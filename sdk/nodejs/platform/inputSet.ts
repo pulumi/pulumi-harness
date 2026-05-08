@@ -160,51 +160,51 @@ export interface InputSetState {
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Contains parameters related to creating an Entity for Git Experience.
      */
-    gitDetails?: pulumi.Input<inputs.platform.InputSetGitDetails>;
+    gitDetails?: pulumi.Input<inputs.platform.InputSetGitDetails | undefined>;
     /**
      * Contains Git Information for importing entities from Git
      */
-    gitImportInfo?: pulumi.Input<inputs.platform.InputSetGitImportInfo>;
+    gitImportInfo?: pulumi.Input<inputs.platform.InputSetGitImportInfo | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Flag to set if importing from Git
      */
-    importFromGit?: pulumi.Input<boolean>;
+    importFromGit?: pulumi.Input<boolean | undefined>;
     /**
      * Contains parameters for importing a input set
      */
-    inputSetImportRequest?: pulumi.Input<inputs.platform.InputSetInputSetImportRequest>;
+    inputSetImportRequest?: pulumi.Input<inputs.platform.InputSetInputSetImportRequest | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the pipeline
      */
-    pipelineId?: pulumi.Input<string>;
+    pipelineId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Input Set YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
-    yaml?: pulumi.Input<string>;
+    yaml?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -214,15 +214,15 @@ export interface InputSetArgs {
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Contains parameters related to creating an Entity for Git Experience.
      */
-    gitDetails?: pulumi.Input<inputs.platform.InputSetGitDetails>;
+    gitDetails?: pulumi.Input<inputs.platform.InputSetGitDetails | undefined>;
     /**
      * Contains Git Information for importing entities from Git
      */
-    gitImportInfo?: pulumi.Input<inputs.platform.InputSetGitImportInfo>;
+    gitImportInfo?: pulumi.Input<inputs.platform.InputSetGitImportInfo | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -230,15 +230,15 @@ export interface InputSetArgs {
     /**
      * Flag to set if importing from Git
      */
-    importFromGit?: pulumi.Input<boolean>;
+    importFromGit?: pulumi.Input<boolean | undefined>;
     /**
      * Contains parameters for importing a input set
      */
-    inputSetImportRequest?: pulumi.Input<inputs.platform.InputSetInputSetImportRequest>;
+    inputSetImportRequest?: pulumi.Input<inputs.platform.InputSetInputSetImportRequest | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
@@ -254,9 +254,9 @@ export interface InputSetArgs {
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Input Set YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
-    yaml?: pulumi.Input<string>;
+    yaml?: pulumi.Input<string | undefined>;
 }

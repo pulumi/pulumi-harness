@@ -216,17 +216,17 @@ export interface GetDiscoveryAgentOutputArgs {
     /**
      * The unique identity of the agent. Either this or 'name' must be provided.
      */
-    identity?: pulumi.Input<string>;
+    identity?: pulumi.Input<string | undefined>;
     /**
      * The name of the agent. Either this or 'identity' must be provided.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The organization identifier of the agent (optional). Must be 1-64 characters and contain only alphanumeric characters, hyphens, or underscores.
      */
-    orgIdentifier?: pulumi.Input<string>;
+    orgIdentifier?: pulumi.Input<string | undefined>;
     /**
      * The project identifier of the agent (optional). Must be 1-64 characters and contain only alphanumeric characters, hyphens, or underscores.
      */
-    projectIdentifier?: pulumi.Input<string>;
+    projectIdentifier?: pulumi.Input<string | undefined>;
 }

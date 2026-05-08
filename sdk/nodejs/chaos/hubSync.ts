@@ -104,13 +104,13 @@ export interface HubSyncState {
     /**
      * The ID of the Chaos Hub to sync
      */
-    hubId?: pulumi.Input<string>;
+    hubId?: pulumi.Input<string | undefined>;
     /**
      * Timestamp of the last sync
      */
-    lastSyncedAt?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
-    projectId?: pulumi.Input<string>;
+    lastSyncedAt?: pulumi.Input<string | undefined>;
+    orgId?: pulumi.Input<string | undefined>;
+    projectId?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -24,15 +24,15 @@ class DbSchemaArgs:
                  identifier: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 changelog_script: Optional[pulumi.Input['DbSchemaChangelogScriptArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 migration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_source: Optional[pulumi.Input['DbSchemaSchemaSourceArgs']] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_percona: Optional[pulumi.Input[_builtins.bool]] = None):
+                 changelog_script: pulumi.Input[Optional['DbSchemaChangelogScriptArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 migration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_source: pulumi.Input[Optional['DbSchemaSchemaSourceArgs']] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_percona: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DbSchema resource.
 
@@ -109,128 +109,128 @@ class DbSchemaArgs:
 
     @_builtins.property
     @pulumi.getter(name="changelogScript")
-    def changelog_script(self) -> Optional[pulumi.Input['DbSchemaChangelogScriptArgs']]:
+    def changelog_script(self) -> pulumi.Input[Optional['DbSchemaChangelogScriptArgs']]:
         """
         Configuration to clone changeSets using script
         """
         return pulumi.get(self, "changelog_script")
 
     @changelog_script.setter
-    def changelog_script(self, value: Optional[pulumi.Input['DbSchemaChangelogScriptArgs']]):
+    def changelog_script(self, value: pulumi.Input[Optional['DbSchemaChangelogScriptArgs']]):
         pulumi.set(self, "changelog_script", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="migrationType")
-    def migration_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def migration_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DB Migration tool type. Valid values are: Liquibase, Flyway
         """
         return pulumi.get(self, "migration_type")
 
     @migration_type.setter
-    def migration_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def migration_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "migration_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaSource")
-    def schema_source(self) -> Optional[pulumi.Input['DbSchemaSchemaSourceArgs']]:
+    def schema_source(self) -> pulumi.Input[Optional['DbSchemaSchemaSourceArgs']]:
         """
         Provides a connector and path at which to find the database schema representation
         """
         return pulumi.get(self, "schema_source")
 
     @schema_source.setter
-    def schema_source(self, value: Optional[pulumi.Input['DbSchemaSchemaSourceArgs']]):
+    def schema_source(self, value: pulumi.Input[Optional['DbSchemaSchemaSourceArgs']]):
         pulumi.set(self, "schema_source", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service associated with schema
         """
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the database schema. Valid values are: SCRIPT, REPOSITORY
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="usePercona")
-    def use_percona(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_percona(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
         """
         return pulumi.get(self, "use_percona")
 
     @use_percona.setter
-    def use_percona(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_percona(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_percona", value)
 
 
 @pulumi.input_type
 class _DbSchemaState:
     def __init__(__self__, *,
-                 changelog_script: Optional[pulumi.Input['DbSchemaChangelogScriptArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 migration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_source: Optional[pulumi.Input['DbSchemaSchemaSourceArgs']] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_percona: Optional[pulumi.Input[_builtins.bool]] = None):
+                 changelog_script: pulumi.Input[Optional['DbSchemaChangelogScriptArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 migration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_source: pulumi.Input[Optional['DbSchemaSchemaSourceArgs']] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_percona: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering DbSchema resources.
 
@@ -274,146 +274,146 @@ class _DbSchemaState:
 
     @_builtins.property
     @pulumi.getter(name="changelogScript")
-    def changelog_script(self) -> Optional[pulumi.Input['DbSchemaChangelogScriptArgs']]:
+    def changelog_script(self) -> pulumi.Input[Optional['DbSchemaChangelogScriptArgs']]:
         """
         Configuration to clone changeSets using script
         """
         return pulumi.get(self, "changelog_script")
 
     @changelog_script.setter
-    def changelog_script(self, value: Optional[pulumi.Input['DbSchemaChangelogScriptArgs']]):
+    def changelog_script(self, value: pulumi.Input[Optional['DbSchemaChangelogScriptArgs']]):
         pulumi.set(self, "changelog_script", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="migrationType")
-    def migration_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def migration_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DB Migration tool type. Valid values are: Liquibase, Flyway
         """
         return pulumi.get(self, "migration_type")
 
     @migration_type.setter
-    def migration_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def migration_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "migration_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaSource")
-    def schema_source(self) -> Optional[pulumi.Input['DbSchemaSchemaSourceArgs']]:
+    def schema_source(self) -> pulumi.Input[Optional['DbSchemaSchemaSourceArgs']]:
         """
         Provides a connector and path at which to find the database schema representation
         """
         return pulumi.get(self, "schema_source")
 
     @schema_source.setter
-    def schema_source(self, value: Optional[pulumi.Input['DbSchemaSchemaSourceArgs']]):
+    def schema_source(self, value: pulumi.Input[Optional['DbSchemaSchemaSourceArgs']]):
         pulumi.set(self, "schema_source", value)
 
     @_builtins.property
     @pulumi.getter
-    def service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service associated with schema
         """
         return pulumi.get(self, "service")
 
     @service.setter
-    def service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the database schema. Valid values are: SCRIPT, REPOSITORY
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="usePercona")
-    def use_percona(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_percona(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
         """
         return pulumi.get(self, "use_percona")
 
     @use_percona.setter
-    def use_percona(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_percona(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_percona", value)
 
 
@@ -423,18 +423,18 @@ class DbSchema(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 changelog_script: Optional[pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 migration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_source: Optional[pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_percona: Optional[pulumi.Input[_builtins.bool]] = None,
+                 changelog_script: pulumi.Input[Optional[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 migration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_source: pulumi.Input[Optional[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_percona: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Resource for creating a Harness DBDevOps Schema.
@@ -734,18 +734,18 @@ class DbSchema(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 changelog_script: Optional[pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 migration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_source: Optional[pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']]] = None,
-                 service: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_percona: Optional[pulumi.Input[_builtins.bool]] = None,
+                 changelog_script: pulumi.Input[Optional[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 migration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_source: pulumi.Input[Optional[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_percona: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -783,18 +783,18 @@ class DbSchema(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            changelog_script: Optional[pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            migration_type: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            schema_source: Optional[pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']]] = None,
-            service: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            use_percona: Optional[pulumi.Input[_builtins.bool]] = None) -> 'DbSchema':
+            changelog_script: pulumi.Input[Optional[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            migration_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            schema_source: pulumi.Input[Optional[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            use_percona: pulumi.Input[Optional[_builtins.bool]] = None) -> 'DbSchema':
         """
         Get an existing DbSchema resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

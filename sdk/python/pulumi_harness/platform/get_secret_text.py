@@ -217,11 +217,11 @@ def get_secret_text(additional_metadatas: Optional[Sequence[Union['GetSecretText
         tags=pulumi.get(__ret__, 'tags'),
         value=pulumi.get(__ret__, 'value'),
         value_type=pulumi.get(__ret__, 'value_type'))
-def get_secret_text_output(additional_metadatas: Optional[pulumi.Input[Optional[Sequence[Union['GetSecretTextAdditionalMetadataArgs', 'GetSecretTextAdditionalMetadataArgsDict']]]]] = None,
-                           identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                           name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_secret_text_output(additional_metadatas: pulumi.Input[Optional[Optional[Sequence[Union['GetSecretTextAdditionalMetadataArgs', 'GetSecretTextAdditionalMetadataArgsDict']]]]] = None,
+                           identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                           name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretTextResult]:
     """
     DataSource for looking up secret of type secret text.

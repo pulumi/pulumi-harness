@@ -108,11 +108,11 @@ export interface AddUserToGroupState {
     /**
      * The name of the user.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the user.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**

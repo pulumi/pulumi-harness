@@ -259,15 +259,15 @@ def get_repo_rule_branch(bypasses: Optional[Sequence[Union['GetRepoRuleBranchByp
         state=pulumi.get(__ret__, 'state'),
         updated=pulumi.get(__ret__, 'updated'),
         updated_by=pulumi.get(__ret__, 'updated_by'))
-def get_repo_rule_branch_output(bypasses: Optional[pulumi.Input[Sequence[Union['GetRepoRuleBranchBypassArgs', 'GetRepoRuleBranchBypassArgsDict']]]] = None,
-                                description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                                org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                patterns: Optional[pulumi.Input[Optional[Sequence[Union['GetRepoRuleBranchPatternArgs', 'GetRepoRuleBranchPatternArgsDict']]]]] = None,
-                                policies: Optional[pulumi.Input[Sequence[Union['GetRepoRuleBranchPolicyArgs', 'GetRepoRuleBranchPolicyArgsDict']]]] = None,
-                                project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                repo_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                                state: Optional[pulumi.Input[_builtins.str]] = None,
+def get_repo_rule_branch_output(bypasses: pulumi.Input[Optional[Sequence[Union['GetRepoRuleBranchBypassArgs', 'GetRepoRuleBranchBypassArgsDict']]]] = None,
+                                description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                                org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                patterns: pulumi.Input[Optional[Optional[Sequence[Union['GetRepoRuleBranchPatternArgs', 'GetRepoRuleBranchPatternArgsDict']]]]] = None,
+                                policies: pulumi.Input[Optional[Sequence[Union['GetRepoRuleBranchPolicyArgs', 'GetRepoRuleBranchPolicyArgsDict']]]] = None,
+                                project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                repo_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                                state: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepoRuleBranchResult]:
     """
     Data source for retrieving a Harness repo branch rule.

@@ -30,22 +30,22 @@ class WorkspaceArgs:
                  repository: pulumi.Input[_builtins.str],
                  repository_connector: pulumi.Input[_builtins.str],
                  repository_path: pulumi.Input[_builtins.str],
-                 connectors: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceConnectorArgs']]]] = None,
-                 default_pipelines: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_connector: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_commit: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_sha: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]]] = None,
-                 terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]] = None,
-                 terragrunt_provider: Optional[pulumi.Input[_builtins.bool]] = None,
-                 terragrunt_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 variable_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 connectors: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceConnectorArgs']]]] = None,
+                 default_pipelines: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_commit: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_sha: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]]] = None,
+                 terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]] = None,
+                 terragrunt_provider: pulumi.Input[Optional[_builtins.bool]] = None,
+                 terragrunt_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 variable_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Workspace resource.
 
@@ -227,225 +227,225 @@ class WorkspaceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def connectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceConnectorArgs']]]]:
+    def connectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceConnectorArgs']]]]:
         """
         Provider connectors configured on the Workspace. Only one connector of a type is supported
         """
         return pulumi.get(self, "connectors")
 
     @connectors.setter
-    def connectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceConnectorArgs']]]]):
+    def connectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceConnectorArgs']]]]):
         pulumi.set(self, "connectors", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultPipelines")
-    def default_pipelines(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def default_pipelines(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Default pipelines associated with this workspace
         """
         return pulumi.get(self, "default_pipelines")
 
     @default_pipelines.setter
-    def default_pipelines(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def default_pipelines(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "default_pipelines", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]]]:
+    def environment_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]]]:
         """
         Environment variables configured on the workspace
         """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]]]):
+    def environment_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]]]):
         pulumi.set(self, "environment_variables", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConnector")
-    def provider_connector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provider_connector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provider connector is the reference to the connector for the infrastructure provider
         """
         return pulumi.get(self, "provider_connector")
 
     @provider_connector.setter
-    def provider_connector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provider_connector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provider_connector", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryBranch")
-    def repository_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
         """
         return pulumi.get(self, "repository_branch")
 
     @repository_branch.setter
-    def repository_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryCommit")
-    def repository_commit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_commit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
         """
         return pulumi.get(self, "repository_commit")
 
     @repository_commit.setter
-    def repository_commit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_commit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_commit", value)
 
     @_builtins.property
     @pulumi.getter(name="repositorySha")
-    def repository_sha(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_sha(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
         """
         return pulumi.get(self, "repository_sha")
 
     @repository_sha.setter
-    def repository_sha(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_sha(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_sha", value)
 
     @_builtins.property
     @pulumi.getter(name="runAll")
-    def run_all(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_all(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean flag for run-all terragrunt modules
         """
         return pulumi.get(self, "run_all")
 
     @run_all.setter
-    def run_all(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_all(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_all", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="terraformVariableFiles")
-    def terraform_variable_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]]]:
+    def terraform_variable_files(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]]]:
         """
         Terraform variables files configured on the workspace (see below for nested schema)
         """
         return pulumi.get(self, "terraform_variable_files")
 
     @terraform_variable_files.setter
-    def terraform_variable_files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]]]):
+    def terraform_variable_files(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]]]):
         pulumi.set(self, "terraform_variable_files", value)
 
     @_builtins.property
     @pulumi.getter(name="terraformVariables")
-    def terraform_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]]:
+    def terraform_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]]:
         """
         Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
         """
         return pulumi.get(self, "terraform_variables")
 
     @terraform_variables.setter
-    def terraform_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]]):
+    def terraform_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]]):
         pulumi.set(self, "terraform_variables", value)
 
     @_builtins.property
     @pulumi.getter(name="terragruntProvider")
-    def terragrunt_provider(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def terragrunt_provider(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to enable Terragrunt mode
         """
         return pulumi.get(self, "terragrunt_provider")
 
     @terragrunt_provider.setter
-    def terragrunt_provider(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def terragrunt_provider(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "terragrunt_provider", value)
 
     @_builtins.property
     @pulumi.getter(name="terragruntVersion")
-    def terragrunt_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def terragrunt_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Terragrunt version to use (e.g., 0.45.0)
         """
         return pulumi.get(self, "terragrunt_version")
 
     @terragrunt_version.setter
-    def terragrunt_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def terragrunt_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "terragrunt_version", value)
 
     @_builtins.property
     @pulumi.getter(name="variableSets")
-    def variable_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def variable_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Variable sets to use.
         """
         return pulumi.get(self, "variable_sets")
 
     @variable_sets.setter
-    def variable_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def variable_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "variable_sets", value)
 
 
 @pulumi.input_type
 class _WorkspaceState:
     def __init__(__self__, *,
-                 connectors: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceConnectorArgs']]]] = None,
-                 cost_estimation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_pipelines: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_connector: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioner_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioner_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_commit: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_connector: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_sha: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]]] = None,
-                 terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]] = None,
-                 terragrunt_provider: Optional[pulumi.Input[_builtins.bool]] = None,
-                 terragrunt_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 variable_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 connectors: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceConnectorArgs']]]] = None,
+                 cost_estimation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_pipelines: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioner_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_commit: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_sha: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]]] = None,
+                 terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]] = None,
+                 terragrunt_provider: pulumi.Input[Optional[_builtins.bool]] = None,
+                 terragrunt_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 variable_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Workspace resources.
 
@@ -528,302 +528,302 @@ class _WorkspaceState:
 
     @_builtins.property
     @pulumi.getter
-    def connectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceConnectorArgs']]]]:
+    def connectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceConnectorArgs']]]]:
         """
         Provider connectors configured on the Workspace. Only one connector of a type is supported
         """
         return pulumi.get(self, "connectors")
 
     @connectors.setter
-    def connectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceConnectorArgs']]]]):
+    def connectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceConnectorArgs']]]]):
         pulumi.set(self, "connectors", value)
 
     @_builtins.property
     @pulumi.getter(name="costEstimationEnabled")
-    def cost_estimation_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cost_estimation_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Cost estimation enabled determines if cost estimation operations are performed.
         """
         return pulumi.get(self, "cost_estimation_enabled")
 
     @cost_estimation_enabled.setter
-    def cost_estimation_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cost_estimation_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cost_estimation_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultPipelines")
-    def default_pipelines(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def default_pipelines(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Default pipelines associated with this workspace
         """
         return pulumi.get(self, "default_pipelines")
 
     @default_pipelines.setter
-    def default_pipelines(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def default_pipelines(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "default_pipelines", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]]]:
+    def environment_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]]]:
         """
         Environment variables configured on the workspace
         """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]]]):
+    def environment_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]]]):
         pulumi.set(self, "environment_variables", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConnector")
-    def provider_connector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provider_connector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provider connector is the reference to the connector for the infrastructure provider
         """
         return pulumi.get(self, "provider_connector")
 
     @provider_connector.setter
-    def provider_connector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provider_connector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provider_connector", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionerType")
-    def provisioner_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provisioner_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provisioner type defines the provisioning tool to use (terraform or opentofu)
         """
         return pulumi.get(self, "provisioner_type")
 
     @provisioner_type.setter
-    def provisioner_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provisioner_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provisioner_type", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionerVersion")
-    def provisioner_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provisioner_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
         """
         return pulumi.get(self, "provisioner_version")
 
     @provisioner_version.setter
-    def provisioner_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provisioner_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provisioner_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def repository(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repository is the name of the repository to fetch the code from.
         """
         return pulumi.get(self, "repository")
 
     @repository.setter
-    def repository(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryBranch")
-    def repository_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
         """
         return pulumi.get(self, "repository_branch")
 
     @repository_branch.setter
-    def repository_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryCommit")
-    def repository_commit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_commit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
         """
         return pulumi.get(self, "repository_commit")
 
     @repository_commit.setter
-    def repository_commit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_commit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_commit", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryConnector")
-    def repository_connector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_connector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repository connector is the reference to the connector used to fetch the code.
         """
         return pulumi.get(self, "repository_connector")
 
     @repository_connector.setter
-    def repository_connector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_connector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_connector", value)
 
     @_builtins.property
     @pulumi.getter(name="repositoryPath")
-    def repository_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repository path is the path in which the code resides.
         """
         return pulumi.get(self, "repository_path")
 
     @repository_path.setter
-    def repository_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_path", value)
 
     @_builtins.property
     @pulumi.getter(name="repositorySha")
-    def repository_sha(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repository_sha(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
         """
         return pulumi.get(self, "repository_sha")
 
     @repository_sha.setter
-    def repository_sha(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repository_sha(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repository_sha", value)
 
     @_builtins.property
     @pulumi.getter(name="runAll")
-    def run_all(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_all(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean flag for run-all terragrunt modules
         """
         return pulumi.get(self, "run_all")
 
     @run_all.setter
-    def run_all(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_all(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_all", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="terraformVariableFiles")
-    def terraform_variable_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]]]:
+    def terraform_variable_files(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]]]:
         """
         Terraform variables files configured on the workspace (see below for nested schema)
         """
         return pulumi.get(self, "terraform_variable_files")
 
     @terraform_variable_files.setter
-    def terraform_variable_files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]]]):
+    def terraform_variable_files(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]]]):
         pulumi.set(self, "terraform_variable_files", value)
 
     @_builtins.property
     @pulumi.getter(name="terraformVariables")
-    def terraform_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]]:
+    def terraform_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]]:
         """
         Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
         """
         return pulumi.get(self, "terraform_variables")
 
     @terraform_variables.setter
-    def terraform_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]]):
+    def terraform_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceTerraformVariableArgs']]]]):
         pulumi.set(self, "terraform_variables", value)
 
     @_builtins.property
     @pulumi.getter(name="terragruntProvider")
-    def terragrunt_provider(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def terragrunt_provider(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to enable Terragrunt mode
         """
         return pulumi.get(self, "terragrunt_provider")
 
     @terragrunt_provider.setter
-    def terragrunt_provider(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def terragrunt_provider(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "terragrunt_provider", value)
 
     @_builtins.property
     @pulumi.getter(name="terragruntVersion")
-    def terragrunt_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def terragrunt_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Terragrunt version to use (e.g., 0.45.0)
         """
         return pulumi.get(self, "terragrunt_version")
 
     @terragrunt_version.setter
-    def terragrunt_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def terragrunt_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "terragrunt_version", value)
 
     @_builtins.property
     @pulumi.getter(name="variableSets")
-    def variable_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def variable_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Variable sets to use.
         """
         return pulumi.get(self, "variable_sets")
 
     @variable_sets.setter
-    def variable_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def variable_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "variable_sets", value)
 
 
@@ -833,31 +833,31 @@ class Workspace(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict']]]]] = None,
-                 cost_estimation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_pipelines: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_connector: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioner_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioner_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_commit: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_connector: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_sha: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]]] = None,
-                 terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None,
-                 terragrunt_provider: Optional[pulumi.Input[_builtins.bool]] = None,
-                 terragrunt_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 variable_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict']]]]] = None,
+                 cost_estimation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_pipelines: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioner_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_commit: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_sha: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]]] = None,
+                 terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None,
+                 terragrunt_provider: pulumi.Input[Optional[_builtins.bool]] = None,
+                 terragrunt_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 variable_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Resource for managing Workspaces
@@ -1084,31 +1084,31 @@ class Workspace(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict']]]]] = None,
-                 cost_estimation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_pipelines: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_connector: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioner_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioner_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_commit: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_connector: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 repository_sha: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]]] = None,
-                 terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None,
-                 terragrunt_provider: Optional[pulumi.Input[_builtins.bool]] = None,
-                 terragrunt_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 variable_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict']]]]] = None,
+                 cost_estimation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_pipelines: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioner_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_commit: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_sha: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]]] = None,
+                 terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None,
+                 terragrunt_provider: pulumi.Input[Optional[_builtins.bool]] = None,
+                 terragrunt_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 variable_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1171,31 +1171,31 @@ class Workspace(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict']]]]] = None,
-            cost_estimation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            default_pipelines: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_connector: Optional[pulumi.Input[_builtins.str]] = None,
-            provisioner_type: Optional[pulumi.Input[_builtins.str]] = None,
-            provisioner_version: Optional[pulumi.Input[_builtins.str]] = None,
-            repository: Optional[pulumi.Input[_builtins.str]] = None,
-            repository_branch: Optional[pulumi.Input[_builtins.str]] = None,
-            repository_commit: Optional[pulumi.Input[_builtins.str]] = None,
-            repository_connector: Optional[pulumi.Input[_builtins.str]] = None,
-            repository_path: Optional[pulumi.Input[_builtins.str]] = None,
-            repository_sha: Optional[pulumi.Input[_builtins.str]] = None,
-            run_all: Optional[pulumi.Input[_builtins.bool]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]]] = None,
-            terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None,
-            terragrunt_provider: Optional[pulumi.Input[_builtins.bool]] = None,
-            terragrunt_version: Optional[pulumi.Input[_builtins.str]] = None,
-            variable_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Workspace':
+            connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict']]]]] = None,
+            cost_estimation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            default_pipelines: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_connector: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioner_version: pulumi.Input[Optional[_builtins.str]] = None,
+            repository: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_commit: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_connector: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_path: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_sha: pulumi.Input[Optional[_builtins.str]] = None,
+            run_all: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]]] = None,
+            terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None,
+            terragrunt_provider: pulumi.Input[Optional[_builtins.bool]] = None,
+            terragrunt_version: pulumi.Input[Optional[_builtins.str]] = None,
+            variable_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Workspace':
         """
         Get an existing Workspace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

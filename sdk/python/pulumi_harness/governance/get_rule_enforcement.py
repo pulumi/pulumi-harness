@@ -229,7 +229,7 @@ def get_rule_enforcement(enforcement_id: Optional[_builtins.str] = None,
         rule_set_ids=pulumi.get(__ret__, 'rule_set_ids'),
         target_accounts=pulumi.get(__ret__, 'target_accounts'),
         target_regions=pulumi.get(__ret__, 'target_regions'))
-def get_rule_enforcement_output(enforcement_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_rule_enforcement_output(enforcement_id: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleEnforcementResult]:
     """
     Datasource for looking up a rule enforcement.

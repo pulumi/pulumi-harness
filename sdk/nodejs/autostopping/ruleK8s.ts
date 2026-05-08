@@ -132,39 +132,39 @@ export interface RuleK8sState {
     /**
      * Id of the cloud connector
      */
-    cloudConnectorId?: pulumi.Input<string>;
+    cloudConnectorId?: pulumi.Input<string | undefined>;
     /**
      * Dependent rules
      */
-    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleK8sDepend>[]>;
+    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleK8sDepend>[] | undefined>;
     /**
      * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */
-    idleTimeMins?: pulumi.Input<number>;
+    idleTimeMins?: pulumi.Input<number | undefined>;
     /**
      * Id of the K8s connector
      */
-    k8sConnectorId?: pulumi.Input<string>;
+    k8sConnectorId?: pulumi.Input<string | undefined>;
     /**
      * Namespace of the cluster
      */
-    k8sNamespace?: pulumi.Input<string>;
+    k8sNamespace?: pulumi.Input<string | undefined>;
     /**
      * Name of the rule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
      */
-    ruleYaml?: pulumi.Input<string>;
+    ruleYaml?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -178,15 +178,15 @@ export interface RuleK8sArgs {
     /**
      * Dependent rules
      */
-    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleK8sDepend>[]>;
+    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleK8sDepend>[] | undefined>;
     /**
      * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */
-    idleTimeMins?: pulumi.Input<number>;
+    idleTimeMins?: pulumi.Input<number | undefined>;
     /**
      * Id of the K8s connector
      */
@@ -198,7 +198,7 @@ export interface RuleK8sArgs {
     /**
      * Name of the rule
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
      */

@@ -65,6 +65,8 @@ import (
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				myTemplate,
 //				myInfra,
+//			}), pulumi.IgnoreChanges([]string{
+//				"tags",
 //			}))
 //			if err != nil {
 //				return err
@@ -93,6 +95,8 @@ import (
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				myTemplate,
 //				myInfra,
+//			}), pulumi.IgnoreChanges([]string{
+//				"tags",
 //			}))
 //			if err != nil {
 //				return err
@@ -120,6 +124,8 @@ import (
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				orgTemplate,
 //				myInfra,
+//			}), pulumi.IgnoreChanges([]string{
+//				"tags",
 //			}))
 //			if err != nil {
 //				return err

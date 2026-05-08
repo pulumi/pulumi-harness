@@ -118,15 +118,15 @@ export interface GetInputSetOutputArgs {
     /**
      * Contains parameters related to creating an Entity for Git Experience.
      */
-    gitDetails?: pulumi.Input<inputs.platform.GetInputSetGitDetailsArgs>;
+    gitDetails?: pulumi.Input<inputs.platform.GetInputSetGitDetailsArgs | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */

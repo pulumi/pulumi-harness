@@ -119,19 +119,19 @@ export interface OrchestratorState {
     /**
      * Endpoint of the k8s cluster being onboarded under the orchestrator
      */
-    clusterEndpoint?: pulumi.Input<string>;
+    clusterEndpoint?: pulumi.Input<string | undefined>;
     /**
      * ID of the Harness Kubernetes Connector Being used
      */
-    k8sConnectorId?: pulumi.Input<string>;
+    k8sConnectorId?: pulumi.Input<string | undefined>;
     /**
      * Name of the Orchestrator
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Region of the k8s cluster
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -149,9 +149,9 @@ export interface OrchestratorArgs {
     /**
      * Name of the Orchestrator
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Region of the k8s cluster
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

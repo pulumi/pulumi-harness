@@ -24,18 +24,18 @@ class SplunkConnectorArgs:
                  account_id: pulumi.Input[_builtins.str],
                  identifier: pulumi.Input[_builtins.str],
                  url: pulumi.Input[_builtins.str],
-                 bearer_token: Optional[pulumi.Input['SplunkConnectorBearerTokenArgs']] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hec_token: Optional[pulumi.Input['SplunkConnectorHecTokenArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_authentication: Optional[pulumi.Input['SplunkConnectorNoAuthenticationArgs']] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_password: Optional[pulumi.Input['SplunkConnectorUsernamePasswordArgs']] = None):
+                 bearer_token: pulumi.Input[Optional['SplunkConnectorBearerTokenArgs']] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hec_token: pulumi.Input[Optional['SplunkConnectorHecTokenArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_authentication: pulumi.Input[Optional['SplunkConnectorNoAuthenticationArgs']] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_password: pulumi.Input[Optional['SplunkConnectorUsernamePasswordArgs']] = None):
         """
         The set of arguments for constructing a SplunkConnector resource.
 
@@ -127,169 +127,169 @@ class SplunkConnectorArgs:
 
     @_builtins.property
     @pulumi.getter(name="bearerToken")
-    def bearer_token(self) -> Optional[pulumi.Input['SplunkConnectorBearerTokenArgs']]:
+    def bearer_token(self) -> pulumi.Input[Optional['SplunkConnectorBearerTokenArgs']]:
         """
         Authenticate to Splunk using bearer token.
         """
         return pulumi.get(self, "bearer_token")
 
     @bearer_token.setter
-    def bearer_token(self, value: Optional[pulumi.Input['SplunkConnectorBearerTokenArgs']]):
+    def bearer_token(self, value: pulumi.Input[Optional['SplunkConnectorBearerTokenArgs']]):
         pulumi.set(self, "bearer_token", value)
 
     @_builtins.property
     @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def delegate_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
     @delegate_selectors.setter
-    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "delegate_selectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="hecToken")
-    def hec_token(self) -> Optional[pulumi.Input['SplunkConnectorHecTokenArgs']]:
+    def hec_token(self) -> pulumi.Input[Optional['SplunkConnectorHecTokenArgs']]:
         """
         Authenticate to Splunk using HEC (HTTP Event Collector) token.
         """
         return pulumi.get(self, "hec_token")
 
     @hec_token.setter
-    def hec_token(self, value: Optional[pulumi.Input['SplunkConnectorHecTokenArgs']]):
+    def hec_token(self, value: pulumi.Input[Optional['SplunkConnectorHecTokenArgs']]):
         pulumi.set(self, "hec_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="noAuthentication")
-    def no_authentication(self) -> Optional[pulumi.Input['SplunkConnectorNoAuthenticationArgs']]:
+    def no_authentication(self) -> pulumi.Input[Optional['SplunkConnectorNoAuthenticationArgs']]:
         """
         No authentication required for Splunk.
         """
         return pulumi.get(self, "no_authentication")
 
     @no_authentication.setter
-    def no_authentication(self, value: Optional[pulumi.Input['SplunkConnectorNoAuthenticationArgs']]):
+    def no_authentication(self, value: pulumi.Input[Optional['SplunkConnectorNoAuthenticationArgs']]):
         pulumi.set(self, "no_authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordRef")
     @_utilities.deprecated("""Use 'username_password' authentication block instead""")
-    def password_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reference to the Harness secret containing the Splunk password. Deprecated: Use 'username_password' block instead. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "password_ref")
 
     @password_ref.setter
-    def password_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_ref", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Use 'username_password' authentication block instead""")
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username used for connecting to Splunk. Deprecated: Use 'username_password' block instead.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
     @_builtins.property
     @pulumi.getter(name="usernamePassword")
-    def username_password(self) -> Optional[pulumi.Input['SplunkConnectorUsernamePasswordArgs']]:
+    def username_password(self) -> pulumi.Input[Optional['SplunkConnectorUsernamePasswordArgs']]:
         """
         Authenticate to Splunk using username and password.
         """
         return pulumi.get(self, "username_password")
 
     @username_password.setter
-    def username_password(self, value: Optional[pulumi.Input['SplunkConnectorUsernamePasswordArgs']]):
+    def username_password(self, value: pulumi.Input[Optional['SplunkConnectorUsernamePasswordArgs']]):
         pulumi.set(self, "username_password", value)
 
 
 @pulumi.input_type
 class _SplunkConnectorState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bearer_token: Optional[pulumi.Input['SplunkConnectorBearerTokenArgs']] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hec_token: Optional[pulumi.Input['SplunkConnectorHecTokenArgs']] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_authentication: Optional[pulumi.Input['SplunkConnectorNoAuthenticationArgs']] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_password: Optional[pulumi.Input['SplunkConnectorUsernamePasswordArgs']] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bearer_token: pulumi.Input[Optional['SplunkConnectorBearerTokenArgs']] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hec_token: pulumi.Input[Optional['SplunkConnectorHecTokenArgs']] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_authentication: pulumi.Input[Optional['SplunkConnectorNoAuthenticationArgs']] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_password: pulumi.Input[Optional['SplunkConnectorUsernamePasswordArgs']] = None):
         """
         Input properties used for looking up and filtering SplunkConnector resources.
 
@@ -348,184 +348,184 @@ class _SplunkConnectorState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Splunk account id.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="bearerToken")
-    def bearer_token(self) -> Optional[pulumi.Input['SplunkConnectorBearerTokenArgs']]:
+    def bearer_token(self) -> pulumi.Input[Optional['SplunkConnectorBearerTokenArgs']]:
         """
         Authenticate to Splunk using bearer token.
         """
         return pulumi.get(self, "bearer_token")
 
     @bearer_token.setter
-    def bearer_token(self, value: Optional[pulumi.Input['SplunkConnectorBearerTokenArgs']]):
+    def bearer_token(self, value: pulumi.Input[Optional['SplunkConnectorBearerTokenArgs']]):
         pulumi.set(self, "bearer_token", value)
 
     @_builtins.property
     @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def delegate_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
     @delegate_selectors.setter
-    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "delegate_selectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="hecToken")
-    def hec_token(self) -> Optional[pulumi.Input['SplunkConnectorHecTokenArgs']]:
+    def hec_token(self) -> pulumi.Input[Optional['SplunkConnectorHecTokenArgs']]:
         """
         Authenticate to Splunk using HEC (HTTP Event Collector) token.
         """
         return pulumi.get(self, "hec_token")
 
     @hec_token.setter
-    def hec_token(self, value: Optional[pulumi.Input['SplunkConnectorHecTokenArgs']]):
+    def hec_token(self, value: pulumi.Input[Optional['SplunkConnectorHecTokenArgs']]):
         pulumi.set(self, "hec_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="noAuthentication")
-    def no_authentication(self) -> Optional[pulumi.Input['SplunkConnectorNoAuthenticationArgs']]:
+    def no_authentication(self) -> pulumi.Input[Optional['SplunkConnectorNoAuthenticationArgs']]:
         """
         No authentication required for Splunk.
         """
         return pulumi.get(self, "no_authentication")
 
     @no_authentication.setter
-    def no_authentication(self, value: Optional[pulumi.Input['SplunkConnectorNoAuthenticationArgs']]):
+    def no_authentication(self, value: pulumi.Input[Optional['SplunkConnectorNoAuthenticationArgs']]):
         pulumi.set(self, "no_authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordRef")
     @_utilities.deprecated("""Use 'username_password' authentication block instead""")
-    def password_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reference to the Harness secret containing the Splunk password. Deprecated: Use 'username_password' block instead. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "password_ref")
 
     @password_ref.setter
-    def password_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_ref", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the Splunk server.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Use 'username_password' authentication block instead""")
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username used for connecting to Splunk. Deprecated: Use 'username_password' block instead.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
     @_builtins.property
     @pulumi.getter(name="usernamePassword")
-    def username_password(self) -> Optional[pulumi.Input['SplunkConnectorUsernamePasswordArgs']]:
+    def username_password(self) -> pulumi.Input[Optional['SplunkConnectorUsernamePasswordArgs']]:
         """
         Authenticate to Splunk using username and password.
         """
         return pulumi.get(self, "username_password")
 
     @username_password.setter
-    def username_password(self, value: Optional[pulumi.Input['SplunkConnectorUsernamePasswordArgs']]):
+    def username_password(self, value: pulumi.Input[Optional['SplunkConnectorUsernamePasswordArgs']]):
         pulumi.set(self, "username_password", value)
 
 
@@ -535,21 +535,21 @@ class SplunkConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bearer_token: Optional[pulumi.Input[Union['SplunkConnectorBearerTokenArgs', 'SplunkConnectorBearerTokenArgsDict']]] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hec_token: Optional[pulumi.Input[Union['SplunkConnectorHecTokenArgs', 'SplunkConnectorHecTokenArgsDict']]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_authentication: Optional[pulumi.Input[Union['SplunkConnectorNoAuthenticationArgs', 'SplunkConnectorNoAuthenticationArgsDict']]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_password: Optional[pulumi.Input[Union['SplunkConnectorUsernamePasswordArgs', 'SplunkConnectorUsernamePasswordArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bearer_token: pulumi.Input[Optional[Union['SplunkConnectorBearerTokenArgs', 'SplunkConnectorBearerTokenArgsDict']]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hec_token: pulumi.Input[Optional[Union['SplunkConnectorHecTokenArgs', 'SplunkConnectorHecTokenArgsDict']]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_authentication: pulumi.Input[Optional[Union['SplunkConnectorNoAuthenticationArgs', 'SplunkConnectorNoAuthenticationArgsDict']]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_password: pulumi.Input[Optional[Union['SplunkConnectorUsernamePasswordArgs', 'SplunkConnectorUsernamePasswordArgsDict']]] = None,
                  __props__=None):
         """
         Resource for creating a Splunk connector.
@@ -774,21 +774,21 @@ class SplunkConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bearer_token: Optional[pulumi.Input[Union['SplunkConnectorBearerTokenArgs', 'SplunkConnectorBearerTokenArgsDict']]] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hec_token: Optional[pulumi.Input[Union['SplunkConnectorHecTokenArgs', 'SplunkConnectorHecTokenArgsDict']]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_authentication: Optional[pulumi.Input[Union['SplunkConnectorNoAuthenticationArgs', 'SplunkConnectorNoAuthenticationArgsDict']]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_password: Optional[pulumi.Input[Union['SplunkConnectorUsernamePasswordArgs', 'SplunkConnectorUsernamePasswordArgsDict']]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bearer_token: pulumi.Input[Optional[Union['SplunkConnectorBearerTokenArgs', 'SplunkConnectorBearerTokenArgsDict']]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hec_token: pulumi.Input[Optional[Union['SplunkConnectorHecTokenArgs', 'SplunkConnectorHecTokenArgsDict']]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_authentication: pulumi.Input[Optional[Union['SplunkConnectorNoAuthenticationArgs', 'SplunkConnectorNoAuthenticationArgsDict']]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_password: pulumi.Input[Optional[Union['SplunkConnectorUsernamePasswordArgs', 'SplunkConnectorUsernamePasswordArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -829,21 +829,21 @@ class SplunkConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            bearer_token: Optional[pulumi.Input[Union['SplunkConnectorBearerTokenArgs', 'SplunkConnectorBearerTokenArgsDict']]] = None,
-            delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            hec_token: Optional[pulumi.Input[Union['SplunkConnectorHecTokenArgs', 'SplunkConnectorHecTokenArgsDict']]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            no_authentication: Optional[pulumi.Input[Union['SplunkConnectorNoAuthenticationArgs', 'SplunkConnectorNoAuthenticationArgsDict']]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            password_ref: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None,
-            username_password: Optional[pulumi.Input[Union['SplunkConnectorUsernamePasswordArgs', 'SplunkConnectorUsernamePasswordArgsDict']]] = None) -> 'SplunkConnector':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bearer_token: pulumi.Input[Optional[Union['SplunkConnectorBearerTokenArgs', 'SplunkConnectorBearerTokenArgsDict']]] = None,
+            delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            hec_token: pulumi.Input[Optional[Union['SplunkConnectorHecTokenArgs', 'SplunkConnectorHecTokenArgsDict']]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            no_authentication: pulumi.Input[Optional[Union['SplunkConnectorNoAuthenticationArgs', 'SplunkConnectorNoAuthenticationArgsDict']]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            password_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None,
+            username_password: pulumi.Input[Optional[Union['SplunkConnectorUsernamePasswordArgs', 'SplunkConnectorUsernamePasswordArgsDict']]] = None) -> 'SplunkConnector':
         """
         Get an existing SplunkConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

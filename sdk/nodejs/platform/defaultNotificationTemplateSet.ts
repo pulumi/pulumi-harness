@@ -132,39 +132,39 @@ export interface DefaultNotificationTemplateSetState {
     /**
      * Timestamp when the default notification template set was created.
      */
-    created?: pulumi.Input<number>;
+    created?: pulumi.Input<number | undefined>;
     /**
      * Description for Default Notification Template Set
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Set of event-template configurations
      */
-    eventTemplateConfigurationSets?: pulumi.Input<pulumi.Input<inputs.platform.DefaultNotificationTemplateSetEventTemplateConfigurationSet>[]>;
+    eventTemplateConfigurationSets?: pulumi.Input<pulumi.Input<inputs.platform.DefaultNotificationTemplateSetEventTemplateConfigurationSet>[] | undefined>;
     /**
      * Identifier of Default Notification Template Set
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the default notification template set was last modified.
      */
-    lastModified?: pulumi.Input<number>;
+    lastModified?: pulumi.Input<number | undefined>;
     /**
      * Name of Default Notification Template Set
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Type of channel (e.g. SLACK, EMAIL, etc.)
      */
-    notificationChannelType?: pulumi.Input<string>;
+    notificationChannelType?: pulumi.Input<string | undefined>;
     /**
      * Type of the entity (e.g. PIPELINE, SERVICE, etc.)
      */
-    notificationEntity?: pulumi.Input<string>;
+    notificationEntity?: pulumi.Input<string | undefined>;
     /**
      * Key-value tags
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -174,7 +174,7 @@ export interface DefaultNotificationTemplateSetArgs {
     /**
      * Description for Default Notification Template Set
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Set of event-template configurations
      */
@@ -186,7 +186,7 @@ export interface DefaultNotificationTemplateSetArgs {
     /**
      * Name of Default Notification Template Set
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Type of channel (e.g. SLACK, EMAIL, etc.)
      */
@@ -198,5 +198,5 @@ export interface DefaultNotificationTemplateSetArgs {
     /**
      * Key-value tags
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

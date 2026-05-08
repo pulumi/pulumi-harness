@@ -131,9 +131,9 @@ def get_workspace_output_value(identifier: Optional[_builtins.str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         output_values=pulumi.get(__ret__, 'output_values'),
         project_id=pulumi.get(__ret__, 'project_id'))
-def get_workspace_output_value_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                                      org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                      project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_workspace_output_value_output(identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                                      org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                      project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceOutputValueResult]:
     """
     Data source for retrieving workspace outputs.

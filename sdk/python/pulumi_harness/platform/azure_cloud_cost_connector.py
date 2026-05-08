@@ -25,13 +25,13 @@ class AzureCloudCostConnectorArgs:
                  identifier: pulumi.Input[_builtins.str],
                  subscription_id: pulumi.Input[_builtins.str],
                  tenant_id: pulumi.Input[_builtins.str],
-                 billing_export_spec: Optional[pulumi.Input['AzureCloudCostConnectorBillingExportSpecArgs']] = None,
-                 billing_export_spec2: Optional[pulumi.Input['AzureCloudCostConnectorBillingExportSpec2Args']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 billing_export_spec: pulumi.Input[Optional['AzureCloudCostConnectorBillingExportSpecArgs']] = None,
+                 billing_export_spec2: pulumi.Input[Optional['AzureCloudCostConnectorBillingExportSpec2Args']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AzureCloudCostConnector resource.
 
@@ -116,103 +116,103 @@ class AzureCloudCostConnectorArgs:
 
     @_builtins.property
     @pulumi.getter(name="billingExportSpec")
-    def billing_export_spec(self) -> Optional[pulumi.Input['AzureCloudCostConnectorBillingExportSpecArgs']]:
+    def billing_export_spec(self) -> pulumi.Input[Optional['AzureCloudCostConnectorBillingExportSpecArgs']]:
         """
         Returns billing details for the Azure account.
         """
         return pulumi.get(self, "billing_export_spec")
 
     @billing_export_spec.setter
-    def billing_export_spec(self, value: Optional[pulumi.Input['AzureCloudCostConnectorBillingExportSpecArgs']]):
+    def billing_export_spec(self, value: pulumi.Input[Optional['AzureCloudCostConnectorBillingExportSpecArgs']]):
         pulumi.set(self, "billing_export_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="billingExportSpec2")
-    def billing_export_spec2(self) -> Optional[pulumi.Input['AzureCloudCostConnectorBillingExportSpec2Args']]:
+    def billing_export_spec2(self) -> pulumi.Input[Optional['AzureCloudCostConnectorBillingExportSpec2Args']]:
         """
         Returns billing details for the Azure account.
         """
         return pulumi.get(self, "billing_export_spec2")
 
     @billing_export_spec2.setter
-    def billing_export_spec2(self, value: Optional[pulumi.Input['AzureCloudCostConnectorBillingExportSpec2Args']]):
+    def billing_export_spec2(self, value: pulumi.Input[Optional['AzureCloudCostConnectorBillingExportSpec2Args']]):
         pulumi.set(self, "billing_export_spec2", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _AzureCloudCostConnectorState:
     def __init__(__self__, *,
-                 billing_export_spec: Optional[pulumi.Input['AzureCloudCostConnectorBillingExportSpecArgs']] = None,
-                 billing_export_spec2: Optional[pulumi.Input['AzureCloudCostConnectorBillingExportSpec2Args']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 features_enableds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 billing_export_spec: pulumi.Input[Optional['AzureCloudCostConnectorBillingExportSpecArgs']] = None,
+                 billing_export_spec2: pulumi.Input[Optional['AzureCloudCostConnectorBillingExportSpec2Args']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 features_enableds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AzureCloudCostConnector resources.
 
@@ -253,134 +253,134 @@ class _AzureCloudCostConnectorState:
 
     @_builtins.property
     @pulumi.getter(name="billingExportSpec")
-    def billing_export_spec(self) -> Optional[pulumi.Input['AzureCloudCostConnectorBillingExportSpecArgs']]:
+    def billing_export_spec(self) -> pulumi.Input[Optional['AzureCloudCostConnectorBillingExportSpecArgs']]:
         """
         Returns billing details for the Azure account.
         """
         return pulumi.get(self, "billing_export_spec")
 
     @billing_export_spec.setter
-    def billing_export_spec(self, value: Optional[pulumi.Input['AzureCloudCostConnectorBillingExportSpecArgs']]):
+    def billing_export_spec(self, value: pulumi.Input[Optional['AzureCloudCostConnectorBillingExportSpecArgs']]):
         pulumi.set(self, "billing_export_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="billingExportSpec2")
-    def billing_export_spec2(self) -> Optional[pulumi.Input['AzureCloudCostConnectorBillingExportSpec2Args']]:
+    def billing_export_spec2(self) -> pulumi.Input[Optional['AzureCloudCostConnectorBillingExportSpec2Args']]:
         """
         Returns billing details for the Azure account.
         """
         return pulumi.get(self, "billing_export_spec2")
 
     @billing_export_spec2.setter
-    def billing_export_spec2(self, value: Optional[pulumi.Input['AzureCloudCostConnectorBillingExportSpec2Args']]):
+    def billing_export_spec2(self, value: pulumi.Input[Optional['AzureCloudCostConnectorBillingExportSpec2Args']]):
         pulumi.set(self, "billing_export_spec2", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="featuresEnableds")
-    def features_enableds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def features_enableds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
         """
         return pulumi.get(self, "features_enableds")
 
     @features_enableds.setter
-    def features_enableds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def features_enableds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "features_enableds", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionId")
-    def subscription_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subsription id.
         """
         return pulumi.get(self, "subscription_id")
 
     @subscription_id.setter
-    def subscription_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tenant id.
         """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
-    def tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
 
 
@@ -390,17 +390,17 @@ class AzureCloudCostConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 billing_export_spec: Optional[pulumi.Input[Union['AzureCloudCostConnectorBillingExportSpecArgs', 'AzureCloudCostConnectorBillingExportSpecArgsDict']]] = None,
-                 billing_export_spec2: Optional[pulumi.Input[Union['AzureCloudCostConnectorBillingExportSpec2Args', 'AzureCloudCostConnectorBillingExportSpec2ArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 features_enableds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 billing_export_spec: pulumi.Input[Optional[Union['AzureCloudCostConnectorBillingExportSpecArgs', 'AzureCloudCostConnectorBillingExportSpecArgsDict']]] = None,
+                 billing_export_spec2: pulumi.Input[Optional[Union['AzureCloudCostConnectorBillingExportSpec2Args', 'AzureCloudCostConnectorBillingExportSpec2ArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 features_enableds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating an Azure Cloud Cost connector in Harness.
@@ -563,17 +563,17 @@ class AzureCloudCostConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 billing_export_spec: Optional[pulumi.Input[Union['AzureCloudCostConnectorBillingExportSpecArgs', 'AzureCloudCostConnectorBillingExportSpecArgsDict']]] = None,
-                 billing_export_spec2: Optional[pulumi.Input[Union['AzureCloudCostConnectorBillingExportSpec2Args', 'AzureCloudCostConnectorBillingExportSpec2ArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 features_enableds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 billing_export_spec: pulumi.Input[Optional[Union['AzureCloudCostConnectorBillingExportSpecArgs', 'AzureCloudCostConnectorBillingExportSpecArgsDict']]] = None,
+                 billing_export_spec2: pulumi.Input[Optional[Union['AzureCloudCostConnectorBillingExportSpec2Args', 'AzureCloudCostConnectorBillingExportSpec2ArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 features_enableds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -612,17 +612,17 @@ class AzureCloudCostConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            billing_export_spec: Optional[pulumi.Input[Union['AzureCloudCostConnectorBillingExportSpecArgs', 'AzureCloudCostConnectorBillingExportSpecArgsDict']]] = None,
-            billing_export_spec2: Optional[pulumi.Input[Union['AzureCloudCostConnectorBillingExportSpec2Args', 'AzureCloudCostConnectorBillingExportSpec2ArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            features_enableds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            subscription_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tenant_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AzureCloudCostConnector':
+            billing_export_spec: pulumi.Input[Optional[Union['AzureCloudCostConnectorBillingExportSpecArgs', 'AzureCloudCostConnectorBillingExportSpecArgsDict']]] = None,
+            billing_export_spec2: pulumi.Input[Optional[Union['AzureCloudCostConnectorBillingExportSpec2Args', 'AzureCloudCostConnectorBillingExportSpec2ArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            features_enableds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AzureCloudCostConnector':
         """
         Get an existing AzureCloudCostConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

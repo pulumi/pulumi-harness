@@ -284,12 +284,12 @@ def get_aws_secret_manager_connector(force_delete_without_recovery: Optional[_bu
         secret_name_prefix=pulumi.get(__ret__, 'secret_name_prefix'),
         tags=pulumi.get(__ret__, 'tags'),
         use_put_secret=pulumi.get(__ret__, 'use_put_secret'))
-def get_aws_secret_manager_connector_output(force_delete_without_recovery: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                                            name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            recovery_window_in_days: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_aws_secret_manager_connector_output(force_delete_without_recovery: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                                            name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            recovery_window_in_days: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsSecretManagerConnectorResult]:
     """
     Datasource for looking up an AWS Secret Manager connector.

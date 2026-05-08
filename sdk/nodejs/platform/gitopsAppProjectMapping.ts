@@ -148,31 +148,31 @@ export interface GitopsAppProjectMappingState {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier for which the ArgoCD and Harness project mapping is to be created.
      */
-    agentId?: pulumi.Input<string>;
+    agentId?: pulumi.Input<string | undefined>;
     /**
      * ArgoCD Project name which is to be mapped to the Harness project.
      */
-    argoProjectName?: pulumi.Input<string>;
+    argoProjectName?: pulumi.Input<string | undefined>;
     /**
      * Enable automated creation of service, environment and cluster-env link. Defaults to false.
      */
-    autoCreateServiceEnv?: pulumi.Input<boolean>;
+    autoCreateServiceEnv?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier of the GitOps Application Project.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier of the GitOps agent's Application Project.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the GitOps agent's Application Project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -184,7 +184,7 @@ export interface GitopsAppProjectMappingArgs {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier for which the ArgoCD and Harness project mapping is to be created.
      */
@@ -196,7 +196,7 @@ export interface GitopsAppProjectMappingArgs {
     /**
      * Enable automated creation of service, environment and cluster-env link. Defaults to false.
      */
-    autoCreateServiceEnv?: pulumi.Input<boolean>;
+    autoCreateServiceEnv?: pulumi.Input<boolean | undefined>;
     /**
      * Organization identifier of the GitOps agent's Application Project.
      */

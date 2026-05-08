@@ -156,7 +156,7 @@ export interface GetDbInstanceOutputArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
@@ -172,5 +172,5 @@ export interface GetDbInstanceOutputArgs {
     /**
      * The properties to substitute in changelog migration script
      */
-    substituteProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    substituteProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -171,8 +171,8 @@ def get_service(app_id: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         template_uri=pulumi.get(__ret__, 'template_uri'),
         type=pulumi.get(__ret__, 'type'))
-def get_service_output(app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                       id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_service_output(app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                       id: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceResult]:
     """
     Data source for retrieving a Harness service

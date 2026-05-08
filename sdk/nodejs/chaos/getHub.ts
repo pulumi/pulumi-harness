@@ -152,9 +152,9 @@ export interface GetHubOutputArgs {
     /**
      * The organization ID of the chaos hub
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The project ID of the chaos hub
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

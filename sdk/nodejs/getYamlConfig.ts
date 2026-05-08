@@ -72,7 +72,7 @@ export interface GetYamlConfigOutputArgs {
     /**
      * Unique identifier of the application. This is not required for account level resources (i.e. cloud providers, connectors, etc.).
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * Path to the yaml file.
      */

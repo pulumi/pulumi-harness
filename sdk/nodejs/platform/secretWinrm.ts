@@ -414,39 +414,39 @@ export interface SecretWinrmState {
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Kerberos authentication scheme
      */
-    kerberos?: pulumi.Input<inputs.platform.SecretWinrmKerberos>;
+    kerberos?: pulumi.Input<inputs.platform.SecretWinrmKerberos | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * NTLM authentication scheme
      */
-    ntlm?: pulumi.Input<inputs.platform.SecretWinrmNtlm>;
+    ntlm?: pulumi.Input<inputs.platform.SecretWinrmNtlm | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * WinRM port. Default is 5986 for HTTPS, 5985 for HTTP.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -456,7 +456,7 @@ export interface SecretWinrmArgs {
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -464,29 +464,29 @@ export interface SecretWinrmArgs {
     /**
      * Kerberos authentication scheme
      */
-    kerberos?: pulumi.Input<inputs.platform.SecretWinrmKerberos>;
+    kerberos?: pulumi.Input<inputs.platform.SecretWinrmKerberos | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * NTLM authentication scheme
      */
-    ntlm?: pulumi.Input<inputs.platform.SecretWinrmNtlm>;
+    ntlm?: pulumi.Input<inputs.platform.SecretWinrmNtlm | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * WinRM port. Default is 5986 for HTTPS, 5985 for HTTP.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

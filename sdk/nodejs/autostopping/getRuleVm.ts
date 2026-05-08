@@ -146,20 +146,20 @@ export interface GetRuleVmOutputArgs {
     /**
      * Custom URLs used to access the instances
      */
-    customDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    customDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Dependent rules
      */
-    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmDependArgs>[]>;
+    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmDependArgs>[] | undefined>;
     filter: pulumi.Input<inputs.autostopping.GetRuleVmFilterArgs>;
     /**
      * Http routing configuration
      */
-    https?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmHttpArgs>[]>;
+    https?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmHttpArgs>[] | undefined>;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */
-    idleTimeMins?: pulumi.Input<number>;
+    idleTimeMins?: pulumi.Input<number | undefined>;
     /**
      * Name of the rule
      */
@@ -167,9 +167,9 @@ export interface GetRuleVmOutputArgs {
     /**
      * TCP routing configuration
      */
-    tcps?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmTcpArgs>[]>;
+    tcps?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmTcpArgs>[] | undefined>;
     /**
      * Boolean that indicates whether the selected instances should be converted to spot vm
      */
-    useSpot?: pulumi.Input<boolean>;
+    useSpot?: pulumi.Input<boolean | undefined>;
 }

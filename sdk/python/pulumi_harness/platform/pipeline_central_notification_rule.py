@@ -24,11 +24,11 @@ class PipelineCentralNotificationRuleArgs:
                  identifier: pulumi.Input[_builtins.str],
                  notification_channel_refs: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  notification_conditions: pulumi.Input[Sequence[pulumi.Input['PipelineCentralNotificationRuleNotificationConditionArgs']]],
-                 custom_notification_template_ref: Optional[pulumi.Input['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_notification_template_ref: pulumi.Input[Optional['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PipelineCentralNotificationRule resource.
         """
@@ -75,64 +75,64 @@ class PipelineCentralNotificationRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="customNotificationTemplateRef")
-    def custom_notification_template_ref(self) -> Optional[pulumi.Input['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs']]:
+    def custom_notification_template_ref(self) -> pulumi.Input[Optional['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs']]:
         return pulumi.get(self, "custom_notification_template_ref")
 
     @custom_notification_template_ref.setter
-    def custom_notification_template_ref(self, value: Optional[pulumi.Input['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs']]):
+    def custom_notification_template_ref(self, value: pulumi.Input[Optional['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs']]):
         pulumi.set(self, "custom_notification_template_ref", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def org(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org")
 
     @org.setter
-    def org(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _PipelineCentralNotificationRuleState:
     def __init__(__self__, *,
-                 account: Optional[pulumi.Input[_builtins.str]] = None,
-                 created: Optional[pulumi.Input[_builtins.int]] = None,
-                 custom_notification_template_ref: Optional[pulumi.Input['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs']] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modified: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_channel_refs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notification_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineCentralNotificationRuleNotificationConditionArgs']]]] = None,
-                 org: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 account: pulumi.Input[Optional[_builtins.str]] = None,
+                 created: pulumi.Input[Optional[_builtins.int]] = None,
+                 custom_notification_template_ref: pulumi.Input[Optional['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs']] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modified: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_channel_refs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notification_conditions: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineCentralNotificationRuleNotificationConditionArgs']]]] = None,
+                 org: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PipelineCentralNotificationRule resources.
 
@@ -165,110 +165,110 @@ class _PipelineCentralNotificationRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier associated with this notification channel.
         """
         return pulumi.get(self, "account")
 
     @account.setter
-    def account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account", value)
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp when the notification rule was created.
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter(name="customNotificationTemplateRef")
-    def custom_notification_template_ref(self) -> Optional[pulumi.Input['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs']]:
+    def custom_notification_template_ref(self) -> pulumi.Input[Optional['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs']]:
         return pulumi.get(self, "custom_notification_template_ref")
 
     @custom_notification_template_ref.setter
-    def custom_notification_template_ref(self, value: Optional[pulumi.Input['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs']]):
+    def custom_notification_template_ref(self, value: pulumi.Input[Optional['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs']]):
         pulumi.set(self, "custom_notification_template_ref", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
-    def last_modified(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def last_modified(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp when the notification rule was last modified.
         """
         return pulumi.get(self, "last_modified")
 
     @last_modified.setter
-    def last_modified(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def last_modified(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "last_modified", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationChannelRefs")
-    def notification_channel_refs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def notification_channel_refs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "notification_channel_refs")
 
     @notification_channel_refs.setter
-    def notification_channel_refs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def notification_channel_refs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "notification_channel_refs", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationConditions")
-    def notification_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineCentralNotificationRuleNotificationConditionArgs']]]]:
+    def notification_conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PipelineCentralNotificationRuleNotificationConditionArgs']]]]:
         return pulumi.get(self, "notification_conditions")
 
     @notification_conditions.setter
-    def notification_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineCentralNotificationRuleNotificationConditionArgs']]]]):
+    def notification_conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineCentralNotificationRuleNotificationConditionArgs']]]]):
         pulumi.set(self, "notification_conditions", value)
 
     @_builtins.property
     @pulumi.getter
-    def org(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "org")
 
     @org.setter
-    def org(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -278,14 +278,14 @@ class PipelineCentralNotificationRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_notification_template_ref: Optional[pulumi.Input[Union['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs', 'PipelineCentralNotificationRuleCustomNotificationTemplateRefArgsDict']]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_channel_refs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notification_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineCentralNotificationRuleNotificationConditionArgs', 'PipelineCentralNotificationRuleNotificationConditionArgsDict']]]]] = None,
-                 org: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_notification_template_ref: pulumi.Input[Optional[Union['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs', 'PipelineCentralNotificationRuleCustomNotificationTemplateRefArgsDict']]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_channel_refs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notification_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineCentralNotificationRuleNotificationConditionArgs', 'PipelineCentralNotificationRuleNotificationConditionArgsDict']]]]] = None,
+                 org: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating a Harness Notification Rule for Pipeline
@@ -493,14 +493,14 @@ class PipelineCentralNotificationRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_notification_template_ref: Optional[pulumi.Input[Union['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs', 'PipelineCentralNotificationRuleCustomNotificationTemplateRefArgsDict']]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_channel_refs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notification_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineCentralNotificationRuleNotificationConditionArgs', 'PipelineCentralNotificationRuleNotificationConditionArgsDict']]]]] = None,
-                 org: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_notification_template_ref: pulumi.Input[Optional[Union['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs', 'PipelineCentralNotificationRuleCustomNotificationTemplateRefArgsDict']]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_channel_refs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 notification_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineCentralNotificationRuleNotificationConditionArgs', 'PipelineCentralNotificationRuleNotificationConditionArgsDict']]]]] = None,
+                 org: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -537,17 +537,17 @@ class PipelineCentralNotificationRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account: Optional[pulumi.Input[_builtins.str]] = None,
-            created: Optional[pulumi.Input[_builtins.int]] = None,
-            custom_notification_template_ref: Optional[pulumi.Input[Union['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs', 'PipelineCentralNotificationRuleCustomNotificationTemplateRefArgsDict']]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            last_modified: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            notification_channel_refs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            notification_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineCentralNotificationRuleNotificationConditionArgs', 'PipelineCentralNotificationRuleNotificationConditionArgsDict']]]]] = None,
-            org: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'PipelineCentralNotificationRule':
+            account: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.int]] = None,
+            custom_notification_template_ref: pulumi.Input[Optional[Union['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs', 'PipelineCentralNotificationRuleCustomNotificationTemplateRefArgsDict']]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_channel_refs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            notification_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineCentralNotificationRuleNotificationConditionArgs', 'PipelineCentralNotificationRuleNotificationConditionArgsDict']]]]] = None,
+            org: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'PipelineCentralNotificationRule':
         """
         Get an existing PipelineCentralNotificationRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

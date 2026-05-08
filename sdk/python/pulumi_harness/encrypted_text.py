@@ -22,12 +22,12 @@ __all__ = ['EncryptedTextArgs', 'EncryptedText']
 class EncryptedTextArgs:
     def __init__(__self__, *,
                  secret_manager_id: pulumi.Input[_builtins.str],
-                 inherit_scopes_from_secret_manager: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scoped_to_account: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secret_reference: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['EncryptedTextUsageScopeArgs']]]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 inherit_scopes_from_secret_manager: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scoped_to_account: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret_reference: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input['EncryptedTextUsageScopeArgs']]]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EncryptedText resource.
 
@@ -67,87 +67,87 @@ class EncryptedTextArgs:
 
     @_builtins.property
     @pulumi.getter(name="inheritScopesFromSecretManager")
-    def inherit_scopes_from_secret_manager(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def inherit_scopes_from_secret_manager(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean that indicates whether or not to inherit the usage scopes from the secret manager
         """
         return pulumi.get(self, "inherit_scopes_from_secret_manager")
 
     @inherit_scopes_from_secret_manager.setter
-    def inherit_scopes_from_secret_manager(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def inherit_scopes_from_secret_manager(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "inherit_scopes_from_secret_manager", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the encrypted text secret
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="scopedToAccount")
-    def scoped_to_account(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def scoped_to_account(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean that indicates whether or not the secret is scoped to the account
         """
         return pulumi.get(self, "scoped_to_account")
 
     @scoped_to_account.setter
-    def scoped_to_account(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def scoped_to_account(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "scoped_to_account", value)
 
     @_builtins.property
     @pulumi.getter(name="secretReference")
-    def secret_reference(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_reference(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the existing secret. If you already have secrets created in a secrets manager such as HashiCorp Vault or AWS Secrets Manager, you do not need to re-create the existing secrets in Harness.
         """
         return pulumi.get(self, "secret_reference")
 
     @secret_reference.setter
-    def secret_reference(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_reference(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_reference", value)
 
     @_builtins.property
     @pulumi.getter(name="usageScopes")
-    def usage_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EncryptedTextUsageScopeArgs']]]]:
+    def usage_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EncryptedTextUsageScopeArgs']]]]:
         """
         This block is used for scoping the resource to a specific set of applications or environments.
         """
         return pulumi.get(self, "usage_scopes")
 
     @usage_scopes.setter
-    def usage_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EncryptedTextUsageScopeArgs']]]]):
+    def usage_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EncryptedTextUsageScopeArgs']]]]):
         pulumi.set(self, "usage_scopes", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the secret.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
 class _EncryptedTextState:
     def __init__(__self__, *,
-                 inherit_scopes_from_secret_manager: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scoped_to_account: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secret_manager_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_reference: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['EncryptedTextUsageScopeArgs']]]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 inherit_scopes_from_secret_manager: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scoped_to_account: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret_manager_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_reference: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input['EncryptedTextUsageScopeArgs']]]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EncryptedText resources.
 
@@ -176,86 +176,86 @@ class _EncryptedTextState:
 
     @_builtins.property
     @pulumi.getter(name="inheritScopesFromSecretManager")
-    def inherit_scopes_from_secret_manager(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def inherit_scopes_from_secret_manager(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean that indicates whether or not to inherit the usage scopes from the secret manager
         """
         return pulumi.get(self, "inherit_scopes_from_secret_manager")
 
     @inherit_scopes_from_secret_manager.setter
-    def inherit_scopes_from_secret_manager(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def inherit_scopes_from_secret_manager(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "inherit_scopes_from_secret_manager", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the encrypted text secret
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="scopedToAccount")
-    def scoped_to_account(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def scoped_to_account(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean that indicates whether or not the secret is scoped to the account
         """
         return pulumi.get(self, "scoped_to_account")
 
     @scoped_to_account.setter
-    def scoped_to_account(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def scoped_to_account(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "scoped_to_account", value)
 
     @_builtins.property
     @pulumi.getter(name="secretManagerId")
-    def secret_manager_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_manager_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the secret manager to associate the secret with. Once set, this field cannot be changed.
         """
         return pulumi.get(self, "secret_manager_id")
 
     @secret_manager_id.setter
-    def secret_manager_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_manager_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_manager_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secretReference")
-    def secret_reference(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_reference(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the existing secret. If you already have secrets created in a secrets manager such as HashiCorp Vault or AWS Secrets Manager, you do not need to re-create the existing secrets in Harness.
         """
         return pulumi.get(self, "secret_reference")
 
     @secret_reference.setter
-    def secret_reference(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_reference(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_reference", value)
 
     @_builtins.property
     @pulumi.getter(name="usageScopes")
-    def usage_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EncryptedTextUsageScopeArgs']]]]:
+    def usage_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EncryptedTextUsageScopeArgs']]]]:
         """
         This block is used for scoping the resource to a specific set of applications or environments.
         """
         return pulumi.get(self, "usage_scopes")
 
     @usage_scopes.setter
-    def usage_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EncryptedTextUsageScopeArgs']]]]):
+    def usage_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EncryptedTextUsageScopeArgs']]]]):
         pulumi.set(self, "usage_scopes", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the secret.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -265,13 +265,13 @@ class EncryptedText(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 inherit_scopes_from_secret_manager: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scoped_to_account: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secret_manager_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_reference: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EncryptedTextUsageScopeArgs', 'EncryptedTextUsageScopeArgsDict']]]]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
+                 inherit_scopes_from_secret_manager: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scoped_to_account: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret_manager_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_reference: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EncryptedTextUsageScopeArgs', 'EncryptedTextUsageScopeArgsDict']]]]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating an encrypted text secret
@@ -376,13 +376,13 @@ class EncryptedText(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 inherit_scopes_from_secret_manager: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scoped_to_account: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secret_manager_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_reference: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EncryptedTextUsageScopeArgs', 'EncryptedTextUsageScopeArgsDict']]]]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
+                 inherit_scopes_from_secret_manager: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scoped_to_account: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secret_manager_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_reference: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EncryptedTextUsageScopeArgs', 'EncryptedTextUsageScopeArgsDict']]]]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -413,13 +413,13 @@ class EncryptedText(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            inherit_scopes_from_secret_manager: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            scoped_to_account: Optional[pulumi.Input[_builtins.bool]] = None,
-            secret_manager_id: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_reference: Optional[pulumi.Input[_builtins.str]] = None,
-            usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EncryptedTextUsageScopeArgs', 'EncryptedTextUsageScopeArgsDict']]]]] = None,
-            value: Optional[pulumi.Input[_builtins.str]] = None) -> 'EncryptedText':
+            inherit_scopes_from_secret_manager: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            scoped_to_account: pulumi.Input[Optional[_builtins.bool]] = None,
+            secret_manager_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_reference: pulumi.Input[Optional[_builtins.str]] = None,
+            usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EncryptedTextUsageScopeArgs', 'EncryptedTextUsageScopeArgsDict']]]]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None) -> 'EncryptedText':
         """
         Get an existing EncryptedText resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

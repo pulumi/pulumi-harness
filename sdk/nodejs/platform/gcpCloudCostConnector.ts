@@ -186,43 +186,43 @@ export interface GcpCloudCostConnectorState {
     /**
      * Returns billing details.
      */
-    billingExportSpec?: pulumi.Input<inputs.platform.GcpCloudCostConnectorBillingExportSpec>;
+    billingExportSpec?: pulumi.Input<inputs.platform.GcpCloudCostConnectorBillingExportSpec | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates which features to enable among Billing, Optimization, Visibility and Governance.
      */
-    featuresEnableds?: pulumi.Input<pulumi.Input<string>[]>;
+    featuresEnableds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * GCP Project Id.
      */
-    gcpProjectId?: pulumi.Input<string>;
+    gcpProjectId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Email corresponding to the Service Account.
      */
-    serviceAccountEmail?: pulumi.Input<string>;
+    serviceAccountEmail?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -232,11 +232,11 @@ export interface GcpCloudCostConnectorArgs {
     /**
      * Returns billing details.
      */
-    billingExportSpec?: pulumi.Input<inputs.platform.GcpCloudCostConnectorBillingExportSpec>;
+    billingExportSpec?: pulumi.Input<inputs.platform.GcpCloudCostConnectorBillingExportSpec | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates which features to enable among Billing, Optimization, Visibility and Governance.
      */
@@ -252,15 +252,15 @@ export interface GcpCloudCostConnectorArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Email corresponding to the Service Account.
      */
@@ -268,5 +268,5 @@ export interface GcpCloudCostConnectorArgs {
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

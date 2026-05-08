@@ -23,19 +23,19 @@ class TemplateArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[_builtins.str],
                  version: pulumi.Input[_builtins.str],
-                 comments: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 git_details: Optional[pulumi.Input['TemplateGitDetailsArgs']] = None,
-                 git_import_details: Optional[pulumi.Input['TemplateGitImportDetailsArgs']] = None,
-                 import_from_git: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_stable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_import_request: Optional[pulumi.Input['TemplateTemplateImportRequestArgs']] = None,
-                 template_yaml: Optional[pulumi.Input[_builtins.str]] = None):
+                 comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 git_details: pulumi.Input[Optional['TemplateGitDetailsArgs']] = None,
+                 git_import_details: pulumi.Input[Optional['TemplateGitImportDetailsArgs']] = None,
+                 import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_stable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template_import_request: pulumi.Input[Optional['TemplateTemplateImportRequestArgs']] = None,
+                 template_yaml: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Template resource.
 
@@ -113,180 +113,180 @@ class TemplateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comments(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comments(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify comment with respect to changes.
         """
         return pulumi.get(self, "comments")
 
     @comments.setter
-    def comments(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comments(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comments", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""description field is deprecated""")
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the entity. Description field is deprecated
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="gitDetails")
-    def git_details(self) -> Optional[pulumi.Input['TemplateGitDetailsArgs']]:
+    def git_details(self) -> pulumi.Input[Optional['TemplateGitDetailsArgs']]:
         """
         Contains parameters related to creating an Entity for Git Experience.
         """
         return pulumi.get(self, "git_details")
 
     @git_details.setter
-    def git_details(self, value: Optional[pulumi.Input['TemplateGitDetailsArgs']]):
+    def git_details(self, value: pulumi.Input[Optional['TemplateGitDetailsArgs']]):
         pulumi.set(self, "git_details", value)
 
     @_builtins.property
     @pulumi.getter(name="gitImportDetails")
-    def git_import_details(self) -> Optional[pulumi.Input['TemplateGitImportDetailsArgs']]:
+    def git_import_details(self) -> pulumi.Input[Optional['TemplateGitImportDetailsArgs']]:
         """
         Contains Git Information for importing entities from Git
         """
         return pulumi.get(self, "git_import_details")
 
     @git_import_details.setter
-    def git_import_details(self, value: Optional[pulumi.Input['TemplateGitImportDetailsArgs']]):
+    def git_import_details(self, value: pulumi.Input[Optional['TemplateGitImportDetailsArgs']]):
         pulumi.set(self, "git_import_details", value)
 
     @_builtins.property
     @pulumi.getter(name="importFromGit")
-    def import_from_git(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def import_from_git(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to set if importing from Git
         """
         return pulumi.get(self, "import_from_git")
 
     @import_from_git.setter
-    def import_from_git(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def import_from_git(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "import_from_git", value)
 
     @_builtins.property
     @pulumi.getter(name="isStable")
-    def is_stable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_stable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if given version for template to be set as stable.
         """
         return pulumi.get(self, "is_stable")
 
     @is_stable.setter
-    def is_stable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_stable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_stable", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Variable
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization Identifier for the Entity
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project Identifier for the Entity
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="templateImportRequest")
-    def template_import_request(self) -> Optional[pulumi.Input['TemplateTemplateImportRequestArgs']]:
+    def template_import_request(self) -> pulumi.Input[Optional['TemplateTemplateImportRequestArgs']]:
         """
         Contains parameters for importing template.
         """
         return pulumi.get(self, "template_import_request")
 
     @template_import_request.setter
-    def template_import_request(self, value: Optional[pulumi.Input['TemplateTemplateImportRequestArgs']]):
+    def template_import_request(self, value: pulumi.Input[Optional['TemplateTemplateImportRequestArgs']]):
         pulumi.set(self, "template_import_request", value)
 
     @_builtins.property
     @pulumi.getter(name="templateYaml")
-    def template_yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "template_yaml")
 
     @template_yaml.setter
-    def template_yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_yaml", value)
 
 
 @pulumi.input_type
 class _TemplateState:
     def __init__(__self__, *,
-                 comments: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 git_details: Optional[pulumi.Input['TemplateGitDetailsArgs']] = None,
-                 git_import_details: Optional[pulumi.Input['TemplateGitImportDetailsArgs']] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_from_git: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_stable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_import_request: Optional[pulumi.Input['TemplateTemplateImportRequestArgs']] = None,
-                 template_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 git_details: pulumi.Input[Optional['TemplateGitDetailsArgs']] = None,
+                 git_import_details: pulumi.Input[Optional['TemplateGitImportDetailsArgs']] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_stable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template_import_request: pulumi.Input[Optional['TemplateTemplateImportRequestArgs']] = None,
+                 template_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Template resources.
 
@@ -342,183 +342,183 @@ class _TemplateState:
 
     @_builtins.property
     @pulumi.getter
-    def comments(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comments(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify comment with respect to changes.
         """
         return pulumi.get(self, "comments")
 
     @comments.setter
-    def comments(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comments(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comments", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""description field is deprecated""")
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the entity. Description field is deprecated
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="gitDetails")
-    def git_details(self) -> Optional[pulumi.Input['TemplateGitDetailsArgs']]:
+    def git_details(self) -> pulumi.Input[Optional['TemplateGitDetailsArgs']]:
         """
         Contains parameters related to creating an Entity for Git Experience.
         """
         return pulumi.get(self, "git_details")
 
     @git_details.setter
-    def git_details(self, value: Optional[pulumi.Input['TemplateGitDetailsArgs']]):
+    def git_details(self, value: pulumi.Input[Optional['TemplateGitDetailsArgs']]):
         pulumi.set(self, "git_details", value)
 
     @_builtins.property
     @pulumi.getter(name="gitImportDetails")
-    def git_import_details(self) -> Optional[pulumi.Input['TemplateGitImportDetailsArgs']]:
+    def git_import_details(self) -> pulumi.Input[Optional['TemplateGitImportDetailsArgs']]:
         """
         Contains Git Information for importing entities from Git
         """
         return pulumi.get(self, "git_import_details")
 
     @git_import_details.setter
-    def git_import_details(self, value: Optional[pulumi.Input['TemplateGitImportDetailsArgs']]):
+    def git_import_details(self, value: pulumi.Input[Optional['TemplateGitImportDetailsArgs']]):
         pulumi.set(self, "git_import_details", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="importFromGit")
-    def import_from_git(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def import_from_git(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to set if importing from Git
         """
         return pulumi.get(self, "import_from_git")
 
     @import_from_git.setter
-    def import_from_git(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def import_from_git(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "import_from_git", value)
 
     @_builtins.property
     @pulumi.getter(name="isStable")
-    def is_stable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_stable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if given version for template to be set as stable.
         """
         return pulumi.get(self, "is_stable")
 
     @is_stable.setter
-    def is_stable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_stable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_stable", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Variable
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization Identifier for the Entity
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project Identifier for the Entity
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="templateImportRequest")
-    def template_import_request(self) -> Optional[pulumi.Input['TemplateTemplateImportRequestArgs']]:
+    def template_import_request(self) -> pulumi.Input[Optional['TemplateTemplateImportRequestArgs']]:
         """
         Contains parameters for importing template.
         """
         return pulumi.get(self, "template_import_request")
 
     @template_import_request.setter
-    def template_import_request(self, value: Optional[pulumi.Input['TemplateTemplateImportRequestArgs']]):
+    def template_import_request(self, value: pulumi.Input[Optional['TemplateTemplateImportRequestArgs']]):
         pulumi.set(self, "template_import_request", value)
 
     @_builtins.property
     @pulumi.getter(name="templateYaml")
-    def template_yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "template_yaml")
 
     @template_yaml.setter
-    def template_yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_yaml", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version Label for Template.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -528,21 +528,21 @@ class Template(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comments: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 git_details: Optional[pulumi.Input[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict']]] = None,
-                 git_import_details: Optional[pulumi.Input[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict']]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_from_git: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_stable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_import_request: Optional[pulumi.Input[Union['TemplateTemplateImportRequestArgs', 'TemplateTemplateImportRequestArgsDict']]] = None,
-                 template_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 git_details: pulumi.Input[Optional[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict']]] = None,
+                 git_import_details: pulumi.Input[Optional[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict']]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_stable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template_import_request: pulumi.Input[Optional[Union['TemplateTemplateImportRequestArgs', 'TemplateTemplateImportRequestArgsDict']]] = None,
+                 template_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating a Template. Description field is deprecated
@@ -635,21 +635,21 @@ class Template(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comments: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 git_details: Optional[pulumi.Input[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict']]] = None,
-                 git_import_details: Optional[pulumi.Input[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict']]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_from_git: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_stable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_import_request: Optional[pulumi.Input[Union['TemplateTemplateImportRequestArgs', 'TemplateTemplateImportRequestArgsDict']]] = None,
-                 template_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 comments: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 git_details: pulumi.Input[Optional[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict']]] = None,
+                 git_import_details: pulumi.Input[Optional[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict']]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_stable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template_import_request: pulumi.Input[Optional[Union['TemplateTemplateImportRequestArgs', 'TemplateTemplateImportRequestArgsDict']]] = None,
+                 template_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -688,21 +688,21 @@ class Template(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            comments: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-            git_details: Optional[pulumi.Input[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict']]] = None,
-            git_import_details: Optional[pulumi.Input[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict']]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            import_from_git: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_stable: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            template_import_request: Optional[pulumi.Input[Union['TemplateTemplateImportRequestArgs', 'TemplateTemplateImportRequestArgsDict']]] = None,
-            template_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None) -> 'Template':
+            comments: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            git_details: pulumi.Input[Optional[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict']]] = None,
+            git_import_details: pulumi.Input[Optional[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict']]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_stable: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            template_import_request: pulumi.Input[Optional[Union['TemplateTemplateImportRequestArgs', 'TemplateTemplateImportRequestArgsDict']]] = None,
+            template_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> 'Template':
         """
         Get an existing Template resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

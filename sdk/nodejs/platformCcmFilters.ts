@@ -159,31 +159,31 @@ export interface PlatformCcmFiltersState {
     /**
      * Properties of the filters entity defined in Harness.
      */
-    filterProperties?: pulumi.Input<inputs.PlatformCcmFiltersFilterProperties>;
+    filterProperties?: pulumi.Input<inputs.PlatformCcmFiltersFilterProperties | undefined>;
     /**
      * This indicates visibility of filters, by default it is Everyone.
      */
-    filterVisibility?: pulumi.Input<string>;
+    filterVisibility?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the ccm filters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization Identifier for the Entity.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project Identifier for the Entity.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Type of ccm filters.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -197,7 +197,7 @@ export interface PlatformCcmFiltersArgs {
     /**
      * This indicates visibility of filters, by default it is Everyone.
      */
-    filterVisibility?: pulumi.Input<string>;
+    filterVisibility?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -205,15 +205,15 @@ export interface PlatformCcmFiltersArgs {
     /**
      * Name of the ccm filters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization Identifier for the Entity.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project Identifier for the Entity.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Type of ccm filters.
      */

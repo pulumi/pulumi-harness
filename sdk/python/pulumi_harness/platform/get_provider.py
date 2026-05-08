@@ -77,7 +77,7 @@ def get_provider(identifier: Optional[_builtins.str] = None,
     return AwaitableGetProviderResult(
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'))
-def get_provider_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
+def get_provider_output(identifier: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProviderResult]:
     """
     Data source for Harness Provider.

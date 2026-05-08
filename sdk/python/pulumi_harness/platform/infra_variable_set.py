@@ -22,15 +22,15 @@ __all__ = ['InfraVariableSetArgs', 'InfraVariableSet']
 class InfraVariableSetArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[_builtins.str],
-                 connectors: Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetConnectorArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetEnvironmentVariableArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableFileArgs']]]] = None,
-                 terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableArgs']]]] = None):
+                 connectors: pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetConnectorArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetEnvironmentVariableArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetTerraformVariableFileArgs']]]] = None,
+                 terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetTerraformVariableArgs']]]] = None):
         """
         The set of arguments for constructing a InfraVariableSet resource.
 
@@ -79,126 +79,126 @@ class InfraVariableSetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def connectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetConnectorArgs']]]]:
+    def connectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetConnectorArgs']]]]:
         """
         Provider connectors configured on the Variable Set. Only one connector of a type is supported
         """
         return pulumi.get(self, "connectors")
 
     @connectors.setter
-    def connectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetConnectorArgs']]]]):
+    def connectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetConnectorArgs']]]]):
         pulumi.set(self, "connectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetEnvironmentVariableArgs']]]]:
+    def environment_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetEnvironmentVariableArgs']]]]:
         """
         Environment variables configured on the Variable Set
         """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetEnvironmentVariableArgs']]]]):
+    def environment_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetEnvironmentVariableArgs']]]]):
         pulumi.set(self, "environment_variables", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="terraformVariableFiles")
-    def terraform_variable_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableFileArgs']]]]:
+    def terraform_variable_files(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetTerraformVariableFileArgs']]]]:
         """
         Terraform variables files configured on the Variable Set (see below for nested schema)
         """
         return pulumi.get(self, "terraform_variable_files")
 
     @terraform_variable_files.setter
-    def terraform_variable_files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableFileArgs']]]]):
+    def terraform_variable_files(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetTerraformVariableFileArgs']]]]):
         pulumi.set(self, "terraform_variable_files", value)
 
     @_builtins.property
     @pulumi.getter(name="terraformVariables")
-    def terraform_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableArgs']]]]:
+    def terraform_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetTerraformVariableArgs']]]]:
         """
         Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
         """
         return pulumi.get(self, "terraform_variables")
 
     @terraform_variables.setter
-    def terraform_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableArgs']]]]):
+    def terraform_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetTerraformVariableArgs']]]]):
         pulumi.set(self, "terraform_variables", value)
 
 
 @pulumi.input_type
 class _InfraVariableSetState:
     def __init__(__self__, *,
-                 connectors: Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetConnectorArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetEnvironmentVariableArgs']]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableFileArgs']]]] = None,
-                 terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableArgs']]]] = None):
+                 connectors: pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetConnectorArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetEnvironmentVariableArgs']]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetTerraformVariableFileArgs']]]] = None,
+                 terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetTerraformVariableArgs']]]] = None):
         """
         Input properties used for looking up and filtering InfraVariableSet resources.
 
@@ -236,122 +236,122 @@ class _InfraVariableSetState:
 
     @_builtins.property
     @pulumi.getter
-    def connectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetConnectorArgs']]]]:
+    def connectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetConnectorArgs']]]]:
         """
         Provider connectors configured on the Variable Set. Only one connector of a type is supported
         """
         return pulumi.get(self, "connectors")
 
     @connectors.setter
-    def connectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetConnectorArgs']]]]):
+    def connectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetConnectorArgs']]]]):
         pulumi.set(self, "connectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetEnvironmentVariableArgs']]]]:
+    def environment_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetEnvironmentVariableArgs']]]]:
         """
         Environment variables configured on the Variable Set
         """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetEnvironmentVariableArgs']]]]):
+    def environment_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetEnvironmentVariableArgs']]]]):
         pulumi.set(self, "environment_variables", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="terraformVariableFiles")
-    def terraform_variable_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableFileArgs']]]]:
+    def terraform_variable_files(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetTerraformVariableFileArgs']]]]:
         """
         Terraform variables files configured on the Variable Set (see below for nested schema)
         """
         return pulumi.get(self, "terraform_variable_files")
 
     @terraform_variable_files.setter
-    def terraform_variable_files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableFileArgs']]]]):
+    def terraform_variable_files(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetTerraformVariableFileArgs']]]]):
         pulumi.set(self, "terraform_variable_files", value)
 
     @_builtins.property
     @pulumi.getter(name="terraformVariables")
-    def terraform_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableArgs']]]]:
+    def terraform_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetTerraformVariableArgs']]]]:
         """
         Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
         """
         return pulumi.get(self, "terraform_variables")
 
     @terraform_variables.setter
-    def terraform_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfraVariableSetTerraformVariableArgs']]]]):
+    def terraform_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InfraVariableSetTerraformVariableArgs']]]]):
         pulumi.set(self, "terraform_variables", value)
 
 
@@ -361,16 +361,16 @@ class InfraVariableSet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetConnectorArgs', 'InfraVariableSetConnectorArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetEnvironmentVariableArgs', 'InfraVariableSetEnvironmentVariableArgsDict']]]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableFileArgs', 'InfraVariableSetTerraformVariableFileArgsDict']]]]] = None,
-                 terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableArgs', 'InfraVariableSetTerraformVariableArgsDict']]]]] = None,
+                 connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetConnectorArgs', 'InfraVariableSetConnectorArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetEnvironmentVariableArgs', 'InfraVariableSetEnvironmentVariableArgsDict']]]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableFileArgs', 'InfraVariableSetTerraformVariableFileArgsDict']]]]] = None,
+                 terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableArgs', 'InfraVariableSetTerraformVariableArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for managing Variable Sets
@@ -582,16 +582,16 @@ class InfraVariableSet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetConnectorArgs', 'InfraVariableSetConnectorArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetEnvironmentVariableArgs', 'InfraVariableSetEnvironmentVariableArgsDict']]]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableFileArgs', 'InfraVariableSetTerraformVariableFileArgsDict']]]]] = None,
-                 terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableArgs', 'InfraVariableSetTerraformVariableArgsDict']]]]] = None,
+                 connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetConnectorArgs', 'InfraVariableSetConnectorArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetEnvironmentVariableArgs', 'InfraVariableSetEnvironmentVariableArgsDict']]]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableFileArgs', 'InfraVariableSetTerraformVariableFileArgsDict']]]]] = None,
+                 terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableArgs', 'InfraVariableSetTerraformVariableArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -623,16 +623,16 @@ class InfraVariableSet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetConnectorArgs', 'InfraVariableSetConnectorArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetEnvironmentVariableArgs', 'InfraVariableSetEnvironmentVariableArgsDict']]]]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            terraform_variable_files: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableFileArgs', 'InfraVariableSetTerraformVariableFileArgsDict']]]]] = None,
-            terraform_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableArgs', 'InfraVariableSetTerraformVariableArgsDict']]]]] = None) -> 'InfraVariableSet':
+            connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetConnectorArgs', 'InfraVariableSetConnectorArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetEnvironmentVariableArgs', 'InfraVariableSetEnvironmentVariableArgsDict']]]]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableFileArgs', 'InfraVariableSetTerraformVariableFileArgsDict']]]]] = None,
+            terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableArgs', 'InfraVariableSetTerraformVariableArgsDict']]]]] = None) -> 'InfraVariableSet':
         """
         Get an existing InfraVariableSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

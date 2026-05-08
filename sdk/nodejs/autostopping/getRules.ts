@@ -142,9 +142,9 @@ export interface GetRulesOutputArgs {
     /**
      * Return rules matching provided kind.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Filter by rule name using a regular expression. e.g. "^myname-.*" or "^(app|svc).*".
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

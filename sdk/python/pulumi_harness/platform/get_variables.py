@@ -173,9 +173,9 @@ def get_variables(identifier: Optional[_builtins.str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         specs=pulumi.get(__ret__, 'specs'),
         type=pulumi.get(__ret__, 'type'))
-def get_variables_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                         org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_variables_output(identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                         org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVariablesResult]:
     """
     Data source for retrieving a Harness Variable.

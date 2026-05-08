@@ -187,67 +187,67 @@ export interface AwsConnectorState {
     /**
      * Select this option if you want to use one AWS account for the connection, but you want to deploy or build in a different AWS account. In this scenario, the AWS account used for AWS access in Credentials will assume the IAM role you specify in Cross-account role ARN setting. This option uses the AWS Security Token Service (STS) feature.
      */
-    crossAccountAccess?: pulumi.Input<inputs.platform.AwsConnectorCrossAccountAccess>;
+    crossAccountAccess?: pulumi.Input<inputs.platform.AwsConnectorCrossAccountAccess | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Equal Jitter BackOff Strategy.
      */
-    equalJitterBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorEqualJitterBackoffStrategy>;
+    equalJitterBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorEqualJitterBackoffStrategy | undefined>;
     /**
      * Enable this flag to execute on Delegate
      */
-    executeOnDelegate?: pulumi.Input<boolean>;
+    executeOnDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * Fixed Delay BackOff Strategy.
      */
-    fixedDelayBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorFixedDelayBackoffStrategy>;
+    fixedDelayBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorFixedDelayBackoffStrategy | undefined>;
     /**
      * Enable this flag for force deletion of connector
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Full Jitter BackOff Strategy.
      */
-    fullJitterBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorFullJitterBackoffStrategy>;
+    fullJitterBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorFullJitterBackoffStrategy | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Inherit credentials from the delegate.
      */
-    inheritFromDelegate?: pulumi.Input<inputs.platform.AwsConnectorInheritFromDelegate>;
+    inheritFromDelegate?: pulumi.Input<inputs.platform.AwsConnectorInheritFromDelegate | undefined>;
     /**
      * Use IAM role for service accounts.
      */
-    irsa?: pulumi.Input<inputs.platform.AwsConnectorIrsa>;
+    irsa?: pulumi.Input<inputs.platform.AwsConnectorIrsa | undefined>;
     /**
      * Use IAM role for service accounts.
      */
-    manual?: pulumi.Input<inputs.platform.AwsConnectorManual>;
+    manual?: pulumi.Input<inputs.platform.AwsConnectorManual | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Authentication using harness oidc.
      */
-    oidcAuthentication?: pulumi.Input<inputs.platform.AwsConnectorOidcAuthentication>;
+    oidcAuthentication?: pulumi.Input<inputs.platform.AwsConnectorOidcAuthentication | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -257,31 +257,31 @@ export interface AwsConnectorArgs {
     /**
      * Select this option if you want to use one AWS account for the connection, but you want to deploy or build in a different AWS account. In this scenario, the AWS account used for AWS access in Credentials will assume the IAM role you specify in Cross-account role ARN setting. This option uses the AWS Security Token Service (STS) feature.
      */
-    crossAccountAccess?: pulumi.Input<inputs.platform.AwsConnectorCrossAccountAccess>;
+    crossAccountAccess?: pulumi.Input<inputs.platform.AwsConnectorCrossAccountAccess | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Equal Jitter BackOff Strategy.
      */
-    equalJitterBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorEqualJitterBackoffStrategy>;
+    equalJitterBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorEqualJitterBackoffStrategy | undefined>;
     /**
      * Enable this flag to execute on Delegate
      */
-    executeOnDelegate?: pulumi.Input<boolean>;
+    executeOnDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * Fixed Delay BackOff Strategy.
      */
-    fixedDelayBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorFixedDelayBackoffStrategy>;
+    fixedDelayBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorFixedDelayBackoffStrategy | undefined>;
     /**
      * Enable this flag for force deletion of connector
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Full Jitter BackOff Strategy.
      */
-    fullJitterBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorFullJitterBackoffStrategy>;
+    fullJitterBackoffStrategy?: pulumi.Input<inputs.platform.AwsConnectorFullJitterBackoffStrategy | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -289,33 +289,33 @@ export interface AwsConnectorArgs {
     /**
      * Inherit credentials from the delegate.
      */
-    inheritFromDelegate?: pulumi.Input<inputs.platform.AwsConnectorInheritFromDelegate>;
+    inheritFromDelegate?: pulumi.Input<inputs.platform.AwsConnectorInheritFromDelegate | undefined>;
     /**
      * Use IAM role for service accounts.
      */
-    irsa?: pulumi.Input<inputs.platform.AwsConnectorIrsa>;
+    irsa?: pulumi.Input<inputs.platform.AwsConnectorIrsa | undefined>;
     /**
      * Use IAM role for service accounts.
      */
-    manual?: pulumi.Input<inputs.platform.AwsConnectorManual>;
+    manual?: pulumi.Input<inputs.platform.AwsConnectorManual | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Authentication using harness oidc.
      */
-    oidcAuthentication?: pulumi.Input<inputs.platform.AwsConnectorOidcAuthentication>;
+    oidcAuthentication?: pulumi.Input<inputs.platform.AwsConnectorOidcAuthentication | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

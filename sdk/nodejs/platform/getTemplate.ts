@@ -220,41 +220,41 @@ export interface GetTemplateOutputArgs {
     /**
      * Version Label for Template.
      */
-    branchName?: pulumi.Input<string>;
+    branchName?: pulumi.Input<string | undefined>;
     /**
      * Defines child template type.
      */
-    childType?: pulumi.Input<string>;
+    childType?: pulumi.Input<string | undefined>;
     /**
      * Contains parameters related to creating an Entity for Git Experience.
      */
-    gitDetails?: pulumi.Input<inputs.platform.GetTemplateGitDetailsArgs>;
+    gitDetails?: pulumi.Input<inputs.platform.GetTemplateGitDetailsArgs | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * True if given version for template to be set as stable.
      */
-    isStable?: pulumi.Input<boolean>;
+    isStable?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Scope of template.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * Version Label for Template.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

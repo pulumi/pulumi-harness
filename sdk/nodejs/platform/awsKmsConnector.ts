@@ -175,55 +175,55 @@ export interface AwsKmsConnectorState {
     /**
      * A reference to the Harness secret containing the ARN of the AWS KMS.
      */
-    arnPlaintext?: pulumi.Input<string>;
+    arnPlaintext?: pulumi.Input<string | undefined>;
     /**
      * A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
-    arnRef?: pulumi.Input<string>;
+    arnRef?: pulumi.Input<string | undefined>;
     /**
      * Credentials to connect to AWS.
      */
-    credentials?: pulumi.Input<inputs.platform.AwsKmsConnectorCredentials>;
+    credentials?: pulumi.Input<inputs.platform.AwsKmsConnectorCredentials | undefined>;
     /**
      * Set this connector as the default for all the services.
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * Tags to filter delegates for connection.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Execute the command on the delegate.
      */
-    executeOnDelegate?: pulumi.Input<boolean>;
+    executeOnDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The AWS region where the AWS Secret Manager is.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -233,11 +233,11 @@ export interface AwsKmsConnectorArgs {
     /**
      * A reference to the Harness secret containing the ARN of the AWS KMS.
      */
-    arnPlaintext?: pulumi.Input<string>;
+    arnPlaintext?: pulumi.Input<string | undefined>;
     /**
      * A reference to the Harness secret containing the ARN of the AWS KMS. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
-    arnRef?: pulumi.Input<string>;
+    arnRef?: pulumi.Input<string | undefined>;
     /**
      * Credentials to connect to AWS.
      */
@@ -245,19 +245,19 @@ export interface AwsKmsConnectorArgs {
     /**
      * Set this connector as the default for all the services.
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * Tags to filter delegates for connection.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Execute the command on the delegate.
      */
-    executeOnDelegate?: pulumi.Input<boolean>;
+    executeOnDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -265,15 +265,15 @@ export interface AwsKmsConnectorArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The AWS region where the AWS Secret Manager is.
      */
@@ -281,5 +281,5 @@ export interface AwsKmsConnectorArgs {
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

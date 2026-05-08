@@ -88,12 +88,12 @@ class InfraProviderSigningKeyArgs:
 @pulumi.input_type
 class _InfraProviderSigningKeyState:
     def __init__(__self__, *,
-                 ascii_armor: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 ascii_armor: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InfraProviderSigningKey resources.
 
@@ -119,74 +119,74 @@ class _InfraProviderSigningKeyState:
 
     @_builtins.property
     @pulumi.getter(name="asciiArmor")
-    def ascii_armor(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ascii_armor(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ASCII-armored GPG public key.
         """
         return pulumi.get(self, "ascii_armor")
 
     @ascii_armor.setter
-    def ascii_armor(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ascii_armor(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ascii_armor", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation timestamp.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="keyId")
-    def key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         GPG key ID.
         """
         return pulumi.get(self, "key_id")
 
     @key_id.setter
-    def key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="keyName")
-    def key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         GPG key name.
         """
         return pulumi.get(self, "key_name")
 
     @key_name.setter
-    def key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last updated timestamp.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User who uploaded the key.
         """
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
@@ -196,10 +196,10 @@ class InfraProviderSigningKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ascii_armor: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None,
+                 ascii_armor: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for managing GPG Signing Keys for Terraform/OpenTofu Providers in the IaCM Provider Registry.
@@ -317,10 +317,10 @@ class InfraProviderSigningKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ascii_armor: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None,
+                 ascii_armor: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -356,12 +356,12 @@ class InfraProviderSigningKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ascii_armor: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            key_name: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            user: Optional[pulumi.Input[_builtins.str]] = None) -> 'InfraProviderSigningKey':
+            ascii_armor: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[_builtins.str]] = None) -> 'InfraProviderSigningKey':
         """
         Get an existing InfraProviderSigningKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

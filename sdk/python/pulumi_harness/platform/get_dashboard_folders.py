@@ -144,9 +144,9 @@ def get_dashboard_folders(id: Optional[_builtins.str] = None,
         identifier=pulumi.get(__ret__, 'identifier'),
         name=pulumi.get(__ret__, 'name'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_dashboard_folders_output(id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 identifier: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_dashboard_folders_output(id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDashboardFoldersResult]:
     """
     Data source for retrieving a Harness Dashboard Folder.

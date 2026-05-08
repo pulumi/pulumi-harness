@@ -31,8 +31,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.GitOpsGnupg;
  * import com.pulumi.harness.platform.GitOpsGnupgArgs;
  * import com.pulumi.harness.platform.inputs.GitOpsGnupgRequestArgs;
- * import java.util.List;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -53,7 +54,9 @@ import javax.annotation.Nullable;
  *                     .keyData("-----BEGIN PGP PUBLIC KEY BLOCK-----XXXXXX-----END PGP PUBLIC KEY BLOCK-----")
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .ignoreChanges("requests[0].upsert")
+ *                 .build());
  * 
  *     }
  * }

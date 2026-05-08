@@ -153,49 +153,49 @@ export interface ConnectorCustomSecretManagerState {
     /**
      * Tags to filter delegates for connection.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
-    onDelegate?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string | undefined>;
+    onDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * SSH secret reference for the custom secrets manager, required if 'on_delegate' is false.
      */
-    sshSecretRef?: pulumi.Input<string>;
+    sshSecretRef?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Host where the custom secrets manager is located, required if 'on_delegate' is false.
      */
-    targetHost?: pulumi.Input<string>;
-    templateInputs?: pulumi.Input<pulumi.Input<inputs.platform.ConnectorCustomSecretManagerTemplateInput>[]>;
-    templateRef?: pulumi.Input<string>;
-    timeout?: pulumi.Input<number>;
-    type?: pulumi.Input<string>;
-    versionLabel?: pulumi.Input<string>;
+    targetHost?: pulumi.Input<string | undefined>;
+    templateInputs?: pulumi.Input<pulumi.Input<inputs.platform.ConnectorCustomSecretManagerTemplateInput>[] | undefined>;
+    templateRef?: pulumi.Input<string | undefined>;
+    timeout?: pulumi.Input<number | undefined>;
+    type?: pulumi.Input<string | undefined>;
+    versionLabel?: pulumi.Input<string | undefined>;
     /**
      * The working directory for operations, required if 'on_delegate' is false.
      */
-    workingDirectory?: pulumi.Input<string>;
+    workingDirectory?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -205,11 +205,11 @@ export interface ConnectorCustomSecretManagerArgs {
     /**
      * Tags to filter delegates for connection.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -217,35 +217,35 @@ export interface ConnectorCustomSecretManagerArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
-    onDelegate?: pulumi.Input<boolean>;
+    name?: pulumi.Input<string | undefined>;
+    onDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * SSH secret reference for the custom secrets manager, required if 'on_delegate' is false.
      */
-    sshSecretRef?: pulumi.Input<string>;
+    sshSecretRef?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Host where the custom secrets manager is located, required if 'on_delegate' is false.
      */
-    targetHost?: pulumi.Input<string>;
-    templateInputs?: pulumi.Input<pulumi.Input<inputs.platform.ConnectorCustomSecretManagerTemplateInput>[]>;
+    targetHost?: pulumi.Input<string | undefined>;
+    templateInputs?: pulumi.Input<pulumi.Input<inputs.platform.ConnectorCustomSecretManagerTemplateInput>[] | undefined>;
     templateRef: pulumi.Input<string>;
-    timeout?: pulumi.Input<number>;
-    type?: pulumi.Input<string>;
+    timeout?: pulumi.Input<number | undefined>;
+    type?: pulumi.Input<string | undefined>;
     versionLabel: pulumi.Input<string>;
     /**
      * The working directory for operations, required if 'on_delegate' is false.
      */
-    workingDirectory?: pulumi.Input<string>;
+    workingDirectory?: pulumi.Input<string | undefined>;
 }

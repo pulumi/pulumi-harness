@@ -179,19 +179,19 @@ export interface SloState {
     /**
      * Identifier of the SLO.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the organization in which the SLO is configured.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the project in which the SLO is configured.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Request for creating or updating SLO.
      */
-    request?: pulumi.Input<inputs.platform.SloRequest>;
+    request?: pulumi.Input<inputs.platform.SloRequest | undefined>;
 }
 
 /**
@@ -213,5 +213,5 @@ export interface SloArgs {
     /**
      * Request for creating or updating SLO.
      */
-    request?: pulumi.Input<inputs.platform.SloRequest>;
+    request?: pulumi.Input<inputs.platform.SloRequest | undefined>;
 }

@@ -78,13 +78,13 @@ export interface GetEncryptedTextOutputArgs {
     /**
      * Unique identifier of the encrypted secret
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the encrypted secret
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.GetEncryptedTextUsageScopeArgs>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.GetEncryptedTextUsageScopeArgs>[] | undefined>;
 }

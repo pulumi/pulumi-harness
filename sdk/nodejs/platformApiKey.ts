@@ -151,43 +151,43 @@ export interface PlatformApiKeyState {
     /**
      * Account Identifier for the Entity
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Type of the API Key
      */
-    apikeyType?: pulumi.Input<string>;
+    apikeyType?: pulumi.Input<string | undefined>;
     /**
      * Default expiration time of the Token within API Key
      */
-    defaultTimeToExpireToken?: pulumi.Input<number>;
+    defaultTimeToExpireToken?: pulumi.Input<number | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Parent Entity Identifier of the API Key
      */
-    parentId?: pulumi.Input<string>;
+    parentId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -205,11 +205,11 @@ export interface PlatformApiKeyArgs {
     /**
      * Default expiration time of the Token within API Key
      */
-    defaultTimeToExpireToken?: pulumi.Input<number>;
+    defaultTimeToExpireToken?: pulumi.Input<number | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -217,11 +217,11 @@ export interface PlatformApiKeyArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Parent Entity Identifier of the API Key
      */
@@ -229,9 +229,9 @@ export interface PlatformApiKeyArgs {
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

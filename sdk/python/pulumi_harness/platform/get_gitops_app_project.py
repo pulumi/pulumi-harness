@@ -150,11 +150,11 @@ def get_gitops_app_project(account_id: Optional[_builtins.str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         query_name=pulumi.get(__ret__, 'query_name'))
-def get_gitops_app_project_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                  org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  query_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_gitops_app_project_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                  org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  query_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGitopsAppProjectResult]:
     """
     ## Example Usage

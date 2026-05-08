@@ -252,35 +252,35 @@ export interface UserGroupState {
     /**
      * The description of the user group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the user group was imported by SCIM.
      */
-    importedByScim?: pulumi.Input<boolean>;
+    importedByScim?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the user group is linked to an SSO provider.
      */
-    isSsoLinked?: pulumi.Input<boolean>;
+    isSsoLinked?: pulumi.Input<boolean | undefined>;
     /**
      * The LDAP settings for the user group.
      */
-    ldapSettings?: pulumi.Input<inputs.UserGroupLdapSettings>;
+    ldapSettings?: pulumi.Input<inputs.UserGroupLdapSettings | undefined>;
     /**
      * The name of the user group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The notification settings of the user group.
      */
-    notificationSettings?: pulumi.Input<inputs.UserGroupNotificationSettings>;
+    notificationSettings?: pulumi.Input<inputs.UserGroupNotificationSettings | undefined>;
     /**
      * The permissions of the user group.
      */
-    permissions?: pulumi.Input<inputs.UserGroupPermissions>;
+    permissions?: pulumi.Input<inputs.UserGroupPermissions | undefined>;
     /**
      * The SAML settings for the user group.
      */
-    samlSettings?: pulumi.Input<inputs.UserGroupSamlSettings>;
+    samlSettings?: pulumi.Input<inputs.UserGroupSamlSettings | undefined>;
 }
 
 /**
@@ -290,25 +290,25 @@ export interface UserGroupArgs {
     /**
      * The description of the user group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The LDAP settings for the user group.
      */
-    ldapSettings?: pulumi.Input<inputs.UserGroupLdapSettings>;
+    ldapSettings?: pulumi.Input<inputs.UserGroupLdapSettings | undefined>;
     /**
      * The name of the user group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The notification settings of the user group.
      */
-    notificationSettings?: pulumi.Input<inputs.UserGroupNotificationSettings>;
+    notificationSettings?: pulumi.Input<inputs.UserGroupNotificationSettings | undefined>;
     /**
      * The permissions of the user group.
      */
-    permissions?: pulumi.Input<inputs.UserGroupPermissions>;
+    permissions?: pulumi.Input<inputs.UserGroupPermissions | undefined>;
     /**
      * The SAML settings for the user group.
      */
-    samlSettings?: pulumi.Input<inputs.UserGroupSamlSettings>;
+    samlSettings?: pulumi.Input<inputs.UserGroupSamlSettings | undefined>;
 }

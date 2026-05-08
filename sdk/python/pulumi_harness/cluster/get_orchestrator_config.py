@@ -184,13 +184,13 @@ def get_orchestrator_config(binpacking: Optional[Union['GetOrchestratorConfigBin
         node_preferences=pulumi.get(__ret__, 'node_preferences'),
         orchestrator_id=pulumi.get(__ret__, 'orchestrator_id'),
         replacement_schedule=pulumi.get(__ret__, 'replacement_schedule'))
-def get_orchestrator_config_output(binpacking: Optional[pulumi.Input[Optional[Union['GetOrchestratorConfigBinpackingArgs', 'GetOrchestratorConfigBinpackingArgsDict']]]] = None,
-                                   commitment_integration: Optional[pulumi.Input[Optional[Union['GetOrchestratorConfigCommitmentIntegrationArgs', 'GetOrchestratorConfigCommitmentIntegrationArgsDict']]]] = None,
-                                   disabled: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                   distribution: Optional[pulumi.Input[Optional[Union['GetOrchestratorConfigDistributionArgs', 'GetOrchestratorConfigDistributionArgsDict']]]] = None,
-                                   node_preferences: Optional[pulumi.Input[Optional[Union['GetOrchestratorConfigNodePreferencesArgs', 'GetOrchestratorConfigNodePreferencesArgsDict']]]] = None,
-                                   orchestrator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                   replacement_schedule: Optional[pulumi.Input[Optional[Union['GetOrchestratorConfigReplacementScheduleArgs', 'GetOrchestratorConfigReplacementScheduleArgsDict']]]] = None,
+def get_orchestrator_config_output(binpacking: pulumi.Input[Optional[Optional[Union['GetOrchestratorConfigBinpackingArgs', 'GetOrchestratorConfigBinpackingArgsDict']]]] = None,
+                                   commitment_integration: pulumi.Input[Optional[Optional[Union['GetOrchestratorConfigCommitmentIntegrationArgs', 'GetOrchestratorConfigCommitmentIntegrationArgsDict']]]] = None,
+                                   disabled: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                   distribution: pulumi.Input[Optional[Optional[Union['GetOrchestratorConfigDistributionArgs', 'GetOrchestratorConfigDistributionArgsDict']]]] = None,
+                                   node_preferences: pulumi.Input[Optional[Optional[Union['GetOrchestratorConfigNodePreferencesArgs', 'GetOrchestratorConfigNodePreferencesArgsDict']]]] = None,
+                                   orchestrator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                   replacement_schedule: pulumi.Input[Optional[Optional[Union['GetOrchestratorConfigReplacementScheduleArgs', 'GetOrchestratorConfigReplacementScheduleArgsDict']]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrchestratorConfigResult]:
     """
     Data Source for retrieving Harness CCM ClusterOrchestrator Config.

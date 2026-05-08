@@ -151,47 +151,47 @@ export interface PolicySetState {
     /**
      * Action for the policyset.
      */
-    action?: pulumi.Input<string>;
+    action?: pulumi.Input<string | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enabled for the policyset.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * List of policy identifiers / severity for the policyset.
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.platform.PolicySetPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.platform.PolicySetPolicy>[] | undefined>;
     /**
      * Set of policy identifiers / severity for the policyset. Order is not significant.
      */
-    policyReferences?: pulumi.Input<pulumi.Input<inputs.platform.PolicySetPolicyReference>[]>;
+    policyReferences?: pulumi.Input<pulumi.Input<inputs.platform.PolicySetPolicyReference>[] | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type for the policyset.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -205,11 +205,11 @@ export interface PolicySetArgs {
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Enabled for the policyset.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -217,27 +217,27 @@ export interface PolicySetArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * List of policy identifiers / severity for the policyset.
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.platform.PolicySetPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.platform.PolicySetPolicy>[] | undefined>;
     /**
      * Set of policy identifiers / severity for the policyset. Order is not significant.
      */
-    policyReferences?: pulumi.Input<pulumi.Input<inputs.platform.PolicySetPolicyReference>[]>;
+    policyReferences?: pulumi.Input<pulumi.Input<inputs.platform.PolicySetPolicyReference>[] | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type for the policyset.
      */

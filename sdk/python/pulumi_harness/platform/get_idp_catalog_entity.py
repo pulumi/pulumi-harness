@@ -152,10 +152,10 @@ def get_idp_catalog_entity(identifier: Optional[_builtins.str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         yaml=pulumi.get(__ret__, 'yaml'))
-def get_idp_catalog_entity_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                                  kind: Optional[pulumi.Input[_builtins.str]] = None,
-                                  org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_idp_catalog_entity_output(identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                                  kind: pulumi.Input[Optional[_builtins.str]] = None,
+                                  org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIdpCatalogEntityResult]:
     """
     Data source for retrieving Harness catalog entities.

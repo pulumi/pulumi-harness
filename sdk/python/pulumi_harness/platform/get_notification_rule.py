@@ -120,9 +120,9 @@ def get_notification_rule(identifier: Optional[_builtins.str] = None,
         identifier=pulumi.get(__ret__, 'identifier'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'))
-def get_notification_rule_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_notification_rule_output(identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotificationRuleResult]:
     """
     Data source for retrieving a Notification Rule.

@@ -21,15 +21,15 @@ class DashboardsArgs:
     def __init__(__self__, *,
                  dashboard_id: pulumi.Input[_builtins.str],
                  resource_identifier: pulumi.Input[_builtins.str],
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 models: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 view_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 models: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 view_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Dashboards resource.
 
@@ -92,129 +92,129 @@ class DashboardsArgs:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Created at timestamp of the Dashboard.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSources")
-    def data_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def data_sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Data Sources within the Dashboard.
         """
         return pulumi.get(self, "data_sources")
 
     @data_sources.setter
-    def data_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def data_sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data_sources", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the Dashboard.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="folderId")
-    def folder_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Folder ID that the Dashboard belongs to.
         """
         return pulumi.get(self, "folder_id")
 
     @folder_id.setter
-    def folder_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def models(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Data Models within the Dashboard.
         """
         return pulumi.get(self, "models")
 
     @models.setter
-    def models(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def models(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "models", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Dashboard.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Title of the Dashboard.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the dashboard.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="viewCount")
-    def view_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def view_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         View count of the dashboard.
         """
         return pulumi.get(self, "view_count")
 
     @view_count.setter
-    def view_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def view_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "view_count", value)
 
 
 @pulumi.input_type
 class _DashboardsState:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 favorite_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_accessed_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 models: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 view_count: Optional[pulumi.Input[_builtins.int]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 favorite_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_accessed_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 models: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 view_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Dashboards resources.
 
@@ -261,158 +261,158 @@ class _DashboardsState:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Created at timestamp of the Dashboard.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="dashboardId")
-    def dashboard_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dashboard_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the Template Dashboard to create from.
         """
         return pulumi.get(self, "dashboard_id")
 
     @dashboard_id.setter
-    def dashboard_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dashboard_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSources")
-    def data_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def data_sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Data Sources within the Dashboard.
         """
         return pulumi.get(self, "data_sources")
 
     @data_sources.setter
-    def data_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def data_sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data_sources", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the Dashboard.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="favoriteCount")
-    def favorite_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def favorite_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Favorite count of the dashboard.
         """
         return pulumi.get(self, "favorite_count")
 
     @favorite_count.setter
-    def favorite_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def favorite_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "favorite_count", value)
 
     @_builtins.property
     @pulumi.getter(name="folderId")
-    def folder_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Folder ID that the Dashboard belongs to.
         """
         return pulumi.get(self, "folder_id")
 
     @folder_id.setter
-    def folder_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder_id", value)
 
     @_builtins.property
     @pulumi.getter(name="lastAccessedAt")
-    def last_accessed_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_accessed_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last accessed at timestamp of the Dashboard.
         """
         return pulumi.get(self, "last_accessed_at")
 
     @last_accessed_at.setter
-    def last_accessed_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_accessed_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_accessed_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def models(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Data Models within the Dashboard.
         """
         return pulumi.get(self, "models")
 
     @models.setter
-    def models(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def models(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "models", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Dashboard.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceIdentifier")
-    def resource_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Folder ID that the Dashboard belongs to.
         """
         return pulumi.get(self, "resource_identifier")
 
     @resource_identifier.setter
-    def resource_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Title of the Dashboard.
         """
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the dashboard.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="viewCount")
-    def view_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def view_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         View count of the dashboard.
         """
         return pulumi.get(self, "view_count")
 
     @view_count.setter
-    def view_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def view_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "view_count", value)
 
 
@@ -422,17 +422,17 @@ class Dashboards(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 models: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 view_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 models: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 view_count: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Resource for a Harness Custom Dashboard.
@@ -503,17 +503,17 @@ class Dashboards(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 models: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 view_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 models: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 view_count: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -550,19 +550,19 @@ class Dashboards(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-            data_sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            favorite_count: Optional[pulumi.Input[_builtins.int]] = None,
-            folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-            last_accessed_at: Optional[pulumi.Input[_builtins.str]] = None,
-            models: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            title: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            view_count: Optional[pulumi.Input[_builtins.int]] = None) -> 'Dashboards':
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            favorite_count: pulumi.Input[Optional[_builtins.int]] = None,
+            folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+            last_accessed_at: pulumi.Input[Optional[_builtins.str]] = None,
+            models: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            view_count: pulumi.Input[Optional[_builtins.int]] = None) -> 'Dashboards':
         """
         Get an existing Dashboards resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

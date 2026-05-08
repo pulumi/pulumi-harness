@@ -260,19 +260,19 @@ export interface GetActionTemplateOutputArgs {
     /**
      * Container action configuration. Required when type is 'container'.
      */
-    containerAction?: pulumi.Input<inputs.chaos.GetActionTemplateContainerActionArgs>;
+    containerAction?: pulumi.Input<inputs.chaos.GetActionTemplateContainerActionArgs | undefined>;
     /**
      * Custom script action configuration. Required when type is 'customScript'.
      */
-    customScriptAction?: pulumi.Input<inputs.chaos.GetActionTemplateCustomScriptActionArgs>;
+    customScriptAction?: pulumi.Input<inputs.chaos.GetActionTemplateCustomScriptActionArgs | undefined>;
     /**
      * Delay action configuration. Required when type is 'delay'.
      */
-    delayAction?: pulumi.Input<inputs.chaos.GetActionTemplateDelayActionArgs>;
+    delayAction?: pulumi.Input<inputs.chaos.GetActionTemplateDelayActionArgs | undefined>;
     /**
      * Description of the action template.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Identity of the chaos hub this action template belongs to.
      */
@@ -280,37 +280,37 @@ export interface GetActionTemplateOutputArgs {
     /**
      * Unique identifier for the action template (immutable).
      */
-    identity?: pulumi.Input<string>;
+    identity?: pulumi.Input<string | undefined>;
     /**
      * Infrastructure type for the action template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container. Supports runtime inputs like <+input>.
      */
-    infrastructureType?: pulumi.Input<string>;
+    infrastructureType?: pulumi.Input<string | undefined>;
     /**
      * Name of the action template.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Run properties for the action template execution.
      */
-    runProperties?: pulumi.Input<inputs.chaos.GetActionTemplateRunPropertiesArgs>;
+    runProperties?: pulumi.Input<inputs.chaos.GetActionTemplateRunPropertiesArgs | undefined>;
     /**
      * Tags to associate with the action template.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type of the action template. Valid values: delay, customScript, container.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Template variables that can be used in the action.
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.chaos.GetActionTemplateVariableArgs>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.chaos.GetActionTemplateVariableArgs>[] | undefined>;
 }

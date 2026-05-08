@@ -170,17 +170,17 @@ export interface GetImageRegistryOutputArgs {
     /**
      * Whether to check if override is allowed
      */
-    checkOverride?: pulumi.Input<boolean>;
+    checkOverride?: pulumi.Input<boolean | undefined>;
     /**
      * The infrastructure ID to set up the image registry
      */
-    infraId?: pulumi.Input<string>;
+    infraId?: pulumi.Input<string | undefined>;
     /**
      * The organization ID of the image registry
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The project ID of the image registry
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

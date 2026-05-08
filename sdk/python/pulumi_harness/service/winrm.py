@@ -23,9 +23,9 @@ class WinrmArgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[_builtins.str],
                  artifact_type: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input['WinrmVariableArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input['WinrmVariableArgs']]]] = None):
         """
         The set of arguments for constructing a Winrm resource.
 
@@ -70,49 +70,49 @@ class WinrmArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of th service
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the service
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WinrmVariableArgs']]]]:
+    def variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WinrmVariableArgs']]]]:
         """
         Variables to be used in the service
         """
         return pulumi.get(self, "variables")
 
     @variables.setter
-    def variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WinrmVariableArgs']]]]):
+    def variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WinrmVariableArgs']]]]):
         pulumi.set(self, "variables", value)
 
 
 @pulumi.input_type
 class _WinrmState:
     def __init__(__self__, *,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 artifact_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input['WinrmVariableArgs']]]] = None):
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 artifact_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input['WinrmVariableArgs']]]] = None):
         """
         Input properties used for looking up and filtering Winrm resources.
 
@@ -135,62 +135,62 @@ class _WinrmState:
 
     @_builtins.property
     @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the application the service belongs to
         """
         return pulumi.get(self, "app_id")
 
     @app_id.setter
-    def app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_id", value)
 
     @_builtins.property
     @pulumi.getter(name="artifactType")
-    def artifact_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def artifact_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of artifact to deploy.
         """
         return pulumi.get(self, "artifact_type")
 
     @artifact_type.setter
-    def artifact_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def artifact_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "artifact_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of th service
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the service
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WinrmVariableArgs']]]]:
+    def variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WinrmVariableArgs']]]]:
         """
         Variables to be used in the service
         """
         return pulumi.get(self, "variables")
 
     @variables.setter
-    def variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WinrmVariableArgs']]]]):
+    def variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WinrmVariableArgs']]]]):
         pulumi.set(self, "variables", value)
 
 
@@ -200,11 +200,11 @@ class Winrm(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 artifact_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WinrmVariableArgs', 'WinrmVariableArgsDict']]]]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 artifact_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WinrmVariableArgs', 'WinrmVariableArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for creating an WinRM service. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
@@ -291,11 +291,11 @@ class Winrm(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 artifact_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WinrmVariableArgs', 'WinrmVariableArgsDict']]]]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 artifact_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WinrmVariableArgs', 'WinrmVariableArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -324,11 +324,11 @@ class Winrm(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_id: Optional[pulumi.Input[_builtins.str]] = None,
-            artifact_type: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WinrmVariableArgs', 'WinrmVariableArgsDict']]]]] = None) -> 'Winrm':
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            artifact_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WinrmVariableArgs', 'WinrmVariableArgsDict']]]]] = None) -> 'Winrm':
         """
         Get an existing Winrm resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -25,13 +25,13 @@ class AwsCCConnectorArgs:
                  cross_account_access: pulumi.Input['AwsCCConnectorCrossAccountAccessArgs'],
                  features_enableds: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  identifier: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 report_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AwsCCConnector resource.
 
@@ -116,103 +116,103 @@ class AwsCCConnectorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="reportName")
-    def report_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def report_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
         """
         return pulumi.get(self, "report_name")
 
     @report_name.setter
-    def report_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def report_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "report_name", value)
 
     @_builtins.property
     @pulumi.getter(name="s3Bucket")
-    def s3_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def s3_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of s3 bucket.
         """
         return pulumi.get(self, "s3_bucket")
 
     @s3_bucket.setter
-    def s3_bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def s3_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "s3_bucket", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _AwsCCConnectorState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_access: Optional[pulumi.Input['AwsCCConnectorCrossAccountAccessArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 features_enableds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 report_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_access: pulumi.Input[Optional['AwsCCConnectorCrossAccountAccessArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 features_enableds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AwsCCConnector resources.
 
@@ -253,134 +253,134 @@ class _AwsCCConnectorState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AWS account id.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="crossAccountAccess")
-    def cross_account_access(self) -> Optional[pulumi.Input['AwsCCConnectorCrossAccountAccessArgs']]:
+    def cross_account_access(self) -> pulumi.Input[Optional['AwsCCConnectorCrossAccountAccessArgs']]:
         """
         Harness uses the secure cross-account role to access your AWS account. The role includes a restricted policy to access the cost and usage reports and resources for the sole purpose of cost analysis and cost optimization.
         """
         return pulumi.get(self, "cross_account_access")
 
     @cross_account_access.setter
-    def cross_account_access(self, value: Optional[pulumi.Input['AwsCCConnectorCrossAccountAccessArgs']]):
+    def cross_account_access(self, value: pulumi.Input[Optional['AwsCCConnectorCrossAccountAccessArgs']]):
         pulumi.set(self, "cross_account_access", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="featuresEnableds")
-    def features_enableds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def features_enableds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
         """
         return pulumi.get(self, "features_enableds")
 
     @features_enableds.setter
-    def features_enableds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def features_enableds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "features_enableds", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="reportName")
-    def report_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def report_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
         """
         return pulumi.get(self, "report_name")
 
     @report_name.setter
-    def report_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def report_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "report_name", value)
 
     @_builtins.property
     @pulumi.getter(name="s3Bucket")
-    def s3_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def s3_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of s3 bucket.
         """
         return pulumi.get(self, "s3_bucket")
 
     @s3_bucket.setter
-    def s3_bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def s3_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "s3_bucket", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -390,17 +390,17 @@ class AwsCCConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_access: Optional[pulumi.Input[Union['AwsCCConnectorCrossAccountAccessArgs', 'AwsCCConnectorCrossAccountAccessArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 features_enableds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 report_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_access: pulumi.Input[Optional[Union['AwsCCConnectorCrossAccountAccessArgs', 'AwsCCConnectorCrossAccountAccessArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 features_enableds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Resource for creating an AWS Cloud Cost connector.
@@ -539,17 +539,17 @@ class AwsCCConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_access: Optional[pulumi.Input[Union['AwsCCConnectorCrossAccountAccessArgs', 'AwsCCConnectorCrossAccountAccessArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 features_enableds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 report_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_access: pulumi.Input[Optional[Union['AwsCCConnectorCrossAccountAccessArgs', 'AwsCCConnectorCrossAccountAccessArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 features_enableds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -588,17 +588,17 @@ class AwsCCConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cross_account_access: Optional[pulumi.Input[Union['AwsCCConnectorCrossAccountAccessArgs', 'AwsCCConnectorCrossAccountAccessArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            features_enableds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            report_name: Optional[pulumi.Input[_builtins.str]] = None,
-            s3_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AwsCCConnector':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_access: pulumi.Input[Optional[Union['AwsCCConnectorCrossAccountAccessArgs', 'AwsCCConnectorCrossAccountAccessArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            features_enableds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            report_name: pulumi.Input[Optional[_builtins.str]] = None,
+            s3_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AwsCCConnector':
         """
         Get an existing AwsCCConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

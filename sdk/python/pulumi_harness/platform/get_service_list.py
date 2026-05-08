@@ -136,10 +136,10 @@ def get_service_list(org_id: Optional[_builtins.str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         services=pulumi.get(__ret__, 'services'),
         size=pulumi.get(__ret__, 'size'))
-def get_service_list_output(org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            page: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                            project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_service_list_output(org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            page: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                            project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceListResult]:
     """
     Data source for retrieving a Harness service List.

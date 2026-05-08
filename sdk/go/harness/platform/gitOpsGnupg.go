@@ -41,7 +41,9 @@ import (
 //						},
 //					},
 //				},
-//			})
+//			}, pulumi.IgnoreChanges([]string{
+//				"requests[0].upsert",
+//			}))
 //			if err != nil {
 //				return err
 //			}

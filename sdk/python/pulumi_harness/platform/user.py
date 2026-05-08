@@ -23,9 +23,9 @@ class UserArgs:
     def __init__(__self__, *,
                  email: pulumi.Input[_builtins.str],
                  user_groups: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['UserRoleBindingArgs']]]] = None):
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_bindings: pulumi.Input[Optional[Sequence[pulumi.Input['UserRoleBindingArgs']]]] = None):
         """
         The set of arguments for constructing a User resource.
 
@@ -70,54 +70,54 @@ class UserArgs:
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier of the user.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier of the user.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="roleBindings")
-    def role_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserRoleBindingArgs']]]]:
+    def role_bindings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserRoleBindingArgs']]]]:
         """
         Role Bindings of the user. Cannot be updated.
         """
         return pulumi.get(self, "role_bindings")
 
     @role_bindings.setter
-    def role_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserRoleBindingArgs']]]]):
+    def role_bindings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserRoleBindingArgs']]]]):
         pulumi.set(self, "role_bindings", value)
 
 
 @pulumi.input_type
 class _UserState:
     def __init__(__self__, *,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 externally_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['UserRoleBindingArgs']]]] = None,
-                 user_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 externally_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_bindings: pulumi.Input[Optional[Sequence[pulumi.Input['UserRoleBindingArgs']]]] = None,
+                 user_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering User resources.
 
@@ -155,122 +155,122 @@ class _UserState:
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the user account is disabled.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email of the user.
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="externallyManaged")
-    def externally_managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def externally_managed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the user account is externally managed.
         """
         return pulumi.get(self, "externally_managed")
 
     @externally_managed.setter
-    def externally_managed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def externally_managed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "externally_managed", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the user.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def locked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the user account is locked.
         """
         return pulumi.get(self, "locked")
 
     @locked.setter
-    def locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def locked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "locked", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the user.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier of the user.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier of the user.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="roleBindings")
-    def role_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UserRoleBindingArgs']]]]:
+    def role_bindings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserRoleBindingArgs']]]]:
         """
         Role Bindings of the user. Cannot be updated.
         """
         return pulumi.get(self, "role_bindings")
 
     @role_bindings.setter
-    def role_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UserRoleBindingArgs']]]]):
+    def role_bindings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UserRoleBindingArgs']]]]):
         pulumi.set(self, "role_bindings", value)
 
     @_builtins.property
     @pulumi.getter(name="userGroups")
-    def user_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def user_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The user group of the user. Cannot be updated.
         """
         return pulumi.get(self, "user_groups")
 
     @user_groups.setter
-    def user_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def user_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_groups", value)
 
 
@@ -280,11 +280,11 @@ class User(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserRoleBindingArgs', 'UserRoleBindingArgsDict']]]]] = None,
-                 user_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserRoleBindingArgs', 'UserRoleBindingArgsDict']]]]] = None,
+                 user_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Resource for creating a Harness User. This requires your authentication mechanism to be set to SAML, LDAP, or OAuth, and the feature flag AUTO_ACCEPT_SAML_ACCOUNT_INVITES to be enabled.
@@ -367,11 +367,11 @@ class User(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserRoleBindingArgs', 'UserRoleBindingArgsDict']]]]] = None,
-                 user_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserRoleBindingArgs', 'UserRoleBindingArgsDict']]]]] = None,
+                 user_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -405,16 +405,16 @@ class User(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            email: Optional[pulumi.Input[_builtins.str]] = None,
-            externally_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            locked: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            role_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UserRoleBindingArgs', 'UserRoleBindingArgsDict']]]]] = None,
-            user_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'User':
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            externally_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserRoleBindingArgs', 'UserRoleBindingArgsDict']]]]] = None,
+            user_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

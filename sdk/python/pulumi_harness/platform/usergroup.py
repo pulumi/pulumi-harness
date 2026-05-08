@@ -22,21 +22,21 @@ __all__ = ['UsergroupArgs', 'Usergroup']
 class UsergroupArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 externally_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 linked_sso_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_sso_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_sso_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['UsergroupNotificationConfigArgs']]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso_linked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 externally_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 linked_sso_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_sso_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_sso_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input['UsergroupNotificationConfigArgs']]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_linked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 user_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Usergroup resource.
 
@@ -103,204 +103,204 @@ class UsergroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="externallyManaged")
-    def externally_managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def externally_managed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the user group is externally managed.
         """
         return pulumi.get(self, "externally_managed")
 
     @externally_managed.setter
-    def externally_managed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def externally_managed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "externally_managed", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedSsoDisplayName")
-    def linked_sso_display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def linked_sso_display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the linked SSO.
         """
         return pulumi.get(self, "linked_sso_display_name")
 
     @linked_sso_display_name.setter
-    def linked_sso_display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def linked_sso_display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "linked_sso_display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedSsoId")
-    def linked_sso_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def linked_sso_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SSO account ID that the user group is linked to.
         """
         return pulumi.get(self, "linked_sso_id")
 
     @linked_sso_id.setter
-    def linked_sso_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def linked_sso_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "linked_sso_id", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedSsoType")
-    def linked_sso_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def linked_sso_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of linked SSO.
         """
         return pulumi.get(self, "linked_sso_type")
 
     @linked_sso_type.setter
-    def linked_sso_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def linked_sso_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "linked_sso_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationConfigs")
-    def notification_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UsergroupNotificationConfigArgs']]]]:
+    def notification_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UsergroupNotificationConfigArgs']]]]:
         """
         List of notification settings.
         """
         return pulumi.get(self, "notification_configs")
 
     @notification_configs.setter
-    def notification_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UsergroupNotificationConfigArgs']]]]):
+    def notification_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UsergroupNotificationConfigArgs']]]]):
         pulumi.set(self, "notification_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ssoGroupId")
-    def sso_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sso_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the userGroup in SSO.
         """
         return pulumi.get(self, "sso_group_id")
 
     @sso_group_id.setter
-    def sso_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sso_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sso_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ssoGroupName")
-    def sso_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sso_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the SSO userGroup.
         """
         return pulumi.get(self, "sso_group_name")
 
     @sso_group_name.setter
-    def sso_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sso_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sso_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ssoLinked")
-    def sso_linked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sso_linked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether sso is linked or not.
         """
         return pulumi.get(self, "sso_linked")
 
     @sso_linked.setter
-    def sso_linked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sso_linked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sso_linked", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="userEmails")
-    def user_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def user_emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of user emails in the UserGroup. Either provide list of users or list of user emails.
         """
         return pulumi.get(self, "user_emails")
 
     @user_emails.setter
-    def user_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def user_emails(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_emails", value)
 
     @_builtins.property
     @pulumi.getter
-    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
         """
         return pulumi.get(self, "users")
 
     @users.setter
-    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "users", value)
 
 
 @pulumi.input_type
 class _UsergroupState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 externally_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_sso_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_sso_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_sso_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['UsergroupNotificationConfigArgs']]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso_linked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 externally_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_sso_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_sso_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_sso_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input['UsergroupNotificationConfigArgs']]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_linked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 user_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Usergroup resources.
 
@@ -356,194 +356,194 @@ class _UsergroupState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="externallyManaged")
-    def externally_managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def externally_managed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the user group is externally managed.
         """
         return pulumi.get(self, "externally_managed")
 
     @externally_managed.setter
-    def externally_managed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def externally_managed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "externally_managed", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedSsoDisplayName")
-    def linked_sso_display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def linked_sso_display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the linked SSO.
         """
         return pulumi.get(self, "linked_sso_display_name")
 
     @linked_sso_display_name.setter
-    def linked_sso_display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def linked_sso_display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "linked_sso_display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedSsoId")
-    def linked_sso_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def linked_sso_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SSO account ID that the user group is linked to.
         """
         return pulumi.get(self, "linked_sso_id")
 
     @linked_sso_id.setter
-    def linked_sso_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def linked_sso_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "linked_sso_id", value)
 
     @_builtins.property
     @pulumi.getter(name="linkedSsoType")
-    def linked_sso_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def linked_sso_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of linked SSO.
         """
         return pulumi.get(self, "linked_sso_type")
 
     @linked_sso_type.setter
-    def linked_sso_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def linked_sso_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "linked_sso_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationConfigs")
-    def notification_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['UsergroupNotificationConfigArgs']]]]:
+    def notification_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UsergroupNotificationConfigArgs']]]]:
         """
         List of notification settings.
         """
         return pulumi.get(self, "notification_configs")
 
     @notification_configs.setter
-    def notification_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['UsergroupNotificationConfigArgs']]]]):
+    def notification_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UsergroupNotificationConfigArgs']]]]):
         pulumi.set(self, "notification_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ssoGroupId")
-    def sso_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sso_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the userGroup in SSO.
         """
         return pulumi.get(self, "sso_group_id")
 
     @sso_group_id.setter
-    def sso_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sso_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sso_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ssoGroupName")
-    def sso_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sso_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the SSO userGroup.
         """
         return pulumi.get(self, "sso_group_name")
 
     @sso_group_name.setter
-    def sso_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sso_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sso_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ssoLinked")
-    def sso_linked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sso_linked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether sso is linked or not.
         """
         return pulumi.get(self, "sso_linked")
 
     @sso_linked.setter
-    def sso_linked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sso_linked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sso_linked", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="userEmails")
-    def user_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def user_emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of user emails in the UserGroup. Either provide list of users or list of user emails.
         """
         return pulumi.get(self, "user_emails")
 
     @user_emails.setter
-    def user_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def user_emails(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_emails", value)
 
     @_builtins.property
     @pulumi.getter
-    def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of users in the UserGroup. Either provide list of users or list of user emails. (Should be null for SSO managed)
         """
         return pulumi.get(self, "users")
 
     @users.setter
-    def users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def users(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "users", value)
 
 
@@ -553,22 +553,22 @@ class Usergroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 externally_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_sso_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_sso_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_sso_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict']]]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso_linked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 externally_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_sso_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_sso_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_sso_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict']]]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_linked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 user_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Resource for creating a Harness User Group. Linking SSO providers with User Groups:
@@ -928,22 +928,22 @@ class Usergroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 externally_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_sso_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_sso_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 linked_sso_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict']]]]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso_linked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 externally_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_sso_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_sso_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 linked_sso_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict']]]]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_linked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 user_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -981,22 +981,22 @@ class Usergroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            externally_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            linked_sso_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            linked_sso_id: Optional[pulumi.Input[_builtins.str]] = None,
-            linked_sso_type: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict']]]]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sso_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sso_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            sso_linked: Optional[pulumi.Input[_builtins.bool]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            user_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Usergroup':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            externally_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            linked_sso_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            linked_sso_id: pulumi.Input[Optional[_builtins.str]] = None,
+            linked_sso_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict']]]]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sso_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sso_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sso_linked: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            user_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Usergroup':
         """
         Get an existing Usergroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

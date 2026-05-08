@@ -54,6 +54,7 @@ import * as utilities from "../utilities";
  *         myTemplate,
  *         myInfra,
  *     ],
+ *     ignoreChanges: ["tags"],
  * });
  * // ----------------------------------------------------------------------------
  * // Example 2: Experiment with LOCAL Import
@@ -81,6 +82,7 @@ import * as utilities from "../utilities";
  *         myTemplate,
  *         myInfra,
  *     ],
+ *     ignoreChanges: ["tags"],
  * });
  * // ----------------------------------------------------------------------------
  * // Example 3: Cross-Scope Experiment (Org Hub → Project Experiment)
@@ -107,6 +109,7 @@ import * as utilities from "../utilities";
  *         orgTemplate,
  *         myInfra,
  *     ],
+ *     ignoreChanges: ["tags"],
  * });
  * ```
  *
@@ -404,127 +407,127 @@ export interface ExperimentState {
     /**
      * Creation timestamp (Unix)
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * Username of the creator
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Cron expression for scheduled execution
      */
-    cronSyntax?: pulumi.Input<string>;
+    cronSyntax?: pulumi.Input<string | undefined>;
     /**
      * Description of the chaos experiment
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Full experiment ID
      */
-    experimentId?: pulumi.Input<string>;
+    experimentId?: pulumi.Input<string | undefined>;
     /**
      * Type of the experiment
      */
-    experimentType?: pulumi.Input<string>;
+    experimentType?: pulumi.Input<string | undefined>;
     /**
      * List of fault IDs used in the experiment
      */
-    faultIds?: pulumi.Input<pulumi.Input<string>[]>;
+    faultIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Identity of the hub where the experiment template resides. Must include scope prefix for account and org levels: 'account.my-hub' for account-level hubs, 'org.my-hub' for org-level hubs, or just 'my-hub' for project-level hubs (no prefix)
      */
-    hubIdentity?: pulumi.Input<string>;
+    hubIdentity?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier where the hub/template resides (leave empty for account-level hubs). This is used to locate the template, not where the experiment will be created.
      */
-    hubOrgId?: pulumi.Input<string>;
+    hubOrgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier where the hub/template resides (leave empty for org-level or account-level hubs). This is used to locate the template, not where the experiment will be created.
      */
-    hubProjectId?: pulumi.Input<string>;
+    hubProjectId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier for the experiment (auto-generated if not provided)
      */
-    identity?: pulumi.Input<string>;
+    identity?: pulumi.Input<string | undefined>;
     /**
      * Import type: REFERENCE (template reference) or LOCAL (full copy). Default: REFERENCE
      */
-    importType?: pulumi.Input<string>;
+    importType?: pulumi.Input<string | undefined>;
     /**
      * Resolved infrastructure ID
      */
-    infraId?: pulumi.Input<string>;
+    infraId?: pulumi.Input<string | undefined>;
     /**
      * Infrastructure reference (ID or identity) to bind the experiment to
      */
-    infraRef?: pulumi.Input<string>;
+    infraRef?: pulumi.Input<string | undefined>;
     /**
      * Infrastructure type (e.g., KubernetesV2)
      */
-    infraType?: pulumi.Input<string>;
+    infraType?: pulumi.Input<string | undefined>;
     /**
      * Whether cron scheduling is enabled
      */
-    isCronEnabled?: pulumi.Input<boolean>;
+    isCronEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this is a custom experiment
      */
-    isCustomExperiment?: pulumi.Input<boolean>;
+    isCustomExperiment?: pulumi.Input<boolean | undefined>;
     /**
      * Whether single-run cron is enabled
      */
-    isSingleRunCronEnabled?: pulumi.Input<boolean>;
+    isSingleRunCronEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Timestamp of last execution
      */
-    lastExecutedAt?: pulumi.Input<number>;
+    lastExecutedAt?: pulumi.Input<number | undefined>;
     /**
      * Full experiment manifest YAML (populated for LOCAL imports)
      */
-    manifest?: pulumi.Input<string>;
+    manifest?: pulumi.Input<string | undefined>;
     /**
      * Name of the chaos experiment
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier where the experiment will be created
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier where the experiment will be created
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Template revision to use (default: v1)
      */
-    revision?: pulumi.Input<string>;
+    revision?: pulumi.Input<string | undefined>;
     /**
      * Tags to categorize the experiment. Note: Only user-configured tags are tracked in state. The API may add system-generated tags which are automatically filtered to prevent drift.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Target network map ID
      */
-    targetNetworkMapId?: pulumi.Input<string>;
+    targetNetworkMapId?: pulumi.Input<string | undefined>;
     /**
      * Details about the experiment template used
      */
-    templateDetails?: pulumi.Input<pulumi.Input<inputs.chaos.ExperimentTemplateDetail>[]>;
+    templateDetails?: pulumi.Input<pulumi.Input<inputs.chaos.ExperimentTemplateDetail>[] | undefined>;
     /**
      * Identity of the experiment template to launch from
      */
-    templateIdentity?: pulumi.Input<string>;
+    templateIdentity?: pulumi.Input<string | undefined>;
     /**
      * Total number of experiment runs
      */
-    totalExperimentRuns?: pulumi.Input<number>;
+    totalExperimentRuns?: pulumi.Input<number | undefined>;
     /**
      * Last update timestamp (Unix)
      */
-    updatedAt?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<number | undefined>;
     /**
      * Username of the last updater
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -534,7 +537,7 @@ export interface ExperimentArgs {
     /**
      * Description of the chaos experiment
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Identity of the hub where the experiment template resides. Must include scope prefix for account and org levels: 'account.my-hub' for account-level hubs, 'org.my-hub' for org-level hubs, or just 'my-hub' for project-level hubs (no prefix)
      */
@@ -542,19 +545,19 @@ export interface ExperimentArgs {
     /**
      * Organization identifier where the hub/template resides (leave empty for account-level hubs). This is used to locate the template, not where the experiment will be created.
      */
-    hubOrgId?: pulumi.Input<string>;
+    hubOrgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier where the hub/template resides (leave empty for org-level or account-level hubs). This is used to locate the template, not where the experiment will be created.
      */
-    hubProjectId?: pulumi.Input<string>;
+    hubProjectId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier for the experiment (auto-generated if not provided)
      */
-    identity?: pulumi.Input<string>;
+    identity?: pulumi.Input<string | undefined>;
     /**
      * Import type: REFERENCE (template reference) or LOCAL (full copy). Default: REFERENCE
      */
-    importType?: pulumi.Input<string>;
+    importType?: pulumi.Input<string | undefined>;
     /**
      * Infrastructure reference (ID or identity) to bind the experiment to
      */
@@ -562,7 +565,7 @@ export interface ExperimentArgs {
     /**
      * Name of the chaos experiment
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier where the experiment will be created
      */
@@ -574,11 +577,11 @@ export interface ExperimentArgs {
     /**
      * Template revision to use (default: v1)
      */
-    revision?: pulumi.Input<string>;
+    revision?: pulumi.Input<string | undefined>;
     /**
      * Tags to categorize the experiment. Note: Only user-configured tags are tracked in state. The API may add system-generated tags which are automatically filtered to prevent drift.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Identity of the experiment template to launch from
      */

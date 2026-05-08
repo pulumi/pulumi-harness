@@ -181,47 +181,47 @@ export interface DbInstanceState {
     /**
      * The branch of changeSet repository
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * The connector to database
      */
-    connector?: pulumi.Input<string>;
+    connector?: pulumi.Input<string | undefined>;
     /**
      * The liquibase context
      */
-    context?: pulumi.Input<string>;
+    context?: pulumi.Input<string | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the parent database schema
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * The properties to substitute in changelog migration script
      */
-    substituteProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    substituteProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -231,7 +231,7 @@ export interface DbInstanceArgs {
     /**
      * The branch of changeSet repository
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * The connector to database
      */
@@ -239,11 +239,11 @@ export interface DbInstanceArgs {
     /**
      * The liquibase context
      */
-    context?: pulumi.Input<string>;
+    context?: pulumi.Input<string | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -251,7 +251,7 @@ export interface DbInstanceArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
@@ -267,9 +267,9 @@ export interface DbInstanceArgs {
     /**
      * The properties to substitute in changelog migration script
      */
-    substituteProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    substituteProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

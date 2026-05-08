@@ -134,7 +134,7 @@ export interface GetServiceOutputArgs {
     /**
      * Contains parameters related to Git Experience for remote entities
      */
-    gitDetails?: pulumi.Input<inputs.platform.GetServiceGitDetailsArgs>;
+    gitDetails?: pulumi.Input<inputs.platform.GetServiceGitDetailsArgs | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -142,13 +142,13 @@ export interface GetServiceOutputArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

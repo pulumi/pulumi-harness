@@ -156,39 +156,39 @@ export interface DelegatetokenState {
     /**
      * Account Identifier for the Entity
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Time when the delegate token is created. This is an epoch timestamp.
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * created by details
      */
-    createdBy?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    createdBy?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the delegate token
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Org Identifier for the Entity
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project Identifier for the Entity
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
      */
-    revokeAfter?: pulumi.Input<number>;
+    revokeAfter?: pulumi.Input<number | undefined>;
     /**
      * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
      */
-    tokenStatus?: pulumi.Input<string>;
+    tokenStatus?: pulumi.Input<string | undefined>;
     /**
      * Value of the delegate token. Encoded in base64.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -202,33 +202,33 @@ export interface DelegatetokenArgs {
     /**
      * Time when the delegate token is created. This is an epoch timestamp.
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * created by details
      */
-    createdBy?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    createdBy?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the delegate token
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Org Identifier for the Entity
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project Identifier for the Entity
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Epoch time in milliseconds after which the token will be marked as revoked. There can be a delay of up to one hour from the epoch value provided and actual revoking of the token.
      */
-    revokeAfter?: pulumi.Input<number>;
+    revokeAfter?: pulumi.Input<number | undefined>;
     /**
      * Status of Delegate Token (ACTIVE or REVOKED). If left empty both active and revoked tokens will be assumed
      */
-    tokenStatus?: pulumi.Input<string>;
+    tokenStatus?: pulumi.Input<string | undefined>;
     /**
      * Value of the delegate token. Encoded in base64.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }

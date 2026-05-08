@@ -217,19 +217,19 @@ export interface NotificationRuleState {
     /**
      * Identifier of the Notification Rule.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the organization in which the Notification Rule is configured.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the project in which the Notification Rule is configured.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Request for creating or updating Notification Rule.
      */
-    request?: pulumi.Input<inputs.platform.NotificationRuleRequest>;
+    request?: pulumi.Input<inputs.platform.NotificationRuleRequest | undefined>;
 }
 
 /**
@@ -251,5 +251,5 @@ export interface NotificationRuleArgs {
     /**
      * Request for creating or updating Notification Rule.
      */
-    request?: pulumi.Input<inputs.platform.NotificationRuleRequest>;
+    request?: pulumi.Input<inputs.platform.NotificationRuleRequest | undefined>;
 }

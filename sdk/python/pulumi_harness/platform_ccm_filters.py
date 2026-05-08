@@ -24,10 +24,10 @@ class PlatformCcmFiltersArgs:
                  filter_properties: pulumi.Input['PlatformCcmFiltersFilterPropertiesArgs'],
                  identifier: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 filter_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 filter_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PlatformCcmFilters resource.
 
@@ -89,63 +89,63 @@ class PlatformCcmFiltersArgs:
 
     @_builtins.property
     @pulumi.getter(name="filterVisibility")
-    def filter_visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter_visibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This indicates visibility of filters, by default it is Everyone.
         """
         return pulumi.get(self, "filter_visibility")
 
     @filter_visibility.setter
-    def filter_visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter_visibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_visibility", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the ccm filters.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization Identifier for the Entity.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project Identifier for the Entity.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
 
 @pulumi.input_type
 class _PlatformCcmFiltersState:
     def __init__(__self__, *,
-                 filter_properties: Optional[pulumi.Input['PlatformCcmFiltersFilterPropertiesArgs']] = None,
-                 filter_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 filter_properties: pulumi.Input[Optional['PlatformCcmFiltersFilterPropertiesArgs']] = None,
+                 filter_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PlatformCcmFilters resources.
 
@@ -174,86 +174,86 @@ class _PlatformCcmFiltersState:
 
     @_builtins.property
     @pulumi.getter(name="filterProperties")
-    def filter_properties(self) -> Optional[pulumi.Input['PlatformCcmFiltersFilterPropertiesArgs']]:
+    def filter_properties(self) -> pulumi.Input[Optional['PlatformCcmFiltersFilterPropertiesArgs']]:
         """
         Properties of the filters entity defined in Harness.
         """
         return pulumi.get(self, "filter_properties")
 
     @filter_properties.setter
-    def filter_properties(self, value: Optional[pulumi.Input['PlatformCcmFiltersFilterPropertiesArgs']]):
+    def filter_properties(self, value: pulumi.Input[Optional['PlatformCcmFiltersFilterPropertiesArgs']]):
         pulumi.set(self, "filter_properties", value)
 
     @_builtins.property
     @pulumi.getter(name="filterVisibility")
-    def filter_visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter_visibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This indicates visibility of filters, by default it is Everyone.
         """
         return pulumi.get(self, "filter_visibility")
 
     @filter_visibility.setter
-    def filter_visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter_visibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_visibility", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the ccm filters.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization Identifier for the Entity.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project Identifier for the Entity.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of ccm filters.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -263,13 +263,13 @@ class PlatformCcmFilters(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 filter_properties: Optional[pulumi.Input[Union['PlatformCcmFiltersFilterPropertiesArgs', 'PlatformCcmFiltersFilterPropertiesArgsDict']]] = None,
-                 filter_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 filter_properties: pulumi.Input[Optional[Union['PlatformCcmFiltersFilterPropertiesArgs', 'PlatformCcmFiltersFilterPropertiesArgsDict']]] = None,
+                 filter_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating a Harness CCM Filters.
@@ -392,13 +392,13 @@ class PlatformCcmFilters(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 filter_properties: Optional[pulumi.Input[Union['PlatformCcmFiltersFilterPropertiesArgs', 'PlatformCcmFiltersFilterPropertiesArgsDict']]] = None,
-                 filter_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 filter_properties: pulumi.Input[Optional[Union['PlatformCcmFiltersFilterPropertiesArgs', 'PlatformCcmFiltersFilterPropertiesArgsDict']]] = None,
+                 filter_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -431,13 +431,13 @@ class PlatformCcmFilters(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            filter_properties: Optional[pulumi.Input[Union['PlatformCcmFiltersFilterPropertiesArgs', 'PlatformCcmFiltersFilterPropertiesArgsDict']]] = None,
-            filter_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'PlatformCcmFilters':
+            filter_properties: pulumi.Input[Optional[Union['PlatformCcmFiltersFilterPropertiesArgs', 'PlatformCcmFiltersFilterPropertiesArgsDict']]] = None,
+            filter_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'PlatformCcmFilters':
         """
         Get an existing PlatformCcmFilters resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

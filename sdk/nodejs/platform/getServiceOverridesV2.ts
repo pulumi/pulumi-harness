@@ -136,7 +136,7 @@ export interface GetServiceOverridesV2OutputArgs {
     /**
      * Contains parameters related to Git Experience for remote overrides
      */
-    gitDetails?: pulumi.Input<inputs.platform.GetServiceOverridesV2GitDetailsArgs>;
+    gitDetails?: pulumi.Input<inputs.platform.GetServiceOverridesV2GitDetailsArgs | undefined>;
     /**
      * The identifier of the override entity.
      */
@@ -144,9 +144,9 @@ export interface GetServiceOverridesV2OutputArgs {
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

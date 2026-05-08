@@ -159,55 +159,55 @@ export interface RepoRuleBranchState {
     /**
      * List of users who can bypass this rule.
      */
-    bypasses?: pulumi.Input<pulumi.Input<inputs.platform.RepoRuleBranchBypass>[]>;
+    bypasses?: pulumi.Input<pulumi.Input<inputs.platform.RepoRuleBranchBypass>[] | undefined>;
     /**
      * Timestamp when the rule was created.
      */
-    created?: pulumi.Input<number>;
+    created?: pulumi.Input<number | undefined>;
     /**
      * ID of the user who created the rule.
      */
-    createdBy?: pulumi.Input<number>;
+    createdBy?: pulumi.Input<number | undefined>;
     /**
      * Description of the rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the rule.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Pattern of branch to which rule will apply.
      */
-    patterns?: pulumi.Input<pulumi.Input<inputs.platform.RepoRuleBranchPattern>[]>;
+    patterns?: pulumi.Input<pulumi.Input<inputs.platform.RepoRuleBranchPattern>[] | undefined>;
     /**
      * Policies to be applied for this rule.
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.platform.RepoRuleBranchPolicy>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.platform.RepoRuleBranchPolicy>[] | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Repo identifier of the repository.
      */
-    repoIdentifier?: pulumi.Input<string>;
+    repoIdentifier?: pulumi.Input<string | undefined>;
     /**
      * State of the rule (active, disable, monitor).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the rule was updated.
      */
-    updated?: pulumi.Input<number>;
+    updated?: pulumi.Input<number | undefined>;
     /**
      * ID of the user who updated the rule.
      */
-    updatedBy?: pulumi.Input<number>;
+    updatedBy?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -221,7 +221,7 @@ export interface RepoRuleBranchArgs {
     /**
      * Description of the rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the rule.
      */
@@ -229,11 +229,11 @@ export interface RepoRuleBranchArgs {
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Pattern of branch to which rule will apply.
      */
-    patterns?: pulumi.Input<pulumi.Input<inputs.platform.RepoRuleBranchPattern>[]>;
+    patterns?: pulumi.Input<pulumi.Input<inputs.platform.RepoRuleBranchPattern>[] | undefined>;
     /**
      * Policies to be applied for this rule.
      */
@@ -241,7 +241,7 @@ export interface RepoRuleBranchArgs {
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Repo identifier of the repository.
      */

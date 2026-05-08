@@ -144,15 +144,15 @@ export interface GetTriggersOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * ignore error default false
      */
-    ignoreError?: pulumi.Input<boolean>;
+    ignoreError?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */

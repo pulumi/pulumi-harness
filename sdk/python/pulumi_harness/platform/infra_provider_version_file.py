@@ -22,7 +22,7 @@ class InfraProviderVersionFileArgs:
                  file_path: pulumi.Input[_builtins.str],
                  provider_id: pulumi.Input[_builtins.str],
                  version: pulumi.Input[_builtins.str],
-                 filename: Optional[pulumi.Input[_builtins.str]] = None):
+                 filename: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a InfraProviderVersionFile resource.
 
@@ -75,25 +75,25 @@ class InfraProviderVersionFileArgs:
 
     @_builtins.property
     @pulumi.getter
-    def filename(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filename(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the file to upload (e.g., terraform-provider-aws*5.0.0*linux*amd64.zip). If not provided, will be derived from file*path. Use this to override the uploaded filename if it should differ from the local filename.
         """
         return pulumi.get(self, "filename")
 
     @filename.setter
-    def filename(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filename(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filename", value)
 
 
 @pulumi.input_type
 class _InfraProviderVersionFileState:
     def __init__(__self__, *,
-                 file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 filename: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 synced: Optional[pulumi.Input[_builtins.bool]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 filename: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 synced: pulumi.Input[Optional[_builtins.bool]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InfraProviderVersionFile resources.
 
@@ -116,62 +116,62 @@ class _InfraProviderVersionFileState:
 
     @_builtins.property
     @pulumi.getter(name="filePath")
-    def file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Local path to the file to upload. Required for uploading file content.
         """
         return pulumi.get(self, "file_path")
 
     @file_path.setter
-    def file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def filename(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filename(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the file to upload (e.g., terraform-provider-aws*5.0.0*linux*amd64.zip). If not provided, will be derived from file*path. Use this to override the uploaded filename if it should differ from the local filename.
         """
         return pulumi.get(self, "filename")
 
     @filename.setter
-    def filename(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filename(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filename", value)
 
     @_builtins.property
     @pulumi.getter(name="providerId")
-    def provider_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provider_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the provider.
         """
         return pulumi.get(self, "provider_id")
 
     @provider_id.setter
-    def provider_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provider_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provider_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def synced(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def synced(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the provider version is synced after file upload.
         """
         return pulumi.get(self, "synced")
 
     @synced.setter
-    def synced(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def synced(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "synced", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provider version number.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -181,10 +181,10 @@ class InfraProviderVersionFile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 filename: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 filename: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for uploading files to Terraform/OpenTofu Provider Versions in the IaCM Provider Registry.
@@ -358,10 +358,10 @@ class InfraProviderVersionFile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 filename: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 filename: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -392,11 +392,11 @@ class InfraProviderVersionFile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            file_path: Optional[pulumi.Input[_builtins.str]] = None,
-            filename: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-            synced: Optional[pulumi.Input[_builtins.bool]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None) -> 'InfraProviderVersionFile':
+            file_path: pulumi.Input[Optional[_builtins.str]] = None,
+            filename: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+            synced: pulumi.Input[Optional[_builtins.bool]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> 'InfraProviderVersionFile':
         """
         Get an existing InfraProviderVersionFile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

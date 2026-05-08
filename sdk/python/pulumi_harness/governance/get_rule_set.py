@@ -129,7 +129,7 @@ def get_rule_set(rule_set_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         rule_ids=pulumi.get(__ret__, 'rule_ids'),
         rule_set_id=pulumi.get(__ret__, 'rule_set_id'))
-def get_rule_set_output(rule_set_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_rule_set_output(rule_set_id: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleSetResult]:
     """
     Datasource for looking up a rule.

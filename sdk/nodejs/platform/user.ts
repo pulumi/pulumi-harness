@@ -154,43 +154,43 @@ export interface UserState {
     /**
      * Whether or not the user account is disabled.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The email of the user.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Whether or not the user account is externally managed.
      */
-    externallyManaged?: pulumi.Input<boolean>;
+    externallyManaged?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the user.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Whether or not the user account is locked.
      */
-    locked?: pulumi.Input<boolean>;
+    locked?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the user.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier of the user.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the user.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Role Bindings of the user. Cannot be updated.
      */
-    roleBindings?: pulumi.Input<pulumi.Input<inputs.platform.UserRoleBinding>[]>;
+    roleBindings?: pulumi.Input<pulumi.Input<inputs.platform.UserRoleBinding>[] | undefined>;
     /**
      * The user group of the user. Cannot be updated.
      */
-    userGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    userGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -204,15 +204,15 @@ export interface UserArgs {
     /**
      * Organization identifier of the user.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the user.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Role Bindings of the user. Cannot be updated.
      */
-    roleBindings?: pulumi.Input<pulumi.Input<inputs.platform.UserRoleBinding>[]>;
+    roleBindings?: pulumi.Input<pulumi.Input<inputs.platform.UserRoleBinding>[] | undefined>;
     /**
      * The user group of the user. Cannot be updated.
      */

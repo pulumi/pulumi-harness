@@ -122,9 +122,9 @@ def get_delegate_ids(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         status=pulumi.get(__ret__, 'status'),
         type=pulumi.get(__ret__, 'type'))
-def get_delegate_ids_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_delegate_ids_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDelegateIdsResult]:
     """
     Use this data source to get a list of delegate ID's matching the specified search criteria.

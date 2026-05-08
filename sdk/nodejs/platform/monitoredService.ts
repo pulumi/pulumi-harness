@@ -954,19 +954,19 @@ export interface MonitoredServiceState {
     /**
      * Identifier of the monitored service.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the organization in which the monitored service is configured.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the project in which the monitored service is configured.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Request for creating or updating a monitored service.
      */
-    request?: pulumi.Input<inputs.platform.MonitoredServiceRequest>;
+    request?: pulumi.Input<inputs.platform.MonitoredServiceRequest | undefined>;
 }
 
 /**
@@ -988,5 +988,5 @@ export interface MonitoredServiceArgs {
     /**
      * Request for creating or updating a monitored service.
      */
-    request?: pulumi.Input<inputs.platform.MonitoredServiceRequest>;
+    request?: pulumi.Input<inputs.platform.MonitoredServiceRequest | undefined>;
 }

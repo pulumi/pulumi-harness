@@ -166,51 +166,51 @@ export interface OverridesState {
     /**
      * The cluster ID to which the overrides are associated.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The environment ID to which the overrides are associated.
      */
-    envId?: pulumi.Input<string>;
+    envId?: pulumi.Input<string | undefined>;
     /**
      * Contains parameters related to creating an Entity for Git Experience.
      */
-    gitDetails?: pulumi.Input<inputs.platform.OverridesGitDetails>;
+    gitDetails?: pulumi.Input<inputs.platform.OverridesGitDetails | undefined>;
     /**
      * The identifier of the override entity.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * import override from git
      */
-    importFromGit?: pulumi.Input<boolean>;
+    importFromGit?: pulumi.Input<boolean | undefined>;
     /**
      * The infrastructure ID to which the overrides are associated.
      */
-    infraId?: pulumi.Input<string>;
+    infraId?: pulumi.Input<string | undefined>;
     /**
      * force import override from remote even if same file path already exist
      */
-    isForceImport?: pulumi.Input<boolean>;
+    isForceImport?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The service ID to which the overrides applies.
      */
-    serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string | undefined>;
     /**
      * The type of the overrides.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The yaml of the override entity
      */
-    yaml?: pulumi.Input<string>;
+    yaml?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -220,7 +220,7 @@ export interface OverridesArgs {
     /**
      * The cluster ID to which the overrides are associated.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The environment ID to which the overrides are associated.
      */
@@ -228,35 +228,35 @@ export interface OverridesArgs {
     /**
      * Contains parameters related to creating an Entity for Git Experience.
      */
-    gitDetails?: pulumi.Input<inputs.platform.OverridesGitDetails>;
+    gitDetails?: pulumi.Input<inputs.platform.OverridesGitDetails | undefined>;
     /**
      * The identifier of the override entity.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * import override from git
      */
-    importFromGit?: pulumi.Input<boolean>;
+    importFromGit?: pulumi.Input<boolean | undefined>;
     /**
      * The infrastructure ID to which the overrides are associated.
      */
-    infraId?: pulumi.Input<string>;
+    infraId?: pulumi.Input<string | undefined>;
     /**
      * force import override from remote even if same file path already exist
      */
-    isForceImport?: pulumi.Input<boolean>;
+    isForceImport?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The service ID to which the overrides applies.
      */
-    serviceId?: pulumi.Input<string>;
+    serviceId?: pulumi.Input<string | undefined>;
     /**
      * The type of the overrides.
      */
@@ -264,5 +264,5 @@ export interface OverridesArgs {
     /**
      * The yaml of the override entity
      */
-    yaml?: pulumi.Input<string>;
+    yaml?: pulumi.Input<string | undefined>;
 }

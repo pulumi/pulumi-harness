@@ -23,23 +23,23 @@ class FaultTemplateArgs:
     def __init__(__self__, *,
                  hub_identity: pulumi.Input[_builtins.str],
                  identity: pulumi.Input[_builtins.str],
-                 api_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 infrastructures: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 keywords: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 links: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateLinkArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 permissions_required: Optional[pulumi.Input[_builtins.str]] = None,
-                 platforms: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input['FaultTemplateSpecArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateVariableArgs']]]] = None):
+                 api_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 infrastructures: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 keywords: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 links: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateLinkArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions_required: pulumi.Input[Optional[_builtins.str]] = None,
+                 platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional['FaultTemplateSpecArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateVariableArgs']]]] = None):
         """
         The set of arguments for constructing a FaultTemplate resource.
 
@@ -126,239 +126,239 @@ class FaultTemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiVersion")
-    def api_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API version
         """
         return pulumi.get(self, "api_version")
 
     @api_version.setter
-    def api_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def categories(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Fault categories
         """
         return pulumi.get(self, "categories")
 
     @categories.setter
-    def categories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def categories(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "categories", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the fault template
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def infrastructures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def infrastructures(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of supported infrastructures
         """
         return pulumi.get(self, "infrastructures")
 
     @infrastructures.setter
-    def infrastructures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def infrastructures(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "infrastructures", value)
 
     @_builtins.property
     @pulumi.getter
-    def keywords(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def keywords(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Search keywords
         """
         return pulumi.get(self, "keywords")
 
     @keywords.setter
-    def keywords(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def keywords(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "keywords", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource kind
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter
-    def links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateLinkArgs']]]]:
+    def links(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateLinkArgs']]]]:
         """
         Related links
         """
         return pulumi.get(self, "links")
 
     @links.setter
-    def links(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateLinkArgs']]]]):
+    def links(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateLinkArgs']]]]):
         pulumi.set(self, "links", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the fault template
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="permissionsRequired")
-    def permissions_required(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def permissions_required(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required permissions for the fault
         """
         return pulumi.get(self, "permissions_required")
 
     @permissions_required.setter
-    def permissions_required(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def permissions_required(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "permissions_required", value)
 
     @_builtins.property
     @pulumi.getter
-    def platforms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def platforms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Supported platforms
         """
         return pulumi.get(self, "platforms")
 
     @platforms.setter
-    def platforms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def platforms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "platforms", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def revision(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template revision (defaults to v1 if not specified)
         """
         return pulumi.get(self, "revision")
 
     @revision.setter
-    def revision(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['FaultTemplateSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['FaultTemplateSpecArgs']]:
         """
         Fault specification
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['FaultTemplateSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['FaultTemplateSpecArgs']]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags for the fault template
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fault type
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateVariableArgs']]]]:
+    def variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateVariableArgs']]]]:
         """
         Template variables
         """
         return pulumi.get(self, "variables")
 
     @variables.setter
-    def variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateVariableArgs']]]]):
+    def variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateVariableArgs']]]]):
         pulumi.set(self, "variables", value)
 
 
 @pulumi.input_type
 class _FaultTemplateState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hub_identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 hub_ref: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 infrastructures: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 is_enterprise: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_removed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keywords: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 links: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateLinkArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 permissions_required: Optional[pulumi.Input[_builtins.str]] = None,
-                 platforms: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input['FaultTemplateSpecArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateVariableArgs']]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 hub_ref: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 infrastructures: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 is_enterprise: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_removed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keywords: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 links: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateLinkArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions_required: pulumi.Input[Optional[_builtins.str]] = None,
+                 platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional['FaultTemplateSpecArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateVariableArgs']]]] = None):
         """
         Input properties used for looking up and filtering FaultTemplate resources.
 
@@ -447,326 +447,326 @@ class _FaultTemplateState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account identifier
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="apiVersion")
-    def api_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API version
         """
         return pulumi.get(self, "api_version")
 
     @api_version.setter
-    def api_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def categories(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Fault categories
         """
         return pulumi.get(self, "categories")
 
     @categories.setter
-    def categories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def categories(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "categories", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Creation timestamp
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creator user ID
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the fault template
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="hubIdentity")
-    def hub_identity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hub_identity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hub identity reference
         """
         return pulumi.get(self, "hub_identity")
 
     @hub_identity.setter
-    def hub_identity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hub_identity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hub_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="hubRef")
-    def hub_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hub_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hub reference (computed)
         """
         return pulumi.get(self, "hub_ref")
 
     @hub_ref.setter
-    def hub_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hub_ref(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hub_ref", value)
 
     @_builtins.property
     @pulumi.getter
-    def identity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier for the fault template (immutable)
         """
         return pulumi.get(self, "identity")
 
     @identity.setter
-    def identity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identity", value)
 
     @_builtins.property
     @pulumi.getter
-    def infrastructures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def infrastructures(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of supported infrastructures
         """
         return pulumi.get(self, "infrastructures")
 
     @infrastructures.setter
-    def infrastructures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def infrastructures(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "infrastructures", value)
 
     @_builtins.property
     @pulumi.getter(name="isEnterprise")
-    def is_enterprise(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enterprise(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this is an enterprise-only template
         """
         return pulumi.get(self, "is_enterprise")
 
     @is_enterprise.setter
-    def is_enterprise(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enterprise(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enterprise", value)
 
     @_builtins.property
     @pulumi.getter(name="isRemoved")
-    def is_removed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_removed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Soft delete flag
         """
         return pulumi.get(self, "is_removed")
 
     @is_removed.setter
-    def is_removed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_removed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_removed", value)
 
     @_builtins.property
     @pulumi.getter
-    def keywords(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def keywords(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Search keywords
         """
         return pulumi.get(self, "keywords")
 
     @keywords.setter
-    def keywords(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def keywords(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "keywords", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource kind
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter
-    def links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateLinkArgs']]]]:
+    def links(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateLinkArgs']]]]:
         """
         Related links
         """
         return pulumi.get(self, "links")
 
     @links.setter
-    def links(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateLinkArgs']]]]):
+    def links(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateLinkArgs']]]]):
         pulumi.set(self, "links", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the fault template
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Organization identifier
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="permissionsRequired")
-    def permissions_required(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def permissions_required(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required permissions for the fault
         """
         return pulumi.get(self, "permissions_required")
 
     @permissions_required.setter
-    def permissions_required(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def permissions_required(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "permissions_required", value)
 
     @_builtins.property
     @pulumi.getter
-    def platforms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def platforms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Supported platforms
         """
         return pulumi.get(self, "platforms")
 
     @platforms.setter
-    def platforms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def platforms(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "platforms", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project identifier
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def revision(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template revision (defaults to v1 if not specified)
         """
         return pulumi.get(self, "revision")
 
     @revision.setter
-    def revision(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['FaultTemplateSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['FaultTemplateSpecArgs']]:
         """
         Fault specification
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['FaultTemplateSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['FaultTemplateSpecArgs']]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags for the fault template
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fault type
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Update timestamp
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedBy")
-    def updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Updater user ID
         """
         return pulumi.get(self, "updated_by")
 
     @updated_by.setter
-    def updated_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateVariableArgs']]]]:
+    def variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateVariableArgs']]]]:
         """
         Template variables
         """
         return pulumi.get(self, "variables")
 
     @variables.setter
-    def variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FaultTemplateVariableArgs']]]]):
+    def variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateVariableArgs']]]]):
         pulumi.set(self, "variables", value)
 
 
@@ -776,25 +776,25 @@ class FaultTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hub_identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 infrastructures: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 keywords: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FaultTemplateLinkArgs', 'FaultTemplateLinkArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 permissions_required: Optional[pulumi.Input[_builtins.str]] = None,
-                 platforms: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[Union['FaultTemplateSpecArgs', 'FaultTemplateSpecArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FaultTemplateVariableArgs', 'FaultTemplateVariableArgsDict']]]]] = None,
+                 api_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 infrastructures: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 keywords: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FaultTemplateLinkArgs', 'FaultTemplateLinkArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions_required: pulumi.Input[Optional[_builtins.str]] = None,
+                 platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[Union['FaultTemplateSpecArgs', 'FaultTemplateSpecArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FaultTemplateVariableArgs', 'FaultTemplateVariableArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for managing Harness Chaos Fault Templates. Phase 1: Core fields (identity, name, description, tags, category, infrastructure, basic spec)
@@ -1395,25 +1395,25 @@ class FaultTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 hub_identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 infrastructures: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 keywords: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FaultTemplateLinkArgs', 'FaultTemplateLinkArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 permissions_required: Optional[pulumi.Input[_builtins.str]] = None,
-                 platforms: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[Union['FaultTemplateSpecArgs', 'FaultTemplateSpecArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FaultTemplateVariableArgs', 'FaultTemplateVariableArgsDict']]]]] = None,
+                 api_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 infrastructures: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 keywords: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FaultTemplateLinkArgs', 'FaultTemplateLinkArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions_required: pulumi.Input[Optional[_builtins.str]] = None,
+                 platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[Union['FaultTemplateSpecArgs', 'FaultTemplateSpecArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FaultTemplateVariableArgs', 'FaultTemplateVariableArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1464,33 +1464,33 @@ class FaultTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            api_version: Optional[pulumi.Input[_builtins.str]] = None,
-            categories: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            created_at: Optional[pulumi.Input[_builtins.int]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            hub_identity: Optional[pulumi.Input[_builtins.str]] = None,
-            hub_ref: Optional[pulumi.Input[_builtins.str]] = None,
-            identity: Optional[pulumi.Input[_builtins.str]] = None,
-            infrastructures: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            is_enterprise: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_removed: Optional[pulumi.Input[_builtins.bool]] = None,
-            keywords: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            kind: Optional[pulumi.Input[_builtins.str]] = None,
-            links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FaultTemplateLinkArgs', 'FaultTemplateLinkArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            permissions_required: Optional[pulumi.Input[_builtins.str]] = None,
-            platforms: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            revision: Optional[pulumi.Input[_builtins.str]] = None,
-            spec: Optional[pulumi.Input[Union['FaultTemplateSpecArgs', 'FaultTemplateSpecArgsDict']]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-            updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-            variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FaultTemplateVariableArgs', 'FaultTemplateVariableArgsDict']]]]] = None) -> 'FaultTemplate':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            api_version: pulumi.Input[Optional[_builtins.str]] = None,
+            categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+            hub_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            identity: pulumi.Input[Optional[_builtins.str]] = None,
+            infrastructures: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            is_enterprise: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_removed: pulumi.Input[Optional[_builtins.bool]] = None,
+            keywords: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FaultTemplateLinkArgs', 'FaultTemplateLinkArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            permissions_required: pulumi.Input[Optional[_builtins.str]] = None,
+            platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            revision: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[Union['FaultTemplateSpecArgs', 'FaultTemplateSpecArgsDict']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FaultTemplateVariableArgs', 'FaultTemplateVariableArgsDict']]]]] = None) -> 'FaultTemplate':
         """
         Get an existing FaultTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

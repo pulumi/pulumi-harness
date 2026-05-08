@@ -66,11 +66,11 @@ __all__ = [
 ]
 
 class OrchestratorConfigBinpackingArgsDict(TypedDict):
-    disruption: NotRequired[pulumi.Input['OrchestratorConfigBinpackingDisruptionArgsDict']]
+    disruption: NotRequired[pulumi.Input[Optional['OrchestratorConfigBinpackingDisruptionArgs']]]
     """
     Harness disruption configuration
     """
-    pod_eviction: NotRequired[pulumi.Input['OrchestratorConfigBinpackingPodEvictionArgsDict']]
+    pod_eviction: NotRequired[pulumi.Input[Optional['OrchestratorConfigBinpackingPodEvictionArgs']]]
     """
     Harness Pod Evictor Configuration
     """
@@ -78,8 +78,8 @@ class OrchestratorConfigBinpackingArgsDict(TypedDict):
 @pulumi.input_type
 class OrchestratorConfigBinpackingArgs:
     def __init__(__self__, *,
-                 disruption: Optional[pulumi.Input['OrchestratorConfigBinpackingDisruptionArgs']] = None,
-                 pod_eviction: Optional[pulumi.Input['OrchestratorConfigBinpackingPodEvictionArgs']] = None):
+                 disruption: pulumi.Input[Optional['OrchestratorConfigBinpackingDisruptionArgs']] = None,
+                 pod_eviction: pulumi.Input[Optional['OrchestratorConfigBinpackingPodEvictionArgs']] = None):
         """
         :param pulumi.Input['OrchestratorConfigBinpackingDisruptionArgs'] disruption: Harness disruption configuration
         :param pulumi.Input['OrchestratorConfigBinpackingPodEvictionArgs'] pod_eviction: Harness Pod Evictor Configuration
@@ -91,39 +91,39 @@ class OrchestratorConfigBinpackingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def disruption(self) -> Optional[pulumi.Input['OrchestratorConfigBinpackingDisruptionArgs']]:
+    def disruption(self) -> pulumi.Input[Optional['OrchestratorConfigBinpackingDisruptionArgs']]:
         """
         Harness disruption configuration
         """
         return pulumi.get(self, "disruption")
 
     @disruption.setter
-    def disruption(self, value: Optional[pulumi.Input['OrchestratorConfigBinpackingDisruptionArgs']]):
+    def disruption(self, value: pulumi.Input[Optional['OrchestratorConfigBinpackingDisruptionArgs']]):
         pulumi.set(self, "disruption", value)
 
     @_builtins.property
     @pulumi.getter(name="podEviction")
-    def pod_eviction(self) -> Optional[pulumi.Input['OrchestratorConfigBinpackingPodEvictionArgs']]:
+    def pod_eviction(self) -> pulumi.Input[Optional['OrchestratorConfigBinpackingPodEvictionArgs']]:
         """
         Harness Pod Evictor Configuration
         """
         return pulumi.get(self, "pod_eviction")
 
     @pod_eviction.setter
-    def pod_eviction(self, value: Optional[pulumi.Input['OrchestratorConfigBinpackingPodEvictionArgs']]):
+    def pod_eviction(self, value: pulumi.Input[Optional['OrchestratorConfigBinpackingPodEvictionArgs']]):
         pulumi.set(self, "pod_eviction", value)
 
 
 class OrchestratorConfigBinpackingDisruptionArgsDict(TypedDict):
-    budgets: NotRequired[pulumi.Input[Sequence[pulumi.Input['OrchestratorConfigBinpackingDisruptionBudgetArgsDict']]]]
+    budgets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OrchestratorConfigBinpackingDisruptionBudgetArgs']]]]]
     """
     Budgets for disruption
     """
-    criteria: NotRequired[pulumi.Input[_builtins.str]]
+    criteria: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Criteria for considering a nodes for disruption
     """
-    delay: NotRequired[pulumi.Input[_builtins.str]]
+    delay: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Deletion delay
     """
@@ -131,9 +131,9 @@ class OrchestratorConfigBinpackingDisruptionArgsDict(TypedDict):
 @pulumi.input_type
 class OrchestratorConfigBinpackingDisruptionArgs:
     def __init__(__self__, *,
-                 budgets: Optional[pulumi.Input[Sequence[pulumi.Input['OrchestratorConfigBinpackingDisruptionBudgetArgs']]]] = None,
-                 criteria: Optional[pulumi.Input[_builtins.str]] = None,
-                 delay: Optional[pulumi.Input[_builtins.str]] = None):
+                 budgets: pulumi.Input[Optional[Sequence[pulumi.Input['OrchestratorConfigBinpackingDisruptionBudgetArgs']]]] = None,
+                 criteria: pulumi.Input[Optional[_builtins.str]] = None,
+                 delay: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['OrchestratorConfigBinpackingDisruptionBudgetArgs']]] budgets: Budgets for disruption
         :param pulumi.Input[_builtins.str] criteria: Criteria for considering a nodes for disruption
@@ -148,38 +148,38 @@ class OrchestratorConfigBinpackingDisruptionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def budgets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OrchestratorConfigBinpackingDisruptionBudgetArgs']]]]:
+    def budgets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OrchestratorConfigBinpackingDisruptionBudgetArgs']]]]:
         """
         Budgets for disruption
         """
         return pulumi.get(self, "budgets")
 
     @budgets.setter
-    def budgets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OrchestratorConfigBinpackingDisruptionBudgetArgs']]]]):
+    def budgets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OrchestratorConfigBinpackingDisruptionBudgetArgs']]]]):
         pulumi.set(self, "budgets", value)
 
     @_builtins.property
     @pulumi.getter
-    def criteria(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def criteria(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Criteria for considering a nodes for disruption
         """
         return pulumi.get(self, "criteria")
 
     @criteria.setter
-    def criteria(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def criteria(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "criteria", value)
 
     @_builtins.property
     @pulumi.getter
-    def delay(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delay(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deletion delay
         """
         return pulumi.get(self, "delay")
 
     @delay.setter
-    def delay(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delay(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delay", value)
 
 
@@ -188,11 +188,11 @@ class OrchestratorConfigBinpackingDisruptionBudgetArgsDict(TypedDict):
     """
     Number or percentage of Nodes to consider for disruption
     """
-    reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    reasons: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Reasons for disruption
     """
-    schedule: NotRequired[pulumi.Input['OrchestratorConfigBinpackingDisruptionBudgetScheduleArgsDict']]
+    schedule: NotRequired[pulumi.Input[Optional['OrchestratorConfigBinpackingDisruptionBudgetScheduleArgs']]]
     """
     Schedule for disruption budget
     """
@@ -201,8 +201,8 @@ class OrchestratorConfigBinpackingDisruptionBudgetArgsDict(TypedDict):
 class OrchestratorConfigBinpackingDisruptionBudgetArgs:
     def __init__(__self__, *,
                  nodes: pulumi.Input[_builtins.str],
-                 reasons: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 schedule: Optional[pulumi.Input['OrchestratorConfigBinpackingDisruptionBudgetScheduleArgs']] = None):
+                 reasons: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 schedule: pulumi.Input[Optional['OrchestratorConfigBinpackingDisruptionBudgetScheduleArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] nodes: Number or percentage of Nodes to consider for disruption
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] reasons: Reasons for disruption
@@ -228,26 +228,26 @@ class OrchestratorConfigBinpackingDisruptionBudgetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def reasons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def reasons(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Reasons for disruption
         """
         return pulumi.get(self, "reasons")
 
     @reasons.setter
-    def reasons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def reasons(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "reasons", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input['OrchestratorConfigBinpackingDisruptionBudgetScheduleArgs']]:
+    def schedule(self) -> pulumi.Input[Optional['OrchestratorConfigBinpackingDisruptionBudgetScheduleArgs']]:
         """
         Schedule for disruption budget
         """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input['OrchestratorConfigBinpackingDisruptionBudgetScheduleArgs']]):
+    def schedule(self, value: pulumi.Input[Optional['OrchestratorConfigBinpackingDisruptionBudgetScheduleArgs']]):
         pulumi.set(self, "schedule", value)
 
 
@@ -425,15 +425,15 @@ class OrchestratorConfigDistributionArgsDict(TypedDict):
     """
     Percentage of on-demand replicas required for workloads
     """
-    base_ondemand_capacity: NotRequired[pulumi.Input[_builtins.int]]
+    base_ondemand_capacity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of minimum ondemand replicas required for workloads
     """
-    selector: NotRequired[pulumi.Input[_builtins.str]]
+    selector: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Selector for choosing workloads for distribution
     """
-    strategy: NotRequired[pulumi.Input[_builtins.str]]
+    strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Strategy for choosing spot nodes for cluster
     """
@@ -442,9 +442,9 @@ class OrchestratorConfigDistributionArgsDict(TypedDict):
 class OrchestratorConfigDistributionArgs:
     def __init__(__self__, *,
                  ondemand_replica_percentage: pulumi.Input[_builtins.float],
-                 base_ondemand_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 selector: Optional[pulumi.Input[_builtins.str]] = None,
-                 strategy: Optional[pulumi.Input[_builtins.str]] = None):
+                 base_ondemand_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 selector: pulumi.Input[Optional[_builtins.str]] = None,
+                 strategy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.float] ondemand_replica_percentage: Percentage of on-demand replicas required for workloads
         :param pulumi.Input[_builtins.int] base_ondemand_capacity: Number of minimum ondemand replicas required for workloads
@@ -473,47 +473,47 @@ class OrchestratorConfigDistributionArgs:
 
     @_builtins.property
     @pulumi.getter(name="baseOndemandCapacity")
-    def base_ondemand_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def base_ondemand_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of minimum ondemand replicas required for workloads
         """
         return pulumi.get(self, "base_ondemand_capacity")
 
     @base_ondemand_capacity.setter
-    def base_ondemand_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def base_ondemand_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "base_ondemand_capacity", value)
 
     @_builtins.property
     @pulumi.getter
-    def selector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def selector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Selector for choosing workloads for distribution
         """
         return pulumi.get(self, "selector")
 
     @selector.setter
-    def selector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def selector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "selector", value)
 
     @_builtins.property
     @pulumi.getter
-    def strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Strategy for choosing spot nodes for cluster
         """
         return pulumi.get(self, "strategy")
 
     @strategy.setter
-    def strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "strategy", value)
 
 
 class OrchestratorConfigNodePreferencesArgsDict(TypedDict):
-    reverse_fallback_interval: NotRequired[pulumi.Input[_builtins.str]]
+    reverse_fallback_interval: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Reverse fallback interval
     """
-    ttl: NotRequired[pulumi.Input[_builtins.str]]
+    ttl: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     TTL for nodes
     """
@@ -521,8 +521,8 @@ class OrchestratorConfigNodePreferencesArgsDict(TypedDict):
 @pulumi.input_type
 class OrchestratorConfigNodePreferencesArgs:
     def __init__(__self__, *,
-                 reverse_fallback_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.str]] = None):
+                 reverse_fallback_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] reverse_fallback_interval: Reverse fallback interval
         :param pulumi.Input[_builtins.str] ttl: TTL for nodes
@@ -534,26 +534,26 @@ class OrchestratorConfigNodePreferencesArgs:
 
     @_builtins.property
     @pulumi.getter(name="reverseFallbackInterval")
-    def reverse_fallback_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reverse_fallback_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reverse fallback interval
         """
         return pulumi.get(self, "reverse_fallback_interval")
 
     @reverse_fallback_interval.setter
-    def reverse_fallback_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reverse_fallback_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reverse_fallback_interval", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TTL for nodes
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ttl", value)
 
 
@@ -566,14 +566,14 @@ class OrchestratorConfigReplacementScheduleArgsDict(TypedDict):
     """
     Window type for replacement schedule
     """
-    window_details: NotRequired[pulumi.Input['OrchestratorConfigReplacementScheduleWindowDetailsArgsDict']]
+    window_details: NotRequired[pulumi.Input[Optional['OrchestratorConfigReplacementScheduleWindowDetailsArgs']]]
 
 @pulumi.input_type
 class OrchestratorConfigReplacementScheduleArgs:
     def __init__(__self__, *,
                  applies_to: pulumi.Input['OrchestratorConfigReplacementScheduleAppliesToArgs'],
                  window_type: pulumi.Input[_builtins.str],
-                 window_details: Optional[pulumi.Input['OrchestratorConfigReplacementScheduleWindowDetailsArgs']] = None):
+                 window_details: pulumi.Input[Optional['OrchestratorConfigReplacementScheduleWindowDetailsArgs']] = None):
         """
         :param pulumi.Input['OrchestratorConfigReplacementScheduleAppliesToArgs'] applies_to: Defines the scope of the replacement schedule
         :param pulumi.Input[_builtins.str] window_type: Window type for replacement schedule
@@ -609,11 +609,11 @@ class OrchestratorConfigReplacementScheduleArgs:
 
     @_builtins.property
     @pulumi.getter(name="windowDetails")
-    def window_details(self) -> Optional[pulumi.Input['OrchestratorConfigReplacementScheduleWindowDetailsArgs']]:
+    def window_details(self) -> pulumi.Input[Optional['OrchestratorConfigReplacementScheduleWindowDetailsArgs']]:
         return pulumi.get(self, "window_details")
 
     @window_details.setter
-    def window_details(self, value: Optional[pulumi.Input['OrchestratorConfigReplacementScheduleWindowDetailsArgs']]):
+    def window_details(self, value: pulumi.Input[Optional['OrchestratorConfigReplacementScheduleWindowDetailsArgs']]):
         pulumi.set(self, "window_details", value)
 
 
@@ -669,12 +669,12 @@ class OrchestratorConfigReplacementScheduleWindowDetailsArgsDict(TypedDict):
     """
     Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
     """
-    all_day: NotRequired[pulumi.Input[_builtins.bool]]
-    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    all_day: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
     """
@@ -684,9 +684,9 @@ class OrchestratorConfigReplacementScheduleWindowDetailsArgs:
     def __init__(__self__, *,
                  days: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  time_zone: pulumi.Input[_builtins.str],
-                 all_day: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 all_day: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] days: List of days on which schedule need to be active. Valid values are SUN, MON, TUE, WED, THU, FRI and SAT.
         :param pulumi.Input[_builtins.str] time_zone: Time zone in which the schedule needs to be executed. Example Valid values: UTC, America/New*York, Europe/London, Asia/Kolkata, Asia/Tokyo, Asia/Hong*Kong, Asia/Singapore, Australia/Melbourne and Australia/Sydney.
@@ -728,35 +728,35 @@ class OrchestratorConfigReplacementScheduleWindowDetailsArgs:
 
     @_builtins.property
     @pulumi.getter(name="allDay")
-    def all_day(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def all_day(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "all_day")
 
     @all_day.setter
-    def all_day(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def all_day(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "all_day", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         End time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Start time of schedule in the format HH:MM. Eg : 13:15 for 01:15pm
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
 

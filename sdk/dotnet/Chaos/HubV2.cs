@@ -49,6 +49,12 @@ namespace Pulumi.Harness.Chaos
     ///             "enterprise",
     ///             "chaos",
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         IgnoreChanges =
+    ///         {
+    ///             "tags",
+    ///         },
     ///     });
     /// 
     ///     // ----------------------------------------------------------------------------
@@ -72,6 +78,10 @@ namespace Pulumi.Harness.Chaos
     ///         DependsOn =
     ///         {
     ///             @this,
+    ///         },
+    ///         IgnoreChanges =
+    ///         {
+    ///             "tags",
     ///         },
     ///     });
     /// 
@@ -97,6 +107,10 @@ namespace Pulumi.Harness.Chaos
     ///         DependsOn =
     ///         {
     ///             thisHarnessPlatformProject,
+    ///         },
+    ///         IgnoreChanges =
+    ///         {
+    ///             "tags",
     ///         },
     ///     });
     /// 

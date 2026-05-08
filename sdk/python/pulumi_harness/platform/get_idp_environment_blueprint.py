@@ -145,8 +145,8 @@ def get_idp_environment_blueprint(identifier: Optional[_builtins.str] = None,
         stable=pulumi.get(__ret__, 'stable'),
         version=pulumi.get(__ret__, 'version'),
         yaml=pulumi.get(__ret__, 'yaml'))
-def get_idp_environment_blueprint_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                                         version: Optional[pulumi.Input[_builtins.str]] = None,
+def get_idp_environment_blueprint_output(identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                                         version: pulumi.Input[Optional[_builtins.str]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIdpEnvironmentBlueprintResult]:
     """
     Data source for retrieving Harness environment blueprints.

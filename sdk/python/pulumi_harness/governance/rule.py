@@ -21,8 +21,8 @@ class RuleArgs:
     def __init__(__self__, *,
                  cloud_provider: pulumi.Input[_builtins.str],
                  rules_yaml: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Rule resource.
 
@@ -64,37 +64,37 @@ class RuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description for rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the rule.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _RuleState:
     def __init__(__self__, *,
-                 cloud_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules_yaml: Optional[pulumi.Input[_builtins.str]] = None):
+                 cloud_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules_yaml: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
 
@@ -117,62 +117,62 @@ class _RuleState:
 
     @_builtins.property
     @pulumi.getter(name="cloudProvider")
-    def cloud_provider(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_provider(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cloud provider for the rule. It should be either AWS, AZURE or GCP.
         """
         return pulumi.get(self, "cloud_provider")
 
     @cloud_provider.setter
-    def cloud_provider(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_provider(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_provider", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description for rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the rule.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
-    def rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the rule.
         """
         return pulumi.get(self, "rule_id")
 
     @rule_id.setter
-    def rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="rulesYaml")
-    def rules_yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rules_yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy YAML of the rule
         """
         return pulumi.get(self, "rules_yaml")
 
     @rules_yaml.setter
-    def rules_yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rules_yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rules_yaml", value)
 
 
@@ -182,10 +182,10 @@ class Rule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules_yaml: Optional[pulumi.Input[_builtins.str]] = None,
+                 cloud_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules_yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating, updating, and managing rule.
@@ -275,10 +275,10 @@ class Rule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules_yaml: Optional[pulumi.Input[_builtins.str]] = None,
+                 cloud_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules_yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -307,11 +307,11 @@ class Rule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cloud_provider: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            rules_yaml: Optional[pulumi.Input[_builtins.str]] = None) -> 'Rule':
+            cloud_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rules_yaml: pulumi.Input[Optional[_builtins.str]] = None) -> 'Rule':
         """
         Get an existing Rule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

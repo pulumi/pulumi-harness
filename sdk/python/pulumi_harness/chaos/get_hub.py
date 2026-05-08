@@ -276,9 +276,9 @@ def get_hub(name: Optional[_builtins.str] = None,
         total_experiments=pulumi.get(__ret__, 'total_experiments'),
         total_faults=pulumi.get(__ret__, 'total_faults'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-def get_hub_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                   org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                   project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_hub_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                   org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                   project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHubResult]:
     """
     Data source for retrieving a Harness Chaos Hub

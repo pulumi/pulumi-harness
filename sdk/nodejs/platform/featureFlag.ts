@@ -174,59 +174,59 @@ export interface FeatureFlagState {
     /**
      * Whether or not the flag is archived.
      */
-    archived?: pulumi.Input<boolean>;
+    archived?: pulumi.Input<boolean | undefined>;
     /**
      * Which of the variations to use when the flag is toggled to off state
      */
-    defaultOffVariation?: pulumi.Input<string>;
+    defaultOffVariation?: pulumi.Input<string | undefined>;
     /**
      * Which of the variations to use when the flag is toggled to on state
      */
-    defaultOnVariation?: pulumi.Input<string>;
+    defaultOnVariation?: pulumi.Input<string | undefined>;
     /**
      * Description of the Feature Flag
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Environment Identifier
      */
-    environments?: pulumi.Input<pulumi.Input<inputs.platform.FeatureFlagEnvironment>[]>;
+    environments?: pulumi.Input<pulumi.Input<inputs.platform.FeatureFlagEnvironment>[] | undefined>;
     /**
      * Identifier of the Feature Flag
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * The type of data the flag represents. Valid values are `boolean`, `int`, `string`, `json`
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Name of the Feature Flag
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization Identifier
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The owner of the flag
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Whether or not the flag is permanent. If it is, it will never be flagged as stale
      */
-    permanent?: pulumi.Input<boolean>;
+    permanent?: pulumi.Input<boolean | undefined>;
     /**
      * Project Identifier
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The tags for the flag
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.platform.FeatureFlagTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.platform.FeatureFlagTag>[] | undefined>;
     /**
      * The options available for your flag
      */
-    variations?: pulumi.Input<pulumi.Input<inputs.platform.FeatureFlagVariation>[]>;
+    variations?: pulumi.Input<pulumi.Input<inputs.platform.FeatureFlagVariation>[] | undefined>;
 }
 
 /**
@@ -236,7 +236,7 @@ export interface FeatureFlagArgs {
     /**
      * Whether or not the flag is archived.
      */
-    archived?: pulumi.Input<boolean>;
+    archived?: pulumi.Input<boolean | undefined>;
     /**
      * Which of the variations to use when the flag is toggled to off state
      */
@@ -248,11 +248,11 @@ export interface FeatureFlagArgs {
     /**
      * Description of the Feature Flag
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Environment Identifier
      */
-    environments?: pulumi.Input<pulumi.Input<inputs.platform.FeatureFlagEnvironment>[]>;
+    environments?: pulumi.Input<pulumi.Input<inputs.platform.FeatureFlagEnvironment>[] | undefined>;
     /**
      * Identifier of the Feature Flag
      */
@@ -264,7 +264,7 @@ export interface FeatureFlagArgs {
     /**
      * Name of the Feature Flag
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization Identifier
      */
@@ -272,7 +272,7 @@ export interface FeatureFlagArgs {
     /**
      * The owner of the flag
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Whether or not the flag is permanent. If it is, it will never be flagged as stale
      */
@@ -284,7 +284,7 @@ export interface FeatureFlagArgs {
     /**
      * The tags for the flag
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.platform.FeatureFlagTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.platform.FeatureFlagTag>[] | undefined>;
     /**
      * The options available for your flag
      */

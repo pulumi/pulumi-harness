@@ -348,6 +348,63 @@ def get_fault_template(hub_identity: Optional[_builtins.str] = None,
     """
     Data source for retrieving a Harness Chaos Fault Template. Supports lookup by identity (recommended) or name.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    def try_(*fns):
+        for fn in fns:
+            try:
+                result = fn()
+                return result
+            except:
+                continue
+        return None
+
+
+    # Example 1: Lookup Fault Template by Identity (Recommended)
+    by_identity = harness.chaos.get_fault_template(org_id="my_org",
+        project_id="my_project",
+        hub_identity="my-chaos-hub",
+        identity="pod-delete-fault")
+    pulumi.export("faultName", by_identity.name)
+    pulumi.export("faultCategory", by_identity.categories)
+    pulumi.export("faultDescription", by_identity.description)
+    # Example 2: Lookup Fault Template by Name
+    by_name = harness.chaos.get_fault_template(org_id="my_org",
+        project_id="my_project",
+        hub_identity="my-chaos-hub",
+        name="Pod Delete Fault")
+    # Example 3: Use in Chaos Experiment
+    example = harness.chaos.Experiment("example", fault=[{
+        "name": by_identity.name,
+        "description": by_identity.description,
+    }])
+    pulumi.export("kubernetesImage", try_(
+        lambda: by_identity.spec[0]["chaos"][0]["kubernetes"][0]["image"],
+        lambda: "not configured"
+    ))
+    pulumi.export("faultParams", try_(
+        lambda: by_identity.spec[0]["chaos"][0]["params"],
+        lambda: []
+    ))
+    has_kubernetes_spec = len(try_(
+        lambda: by_identity.spec[0]["chaos"][0]["kubernetes"],
+        lambda: []
+    )).apply(lambda length: length > 0)
+    has_targets = len(try_(
+        lambda: by_identity.spec[0]["target"],
+        lambda: []
+    )).apply(lambda length: length > 0)
+    pulumi.export("templateFeatures", {
+        "hasKubernetesSpec": has_kubernetes_spec,
+        "hasTargets": has_targets,
+        "tags": by_identity.tags,
+    })
+    ```
+
 
     :param _builtins.str hub_identity: Identity of the chaos hub
     :param _builtins.str identity: Unique identifier of the fault template (recommended)
@@ -392,15 +449,72 @@ def get_fault_template(hub_identity: Optional[_builtins.str] = None,
         updated_at=pulumi.get(__ret__, 'updated_at'),
         updated_by=pulumi.get(__ret__, 'updated_by'),
         variables=pulumi.get(__ret__, 'variables'))
-def get_fault_template_output(hub_identity: Optional[pulumi.Input[_builtins.str]] = None,
-                              identity: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              revision: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_fault_template_output(hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+                              identity: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              revision: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFaultTemplateResult]:
     """
     Data source for retrieving a Harness Chaos Fault Template. Supports lookup by identity (recommended) or name.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    def try_(*fns):
+        for fn in fns:
+            try:
+                result = fn()
+                return result
+            except:
+                continue
+        return None
+
+
+    # Example 1: Lookup Fault Template by Identity (Recommended)
+    by_identity = harness.chaos.get_fault_template(org_id="my_org",
+        project_id="my_project",
+        hub_identity="my-chaos-hub",
+        identity="pod-delete-fault")
+    pulumi.export("faultName", by_identity.name)
+    pulumi.export("faultCategory", by_identity.categories)
+    pulumi.export("faultDescription", by_identity.description)
+    # Example 2: Lookup Fault Template by Name
+    by_name = harness.chaos.get_fault_template(org_id="my_org",
+        project_id="my_project",
+        hub_identity="my-chaos-hub",
+        name="Pod Delete Fault")
+    # Example 3: Use in Chaos Experiment
+    example = harness.chaos.Experiment("example", fault=[{
+        "name": by_identity.name,
+        "description": by_identity.description,
+    }])
+    pulumi.export("kubernetesImage", try_(
+        lambda: by_identity.spec[0]["chaos"][0]["kubernetes"][0]["image"],
+        lambda: "not configured"
+    ))
+    pulumi.export("faultParams", try_(
+        lambda: by_identity.spec[0]["chaos"][0]["params"],
+        lambda: []
+    ))
+    has_kubernetes_spec = len(try_(
+        lambda: by_identity.spec[0]["chaos"][0]["kubernetes"],
+        lambda: []
+    )).apply(lambda length: length > 0)
+    has_targets = len(try_(
+        lambda: by_identity.spec[0]["target"],
+        lambda: []
+    )).apply(lambda length: length > 0)
+    pulumi.export("templateFeatures", {
+        "hasKubernetesSpec": has_kubernetes_spec,
+        "hasTargets": has_targets,
+        "tags": by_identity.tags,
+    })
+    ```
 
 
     :param _builtins.str hub_identity: Identity of the chaos hub

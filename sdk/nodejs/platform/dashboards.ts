@@ -162,55 +162,55 @@ export interface DashboardsState {
     /**
      * Created at timestamp of the Dashboard.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the Template Dashboard to create from.
      */
-    dashboardId?: pulumi.Input<string>;
+    dashboardId?: pulumi.Input<string | undefined>;
     /**
      * Data Sources within the Dashboard.
      */
-    dataSources?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the Dashboard.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Favorite count of the dashboard.
      */
-    favoriteCount?: pulumi.Input<number>;
+    favoriteCount?: pulumi.Input<number | undefined>;
     /**
      * The Folder ID that the Dashboard belongs to.
      */
-    folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string | undefined>;
     /**
      * Last accessed at timestamp of the Dashboard.
      */
-    lastAccessedAt?: pulumi.Input<string>;
+    lastAccessedAt?: pulumi.Input<string | undefined>;
     /**
      * Data Models within the Dashboard.
      */
-    models?: pulumi.Input<pulumi.Input<string>[]>;
+    models?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the Dashboard.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Folder ID that the Dashboard belongs to.
      */
-    resourceIdentifier?: pulumi.Input<string>;
+    resourceIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Title of the Dashboard.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
     /**
      * Type of the dashboard.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * View count of the dashboard.
      */
-    viewCount?: pulumi.Input<number>;
+    viewCount?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -220,7 +220,7 @@ export interface DashboardsArgs {
     /**
      * Created at timestamp of the Dashboard.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the Template Dashboard to create from.
      */
@@ -228,23 +228,23 @@ export interface DashboardsArgs {
     /**
      * Data Sources within the Dashboard.
      */
-    dataSources?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the Dashboard.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Folder ID that the Dashboard belongs to.
      */
-    folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string | undefined>;
     /**
      * Data Models within the Dashboard.
      */
-    models?: pulumi.Input<pulumi.Input<string>[]>;
+    models?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the Dashboard.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Folder ID that the Dashboard belongs to.
      */
@@ -252,13 +252,13 @@ export interface DashboardsArgs {
     /**
      * Title of the Dashboard.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
     /**
      * Type of the dashboard.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * View count of the dashboard.
      */
-    viewCount?: pulumi.Input<number>;
+    viewCount?: pulumi.Input<number | undefined>;
 }

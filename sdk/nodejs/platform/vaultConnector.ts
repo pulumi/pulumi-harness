@@ -464,151 +464,151 @@ export interface VaultConnectorState {
     /**
      * Access type.
      */
-    accessType?: pulumi.Input<string>;
+    accessType?: pulumi.Input<string | undefined>;
     /**
      * ID of App Role.
      */
-    appRoleId?: pulumi.Input<string>;
+    appRoleId?: pulumi.Input<string | undefined>;
     /**
      * Authentication token for Vault.
      */
-    authToken?: pulumi.Input<string>;
+    authToken?: pulumi.Input<string | undefined>;
     /**
      * AWS region where the AWS IAM authentication will happen.
      */
-    awsRegion?: pulumi.Input<string>;
+    awsRegion?: pulumi.Input<string | undefined>;
     /**
      * Location of the Vault directory where the secret will be stored.
      */
-    basePath?: pulumi.Input<string>;
+    basePath?: pulumi.Input<string | undefined>;
     /**
      * Is default or not.
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * List of Delegate Selectors that belong to the same Delegate and are used to connect to the Secret Manager.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Execute on delegate or not.
      */
-    executeOnDelegate?: pulumi.Input<boolean>;
+    executeOnDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Is default or not.
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Read only or not.
      */
-    isReadOnly?: pulumi.Input<boolean>;
+    isReadOnly?: pulumi.Input<boolean | undefined>;
     /**
      * The path where Kubernetes Auth is enabled in Vault.
      */
-    k8sAuthEndpoint?: pulumi.Input<string>;
+    k8sAuthEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Vault namespace where the Secret will be created.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Read only.
      */
-    readOnly?: pulumi.Input<boolean>;
+    readOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Boolean value to indicate if AppRole token renewal is enabled or not.
      */
-    renewAppRoleToken?: pulumi.Input<boolean>;
+    renewAppRoleToken?: pulumi.Input<boolean | undefined>;
     /**
      * The time interval for the token renewal.
      */
-    renewalIntervalMinutes?: pulumi.Input<number>;
+    renewalIntervalMinutes?: pulumi.Input<number | undefined>;
     /**
      * Manually entered Secret Engine.
      */
-    secretEngineManuallyConfigured?: pulumi.Input<boolean>;
+    secretEngineManuallyConfigured?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Secret Engine.
      */
-    secretEngineName?: pulumi.Input<string>;
+    secretEngineName?: pulumi.Input<string | undefined>;
     /**
      * Version of Secret Engine.
      */
-    secretEngineVersion?: pulumi.Input<number>;
+    secretEngineVersion?: pulumi.Input<number | undefined>;
     /**
      * ID of the Secret.
      */
-    secretId?: pulumi.Input<string>;
+    secretId?: pulumi.Input<string | undefined>;
     /**
      * The Service Account token path in the K8s pod where the token is mounted.
      */
-    serviceAccountTokenPath?: pulumi.Input<string>;
+    serviceAccountTokenPath?: pulumi.Input<string | undefined>;
     /**
      * The location from which the authentication token should be read.
      */
-    sinkPath?: pulumi.Input<string>;
+    sinkPath?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Boolean value to indicate if AWS IAM is used for authentication.
      */
-    useAwsIam?: pulumi.Input<boolean>;
+    useAwsIam?: pulumi.Input<boolean | undefined>;
     /**
      * Boolean value to indicate if JWT is used for authentication.
      */
-    useJwtAuth?: pulumi.Input<boolean>;
+    useJwtAuth?: pulumi.Input<boolean | undefined>;
     /**
      * Boolean value to indicate if K8s Auth is used for authentication.
      */
-    useK8sAuth?: pulumi.Input<boolean>;
+    useK8sAuth?: pulumi.Input<boolean | undefined>;
     /**
      * Boolean value to indicate if Vault Agent is used for authentication.
      */
-    useVaultAgent?: pulumi.Input<boolean>;
+    useVaultAgent?: pulumi.Input<boolean | undefined>;
     /**
      * The Vault role defined to bind to aws iam account/role being accessed.
      */
-    vaultAwsIamRole?: pulumi.Input<string>;
+    vaultAwsIamRole?: pulumi.Input<string | undefined>;
     /**
      * Custom path at with JWT auth in enabled for Vault
      */
-    vaultJwtAuthPath?: pulumi.Input<string>;
+    vaultJwtAuthPath?: pulumi.Input<string | undefined>;
     /**
      * The Vault role defined with JWT auth type for accessing Vault as per policies binded.
      */
-    vaultJwtAuthRole?: pulumi.Input<string>;
+    vaultJwtAuthRole?: pulumi.Input<string | undefined>;
     /**
      * The role where K8s Auth will happen.
      */
-    vaultK8sAuthRole?: pulumi.Input<string>;
+    vaultK8sAuthRole?: pulumi.Input<string | undefined>;
     /**
      * URL of the HashiCorp Vault.
      */
-    vaultUrl?: pulumi.Input<string>;
+    vaultUrl?: pulumi.Input<string | undefined>;
     /**
      * The AWS IAM Header Server ID that has been configured for this AWS IAM instance.
      */
-    xvaultAwsIamServerId?: pulumi.Input<string>;
+    xvaultAwsIamServerId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -618,39 +618,39 @@ export interface VaultConnectorArgs {
     /**
      * Access type.
      */
-    accessType?: pulumi.Input<string>;
+    accessType?: pulumi.Input<string | undefined>;
     /**
      * ID of App Role.
      */
-    appRoleId?: pulumi.Input<string>;
+    appRoleId?: pulumi.Input<string | undefined>;
     /**
      * Authentication token for Vault.
      */
-    authToken?: pulumi.Input<string>;
+    authToken?: pulumi.Input<string | undefined>;
     /**
      * AWS region where the AWS IAM authentication will happen.
      */
-    awsRegion?: pulumi.Input<string>;
+    awsRegion?: pulumi.Input<string | undefined>;
     /**
      * Location of the Vault directory where the secret will be stored.
      */
-    basePath?: pulumi.Input<string>;
+    basePath?: pulumi.Input<string | undefined>;
     /**
      * Is default or not.
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * List of Delegate Selectors that belong to the same Delegate and are used to connect to the Secret Manager.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Execute on delegate or not.
      */
-    executeOnDelegate?: pulumi.Input<boolean>;
+    executeOnDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -658,39 +658,39 @@ export interface VaultConnectorArgs {
     /**
      * Is default or not.
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Read only or not.
      */
-    isReadOnly?: pulumi.Input<boolean>;
+    isReadOnly?: pulumi.Input<boolean | undefined>;
     /**
      * The path where Kubernetes Auth is enabled in Vault.
      */
-    k8sAuthEndpoint?: pulumi.Input<string>;
+    k8sAuthEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Vault namespace where the Secret will be created.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Read only.
      */
-    readOnly?: pulumi.Input<boolean>;
+    readOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Boolean value to indicate if AppRole token renewal is enabled or not.
      */
-    renewAppRoleToken?: pulumi.Input<boolean>;
+    renewAppRoleToken?: pulumi.Input<boolean | undefined>;
     /**
      * The time interval for the token renewal.
      */
@@ -698,63 +698,63 @@ export interface VaultConnectorArgs {
     /**
      * Manually entered Secret Engine.
      */
-    secretEngineManuallyConfigured?: pulumi.Input<boolean>;
+    secretEngineManuallyConfigured?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Secret Engine.
      */
-    secretEngineName?: pulumi.Input<string>;
+    secretEngineName?: pulumi.Input<string | undefined>;
     /**
      * Version of Secret Engine.
      */
-    secretEngineVersion?: pulumi.Input<number>;
+    secretEngineVersion?: pulumi.Input<number | undefined>;
     /**
      * ID of the Secret.
      */
-    secretId?: pulumi.Input<string>;
+    secretId?: pulumi.Input<string | undefined>;
     /**
      * The Service Account token path in the K8s pod where the token is mounted.
      */
-    serviceAccountTokenPath?: pulumi.Input<string>;
+    serviceAccountTokenPath?: pulumi.Input<string | undefined>;
     /**
      * The location from which the authentication token should be read.
      */
-    sinkPath?: pulumi.Input<string>;
+    sinkPath?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Boolean value to indicate if AWS IAM is used for authentication.
      */
-    useAwsIam?: pulumi.Input<boolean>;
+    useAwsIam?: pulumi.Input<boolean | undefined>;
     /**
      * Boolean value to indicate if JWT is used for authentication.
      */
-    useJwtAuth?: pulumi.Input<boolean>;
+    useJwtAuth?: pulumi.Input<boolean | undefined>;
     /**
      * Boolean value to indicate if K8s Auth is used for authentication.
      */
-    useK8sAuth?: pulumi.Input<boolean>;
+    useK8sAuth?: pulumi.Input<boolean | undefined>;
     /**
      * Boolean value to indicate if Vault Agent is used for authentication.
      */
-    useVaultAgent?: pulumi.Input<boolean>;
+    useVaultAgent?: pulumi.Input<boolean | undefined>;
     /**
      * The Vault role defined to bind to aws iam account/role being accessed.
      */
-    vaultAwsIamRole?: pulumi.Input<string>;
+    vaultAwsIamRole?: pulumi.Input<string | undefined>;
     /**
      * Custom path at with JWT auth in enabled for Vault
      */
-    vaultJwtAuthPath?: pulumi.Input<string>;
+    vaultJwtAuthPath?: pulumi.Input<string | undefined>;
     /**
      * The Vault role defined with JWT auth type for accessing Vault as per policies binded.
      */
-    vaultJwtAuthRole?: pulumi.Input<string>;
+    vaultJwtAuthRole?: pulumi.Input<string | undefined>;
     /**
      * The role where K8s Auth will happen.
      */
-    vaultK8sAuthRole?: pulumi.Input<string>;
+    vaultK8sAuthRole?: pulumi.Input<string | undefined>;
     /**
      * URL of the HashiCorp Vault.
      */
@@ -762,5 +762,5 @@ export interface VaultConnectorArgs {
     /**
      * The AWS IAM Header Server ID that has been configured for this AWS IAM instance.
      */
-    xvaultAwsIamServerId?: pulumi.Input<string>;
+    xvaultAwsIamServerId?: pulumi.Input<string | undefined>;
 }

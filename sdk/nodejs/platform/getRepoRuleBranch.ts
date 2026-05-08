@@ -156,7 +156,7 @@ export interface GetRepoRuleBranchOutputArgs {
     /**
      * Description of the rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the rule.
      */
@@ -164,11 +164,11 @@ export interface GetRepoRuleBranchOutputArgs {
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Pattern of branch to which rule will apply.
      */
-    patterns?: pulumi.Input<pulumi.Input<inputs.platform.GetRepoRuleBranchPatternArgs>[]>;
+    patterns?: pulumi.Input<pulumi.Input<inputs.platform.GetRepoRuleBranchPatternArgs>[] | undefined>;
     /**
      * Policies to be applied for this rule.
      */
@@ -176,7 +176,7 @@ export interface GetRepoRuleBranchOutputArgs {
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Repo identifier of the repository.
      */

@@ -113,11 +113,11 @@ export interface GetRuleRdsOutputArgs {
     /**
      * Dependent rules
      */
-    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleRdsDependArgs>[]>;
+    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleRdsDependArgs>[] | undefined>;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */
-    idleTimeMins?: pulumi.Input<number>;
+    idleTimeMins?: pulumi.Input<number | undefined>;
     /**
      * Name of the rule
      */
@@ -125,5 +125,5 @@ export interface GetRuleRdsOutputArgs {
     /**
      * TCP routing configuration
      */
-    tcps?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleRdsTcpArgs>[]>;
+    tcps?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleRdsTcpArgs>[] | undefined>;
 }

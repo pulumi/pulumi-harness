@@ -23,15 +23,15 @@ class ElasticsearchConnectorArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[_builtins.str],
                  url: pulumi.Input[_builtins.str],
-                 api_token: Optional[pulumi.Input['ElasticsearchConnectorApiTokenArgs']] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_authentication: Optional[pulumi.Input['ElasticsearchConnectorNoAuthenticationArgs']] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 username_password: Optional[pulumi.Input['ElasticsearchConnectorUsernamePasswordArgs']] = None):
+                 api_token: pulumi.Input[Optional['ElasticsearchConnectorApiTokenArgs']] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_authentication: pulumi.Input[Optional['ElasticsearchConnectorNoAuthenticationArgs']] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 username_password: pulumi.Input[Optional['ElasticsearchConnectorUsernamePasswordArgs']] = None):
         """
         The set of arguments for constructing a ElasticsearchConnector resource.
 
@@ -94,127 +94,127 @@ class ElasticsearchConnectorArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiToken")
-    def api_token(self) -> Optional[pulumi.Input['ElasticsearchConnectorApiTokenArgs']]:
+    def api_token(self) -> pulumi.Input[Optional['ElasticsearchConnectorApiTokenArgs']]:
         """
         Authenticate to ElasticSearch using api token.
         """
         return pulumi.get(self, "api_token")
 
     @api_token.setter
-    def api_token(self, value: Optional[pulumi.Input['ElasticsearchConnectorApiTokenArgs']]):
+    def api_token(self, value: pulumi.Input[Optional['ElasticsearchConnectorApiTokenArgs']]):
         pulumi.set(self, "api_token", value)
 
     @_builtins.property
     @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def delegate_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
     @delegate_selectors.setter
-    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "delegate_selectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="noAuthentication")
-    def no_authentication(self) -> Optional[pulumi.Input['ElasticsearchConnectorNoAuthenticationArgs']]:
+    def no_authentication(self) -> pulumi.Input[Optional['ElasticsearchConnectorNoAuthenticationArgs']]:
         """
         No Authentication to ElasticSearch
         """
         return pulumi.get(self, "no_authentication")
 
     @no_authentication.setter
-    def no_authentication(self, value: Optional[pulumi.Input['ElasticsearchConnectorNoAuthenticationArgs']]):
+    def no_authentication(self, value: pulumi.Input[Optional['ElasticsearchConnectorNoAuthenticationArgs']]):
         pulumi.set(self, "no_authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="usernamePassword")
-    def username_password(self) -> Optional[pulumi.Input['ElasticsearchConnectorUsernamePasswordArgs']]:
+    def username_password(self) -> pulumi.Input[Optional['ElasticsearchConnectorUsernamePasswordArgs']]:
         """
         Authenticate to ElasticSearch using username and password.
         """
         return pulumi.get(self, "username_password")
 
     @username_password.setter
-    def username_password(self, value: Optional[pulumi.Input['ElasticsearchConnectorUsernamePasswordArgs']]):
+    def username_password(self, value: pulumi.Input[Optional['ElasticsearchConnectorUsernamePasswordArgs']]):
         pulumi.set(self, "username_password", value)
 
 
 @pulumi.input_type
 class _ElasticsearchConnectorState:
     def __init__(__self__, *,
-                 api_token: Optional[pulumi.Input['ElasticsearchConnectorApiTokenArgs']] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_authentication: Optional[pulumi.Input['ElasticsearchConnectorNoAuthenticationArgs']] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_password: Optional[pulumi.Input['ElasticsearchConnectorUsernamePasswordArgs']] = None):
+                 api_token: pulumi.Input[Optional['ElasticsearchConnectorApiTokenArgs']] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_authentication: pulumi.Input[Optional['ElasticsearchConnectorNoAuthenticationArgs']] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_password: pulumi.Input[Optional['ElasticsearchConnectorUsernamePasswordArgs']] = None):
         """
         Input properties used for looking up and filtering ElasticsearchConnector resources.
 
@@ -255,134 +255,134 @@ class _ElasticsearchConnectorState:
 
     @_builtins.property
     @pulumi.getter(name="apiToken")
-    def api_token(self) -> Optional[pulumi.Input['ElasticsearchConnectorApiTokenArgs']]:
+    def api_token(self) -> pulumi.Input[Optional['ElasticsearchConnectorApiTokenArgs']]:
         """
         Authenticate to ElasticSearch using api token.
         """
         return pulumi.get(self, "api_token")
 
     @api_token.setter
-    def api_token(self, value: Optional[pulumi.Input['ElasticsearchConnectorApiTokenArgs']]):
+    def api_token(self, value: pulumi.Input[Optional['ElasticsearchConnectorApiTokenArgs']]):
         pulumi.set(self, "api_token", value)
 
     @_builtins.property
     @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def delegate_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to filter delegates for connection.
         """
         return pulumi.get(self, "delegate_selectors")
 
     @delegate_selectors.setter
-    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "delegate_selectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="noAuthentication")
-    def no_authentication(self) -> Optional[pulumi.Input['ElasticsearchConnectorNoAuthenticationArgs']]:
+    def no_authentication(self) -> pulumi.Input[Optional['ElasticsearchConnectorNoAuthenticationArgs']]:
         """
         No Authentication to ElasticSearch
         """
         return pulumi.get(self, "no_authentication")
 
     @no_authentication.setter
-    def no_authentication(self, value: Optional[pulumi.Input['ElasticsearchConnectorNoAuthenticationArgs']]):
+    def no_authentication(self, value: pulumi.Input[Optional['ElasticsearchConnectorNoAuthenticationArgs']]):
         pulumi.set(self, "no_authentication", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the elasticsearch
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="usernamePassword")
-    def username_password(self) -> Optional[pulumi.Input['ElasticsearchConnectorUsernamePasswordArgs']]:
+    def username_password(self) -> pulumi.Input[Optional['ElasticsearchConnectorUsernamePasswordArgs']]:
         """
         Authenticate to ElasticSearch using username and password.
         """
         return pulumi.get(self, "username_password")
 
     @username_password.setter
-    def username_password(self, value: Optional[pulumi.Input['ElasticsearchConnectorUsernamePasswordArgs']]):
+    def username_password(self, value: pulumi.Input[Optional['ElasticsearchConnectorUsernamePasswordArgs']]):
         pulumi.set(self, "username_password", value)
 
 
@@ -392,17 +392,17 @@ class ElasticsearchConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_token: Optional[pulumi.Input[Union['ElasticsearchConnectorApiTokenArgs', 'ElasticsearchConnectorApiTokenArgsDict']]] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_authentication: Optional[pulumi.Input[Union['ElasticsearchConnectorNoAuthenticationArgs', 'ElasticsearchConnectorNoAuthenticationArgsDict']]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_password: Optional[pulumi.Input[Union['ElasticsearchConnectorUsernamePasswordArgs', 'ElasticsearchConnectorUsernamePasswordArgsDict']]] = None,
+                 api_token: pulumi.Input[Optional[Union['ElasticsearchConnectorApiTokenArgs', 'ElasticsearchConnectorApiTokenArgsDict']]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_authentication: pulumi.Input[Optional[Union['ElasticsearchConnectorNoAuthenticationArgs', 'ElasticsearchConnectorNoAuthenticationArgsDict']]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_password: pulumi.Input[Optional[Union['ElasticsearchConnectorUsernamePasswordArgs', 'ElasticsearchConnectorUsernamePasswordArgsDict']]] = None,
                  __props__=None):
         """
         Resource for creating an ElasticSearch connector.
@@ -571,17 +571,17 @@ class ElasticsearchConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_token: Optional[pulumi.Input[Union['ElasticsearchConnectorApiTokenArgs', 'ElasticsearchConnectorApiTokenArgsDict']]] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_authentication: Optional[pulumi.Input[Union['ElasticsearchConnectorNoAuthenticationArgs', 'ElasticsearchConnectorNoAuthenticationArgsDict']]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_password: Optional[pulumi.Input[Union['ElasticsearchConnectorUsernamePasswordArgs', 'ElasticsearchConnectorUsernamePasswordArgsDict']]] = None,
+                 api_token: pulumi.Input[Optional[Union['ElasticsearchConnectorApiTokenArgs', 'ElasticsearchConnectorApiTokenArgsDict']]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_authentication: pulumi.Input[Optional[Union['ElasticsearchConnectorNoAuthenticationArgs', 'ElasticsearchConnectorNoAuthenticationArgsDict']]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_password: pulumi.Input[Optional[Union['ElasticsearchConnectorUsernamePasswordArgs', 'ElasticsearchConnectorUsernamePasswordArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -616,17 +616,17 @@ class ElasticsearchConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api_token: Optional[pulumi.Input[Union['ElasticsearchConnectorApiTokenArgs', 'ElasticsearchConnectorApiTokenArgsDict']]] = None,
-            delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            no_authentication: Optional[pulumi.Input[Union['ElasticsearchConnectorNoAuthenticationArgs', 'ElasticsearchConnectorNoAuthenticationArgsDict']]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            username_password: Optional[pulumi.Input[Union['ElasticsearchConnectorUsernamePasswordArgs', 'ElasticsearchConnectorUsernamePasswordArgsDict']]] = None) -> 'ElasticsearchConnector':
+            api_token: pulumi.Input[Optional[Union['ElasticsearchConnectorApiTokenArgs', 'ElasticsearchConnectorApiTokenArgsDict']]] = None,
+            delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            no_authentication: pulumi.Input[Optional[Union['ElasticsearchConnectorNoAuthenticationArgs', 'ElasticsearchConnectorNoAuthenticationArgsDict']]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            username_password: pulumi.Input[Optional[Union['ElasticsearchConnectorUsernamePasswordArgs', 'ElasticsearchConnectorUsernamePasswordArgsDict']]] = None) -> 'ElasticsearchConnector':
         """
         Get an existing ElasticsearchConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

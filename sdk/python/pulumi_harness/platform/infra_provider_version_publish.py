@@ -58,9 +58,9 @@ class InfraProviderVersionPublishArgs:
 @pulumi.input_type
 class _InfraProviderVersionPublishState:
     def __init__(__self__, *,
-                 provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 published: Optional[pulumi.Input[_builtins.bool]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 published: pulumi.Input[Optional[_builtins.bool]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InfraProviderVersionPublish resources.
 
@@ -77,38 +77,38 @@ class _InfraProviderVersionPublishState:
 
     @_builtins.property
     @pulumi.getter(name="providerId")
-    def provider_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provider_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the provider.
         """
         return pulumi.get(self, "provider_id")
 
     @provider_id.setter
-    def provider_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provider_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provider_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def published(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def published(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the provider version is published.
         """
         return pulumi.get(self, "published")
 
     @published.setter
-    def published(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def published(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "published", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provider version number to publish.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -118,8 +118,8 @@ class InfraProviderVersionPublish(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for publishing Terraform/OpenTofu Provider Versions in the IaCM Provider Registry. Publishing makes the provider version available for use.
@@ -171,8 +171,8 @@ class InfraProviderVersionPublish(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -199,9 +199,9 @@ class InfraProviderVersionPublish(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            provider_id: Optional[pulumi.Input[_builtins.str]] = None,
-            published: Optional[pulumi.Input[_builtins.bool]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None) -> 'InfraProviderVersionPublish':
+            provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+            published: pulumi.Input[Optional[_builtins.bool]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> 'InfraProviderVersionPublish':
         """
         Get an existing InfraProviderVersionPublish resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

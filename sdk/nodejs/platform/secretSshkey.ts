@@ -145,39 +145,39 @@ export interface SecretSshkeyState {
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Kerberos authentication scheme
      */
-    kerberos?: pulumi.Input<inputs.platform.SecretSshkeyKerberos>;
+    kerberos?: pulumi.Input<inputs.platform.SecretSshkeyKerberos | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * SSH port
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Kerberos authentication scheme
      */
-    ssh?: pulumi.Input<inputs.platform.SecretSshkeySsh>;
+    ssh?: pulumi.Input<inputs.platform.SecretSshkeySsh | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -187,7 +187,7 @@ export interface SecretSshkeyArgs {
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -195,29 +195,29 @@ export interface SecretSshkeyArgs {
     /**
      * Kerberos authentication scheme
      */
-    kerberos?: pulumi.Input<inputs.platform.SecretSshkeyKerberos>;
+    kerberos?: pulumi.Input<inputs.platform.SecretSshkeyKerberos | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * SSH port
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Kerberos authentication scheme
      */
-    ssh?: pulumi.Input<inputs.platform.SecretSshkeySsh>;
+    ssh?: pulumi.Input<inputs.platform.SecretSshkeySsh | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

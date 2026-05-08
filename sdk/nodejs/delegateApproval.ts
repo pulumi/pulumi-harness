@@ -113,15 +113,15 @@ export interface DelegateApprovalState {
     /**
      * Whether or not to approve the delegate.
      */
-    approve?: pulumi.Input<boolean>;
+    approve?: pulumi.Input<boolean | undefined>;
     /**
      * The id of the delegate.
      */
-    delegateId?: pulumi.Input<string>;
+    delegateId?: pulumi.Input<string | undefined>;
     /**
      * The status of the delegate.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

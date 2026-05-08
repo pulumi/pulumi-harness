@@ -186,15 +186,15 @@ export interface GetRepoOutputArgs {
     /**
      * Default branch of the repository (Applicate only for create).
      */
-    defaultBranch?: pulumi.Input<string>;
+    defaultBranch?: pulumi.Input<string | undefined>;
     /**
      * Description of the repository.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Repository should be created with specified predefined gitignore file.
      */
-    gitIgnore?: pulumi.Input<string>;
+    gitIgnore?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the repository.
      */
@@ -202,21 +202,21 @@ export interface GetRepoOutputArgs {
     /**
      * Repository should be created with specified predefined license file.
      */
-    license?: pulumi.Input<string>;
+    license?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Repository should be created with readme file.
      */
-    readme?: pulumi.Input<boolean>;
+    readme?: pulumi.Input<boolean | undefined>;
     /**
      * Configuration for importing an existing repository from SCM provider.
      */
-    sources?: pulumi.Input<pulumi.Input<inputs.platform.GetRepoSourceArgs>[]>;
+    sources?: pulumi.Input<pulumi.Input<inputs.platform.GetRepoSourceArgs>[] | undefined>;
 }

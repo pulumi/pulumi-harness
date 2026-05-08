@@ -269,10 +269,10 @@ def get_azure_key_vault_connector(identifier: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         tenant_id=pulumi.get(__ret__, 'tenant_id'),
         vault_name=pulumi.get(__ret__, 'vault_name'))
-def get_azure_key_vault_connector_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                                         name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_azure_key_vault_connector_output(identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                                         name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAzureKeyVaultConnectorResult]:
     """
     Data source for looking up an Azure key vault connector.

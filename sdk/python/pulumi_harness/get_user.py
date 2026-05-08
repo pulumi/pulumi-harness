@@ -158,8 +158,8 @@ def get_user(email: Optional[_builtins.str] = None,
         is_two_factor_auth_enabled=pulumi.get(__ret__, 'is_two_factor_auth_enabled'),
         is_user_locked=pulumi.get(__ret__, 'is_user_locked'),
         name=pulumi.get(__ret__, 'name'))
-def get_user_output(email: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_user_output(email: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     Data source for retrieving a Harness user

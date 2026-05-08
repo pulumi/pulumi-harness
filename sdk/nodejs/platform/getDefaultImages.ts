@@ -250,7 +250,7 @@ export interface GetDefaultImagesOutputArgs {
     /**
      * The infrastructure type passed to the execution config API (e.g. `K8`, `VM`). Defaults to `K8`.
      */
-    infraType?: pulumi.Input<string>;
+    infraType?: pulumi.Input<string | undefined>;
     /**
      * The service kind. Supported values: `ci`, `iacm`, `idp`.
      */
@@ -258,5 +258,5 @@ export interface GetDefaultImagesOutputArgs {
     /**
      * The configuration type to retrieve. `default` returns Harness-managed default image tags; `customer` returns only the image fields that have been explicitly overridden at the account level. Defaults to `default`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

@@ -387,10 +387,10 @@ def get_hub_v2(identity: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         updated_by=pulumi.get(__ret__, 'updated_by'))
-def get_hub_v2_output(identity: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_hub_v2_output(identity: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHubV2Result]:
     """
     Data source for retrieving a Harness Chaos Hub.

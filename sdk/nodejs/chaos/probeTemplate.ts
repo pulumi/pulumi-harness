@@ -214,79 +214,79 @@ export interface ProbeTemplateState {
     /**
      * Account identifier.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * APM probe configuration. Required when type is 'apmProbe'.
      */
-    apmProbe?: pulumi.Input<inputs.chaos.ProbeTemplateApmProbe>;
+    apmProbe?: pulumi.Input<inputs.chaos.ProbeTemplateApmProbe | undefined>;
     /**
      * Command probe configuration. Required when type is 'cmdProbe'.
      */
-    cmdProbe?: pulumi.Input<inputs.chaos.ProbeTemplateCmdProbe>;
+    cmdProbe?: pulumi.Input<inputs.chaos.ProbeTemplateCmdProbe | undefined>;
     /**
      * Description of the probe template.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * HTTP probe configuration. Required when type is 'httpProbe'.
      */
-    httpProbe?: pulumi.Input<inputs.chaos.ProbeTemplateHttpProbe>;
+    httpProbe?: pulumi.Input<inputs.chaos.ProbeTemplateHttpProbe | undefined>;
     /**
      * Identity of the chaos hub this probe template belongs to.
      */
-    hubIdentity?: pulumi.Input<string>;
+    hubIdentity?: pulumi.Input<string | undefined>;
     /**
      * Hub reference.
      */
-    hubRef?: pulumi.Input<string>;
+    hubRef?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier for the probe template (immutable).
      */
-    identity?: pulumi.Input<string>;
+    identity?: pulumi.Input<string | undefined>;
     /**
      * Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
      */
-    infrastructureType?: pulumi.Input<string>;
+    infrastructureType?: pulumi.Input<string | undefined>;
     /**
      * Whether this is the default version for predefined probes.
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Kubernetes probe configuration. Required when type is 'k8sProbe'.
      */
-    k8sProbe?: pulumi.Input<inputs.chaos.ProbeTemplateK8sProbe>;
+    k8sProbe?: pulumi.Input<inputs.chaos.ProbeTemplateK8sProbe | undefined>;
     /**
      * Name of the probe template.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Revision number of the probe template.
      */
-    revision?: pulumi.Input<number>;
+    revision?: pulumi.Input<number | undefined>;
     /**
      * Run properties for the probe template execution.
      */
-    runProperties?: pulumi.Input<inputs.chaos.ProbeTemplateRunProperties>;
+    runProperties?: pulumi.Input<inputs.chaos.ProbeTemplateRunProperties | undefined>;
     /**
      * Tags to associate with the probe template.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Template variables that can be used in the probe.
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.chaos.ProbeTemplateVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.chaos.ProbeTemplateVariable>[] | undefined>;
 }
 
 /**
@@ -296,19 +296,19 @@ export interface ProbeTemplateArgs {
     /**
      * APM probe configuration. Required when type is 'apmProbe'.
      */
-    apmProbe?: pulumi.Input<inputs.chaos.ProbeTemplateApmProbe>;
+    apmProbe?: pulumi.Input<inputs.chaos.ProbeTemplateApmProbe | undefined>;
     /**
      * Command probe configuration. Required when type is 'cmdProbe'.
      */
-    cmdProbe?: pulumi.Input<inputs.chaos.ProbeTemplateCmdProbe>;
+    cmdProbe?: pulumi.Input<inputs.chaos.ProbeTemplateCmdProbe | undefined>;
     /**
      * Description of the probe template.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * HTTP probe configuration. Required when type is 'httpProbe'.
      */
-    httpProbe?: pulumi.Input<inputs.chaos.ProbeTemplateHttpProbe>;
+    httpProbe?: pulumi.Input<inputs.chaos.ProbeTemplateHttpProbe | undefined>;
     /**
      * Identity of the chaos hub this probe template belongs to.
      */
@@ -320,31 +320,31 @@ export interface ProbeTemplateArgs {
     /**
      * Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
      */
-    infrastructureType?: pulumi.Input<string>;
+    infrastructureType?: pulumi.Input<string | undefined>;
     /**
      * Kubernetes probe configuration. Required when type is 'k8sProbe'.
      */
-    k8sProbe?: pulumi.Input<inputs.chaos.ProbeTemplateK8sProbe>;
+    k8sProbe?: pulumi.Input<inputs.chaos.ProbeTemplateK8sProbe | undefined>;
     /**
      * Name of the probe template.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Run properties for the probe template execution.
      */
-    runProperties?: pulumi.Input<inputs.chaos.ProbeTemplateRunProperties>;
+    runProperties?: pulumi.Input<inputs.chaos.ProbeTemplateRunProperties | undefined>;
     /**
      * Tags to associate with the probe template.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
      */
@@ -352,5 +352,5 @@ export interface ProbeTemplateArgs {
     /**
      * Template variables that can be used in the probe.
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.chaos.ProbeTemplateVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.chaos.ProbeTemplateVariable>[] | undefined>;
 }

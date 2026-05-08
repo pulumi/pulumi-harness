@@ -135,23 +135,23 @@ export interface AzureState {
     /**
      * The client id for the Azure application
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * The type of environment. Valid options are [AZURE AZURE*US*GOVERNMENT]
      */
-    environmentType?: pulumi.Input<string>;
+    environmentType?: pulumi.Input<string | undefined>;
     /**
      * The Name of the Harness secret containing the key for the Azure application
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The name of the cloud provider.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The tenant id for the Azure application
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -165,7 +165,7 @@ export interface AzureArgs {
     /**
      * The type of environment. Valid options are [AZURE AZURE*US*GOVERNMENT]
      */
-    environmentType?: pulumi.Input<string>;
+    environmentType?: pulumi.Input<string | undefined>;
     /**
      * The Name of the Harness secret containing the key for the Azure application
      */
@@ -173,7 +173,7 @@ export interface AzureArgs {
     /**
      * The name of the cloud provider.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The tenant id for the Azure application
      */

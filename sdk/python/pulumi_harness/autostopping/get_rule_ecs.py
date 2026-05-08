@@ -186,13 +186,13 @@ def get_rule_ecs(cloud_connector_id: Optional[_builtins.str] = None,
         identifier=pulumi.get(__ret__, 'identifier'),
         idle_time_mins=pulumi.get(__ret__, 'idle_time_mins'),
         name=pulumi.get(__ret__, 'name'))
-def get_rule_ecs_output(cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                        container: Optional[pulumi.Input[Optional[Union['GetRuleEcsContainerArgs', 'GetRuleEcsContainerArgsDict']]]] = None,
-                        custom_domains: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                        depends: Optional[pulumi.Input[Optional[Sequence[Union['GetRuleEcsDependArgs', 'GetRuleEcsDependArgsDict']]]]] = None,
-                        https: Optional[pulumi.Input[Optional[Sequence[Union['GetRuleEcsHttpArgs', 'GetRuleEcsHttpArgsDict']]]]] = None,
-                        idle_time_mins: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                        name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_rule_ecs_output(cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                        container: pulumi.Input[Optional[Optional[Union['GetRuleEcsContainerArgs', 'GetRuleEcsContainerArgsDict']]]] = None,
+                        custom_domains: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                        depends: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleEcsDependArgs', 'GetRuleEcsDependArgsDict']]]]] = None,
+                        https: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleEcsHttpArgs', 'GetRuleEcsHttpArgsDict']]]]] = None,
+                        idle_time_mins: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                        name: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleEcsResult]:
     """
     Data source for retrieving a Harness AutoStopping rule for ECS services.

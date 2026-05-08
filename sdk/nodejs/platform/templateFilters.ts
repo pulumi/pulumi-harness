@@ -159,31 +159,31 @@ export interface TemplateFiltersState {
     /**
      * Properties of the filters entity defined in Harness.
      */
-    filterProperties?: pulumi.Input<inputs.platform.TemplateFiltersFilterProperties>;
+    filterProperties?: pulumi.Input<inputs.platform.TemplateFiltersFilterProperties | undefined>;
     /**
      * Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
      */
-    filterVisibility?: pulumi.Input<string>;
+    filterVisibility?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the template filters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization Identifier for the Entity.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project Identifier for the Entity.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Type of template filters. Currently supported types are { Template}
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -197,7 +197,7 @@ export interface TemplateFiltersArgs {
     /**
      * Only accept values "EveryOne" and "OnlyCreator". This indicates visibility of filters. By default, everyone can view this filter.
      */
-    filterVisibility?: pulumi.Input<string>;
+    filterVisibility?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -205,15 +205,15 @@ export interface TemplateFiltersArgs {
     /**
      * Name of the template filters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization Identifier for the Entity.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project Identifier for the Entity.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Type of template filters. Currently supported types are { Template}
      */

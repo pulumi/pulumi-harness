@@ -178,55 +178,55 @@ export interface GitlabConnectorState {
     /**
      * Configuration for using the gitlab api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
      */
-    apiAuthentication?: pulumi.Input<inputs.platform.GitlabConnectorApiAuthentication>;
+    apiAuthentication?: pulumi.Input<inputs.platform.GitlabConnectorApiAuthentication | undefined>;
     /**
      * Whether the connection we're making is to a gitlab repository or a gitlab account. Valid values are Account, Repo.
      */
-    connectionType?: pulumi.Input<string>;
+    connectionType?: pulumi.Input<string | undefined>;
     /**
      * Credentials to use for the connection.
      */
-    credentials?: pulumi.Input<inputs.platform.GitlabConnectorCredentials>;
+    credentials?: pulumi.Input<inputs.platform.GitlabConnectorCredentials | undefined>;
     /**
      * Tags to filter delegates for connection.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Execute on delegate or not.
      */
-    executeOnDelegate?: pulumi.Input<boolean>;
+    executeOnDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL of the gitlab repository or account.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * Repository to test the connection with. This is only used when `connectionType` is `Account`.
      */
-    validationRepo?: pulumi.Input<string>;
+    validationRepo?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -236,7 +236,7 @@ export interface GitlabConnectorArgs {
     /**
      * Configuration for using the gitlab api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
      */
-    apiAuthentication?: pulumi.Input<inputs.platform.GitlabConnectorApiAuthentication>;
+    apiAuthentication?: pulumi.Input<inputs.platform.GitlabConnectorApiAuthentication | undefined>;
     /**
      * Whether the connection we're making is to a gitlab repository or a gitlab account. Valid values are Account, Repo.
      */
@@ -248,15 +248,15 @@ export interface GitlabConnectorArgs {
     /**
      * Tags to filter delegates for connection.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Execute on delegate or not.
      */
-    executeOnDelegate?: pulumi.Input<boolean>;
+    executeOnDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -264,19 +264,19 @@ export interface GitlabConnectorArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL of the gitlab repository or account.
      */
@@ -284,5 +284,5 @@ export interface GitlabConnectorArgs {
     /**
      * Repository to test the connection with. This is only used when `connectionType` is `Account`.
      */
-    validationRepo?: pulumi.Input<string>;
+    validationRepo?: pulumi.Input<string | undefined>;
 }

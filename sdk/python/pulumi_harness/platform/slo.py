@@ -24,7 +24,7 @@ class SloArgs:
                  identifier: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 request: Optional[pulumi.Input['SloRequestArgs']] = None):
+                 request: pulumi.Input[Optional['SloRequestArgs']] = None):
         """
         The set of arguments for constructing a Slo resource.
 
@@ -77,24 +77,24 @@ class SloArgs:
 
     @_builtins.property
     @pulumi.getter
-    def request(self) -> Optional[pulumi.Input['SloRequestArgs']]:
+    def request(self) -> pulumi.Input[Optional['SloRequestArgs']]:
         """
         Request for creating or updating SLO.
         """
         return pulumi.get(self, "request")
 
     @request.setter
-    def request(self, value: Optional[pulumi.Input['SloRequestArgs']]):
+    def request(self, value: pulumi.Input[Optional['SloRequestArgs']]):
         pulumi.set(self, "request", value)
 
 
 @pulumi.input_type
 class _SloState:
     def __init__(__self__, *,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 request: Optional[pulumi.Input['SloRequestArgs']] = None):
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 request: pulumi.Input[Optional['SloRequestArgs']] = None):
         """
         Input properties used for looking up and filtering Slo resources.
 
@@ -114,50 +114,50 @@ class _SloState:
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the SLO.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the organization in which the SLO is configured.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the project in which the SLO is configured.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def request(self) -> Optional[pulumi.Input['SloRequestArgs']]:
+    def request(self) -> pulumi.Input[Optional['SloRequestArgs']]:
         """
         Request for creating or updating SLO.
         """
         return pulumi.get(self, "request")
 
     @request.setter
-    def request(self, value: Optional[pulumi.Input['SloRequestArgs']]):
+    def request(self, value: pulumi.Input[Optional['SloRequestArgs']]):
         pulumi.set(self, "request", value)
 
 
@@ -167,10 +167,10 @@ class Slo(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 request: Optional[pulumi.Input[Union['SloRequestArgs', 'SloRequestArgsDict']]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 request: pulumi.Input[Optional[Union['SloRequestArgs', 'SloRequestArgsDict']]] = None,
                  __props__=None):
         """
         Resource for creating an SLO.
@@ -199,7 +199,7 @@ class Slo(pulumi.CustomResource):
                 ],
                 "slo_target": {
                     "type": "Calender",
-                    "slo_target_percentage": 10,
+                    "slo_target_percentage": float(10),
                     "spec": json.dumps({
                         "type": "Monthly",
                         "spec": {
@@ -296,7 +296,7 @@ class Slo(pulumi.CustomResource):
                 ],
                 "slo_target": {
                     "type": "Calender",
-                    "slo_target_percentage": 10,
+                    "slo_target_percentage": float(10),
                     "spec": json.dumps({
                         "type": "Monthly",
                         "spec": {
@@ -368,10 +368,10 @@ class Slo(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 request: Optional[pulumi.Input[Union['SloRequestArgs', 'SloRequestArgsDict']]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 request: pulumi.Input[Optional[Union['SloRequestArgs', 'SloRequestArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -401,10 +401,10 @@ class Slo(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            request: Optional[pulumi.Input[Union['SloRequestArgs', 'SloRequestArgsDict']]] = None) -> 'Slo':
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            request: pulumi.Input[Optional[Union['SloRequestArgs', 'SloRequestArgsDict']]] = None) -> 'Slo':
         """
         Get an existing Slo resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

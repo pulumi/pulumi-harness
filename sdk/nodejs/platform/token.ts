@@ -204,75 +204,75 @@ export interface TokenState {
     /**
      * Account Identifier for the Entity
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the API Key
      */
-    apikeyId?: pulumi.Input<string>;
+    apikeyId?: pulumi.Input<string | undefined>;
     /**
      * Type of the API Key
      */
-    apikeyType?: pulumi.Input<string>;
+    apikeyType?: pulumi.Input<string | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Email Id of the user who created the Token
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Encoded password of the Token
      */
-    encodedPassword?: pulumi.Input<string>;
+    encodedPassword?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Parent Entity Identifier of the API Key
      */
-    parentId?: pulumi.Input<string>;
+    parentId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Scheduled expiry time in milliseconds
      */
-    scheduledExpireTime?: pulumi.Input<number>;
+    scheduledExpireTime?: pulumi.Input<number | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the user who created the Token
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * Boolean value to indicate if Token is valid or not.
      */
-    valid?: pulumi.Input<boolean>;
+    valid?: pulumi.Input<boolean | undefined>;
     /**
      * This is the time from which the Token is valid. The time is in milliseconds
      */
-    validFrom?: pulumi.Input<number>;
+    validFrom?: pulumi.Input<number | undefined>;
     /**
      * This is the time till which the Token is valid. The time is in milliseconds
      */
-    validTo?: pulumi.Input<number>;
+    validTo?: pulumi.Input<number | undefined>;
     /**
      * Value of the Token
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -294,15 +294,15 @@ export interface TokenArgs {
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Email Id of the user who created the Token
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Encoded password of the Token
      */
-    encodedPassword?: pulumi.Input<string>;
+    encodedPassword?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -310,11 +310,11 @@ export interface TokenArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Parent Entity Identifier of the API Key
      */
@@ -322,29 +322,29 @@ export interface TokenArgs {
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Scheduled expiry time in milliseconds
      */
-    scheduledExpireTime?: pulumi.Input<number>;
+    scheduledExpireTime?: pulumi.Input<number | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the user who created the Token
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * Boolean value to indicate if Token is valid or not.
      */
-    valid?: pulumi.Input<boolean>;
+    valid?: pulumi.Input<boolean | undefined>;
     /**
      * This is the time from which the Token is valid. The time is in milliseconds
      */
-    validFrom?: pulumi.Input<number>;
+    validFrom?: pulumi.Input<number | undefined>;
     /**
      * This is the time till which the Token is valid. The time is in milliseconds
      */
-    validTo?: pulumi.Input<number>;
+    validTo?: pulumi.Input<number | undefined>;
 }

@@ -140,7 +140,7 @@ export interface GetGitopsRepositoryOutputArgs {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier of the GitOps repository.
      */
@@ -152,9 +152,9 @@ export interface GetGitopsRepositoryOutputArgs {
     /**
      * Organization identifier of the GitOps repository.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the GitOps repository.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

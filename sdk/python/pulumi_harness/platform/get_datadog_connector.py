@@ -215,11 +215,11 @@ def get_datadog_connector(delegate_selectors: Optional[Sequence[_builtins.str]] 
         project_id=pulumi.get(__ret__, 'project_id'),
         tags=pulumi.get(__ret__, 'tags'),
         url=pulumi.get(__ret__, 'url'))
-def get_datadog_connector_output(delegate_selectors: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                                 name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_datadog_connector_output(delegate_selectors: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                                 name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatadogConnectorResult]:
     """
     Datasource for looking up a Datadog connector.

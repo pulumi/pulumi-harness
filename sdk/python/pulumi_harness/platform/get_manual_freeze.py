@@ -245,10 +245,10 @@ def get_manual_freeze(account_id: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'),
         yaml=pulumi.get(__ret__, 'yaml'))
-def get_manual_freeze_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                             identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                             org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_manual_freeze_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                             identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                             org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetManualFreezeResult]:
     """
     DataSource for deployment freeze in harness.

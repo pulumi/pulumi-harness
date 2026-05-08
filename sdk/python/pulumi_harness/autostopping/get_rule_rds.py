@@ -170,12 +170,12 @@ def get_rule_rds(cloud_connector_id: Optional[_builtins.str] = None,
         idle_time_mins=pulumi.get(__ret__, 'idle_time_mins'),
         name=pulumi.get(__ret__, 'name'),
         tcps=pulumi.get(__ret__, 'tcps'))
-def get_rule_rds_output(cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                        database: Optional[pulumi.Input[Union['GetRuleRdsDatabaseArgs', 'GetRuleRdsDatabaseArgsDict']]] = None,
-                        depends: Optional[pulumi.Input[Optional[Sequence[Union['GetRuleRdsDependArgs', 'GetRuleRdsDependArgsDict']]]]] = None,
-                        idle_time_mins: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                        name: Optional[pulumi.Input[_builtins.str]] = None,
-                        tcps: Optional[pulumi.Input[Optional[Sequence[Union['GetRuleRdsTcpArgs', 'GetRuleRdsTcpArgsDict']]]]] = None,
+def get_rule_rds_output(cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                        database: pulumi.Input[Optional[Union['GetRuleRdsDatabaseArgs', 'GetRuleRdsDatabaseArgsDict']]] = None,
+                        depends: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleRdsDependArgs', 'GetRuleRdsDependArgsDict']]]]] = None,
+                        idle_time_mins: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                        name: pulumi.Input[Optional[_builtins.str]] = None,
+                        tcps: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleRdsTcpArgs', 'GetRuleRdsTcpArgsDict']]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleRdsResult]:
     """
     Data source for retrieving a Harness AutoStopping rule for RDS databases.

@@ -28,7 +28,7 @@ namespace Pulumi.Harness.Platform
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["providerCount"] = all.Apply(getInfraProvidersResult =&gt; getInfraProvidersResult.Providers).Length,
+        ///         ["providerCount"] = all.Apply(getInfraProvidersResult =&gt; getInfraProvidersResult.Providers).Length(),
         ///         ["providerTypes"] = .Select(p =&gt; 
         ///         {
         ///             return p.Type;
@@ -57,7 +57,7 @@ namespace Pulumi.Harness.Platform
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["providerCount"] = all.Apply(getInfraProvidersResult =&gt; getInfraProvidersResult.Providers).Length,
+        ///         ["providerCount"] = all.Apply(getInfraProvidersResult =&gt; getInfraProvidersResult.Providers).Length(),
         ///         ["providerTypes"] = .Select(p =&gt; 
         ///         {
         ///             return p.Type;
@@ -86,7 +86,7 @@ namespace Pulumi.Harness.Platform
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["providerCount"] = all.Apply(getInfraProvidersResult =&gt; getInfraProvidersResult.Providers).Length,
+        ///         ["providerCount"] = all.Apply(getInfraProvidersResult =&gt; getInfraProvidersResult.Providers).Length(),
         ///         ["providerTypes"] = .Select(p =&gt; 
         ///         {
         ///             return p.Type;

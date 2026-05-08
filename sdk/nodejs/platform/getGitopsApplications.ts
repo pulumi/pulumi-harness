@@ -168,7 +168,7 @@ export interface GetGitopsApplicationsOutputArgs {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier of the GitOps application.
      */
@@ -178,7 +178,7 @@ export interface GetGitopsApplicationsOutputArgs {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the GitOps application.
      */

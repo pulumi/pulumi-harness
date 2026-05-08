@@ -155,27 +155,27 @@ export interface InfraProviderSigningKeyState {
     /**
      * ASCII-armored GPG public key.
      */
-    asciiArmor?: pulumi.Input<string>;
+    asciiArmor?: pulumi.Input<string | undefined>;
     /**
      * Creation timestamp.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * GPG key ID.
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * GPG key name.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * Last updated timestamp.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * User who uploaded the key.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }
 
 /**

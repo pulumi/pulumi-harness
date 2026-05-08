@@ -174,12 +174,12 @@ def get_alert(applicable_to_all_rules: Optional[_builtins.bool] = None,
         name=pulumi.get(__ret__, 'name'),
         recipients=pulumi.get(__ret__, 'recipients'),
         rule_id_lists=pulumi.get(__ret__, 'rule_id_lists'))
-def get_alert_output(applicable_to_all_rules: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                     enabled: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                     events: Optional[pulumi.Input[Sequence[_builtins.str]]] = None,
-                     name: Optional[pulumi.Input[_builtins.str]] = None,
-                     recipients: Optional[pulumi.Input[Union['GetAlertRecipientsArgs', 'GetAlertRecipientsArgsDict']]] = None,
-                     rule_id_lists: Optional[pulumi.Input[Optional[Sequence[_builtins.int]]]] = None,
+def get_alert_output(applicable_to_all_rules: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                     enabled: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                     events: pulumi.Input[Optional[Sequence[_builtins.str]]] = None,
+                     name: pulumi.Input[Optional[_builtins.str]] = None,
+                     recipients: pulumi.Input[Optional[Union['GetAlertRecipientsArgs', 'GetAlertRecipientsArgsDict']]] = None,
+                     rule_id_lists: pulumi.Input[Optional[Optional[Sequence[_builtins.int]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlertResult]:
     """
     Data source for retrieving a Harness AutoStopping alert by ID. Use the id (identifier) returned by the API when the alert was created.

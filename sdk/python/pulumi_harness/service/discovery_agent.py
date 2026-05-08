@@ -24,13 +24,13 @@ class DiscoveryAgentArgs:
                  configs: pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigArgs']]],
                  environment_identifier: pulumi.Input[_builtins.str],
                  infra_identifier: pulumi.Input[_builtins.str],
-                 correlation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 installation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 permanent_installation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 webhook_url: Optional[pulumi.Input[_builtins.str]] = None):
+                 correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 installation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 permanent_installation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 webhook_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DiscoveryAgent resource.
 
@@ -101,114 +101,114 @@ class DiscoveryAgentArgs:
 
     @_builtins.property
     @pulumi.getter(name="correlationId")
-    def correlation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def correlation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Correlation ID for the agent.
         """
         return pulumi.get(self, "correlation_id")
 
     @correlation_id.setter
-    def correlation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def correlation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "correlation_id", value)
 
     @_builtins.property
     @pulumi.getter(name="installationType")
-    def installation_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def installation_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of installation for the agent.
         """
         return pulumi.get(self, "installation_type")
 
     @installation_type.setter
-    def installation_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def installation_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "installation_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the agent. This is a required field.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgIdentifier")
-    def org_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The organization identifier of the agent. Must be 1-64 characters and contain only alphanumeric characters, hyphens, or underscores.
         """
         return pulumi.get(self, "org_identifier")
 
     @org_identifier.setter
-    def org_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="permanentInstallation")
-    def permanent_installation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def permanent_installation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this is a permanent installation.
         """
         return pulumi.get(self, "permanent_installation")
 
     @permanent_installation.setter
-    def permanent_installation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def permanent_installation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "permanent_installation", value)
 
     @_builtins.property
     @pulumi.getter(name="projectIdentifier")
-    def project_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project identifier of the agent. Must be 1-64 characters and contain only alphanumeric characters, hyphens, or underscores.
         """
         return pulumi.get(self, "project_identifier")
 
     @project_identifier.setter
-    def project_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="webhookUrl")
-    def webhook_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def webhook_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Webhook URL for the agent.
         """
         return pulumi.get(self, "webhook_url")
 
     @webhook_url.setter
-    def webhook_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def webhook_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "webhook_url", value)
 
 
 @pulumi.input_type
 class _DiscoveryAgentState:
     def __init__(__self__, *,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigArgs']]]] = None,
-                 correlation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 identity: Optional[pulumi.Input[_builtins.str]] = None,
-                 infra_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 installation_details: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailArgs']]]] = None,
-                 installation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_map_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 org_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 permanent_installation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 removed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 removed_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 webhook_url: Optional[pulumi.Input[_builtins.str]] = None):
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentConfigArgs']]]] = None,
+                 correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 infra_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 installation_details: pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailArgs']]]] = None,
+                 installation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_map_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 org_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 permanent_installation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 removed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 removed_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 webhook_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DiscoveryAgent resources.
 
@@ -282,266 +282,266 @@ class _DiscoveryAgentState:
 
     @_builtins.property
     @pulumi.getter
-    def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigArgs']]]]:
+    def configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentConfigArgs']]]]:
         """
         Configuration for the agent. This is a required field.
         """
         return pulumi.get(self, "configs")
 
     @configs.setter
-    def configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentConfigArgs']]]]):
+    def configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentConfigArgs']]]]):
         pulumi.set(self, "configs", value)
 
     @_builtins.property
     @pulumi.getter(name="correlationId")
-    def correlation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def correlation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Correlation ID for the agent.
         """
         return pulumi.get(self, "correlation_id")
 
     @correlation_id.setter
-    def correlation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def correlation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "correlation_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the agent was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User who created the agent.
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the agent.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentIdentifier")
-    def environment_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The environment identifier of the agent. This is a required field.
         """
         return pulumi.get(self, "environment_identifier")
 
     @environment_identifier.setter
-    def environment_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def identity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identity of the agent.
         """
         return pulumi.get(self, "identity")
 
     @identity.setter
-    def identity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identity", value)
 
     @_builtins.property
     @pulumi.getter(name="infraIdentifier")
-    def infra_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def infra_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The infrastructure identifier of the agent. This is a required field.
         """
         return pulumi.get(self, "infra_identifier")
 
     @infra_identifier.setter
-    def infra_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def infra_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "infra_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="installationDetails")
-    def installation_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailArgs']]]]:
+    def installation_details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailArgs']]]]:
         """
         Installation details of the agent.
         """
         return pulumi.get(self, "installation_details")
 
     @installation_details.setter
-    def installation_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailArgs']]]]):
+    def installation_details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailArgs']]]]):
         pulumi.set(self, "installation_details", value)
 
     @_builtins.property
     @pulumi.getter(name="installationType")
-    def installation_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def installation_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of installation for the agent.
         """
         return pulumi.get(self, "installation_type")
 
     @installation_type.setter
-    def installation_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def installation_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "installation_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the agent. This is a required field.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkMapCount")
-    def network_map_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def network_map_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of network maps associated with this agent.
         """
         return pulumi.get(self, "network_map_count")
 
     @network_map_count.setter
-    def network_map_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def network_map_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "network_map_count", value)
 
     @_builtins.property
     @pulumi.getter(name="orgIdentifier")
-    def org_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The organization identifier of the agent. Must be 1-64 characters and contain only alphanumeric characters, hyphens, or underscores.
         """
         return pulumi.get(self, "org_identifier")
 
     @org_identifier.setter
-    def org_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="permanentInstallation")
-    def permanent_installation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def permanent_installation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this is a permanent installation.
         """
         return pulumi.get(self, "permanent_installation")
 
     @permanent_installation.setter
-    def permanent_installation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def permanent_installation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "permanent_installation", value)
 
     @_builtins.property
     @pulumi.getter(name="projectIdentifier")
-    def project_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project identifier of the agent. Must be 1-64 characters and contain only alphanumeric characters, hyphens, or underscores.
         """
         return pulumi.get(self, "project_identifier")
 
     @project_identifier.setter
-    def project_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def removed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def removed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the agent has been removed.
         """
         return pulumi.get(self, "removed")
 
     @removed.setter
-    def removed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def removed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "removed", value)
 
     @_builtins.property
     @pulumi.getter(name="removedAt")
-    def removed_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def removed_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the agent was removed.
         """
         return pulumi.get(self, "removed_at")
 
     @removed_at.setter
-    def removed_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def removed_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "removed_at", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceCount")
-    def service_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def service_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of services managed by this agent.
         """
         return pulumi.get(self, "service_count")
 
     @service_count.setter
-    def service_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def service_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "service_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of resource tags for the agent.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the agent was last updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedBy")
-    def updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User who last updated the agent.
         """
         return pulumi.get(self, "updated_by")
 
     @updated_by.setter
-    def updated_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_by", value)
 
     @_builtins.property
     @pulumi.getter(name="webhookUrl")
-    def webhook_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def webhook_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Webhook URL for the agent.
         """
         return pulumi.get(self, "webhook_url")
 
     @webhook_url.setter
-    def webhook_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def webhook_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "webhook_url", value)
 
 
@@ -551,16 +551,16 @@ class DiscoveryAgent(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DiscoveryAgentConfigArgs', 'DiscoveryAgentConfigArgsDict']]]]] = None,
-                 correlation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 infra_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 installation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 permanent_installation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 webhook_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiscoveryAgentConfigArgs', 'DiscoveryAgentConfigArgsDict']]]]] = None,
+                 correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 infra_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 installation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 permanent_installation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 webhook_url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for managing a Harness Service Discovery Agent.
@@ -896,16 +896,16 @@ class DiscoveryAgent(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DiscoveryAgentConfigArgs', 'DiscoveryAgentConfigArgsDict']]]]] = None,
-                 correlation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 infra_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 installation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 permanent_installation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 webhook_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiscoveryAgentConfigArgs', 'DiscoveryAgentConfigArgsDict']]]]] = None,
+                 correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 infra_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 installation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 permanent_installation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 webhook_url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -953,28 +953,28 @@ class DiscoveryAgent(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DiscoveryAgentConfigArgs', 'DiscoveryAgentConfigArgsDict']]]]] = None,
-            correlation_id: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            environment_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            identity: Optional[pulumi.Input[_builtins.str]] = None,
-            infra_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            installation_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DiscoveryAgentInstallationDetailArgs', 'DiscoveryAgentInstallationDetailArgsDict']]]]] = None,
-            installation_type: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_map_count: Optional[pulumi.Input[_builtins.int]] = None,
-            org_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            permanent_installation: Optional[pulumi.Input[_builtins.bool]] = None,
-            project_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            removed: Optional[pulumi.Input[_builtins.bool]] = None,
-            removed_at: Optional[pulumi.Input[_builtins.str]] = None,
-            service_count: Optional[pulumi.Input[_builtins.int]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-            webhook_url: Optional[pulumi.Input[_builtins.str]] = None) -> 'DiscoveryAgent':
+            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiscoveryAgentConfigArgs', 'DiscoveryAgentConfigArgsDict']]]]] = None,
+            correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            identity: pulumi.Input[Optional[_builtins.str]] = None,
+            infra_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            installation_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiscoveryAgentInstallationDetailArgs', 'DiscoveryAgentInstallationDetailArgsDict']]]]] = None,
+            installation_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_map_count: pulumi.Input[Optional[_builtins.int]] = None,
+            org_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            permanent_installation: pulumi.Input[Optional[_builtins.bool]] = None,
+            project_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            removed: pulumi.Input[Optional[_builtins.bool]] = None,
+            removed_at: pulumi.Input[Optional[_builtins.str]] = None,
+            service_count: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            webhook_url: pulumi.Input[Optional[_builtins.str]] = None) -> 'DiscoveryAgent':
         """
         Get an existing DiscoveryAgent resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

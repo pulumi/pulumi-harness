@@ -200,10 +200,10 @@ def get_secret_sshkey(identifier: Optional[_builtins.str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         sshes=pulumi.get(__ret__, 'sshes'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_secret_sshkey_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                             name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_secret_sshkey_output(identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                             name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretSshkeyResult]:
     """
     Resource for looking up an SSH Key type secret.

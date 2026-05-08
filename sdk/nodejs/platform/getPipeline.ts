@@ -142,15 +142,15 @@ export interface GetPipelineOutputArgs {
     /**
      * Contains parameters related to creating an Entity for Git Experience.
      */
-    gitDetails?: pulumi.Input<inputs.platform.GetPipelineGitDetailsArgs>;
+    gitDetails?: pulumi.Input<inputs.platform.GetPipelineGitDetailsArgs | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */

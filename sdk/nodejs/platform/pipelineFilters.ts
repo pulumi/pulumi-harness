@@ -260,31 +260,31 @@ export interface PipelineFiltersState {
     /**
      * Properties of the filters entity defined in Harness.
      */
-    filterProperties?: pulumi.Input<inputs.platform.PipelineFiltersFilterProperties>;
+    filterProperties?: pulumi.Input<inputs.platform.PipelineFiltersFilterProperties | undefined>;
     /**
      * This indicates visibility of filters. By default, everyone can view this filter.
      */
-    filterVisibility?: pulumi.Input<string>;
+    filterVisibility?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the pipeline filters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization Identifier for the Entity.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project Identifier for the Entity.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Type of pipeline filters. Currently supported types are {PipelineSetup, PipelineExecution, Deployment, Template, EnvironmentGroup, Environment}
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -298,7 +298,7 @@ export interface PipelineFiltersArgs {
     /**
      * This indicates visibility of filters. By default, everyone can view this filter.
      */
-    filterVisibility?: pulumi.Input<string>;
+    filterVisibility?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -306,15 +306,15 @@ export interface PipelineFiltersArgs {
     /**
      * Name of the pipeline filters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization Identifier for the Entity.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project Identifier for the Entity.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Type of pipeline filters. Currently supported types are {PipelineSetup, PipelineExecution, Deployment, Template, EnvironmentGroup, Environment}
      */

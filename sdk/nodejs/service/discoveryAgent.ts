@@ -357,91 +357,91 @@ export interface DiscoveryAgentState {
     /**
      * Configuration for the agent. This is a required field.
      */
-    configs?: pulumi.Input<pulumi.Input<inputs.service.DiscoveryAgentConfig>[]>;
+    configs?: pulumi.Input<pulumi.Input<inputs.service.DiscoveryAgentConfig>[] | undefined>;
     /**
      * Correlation ID for the agent.
      */
-    correlationId?: pulumi.Input<string>;
+    correlationId?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the agent was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * User who created the agent.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Description of the agent.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The environment identifier of the agent. This is a required field.
      */
-    environmentIdentifier?: pulumi.Input<string>;
+    environmentIdentifier?: pulumi.Input<string | undefined>;
     /**
      * The unique identity of the agent.
      */
-    identity?: pulumi.Input<string>;
+    identity?: pulumi.Input<string | undefined>;
     /**
      * The infrastructure identifier of the agent. This is a required field.
      */
-    infraIdentifier?: pulumi.Input<string>;
+    infraIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Installation details of the agent.
      */
-    installationDetails?: pulumi.Input<pulumi.Input<inputs.service.DiscoveryAgentInstallationDetail>[]>;
+    installationDetails?: pulumi.Input<pulumi.Input<inputs.service.DiscoveryAgentInstallationDetail>[] | undefined>;
     /**
      * Type of installation for the agent.
      */
-    installationType?: pulumi.Input<string>;
+    installationType?: pulumi.Input<string | undefined>;
     /**
      * The name of the agent. This is a required field.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Number of network maps associated with this agent.
      */
-    networkMapCount?: pulumi.Input<number>;
+    networkMapCount?: pulumi.Input<number | undefined>;
     /**
      * The organization identifier of the agent. Must be 1-64 characters and contain only alphanumeric characters, hyphens, or underscores.
      */
-    orgIdentifier?: pulumi.Input<string>;
+    orgIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Whether this is a permanent installation.
      */
-    permanentInstallation?: pulumi.Input<boolean>;
+    permanentInstallation?: pulumi.Input<boolean | undefined>;
     /**
      * The project identifier of the agent. Must be 1-64 characters and contain only alphanumeric characters, hyphens, or underscores.
      */
-    projectIdentifier?: pulumi.Input<string>;
+    projectIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Whether the agent has been removed.
      */
-    removed?: pulumi.Input<boolean>;
+    removed?: pulumi.Input<boolean | undefined>;
     /**
      * Timestamp when the agent was removed.
      */
-    removedAt?: pulumi.Input<string>;
+    removedAt?: pulumi.Input<string | undefined>;
     /**
      * Number of services managed by this agent.
      */
-    serviceCount?: pulumi.Input<number>;
+    serviceCount?: pulumi.Input<number | undefined>;
     /**
      * List of resource tags for the agent.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timestamp when the agent was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * User who last updated the agent.
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
     /**
      * Webhook URL for the agent.
      */
-    webhookUrl?: pulumi.Input<string>;
+    webhookUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -455,7 +455,7 @@ export interface DiscoveryAgentArgs {
     /**
      * Correlation ID for the agent.
      */
-    correlationId?: pulumi.Input<string>;
+    correlationId?: pulumi.Input<string | undefined>;
     /**
      * The environment identifier of the agent. This is a required field.
      */
@@ -467,25 +467,25 @@ export interface DiscoveryAgentArgs {
     /**
      * Type of installation for the agent.
      */
-    installationType?: pulumi.Input<string>;
+    installationType?: pulumi.Input<string | undefined>;
     /**
      * The name of the agent. This is a required field.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The organization identifier of the agent. Must be 1-64 characters and contain only alphanumeric characters, hyphens, or underscores.
      */
-    orgIdentifier?: pulumi.Input<string>;
+    orgIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Whether this is a permanent installation.
      */
-    permanentInstallation?: pulumi.Input<boolean>;
+    permanentInstallation?: pulumi.Input<boolean | undefined>;
     /**
      * The project identifier of the agent. Must be 1-64 characters and contain only alphanumeric characters, hyphens, or underscores.
      */
-    projectIdentifier?: pulumi.Input<string>;
+    projectIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Webhook URL for the agent.
      */
-    webhookUrl?: pulumi.Input<string>;
+    webhookUrl?: pulumi.Input<string | undefined>;
 }

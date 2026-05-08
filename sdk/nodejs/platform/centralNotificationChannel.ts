@@ -114,22 +114,22 @@ export interface CentralNotificationChannelState {
     /**
      * Account identifier associated with this notification channel.
      */
-    account?: pulumi.Input<string>;
-    channel?: pulumi.Input<inputs.platform.CentralNotificationChannelChannel>;
+    account?: pulumi.Input<string | undefined>;
+    channel?: pulumi.Input<inputs.platform.CentralNotificationChannelChannel | undefined>;
     /**
      * Timestamp when the notification channel was created.
      */
-    created?: pulumi.Input<number>;
-    identifier?: pulumi.Input<string>;
+    created?: pulumi.Input<number | undefined>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the notification channel was last modified.
      */
-    lastModified?: pulumi.Input<number>;
-    name?: pulumi.Input<string>;
-    notificationChannelType?: pulumi.Input<string>;
-    org?: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
+    lastModified?: pulumi.Input<number | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    notificationChannelType?: pulumi.Input<string | undefined>;
+    org?: pulumi.Input<string | undefined>;
+    project?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -138,9 +138,9 @@ export interface CentralNotificationChannelState {
 export interface CentralNotificationChannelArgs {
     channel: pulumi.Input<inputs.platform.CentralNotificationChannelChannel>;
     identifier: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     notificationChannelType: pulumi.Input<string>;
-    org?: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
+    org?: pulumi.Input<string | undefined>;
+    project?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string | undefined>;
 }

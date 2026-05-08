@@ -240,51 +240,51 @@ export interface ServiceState {
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * to fetch resoled service yaml
      */
-    fetchResolvedYaml?: pulumi.Input<boolean>;
+    fetchResolvedYaml?: pulumi.Input<boolean | undefined>;
     /**
      * Enable this flag for force deletion of service
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Contains parameters related to Git Experience for remote entities
      */
-    gitDetails?: pulumi.Input<inputs.platform.ServiceGitDetails>;
+    gitDetails?: pulumi.Input<inputs.platform.ServiceGitDetails | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * import service from git
      */
-    importFromGit?: pulumi.Input<boolean>;
+    importFromGit?: pulumi.Input<boolean | undefined>;
     /**
      * force import service from remote even if same file path already exist
      */
-    isForceImport?: pulumi.Input<boolean>;
+    isForceImport?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
-    yaml?: pulumi.Input<string>;
+    yaml?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -294,19 +294,19 @@ export interface ServiceArgs {
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * to fetch resoled service yaml
      */
-    fetchResolvedYaml?: pulumi.Input<boolean>;
+    fetchResolvedYaml?: pulumi.Input<boolean | undefined>;
     /**
      * Enable this flag for force deletion of service
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Contains parameters related to Git Experience for remote entities
      */
-    gitDetails?: pulumi.Input<inputs.platform.ServiceGitDetails>;
+    gitDetails?: pulumi.Input<inputs.platform.ServiceGitDetails | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -314,29 +314,29 @@ export interface ServiceArgs {
     /**
      * import service from git
      */
-    importFromGit?: pulumi.Input<boolean>;
+    importFromGit?: pulumi.Input<boolean | undefined>;
     /**
      * force import service from remote even if same file path already exist
      */
-    isForceImport?: pulumi.Input<boolean>;
+    isForceImport?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Service YAML. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
-    yaml?: pulumi.Input<string>;
+    yaml?: pulumi.Input<string | undefined>;
 }

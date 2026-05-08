@@ -171,12 +171,12 @@ def get_gitops_gnupg(account_id: Optional[_builtins.str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         requests=pulumi.get(__ret__, 'requests'))
-def get_gitops_gnupg_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                            org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            requests: Optional[pulumi.Input[Optional[Sequence[Union['GetGitopsGnupgRequestArgs', 'GetGitopsGnupgRequestArgsDict']]]]] = None,
+def get_gitops_gnupg_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                            org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            requests: pulumi.Input[Optional[Optional[Sequence[Union['GetGitopsGnupgRequestArgs', 'GetGitopsGnupgRequestArgsDict']]]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGitopsGnupgResult]:
     """
     Data source for fetching a Harness GitOps GPG public key.

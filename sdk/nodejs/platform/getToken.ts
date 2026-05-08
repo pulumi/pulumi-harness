@@ -248,11 +248,11 @@ export interface GetTokenOutputArgs {
     /**
      * Email Id of the user who created the Token
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Encoded password of the Token
      */
-    encodedPassword?: pulumi.Input<string>;
+    encodedPassword?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -260,11 +260,11 @@ export interface GetTokenOutputArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Parent Entity Identifier of the API Key
      */
@@ -272,25 +272,25 @@ export interface GetTokenOutputArgs {
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Scheduled expiry time in milliseconds
      */
-    scheduledExpireTime?: pulumi.Input<number>;
+    scheduledExpireTime?: pulumi.Input<number | undefined>;
     /**
      * Name of the user who created the Token
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * Boolean value to indicate if Token is valid or not.
      */
-    valid?: pulumi.Input<boolean>;
+    valid?: pulumi.Input<boolean | undefined>;
     /**
      * This is the time from which the Token is valid. The time is in milliseconds
      */
-    validFrom?: pulumi.Input<number>;
+    validFrom?: pulumi.Input<number | undefined>;
     /**
      * This is the time till which the Token is valid. The time is in milliseconds
      */
-    validTo?: pulumi.Input<number>;
+    validTo?: pulumi.Input<number | undefined>;
 }

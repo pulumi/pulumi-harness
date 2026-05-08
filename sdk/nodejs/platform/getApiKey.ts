@@ -140,7 +140,7 @@ export interface GetApiKeyOutputArgs {
     /**
      * Expiry time of the apiKey
      */
-    defaultTimeToExpireToken?: pulumi.Input<number>;
+    defaultTimeToExpireToken?: pulumi.Input<number | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -148,11 +148,11 @@ export interface GetApiKeyOutputArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Parent Identifier for the Entity
      */
@@ -160,5 +160,5 @@ export interface GetApiKeyOutputArgs {
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

@@ -40,7 +40,7 @@ class AwsAssumeCrossAccountRoleArgsDict(TypedDict):
     """
     This is an IAM role in the target deployment AWS account.
     """
-    external_id: NotRequired[pulumi.Input[_builtins.str]]
+    external_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
     """
@@ -49,7 +49,7 @@ class AwsAssumeCrossAccountRoleArgsDict(TypedDict):
 class AwsAssumeCrossAccountRoleArgs:
     def __init__(__self__, *,
                  role_arn: pulumi.Input[_builtins.str],
-                 external_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 external_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] role_arn: This is an IAM role in the target deployment AWS account.
         :param pulumi.Input[_builtins.str] external_id: If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
@@ -72,27 +72,27 @@ class AwsAssumeCrossAccountRoleArgs:
 
     @_builtins.property
     @pulumi.getter(name="externalId")
-    def external_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If the administrator of the account to which the role belongs provided you with an external ID, then enter that value.
         """
         return pulumi.get(self, "external_id")
 
     @external_id.setter
-    def external_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_id", value)
 
 
 class AwsUsageScopeArgsDict(TypedDict):
-    application_id: NotRequired[pulumi.Input[_builtins.str]]
+    application_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Id of the application to scope to. If empty then this scope applies to all applications.
     """
-    environment_filter_type: NotRequired[pulumi.Input[_builtins.str]]
+    environment_filter_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
     """
-    environment_id: NotRequired[pulumi.Input[_builtins.str]]
+    environment_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
     """
@@ -100,9 +100,9 @@ class AwsUsageScopeArgsDict(TypedDict):
 @pulumi.input_type
 class AwsUsageScopeArgs:
     def __init__(__self__, *,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_filter_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_filter_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] application_id: Id of the application to scope to. If empty then this scope applies to all applications.
         :param pulumi.Input[_builtins.str] environment_filter_type: Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
@@ -117,51 +117,51 @@ class AwsUsageScopeArgs:
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the application to scope to. If empty then this scope applies to all applications.
         """
         return pulumi.get(self, "application_id")
 
     @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_id", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentFilterType")
-    def environment_filter_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_filter_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
         """
         return pulumi.get(self, "environment_filter_type")
 
     @environment_filter_type.setter
-    def environment_filter_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_filter_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_filter_type", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentId")
-    def environment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
         """
         return pulumi.get(self, "environment_id")
 
     @environment_id.setter
-    def environment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_id", value)
 
 
 class DatacenterUsageScopeArgsDict(TypedDict):
-    application_id: NotRequired[pulumi.Input[_builtins.str]]
+    application_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Id of the application to scope to. If empty then this scope applies to all applications.
     """
-    environment_filter_type: NotRequired[pulumi.Input[_builtins.str]]
+    environment_filter_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
     """
-    environment_id: NotRequired[pulumi.Input[_builtins.str]]
+    environment_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
     """
@@ -169,9 +169,9 @@ class DatacenterUsageScopeArgsDict(TypedDict):
 @pulumi.input_type
 class DatacenterUsageScopeArgs:
     def __init__(__self__, *,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_filter_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_filter_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] application_id: Id of the application to scope to. If empty then this scope applies to all applications.
         :param pulumi.Input[_builtins.str] environment_filter_type: Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
@@ -186,51 +186,51 @@ class DatacenterUsageScopeArgs:
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the application to scope to. If empty then this scope applies to all applications.
         """
         return pulumi.get(self, "application_id")
 
     @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_id", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentFilterType")
-    def environment_filter_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_filter_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
         """
         return pulumi.get(self, "environment_filter_type")
 
     @environment_filter_type.setter
-    def environment_filter_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_filter_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_filter_type", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentId")
-    def environment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
         """
         return pulumi.get(self, "environment_id")
 
     @environment_id.setter
-    def environment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_id", value)
 
 
 class GcpUsageScopeArgsDict(TypedDict):
-    application_id: NotRequired[pulumi.Input[_builtins.str]]
+    application_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Id of the application to scope to. If empty then this scope applies to all applications.
     """
-    environment_filter_type: NotRequired[pulumi.Input[_builtins.str]]
+    environment_filter_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
     """
-    environment_id: NotRequired[pulumi.Input[_builtins.str]]
+    environment_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
     """
@@ -238,9 +238,9 @@ class GcpUsageScopeArgsDict(TypedDict):
 @pulumi.input_type
 class GcpUsageScopeArgs:
     def __init__(__self__, *,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_filter_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_filter_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] application_id: Id of the application to scope to. If empty then this scope applies to all applications.
         :param pulumi.Input[_builtins.str] environment_filter_type: Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
@@ -255,55 +255,55 @@ class GcpUsageScopeArgs:
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the application to scope to. If empty then this scope applies to all applications.
         """
         return pulumi.get(self, "application_id")
 
     @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_id", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentFilterType")
-    def environment_filter_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_filter_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
         """
         return pulumi.get(self, "environment_filter_type")
 
     @environment_filter_type.setter
-    def environment_filter_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_filter_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_filter_type", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentId")
-    def environment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
         """
         return pulumi.get(self, "environment_id")
 
     @environment_id.setter
-    def environment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_id", value)
 
 
 class KubernetesAuthenticationArgsDict(TypedDict):
-    delegate_selectors: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    delegate_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Delegate selectors to inherit the GCP credentials from.
     """
-    oidc: NotRequired[pulumi.Input['KubernetesAuthenticationOidcArgsDict']]
+    oidc: NotRequired[pulumi.Input[Optional['KubernetesAuthenticationOidcArgs']]]
     """
     Service account configuration for connecting to the Kubernetes cluster
     """
-    service_account: NotRequired[pulumi.Input['KubernetesAuthenticationServiceAccountArgsDict']]
+    service_account: NotRequired[pulumi.Input[Optional['KubernetesAuthenticationServiceAccountArgs']]]
     """
     Username and password for authentication to the cluster
     """
-    username_password: NotRequired[pulumi.Input['KubernetesAuthenticationUsernamePasswordArgsDict']]
+    username_password: NotRequired[pulumi.Input[Optional['KubernetesAuthenticationUsernamePasswordArgs']]]
     """
     Username and password for authentication to the cluster
     """
@@ -311,10 +311,10 @@ class KubernetesAuthenticationArgsDict(TypedDict):
 @pulumi.input_type
 class KubernetesAuthenticationArgs:
     def __init__(__self__, *,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 oidc: Optional[pulumi.Input['KubernetesAuthenticationOidcArgs']] = None,
-                 service_account: Optional[pulumi.Input['KubernetesAuthenticationServiceAccountArgs']] = None,
-                 username_password: Optional[pulumi.Input['KubernetesAuthenticationUsernamePasswordArgs']] = None):
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 oidc: pulumi.Input[Optional['KubernetesAuthenticationOidcArgs']] = None,
+                 service_account: pulumi.Input[Optional['KubernetesAuthenticationServiceAccountArgs']] = None,
+                 username_password: pulumi.Input[Optional['KubernetesAuthenticationUsernamePasswordArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Delegate selectors to inherit the GCP credentials from.
         :param pulumi.Input['KubernetesAuthenticationOidcArgs'] oidc: Service account configuration for connecting to the Kubernetes cluster
@@ -332,50 +332,50 @@ class KubernetesAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def delegate_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Delegate selectors to inherit the GCP credentials from.
         """
         return pulumi.get(self, "delegate_selectors")
 
     @delegate_selectors.setter
-    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "delegate_selectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def oidc(self) -> Optional[pulumi.Input['KubernetesAuthenticationOidcArgs']]:
+    def oidc(self) -> pulumi.Input[Optional['KubernetesAuthenticationOidcArgs']]:
         """
         Service account configuration for connecting to the Kubernetes cluster
         """
         return pulumi.get(self, "oidc")
 
     @oidc.setter
-    def oidc(self, value: Optional[pulumi.Input['KubernetesAuthenticationOidcArgs']]):
+    def oidc(self, value: pulumi.Input[Optional['KubernetesAuthenticationOidcArgs']]):
         pulumi.set(self, "oidc", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccount")
-    def service_account(self) -> Optional[pulumi.Input['KubernetesAuthenticationServiceAccountArgs']]:
+    def service_account(self) -> pulumi.Input[Optional['KubernetesAuthenticationServiceAccountArgs']]:
         """
         Username and password for authentication to the cluster
         """
         return pulumi.get(self, "service_account")
 
     @service_account.setter
-    def service_account(self, value: Optional[pulumi.Input['KubernetesAuthenticationServiceAccountArgs']]):
+    def service_account(self, value: pulumi.Input[Optional['KubernetesAuthenticationServiceAccountArgs']]):
         pulumi.set(self, "service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="usernamePassword")
-    def username_password(self) -> Optional[pulumi.Input['KubernetesAuthenticationUsernamePasswordArgs']]:
+    def username_password(self) -> pulumi.Input[Optional['KubernetesAuthenticationUsernamePasswordArgs']]:
         """
         Username and password for authentication to the cluster
         """
         return pulumi.get(self, "username_password")
 
     @username_password.setter
-    def username_password(self, value: Optional[pulumi.Input['KubernetesAuthenticationUsernamePasswordArgs']]):
+    def username_password(self, value: pulumi.Input[Optional['KubernetesAuthenticationUsernamePasswordArgs']]):
         pulumi.set(self, "username_password", value)
 
 
@@ -400,11 +400,11 @@ class KubernetesAuthenticationOidcArgsDict(TypedDict):
     """
     Username for authentication to the cluster. This can be the username itself or the ID of a harness secret.
     """
-    client_secret_secret_name: NotRequired[pulumi.Input[_builtins.str]]
+    client_secret_secret_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the Harness secret containing the client secret for the cluster.
     """
-    scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Scopes to request from the identity provider.
     """
@@ -417,8 +417,8 @@ class KubernetesAuthenticationOidcArgs:
                  master_url: pulumi.Input[_builtins.str],
                  password_secret_name: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
-                 client_secret_secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 client_secret_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] client_id_secret_name: Name of the Harness secret containing the client ID for the cluster.
         :param pulumi.Input[_builtins.str] identity_provider_url: URL of the identity provider to use.
@@ -500,26 +500,26 @@ class KubernetesAuthenticationOidcArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientSecretSecretName")
-    def client_secret_secret_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret_secret_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Harness secret containing the client secret for the cluster.
         """
         return pulumi.get(self, "client_secret_secret_name")
 
     @client_secret_secret_name.setter
-    def client_secret_secret_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret_secret_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret_secret_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Scopes to request from the identity provider.
         """
         return pulumi.get(self, "scopes")
 
     @scopes.setter
-    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "scopes", value)
 
 
@@ -532,7 +532,7 @@ class KubernetesAuthenticationServiceAccountArgsDict(TypedDict):
     """
     Name of the Harness secret containing the service account token for the cluster.
     """
-    ca_certificate_secret_name: NotRequired[pulumi.Input[_builtins.str]]
+    ca_certificate_secret_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the Harness secret containing the CA certificate for the cluster.
     """
@@ -542,7 +542,7 @@ class KubernetesAuthenticationServiceAccountArgs:
     def __init__(__self__, *,
                  master_url: pulumi.Input[_builtins.str],
                  service_account_token_secret_name: pulumi.Input[_builtins.str],
-                 ca_certificate_secret_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 ca_certificate_secret_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] master_url: URL of the Kubernetes master to connect to.
         :param pulumi.Input[_builtins.str] service_account_token_secret_name: Name of the Harness secret containing the service account token for the cluster.
@@ -579,14 +579,14 @@ class KubernetesAuthenticationServiceAccountArgs:
 
     @_builtins.property
     @pulumi.getter(name="caCertificateSecretName")
-    def ca_certificate_secret_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_certificate_secret_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Harness secret containing the CA certificate for the cluster.
         """
         return pulumi.get(self, "ca_certificate_secret_name")
 
     @ca_certificate_secret_name.setter
-    def ca_certificate_secret_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_certificate_secret_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_certificate_secret_name", value)
 
 
@@ -599,11 +599,11 @@ class KubernetesAuthenticationUsernamePasswordArgsDict(TypedDict):
     """
     Name of the Harness secret containing the password for the cluster.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Username for authentication to the cluster
     """
-    username_secret_name: NotRequired[pulumi.Input[_builtins.str]]
+    username_secret_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the Harness secret containing the username for authentication to the cluster
     """
@@ -613,8 +613,8 @@ class KubernetesAuthenticationUsernamePasswordArgs:
     def __init__(__self__, *,
                  master_url: pulumi.Input[_builtins.str],
                  password_secret_name: pulumi.Input[_builtins.str],
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_secret_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_secret_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] master_url: URL of the Kubernetes master to connect to.
         :param pulumi.Input[_builtins.str] password_secret_name: Name of the Harness secret containing the password for the cluster.
@@ -654,39 +654,39 @@ class KubernetesAuthenticationUsernamePasswordArgs:
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username for authentication to the cluster
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
     @_builtins.property
     @pulumi.getter(name="usernameSecretName")
-    def username_secret_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username_secret_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Harness secret containing the username for authentication to the cluster
         """
         return pulumi.get(self, "username_secret_name")
 
     @username_secret_name.setter
-    def username_secret_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username_secret_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username_secret_name", value)
 
 
 class KubernetesUsageScopeArgsDict(TypedDict):
-    application_id: NotRequired[pulumi.Input[_builtins.str]]
+    application_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Id of the application to scope to. If empty then this scope applies to all applications.
     """
-    environment_filter_type: NotRequired[pulumi.Input[_builtins.str]]
+    environment_filter_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
     """
-    environment_id: NotRequired[pulumi.Input[_builtins.str]]
+    environment_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
     """
@@ -694,9 +694,9 @@ class KubernetesUsageScopeArgsDict(TypedDict):
 @pulumi.input_type
 class KubernetesUsageScopeArgs:
     def __init__(__self__, *,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_filter_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_filter_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] application_id: Id of the application to scope to. If empty then this scope applies to all applications.
         :param pulumi.Input[_builtins.str] environment_filter_type: Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
@@ -711,38 +711,38 @@ class KubernetesUsageScopeArgs:
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the application to scope to. If empty then this scope applies to all applications.
         """
         return pulumi.get(self, "application_id")
 
     @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_id", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentFilterType")
-    def environment_filter_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_filter_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of environment filter applied. Cannot be used with `environment_id`. Valid options are NON*PRODUCTION*ENVIRONMENTS, PRODUCTION_ENVIRONMENTS.
         """
         return pulumi.get(self, "environment_filter_type")
 
     @environment_filter_type.setter
-    def environment_filter_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_filter_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_filter_type", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentId")
-    def environment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the id of the specific environment to scope to. Cannot be used with `environment_filter_type`.
         """
         return pulumi.get(self, "environment_id")
 
     @environment_id.setter
-    def environment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_id", value)
 
 

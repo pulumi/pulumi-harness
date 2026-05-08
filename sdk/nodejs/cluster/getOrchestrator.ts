@@ -92,7 +92,7 @@ export interface GetOrchestratorOutputArgs {
     /**
      * ID of the Harness Kubernetes Connector Being used
      */
-    k8sConnectorId?: pulumi.Input<string>;
+    k8sConnectorId?: pulumi.Input<string | undefined>;
     /**
      * Name of the Orchestrator
      */
@@ -100,5 +100,5 @@ export interface GetOrchestratorOutputArgs {
     /**
      * Region of the k8s cluster
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

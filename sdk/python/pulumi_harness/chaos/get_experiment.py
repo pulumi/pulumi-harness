@@ -489,10 +489,10 @@ def get_experiment(identity: Optional[_builtins.str] = None,
         total_experiment_runs=pulumi.get(__ret__, 'total_experiment_runs'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         updated_by=pulumi.get(__ret__, 'updated_by'))
-def get_experiment_output(identity: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                          project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_experiment_output(identity: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                          project_id: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExperimentResult]:
     """
     Data source for looking up chaos experiments

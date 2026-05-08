@@ -199,47 +199,47 @@ export interface AppDynamicsConnectorState {
     /**
      * The App Dynamics account name.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * Authenticate to App Dynamics using api token.
      */
-    apiToken?: pulumi.Input<inputs.platform.AppDynamicsConnectorApiToken>;
+    apiToken?: pulumi.Input<inputs.platform.AppDynamicsConnectorApiToken | undefined>;
     /**
      * Tags to filter delegates for connection.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL of the App Dynamics controller.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * Authenticate to App Dynamics using username and password.
      */
-    usernamePassword?: pulumi.Input<inputs.platform.AppDynamicsConnectorUsernamePassword>;
+    usernamePassword?: pulumi.Input<inputs.platform.AppDynamicsConnectorUsernamePassword | undefined>;
 }
 
 /**
@@ -253,15 +253,15 @@ export interface AppDynamicsConnectorArgs {
     /**
      * Authenticate to App Dynamics using api token.
      */
-    apiToken?: pulumi.Input<inputs.platform.AppDynamicsConnectorApiToken>;
+    apiToken?: pulumi.Input<inputs.platform.AppDynamicsConnectorApiToken | undefined>;
     /**
      * Tags to filter delegates for connection.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -269,19 +269,19 @@ export interface AppDynamicsConnectorArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * URL of the App Dynamics controller.
      */
@@ -289,5 +289,5 @@ export interface AppDynamicsConnectorArgs {
     /**
      * Authenticate to App Dynamics using username and password.
      */
-    usernamePassword?: pulumi.Input<inputs.platform.AppDynamicsConnectorUsernamePassword>;
+    usernamePassword?: pulumi.Input<inputs.platform.AppDynamicsConnectorUsernamePassword | undefined>;
 }

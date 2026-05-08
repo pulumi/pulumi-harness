@@ -23,15 +23,15 @@ class FileStoreFileArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[_builtins.str],
                  parent_identifier: pulumi.Input[_builtins.str],
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_content_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_usage: Optional[pulumi.Input[_builtins.str]] = None,
-                 mime_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_content_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 mime_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a FileStoreFile resource.
 
@@ -94,131 +94,131 @@ class FileStoreFileArgs:
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         File content stored on Harness File Store
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="fileContentPath")
-    def file_content_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_content_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         File content path to be upladed on Harness File Store
         """
         return pulumi.get(self, "file_content_path")
 
     @file_content_path.setter
-    def file_content_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_content_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_content_path", value)
 
     @_builtins.property
     @pulumi.getter(name="fileUsage")
-    def file_usage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_usage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
         """
         return pulumi.get(self, "file_usage")
 
     @file_usage.setter
-    def file_usage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_usage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_usage", value)
 
     @_builtins.property
     @pulumi.getter(name="mimeType")
-    def mime_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mime_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         File mime type
         """
         return pulumi.get(self, "mime_type")
 
     @mime_type.setter
-    def mime_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mime_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mime_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _FileStoreFileState:
     def __init__(__self__, *,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_bies: Optional[pulumi.Input[Sequence[pulumi.Input['FileStoreFileCreatedByArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_content_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_usage: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modified_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 last_modified_bies: Optional[pulumi.Input[Sequence[pulumi.Input['FileStoreFileLastModifiedByArgs']]]] = None,
-                 mime_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_bies: pulumi.Input[Optional[Sequence[pulumi.Input['FileStoreFileCreatedByArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_content_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modified_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 last_modified_bies: pulumi.Input[Optional[Sequence[pulumi.Input['FileStoreFileLastModifiedByArgs']]]] = None,
+                 mime_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering FileStoreFile resources.
 
@@ -271,182 +271,182 @@ class _FileStoreFileState:
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         File content stored on Harness File Store
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBies")
-    def created_bies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FileStoreFileCreatedByArgs']]]]:
+    def created_bies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FileStoreFileCreatedByArgs']]]]:
         """
         Created by
         """
         return pulumi.get(self, "created_bies")
 
     @created_bies.setter
-    def created_bies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FileStoreFileCreatedByArgs']]]]):
+    def created_bies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FileStoreFileCreatedByArgs']]]]):
         pulumi.set(self, "created_bies", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="fileContentPath")
-    def file_content_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_content_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         File content path to be upladed on Harness File Store
         """
         return pulumi.get(self, "file_content_path")
 
     @file_content_path.setter
-    def file_content_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_content_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_content_path", value)
 
     @_builtins.property
     @pulumi.getter(name="fileUsage")
-    def file_usage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_usage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
         """
         return pulumi.get(self, "file_usage")
 
     @file_usage.setter
-    def file_usage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_usage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_usage", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedAt")
-    def last_modified_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def last_modified_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Last modified at
         """
         return pulumi.get(self, "last_modified_at")
 
     @last_modified_at.setter
-    def last_modified_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def last_modified_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "last_modified_at", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedBies")
-    def last_modified_bies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FileStoreFileLastModifiedByArgs']]]]:
+    def last_modified_bies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FileStoreFileLastModifiedByArgs']]]]:
         """
         Last modified by
         """
         return pulumi.get(self, "last_modified_bies")
 
     @last_modified_bies.setter
-    def last_modified_bies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FileStoreFileLastModifiedByArgs']]]]):
+    def last_modified_bies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FileStoreFileLastModifiedByArgs']]]]):
         pulumi.set(self, "last_modified_bies", value)
 
     @_builtins.property
     @pulumi.getter(name="mimeType")
-    def mime_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mime_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         File mime type
         """
         return pulumi.get(self, "mime_type")
 
     @mime_type.setter
-    def mime_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mime_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mime_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="parentIdentifier")
-    def parent_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         File parent identifier on Harness File Store
         """
         return pulumi.get(self, "parent_identifier")
 
     @parent_identifier.setter
-    def parent_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Harness File Store file path
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -456,17 +456,17 @@ class FileStoreFile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_content_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_usage: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 mime_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_content_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 mime_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Resource for creating files in Harness.
@@ -601,17 +601,17 @@ class FileStoreFile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_content_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_usage: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 mime_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_content_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_usage: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 mime_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -650,21 +650,21 @@ class FileStoreFile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            content: Optional[pulumi.Input[_builtins.str]] = None,
-            created_bies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FileStoreFileCreatedByArgs', 'FileStoreFileCreatedByArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            file_content_path: Optional[pulumi.Input[_builtins.str]] = None,
-            file_usage: Optional[pulumi.Input[_builtins.str]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            last_modified_at: Optional[pulumi.Input[_builtins.int]] = None,
-            last_modified_bies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FileStoreFileLastModifiedByArgs', 'FileStoreFileLastModifiedByArgsDict']]]]] = None,
-            mime_type: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            path: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'FileStoreFile':
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            created_bies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FileStoreFileCreatedByArgs', 'FileStoreFileCreatedByArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            file_content_path: pulumi.Input[Optional[_builtins.str]] = None,
+            file_usage: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_at: pulumi.Input[Optional[_builtins.int]] = None,
+            last_modified_bies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FileStoreFileLastModifiedByArgs', 'FileStoreFileLastModifiedByArgsDict']]]]] = None,
+            mime_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'FileStoreFile':
         """
         Get an existing FileStoreFile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -93,15 +93,15 @@ export interface GetProjectListOutputArgs {
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
-    limit?: pulumi.Input<number>;
+    identifier?: pulumi.Input<string | undefined>;
+    limit?: pulumi.Input<number | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
     orgId: pulumi.Input<string>;
-    page?: pulumi.Input<number>;
+    page?: pulumi.Input<number | undefined>;
 }

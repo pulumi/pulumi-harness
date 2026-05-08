@@ -108,9 +108,9 @@ export interface GetGitConnectorOutputArgs {
     /**
      * Id of the git connector.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the git connector.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

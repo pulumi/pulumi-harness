@@ -27,11 +27,11 @@ class AwsProxyArgs:
                  machine_type: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
                  vpc: pulumi.Input[_builtins.str],
-                 allocate_static_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 certificates: Optional[pulumi.Input['AwsProxyCertificatesArgs']] = None,
-                 keypair: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allocate_static_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 certificates: pulumi.Input[Optional['AwsProxyCertificatesArgs']] = None,
+                 keypair: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AwsProxy resource.
 
@@ -136,76 +136,76 @@ class AwsProxyArgs:
 
     @_builtins.property
     @pulumi.getter(name="allocateStaticIp")
-    def allocate_static_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allocate_static_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean value to indicate if proxy vm needs to have static IP
         """
         return pulumi.get(self, "allocate_static_ip")
 
     @allocate_static_ip.setter
-    def allocate_static_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allocate_static_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allocate_static_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def certificates(self) -> Optional[pulumi.Input['AwsProxyCertificatesArgs']]:
+    def certificates(self) -> pulumi.Input[Optional['AwsProxyCertificatesArgs']]:
         return pulumi.get(self, "certificates")
 
     @certificates.setter
-    def certificates(self, value: Optional[pulumi.Input['AwsProxyCertificatesArgs']]):
+    def certificates(self, value: pulumi.Input[Optional['AwsProxyCertificatesArgs']]):
         pulumi.set(self, "certificates", value)
 
     @_builtins.property
     @pulumi.getter
-    def keypair(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keypair(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "keypair")
 
     @keypair.setter
-    def keypair(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keypair(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keypair", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the proxy
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Security Group to define the security rules that determine the inbound and outbound traffic
         """
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_groups", value)
 
 
 @pulumi.input_type
 class _AwsProxyState:
     def __init__(__self__, *,
-                 allocate_static_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificates: Optional[pulumi.Input['AwsProxyCertificatesArgs']] = None,
-                 cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 keypair: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc: Optional[pulumi.Input[_builtins.str]] = None):
+                 allocate_static_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificates: pulumi.Input[Optional['AwsProxyCertificatesArgs']] = None,
+                 cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_cloud_resources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 keypair: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AwsProxy resources.
 
@@ -253,164 +253,164 @@ class _AwsProxyState:
 
     @_builtins.property
     @pulumi.getter(name="allocateStaticIp")
-    def allocate_static_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allocate_static_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean value to indicate if proxy vm needs to have static IP
         """
         return pulumi.get(self, "allocate_static_ip")
 
     @allocate_static_ip.setter
-    def allocate_static_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allocate_static_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allocate_static_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="apiKey")
-    def api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Harness NG API key
         """
         return pulumi.get(self, "api_key")
 
     @api_key.setter
-    def api_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def certificates(self) -> Optional[pulumi.Input['AwsProxyCertificatesArgs']]:
+    def certificates(self) -> pulumi.Input[Optional['AwsProxyCertificatesArgs']]:
         return pulumi.get(self, "certificates")
 
     @certificates.setter
-    def certificates(self, value: Optional[pulumi.Input['AwsProxyCertificatesArgs']]):
+    def certificates(self, value: pulumi.Input[Optional['AwsProxyCertificatesArgs']]):
         pulumi.set(self, "certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudConnectorId")
-    def cloud_connector_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_connector_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of the cloud connector
         """
         return pulumi.get(self, "cloud_connector_id")
 
     @cloud_connector_id.setter
-    def cloud_connector_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_connector_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_connector_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteCloudResourcesOnDestroy")
-    def delete_cloud_resources_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_cloud_resources_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
         """
         return pulumi.get(self, "delete_cloud_resources_on_destroy")
 
     @delete_cloud_resources_on_destroy.setter
-    def delete_cloud_resources_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_cloud_resources_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_cloud_resources_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def keypair(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keypair(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "keypair")
 
     @keypair.setter
-    def keypair(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keypair(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keypair", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Machine instance type
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the proxy
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
-    def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private IP address of the proxy
         """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
-    def private_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
-    def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Public IP address of the proxy
         """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
-    def public_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region in which cloud resources are hosted
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Security Group to define the security rules that determine the inbound and outbound traffic
         """
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_groups", value)
 
     @_builtins.property
     @pulumi.getter
-    def vpc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC in which cloud resources are hosted
         """
         return pulumi.get(self, "vpc")
 
     @vpc.setter
-    def vpc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc", value)
 
 
@@ -420,17 +420,17 @@ class AwsProxy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocate_static_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificates: Optional[pulumi.Input[Union['AwsProxyCertificatesArgs', 'AwsProxyCertificatesArgsDict']]] = None,
-                 cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keypair: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc: Optional[pulumi.Input[_builtins.str]] = None,
+                 allocate_static_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificates: pulumi.Input[Optional[Union['AwsProxyCertificatesArgs', 'AwsProxyCertificatesArgsDict']]] = None,
+                 cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_cloud_resources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keypair: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating an AWS Autostopping proxy
@@ -515,17 +515,17 @@ class AwsProxy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocate_static_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 api_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificates: Optional[pulumi.Input[Union['AwsProxyCertificatesArgs', 'AwsProxyCertificatesArgsDict']]] = None,
-                 cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keypair: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc: Optional[pulumi.Input[_builtins.str]] = None,
+                 allocate_static_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificates: pulumi.Input[Optional[Union['AwsProxyCertificatesArgs', 'AwsProxyCertificatesArgsDict']]] = None,
+                 cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_cloud_resources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keypair: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -573,20 +573,20 @@ class AwsProxy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allocate_static_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-            api_key: Optional[pulumi.Input[_builtins.str]] = None,
-            certificates: Optional[pulumi.Input[Union['AwsProxyCertificatesArgs', 'AwsProxyCertificatesArgsDict']]] = None,
-            cloud_connector_id: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_cloud_resources_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            keypair: Optional[pulumi.Input[_builtins.str]] = None,
-            machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            public_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            vpc: Optional[pulumi.Input[_builtins.str]] = None) -> 'AwsProxy':
+            allocate_static_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            api_key: pulumi.Input[Optional[_builtins.str]] = None,
+            certificates: pulumi.Input[Optional[Union['AwsProxyCertificatesArgs', 'AwsProxyCertificatesArgsDict']]] = None,
+            cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_cloud_resources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            keypair: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vpc: pulumi.Input[Optional[_builtins.str]] = None) -> 'AwsProxy':
         """
         Get an existing AwsProxy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -250,13 +250,13 @@ def get_db_schema(identifier: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'),
         use_percona=pulumi.get(__ret__, 'use_percona'))
-def get_db_schema_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                         migration_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                         project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                         type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         use_percona: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+def get_db_schema_output(identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                         migration_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                         project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                         type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         use_percona: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbSchemaResult]:
     """
     Data source for retrieving a Harness DBDevOps Schema.

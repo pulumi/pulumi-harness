@@ -21,15 +21,15 @@ __all__ = ['AwsArgs', 'Aws']
 @pulumi.input_type
 class AwsArgs:
     def __init__(__self__, *,
-                 access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_key_id_secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 assume_cross_account_role: Optional[pulumi.Input['AwsAssumeCrossAccountRoleArgs']] = None,
-                 delegate_selector: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_access_key_secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['AwsUsageScopeArgs']]]] = None,
-                 use_ec2_iam_credentials: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_irsa: Optional[pulumi.Input[_builtins.bool]] = None):
+                 access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_key_id_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 assume_cross_account_role: pulumi.Input[Optional['AwsAssumeCrossAccountRoleArgs']] = None,
+                 delegate_selector: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_access_key_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input['AwsUsageScopeArgs']]]] = None,
+                 use_ec2_iam_credentials: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_irsa: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Aws resource.
 
@@ -64,125 +64,125 @@ class AwsArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessKeyId")
-    def access_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The plain text AWS access key id.
         """
         return pulumi.get(self, "access_key_id")
 
     @access_key_id.setter
-    def access_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accessKeyIdSecretName")
-    def access_key_id_secret_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key_id_secret_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Harness secret containing the AWS access key id
         """
         return pulumi.get(self, "access_key_id_secret_name")
 
     @access_key_id_secret_name.setter
-    def access_key_id_secret_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key_id_secret_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key_id_secret_name", value)
 
     @_builtins.property
     @pulumi.getter(name="assumeCrossAccountRole")
-    def assume_cross_account_role(self) -> Optional[pulumi.Input['AwsAssumeCrossAccountRoleArgs']]:
+    def assume_cross_account_role(self) -> pulumi.Input[Optional['AwsAssumeCrossAccountRoleArgs']]:
         """
         Configuration for assuming a cross account role.
         """
         return pulumi.get(self, "assume_cross_account_role")
 
     @assume_cross_account_role.setter
-    def assume_cross_account_role(self, value: Optional[pulumi.Input['AwsAssumeCrossAccountRoleArgs']]):
+    def assume_cross_account_role(self, value: pulumi.Input[Optional['AwsAssumeCrossAccountRoleArgs']]):
         pulumi.set(self, "assume_cross_account_role", value)
 
     @_builtins.property
     @pulumi.getter(name="delegateSelector")
-    def delegate_selector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delegate_selector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Select the Delegate to use via one of its Selectors.
         """
         return pulumi.get(self, "delegate_selector")
 
     @delegate_selector.setter
-    def delegate_selector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delegate_selector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delegate_selector", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cloud provider.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="secretAccessKeySecretName")
-    def secret_access_key_secret_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_access_key_secret_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Harness secret containing the AWS secret access key.
         """
         return pulumi.get(self, "secret_access_key_secret_name")
 
     @secret_access_key_secret_name.setter
-    def secret_access_key_secret_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_access_key_secret_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_access_key_secret_name", value)
 
     @_builtins.property
     @pulumi.getter(name="usageScopes")
-    def usage_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsUsageScopeArgs']]]]:
+    def usage_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AwsUsageScopeArgs']]]]:
         """
         This block is used for scoping the resource to a specific set of applications or environments.
         """
         return pulumi.get(self, "usage_scopes")
 
     @usage_scopes.setter
-    def usage_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsUsageScopeArgs']]]]):
+    def usage_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AwsUsageScopeArgs']]]]):
         pulumi.set(self, "usage_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="useEc2IamCredentials")
-    def use_ec2_iam_credentials(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_ec2_iam_credentials(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use the EC2 Instance Profile for Service Accounts.
         """
         return pulumi.get(self, "use_ec2_iam_credentials")
 
     @use_ec2_iam_credentials.setter
-    def use_ec2_iam_credentials(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_ec2_iam_credentials(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_ec2_iam_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="useIrsa")
-    def use_irsa(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_irsa(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use the AWS IAM Role for Service Accounts.
         """
         return pulumi.get(self, "use_irsa")
 
     @use_irsa.setter
-    def use_irsa(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_irsa(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_irsa", value)
 
 
 @pulumi.input_type
 class _AwsState:
     def __init__(__self__, *,
-                 access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_key_id_secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 assume_cross_account_role: Optional[pulumi.Input['AwsAssumeCrossAccountRoleArgs']] = None,
-                 delegate_selector: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_access_key_secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['AwsUsageScopeArgs']]]] = None,
-                 use_ec2_iam_credentials: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_irsa: Optional[pulumi.Input[_builtins.bool]] = None):
+                 access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_key_id_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 assume_cross_account_role: pulumi.Input[Optional['AwsAssumeCrossAccountRoleArgs']] = None,
+                 delegate_selector: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_access_key_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input['AwsUsageScopeArgs']]]] = None,
+                 use_ec2_iam_credentials: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_irsa: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Aws resources.
 
@@ -217,110 +217,110 @@ class _AwsState:
 
     @_builtins.property
     @pulumi.getter(name="accessKeyId")
-    def access_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The plain text AWS access key id.
         """
         return pulumi.get(self, "access_key_id")
 
     @access_key_id.setter
-    def access_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accessKeyIdSecretName")
-    def access_key_id_secret_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key_id_secret_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Harness secret containing the AWS access key id
         """
         return pulumi.get(self, "access_key_id_secret_name")
 
     @access_key_id_secret_name.setter
-    def access_key_id_secret_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key_id_secret_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key_id_secret_name", value)
 
     @_builtins.property
     @pulumi.getter(name="assumeCrossAccountRole")
-    def assume_cross_account_role(self) -> Optional[pulumi.Input['AwsAssumeCrossAccountRoleArgs']]:
+    def assume_cross_account_role(self) -> pulumi.Input[Optional['AwsAssumeCrossAccountRoleArgs']]:
         """
         Configuration for assuming a cross account role.
         """
         return pulumi.get(self, "assume_cross_account_role")
 
     @assume_cross_account_role.setter
-    def assume_cross_account_role(self, value: Optional[pulumi.Input['AwsAssumeCrossAccountRoleArgs']]):
+    def assume_cross_account_role(self, value: pulumi.Input[Optional['AwsAssumeCrossAccountRoleArgs']]):
         pulumi.set(self, "assume_cross_account_role", value)
 
     @_builtins.property
     @pulumi.getter(name="delegateSelector")
-    def delegate_selector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delegate_selector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Select the Delegate to use via one of its Selectors.
         """
         return pulumi.get(self, "delegate_selector")
 
     @delegate_selector.setter
-    def delegate_selector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delegate_selector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delegate_selector", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cloud provider.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="secretAccessKeySecretName")
-    def secret_access_key_secret_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_access_key_secret_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Harness secret containing the AWS secret access key.
         """
         return pulumi.get(self, "secret_access_key_secret_name")
 
     @secret_access_key_secret_name.setter
-    def secret_access_key_secret_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_access_key_secret_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_access_key_secret_name", value)
 
     @_builtins.property
     @pulumi.getter(name="usageScopes")
-    def usage_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsUsageScopeArgs']]]]:
+    def usage_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AwsUsageScopeArgs']]]]:
         """
         This block is used for scoping the resource to a specific set of applications or environments.
         """
         return pulumi.get(self, "usage_scopes")
 
     @usage_scopes.setter
-    def usage_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsUsageScopeArgs']]]]):
+    def usage_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AwsUsageScopeArgs']]]]):
         pulumi.set(self, "usage_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="useEc2IamCredentials")
-    def use_ec2_iam_credentials(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_ec2_iam_credentials(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use the EC2 Instance Profile for Service Accounts.
         """
         return pulumi.get(self, "use_ec2_iam_credentials")
 
     @use_ec2_iam_credentials.setter
-    def use_ec2_iam_credentials(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_ec2_iam_credentials(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_ec2_iam_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="useIrsa")
-    def use_irsa(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_irsa(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use the AWS IAM Role for Service Accounts.
         """
         return pulumi.get(self, "use_irsa")
 
     @use_irsa.setter
-    def use_irsa(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_irsa(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_irsa", value)
 
 
@@ -330,15 +330,15 @@ class Aws(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_key_id_secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 assume_cross_account_role: Optional[pulumi.Input[Union['AwsAssumeCrossAccountRoleArgs', 'AwsAssumeCrossAccountRoleArgsDict']]] = None,
-                 delegate_selector: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_access_key_secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsUsageScopeArgs', 'AwsUsageScopeArgsDict']]]]] = None,
-                 use_ec2_iam_credentials: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_irsa: Optional[pulumi.Input[_builtins.bool]] = None,
+                 access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_key_id_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 assume_cross_account_role: pulumi.Input[Optional[Union['AwsAssumeCrossAccountRoleArgs', 'AwsAssumeCrossAccountRoleArgsDict']]] = None,
+                 delegate_selector: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_access_key_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AwsUsageScopeArgs', 'AwsUsageScopeArgsDict']]]]] = None,
+                 use_ec2_iam_credentials: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_irsa: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Resource for creating an AWS cloud provider. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
@@ -443,15 +443,15 @@ class Aws(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_key_id_secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 assume_cross_account_role: Optional[pulumi.Input[Union['AwsAssumeCrossAccountRoleArgs', 'AwsAssumeCrossAccountRoleArgsDict']]] = None,
-                 delegate_selector: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_access_key_secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsUsageScopeArgs', 'AwsUsageScopeArgsDict']]]]] = None,
-                 use_ec2_iam_credentials: Optional[pulumi.Input[_builtins.bool]] = None,
-                 use_irsa: Optional[pulumi.Input[_builtins.bool]] = None,
+                 access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_key_id_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 assume_cross_account_role: pulumi.Input[Optional[Union['AwsAssumeCrossAccountRoleArgs', 'AwsAssumeCrossAccountRoleArgsDict']]] = None,
+                 delegate_selector: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_access_key_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AwsUsageScopeArgs', 'AwsUsageScopeArgsDict']]]]] = None,
+                 use_ec2_iam_credentials: pulumi.Input[Optional[_builtins.bool]] = None,
+                 use_irsa: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -480,15 +480,15 @@ class Aws(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            access_key_id_secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-            assume_cross_account_role: Optional[pulumi.Input[Union['AwsAssumeCrossAccountRoleArgs', 'AwsAssumeCrossAccountRoleArgsDict']]] = None,
-            delegate_selector: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_access_key_secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-            usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsUsageScopeArgs', 'AwsUsageScopeArgsDict']]]]] = None,
-            use_ec2_iam_credentials: Optional[pulumi.Input[_builtins.bool]] = None,
-            use_irsa: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Aws':
+            access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            access_key_id_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+            assume_cross_account_role: pulumi.Input[Optional[Union['AwsAssumeCrossAccountRoleArgs', 'AwsAssumeCrossAccountRoleArgsDict']]] = None,
+            delegate_selector: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_access_key_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+            usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AwsUsageScopeArgs', 'AwsUsageScopeArgsDict']]]]] = None,
+            use_ec2_iam_credentials: pulumi.Input[Optional[_builtins.bool]] = None,
+            use_irsa: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Aws':
         """
         Get an existing Aws resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

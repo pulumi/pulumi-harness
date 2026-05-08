@@ -133,31 +133,31 @@ export interface IdpCatalogEntityState {
     /**
      * Contains Git Information for importing entities from Git
      */
-    gitDetails?: pulumi.Input<inputs.platform.IdpCatalogEntityGitDetails>;
+    gitDetails?: pulumi.Input<inputs.platform.IdpCatalogEntityGitDetails | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Flag to set if importing from Git
      */
-    importFromGit?: pulumi.Input<boolean>;
+    importFromGit?: pulumi.Input<boolean | undefined>;
     /**
      * Kind of the catalog entity
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * YAML definition of the catalog entity
      */
-    yaml?: pulumi.Input<string>;
+    yaml?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -167,7 +167,7 @@ export interface IdpCatalogEntityArgs {
     /**
      * Contains Git Information for importing entities from Git
      */
-    gitDetails?: pulumi.Input<inputs.platform.IdpCatalogEntityGitDetails>;
+    gitDetails?: pulumi.Input<inputs.platform.IdpCatalogEntityGitDetails | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -175,21 +175,21 @@ export interface IdpCatalogEntityArgs {
     /**
      * Flag to set if importing from Git
      */
-    importFromGit?: pulumi.Input<boolean>;
+    importFromGit?: pulumi.Input<boolean | undefined>;
     /**
      * Kind of the catalog entity
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * YAML definition of the catalog entity
      */
-    yaml?: pulumi.Input<string>;
+    yaml?: pulumi.Input<string | undefined>;
 }

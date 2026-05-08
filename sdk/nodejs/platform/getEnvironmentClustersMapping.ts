@@ -180,7 +180,7 @@ export interface GetEnvironmentClustersMappingOutputArgs {
     /**
      * list of cluster identifiers and names
      */
-    clusters?: pulumi.Input<pulumi.Input<inputs.platform.GetEnvironmentClustersMappingClusterArgs>[]>;
+    clusters?: pulumi.Input<pulumi.Input<inputs.platform.GetEnvironmentClustersMappingClusterArgs>[] | undefined>;
     /**
      * environment identifier.
      */
@@ -192,9 +192,9 @@ export interface GetEnvironmentClustersMappingOutputArgs {
     /**
      * org_id of the environment.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * project_id of the environment.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

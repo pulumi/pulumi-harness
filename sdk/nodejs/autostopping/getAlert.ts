@@ -114,11 +114,11 @@ export interface GetAlertOutputArgs {
     /**
      * When true, the alert applies to all AutoStopping rules in the account (leave `ruleIdList` empty). Mutually exclusive with `ruleIdList`.
      */
-    applicableToAllRules?: pulumi.Input<boolean>;
+    applicableToAllRules?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the alert is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * List of event types that trigger the alert.
      */
@@ -134,5 +134,5 @@ export interface GetAlertOutputArgs {
     /**
      * List of AutoStopping rule IDs to apply the alert to. Required when `applicableToAllRules` is false. Mutually exclusive with `applicableToAllRules` = true.
      */
-    ruleIdLists?: pulumi.Input<pulumi.Input<number>[]>;
+    ruleIdLists?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }

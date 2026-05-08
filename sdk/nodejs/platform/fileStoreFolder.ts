@@ -181,47 +181,47 @@ export interface FileStoreFolderState {
     /**
      * Created by
      */
-    createdBies?: pulumi.Input<pulumi.Input<inputs.platform.FileStoreFolderCreatedBy>[]>;
+    createdBies?: pulumi.Input<pulumi.Input<inputs.platform.FileStoreFolderCreatedBy>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Last modified at
      */
-    lastModifiedAt?: pulumi.Input<number>;
+    lastModifiedAt?: pulumi.Input<number | undefined>;
     /**
      * Last modified by
      */
-    lastModifiedBies?: pulumi.Input<pulumi.Input<inputs.platform.FileStoreFolderLastModifiedBy>[]>;
+    lastModifiedBies?: pulumi.Input<pulumi.Input<inputs.platform.FileStoreFolderLastModifiedBy>[] | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Folder parent identifier on Harness File Store
      */
-    parentIdentifier?: pulumi.Input<string>;
+    parentIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Harness File Store folder path
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -231,7 +231,7 @@ export interface FileStoreFolderArgs {
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -239,11 +239,11 @@ export interface FileStoreFolderArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Folder parent identifier on Harness File Store
      */
@@ -251,9 +251,9 @@ export interface FileStoreFolderArgs {
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

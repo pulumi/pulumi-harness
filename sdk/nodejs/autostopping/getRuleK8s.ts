@@ -138,15 +138,15 @@ export interface GetRuleK8sOutputArgs {
     /**
      * Dependent rules
      */
-    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleK8sDependArgs>[]>;
+    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleK8sDependArgs>[] | undefined>;
     /**
      * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */
-    idleTimeMins?: pulumi.Input<number>;
+    idleTimeMins?: pulumi.Input<number | undefined>;
     /**
      * Id of the K8s connector
      */

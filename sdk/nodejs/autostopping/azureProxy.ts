@@ -213,65 +213,65 @@ export interface AzureProxyState {
     /**
      * Boolean value to indicate if proxy vm needs to have static IP
      */
-    allocateStaticIp?: pulumi.Input<boolean>;
+    allocateStaticIp?: pulumi.Input<boolean | undefined>;
     /**
      * Harness NG API key
      */
-    apiKey?: pulumi.Input<string>;
-    certificateId?: pulumi.Input<string>;
-    certificates?: pulumi.Input<inputs.autostopping.AzureProxyCertificates>;
+    apiKey?: pulumi.Input<string | undefined>;
+    certificateId?: pulumi.Input<string | undefined>;
+    certificates?: pulumi.Input<inputs.autostopping.AzureProxyCertificates | undefined>;
     /**
      * Id of the cloud connector
      */
-    cloudConnectorId?: pulumi.Input<string>;
+    cloudConnectorId?: pulumi.Input<string | undefined>;
     /**
      * Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in Azure account itself.
      */
-    deleteCloudResourcesOnDestroy?: pulumi.Input<boolean>;
+    deleteCloudResourcesOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of SSH Key to be used for proxy VM
      */
-    keypair?: pulumi.Input<string>;
+    keypair?: pulumi.Input<string | undefined>;
     /**
      * Type of instance to be used for proxy
      */
-    machineType?: pulumi.Input<string>;
+    machineType?: pulumi.Input<string | undefined>;
     /**
      * Name of the proxy
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Private IP address of the proxy
      */
-    privateIp?: pulumi.Input<string>;
+    privateIp?: pulumi.Input<string | undefined>;
     /**
      * Public IP address of the proxy
      */
-    publicIp?: pulumi.Input<string>;
+    publicIp?: pulumi.Input<string | undefined>;
     /**
      * Region in which cloud resources are hosted
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Resource group in which cloud resources are hosted
      */
-    resourceGroup?: pulumi.Input<string>;
+    resourceGroup?: pulumi.Input<string | undefined>;
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Subnet in which cloud resources are hosted
      */
-    subnetId?: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string | undefined>;
     /**
      * VPC in which cloud resources are hosted
      */
-    vpc?: pulumi.Input<string>;
+    vpc?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -281,13 +281,13 @@ export interface AzureProxyArgs {
     /**
      * Boolean value to indicate if proxy vm needs to have static IP
      */
-    allocateStaticIp?: pulumi.Input<boolean>;
+    allocateStaticIp?: pulumi.Input<boolean | undefined>;
     /**
      * Harness NG API key
      */
     apiKey: pulumi.Input<string>;
-    certificateId?: pulumi.Input<string>;
-    certificates?: pulumi.Input<inputs.autostopping.AzureProxyCertificates>;
+    certificateId?: pulumi.Input<string | undefined>;
+    certificates?: pulumi.Input<inputs.autostopping.AzureProxyCertificates | undefined>;
     /**
      * Id of the cloud connector
      */
@@ -307,7 +307,7 @@ export interface AzureProxyArgs {
     /**
      * Name of the proxy
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Region in which cloud resources are hosted
      */
@@ -319,7 +319,7 @@ export interface AzureProxyArgs {
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Subnet in which cloud resources are hosted
      */

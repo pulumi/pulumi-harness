@@ -119,15 +119,15 @@ export interface SpotState {
     /**
      * The Spot account ID
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The name of the cloud provider.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the Harness secret containing the spot account token
      */
-    tokenSecretName?: pulumi.Input<string>;
+    tokenSecretName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -141,7 +141,7 @@ export interface SpotArgs {
     /**
      * The name of the cloud provider.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the Harness secret containing the spot account token
      */

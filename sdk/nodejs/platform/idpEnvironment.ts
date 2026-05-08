@@ -184,47 +184,47 @@ export interface IdpEnvironmentState {
     /**
      * Based on environment reference. This should be passed as \n\n.\n\n/\n\n
      */
-    basedOn?: pulumi.Input<string>;
+    basedOn?: pulumi.Input<string | undefined>;
     /**
      * Blueprint to base the environment on
      */
-    blueprintIdentifier?: pulumi.Input<string>;
+    blueprintIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Version of the blueprint to base the environment on
      */
-    blueprintVersion?: pulumi.Input<string>;
+    blueprintVersion?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Additional inputs for controlling the environment in YAML format
      */
-    inputs?: pulumi.Input<string>;
+    inputs?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Overrides for environment blueprint inputs in YAML format
      */
-    overrides?: pulumi.Input<string>;
+    overrides?: pulumi.Input<string | undefined>;
     /**
      * Owner of the environment
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * target state of the environment. If different from the current, a pipeline will be triggered to update the environment
      */
-    targetState?: pulumi.Input<string>;
+    targetState?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -234,7 +234,7 @@ export interface IdpEnvironmentArgs {
     /**
      * Based on environment reference. This should be passed as \n\n.\n\n/\n\n
      */
-    basedOn?: pulumi.Input<string>;
+    basedOn?: pulumi.Input<string | undefined>;
     /**
      * Blueprint to base the environment on
      */
@@ -250,11 +250,11 @@ export interface IdpEnvironmentArgs {
     /**
      * Additional inputs for controlling the environment in YAML format
      */
-    inputs?: pulumi.Input<string>;
+    inputs?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
@@ -274,5 +274,5 @@ export interface IdpEnvironmentArgs {
     /**
      * target state of the environment. If different from the current, a pipeline will be triggered to update the environment
      */
-    targetState?: pulumi.Input<string>;
+    targetState?: pulumi.Input<string | undefined>;
 }

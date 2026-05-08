@@ -22,14 +22,14 @@ __all__ = ['SecretWinrmArgs', 'SecretWinrm']
 class SecretWinrmArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 kerberos: Optional[pulumi.Input['SecretWinrmKerberosArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ntlm: Optional[pulumi.Input['SecretWinrmNtlmArgs']] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 kerberos: pulumi.Input[Optional['SecretWinrmKerberosArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ntlm: pulumi.Input[Optional['SecretWinrmNtlmArgs']] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SecretWinrm resource.
 
@@ -75,113 +75,113 @@ class SecretWinrmArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def kerberos(self) -> Optional[pulumi.Input['SecretWinrmKerberosArgs']]:
+    def kerberos(self) -> pulumi.Input[Optional['SecretWinrmKerberosArgs']]:
         """
         Kerberos authentication scheme
         """
         return pulumi.get(self, "kerberos")
 
     @kerberos.setter
-    def kerberos(self, value: Optional[pulumi.Input['SecretWinrmKerberosArgs']]):
+    def kerberos(self, value: pulumi.Input[Optional['SecretWinrmKerberosArgs']]):
         pulumi.set(self, "kerberos", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def ntlm(self) -> Optional[pulumi.Input['SecretWinrmNtlmArgs']]:
+    def ntlm(self) -> pulumi.Input[Optional['SecretWinrmNtlmArgs']]:
         """
         NTLM authentication scheme
         """
         return pulumi.get(self, "ntlm")
 
     @ntlm.setter
-    def ntlm(self, value: Optional[pulumi.Input['SecretWinrmNtlmArgs']]):
+    def ntlm(self, value: pulumi.Input[Optional['SecretWinrmNtlmArgs']]):
         pulumi.set(self, "ntlm", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         WinRM port. Default is 5986 for HTTPS, 5985 for HTTP.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _SecretWinrmState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 kerberos: Optional[pulumi.Input['SecretWinrmKerberosArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ntlm: Optional[pulumi.Input['SecretWinrmNtlmArgs']] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 kerberos: pulumi.Input[Optional['SecretWinrmKerberosArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ntlm: pulumi.Input[Optional['SecretWinrmNtlmArgs']] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SecretWinrm resources.
 
@@ -216,110 +216,110 @@ class _SecretWinrmState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def kerberos(self) -> Optional[pulumi.Input['SecretWinrmKerberosArgs']]:
+    def kerberos(self) -> pulumi.Input[Optional['SecretWinrmKerberosArgs']]:
         """
         Kerberos authentication scheme
         """
         return pulumi.get(self, "kerberos")
 
     @kerberos.setter
-    def kerberos(self, value: Optional[pulumi.Input['SecretWinrmKerberosArgs']]):
+    def kerberos(self, value: pulumi.Input[Optional['SecretWinrmKerberosArgs']]):
         pulumi.set(self, "kerberos", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def ntlm(self) -> Optional[pulumi.Input['SecretWinrmNtlmArgs']]:
+    def ntlm(self) -> pulumi.Input[Optional['SecretWinrmNtlmArgs']]:
         """
         NTLM authentication scheme
         """
         return pulumi.get(self, "ntlm")
 
     @ntlm.setter
-    def ntlm(self, value: Optional[pulumi.Input['SecretWinrmNtlmArgs']]):
+    def ntlm(self, value: pulumi.Input[Optional['SecretWinrmNtlmArgs']]):
         pulumi.set(self, "ntlm", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         WinRM port. Default is 5986 for HTTPS, 5985 for HTTP.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags to associate with the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -329,15 +329,15 @@ class SecretWinrm(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 kerberos: Optional[pulumi.Input[Union['SecretWinrmKerberosArgs', 'SecretWinrmKerberosArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ntlm: Optional[pulumi.Input[Union['SecretWinrmNtlmArgs', 'SecretWinrmNtlmArgsDict']]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 kerberos: pulumi.Input[Optional[Union['SecretWinrmKerberosArgs', 'SecretWinrmKerberosArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ntlm: pulumi.Input[Optional[Union['SecretWinrmNtlmArgs', 'SecretWinrmNtlmArgsDict']]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Resource for creating a WinRM credential secret.
@@ -932,15 +932,15 @@ class SecretWinrm(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 kerberos: Optional[pulumi.Input[Union['SecretWinrmKerberosArgs', 'SecretWinrmKerberosArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ntlm: Optional[pulumi.Input[Union['SecretWinrmNtlmArgs', 'SecretWinrmNtlmArgsDict']]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 kerberos: pulumi.Input[Optional[Union['SecretWinrmKerberosArgs', 'SecretWinrmKerberosArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ntlm: pulumi.Input[Optional[Union['SecretWinrmNtlmArgs', 'SecretWinrmNtlmArgsDict']]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -971,15 +971,15 @@ class SecretWinrm(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            kerberos: Optional[pulumi.Input[Union['SecretWinrmKerberosArgs', 'SecretWinrmKerberosArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            ntlm: Optional[pulumi.Input[Union['SecretWinrmNtlmArgs', 'SecretWinrmNtlmArgsDict']]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            port: Optional[pulumi.Input[_builtins.int]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'SecretWinrm':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            kerberos: pulumi.Input[Optional[Union['SecretWinrmKerberosArgs', 'SecretWinrmKerberosArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ntlm: pulumi.Input[Optional[Union['SecretWinrmNtlmArgs', 'SecretWinrmNtlmArgsDict']]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'SecretWinrm':
         """
         Get an existing SecretWinrm resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

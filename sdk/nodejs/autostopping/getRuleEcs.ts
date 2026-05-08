@@ -119,23 +119,23 @@ export interface GetRuleEcsOutputArgs {
      * Id of the cloud connector
      */
     cloudConnectorId: pulumi.Input<string>;
-    container?: pulumi.Input<inputs.autostopping.GetRuleEcsContainerArgs>;
+    container?: pulumi.Input<inputs.autostopping.GetRuleEcsContainerArgs | undefined>;
     /**
      * Custom URLs used to access the instances
      */
-    customDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    customDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Dependent rules
      */
-    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleEcsDependArgs>[]>;
+    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleEcsDependArgs>[] | undefined>;
     /**
      * Http routing configuration
      */
-    https?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleEcsHttpArgs>[]>;
+    https?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleEcsHttpArgs>[] | undefined>;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */
-    idleTimeMins?: pulumi.Input<number>;
+    idleTimeMins?: pulumi.Input<number | undefined>;
     /**
      * Name of the rule
      */

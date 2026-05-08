@@ -22,12 +22,12 @@ __all__ = ['IdpCatalogEntityArgs', 'IdpCatalogEntity']
 class IdpCatalogEntityArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[_builtins.str],
-                 git_details: Optional[pulumi.Input['IdpCatalogEntityGitDetailsArgs']] = None,
-                 import_from_git: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None):
+                 git_details: pulumi.Input[Optional['IdpCatalogEntityGitDetailsArgs']] = None,
+                 import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a IdpCatalogEntity resource.
 
@@ -67,87 +67,87 @@ class IdpCatalogEntityArgs:
 
     @_builtins.property
     @pulumi.getter(name="gitDetails")
-    def git_details(self) -> Optional[pulumi.Input['IdpCatalogEntityGitDetailsArgs']]:
+    def git_details(self) -> pulumi.Input[Optional['IdpCatalogEntityGitDetailsArgs']]:
         """
         Contains Git Information for importing entities from Git
         """
         return pulumi.get(self, "git_details")
 
     @git_details.setter
-    def git_details(self, value: Optional[pulumi.Input['IdpCatalogEntityGitDetailsArgs']]):
+    def git_details(self, value: pulumi.Input[Optional['IdpCatalogEntityGitDetailsArgs']]):
         pulumi.set(self, "git_details", value)
 
     @_builtins.property
     @pulumi.getter(name="importFromGit")
-    def import_from_git(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def import_from_git(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to set if importing from Git
         """
         return pulumi.get(self, "import_from_git")
 
     @import_from_git.setter
-    def import_from_git(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def import_from_git(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "import_from_git", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kind of the catalog entity
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         YAML definition of the catalog entity
         """
         return pulumi.get(self, "yaml")
 
     @yaml.setter
-    def yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "yaml", value)
 
 
 @pulumi.input_type
 class _IdpCatalogEntityState:
     def __init__(__self__, *,
-                 git_details: Optional[pulumi.Input['IdpCatalogEntityGitDetailsArgs']] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_from_git: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None):
+                 git_details: pulumi.Input[Optional['IdpCatalogEntityGitDetailsArgs']] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IdpCatalogEntity resources.
 
@@ -176,86 +176,86 @@ class _IdpCatalogEntityState:
 
     @_builtins.property
     @pulumi.getter(name="gitDetails")
-    def git_details(self) -> Optional[pulumi.Input['IdpCatalogEntityGitDetailsArgs']]:
+    def git_details(self) -> pulumi.Input[Optional['IdpCatalogEntityGitDetailsArgs']]:
         """
         Contains Git Information for importing entities from Git
         """
         return pulumi.get(self, "git_details")
 
     @git_details.setter
-    def git_details(self, value: Optional[pulumi.Input['IdpCatalogEntityGitDetailsArgs']]):
+    def git_details(self, value: pulumi.Input[Optional['IdpCatalogEntityGitDetailsArgs']]):
         pulumi.set(self, "git_details", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="importFromGit")
-    def import_from_git(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def import_from_git(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to set if importing from Git
         """
         return pulumi.get(self, "import_from_git")
 
     @import_from_git.setter
-    def import_from_git(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def import_from_git(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "import_from_git", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kind of the catalog entity
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         YAML definition of the catalog entity
         """
         return pulumi.get(self, "yaml")
 
     @yaml.setter
-    def yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "yaml", value)
 
 
@@ -265,13 +265,13 @@ class IdpCatalogEntity(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 git_details: Optional[pulumi.Input[Union['IdpCatalogEntityGitDetailsArgs', 'IdpCatalogEntityGitDetailsArgsDict']]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_from_git: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None,
+                 git_details: pulumi.Input[Optional[Union['IdpCatalogEntityGitDetailsArgs', 'IdpCatalogEntityGitDetailsArgsDict']]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating IDP catalog entities.
@@ -356,13 +356,13 @@ class IdpCatalogEntity(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 git_details: Optional[pulumi.Input[Union['IdpCatalogEntityGitDetailsArgs', 'IdpCatalogEntityGitDetailsArgsDict']]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_from_git: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 yaml: Optional[pulumi.Input[_builtins.str]] = None,
+                 git_details: pulumi.Input[Optional[Union['IdpCatalogEntityGitDetailsArgs', 'IdpCatalogEntityGitDetailsArgsDict']]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -391,13 +391,13 @@ class IdpCatalogEntity(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            git_details: Optional[pulumi.Input[Union['IdpCatalogEntityGitDetailsArgs', 'IdpCatalogEntityGitDetailsArgsDict']]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            import_from_git: Optional[pulumi.Input[_builtins.bool]] = None,
-            kind: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            yaml: Optional[pulumi.Input[_builtins.str]] = None) -> 'IdpCatalogEntity':
+            git_details: pulumi.Input[Optional[Union['IdpCatalogEntityGitDetailsArgs', 'IdpCatalogEntityGitDetailsArgsDict']]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            yaml: pulumi.Input[Optional[_builtins.str]] = None) -> 'IdpCatalogEntity':
         """
         Get an existing IdpCatalogEntity resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

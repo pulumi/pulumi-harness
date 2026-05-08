@@ -119,8 +119,8 @@ def get_yaml_config(app_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         path=pulumi.get(__ret__, 'path'))
-def get_yaml_config_output(app_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           path: Optional[pulumi.Input[_builtins.str]] = None,
+def get_yaml_config_output(app_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           path: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetYamlConfigResult]:
     """
     Data source for retrieving a yaml config.

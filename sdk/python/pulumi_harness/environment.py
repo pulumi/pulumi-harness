@@ -23,9 +23,9 @@ class EnvironmentArgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 variable_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentVariableOverrideArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 variable_overrides: pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentVariableOverrideArgs']]]] = None):
         """
         The set of arguments for constructing a Environment resource.
 
@@ -70,49 +70,49 @@ class EnvironmentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the environment.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the environment.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="variableOverrides")
-    def variable_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentVariableOverrideArgs']]]]:
+    def variable_overrides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentVariableOverrideArgs']]]]:
         """
         Override for a service variable
         """
         return pulumi.get(self, "variable_overrides")
 
     @variable_overrides.setter
-    def variable_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentVariableOverrideArgs']]]]):
+    def variable_overrides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentVariableOverrideArgs']]]]):
         pulumi.set(self, "variable_overrides", value)
 
 
 @pulumi.input_type
 class _EnvironmentState:
     def __init__(__self__, *,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 variable_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentVariableOverrideArgs']]]] = None):
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 variable_overrides: pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentVariableOverrideArgs']]]] = None):
         """
         Input properties used for looking up and filtering Environment resources.
 
@@ -135,62 +135,62 @@ class _EnvironmentState:
 
     @_builtins.property
     @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the application.
         """
         return pulumi.get(self, "app_id")
 
     @app_id.setter
-    def app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the environment.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the environment.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the environment. Valid values are `PROD` and `NON_PROD`
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="variableOverrides")
-    def variable_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentVariableOverrideArgs']]]]:
+    def variable_overrides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentVariableOverrideArgs']]]]:
         """
         Override for a service variable
         """
         return pulumi.get(self, "variable_overrides")
 
     @variable_overrides.setter
-    def variable_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentVariableOverrideArgs']]]]):
+    def variable_overrides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentVariableOverrideArgs']]]]):
         pulumi.set(self, "variable_overrides", value)
 
 
@@ -200,11 +200,11 @@ class Environment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 variable_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EnvironmentVariableOverrideArgs', 'EnvironmentVariableOverrideArgsDict']]]]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 variable_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentVariableOverrideArgs', 'EnvironmentVariableOverrideArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for creating an environment
@@ -351,11 +351,11 @@ class Environment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 variable_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EnvironmentVariableOverrideArgs', 'EnvironmentVariableOverrideArgsDict']]]]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 variable_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentVariableOverrideArgs', 'EnvironmentVariableOverrideArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -384,11 +384,11 @@ class Environment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            variable_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EnvironmentVariableOverrideArgs', 'EnvironmentVariableOverrideArgsDict']]]]] = None) -> 'Environment':
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            variable_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentVariableOverrideArgs', 'EnvironmentVariableOverrideArgsDict']]]]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

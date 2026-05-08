@@ -40,6 +40,12 @@ namespace Pulumi.Harness.Platform
     ///                 },
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         IgnoreChanges =
+    ///         {
+    ///             "requests[0].upsert",
+    ///         },
     ///     });
     /// 
     /// });

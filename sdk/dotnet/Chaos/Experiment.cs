@@ -65,6 +65,10 @@ namespace Pulumi.Harness.Chaos
     ///             myTemplate,
     ///             myInfra,
     ///         },
+    ///         IgnoreChanges =
+    ///         {
+    ///             "tags",
+    ///         },
     ///     });
     /// 
     ///     // ----------------------------------------------------------------------------
@@ -97,6 +101,10 @@ namespace Pulumi.Harness.Chaos
     ///             myTemplate,
     ///             myInfra,
     ///         },
+    ///         IgnoreChanges =
+    ///         {
+    ///             "tags",
+    ///         },
     ///     });
     /// 
     ///     // ----------------------------------------------------------------------------
@@ -127,6 +135,10 @@ namespace Pulumi.Harness.Chaos
     ///         {
     ///             orgTemplate,
     ///             myInfra,
+    ///         },
+    ///         IgnoreChanges =
+    ///         {
+    ///             "tags",
     ///         },
     ///     });
     /// 

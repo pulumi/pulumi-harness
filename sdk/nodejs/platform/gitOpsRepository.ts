@@ -188,62 +188,62 @@ export interface GitOpsRepositoryState {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier of the GitOps repository.
      */
-    agentId?: pulumi.Input<string>;
+    agentId?: pulumi.Input<string | undefined>;
     /**
      * Indicates if to operate on credential set instead of repository.
      */
-    credsOnly?: pulumi.Input<boolean>;
+    credsOnly?: pulumi.Input<boolean | undefined>;
     /**
      * ECR access token generator specific configuration.
      */
-    ecrGen?: pulumi.Input<inputs.platform.GitOpsRepositoryEcrGen>;
+    ecrGen?: pulumi.Input<inputs.platform.GitOpsRepositoryEcrGen | undefined>;
     /**
      * Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * GCR access token generator specific configuration.
      */
-    gcrGen?: pulumi.Input<inputs.platform.GitOpsRepositoryGcrGen>;
+    gcrGen?: pulumi.Input<inputs.platform.GitOpsRepositoryGcrGen | undefined>;
     /**
      * Default: "UNSET"
      * Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
      */
-    genType?: pulumi.Input<string>;
+    genType?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the GitOps repository.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier of the GitOps repository.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the GitOps repository.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * For OCI repos, this is the interval to refresh the token to access the registry.
      */
-    refreshInterval?: pulumi.Input<string>;
+    refreshInterval?: pulumi.Input<string | undefined>;
     /**
      * Repo details holding application configurations.
      */
-    repos?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepositoryRepo>[]>;
+    repos?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepositoryRepo>[] | undefined>;
     /**
      * Update mask of the repository.
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    updateMasks?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepositoryUpdateMask>[]>;
+    updateMasks?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepositoryUpdateMask>[] | undefined>;
     /**
      * Indicates if the GitOps repository should be updated if existing and inserted if not.
      */
-    upsert?: pulumi.Input<boolean>;
+    upsert?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -255,7 +255,7 @@ export interface GitOpsRepositoryArgs {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier of the GitOps repository.
      */
@@ -263,24 +263,24 @@ export interface GitOpsRepositoryArgs {
     /**
      * Indicates if to operate on credential set instead of repository.
      */
-    credsOnly?: pulumi.Input<boolean>;
+    credsOnly?: pulumi.Input<boolean | undefined>;
     /**
      * ECR access token generator specific configuration.
      */
-    ecrGen?: pulumi.Input<inputs.platform.GitOpsRepositoryEcrGen>;
+    ecrGen?: pulumi.Input<inputs.platform.GitOpsRepositoryEcrGen | undefined>;
     /**
      * Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * GCR access token generator specific configuration.
      */
-    gcrGen?: pulumi.Input<inputs.platform.GitOpsRepositoryGcrGen>;
+    gcrGen?: pulumi.Input<inputs.platform.GitOpsRepositoryGcrGen | undefined>;
     /**
      * Default: "UNSET"
      * Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
      */
-    genType?: pulumi.Input<string>;
+    genType?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the GitOps repository.
      */
@@ -288,15 +288,15 @@ export interface GitOpsRepositoryArgs {
     /**
      * Organization identifier of the GitOps repository.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the GitOps repository.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * For OCI repos, this is the interval to refresh the token to access the registry.
      */
-    refreshInterval?: pulumi.Input<string>;
+    refreshInterval?: pulumi.Input<string | undefined>;
     /**
      * Repo details holding application configurations.
      */
@@ -306,9 +306,9 @@ export interface GitOpsRepositoryArgs {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    updateMasks?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepositoryUpdateMask>[]>;
+    updateMasks?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsRepositoryUpdateMask>[] | undefined>;
     /**
      * Indicates if the GitOps repository should be updated if existing and inserted if not.
      */
-    upsert?: pulumi.Input<boolean>;
+    upsert?: pulumi.Input<boolean | undefined>;
 }

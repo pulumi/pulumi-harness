@@ -112,7 +112,7 @@ export interface GetGitopsAppProjectMappingOutputArgs {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier for which the ArgoCD and Harness project mapping is to be created.
      */

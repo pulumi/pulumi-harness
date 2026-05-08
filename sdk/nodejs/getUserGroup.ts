@@ -62,9 +62,9 @@ export interface GetUserGroupOutputArgs {
     /**
      * Unique identifier of the user group
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the user group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

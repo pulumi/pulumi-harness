@@ -21,11 +21,11 @@ __all__ = ['GcpArgs', 'Gcp']
 @pulumi.input_type
 class GcpArgs:
     def __init__(__self__, *,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['GcpUsageScopeArgs']]]] = None):
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input['GcpUsageScopeArgs']]]] = None):
         """
         The set of arguments for constructing a Gcp resource.
 
@@ -48,73 +48,73 @@ class GcpArgs:
 
     @_builtins.property
     @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def delegate_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Delegate selectors to use for this provider.
         """
         return pulumi.get(self, "delegate_selectors")
 
     @delegate_selectors.setter
-    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "delegate_selectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cloud provider.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="secretFileId")
-    def secret_file_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_file_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the secret containing the GCP credentials
         """
         return pulumi.get(self, "secret_file_id")
 
     @secret_file_id.setter
-    def secret_file_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_file_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_file_id", value)
 
     @_builtins.property
     @pulumi.getter(name="skipValidation")
-    def skip_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Skip validation of GCP configuration.
         """
         return pulumi.get(self, "skip_validation")
 
     @skip_validation.setter
-    def skip_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="usageScopes")
-    def usage_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GcpUsageScopeArgs']]]]:
+    def usage_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GcpUsageScopeArgs']]]]:
         """
         This block is used for scoping the resource to a specific set of applications or environments.
         """
         return pulumi.get(self, "usage_scopes")
 
     @usage_scopes.setter
-    def usage_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcpUsageScopeArgs']]]]):
+    def usage_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GcpUsageScopeArgs']]]]):
         pulumi.set(self, "usage_scopes", value)
 
 
 @pulumi.input_type
 class _GcpState:
     def __init__(__self__, *,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['GcpUsageScopeArgs']]]] = None):
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input['GcpUsageScopeArgs']]]] = None):
         """
         Input properties used for looking up and filtering Gcp resources.
 
@@ -137,62 +137,62 @@ class _GcpState:
 
     @_builtins.property
     @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def delegate_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Delegate selectors to use for this provider.
         """
         return pulumi.get(self, "delegate_selectors")
 
     @delegate_selectors.setter
-    def delegate_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "delegate_selectors", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cloud provider.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="secretFileId")
-    def secret_file_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_file_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the secret containing the GCP credentials
         """
         return pulumi.get(self, "secret_file_id")
 
     @secret_file_id.setter
-    def secret_file_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_file_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_file_id", value)
 
     @_builtins.property
     @pulumi.getter(name="skipValidation")
-    def skip_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Skip validation of GCP configuration.
         """
         return pulumi.get(self, "skip_validation")
 
     @skip_validation.setter
-    def skip_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="usageScopes")
-    def usage_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GcpUsageScopeArgs']]]]:
+    def usage_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GcpUsageScopeArgs']]]]:
         """
         This block is used for scoping the resource to a specific set of applications or environments.
         """
         return pulumi.get(self, "usage_scopes")
 
     @usage_scopes.setter
-    def usage_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcpUsageScopeArgs']]]]):
+    def usage_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GcpUsageScopeArgs']]]]):
         pulumi.set(self, "usage_scopes", value)
 
 
@@ -202,11 +202,11 @@ class Gcp(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpUsageScopeArgs', 'GcpUsageScopeArgsDict']]]]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpUsageScopeArgs', 'GcpUsageScopeArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for creating a GCP cloud provider. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
@@ -245,11 +245,11 @@ class Gcp(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpUsageScopeArgs', 'GcpUsageScopeArgsDict']]]]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpUsageScopeArgs', 'GcpUsageScopeArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -274,11 +274,11 @@ class Gcp(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            delegate_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-            skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-            usage_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpUsageScopeArgs', 'GcpUsageScopeArgsDict']]]]] = None) -> 'Gcp':
+            delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpUsageScopeArgs', 'GcpUsageScopeArgsDict']]]]] = None) -> 'Gcp':
         """
         Get an existing Gcp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -280,51 +280,51 @@ export interface DbSchemaState {
     /**
      * Configuration to clone changeSets using script
      */
-    changelogScript?: pulumi.Input<inputs.platform.DbSchemaChangelogScript>;
+    changelogScript?: pulumi.Input<inputs.platform.DbSchemaChangelogScript | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * DB Migration tool type. Valid values are: Liquibase, Flyway
      */
-    migrationType?: pulumi.Input<string>;
+    migrationType?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Provides a connector and path at which to find the database schema representation
      */
-    schemaSource?: pulumi.Input<inputs.platform.DbSchemaSchemaSource>;
+    schemaSource?: pulumi.Input<inputs.platform.DbSchemaSchemaSource | undefined>;
     /**
      * The service associated with schema
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type of the database schema. Valid values are: SCRIPT, REPOSITORY
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
      */
-    usePercona?: pulumi.Input<boolean>;
+    usePercona?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -334,11 +334,11 @@ export interface DbSchemaArgs {
     /**
      * Configuration to clone changeSets using script
      */
-    changelogScript?: pulumi.Input<inputs.platform.DbSchemaChangelogScript>;
+    changelogScript?: pulumi.Input<inputs.platform.DbSchemaChangelogScript | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -346,11 +346,11 @@ export interface DbSchemaArgs {
     /**
      * DB Migration tool type. Valid values are: Liquibase, Flyway
      */
-    migrationType?: pulumi.Input<string>;
+    migrationType?: pulumi.Input<string | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
@@ -362,21 +362,21 @@ export interface DbSchemaArgs {
     /**
      * Provides a connector and path at which to find the database schema representation
      */
-    schemaSource?: pulumi.Input<inputs.platform.DbSchemaSchemaSource>;
+    schemaSource?: pulumi.Input<inputs.platform.DbSchemaSchemaSource | undefined>;
     /**
      * The service associated with schema
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type of the database schema. Valid values are: SCRIPT, REPOSITORY
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * If percona-toolkit is to be enabled for the database schema. Defaults to `false`.
      */
-    usePercona?: pulumi.Input<boolean>;
+    usePercona?: pulumi.Input<boolean | undefined>;
 }

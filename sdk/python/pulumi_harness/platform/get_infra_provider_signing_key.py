@@ -153,7 +153,7 @@ def get_infra_provider_signing_key(id: Optional[_builtins.str] = None,
         key_name=pulumi.get(__ret__, 'key_name'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         user=pulumi.get(__ret__, 'user'))
-def get_infra_provider_signing_key_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_infra_provider_signing_key_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInfraProviderSigningKeyResult]:
     """
     Data source for retrieving a GPG Signing Key from the IaCM Provider Registry.

@@ -178,55 +178,55 @@ export interface ImageRegistryState {
     /**
      * Creation timestamp
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Custom images configuration
      */
-    customImages?: pulumi.Input<pulumi.Input<inputs.chaos.ImageRegistryCustomImage>[]>;
+    customImages?: pulumi.Input<pulumi.Input<inputs.chaos.ImageRegistryCustomImage>[] | undefined>;
     /**
      * The infrastructure ID to set up the image registry
      */
-    infraId?: pulumi.Input<string>;
+    infraId?: pulumi.Input<string | undefined>;
     /**
      * Whether this is the default registry
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Whether override is allowed for this registry
      */
-    isOverrideAllowed?: pulumi.Input<boolean>;
+    isOverrideAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the registry is private
      */
-    isPrivate?: pulumi.Input<boolean>;
+    isPrivate?: pulumi.Input<boolean | undefined>;
     /**
      * The organization ID of the image registry
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The project ID of the image registry
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The registry account name
      */
-    registryAccount?: pulumi.Input<string>;
+    registryAccount?: pulumi.Input<string | undefined>;
     /**
      * The registry server URL
      */
-    registryServer?: pulumi.Input<string>;
+    registryServer?: pulumi.Input<string | undefined>;
     /**
      * The name of the secret for authentication
      */
-    secretName?: pulumi.Input<string>;
+    secretName?: pulumi.Input<string | undefined>;
     /**
      * Last update timestamp
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * Whether to use custom images
      */
-    useCustomImages?: pulumi.Input<boolean>;
+    useCustomImages?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -236,19 +236,19 @@ export interface ImageRegistryArgs {
     /**
      * Custom images configuration
      */
-    customImages?: pulumi.Input<pulumi.Input<inputs.chaos.ImageRegistryCustomImage>[]>;
+    customImages?: pulumi.Input<pulumi.Input<inputs.chaos.ImageRegistryCustomImage>[] | undefined>;
     /**
      * The infrastructure ID to set up the image registry
      */
-    infraId?: pulumi.Input<string>;
+    infraId?: pulumi.Input<string | undefined>;
     /**
      * Whether this is the default registry
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Whether override is allowed for this registry
      */
-    isOverrideAllowed?: pulumi.Input<boolean>;
+    isOverrideAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the registry is private
      */
@@ -256,11 +256,11 @@ export interface ImageRegistryArgs {
     /**
      * The organization ID of the image registry
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The project ID of the image registry
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The registry account name
      */
@@ -272,9 +272,9 @@ export interface ImageRegistryArgs {
     /**
      * The name of the secret for authentication
      */
-    secretName?: pulumi.Input<string>;
+    secretName?: pulumi.Input<string | undefined>;
     /**
      * Whether to use custom images
      */
-    useCustomImages?: pulumi.Input<boolean>;
+    useCustomImages?: pulumi.Input<boolean | undefined>;
 }

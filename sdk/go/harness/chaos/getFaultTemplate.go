@@ -12,6 +12,8 @@ import (
 )
 
 // Data source for retrieving a Harness Chaos Fault Template. Supports lookup by identity (recommended) or name.
+//
+// ## Example Usage
 func LookupFaultTemplate(ctx *pulumi.Context, args *LookupFaultTemplateArgs, opts ...pulumi.InvokeOption) (*LookupFaultTemplateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFaultTemplateResult

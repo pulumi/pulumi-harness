@@ -287,11 +287,11 @@ def get_usergroup(identifier: Optional[_builtins.str] = None,
         sso_linked=pulumi.get(__ret__, 'sso_linked'),
         tags=pulumi.get(__ret__, 'tags'),
         users=pulumi.get(__ret__, 'users'))
-def get_usergroup_output(identifier: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         notification_configs: Optional[pulumi.Input[Optional[Sequence[Union['GetUsergroupNotificationConfigArgs', 'GetUsergroupNotificationConfigArgsDict']]]]] = None,
-                         org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_usergroup_output(identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         notification_configs: pulumi.Input[Optional[Optional[Sequence[Union['GetUsergroupNotificationConfigArgs', 'GetUsergroupNotificationConfigArgsDict']]]]] = None,
+                         org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUsergroupResult]:
     """
     Data source for retrieving a Harness User Group.

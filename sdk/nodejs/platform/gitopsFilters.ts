@@ -121,31 +121,31 @@ export interface GitopsFiltersState {
     /**
      * Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})
      */
-    filterProperties?: pulumi.Input<string>;
+    filterProperties?: pulumi.Input<string | undefined>;
     /**
      * This indicates visibility of filters, by default it is Everyone.
      */
-    filterVisibility?: pulumi.Input<string>;
+    filterVisibility?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the GitOps filters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization Identifier for the Entity.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project Identifier for the Entity.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Type of GitOps filters.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -159,7 +159,7 @@ export interface GitopsFiltersArgs {
     /**
      * This indicates visibility of filters, by default it is Everyone.
      */
-    filterVisibility?: pulumi.Input<string>;
+    filterVisibility?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -167,7 +167,7 @@ export interface GitopsFiltersArgs {
     /**
      * Name of the GitOps filters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Organization Identifier for the Entity.
      */

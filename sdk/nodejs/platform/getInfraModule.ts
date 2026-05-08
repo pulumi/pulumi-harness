@@ -316,15 +316,15 @@ export interface GetInfraModuleOutputArgs {
     /**
      * Timestamp when the module was created
      */
-    created?: pulumi.Input<number>;
+    created?: pulumi.Input<number | undefined>;
     /**
      * Description of the module
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Git Tag Style
      */
-    gitTagStyle?: pulumi.Input<string>;
+    gitTagStyle?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the module
      */
@@ -332,7 +332,7 @@ export interface GetInfraModuleOutputArgs {
     /**
      * Error while retrieving the module
      */
-    moduleError?: pulumi.Input<string>;
+    moduleError?: pulumi.Input<string | undefined>;
     /**
      * Name of the module
      */
@@ -340,53 +340,53 @@ export interface GetInfraModuleOutputArgs {
     /**
      * Onboarding Pipeline identifier.
      */
-    onboardingPipeline?: pulumi.Input<string>;
+    onboardingPipeline?: pulumi.Input<string | undefined>;
     /**
      * Onboarding Pipeline organization.
      */
-    onboardingPipelineOrg?: pulumi.Input<string>;
+    onboardingPipelineOrg?: pulumi.Input<string | undefined>;
     /**
      * Onboarding Pipeline project.
      */
-    onboardingPipelineProject?: pulumi.Input<string>;
+    onboardingPipelineProject?: pulumi.Input<string | undefined>;
     /**
      * Sync the project automatically.
      */
-    onboardingPipelineSync?: pulumi.Input<boolean>;
-    org?: pulumi.Input<string>;
-    project?: pulumi.Input<string>;
+    onboardingPipelineSync?: pulumi.Input<boolean | undefined>;
+    org?: pulumi.Input<string | undefined>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * For account connectors, the repository name where the module is stored.
      */
-    repository?: pulumi.Input<string>;
+    repository?: pulumi.Input<string | undefined>;
     /**
      * Repository Branch in which the module should be accessed
      */
-    repositoryBranch?: pulumi.Input<string>;
+    repositoryBranch?: pulumi.Input<string | undefined>;
     /**
      * Repository Commit in which the module should be accessed
      */
-    repositoryCommit?: pulumi.Input<string>;
+    repositoryCommit?: pulumi.Input<string | undefined>;
     /**
      * Repository Connector is the reference to the connector for the repository
      */
-    repositoryConnector?: pulumi.Input<string>;
+    repositoryConnector?: pulumi.Input<string | undefined>;
     /**
      * Repository Path is the path in which the module resides
      */
-    repositoryPath?: pulumi.Input<string>;
+    repositoryPath?: pulumi.Input<string | undefined>;
     /**
      * URL where the module is stored
      */
-    repositoryUrl?: pulumi.Input<string>;
+    repositoryUrl?: pulumi.Input<string | undefined>;
     /**
      * How to store the artifact.
      */
-    storageType?: pulumi.Input<string>;
+    storageType?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the module was last synced
      */
-    synced?: pulumi.Input<number>;
+    synced?: pulumi.Input<number | undefined>;
     /**
      * Provider of the module
      */
@@ -394,21 +394,21 @@ export interface GetInfraModuleOutputArgs {
     /**
      * Tags associated with the module
      */
-    tags?: pulumi.Input<string>;
+    tags?: pulumi.Input<string | undefined>;
     /**
      * Whether testing is enabled for the module
      */
-    testingEnabled?: pulumi.Input<boolean>;
+    testingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Testing metadata for the module
      */
-    testingMetadata?: pulumi.Input<inputs.platform.GetInfraModuleTestingMetadataArgs>;
+    testingMetadata?: pulumi.Input<inputs.platform.GetInfraModuleTestingMetadataArgs | undefined>;
     /**
      * Timestamp when the module was last modified
      */
-    updated?: pulumi.Input<number>;
+    updated?: pulumi.Input<number | undefined>;
     /**
      * Versions of the module
      */
-    versions?: pulumi.Input<pulumi.Input<string>[]>;
+    versions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

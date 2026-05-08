@@ -124,23 +124,23 @@ export interface IacmDefaultPipelineState {
     /**
      * The operation associated with this default.
      */
-    operation?: pulumi.Input<string>;
+    operation?: pulumi.Input<string | undefined>;
     /**
      * Organization identifier of the organization the default pipelines resides in.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The pipeline associated with this default.
      */
-    pipeline?: pulumi.Input<string>;
+    pipeline?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the project the default pipelines resides in.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The provisioner associated with this default.
      */
-    provisionerType?: pulumi.Input<string>;
+    provisionerType?: pulumi.Input<string | undefined>;
 }
 
 /**

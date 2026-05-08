@@ -96,23 +96,23 @@ export interface GcpState {
     /**
      * Delegate selectors to use for this provider.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the cloud provider.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The id of the secret containing the GCP credentials
      */
-    secretFileId?: pulumi.Input<string>;
+    secretFileId?: pulumi.Input<string | undefined>;
     /**
      * Skip validation of GCP configuration.
      */
-    skipValidation?: pulumi.Input<boolean>;
+    skipValidation?: pulumi.Input<boolean | undefined>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.GcpUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.GcpUsageScope>[] | undefined>;
 }
 
 /**
@@ -122,21 +122,21 @@ export interface GcpArgs {
     /**
      * Delegate selectors to use for this provider.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the cloud provider.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The id of the secret containing the GCP credentials
      */
-    secretFileId?: pulumi.Input<string>;
+    secretFileId?: pulumi.Input<string | undefined>;
     /**
      * Skip validation of GCP configuration.
      */
-    skipValidation?: pulumi.Input<boolean>;
+    skipValidation?: pulumi.Input<boolean | undefined>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.GcpUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.GcpUsageScope>[] | undefined>;
 }

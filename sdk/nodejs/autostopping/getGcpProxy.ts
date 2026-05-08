@@ -176,12 +176,12 @@ export interface GetGcpProxyOutputArgs {
     /**
      * Boolean value to indicate if proxy vm needs to have static IP
      */
-    allocateStaticIp?: pulumi.Input<boolean>;
+    allocateStaticIp?: pulumi.Input<boolean | undefined>;
     /**
      * Harness NG API key
      */
     apiKey: pulumi.Input<string>;
-    certificates?: pulumi.Input<inputs.autostopping.GetGcpProxyCertificatesArgs>;
+    certificates?: pulumi.Input<inputs.autostopping.GetGcpProxyCertificatesArgs | undefined>;
     /**
      * Id of the cloud connector
      */
@@ -205,7 +205,7 @@ export interface GetGcpProxyOutputArgs {
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * VPC in which cloud resources are hosted
      */

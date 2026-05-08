@@ -154,7 +154,7 @@ def get_infra_provider(id: Optional[_builtins.str] = None,
         type=pulumi.get(__ret__, 'type'),
         updated=pulumi.get(__ret__, 'updated'),
         versions=pulumi.get(__ret__, 'versions'))
-def get_infra_provider_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_infra_provider_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInfraProviderResult]:
     """
     Data source for retrieving a Terraform/OpenTofu Provider from the IaCM Provider Registry.

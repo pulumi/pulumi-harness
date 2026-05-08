@@ -21,10 +21,10 @@ __all__ = ['DiscoverySettingArgs', 'DiscoverySetting']
 @pulumi.input_type
 class DiscoverySettingArgs:
     def __init__(__self__, *,
-                 correlation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_registry: Optional[pulumi.Input['DiscoverySettingImageRegistryArgs']] = None,
-                 org_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_identifier: Optional[pulumi.Input[_builtins.str]] = None):
+                 correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_registry: pulumi.Input[Optional['DiscoverySettingImageRegistryArgs']] = None,
+                 org_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_identifier: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DiscoverySetting resource.
 
@@ -44,62 +44,62 @@ class DiscoverySettingArgs:
 
     @_builtins.property
     @pulumi.getter(name="correlationId")
-    def correlation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def correlation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Correlation ID for the request.
         """
         return pulumi.get(self, "correlation_id")
 
     @correlation_id.setter
-    def correlation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def correlation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "correlation_id", value)
 
     @_builtins.property
     @pulumi.getter(name="imageRegistry")
-    def image_registry(self) -> Optional[pulumi.Input['DiscoverySettingImageRegistryArgs']]:
+    def image_registry(self) -> pulumi.Input[Optional['DiscoverySettingImageRegistryArgs']]:
         """
         Image registry configuration.
         """
         return pulumi.get(self, "image_registry")
 
     @image_registry.setter
-    def image_registry(self, value: Optional[pulumi.Input['DiscoverySettingImageRegistryArgs']]):
+    def image_registry(self, value: pulumi.Input[Optional['DiscoverySettingImageRegistryArgs']]):
         pulumi.set(self, "image_registry", value)
 
     @_builtins.property
     @pulumi.getter(name="orgIdentifier")
-    def org_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The organization identifier.
         """
         return pulumi.get(self, "org_identifier")
 
     @org_identifier.setter
-    def org_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="projectIdentifier")
-    def project_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project identifier.
         """
         return pulumi.get(self, "project_identifier")
 
     @project_identifier.setter
-    def project_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_identifier", value)
 
 
 @pulumi.input_type
 class _DiscoverySettingState:
     def __init__(__self__, *,
-                 correlation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_registry: Optional[pulumi.Input['DiscoverySettingImageRegistryArgs']] = None,
-                 org_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_registry: pulumi.Input[Optional['DiscoverySettingImageRegistryArgs']] = None,
+                 org_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DiscoverySetting resources.
 
@@ -125,74 +125,74 @@ class _DiscoverySettingState:
 
     @_builtins.property
     @pulumi.getter(name="correlationId")
-    def correlation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def correlation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Correlation ID for the request.
         """
         return pulumi.get(self, "correlation_id")
 
     @correlation_id.setter
-    def correlation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def correlation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "correlation_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the setting was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="imageRegistry")
-    def image_registry(self) -> Optional[pulumi.Input['DiscoverySettingImageRegistryArgs']]:
+    def image_registry(self) -> pulumi.Input[Optional['DiscoverySettingImageRegistryArgs']]:
         """
         Image registry configuration.
         """
         return pulumi.get(self, "image_registry")
 
     @image_registry.setter
-    def image_registry(self, value: Optional[pulumi.Input['DiscoverySettingImageRegistryArgs']]):
+    def image_registry(self, value: pulumi.Input[Optional['DiscoverySettingImageRegistryArgs']]):
         pulumi.set(self, "image_registry", value)
 
     @_builtins.property
     @pulumi.getter(name="orgIdentifier")
-    def org_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The organization identifier.
         """
         return pulumi.get(self, "org_identifier")
 
     @org_identifier.setter
-    def org_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="projectIdentifier")
-    def project_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project identifier.
         """
         return pulumi.get(self, "project_identifier")
 
     @project_identifier.setter
-    def project_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the setting was last updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -202,10 +202,10 @@ class DiscoverySetting(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 correlation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_registry: Optional[pulumi.Input[Union['DiscoverySettingImageRegistryArgs', 'DiscoverySettingImageRegistryArgsDict']]] = None,
-                 org_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_identifier: Optional[pulumi.Input[_builtins.str]] = None,
+                 correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_registry: pulumi.Input[Optional[Union['DiscoverySettingImageRegistryArgs', 'DiscoverySettingImageRegistryArgsDict']]] = None,
+                 org_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for managing service discovery settings.
@@ -277,10 +277,10 @@ class DiscoverySetting(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 correlation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_registry: Optional[pulumi.Input[Union['DiscoverySettingImageRegistryArgs', 'DiscoverySettingImageRegistryArgsDict']]] = None,
-                 org_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_identifier: Optional[pulumi.Input[_builtins.str]] = None,
+                 correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_registry: pulumi.Input[Optional[Union['DiscoverySettingImageRegistryArgs', 'DiscoverySettingImageRegistryArgsDict']]] = None,
+                 org_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -306,12 +306,12 @@ class DiscoverySetting(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            correlation_id: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            image_registry: Optional[pulumi.Input[Union['DiscoverySettingImageRegistryArgs', 'DiscoverySettingImageRegistryArgsDict']]] = None,
-            org_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            project_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'DiscoverySetting':
+            correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            image_registry: pulumi.Input[Optional[Union['DiscoverySettingImageRegistryArgs', 'DiscoverySettingImageRegistryArgsDict']]] = None,
+            org_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            project_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'DiscoverySetting':
         """
         Get an existing DiscoverySetting resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

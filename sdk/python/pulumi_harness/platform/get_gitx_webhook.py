@@ -157,12 +157,12 @@ def get_gitx_webhook(description: Optional[_builtins.str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_gitx_webhook_output(description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                            name: Optional[pulumi.Input[_builtins.str]] = None,
-                            org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            tags: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_gitx_webhook_output(description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                            name: pulumi.Input[Optional[_builtins.str]] = None,
+                            org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            tags: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGitxWebhookResult]:
     """
     Data source for retrieving a Harness GitX Webhook.

@@ -21,10 +21,10 @@ class TanzuArgs:
     def __init__(__self__, *,
                  endpoint: pulumi.Input[_builtins.str],
                  password_secret_name: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_secret_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_secret_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Tanzu resource.
 
@@ -72,62 +72,62 @@ class TanzuArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cloud provider.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="skipValidation")
-    def skip_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Skip validation of Tanzu configuration.
         """
         return pulumi.get(self, "skip_validation")
 
     @skip_validation.setter
-    def skip_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_validation", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username to use to authenticate to Tanzu.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
     @_builtins.property
     @pulumi.getter(name="usernameSecretName")
-    def username_secret_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username_secret_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Harness secret containing the username to authenticate to Tanzu with.
         """
         return pulumi.get(self, "username_secret_name")
 
     @username_secret_name.setter
-    def username_secret_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username_secret_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username_secret_name", value)
 
 
 @pulumi.input_type
 class _TanzuState:
     def __init__(__self__, *,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_secret_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_secret_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Tanzu resources.
 
@@ -153,74 +153,74 @@ class _TanzuState:
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The url of the Tanzu platform.
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cloud provider.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordSecretName")
-    def password_secret_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_secret_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Harness secret containing the password to use to authenticate to Tanzu.
         """
         return pulumi.get(self, "password_secret_name")
 
     @password_secret_name.setter
-    def password_secret_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_secret_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_secret_name", value)
 
     @_builtins.property
     @pulumi.getter(name="skipValidation")
-    def skip_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Skip validation of Tanzu configuration.
         """
         return pulumi.get(self, "skip_validation")
 
     @skip_validation.setter
-    def skip_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_validation", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username to use to authenticate to Tanzu.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
     @_builtins.property
     @pulumi.getter(name="usernameSecretName")
-    def username_secret_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username_secret_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Harness secret containing the username to authenticate to Tanzu with.
         """
         return pulumi.get(self, "username_secret_name")
 
     @username_secret_name.setter
-    def username_secret_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username_secret_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username_secret_name", value)
 
 
@@ -230,12 +230,12 @@ class Tanzu(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_secret_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating a Tanzu cloud provider. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
@@ -333,12 +333,12 @@ class Tanzu(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_secret_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -368,12 +368,12 @@ class Tanzu(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            password_secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-            skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None,
-            username_secret_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Tanzu':
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            password_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None,
+            username_secret_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Tanzu':
         """
         Get an existing Tanzu resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

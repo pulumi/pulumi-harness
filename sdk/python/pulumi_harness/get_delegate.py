@@ -230,11 +230,11 @@ def get_delegate(hostname: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         type=pulumi.get(__ret__, 'type'),
         version=pulumi.get(__ret__, 'version'))
-def get_delegate_output(hostname: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_delegate_output(hostname: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDelegateResult]:
     """
     Data source for retrieving a Harness delegate. If more than one delegate matches the query the first one will be returned.

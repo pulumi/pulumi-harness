@@ -209,43 +209,43 @@ export interface HarRegistryState {
     /**
      * Allowed artifact patterns
      */
-    allowedPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Blocked artifact patterns
      */
-    blockedPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    blockedPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configuration for the registry
      */
-    configs?: pulumi.Input<pulumi.Input<inputs.platform.HarRegistryConfig>[]>;
+    configs?: pulumi.Input<pulumi.Input<inputs.platform.HarRegistryConfig>[] | undefined>;
     /**
      * Creation timestamp
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Description of the registry
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the registry
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Type of package (DOCKER, HELM, MAVEN, etc.)
      */
-    packageType?: pulumi.Input<string>;
+    packageType?: pulumi.Input<string | undefined>;
     /**
      * Parent reference for the registry (required for creation)
      */
-    parentRef?: pulumi.Input<string>;
+    parentRef?: pulumi.Input<string | undefined>;
     /**
      * Space reference for the registry (required for creation)
      */
-    spaceRef?: pulumi.Input<string>;
+    spaceRef?: pulumi.Input<string | undefined>;
     /**
      * URL of the registry
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -255,19 +255,19 @@ export interface HarRegistryArgs {
     /**
      * Allowed artifact patterns
      */
-    allowedPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Blocked artifact patterns
      */
-    blockedPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    blockedPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configuration for the registry
      */
-    configs?: pulumi.Input<pulumi.Input<inputs.platform.HarRegistryConfig>[]>;
+    configs?: pulumi.Input<pulumi.Input<inputs.platform.HarRegistryConfig>[] | undefined>;
     /**
      * Description of the registry
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the registry
      */

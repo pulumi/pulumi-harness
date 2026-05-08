@@ -37,6 +37,8 @@ import * as utilities from "./utilities";
  *             sshKeyFileId: mySecret.id,
  *         },
  *     },
+ * }, {
+ *     ignoreChanges: ["sshAuthentication"],
  * });
  * ```
  *
@@ -131,19 +133,19 @@ export interface SshCredentialState {
     /**
      * Kerberos authentication for SSH. Cannot be used if ssh*authentication is specified
      */
-    kerberosAuthentication?: pulumi.Input<inputs.SshCredentialKerberosAuthentication>;
+    kerberosAuthentication?: pulumi.Input<inputs.SshCredentialKerberosAuthentication | undefined>;
     /**
      * Name of the encrypted text secret
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inlineSsh`, `serverPassword`, or `sshKeyFile` should be set
      */
-    sshAuthentication?: pulumi.Input<inputs.SshCredentialSshAuthentication>;
+    sshAuthentication?: pulumi.Input<inputs.SshCredentialSshAuthentication | undefined>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.SshCredentialUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.SshCredentialUsageScope>[] | undefined>;
 }
 
 /**
@@ -153,17 +155,17 @@ export interface SshCredentialArgs {
     /**
      * Kerberos authentication for SSH. Cannot be used if ssh*authentication is specified
      */
-    kerberosAuthentication?: pulumi.Input<inputs.SshCredentialKerberosAuthentication>;
+    kerberosAuthentication?: pulumi.Input<inputs.SshCredentialKerberosAuthentication | undefined>;
     /**
      * Name of the encrypted text secret
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Authentication method for SSH. Cannot be used if kerberos*authentication is specified. Only one of `inlineSsh`, `serverPassword`, or `sshKeyFile` should be set
      */
-    sshAuthentication?: pulumi.Input<inputs.SshCredentialSshAuthentication>;
+    sshAuthentication?: pulumi.Input<inputs.SshCredentialSshAuthentication | undefined>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.SshCredentialUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.SshCredentialUsageScope>[] | undefined>;
 }

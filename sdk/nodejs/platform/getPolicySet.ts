@@ -190,7 +190,7 @@ export interface GetPolicySetOutputArgs {
     /**
      * Enabled for the policyset.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -198,25 +198,25 @@ export interface GetPolicySetOutputArgs {
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
      *
      * @deprecated Use 'policy_references' instead. This field will be removed in a future version.
      */
-    policies?: pulumi.Input<pulumi.Input<inputs.platform.GetPolicySetPolicyArgs>[]>;
+    policies?: pulumi.Input<pulumi.Input<inputs.platform.GetPolicySetPolicyArgs>[] | undefined>;
     /**
      * Set of policy identifiers / severity for the policyset. Order is not significant.
      */
-    policyReferences?: pulumi.Input<pulumi.Input<inputs.platform.GetPolicySetPolicyReferenceArgs>[]>;
+    policyReferences?: pulumi.Input<pulumi.Input<inputs.platform.GetPolicySetPolicyReferenceArgs>[] | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Type of the policyset.
      */

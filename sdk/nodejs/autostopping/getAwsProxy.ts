@@ -160,12 +160,12 @@ export interface GetAwsProxyOutputArgs {
     /**
      * Boolean value to indicate if proxy vm needs to have static IP
      */
-    allocateStaticIp?: pulumi.Input<boolean>;
+    allocateStaticIp?: pulumi.Input<boolean | undefined>;
     /**
      * Harness NG API key
      */
     apiKey: pulumi.Input<string>;
-    certificates?: pulumi.Input<inputs.autostopping.GetAwsProxyCertificatesArgs>;
+    certificates?: pulumi.Input<inputs.autostopping.GetAwsProxyCertificatesArgs | undefined>;
     /**
      * Id of the cloud connector
      */
@@ -174,7 +174,7 @@ export interface GetAwsProxyOutputArgs {
      * Governs how the proxy entity will be deleted on Terraform destroy. When set to true, the associated VM will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, which leaves the proxy VM in AWS account itself.
      */
     deleteCloudResourcesOnDestroy: pulumi.Input<boolean>;
-    keypair?: pulumi.Input<string>;
+    keypair?: pulumi.Input<string | undefined>;
     /**
      * Machine instance type
      */
@@ -190,7 +190,7 @@ export interface GetAwsProxyOutputArgs {
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * VPC in which cloud resources are hosted
      */

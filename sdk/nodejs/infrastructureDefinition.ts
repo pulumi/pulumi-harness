@@ -286,87 +286,87 @@ export interface InfrastructureDefinitionState {
     /**
      * The id of the application the infrastructure definition belongs to.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * The configuration details for Aws AMI deployments.
      */
-    awsAmi?: pulumi.Input<inputs.InfrastructureDefinitionAwsAmi>;
+    awsAmi?: pulumi.Input<inputs.InfrastructureDefinitionAwsAmi | undefined>;
     /**
      * The configuration details for Aws AMI deployments.
      */
-    awsEcs?: pulumi.Input<inputs.InfrastructureDefinitionAwsEcs>;
+    awsEcs?: pulumi.Input<inputs.InfrastructureDefinitionAwsEcs | undefined>;
     /**
      * The configuration details for Aws Lambda deployments.
      */
-    awsLambda?: pulumi.Input<inputs.InfrastructureDefinitionAwsLambda>;
+    awsLambda?: pulumi.Input<inputs.InfrastructureDefinitionAwsLambda | undefined>;
     /**
      * The configuration details for AWS SSH deployments.
      */
-    awsSsh?: pulumi.Input<inputs.InfrastructureDefinitionAwsSsh>;
+    awsSsh?: pulumi.Input<inputs.InfrastructureDefinitionAwsSsh | undefined>;
     /**
      * The configuration details for AWS WinRM deployments.
      */
-    awsWinrm?: pulumi.Input<inputs.InfrastructureDefinitionAwsWinrm>;
+    awsWinrm?: pulumi.Input<inputs.InfrastructureDefinitionAwsWinrm | undefined>;
     /**
      * The configuration details for Azure VMSS deployments.
      */
-    azureVmss?: pulumi.Input<inputs.InfrastructureDefinitionAzureVmss>;
+    azureVmss?: pulumi.Input<inputs.InfrastructureDefinitionAzureVmss | undefined>;
     /**
      * The configuration details for Azure WebApp deployments.
      */
-    azureWebapp?: pulumi.Input<inputs.InfrastructureDefinitionAzureWebapp>;
+    azureWebapp?: pulumi.Input<inputs.InfrastructureDefinitionAzureWebapp | undefined>;
     /**
      * The type of the cloud provider to connect with. Valid options are AWS, AZURE, CUSTOM, PHYSICAL*DATA*CENTER, KUBERNETES*CLUSTER, PCF, SPOT*INST
      */
-    cloudProviderType?: pulumi.Input<string>;
+    cloudProviderType?: pulumi.Input<string | undefined>;
     /**
      * The configuration details for Custom deployments.
      */
-    custom?: pulumi.Input<inputs.InfrastructureDefinitionCustom>;
+    custom?: pulumi.Input<inputs.InfrastructureDefinitionCustom | undefined>;
     /**
      * The configuration details for SSH datacenter deployments.
      */
-    datacenterSsh?: pulumi.Input<inputs.InfrastructureDefinitionDatacenterSsh>;
+    datacenterSsh?: pulumi.Input<inputs.InfrastructureDefinitionDatacenterSsh | undefined>;
     /**
      * The configuration details for WinRM datacenter deployments.
      */
-    datacenterWinrm?: pulumi.Input<inputs.InfrastructureDefinitionDatacenterWinrm>;
+    datacenterWinrm?: pulumi.Input<inputs.InfrastructureDefinitionDatacenterWinrm | undefined>;
     /**
      * The URI of the deployment template to use. Only used if deploymentType is `CUSTOM`.
      */
-    deploymentTemplateUri?: pulumi.Input<string>;
+    deploymentTemplateUri?: pulumi.Input<string | undefined>;
     /**
      * The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
      */
-    deploymentType?: pulumi.Input<string>;
+    deploymentType?: pulumi.Input<string | undefined>;
     /**
      * The id of the environment the infrastructure definition belongs to.
      */
-    envId?: pulumi.Input<string>;
+    envId?: pulumi.Input<string | undefined>;
     /**
      * The configuration details for Kubernetes deployments.
      */
-    kubernetes?: pulumi.Input<inputs.InfrastructureDefinitionKubernetes>;
+    kubernetes?: pulumi.Input<inputs.InfrastructureDefinitionKubernetes | undefined>;
     /**
      * The configuration details for Kubernetes on GCP deployments.
      */
-    kubernetesGcp?: pulumi.Input<inputs.InfrastructureDefinitionKubernetesGcp>;
+    kubernetesGcp?: pulumi.Input<inputs.InfrastructureDefinitionKubernetesGcp | undefined>;
     /**
      * The name of the infrastructure definition
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the infrastructure provisioner to use.
      */
-    provisionerName?: pulumi.Input<string>;
+    provisionerName?: pulumi.Input<string | undefined>;
     /**
      * The list of service names to scope this infrastructure definition to.
      */
-    scopedServices?: pulumi.Input<pulumi.Input<string>[]>;
+    scopedServices?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The configuration details for PCF deployments.
      */
-    tanzu?: pulumi.Input<inputs.InfrastructureDefinitionTanzu>;
+    tanzu?: pulumi.Input<inputs.InfrastructureDefinitionTanzu | undefined>;
 }
 
 /**
@@ -380,31 +380,31 @@ export interface InfrastructureDefinitionArgs {
     /**
      * The configuration details for Aws AMI deployments.
      */
-    awsAmi?: pulumi.Input<inputs.InfrastructureDefinitionAwsAmi>;
+    awsAmi?: pulumi.Input<inputs.InfrastructureDefinitionAwsAmi | undefined>;
     /**
      * The configuration details for Aws AMI deployments.
      */
-    awsEcs?: pulumi.Input<inputs.InfrastructureDefinitionAwsEcs>;
+    awsEcs?: pulumi.Input<inputs.InfrastructureDefinitionAwsEcs | undefined>;
     /**
      * The configuration details for Aws Lambda deployments.
      */
-    awsLambda?: pulumi.Input<inputs.InfrastructureDefinitionAwsLambda>;
+    awsLambda?: pulumi.Input<inputs.InfrastructureDefinitionAwsLambda | undefined>;
     /**
      * The configuration details for AWS SSH deployments.
      */
-    awsSsh?: pulumi.Input<inputs.InfrastructureDefinitionAwsSsh>;
+    awsSsh?: pulumi.Input<inputs.InfrastructureDefinitionAwsSsh | undefined>;
     /**
      * The configuration details for AWS WinRM deployments.
      */
-    awsWinrm?: pulumi.Input<inputs.InfrastructureDefinitionAwsWinrm>;
+    awsWinrm?: pulumi.Input<inputs.InfrastructureDefinitionAwsWinrm | undefined>;
     /**
      * The configuration details for Azure VMSS deployments.
      */
-    azureVmss?: pulumi.Input<inputs.InfrastructureDefinitionAzureVmss>;
+    azureVmss?: pulumi.Input<inputs.InfrastructureDefinitionAzureVmss | undefined>;
     /**
      * The configuration details for Azure WebApp deployments.
      */
-    azureWebapp?: pulumi.Input<inputs.InfrastructureDefinitionAzureWebapp>;
+    azureWebapp?: pulumi.Input<inputs.InfrastructureDefinitionAzureWebapp | undefined>;
     /**
      * The type of the cloud provider to connect with. Valid options are AWS, AZURE, CUSTOM, PHYSICAL*DATA*CENTER, KUBERNETES*CLUSTER, PCF, SPOT*INST
      */
@@ -412,19 +412,19 @@ export interface InfrastructureDefinitionArgs {
     /**
      * The configuration details for Custom deployments.
      */
-    custom?: pulumi.Input<inputs.InfrastructureDefinitionCustom>;
+    custom?: pulumi.Input<inputs.InfrastructureDefinitionCustom | undefined>;
     /**
      * The configuration details for SSH datacenter deployments.
      */
-    datacenterSsh?: pulumi.Input<inputs.InfrastructureDefinitionDatacenterSsh>;
+    datacenterSsh?: pulumi.Input<inputs.InfrastructureDefinitionDatacenterSsh | undefined>;
     /**
      * The configuration details for WinRM datacenter deployments.
      */
-    datacenterWinrm?: pulumi.Input<inputs.InfrastructureDefinitionDatacenterWinrm>;
+    datacenterWinrm?: pulumi.Input<inputs.InfrastructureDefinitionDatacenterWinrm | undefined>;
     /**
      * The URI of the deployment template to use. Only used if deploymentType is `CUSTOM`.
      */
-    deploymentTemplateUri?: pulumi.Input<string>;
+    deploymentTemplateUri?: pulumi.Input<string | undefined>;
     /**
      * The type of the deployment to use. Valid options are AMI, AWS*CODEDEPLOY, AWS*LAMBDA, AZURE*VMSS, AZURE*WEBAPP, CUSTOM, ECS, HELM, KUBERNETES, PCF, SSH, WINRM
      */
@@ -436,25 +436,25 @@ export interface InfrastructureDefinitionArgs {
     /**
      * The configuration details for Kubernetes deployments.
      */
-    kubernetes?: pulumi.Input<inputs.InfrastructureDefinitionKubernetes>;
+    kubernetes?: pulumi.Input<inputs.InfrastructureDefinitionKubernetes | undefined>;
     /**
      * The configuration details for Kubernetes on GCP deployments.
      */
-    kubernetesGcp?: pulumi.Input<inputs.InfrastructureDefinitionKubernetesGcp>;
+    kubernetesGcp?: pulumi.Input<inputs.InfrastructureDefinitionKubernetesGcp | undefined>;
     /**
      * The name of the infrastructure definition
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the infrastructure provisioner to use.
      */
-    provisionerName?: pulumi.Input<string>;
+    provisionerName?: pulumi.Input<string | undefined>;
     /**
      * The list of service names to scope this infrastructure definition to.
      */
-    scopedServices?: pulumi.Input<pulumi.Input<string>[]>;
+    scopedServices?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The configuration details for PCF deployments.
      */
-    tanzu?: pulumi.Input<inputs.InfrastructureDefinitionTanzu>;
+    tanzu?: pulumi.Input<inputs.InfrastructureDefinitionTanzu | undefined>;
 }

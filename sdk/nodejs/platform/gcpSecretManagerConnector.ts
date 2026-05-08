@@ -214,51 +214,51 @@ export interface GcpSecretManagerConnectorState {
     /**
      * Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
-    credentialsRef?: pulumi.Input<string>;
+    credentialsRef?: pulumi.Input<string | undefined>;
     /**
      * The delegates to inherit the credentials from.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Execute on delegate or not.
      */
-    executeOnDelegate?: pulumi.Input<boolean>;
+    executeOnDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Inherit configuration from delegate.
      */
-    inheritFromDelegate?: pulumi.Input<boolean>;
+    inheritFromDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * Set this flag to set this secret manager as default secret manager.
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Authentication using harness oidc.
      */
-    oidcAuthentications?: pulumi.Input<pulumi.Input<inputs.platform.GcpSecretManagerConnectorOidcAuthentication>[]>;
+    oidcAuthentications?: pulumi.Input<pulumi.Input<inputs.platform.GcpSecretManagerConnectorOidcAuthentication>[] | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -268,19 +268,19 @@ export interface GcpSecretManagerConnectorArgs {
     /**
      * Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
      */
-    credentialsRef?: pulumi.Input<string>;
+    credentialsRef?: pulumi.Input<string | undefined>;
     /**
      * The delegates to inherit the credentials from.
      */
-    delegateSelectors?: pulumi.Input<pulumi.Input<string>[]>;
+    delegateSelectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Execute on delegate or not.
      */
-    executeOnDelegate?: pulumi.Input<boolean>;
+    executeOnDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -288,29 +288,29 @@ export interface GcpSecretManagerConnectorArgs {
     /**
      * Inherit configuration from delegate.
      */
-    inheritFromDelegate?: pulumi.Input<boolean>;
+    inheritFromDelegate?: pulumi.Input<boolean | undefined>;
     /**
      * Set this flag to set this secret manager as default secret manager.
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Authentication using harness oidc.
      */
-    oidcAuthentications?: pulumi.Input<pulumi.Input<inputs.platform.GcpSecretManagerConnectorOidcAuthentication>[]>;
+    oidcAuthentications?: pulumi.Input<pulumi.Input<inputs.platform.GcpSecretManagerConnectorOidcAuthentication>[] | undefined>;
     /**
      * Unique identifier of the organization.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

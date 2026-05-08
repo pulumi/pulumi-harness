@@ -126,8 +126,8 @@ export interface GetAwsAlbOutputArgs {
     /**
      * Arn of AWS ALB to be imported. Required only for importing existing ALB
      */
-    albArn?: pulumi.Input<string>;
-    certificateId?: pulumi.Input<string>;
+    albArn?: pulumi.Input<string | undefined>;
+    certificateId?: pulumi.Input<string | undefined>;
     /**
      * Id of the cloud connector
      */
@@ -147,7 +147,7 @@ export interface GetAwsAlbOutputArgs {
     /**
      * Security Group to define the security rules that determine the inbound and outbound traffic
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * VPC in which cloud resources are hosted
      */

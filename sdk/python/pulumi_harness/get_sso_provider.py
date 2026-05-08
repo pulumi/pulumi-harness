@@ -93,8 +93,8 @@ def get_sso_provider(id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         type=pulumi.get(__ret__, 'type'))
-def get_sso_provider_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_sso_provider_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSsoProviderResult]:
     """
     Data source for retrieving an SSO providers

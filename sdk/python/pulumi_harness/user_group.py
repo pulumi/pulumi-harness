@@ -21,12 +21,12 @@ __all__ = ['UserGroupArgs', 'UserGroup']
 @pulumi.input_type
 class UserGroupArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_settings: Optional[pulumi.Input['UserGroupLdapSettingsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_settings: Optional[pulumi.Input['UserGroupNotificationSettingsArgs']] = None,
-                 permissions: Optional[pulumi.Input['UserGroupPermissionsArgs']] = None,
-                 saml_settings: Optional[pulumi.Input['UserGroupSamlSettingsArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_settings: pulumi.Input[Optional['UserGroupLdapSettingsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_settings: pulumi.Input[Optional['UserGroupNotificationSettingsArgs']] = None,
+                 permissions: pulumi.Input[Optional['UserGroupPermissionsArgs']] = None,
+                 saml_settings: pulumi.Input[Optional['UserGroupSamlSettingsArgs']] = None):
         """
         The set of arguments for constructing a UserGroup resource.
 
@@ -52,88 +52,88 @@ class UserGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the user group.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapSettings")
-    def ldap_settings(self) -> Optional[pulumi.Input['UserGroupLdapSettingsArgs']]:
+    def ldap_settings(self) -> pulumi.Input[Optional['UserGroupLdapSettingsArgs']]:
         """
         The LDAP settings for the user group.
         """
         return pulumi.get(self, "ldap_settings")
 
     @ldap_settings.setter
-    def ldap_settings(self, value: Optional[pulumi.Input['UserGroupLdapSettingsArgs']]):
+    def ldap_settings(self, value: pulumi.Input[Optional['UserGroupLdapSettingsArgs']]):
         pulumi.set(self, "ldap_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the user group.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationSettings")
-    def notification_settings(self) -> Optional[pulumi.Input['UserGroupNotificationSettingsArgs']]:
+    def notification_settings(self) -> pulumi.Input[Optional['UserGroupNotificationSettingsArgs']]:
         """
         The notification settings of the user group.
         """
         return pulumi.get(self, "notification_settings")
 
     @notification_settings.setter
-    def notification_settings(self, value: Optional[pulumi.Input['UserGroupNotificationSettingsArgs']]):
+    def notification_settings(self, value: pulumi.Input[Optional['UserGroupNotificationSettingsArgs']]):
         pulumi.set(self, "notification_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input['UserGroupPermissionsArgs']]:
+    def permissions(self) -> pulumi.Input[Optional['UserGroupPermissionsArgs']]:
         """
         The permissions of the user group.
         """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input['UserGroupPermissionsArgs']]):
+    def permissions(self, value: pulumi.Input[Optional['UserGroupPermissionsArgs']]):
         pulumi.set(self, "permissions", value)
 
     @_builtins.property
     @pulumi.getter(name="samlSettings")
-    def saml_settings(self) -> Optional[pulumi.Input['UserGroupSamlSettingsArgs']]:
+    def saml_settings(self) -> pulumi.Input[Optional['UserGroupSamlSettingsArgs']]:
         """
         The SAML settings for the user group.
         """
         return pulumi.get(self, "saml_settings")
 
     @saml_settings.setter
-    def saml_settings(self, value: Optional[pulumi.Input['UserGroupSamlSettingsArgs']]):
+    def saml_settings(self, value: pulumi.Input[Optional['UserGroupSamlSettingsArgs']]):
         pulumi.set(self, "saml_settings", value)
 
 
 @pulumi.input_type
 class _UserGroupState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 imported_by_scim: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_sso_linked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ldap_settings: Optional[pulumi.Input['UserGroupLdapSettingsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_settings: Optional[pulumi.Input['UserGroupNotificationSettingsArgs']] = None,
-                 permissions: Optional[pulumi.Input['UserGroupPermissionsArgs']] = None,
-                 saml_settings: Optional[pulumi.Input['UserGroupSamlSettingsArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 imported_by_scim: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_sso_linked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ldap_settings: pulumi.Input[Optional['UserGroupLdapSettingsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_settings: pulumi.Input[Optional['UserGroupNotificationSettingsArgs']] = None,
+                 permissions: pulumi.Input[Optional['UserGroupPermissionsArgs']] = None,
+                 saml_settings: pulumi.Input[Optional['UserGroupSamlSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering UserGroup resources.
 
@@ -165,98 +165,98 @@ class _UserGroupState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the user group.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="importedByScim")
-    def imported_by_scim(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def imported_by_scim(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the user group was imported by SCIM.
         """
         return pulumi.get(self, "imported_by_scim")
 
     @imported_by_scim.setter
-    def imported_by_scim(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def imported_by_scim(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "imported_by_scim", value)
 
     @_builtins.property
     @pulumi.getter(name="isSsoLinked")
-    def is_sso_linked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_sso_linked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the user group is linked to an SSO provider.
         """
         return pulumi.get(self, "is_sso_linked")
 
     @is_sso_linked.setter
-    def is_sso_linked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_sso_linked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_sso_linked", value)
 
     @_builtins.property
     @pulumi.getter(name="ldapSettings")
-    def ldap_settings(self) -> Optional[pulumi.Input['UserGroupLdapSettingsArgs']]:
+    def ldap_settings(self) -> pulumi.Input[Optional['UserGroupLdapSettingsArgs']]:
         """
         The LDAP settings for the user group.
         """
         return pulumi.get(self, "ldap_settings")
 
     @ldap_settings.setter
-    def ldap_settings(self, value: Optional[pulumi.Input['UserGroupLdapSettingsArgs']]):
+    def ldap_settings(self, value: pulumi.Input[Optional['UserGroupLdapSettingsArgs']]):
         pulumi.set(self, "ldap_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the user group.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationSettings")
-    def notification_settings(self) -> Optional[pulumi.Input['UserGroupNotificationSettingsArgs']]:
+    def notification_settings(self) -> pulumi.Input[Optional['UserGroupNotificationSettingsArgs']]:
         """
         The notification settings of the user group.
         """
         return pulumi.get(self, "notification_settings")
 
     @notification_settings.setter
-    def notification_settings(self, value: Optional[pulumi.Input['UserGroupNotificationSettingsArgs']]):
+    def notification_settings(self, value: pulumi.Input[Optional['UserGroupNotificationSettingsArgs']]):
         pulumi.set(self, "notification_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input['UserGroupPermissionsArgs']]:
+    def permissions(self) -> pulumi.Input[Optional['UserGroupPermissionsArgs']]:
         """
         The permissions of the user group.
         """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input['UserGroupPermissionsArgs']]):
+    def permissions(self, value: pulumi.Input[Optional['UserGroupPermissionsArgs']]):
         pulumi.set(self, "permissions", value)
 
     @_builtins.property
     @pulumi.getter(name="samlSettings")
-    def saml_settings(self) -> Optional[pulumi.Input['UserGroupSamlSettingsArgs']]:
+    def saml_settings(self) -> pulumi.Input[Optional['UserGroupSamlSettingsArgs']]:
         """
         The SAML settings for the user group.
         """
         return pulumi.get(self, "saml_settings")
 
     @saml_settings.setter
-    def saml_settings(self, value: Optional[pulumi.Input['UserGroupSamlSettingsArgs']]):
+    def saml_settings(self, value: pulumi.Input[Optional['UserGroupSamlSettingsArgs']]):
         pulumi.set(self, "saml_settings", value)
 
 
@@ -266,12 +266,12 @@ class UserGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_settings: Optional[pulumi.Input[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_settings: Optional[pulumi.Input[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict']]] = None,
-                 permissions: Optional[pulumi.Input[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict']]] = None,
-                 saml_settings: Optional[pulumi.Input[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_settings: pulumi.Input[Optional[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_settings: pulumi.Input[Optional[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict']]] = None,
+                 permissions: pulumi.Input[Optional[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict']]] = None,
+                 saml_settings: pulumi.Input[Optional[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict']]] = None,
                  __props__=None):
         """
         Resource for creating a Harness user group
@@ -585,12 +585,12 @@ class UserGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ldap_settings: Optional[pulumi.Input[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_settings: Optional[pulumi.Input[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict']]] = None,
-                 permissions: Optional[pulumi.Input[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict']]] = None,
-                 saml_settings: Optional[pulumi.Input[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ldap_settings: pulumi.Input[Optional[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_settings: pulumi.Input[Optional[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict']]] = None,
+                 permissions: pulumi.Input[Optional[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict']]] = None,
+                 saml_settings: pulumi.Input[Optional[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -618,14 +618,14 @@ class UserGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            imported_by_scim: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_sso_linked: Optional[pulumi.Input[_builtins.bool]] = None,
-            ldap_settings: Optional[pulumi.Input[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            notification_settings: Optional[pulumi.Input[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict']]] = None,
-            permissions: Optional[pulumi.Input[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict']]] = None,
-            saml_settings: Optional[pulumi.Input[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict']]] = None) -> 'UserGroup':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            imported_by_scim: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_sso_linked: pulumi.Input[Optional[_builtins.bool]] = None,
+            ldap_settings: pulumi.Input[Optional[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_settings: pulumi.Input[Optional[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict']]] = None,
+            permissions: pulumi.Input[Optional[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict']]] = None,
+            saml_settings: pulumi.Input[Optional[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict']]] = None) -> 'UserGroup':
         """
         Get an existing UserGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

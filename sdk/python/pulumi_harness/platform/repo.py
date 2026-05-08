@@ -22,14 +22,14 @@ __all__ = ['RepoArgs', 'Repo']
 class RepoArgs:
     def __init__(__self__, *,
                  identifier: pulumi.Input[_builtins.str],
-                 default_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_ignore: Optional[pulumi.Input[_builtins.str]] = None,
-                 license: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 readme: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['RepoSourceArgs']]]] = None):
+                 default_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_ignore: pulumi.Input[Optional[_builtins.str]] = None,
+                 license: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 readme: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input['RepoSourceArgs']]]] = None):
         """
         The set of arguments for constructing a Repo resource.
 
@@ -75,119 +75,119 @@ class RepoArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultBranch")
-    def default_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default branch of the repository (Applicate only for create).
         """
         return pulumi.get(self, "default_branch")
 
     @default_branch.setter
-    def default_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_branch", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the repository.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="gitIgnore")
-    def git_ignore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_ignore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repository should be created with specified predefined gitignore file.
         """
         return pulumi.get(self, "git_ignore")
 
     @git_ignore.setter
-    def git_ignore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_ignore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_ignore", value)
 
     @_builtins.property
     @pulumi.getter
-    def license(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def license(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repository should be created with specified predefined license file.
         """
         return pulumi.get(self, "license")
 
     @license.setter
-    def license(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def license(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "license", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def readme(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def readme(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Repository should be created with readme file.
         """
         return pulumi.get(self, "readme")
 
     @readme.setter
-    def readme(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def readme(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "readme", value)
 
     @_builtins.property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepoSourceArgs']]]]:
+    def sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RepoSourceArgs']]]]:
         """
         Configuration for importing an existing repository from SCM provider.
         """
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepoSourceArgs']]]]):
+    def sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RepoSourceArgs']]]]):
         pulumi.set(self, "sources", value)
 
 
 @pulumi.input_type
 class _RepoState:
     def __init__(__self__, *,
-                 created: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_ignore: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 license: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 readme: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['RepoSourceArgs']]]] = None,
-                 updated: Optional[pulumi.Input[_builtins.int]] = None):
+                 created: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_ignore: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 license: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 readme: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input['RepoSourceArgs']]]] = None,
+                 updated: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Repo resources.
 
@@ -240,182 +240,182 @@ class _RepoState:
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp when the repository was created.
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         ID of the user who created the repository.
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultBranch")
-    def default_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default branch of the repository (Applicate only for create).
         """
         return pulumi.get(self, "default_branch")
 
     @default_branch.setter
-    def default_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_branch", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the repository.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="gitIgnore")
-    def git_ignore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_ignore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repository should be created with specified predefined gitignore file.
         """
         return pulumi.get(self, "git_ignore")
 
     @git_ignore.setter
-    def git_ignore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_ignore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_ignore", value)
 
     @_builtins.property
     @pulumi.getter(name="gitUrl")
-    def git_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git URL of the repository.
         """
         return pulumi.get(self, "git_url")
 
     @git_url.setter
-    def git_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the repository.
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def license(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def license(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Repository should be created with specified predefined license file.
         """
         return pulumi.get(self, "license")
 
     @license.setter
-    def license(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def license(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "license", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the repository.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the organization.
         """
         return pulumi.get(self, "org_id")
 
     @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path of the repository.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def readme(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def readme(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Repository should be created with readme file.
         """
         return pulumi.get(self, "readme")
 
     @readme.setter
-    def readme(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def readme(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "readme", value)
 
     @_builtins.property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepoSourceArgs']]]]:
+    def sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RepoSourceArgs']]]]:
         """
         Configuration for importing an existing repository from SCM provider.
         """
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepoSourceArgs']]]]):
+    def sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RepoSourceArgs']]]]):
         pulumi.set(self, "sources", value)
 
     @_builtins.property
     @pulumi.getter
-    def updated(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def updated(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp when the repository was last updated.
         """
         return pulumi.get(self, "updated")
 
     @updated.setter
-    def updated(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def updated(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "updated", value)
 
 
@@ -425,15 +425,15 @@ class Repo(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_ignore: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 license: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 readme: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoSourceArgs', 'RepoSourceArgsDict']]]]] = None,
+                 default_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_ignore: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 license: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 readme: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepoSourceArgs', 'RepoSourceArgsDict']]]]] = None,
                  __props__=None):
         """
         Resource for creating a Harness Repo.
@@ -556,15 +556,15 @@ class Repo(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_ignore: Optional[pulumi.Input[_builtins.str]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 license: Optional[pulumi.Input[_builtins.str]] = None,
-                 org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 readme: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoSourceArgs', 'RepoSourceArgsDict']]]]] = None,
+                 default_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_ignore: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 license: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 readme: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepoSourceArgs', 'RepoSourceArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -601,21 +601,21 @@ class Repo(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created: Optional[pulumi.Input[_builtins.int]] = None,
-            created_by: Optional[pulumi.Input[_builtins.int]] = None,
-            default_branch: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            git_ignore: Optional[pulumi.Input[_builtins.str]] = None,
-            git_url: Optional[pulumi.Input[_builtins.str]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            license: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            org_id: Optional[pulumi.Input[_builtins.str]] = None,
-            path: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            readme: Optional[pulumi.Input[_builtins.bool]] = None,
-            sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepoSourceArgs', 'RepoSourceArgsDict']]]]] = None,
-            updated: Optional[pulumi.Input[_builtins.int]] = None) -> 'Repo':
+            created: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.int]] = None,
+            default_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            git_ignore: pulumi.Input[Optional[_builtins.str]] = None,
+            git_url: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            license: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            readme: pulumi.Input[Optional[_builtins.bool]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepoSourceArgs', 'RepoSourceArgsDict']]]]] = None,
+            updated: pulumi.Input[Optional[_builtins.int]] = None) -> 'Repo':
         """
         Get an existing Repo resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

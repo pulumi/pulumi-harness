@@ -90,7 +90,7 @@ def get_current_account(id: Optional[_builtins.str] = None,
         account_id=pulumi.get(__ret__, 'account_id'),
         endpoint=pulumi.get(__ret__, 'endpoint'),
         id=pulumi.get(__ret__, 'id'))
-def get_current_account_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_current_account_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCurrentAccountResult]:
     """
     Data source for retrieving information about the current Harness account

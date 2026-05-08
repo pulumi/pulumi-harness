@@ -266,39 +266,39 @@ export interface SecurityGovernanceConditionState {
     /**
      * Description of the security governance condition
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specification for faults to be included in the condition
      */
-    faultSpec?: pulumi.Input<inputs.chaos.SecurityGovernanceConditionFaultSpec>;
+    faultSpec?: pulumi.Input<inputs.chaos.SecurityGovernanceConditionFaultSpec | undefined>;
     /**
      * Type of infrastructure (Kubernetes, KubernetesV2, Linux, Windows, CloudFoundry, Container)
      */
-    infraType?: pulumi.Input<string>;
+    infraType?: pulumi.Input<string | undefined>;
     /**
      * Kubernetes specific configuration (required when infra*type is KUBERNETES or KUBERNETESV2)
      */
-    k8sSpec?: pulumi.Input<inputs.chaos.SecurityGovernanceConditionK8sSpec>;
+    k8sSpec?: pulumi.Input<inputs.chaos.SecurityGovernanceConditionK8sSpec | undefined>;
     /**
      * Machine specific configuration (required when infra*type is LINUX or WINDOWS)
      */
-    machineSpec?: pulumi.Input<inputs.chaos.SecurityGovernanceConditionMachineSpec>;
+    machineSpec?: pulumi.Input<inputs.chaos.SecurityGovernanceConditionMachineSpec | undefined>;
     /**
      * Name of the security governance condition
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The organization ID of the security governance condition
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The project ID of the security governance condition
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags for the security governance condition
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -308,7 +308,7 @@ export interface SecurityGovernanceConditionArgs {
     /**
      * Description of the security governance condition
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specification for faults to be included in the condition
      */
@@ -320,15 +320,15 @@ export interface SecurityGovernanceConditionArgs {
     /**
      * Kubernetes specific configuration (required when infra*type is KUBERNETES or KUBERNETESV2)
      */
-    k8sSpec?: pulumi.Input<inputs.chaos.SecurityGovernanceConditionK8sSpec>;
+    k8sSpec?: pulumi.Input<inputs.chaos.SecurityGovernanceConditionK8sSpec | undefined>;
     /**
      * Machine specific configuration (required when infra*type is LINUX or WINDOWS)
      */
-    machineSpec?: pulumi.Input<inputs.chaos.SecurityGovernanceConditionMachineSpec>;
+    machineSpec?: pulumi.Input<inputs.chaos.SecurityGovernanceConditionMachineSpec | undefined>;
     /**
      * Name of the security governance condition
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The organization ID of the security governance condition
      */
@@ -340,5 +340,5 @@ export interface SecurityGovernanceConditionArgs {
     /**
      * Tags for the security governance condition
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

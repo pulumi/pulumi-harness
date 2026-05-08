@@ -137,35 +137,35 @@ export interface UserState {
     /**
      * The email of the user.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignoreChanges = ["groupIds"] }`.
      */
-    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Flag indicating whether or not the users email has been verified.
      */
-    isEmailVerified?: pulumi.Input<boolean>;
+    isEmailVerified?: pulumi.Input<boolean | undefined>;
     /**
      * Flag indicating whether or not the user was imported from an identity provider.
      */
-    isImportedFromIdentityProvider?: pulumi.Input<boolean>;
+    isImportedFromIdentityProvider?: pulumi.Input<boolean | undefined>;
     /**
      * Flag indicating whether or not the users password has expired.
      */
-    isPasswordExpired?: pulumi.Input<boolean>;
+    isPasswordExpired?: pulumi.Input<boolean | undefined>;
     /**
      * Flag indicating whether or not two-factor authentication is enabled for the user.
      */
-    isTwoFactorAuthEnabled?: pulumi.Input<boolean>;
+    isTwoFactorAuthEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Flag indicating whether or not the user is locked out.
      */
-    isUserLocked?: pulumi.Input<boolean>;
+    isUserLocked?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the user.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -179,9 +179,9 @@ export interface UserArgs {
     /**
      * The groups the user belongs to. This is only used during the creation of the user. The groups are not updated after the user is created. When using this option you should also set `lifecycle = { ignoreChanges = ["groupIds"] }`.
      */
-    groupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    groupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the user.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

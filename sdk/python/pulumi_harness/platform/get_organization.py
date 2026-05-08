@@ -128,8 +128,8 @@ def get_organization(identifier: Optional[_builtins.str] = None,
         identifier=pulumi.get(__ret__, 'identifier'),
         name=pulumi.get(__ret__, 'name'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_organization_output(identifier: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_organization_output(identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationResult]:
     """
     Data source for retrieving a Harness organization

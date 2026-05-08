@@ -103,9 +103,9 @@ export interface GetGitopsClusterOutputArgs {
     /**
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     agentId: pulumi.Input<string>;
     identifier: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
-    projectId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
+    projectId?: pulumi.Input<string | undefined>;
 }

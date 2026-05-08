@@ -200,10 +200,10 @@ def get_jenkins_connector(identifier: Optional[_builtins.str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_jenkins_connector_output(identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                                 name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 org_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_jenkins_connector_output(identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                                 name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetJenkinsConnectorResult]:
     """
     Datasource for looking up a Jenkins connector.

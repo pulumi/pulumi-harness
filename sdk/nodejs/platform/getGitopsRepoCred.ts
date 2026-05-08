@@ -142,7 +142,7 @@ export interface GetGitopsRepoCredOutputArgs {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Agent identifier of the Repository Credentials.
      */
@@ -150,7 +150,7 @@ export interface GetGitopsRepoCredOutputArgs {
     /**
      * credential details.
      */
-    creds?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsRepoCredCredArgs>[]>;
+    creds?: pulumi.Input<pulumi.Input<inputs.platform.GetGitopsRepoCredCredArgs>[] | undefined>;
     /**
      * Identifier of the Repository Credentials.
      */
@@ -158,9 +158,9 @@ export interface GetGitopsRepoCredOutputArgs {
     /**
      * Organization identifier of the Repository Credentials.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the Repository Credentials.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

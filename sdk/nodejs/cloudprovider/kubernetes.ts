@@ -103,19 +103,19 @@ export interface KubernetesState {
     /**
      * Authentication configuration for the Kubernetes cluster
      */
-    authentication?: pulumi.Input<inputs.cloudprovider.KubernetesAuthentication>;
+    authentication?: pulumi.Input<inputs.cloudprovider.KubernetesAuthentication | undefined>;
     /**
      * The name of the cloud provider.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Skip validation of Kubernetes configuration.
      */
-    skipValidation?: pulumi.Input<boolean>;
+    skipValidation?: pulumi.Input<boolean | undefined>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.KubernetesUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.KubernetesUsageScope>[] | undefined>;
 }
 
 /**
@@ -129,13 +129,13 @@ export interface KubernetesArgs {
     /**
      * The name of the cloud provider.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Skip validation of Kubernetes configuration.
      */
-    skipValidation?: pulumi.Input<boolean>;
+    skipValidation?: pulumi.Input<boolean | undefined>;
     /**
      * This block is used for scoping the resource to a specific set of applications or environments.
      */
-    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.KubernetesUsageScope>[]>;
+    usageScopes?: pulumi.Input<pulumi.Input<inputs.cloudprovider.KubernetesUsageScope>[] | undefined>;
 }

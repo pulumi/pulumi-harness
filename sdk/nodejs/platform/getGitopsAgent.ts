@@ -139,7 +139,7 @@ export interface GetGitopsAgentOutputArgs {
      *
      * @deprecated This field is deprecated and will be removed in a future release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the GitOps agent.
      */
@@ -147,13 +147,13 @@ export interface GetGitopsAgentOutputArgs {
     /**
      * Organization identifier of the GitOps agent.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Project identifier of the GitOps agent.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Specify whether to retrieve the gitops agent's token. (The field agentToken will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
      */
-    withCredentials?: pulumi.Input<boolean>;
+    withCredentials?: pulumi.Input<boolean | undefined>;
 }

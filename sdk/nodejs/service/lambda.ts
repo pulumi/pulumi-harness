@@ -117,19 +117,19 @@ export interface LambdaState {
     /**
      * The id of the application the service belongs to
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * Description of th service
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the service
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.service.LambdaVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.LambdaVariable>[] | undefined>;
 }
 
 /**
@@ -143,13 +143,13 @@ export interface LambdaArgs {
     /**
      * Description of th service
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the service
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Variables to be used in the service
      */
-    variables?: pulumi.Input<pulumi.Input<inputs.service.LambdaVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.service.LambdaVariable>[] | undefined>;
 }

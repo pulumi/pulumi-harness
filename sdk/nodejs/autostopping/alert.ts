@@ -158,27 +158,27 @@ export interface AlertState {
     /**
      * When true, the alert applies to all AutoStopping rules in the account (leave `ruleIdList` empty). Mutually exclusive with `ruleIdList`.
      */
-    applicableToAllRules?: pulumi.Input<boolean>;
+    applicableToAllRules?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the alert is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * List of event types that trigger the alert (e.g. autostopping*rule*created, autostopping*warmup*failed, autostopping*cooldown*failed).
      */
-    events?: pulumi.Input<pulumi.Input<string>[]>;
+    events?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the alert.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Notification recipients. At least one of `email` or `slack` is required (with at least one value).
      */
-    recipients?: pulumi.Input<inputs.autostopping.AlertRecipients>;
+    recipients?: pulumi.Input<inputs.autostopping.AlertRecipients | undefined>;
     /**
      * List of AutoStopping rule IDs to apply the alert to. Required when `applicableToAllRules` is false. Mutually exclusive with `applicableToAllRules` = true.
      */
-    ruleIdLists?: pulumi.Input<pulumi.Input<number>[]>;
+    ruleIdLists?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }
 
 /**
@@ -188,11 +188,11 @@ export interface AlertArgs {
     /**
      * When true, the alert applies to all AutoStopping rules in the account (leave `ruleIdList` empty). Mutually exclusive with `ruleIdList`.
      */
-    applicableToAllRules?: pulumi.Input<boolean>;
+    applicableToAllRules?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the alert is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * List of event types that trigger the alert (e.g. autostopping*rule*created, autostopping*warmup*failed, autostopping*cooldown*failed).
      */
@@ -200,7 +200,7 @@ export interface AlertArgs {
     /**
      * Name of the alert.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Notification recipients. At least one of `email` or `slack` is required (with at least one value).
      */
@@ -208,5 +208,5 @@ export interface AlertArgs {
     /**
      * List of AutoStopping rule IDs to apply the alert to. Required when `applicableToAllRules` is false. Mutually exclusive with `applicableToAllRules` = true.
      */
-    ruleIdLists?: pulumi.Input<pulumi.Input<number>[]>;
+    ruleIdLists?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }

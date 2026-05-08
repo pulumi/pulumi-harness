@@ -145,35 +145,35 @@ export interface RoleAssignmentsState {
     /**
      * Disabled or not.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier for role assignment.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Managed or not.
      */
-    managed?: pulumi.Input<boolean>;
+    managed?: pulumi.Input<boolean | undefined>;
     /**
      * Org identifier.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Principal.
      */
-    principals?: pulumi.Input<pulumi.Input<inputs.platform.RoleAssignmentsPrincipal>[]>;
+    principals?: pulumi.Input<pulumi.Input<inputs.platform.RoleAssignmentsPrincipal>[] | undefined>;
     /**
      * Project Identifier
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Resource group identifier.
      */
-    resourceGroupIdentifier?: pulumi.Input<string>;
+    resourceGroupIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Role identifier.
      */
-    roleIdentifier?: pulumi.Input<string>;
+    roleIdentifier?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -183,19 +183,19 @@ export interface RoleAssignmentsArgs {
     /**
      * Disabled or not.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier for role assignment.
      */
-    identifier?: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
      * Managed or not.
      */
-    managed?: pulumi.Input<boolean>;
+    managed?: pulumi.Input<boolean | undefined>;
     /**
      * Org identifier.
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * Principal.
      */
@@ -203,7 +203,7 @@ export interface RoleAssignmentsArgs {
     /**
      * Project Identifier
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Resource group identifier.
      */

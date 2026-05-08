@@ -25,9 +25,9 @@ class DefaultNotificationTemplateSetArgs:
                  identifier: pulumi.Input[_builtins.str],
                  notification_channel_type: pulumi.Input[_builtins.str],
                  notification_entity: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DefaultNotificationTemplateSet resource.
 
@@ -100,53 +100,53 @@ class DefaultNotificationTemplateSetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description for Default Notification Template Set
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of Default Notification Template Set
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Key-value tags
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _DefaultNotificationTemplateSetState:
     def __init__(__self__, *,
-                 created: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_template_configuration_sets: Optional[pulumi.Input[Sequence[pulumi.Input['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs']]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modified: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_entity: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 created: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_template_configuration_sets: pulumi.Input[Optional[Sequence[pulumi.Input['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs']]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modified: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_entity: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DefaultNotificationTemplateSet resources.
 
@@ -181,110 +181,110 @@ class _DefaultNotificationTemplateSetState:
 
     @_builtins.property
     @pulumi.getter
-    def created(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp when the default notification template set was created.
         """
         return pulumi.get(self, "created")
 
     @created.setter
-    def created(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description for Default Notification Template Set
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="eventTemplateConfigurationSets")
-    def event_template_configuration_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs']]]]:
+    def event_template_configuration_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs']]]]:
         """
         Set of event-template configurations
         """
         return pulumi.get(self, "event_template_configuration_sets")
 
     @event_template_configuration_sets.setter
-    def event_template_configuration_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs']]]]):
+    def event_template_configuration_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs']]]]):
         pulumi.set(self, "event_template_configuration_sets", value)
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of Default Notification Template Set
         """
         return pulumi.get(self, "identifier")
 
     @identifier.setter
-    def identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
-    def last_modified(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def last_modified(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp when the default notification template set was last modified.
         """
         return pulumi.get(self, "last_modified")
 
     @last_modified.setter
-    def last_modified(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def last_modified(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "last_modified", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of Default Notification Template Set
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationChannelType")
-    def notification_channel_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notification_channel_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of channel (e.g. SLACK, EMAIL, etc.)
         """
         return pulumi.get(self, "notification_channel_type")
 
     @notification_channel_type.setter
-    def notification_channel_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notification_channel_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notification_channel_type", value)
 
     @_builtins.property
     @pulumi.getter(name="notificationEntity")
-    def notification_entity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notification_entity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the entity (e.g. PIPELINE, SERVICE, etc.)
         """
         return pulumi.get(self, "notification_entity")
 
     @notification_entity.setter
-    def notification_entity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notification_entity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notification_entity", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Key-value tags
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -294,13 +294,13 @@ class DefaultNotificationTemplateSet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_template_configuration_sets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'DefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict']]]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_entity: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_template_configuration_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'DefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict']]]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_entity: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Resource for creating a Harness Default Notification Template Set
@@ -341,13 +341,13 @@ class DefaultNotificationTemplateSet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_template_configuration_sets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'DefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict']]]]] = None,
-                 identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 notification_entity: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_template_configuration_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'DefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict']]]]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_entity: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -384,15 +384,15 @@ class DefaultNotificationTemplateSet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            event_template_configuration_sets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'DefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict']]]]] = None,
-            identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            last_modified: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            notification_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
-            notification_entity: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'DefaultNotificationTemplateSet':
+            created: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            event_template_configuration_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'DefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict']]]]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_entity: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'DefaultNotificationTemplateSet':
         """
         Get an existing DefaultNotificationTemplateSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
