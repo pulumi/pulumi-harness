@@ -19,7 +19,7 @@ namespace Pulumi.Harness.Fme
         /// The secret API key value (only set on initial create).
         /// </summary>
         [Output("apiKey")]
-        public Output<string> ApiKey { get; private set; } = null!;
+        public Output<string> ApiKeyValue { get; private set; } = null!;
 
         /// <summary>
         /// Split API key type. Must be `ServerSide` or `ClientSide`.
@@ -152,7 +152,7 @@ namespace Pulumi.Harness.Fme
         /// <summary>
         /// The secret API key value (only set on initial create).
         /// </summary>
-        public Input<string>? ApiKey
+        public Input<string>? ApiKeyValue
         {
             get => _apiKey;
             set

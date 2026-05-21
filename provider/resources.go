@@ -105,6 +105,18 @@ func Provider() info.Provider {
 			"harness_application":         {Tok: harnessResource(mainMod, "Application")},
 			"harness_application_gitsync": {Tok: harnessResource(mainMod, "ApplicationGitSync")},
 			"harness_delegate_approval":   {Tok: harnessResource(mainMod, "DelegateApproval")},
+			"harness_fme_api_key": {
+				Tok: harnessResource("fme", "ApiKey"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"api_key": {CSharpName: "ApiKeyValue"},
+				},
+			},
+			"harness_fme_feature_flag_definition": {
+				Tok: harnessResource("fmeFeatureFlag", "Definition"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"definition": {CSharpName: "DefinitionJson"},
+				},
+			},
 			"harness_platform_apikey": {
 				Tok: harnessResource(mainMod, "PlatformApiKey"),
 			},

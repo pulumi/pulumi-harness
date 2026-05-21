@@ -19,7 +19,7 @@ namespace Pulumi.Harness.FmeFeatureFlag
         /// JSON object for the split definition (treatments, defaultTreatment, defaultRule, trafficAllocation, rules, etc.).
         /// </summary>
         [Output("definition")]
-        public Output<string> Definition { get; private set; } = null!;
+        public Output<string> DefinitionJson { get; private set; } = null!;
 
         /// <summary>
         /// Split definition id from the API when available.
@@ -102,7 +102,7 @@ namespace Pulumi.Harness.FmeFeatureFlag
         /// JSON object for the split definition (treatments, defaultTreatment, defaultRule, trafficAllocation, rules, etc.).
         /// </summary>
         [Input("definition", required: true)]
-        public Input<string> Definition { get; set; } = null!;
+        public Input<string> DefinitionJson { get; set; } = null!;
 
         /// <summary>
         /// Split environment ID.
@@ -140,7 +140,7 @@ namespace Pulumi.Harness.FmeFeatureFlag
         /// JSON object for the split definition (treatments, defaultTreatment, defaultRule, trafficAllocation, rules, etc.).
         /// </summary>
         [Input("definition")]
-        public Input<string>? Definition { get; set; }
+        public Input<string>? DefinitionJson { get; set; }
 
         /// <summary>
         /// Split definition id from the API when available.
