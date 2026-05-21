@@ -60,10 +60,6 @@ import javax.annotation.Nullable;
  *                 .region("us-east-1")
  *                 .taskCount(1)
  *                 .build())
- *             .tcp(Arrays.asList(Map.ofEntries(
- *                 Map.entry("proxyId", "proxy_id"),
- *                 Map.entry("forwardRule", Arrays.asList(Map.of("port", 2233)))
- *             )))
  *             .depends(RuleEcsDependArgs.builder()
  *                 .ruleId(24576)
  *                 .delayInSec(5)

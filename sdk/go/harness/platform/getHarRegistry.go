@@ -61,6 +61,8 @@ type LookupHarRegistryArgs struct {
 	Description *string `pulumi:"description"`
 	// Unique identifier of the registry
 	Identifier string `pulumi:"identifier"`
+	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
+	Metadata map[string]string `pulumi:"metadata"`
 	// Type of package (DOCKER, HELM, MAVEN, etc.)
 	PackageType *string `pulumi:"packageType"`
 	// Parent reference for the registry
@@ -85,6 +87,8 @@ type LookupHarRegistryResult struct {
 	Id string `pulumi:"id"`
 	// Unique identifier of the registry
 	Identifier string `pulumi:"identifier"`
+	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
+	Metadata map[string]string `pulumi:"metadata"`
 	// Type of package (DOCKER, HELM, MAVEN, etc.)
 	PackageType *string `pulumi:"packageType"`
 	// Parent reference for the registry
@@ -116,6 +120,8 @@ type LookupHarRegistryOutputArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Unique identifier of the registry
 	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// Type of package (DOCKER, HELM, MAVEN, etc.)
 	PackageType pulumi.StringPtrInput `pulumi:"packageType"`
 	// Parent reference for the registry
@@ -176,6 +182,11 @@ func (o LookupHarRegistryResultOutput) Id() pulumi.StringOutput {
 // Unique identifier of the registry
 func (o LookupHarRegistryResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHarRegistryResult) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
+func (o LookupHarRegistryResultOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupHarRegistryResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // Type of package (DOCKER, HELM, MAVEN, etc.)

@@ -14,6 +14,8 @@ namespace Pulumi.Harness.Platform
     /// 
     /// ## Example Usage
     /// 
+    /// ### Manual Credentials
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -22,7 +24,7 @@ namespace Pulumi.Harness.Platform
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Harness.Platform.AzureKeyVaultConnector("example", new()
+    ///     var manual = new Harness.Platform.AzureKeyVaultConnector("manual", new()
     ///     {
     ///         Identifier = "identifier",
     ///         Name = "name",
@@ -37,6 +39,75 @@ namespace Pulumi.Harness.Platform
     ///         VaultName = "vault_name",
     ///         Subscription = "subscription",
     ///         IsDefault = false,
+    ///         AzureEnvironmentType = "AZURE",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### System-Assigned Managed Identity
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var systemMsi = new Harness.Platform.AzureKeyVaultConnector("system_msi", new()
+    ///     {
+    ///         Identifier = "system_msi_example",
+    ///         Name = "system_msi_example",
+    ///         Description = "Azure Key Vault using system-assigned managed identity",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         VaultName = "vault_name",
+    ///         Subscription = "subscription",
+    ///         IsDefault = false,
+    ///         UseManagedIdentity = true,
+    ///         AzureManagedIdentityType = "SystemAssignedManagedIdentity",
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
+    ///         AzureEnvironmentType = "AZURE",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### User-Assigned Managed Identity
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var userMsi = new Harness.Platform.AzureKeyVaultConnector("user_msi", new()
+    ///     {
+    ///         Identifier = "user_msi_example",
+    ///         Name = "user_msi_example",
+    ///         Description = "Azure Key Vault using user-assigned managed identity",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         VaultName = "vault_name",
+    ///         Subscription = "subscription",
+    ///         IsDefault = false,
+    ///         UseManagedIdentity = true,
+    ///         AzureManagedIdentityType = "UserAssignedManagedIdentity",
+    ///         ManagedClientId = "client_id_of_managed_identity",
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
     ///         AzureEnvironmentType = "AZURE",
     ///     });
     /// 
@@ -75,10 +146,16 @@ namespace Pulumi.Harness.Platform
         public Output<string> AzureEnvironmentType { get; private set; } = null!;
 
         /// <summary>
-        /// Application ID of the Azure App.
+        /// Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity. Required when use*managed*identity is true.
+        /// </summary>
+        [Output("azureManagedIdentityType")]
+        public Output<string?> AzureManagedIdentityType { get; private set; } = null!;
+
+        /// <summary>
+        /// Application ID of the Azure App. Required when use*managed*identity is false.
         /// </summary>
         [Output("clientId")]
-        public Output<string> ClientId { get; private set; } = null!;
+        public Output<string?> ClientId { get; private set; } = null!;
 
         /// <summary>
         /// Tags to filter delegates for connection.
@@ -93,6 +170,12 @@ namespace Pulumi.Harness.Platform
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Boolean value to indicate if purge is enabled.
+        /// </summary>
+        [Output("enablePurge")]
+        public Output<bool?> EnablePurge { get; private set; } = null!;
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
         [Output("identifier")]
@@ -103,6 +186,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("isDefault")]
         public Output<bool?> IsDefault { get; private set; } = null!;
+
+        /// <summary>
+        /// Client Id of the ManagedIdentity resource. Required when azure*managed*identity_type is UserAssignedManagedIdentity.
+        /// </summary>
+        [Output("managedClientId")]
+        public Output<string?> ManagedClientId { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource.
@@ -123,10 +212,10 @@ namespace Pulumi.Harness.Platform
         public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The Harness text secret with the Azure authentication key as its value.
+        /// The Harness text secret with the Azure authentication key as its value. Required when use*managed*identity is false.
         /// </summary>
         [Output("secretKey")]
-        public Output<string> SecretKey { get; private set; } = null!;
+        public Output<string?> SecretKey { get; private set; } = null!;
 
         /// <summary>
         /// Azure subscription ID.
@@ -141,10 +230,16 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The Azure Active Directory (Azure AD) directory ID where you created your application.
+        /// The Azure Active Directory (Azure AD) directory ID where you created your application. Required when use*managed*identity is false.
         /// </summary>
         [Output("tenantId")]
-        public Output<string> TenantId { get; private set; } = null!;
+        public Output<string?> TenantId { get; private set; } = null!;
+
+        /// <summary>
+        /// Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+        /// </summary>
+        [Output("useManagedIdentity")]
+        public Output<bool?> UseManagedIdentity { get; private set; } = null!;
 
         /// <summary>
         /// Name of the vault.
@@ -206,111 +301,13 @@ namespace Pulumi.Harness.Platform
         public Input<string>? AzureEnvironmentType { get; set; }
 
         /// <summary>
-        /// Application ID of the Azure App.
+        /// Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity. Required when use*managed*identity is true.
         /// </summary>
-        [Input("clientId", required: true)]
-        public Input<string> ClientId { get; set; } = null!;
-
-        [Input("delegateSelectors")]
-        private InputList<string>? _delegateSelectors;
+        [Input("azureManagedIdentityType")]
+        public Input<string>? AzureManagedIdentityType { get; set; }
 
         /// <summary>
-        /// Tags to filter delegates for connection.
-        /// </summary>
-        public InputList<string> DelegateSelectors
-        {
-            get => _delegateSelectors ?? (_delegateSelectors = new InputList<string>());
-            set => _delegateSelectors = value;
-        }
-
-        /// <summary>
-        /// Description of the resource.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Unique identifier of the resource.
-        /// </summary>
-        [Input("identifier", required: true)]
-        public Input<string> Identifier { get; set; } = null!;
-
-        /// <summary>
-        /// Specifies whether or not is the default value.
-        /// </summary>
-        [Input("isDefault")]
-        public Input<bool>? IsDefault { get; set; }
-
-        /// <summary>
-        /// Name of the resource.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Unique identifier of the organization.
-        /// </summary>
-        [Input("orgId")]
-        public Input<string>? OrgId { get; set; }
-
-        /// <summary>
-        /// Unique identifier of the project.
-        /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
-
-        /// <summary>
-        /// The Harness text secret with the Azure authentication key as its value.
-        /// </summary>
-        [Input("secretKey", required: true)]
-        public Input<string> SecretKey { get; set; } = null!;
-
-        /// <summary>
-        /// Azure subscription ID.
-        /// </summary>
-        [Input("subscription", required: true)]
-        public Input<string> Subscription { get; set; } = null!;
-
-        [Input("tags")]
-        private InputList<string>? _tags;
-
-        /// <summary>
-        /// Tags to associate with the resource.
-        /// </summary>
-        public InputList<string> Tags
-        {
-            get => _tags ?? (_tags = new InputList<string>());
-            set => _tags = value;
-        }
-
-        /// <summary>
-        /// The Azure Active Directory (Azure AD) directory ID where you created your application.
-        /// </summary>
-        [Input("tenantId", required: true)]
-        public Input<string> TenantId { get; set; } = null!;
-
-        /// <summary>
-        /// Name of the vault.
-        /// </summary>
-        [Input("vaultName", required: true)]
-        public Input<string> VaultName { get; set; } = null!;
-
-        public AzureKeyVaultConnectorArgs()
-        {
-        }
-        public static new AzureKeyVaultConnectorArgs Empty => new AzureKeyVaultConnectorArgs();
-    }
-
-    public sealed class AzureKeyVaultConnectorState : global::Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
-        /// </summary>
-        [Input("azureEnvironmentType")]
-        public Input<string>? AzureEnvironmentType { get; set; }
-
-        /// <summary>
-        /// Application ID of the Azure App.
+        /// Application ID of the Azure App. Required when use*managed*identity is false.
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
@@ -334,16 +331,28 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Boolean value to indicate if purge is enabled.
+        /// </summary>
+        [Input("enablePurge")]
+        public Input<bool>? EnablePurge { get; set; }
+
+        /// <summary>
         /// Unique identifier of the resource.
         /// </summary>
-        [Input("identifier")]
-        public Input<string>? Identifier { get; set; }
+        [Input("identifier", required: true)]
+        public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
         /// Specifies whether or not is the default value.
         /// </summary>
         [Input("isDefault")]
         public Input<bool>? IsDefault { get; set; }
+
+        /// <summary>
+        /// Client Id of the ManagedIdentity resource. Required when azure*managed*identity_type is UserAssignedManagedIdentity.
+        /// </summary>
+        [Input("managedClientId")]
+        public Input<string>? ManagedClientId { get; set; }
 
         /// <summary>
         /// Name of the resource.
@@ -364,7 +373,135 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// The Harness text secret with the Azure authentication key as its value.
+        /// The Harness text secret with the Azure authentication key as its value. Required when use*managed*identity is false.
+        /// </summary>
+        [Input("secretKey")]
+        public Input<string>? SecretKey { get; set; }
+
+        /// <summary>
+        /// Azure subscription ID.
+        /// </summary>
+        [Input("subscription", required: true)]
+        public Input<string> Subscription { get; set; } = null!;
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags to associate with the resource.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The Azure Active Directory (Azure AD) directory ID where you created your application. Required when use*managed*identity is false.
+        /// </summary>
+        [Input("tenantId")]
+        public Input<string>? TenantId { get; set; }
+
+        /// <summary>
+        /// Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+        /// </summary>
+        [Input("useManagedIdentity")]
+        public Input<bool>? UseManagedIdentity { get; set; }
+
+        /// <summary>
+        /// Name of the vault.
+        /// </summary>
+        [Input("vaultName", required: true)]
+        public Input<string> VaultName { get; set; } = null!;
+
+        public AzureKeyVaultConnectorArgs()
+        {
+        }
+        public static new AzureKeyVaultConnectorArgs Empty => new AzureKeyVaultConnectorArgs();
+    }
+
+    public sealed class AzureKeyVaultConnectorState : global::Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
+        /// </summary>
+        [Input("azureEnvironmentType")]
+        public Input<string>? AzureEnvironmentType { get; set; }
+
+        /// <summary>
+        /// Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity. Required when use*managed*identity is true.
+        /// </summary>
+        [Input("azureManagedIdentityType")]
+        public Input<string>? AzureManagedIdentityType { get; set; }
+
+        /// <summary>
+        /// Application ID of the Azure App. Required when use*managed*identity is false.
+        /// </summary>
+        [Input("clientId")]
+        public Input<string>? ClientId { get; set; }
+
+        [Input("delegateSelectors")]
+        private InputList<string>? _delegateSelectors;
+
+        /// <summary>
+        /// Tags to filter delegates for connection.
+        /// </summary>
+        public InputList<string> DelegateSelectors
+        {
+            get => _delegateSelectors ?? (_delegateSelectors = new InputList<string>());
+            set => _delegateSelectors = value;
+        }
+
+        /// <summary>
+        /// Description of the resource.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Boolean value to indicate if purge is enabled.
+        /// </summary>
+        [Input("enablePurge")]
+        public Input<bool>? EnablePurge { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the resource.
+        /// </summary>
+        [Input("identifier")]
+        public Input<string>? Identifier { get; set; }
+
+        /// <summary>
+        /// Specifies whether or not is the default value.
+        /// </summary>
+        [Input("isDefault")]
+        public Input<bool>? IsDefault { get; set; }
+
+        /// <summary>
+        /// Client Id of the ManagedIdentity resource. Required when azure*managed*identity_type is UserAssignedManagedIdentity.
+        /// </summary>
+        [Input("managedClientId")]
+        public Input<string>? ManagedClientId { get; set; }
+
+        /// <summary>
+        /// Name of the resource.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the organization.
+        /// </summary>
+        [Input("orgId")]
+        public Input<string>? OrgId { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the project.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
+        /// The Harness text secret with the Azure authentication key as its value. Required when use*managed*identity is false.
         /// </summary>
         [Input("secretKey")]
         public Input<string>? SecretKey { get; set; }
@@ -388,10 +525,16 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// The Azure Active Directory (Azure AD) directory ID where you created your application.
+        /// The Azure Active Directory (Azure AD) directory ID where you created your application. Required when use*managed*identity is false.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
+
+        /// <summary>
+        /// Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+        /// </summary>
+        [Input("useManagedIdentity")]
+        public Input<bool>? UseManagedIdentity { get; set; }
 
         /// <summary>
         /// Name of the vault.

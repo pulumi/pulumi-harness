@@ -31,6 +31,12 @@ namespace Pulumi.Harness.Platform.Inputs
         }
 
         /// <summary>
+        /// Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+        /// </summary>
+        [Input("firewallMode", required: true)]
+        public Input<string> FirewallMode { get; set; } = null!;
+
+        /// <summary>
         /// Upstream source
         /// </summary>
         [Input("source")]

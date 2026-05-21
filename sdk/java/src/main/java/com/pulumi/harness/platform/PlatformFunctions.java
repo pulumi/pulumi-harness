@@ -139,6 +139,10 @@ import com.pulumi.harness.platform.inputs.GetHarRegistryArgs;
 import com.pulumi.harness.platform.inputs.GetHarRegistryPlainArgs;
 import com.pulumi.harness.platform.inputs.GetHelmConnectorArgs;
 import com.pulumi.harness.platform.inputs.GetHelmConnectorPlainArgs;
+import com.pulumi.harness.platform.inputs.GetIacmAnsibleInventoryArgs;
+import com.pulumi.harness.platform.inputs.GetIacmAnsibleInventoryPlainArgs;
+import com.pulumi.harness.platform.inputs.GetIacmAnsiblePlaybookArgs;
+import com.pulumi.harness.platform.inputs.GetIacmAnsiblePlaybookPlainArgs;
 import com.pulumi.harness.platform.inputs.GetIacmDefaultPipelineArgs;
 import com.pulumi.harness.platform.inputs.GetIacmDefaultPipelinePlainArgs;
 import com.pulumi.harness.platform.inputs.GetIdpCatalogEntityArgs;
@@ -341,6 +345,8 @@ import com.pulumi.harness.platform.outputs.GetGitopsRepositoryResult;
 import com.pulumi.harness.platform.outputs.GetGitxWebhookResult;
 import com.pulumi.harness.platform.outputs.GetHarRegistryResult;
 import com.pulumi.harness.platform.outputs.GetHelmConnectorResult;
+import com.pulumi.harness.platform.outputs.GetIacmAnsibleInventoryResult;
+import com.pulumi.harness.platform.outputs.GetIacmAnsiblePlaybookResult;
 import com.pulumi.harness.platform.outputs.GetIacmDefaultPipelineResult;
 import com.pulumi.harness.platform.outputs.GetIdpCatalogEntityResult;
 import com.pulumi.harness.platform.outputs.GetIdpEnvironmentBlueprintResult;
@@ -12965,6 +12971,426 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetHelmConnectorResult> getHelmConnectorPlain(GetHelmConnectorPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getHelmConnector:getHelmConnector", TypeShape.of(GetHelmConnectorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness IaCM Ansible Inventory.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIacmAnsibleInventoryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getIacmAnsibleInventory(GetIacmAnsibleInventoryArgs.builder()
+     *             .identifier("my_inventory")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIacmAnsibleInventoryResult> getIacmAnsibleInventory(GetIacmAnsibleInventoryArgs args) {
+        return getIacmAnsibleInventory(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness IaCM Ansible Inventory.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIacmAnsibleInventoryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getIacmAnsibleInventory(GetIacmAnsibleInventoryArgs.builder()
+     *             .identifier("my_inventory")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetIacmAnsibleInventoryResult> getIacmAnsibleInventoryPlain(GetIacmAnsibleInventoryPlainArgs args) {
+        return getIacmAnsibleInventoryPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness IaCM Ansible Inventory.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIacmAnsibleInventoryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getIacmAnsibleInventory(GetIacmAnsibleInventoryArgs.builder()
+     *             .identifier("my_inventory")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIacmAnsibleInventoryResult> getIacmAnsibleInventory(GetIacmAnsibleInventoryArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getIacmAnsibleInventory:getIacmAnsibleInventory", TypeShape.of(GetIacmAnsibleInventoryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness IaCM Ansible Inventory.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIacmAnsibleInventoryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getIacmAnsibleInventory(GetIacmAnsibleInventoryArgs.builder()
+     *             .identifier("my_inventory")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIacmAnsibleInventoryResult> getIacmAnsibleInventory(GetIacmAnsibleInventoryArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getIacmAnsibleInventory:getIacmAnsibleInventory", TypeShape.of(GetIacmAnsibleInventoryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness IaCM Ansible Inventory.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIacmAnsibleInventoryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getIacmAnsibleInventory(GetIacmAnsibleInventoryArgs.builder()
+     *             .identifier("my_inventory")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetIacmAnsibleInventoryResult> getIacmAnsibleInventoryPlain(GetIacmAnsibleInventoryPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getIacmAnsibleInventory:getIacmAnsibleInventory", TypeShape.of(GetIacmAnsibleInventoryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness IaCM Ansible Playbook.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIacmAnsiblePlaybookArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getIacmAnsiblePlaybook(GetIacmAnsiblePlaybookArgs.builder()
+     *             .identifier("my_playbook")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIacmAnsiblePlaybookResult> getIacmAnsiblePlaybook(GetIacmAnsiblePlaybookArgs args) {
+        return getIacmAnsiblePlaybook(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness IaCM Ansible Playbook.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIacmAnsiblePlaybookArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getIacmAnsiblePlaybook(GetIacmAnsiblePlaybookArgs.builder()
+     *             .identifier("my_playbook")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetIacmAnsiblePlaybookResult> getIacmAnsiblePlaybookPlain(GetIacmAnsiblePlaybookPlainArgs args) {
+        return getIacmAnsiblePlaybookPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness IaCM Ansible Playbook.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIacmAnsiblePlaybookArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getIacmAnsiblePlaybook(GetIacmAnsiblePlaybookArgs.builder()
+     *             .identifier("my_playbook")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIacmAnsiblePlaybookResult> getIacmAnsiblePlaybook(GetIacmAnsiblePlaybookArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getIacmAnsiblePlaybook:getIacmAnsiblePlaybook", TypeShape.of(GetIacmAnsiblePlaybookResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness IaCM Ansible Playbook.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIacmAnsiblePlaybookArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getIacmAnsiblePlaybook(GetIacmAnsiblePlaybookArgs.builder()
+     *             .identifier("my_playbook")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIacmAnsiblePlaybookResult> getIacmAnsiblePlaybook(GetIacmAnsiblePlaybookArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getIacmAnsiblePlaybook:getIacmAnsiblePlaybook", TypeShape.of(GetIacmAnsiblePlaybookResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness IaCM Ansible Playbook.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIacmAnsiblePlaybookArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getIacmAnsiblePlaybook(GetIacmAnsiblePlaybookArgs.builder()
+     *             .identifier("my_playbook")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetIacmAnsiblePlaybookResult> getIacmAnsiblePlaybookPlain(GetIacmAnsiblePlaybookPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getIacmAnsiblePlaybook:getIacmAnsiblePlaybook", TypeShape.of(GetIacmAnsiblePlaybookResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving IACM default pipelines.

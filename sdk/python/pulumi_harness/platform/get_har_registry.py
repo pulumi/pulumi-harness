@@ -28,7 +28,7 @@ class GetHarRegistryResult:
     """
     A collection of values returned by getHarRegistry.
     """
-    def __init__(__self__, allowed_patterns=None, blocked_patterns=None, configs=None, created_at=None, description=None, id=None, identifier=None, package_type=None, parent_ref=None, space_ref=None, url=None):
+    def __init__(__self__, allowed_patterns=None, blocked_patterns=None, configs=None, created_at=None, description=None, id=None, identifier=None, metadata=None, package_type=None, parent_ref=None, space_ref=None, url=None):
         if allowed_patterns and not isinstance(allowed_patterns, list):
             raise TypeError("Expected argument 'allowed_patterns' to be a list")
         pulumi.set(__self__, "allowed_patterns", allowed_patterns)
@@ -50,6 +50,9 @@ class GetHarRegistryResult:
         if identifier and not isinstance(identifier, str):
             raise TypeError("Expected argument 'identifier' to be a str")
         pulumi.set(__self__, "identifier", identifier)
+        if metadata and not isinstance(metadata, dict):
+            raise TypeError("Expected argument 'metadata' to be a dict")
+        pulumi.set(__self__, "metadata", metadata)
         if package_type and not isinstance(package_type, str):
             raise TypeError("Expected argument 'package_type' to be a str")
         pulumi.set(__self__, "package_type", package_type)
@@ -120,6 +123,14 @@ class GetHarRegistryResult:
         return pulumi.get(self, "identifier")
 
     @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
+        """
+        return pulumi.get(self, "metadata")
+
+    @_builtins.property
     @pulumi.getter(name="packageType")
     def package_type(self) -> Optional[_builtins.str]:
         """
@@ -165,6 +176,7 @@ class AwaitableGetHarRegistryResult(GetHarRegistryResult):
             description=self.description,
             id=self.id,
             identifier=self.identifier,
+            metadata=self.metadata,
             package_type=self.package_type,
             parent_ref=self.parent_ref,
             space_ref=self.space_ref,
@@ -176,6 +188,7 @@ def get_har_registry(allowed_patterns: Optional[Sequence[_builtins.str]] = None,
                      configs: Optional[Sequence[Union['GetHarRegistryConfigArgs', 'GetHarRegistryConfigArgsDict']]] = None,
                      description: Optional[_builtins.str] = None,
                      identifier: Optional[_builtins.str] = None,
+                     metadata: Optional[Mapping[str, _builtins.str]] = None,
                      package_type: Optional[_builtins.str] = None,
                      parent_ref: Optional[_builtins.str] = None,
                      space_ref: Optional[_builtins.str] = None,
@@ -199,6 +212,7 @@ def get_har_registry(allowed_patterns: Optional[Sequence[_builtins.str]] = None,
     :param Sequence[Union['GetHarRegistryConfigArgs', 'GetHarRegistryConfigArgsDict']] configs: Configuration for the registry
     :param _builtins.str description: Description of the registry
     :param _builtins.str identifier: Unique identifier of the registry
+    :param Mapping[str, _builtins.str] metadata: Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
     :param _builtins.str package_type: Type of package (DOCKER, HELM, MAVEN, etc.)
     :param _builtins.str parent_ref: Parent reference for the registry
     :param _builtins.str space_ref: Space reference for the registry
@@ -209,6 +223,7 @@ def get_har_registry(allowed_patterns: Optional[Sequence[_builtins.str]] = None,
     __args__['configs'] = configs
     __args__['description'] = description
     __args__['identifier'] = identifier
+    __args__['metadata'] = metadata
     __args__['packageType'] = package_type
     __args__['parentRef'] = parent_ref
     __args__['spaceRef'] = space_ref
@@ -223,6 +238,7 @@ def get_har_registry(allowed_patterns: Optional[Sequence[_builtins.str]] = None,
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
+        metadata=pulumi.get(__ret__, 'metadata'),
         package_type=pulumi.get(__ret__, 'package_type'),
         parent_ref=pulumi.get(__ret__, 'parent_ref'),
         space_ref=pulumi.get(__ret__, 'space_ref'),
@@ -232,6 +248,7 @@ def get_har_registry_output(allowed_patterns: pulumi.Input[Optional[Optional[Seq
                             configs: pulumi.Input[Optional[Optional[Sequence[Union['GetHarRegistryConfigArgs', 'GetHarRegistryConfigArgsDict']]]]] = None,
                             description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                            metadata: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                             package_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             parent_ref: pulumi.Input[Optional[_builtins.str]] = None,
                             space_ref: pulumi.Input[Optional[_builtins.str]] = None,
@@ -255,6 +272,7 @@ def get_har_registry_output(allowed_patterns: pulumi.Input[Optional[Optional[Seq
     :param Sequence[Union['GetHarRegistryConfigArgs', 'GetHarRegistryConfigArgsDict']] configs: Configuration for the registry
     :param _builtins.str description: Description of the registry
     :param _builtins.str identifier: Unique identifier of the registry
+    :param Mapping[str, _builtins.str] metadata: Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
     :param _builtins.str package_type: Type of package (DOCKER, HELM, MAVEN, etc.)
     :param _builtins.str parent_ref: Parent reference for the registry
     :param _builtins.str space_ref: Space reference for the registry
@@ -265,6 +283,7 @@ def get_har_registry_output(allowed_patterns: pulumi.Input[Optional[Optional[Seq
     __args__['configs'] = configs
     __args__['description'] = description
     __args__['identifier'] = identifier
+    __args__['metadata'] = metadata
     __args__['packageType'] = package_type
     __args__['parentRef'] = parent_ref
     __args__['spaceRef'] = space_ref
@@ -278,6 +297,7 @@ def get_har_registry_output(allowed_patterns: pulumi.Input[Optional[Optional[Seq
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
+        metadata=pulumi.get(__response__, 'metadata'),
         package_type=pulumi.get(__response__, 'package_type'),
         parent_ref=pulumi.get(__response__, 'parent_ref'),
         space_ref=pulumi.get(__response__, 'space_ref'),

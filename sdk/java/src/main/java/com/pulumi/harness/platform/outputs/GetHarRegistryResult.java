@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetHarRegistryConfig;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -49,6 +50,11 @@ public final class GetHarRegistryResult {
      * 
      */
     private String identifier;
+    /**
+     * @return Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - {@literal @}. Keys are case-sensitive. Maximum 49 entries allowed.
+     * 
+     */
+    private @Nullable Map<String,String> metadata;
     /**
      * @return Type of package (DOCKER, HELM, MAVEN, etc.)
      * 
@@ -121,6 +127,13 @@ public final class GetHarRegistryResult {
         return this.identifier;
     }
     /**
+     * @return Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - {@literal @}. Keys are case-sensitive. Maximum 49 entries allowed.
+     * 
+     */
+    public Map<String,String> metadata() {
+        return this.metadata == null ? Map.of() : this.metadata;
+    }
+    /**
      * @return Type of package (DOCKER, HELM, MAVEN, etc.)
      * 
      */
@@ -165,6 +178,7 @@ public final class GetHarRegistryResult {
         private @Nullable String description;
         private String id;
         private String identifier;
+        private @Nullable Map<String,String> metadata;
         private @Nullable String packageType;
         private String parentRef;
         private String spaceRef;
@@ -179,6 +193,7 @@ public final class GetHarRegistryResult {
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
+    	      this.metadata = defaults.metadata;
     	      this.packageType = defaults.packageType;
     	      this.parentRef = defaults.parentRef;
     	      this.spaceRef = defaults.spaceRef;
@@ -243,6 +258,12 @@ public final class GetHarRegistryResult {
             return this;
         }
         @CustomType.Setter
+        public Builder metadata(@Nullable Map<String,String> metadata) {
+
+            this.metadata = metadata;
+            return this;
+        }
+        @CustomType.Setter
         public Builder packageType(@Nullable String packageType) {
 
             this.packageType = packageType;
@@ -281,6 +302,7 @@ public final class GetHarRegistryResult {
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
+            _resultValue.metadata = metadata;
             _resultValue.packageType = packageType;
             _resultValue.parentRef = parentRef;
             _resultValue.spaceRef = spaceRef;

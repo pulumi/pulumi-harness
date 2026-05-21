@@ -19,72 +19,79 @@ __all__ = ['AzureKeyVaultConnectorArgs', 'AzureKeyVaultConnector']
 @pulumi.input_type
 class AzureKeyVaultConnectorArgs:
     def __init__(__self__, *,
-                 client_id: pulumi.Input[_builtins.str],
                  identifier: pulumi.Input[_builtins.str],
-                 secret_key: pulumi.Input[_builtins.str],
                  subscription: pulumi.Input[_builtins.str],
-                 tenant_id: pulumi.Input[_builtins.str],
                  vault_name: pulumi.Input[_builtins.str],
                  azure_environment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_managed_identity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_purge: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 managed_client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_managed_identity: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AzureKeyVaultConnector resource.
 
-        :param pulumi.Input[_builtins.str] client_id: Application ID of the Azure App.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[_builtins.str] secret_key: The Harness text secret with the Azure authentication key as its value.
         :param pulumi.Input[_builtins.str] subscription: Azure subscription ID.
-        :param pulumi.Input[_builtins.str] tenant_id: The Azure Active Directory (Azure AD) directory ID where you created your application.
         :param pulumi.Input[_builtins.str] vault_name: Name of the vault.
         :param pulumi.Input[_builtins.str] azure_environment_type: Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
+        :param pulumi.Input[_builtins.str] azure_managed_identity_type: Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity. Required when use*managed*identity is true.
+        :param pulumi.Input[_builtins.str] client_id: Application ID of the Azure App. Required when use*managed*identity is false.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
+        :param pulumi.Input[_builtins.bool] enable_purge: Boolean value to indicate if purge is enabled.
         :param pulumi.Input[_builtins.bool] is_default: Specifies whether or not is the default value.
+        :param pulumi.Input[_builtins.str] managed_client_id: Client Id of the ManagedIdentity resource. Required when azure*managed*identity_type is UserAssignedManagedIdentity.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
+        :param pulumi.Input[_builtins.str] secret_key: The Harness text secret with the Azure authentication key as its value. Required when use*managed*identity is false.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[_builtins.str] tenant_id: The Azure Active Directory (Azure AD) directory ID where you created your application. Required when use*managed*identity is false.
+        :param pulumi.Input[_builtins.bool] use_managed_identity: Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
         """
-        pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "identifier", identifier)
-        pulumi.set(__self__, "secret_key", secret_key)
         pulumi.set(__self__, "subscription", subscription)
-        pulumi.set(__self__, "tenant_id", tenant_id)
         pulumi.set(__self__, "vault_name", vault_name)
         if azure_environment_type is not None:
             pulumi.set(__self__, "azure_environment_type", azure_environment_type)
+        if azure_managed_identity_type is not None:
+            pulumi.set(__self__, "azure_managed_identity_type", azure_managed_identity_type)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
         if delegate_selectors is not None:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_purge is not None:
+            pulumi.set(__self__, "enable_purge", enable_purge)
         if is_default is not None:
             pulumi.set(__self__, "is_default", is_default)
+        if managed_client_id is not None:
+            pulumi.set(__self__, "managed_client_id", managed_client_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @_builtins.property
-    @pulumi.getter(name="clientId")
-    def client_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Application ID of the Azure App.
-        """
-        return pulumi.get(self, "client_id")
-
-    @client_id.setter
-    def client_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "client_id", value)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+        if use_managed_identity is not None:
+            pulumi.set(__self__, "use_managed_identity", use_managed_identity)
 
     @_builtins.property
     @pulumi.getter
@@ -99,18 +106,6 @@ class AzureKeyVaultConnectorArgs:
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
-    @pulumi.getter(name="secretKey")
-    def secret_key(self) -> pulumi.Input[_builtins.str]:
-        """
-        The Harness text secret with the Azure authentication key as its value.
-        """
-        return pulumi.get(self, "secret_key")
-
-    @secret_key.setter
-    def secret_key(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "secret_key", value)
-
-    @_builtins.property
     @pulumi.getter
     def subscription(self) -> pulumi.Input[_builtins.str]:
         """
@@ -121,18 +116,6 @@ class AzureKeyVaultConnectorArgs:
     @subscription.setter
     def subscription(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "subscription", value)
-
-    @_builtins.property
-    @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        The Azure Active Directory (Azure AD) directory ID where you created your application.
-        """
-        return pulumi.get(self, "tenant_id")
-
-    @tenant_id.setter
-    def tenant_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultName")
@@ -159,171 +142,22 @@ class AzureKeyVaultConnectorArgs:
         pulumi.set(self, "azure_environment_type", value)
 
     @_builtins.property
-    @pulumi.getter(name="delegateSelectors")
-    def delegate_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+    @pulumi.getter(name="azureManagedIdentityType")
+    def azure_managed_identity_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Tags to filter delegates for connection.
+        Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity. Required when use*managed*identity is true.
         """
-        return pulumi.get(self, "delegate_selectors")
+        return pulumi.get(self, "azure_managed_identity_type")
 
-    @delegate_selectors.setter
-    def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "delegate_selectors", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Description of the resource.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "description", value)
-
-    @_builtins.property
-    @pulumi.getter(name="isDefault")
-    def is_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Specifies whether or not is the default value.
-        """
-        return pulumi.get(self, "is_default")
-
-    @is_default.setter
-    def is_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "is_default", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Name of the resource.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="orgId")
-    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Unique identifier of the organization.
-        """
-        return pulumi.get(self, "org_id")
-
-    @org_id.setter
-    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "org_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Unique identifier of the project.
-        """
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "project_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Tags to associate with the resource.
-        """
-        return pulumi.get(self, "tags")
-
-    @tags.setter
-    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "tags", value)
-
-
-@pulumi.input_type
-class _AzureKeyVaultConnectorState:
-    def __init__(__self__, *,
-                 azure_environment_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: pulumi.Input[Optional[_builtins.str]] = None,
-                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
-                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
-                 name: pulumi.Input[Optional[_builtins.str]] = None,
-                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 secret_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 subscription: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 vault_name: pulumi.Input[Optional[_builtins.str]] = None):
-        """
-        Input properties used for looking up and filtering AzureKeyVaultConnector resources.
-
-        :param pulumi.Input[_builtins.str] azure_environment_type: Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
-        :param pulumi.Input[_builtins.str] client_id: Application ID of the Azure App.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
-        :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[_builtins.bool] is_default: Specifies whether or not is the default value.
-        :param pulumi.Input[_builtins.str] name: Name of the resource.
-        :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[_builtins.str] secret_key: The Harness text secret with the Azure authentication key as its value.
-        :param pulumi.Input[_builtins.str] subscription: Azure subscription ID.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[_builtins.str] tenant_id: The Azure Active Directory (Azure AD) directory ID where you created your application.
-        :param pulumi.Input[_builtins.str] vault_name: Name of the vault.
-        """
-        if azure_environment_type is not None:
-            pulumi.set(__self__, "azure_environment_type", azure_environment_type)
-        if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
-        if delegate_selectors is not None:
-            pulumi.set(__self__, "delegate_selectors", delegate_selectors)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if identifier is not None:
-            pulumi.set(__self__, "identifier", identifier)
-        if is_default is not None:
-            pulumi.set(__self__, "is_default", is_default)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
-        if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
-        if subscription is not None:
-            pulumi.set(__self__, "subscription", subscription)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
-        if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
-        if vault_name is not None:
-            pulumi.set(__self__, "vault_name", vault_name)
-
-    @_builtins.property
-    @pulumi.getter(name="azureEnvironmentType")
-    def azure_environment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
-        """
-        return pulumi.get(self, "azure_environment_type")
-
-    @azure_environment_type.setter
-    def azure_environment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "azure_environment_type", value)
+    @azure_managed_identity_type.setter
+    def azure_managed_identity_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "azure_managed_identity_type", value)
 
     @_builtins.property
     @pulumi.getter(name="clientId")
     def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Application ID of the Azure App.
+        Application ID of the Azure App. Required when use*managed*identity is false.
         """
         return pulumi.get(self, "client_id")
 
@@ -356,16 +190,16 @@ class _AzureKeyVaultConnectorState:
         pulumi.set(self, "description", value)
 
     @_builtins.property
-    @pulumi.getter
-    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
+    @pulumi.getter(name="enablePurge")
+    def enable_purge(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Unique identifier of the resource.
+        Boolean value to indicate if purge is enabled.
         """
-        return pulumi.get(self, "identifier")
+        return pulumi.get(self, "enable_purge")
 
-    @identifier.setter
-    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "identifier", value)
+    @enable_purge.setter
+    def enable_purge(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_purge", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
@@ -378,6 +212,18 @@ class _AzureKeyVaultConnectorState:
     @is_default.setter
     def is_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default", value)
+
+    @_builtins.property
+    @pulumi.getter(name="managedClientId")
+    def managed_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Client Id of the ManagedIdentity resource. Required when azure*managed*identity_type is UserAssignedManagedIdentity.
+        """
+        return pulumi.get(self, "managed_client_id")
+
+    @managed_client_id.setter
+    def managed_client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "managed_client_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -419,7 +265,280 @@ class _AzureKeyVaultConnectorState:
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Harness text secret with the Azure authentication key as its value.
+        The Harness text secret with the Azure authentication key as its value. Required when use*managed*identity is false.
+        """
+        return pulumi.get(self, "secret_key")
+
+    @secret_key.setter
+    def secret_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "secret_key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Tags to associate with the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Azure Active Directory (Azure AD) directory ID where you created your application. Required when use*managed*identity is false.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tenant_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="useManagedIdentity")
+    def use_managed_identity(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+        """
+        return pulumi.get(self, "use_managed_identity")
+
+    @use_managed_identity.setter
+    def use_managed_identity(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "use_managed_identity", value)
+
+
+@pulumi.input_type
+class _AzureKeyVaultConnectorState:
+    def __init__(__self__, *,
+                 azure_environment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_managed_identity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_purge: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 managed_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_managed_identity: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vault_name: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        Input properties used for looking up and filtering AzureKeyVaultConnector resources.
+
+        :param pulumi.Input[_builtins.str] azure_environment_type: Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
+        :param pulumi.Input[_builtins.str] azure_managed_identity_type: Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity. Required when use*managed*identity is true.
+        :param pulumi.Input[_builtins.str] client_id: Application ID of the Azure App. Required when use*managed*identity is false.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
+        :param pulumi.Input[_builtins.str] description: Description of the resource.
+        :param pulumi.Input[_builtins.bool] enable_purge: Boolean value to indicate if purge is enabled.
+        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[_builtins.bool] is_default: Specifies whether or not is the default value.
+        :param pulumi.Input[_builtins.str] managed_client_id: Client Id of the ManagedIdentity resource. Required when azure*managed*identity_type is UserAssignedManagedIdentity.
+        :param pulumi.Input[_builtins.str] name: Name of the resource.
+        :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
+        :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
+        :param pulumi.Input[_builtins.str] secret_key: The Harness text secret with the Azure authentication key as its value. Required when use*managed*identity is false.
+        :param pulumi.Input[_builtins.str] subscription: Azure subscription ID.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
+        :param pulumi.Input[_builtins.str] tenant_id: The Azure Active Directory (Azure AD) directory ID where you created your application. Required when use*managed*identity is false.
+        :param pulumi.Input[_builtins.bool] use_managed_identity: Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+        :param pulumi.Input[_builtins.str] vault_name: Name of the vault.
+        """
+        if azure_environment_type is not None:
+            pulumi.set(__self__, "azure_environment_type", azure_environment_type)
+        if azure_managed_identity_type is not None:
+            pulumi.set(__self__, "azure_managed_identity_type", azure_managed_identity_type)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if delegate_selectors is not None:
+            pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enable_purge is not None:
+            pulumi.set(__self__, "enable_purge", enable_purge)
+        if identifier is not None:
+            pulumi.set(__self__, "identifier", identifier)
+        if is_default is not None:
+            pulumi.set(__self__, "is_default", is_default)
+        if managed_client_id is not None:
+            pulumi.set(__self__, "managed_client_id", managed_client_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if org_id is not None:
+            pulumi.set(__self__, "org_id", org_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+        if subscription is not None:
+            pulumi.set(__self__, "subscription", subscription)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+        if use_managed_identity is not None:
+            pulumi.set(__self__, "use_managed_identity", use_managed_identity)
+        if vault_name is not None:
+            pulumi.set(__self__, "vault_name", vault_name)
+
+    @_builtins.property
+    @pulumi.getter(name="azureEnvironmentType")
+    def azure_environment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
+        """
+        return pulumi.get(self, "azure_environment_type")
+
+    @azure_environment_type.setter
+    def azure_environment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "azure_environment_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="azureManagedIdentityType")
+    def azure_managed_identity_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity. Required when use*managed*identity is true.
+        """
+        return pulumi.get(self, "azure_managed_identity_type")
+
+    @azure_managed_identity_type.setter
+    def azure_managed_identity_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "azure_managed_identity_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Application ID of the Azure App. Required when use*managed*identity is false.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "client_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="delegateSelectors")
+    def delegate_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Tags to filter delegates for connection.
+        """
+        return pulumi.get(self, "delegate_selectors")
+
+    @delegate_selectors.setter
+    def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "delegate_selectors", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Description of the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enablePurge")
+    def enable_purge(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Boolean value to indicate if purge is enabled.
+        """
+        return pulumi.get(self, "enable_purge")
+
+    @enable_purge.setter
+    def enable_purge(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_purge", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Unique identifier of the resource.
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "identifier", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Specifies whether or not is the default value.
+        """
+        return pulumi.get(self, "is_default")
+
+    @is_default.setter
+    def is_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "is_default", value)
+
+    @_builtins.property
+    @pulumi.getter(name="managedClientId")
+    def managed_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Client Id of the ManagedIdentity resource. Required when azure*managed*identity_type is UserAssignedManagedIdentity.
+        """
+        return pulumi.get(self, "managed_client_id")
+
+    @managed_client_id.setter
+    def managed_client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "managed_client_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Name of the resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Unique identifier of the organization.
+        """
+        return pulumi.get(self, "org_id")
+
+    @org_id.setter
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "org_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Unique identifier of the project.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Harness text secret with the Azure authentication key as its value. Required when use*managed*identity is false.
         """
         return pulumi.get(self, "secret_key")
 
@@ -455,13 +574,25 @@ class _AzureKeyVaultConnectorState:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Azure Active Directory (Azure AD) directory ID where you created your application.
+        The Azure Active Directory (Azure AD) directory ID where you created your application. Required when use*managed*identity is false.
         """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
     def tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tenant_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="useManagedIdentity")
+    def use_managed_identity(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+        """
+        return pulumi.get(self, "use_managed_identity")
+
+    @use_managed_identity.setter
+    def use_managed_identity(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "use_managed_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultName")
@@ -483,11 +614,14 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  azure_environment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_managed_identity_type: pulumi.Input[Optional[_builtins.str]] = None,
                  client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_purge: pulumi.Input[Optional[_builtins.bool]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 managed_client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -495,6 +629,7 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
                  subscription: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_managed_identity: pulumi.Input[Optional[_builtins.bool]] = None,
                  vault_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -502,11 +637,13 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Manual Credentials
+
         ```python
         import pulumi
         import pulumi_harness as harness
 
-        example = harness.platform.AzureKeyVaultConnector("example",
+        manual = harness.platform.AzureKeyVaultConnector("manual",
             identifier="identifier",
             name="name",
             description="example",
@@ -517,6 +654,47 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
             vault_name="vault_name",
             subscription="subscription",
             is_default=False,
+            azure_environment_type="AZURE")
+        ```
+
+        ### System-Assigned Managed Identity
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        system_msi = harness.platform.AzureKeyVaultConnector("system_msi",
+            identifier="system_msi_example",
+            name="system_msi_example",
+            description="Azure Key Vault using system-assigned managed identity",
+            tags=["foo:bar"],
+            vault_name="vault_name",
+            subscription="subscription",
+            is_default=False,
+            use_managed_identity=True,
+            azure_managed_identity_type="SystemAssignedManagedIdentity",
+            delegate_selectors=["harness-delegate"],
+            azure_environment_type="AZURE")
+        ```
+
+        ### User-Assigned Managed Identity
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        user_msi = harness.platform.AzureKeyVaultConnector("user_msi",
+            identifier="user_msi_example",
+            name="user_msi_example",
+            description="Azure Key Vault using user-assigned managed identity",
+            tags=["foo:bar"],
+            vault_name="vault_name",
+            subscription="subscription",
+            is_default=False,
+            use_managed_identity=True,
+            azure_managed_identity_type="UserAssignedManagedIdentity",
+            managed_client_id="client_id_of_managed_identity",
+            delegate_selectors=["harness-delegate"],
             azure_environment_type="AZURE")
         ```
 
@@ -546,18 +724,22 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] azure_environment_type: Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
-        :param pulumi.Input[_builtins.str] client_id: Application ID of the Azure App.
+        :param pulumi.Input[_builtins.str] azure_managed_identity_type: Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity. Required when use*managed*identity is true.
+        :param pulumi.Input[_builtins.str] client_id: Application ID of the Azure App. Required when use*managed*identity is false.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
+        :param pulumi.Input[_builtins.bool] enable_purge: Boolean value to indicate if purge is enabled.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.bool] is_default: Specifies whether or not is the default value.
+        :param pulumi.Input[_builtins.str] managed_client_id: Client Id of the ManagedIdentity resource. Required when azure*managed*identity_type is UserAssignedManagedIdentity.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[_builtins.str] secret_key: The Harness text secret with the Azure authentication key as its value.
+        :param pulumi.Input[_builtins.str] secret_key: The Harness text secret with the Azure authentication key as its value. Required when use*managed*identity is false.
         :param pulumi.Input[_builtins.str] subscription: Azure subscription ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[_builtins.str] tenant_id: The Azure Active Directory (Azure AD) directory ID where you created your application.
+        :param pulumi.Input[_builtins.str] tenant_id: The Azure Active Directory (Azure AD) directory ID where you created your application. Required when use*managed*identity is false.
+        :param pulumi.Input[_builtins.bool] use_managed_identity: Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
         :param pulumi.Input[_builtins.str] vault_name: Name of the vault.
         """
         ...
@@ -571,11 +753,13 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Manual Credentials
+
         ```python
         import pulumi
         import pulumi_harness as harness
 
-        example = harness.platform.AzureKeyVaultConnector("example",
+        manual = harness.platform.AzureKeyVaultConnector("manual",
             identifier="identifier",
             name="name",
             description="example",
@@ -586,6 +770,47 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
             vault_name="vault_name",
             subscription="subscription",
             is_default=False,
+            azure_environment_type="AZURE")
+        ```
+
+        ### System-Assigned Managed Identity
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        system_msi = harness.platform.AzureKeyVaultConnector("system_msi",
+            identifier="system_msi_example",
+            name="system_msi_example",
+            description="Azure Key Vault using system-assigned managed identity",
+            tags=["foo:bar"],
+            vault_name="vault_name",
+            subscription="subscription",
+            is_default=False,
+            use_managed_identity=True,
+            azure_managed_identity_type="SystemAssignedManagedIdentity",
+            delegate_selectors=["harness-delegate"],
+            azure_environment_type="AZURE")
+        ```
+
+        ### User-Assigned Managed Identity
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+
+        user_msi = harness.platform.AzureKeyVaultConnector("user_msi",
+            identifier="user_msi_example",
+            name="user_msi_example",
+            description="Azure Key Vault using user-assigned managed identity",
+            tags=["foo:bar"],
+            vault_name="vault_name",
+            subscription="subscription",
+            is_default=False,
+            use_managed_identity=True,
+            azure_managed_identity_type="UserAssignedManagedIdentity",
+            managed_client_id="client_id_of_managed_identity",
+            delegate_selectors=["harness-delegate"],
             azure_environment_type="AZURE")
         ```
 
@@ -628,11 +853,14 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  azure_environment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_managed_identity_type: pulumi.Input[Optional[_builtins.str]] = None,
                  client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_purge: pulumi.Input[Optional[_builtins.bool]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 managed_client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -640,6 +868,7 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
                  subscription: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_managed_identity: pulumi.Input[Optional[_builtins.bool]] = None,
                  vault_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -651,28 +880,26 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
             __props__ = AzureKeyVaultConnectorArgs.__new__(AzureKeyVaultConnectorArgs)
 
             __props__.__dict__["azure_environment_type"] = azure_environment_type
-            if client_id is None and not opts.urn:
-                raise TypeError("Missing required property 'client_id'")
+            __props__.__dict__["azure_managed_identity_type"] = azure_managed_identity_type
             __props__.__dict__["client_id"] = client_id
             __props__.__dict__["delegate_selectors"] = delegate_selectors
             __props__.__dict__["description"] = description
+            __props__.__dict__["enable_purge"] = enable_purge
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["is_default"] = is_default
+            __props__.__dict__["managed_client_id"] = managed_client_id
             __props__.__dict__["name"] = name
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["project_id"] = project_id
-            if secret_key is None and not opts.urn:
-                raise TypeError("Missing required property 'secret_key'")
             __props__.__dict__["secret_key"] = secret_key
             if subscription is None and not opts.urn:
                 raise TypeError("Missing required property 'subscription'")
             __props__.__dict__["subscription"] = subscription
             __props__.__dict__["tags"] = tags
-            if tenant_id is None and not opts.urn:
-                raise TypeError("Missing required property 'tenant_id'")
             __props__.__dict__["tenant_id"] = tenant_id
+            __props__.__dict__["use_managed_identity"] = use_managed_identity
             if vault_name is None and not opts.urn:
                 raise TypeError("Missing required property 'vault_name'")
             __props__.__dict__["vault_name"] = vault_name
@@ -687,11 +914,14 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             azure_environment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            azure_managed_identity_type: pulumi.Input[Optional[_builtins.str]] = None,
             client_id: pulumi.Input[Optional[_builtins.str]] = None,
             delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_purge: pulumi.Input[Optional[_builtins.bool]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            managed_client_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -699,6 +929,7 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
             subscription: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            use_managed_identity: pulumi.Input[Optional[_builtins.bool]] = None,
             vault_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'AzureKeyVaultConnector':
         """
         Get an existing AzureKeyVaultConnector resource's state with the given name, id, and optional extra
@@ -708,18 +939,22 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] azure_environment_type: Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
-        :param pulumi.Input[_builtins.str] client_id: Application ID of the Azure App.
+        :param pulumi.Input[_builtins.str] azure_managed_identity_type: Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity. Required when use*managed*identity is true.
+        :param pulumi.Input[_builtins.str] client_id: Application ID of the Azure App. Required when use*managed*identity is false.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
+        :param pulumi.Input[_builtins.bool] enable_purge: Boolean value to indicate if purge is enabled.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.bool] is_default: Specifies whether or not is the default value.
+        :param pulumi.Input[_builtins.str] managed_client_id: Client Id of the ManagedIdentity resource. Required when azure*managed*identity_type is UserAssignedManagedIdentity.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[_builtins.str] secret_key: The Harness text secret with the Azure authentication key as its value.
+        :param pulumi.Input[_builtins.str] secret_key: The Harness text secret with the Azure authentication key as its value. Required when use*managed*identity is false.
         :param pulumi.Input[_builtins.str] subscription: Azure subscription ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[_builtins.str] tenant_id: The Azure Active Directory (Azure AD) directory ID where you created your application.
+        :param pulumi.Input[_builtins.str] tenant_id: The Azure Active Directory (Azure AD) directory ID where you created your application. Required when use*managed*identity is false.
+        :param pulumi.Input[_builtins.bool] use_managed_identity: Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
         :param pulumi.Input[_builtins.str] vault_name: Name of the vault.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -727,11 +962,14 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
         __props__ = _AzureKeyVaultConnectorState.__new__(_AzureKeyVaultConnectorState)
 
         __props__.__dict__["azure_environment_type"] = azure_environment_type
+        __props__.__dict__["azure_managed_identity_type"] = azure_managed_identity_type
         __props__.__dict__["client_id"] = client_id
         __props__.__dict__["delegate_selectors"] = delegate_selectors
         __props__.__dict__["description"] = description
+        __props__.__dict__["enable_purge"] = enable_purge
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["is_default"] = is_default
+        __props__.__dict__["managed_client_id"] = managed_client_id
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
@@ -739,6 +977,7 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
         __props__.__dict__["subscription"] = subscription
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tenant_id"] = tenant_id
+        __props__.__dict__["use_managed_identity"] = use_managed_identity
         __props__.__dict__["vault_name"] = vault_name
         return AzureKeyVaultConnector(resource_name, opts=opts, __props__=__props__)
 
@@ -751,10 +990,18 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
         return pulumi.get(self, "azure_environment_type")
 
     @_builtins.property
-    @pulumi.getter(name="clientId")
-    def client_id(self) -> pulumi.Output[_builtins.str]:
+    @pulumi.getter(name="azureManagedIdentityType")
+    def azure_managed_identity_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Application ID of the Azure App.
+        Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity. Required when use*managed*identity is true.
+        """
+        return pulumi.get(self, "azure_managed_identity_type")
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Application ID of the Azure App. Required when use*managed*identity is false.
         """
         return pulumi.get(self, "client_id")
 
@@ -775,6 +1022,14 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @_builtins.property
+    @pulumi.getter(name="enablePurge")
+    def enable_purge(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Boolean value to indicate if purge is enabled.
+        """
+        return pulumi.get(self, "enable_purge")
+
+    @_builtins.property
     @pulumi.getter
     def identifier(self) -> pulumi.Output[_builtins.str]:
         """
@@ -789,6 +1044,14 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
         Specifies whether or not is the default value.
         """
         return pulumi.get(self, "is_default")
+
+    @_builtins.property
+    @pulumi.getter(name="managedClientId")
+    def managed_client_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Client Id of the ManagedIdentity resource. Required when azure*managed*identity_type is UserAssignedManagedIdentity.
+        """
+        return pulumi.get(self, "managed_client_id")
 
     @_builtins.property
     @pulumi.getter
@@ -816,9 +1079,9 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="secretKey")
-    def secret_key(self) -> pulumi.Output[_builtins.str]:
+    def secret_key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The Harness text secret with the Azure authentication key as its value.
+        The Harness text secret with the Azure authentication key as its value. Required when use*managed*identity is false.
         """
         return pulumi.get(self, "secret_key")
 
@@ -840,11 +1103,19 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> pulumi.Output[_builtins.str]:
+    def tenant_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The Azure Active Directory (Azure AD) directory ID where you created your application.
+        The Azure Active Directory (Azure AD) directory ID where you created your application. Required when use*managed*identity is false.
         """
         return pulumi.get(self, "tenant_id")
+
+    @_builtins.property
+    @pulumi.getter(name="useManagedIdentity")
+    def use_managed_identity(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+        """
+        return pulumi.get(self, "use_managed_identity")
 
     @_builtins.property
     @pulumi.getter(name="vaultName")

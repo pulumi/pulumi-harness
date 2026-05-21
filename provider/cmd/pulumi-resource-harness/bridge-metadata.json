@@ -1040,6 +1040,81 @@
                     }
                 }
             },
+            "harness_fme_api_key": {
+                "current": "harness:fme/apiKey:ApiKey"
+            },
+            "harness_fme_environment": {
+                "current": "harness:fmeEnvironment/fmeEnvironment:FmeEnvironment",
+                "fields": {
+                    "bootstrap_api_token_ids": {
+                        "maxItemsOne": false
+                    },
+                    "change_permissions": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "approval_skippable_by": {
+                                    "maxItemsOne": false
+                                },
+                                "approvers": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "harness_fme_environment_segment_keys": {
+                "current": "harness:fmeEnvironment/segmentKeys:SegmentKeys",
+                "fields": {
+                    "keys": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_fme_feature_flag": {
+                "current": "harness:fmeFeatureFlag/fmeFeatureFlag:FmeFeatureFlag",
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_fme_feature_flag_definition": {
+                "current": "harness:fmeFeatureFlag/definition:Definition"
+            },
+            "harness_fme_flag_set": {
+                "current": "harness:fme/flagSet:FlagSet"
+            },
+            "harness_fme_large_segment": {
+                "current": "harness:fmeLargeSegment/fmeLargeSegment:FmeLargeSegment"
+            },
+            "harness_fme_large_segment_environment_association": {
+                "current": "harness:fmeLargeSegment/environmentAssociation:EnvironmentAssociation"
+            },
+            "harness_fme_rule_based_segment": {
+                "current": "harness:fmeRuleBasedSegment/fmeRuleBasedSegment:FmeRuleBasedSegment"
+            },
+            "harness_fme_rule_based_segment_environment_association": {
+                "current": "harness:fmeRuleBasedSegment/environmentAssociation:EnvironmentAssociation"
+            },
+            "harness_fme_segment": {
+                "current": "harness:fmeSegment/fmeSegment:FmeSegment"
+            },
+            "harness_fme_segment_environment_association": {
+                "current": "harness:fmeSegment/environmentAssociation:EnvironmentAssociation"
+            },
+            "harness_fme_traffic_type": {
+                "current": "harness:fmeTrafficType/fmeTrafficType:FmeTrafficType"
+            },
+            "harness_fme_traffic_type_attribute": {
+                "current": "harness:fmeTrafficType/attribute:Attribute",
+                "fields": {
+                    "suggested_values": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_git_connector": {
                 "current": "harness:index/gitConnector:GitConnector",
                 "fields": {
@@ -14695,6 +14770,70 @@
                     }
                 }
             },
+            "harness_platform_iacm_ansible_inventory": {
+                "current": "harness:platform/iacmAnsibleInventory:IacmAnsibleInventory",
+                "fields": {
+                    "dynamic_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "configuration": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "selectors": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "dynamic_vars": {
+                                    "maxItemsOne": false
+                                },
+                                "vars": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "hosts": {
+                                    "maxItemsOne": false
+                                },
+                                "vars": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "plugin_options": {
+                        "maxItemsOne": true
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "vars": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_iacm_ansible_playbook": {
+                "current": "harness:platform/iacmAnsiblePlaybook:IacmAnsiblePlaybook",
+                "fields": {
+                    "env_vars": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "vars": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_iacm_default_pipeline": {
                 "current": "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline"
             },
@@ -15204,6 +15343,9 @@
                 "fields": {
                     "principal": {
                         "maxItemsOne": false
+                    },
+                    "role_reference": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -16730,6 +16872,21 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "harness_fme_environment": {
+                "current": "harness:fme/getEnvironment:getEnvironment"
+            },
+            "harness_fme_flag_set": {
+                "current": "harness:fme/getFlagSet:getFlagSet"
+            },
+            "harness_fme_large_segment": {
+                "current": "harness:fme/getLargeSegment:getLargeSegment"
+            },
+            "harness_fme_traffic_type": {
+                "current": "harness:fme/getTrafficType:getTrafficType"
+            },
+            "harness_fme_workspace": {
+                "current": "harness:fme/workspace:Workspace"
             },
             "harness_git_connector": {
                 "current": "harness:index/getGitConnector:getGitConnector",
@@ -18368,6 +18525,70 @@
                     }
                 }
             },
+            "harness_platform_iacm_ansible_inventory": {
+                "current": "harness:platform/getIacmAnsibleInventory:getIacmAnsibleInventory",
+                "fields": {
+                    "dynamic_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "configuration": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "selectors": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "dynamic_vars": {
+                                    "maxItemsOne": false
+                                },
+                                "vars": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "hosts": {
+                                    "maxItemsOne": false
+                                },
+                                "vars": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "plugin_options": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "vars": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_iacm_ansible_playbook": {
+                "current": "harness:platform/getIacmAnsiblePlaybook:getIacmAnsiblePlaybook",
+                "fields": {
+                    "env_vars": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "vars": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_iacm_default_pipeline": {
                 "current": "harness:platform/getIacmDefaultPipeline:getIacmDefaultPipeline"
             },
@@ -18879,6 +19100,9 @@
                 "current": "harness:platform/getRoleAssignments:getRoleAssignments",
                 "fields": {
                     "principal": {
+                        "maxItemsOne": false
+                    },
+                    "role_reference": {
                         "maxItemsOne": false
                     }
                 }

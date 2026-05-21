@@ -1784,7 +1784,7 @@ func (o GitopsApplicationsetApplicationsetSpecStrategyRollingSyncStepMatchExpres
 type GitopsApplicationsetApplicationsetSpecSyncPolicy struct {
 	// Represents the policy applied on the generated applications. Possible values are create-only, create-update, create-delete, and sync.
 	ApplicationsSync *string `pulumi:"applicationsSync"`
-	// Label selector used to narrow the scope of targeted clusters.
+	// If true, prevents an Application's child resources from being deleted when the parent Application is deleted.
 	PreserveResourcesOnDeletion *bool `pulumi:"preserveResourcesOnDeletion"`
 }
 
@@ -1802,7 +1802,7 @@ type GitopsApplicationsetApplicationsetSpecSyncPolicyInput interface {
 type GitopsApplicationsetApplicationsetSpecSyncPolicyArgs struct {
 	// Represents the policy applied on the generated applications. Possible values are create-only, create-update, create-delete, and sync.
 	ApplicationsSync pulumi.StringPtrInput `pulumi:"applicationsSync"`
-	// Label selector used to narrow the scope of targeted clusters.
+	// If true, prevents an Application's child resources from being deleted when the parent Application is deleted.
 	PreserveResourcesOnDeletion pulumi.BoolPtrInput `pulumi:"preserveResourcesOnDeletion"`
 }
 
@@ -1888,7 +1888,7 @@ func (o GitopsApplicationsetApplicationsetSpecSyncPolicyOutput) ApplicationsSync
 	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecSyncPolicy) *string { return v.ApplicationsSync }).(pulumi.StringPtrOutput)
 }
 
-// Label selector used to narrow the scope of targeted clusters.
+// If true, prevents an Application's child resources from being deleted when the parent Application is deleted.
 func (o GitopsApplicationsetApplicationsetSpecSyncPolicyOutput) PreserveResourcesOnDeletion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecSyncPolicy) *bool { return v.PreserveResourcesOnDeletion }).(pulumi.BoolPtrOutput)
 }
@@ -1927,7 +1927,7 @@ func (o GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput) ApplicationsS
 	}).(pulumi.StringPtrOutput)
 }
 
-// Label selector used to narrow the scope of targeted clusters.
+// If true, prevents an Application's child resources from being deleted when the parent Application is deleted.
 func (o GitopsApplicationsetApplicationsetSpecSyncPolicyPtrOutput) PreserveResourcesOnDeletion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecSyncPolicy) *bool {
 		if v == nil {
@@ -5821,6 +5821,8 @@ type HarRegistryConfig struct {
 	AuthType *string `pulumi:"authType"`
 	// Authentication configuration for UPSTREAM registry type
 	Auths []HarRegistryConfigAuth `pulumi:"auths"`
+	// Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+	FirewallMode *string `pulumi:"firewallMode"`
 	// Upstream source
 	Source *string `pulumi:"source"`
 	// Type of registry (VIRTUAL or UPSTREAM)
@@ -5847,6 +5849,8 @@ type HarRegistryConfigArgs struct {
 	AuthType pulumi.StringPtrInput `pulumi:"authType"`
 	// Authentication configuration for UPSTREAM registry type
 	Auths HarRegistryConfigAuthArrayInput `pulumi:"auths"`
+	// Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+	FirewallMode pulumi.StringPtrInput `pulumi:"firewallMode"`
 	// Upstream source
 	Source pulumi.StringPtrInput `pulumi:"source"`
 	// Type of registry (VIRTUAL or UPSTREAM)
@@ -5916,6 +5920,11 @@ func (o HarRegistryConfigOutput) AuthType() pulumi.StringPtrOutput {
 // Authentication configuration for UPSTREAM registry type
 func (o HarRegistryConfigOutput) Auths() HarRegistryConfigAuthArrayOutput {
 	return o.ApplyT(func(v HarRegistryConfig) []HarRegistryConfigAuth { return v.Auths }).(HarRegistryConfigAuthArrayOutput)
+}
+
+// Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+func (o HarRegistryConfigOutput) FirewallMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HarRegistryConfig) *string { return v.FirewallMode }).(pulumi.StringPtrOutput)
 }
 
 // Upstream source
@@ -6285,6 +6294,1610 @@ func (o HelmConnectorCredentialsPtrOutput) UsernameRef() pulumi.StringPtrOutput 
 		}
 		return v.UsernameRef
 	}).(pulumi.StringPtrOutput)
+}
+
+type IacmAnsibleInventoryDynamicGroup struct {
+	// Configuration for the dynamic group.
+	Configuration *IacmAnsibleInventoryDynamicGroupConfiguration `pulumi:"configuration"`
+	// Connector identifier used by the dynamic group.
+	ConnectorIdentifier string `pulumi:"connectorIdentifier"`
+	// Connector type (e.g. workspace, aws, gcp, azure, vault).
+	ConnectorType string `pulumi:"connectorType"`
+	// Dynamic variables for the dynamic group.
+	DynamicVars []IacmAnsibleInventoryDynamicGroupDynamicVar `pulumi:"dynamicVars"`
+	// Identifier of the dynamic group.
+	Identifier string `pulumi:"identifier"`
+	// Name of the dynamic group.
+	Name string `pulumi:"name"`
+	// Variables for the dynamic group.
+	Vars []IacmAnsibleInventoryDynamicGroupVar `pulumi:"vars"`
+}
+
+// IacmAnsibleInventoryDynamicGroupInput is an input type that accepts IacmAnsibleInventoryDynamicGroupArgs and IacmAnsibleInventoryDynamicGroupOutput values.
+// You can construct a concrete instance of `IacmAnsibleInventoryDynamicGroupInput` via:
+//
+//	IacmAnsibleInventoryDynamicGroupArgs{...}
+type IacmAnsibleInventoryDynamicGroupInput interface {
+	pulumi.Input
+
+	ToIacmAnsibleInventoryDynamicGroupOutput() IacmAnsibleInventoryDynamicGroupOutput
+	ToIacmAnsibleInventoryDynamicGroupOutputWithContext(context.Context) IacmAnsibleInventoryDynamicGroupOutput
+}
+
+type IacmAnsibleInventoryDynamicGroupArgs struct {
+	// Configuration for the dynamic group.
+	Configuration IacmAnsibleInventoryDynamicGroupConfigurationPtrInput `pulumi:"configuration"`
+	// Connector identifier used by the dynamic group.
+	ConnectorIdentifier pulumi.StringInput `pulumi:"connectorIdentifier"`
+	// Connector type (e.g. workspace, aws, gcp, azure, vault).
+	ConnectorType pulumi.StringInput `pulumi:"connectorType"`
+	// Dynamic variables for the dynamic group.
+	DynamicVars IacmAnsibleInventoryDynamicGroupDynamicVarArrayInput `pulumi:"dynamicVars"`
+	// Identifier of the dynamic group.
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Name of the dynamic group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Variables for the dynamic group.
+	Vars IacmAnsibleInventoryDynamicGroupVarArrayInput `pulumi:"vars"`
+}
+
+func (IacmAnsibleInventoryDynamicGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsibleInventoryDynamicGroup)(nil)).Elem()
+}
+
+func (i IacmAnsibleInventoryDynamicGroupArgs) ToIacmAnsibleInventoryDynamicGroupOutput() IacmAnsibleInventoryDynamicGroupOutput {
+	return i.ToIacmAnsibleInventoryDynamicGroupOutputWithContext(context.Background())
+}
+
+func (i IacmAnsibleInventoryDynamicGroupArgs) ToIacmAnsibleInventoryDynamicGroupOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsibleInventoryDynamicGroupOutput)
+}
+
+// IacmAnsibleInventoryDynamicGroupArrayInput is an input type that accepts IacmAnsibleInventoryDynamicGroupArray and IacmAnsibleInventoryDynamicGroupArrayOutput values.
+// You can construct a concrete instance of `IacmAnsibleInventoryDynamicGroupArrayInput` via:
+//
+//	IacmAnsibleInventoryDynamicGroupArray{ IacmAnsibleInventoryDynamicGroupArgs{...} }
+type IacmAnsibleInventoryDynamicGroupArrayInput interface {
+	pulumi.Input
+
+	ToIacmAnsibleInventoryDynamicGroupArrayOutput() IacmAnsibleInventoryDynamicGroupArrayOutput
+	ToIacmAnsibleInventoryDynamicGroupArrayOutputWithContext(context.Context) IacmAnsibleInventoryDynamicGroupArrayOutput
+}
+
+type IacmAnsibleInventoryDynamicGroupArray []IacmAnsibleInventoryDynamicGroupInput
+
+func (IacmAnsibleInventoryDynamicGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacmAnsibleInventoryDynamicGroup)(nil)).Elem()
+}
+
+func (i IacmAnsibleInventoryDynamicGroupArray) ToIacmAnsibleInventoryDynamicGroupArrayOutput() IacmAnsibleInventoryDynamicGroupArrayOutput {
+	return i.ToIacmAnsibleInventoryDynamicGroupArrayOutputWithContext(context.Background())
+}
+
+func (i IacmAnsibleInventoryDynamicGroupArray) ToIacmAnsibleInventoryDynamicGroupArrayOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsibleInventoryDynamicGroupArrayOutput)
+}
+
+type IacmAnsibleInventoryDynamicGroupOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsibleInventoryDynamicGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsibleInventoryDynamicGroup)(nil)).Elem()
+}
+
+func (o IacmAnsibleInventoryDynamicGroupOutput) ToIacmAnsibleInventoryDynamicGroupOutput() IacmAnsibleInventoryDynamicGroupOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryDynamicGroupOutput) ToIacmAnsibleInventoryDynamicGroupOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupOutput {
+	return o
+}
+
+// Configuration for the dynamic group.
+func (o IacmAnsibleInventoryDynamicGroupOutput) Configuration() IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryDynamicGroup) *IacmAnsibleInventoryDynamicGroupConfiguration {
+		return v.Configuration
+	}).(IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput)
+}
+
+// Connector identifier used by the dynamic group.
+func (o IacmAnsibleInventoryDynamicGroupOutput) ConnectorIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryDynamicGroup) string { return v.ConnectorIdentifier }).(pulumi.StringOutput)
+}
+
+// Connector type (e.g. workspace, aws, gcp, azure, vault).
+func (o IacmAnsibleInventoryDynamicGroupOutput) ConnectorType() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryDynamicGroup) string { return v.ConnectorType }).(pulumi.StringOutput)
+}
+
+// Dynamic variables for the dynamic group.
+func (o IacmAnsibleInventoryDynamicGroupOutput) DynamicVars() IacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryDynamicGroup) []IacmAnsibleInventoryDynamicGroupDynamicVar {
+		return v.DynamicVars
+	}).(IacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput)
+}
+
+// Identifier of the dynamic group.
+func (o IacmAnsibleInventoryDynamicGroupOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryDynamicGroup) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Name of the dynamic group.
+func (o IacmAnsibleInventoryDynamicGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryDynamicGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Variables for the dynamic group.
+func (o IacmAnsibleInventoryDynamicGroupOutput) Vars() IacmAnsibleInventoryDynamicGroupVarArrayOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryDynamicGroup) []IacmAnsibleInventoryDynamicGroupVar { return v.Vars }).(IacmAnsibleInventoryDynamicGroupVarArrayOutput)
+}
+
+type IacmAnsibleInventoryDynamicGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsibleInventoryDynamicGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacmAnsibleInventoryDynamicGroup)(nil)).Elem()
+}
+
+func (o IacmAnsibleInventoryDynamicGroupArrayOutput) ToIacmAnsibleInventoryDynamicGroupArrayOutput() IacmAnsibleInventoryDynamicGroupArrayOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryDynamicGroupArrayOutput) ToIacmAnsibleInventoryDynamicGroupArrayOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupArrayOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryDynamicGroupArrayOutput) Index(i pulumi.IntInput) IacmAnsibleInventoryDynamicGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IacmAnsibleInventoryDynamicGroup {
+		return vs[0].([]IacmAnsibleInventoryDynamicGroup)[vs[1].(int)]
+	}).(IacmAnsibleInventoryDynamicGroupOutput)
+}
+
+type IacmAnsibleInventoryDynamicGroupConfiguration struct {
+	// Host address attribute.
+	HostAddressAttribute *string `pulumi:"hostAddressAttribute"`
+	// Resource type to select.
+	ResourceType *string `pulumi:"resourceType"`
+	// Resource selectors.
+	Selectors []IacmAnsibleInventoryDynamicGroupConfigurationSelector `pulumi:"selectors"`
+}
+
+// IacmAnsibleInventoryDynamicGroupConfigurationInput is an input type that accepts IacmAnsibleInventoryDynamicGroupConfigurationArgs and IacmAnsibleInventoryDynamicGroupConfigurationOutput values.
+// You can construct a concrete instance of `IacmAnsibleInventoryDynamicGroupConfigurationInput` via:
+//
+//	IacmAnsibleInventoryDynamicGroupConfigurationArgs{...}
+type IacmAnsibleInventoryDynamicGroupConfigurationInput interface {
+	pulumi.Input
+
+	ToIacmAnsibleInventoryDynamicGroupConfigurationOutput() IacmAnsibleInventoryDynamicGroupConfigurationOutput
+	ToIacmAnsibleInventoryDynamicGroupConfigurationOutputWithContext(context.Context) IacmAnsibleInventoryDynamicGroupConfigurationOutput
+}
+
+type IacmAnsibleInventoryDynamicGroupConfigurationArgs struct {
+	// Host address attribute.
+	HostAddressAttribute pulumi.StringPtrInput `pulumi:"hostAddressAttribute"`
+	// Resource type to select.
+	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
+	// Resource selectors.
+	Selectors IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayInput `pulumi:"selectors"`
+}
+
+func (IacmAnsibleInventoryDynamicGroupConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsibleInventoryDynamicGroupConfiguration)(nil)).Elem()
+}
+
+func (i IacmAnsibleInventoryDynamicGroupConfigurationArgs) ToIacmAnsibleInventoryDynamicGroupConfigurationOutput() IacmAnsibleInventoryDynamicGroupConfigurationOutput {
+	return i.ToIacmAnsibleInventoryDynamicGroupConfigurationOutputWithContext(context.Background())
+}
+
+func (i IacmAnsibleInventoryDynamicGroupConfigurationArgs) ToIacmAnsibleInventoryDynamicGroupConfigurationOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsibleInventoryDynamicGroupConfigurationOutput)
+}
+
+func (i IacmAnsibleInventoryDynamicGroupConfigurationArgs) ToIacmAnsibleInventoryDynamicGroupConfigurationPtrOutput() IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput {
+	return i.ToIacmAnsibleInventoryDynamicGroupConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i IacmAnsibleInventoryDynamicGroupConfigurationArgs) ToIacmAnsibleInventoryDynamicGroupConfigurationPtrOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsibleInventoryDynamicGroupConfigurationOutput).ToIacmAnsibleInventoryDynamicGroupConfigurationPtrOutputWithContext(ctx)
+}
+
+// IacmAnsibleInventoryDynamicGroupConfigurationPtrInput is an input type that accepts IacmAnsibleInventoryDynamicGroupConfigurationArgs, IacmAnsibleInventoryDynamicGroupConfigurationPtr and IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput values.
+// You can construct a concrete instance of `IacmAnsibleInventoryDynamicGroupConfigurationPtrInput` via:
+//
+//	        IacmAnsibleInventoryDynamicGroupConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type IacmAnsibleInventoryDynamicGroupConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToIacmAnsibleInventoryDynamicGroupConfigurationPtrOutput() IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput
+	ToIacmAnsibleInventoryDynamicGroupConfigurationPtrOutputWithContext(context.Context) IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput
+}
+
+type iacmAnsibleInventoryDynamicGroupConfigurationPtrType IacmAnsibleInventoryDynamicGroupConfigurationArgs
+
+func IacmAnsibleInventoryDynamicGroupConfigurationPtr(v *IacmAnsibleInventoryDynamicGroupConfigurationArgs) IacmAnsibleInventoryDynamicGroupConfigurationPtrInput {
+	return (*iacmAnsibleInventoryDynamicGroupConfigurationPtrType)(v)
+}
+
+func (*iacmAnsibleInventoryDynamicGroupConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IacmAnsibleInventoryDynamicGroupConfiguration)(nil)).Elem()
+}
+
+func (i *iacmAnsibleInventoryDynamicGroupConfigurationPtrType) ToIacmAnsibleInventoryDynamicGroupConfigurationPtrOutput() IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput {
+	return i.ToIacmAnsibleInventoryDynamicGroupConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *iacmAnsibleInventoryDynamicGroupConfigurationPtrType) ToIacmAnsibleInventoryDynamicGroupConfigurationPtrOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput)
+}
+
+type IacmAnsibleInventoryDynamicGroupConfigurationOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsibleInventoryDynamicGroupConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsibleInventoryDynamicGroupConfiguration)(nil)).Elem()
+}
+
+func (o IacmAnsibleInventoryDynamicGroupConfigurationOutput) ToIacmAnsibleInventoryDynamicGroupConfigurationOutput() IacmAnsibleInventoryDynamicGroupConfigurationOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryDynamicGroupConfigurationOutput) ToIacmAnsibleInventoryDynamicGroupConfigurationOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupConfigurationOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryDynamicGroupConfigurationOutput) ToIacmAnsibleInventoryDynamicGroupConfigurationPtrOutput() IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput {
+	return o.ToIacmAnsibleInventoryDynamicGroupConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o IacmAnsibleInventoryDynamicGroupConfigurationOutput) ToIacmAnsibleInventoryDynamicGroupConfigurationPtrOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IacmAnsibleInventoryDynamicGroupConfiguration) *IacmAnsibleInventoryDynamicGroupConfiguration {
+		return &v
+	}).(IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput)
+}
+
+// Host address attribute.
+func (o IacmAnsibleInventoryDynamicGroupConfigurationOutput) HostAddressAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryDynamicGroupConfiguration) *string { return v.HostAddressAttribute }).(pulumi.StringPtrOutput)
+}
+
+// Resource type to select.
+func (o IacmAnsibleInventoryDynamicGroupConfigurationOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryDynamicGroupConfiguration) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
+}
+
+// Resource selectors.
+func (o IacmAnsibleInventoryDynamicGroupConfigurationOutput) Selectors() IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryDynamicGroupConfiguration) []IacmAnsibleInventoryDynamicGroupConfigurationSelector {
+		return v.Selectors
+	}).(IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput)
+}
+
+type IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IacmAnsibleInventoryDynamicGroupConfiguration)(nil)).Elem()
+}
+
+func (o IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput) ToIacmAnsibleInventoryDynamicGroupConfigurationPtrOutput() IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput) ToIacmAnsibleInventoryDynamicGroupConfigurationPtrOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput) Elem() IacmAnsibleInventoryDynamicGroupConfigurationOutput {
+	return o.ApplyT(func(v *IacmAnsibleInventoryDynamicGroupConfiguration) IacmAnsibleInventoryDynamicGroupConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret IacmAnsibleInventoryDynamicGroupConfiguration
+		return ret
+	}).(IacmAnsibleInventoryDynamicGroupConfigurationOutput)
+}
+
+// Host address attribute.
+func (o IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput) HostAddressAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IacmAnsibleInventoryDynamicGroupConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostAddressAttribute
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource type to select.
+func (o IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IacmAnsibleInventoryDynamicGroupConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource selectors.
+func (o IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput) Selectors() IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput {
+	return o.ApplyT(func(v *IacmAnsibleInventoryDynamicGroupConfiguration) []IacmAnsibleInventoryDynamicGroupConfigurationSelector {
+		if v == nil {
+			return nil
+		}
+		return v.Selectors
+	}).(IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput)
+}
+
+type IacmAnsibleInventoryDynamicGroupConfigurationSelector struct {
+	// Attribute to filter on.
+	Attribute string `pulumi:"attribute"`
+	// Operator for the filter.
+	Operator string `pulumi:"operator"`
+	// Value for the filter.
+	Value string `pulumi:"value"`
+}
+
+// IacmAnsibleInventoryDynamicGroupConfigurationSelectorInput is an input type that accepts IacmAnsibleInventoryDynamicGroupConfigurationSelectorArgs and IacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput values.
+// You can construct a concrete instance of `IacmAnsibleInventoryDynamicGroupConfigurationSelectorInput` via:
+//
+//	IacmAnsibleInventoryDynamicGroupConfigurationSelectorArgs{...}
+type IacmAnsibleInventoryDynamicGroupConfigurationSelectorInput interface {
+	pulumi.Input
+
+	ToIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput() IacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput
+	ToIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutputWithContext(context.Context) IacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput
+}
+
+type IacmAnsibleInventoryDynamicGroupConfigurationSelectorArgs struct {
+	// Attribute to filter on.
+	Attribute pulumi.StringInput `pulumi:"attribute"`
+	// Operator for the filter.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Value for the filter.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (IacmAnsibleInventoryDynamicGroupConfigurationSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsibleInventoryDynamicGroupConfigurationSelector)(nil)).Elem()
+}
+
+func (i IacmAnsibleInventoryDynamicGroupConfigurationSelectorArgs) ToIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput() IacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput {
+	return i.ToIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutputWithContext(context.Background())
+}
+
+func (i IacmAnsibleInventoryDynamicGroupConfigurationSelectorArgs) ToIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput)
+}
+
+// IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayInput is an input type that accepts IacmAnsibleInventoryDynamicGroupConfigurationSelectorArray and IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput values.
+// You can construct a concrete instance of `IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayInput` via:
+//
+//	IacmAnsibleInventoryDynamicGroupConfigurationSelectorArray{ IacmAnsibleInventoryDynamicGroupConfigurationSelectorArgs{...} }
+type IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayInput interface {
+	pulumi.Input
+
+	ToIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput() IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput
+	ToIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutputWithContext(context.Context) IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput
+}
+
+type IacmAnsibleInventoryDynamicGroupConfigurationSelectorArray []IacmAnsibleInventoryDynamicGroupConfigurationSelectorInput
+
+func (IacmAnsibleInventoryDynamicGroupConfigurationSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacmAnsibleInventoryDynamicGroupConfigurationSelector)(nil)).Elem()
+}
+
+func (i IacmAnsibleInventoryDynamicGroupConfigurationSelectorArray) ToIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput() IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput {
+	return i.ToIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i IacmAnsibleInventoryDynamicGroupConfigurationSelectorArray) ToIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput)
+}
+
+type IacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsibleInventoryDynamicGroupConfigurationSelector)(nil)).Elem()
+}
+
+func (o IacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput) ToIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput() IacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput) ToIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput {
+	return o
+}
+
+// Attribute to filter on.
+func (o IacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput) Attribute() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryDynamicGroupConfigurationSelector) string { return v.Attribute }).(pulumi.StringOutput)
+}
+
+// Operator for the filter.
+func (o IacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryDynamicGroupConfigurationSelector) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Value for the filter.
+func (o IacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryDynamicGroupConfigurationSelector) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacmAnsibleInventoryDynamicGroupConfigurationSelector)(nil)).Elem()
+}
+
+func (o IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput) ToIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput() IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput) ToIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput) Index(i pulumi.IntInput) IacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IacmAnsibleInventoryDynamicGroupConfigurationSelector {
+		return vs[0].([]IacmAnsibleInventoryDynamicGroupConfigurationSelector)[vs[1].(int)]
+	}).(IacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput)
+}
+
+type IacmAnsibleInventoryDynamicGroupDynamicVar struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName *string `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key string `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value string `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType string `pulumi:"valueType"`
+}
+
+// IacmAnsibleInventoryDynamicGroupDynamicVarInput is an input type that accepts IacmAnsibleInventoryDynamicGroupDynamicVarArgs and IacmAnsibleInventoryDynamicGroupDynamicVarOutput values.
+// You can construct a concrete instance of `IacmAnsibleInventoryDynamicGroupDynamicVarInput` via:
+//
+//	IacmAnsibleInventoryDynamicGroupDynamicVarArgs{...}
+type IacmAnsibleInventoryDynamicGroupDynamicVarInput interface {
+	pulumi.Input
+
+	ToIacmAnsibleInventoryDynamicGroupDynamicVarOutput() IacmAnsibleInventoryDynamicGroupDynamicVarOutput
+	ToIacmAnsibleInventoryDynamicGroupDynamicVarOutputWithContext(context.Context) IacmAnsibleInventoryDynamicGroupDynamicVarOutput
+}
+
+type IacmAnsibleInventoryDynamicGroupDynamicVarArgs struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName pulumi.StringPtrInput `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value pulumi.StringInput `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (IacmAnsibleInventoryDynamicGroupDynamicVarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsibleInventoryDynamicGroupDynamicVar)(nil)).Elem()
+}
+
+func (i IacmAnsibleInventoryDynamicGroupDynamicVarArgs) ToIacmAnsibleInventoryDynamicGroupDynamicVarOutput() IacmAnsibleInventoryDynamicGroupDynamicVarOutput {
+	return i.ToIacmAnsibleInventoryDynamicGroupDynamicVarOutputWithContext(context.Background())
+}
+
+func (i IacmAnsibleInventoryDynamicGroupDynamicVarArgs) ToIacmAnsibleInventoryDynamicGroupDynamicVarOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupDynamicVarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsibleInventoryDynamicGroupDynamicVarOutput)
+}
+
+// IacmAnsibleInventoryDynamicGroupDynamicVarArrayInput is an input type that accepts IacmAnsibleInventoryDynamicGroupDynamicVarArray and IacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput values.
+// You can construct a concrete instance of `IacmAnsibleInventoryDynamicGroupDynamicVarArrayInput` via:
+//
+//	IacmAnsibleInventoryDynamicGroupDynamicVarArray{ IacmAnsibleInventoryDynamicGroupDynamicVarArgs{...} }
+type IacmAnsibleInventoryDynamicGroupDynamicVarArrayInput interface {
+	pulumi.Input
+
+	ToIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput() IacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput
+	ToIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutputWithContext(context.Context) IacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput
+}
+
+type IacmAnsibleInventoryDynamicGroupDynamicVarArray []IacmAnsibleInventoryDynamicGroupDynamicVarInput
+
+func (IacmAnsibleInventoryDynamicGroupDynamicVarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacmAnsibleInventoryDynamicGroupDynamicVar)(nil)).Elem()
+}
+
+func (i IacmAnsibleInventoryDynamicGroupDynamicVarArray) ToIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput() IacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput {
+	return i.ToIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutputWithContext(context.Background())
+}
+
+func (i IacmAnsibleInventoryDynamicGroupDynamicVarArray) ToIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput)
+}
+
+type IacmAnsibleInventoryDynamicGroupDynamicVarOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsibleInventoryDynamicGroupDynamicVarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsibleInventoryDynamicGroupDynamicVar)(nil)).Elem()
+}
+
+func (o IacmAnsibleInventoryDynamicGroupDynamicVarOutput) ToIacmAnsibleInventoryDynamicGroupDynamicVarOutput() IacmAnsibleInventoryDynamicGroupDynamicVarOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryDynamicGroupDynamicVarOutput) ToIacmAnsibleInventoryDynamicGroupDynamicVarOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupDynamicVarOutput {
+	return o
+}
+
+// Filename to store the value in (used for file-backed variables).
+func (o IacmAnsibleInventoryDynamicGroupDynamicVarOutput) FileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryDynamicGroupDynamicVar) *string { return v.FileName }).(pulumi.StringPtrOutput)
+}
+
+// Key is the identifier for the variable.
+func (o IacmAnsibleInventoryDynamicGroupDynamicVarOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryDynamicGroupDynamicVar) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value of the variable. For secret value types this must be a Harness secret reference.
+func (o IacmAnsibleInventoryDynamicGroupDynamicVarOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryDynamicGroupDynamicVar) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// Value type. One of: string, secret.
+func (o IacmAnsibleInventoryDynamicGroupDynamicVarOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryDynamicGroupDynamicVar) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type IacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacmAnsibleInventoryDynamicGroupDynamicVar)(nil)).Elem()
+}
+
+func (o IacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput) ToIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput() IacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput) ToIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput) Index(i pulumi.IntInput) IacmAnsibleInventoryDynamicGroupDynamicVarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IacmAnsibleInventoryDynamicGroupDynamicVar {
+		return vs[0].([]IacmAnsibleInventoryDynamicGroupDynamicVar)[vs[1].(int)]
+	}).(IacmAnsibleInventoryDynamicGroupDynamicVarOutput)
+}
+
+type IacmAnsibleInventoryDynamicGroupVar struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName *string `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key string `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value string `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType string `pulumi:"valueType"`
+}
+
+// IacmAnsibleInventoryDynamicGroupVarInput is an input type that accepts IacmAnsibleInventoryDynamicGroupVarArgs and IacmAnsibleInventoryDynamicGroupVarOutput values.
+// You can construct a concrete instance of `IacmAnsibleInventoryDynamicGroupVarInput` via:
+//
+//	IacmAnsibleInventoryDynamicGroupVarArgs{...}
+type IacmAnsibleInventoryDynamicGroupVarInput interface {
+	pulumi.Input
+
+	ToIacmAnsibleInventoryDynamicGroupVarOutput() IacmAnsibleInventoryDynamicGroupVarOutput
+	ToIacmAnsibleInventoryDynamicGroupVarOutputWithContext(context.Context) IacmAnsibleInventoryDynamicGroupVarOutput
+}
+
+type IacmAnsibleInventoryDynamicGroupVarArgs struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName pulumi.StringPtrInput `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value pulumi.StringInput `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (IacmAnsibleInventoryDynamicGroupVarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsibleInventoryDynamicGroupVar)(nil)).Elem()
+}
+
+func (i IacmAnsibleInventoryDynamicGroupVarArgs) ToIacmAnsibleInventoryDynamicGroupVarOutput() IacmAnsibleInventoryDynamicGroupVarOutput {
+	return i.ToIacmAnsibleInventoryDynamicGroupVarOutputWithContext(context.Background())
+}
+
+func (i IacmAnsibleInventoryDynamicGroupVarArgs) ToIacmAnsibleInventoryDynamicGroupVarOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupVarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsibleInventoryDynamicGroupVarOutput)
+}
+
+// IacmAnsibleInventoryDynamicGroupVarArrayInput is an input type that accepts IacmAnsibleInventoryDynamicGroupVarArray and IacmAnsibleInventoryDynamicGroupVarArrayOutput values.
+// You can construct a concrete instance of `IacmAnsibleInventoryDynamicGroupVarArrayInput` via:
+//
+//	IacmAnsibleInventoryDynamicGroupVarArray{ IacmAnsibleInventoryDynamicGroupVarArgs{...} }
+type IacmAnsibleInventoryDynamicGroupVarArrayInput interface {
+	pulumi.Input
+
+	ToIacmAnsibleInventoryDynamicGroupVarArrayOutput() IacmAnsibleInventoryDynamicGroupVarArrayOutput
+	ToIacmAnsibleInventoryDynamicGroupVarArrayOutputWithContext(context.Context) IacmAnsibleInventoryDynamicGroupVarArrayOutput
+}
+
+type IacmAnsibleInventoryDynamicGroupVarArray []IacmAnsibleInventoryDynamicGroupVarInput
+
+func (IacmAnsibleInventoryDynamicGroupVarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacmAnsibleInventoryDynamicGroupVar)(nil)).Elem()
+}
+
+func (i IacmAnsibleInventoryDynamicGroupVarArray) ToIacmAnsibleInventoryDynamicGroupVarArrayOutput() IacmAnsibleInventoryDynamicGroupVarArrayOutput {
+	return i.ToIacmAnsibleInventoryDynamicGroupVarArrayOutputWithContext(context.Background())
+}
+
+func (i IacmAnsibleInventoryDynamicGroupVarArray) ToIacmAnsibleInventoryDynamicGroupVarArrayOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupVarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsibleInventoryDynamicGroupVarArrayOutput)
+}
+
+type IacmAnsibleInventoryDynamicGroupVarOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsibleInventoryDynamicGroupVarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsibleInventoryDynamicGroupVar)(nil)).Elem()
+}
+
+func (o IacmAnsibleInventoryDynamicGroupVarOutput) ToIacmAnsibleInventoryDynamicGroupVarOutput() IacmAnsibleInventoryDynamicGroupVarOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryDynamicGroupVarOutput) ToIacmAnsibleInventoryDynamicGroupVarOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupVarOutput {
+	return o
+}
+
+// Filename to store the value in (used for file-backed variables).
+func (o IacmAnsibleInventoryDynamicGroupVarOutput) FileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryDynamicGroupVar) *string { return v.FileName }).(pulumi.StringPtrOutput)
+}
+
+// Key is the identifier for the variable.
+func (o IacmAnsibleInventoryDynamicGroupVarOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryDynamicGroupVar) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value of the variable. For secret value types this must be a Harness secret reference.
+func (o IacmAnsibleInventoryDynamicGroupVarOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryDynamicGroupVar) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// Value type. One of: string, secret.
+func (o IacmAnsibleInventoryDynamicGroupVarOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryDynamicGroupVar) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type IacmAnsibleInventoryDynamicGroupVarArrayOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsibleInventoryDynamicGroupVarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacmAnsibleInventoryDynamicGroupVar)(nil)).Elem()
+}
+
+func (o IacmAnsibleInventoryDynamicGroupVarArrayOutput) ToIacmAnsibleInventoryDynamicGroupVarArrayOutput() IacmAnsibleInventoryDynamicGroupVarArrayOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryDynamicGroupVarArrayOutput) ToIacmAnsibleInventoryDynamicGroupVarArrayOutputWithContext(ctx context.Context) IacmAnsibleInventoryDynamicGroupVarArrayOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryDynamicGroupVarArrayOutput) Index(i pulumi.IntInput) IacmAnsibleInventoryDynamicGroupVarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IacmAnsibleInventoryDynamicGroupVar {
+		return vs[0].([]IacmAnsibleInventoryDynamicGroupVar)[vs[1].(int)]
+	}).(IacmAnsibleInventoryDynamicGroupVarOutput)
+}
+
+type IacmAnsibleInventoryGroup struct {
+	// List of hosts in the group.
+	Hosts []string `pulumi:"hosts"`
+	// Identifier of the group.
+	Identifier string `pulumi:"identifier"`
+	// Name of the group.
+	Name string `pulumi:"name"`
+	// Variables for the group.
+	Vars []IacmAnsibleInventoryGroupVar `pulumi:"vars"`
+}
+
+// IacmAnsibleInventoryGroupInput is an input type that accepts IacmAnsibleInventoryGroupArgs and IacmAnsibleInventoryGroupOutput values.
+// You can construct a concrete instance of `IacmAnsibleInventoryGroupInput` via:
+//
+//	IacmAnsibleInventoryGroupArgs{...}
+type IacmAnsibleInventoryGroupInput interface {
+	pulumi.Input
+
+	ToIacmAnsibleInventoryGroupOutput() IacmAnsibleInventoryGroupOutput
+	ToIacmAnsibleInventoryGroupOutputWithContext(context.Context) IacmAnsibleInventoryGroupOutput
+}
+
+type IacmAnsibleInventoryGroupArgs struct {
+	// List of hosts in the group.
+	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
+	// Identifier of the group.
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Name of the group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Variables for the group.
+	Vars IacmAnsibleInventoryGroupVarArrayInput `pulumi:"vars"`
+}
+
+func (IacmAnsibleInventoryGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsibleInventoryGroup)(nil)).Elem()
+}
+
+func (i IacmAnsibleInventoryGroupArgs) ToIacmAnsibleInventoryGroupOutput() IacmAnsibleInventoryGroupOutput {
+	return i.ToIacmAnsibleInventoryGroupOutputWithContext(context.Background())
+}
+
+func (i IacmAnsibleInventoryGroupArgs) ToIacmAnsibleInventoryGroupOutputWithContext(ctx context.Context) IacmAnsibleInventoryGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsibleInventoryGroupOutput)
+}
+
+// IacmAnsibleInventoryGroupArrayInput is an input type that accepts IacmAnsibleInventoryGroupArray and IacmAnsibleInventoryGroupArrayOutput values.
+// You can construct a concrete instance of `IacmAnsibleInventoryGroupArrayInput` via:
+//
+//	IacmAnsibleInventoryGroupArray{ IacmAnsibleInventoryGroupArgs{...} }
+type IacmAnsibleInventoryGroupArrayInput interface {
+	pulumi.Input
+
+	ToIacmAnsibleInventoryGroupArrayOutput() IacmAnsibleInventoryGroupArrayOutput
+	ToIacmAnsibleInventoryGroupArrayOutputWithContext(context.Context) IacmAnsibleInventoryGroupArrayOutput
+}
+
+type IacmAnsibleInventoryGroupArray []IacmAnsibleInventoryGroupInput
+
+func (IacmAnsibleInventoryGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacmAnsibleInventoryGroup)(nil)).Elem()
+}
+
+func (i IacmAnsibleInventoryGroupArray) ToIacmAnsibleInventoryGroupArrayOutput() IacmAnsibleInventoryGroupArrayOutput {
+	return i.ToIacmAnsibleInventoryGroupArrayOutputWithContext(context.Background())
+}
+
+func (i IacmAnsibleInventoryGroupArray) ToIacmAnsibleInventoryGroupArrayOutputWithContext(ctx context.Context) IacmAnsibleInventoryGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsibleInventoryGroupArrayOutput)
+}
+
+type IacmAnsibleInventoryGroupOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsibleInventoryGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsibleInventoryGroup)(nil)).Elem()
+}
+
+func (o IacmAnsibleInventoryGroupOutput) ToIacmAnsibleInventoryGroupOutput() IacmAnsibleInventoryGroupOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryGroupOutput) ToIacmAnsibleInventoryGroupOutputWithContext(ctx context.Context) IacmAnsibleInventoryGroupOutput {
+	return o
+}
+
+// List of hosts in the group.
+func (o IacmAnsibleInventoryGroupOutput) Hosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryGroup) []string { return v.Hosts }).(pulumi.StringArrayOutput)
+}
+
+// Identifier of the group.
+func (o IacmAnsibleInventoryGroupOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryGroup) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Name of the group.
+func (o IacmAnsibleInventoryGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Variables for the group.
+func (o IacmAnsibleInventoryGroupOutput) Vars() IacmAnsibleInventoryGroupVarArrayOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryGroup) []IacmAnsibleInventoryGroupVar { return v.Vars }).(IacmAnsibleInventoryGroupVarArrayOutput)
+}
+
+type IacmAnsibleInventoryGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsibleInventoryGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacmAnsibleInventoryGroup)(nil)).Elem()
+}
+
+func (o IacmAnsibleInventoryGroupArrayOutput) ToIacmAnsibleInventoryGroupArrayOutput() IacmAnsibleInventoryGroupArrayOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryGroupArrayOutput) ToIacmAnsibleInventoryGroupArrayOutputWithContext(ctx context.Context) IacmAnsibleInventoryGroupArrayOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryGroupArrayOutput) Index(i pulumi.IntInput) IacmAnsibleInventoryGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IacmAnsibleInventoryGroup {
+		return vs[0].([]IacmAnsibleInventoryGroup)[vs[1].(int)]
+	}).(IacmAnsibleInventoryGroupOutput)
+}
+
+type IacmAnsibleInventoryGroupVar struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName *string `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key string `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value string `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType string `pulumi:"valueType"`
+}
+
+// IacmAnsibleInventoryGroupVarInput is an input type that accepts IacmAnsibleInventoryGroupVarArgs and IacmAnsibleInventoryGroupVarOutput values.
+// You can construct a concrete instance of `IacmAnsibleInventoryGroupVarInput` via:
+//
+//	IacmAnsibleInventoryGroupVarArgs{...}
+type IacmAnsibleInventoryGroupVarInput interface {
+	pulumi.Input
+
+	ToIacmAnsibleInventoryGroupVarOutput() IacmAnsibleInventoryGroupVarOutput
+	ToIacmAnsibleInventoryGroupVarOutputWithContext(context.Context) IacmAnsibleInventoryGroupVarOutput
+}
+
+type IacmAnsibleInventoryGroupVarArgs struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName pulumi.StringPtrInput `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value pulumi.StringInput `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (IacmAnsibleInventoryGroupVarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsibleInventoryGroupVar)(nil)).Elem()
+}
+
+func (i IacmAnsibleInventoryGroupVarArgs) ToIacmAnsibleInventoryGroupVarOutput() IacmAnsibleInventoryGroupVarOutput {
+	return i.ToIacmAnsibleInventoryGroupVarOutputWithContext(context.Background())
+}
+
+func (i IacmAnsibleInventoryGroupVarArgs) ToIacmAnsibleInventoryGroupVarOutputWithContext(ctx context.Context) IacmAnsibleInventoryGroupVarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsibleInventoryGroupVarOutput)
+}
+
+// IacmAnsibleInventoryGroupVarArrayInput is an input type that accepts IacmAnsibleInventoryGroupVarArray and IacmAnsibleInventoryGroupVarArrayOutput values.
+// You can construct a concrete instance of `IacmAnsibleInventoryGroupVarArrayInput` via:
+//
+//	IacmAnsibleInventoryGroupVarArray{ IacmAnsibleInventoryGroupVarArgs{...} }
+type IacmAnsibleInventoryGroupVarArrayInput interface {
+	pulumi.Input
+
+	ToIacmAnsibleInventoryGroupVarArrayOutput() IacmAnsibleInventoryGroupVarArrayOutput
+	ToIacmAnsibleInventoryGroupVarArrayOutputWithContext(context.Context) IacmAnsibleInventoryGroupVarArrayOutput
+}
+
+type IacmAnsibleInventoryGroupVarArray []IacmAnsibleInventoryGroupVarInput
+
+func (IacmAnsibleInventoryGroupVarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacmAnsibleInventoryGroupVar)(nil)).Elem()
+}
+
+func (i IacmAnsibleInventoryGroupVarArray) ToIacmAnsibleInventoryGroupVarArrayOutput() IacmAnsibleInventoryGroupVarArrayOutput {
+	return i.ToIacmAnsibleInventoryGroupVarArrayOutputWithContext(context.Background())
+}
+
+func (i IacmAnsibleInventoryGroupVarArray) ToIacmAnsibleInventoryGroupVarArrayOutputWithContext(ctx context.Context) IacmAnsibleInventoryGroupVarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsibleInventoryGroupVarArrayOutput)
+}
+
+type IacmAnsibleInventoryGroupVarOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsibleInventoryGroupVarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsibleInventoryGroupVar)(nil)).Elem()
+}
+
+func (o IacmAnsibleInventoryGroupVarOutput) ToIacmAnsibleInventoryGroupVarOutput() IacmAnsibleInventoryGroupVarOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryGroupVarOutput) ToIacmAnsibleInventoryGroupVarOutputWithContext(ctx context.Context) IacmAnsibleInventoryGroupVarOutput {
+	return o
+}
+
+// Filename to store the value in (used for file-backed variables).
+func (o IacmAnsibleInventoryGroupVarOutput) FileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryGroupVar) *string { return v.FileName }).(pulumi.StringPtrOutput)
+}
+
+// Key is the identifier for the variable.
+func (o IacmAnsibleInventoryGroupVarOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryGroupVar) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value of the variable. For secret value types this must be a Harness secret reference.
+func (o IacmAnsibleInventoryGroupVarOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryGroupVar) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// Value type. One of: string, secret.
+func (o IacmAnsibleInventoryGroupVarOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryGroupVar) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type IacmAnsibleInventoryGroupVarArrayOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsibleInventoryGroupVarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacmAnsibleInventoryGroupVar)(nil)).Elem()
+}
+
+func (o IacmAnsibleInventoryGroupVarArrayOutput) ToIacmAnsibleInventoryGroupVarArrayOutput() IacmAnsibleInventoryGroupVarArrayOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryGroupVarArrayOutput) ToIacmAnsibleInventoryGroupVarArrayOutputWithContext(ctx context.Context) IacmAnsibleInventoryGroupVarArrayOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryGroupVarArrayOutput) Index(i pulumi.IntInput) IacmAnsibleInventoryGroupVarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IacmAnsibleInventoryGroupVar {
+		return vs[0].([]IacmAnsibleInventoryGroupVar)[vs[1].(int)]
+	}).(IacmAnsibleInventoryGroupVarOutput)
+}
+
+type IacmAnsibleInventoryPluginOptions struct {
+	// Inline plugin inventory YAML content (when sourceType is inline).
+	InlineYaml *string `pulumi:"inlineYaml"`
+	// Provider connector identifier for plugin inventory execution.
+	ProviderConnectorIdentifier *string `pulumi:"providerConnectorIdentifier"`
+	// Provider connector type.
+	ProviderConnectorType *string `pulumi:"providerConnectorType"`
+	// Git repository name (when sourceType is git).
+	Repository *string `pulumi:"repository"`
+	// Git branch.
+	RepositoryBranch *string `pulumi:"repositoryBranch"`
+	// Git commit or tag.
+	RepositoryCommit *string `pulumi:"repositoryCommit"`
+	// Repository connector reference (when sourceType is git).
+	RepositoryConnector *string `pulumi:"repositoryConnector"`
+	// Path within the repository to the plugin inventory YAML.
+	RepositoryPath *string `pulumi:"repositoryPath"`
+	// Source type for plugin inventory. One of: git, inline.
+	SourceType *string `pulumi:"sourceType"`
+}
+
+// IacmAnsibleInventoryPluginOptionsInput is an input type that accepts IacmAnsibleInventoryPluginOptionsArgs and IacmAnsibleInventoryPluginOptionsOutput values.
+// You can construct a concrete instance of `IacmAnsibleInventoryPluginOptionsInput` via:
+//
+//	IacmAnsibleInventoryPluginOptionsArgs{...}
+type IacmAnsibleInventoryPluginOptionsInput interface {
+	pulumi.Input
+
+	ToIacmAnsibleInventoryPluginOptionsOutput() IacmAnsibleInventoryPluginOptionsOutput
+	ToIacmAnsibleInventoryPluginOptionsOutputWithContext(context.Context) IacmAnsibleInventoryPluginOptionsOutput
+}
+
+type IacmAnsibleInventoryPluginOptionsArgs struct {
+	// Inline plugin inventory YAML content (when sourceType is inline).
+	InlineYaml pulumi.StringPtrInput `pulumi:"inlineYaml"`
+	// Provider connector identifier for plugin inventory execution.
+	ProviderConnectorIdentifier pulumi.StringPtrInput `pulumi:"providerConnectorIdentifier"`
+	// Provider connector type.
+	ProviderConnectorType pulumi.StringPtrInput `pulumi:"providerConnectorType"`
+	// Git repository name (when sourceType is git).
+	Repository pulumi.StringPtrInput `pulumi:"repository"`
+	// Git branch.
+	RepositoryBranch pulumi.StringPtrInput `pulumi:"repositoryBranch"`
+	// Git commit or tag.
+	RepositoryCommit pulumi.StringPtrInput `pulumi:"repositoryCommit"`
+	// Repository connector reference (when sourceType is git).
+	RepositoryConnector pulumi.StringPtrInput `pulumi:"repositoryConnector"`
+	// Path within the repository to the plugin inventory YAML.
+	RepositoryPath pulumi.StringPtrInput `pulumi:"repositoryPath"`
+	// Source type for plugin inventory. One of: git, inline.
+	SourceType pulumi.StringPtrInput `pulumi:"sourceType"`
+}
+
+func (IacmAnsibleInventoryPluginOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsibleInventoryPluginOptions)(nil)).Elem()
+}
+
+func (i IacmAnsibleInventoryPluginOptionsArgs) ToIacmAnsibleInventoryPluginOptionsOutput() IacmAnsibleInventoryPluginOptionsOutput {
+	return i.ToIacmAnsibleInventoryPluginOptionsOutputWithContext(context.Background())
+}
+
+func (i IacmAnsibleInventoryPluginOptionsArgs) ToIacmAnsibleInventoryPluginOptionsOutputWithContext(ctx context.Context) IacmAnsibleInventoryPluginOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsibleInventoryPluginOptionsOutput)
+}
+
+func (i IacmAnsibleInventoryPluginOptionsArgs) ToIacmAnsibleInventoryPluginOptionsPtrOutput() IacmAnsibleInventoryPluginOptionsPtrOutput {
+	return i.ToIacmAnsibleInventoryPluginOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i IacmAnsibleInventoryPluginOptionsArgs) ToIacmAnsibleInventoryPluginOptionsPtrOutputWithContext(ctx context.Context) IacmAnsibleInventoryPluginOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsibleInventoryPluginOptionsOutput).ToIacmAnsibleInventoryPluginOptionsPtrOutputWithContext(ctx)
+}
+
+// IacmAnsibleInventoryPluginOptionsPtrInput is an input type that accepts IacmAnsibleInventoryPluginOptionsArgs, IacmAnsibleInventoryPluginOptionsPtr and IacmAnsibleInventoryPluginOptionsPtrOutput values.
+// You can construct a concrete instance of `IacmAnsibleInventoryPluginOptionsPtrInput` via:
+//
+//	        IacmAnsibleInventoryPluginOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type IacmAnsibleInventoryPluginOptionsPtrInput interface {
+	pulumi.Input
+
+	ToIacmAnsibleInventoryPluginOptionsPtrOutput() IacmAnsibleInventoryPluginOptionsPtrOutput
+	ToIacmAnsibleInventoryPluginOptionsPtrOutputWithContext(context.Context) IacmAnsibleInventoryPluginOptionsPtrOutput
+}
+
+type iacmAnsibleInventoryPluginOptionsPtrType IacmAnsibleInventoryPluginOptionsArgs
+
+func IacmAnsibleInventoryPluginOptionsPtr(v *IacmAnsibleInventoryPluginOptionsArgs) IacmAnsibleInventoryPluginOptionsPtrInput {
+	return (*iacmAnsibleInventoryPluginOptionsPtrType)(v)
+}
+
+func (*iacmAnsibleInventoryPluginOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IacmAnsibleInventoryPluginOptions)(nil)).Elem()
+}
+
+func (i *iacmAnsibleInventoryPluginOptionsPtrType) ToIacmAnsibleInventoryPluginOptionsPtrOutput() IacmAnsibleInventoryPluginOptionsPtrOutput {
+	return i.ToIacmAnsibleInventoryPluginOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *iacmAnsibleInventoryPluginOptionsPtrType) ToIacmAnsibleInventoryPluginOptionsPtrOutputWithContext(ctx context.Context) IacmAnsibleInventoryPluginOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsibleInventoryPluginOptionsPtrOutput)
+}
+
+type IacmAnsibleInventoryPluginOptionsOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsibleInventoryPluginOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsibleInventoryPluginOptions)(nil)).Elem()
+}
+
+func (o IacmAnsibleInventoryPluginOptionsOutput) ToIacmAnsibleInventoryPluginOptionsOutput() IacmAnsibleInventoryPluginOptionsOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryPluginOptionsOutput) ToIacmAnsibleInventoryPluginOptionsOutputWithContext(ctx context.Context) IacmAnsibleInventoryPluginOptionsOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryPluginOptionsOutput) ToIacmAnsibleInventoryPluginOptionsPtrOutput() IacmAnsibleInventoryPluginOptionsPtrOutput {
+	return o.ToIacmAnsibleInventoryPluginOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o IacmAnsibleInventoryPluginOptionsOutput) ToIacmAnsibleInventoryPluginOptionsPtrOutputWithContext(ctx context.Context) IacmAnsibleInventoryPluginOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IacmAnsibleInventoryPluginOptions) *IacmAnsibleInventoryPluginOptions {
+		return &v
+	}).(IacmAnsibleInventoryPluginOptionsPtrOutput)
+}
+
+// Inline plugin inventory YAML content (when sourceType is inline).
+func (o IacmAnsibleInventoryPluginOptionsOutput) InlineYaml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryPluginOptions) *string { return v.InlineYaml }).(pulumi.StringPtrOutput)
+}
+
+// Provider connector identifier for plugin inventory execution.
+func (o IacmAnsibleInventoryPluginOptionsOutput) ProviderConnectorIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryPluginOptions) *string { return v.ProviderConnectorIdentifier }).(pulumi.StringPtrOutput)
+}
+
+// Provider connector type.
+func (o IacmAnsibleInventoryPluginOptionsOutput) ProviderConnectorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryPluginOptions) *string { return v.ProviderConnectorType }).(pulumi.StringPtrOutput)
+}
+
+// Git repository name (when sourceType is git).
+func (o IacmAnsibleInventoryPluginOptionsOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryPluginOptions) *string { return v.Repository }).(pulumi.StringPtrOutput)
+}
+
+// Git branch.
+func (o IacmAnsibleInventoryPluginOptionsOutput) RepositoryBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryPluginOptions) *string { return v.RepositoryBranch }).(pulumi.StringPtrOutput)
+}
+
+// Git commit or tag.
+func (o IacmAnsibleInventoryPluginOptionsOutput) RepositoryCommit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryPluginOptions) *string { return v.RepositoryCommit }).(pulumi.StringPtrOutput)
+}
+
+// Repository connector reference (when sourceType is git).
+func (o IacmAnsibleInventoryPluginOptionsOutput) RepositoryConnector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryPluginOptions) *string { return v.RepositoryConnector }).(pulumi.StringPtrOutput)
+}
+
+// Path within the repository to the plugin inventory YAML.
+func (o IacmAnsibleInventoryPluginOptionsOutput) RepositoryPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryPluginOptions) *string { return v.RepositoryPath }).(pulumi.StringPtrOutput)
+}
+
+// Source type for plugin inventory. One of: git, inline.
+func (o IacmAnsibleInventoryPluginOptionsOutput) SourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryPluginOptions) *string { return v.SourceType }).(pulumi.StringPtrOutput)
+}
+
+type IacmAnsibleInventoryPluginOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsibleInventoryPluginOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IacmAnsibleInventoryPluginOptions)(nil)).Elem()
+}
+
+func (o IacmAnsibleInventoryPluginOptionsPtrOutput) ToIacmAnsibleInventoryPluginOptionsPtrOutput() IacmAnsibleInventoryPluginOptionsPtrOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryPluginOptionsPtrOutput) ToIacmAnsibleInventoryPluginOptionsPtrOutputWithContext(ctx context.Context) IacmAnsibleInventoryPluginOptionsPtrOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryPluginOptionsPtrOutput) Elem() IacmAnsibleInventoryPluginOptionsOutput {
+	return o.ApplyT(func(v *IacmAnsibleInventoryPluginOptions) IacmAnsibleInventoryPluginOptions {
+		if v != nil {
+			return *v
+		}
+		var ret IacmAnsibleInventoryPluginOptions
+		return ret
+	}).(IacmAnsibleInventoryPluginOptionsOutput)
+}
+
+// Inline plugin inventory YAML content (when sourceType is inline).
+func (o IacmAnsibleInventoryPluginOptionsPtrOutput) InlineYaml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IacmAnsibleInventoryPluginOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InlineYaml
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provider connector identifier for plugin inventory execution.
+func (o IacmAnsibleInventoryPluginOptionsPtrOutput) ProviderConnectorIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IacmAnsibleInventoryPluginOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProviderConnectorIdentifier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provider connector type.
+func (o IacmAnsibleInventoryPluginOptionsPtrOutput) ProviderConnectorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IacmAnsibleInventoryPluginOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProviderConnectorType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Git repository name (when sourceType is git).
+func (o IacmAnsibleInventoryPluginOptionsPtrOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IacmAnsibleInventoryPluginOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repository
+	}).(pulumi.StringPtrOutput)
+}
+
+// Git branch.
+func (o IacmAnsibleInventoryPluginOptionsPtrOutput) RepositoryBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IacmAnsibleInventoryPluginOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepositoryBranch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Git commit or tag.
+func (o IacmAnsibleInventoryPluginOptionsPtrOutput) RepositoryCommit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IacmAnsibleInventoryPluginOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepositoryCommit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Repository connector reference (when sourceType is git).
+func (o IacmAnsibleInventoryPluginOptionsPtrOutput) RepositoryConnector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IacmAnsibleInventoryPluginOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepositoryConnector
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path within the repository to the plugin inventory YAML.
+func (o IacmAnsibleInventoryPluginOptionsPtrOutput) RepositoryPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IacmAnsibleInventoryPluginOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RepositoryPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Source type for plugin inventory. One of: git, inline.
+func (o IacmAnsibleInventoryPluginOptionsPtrOutput) SourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IacmAnsibleInventoryPluginOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+type IacmAnsibleInventoryVar struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName *string `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key string `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value string `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType string `pulumi:"valueType"`
+}
+
+// IacmAnsibleInventoryVarInput is an input type that accepts IacmAnsibleInventoryVarArgs and IacmAnsibleInventoryVarOutput values.
+// You can construct a concrete instance of `IacmAnsibleInventoryVarInput` via:
+//
+//	IacmAnsibleInventoryVarArgs{...}
+type IacmAnsibleInventoryVarInput interface {
+	pulumi.Input
+
+	ToIacmAnsibleInventoryVarOutput() IacmAnsibleInventoryVarOutput
+	ToIacmAnsibleInventoryVarOutputWithContext(context.Context) IacmAnsibleInventoryVarOutput
+}
+
+type IacmAnsibleInventoryVarArgs struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName pulumi.StringPtrInput `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value pulumi.StringInput `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (IacmAnsibleInventoryVarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsibleInventoryVar)(nil)).Elem()
+}
+
+func (i IacmAnsibleInventoryVarArgs) ToIacmAnsibleInventoryVarOutput() IacmAnsibleInventoryVarOutput {
+	return i.ToIacmAnsibleInventoryVarOutputWithContext(context.Background())
+}
+
+func (i IacmAnsibleInventoryVarArgs) ToIacmAnsibleInventoryVarOutputWithContext(ctx context.Context) IacmAnsibleInventoryVarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsibleInventoryVarOutput)
+}
+
+// IacmAnsibleInventoryVarArrayInput is an input type that accepts IacmAnsibleInventoryVarArray and IacmAnsibleInventoryVarArrayOutput values.
+// You can construct a concrete instance of `IacmAnsibleInventoryVarArrayInput` via:
+//
+//	IacmAnsibleInventoryVarArray{ IacmAnsibleInventoryVarArgs{...} }
+type IacmAnsibleInventoryVarArrayInput interface {
+	pulumi.Input
+
+	ToIacmAnsibleInventoryVarArrayOutput() IacmAnsibleInventoryVarArrayOutput
+	ToIacmAnsibleInventoryVarArrayOutputWithContext(context.Context) IacmAnsibleInventoryVarArrayOutput
+}
+
+type IacmAnsibleInventoryVarArray []IacmAnsibleInventoryVarInput
+
+func (IacmAnsibleInventoryVarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacmAnsibleInventoryVar)(nil)).Elem()
+}
+
+func (i IacmAnsibleInventoryVarArray) ToIacmAnsibleInventoryVarArrayOutput() IacmAnsibleInventoryVarArrayOutput {
+	return i.ToIacmAnsibleInventoryVarArrayOutputWithContext(context.Background())
+}
+
+func (i IacmAnsibleInventoryVarArray) ToIacmAnsibleInventoryVarArrayOutputWithContext(ctx context.Context) IacmAnsibleInventoryVarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsibleInventoryVarArrayOutput)
+}
+
+type IacmAnsibleInventoryVarOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsibleInventoryVarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsibleInventoryVar)(nil)).Elem()
+}
+
+func (o IacmAnsibleInventoryVarOutput) ToIacmAnsibleInventoryVarOutput() IacmAnsibleInventoryVarOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryVarOutput) ToIacmAnsibleInventoryVarOutputWithContext(ctx context.Context) IacmAnsibleInventoryVarOutput {
+	return o
+}
+
+// Filename to store the value in (used for file-backed variables).
+func (o IacmAnsibleInventoryVarOutput) FileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryVar) *string { return v.FileName }).(pulumi.StringPtrOutput)
+}
+
+// Key is the identifier for the variable.
+func (o IacmAnsibleInventoryVarOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryVar) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value of the variable. For secret value types this must be a Harness secret reference.
+func (o IacmAnsibleInventoryVarOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryVar) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// Value type. One of: string, secret.
+func (o IacmAnsibleInventoryVarOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsibleInventoryVar) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type IacmAnsibleInventoryVarArrayOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsibleInventoryVarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacmAnsibleInventoryVar)(nil)).Elem()
+}
+
+func (o IacmAnsibleInventoryVarArrayOutput) ToIacmAnsibleInventoryVarArrayOutput() IacmAnsibleInventoryVarArrayOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryVarArrayOutput) ToIacmAnsibleInventoryVarArrayOutputWithContext(ctx context.Context) IacmAnsibleInventoryVarArrayOutput {
+	return o
+}
+
+func (o IacmAnsibleInventoryVarArrayOutput) Index(i pulumi.IntInput) IacmAnsibleInventoryVarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IacmAnsibleInventoryVar {
+		return vs[0].([]IacmAnsibleInventoryVar)[vs[1].(int)]
+	}).(IacmAnsibleInventoryVarOutput)
+}
+
+type IacmAnsiblePlaybookEnvVar struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName *string `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key string `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value string `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType string `pulumi:"valueType"`
+}
+
+// IacmAnsiblePlaybookEnvVarInput is an input type that accepts IacmAnsiblePlaybookEnvVarArgs and IacmAnsiblePlaybookEnvVarOutput values.
+// You can construct a concrete instance of `IacmAnsiblePlaybookEnvVarInput` via:
+//
+//	IacmAnsiblePlaybookEnvVarArgs{...}
+type IacmAnsiblePlaybookEnvVarInput interface {
+	pulumi.Input
+
+	ToIacmAnsiblePlaybookEnvVarOutput() IacmAnsiblePlaybookEnvVarOutput
+	ToIacmAnsiblePlaybookEnvVarOutputWithContext(context.Context) IacmAnsiblePlaybookEnvVarOutput
+}
+
+type IacmAnsiblePlaybookEnvVarArgs struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName pulumi.StringPtrInput `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value pulumi.StringInput `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (IacmAnsiblePlaybookEnvVarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsiblePlaybookEnvVar)(nil)).Elem()
+}
+
+func (i IacmAnsiblePlaybookEnvVarArgs) ToIacmAnsiblePlaybookEnvVarOutput() IacmAnsiblePlaybookEnvVarOutput {
+	return i.ToIacmAnsiblePlaybookEnvVarOutputWithContext(context.Background())
+}
+
+func (i IacmAnsiblePlaybookEnvVarArgs) ToIacmAnsiblePlaybookEnvVarOutputWithContext(ctx context.Context) IacmAnsiblePlaybookEnvVarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsiblePlaybookEnvVarOutput)
+}
+
+// IacmAnsiblePlaybookEnvVarArrayInput is an input type that accepts IacmAnsiblePlaybookEnvVarArray and IacmAnsiblePlaybookEnvVarArrayOutput values.
+// You can construct a concrete instance of `IacmAnsiblePlaybookEnvVarArrayInput` via:
+//
+//	IacmAnsiblePlaybookEnvVarArray{ IacmAnsiblePlaybookEnvVarArgs{...} }
+type IacmAnsiblePlaybookEnvVarArrayInput interface {
+	pulumi.Input
+
+	ToIacmAnsiblePlaybookEnvVarArrayOutput() IacmAnsiblePlaybookEnvVarArrayOutput
+	ToIacmAnsiblePlaybookEnvVarArrayOutputWithContext(context.Context) IacmAnsiblePlaybookEnvVarArrayOutput
+}
+
+type IacmAnsiblePlaybookEnvVarArray []IacmAnsiblePlaybookEnvVarInput
+
+func (IacmAnsiblePlaybookEnvVarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacmAnsiblePlaybookEnvVar)(nil)).Elem()
+}
+
+func (i IacmAnsiblePlaybookEnvVarArray) ToIacmAnsiblePlaybookEnvVarArrayOutput() IacmAnsiblePlaybookEnvVarArrayOutput {
+	return i.ToIacmAnsiblePlaybookEnvVarArrayOutputWithContext(context.Background())
+}
+
+func (i IacmAnsiblePlaybookEnvVarArray) ToIacmAnsiblePlaybookEnvVarArrayOutputWithContext(ctx context.Context) IacmAnsiblePlaybookEnvVarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsiblePlaybookEnvVarArrayOutput)
+}
+
+type IacmAnsiblePlaybookEnvVarOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsiblePlaybookEnvVarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsiblePlaybookEnvVar)(nil)).Elem()
+}
+
+func (o IacmAnsiblePlaybookEnvVarOutput) ToIacmAnsiblePlaybookEnvVarOutput() IacmAnsiblePlaybookEnvVarOutput {
+	return o
+}
+
+func (o IacmAnsiblePlaybookEnvVarOutput) ToIacmAnsiblePlaybookEnvVarOutputWithContext(ctx context.Context) IacmAnsiblePlaybookEnvVarOutput {
+	return o
+}
+
+// Filename to store the value in (used for file-backed variables).
+func (o IacmAnsiblePlaybookEnvVarOutput) FileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacmAnsiblePlaybookEnvVar) *string { return v.FileName }).(pulumi.StringPtrOutput)
+}
+
+// Key is the identifier for the variable.
+func (o IacmAnsiblePlaybookEnvVarOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsiblePlaybookEnvVar) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value of the variable. For secret value types this must be a Harness secret reference.
+func (o IacmAnsiblePlaybookEnvVarOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsiblePlaybookEnvVar) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// Value type. One of: string, secret.
+func (o IacmAnsiblePlaybookEnvVarOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsiblePlaybookEnvVar) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type IacmAnsiblePlaybookEnvVarArrayOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsiblePlaybookEnvVarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacmAnsiblePlaybookEnvVar)(nil)).Elem()
+}
+
+func (o IacmAnsiblePlaybookEnvVarArrayOutput) ToIacmAnsiblePlaybookEnvVarArrayOutput() IacmAnsiblePlaybookEnvVarArrayOutput {
+	return o
+}
+
+func (o IacmAnsiblePlaybookEnvVarArrayOutput) ToIacmAnsiblePlaybookEnvVarArrayOutputWithContext(ctx context.Context) IacmAnsiblePlaybookEnvVarArrayOutput {
+	return o
+}
+
+func (o IacmAnsiblePlaybookEnvVarArrayOutput) Index(i pulumi.IntInput) IacmAnsiblePlaybookEnvVarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IacmAnsiblePlaybookEnvVar {
+		return vs[0].([]IacmAnsiblePlaybookEnvVar)[vs[1].(int)]
+	}).(IacmAnsiblePlaybookEnvVarOutput)
+}
+
+type IacmAnsiblePlaybookVar struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName *string `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key string `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value string `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType string `pulumi:"valueType"`
+}
+
+// IacmAnsiblePlaybookVarInput is an input type that accepts IacmAnsiblePlaybookVarArgs and IacmAnsiblePlaybookVarOutput values.
+// You can construct a concrete instance of `IacmAnsiblePlaybookVarInput` via:
+//
+//	IacmAnsiblePlaybookVarArgs{...}
+type IacmAnsiblePlaybookVarInput interface {
+	pulumi.Input
+
+	ToIacmAnsiblePlaybookVarOutput() IacmAnsiblePlaybookVarOutput
+	ToIacmAnsiblePlaybookVarOutputWithContext(context.Context) IacmAnsiblePlaybookVarOutput
+}
+
+type IacmAnsiblePlaybookVarArgs struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName pulumi.StringPtrInput `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value pulumi.StringInput `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (IacmAnsiblePlaybookVarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsiblePlaybookVar)(nil)).Elem()
+}
+
+func (i IacmAnsiblePlaybookVarArgs) ToIacmAnsiblePlaybookVarOutput() IacmAnsiblePlaybookVarOutput {
+	return i.ToIacmAnsiblePlaybookVarOutputWithContext(context.Background())
+}
+
+func (i IacmAnsiblePlaybookVarArgs) ToIacmAnsiblePlaybookVarOutputWithContext(ctx context.Context) IacmAnsiblePlaybookVarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsiblePlaybookVarOutput)
+}
+
+// IacmAnsiblePlaybookVarArrayInput is an input type that accepts IacmAnsiblePlaybookVarArray and IacmAnsiblePlaybookVarArrayOutput values.
+// You can construct a concrete instance of `IacmAnsiblePlaybookVarArrayInput` via:
+//
+//	IacmAnsiblePlaybookVarArray{ IacmAnsiblePlaybookVarArgs{...} }
+type IacmAnsiblePlaybookVarArrayInput interface {
+	pulumi.Input
+
+	ToIacmAnsiblePlaybookVarArrayOutput() IacmAnsiblePlaybookVarArrayOutput
+	ToIacmAnsiblePlaybookVarArrayOutputWithContext(context.Context) IacmAnsiblePlaybookVarArrayOutput
+}
+
+type IacmAnsiblePlaybookVarArray []IacmAnsiblePlaybookVarInput
+
+func (IacmAnsiblePlaybookVarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacmAnsiblePlaybookVar)(nil)).Elem()
+}
+
+func (i IacmAnsiblePlaybookVarArray) ToIacmAnsiblePlaybookVarArrayOutput() IacmAnsiblePlaybookVarArrayOutput {
+	return i.ToIacmAnsiblePlaybookVarArrayOutputWithContext(context.Background())
+}
+
+func (i IacmAnsiblePlaybookVarArray) ToIacmAnsiblePlaybookVarArrayOutputWithContext(ctx context.Context) IacmAnsiblePlaybookVarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IacmAnsiblePlaybookVarArrayOutput)
+}
+
+type IacmAnsiblePlaybookVarOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsiblePlaybookVarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IacmAnsiblePlaybookVar)(nil)).Elem()
+}
+
+func (o IacmAnsiblePlaybookVarOutput) ToIacmAnsiblePlaybookVarOutput() IacmAnsiblePlaybookVarOutput {
+	return o
+}
+
+func (o IacmAnsiblePlaybookVarOutput) ToIacmAnsiblePlaybookVarOutputWithContext(ctx context.Context) IacmAnsiblePlaybookVarOutput {
+	return o
+}
+
+// Filename to store the value in (used for file-backed variables).
+func (o IacmAnsiblePlaybookVarOutput) FileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IacmAnsiblePlaybookVar) *string { return v.FileName }).(pulumi.StringPtrOutput)
+}
+
+// Key is the identifier for the variable.
+func (o IacmAnsiblePlaybookVarOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsiblePlaybookVar) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value of the variable. For secret value types this must be a Harness secret reference.
+func (o IacmAnsiblePlaybookVarOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsiblePlaybookVar) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// Value type. One of: string, secret.
+func (o IacmAnsiblePlaybookVarOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v IacmAnsiblePlaybookVar) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type IacmAnsiblePlaybookVarArrayOutput struct{ *pulumi.OutputState }
+
+func (IacmAnsiblePlaybookVarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IacmAnsiblePlaybookVar)(nil)).Elem()
+}
+
+func (o IacmAnsiblePlaybookVarArrayOutput) ToIacmAnsiblePlaybookVarArrayOutput() IacmAnsiblePlaybookVarArrayOutput {
+	return o
+}
+
+func (o IacmAnsiblePlaybookVarArrayOutput) ToIacmAnsiblePlaybookVarArrayOutputWithContext(ctx context.Context) IacmAnsiblePlaybookVarArrayOutput {
+	return o
+}
+
+func (o IacmAnsiblePlaybookVarArrayOutput) Index(i pulumi.IntInput) IacmAnsiblePlaybookVarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IacmAnsiblePlaybookVar {
+		return vs[0].([]IacmAnsiblePlaybookVar)[vs[1].(int)]
+	}).(IacmAnsiblePlaybookVarOutput)
 }
 
 type IdpCatalogEntityGitDetails struct {
@@ -17147,7 +18760,7 @@ func (o ResourceGroupResourceFilterResourceAttributeFilterArrayOutput) Index(i p
 type RoleAssignmentsPrincipal struct {
 	// Identifier.
 	Identifier *string `pulumi:"identifier"`
-	// Scope level.
+	// Scope level. Valid values are 'account', 'organization', or 'project'.
 	ScopeLevel *string `pulumi:"scopeLevel"`
 	// Type.
 	Type string `pulumi:"type"`
@@ -17167,7 +18780,7 @@ type RoleAssignmentsPrincipalInput interface {
 type RoleAssignmentsPrincipalArgs struct {
 	// Identifier.
 	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
-	// Scope level.
+	// Scope level. Valid values are 'account', 'organization', or 'project'.
 	ScopeLevel pulumi.StringPtrInput `pulumi:"scopeLevel"`
 	// Type.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -17229,7 +18842,7 @@ func (o RoleAssignmentsPrincipalOutput) Identifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RoleAssignmentsPrincipal) *string { return v.Identifier }).(pulumi.StringPtrOutput)
 }
 
-// Scope level.
+// Scope level. Valid values are 'account', 'organization', or 'project'.
 func (o RoleAssignmentsPrincipalOutput) ScopeLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RoleAssignmentsPrincipal) *string { return v.ScopeLevel }).(pulumi.StringPtrOutput)
 }
@@ -17257,6 +18870,162 @@ func (o RoleAssignmentsPrincipalArrayOutput) Index(i pulumi.IntInput) RoleAssign
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoleAssignmentsPrincipal {
 		return vs[0].([]RoleAssignmentsPrincipal)[vs[1].(int)]
 	}).(RoleAssignmentsPrincipalOutput)
+}
+
+type RoleAssignmentsRoleReference struct {
+	// Identifier.
+	Identifier *string `pulumi:"identifier"`
+	// Scope level. Valid values are 'account', 'organization', or 'project'.
+	ScopeLevel *string `pulumi:"scopeLevel"`
+}
+
+// RoleAssignmentsRoleReferenceInput is an input type that accepts RoleAssignmentsRoleReferenceArgs and RoleAssignmentsRoleReferenceOutput values.
+// You can construct a concrete instance of `RoleAssignmentsRoleReferenceInput` via:
+//
+//	RoleAssignmentsRoleReferenceArgs{...}
+type RoleAssignmentsRoleReferenceInput interface {
+	pulumi.Input
+
+	ToRoleAssignmentsRoleReferenceOutput() RoleAssignmentsRoleReferenceOutput
+	ToRoleAssignmentsRoleReferenceOutputWithContext(context.Context) RoleAssignmentsRoleReferenceOutput
+}
+
+type RoleAssignmentsRoleReferenceArgs struct {
+	// Identifier.
+	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	// Scope level. Valid values are 'account', 'organization', or 'project'.
+	ScopeLevel pulumi.StringPtrInput `pulumi:"scopeLevel"`
+}
+
+func (RoleAssignmentsRoleReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleAssignmentsRoleReference)(nil)).Elem()
+}
+
+func (i RoleAssignmentsRoleReferenceArgs) ToRoleAssignmentsRoleReferenceOutput() RoleAssignmentsRoleReferenceOutput {
+	return i.ToRoleAssignmentsRoleReferenceOutputWithContext(context.Background())
+}
+
+func (i RoleAssignmentsRoleReferenceArgs) ToRoleAssignmentsRoleReferenceOutputWithContext(ctx context.Context) RoleAssignmentsRoleReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleAssignmentsRoleReferenceOutput)
+}
+
+func (i RoleAssignmentsRoleReferenceArgs) ToRoleAssignmentsRoleReferencePtrOutput() RoleAssignmentsRoleReferencePtrOutput {
+	return i.ToRoleAssignmentsRoleReferencePtrOutputWithContext(context.Background())
+}
+
+func (i RoleAssignmentsRoleReferenceArgs) ToRoleAssignmentsRoleReferencePtrOutputWithContext(ctx context.Context) RoleAssignmentsRoleReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleAssignmentsRoleReferenceOutput).ToRoleAssignmentsRoleReferencePtrOutputWithContext(ctx)
+}
+
+// RoleAssignmentsRoleReferencePtrInput is an input type that accepts RoleAssignmentsRoleReferenceArgs, RoleAssignmentsRoleReferencePtr and RoleAssignmentsRoleReferencePtrOutput values.
+// You can construct a concrete instance of `RoleAssignmentsRoleReferencePtrInput` via:
+//
+//	        RoleAssignmentsRoleReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type RoleAssignmentsRoleReferencePtrInput interface {
+	pulumi.Input
+
+	ToRoleAssignmentsRoleReferencePtrOutput() RoleAssignmentsRoleReferencePtrOutput
+	ToRoleAssignmentsRoleReferencePtrOutputWithContext(context.Context) RoleAssignmentsRoleReferencePtrOutput
+}
+
+type roleAssignmentsRoleReferencePtrType RoleAssignmentsRoleReferenceArgs
+
+func RoleAssignmentsRoleReferencePtr(v *RoleAssignmentsRoleReferenceArgs) RoleAssignmentsRoleReferencePtrInput {
+	return (*roleAssignmentsRoleReferencePtrType)(v)
+}
+
+func (*roleAssignmentsRoleReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoleAssignmentsRoleReference)(nil)).Elem()
+}
+
+func (i *roleAssignmentsRoleReferencePtrType) ToRoleAssignmentsRoleReferencePtrOutput() RoleAssignmentsRoleReferencePtrOutput {
+	return i.ToRoleAssignmentsRoleReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *roleAssignmentsRoleReferencePtrType) ToRoleAssignmentsRoleReferencePtrOutputWithContext(ctx context.Context) RoleAssignmentsRoleReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleAssignmentsRoleReferencePtrOutput)
+}
+
+type RoleAssignmentsRoleReferenceOutput struct{ *pulumi.OutputState }
+
+func (RoleAssignmentsRoleReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleAssignmentsRoleReference)(nil)).Elem()
+}
+
+func (o RoleAssignmentsRoleReferenceOutput) ToRoleAssignmentsRoleReferenceOutput() RoleAssignmentsRoleReferenceOutput {
+	return o
+}
+
+func (o RoleAssignmentsRoleReferenceOutput) ToRoleAssignmentsRoleReferenceOutputWithContext(ctx context.Context) RoleAssignmentsRoleReferenceOutput {
+	return o
+}
+
+func (o RoleAssignmentsRoleReferenceOutput) ToRoleAssignmentsRoleReferencePtrOutput() RoleAssignmentsRoleReferencePtrOutput {
+	return o.ToRoleAssignmentsRoleReferencePtrOutputWithContext(context.Background())
+}
+
+func (o RoleAssignmentsRoleReferenceOutput) ToRoleAssignmentsRoleReferencePtrOutputWithContext(ctx context.Context) RoleAssignmentsRoleReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoleAssignmentsRoleReference) *RoleAssignmentsRoleReference {
+		return &v
+	}).(RoleAssignmentsRoleReferencePtrOutput)
+}
+
+// Identifier.
+func (o RoleAssignmentsRoleReferenceOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoleAssignmentsRoleReference) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+}
+
+// Scope level. Valid values are 'account', 'organization', or 'project'.
+func (o RoleAssignmentsRoleReferenceOutput) ScopeLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoleAssignmentsRoleReference) *string { return v.ScopeLevel }).(pulumi.StringPtrOutput)
+}
+
+type RoleAssignmentsRoleReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (RoleAssignmentsRoleReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoleAssignmentsRoleReference)(nil)).Elem()
+}
+
+func (o RoleAssignmentsRoleReferencePtrOutput) ToRoleAssignmentsRoleReferencePtrOutput() RoleAssignmentsRoleReferencePtrOutput {
+	return o
+}
+
+func (o RoleAssignmentsRoleReferencePtrOutput) ToRoleAssignmentsRoleReferencePtrOutputWithContext(ctx context.Context) RoleAssignmentsRoleReferencePtrOutput {
+	return o
+}
+
+func (o RoleAssignmentsRoleReferencePtrOutput) Elem() RoleAssignmentsRoleReferenceOutput {
+	return o.ApplyT(func(v *RoleAssignmentsRoleReference) RoleAssignmentsRoleReference {
+		if v != nil {
+			return *v
+		}
+		var ret RoleAssignmentsRoleReference
+		return ret
+	}).(RoleAssignmentsRoleReferenceOutput)
+}
+
+// Identifier.
+func (o RoleAssignmentsRoleReferencePtrOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoleAssignmentsRoleReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Identifier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scope level. Valid values are 'account', 'organization', or 'project'.
+func (o RoleAssignmentsRoleReferencePtrOutput) ScopeLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoleAssignmentsRoleReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScopeLevel
+	}).(pulumi.StringPtrOutput)
 }
 
 type SecretFileAdditionalMetadata struct {
@@ -41227,6 +42996,8 @@ type GetHarRegistryConfig struct {
 	AuthType *string `pulumi:"authType"`
 	// Authentication configuration for UPSTREAM registry type
 	Auths []GetHarRegistryConfigAuth `pulumi:"auths"`
+	// Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+	FirewallMode string `pulumi:"firewallMode"`
 	// Upstream source
 	Source *string `pulumi:"source"`
 	// Type of registry (VIRTUAL or UPSTREAM)
@@ -41253,6 +43024,8 @@ type GetHarRegistryConfigArgs struct {
 	AuthType pulumi.StringPtrInput `pulumi:"authType"`
 	// Authentication configuration for UPSTREAM registry type
 	Auths GetHarRegistryConfigAuthArrayInput `pulumi:"auths"`
+	// Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+	FirewallMode pulumi.StringInput `pulumi:"firewallMode"`
 	// Upstream source
 	Source pulumi.StringPtrInput `pulumi:"source"`
 	// Type of registry (VIRTUAL or UPSTREAM)
@@ -41322,6 +43095,11 @@ func (o GetHarRegistryConfigOutput) AuthType() pulumi.StringPtrOutput {
 // Authentication configuration for UPSTREAM registry type
 func (o GetHarRegistryConfigOutput) Auths() GetHarRegistryConfigAuthArrayOutput {
 	return o.ApplyT(func(v GetHarRegistryConfig) []GetHarRegistryConfigAuth { return v.Auths }).(GetHarRegistryConfigAuthArrayOutput)
+}
+
+// Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+func (o GetHarRegistryConfigOutput) FirewallMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHarRegistryConfig) string { return v.FirewallMode }).(pulumi.StringOutput)
 }
 
 // Upstream source
@@ -41631,6 +43409,1430 @@ func (o GetHelmConnectorCredentialArrayOutput) Index(i pulumi.IntInput) GetHelmC
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHelmConnectorCredential {
 		return vs[0].([]GetHelmConnectorCredential)[vs[1].(int)]
 	}).(GetHelmConnectorCredentialOutput)
+}
+
+type GetIacmAnsibleInventoryDynamicGroup struct {
+	// Configuration for the dynamic group.
+	Configurations []GetIacmAnsibleInventoryDynamicGroupConfiguration `pulumi:"configurations"`
+	// Connector identifier used by the dynamic group.
+	ConnectorIdentifier string `pulumi:"connectorIdentifier"`
+	// Connector type (e.g. workspace, aws, gcp, azure, vault).
+	ConnectorType string `pulumi:"connectorType"`
+	// Dynamic variables for the dynamic group.
+	DynamicVars []GetIacmAnsibleInventoryDynamicGroupDynamicVar `pulumi:"dynamicVars"`
+	// Identifier of the dynamic group.
+	Identifier string `pulumi:"identifier"`
+	// Name of the dynamic group.
+	Name string `pulumi:"name"`
+	// Variables for the dynamic group.
+	Vars []GetIacmAnsibleInventoryDynamicGroupVar `pulumi:"vars"`
+}
+
+// GetIacmAnsibleInventoryDynamicGroupInput is an input type that accepts GetIacmAnsibleInventoryDynamicGroupArgs and GetIacmAnsibleInventoryDynamicGroupOutput values.
+// You can construct a concrete instance of `GetIacmAnsibleInventoryDynamicGroupInput` via:
+//
+//	GetIacmAnsibleInventoryDynamicGroupArgs{...}
+type GetIacmAnsibleInventoryDynamicGroupInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsibleInventoryDynamicGroupOutput() GetIacmAnsibleInventoryDynamicGroupOutput
+	ToGetIacmAnsibleInventoryDynamicGroupOutputWithContext(context.Context) GetIacmAnsibleInventoryDynamicGroupOutput
+}
+
+type GetIacmAnsibleInventoryDynamicGroupArgs struct {
+	// Configuration for the dynamic group.
+	Configurations GetIacmAnsibleInventoryDynamicGroupConfigurationArrayInput `pulumi:"configurations"`
+	// Connector identifier used by the dynamic group.
+	ConnectorIdentifier pulumi.StringInput `pulumi:"connectorIdentifier"`
+	// Connector type (e.g. workspace, aws, gcp, azure, vault).
+	ConnectorType pulumi.StringInput `pulumi:"connectorType"`
+	// Dynamic variables for the dynamic group.
+	DynamicVars GetIacmAnsibleInventoryDynamicGroupDynamicVarArrayInput `pulumi:"dynamicVars"`
+	// Identifier of the dynamic group.
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Name of the dynamic group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Variables for the dynamic group.
+	Vars GetIacmAnsibleInventoryDynamicGroupVarArrayInput `pulumi:"vars"`
+}
+
+func (GetIacmAnsibleInventoryDynamicGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsibleInventoryDynamicGroup)(nil)).Elem()
+}
+
+func (i GetIacmAnsibleInventoryDynamicGroupArgs) ToGetIacmAnsibleInventoryDynamicGroupOutput() GetIacmAnsibleInventoryDynamicGroupOutput {
+	return i.ToGetIacmAnsibleInventoryDynamicGroupOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsibleInventoryDynamicGroupArgs) ToGetIacmAnsibleInventoryDynamicGroupOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryDynamicGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsibleInventoryDynamicGroupOutput)
+}
+
+// GetIacmAnsibleInventoryDynamicGroupArrayInput is an input type that accepts GetIacmAnsibleInventoryDynamicGroupArray and GetIacmAnsibleInventoryDynamicGroupArrayOutput values.
+// You can construct a concrete instance of `GetIacmAnsibleInventoryDynamicGroupArrayInput` via:
+//
+//	GetIacmAnsibleInventoryDynamicGroupArray{ GetIacmAnsibleInventoryDynamicGroupArgs{...} }
+type GetIacmAnsibleInventoryDynamicGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsibleInventoryDynamicGroupArrayOutput() GetIacmAnsibleInventoryDynamicGroupArrayOutput
+	ToGetIacmAnsibleInventoryDynamicGroupArrayOutputWithContext(context.Context) GetIacmAnsibleInventoryDynamicGroupArrayOutput
+}
+
+type GetIacmAnsibleInventoryDynamicGroupArray []GetIacmAnsibleInventoryDynamicGroupInput
+
+func (GetIacmAnsibleInventoryDynamicGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsibleInventoryDynamicGroup)(nil)).Elem()
+}
+
+func (i GetIacmAnsibleInventoryDynamicGroupArray) ToGetIacmAnsibleInventoryDynamicGroupArrayOutput() GetIacmAnsibleInventoryDynamicGroupArrayOutput {
+	return i.ToGetIacmAnsibleInventoryDynamicGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsibleInventoryDynamicGroupArray) ToGetIacmAnsibleInventoryDynamicGroupArrayOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryDynamicGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsibleInventoryDynamicGroupArrayOutput)
+}
+
+type GetIacmAnsibleInventoryDynamicGroupOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsibleInventoryDynamicGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsibleInventoryDynamicGroup)(nil)).Elem()
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupOutput) ToGetIacmAnsibleInventoryDynamicGroupOutput() GetIacmAnsibleInventoryDynamicGroupOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupOutput) ToGetIacmAnsibleInventoryDynamicGroupOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryDynamicGroupOutput {
+	return o
+}
+
+// Configuration for the dynamic group.
+func (o GetIacmAnsibleInventoryDynamicGroupOutput) Configurations() GetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryDynamicGroup) []GetIacmAnsibleInventoryDynamicGroupConfiguration {
+		return v.Configurations
+	}).(GetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutput)
+}
+
+// Connector identifier used by the dynamic group.
+func (o GetIacmAnsibleInventoryDynamicGroupOutput) ConnectorIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryDynamicGroup) string { return v.ConnectorIdentifier }).(pulumi.StringOutput)
+}
+
+// Connector type (e.g. workspace, aws, gcp, azure, vault).
+func (o GetIacmAnsibleInventoryDynamicGroupOutput) ConnectorType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryDynamicGroup) string { return v.ConnectorType }).(pulumi.StringOutput)
+}
+
+// Dynamic variables for the dynamic group.
+func (o GetIacmAnsibleInventoryDynamicGroupOutput) DynamicVars() GetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryDynamicGroup) []GetIacmAnsibleInventoryDynamicGroupDynamicVar {
+		return v.DynamicVars
+	}).(GetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput)
+}
+
+// Identifier of the dynamic group.
+func (o GetIacmAnsibleInventoryDynamicGroupOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryDynamicGroup) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Name of the dynamic group.
+func (o GetIacmAnsibleInventoryDynamicGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryDynamicGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Variables for the dynamic group.
+func (o GetIacmAnsibleInventoryDynamicGroupOutput) Vars() GetIacmAnsibleInventoryDynamicGroupVarArrayOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryDynamicGroup) []GetIacmAnsibleInventoryDynamicGroupVar { return v.Vars }).(GetIacmAnsibleInventoryDynamicGroupVarArrayOutput)
+}
+
+type GetIacmAnsibleInventoryDynamicGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsibleInventoryDynamicGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsibleInventoryDynamicGroup)(nil)).Elem()
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupArrayOutput) ToGetIacmAnsibleInventoryDynamicGroupArrayOutput() GetIacmAnsibleInventoryDynamicGroupArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupArrayOutput) ToGetIacmAnsibleInventoryDynamicGroupArrayOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryDynamicGroupArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupArrayOutput) Index(i pulumi.IntInput) GetIacmAnsibleInventoryDynamicGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIacmAnsibleInventoryDynamicGroup {
+		return vs[0].([]GetIacmAnsibleInventoryDynamicGroup)[vs[1].(int)]
+	}).(GetIacmAnsibleInventoryDynamicGroupOutput)
+}
+
+type GetIacmAnsibleInventoryDynamicGroupConfiguration struct {
+	// Host address attribute.
+	HostAddressAttribute string `pulumi:"hostAddressAttribute"`
+	// Resource type to select.
+	ResourceType string `pulumi:"resourceType"`
+	// Resource selectors.
+	Selectors []GetIacmAnsibleInventoryDynamicGroupConfigurationSelector `pulumi:"selectors"`
+}
+
+// GetIacmAnsibleInventoryDynamicGroupConfigurationInput is an input type that accepts GetIacmAnsibleInventoryDynamicGroupConfigurationArgs and GetIacmAnsibleInventoryDynamicGroupConfigurationOutput values.
+// You can construct a concrete instance of `GetIacmAnsibleInventoryDynamicGroupConfigurationInput` via:
+//
+//	GetIacmAnsibleInventoryDynamicGroupConfigurationArgs{...}
+type GetIacmAnsibleInventoryDynamicGroupConfigurationInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsibleInventoryDynamicGroupConfigurationOutput() GetIacmAnsibleInventoryDynamicGroupConfigurationOutput
+	ToGetIacmAnsibleInventoryDynamicGroupConfigurationOutputWithContext(context.Context) GetIacmAnsibleInventoryDynamicGroupConfigurationOutput
+}
+
+type GetIacmAnsibleInventoryDynamicGroupConfigurationArgs struct {
+	// Host address attribute.
+	HostAddressAttribute pulumi.StringInput `pulumi:"hostAddressAttribute"`
+	// Resource type to select.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// Resource selectors.
+	Selectors GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayInput `pulumi:"selectors"`
+}
+
+func (GetIacmAnsibleInventoryDynamicGroupConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsibleInventoryDynamicGroupConfiguration)(nil)).Elem()
+}
+
+func (i GetIacmAnsibleInventoryDynamicGroupConfigurationArgs) ToGetIacmAnsibleInventoryDynamicGroupConfigurationOutput() GetIacmAnsibleInventoryDynamicGroupConfigurationOutput {
+	return i.ToGetIacmAnsibleInventoryDynamicGroupConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsibleInventoryDynamicGroupConfigurationArgs) ToGetIacmAnsibleInventoryDynamicGroupConfigurationOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryDynamicGroupConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsibleInventoryDynamicGroupConfigurationOutput)
+}
+
+// GetIacmAnsibleInventoryDynamicGroupConfigurationArrayInput is an input type that accepts GetIacmAnsibleInventoryDynamicGroupConfigurationArray and GetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetIacmAnsibleInventoryDynamicGroupConfigurationArrayInput` via:
+//
+//	GetIacmAnsibleInventoryDynamicGroupConfigurationArray{ GetIacmAnsibleInventoryDynamicGroupConfigurationArgs{...} }
+type GetIacmAnsibleInventoryDynamicGroupConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutput() GetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutput
+	ToGetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutputWithContext(context.Context) GetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutput
+}
+
+type GetIacmAnsibleInventoryDynamicGroupConfigurationArray []GetIacmAnsibleInventoryDynamicGroupConfigurationInput
+
+func (GetIacmAnsibleInventoryDynamicGroupConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsibleInventoryDynamicGroupConfiguration)(nil)).Elem()
+}
+
+func (i GetIacmAnsibleInventoryDynamicGroupConfigurationArray) ToGetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutput() GetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutput {
+	return i.ToGetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsibleInventoryDynamicGroupConfigurationArray) ToGetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutput)
+}
+
+type GetIacmAnsibleInventoryDynamicGroupConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsibleInventoryDynamicGroupConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsibleInventoryDynamicGroupConfiguration)(nil)).Elem()
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupConfigurationOutput) ToGetIacmAnsibleInventoryDynamicGroupConfigurationOutput() GetIacmAnsibleInventoryDynamicGroupConfigurationOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupConfigurationOutput) ToGetIacmAnsibleInventoryDynamicGroupConfigurationOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryDynamicGroupConfigurationOutput {
+	return o
+}
+
+// Host address attribute.
+func (o GetIacmAnsibleInventoryDynamicGroupConfigurationOutput) HostAddressAttribute() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryDynamicGroupConfiguration) string { return v.HostAddressAttribute }).(pulumi.StringOutput)
+}
+
+// Resource type to select.
+func (o GetIacmAnsibleInventoryDynamicGroupConfigurationOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryDynamicGroupConfiguration) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Resource selectors.
+func (o GetIacmAnsibleInventoryDynamicGroupConfigurationOutput) Selectors() GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryDynamicGroupConfiguration) []GetIacmAnsibleInventoryDynamicGroupConfigurationSelector {
+		return v.Selectors
+	}).(GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput)
+}
+
+type GetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsibleInventoryDynamicGroupConfiguration)(nil)).Elem()
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutput) ToGetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutput() GetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutput) ToGetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutput) Index(i pulumi.IntInput) GetIacmAnsibleInventoryDynamicGroupConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIacmAnsibleInventoryDynamicGroupConfiguration {
+		return vs[0].([]GetIacmAnsibleInventoryDynamicGroupConfiguration)[vs[1].(int)]
+	}).(GetIacmAnsibleInventoryDynamicGroupConfigurationOutput)
+}
+
+type GetIacmAnsibleInventoryDynamicGroupConfigurationSelector struct {
+	// Attribute to filter on.
+	Attribute string `pulumi:"attribute"`
+	// Operator for the filter.
+	Operator string `pulumi:"operator"`
+	// Value for the filter.
+	Value string `pulumi:"value"`
+}
+
+// GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorInput is an input type that accepts GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArgs and GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput values.
+// You can construct a concrete instance of `GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorInput` via:
+//
+//	GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArgs{...}
+type GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput() GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput
+	ToGetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutputWithContext(context.Context) GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput
+}
+
+type GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArgs struct {
+	// Attribute to filter on.
+	Attribute pulumi.StringInput `pulumi:"attribute"`
+	// Operator for the filter.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Value for the filter.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsibleInventoryDynamicGroupConfigurationSelector)(nil)).Elem()
+}
+
+func (i GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArgs) ToGetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput() GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput {
+	return i.ToGetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArgs) ToGetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput)
+}
+
+// GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayInput is an input type that accepts GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArray and GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput values.
+// You can construct a concrete instance of `GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayInput` via:
+//
+//	GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArray{ GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArgs{...} }
+type GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput() GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput
+	ToGetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutputWithContext(context.Context) GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput
+}
+
+type GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArray []GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorInput
+
+func (GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsibleInventoryDynamicGroupConfigurationSelector)(nil)).Elem()
+}
+
+func (i GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArray) ToGetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput() GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput {
+	return i.ToGetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArray) ToGetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput)
+}
+
+type GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsibleInventoryDynamicGroupConfigurationSelector)(nil)).Elem()
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput) ToGetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput() GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput) ToGetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput {
+	return o
+}
+
+// Attribute to filter on.
+func (o GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput) Attribute() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryDynamicGroupConfigurationSelector) string { return v.Attribute }).(pulumi.StringOutput)
+}
+
+// Operator for the filter.
+func (o GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryDynamicGroupConfigurationSelector) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Value for the filter.
+func (o GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryDynamicGroupConfigurationSelector) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsibleInventoryDynamicGroupConfigurationSelector)(nil)).Elem()
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput) ToGetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput() GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput) ToGetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput) Index(i pulumi.IntInput) GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIacmAnsibleInventoryDynamicGroupConfigurationSelector {
+		return vs[0].([]GetIacmAnsibleInventoryDynamicGroupConfigurationSelector)[vs[1].(int)]
+	}).(GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput)
+}
+
+type GetIacmAnsibleInventoryDynamicGroupDynamicVar struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName string `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key string `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value string `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType string `pulumi:"valueType"`
+}
+
+// GetIacmAnsibleInventoryDynamicGroupDynamicVarInput is an input type that accepts GetIacmAnsibleInventoryDynamicGroupDynamicVarArgs and GetIacmAnsibleInventoryDynamicGroupDynamicVarOutput values.
+// You can construct a concrete instance of `GetIacmAnsibleInventoryDynamicGroupDynamicVarInput` via:
+//
+//	GetIacmAnsibleInventoryDynamicGroupDynamicVarArgs{...}
+type GetIacmAnsibleInventoryDynamicGroupDynamicVarInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsibleInventoryDynamicGroupDynamicVarOutput() GetIacmAnsibleInventoryDynamicGroupDynamicVarOutput
+	ToGetIacmAnsibleInventoryDynamicGroupDynamicVarOutputWithContext(context.Context) GetIacmAnsibleInventoryDynamicGroupDynamicVarOutput
+}
+
+type GetIacmAnsibleInventoryDynamicGroupDynamicVarArgs struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName pulumi.StringInput `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value pulumi.StringInput `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (GetIacmAnsibleInventoryDynamicGroupDynamicVarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsibleInventoryDynamicGroupDynamicVar)(nil)).Elem()
+}
+
+func (i GetIacmAnsibleInventoryDynamicGroupDynamicVarArgs) ToGetIacmAnsibleInventoryDynamicGroupDynamicVarOutput() GetIacmAnsibleInventoryDynamicGroupDynamicVarOutput {
+	return i.ToGetIacmAnsibleInventoryDynamicGroupDynamicVarOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsibleInventoryDynamicGroupDynamicVarArgs) ToGetIacmAnsibleInventoryDynamicGroupDynamicVarOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryDynamicGroupDynamicVarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsibleInventoryDynamicGroupDynamicVarOutput)
+}
+
+// GetIacmAnsibleInventoryDynamicGroupDynamicVarArrayInput is an input type that accepts GetIacmAnsibleInventoryDynamicGroupDynamicVarArray and GetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput values.
+// You can construct a concrete instance of `GetIacmAnsibleInventoryDynamicGroupDynamicVarArrayInput` via:
+//
+//	GetIacmAnsibleInventoryDynamicGroupDynamicVarArray{ GetIacmAnsibleInventoryDynamicGroupDynamicVarArgs{...} }
+type GetIacmAnsibleInventoryDynamicGroupDynamicVarArrayInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput() GetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput
+	ToGetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutputWithContext(context.Context) GetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput
+}
+
+type GetIacmAnsibleInventoryDynamicGroupDynamicVarArray []GetIacmAnsibleInventoryDynamicGroupDynamicVarInput
+
+func (GetIacmAnsibleInventoryDynamicGroupDynamicVarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsibleInventoryDynamicGroupDynamicVar)(nil)).Elem()
+}
+
+func (i GetIacmAnsibleInventoryDynamicGroupDynamicVarArray) ToGetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput() GetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput {
+	return i.ToGetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsibleInventoryDynamicGroupDynamicVarArray) ToGetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput)
+}
+
+type GetIacmAnsibleInventoryDynamicGroupDynamicVarOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsibleInventoryDynamicGroupDynamicVarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsibleInventoryDynamicGroupDynamicVar)(nil)).Elem()
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupDynamicVarOutput) ToGetIacmAnsibleInventoryDynamicGroupDynamicVarOutput() GetIacmAnsibleInventoryDynamicGroupDynamicVarOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupDynamicVarOutput) ToGetIacmAnsibleInventoryDynamicGroupDynamicVarOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryDynamicGroupDynamicVarOutput {
+	return o
+}
+
+// Filename to store the value in (used for file-backed variables).
+func (o GetIacmAnsibleInventoryDynamicGroupDynamicVarOutput) FileName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryDynamicGroupDynamicVar) string { return v.FileName }).(pulumi.StringOutput)
+}
+
+// Key is the identifier for the variable.
+func (o GetIacmAnsibleInventoryDynamicGroupDynamicVarOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryDynamicGroupDynamicVar) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value of the variable. For secret value types this must be a Harness secret reference.
+func (o GetIacmAnsibleInventoryDynamicGroupDynamicVarOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryDynamicGroupDynamicVar) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// Value type. One of: string, secret.
+func (o GetIacmAnsibleInventoryDynamicGroupDynamicVarOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryDynamicGroupDynamicVar) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type GetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsibleInventoryDynamicGroupDynamicVar)(nil)).Elem()
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput) ToGetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput() GetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput) ToGetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput) Index(i pulumi.IntInput) GetIacmAnsibleInventoryDynamicGroupDynamicVarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIacmAnsibleInventoryDynamicGroupDynamicVar {
+		return vs[0].([]GetIacmAnsibleInventoryDynamicGroupDynamicVar)[vs[1].(int)]
+	}).(GetIacmAnsibleInventoryDynamicGroupDynamicVarOutput)
+}
+
+type GetIacmAnsibleInventoryDynamicGroupVar struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName string `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key string `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value string `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType string `pulumi:"valueType"`
+}
+
+// GetIacmAnsibleInventoryDynamicGroupVarInput is an input type that accepts GetIacmAnsibleInventoryDynamicGroupVarArgs and GetIacmAnsibleInventoryDynamicGroupVarOutput values.
+// You can construct a concrete instance of `GetIacmAnsibleInventoryDynamicGroupVarInput` via:
+//
+//	GetIacmAnsibleInventoryDynamicGroupVarArgs{...}
+type GetIacmAnsibleInventoryDynamicGroupVarInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsibleInventoryDynamicGroupVarOutput() GetIacmAnsibleInventoryDynamicGroupVarOutput
+	ToGetIacmAnsibleInventoryDynamicGroupVarOutputWithContext(context.Context) GetIacmAnsibleInventoryDynamicGroupVarOutput
+}
+
+type GetIacmAnsibleInventoryDynamicGroupVarArgs struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName pulumi.StringInput `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value pulumi.StringInput `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (GetIacmAnsibleInventoryDynamicGroupVarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsibleInventoryDynamicGroupVar)(nil)).Elem()
+}
+
+func (i GetIacmAnsibleInventoryDynamicGroupVarArgs) ToGetIacmAnsibleInventoryDynamicGroupVarOutput() GetIacmAnsibleInventoryDynamicGroupVarOutput {
+	return i.ToGetIacmAnsibleInventoryDynamicGroupVarOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsibleInventoryDynamicGroupVarArgs) ToGetIacmAnsibleInventoryDynamicGroupVarOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryDynamicGroupVarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsibleInventoryDynamicGroupVarOutput)
+}
+
+// GetIacmAnsibleInventoryDynamicGroupVarArrayInput is an input type that accepts GetIacmAnsibleInventoryDynamicGroupVarArray and GetIacmAnsibleInventoryDynamicGroupVarArrayOutput values.
+// You can construct a concrete instance of `GetIacmAnsibleInventoryDynamicGroupVarArrayInput` via:
+//
+//	GetIacmAnsibleInventoryDynamicGroupVarArray{ GetIacmAnsibleInventoryDynamicGroupVarArgs{...} }
+type GetIacmAnsibleInventoryDynamicGroupVarArrayInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsibleInventoryDynamicGroupVarArrayOutput() GetIacmAnsibleInventoryDynamicGroupVarArrayOutput
+	ToGetIacmAnsibleInventoryDynamicGroupVarArrayOutputWithContext(context.Context) GetIacmAnsibleInventoryDynamicGroupVarArrayOutput
+}
+
+type GetIacmAnsibleInventoryDynamicGroupVarArray []GetIacmAnsibleInventoryDynamicGroupVarInput
+
+func (GetIacmAnsibleInventoryDynamicGroupVarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsibleInventoryDynamicGroupVar)(nil)).Elem()
+}
+
+func (i GetIacmAnsibleInventoryDynamicGroupVarArray) ToGetIacmAnsibleInventoryDynamicGroupVarArrayOutput() GetIacmAnsibleInventoryDynamicGroupVarArrayOutput {
+	return i.ToGetIacmAnsibleInventoryDynamicGroupVarArrayOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsibleInventoryDynamicGroupVarArray) ToGetIacmAnsibleInventoryDynamicGroupVarArrayOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryDynamicGroupVarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsibleInventoryDynamicGroupVarArrayOutput)
+}
+
+type GetIacmAnsibleInventoryDynamicGroupVarOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsibleInventoryDynamicGroupVarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsibleInventoryDynamicGroupVar)(nil)).Elem()
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupVarOutput) ToGetIacmAnsibleInventoryDynamicGroupVarOutput() GetIacmAnsibleInventoryDynamicGroupVarOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupVarOutput) ToGetIacmAnsibleInventoryDynamicGroupVarOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryDynamicGroupVarOutput {
+	return o
+}
+
+// Filename to store the value in (used for file-backed variables).
+func (o GetIacmAnsibleInventoryDynamicGroupVarOutput) FileName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryDynamicGroupVar) string { return v.FileName }).(pulumi.StringOutput)
+}
+
+// Key is the identifier for the variable.
+func (o GetIacmAnsibleInventoryDynamicGroupVarOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryDynamicGroupVar) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value of the variable. For secret value types this must be a Harness secret reference.
+func (o GetIacmAnsibleInventoryDynamicGroupVarOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryDynamicGroupVar) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// Value type. One of: string, secret.
+func (o GetIacmAnsibleInventoryDynamicGroupVarOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryDynamicGroupVar) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type GetIacmAnsibleInventoryDynamicGroupVarArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsibleInventoryDynamicGroupVarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsibleInventoryDynamicGroupVar)(nil)).Elem()
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupVarArrayOutput) ToGetIacmAnsibleInventoryDynamicGroupVarArrayOutput() GetIacmAnsibleInventoryDynamicGroupVarArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupVarArrayOutput) ToGetIacmAnsibleInventoryDynamicGroupVarArrayOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryDynamicGroupVarArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryDynamicGroupVarArrayOutput) Index(i pulumi.IntInput) GetIacmAnsibleInventoryDynamicGroupVarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIacmAnsibleInventoryDynamicGroupVar {
+		return vs[0].([]GetIacmAnsibleInventoryDynamicGroupVar)[vs[1].(int)]
+	}).(GetIacmAnsibleInventoryDynamicGroupVarOutput)
+}
+
+type GetIacmAnsibleInventoryGroup struct {
+	// List of hosts in the group.
+	Hosts []string `pulumi:"hosts"`
+	// Identifier of the group.
+	Identifier string `pulumi:"identifier"`
+	// Name of the group.
+	Name string `pulumi:"name"`
+	// Variables for the group.
+	Vars []GetIacmAnsibleInventoryGroupVar `pulumi:"vars"`
+}
+
+// GetIacmAnsibleInventoryGroupInput is an input type that accepts GetIacmAnsibleInventoryGroupArgs and GetIacmAnsibleInventoryGroupOutput values.
+// You can construct a concrete instance of `GetIacmAnsibleInventoryGroupInput` via:
+//
+//	GetIacmAnsibleInventoryGroupArgs{...}
+type GetIacmAnsibleInventoryGroupInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsibleInventoryGroupOutput() GetIacmAnsibleInventoryGroupOutput
+	ToGetIacmAnsibleInventoryGroupOutputWithContext(context.Context) GetIacmAnsibleInventoryGroupOutput
+}
+
+type GetIacmAnsibleInventoryGroupArgs struct {
+	// List of hosts in the group.
+	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
+	// Identifier of the group.
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Name of the group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Variables for the group.
+	Vars GetIacmAnsibleInventoryGroupVarArrayInput `pulumi:"vars"`
+}
+
+func (GetIacmAnsibleInventoryGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsibleInventoryGroup)(nil)).Elem()
+}
+
+func (i GetIacmAnsibleInventoryGroupArgs) ToGetIacmAnsibleInventoryGroupOutput() GetIacmAnsibleInventoryGroupOutput {
+	return i.ToGetIacmAnsibleInventoryGroupOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsibleInventoryGroupArgs) ToGetIacmAnsibleInventoryGroupOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsibleInventoryGroupOutput)
+}
+
+// GetIacmAnsibleInventoryGroupArrayInput is an input type that accepts GetIacmAnsibleInventoryGroupArray and GetIacmAnsibleInventoryGroupArrayOutput values.
+// You can construct a concrete instance of `GetIacmAnsibleInventoryGroupArrayInput` via:
+//
+//	GetIacmAnsibleInventoryGroupArray{ GetIacmAnsibleInventoryGroupArgs{...} }
+type GetIacmAnsibleInventoryGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsibleInventoryGroupArrayOutput() GetIacmAnsibleInventoryGroupArrayOutput
+	ToGetIacmAnsibleInventoryGroupArrayOutputWithContext(context.Context) GetIacmAnsibleInventoryGroupArrayOutput
+}
+
+type GetIacmAnsibleInventoryGroupArray []GetIacmAnsibleInventoryGroupInput
+
+func (GetIacmAnsibleInventoryGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsibleInventoryGroup)(nil)).Elem()
+}
+
+func (i GetIacmAnsibleInventoryGroupArray) ToGetIacmAnsibleInventoryGroupArrayOutput() GetIacmAnsibleInventoryGroupArrayOutput {
+	return i.ToGetIacmAnsibleInventoryGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsibleInventoryGroupArray) ToGetIacmAnsibleInventoryGroupArrayOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsibleInventoryGroupArrayOutput)
+}
+
+type GetIacmAnsibleInventoryGroupOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsibleInventoryGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsibleInventoryGroup)(nil)).Elem()
+}
+
+func (o GetIacmAnsibleInventoryGroupOutput) ToGetIacmAnsibleInventoryGroupOutput() GetIacmAnsibleInventoryGroupOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryGroupOutput) ToGetIacmAnsibleInventoryGroupOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryGroupOutput {
+	return o
+}
+
+// List of hosts in the group.
+func (o GetIacmAnsibleInventoryGroupOutput) Hosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryGroup) []string { return v.Hosts }).(pulumi.StringArrayOutput)
+}
+
+// Identifier of the group.
+func (o GetIacmAnsibleInventoryGroupOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryGroup) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Name of the group.
+func (o GetIacmAnsibleInventoryGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Variables for the group.
+func (o GetIacmAnsibleInventoryGroupOutput) Vars() GetIacmAnsibleInventoryGroupVarArrayOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryGroup) []GetIacmAnsibleInventoryGroupVar { return v.Vars }).(GetIacmAnsibleInventoryGroupVarArrayOutput)
+}
+
+type GetIacmAnsibleInventoryGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsibleInventoryGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsibleInventoryGroup)(nil)).Elem()
+}
+
+func (o GetIacmAnsibleInventoryGroupArrayOutput) ToGetIacmAnsibleInventoryGroupArrayOutput() GetIacmAnsibleInventoryGroupArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryGroupArrayOutput) ToGetIacmAnsibleInventoryGroupArrayOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryGroupArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryGroupArrayOutput) Index(i pulumi.IntInput) GetIacmAnsibleInventoryGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIacmAnsibleInventoryGroup {
+		return vs[0].([]GetIacmAnsibleInventoryGroup)[vs[1].(int)]
+	}).(GetIacmAnsibleInventoryGroupOutput)
+}
+
+type GetIacmAnsibleInventoryGroupVar struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName string `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key string `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value string `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType string `pulumi:"valueType"`
+}
+
+// GetIacmAnsibleInventoryGroupVarInput is an input type that accepts GetIacmAnsibleInventoryGroupVarArgs and GetIacmAnsibleInventoryGroupVarOutput values.
+// You can construct a concrete instance of `GetIacmAnsibleInventoryGroupVarInput` via:
+//
+//	GetIacmAnsibleInventoryGroupVarArgs{...}
+type GetIacmAnsibleInventoryGroupVarInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsibleInventoryGroupVarOutput() GetIacmAnsibleInventoryGroupVarOutput
+	ToGetIacmAnsibleInventoryGroupVarOutputWithContext(context.Context) GetIacmAnsibleInventoryGroupVarOutput
+}
+
+type GetIacmAnsibleInventoryGroupVarArgs struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName pulumi.StringInput `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value pulumi.StringInput `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (GetIacmAnsibleInventoryGroupVarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsibleInventoryGroupVar)(nil)).Elem()
+}
+
+func (i GetIacmAnsibleInventoryGroupVarArgs) ToGetIacmAnsibleInventoryGroupVarOutput() GetIacmAnsibleInventoryGroupVarOutput {
+	return i.ToGetIacmAnsibleInventoryGroupVarOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsibleInventoryGroupVarArgs) ToGetIacmAnsibleInventoryGroupVarOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryGroupVarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsibleInventoryGroupVarOutput)
+}
+
+// GetIacmAnsibleInventoryGroupVarArrayInput is an input type that accepts GetIacmAnsibleInventoryGroupVarArray and GetIacmAnsibleInventoryGroupVarArrayOutput values.
+// You can construct a concrete instance of `GetIacmAnsibleInventoryGroupVarArrayInput` via:
+//
+//	GetIacmAnsibleInventoryGroupVarArray{ GetIacmAnsibleInventoryGroupVarArgs{...} }
+type GetIacmAnsibleInventoryGroupVarArrayInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsibleInventoryGroupVarArrayOutput() GetIacmAnsibleInventoryGroupVarArrayOutput
+	ToGetIacmAnsibleInventoryGroupVarArrayOutputWithContext(context.Context) GetIacmAnsibleInventoryGroupVarArrayOutput
+}
+
+type GetIacmAnsibleInventoryGroupVarArray []GetIacmAnsibleInventoryGroupVarInput
+
+func (GetIacmAnsibleInventoryGroupVarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsibleInventoryGroupVar)(nil)).Elem()
+}
+
+func (i GetIacmAnsibleInventoryGroupVarArray) ToGetIacmAnsibleInventoryGroupVarArrayOutput() GetIacmAnsibleInventoryGroupVarArrayOutput {
+	return i.ToGetIacmAnsibleInventoryGroupVarArrayOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsibleInventoryGroupVarArray) ToGetIacmAnsibleInventoryGroupVarArrayOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryGroupVarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsibleInventoryGroupVarArrayOutput)
+}
+
+type GetIacmAnsibleInventoryGroupVarOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsibleInventoryGroupVarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsibleInventoryGroupVar)(nil)).Elem()
+}
+
+func (o GetIacmAnsibleInventoryGroupVarOutput) ToGetIacmAnsibleInventoryGroupVarOutput() GetIacmAnsibleInventoryGroupVarOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryGroupVarOutput) ToGetIacmAnsibleInventoryGroupVarOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryGroupVarOutput {
+	return o
+}
+
+// Filename to store the value in (used for file-backed variables).
+func (o GetIacmAnsibleInventoryGroupVarOutput) FileName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryGroupVar) string { return v.FileName }).(pulumi.StringOutput)
+}
+
+// Key is the identifier for the variable.
+func (o GetIacmAnsibleInventoryGroupVarOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryGroupVar) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value of the variable. For secret value types this must be a Harness secret reference.
+func (o GetIacmAnsibleInventoryGroupVarOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryGroupVar) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// Value type. One of: string, secret.
+func (o GetIacmAnsibleInventoryGroupVarOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryGroupVar) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type GetIacmAnsibleInventoryGroupVarArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsibleInventoryGroupVarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsibleInventoryGroupVar)(nil)).Elem()
+}
+
+func (o GetIacmAnsibleInventoryGroupVarArrayOutput) ToGetIacmAnsibleInventoryGroupVarArrayOutput() GetIacmAnsibleInventoryGroupVarArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryGroupVarArrayOutput) ToGetIacmAnsibleInventoryGroupVarArrayOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryGroupVarArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryGroupVarArrayOutput) Index(i pulumi.IntInput) GetIacmAnsibleInventoryGroupVarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIacmAnsibleInventoryGroupVar {
+		return vs[0].([]GetIacmAnsibleInventoryGroupVar)[vs[1].(int)]
+	}).(GetIacmAnsibleInventoryGroupVarOutput)
+}
+
+type GetIacmAnsibleInventoryPluginOption struct {
+	// Inline plugin inventory YAML content (when sourceType is inline).
+	InlineYaml string `pulumi:"inlineYaml"`
+	// Provider connector identifier for plugin inventory execution.
+	ProviderConnectorIdentifier string `pulumi:"providerConnectorIdentifier"`
+	// Provider connector type.
+	ProviderConnectorType string `pulumi:"providerConnectorType"`
+	// Git repository name (when sourceType is git).
+	Repository string `pulumi:"repository"`
+	// Git branch.
+	RepositoryBranch string `pulumi:"repositoryBranch"`
+	// Git commit or tag.
+	RepositoryCommit string `pulumi:"repositoryCommit"`
+	// Repository connector reference (when sourceType is git).
+	RepositoryConnector string `pulumi:"repositoryConnector"`
+	// Path within the repository to the plugin inventory YAML.
+	RepositoryPath string `pulumi:"repositoryPath"`
+	// Source type for plugin inventory. One of: git, inline.
+	SourceType string `pulumi:"sourceType"`
+}
+
+// GetIacmAnsibleInventoryPluginOptionInput is an input type that accepts GetIacmAnsibleInventoryPluginOptionArgs and GetIacmAnsibleInventoryPluginOptionOutput values.
+// You can construct a concrete instance of `GetIacmAnsibleInventoryPluginOptionInput` via:
+//
+//	GetIacmAnsibleInventoryPluginOptionArgs{...}
+type GetIacmAnsibleInventoryPluginOptionInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsibleInventoryPluginOptionOutput() GetIacmAnsibleInventoryPluginOptionOutput
+	ToGetIacmAnsibleInventoryPluginOptionOutputWithContext(context.Context) GetIacmAnsibleInventoryPluginOptionOutput
+}
+
+type GetIacmAnsibleInventoryPluginOptionArgs struct {
+	// Inline plugin inventory YAML content (when sourceType is inline).
+	InlineYaml pulumi.StringInput `pulumi:"inlineYaml"`
+	// Provider connector identifier for plugin inventory execution.
+	ProviderConnectorIdentifier pulumi.StringInput `pulumi:"providerConnectorIdentifier"`
+	// Provider connector type.
+	ProviderConnectorType pulumi.StringInput `pulumi:"providerConnectorType"`
+	// Git repository name (when sourceType is git).
+	Repository pulumi.StringInput `pulumi:"repository"`
+	// Git branch.
+	RepositoryBranch pulumi.StringInput `pulumi:"repositoryBranch"`
+	// Git commit or tag.
+	RepositoryCommit pulumi.StringInput `pulumi:"repositoryCommit"`
+	// Repository connector reference (when sourceType is git).
+	RepositoryConnector pulumi.StringInput `pulumi:"repositoryConnector"`
+	// Path within the repository to the plugin inventory YAML.
+	RepositoryPath pulumi.StringInput `pulumi:"repositoryPath"`
+	// Source type for plugin inventory. One of: git, inline.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+}
+
+func (GetIacmAnsibleInventoryPluginOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsibleInventoryPluginOption)(nil)).Elem()
+}
+
+func (i GetIacmAnsibleInventoryPluginOptionArgs) ToGetIacmAnsibleInventoryPluginOptionOutput() GetIacmAnsibleInventoryPluginOptionOutput {
+	return i.ToGetIacmAnsibleInventoryPluginOptionOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsibleInventoryPluginOptionArgs) ToGetIacmAnsibleInventoryPluginOptionOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryPluginOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsibleInventoryPluginOptionOutput)
+}
+
+// GetIacmAnsibleInventoryPluginOptionArrayInput is an input type that accepts GetIacmAnsibleInventoryPluginOptionArray and GetIacmAnsibleInventoryPluginOptionArrayOutput values.
+// You can construct a concrete instance of `GetIacmAnsibleInventoryPluginOptionArrayInput` via:
+//
+//	GetIacmAnsibleInventoryPluginOptionArray{ GetIacmAnsibleInventoryPluginOptionArgs{...} }
+type GetIacmAnsibleInventoryPluginOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsibleInventoryPluginOptionArrayOutput() GetIacmAnsibleInventoryPluginOptionArrayOutput
+	ToGetIacmAnsibleInventoryPluginOptionArrayOutputWithContext(context.Context) GetIacmAnsibleInventoryPluginOptionArrayOutput
+}
+
+type GetIacmAnsibleInventoryPluginOptionArray []GetIacmAnsibleInventoryPluginOptionInput
+
+func (GetIacmAnsibleInventoryPluginOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsibleInventoryPluginOption)(nil)).Elem()
+}
+
+func (i GetIacmAnsibleInventoryPluginOptionArray) ToGetIacmAnsibleInventoryPluginOptionArrayOutput() GetIacmAnsibleInventoryPluginOptionArrayOutput {
+	return i.ToGetIacmAnsibleInventoryPluginOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsibleInventoryPluginOptionArray) ToGetIacmAnsibleInventoryPluginOptionArrayOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryPluginOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsibleInventoryPluginOptionArrayOutput)
+}
+
+type GetIacmAnsibleInventoryPluginOptionOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsibleInventoryPluginOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsibleInventoryPluginOption)(nil)).Elem()
+}
+
+func (o GetIacmAnsibleInventoryPluginOptionOutput) ToGetIacmAnsibleInventoryPluginOptionOutput() GetIacmAnsibleInventoryPluginOptionOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryPluginOptionOutput) ToGetIacmAnsibleInventoryPluginOptionOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryPluginOptionOutput {
+	return o
+}
+
+// Inline plugin inventory YAML content (when sourceType is inline).
+func (o GetIacmAnsibleInventoryPluginOptionOutput) InlineYaml() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryPluginOption) string { return v.InlineYaml }).(pulumi.StringOutput)
+}
+
+// Provider connector identifier for plugin inventory execution.
+func (o GetIacmAnsibleInventoryPluginOptionOutput) ProviderConnectorIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryPluginOption) string { return v.ProviderConnectorIdentifier }).(pulumi.StringOutput)
+}
+
+// Provider connector type.
+func (o GetIacmAnsibleInventoryPluginOptionOutput) ProviderConnectorType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryPluginOption) string { return v.ProviderConnectorType }).(pulumi.StringOutput)
+}
+
+// Git repository name (when sourceType is git).
+func (o GetIacmAnsibleInventoryPluginOptionOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryPluginOption) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+// Git branch.
+func (o GetIacmAnsibleInventoryPluginOptionOutput) RepositoryBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryPluginOption) string { return v.RepositoryBranch }).(pulumi.StringOutput)
+}
+
+// Git commit or tag.
+func (o GetIacmAnsibleInventoryPluginOptionOutput) RepositoryCommit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryPluginOption) string { return v.RepositoryCommit }).(pulumi.StringOutput)
+}
+
+// Repository connector reference (when sourceType is git).
+func (o GetIacmAnsibleInventoryPluginOptionOutput) RepositoryConnector() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryPluginOption) string { return v.RepositoryConnector }).(pulumi.StringOutput)
+}
+
+// Path within the repository to the plugin inventory YAML.
+func (o GetIacmAnsibleInventoryPluginOptionOutput) RepositoryPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryPluginOption) string { return v.RepositoryPath }).(pulumi.StringOutput)
+}
+
+// Source type for plugin inventory. One of: git, inline.
+func (o GetIacmAnsibleInventoryPluginOptionOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryPluginOption) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+type GetIacmAnsibleInventoryPluginOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsibleInventoryPluginOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsibleInventoryPluginOption)(nil)).Elem()
+}
+
+func (o GetIacmAnsibleInventoryPluginOptionArrayOutput) ToGetIacmAnsibleInventoryPluginOptionArrayOutput() GetIacmAnsibleInventoryPluginOptionArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryPluginOptionArrayOutput) ToGetIacmAnsibleInventoryPluginOptionArrayOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryPluginOptionArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryPluginOptionArrayOutput) Index(i pulumi.IntInput) GetIacmAnsibleInventoryPluginOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIacmAnsibleInventoryPluginOption {
+		return vs[0].([]GetIacmAnsibleInventoryPluginOption)[vs[1].(int)]
+	}).(GetIacmAnsibleInventoryPluginOptionOutput)
+}
+
+type GetIacmAnsibleInventoryVar struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName string `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key string `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value string `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType string `pulumi:"valueType"`
+}
+
+// GetIacmAnsibleInventoryVarInput is an input type that accepts GetIacmAnsibleInventoryVarArgs and GetIacmAnsibleInventoryVarOutput values.
+// You can construct a concrete instance of `GetIacmAnsibleInventoryVarInput` via:
+//
+//	GetIacmAnsibleInventoryVarArgs{...}
+type GetIacmAnsibleInventoryVarInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsibleInventoryVarOutput() GetIacmAnsibleInventoryVarOutput
+	ToGetIacmAnsibleInventoryVarOutputWithContext(context.Context) GetIacmAnsibleInventoryVarOutput
+}
+
+type GetIacmAnsibleInventoryVarArgs struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName pulumi.StringInput `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value pulumi.StringInput `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (GetIacmAnsibleInventoryVarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsibleInventoryVar)(nil)).Elem()
+}
+
+func (i GetIacmAnsibleInventoryVarArgs) ToGetIacmAnsibleInventoryVarOutput() GetIacmAnsibleInventoryVarOutput {
+	return i.ToGetIacmAnsibleInventoryVarOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsibleInventoryVarArgs) ToGetIacmAnsibleInventoryVarOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryVarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsibleInventoryVarOutput)
+}
+
+// GetIacmAnsibleInventoryVarArrayInput is an input type that accepts GetIacmAnsibleInventoryVarArray and GetIacmAnsibleInventoryVarArrayOutput values.
+// You can construct a concrete instance of `GetIacmAnsibleInventoryVarArrayInput` via:
+//
+//	GetIacmAnsibleInventoryVarArray{ GetIacmAnsibleInventoryVarArgs{...} }
+type GetIacmAnsibleInventoryVarArrayInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsibleInventoryVarArrayOutput() GetIacmAnsibleInventoryVarArrayOutput
+	ToGetIacmAnsibleInventoryVarArrayOutputWithContext(context.Context) GetIacmAnsibleInventoryVarArrayOutput
+}
+
+type GetIacmAnsibleInventoryVarArray []GetIacmAnsibleInventoryVarInput
+
+func (GetIacmAnsibleInventoryVarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsibleInventoryVar)(nil)).Elem()
+}
+
+func (i GetIacmAnsibleInventoryVarArray) ToGetIacmAnsibleInventoryVarArrayOutput() GetIacmAnsibleInventoryVarArrayOutput {
+	return i.ToGetIacmAnsibleInventoryVarArrayOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsibleInventoryVarArray) ToGetIacmAnsibleInventoryVarArrayOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryVarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsibleInventoryVarArrayOutput)
+}
+
+type GetIacmAnsibleInventoryVarOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsibleInventoryVarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsibleInventoryVar)(nil)).Elem()
+}
+
+func (o GetIacmAnsibleInventoryVarOutput) ToGetIacmAnsibleInventoryVarOutput() GetIacmAnsibleInventoryVarOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryVarOutput) ToGetIacmAnsibleInventoryVarOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryVarOutput {
+	return o
+}
+
+// Filename to store the value in (used for file-backed variables).
+func (o GetIacmAnsibleInventoryVarOutput) FileName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryVar) string { return v.FileName }).(pulumi.StringOutput)
+}
+
+// Key is the identifier for the variable.
+func (o GetIacmAnsibleInventoryVarOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryVar) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value of the variable. For secret value types this must be a Harness secret reference.
+func (o GetIacmAnsibleInventoryVarOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryVar) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// Value type. One of: string, secret.
+func (o GetIacmAnsibleInventoryVarOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsibleInventoryVar) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type GetIacmAnsibleInventoryVarArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsibleInventoryVarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsibleInventoryVar)(nil)).Elem()
+}
+
+func (o GetIacmAnsibleInventoryVarArrayOutput) ToGetIacmAnsibleInventoryVarArrayOutput() GetIacmAnsibleInventoryVarArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryVarArrayOutput) ToGetIacmAnsibleInventoryVarArrayOutputWithContext(ctx context.Context) GetIacmAnsibleInventoryVarArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsibleInventoryVarArrayOutput) Index(i pulumi.IntInput) GetIacmAnsibleInventoryVarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIacmAnsibleInventoryVar {
+		return vs[0].([]GetIacmAnsibleInventoryVar)[vs[1].(int)]
+	}).(GetIacmAnsibleInventoryVarOutput)
+}
+
+type GetIacmAnsiblePlaybookEnvVar struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName string `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key string `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value string `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType string `pulumi:"valueType"`
+}
+
+// GetIacmAnsiblePlaybookEnvVarInput is an input type that accepts GetIacmAnsiblePlaybookEnvVarArgs and GetIacmAnsiblePlaybookEnvVarOutput values.
+// You can construct a concrete instance of `GetIacmAnsiblePlaybookEnvVarInput` via:
+//
+//	GetIacmAnsiblePlaybookEnvVarArgs{...}
+type GetIacmAnsiblePlaybookEnvVarInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsiblePlaybookEnvVarOutput() GetIacmAnsiblePlaybookEnvVarOutput
+	ToGetIacmAnsiblePlaybookEnvVarOutputWithContext(context.Context) GetIacmAnsiblePlaybookEnvVarOutput
+}
+
+type GetIacmAnsiblePlaybookEnvVarArgs struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName pulumi.StringInput `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value pulumi.StringInput `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (GetIacmAnsiblePlaybookEnvVarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsiblePlaybookEnvVar)(nil)).Elem()
+}
+
+func (i GetIacmAnsiblePlaybookEnvVarArgs) ToGetIacmAnsiblePlaybookEnvVarOutput() GetIacmAnsiblePlaybookEnvVarOutput {
+	return i.ToGetIacmAnsiblePlaybookEnvVarOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsiblePlaybookEnvVarArgs) ToGetIacmAnsiblePlaybookEnvVarOutputWithContext(ctx context.Context) GetIacmAnsiblePlaybookEnvVarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsiblePlaybookEnvVarOutput)
+}
+
+// GetIacmAnsiblePlaybookEnvVarArrayInput is an input type that accepts GetIacmAnsiblePlaybookEnvVarArray and GetIacmAnsiblePlaybookEnvVarArrayOutput values.
+// You can construct a concrete instance of `GetIacmAnsiblePlaybookEnvVarArrayInput` via:
+//
+//	GetIacmAnsiblePlaybookEnvVarArray{ GetIacmAnsiblePlaybookEnvVarArgs{...} }
+type GetIacmAnsiblePlaybookEnvVarArrayInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsiblePlaybookEnvVarArrayOutput() GetIacmAnsiblePlaybookEnvVarArrayOutput
+	ToGetIacmAnsiblePlaybookEnvVarArrayOutputWithContext(context.Context) GetIacmAnsiblePlaybookEnvVarArrayOutput
+}
+
+type GetIacmAnsiblePlaybookEnvVarArray []GetIacmAnsiblePlaybookEnvVarInput
+
+func (GetIacmAnsiblePlaybookEnvVarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsiblePlaybookEnvVar)(nil)).Elem()
+}
+
+func (i GetIacmAnsiblePlaybookEnvVarArray) ToGetIacmAnsiblePlaybookEnvVarArrayOutput() GetIacmAnsiblePlaybookEnvVarArrayOutput {
+	return i.ToGetIacmAnsiblePlaybookEnvVarArrayOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsiblePlaybookEnvVarArray) ToGetIacmAnsiblePlaybookEnvVarArrayOutputWithContext(ctx context.Context) GetIacmAnsiblePlaybookEnvVarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsiblePlaybookEnvVarArrayOutput)
+}
+
+type GetIacmAnsiblePlaybookEnvVarOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsiblePlaybookEnvVarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsiblePlaybookEnvVar)(nil)).Elem()
+}
+
+func (o GetIacmAnsiblePlaybookEnvVarOutput) ToGetIacmAnsiblePlaybookEnvVarOutput() GetIacmAnsiblePlaybookEnvVarOutput {
+	return o
+}
+
+func (o GetIacmAnsiblePlaybookEnvVarOutput) ToGetIacmAnsiblePlaybookEnvVarOutputWithContext(ctx context.Context) GetIacmAnsiblePlaybookEnvVarOutput {
+	return o
+}
+
+// Filename to store the value in (used for file-backed variables).
+func (o GetIacmAnsiblePlaybookEnvVarOutput) FileName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsiblePlaybookEnvVar) string { return v.FileName }).(pulumi.StringOutput)
+}
+
+// Key is the identifier for the variable.
+func (o GetIacmAnsiblePlaybookEnvVarOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsiblePlaybookEnvVar) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value of the variable. For secret value types this must be a Harness secret reference.
+func (o GetIacmAnsiblePlaybookEnvVarOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsiblePlaybookEnvVar) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// Value type. One of: string, secret.
+func (o GetIacmAnsiblePlaybookEnvVarOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsiblePlaybookEnvVar) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type GetIacmAnsiblePlaybookEnvVarArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsiblePlaybookEnvVarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsiblePlaybookEnvVar)(nil)).Elem()
+}
+
+func (o GetIacmAnsiblePlaybookEnvVarArrayOutput) ToGetIacmAnsiblePlaybookEnvVarArrayOutput() GetIacmAnsiblePlaybookEnvVarArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsiblePlaybookEnvVarArrayOutput) ToGetIacmAnsiblePlaybookEnvVarArrayOutputWithContext(ctx context.Context) GetIacmAnsiblePlaybookEnvVarArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsiblePlaybookEnvVarArrayOutput) Index(i pulumi.IntInput) GetIacmAnsiblePlaybookEnvVarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIacmAnsiblePlaybookEnvVar {
+		return vs[0].([]GetIacmAnsiblePlaybookEnvVar)[vs[1].(int)]
+	}).(GetIacmAnsiblePlaybookEnvVarOutput)
+}
+
+type GetIacmAnsiblePlaybookVar struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName string `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key string `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value string `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType string `pulumi:"valueType"`
+}
+
+// GetIacmAnsiblePlaybookVarInput is an input type that accepts GetIacmAnsiblePlaybookVarArgs and GetIacmAnsiblePlaybookVarOutput values.
+// You can construct a concrete instance of `GetIacmAnsiblePlaybookVarInput` via:
+//
+//	GetIacmAnsiblePlaybookVarArgs{...}
+type GetIacmAnsiblePlaybookVarInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsiblePlaybookVarOutput() GetIacmAnsiblePlaybookVarOutput
+	ToGetIacmAnsiblePlaybookVarOutputWithContext(context.Context) GetIacmAnsiblePlaybookVarOutput
+}
+
+type GetIacmAnsiblePlaybookVarArgs struct {
+	// Filename to store the value in (used for file-backed variables).
+	FileName pulumi.StringInput `pulumi:"fileName"`
+	// Key is the identifier for the variable.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Value of the variable. For secret value types this must be a Harness secret reference.
+	Value pulumi.StringInput `pulumi:"value"`
+	// Value type. One of: string, secret.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (GetIacmAnsiblePlaybookVarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsiblePlaybookVar)(nil)).Elem()
+}
+
+func (i GetIacmAnsiblePlaybookVarArgs) ToGetIacmAnsiblePlaybookVarOutput() GetIacmAnsiblePlaybookVarOutput {
+	return i.ToGetIacmAnsiblePlaybookVarOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsiblePlaybookVarArgs) ToGetIacmAnsiblePlaybookVarOutputWithContext(ctx context.Context) GetIacmAnsiblePlaybookVarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsiblePlaybookVarOutput)
+}
+
+// GetIacmAnsiblePlaybookVarArrayInput is an input type that accepts GetIacmAnsiblePlaybookVarArray and GetIacmAnsiblePlaybookVarArrayOutput values.
+// You can construct a concrete instance of `GetIacmAnsiblePlaybookVarArrayInput` via:
+//
+//	GetIacmAnsiblePlaybookVarArray{ GetIacmAnsiblePlaybookVarArgs{...} }
+type GetIacmAnsiblePlaybookVarArrayInput interface {
+	pulumi.Input
+
+	ToGetIacmAnsiblePlaybookVarArrayOutput() GetIacmAnsiblePlaybookVarArrayOutput
+	ToGetIacmAnsiblePlaybookVarArrayOutputWithContext(context.Context) GetIacmAnsiblePlaybookVarArrayOutput
+}
+
+type GetIacmAnsiblePlaybookVarArray []GetIacmAnsiblePlaybookVarInput
+
+func (GetIacmAnsiblePlaybookVarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsiblePlaybookVar)(nil)).Elem()
+}
+
+func (i GetIacmAnsiblePlaybookVarArray) ToGetIacmAnsiblePlaybookVarArrayOutput() GetIacmAnsiblePlaybookVarArrayOutput {
+	return i.ToGetIacmAnsiblePlaybookVarArrayOutputWithContext(context.Background())
+}
+
+func (i GetIacmAnsiblePlaybookVarArray) ToGetIacmAnsiblePlaybookVarArrayOutputWithContext(ctx context.Context) GetIacmAnsiblePlaybookVarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIacmAnsiblePlaybookVarArrayOutput)
+}
+
+type GetIacmAnsiblePlaybookVarOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsiblePlaybookVarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIacmAnsiblePlaybookVar)(nil)).Elem()
+}
+
+func (o GetIacmAnsiblePlaybookVarOutput) ToGetIacmAnsiblePlaybookVarOutput() GetIacmAnsiblePlaybookVarOutput {
+	return o
+}
+
+func (o GetIacmAnsiblePlaybookVarOutput) ToGetIacmAnsiblePlaybookVarOutputWithContext(ctx context.Context) GetIacmAnsiblePlaybookVarOutput {
+	return o
+}
+
+// Filename to store the value in (used for file-backed variables).
+func (o GetIacmAnsiblePlaybookVarOutput) FileName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsiblePlaybookVar) string { return v.FileName }).(pulumi.StringOutput)
+}
+
+// Key is the identifier for the variable.
+func (o GetIacmAnsiblePlaybookVarOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsiblePlaybookVar) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value of the variable. For secret value types this must be a Harness secret reference.
+func (o GetIacmAnsiblePlaybookVarOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsiblePlaybookVar) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// Value type. One of: string, secret.
+func (o GetIacmAnsiblePlaybookVarOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIacmAnsiblePlaybookVar) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type GetIacmAnsiblePlaybookVarArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIacmAnsiblePlaybookVarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIacmAnsiblePlaybookVar)(nil)).Elem()
+}
+
+func (o GetIacmAnsiblePlaybookVarArrayOutput) ToGetIacmAnsiblePlaybookVarArrayOutput() GetIacmAnsiblePlaybookVarArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsiblePlaybookVarArrayOutput) ToGetIacmAnsiblePlaybookVarArrayOutputWithContext(ctx context.Context) GetIacmAnsiblePlaybookVarArrayOutput {
+	return o
+}
+
+func (o GetIacmAnsiblePlaybookVarArrayOutput) Index(i pulumi.IntInput) GetIacmAnsiblePlaybookVarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIacmAnsiblePlaybookVar {
+		return vs[0].([]GetIacmAnsiblePlaybookVar)[vs[1].(int)]
+	}).(GetIacmAnsiblePlaybookVarOutput)
 }
 
 type GetIdpCatalogEntityGitDetail struct {
@@ -49609,6 +52811,112 @@ func (o GetRoleAssignmentsPrincipalArrayOutput) Index(i pulumi.IntInput) GetRole
 	}).(GetRoleAssignmentsPrincipalOutput)
 }
 
+type GetRoleAssignmentsRoleReference struct {
+	// Identifier.
+	Identifier string `pulumi:"identifier"`
+	// Scope level.
+	ScopeLevel string `pulumi:"scopeLevel"`
+}
+
+// GetRoleAssignmentsRoleReferenceInput is an input type that accepts GetRoleAssignmentsRoleReferenceArgs and GetRoleAssignmentsRoleReferenceOutput values.
+// You can construct a concrete instance of `GetRoleAssignmentsRoleReferenceInput` via:
+//
+//	GetRoleAssignmentsRoleReferenceArgs{...}
+type GetRoleAssignmentsRoleReferenceInput interface {
+	pulumi.Input
+
+	ToGetRoleAssignmentsRoleReferenceOutput() GetRoleAssignmentsRoleReferenceOutput
+	ToGetRoleAssignmentsRoleReferenceOutputWithContext(context.Context) GetRoleAssignmentsRoleReferenceOutput
+}
+
+type GetRoleAssignmentsRoleReferenceArgs struct {
+	// Identifier.
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Scope level.
+	ScopeLevel pulumi.StringInput `pulumi:"scopeLevel"`
+}
+
+func (GetRoleAssignmentsRoleReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoleAssignmentsRoleReference)(nil)).Elem()
+}
+
+func (i GetRoleAssignmentsRoleReferenceArgs) ToGetRoleAssignmentsRoleReferenceOutput() GetRoleAssignmentsRoleReferenceOutput {
+	return i.ToGetRoleAssignmentsRoleReferenceOutputWithContext(context.Background())
+}
+
+func (i GetRoleAssignmentsRoleReferenceArgs) ToGetRoleAssignmentsRoleReferenceOutputWithContext(ctx context.Context) GetRoleAssignmentsRoleReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoleAssignmentsRoleReferenceOutput)
+}
+
+// GetRoleAssignmentsRoleReferenceArrayInput is an input type that accepts GetRoleAssignmentsRoleReferenceArray and GetRoleAssignmentsRoleReferenceArrayOutput values.
+// You can construct a concrete instance of `GetRoleAssignmentsRoleReferenceArrayInput` via:
+//
+//	GetRoleAssignmentsRoleReferenceArray{ GetRoleAssignmentsRoleReferenceArgs{...} }
+type GetRoleAssignmentsRoleReferenceArrayInput interface {
+	pulumi.Input
+
+	ToGetRoleAssignmentsRoleReferenceArrayOutput() GetRoleAssignmentsRoleReferenceArrayOutput
+	ToGetRoleAssignmentsRoleReferenceArrayOutputWithContext(context.Context) GetRoleAssignmentsRoleReferenceArrayOutput
+}
+
+type GetRoleAssignmentsRoleReferenceArray []GetRoleAssignmentsRoleReferenceInput
+
+func (GetRoleAssignmentsRoleReferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoleAssignmentsRoleReference)(nil)).Elem()
+}
+
+func (i GetRoleAssignmentsRoleReferenceArray) ToGetRoleAssignmentsRoleReferenceArrayOutput() GetRoleAssignmentsRoleReferenceArrayOutput {
+	return i.ToGetRoleAssignmentsRoleReferenceArrayOutputWithContext(context.Background())
+}
+
+func (i GetRoleAssignmentsRoleReferenceArray) ToGetRoleAssignmentsRoleReferenceArrayOutputWithContext(ctx context.Context) GetRoleAssignmentsRoleReferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRoleAssignmentsRoleReferenceArrayOutput)
+}
+
+type GetRoleAssignmentsRoleReferenceOutput struct{ *pulumi.OutputState }
+
+func (GetRoleAssignmentsRoleReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRoleAssignmentsRoleReference)(nil)).Elem()
+}
+
+func (o GetRoleAssignmentsRoleReferenceOutput) ToGetRoleAssignmentsRoleReferenceOutput() GetRoleAssignmentsRoleReferenceOutput {
+	return o
+}
+
+func (o GetRoleAssignmentsRoleReferenceOutput) ToGetRoleAssignmentsRoleReferenceOutputWithContext(ctx context.Context) GetRoleAssignmentsRoleReferenceOutput {
+	return o
+}
+
+// Identifier.
+func (o GetRoleAssignmentsRoleReferenceOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoleAssignmentsRoleReference) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Scope level.
+func (o GetRoleAssignmentsRoleReferenceOutput) ScopeLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoleAssignmentsRoleReference) string { return v.ScopeLevel }).(pulumi.StringOutput)
+}
+
+type GetRoleAssignmentsRoleReferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRoleAssignmentsRoleReferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRoleAssignmentsRoleReference)(nil)).Elem()
+}
+
+func (o GetRoleAssignmentsRoleReferenceArrayOutput) ToGetRoleAssignmentsRoleReferenceArrayOutput() GetRoleAssignmentsRoleReferenceArrayOutput {
+	return o
+}
+
+func (o GetRoleAssignmentsRoleReferenceArrayOutput) ToGetRoleAssignmentsRoleReferenceArrayOutputWithContext(ctx context.Context) GetRoleAssignmentsRoleReferenceArrayOutput {
+	return o
+}
+
+func (o GetRoleAssignmentsRoleReferenceArrayOutput) Index(i pulumi.IntInput) GetRoleAssignmentsRoleReferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoleAssignmentsRoleReference {
+		return vs[0].([]GetRoleAssignmentsRoleReference)[vs[1].(int)]
+	}).(GetRoleAssignmentsRoleReferenceOutput)
+}
+
 type GetSecretFileAdditionalMetadata struct {
 	Values []GetSecretFileAdditionalMetadataValue `pulumi:"values"`
 }
@@ -54676,6 +57984,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HarRegistryConfigAuthArrayInput)(nil)).Elem(), HarRegistryConfigAuthArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HelmConnectorCredentialsInput)(nil)).Elem(), HelmConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HelmConnectorCredentialsPtrInput)(nil)).Elem(), HelmConnectorCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsibleInventoryDynamicGroupInput)(nil)).Elem(), IacmAnsibleInventoryDynamicGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsibleInventoryDynamicGroupArrayInput)(nil)).Elem(), IacmAnsibleInventoryDynamicGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsibleInventoryDynamicGroupConfigurationInput)(nil)).Elem(), IacmAnsibleInventoryDynamicGroupConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsibleInventoryDynamicGroupConfigurationPtrInput)(nil)).Elem(), IacmAnsibleInventoryDynamicGroupConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsibleInventoryDynamicGroupConfigurationSelectorInput)(nil)).Elem(), IacmAnsibleInventoryDynamicGroupConfigurationSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayInput)(nil)).Elem(), IacmAnsibleInventoryDynamicGroupConfigurationSelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsibleInventoryDynamicGroupDynamicVarInput)(nil)).Elem(), IacmAnsibleInventoryDynamicGroupDynamicVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsibleInventoryDynamicGroupDynamicVarArrayInput)(nil)).Elem(), IacmAnsibleInventoryDynamicGroupDynamicVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsibleInventoryDynamicGroupVarInput)(nil)).Elem(), IacmAnsibleInventoryDynamicGroupVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsibleInventoryDynamicGroupVarArrayInput)(nil)).Elem(), IacmAnsibleInventoryDynamicGroupVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsibleInventoryGroupInput)(nil)).Elem(), IacmAnsibleInventoryGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsibleInventoryGroupArrayInput)(nil)).Elem(), IacmAnsibleInventoryGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsibleInventoryGroupVarInput)(nil)).Elem(), IacmAnsibleInventoryGroupVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsibleInventoryGroupVarArrayInput)(nil)).Elem(), IacmAnsibleInventoryGroupVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsibleInventoryPluginOptionsInput)(nil)).Elem(), IacmAnsibleInventoryPluginOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsibleInventoryPluginOptionsPtrInput)(nil)).Elem(), IacmAnsibleInventoryPluginOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsibleInventoryVarInput)(nil)).Elem(), IacmAnsibleInventoryVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsibleInventoryVarArrayInput)(nil)).Elem(), IacmAnsibleInventoryVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsiblePlaybookEnvVarInput)(nil)).Elem(), IacmAnsiblePlaybookEnvVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsiblePlaybookEnvVarArrayInput)(nil)).Elem(), IacmAnsiblePlaybookEnvVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsiblePlaybookVarInput)(nil)).Elem(), IacmAnsiblePlaybookVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsiblePlaybookVarArrayInput)(nil)).Elem(), IacmAnsiblePlaybookVarArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdpCatalogEntityGitDetailsInput)(nil)).Elem(), IdpCatalogEntityGitDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdpCatalogEntityGitDetailsPtrInput)(nil)).Elem(), IdpCatalogEntityGitDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfraModuleTestingTestingMetadataInput)(nil)).Elem(), InfraModuleTestingTestingMetadataArgs{})
@@ -54804,6 +58134,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupResourceFilterResourceAttributeFilterArrayInput)(nil)).Elem(), ResourceGroupResourceFilterResourceAttributeFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleAssignmentsPrincipalInput)(nil)).Elem(), RoleAssignmentsPrincipalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleAssignmentsPrincipalArrayInput)(nil)).Elem(), RoleAssignmentsPrincipalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoleAssignmentsRoleReferenceInput)(nil)).Elem(), RoleAssignmentsRoleReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoleAssignmentsRoleReferencePtrInput)(nil)).Elem(), RoleAssignmentsRoleReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretFileAdditionalMetadataInput)(nil)).Elem(), SecretFileAdditionalMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretFileAdditionalMetadataArrayInput)(nil)).Elem(), SecretFileAdditionalMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretFileAdditionalMetadataValueInput)(nil)).Elem(), SecretFileAdditionalMetadataValueArgs{})
@@ -55168,6 +58500,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHarRegistryConfigAuthArrayInput)(nil)).Elem(), GetHarRegistryConfigAuthArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHelmConnectorCredentialInput)(nil)).Elem(), GetHelmConnectorCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHelmConnectorCredentialArrayInput)(nil)).Elem(), GetHelmConnectorCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsibleInventoryDynamicGroupInput)(nil)).Elem(), GetIacmAnsibleInventoryDynamicGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsibleInventoryDynamicGroupArrayInput)(nil)).Elem(), GetIacmAnsibleInventoryDynamicGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsibleInventoryDynamicGroupConfigurationInput)(nil)).Elem(), GetIacmAnsibleInventoryDynamicGroupConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsibleInventoryDynamicGroupConfigurationArrayInput)(nil)).Elem(), GetIacmAnsibleInventoryDynamicGroupConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorInput)(nil)).Elem(), GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayInput)(nil)).Elem(), GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsibleInventoryDynamicGroupDynamicVarInput)(nil)).Elem(), GetIacmAnsibleInventoryDynamicGroupDynamicVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsibleInventoryDynamicGroupDynamicVarArrayInput)(nil)).Elem(), GetIacmAnsibleInventoryDynamicGroupDynamicVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsibleInventoryDynamicGroupVarInput)(nil)).Elem(), GetIacmAnsibleInventoryDynamicGroupVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsibleInventoryDynamicGroupVarArrayInput)(nil)).Elem(), GetIacmAnsibleInventoryDynamicGroupVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsibleInventoryGroupInput)(nil)).Elem(), GetIacmAnsibleInventoryGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsibleInventoryGroupArrayInput)(nil)).Elem(), GetIacmAnsibleInventoryGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsibleInventoryGroupVarInput)(nil)).Elem(), GetIacmAnsibleInventoryGroupVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsibleInventoryGroupVarArrayInput)(nil)).Elem(), GetIacmAnsibleInventoryGroupVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsibleInventoryPluginOptionInput)(nil)).Elem(), GetIacmAnsibleInventoryPluginOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsibleInventoryPluginOptionArrayInput)(nil)).Elem(), GetIacmAnsibleInventoryPluginOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsibleInventoryVarInput)(nil)).Elem(), GetIacmAnsibleInventoryVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsibleInventoryVarArrayInput)(nil)).Elem(), GetIacmAnsibleInventoryVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsiblePlaybookEnvVarInput)(nil)).Elem(), GetIacmAnsiblePlaybookEnvVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsiblePlaybookEnvVarArrayInput)(nil)).Elem(), GetIacmAnsiblePlaybookEnvVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsiblePlaybookVarInput)(nil)).Elem(), GetIacmAnsiblePlaybookVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsiblePlaybookVarArrayInput)(nil)).Elem(), GetIacmAnsiblePlaybookVarArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpCatalogEntityGitDetailInput)(nil)).Elem(), GetIdpCatalogEntityGitDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpCatalogEntityGitDetailArrayInput)(nil)).Elem(), GetIdpCatalogEntityGitDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraModuleTestingMetadataInput)(nil)).Elem(), GetInfraModuleTestingMetadataArgs{})
@@ -55283,6 +58637,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceGroupResourceFilterResourceAttributeFilterArrayInput)(nil)).Elem(), GetResourceGroupResourceFilterResourceAttributeFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleAssignmentsPrincipalInput)(nil)).Elem(), GetRoleAssignmentsPrincipalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleAssignmentsPrincipalArrayInput)(nil)).Elem(), GetRoleAssignmentsPrincipalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleAssignmentsRoleReferenceInput)(nil)).Elem(), GetRoleAssignmentsRoleReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleAssignmentsRoleReferenceArrayInput)(nil)).Elem(), GetRoleAssignmentsRoleReferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretFileAdditionalMetadataInput)(nil)).Elem(), GetSecretFileAdditionalMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretFileAdditionalMetadataArrayInput)(nil)).Elem(), GetSecretFileAdditionalMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretFileAdditionalMetadataValueInput)(nil)).Elem(), GetSecretFileAdditionalMetadataValueArgs{})
@@ -55441,6 +58797,28 @@ func init() {
 	pulumi.RegisterOutputType(HarRegistryConfigAuthArrayOutput{})
 	pulumi.RegisterOutputType(HelmConnectorCredentialsOutput{})
 	pulumi.RegisterOutputType(HelmConnectorCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(IacmAnsibleInventoryDynamicGroupOutput{})
+	pulumi.RegisterOutputType(IacmAnsibleInventoryDynamicGroupArrayOutput{})
+	pulumi.RegisterOutputType(IacmAnsibleInventoryDynamicGroupConfigurationOutput{})
+	pulumi.RegisterOutputType(IacmAnsibleInventoryDynamicGroupConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(IacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput{})
+	pulumi.RegisterOutputType(IacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput{})
+	pulumi.RegisterOutputType(IacmAnsibleInventoryDynamicGroupDynamicVarOutput{})
+	pulumi.RegisterOutputType(IacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput{})
+	pulumi.RegisterOutputType(IacmAnsibleInventoryDynamicGroupVarOutput{})
+	pulumi.RegisterOutputType(IacmAnsibleInventoryDynamicGroupVarArrayOutput{})
+	pulumi.RegisterOutputType(IacmAnsibleInventoryGroupOutput{})
+	pulumi.RegisterOutputType(IacmAnsibleInventoryGroupArrayOutput{})
+	pulumi.RegisterOutputType(IacmAnsibleInventoryGroupVarOutput{})
+	pulumi.RegisterOutputType(IacmAnsibleInventoryGroupVarArrayOutput{})
+	pulumi.RegisterOutputType(IacmAnsibleInventoryPluginOptionsOutput{})
+	pulumi.RegisterOutputType(IacmAnsibleInventoryPluginOptionsPtrOutput{})
+	pulumi.RegisterOutputType(IacmAnsibleInventoryVarOutput{})
+	pulumi.RegisterOutputType(IacmAnsibleInventoryVarArrayOutput{})
+	pulumi.RegisterOutputType(IacmAnsiblePlaybookEnvVarOutput{})
+	pulumi.RegisterOutputType(IacmAnsiblePlaybookEnvVarArrayOutput{})
+	pulumi.RegisterOutputType(IacmAnsiblePlaybookVarOutput{})
+	pulumi.RegisterOutputType(IacmAnsiblePlaybookVarArrayOutput{})
 	pulumi.RegisterOutputType(IdpCatalogEntityGitDetailsOutput{})
 	pulumi.RegisterOutputType(IdpCatalogEntityGitDetailsPtrOutput{})
 	pulumi.RegisterOutputType(InfraModuleTestingTestingMetadataOutput{})
@@ -55569,6 +58947,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceGroupResourceFilterResourceAttributeFilterArrayOutput{})
 	pulumi.RegisterOutputType(RoleAssignmentsPrincipalOutput{})
 	pulumi.RegisterOutputType(RoleAssignmentsPrincipalArrayOutput{})
+	pulumi.RegisterOutputType(RoleAssignmentsRoleReferenceOutput{})
+	pulumi.RegisterOutputType(RoleAssignmentsRoleReferencePtrOutput{})
 	pulumi.RegisterOutputType(SecretFileAdditionalMetadataOutput{})
 	pulumi.RegisterOutputType(SecretFileAdditionalMetadataArrayOutput{})
 	pulumi.RegisterOutputType(SecretFileAdditionalMetadataValueOutput{})
@@ -55933,6 +59313,28 @@ func init() {
 	pulumi.RegisterOutputType(GetHarRegistryConfigAuthArrayOutput{})
 	pulumi.RegisterOutputType(GetHelmConnectorCredentialOutput{})
 	pulumi.RegisterOutputType(GetHelmConnectorCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsibleInventoryDynamicGroupOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsibleInventoryDynamicGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsibleInventoryDynamicGroupConfigurationOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsibleInventoryDynamicGroupConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsibleInventoryDynamicGroupConfigurationSelectorArrayOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsibleInventoryDynamicGroupDynamicVarOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsibleInventoryDynamicGroupDynamicVarArrayOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsibleInventoryDynamicGroupVarOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsibleInventoryDynamicGroupVarArrayOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsibleInventoryGroupOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsibleInventoryGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsibleInventoryGroupVarOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsibleInventoryGroupVarArrayOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsibleInventoryPluginOptionOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsibleInventoryPluginOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsibleInventoryVarOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsibleInventoryVarArrayOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsiblePlaybookEnvVarOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsiblePlaybookEnvVarArrayOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsiblePlaybookVarOutput{})
+	pulumi.RegisterOutputType(GetIacmAnsiblePlaybookVarArrayOutput{})
 	pulumi.RegisterOutputType(GetIdpCatalogEntityGitDetailOutput{})
 	pulumi.RegisterOutputType(GetIdpCatalogEntityGitDetailArrayOutput{})
 	pulumi.RegisterOutputType(GetInfraModuleTestingMetadataOutput{})
@@ -56048,6 +59450,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceGroupResourceFilterResourceAttributeFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetRoleAssignmentsPrincipalOutput{})
 	pulumi.RegisterOutputType(GetRoleAssignmentsPrincipalArrayOutput{})
+	pulumi.RegisterOutputType(GetRoleAssignmentsRoleReferenceOutput{})
+	pulumi.RegisterOutputType(GetRoleAssignmentsRoleReferenceArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretFileAdditionalMetadataOutput{})
 	pulumi.RegisterOutputType(GetSecretFileAdditionalMetadataArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretFileAdditionalMetadataValueOutput{})

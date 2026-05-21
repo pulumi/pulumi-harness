@@ -48,6 +48,21 @@ public final class GetHarRegistryConfig extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
+     * Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+     * 
+     */
+    @Import(name="firewallMode", required=true)
+    private String firewallMode;
+
+    /**
+     * @return Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+     * 
+     */
+    public String firewallMode() {
+        return this.firewallMode;
+    }
+
+    /**
      * Upstream source
      * 
      */
@@ -112,6 +127,7 @@ public final class GetHarRegistryConfig extends com.pulumi.resources.InvokeArgs 
     private GetHarRegistryConfig(GetHarRegistryConfig $) {
         this.authType = $.authType;
         this.auths = $.auths;
+        this.firewallMode = $.firewallMode;
         this.source = $.source;
         this.type = $.type;
         this.upstreamProxies = $.upstreamProxies;
@@ -169,6 +185,17 @@ public final class GetHarRegistryConfig extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
+         * @param firewallMode Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallMode(String firewallMode) {
+            $.firewallMode = firewallMode;
+            return this;
+        }
+
+        /**
          * @param source Upstream source
          * 
          * @return builder
@@ -223,6 +250,9 @@ public final class GetHarRegistryConfig extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetHarRegistryConfig build() {
+            if ($.firewallMode == null) {
+                throw new MissingRequiredPropertyException("GetHarRegistryConfig", "firewallMode");
+            }
             if ($.type == null) {
                 throw new MissingRequiredPropertyException("GetHarRegistryConfig", "type");
             }

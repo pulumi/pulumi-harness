@@ -170,6 +170,13 @@ import * as chaos from "./chaos";
 import * as cloudprovider from "./cloudprovider";
 import * as cluster from "./cluster";
 import * as config from "./config";
+import * as fme from "./fme";
+import * as fmeenvironment from "./fmeenvironment";
+import * as fmefeatureflag from "./fmefeatureflag";
+import * as fmelargesegment from "./fmelargesegment";
+import * as fmerulebasedsegment from "./fmerulebasedsegment";
+import * as fmesegment from "./fmesegment";
+import * as fmetraffictype from "./fmetraffictype";
 import * as governance from "./governance";
 import * as platform from "./platform";
 import * as service from "./service";
@@ -181,6 +188,13 @@ export {
     cloudprovider,
     cluster,
     config,
+    fme,
+    fmeenvironment,
+    fmefeatureflag,
+    fmelargesegment,
+    fmerulebasedsegment,
+    fmesegment,
+    fmetraffictype,
     governance,
     platform,
     service,

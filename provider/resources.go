@@ -105,6 +105,18 @@ func Provider() info.Provider {
 			"harness_application":         {Tok: harnessResource(mainMod, "Application")},
 			"harness_application_gitsync": {Tok: harnessResource(mainMod, "ApplicationGitSync")},
 			"harness_delegate_approval":   {Tok: harnessResource(mainMod, "DelegateApproval")},
+			"harness_fme_api_key": {
+				Tok: harnessResource("fme", "ApiKey"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"api_key": {CSharpName: "ApiKeyValue"},
+				},
+			},
+			"harness_fme_feature_flag_definition": {
+				Tok: harnessResource("fmeFeatureFlag", "Definition"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"definition": {CSharpName: "DefinitionJson"},
+				},
+			},
 			"harness_platform_apikey": {
 				Tok: harnessResource(mainMod, "PlatformApiKey"),
 			},
@@ -209,13 +221,17 @@ func Provider() info.Provider {
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"harness_application":     {Tok: harnessDataSource(mainMod, "getApplication")},
-			"harness_current_account": {Tok: harnessDataSource(mainMod, "getCurrentAccount")},
-			"harness_delegate":        {Tok: harnessDataSource(mainMod, "getDelegate")},
-			"harness_delegate_ids":    {Tok: harnessDataSource(cloudProviderMod, "getDelegateIds")},
-			"harness_encrypted_text":  {Tok: harnessDataSource(mainMod, "getEncryptedText")},
-			"harness_environment":     {Tok: harnessDataSource(mainMod, "getEnvironment")},
-			"harness_git_connector":   {Tok: harnessDataSource(mainMod, "getGitConnector")},
+			"harness_application":       {Tok: harnessDataSource(mainMod, "getApplication")},
+			"harness_current_account":   {Tok: harnessDataSource(mainMod, "getCurrentAccount")},
+			"harness_delegate":          {Tok: harnessDataSource(mainMod, "getDelegate")},
+			"harness_delegate_ids":      {Tok: harnessDataSource(cloudProviderMod, "getDelegateIds")},
+			"harness_encrypted_text":    {Tok: harnessDataSource(mainMod, "getEncryptedText")},
+			"harness_environment":       {Tok: harnessDataSource(mainMod, "getEnvironment")},
+			"harness_fme_environment":   {Tok: harnessDataSource("fme", "getEnvironment")},
+			"harness_fme_flag_set":      {Tok: harnessDataSource("fme", "getFlagSet")},
+			"harness_fme_large_segment": {Tok: harnessDataSource("fme", "getLargeSegment")},
+			"harness_fme_traffic_type":  {Tok: harnessDataSource("fme", "getTrafficType")},
+			"harness_git_connector":     {Tok: harnessDataSource(mainMod, "getGitConnector")},
 			"harness_platform_apikey": {
 				Tok: harnessDataSource(platformMod, "getApiKey"),
 			},

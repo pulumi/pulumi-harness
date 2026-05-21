@@ -26,10 +26,13 @@ class GetAzureKeyVaultConnectorResult:
     """
     A collection of values returned by getAzureKeyVaultConnector.
     """
-    def __init__(__self__, azure_environment_type=None, client_id=None, delegate_selectors=None, description=None, id=None, identifier=None, is_default=None, name=None, org_id=None, project_id=None, secret_key=None, subscription=None, tags=None, tenant_id=None, vault_name=None):
+    def __init__(__self__, azure_environment_type=None, azure_managed_identity_type=None, client_id=None, delegate_selectors=None, description=None, enable_purge=None, id=None, identifier=None, is_default=None, managed_client_id=None, name=None, org_id=None, project_id=None, secret_key=None, subscription=None, tags=None, tenant_id=None, use_managed_identity=None, vault_name=None):
         if azure_environment_type and not isinstance(azure_environment_type, str):
             raise TypeError("Expected argument 'azure_environment_type' to be a str")
         pulumi.set(__self__, "azure_environment_type", azure_environment_type)
+        if azure_managed_identity_type and not isinstance(azure_managed_identity_type, str):
+            raise TypeError("Expected argument 'azure_managed_identity_type' to be a str")
+        pulumi.set(__self__, "azure_managed_identity_type", azure_managed_identity_type)
         if client_id and not isinstance(client_id, str):
             raise TypeError("Expected argument 'client_id' to be a str")
         pulumi.set(__self__, "client_id", client_id)
@@ -39,6 +42,9 @@ class GetAzureKeyVaultConnectorResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if enable_purge and not isinstance(enable_purge, bool):
+            raise TypeError("Expected argument 'enable_purge' to be a bool")
+        pulumi.set(__self__, "enable_purge", enable_purge)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -48,6 +54,9 @@ class GetAzureKeyVaultConnectorResult:
         if is_default and not isinstance(is_default, bool):
             raise TypeError("Expected argument 'is_default' to be a bool")
         pulumi.set(__self__, "is_default", is_default)
+        if managed_client_id and not isinstance(managed_client_id, str):
+            raise TypeError("Expected argument 'managed_client_id' to be a str")
+        pulumi.set(__self__, "managed_client_id", managed_client_id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -69,6 +78,9 @@ class GetAzureKeyVaultConnectorResult:
         if tenant_id and not isinstance(tenant_id, str):
             raise TypeError("Expected argument 'tenant_id' to be a str")
         pulumi.set(__self__, "tenant_id", tenant_id)
+        if use_managed_identity and not isinstance(use_managed_identity, bool):
+            raise TypeError("Expected argument 'use_managed_identity' to be a bool")
+        pulumi.set(__self__, "use_managed_identity", use_managed_identity)
         if vault_name and not isinstance(vault_name, str):
             raise TypeError("Expected argument 'vault_name' to be a str")
         pulumi.set(__self__, "vault_name", vault_name)
@@ -80,6 +92,14 @@ class GetAzureKeyVaultConnectorResult:
         Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
         """
         return pulumi.get(self, "azure_environment_type")
+
+    @_builtins.property
+    @pulumi.getter(name="azureManagedIdentityType")
+    def azure_managed_identity_type(self) -> _builtins.str:
+        """
+        Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity.
+        """
+        return pulumi.get(self, "azure_managed_identity_type")
 
     @_builtins.property
     @pulumi.getter(name="clientId")
@@ -106,6 +126,14 @@ class GetAzureKeyVaultConnectorResult:
         return pulumi.get(self, "description")
 
     @_builtins.property
+    @pulumi.getter(name="enablePurge")
+    def enable_purge(self) -> _builtins.bool:
+        """
+        Boolean value to indicate if purge is enabled.
+        """
+        return pulumi.get(self, "enable_purge")
+
+    @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
@@ -128,6 +156,14 @@ class GetAzureKeyVaultConnectorResult:
         Specifies whether or not is the default value.
         """
         return pulumi.get(self, "is_default")
+
+    @_builtins.property
+    @pulumi.getter(name="managedClientId")
+    def managed_client_id(self) -> _builtins.str:
+        """
+        Client Id of the ManagedIdentity resource.
+        """
+        return pulumi.get(self, "managed_client_id")
 
     @_builtins.property
     @pulumi.getter
@@ -186,6 +222,14 @@ class GetAzureKeyVaultConnectorResult:
         return pulumi.get(self, "tenant_id")
 
     @_builtins.property
+    @pulumi.getter(name="useManagedIdentity")
+    def use_managed_identity(self) -> _builtins.bool:
+        """
+        Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+        """
+        return pulumi.get(self, "use_managed_identity")
+
+    @_builtins.property
     @pulumi.getter(name="vaultName")
     def vault_name(self) -> _builtins.str:
         """
@@ -201,12 +245,15 @@ class AwaitableGetAzureKeyVaultConnectorResult(GetAzureKeyVaultConnectorResult):
             yield self
         return GetAzureKeyVaultConnectorResult(
             azure_environment_type=self.azure_environment_type,
+            azure_managed_identity_type=self.azure_managed_identity_type,
             client_id=self.client_id,
             delegate_selectors=self.delegate_selectors,
             description=self.description,
+            enable_purge=self.enable_purge,
             id=self.id,
             identifier=self.identifier,
             is_default=self.is_default,
+            managed_client_id=self.managed_client_id,
             name=self.name,
             org_id=self.org_id,
             project_id=self.project_id,
@@ -214,6 +261,7 @@ class AwaitableGetAzureKeyVaultConnectorResult(GetAzureKeyVaultConnectorResult):
             subscription=self.subscription,
             tags=self.tags,
             tenant_id=self.tenant_id,
+            use_managed_identity=self.use_managed_identity,
             vault_name=self.vault_name)
 
 
@@ -255,12 +303,15 @@ def get_azure_key_vault_connector(identifier: Optional[_builtins.str] = None,
 
     return AwaitableGetAzureKeyVaultConnectorResult(
         azure_environment_type=pulumi.get(__ret__, 'azure_environment_type'),
+        azure_managed_identity_type=pulumi.get(__ret__, 'azure_managed_identity_type'),
         client_id=pulumi.get(__ret__, 'client_id'),
         delegate_selectors=pulumi.get(__ret__, 'delegate_selectors'),
         description=pulumi.get(__ret__, 'description'),
+        enable_purge=pulumi.get(__ret__, 'enable_purge'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         is_default=pulumi.get(__ret__, 'is_default'),
+        managed_client_id=pulumi.get(__ret__, 'managed_client_id'),
         name=pulumi.get(__ret__, 'name'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
@@ -268,6 +319,7 @@ def get_azure_key_vault_connector(identifier: Optional[_builtins.str] = None,
         subscription=pulumi.get(__ret__, 'subscription'),
         tags=pulumi.get(__ret__, 'tags'),
         tenant_id=pulumi.get(__ret__, 'tenant_id'),
+        use_managed_identity=pulumi.get(__ret__, 'use_managed_identity'),
         vault_name=pulumi.get(__ret__, 'vault_name'))
 def get_azure_key_vault_connector_output(identifier: pulumi.Input[Optional[_builtins.str]] = None,
                                          name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -306,12 +358,15 @@ def get_azure_key_vault_connector_output(identifier: pulumi.Input[Optional[_buil
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getAzureKeyVaultConnector:getAzureKeyVaultConnector', __args__, opts=opts, typ=GetAzureKeyVaultConnectorResult)
     return __ret__.apply(lambda __response__: GetAzureKeyVaultConnectorResult(
         azure_environment_type=pulumi.get(__response__, 'azure_environment_type'),
+        azure_managed_identity_type=pulumi.get(__response__, 'azure_managed_identity_type'),
         client_id=pulumi.get(__response__, 'client_id'),
         delegate_selectors=pulumi.get(__response__, 'delegate_selectors'),
         description=pulumi.get(__response__, 'description'),
+        enable_purge=pulumi.get(__response__, 'enable_purge'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
         is_default=pulumi.get(__response__, 'is_default'),
+        managed_client_id=pulumi.get(__response__, 'managed_client_id'),
         name=pulumi.get(__response__, 'name'),
         org_id=pulumi.get(__response__, 'org_id'),
         project_id=pulumi.get(__response__, 'project_id'),
@@ -319,4 +374,5 @@ def get_azure_key_vault_connector_output(identifier: pulumi.Input[Optional[_buil
         subscription=pulumi.get(__response__, 'subscription'),
         tags=pulumi.get(__response__, 'tags'),
         tenant_id=pulumi.get(__response__, 'tenant_id'),
+        use_managed_identity=pulumi.get(__response__, 'use_managed_identity'),
         vault_name=pulumi.get(__response__, 'vault_name')))

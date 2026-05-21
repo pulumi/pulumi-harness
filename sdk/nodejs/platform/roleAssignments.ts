@@ -91,6 +91,10 @@ export class RoleAssignments extends pulumi.CustomResource {
      * Role identifier.
      */
     declare public readonly roleIdentifier: pulumi.Output<string>;
+    /**
+     * Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+     */
+    declare public readonly roleReference: pulumi.Output<outputs.platform.RoleAssignmentsRoleReference>;
 
     /**
      * Create a RoleAssignments resource with the given unique name, arguments, and options.
@@ -99,7 +103,7 @@ export class RoleAssignments extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: RoleAssignmentsArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: RoleAssignmentsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RoleAssignmentsArgs | RoleAssignmentsState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -113,17 +117,9 @@ export class RoleAssignments extends pulumi.CustomResource {
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["resourceGroupIdentifier"] = state?.resourceGroupIdentifier;
             resourceInputs["roleIdentifier"] = state?.roleIdentifier;
+            resourceInputs["roleReference"] = state?.roleReference;
         } else {
             const args = argsOrState as RoleAssignmentsArgs | undefined;
-            if (args?.principals === undefined && !opts.urn) {
-                throw new Error("Missing required property 'principals'");
-            }
-            if (args?.resourceGroupIdentifier === undefined && !opts.urn) {
-                throw new Error("Missing required property 'resourceGroupIdentifier'");
-            }
-            if (args?.roleIdentifier === undefined && !opts.urn) {
-                throw new Error("Missing required property 'roleIdentifier'");
-            }
             resourceInputs["disabled"] = args?.disabled;
             resourceInputs["identifier"] = args?.identifier;
             resourceInputs["managed"] = args?.managed;
@@ -132,6 +128,7 @@ export class RoleAssignments extends pulumi.CustomResource {
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["resourceGroupIdentifier"] = args?.resourceGroupIdentifier;
             resourceInputs["roleIdentifier"] = args?.roleIdentifier;
+            resourceInputs["roleReference"] = args?.roleReference;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RoleAssignments.__pulumiType, name, resourceInputs, opts);
@@ -174,6 +171,10 @@ export interface RoleAssignmentsState {
      * Role identifier.
      */
     roleIdentifier?: pulumi.Input<string | undefined>;
+    /**
+     * Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+     */
+    roleReference?: pulumi.Input<inputs.platform.RoleAssignmentsRoleReference | undefined>;
 }
 
 /**
@@ -199,7 +200,7 @@ export interface RoleAssignmentsArgs {
     /**
      * Principal.
      */
-    principals: pulumi.Input<pulumi.Input<inputs.platform.RoleAssignmentsPrincipal>[]>;
+    principals?: pulumi.Input<pulumi.Input<inputs.platform.RoleAssignmentsPrincipal>[] | undefined>;
     /**
      * Project Identifier
      */
@@ -207,9 +208,13 @@ export interface RoleAssignmentsArgs {
     /**
      * Resource group identifier.
      */
-    resourceGroupIdentifier: pulumi.Input<string>;
+    resourceGroupIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Role identifier.
      */
-    roleIdentifier: pulumi.Input<string>;
+    roleIdentifier?: pulumi.Input<string | undefined>;
+    /**
+     * Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+     */
+    roleReference?: pulumi.Input<inputs.platform.RoleAssignmentsRoleReference | undefined>;
 }

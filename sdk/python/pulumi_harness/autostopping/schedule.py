@@ -26,6 +26,7 @@ class ScheduleArgs:
                  time_zone: pulumi.Input[_builtins.str],
                  ending_on: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
                  repeats: pulumi.Input[Optional[Sequence[pulumi.Input['ScheduleRepeatArgs']]]] = None,
                  starting_from: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -36,6 +37,7 @@ class ScheduleArgs:
         :param pulumi.Input[_builtins.str] time_zone: Time zone in which schedule needs to be executed
         :param pulumi.Input[_builtins.str] ending_on: Time until which schedule will be active. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
         :param pulumi.Input[_builtins.str] name: Name of the schedule
+        :param pulumi.Input[_builtins.int] priority: Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
         :param pulumi.Input[Sequence[pulumi.Input['ScheduleRepeatArgs']]] repeats: For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
         :param pulumi.Input[_builtins.str] starting_from: Time from which schedule will be active. Schedule will take immediate effect if starting_from is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
         """
@@ -46,6 +48,8 @@ class ScheduleArgs:
             pulumi.set(__self__, "ending_on", ending_on)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
         if repeats is not None:
             pulumi.set(__self__, "repeats", repeats)
         if starting_from is not None:
@@ -113,6 +117,18 @@ class ScheduleArgs:
 
     @_builtins.property
     @pulumi.getter
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "priority", value)
+
+    @_builtins.property
+    @pulumi.getter
     def repeats(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScheduleRepeatArgs']]]]:
         """
         For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
@@ -142,6 +158,7 @@ class _ScheduleState:
                  ending_on: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.float]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
                  repeats: pulumi.Input[Optional[Sequence[pulumi.Input['ScheduleRepeatArgs']]]] = None,
                  rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.float]]]] = None,
                  schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -153,6 +170,7 @@ class _ScheduleState:
         :param pulumi.Input[_builtins.str] ending_on: Time until which schedule will be active. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
         :param pulumi.Input[_builtins.float] identifier: Unique identifier of the schedule
         :param pulumi.Input[_builtins.str] name: Name of the schedule
+        :param pulumi.Input[_builtins.int] priority: Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
         :param pulumi.Input[Sequence[pulumi.Input['ScheduleRepeatArgs']]] repeats: For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.float]]] rules: ID of AutoStopping rules on which the schedule applies
         :param pulumi.Input[_builtins.str] schedule_type: Type of the schedule. Valid values are `uptime` and `downtime`
@@ -165,6 +183,8 @@ class _ScheduleState:
             pulumi.set(__self__, "identifier", identifier)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
         if repeats is not None:
             pulumi.set(__self__, "repeats", repeats)
         if rules is not None:
@@ -211,6 +231,18 @@ class _ScheduleState:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
@@ -281,6 +313,7 @@ class Schedule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ending_on: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
                  repeats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict']]]]] = None,
                  rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.float]]]] = None,
                  schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -295,6 +328,7 @@ class Schedule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ending_on: Time until which schedule will be active. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
         :param pulumi.Input[_builtins.str] name: Name of the schedule
+        :param pulumi.Input[_builtins.int] priority: Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict']]]] repeats: For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.float]]] rules: ID of AutoStopping rules on which the schedule applies
         :param pulumi.Input[_builtins.str] schedule_type: Type of the schedule. Valid values are `uptime` and `downtime`
@@ -328,6 +362,7 @@ class Schedule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ending_on: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
                  repeats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict']]]]] = None,
                  rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.float]]]] = None,
                  schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -344,6 +379,7 @@ class Schedule(pulumi.CustomResource):
 
             __props__.__dict__["ending_on"] = ending_on
             __props__.__dict__["name"] = name
+            __props__.__dict__["priority"] = priority
             __props__.__dict__["repeats"] = repeats
             if rules is None and not opts.urn:
                 raise TypeError("Missing required property 'rules'")
@@ -369,6 +405,7 @@ class Schedule(pulumi.CustomResource):
             ending_on: pulumi.Input[Optional[_builtins.str]] = None,
             identifier: pulumi.Input[Optional[_builtins.float]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
             repeats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict']]]]] = None,
             rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.float]]]] = None,
             schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -384,6 +421,7 @@ class Schedule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ending_on: Time until which schedule will be active. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
         :param pulumi.Input[_builtins.float] identifier: Unique identifier of the schedule
         :param pulumi.Input[_builtins.str] name: Name of the schedule
+        :param pulumi.Input[_builtins.int] priority: Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict']]]] repeats: For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.float]]] rules: ID of AutoStopping rules on which the schedule applies
         :param pulumi.Input[_builtins.str] schedule_type: Type of the schedule. Valid values are `uptime` and `downtime`
@@ -397,6 +435,7 @@ class Schedule(pulumi.CustomResource):
         __props__.__dict__["ending_on"] = ending_on
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["name"] = name
+        __props__.__dict__["priority"] = priority
         __props__.__dict__["repeats"] = repeats
         __props__.__dict__["rules"] = rules
         __props__.__dict__["schedule_type"] = schedule_type
@@ -427,6 +466,14 @@ class Schedule(pulumi.CustomResource):
         Name of the schedule
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+        """
+        return pulumi.get(self, "priority")
 
     @_builtins.property
     @pulumi.getter

@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.platform.inputs.RoleAssignmentsPrincipalArgs;
+import com.pulumi.harness.platform.inputs.RoleAssignmentsRoleReferenceArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -138,6 +139,21 @@ public final class RoleAssignmentsState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.roleIdentifier);
     }
 
+    /**
+     * Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+     * 
+     */
+    @Import(name="roleReference")
+    private @Nullable Output<RoleAssignmentsRoleReferenceArgs> roleReference;
+
+    /**
+     * @return Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+     * 
+     */
+    public Optional<Output<RoleAssignmentsRoleReferenceArgs>> roleReference() {
+        return Optional.ofNullable(this.roleReference);
+    }
+
     private RoleAssignmentsState() {}
 
     private RoleAssignmentsState(RoleAssignmentsState $) {
@@ -149,6 +165,7 @@ public final class RoleAssignmentsState extends com.pulumi.resources.ResourceArg
         this.projectId = $.projectId;
         this.resourceGroupIdentifier = $.resourceGroupIdentifier;
         this.roleIdentifier = $.roleIdentifier;
+        this.roleReference = $.roleReference;
     }
 
     public static Builder builder() {
@@ -345,6 +362,27 @@ public final class RoleAssignmentsState extends com.pulumi.resources.ResourceArg
          */
         public Builder roleIdentifier(String roleIdentifier) {
             return roleIdentifier(Output.of(roleIdentifier));
+        }
+
+        /**
+         * @param roleReference Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleReference(@Nullable Output<RoleAssignmentsRoleReferenceArgs> roleReference) {
+            $.roleReference = roleReference;
+            return this;
+        }
+
+        /**
+         * @param roleReference Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleReference(RoleAssignmentsRoleReferenceArgs roleReference) {
+            return roleReference(Output.of(roleReference));
         }
 
         public RoleAssignmentsState build() {

@@ -173,6 +173,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string AzureEnvironmentType;
         /// <summary>
+        /// Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity.
+        /// </summary>
+        public readonly string AzureManagedIdentityType;
+        /// <summary>
         /// Application ID of the Azure App.
         /// </summary>
         public readonly string ClientId;
@@ -185,6 +189,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Boolean value to indicate if purge is enabled.
+        /// </summary>
+        public readonly bool EnablePurge;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -196,6 +204,10 @@ namespace Pulumi.Harness.Platform
         /// Specifies whether or not is the default value.
         /// </summary>
         public readonly bool IsDefault;
+        /// <summary>
+        /// Client Id of the ManagedIdentity resource.
+        /// </summary>
+        public readonly string ManagedClientId;
         /// <summary>
         /// Name of the resource.
         /// </summary>
@@ -225,6 +237,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string TenantId;
         /// <summary>
+        /// Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+        /// </summary>
+        public readonly bool UseManagedIdentity;
+        /// <summary>
         /// Name of the vault.
         /// </summary>
         public readonly string VaultName;
@@ -233,17 +249,23 @@ namespace Pulumi.Harness.Platform
         private GetAzureKeyVaultConnectorResult(
             string azureEnvironmentType,
 
+            string azureManagedIdentityType,
+
             string clientId,
 
             ImmutableArray<string> delegateSelectors,
 
             string description,
 
+            bool enablePurge,
+
             string id,
 
             string identifier,
 
             bool isDefault,
+
+            string managedClientId,
 
             string? name,
 
@@ -259,15 +281,20 @@ namespace Pulumi.Harness.Platform
 
             string tenantId,
 
+            bool useManagedIdentity,
+
             string vaultName)
         {
             AzureEnvironmentType = azureEnvironmentType;
+            AzureManagedIdentityType = azureManagedIdentityType;
             ClientId = clientId;
             DelegateSelectors = delegateSelectors;
             Description = description;
+            EnablePurge = enablePurge;
             Id = id;
             Identifier = identifier;
             IsDefault = isDefault;
+            ManagedClientId = managedClientId;
             Name = name;
             OrgId = orgId;
             ProjectId = projectId;
@@ -275,6 +302,7 @@ namespace Pulumi.Harness.Platform
             Subscription = subscription;
             Tags = tags;
             TenantId = tenantId;
+            UseManagedIdentity = useManagedIdentity;
             VaultName = vaultName;
         }
     }

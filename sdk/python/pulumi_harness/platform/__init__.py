@@ -117,6 +117,8 @@ from .get_gitops_repository import *
 from .get_gitx_webhook import *
 from .get_har_registry import *
 from .get_helm_connector import *
+from .get_iacm_ansible_inventory import *
+from .get_iacm_ansible_playbook import *
 from .get_iacm_default_pipeline import *
 from .get_idp_catalog_entity import *
 from .get_idp_environment import *
@@ -205,6 +207,8 @@ from .gitops_filters import *
 from .gitx_webhook import *
 from .har_registry import *
 from .helm_connector import *
+from .iacm_ansible_inventory import *
+from .iacm_ansible_playbook import *
 from .iacm_default_pipeline import *
 from .idp_catalog_entity import *
 from .idp_environment import *

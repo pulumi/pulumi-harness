@@ -49,6 +49,21 @@ public final class HarRegistryConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+     * 
+     */
+    @Import(name="firewallMode")
+    private @Nullable Output<String> firewallMode;
+
+    /**
+     * @return Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+     * 
+     */
+    public Optional<Output<String>> firewallMode() {
+        return Optional.ofNullable(this.firewallMode);
+    }
+
+    /**
      * Upstream source
      * 
      */
@@ -113,6 +128,7 @@ public final class HarRegistryConfigArgs extends com.pulumi.resources.ResourceAr
     private HarRegistryConfigArgs(HarRegistryConfigArgs $) {
         this.authType = $.authType;
         this.auths = $.auths;
+        this.firewallMode = $.firewallMode;
         this.source = $.source;
         this.type = $.type;
         this.upstreamProxies = $.upstreamProxies;
@@ -187,6 +203,27 @@ public final class HarRegistryConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder auths(HarRegistryConfigAuthArgs... auths) {
             return auths(List.of(auths));
+        }
+
+        /**
+         * @param firewallMode Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallMode(@Nullable Output<String> firewallMode) {
+            $.firewallMode = firewallMode;
+            return this;
+        }
+
+        /**
+         * @param firewallMode Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firewallMode(String firewallMode) {
+            return firewallMode(Output.of(firewallMode));
         }
 
         /**

@@ -18,7 +18,7 @@ public final class RoleAssignmentsPrincipal {
      */
     private @Nullable String identifier;
     /**
-     * @return Scope level.
+     * @return Scope level. Valid values are &#39;account&#39;, &#39;organization&#39;, or &#39;project&#39;.
      * 
      */
     private @Nullable String scopeLevel;
@@ -37,7 +37,7 @@ public final class RoleAssignmentsPrincipal {
         return Optional.ofNullable(this.identifier);
     }
     /**
-     * @return Scope level.
+     * @return Scope level. Valid values are &#39;account&#39;, &#39;organization&#39;, or &#39;project&#39;.
      * 
      */
     public Optional<String> scopeLevel() {

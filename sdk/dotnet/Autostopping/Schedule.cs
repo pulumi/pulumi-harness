@@ -34,6 +34,12 @@ namespace Pulumi.Harness.Autostopping
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+        /// </summary>
+        [Output("priority")]
+        public Output<int?> Priority { get; private set; } = null!;
+
+        /// <summary>
         /// For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
         /// </summary>
         [Output("repeats")]
@@ -122,6 +128,12 @@ namespace Pulumi.Harness.Autostopping
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+        /// </summary>
+        [Input("priority")]
+        public Input<int>? Priority { get; set; }
+
         [Input("repeats")]
         private InputList<Inputs.ScheduleRepeatArgs>? _repeats;
 
@@ -189,6 +201,12 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+        /// </summary>
+        [Input("priority")]
+        public Input<int>? Priority { get; set; }
 
         [Input("repeats")]
         private InputList<Inputs.ScheduleRepeatGetArgs>? _repeats;

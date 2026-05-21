@@ -19,7 +19,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string>? ApplicationsSync { get; set; }
 
         /// <summary>
-        /// Label selector used to narrow the scope of targeted clusters.
+        /// If true, prevents an Application's child resources from being deleted when the parent Application is deleted.
         /// </summary>
         [Input("preserveResourcesOnDeletion")]
         public Input<bool>? PreserveResourcesOnDeletion { get; set; }

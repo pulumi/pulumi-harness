@@ -80,6 +80,8 @@ type LookupRoleAssignmentsResult struct {
 	ResourceGroupIdentifier string `pulumi:"resourceGroupIdentifier"`
 	// Role identifier.
 	RoleIdentifier string `pulumi:"roleIdentifier"`
+	// Role reference.
+	RoleReferences []GetRoleAssignmentsRoleReference `pulumi:"roleReferences"`
 }
 
 func LookupRoleAssignmentsOutput(ctx *pulumi.Context, args LookupRoleAssignmentsOutputArgs, opts ...pulumi.InvokeOption) LookupRoleAssignmentsResultOutput {
@@ -163,6 +165,11 @@ func (o LookupRoleAssignmentsResultOutput) ResourceGroupIdentifier() pulumi.Stri
 // Role identifier.
 func (o LookupRoleAssignmentsResultOutput) RoleIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentsResult) string { return v.RoleIdentifier }).(pulumi.StringOutput)
+}
+
+// Role reference.
+func (o LookupRoleAssignmentsResultOutput) RoleReferences() GetRoleAssignmentsRoleReferenceArrayOutput {
+	return o.ApplyT(func(v LookupRoleAssignmentsResult) []GetRoleAssignmentsRoleReference { return v.RoleReferences }).(GetRoleAssignmentsRoleReferenceArrayOutput)
 }
 
 func init() {

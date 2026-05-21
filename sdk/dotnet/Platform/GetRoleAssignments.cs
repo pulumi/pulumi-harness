@@ -183,6 +183,10 @@ namespace Pulumi.Harness.Platform
         /// Role identifier.
         /// </summary>
         public readonly string RoleIdentifier;
+        /// <summary>
+        /// Role reference.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRoleAssignmentsRoleReferenceResult> RoleReferences;
 
         [OutputConstructor]
         private GetRoleAssignmentsResult(
@@ -202,7 +206,9 @@ namespace Pulumi.Harness.Platform
 
             string resourceGroupIdentifier,
 
-            string roleIdentifier)
+            string roleIdentifier,
+
+            ImmutableArray<Outputs.GetRoleAssignmentsRoleReferenceResult> roleReferences)
         {
             Disabled = disabled;
             Id = id;
@@ -213,6 +219,7 @@ namespace Pulumi.Harness.Platform
             ProjectId = projectId;
             ResourceGroupIdentifier = resourceGroupIdentifier;
             RoleIdentifier = roleIdentifier;
+            RoleReferences = roleReferences;
         }
     }
 }

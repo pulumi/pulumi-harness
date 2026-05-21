@@ -16,6 +16,8 @@ import (
 //
 // ## Example Usage
 //
+// ### Manual Credentials
+//
 // ```go
 // package main
 //
@@ -28,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.NewAzureKeyVaultConnector(ctx, "example", &platform.AzureKeyVaultConnectorArgs{
+//			_, err := platform.NewAzureKeyVaultConnector(ctx, "manual", &platform.AzureKeyVaultConnectorArgs{
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("example"),
@@ -41,6 +43,87 @@ import (
 //				VaultName:            pulumi.String("vault_name"),
 //				Subscription:         pulumi.String("subscription"),
 //				IsDefault:            pulumi.Bool(false),
+//				AzureEnvironmentType: pulumi.String("AZURE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### System-Assigned Managed Identity
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewAzureKeyVaultConnector(ctx, "system_msi", &platform.AzureKeyVaultConnectorArgs{
+//				Identifier:  pulumi.String("system_msi_example"),
+//				Name:        pulumi.String("system_msi_example"),
+//				Description: pulumi.String("Azure Key Vault using system-assigned managed identity"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				VaultName:                pulumi.String("vault_name"),
+//				Subscription:             pulumi.String("subscription"),
+//				IsDefault:                pulumi.Bool(false),
+//				UseManagedIdentity:       pulumi.Bool(true),
+//				AzureManagedIdentityType: pulumi.String("SystemAssignedManagedIdentity"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
+//				AzureEnvironmentType: pulumi.String("AZURE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### User-Assigned Managed Identity
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.NewAzureKeyVaultConnector(ctx, "user_msi", &platform.AzureKeyVaultConnectorArgs{
+//				Identifier:  pulumi.String("user_msi_example"),
+//				Name:        pulumi.String("user_msi_example"),
+//				Description: pulumi.String("Azure Key Vault using user-assigned managed identity"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				VaultName:                pulumi.String("vault_name"),
+//				Subscription:             pulumi.String("subscription"),
+//				IsDefault:                pulumi.Bool(false),
+//				UseManagedIdentity:       pulumi.Bool(true),
+//				AzureManagedIdentityType: pulumi.String("UserAssignedManagedIdentity"),
+//				ManagedClientId:          pulumi.String("client_id_of_managed_identity"),
+//				DelegateSelectors: pulumi.StringArray{
+//					pulumi.String("harness-delegate"),
+//				},
 //				AzureEnvironmentType: pulumi.String("AZURE"),
 //			})
 //			if err != nil {
@@ -78,30 +161,38 @@ type AzureKeyVaultConnector struct {
 
 	// Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
 	AzureEnvironmentType pulumi.StringOutput `pulumi:"azureEnvironmentType"`
-	// Application ID of the Azure App.
-	ClientId pulumi.StringOutput `pulumi:"clientId"`
+	// Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity. Required when use*managed*identity is true.
+	AzureManagedIdentityType pulumi.StringPtrOutput `pulumi:"azureManagedIdentityType"`
+	// Application ID of the Azure App. Required when use*managed*identity is false.
+	ClientId pulumi.StringPtrOutput `pulumi:"clientId"`
 	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayOutput `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Boolean value to indicate if purge is enabled.
+	EnablePurge pulumi.BoolPtrOutput `pulumi:"enablePurge"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Specifies whether or not is the default value.
 	IsDefault pulumi.BoolPtrOutput `pulumi:"isDefault"`
+	// Client Id of the ManagedIdentity resource. Required when azure*managed*identity_type is UserAssignedManagedIdentity.
+	ManagedClientId pulumi.StringPtrOutput `pulumi:"managedClientId"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// The Harness text secret with the Azure authentication key as its value.
-	SecretKey pulumi.StringOutput `pulumi:"secretKey"`
+	// The Harness text secret with the Azure authentication key as its value. Required when use*managed*identity is false.
+	SecretKey pulumi.StringPtrOutput `pulumi:"secretKey"`
 	// Azure subscription ID.
 	Subscription pulumi.StringOutput `pulumi:"subscription"`
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// The Azure Active Directory (Azure AD) directory ID where you created your application.
-	TenantId pulumi.StringOutput `pulumi:"tenantId"`
+	// The Azure Active Directory (Azure AD) directory ID where you created your application. Required when use*managed*identity is false.
+	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
+	// Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+	UseManagedIdentity pulumi.BoolPtrOutput `pulumi:"useManagedIdentity"`
 	// Name of the vault.
 	VaultName pulumi.StringOutput `pulumi:"vaultName"`
 }
@@ -113,20 +204,11 @@ func NewAzureKeyVaultConnector(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ClientId == nil {
-		return nil, errors.New("invalid value for required argument 'ClientId'")
-	}
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
-	if args.SecretKey == nil {
-		return nil, errors.New("invalid value for required argument 'SecretKey'")
-	}
 	if args.Subscription == nil {
 		return nil, errors.New("invalid value for required argument 'Subscription'")
-	}
-	if args.TenantId == nil {
-		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
 	if args.VaultName == nil {
 		return nil, errors.New("invalid value for required argument 'VaultName'")
@@ -156,30 +238,38 @@ func GetAzureKeyVaultConnector(ctx *pulumi.Context,
 type azureKeyVaultConnectorState struct {
 	// Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
 	AzureEnvironmentType *string `pulumi:"azureEnvironmentType"`
-	// Application ID of the Azure App.
+	// Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity. Required when use*managed*identity is true.
+	AzureManagedIdentityType *string `pulumi:"azureManagedIdentityType"`
+	// Application ID of the Azure App. Required when use*managed*identity is false.
 	ClientId *string `pulumi:"clientId"`
 	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Boolean value to indicate if purge is enabled.
+	EnablePurge *bool `pulumi:"enablePurge"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Specifies whether or not is the default value.
 	IsDefault *bool `pulumi:"isDefault"`
+	// Client Id of the ManagedIdentity resource. Required when azure*managed*identity_type is UserAssignedManagedIdentity.
+	ManagedClientId *string `pulumi:"managedClientId"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// The Harness text secret with the Azure authentication key as its value.
+	// The Harness text secret with the Azure authentication key as its value. Required when use*managed*identity is false.
 	SecretKey *string `pulumi:"secretKey"`
 	// Azure subscription ID.
 	Subscription *string `pulumi:"subscription"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// The Azure Active Directory (Azure AD) directory ID where you created your application.
+	// The Azure Active Directory (Azure AD) directory ID where you created your application. Required when use*managed*identity is false.
 	TenantId *string `pulumi:"tenantId"`
+	// Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+	UseManagedIdentity *bool `pulumi:"useManagedIdentity"`
 	// Name of the vault.
 	VaultName *string `pulumi:"vaultName"`
 }
@@ -187,30 +277,38 @@ type azureKeyVaultConnectorState struct {
 type AzureKeyVaultConnectorState struct {
 	// Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
 	AzureEnvironmentType pulumi.StringPtrInput
-	// Application ID of the Azure App.
+	// Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity. Required when use*managed*identity is true.
+	AzureManagedIdentityType pulumi.StringPtrInput
+	// Application ID of the Azure App. Required when use*managed*identity is false.
 	ClientId pulumi.StringPtrInput
 	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Boolean value to indicate if purge is enabled.
+	EnablePurge pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
 	// Specifies whether or not is the default value.
 	IsDefault pulumi.BoolPtrInput
+	// Client Id of the ManagedIdentity resource. Required when azure*managed*identity_type is UserAssignedManagedIdentity.
+	ManagedClientId pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// The Harness text secret with the Azure authentication key as its value.
+	// The Harness text secret with the Azure authentication key as its value. Required when use*managed*identity is false.
 	SecretKey pulumi.StringPtrInput
 	// Azure subscription ID.
 	Subscription pulumi.StringPtrInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// The Azure Active Directory (Azure AD) directory ID where you created your application.
+	// The Azure Active Directory (Azure AD) directory ID where you created your application. Required when use*managed*identity is false.
 	TenantId pulumi.StringPtrInput
+	// Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+	UseManagedIdentity pulumi.BoolPtrInput
 	// Name of the vault.
 	VaultName pulumi.StringPtrInput
 }
@@ -222,30 +320,38 @@ func (AzureKeyVaultConnectorState) ElementType() reflect.Type {
 type azureKeyVaultConnectorArgs struct {
 	// Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
 	AzureEnvironmentType *string `pulumi:"azureEnvironmentType"`
-	// Application ID of the Azure App.
-	ClientId string `pulumi:"clientId"`
+	// Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity. Required when use*managed*identity is true.
+	AzureManagedIdentityType *string `pulumi:"azureManagedIdentityType"`
+	// Application ID of the Azure App. Required when use*managed*identity is false.
+	ClientId *string `pulumi:"clientId"`
 	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// Boolean value to indicate if purge is enabled.
+	EnablePurge *bool `pulumi:"enablePurge"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Specifies whether or not is the default value.
 	IsDefault *bool `pulumi:"isDefault"`
+	// Client Id of the ManagedIdentity resource. Required when azure*managed*identity_type is UserAssignedManagedIdentity.
+	ManagedClientId *string `pulumi:"managedClientId"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// The Harness text secret with the Azure authentication key as its value.
-	SecretKey string `pulumi:"secretKey"`
+	// The Harness text secret with the Azure authentication key as its value. Required when use*managed*identity is false.
+	SecretKey *string `pulumi:"secretKey"`
 	// Azure subscription ID.
 	Subscription string `pulumi:"subscription"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
-	// The Azure Active Directory (Azure AD) directory ID where you created your application.
-	TenantId string `pulumi:"tenantId"`
+	// The Azure Active Directory (Azure AD) directory ID where you created your application. Required when use*managed*identity is false.
+	TenantId *string `pulumi:"tenantId"`
+	// Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+	UseManagedIdentity *bool `pulumi:"useManagedIdentity"`
 	// Name of the vault.
 	VaultName string `pulumi:"vaultName"`
 }
@@ -254,30 +360,38 @@ type azureKeyVaultConnectorArgs struct {
 type AzureKeyVaultConnectorArgs struct {
 	// Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
 	AzureEnvironmentType pulumi.StringPtrInput
-	// Application ID of the Azure App.
-	ClientId pulumi.StringInput
+	// Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity. Required when use*managed*identity is true.
+	AzureManagedIdentityType pulumi.StringPtrInput
+	// Application ID of the Azure App. Required when use*managed*identity is false.
+	ClientId pulumi.StringPtrInput
 	// Tags to filter delegates for connection.
 	DelegateSelectors pulumi.StringArrayInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// Boolean value to indicate if purge is enabled.
+	EnablePurge pulumi.BoolPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Specifies whether or not is the default value.
 	IsDefault pulumi.BoolPtrInput
+	// Client Id of the ManagedIdentity resource. Required when azure*managed*identity_type is UserAssignedManagedIdentity.
+	ManagedClientId pulumi.StringPtrInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// The Harness text secret with the Azure authentication key as its value.
-	SecretKey pulumi.StringInput
+	// The Harness text secret with the Azure authentication key as its value. Required when use*managed*identity is false.
+	SecretKey pulumi.StringPtrInput
 	// Azure subscription ID.
 	Subscription pulumi.StringInput
 	// Tags to associate with the resource.
 	Tags pulumi.StringArrayInput
-	// The Azure Active Directory (Azure AD) directory ID where you created your application.
-	TenantId pulumi.StringInput
+	// The Azure Active Directory (Azure AD) directory ID where you created your application. Required when use*managed*identity is false.
+	TenantId pulumi.StringPtrInput
+	// Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+	UseManagedIdentity pulumi.BoolPtrInput
 	// Name of the vault.
 	VaultName pulumi.StringInput
 }
@@ -374,9 +488,14 @@ func (o AzureKeyVaultConnectorOutput) AzureEnvironmentType() pulumi.StringOutput
 	return o.ApplyT(func(v *AzureKeyVaultConnector) pulumi.StringOutput { return v.AzureEnvironmentType }).(pulumi.StringOutput)
 }
 
-// Application ID of the Azure App.
-func (o AzureKeyVaultConnectorOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v *AzureKeyVaultConnector) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
+// Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity. Required when use*managed*identity is true.
+func (o AzureKeyVaultConnectorOutput) AzureManagedIdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureKeyVaultConnector) pulumi.StringPtrOutput { return v.AzureManagedIdentityType }).(pulumi.StringPtrOutput)
+}
+
+// Application ID of the Azure App. Required when use*managed*identity is false.
+func (o AzureKeyVaultConnectorOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureKeyVaultConnector) pulumi.StringPtrOutput { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
 // Tags to filter delegates for connection.
@@ -389,6 +508,11 @@ func (o AzureKeyVaultConnectorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureKeyVaultConnector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Boolean value to indicate if purge is enabled.
+func (o AzureKeyVaultConnectorOutput) EnablePurge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AzureKeyVaultConnector) pulumi.BoolPtrOutput { return v.EnablePurge }).(pulumi.BoolPtrOutput)
+}
+
 // Unique identifier of the resource.
 func (o AzureKeyVaultConnectorOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureKeyVaultConnector) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
@@ -397,6 +521,11 @@ func (o AzureKeyVaultConnectorOutput) Identifier() pulumi.StringOutput {
 // Specifies whether or not is the default value.
 func (o AzureKeyVaultConnectorOutput) IsDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AzureKeyVaultConnector) pulumi.BoolPtrOutput { return v.IsDefault }).(pulumi.BoolPtrOutput)
+}
+
+// Client Id of the ManagedIdentity resource. Required when azure*managed*identity_type is UserAssignedManagedIdentity.
+func (o AzureKeyVaultConnectorOutput) ManagedClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureKeyVaultConnector) pulumi.StringPtrOutput { return v.ManagedClientId }).(pulumi.StringPtrOutput)
 }
 
 // Name of the resource.
@@ -414,9 +543,9 @@ func (o AzureKeyVaultConnectorOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureKeyVaultConnector) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// The Harness text secret with the Azure authentication key as its value.
-func (o AzureKeyVaultConnectorOutput) SecretKey() pulumi.StringOutput {
-	return o.ApplyT(func(v *AzureKeyVaultConnector) pulumi.StringOutput { return v.SecretKey }).(pulumi.StringOutput)
+// The Harness text secret with the Azure authentication key as its value. Required when use*managed*identity is false.
+func (o AzureKeyVaultConnectorOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureKeyVaultConnector) pulumi.StringPtrOutput { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
 // Azure subscription ID.
@@ -429,9 +558,14 @@ func (o AzureKeyVaultConnectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AzureKeyVaultConnector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// The Azure Active Directory (Azure AD) directory ID where you created your application.
-func (o AzureKeyVaultConnectorOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v *AzureKeyVaultConnector) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
+// The Azure Active Directory (Azure AD) directory ID where you created your application. Required when use*managed*identity is false.
+func (o AzureKeyVaultConnectorOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureKeyVaultConnector) pulumi.StringPtrOutput { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+// Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+func (o AzureKeyVaultConnectorOutput) UseManagedIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AzureKeyVaultConnector) pulumi.BoolPtrOutput { return v.UseManagedIdentity }).(pulumi.BoolPtrOutput)
 }
 
 // Name of the vault.

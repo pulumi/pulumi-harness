@@ -32,14 +32,14 @@ public final class RoleAssignmentsPrincipalArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Scope level.
+     * Scope level. Valid values are &#39;account&#39;, &#39;organization&#39;, or &#39;project&#39;.
      * 
      */
     @Import(name="scopeLevel")
     private @Nullable Output<String> scopeLevel;
 
     /**
-     * @return Scope level.
+     * @return Scope level. Valid values are &#39;account&#39;, &#39;organization&#39;, or &#39;project&#39;.
      * 
      */
     public Optional<Output<String>> scopeLevel() {
@@ -109,7 +109,7 @@ public final class RoleAssignmentsPrincipalArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param scopeLevel Scope level.
+         * @param scopeLevel Scope level. Valid values are &#39;account&#39;, &#39;organization&#39;, or &#39;project&#39;.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class RoleAssignmentsPrincipalArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param scopeLevel Scope level.
+         * @param scopeLevel Scope level. Valid values are &#39;account&#39;, &#39;organization&#39;, or &#39;project&#39;.
          * 
          * @return builder
          * 

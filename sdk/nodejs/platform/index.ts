@@ -560,6 +560,16 @@ export const getHelmConnector: typeof import("./getHelmConnector").getHelmConnec
 export const getHelmConnectorOutput: typeof import("./getHelmConnector").getHelmConnectorOutput = null as any;
 utilities.lazyLoad(exports, ["getHelmConnector","getHelmConnectorOutput"], () => require("./getHelmConnector"));
 
+export { GetIacmAnsibleInventoryArgs, GetIacmAnsibleInventoryResult, GetIacmAnsibleInventoryOutputArgs } from "./getIacmAnsibleInventory";
+export const getIacmAnsibleInventory: typeof import("./getIacmAnsibleInventory").getIacmAnsibleInventory = null as any;
+export const getIacmAnsibleInventoryOutput: typeof import("./getIacmAnsibleInventory").getIacmAnsibleInventoryOutput = null as any;
+utilities.lazyLoad(exports, ["getIacmAnsibleInventory","getIacmAnsibleInventoryOutput"], () => require("./getIacmAnsibleInventory"));
+
+export { GetIacmAnsiblePlaybookArgs, GetIacmAnsiblePlaybookResult, GetIacmAnsiblePlaybookOutputArgs } from "./getIacmAnsiblePlaybook";
+export const getIacmAnsiblePlaybook: typeof import("./getIacmAnsiblePlaybook").getIacmAnsiblePlaybook = null as any;
+export const getIacmAnsiblePlaybookOutput: typeof import("./getIacmAnsiblePlaybook").getIacmAnsiblePlaybookOutput = null as any;
+utilities.lazyLoad(exports, ["getIacmAnsiblePlaybook","getIacmAnsiblePlaybookOutput"], () => require("./getIacmAnsiblePlaybook"));
+
 export { GetIacmDefaultPipelineArgs, GetIacmDefaultPipelineResult, GetIacmDefaultPipelineOutputArgs } from "./getIacmDefaultPipeline";
 export const getIacmDefaultPipeline: typeof import("./getIacmDefaultPipeline").getIacmDefaultPipeline = null as any;
 export const getIacmDefaultPipelineOutput: typeof import("./getIacmDefaultPipeline").getIacmDefaultPipelineOutput = null as any;
@@ -999,6 +1009,16 @@ export { HelmConnectorArgs, HelmConnectorState } from "./helmConnector";
 export type HelmConnector = import("./helmConnector").HelmConnector;
 export const HelmConnector: typeof import("./helmConnector").HelmConnector = null as any;
 utilities.lazyLoad(exports, ["HelmConnector"], () => require("./helmConnector"));
+
+export { IacmAnsibleInventoryArgs, IacmAnsibleInventoryState } from "./iacmAnsibleInventory";
+export type IacmAnsibleInventory = import("./iacmAnsibleInventory").IacmAnsibleInventory;
+export const IacmAnsibleInventory: typeof import("./iacmAnsibleInventory").IacmAnsibleInventory = null as any;
+utilities.lazyLoad(exports, ["IacmAnsibleInventory"], () => require("./iacmAnsibleInventory"));
+
+export { IacmAnsiblePlaybookArgs, IacmAnsiblePlaybookState } from "./iacmAnsiblePlaybook";
+export type IacmAnsiblePlaybook = import("./iacmAnsiblePlaybook").IacmAnsiblePlaybook;
+export const IacmAnsiblePlaybook: typeof import("./iacmAnsiblePlaybook").IacmAnsiblePlaybook = null as any;
+utilities.lazyLoad(exports, ["IacmAnsiblePlaybook"], () => require("./iacmAnsiblePlaybook"));
 
 export { IacmDefaultPipelineArgs, IacmDefaultPipelineState } from "./iacmDefaultPipeline";
 export type IacmDefaultPipeline = import("./iacmDefaultPipeline").IacmDefaultPipeline;
@@ -1454,6 +1474,10 @@ const _module = {
                 return new HarRegistry(name, <any>undefined, { urn })
             case "harness:platform/helmConnector:HelmConnector":
                 return new HelmConnector(name, <any>undefined, { urn })
+            case "harness:platform/iacmAnsibleInventory:IacmAnsibleInventory":
+                return new IacmAnsibleInventory(name, <any>undefined, { urn })
+            case "harness:platform/iacmAnsiblePlaybook:IacmAnsiblePlaybook":
+                return new IacmAnsiblePlaybook(name, <any>undefined, { urn })
             case "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline":
                 return new IacmDefaultPipeline(name, <any>undefined, { urn })
             case "harness:platform/idpCatalogEntity:IdpCatalogEntity":
@@ -1651,6 +1675,8 @@ pulumi.runtime.registerResourceModule("harness", "platform/gitopsFilters", _modu
 pulumi.runtime.registerResourceModule("harness", "platform/gitxWebhook", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/harRegistry", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/helmConnector", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/iacmAnsibleInventory", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/iacmAnsiblePlaybook", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/iacmDefaultPipeline", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/idpCatalogEntity", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/idpEnvironment", _module)

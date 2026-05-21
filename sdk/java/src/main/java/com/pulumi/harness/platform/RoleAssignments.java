@@ -11,6 +11,7 @@ import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.RoleAssignmentsArgs;
 import com.pulumi.harness.platform.inputs.RoleAssignmentsState;
 import com.pulumi.harness.platform.outputs.RoleAssignmentsPrincipal;
+import com.pulumi.harness.platform.outputs.RoleAssignmentsRoleReference;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -157,6 +158,20 @@ public class RoleAssignments extends com.pulumi.resources.CustomResource {
     public Output<String> roleIdentifier() {
         return this.roleIdentifier;
     }
+    /**
+     * Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+     * 
+     */
+    @Export(name="roleReference", refs={RoleAssignmentsRoleReference.class}, tree="[0]")
+    private Output<RoleAssignmentsRoleReference> roleReference;
+
+    /**
+     * @return Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+     * 
+     */
+    public Output<RoleAssignmentsRoleReference> roleReference() {
+        return this.roleReference;
+    }
 
     /**
      *
@@ -170,7 +185,7 @@ public class RoleAssignments extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RoleAssignments(java.lang.String name, RoleAssignmentsArgs args) {
+    public RoleAssignments(java.lang.String name, @Nullable RoleAssignmentsArgs args) {
         this(name, args, null);
     }
     /**
@@ -179,7 +194,7 @@ public class RoleAssignments extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RoleAssignments(java.lang.String name, RoleAssignmentsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public RoleAssignments(java.lang.String name, @Nullable RoleAssignmentsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("harness:platform/roleAssignments:RoleAssignments", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -187,7 +202,7 @@ public class RoleAssignments extends com.pulumi.resources.CustomResource {
         super("harness:platform/roleAssignments:RoleAssignments", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static RoleAssignmentsArgs makeArgs(RoleAssignmentsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static RoleAssignmentsArgs makeArgs(@Nullable RoleAssignmentsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

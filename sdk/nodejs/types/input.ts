@@ -5655,6 +5655,61 @@ export namespace cluster {
     }
 }
 
+export namespace fmeEnvironment {
+    export interface FmeEnvironmentChangePermissions {
+        /**
+         * Whether kill operations are allowed in this environment.
+         */
+        allowKills?: pulumi.Input<boolean | undefined>;
+        /**
+         * Users, groups, or API keys that can skip the approval requirement.
+         */
+        approvalSkippableBies?: pulumi.Input<pulumi.Input<inputs.fmeEnvironment.FmeEnvironmentChangePermissionsApprovalSkippableBy>[] | undefined>;
+        /**
+         * Users, groups, or API keys that can approve changes.
+         */
+        approvers?: pulumi.Input<pulumi.Input<inputs.fmeEnvironment.FmeEnvironmentChangePermissionsApprover>[] | undefined>;
+        /**
+         * Whether approvals are required before changes take effect.
+         */
+        areApprovalsRequired?: pulumi.Input<boolean | undefined>;
+        /**
+         * Whether only specific users/groups/API keys can approve changes.
+         */
+        areApproversRestricted?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface FmeEnvironmentChangePermissionsApprovalSkippableBy {
+        /**
+         * Identifier of the user, group, or API key.
+         */
+        id: pulumi.Input<string>;
+        /**
+         * Display name (resolved by the API; may differ from the value provided at creation).
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * Entity type: `user`, `group`, or `apiKey` (a Harness service account).
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface FmeEnvironmentChangePermissionsApprover {
+        /**
+         * Identifier of the user, group, or API key.
+         */
+        id: pulumi.Input<string>;
+        /**
+         * Display name (resolved by the API; may differ from the value provided at creation).
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * Entity type: `user`, `group`, or `apiKey` (a Harness service account).
+         */
+        type: pulumi.Input<string>;
+    }
+}
+
 export namespace platform {
     export interface AppDynamicsConnectorApiToken {
         /**
@@ -7421,6 +7476,10 @@ export namespace platform {
          */
         auths?: inputs.platform.GetHarRegistryConfigAuth[];
         /**
+         * Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+         */
+        firewallMode?: string;
+        /**
          * Upstream source
          */
         source?: string;
@@ -7447,6 +7506,10 @@ export namespace platform {
          * Authentication configuration for UPSTREAM registry type
          */
         auths?: pulumi.Input<pulumi.Input<inputs.platform.GetHarRegistryConfigAuthArgs>[] | undefined>;
+        /**
+         * Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+         */
+        firewallMode?: pulumi.Input<string | undefined>;
         /**
          * Upstream source
          */
@@ -35904,7 +35967,7 @@ export namespace platform {
          */
         applicationsSync?: pulumi.Input<string | undefined>;
         /**
-         * Label selector used to narrow the scope of targeted clusters.
+         * If true, prevents an Application's child resources from being deleted when the parent Application is deleted.
          */
         preserveResourcesOnDeletion?: pulumi.Input<boolean | undefined>;
     }
@@ -36349,6 +36412,10 @@ export namespace platform {
          */
         auths?: pulumi.Input<pulumi.Input<inputs.platform.HarRegistryConfigAuth>[] | undefined>;
         /**
+         * Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+         */
+        firewallMode?: pulumi.Input<string | undefined>;
+        /**
          * Upstream source
          */
         source?: pulumi.Input<string | undefined>;
@@ -36403,6 +36470,239 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IacmAnsibleInventoryDynamicGroup {
+        /**
+         * Configuration for the dynamic group.
+         */
+        configuration?: pulumi.Input<inputs.platform.IacmAnsibleInventoryDynamicGroupConfiguration | undefined>;
+        /**
+         * Connector identifier used by the dynamic group.
+         */
+        connectorIdentifier: pulumi.Input<string>;
+        /**
+         * Connector type (e.g. workspace, aws, gcp, azure, vault).
+         */
+        connectorType: pulumi.Input<string>;
+        /**
+         * Dynamic variables for the dynamic group.
+         */
+        dynamicVars?: pulumi.Input<pulumi.Input<inputs.platform.IacmAnsibleInventoryDynamicGroupDynamicVar>[] | undefined>;
+        /**
+         * Identifier of the dynamic group.
+         */
+        identifier: pulumi.Input<string>;
+        /**
+         * Name of the dynamic group.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Variables for the dynamic group.
+         */
+        vars?: pulumi.Input<pulumi.Input<inputs.platform.IacmAnsibleInventoryDynamicGroupVar>[] | undefined>;
+    }
+
+    export interface IacmAnsibleInventoryDynamicGroupConfiguration {
+        /**
+         * Host address attribute.
+         */
+        hostAddressAttribute?: pulumi.Input<string | undefined>;
+        /**
+         * Resource type to select.
+         */
+        resourceType?: pulumi.Input<string | undefined>;
+        /**
+         * Resource selectors.
+         */
+        selectors?: pulumi.Input<pulumi.Input<inputs.platform.IacmAnsibleInventoryDynamicGroupConfigurationSelector>[] | undefined>;
+    }
+
+    export interface IacmAnsibleInventoryDynamicGroupConfigurationSelector {
+        /**
+         * Attribute to filter on.
+         */
+        attribute: pulumi.Input<string>;
+        /**
+         * Operator for the filter.
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * Value for the filter.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface IacmAnsibleInventoryDynamicGroupDynamicVar {
+        /**
+         * Filename to store the value in (used for file-backed variables).
+         */
+        fileName?: pulumi.Input<string | undefined>;
+        /**
+         * Key is the identifier for the variable.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Value of the variable. For secret value types this must be a Harness secret reference.
+         */
+        value: pulumi.Input<string>;
+        /**
+         * Value type. One of: string, secret.
+         */
+        valueType: pulumi.Input<string>;
+    }
+
+    export interface IacmAnsibleInventoryDynamicGroupVar {
+        /**
+         * Filename to store the value in (used for file-backed variables).
+         */
+        fileName?: pulumi.Input<string | undefined>;
+        /**
+         * Key is the identifier for the variable.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Value of the variable. For secret value types this must be a Harness secret reference.
+         */
+        value: pulumi.Input<string>;
+        /**
+         * Value type. One of: string, secret.
+         */
+        valueType: pulumi.Input<string>;
+    }
+
+    export interface IacmAnsibleInventoryGroup {
+        /**
+         * List of hosts in the group.
+         */
+        hosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Identifier of the group.
+         */
+        identifier: pulumi.Input<string>;
+        /**
+         * Name of the group.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Variables for the group.
+         */
+        vars?: pulumi.Input<pulumi.Input<inputs.platform.IacmAnsibleInventoryGroupVar>[] | undefined>;
+    }
+
+    export interface IacmAnsibleInventoryGroupVar {
+        /**
+         * Filename to store the value in (used for file-backed variables).
+         */
+        fileName?: pulumi.Input<string | undefined>;
+        /**
+         * Key is the identifier for the variable.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Value of the variable. For secret value types this must be a Harness secret reference.
+         */
+        value: pulumi.Input<string>;
+        /**
+         * Value type. One of: string, secret.
+         */
+        valueType: pulumi.Input<string>;
+    }
+
+    export interface IacmAnsibleInventoryPluginOptions {
+        /**
+         * Inline plugin inventory YAML content (when sourceType is inline).
+         */
+        inlineYaml?: pulumi.Input<string | undefined>;
+        /**
+         * Provider connector identifier for plugin inventory execution.
+         */
+        providerConnectorIdentifier?: pulumi.Input<string | undefined>;
+        /**
+         * Provider connector type.
+         */
+        providerConnectorType?: pulumi.Input<string | undefined>;
+        /**
+         * Git repository name (when sourceType is git).
+         */
+        repository?: pulumi.Input<string | undefined>;
+        /**
+         * Git branch.
+         */
+        repositoryBranch?: pulumi.Input<string | undefined>;
+        /**
+         * Git commit or tag.
+         */
+        repositoryCommit?: pulumi.Input<string | undefined>;
+        /**
+         * Repository connector reference (when sourceType is git).
+         */
+        repositoryConnector?: pulumi.Input<string | undefined>;
+        /**
+         * Path within the repository to the plugin inventory YAML.
+         */
+        repositoryPath?: pulumi.Input<string | undefined>;
+        /**
+         * Source type for plugin inventory. One of: git, inline.
+         */
+        sourceType?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IacmAnsibleInventoryVar {
+        /**
+         * Filename to store the value in (used for file-backed variables).
+         */
+        fileName?: pulumi.Input<string | undefined>;
+        /**
+         * Key is the identifier for the variable.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Value of the variable. For secret value types this must be a Harness secret reference.
+         */
+        value: pulumi.Input<string>;
+        /**
+         * Value type. One of: string, secret.
+         */
+        valueType: pulumi.Input<string>;
+    }
+
+    export interface IacmAnsiblePlaybookEnvVar {
+        /**
+         * Filename to store the value in (used for file-backed variables).
+         */
+        fileName?: pulumi.Input<string | undefined>;
+        /**
+         * Key is the identifier for the variable.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Value of the variable. For secret value types this must be a Harness secret reference.
+         */
+        value: pulumi.Input<string>;
+        /**
+         * Value type. One of: string, secret.
+         */
+        valueType: pulumi.Input<string>;
+    }
+
+    export interface IacmAnsiblePlaybookVar {
+        /**
+         * Filename to store the value in (used for file-backed variables).
+         */
+        fileName?: pulumi.Input<string | undefined>;
+        /**
+         * Key is the identifier for the variable.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Value of the variable. For secret value types this must be a Harness secret reference.
+         */
+        value: pulumi.Input<string>;
+        /**
+         * Value type. One of: string, secret.
+         */
+        valueType: pulumi.Input<string>;
     }
 
     export interface IdpCatalogEntityGitDetails {
@@ -37668,13 +37968,24 @@ export namespace platform {
          */
         identifier?: pulumi.Input<string | undefined>;
         /**
-         * Scope level.
+         * Scope level. Valid values are 'account', 'organization', or 'project'.
          */
         scopeLevel?: pulumi.Input<string | undefined>;
         /**
          * Type.
          */
         type: pulumi.Input<string>;
+    }
+
+    export interface RoleAssignmentsRoleReference {
+        /**
+         * Identifier.
+         */
+        identifier?: pulumi.Input<string | undefined>;
+        /**
+         * Scope level. Valid values are 'account', 'organization', or 'project'.
+         */
+        scopeLevel?: pulumi.Input<string | undefined>;
     }
 
     export interface SecretFileAdditionalMetadata {

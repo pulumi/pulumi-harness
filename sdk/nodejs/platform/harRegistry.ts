@@ -133,6 +133,10 @@ export class HarRegistry extends pulumi.CustomResource {
      */
     declare public readonly identifier: pulumi.Output<string>;
     /**
+     * Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
+     */
+    declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * Type of package (DOCKER, HELM, MAVEN, etc.)
      */
     declare public readonly packageType: pulumi.Output<string>;
@@ -168,6 +172,7 @@ export class HarRegistry extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["description"] = state?.description;
             resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["metadata"] = state?.metadata;
             resourceInputs["packageType"] = state?.packageType;
             resourceInputs["parentRef"] = state?.parentRef;
             resourceInputs["spaceRef"] = state?.spaceRef;
@@ -191,6 +196,7 @@ export class HarRegistry extends pulumi.CustomResource {
             resourceInputs["configs"] = args?.configs;
             resourceInputs["description"] = args?.description;
             resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["metadata"] = args?.metadata;
             resourceInputs["packageType"] = args?.packageType;
             resourceInputs["parentRef"] = args?.parentRef;
             resourceInputs["spaceRef"] = args?.spaceRef;
@@ -230,6 +236,10 @@ export interface HarRegistryState {
      * Unique identifier of the registry
      */
     identifier?: pulumi.Input<string | undefined>;
+    /**
+     * Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Type of package (DOCKER, HELM, MAVEN, etc.)
      */
@@ -272,6 +282,10 @@ export interface HarRegistryArgs {
      * Unique identifier of the registry
      */
     identifier: pulumi.Input<string>;
+    /**
+     * Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Type of package (DOCKER, HELM, MAVEN, etc.)
      */

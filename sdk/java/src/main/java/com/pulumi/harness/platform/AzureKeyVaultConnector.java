@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Manual Credentials
+ * 
  * <pre>
  * {@code
  * package generated_program;
@@ -43,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AzureKeyVaultConnector("example", AzureKeyVaultConnectorArgs.builder()
+ *         var manual = new AzureKeyVaultConnector("manual", AzureKeyVaultConnectorArgs.builder()
  *             .identifier("identifier")
  *             .name("name")
  *             .description("example")
@@ -54,6 +56,93 @@ import javax.annotation.Nullable;
  *             .vaultName("vault_name")
  *             .subscription("subscription")
  *             .isDefault(false)
+ *             .azureEnvironmentType("AZURE")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### System-Assigned Managed Identity
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.AzureKeyVaultConnector;
+ * import com.pulumi.harness.platform.AzureKeyVaultConnectorArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var systemMsi = new AzureKeyVaultConnector("systemMsi", AzureKeyVaultConnectorArgs.builder()
+ *             .identifier("system_msi_example")
+ *             .name("system_msi_example")
+ *             .description("Azure Key Vault using system-assigned managed identity")
+ *             .tags("foo:bar")
+ *             .vaultName("vault_name")
+ *             .subscription("subscription")
+ *             .isDefault(false)
+ *             .useManagedIdentity(true)
+ *             .azureManagedIdentityType("SystemAssignedManagedIdentity")
+ *             .delegateSelectors("harness-delegate")
+ *             .azureEnvironmentType("AZURE")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### User-Assigned Managed Identity
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.AzureKeyVaultConnector;
+ * import com.pulumi.harness.platform.AzureKeyVaultConnectorArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var userMsi = new AzureKeyVaultConnector("userMsi", AzureKeyVaultConnectorArgs.builder()
+ *             .identifier("user_msi_example")
+ *             .name("user_msi_example")
+ *             .description("Azure Key Vault using user-assigned managed identity")
+ *             .tags("foo:bar")
+ *             .vaultName("vault_name")
+ *             .subscription("subscription")
+ *             .isDefault(false)
+ *             .useManagedIdentity(true)
+ *             .azureManagedIdentityType("UserAssignedManagedIdentity")
+ *             .managedClientId("client_id_of_managed_identity")
+ *             .delegateSelectors("harness-delegate")
  *             .azureEnvironmentType("AZURE")
  *             .build());
  * 
@@ -102,18 +191,32 @@ public class AzureKeyVaultConnector extends com.pulumi.resources.CustomResource 
         return this.azureEnvironmentType;
     }
     /**
-     * Application ID of the Azure App.
+     * Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity. Required when use*managed*identity is true.
+     * 
+     */
+    @Export(name="azureManagedIdentityType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> azureManagedIdentityType;
+
+    /**
+     * @return Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity. Required when use*managed*identity is true.
+     * 
+     */
+    public Output<Optional<String>> azureManagedIdentityType() {
+        return Codegen.optional(this.azureManagedIdentityType);
+    }
+    /**
+     * Application ID of the Azure App. Required when use*managed*identity is false.
      * 
      */
     @Export(name="clientId", refs={String.class}, tree="[0]")
-    private Output<String> clientId;
+    private Output</* @Nullable */ String> clientId;
 
     /**
-     * @return Application ID of the Azure App.
+     * @return Application ID of the Azure App. Required when use*managed*identity is false.
      * 
      */
-    public Output<String> clientId() {
-        return this.clientId;
+    public Output<Optional<String>> clientId() {
+        return Codegen.optional(this.clientId);
     }
     /**
      * Tags to filter delegates for connection.
@@ -144,6 +247,20 @@ public class AzureKeyVaultConnector extends com.pulumi.resources.CustomResource 
         return Codegen.optional(this.description);
     }
     /**
+     * Boolean value to indicate if purge is enabled.
+     * 
+     */
+    @Export(name="enablePurge", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enablePurge;
+
+    /**
+     * @return Boolean value to indicate if purge is enabled.
+     * 
+     */
+    public Output<Optional<Boolean>> enablePurge() {
+        return Codegen.optional(this.enablePurge);
+    }
+    /**
      * Unique identifier of the resource.
      * 
      */
@@ -170,6 +287,20 @@ public class AzureKeyVaultConnector extends com.pulumi.resources.CustomResource 
      */
     public Output<Optional<Boolean>> isDefault() {
         return Codegen.optional(this.isDefault);
+    }
+    /**
+     * Client Id of the ManagedIdentity resource. Required when azure*managed*identity_type is UserAssignedManagedIdentity.
+     * 
+     */
+    @Export(name="managedClientId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> managedClientId;
+
+    /**
+     * @return Client Id of the ManagedIdentity resource. Required when azure*managed*identity_type is UserAssignedManagedIdentity.
+     * 
+     */
+    public Output<Optional<String>> managedClientId() {
+        return Codegen.optional(this.managedClientId);
     }
     /**
      * Name of the resource.
@@ -214,18 +345,18 @@ public class AzureKeyVaultConnector extends com.pulumi.resources.CustomResource 
         return Codegen.optional(this.projectId);
     }
     /**
-     * The Harness text secret with the Azure authentication key as its value.
+     * The Harness text secret with the Azure authentication key as its value. Required when use*managed*identity is false.
      * 
      */
     @Export(name="secretKey", refs={String.class}, tree="[0]")
-    private Output<String> secretKey;
+    private Output</* @Nullable */ String> secretKey;
 
     /**
-     * @return The Harness text secret with the Azure authentication key as its value.
+     * @return The Harness text secret with the Azure authentication key as its value. Required when use*managed*identity is false.
      * 
      */
-    public Output<String> secretKey() {
-        return this.secretKey;
+    public Output<Optional<String>> secretKey() {
+        return Codegen.optional(this.secretKey);
     }
     /**
      * Azure subscription ID.
@@ -256,18 +387,32 @@ public class AzureKeyVaultConnector extends com.pulumi.resources.CustomResource 
         return Codegen.optional(this.tags);
     }
     /**
-     * The Azure Active Directory (Azure AD) directory ID where you created your application.
+     * The Azure Active Directory (Azure AD) directory ID where you created your application. Required when use*managed*identity is false.
      * 
      */
     @Export(name="tenantId", refs={String.class}, tree="[0]")
-    private Output<String> tenantId;
+    private Output</* @Nullable */ String> tenantId;
 
     /**
-     * @return The Azure Active Directory (Azure AD) directory ID where you created your application.
+     * @return The Azure Active Directory (Azure AD) directory ID where you created your application. Required when use*managed*identity is false.
      * 
      */
-    public Output<String> tenantId() {
-        return this.tenantId;
+    public Output<Optional<String>> tenantId() {
+        return Codegen.optional(this.tenantId);
+    }
+    /**
+     * Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+     * 
+     */
+    @Export(name="useManagedIdentity", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> useManagedIdentity;
+
+    /**
+     * @return Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+     * 
+     */
+    public Output<Optional<Boolean>> useManagedIdentity() {
+        return Codegen.optional(this.useManagedIdentity);
     }
     /**
      * Name of the vault.

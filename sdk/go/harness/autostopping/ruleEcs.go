@@ -39,16 +39,6 @@ import (
 //					Region:    pulumi.String("us-east-1"),
 //					TaskCount: pulumi.Int(1),
 //				},
-//				Tcp: []map[string]interface{}{
-//					map[string]interface{}{
-//						"proxyId": "proxy_id",
-//						"forwardRule": []map[string]interface{}{
-//							map[string]interface{}{
-//								"port": 2233,
-//							},
-//						},
-//					},
-//				},
 //				Depends: autostopping.RuleEcsDependArray{
 //					&autostopping.RuleEcsDependArgs{
 //						RuleId:     pulumi.Int(24576),

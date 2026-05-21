@@ -25,6 +25,11 @@ public final class HarRegistryConfig {
      */
     private @Nullable List<HarRegistryConfigAuth> auths;
     /**
+     * @return Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+     * 
+     */
+    private @Nullable String firewallMode;
+    /**
      * @return Upstream source
      * 
      */
@@ -59,6 +64,13 @@ public final class HarRegistryConfig {
      */
     public List<HarRegistryConfigAuth> auths() {
         return this.auths == null ? List.of() : this.auths;
+    }
+    /**
+     * @return Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+     * 
+     */
+    public Optional<String> firewallMode() {
+        return Optional.ofNullable(this.firewallMode);
     }
     /**
      * @return Upstream source
@@ -100,6 +112,7 @@ public final class HarRegistryConfig {
     public static final class Builder {
         private @Nullable String authType;
         private @Nullable List<HarRegistryConfigAuth> auths;
+        private @Nullable String firewallMode;
         private @Nullable String source;
         private String type;
         private @Nullable List<String> upstreamProxies;
@@ -109,6 +122,7 @@ public final class HarRegistryConfig {
     	      Objects.requireNonNull(defaults);
     	      this.authType = defaults.authType;
     	      this.auths = defaults.auths;
+    	      this.firewallMode = defaults.firewallMode;
     	      this.source = defaults.source;
     	      this.type = defaults.type;
     	      this.upstreamProxies = defaults.upstreamProxies;
@@ -129,6 +143,12 @@ public final class HarRegistryConfig {
         }
         public Builder auths(HarRegistryConfigAuth... auths) {
             return auths(List.of(auths));
+        }
+        @CustomType.Setter
+        public Builder firewallMode(@Nullable String firewallMode) {
+
+            this.firewallMode = firewallMode;
+            return this;
         }
         @CustomType.Setter
         public Builder source(@Nullable String source) {
@@ -163,6 +183,7 @@ public final class HarRegistryConfig {
             final var _resultValue = new HarRegistryConfig();
             _resultValue.authType = authType;
             _resultValue.auths = auths;
+            _resultValue.firewallMode = firewallMode;
             _resultValue.source = source;
             _resultValue.type = type;
             _resultValue.upstreamProxies = upstreamProxies;

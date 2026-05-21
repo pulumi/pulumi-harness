@@ -12,6 +12,7 @@ import com.pulumi.harness.autostopping.ScheduleArgs;
 import com.pulumi.harness.autostopping.inputs.ScheduleState;
 import com.pulumi.harness.autostopping.outputs.ScheduleRepeat;
 import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -64,6 +65,20 @@ public class Schedule extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+     * 
+     */
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> priority;
+
+    /**
+     * @return Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+     * 
+     */
+    public Output<Optional<Integer>> priority() {
+        return Codegen.optional(this.priority);
     }
     /**
      * For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific &#39;time_period&#39; is specified

@@ -29,6 +29,7 @@ export function getHarRegistry(args: GetHarRegistryArgs, opts?: pulumi.InvokeOpt
         "configs": args.configs,
         "description": args.description,
         "identifier": args.identifier,
+        "metadata": args.metadata,
         "packageType": args.packageType,
         "parentRef": args.parentRef,
         "spaceRef": args.spaceRef,
@@ -59,6 +60,10 @@ export interface GetHarRegistryArgs {
      * Unique identifier of the registry
      */
     identifier: string;
+    /**
+     * Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
+     */
+    metadata?: {[key: string]: string};
     /**
      * Type of package (DOCKER, HELM, MAVEN, etc.)
      */
@@ -106,6 +111,10 @@ export interface GetHarRegistryResult {
      */
     readonly identifier: string;
     /**
+     * Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
+     */
+    readonly metadata?: {[key: string]: string};
+    /**
      * Type of package (DOCKER, HELM, MAVEN, etc.)
      */
     readonly packageType?: string;
@@ -145,6 +154,7 @@ export function getHarRegistryOutput(args: GetHarRegistryOutputArgs, opts?: pulu
         "configs": args.configs,
         "description": args.description,
         "identifier": args.identifier,
+        "metadata": args.metadata,
         "packageType": args.packageType,
         "parentRef": args.parentRef,
         "spaceRef": args.spaceRef,
@@ -175,6 +185,10 @@ export interface GetHarRegistryOutputArgs {
      * Unique identifier of the registry
      */
     identifier: pulumi.Input<string>;
+    /**
+     * Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Type of package (DOCKER, HELM, MAVEN, etc.)
      */
