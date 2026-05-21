@@ -80,6 +80,10 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+        /// </summary>
+        public readonly int Priority;
+        /// <summary>
         /// For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
         /// </summary>
         public readonly ImmutableArray<Outputs.GetScheduleRepeatResult> Repeats;
@@ -110,6 +114,8 @@ namespace Pulumi.Harness.Autostopping
 
             string name,
 
+            int priority,
+
             ImmutableArray<Outputs.GetScheduleRepeatResult> repeats,
 
             ImmutableArray<double> rules,
@@ -124,6 +130,7 @@ namespace Pulumi.Harness.Autostopping
             Id = id;
             Identifier = identifier;
             Name = name;
+            Priority = priority;
             Repeats = repeats;
             Rules = rules;
             ScheduleType = scheduleType;

@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetRoleAssignmentsPrincipal;
+import com.pulumi.harness.platform.outputs.GetRoleAssignmentsRoleReference;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -60,6 +61,11 @@ public final class GetRoleAssignmentsResult {
      * 
      */
     private String roleIdentifier;
+    /**
+     * @return Role reference.
+     * 
+     */
+    private List<GetRoleAssignmentsRoleReference> roleReferences;
 
     private GetRoleAssignmentsResult() {}
     /**
@@ -125,6 +131,13 @@ public final class GetRoleAssignmentsResult {
     public String roleIdentifier() {
         return this.roleIdentifier;
     }
+    /**
+     * @return Role reference.
+     * 
+     */
+    public List<GetRoleAssignmentsRoleReference> roleReferences() {
+        return this.roleReferences;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -144,6 +157,7 @@ public final class GetRoleAssignmentsResult {
         private @Nullable String projectId;
         private String resourceGroupIdentifier;
         private String roleIdentifier;
+        private List<GetRoleAssignmentsRoleReference> roleReferences;
         public Builder() {}
         public Builder(GetRoleAssignmentsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -156,6 +170,7 @@ public final class GetRoleAssignmentsResult {
     	      this.projectId = defaults.projectId;
     	      this.resourceGroupIdentifier = defaults.resourceGroupIdentifier;
     	      this.roleIdentifier = defaults.roleIdentifier;
+    	      this.roleReferences = defaults.roleReferences;
         }
 
         @CustomType.Setter
@@ -229,6 +244,17 @@ public final class GetRoleAssignmentsResult {
             this.roleIdentifier = roleIdentifier;
             return this;
         }
+        @CustomType.Setter
+        public Builder roleReferences(List<GetRoleAssignmentsRoleReference> roleReferences) {
+            if (roleReferences == null) {
+              throw new MissingRequiredPropertyException("GetRoleAssignmentsResult", "roleReferences");
+            }
+            this.roleReferences = roleReferences;
+            return this;
+        }
+        public Builder roleReferences(GetRoleAssignmentsRoleReference... roleReferences) {
+            return roleReferences(List.of(roleReferences));
+        }
         public GetRoleAssignmentsResult build() {
             final var _resultValue = new GetRoleAssignmentsResult();
             _resultValue.disabled = disabled;
@@ -240,6 +266,7 @@ public final class GetRoleAssignmentsResult {
             _resultValue.projectId = projectId;
             _resultValue.resourceGroupIdentifier = resourceGroupIdentifier;
             _resultValue.roleIdentifier = roleIdentifier;
+            _resultValue.roleReferences = roleReferences;
             return _resultValue;
         }
     }

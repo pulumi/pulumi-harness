@@ -64,6 +64,10 @@ export interface GetAzureKeyVaultConnectorResult {
      */
     readonly azureEnvironmentType: string;
     /**
+     * Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity.
+     */
+    readonly azureManagedIdentityType: string;
+    /**
      * Application ID of the Azure App.
      */
     readonly clientId: string;
@@ -76,6 +80,10 @@ export interface GetAzureKeyVaultConnectorResult {
      */
     readonly description: string;
     /**
+     * Boolean value to indicate if purge is enabled.
+     */
+    readonly enablePurge: boolean;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -87,6 +95,10 @@ export interface GetAzureKeyVaultConnectorResult {
      * Specifies whether or not is the default value.
      */
     readonly isDefault: boolean;
+    /**
+     * Client Id of the ManagedIdentity resource.
+     */
+    readonly managedClientId: string;
     /**
      * Name of the resource.
      */
@@ -115,6 +127,10 @@ export interface GetAzureKeyVaultConnectorResult {
      * The Azure Active Directory (AAD) directory ID where you created your application.
      */
     readonly tenantId: string;
+    /**
+     * Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+     */
+    readonly useManagedIdentity: boolean;
     /**
      * Name of the vault.
      */

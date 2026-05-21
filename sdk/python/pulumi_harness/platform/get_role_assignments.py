@@ -27,7 +27,7 @@ class GetRoleAssignmentsResult:
     """
     A collection of values returned by getRoleAssignments.
     """
-    def __init__(__self__, disabled=None, id=None, identifier=None, managed=None, org_id=None, principals=None, project_id=None, resource_group_identifier=None, role_identifier=None):
+    def __init__(__self__, disabled=None, id=None, identifier=None, managed=None, org_id=None, principals=None, project_id=None, resource_group_identifier=None, role_identifier=None, role_references=None):
         if disabled and not isinstance(disabled, bool):
             raise TypeError("Expected argument 'disabled' to be a bool")
         pulumi.set(__self__, "disabled", disabled)
@@ -55,6 +55,9 @@ class GetRoleAssignmentsResult:
         if role_identifier and not isinstance(role_identifier, str):
             raise TypeError("Expected argument 'role_identifier' to be a str")
         pulumi.set(__self__, "role_identifier", role_identifier)
+        if role_references and not isinstance(role_references, list):
+            raise TypeError("Expected argument 'role_references' to be a list")
+        pulumi.set(__self__, "role_references", role_references)
 
     @_builtins.property
     @pulumi.getter
@@ -128,6 +131,14 @@ class GetRoleAssignmentsResult:
         """
         return pulumi.get(self, "role_identifier")
 
+    @_builtins.property
+    @pulumi.getter(name="roleReferences")
+    def role_references(self) -> Sequence['outputs.GetRoleAssignmentsRoleReferenceResult']:
+        """
+        Role reference.
+        """
+        return pulumi.get(self, "role_references")
+
 
 class AwaitableGetRoleAssignmentsResult(GetRoleAssignmentsResult):
     # pylint: disable=using-constant-test
@@ -143,7 +154,8 @@ class AwaitableGetRoleAssignmentsResult(GetRoleAssignmentsResult):
             principals=self.principals,
             project_id=self.project_id,
             resource_group_identifier=self.resource_group_identifier,
-            role_identifier=self.role_identifier)
+            role_identifier=self.role_identifier,
+            role_references=self.role_references)
 
 
 def get_role_assignments(identifier: Optional[_builtins.str] = None,
@@ -185,7 +197,8 @@ def get_role_assignments(identifier: Optional[_builtins.str] = None,
         principals=pulumi.get(__ret__, 'principals'),
         project_id=pulumi.get(__ret__, 'project_id'),
         resource_group_identifier=pulumi.get(__ret__, 'resource_group_identifier'),
-        role_identifier=pulumi.get(__ret__, 'role_identifier'))
+        role_identifier=pulumi.get(__ret__, 'role_identifier'),
+        role_references=pulumi.get(__ret__, 'role_references'))
 def get_role_assignments_output(identifier: pulumi.Input[Optional[_builtins.str]] = None,
                                 org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -224,4 +237,5 @@ def get_role_assignments_output(identifier: pulumi.Input[Optional[_builtins.str]
         principals=pulumi.get(__response__, 'principals'),
         project_id=pulumi.get(__response__, 'project_id'),
         resource_group_identifier=pulumi.get(__response__, 'resource_group_identifier'),
-        role_identifier=pulumi.get(__response__, 'role_identifier')))
+        role_identifier=pulumi.get(__response__, 'role_identifier'),
+        role_references=pulumi.get(__response__, 'role_references')))

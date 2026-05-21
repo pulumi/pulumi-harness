@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.platform.inputs.HarRegistryConfigArgs;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -108,6 +109,21 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - {@literal @}. Keys are case-sensitive. Maximum 49 entries allowed.
+     * 
+     */
+    @Import(name="metadata")
+    private @Nullable Output<Map<String,String>> metadata;
+
+    /**
+     * @return Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - {@literal @}. Keys are case-sensitive. Maximum 49 entries allowed.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> metadata() {
+        return Optional.ofNullable(this.metadata);
+    }
+
+    /**
      * Type of package (DOCKER, HELM, MAVEN, etc.)
      * 
      */
@@ -176,6 +192,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         this.createdAt = $.createdAt;
         this.description = $.description;
         this.identifier = $.identifier;
+        this.metadata = $.metadata;
         this.packageType = $.packageType;
         this.parentRef = $.parentRef;
         this.spaceRef = $.spaceRef;
@@ -354,6 +371,27 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
+        }
+
+        /**
+         * @param metadata Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - {@literal @}. Keys are case-sensitive. Maximum 49 entries allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadata(@Nullable Output<Map<String,String>> metadata) {
+            $.metadata = metadata;
+            return this;
+        }
+
+        /**
+         * @param metadata Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - {@literal @}. Keys are case-sensitive. Maximum 49 entries allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadata(Map<String,String> metadata) {
+            return metadata(Output.of(metadata));
         }
 
         /**

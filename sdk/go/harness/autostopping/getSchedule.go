@@ -38,6 +38,8 @@ type LookupScheduleResult struct {
 	Identifier float64 `pulumi:"identifier"`
 	// Name of the schedule
 	Name string `pulumi:"name"`
+	// Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+	Priority int `pulumi:"priority"`
 	// For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
 	Repeats []GetScheduleRepeat `pulumi:"repeats"`
 	// ID of AutoStopping rules on which the schedule applies
@@ -102,6 +104,11 @@ func (o LookupScheduleResultOutput) Identifier() pulumi.Float64Output {
 // Name of the schedule
 func (o LookupScheduleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduleResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+func (o LookupScheduleResultOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupScheduleResult) int { return v.Priority }).(pulumi.IntOutput)
 }
 
 // For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified

@@ -53,6 +53,20 @@ if typing.TYPE_CHECKING:
     cluster = __cluster
     import pulumi_harness.config as __config
     config = __config
+    import pulumi_harness.fme as __fme
+    fme = __fme
+    import pulumi_harness.fmeenvironment as __fmeenvironment
+    fmeenvironment = __fmeenvironment
+    import pulumi_harness.fmefeatureflag as __fmefeatureflag
+    fmefeatureflag = __fmefeatureflag
+    import pulumi_harness.fmelargesegment as __fmelargesegment
+    fmelargesegment = __fmelargesegment
+    import pulumi_harness.fmerulebasedsegment as __fmerulebasedsegment
+    fmerulebasedsegment = __fmerulebasedsegment
+    import pulumi_harness.fmesegment as __fmesegment
+    fmesegment = __fmesegment
+    import pulumi_harness.fmetraffictype as __fmetraffictype
+    fmetraffictype = __fmetraffictype
     import pulumi_harness.governance as __governance
     governance = __governance
     import pulumi_harness.platform as __platform
@@ -65,6 +79,13 @@ else:
     cloudprovider = _utilities.lazy_import('pulumi_harness.cloudprovider')
     cluster = _utilities.lazy_import('pulumi_harness.cluster')
     config = _utilities.lazy_import('pulumi_harness.config')
+    fme = _utilities.lazy_import('pulumi_harness.fme')
+    fmeenvironment = _utilities.lazy_import('pulumi_harness.fmeenvironment')
+    fmefeatureflag = _utilities.lazy_import('pulumi_harness.fmefeatureflag')
+    fmelargesegment = _utilities.lazy_import('pulumi_harness.fmelargesegment')
+    fmerulebasedsegment = _utilities.lazy_import('pulumi_harness.fmerulebasedsegment')
+    fmesegment = _utilities.lazy_import('pulumi_harness.fmesegment')
+    fmetraffictype = _utilities.lazy_import('pulumi_harness.fmetraffictype')
     governance = _utilities.lazy_import('pulumi_harness.governance')
     platform = _utilities.lazy_import('pulumi_harness.platform')
     service = _utilities.lazy_import('pulumi_harness.service')
@@ -334,6 +355,118 @@ _utilities.register(
   "fqn": "pulumi_harness.cluster",
   "classes": {
    "harness:cluster/orchestratorConfig:OrchestratorConfig": "OrchestratorConfig"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "fme/apiKey",
+  "fqn": "pulumi_harness.fme",
+  "classes": {
+   "harness:fme/apiKey:ApiKey": "ApiKey"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "fme/flagSet",
+  "fqn": "pulumi_harness.fme",
+  "classes": {
+   "harness:fme/flagSet:FlagSet": "FlagSet"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "fmeEnvironment/fmeEnvironment",
+  "fqn": "pulumi_harness.fmeenvironment",
+  "classes": {
+   "harness:fmeEnvironment/fmeEnvironment:FmeEnvironment": "FmeEnvironment"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "fmeEnvironment/segmentKeys",
+  "fqn": "pulumi_harness.fmeenvironment",
+  "classes": {
+   "harness:fmeEnvironment/segmentKeys:SegmentKeys": "SegmentKeys"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "fmeFeatureFlag/definition",
+  "fqn": "pulumi_harness.fmefeatureflag",
+  "classes": {
+   "harness:fmeFeatureFlag/definition:Definition": "Definition"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "fmeFeatureFlag/fmeFeatureFlag",
+  "fqn": "pulumi_harness.fmefeatureflag",
+  "classes": {
+   "harness:fmeFeatureFlag/fmeFeatureFlag:FmeFeatureFlag": "FmeFeatureFlag"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "fmeLargeSegment/environmentAssociation",
+  "fqn": "pulumi_harness.fmelargesegment",
+  "classes": {
+   "harness:fmeLargeSegment/environmentAssociation:EnvironmentAssociation": "EnvironmentAssociation"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "fmeLargeSegment/fmeLargeSegment",
+  "fqn": "pulumi_harness.fmelargesegment",
+  "classes": {
+   "harness:fmeLargeSegment/fmeLargeSegment:FmeLargeSegment": "FmeLargeSegment"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "fmeRuleBasedSegment/environmentAssociation",
+  "fqn": "pulumi_harness.fmerulebasedsegment",
+  "classes": {
+   "harness:fmeRuleBasedSegment/environmentAssociation:EnvironmentAssociation": "EnvironmentAssociation"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "fmeRuleBasedSegment/fmeRuleBasedSegment",
+  "fqn": "pulumi_harness.fmerulebasedsegment",
+  "classes": {
+   "harness:fmeRuleBasedSegment/fmeRuleBasedSegment:FmeRuleBasedSegment": "FmeRuleBasedSegment"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "fmeSegment/environmentAssociation",
+  "fqn": "pulumi_harness.fmesegment",
+  "classes": {
+   "harness:fmeSegment/environmentAssociation:EnvironmentAssociation": "EnvironmentAssociation"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "fmeSegment/fmeSegment",
+  "fqn": "pulumi_harness.fmesegment",
+  "classes": {
+   "harness:fmeSegment/fmeSegment:FmeSegment": "FmeSegment"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "fmeTrafficType/attribute",
+  "fqn": "pulumi_harness.fmetraffictype",
+  "classes": {
+   "harness:fmeTrafficType/attribute:Attribute": "Attribute"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "fmeTrafficType/fmeTrafficType",
+  "fqn": "pulumi_harness.fmetraffictype",
+  "classes": {
+   "harness:fmeTrafficType/fmeTrafficType:FmeTrafficType": "FmeTrafficType"
   }
  },
  {
@@ -982,6 +1115,22 @@ _utilities.register(
   "fqn": "pulumi_harness.platform",
   "classes": {
    "harness:platform/helmConnector:HelmConnector": "HelmConnector"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/iacmAnsibleInventory",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/iacmAnsibleInventory:IacmAnsibleInventory": "IacmAnsibleInventory"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/iacmAnsiblePlaybook",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/iacmAnsiblePlaybook:IacmAnsiblePlaybook": "IacmAnsiblePlaybook"
   }
  },
  {

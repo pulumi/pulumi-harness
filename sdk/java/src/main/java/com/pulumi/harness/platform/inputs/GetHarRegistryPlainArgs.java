@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.inputs.GetHarRegistryConfig;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -93,6 +94,21 @@ public final class GetHarRegistryPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
+     * Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - {@literal @}. Keys are case-sensitive. Maximum 49 entries allowed.
+     * 
+     */
+    @Import(name="metadata")
+    private @Nullable Map<String,String> metadata;
+
+    /**
+     * @return Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - {@literal @}. Keys are case-sensitive. Maximum 49 entries allowed.
+     * 
+     */
+    public Optional<Map<String,String>> metadata() {
+        return Optional.ofNullable(this.metadata);
+    }
+
+    /**
      * Type of package (DOCKER, HELM, MAVEN, etc.)
      * 
      */
@@ -145,6 +161,7 @@ public final class GetHarRegistryPlainArgs extends com.pulumi.resources.InvokeAr
         this.configs = $.configs;
         this.description = $.description;
         this.identifier = $.identifier;
+        this.metadata = $.metadata;
         this.packageType = $.packageType;
         this.parentRef = $.parentRef;
         this.spaceRef = $.spaceRef;
@@ -250,6 +267,17 @@ public final class GetHarRegistryPlainArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder identifier(String identifier) {
             $.identifier = identifier;
+            return this;
+        }
+
+        /**
+         * @param metadata Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - {@literal @}. Keys are case-sensitive. Maximum 49 entries allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadata(@Nullable Map<String,String> metadata) {
+            $.metadata = metadata;
             return this;
         }
 

@@ -18,7 +18,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? ApplicationsSync;
         /// <summary>
-        /// Label selector used to narrow the scope of targeted clusters.
+        /// If true, prevents an Application's child resources from being deleted when the parent Application is deleted.
         /// </summary>
         public readonly bool? PreserveResourcesOnDeletion;
 

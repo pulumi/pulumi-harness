@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.autostopping.outputs.GetScheduleRepeat;
 import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -33,6 +34,11 @@ public final class GetScheduleResult {
      * 
      */
     private String name;
+    /**
+     * @return Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+     * 
+     */
+    private Integer priority;
     /**
      * @return For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific &#39;time_period&#39; is specified
      * 
@@ -89,6 +95,13 @@ public final class GetScheduleResult {
         return this.name;
     }
     /**
+     * @return Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+     * 
+     */
+    public Integer priority() {
+        return this.priority;
+    }
+    /**
      * @return For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific &#39;time_period&#39; is specified
      * 
      */
@@ -137,6 +150,7 @@ public final class GetScheduleResult {
         private String id;
         private Double identifier;
         private String name;
+        private Integer priority;
         private List<GetScheduleRepeat> repeats;
         private List<Double> rules;
         private String scheduleType;
@@ -149,6 +163,7 @@ public final class GetScheduleResult {
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.name = defaults.name;
+    	      this.priority = defaults.priority;
     	      this.repeats = defaults.repeats;
     	      this.rules = defaults.rules;
     	      this.scheduleType = defaults.scheduleType;
@@ -186,6 +201,14 @@ public final class GetScheduleResult {
               throw new MissingRequiredPropertyException("GetScheduleResult", "name");
             }
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder priority(Integer priority) {
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("GetScheduleResult", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         @CustomType.Setter
@@ -240,6 +263,7 @@ public final class GetScheduleResult {
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.name = name;
+            _resultValue.priority = priority;
             _resultValue.repeats = repeats;
             _resultValue.rules = rules;
             _resultValue.scheduleType = scheduleType;

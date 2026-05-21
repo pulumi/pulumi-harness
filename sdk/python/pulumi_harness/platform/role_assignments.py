@@ -21,140 +21,6 @@ __all__ = ['RoleAssignmentsArgs', 'RoleAssignments']
 @pulumi.input_type
 class RoleAssignmentsArgs:
     def __init__(__self__, *,
-                 principals: pulumi.Input[Sequence[pulumi.Input['RoleAssignmentsPrincipalArgs']]],
-                 resource_group_identifier: pulumi.Input[_builtins.str],
-                 role_identifier: pulumi.Input[_builtins.str],
-                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
-                 managed: pulumi.Input[Optional[_builtins.bool]] = None,
-                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 project_id: pulumi.Input[Optional[_builtins.str]] = None):
-        """
-        The set of arguments for constructing a RoleAssignments resource.
-
-        :param pulumi.Input[Sequence[pulumi.Input['RoleAssignmentsPrincipalArgs']]] principals: Principal.
-        :param pulumi.Input[_builtins.str] resource_group_identifier: Resource group identifier.
-        :param pulumi.Input[_builtins.str] role_identifier: Role identifier.
-        :param pulumi.Input[_builtins.bool] disabled: Disabled or not.
-        :param pulumi.Input[_builtins.str] identifier: Identifier for role assignment.
-        :param pulumi.Input[_builtins.bool] managed: Managed or not.
-        :param pulumi.Input[_builtins.str] org_id: Org identifier.
-        :param pulumi.Input[_builtins.str] project_id: Project Identifier
-        """
-        pulumi.set(__self__, "principals", principals)
-        pulumi.set(__self__, "resource_group_identifier", resource_group_identifier)
-        pulumi.set(__self__, "role_identifier", role_identifier)
-        if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
-        if identifier is not None:
-            pulumi.set(__self__, "identifier", identifier)
-        if managed is not None:
-            pulumi.set(__self__, "managed", managed)
-        if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
-
-    @_builtins.property
-    @pulumi.getter
-    def principals(self) -> pulumi.Input[Sequence[pulumi.Input['RoleAssignmentsPrincipalArgs']]]:
-        """
-        Principal.
-        """
-        return pulumi.get(self, "principals")
-
-    @principals.setter
-    def principals(self, value: pulumi.Input[Sequence[pulumi.Input['RoleAssignmentsPrincipalArgs']]]):
-        pulumi.set(self, "principals", value)
-
-    @_builtins.property
-    @pulumi.getter(name="resourceGroupIdentifier")
-    def resource_group_identifier(self) -> pulumi.Input[_builtins.str]:
-        """
-        Resource group identifier.
-        """
-        return pulumi.get(self, "resource_group_identifier")
-
-    @resource_group_identifier.setter
-    def resource_group_identifier(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "resource_group_identifier", value)
-
-    @_builtins.property
-    @pulumi.getter(name="roleIdentifier")
-    def role_identifier(self) -> pulumi.Input[_builtins.str]:
-        """
-        Role identifier.
-        """
-        return pulumi.get(self, "role_identifier")
-
-    @role_identifier.setter
-    def role_identifier(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "role_identifier", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Disabled or not.
-        """
-        return pulumi.get(self, "disabled")
-
-    @disabled.setter
-    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "disabled", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Identifier for role assignment.
-        """
-        return pulumi.get(self, "identifier")
-
-    @identifier.setter
-    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "identifier", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def managed(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Managed or not.
-        """
-        return pulumi.get(self, "managed")
-
-    @managed.setter
-    def managed(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "managed", value)
-
-    @_builtins.property
-    @pulumi.getter(name="orgId")
-    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Org identifier.
-        """
-        return pulumi.get(self, "org_id")
-
-    @org_id.setter
-    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "org_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Project Identifier
-        """
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "project_id", value)
-
-
-@pulumi.input_type
-class _RoleAssignmentsState:
-    def __init__(__self__, *,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  managed: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -162,9 +28,10 @@ class _RoleAssignmentsState:
                  principals: pulumi.Input[Optional[Sequence[pulumi.Input['RoleAssignmentsPrincipalArgs']]]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_identifier: pulumi.Input[Optional[_builtins.str]] = None,
-                 role_identifier: pulumi.Input[Optional[_builtins.str]] = None):
+                 role_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_reference: pulumi.Input[Optional['RoleAssignmentsRoleReferenceArgs']] = None):
         """
-        Input properties used for looking up and filtering RoleAssignments resources.
+        The set of arguments for constructing a RoleAssignments resource.
 
         :param pulumi.Input[_builtins.bool] disabled: Disabled or not.
         :param pulumi.Input[_builtins.str] identifier: Identifier for role assignment.
@@ -174,6 +41,7 @@ class _RoleAssignmentsState:
         :param pulumi.Input[_builtins.str] project_id: Project Identifier
         :param pulumi.Input[_builtins.str] resource_group_identifier: Resource group identifier.
         :param pulumi.Input[_builtins.str] role_identifier: Role identifier.
+        :param pulumi.Input['RoleAssignmentsRoleReferenceArgs'] role_reference: Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
         """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
@@ -191,6 +59,8 @@ class _RoleAssignmentsState:
             pulumi.set(__self__, "resource_group_identifier", resource_group_identifier)
         if role_identifier is not None:
             pulumi.set(__self__, "role_identifier", role_identifier)
+        if role_reference is not None:
+            pulumi.set(__self__, "role_reference", role_reference)
 
     @_builtins.property
     @pulumi.getter
@@ -288,6 +158,171 @@ class _RoleAssignmentsState:
     def role_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_identifier", value)
 
+    @_builtins.property
+    @pulumi.getter(name="roleReference")
+    def role_reference(self) -> pulumi.Input[Optional['RoleAssignmentsRoleReferenceArgs']]:
+        """
+        Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+        """
+        return pulumi.get(self, "role_reference")
+
+    @role_reference.setter
+    def role_reference(self, value: pulumi.Input[Optional['RoleAssignmentsRoleReferenceArgs']]):
+        pulumi.set(self, "role_reference", value)
+
+
+@pulumi.input_type
+class _RoleAssignmentsState:
+    def __init__(__self__, *,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 principals: pulumi.Input[Optional[Sequence[pulumi.Input['RoleAssignmentsPrincipalArgs']]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_reference: pulumi.Input[Optional['RoleAssignmentsRoleReferenceArgs']] = None):
+        """
+        Input properties used for looking up and filtering RoleAssignments resources.
+
+        :param pulumi.Input[_builtins.bool] disabled: Disabled or not.
+        :param pulumi.Input[_builtins.str] identifier: Identifier for role assignment.
+        :param pulumi.Input[_builtins.bool] managed: Managed or not.
+        :param pulumi.Input[_builtins.str] org_id: Org identifier.
+        :param pulumi.Input[Sequence[pulumi.Input['RoleAssignmentsPrincipalArgs']]] principals: Principal.
+        :param pulumi.Input[_builtins.str] project_id: Project Identifier
+        :param pulumi.Input[_builtins.str] resource_group_identifier: Resource group identifier.
+        :param pulumi.Input[_builtins.str] role_identifier: Role identifier.
+        :param pulumi.Input['RoleAssignmentsRoleReferenceArgs'] role_reference: Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+        """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if identifier is not None:
+            pulumi.set(__self__, "identifier", identifier)
+        if managed is not None:
+            pulumi.set(__self__, "managed", managed)
+        if org_id is not None:
+            pulumi.set(__self__, "org_id", org_id)
+        if principals is not None:
+            pulumi.set(__self__, "principals", principals)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if resource_group_identifier is not None:
+            pulumi.set(__self__, "resource_group_identifier", resource_group_identifier)
+        if role_identifier is not None:
+            pulumi.set(__self__, "role_identifier", role_identifier)
+        if role_reference is not None:
+            pulumi.set(__self__, "role_reference", role_reference)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Disabled or not.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Identifier for role assignment.
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "identifier", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def managed(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Managed or not.
+        """
+        return pulumi.get(self, "managed")
+
+    @managed.setter
+    def managed(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "managed", value)
+
+    @_builtins.property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Org identifier.
+        """
+        return pulumi.get(self, "org_id")
+
+    @org_id.setter
+    def org_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "org_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def principals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RoleAssignmentsPrincipalArgs']]]]:
+        """
+        Principal.
+        """
+        return pulumi.get(self, "principals")
+
+    @principals.setter
+    def principals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RoleAssignmentsPrincipalArgs']]]]):
+        pulumi.set(self, "principals", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Project Identifier
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceGroupIdentifier")
+    def resource_group_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Resource group identifier.
+        """
+        return pulumi.get(self, "resource_group_identifier")
+
+    @resource_group_identifier.setter
+    def resource_group_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "resource_group_identifier", value)
+
+    @_builtins.property
+    @pulumi.getter(name="roleIdentifier")
+    def role_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Role identifier.
+        """
+        return pulumi.get(self, "role_identifier")
+
+    @role_identifier.setter
+    def role_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "role_identifier", value)
+
+    @_builtins.property
+    @pulumi.getter(name="roleReference")
+    def role_reference(self) -> pulumi.Input[Optional['RoleAssignmentsRoleReferenceArgs']]:
+        """
+        Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+        """
+        return pulumi.get(self, "role_reference")
+
+    @role_reference.setter
+    def role_reference(self, value: pulumi.Input[Optional['RoleAssignmentsRoleReferenceArgs']]):
+        pulumi.set(self, "role_reference", value)
+
 
 @pulumi.type_token("harness:platform/roleAssignments:RoleAssignments")
 class RoleAssignments(pulumi.CustomResource):
@@ -303,6 +338,7 @@ class RoleAssignments(pulumi.CustomResource):
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  role_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_reference: pulumi.Input[Optional[Union['RoleAssignmentsRoleReferenceArgs', 'RoleAssignmentsRoleReferenceArgsDict']]] = None,
                  __props__=None):
         """
         Resource for creating role assignments in Harness.
@@ -340,12 +376,13 @@ class RoleAssignments(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project_id: Project Identifier
         :param pulumi.Input[_builtins.str] resource_group_identifier: Resource group identifier.
         :param pulumi.Input[_builtins.str] role_identifier: Role identifier.
+        :param pulumi.Input[Union['RoleAssignmentsRoleReferenceArgs', 'RoleAssignmentsRoleReferenceArgsDict']] role_reference: Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RoleAssignmentsArgs,
+                 args: Optional[RoleAssignmentsArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating role assignments in Harness.
@@ -396,6 +433,7 @@ class RoleAssignments(pulumi.CustomResource):
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  role_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_reference: pulumi.Input[Optional[Union['RoleAssignmentsRoleReferenceArgs', 'RoleAssignmentsRoleReferenceArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -409,16 +447,11 @@ class RoleAssignments(pulumi.CustomResource):
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["managed"] = managed
             __props__.__dict__["org_id"] = org_id
-            if principals is None and not opts.urn:
-                raise TypeError("Missing required property 'principals'")
             __props__.__dict__["principals"] = principals
             __props__.__dict__["project_id"] = project_id
-            if resource_group_identifier is None and not opts.urn:
-                raise TypeError("Missing required property 'resource_group_identifier'")
             __props__.__dict__["resource_group_identifier"] = resource_group_identifier
-            if role_identifier is None and not opts.urn:
-                raise TypeError("Missing required property 'role_identifier'")
             __props__.__dict__["role_identifier"] = role_identifier
+            __props__.__dict__["role_reference"] = role_reference
         super(RoleAssignments, __self__).__init__(
             'harness:platform/roleAssignments:RoleAssignments',
             resource_name,
@@ -436,7 +469,8 @@ class RoleAssignments(pulumi.CustomResource):
             principals: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoleAssignmentsPrincipalArgs', 'RoleAssignmentsPrincipalArgsDict']]]]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_identifier: pulumi.Input[Optional[_builtins.str]] = None,
-            role_identifier: pulumi.Input[Optional[_builtins.str]] = None) -> 'RoleAssignments':
+            role_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            role_reference: pulumi.Input[Optional[Union['RoleAssignmentsRoleReferenceArgs', 'RoleAssignmentsRoleReferenceArgsDict']]] = None) -> 'RoleAssignments':
         """
         Get an existing RoleAssignments resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -452,6 +486,7 @@ class RoleAssignments(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project_id: Project Identifier
         :param pulumi.Input[_builtins.str] resource_group_identifier: Resource group identifier.
         :param pulumi.Input[_builtins.str] role_identifier: Role identifier.
+        :param pulumi.Input[Union['RoleAssignmentsRoleReferenceArgs', 'RoleAssignmentsRoleReferenceArgsDict']] role_reference: Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -465,6 +500,7 @@ class RoleAssignments(pulumi.CustomResource):
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["resource_group_identifier"] = resource_group_identifier
         __props__.__dict__["role_identifier"] = role_identifier
+        __props__.__dict__["role_reference"] = role_reference
         return RoleAssignments(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -530,4 +566,12 @@ class RoleAssignments(pulumi.CustomResource):
         Role identifier.
         """
         return pulumi.get(self, "role_identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="roleReference")
+    def role_reference(self) -> pulumi.Output['outputs.RoleAssignmentsRoleReference']:
+        """
+        Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+        """
+        return pulumi.get(self, "role_reference")
 

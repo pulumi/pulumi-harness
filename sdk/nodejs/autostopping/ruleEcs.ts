@@ -26,12 +26,6 @@ import * as utilities from "../utilities";
  *         region: "us-east-1",
  *         taskCount: 1,
  *     },
- *     tcp: [{
- *         proxyId: "proxy_id",
- *         forwardRule: [{
- *             port: 2233,
- *         }],
- *     }],
  *     depends: [{
  *         ruleId: 24576,
  *         delayInSec: 5,

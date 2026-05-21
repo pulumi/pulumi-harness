@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-harness/sdk/go/harness/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -54,24 +53,17 @@ type RoleAssignments struct {
 	ResourceGroupIdentifier pulumi.StringOutput `pulumi:"resourceGroupIdentifier"`
 	// Role identifier.
 	RoleIdentifier pulumi.StringOutput `pulumi:"roleIdentifier"`
+	// Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+	RoleReference RoleAssignmentsRoleReferenceOutput `pulumi:"roleReference"`
 }
 
 // NewRoleAssignments registers a new resource with the given unique name, arguments, and options.
 func NewRoleAssignments(ctx *pulumi.Context,
 	name string, args *RoleAssignmentsArgs, opts ...pulumi.ResourceOption) (*RoleAssignments, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &RoleAssignmentsArgs{}
 	}
 
-	if args.Principals == nil {
-		return nil, errors.New("invalid value for required argument 'Principals'")
-	}
-	if args.ResourceGroupIdentifier == nil {
-		return nil, errors.New("invalid value for required argument 'ResourceGroupIdentifier'")
-	}
-	if args.RoleIdentifier == nil {
-		return nil, errors.New("invalid value for required argument 'RoleIdentifier'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RoleAssignments
 	err := ctx.RegisterResource("harness:platform/roleAssignments:RoleAssignments", name, args, &resource, opts...)
@@ -111,6 +103,8 @@ type roleAssignmentsState struct {
 	ResourceGroupIdentifier *string `pulumi:"resourceGroupIdentifier"`
 	// Role identifier.
 	RoleIdentifier *string `pulumi:"roleIdentifier"`
+	// Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+	RoleReference *RoleAssignmentsRoleReference `pulumi:"roleReference"`
 }
 
 type RoleAssignmentsState struct {
@@ -130,6 +124,8 @@ type RoleAssignmentsState struct {
 	ResourceGroupIdentifier pulumi.StringPtrInput
 	// Role identifier.
 	RoleIdentifier pulumi.StringPtrInput
+	// Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+	RoleReference RoleAssignmentsRoleReferencePtrInput
 }
 
 func (RoleAssignmentsState) ElementType() reflect.Type {
@@ -150,9 +146,11 @@ type roleAssignmentsArgs struct {
 	// Project Identifier
 	ProjectId *string `pulumi:"projectId"`
 	// Resource group identifier.
-	ResourceGroupIdentifier string `pulumi:"resourceGroupIdentifier"`
+	ResourceGroupIdentifier *string `pulumi:"resourceGroupIdentifier"`
 	// Role identifier.
-	RoleIdentifier string `pulumi:"roleIdentifier"`
+	RoleIdentifier *string `pulumi:"roleIdentifier"`
+	// Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+	RoleReference *RoleAssignmentsRoleReference `pulumi:"roleReference"`
 }
 
 // The set of arguments for constructing a RoleAssignments resource.
@@ -170,9 +168,11 @@ type RoleAssignmentsArgs struct {
 	// Project Identifier
 	ProjectId pulumi.StringPtrInput
 	// Resource group identifier.
-	ResourceGroupIdentifier pulumi.StringInput
+	ResourceGroupIdentifier pulumi.StringPtrInput
 	// Role identifier.
-	RoleIdentifier pulumi.StringInput
+	RoleIdentifier pulumi.StringPtrInput
+	// Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+	RoleReference RoleAssignmentsRoleReferencePtrInput
 }
 
 func (RoleAssignmentsArgs) ElementType() reflect.Type {
@@ -300,6 +300,11 @@ func (o RoleAssignmentsOutput) ResourceGroupIdentifier() pulumi.StringOutput {
 // Role identifier.
 func (o RoleAssignmentsOutput) RoleIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *RoleAssignments) pulumi.StringOutput { return v.RoleIdentifier }).(pulumi.StringOutput)
+}
+
+// Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+func (o RoleAssignmentsOutput) RoleReference() RoleAssignmentsRoleReferenceOutput {
+	return o.ApplyT(func(v *RoleAssignments) RoleAssignmentsRoleReferenceOutput { return v.RoleReference }).(RoleAssignmentsRoleReferenceOutput)
 }
 
 type RoleAssignmentsArrayOutput struct{ *pulumi.OutputState }

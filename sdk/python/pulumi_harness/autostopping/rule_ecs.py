@@ -334,12 +334,6 @@ class RuleEcs(pulumi.CustomResource):
                 "region": "us-east-1",
                 "task_count": 1,
             },
-            tcp=[{
-                "proxyId": "proxy_id",
-                "forwardRule": [{
-                    "port": 2233,
-                }],
-            }],
             depends=[{
                 "rule_id": 24576,
                 "delay_in_sec": 5,
@@ -383,12 +377,6 @@ class RuleEcs(pulumi.CustomResource):
                 "region": "us-east-1",
                 "task_count": 1,
             },
-            tcp=[{
-                "proxyId": "proxy_id",
-                "forwardRule": [{
-                    "port": 2233,
-                }],
-            }],
             depends=[{
                 "rule_id": 24576,
                 "delay_in_sec": 5,

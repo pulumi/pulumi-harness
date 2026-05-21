@@ -18,7 +18,7 @@ public final class GitopsApplicationsetApplicationsetSpecSyncPolicy {
      */
     private @Nullable String applicationsSync;
     /**
-     * @return Label selector used to narrow the scope of targeted clusters.
+     * @return If true, prevents an Application&#39;s child resources from being deleted when the parent Application is deleted.
      * 
      */
     private @Nullable Boolean preserveResourcesOnDeletion;
@@ -32,7 +32,7 @@ public final class GitopsApplicationsetApplicationsetSpecSyncPolicy {
         return Optional.ofNullable(this.applicationsSync);
     }
     /**
-     * @return Label selector used to narrow the scope of targeted clusters.
+     * @return If true, prevents an Application&#39;s child resources from being deleted when the parent Application is deleted.
      * 
      */
     public Optional<Boolean> preserveResourcesOnDeletion() {

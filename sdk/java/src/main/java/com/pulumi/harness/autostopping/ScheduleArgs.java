@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.autostopping.inputs.ScheduleRepeatArgs;
 import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -47,6 +48,21 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+     * 
+     */
+    @Import(name="priority")
+    private @Nullable Output<Integer> priority;
+
+    /**
+     * @return Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+     * 
+     */
+    public Optional<Output<Integer>> priority() {
+        return Optional.ofNullable(this.priority);
     }
 
     /**
@@ -129,6 +145,7 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
     private ScheduleArgs(ScheduleArgs $) {
         this.endingOn = $.endingOn;
         this.name = $.name;
+        this.priority = $.priority;
         this.repeats = $.repeats;
         this.rules = $.rules;
         this.scheduleType = $.scheduleType;
@@ -194,6 +211,27 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param priority Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder priority(@Nullable Output<Integer> priority) {
+            $.priority = priority;
+            return this;
+        }
+
+        /**
+         * @param priority Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder priority(Integer priority) {
+            return priority(Output.of(priority));
         }
 
         /**

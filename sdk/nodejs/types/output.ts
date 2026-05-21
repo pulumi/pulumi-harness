@@ -5145,6 +5145,62 @@ export namespace cluster {
 
 }
 
+export namespace fmeEnvironment {
+    export interface FmeEnvironmentChangePermissions {
+        /**
+         * Whether kill operations are allowed in this environment.
+         */
+        allowKills?: boolean;
+        /**
+         * Users, groups, or API keys that can skip the approval requirement.
+         */
+        approvalSkippableBies?: outputs.fmeEnvironment.FmeEnvironmentChangePermissionsApprovalSkippableBy[];
+        /**
+         * Users, groups, or API keys that can approve changes.
+         */
+        approvers?: outputs.fmeEnvironment.FmeEnvironmentChangePermissionsApprover[];
+        /**
+         * Whether approvals are required before changes take effect.
+         */
+        areApprovalsRequired?: boolean;
+        /**
+         * Whether only specific users/groups/API keys can approve changes.
+         */
+        areApproversRestricted?: boolean;
+    }
+
+    export interface FmeEnvironmentChangePermissionsApprovalSkippableBy {
+        /**
+         * Identifier of the user, group, or API key.
+         */
+        id: string;
+        /**
+         * Display name (resolved by the API; may differ from the value provided at creation).
+         */
+        name: string;
+        /**
+         * Entity type: `user`, `group`, or `apiKey` (a Harness service account).
+         */
+        type: string;
+    }
+
+    export interface FmeEnvironmentChangePermissionsApprover {
+        /**
+         * Identifier of the user, group, or API key.
+         */
+        id: string;
+        /**
+         * Display name (resolved by the API; may differ from the value provided at creation).
+         */
+        name: string;
+        /**
+         * Entity type: `user`, `group`, or `apiKey` (a Harness service account).
+         */
+        type: string;
+    }
+
+}
+
 export namespace platform {
     export interface AppDynamicsConnectorApiToken {
         /**
@@ -8521,6 +8577,10 @@ export namespace platform {
          */
         auths?: outputs.platform.GetHarRegistryConfigAuth[];
         /**
+         * Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+         */
+        firewallMode: string;
+        /**
          * Upstream source
          */
         source?: string;
@@ -8575,6 +8635,239 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef: string;
+    }
+
+    export interface GetIacmAnsibleInventoryDynamicGroup {
+        /**
+         * Configuration for the dynamic group.
+         */
+        configurations: outputs.platform.GetIacmAnsibleInventoryDynamicGroupConfiguration[];
+        /**
+         * Connector identifier used by the dynamic group.
+         */
+        connectorIdentifier: string;
+        /**
+         * Connector type (e.g. workspace, aws, gcp, azure, vault).
+         */
+        connectorType: string;
+        /**
+         * Dynamic variables for the dynamic group.
+         */
+        dynamicVars: outputs.platform.GetIacmAnsibleInventoryDynamicGroupDynamicVar[];
+        /**
+         * Identifier of the dynamic group.
+         */
+        identifier: string;
+        /**
+         * Name of the dynamic group.
+         */
+        name: string;
+        /**
+         * Variables for the dynamic group.
+         */
+        vars: outputs.platform.GetIacmAnsibleInventoryDynamicGroupVar[];
+    }
+
+    export interface GetIacmAnsibleInventoryDynamicGroupConfiguration {
+        /**
+         * Host address attribute.
+         */
+        hostAddressAttribute: string;
+        /**
+         * Resource type to select.
+         */
+        resourceType: string;
+        /**
+         * Resource selectors.
+         */
+        selectors: outputs.platform.GetIacmAnsibleInventoryDynamicGroupConfigurationSelector[];
+    }
+
+    export interface GetIacmAnsibleInventoryDynamicGroupConfigurationSelector {
+        /**
+         * Attribute to filter on.
+         */
+        attribute: string;
+        /**
+         * Operator for the filter.
+         */
+        operator: string;
+        /**
+         * Value for the filter.
+         */
+        value: string;
+    }
+
+    export interface GetIacmAnsibleInventoryDynamicGroupDynamicVar {
+        /**
+         * Filename to store the value in (used for file-backed variables).
+         */
+        fileName: string;
+        /**
+         * Key is the identifier for the variable.
+         */
+        key: string;
+        /**
+         * Value of the variable. For secret value types this must be a Harness secret reference.
+         */
+        value: string;
+        /**
+         * Value type. One of: string, secret.
+         */
+        valueType: string;
+    }
+
+    export interface GetIacmAnsibleInventoryDynamicGroupVar {
+        /**
+         * Filename to store the value in (used for file-backed variables).
+         */
+        fileName: string;
+        /**
+         * Key is the identifier for the variable.
+         */
+        key: string;
+        /**
+         * Value of the variable. For secret value types this must be a Harness secret reference.
+         */
+        value: string;
+        /**
+         * Value type. One of: string, secret.
+         */
+        valueType: string;
+    }
+
+    export interface GetIacmAnsibleInventoryGroup {
+        /**
+         * List of hosts in the group.
+         */
+        hosts: string[];
+        /**
+         * Identifier of the group.
+         */
+        identifier: string;
+        /**
+         * Name of the group.
+         */
+        name: string;
+        /**
+         * Variables for the group.
+         */
+        vars: outputs.platform.GetIacmAnsibleInventoryGroupVar[];
+    }
+
+    export interface GetIacmAnsibleInventoryGroupVar {
+        /**
+         * Filename to store the value in (used for file-backed variables).
+         */
+        fileName: string;
+        /**
+         * Key is the identifier for the variable.
+         */
+        key: string;
+        /**
+         * Value of the variable. For secret value types this must be a Harness secret reference.
+         */
+        value: string;
+        /**
+         * Value type. One of: string, secret.
+         */
+        valueType: string;
+    }
+
+    export interface GetIacmAnsibleInventoryPluginOption {
+        /**
+         * Inline plugin inventory YAML content (when sourceType is inline).
+         */
+        inlineYaml: string;
+        /**
+         * Provider connector identifier for plugin inventory execution.
+         */
+        providerConnectorIdentifier: string;
+        /**
+         * Provider connector type.
+         */
+        providerConnectorType: string;
+        /**
+         * Git repository name (when sourceType is git).
+         */
+        repository: string;
+        /**
+         * Git branch.
+         */
+        repositoryBranch: string;
+        /**
+         * Git commit or tag.
+         */
+        repositoryCommit: string;
+        /**
+         * Repository connector reference (when sourceType is git).
+         */
+        repositoryConnector: string;
+        /**
+         * Path within the repository to the plugin inventory YAML.
+         */
+        repositoryPath: string;
+        /**
+         * Source type for plugin inventory. One of: git, inline.
+         */
+        sourceType: string;
+    }
+
+    export interface GetIacmAnsibleInventoryVar {
+        /**
+         * Filename to store the value in (used for file-backed variables).
+         */
+        fileName: string;
+        /**
+         * Key is the identifier for the variable.
+         */
+        key: string;
+        /**
+         * Value of the variable. For secret value types this must be a Harness secret reference.
+         */
+        value: string;
+        /**
+         * Value type. One of: string, secret.
+         */
+        valueType: string;
+    }
+
+    export interface GetIacmAnsiblePlaybookEnvVar {
+        /**
+         * Filename to store the value in (used for file-backed variables).
+         */
+        fileName: string;
+        /**
+         * Key is the identifier for the variable.
+         */
+        key: string;
+        /**
+         * Value of the variable. For secret value types this must be a Harness secret reference.
+         */
+        value: string;
+        /**
+         * Value type. One of: string, secret.
+         */
+        valueType: string;
+    }
+
+    export interface GetIacmAnsiblePlaybookVar {
+        /**
+         * Filename to store the value in (used for file-backed variables).
+         */
+        fileName: string;
+        /**
+         * Key is the identifier for the variable.
+         */
+        key: string;
+        /**
+         * Value of the variable. For secret value types this must be a Harness secret reference.
+         */
+        value: string;
+        /**
+         * Value type. One of: string, secret.
+         */
+        valueType: string;
     }
 
     export interface GetIdpCatalogEntityGitDetail {
@@ -9718,6 +10011,17 @@ export namespace platform {
         type: string;
     }
 
+    export interface GetRoleAssignmentsRoleReference {
+        /**
+         * Identifier.
+         */
+        identifier: string;
+        /**
+         * Scope level.
+         */
+        scopeLevel: string;
+    }
+
     export interface GetSecretFileAdditionalMetadata {
         values?: outputs.platform.GetSecretFileAdditionalMetadataValue[];
     }
@@ -10836,7 +11140,7 @@ export namespace platform {
         /**
          * Fields which are updated.
          */
-        updatedFields: string[];
+        updatedFields?: string[];
         /**
          * Indicates if the GitOps cluster should be updated if existing and inserted if not.
          */
@@ -37497,7 +37801,7 @@ export namespace platform {
          */
         applicationsSync?: string;
         /**
-         * Label selector used to narrow the scope of targeted clusters.
+         * If true, prevents an Application's child resources from being deleted when the parent Application is deleted.
          */
         preserveResourcesOnDeletion?: boolean;
     }
@@ -37942,6 +38246,10 @@ export namespace platform {
          */
         auths?: outputs.platform.HarRegistryConfigAuth[];
         /**
+         * Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+         */
+        firewallMode: string;
+        /**
          * Upstream source
          */
         source?: string;
@@ -37996,6 +38304,239 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: string;
+    }
+
+    export interface IacmAnsibleInventoryDynamicGroup {
+        /**
+         * Configuration for the dynamic group.
+         */
+        configuration?: outputs.platform.IacmAnsibleInventoryDynamicGroupConfiguration;
+        /**
+         * Connector identifier used by the dynamic group.
+         */
+        connectorIdentifier: string;
+        /**
+         * Connector type (e.g. workspace, aws, gcp, azure, vault).
+         */
+        connectorType: string;
+        /**
+         * Dynamic variables for the dynamic group.
+         */
+        dynamicVars?: outputs.platform.IacmAnsibleInventoryDynamicGroupDynamicVar[];
+        /**
+         * Identifier of the dynamic group.
+         */
+        identifier: string;
+        /**
+         * Name of the dynamic group.
+         */
+        name: string;
+        /**
+         * Variables for the dynamic group.
+         */
+        vars?: outputs.platform.IacmAnsibleInventoryDynamicGroupVar[];
+    }
+
+    export interface IacmAnsibleInventoryDynamicGroupConfiguration {
+        /**
+         * Host address attribute.
+         */
+        hostAddressAttribute?: string;
+        /**
+         * Resource type to select.
+         */
+        resourceType?: string;
+        /**
+         * Resource selectors.
+         */
+        selectors?: outputs.platform.IacmAnsibleInventoryDynamicGroupConfigurationSelector[];
+    }
+
+    export interface IacmAnsibleInventoryDynamicGroupConfigurationSelector {
+        /**
+         * Attribute to filter on.
+         */
+        attribute: string;
+        /**
+         * Operator for the filter.
+         */
+        operator: string;
+        /**
+         * Value for the filter.
+         */
+        value: string;
+    }
+
+    export interface IacmAnsibleInventoryDynamicGroupDynamicVar {
+        /**
+         * Filename to store the value in (used for file-backed variables).
+         */
+        fileName?: string;
+        /**
+         * Key is the identifier for the variable.
+         */
+        key: string;
+        /**
+         * Value of the variable. For secret value types this must be a Harness secret reference.
+         */
+        value: string;
+        /**
+         * Value type. One of: string, secret.
+         */
+        valueType: string;
+    }
+
+    export interface IacmAnsibleInventoryDynamicGroupVar {
+        /**
+         * Filename to store the value in (used for file-backed variables).
+         */
+        fileName?: string;
+        /**
+         * Key is the identifier for the variable.
+         */
+        key: string;
+        /**
+         * Value of the variable. For secret value types this must be a Harness secret reference.
+         */
+        value: string;
+        /**
+         * Value type. One of: string, secret.
+         */
+        valueType: string;
+    }
+
+    export interface IacmAnsibleInventoryGroup {
+        /**
+         * List of hosts in the group.
+         */
+        hosts?: string[];
+        /**
+         * Identifier of the group.
+         */
+        identifier: string;
+        /**
+         * Name of the group.
+         */
+        name: string;
+        /**
+         * Variables for the group.
+         */
+        vars?: outputs.platform.IacmAnsibleInventoryGroupVar[];
+    }
+
+    export interface IacmAnsibleInventoryGroupVar {
+        /**
+         * Filename to store the value in (used for file-backed variables).
+         */
+        fileName?: string;
+        /**
+         * Key is the identifier for the variable.
+         */
+        key: string;
+        /**
+         * Value of the variable. For secret value types this must be a Harness secret reference.
+         */
+        value: string;
+        /**
+         * Value type. One of: string, secret.
+         */
+        valueType: string;
+    }
+
+    export interface IacmAnsibleInventoryPluginOptions {
+        /**
+         * Inline plugin inventory YAML content (when sourceType is inline).
+         */
+        inlineYaml?: string;
+        /**
+         * Provider connector identifier for plugin inventory execution.
+         */
+        providerConnectorIdentifier?: string;
+        /**
+         * Provider connector type.
+         */
+        providerConnectorType?: string;
+        /**
+         * Git repository name (when sourceType is git).
+         */
+        repository?: string;
+        /**
+         * Git branch.
+         */
+        repositoryBranch?: string;
+        /**
+         * Git commit or tag.
+         */
+        repositoryCommit?: string;
+        /**
+         * Repository connector reference (when sourceType is git).
+         */
+        repositoryConnector?: string;
+        /**
+         * Path within the repository to the plugin inventory YAML.
+         */
+        repositoryPath?: string;
+        /**
+         * Source type for plugin inventory. One of: git, inline.
+         */
+        sourceType?: string;
+    }
+
+    export interface IacmAnsibleInventoryVar {
+        /**
+         * Filename to store the value in (used for file-backed variables).
+         */
+        fileName?: string;
+        /**
+         * Key is the identifier for the variable.
+         */
+        key: string;
+        /**
+         * Value of the variable. For secret value types this must be a Harness secret reference.
+         */
+        value: string;
+        /**
+         * Value type. One of: string, secret.
+         */
+        valueType: string;
+    }
+
+    export interface IacmAnsiblePlaybookEnvVar {
+        /**
+         * Filename to store the value in (used for file-backed variables).
+         */
+        fileName?: string;
+        /**
+         * Key is the identifier for the variable.
+         */
+        key: string;
+        /**
+         * Value of the variable. For secret value types this must be a Harness secret reference.
+         */
+        value: string;
+        /**
+         * Value type. One of: string, secret.
+         */
+        valueType: string;
+    }
+
+    export interface IacmAnsiblePlaybookVar {
+        /**
+         * Filename to store the value in (used for file-backed variables).
+         */
+        fileName?: string;
+        /**
+         * Key is the identifier for the variable.
+         */
+        key: string;
+        /**
+         * Value of the variable. For secret value types this must be a Harness secret reference.
+         */
+        value: string;
+        /**
+         * Value type. One of: string, secret.
+         */
+        valueType: string;
     }
 
     export interface IdpCatalogEntityGitDetails {
@@ -39261,13 +39802,24 @@ export namespace platform {
          */
         identifier?: string;
         /**
-         * Scope level.
+         * Scope level. Valid values are 'account', 'organization', or 'project'.
          */
         scopeLevel: string;
         /**
          * Type.
          */
         type: string;
+    }
+
+    export interface RoleAssignmentsRoleReference {
+        /**
+         * Identifier.
+         */
+        identifier?: string;
+        /**
+         * Scope level. Valid values are 'account', 'organization', or 'project'.
+         */
+        scopeLevel: string;
     }
 
     export interface SecretFileAdditionalMetadata {

@@ -22,6 +22,8 @@ type Schedule struct {
 	Identifier pulumi.Float64Output `pulumi:"identifier"`
 	// Name of the schedule
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+	Priority pulumi.IntPtrOutput `pulumi:"priority"`
 	// For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
 	Repeats ScheduleRepeatArrayOutput `pulumi:"repeats"`
 	// ID of AutoStopping rules on which the schedule applies
@@ -79,6 +81,8 @@ type scheduleState struct {
 	Identifier *float64 `pulumi:"identifier"`
 	// Name of the schedule
 	Name *string `pulumi:"name"`
+	// Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+	Priority *int `pulumi:"priority"`
 	// For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
 	Repeats []ScheduleRepeat `pulumi:"repeats"`
 	// ID of AutoStopping rules on which the schedule applies
@@ -98,6 +102,8 @@ type ScheduleState struct {
 	Identifier pulumi.Float64PtrInput
 	// Name of the schedule
 	Name pulumi.StringPtrInput
+	// Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+	Priority pulumi.IntPtrInput
 	// For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
 	Repeats ScheduleRepeatArrayInput
 	// ID of AutoStopping rules on which the schedule applies
@@ -119,6 +125,8 @@ type scheduleArgs struct {
 	EndingOn *string `pulumi:"endingOn"`
 	// Name of the schedule
 	Name *string `pulumi:"name"`
+	// Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+	Priority *int `pulumi:"priority"`
 	// For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
 	Repeats []ScheduleRepeat `pulumi:"repeats"`
 	// ID of AutoStopping rules on which the schedule applies
@@ -137,6 +145,8 @@ type ScheduleArgs struct {
 	EndingOn pulumi.StringPtrInput
 	// Name of the schedule
 	Name pulumi.StringPtrInput
+	// Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+	Priority pulumi.IntPtrInput
 	// For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
 	Repeats ScheduleRepeatArrayInput
 	// ID of AutoStopping rules on which the schedule applies
@@ -249,6 +259,11 @@ func (o ScheduleOutput) Identifier() pulumi.Float64Output {
 // Name of the schedule
 func (o ScheduleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+func (o ScheduleOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
 // For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified

@@ -145,6 +145,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HarRegistry{}
 	case "harness:platform/helmConnector:HelmConnector":
 		r = &HelmConnector{}
+	case "harness:platform/iacmAnsibleInventory:IacmAnsibleInventory":
+		r = &IacmAnsibleInventory{}
+	case "harness:platform/iacmAnsiblePlaybook:IacmAnsiblePlaybook":
+		r = &IacmAnsiblePlaybook{}
 	case "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline":
 		r = &IacmDefaultPipeline{}
 	case "harness:platform/idpCatalogEntity:IdpCatalogEntity":
@@ -596,6 +600,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/helmConnector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/iacmAnsibleInventory",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/iacmAnsiblePlaybook",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

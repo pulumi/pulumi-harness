@@ -18,7 +18,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? Identifier;
         /// <summary>
-        /// Scope level.
+        /// Scope level. Valid values are 'account', 'organization', or 'project'.
         /// </summary>
         public readonly string? ScopeLevel;
         /// <summary>

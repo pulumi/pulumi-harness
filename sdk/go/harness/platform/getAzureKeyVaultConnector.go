@@ -69,18 +69,24 @@ type LookupAzureKeyVaultConnectorArgs struct {
 type LookupAzureKeyVaultConnectorResult struct {
 	// Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
 	AzureEnvironmentType string `pulumi:"azureEnvironmentType"`
+	// Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity.
+	AzureManagedIdentityType string `pulumi:"azureManagedIdentityType"`
 	// Application ID of the Azure App.
 	ClientId string `pulumi:"clientId"`
 	// Connect using only the delegates which have these tags.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
+	// Boolean value to indicate if purge is enabled.
+	EnablePurge bool `pulumi:"enablePurge"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Specifies whether or not is the default value.
 	IsDefault bool `pulumi:"isDefault"`
+	// Client Id of the ManagedIdentity resource.
+	ManagedClientId string `pulumi:"managedClientId"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
@@ -95,6 +101,8 @@ type LookupAzureKeyVaultConnectorResult struct {
 	Tags []string `pulumi:"tags"`
 	// The Azure Active Directory (AAD) directory ID where you created your application.
 	TenantId string `pulumi:"tenantId"`
+	// Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+	UseManagedIdentity bool `pulumi:"useManagedIdentity"`
 	// Name of the vault.
 	VaultName string `pulumi:"vaultName"`
 }
@@ -144,6 +152,11 @@ func (o LookupAzureKeyVaultConnectorResultOutput) AzureEnvironmentType() pulumi.
 	return o.ApplyT(func(v LookupAzureKeyVaultConnectorResult) string { return v.AzureEnvironmentType }).(pulumi.StringOutput)
 }
 
+// Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity.
+func (o LookupAzureKeyVaultConnectorResultOutput) AzureManagedIdentityType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAzureKeyVaultConnectorResult) string { return v.AzureManagedIdentityType }).(pulumi.StringOutput)
+}
+
 // Application ID of the Azure App.
 func (o LookupAzureKeyVaultConnectorResultOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureKeyVaultConnectorResult) string { return v.ClientId }).(pulumi.StringOutput)
@@ -159,6 +172,11 @@ func (o LookupAzureKeyVaultConnectorResultOutput) Description() pulumi.StringOut
 	return o.ApplyT(func(v LookupAzureKeyVaultConnectorResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Boolean value to indicate if purge is enabled.
+func (o LookupAzureKeyVaultConnectorResultOutput) EnablePurge() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAzureKeyVaultConnectorResult) bool { return v.EnablePurge }).(pulumi.BoolOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupAzureKeyVaultConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureKeyVaultConnectorResult) string { return v.Id }).(pulumi.StringOutput)
@@ -172,6 +190,11 @@ func (o LookupAzureKeyVaultConnectorResultOutput) Identifier() pulumi.StringOutp
 // Specifies whether or not is the default value.
 func (o LookupAzureKeyVaultConnectorResultOutput) IsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAzureKeyVaultConnectorResult) bool { return v.IsDefault }).(pulumi.BoolOutput)
+}
+
+// Client Id of the ManagedIdentity resource.
+func (o LookupAzureKeyVaultConnectorResultOutput) ManagedClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAzureKeyVaultConnectorResult) string { return v.ManagedClientId }).(pulumi.StringOutput)
 }
 
 // Name of the resource.
@@ -207,6 +230,11 @@ func (o LookupAzureKeyVaultConnectorResultOutput) Tags() pulumi.StringArrayOutpu
 // The Azure Active Directory (AAD) directory ID where you created your application.
 func (o LookupAzureKeyVaultConnectorResultOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureKeyVaultConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+func (o LookupAzureKeyVaultConnectorResultOutput) UseManagedIdentity() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAzureKeyVaultConnectorResult) bool { return v.UseManagedIdentity }).(pulumi.BoolOutput)
 }
 
 // Name of the vault.

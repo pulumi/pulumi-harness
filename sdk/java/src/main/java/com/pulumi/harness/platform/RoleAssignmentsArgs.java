@@ -5,8 +5,8 @@ package com.pulumi.harness.platform;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.inputs.RoleAssignmentsPrincipalArgs;
+import com.pulumi.harness.platform.inputs.RoleAssignmentsRoleReferenceArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -83,15 +83,15 @@ public final class RoleAssignmentsArgs extends com.pulumi.resources.ResourceArgs
      * Principal.
      * 
      */
-    @Import(name="principals", required=true)
-    private Output<List<RoleAssignmentsPrincipalArgs>> principals;
+    @Import(name="principals")
+    private @Nullable Output<List<RoleAssignmentsPrincipalArgs>> principals;
 
     /**
      * @return Principal.
      * 
      */
-    public Output<List<RoleAssignmentsPrincipalArgs>> principals() {
-        return this.principals;
+    public Optional<Output<List<RoleAssignmentsPrincipalArgs>>> principals() {
+        return Optional.ofNullable(this.principals);
     }
 
     /**
@@ -113,30 +113,45 @@ public final class RoleAssignmentsArgs extends com.pulumi.resources.ResourceArgs
      * Resource group identifier.
      * 
      */
-    @Import(name="resourceGroupIdentifier", required=true)
-    private Output<String> resourceGroupIdentifier;
+    @Import(name="resourceGroupIdentifier")
+    private @Nullable Output<String> resourceGroupIdentifier;
 
     /**
      * @return Resource group identifier.
      * 
      */
-    public Output<String> resourceGroupIdentifier() {
-        return this.resourceGroupIdentifier;
+    public Optional<Output<String>> resourceGroupIdentifier() {
+        return Optional.ofNullable(this.resourceGroupIdentifier);
     }
 
     /**
      * Role identifier.
      * 
      */
-    @Import(name="roleIdentifier", required=true)
-    private Output<String> roleIdentifier;
+    @Import(name="roleIdentifier")
+    private @Nullable Output<String> roleIdentifier;
 
     /**
      * @return Role identifier.
      * 
      */
-    public Output<String> roleIdentifier() {
-        return this.roleIdentifier;
+    public Optional<Output<String>> roleIdentifier() {
+        return Optional.ofNullable(this.roleIdentifier);
+    }
+
+    /**
+     * Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+     * 
+     */
+    @Import(name="roleReference")
+    private @Nullable Output<RoleAssignmentsRoleReferenceArgs> roleReference;
+
+    /**
+     * @return Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+     * 
+     */
+    public Optional<Output<RoleAssignmentsRoleReferenceArgs>> roleReference() {
+        return Optional.ofNullable(this.roleReference);
     }
 
     private RoleAssignmentsArgs() {}
@@ -150,6 +165,7 @@ public final class RoleAssignmentsArgs extends com.pulumi.resources.ResourceArgs
         this.projectId = $.projectId;
         this.resourceGroupIdentifier = $.resourceGroupIdentifier;
         this.roleIdentifier = $.roleIdentifier;
+        this.roleReference = $.roleReference;
     }
 
     public static Builder builder() {
@@ -260,7 +276,7 @@ public final class RoleAssignmentsArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder principals(Output<List<RoleAssignmentsPrincipalArgs>> principals) {
+        public Builder principals(@Nullable Output<List<RoleAssignmentsPrincipalArgs>> principals) {
             $.principals = principals;
             return this;
         }
@@ -312,7 +328,7 @@ public final class RoleAssignmentsArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder resourceGroupIdentifier(Output<String> resourceGroupIdentifier) {
+        public Builder resourceGroupIdentifier(@Nullable Output<String> resourceGroupIdentifier) {
             $.resourceGroupIdentifier = resourceGroupIdentifier;
             return this;
         }
@@ -333,7 +349,7 @@ public final class RoleAssignmentsArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder roleIdentifier(Output<String> roleIdentifier) {
+        public Builder roleIdentifier(@Nullable Output<String> roleIdentifier) {
             $.roleIdentifier = roleIdentifier;
             return this;
         }
@@ -348,16 +364,28 @@ public final class RoleAssignmentsArgs extends com.pulumi.resources.ResourceArgs
             return roleIdentifier(Output.of(roleIdentifier));
         }
 
+        /**
+         * @param roleReference Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleReference(@Nullable Output<RoleAssignmentsRoleReferenceArgs> roleReference) {
+            $.roleReference = roleReference;
+            return this;
+        }
+
+        /**
+         * @param roleReference Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleReference(RoleAssignmentsRoleReferenceArgs roleReference) {
+            return roleReference(Output.of(roleReference));
+        }
+
         public RoleAssignmentsArgs build() {
-            if ($.principals == null) {
-                throw new MissingRequiredPropertyException("RoleAssignmentsArgs", "principals");
-            }
-            if ($.resourceGroupIdentifier == null) {
-                throw new MissingRequiredPropertyException("RoleAssignmentsArgs", "resourceGroupIdentifier");
-            }
-            if ($.roleIdentifier == null) {
-                throw new MissingRequiredPropertyException("RoleAssignmentsArgs", "roleIdentifier");
-            }
             return $;
         }
     }

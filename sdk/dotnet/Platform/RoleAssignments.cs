@@ -85,6 +85,12 @@ namespace Pulumi.Harness.Platform
         [Output("roleIdentifier")]
         public Output<string> RoleIdentifier { get; private set; } = null!;
 
+        /// <summary>
+        /// Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+        /// </summary>
+        [Output("roleReference")]
+        public Output<Outputs.RoleAssignmentsRoleReference> RoleReference { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a RoleAssignments resource with the given unique name, arguments, and options.
@@ -93,7 +99,7 @@ namespace Pulumi.Harness.Platform
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public RoleAssignments(string name, RoleAssignmentsArgs args, CustomResourceOptions? options = null)
+        public RoleAssignments(string name, RoleAssignmentsArgs? args = null, CustomResourceOptions? options = null)
             : base("harness:platform/roleAssignments:RoleAssignments", name, args ?? new RoleAssignmentsArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -156,7 +162,7 @@ namespace Pulumi.Harness.Platform
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
-        [Input("principals", required: true)]
+        [Input("principals")]
         private InputList<Inputs.RoleAssignmentsPrincipalArgs>? _principals;
 
         /// <summary>
@@ -177,14 +183,20 @@ namespace Pulumi.Harness.Platform
         /// <summary>
         /// Resource group identifier.
         /// </summary>
-        [Input("resourceGroupIdentifier", required: true)]
-        public Input<string> ResourceGroupIdentifier { get; set; } = null!;
+        [Input("resourceGroupIdentifier")]
+        public Input<string>? ResourceGroupIdentifier { get; set; }
 
         /// <summary>
         /// Role identifier.
         /// </summary>
-        [Input("roleIdentifier", required: true)]
-        public Input<string> RoleIdentifier { get; set; } = null!;
+        [Input("roleIdentifier")]
+        public Input<string>? RoleIdentifier { get; set; }
+
+        /// <summary>
+        /// Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+        /// </summary>
+        [Input("roleReference")]
+        public Input<Inputs.RoleAssignmentsRoleReferenceArgs>? RoleReference { get; set; }
 
         public RoleAssignmentsArgs()
         {
@@ -247,6 +259,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("roleIdentifier")]
         public Input<string>? RoleIdentifier { get; set; }
+
+        /// <summary>
+        /// Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+        /// </summary>
+        [Input("roleReference")]
+        public Input<Inputs.RoleAssignmentsRoleReferenceGetArgs>? RoleReference { get; set; }
 
         public RoleAssignmentsState()
         {

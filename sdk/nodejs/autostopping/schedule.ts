@@ -50,6 +50,10 @@ export class Schedule extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+     */
+    declare public readonly priority: pulumi.Output<number | undefined>;
+    /**
      * For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
      */
     declare public readonly repeats: pulumi.Output<outputs.autostopping.ScheduleRepeat[] | undefined>;
@@ -86,6 +90,7 @@ export class Schedule extends pulumi.CustomResource {
             resourceInputs["endingOn"] = state?.endingOn;
             resourceInputs["identifier"] = state?.identifier;
             resourceInputs["name"] = state?.name;
+            resourceInputs["priority"] = state?.priority;
             resourceInputs["repeats"] = state?.repeats;
             resourceInputs["rules"] = state?.rules;
             resourceInputs["scheduleType"] = state?.scheduleType;
@@ -104,6 +109,7 @@ export class Schedule extends pulumi.CustomResource {
             }
             resourceInputs["endingOn"] = args?.endingOn;
             resourceInputs["name"] = args?.name;
+            resourceInputs["priority"] = args?.priority;
             resourceInputs["repeats"] = args?.repeats;
             resourceInputs["rules"] = args?.rules;
             resourceInputs["scheduleType"] = args?.scheduleType;
@@ -132,6 +138,10 @@ export interface ScheduleState {
      * Name of the schedule
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+     */
+    priority?: pulumi.Input<number | undefined>;
     /**
      * For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
      */
@@ -166,6 +176,10 @@ export interface ScheduleArgs {
      * Name of the schedule
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+     */
+    priority?: pulumi.Input<number | undefined>;
     /**
      * For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
      */

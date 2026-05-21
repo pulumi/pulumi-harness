@@ -32,14 +32,14 @@ public final class GitopsApplicationsetApplicationsetSpecSyncPolicyArgs extends 
     }
 
     /**
-     * Label selector used to narrow the scope of targeted clusters.
+     * If true, prevents an Application&#39;s child resources from being deleted when the parent Application is deleted.
      * 
      */
     @Import(name="preserveResourcesOnDeletion")
     private @Nullable Output<Boolean> preserveResourcesOnDeletion;
 
     /**
-     * @return Label selector used to narrow the scope of targeted clusters.
+     * @return If true, prevents an Application&#39;s child resources from being deleted when the parent Application is deleted.
      * 
      */
     public Optional<Output<Boolean>> preserveResourcesOnDeletion() {
@@ -93,7 +93,7 @@ public final class GitopsApplicationsetApplicationsetSpecSyncPolicyArgs extends 
         }
 
         /**
-         * @param preserveResourcesOnDeletion Label selector used to narrow the scope of targeted clusters.
+         * @param preserveResourcesOnDeletion If true, prevents an Application&#39;s child resources from being deleted when the parent Application is deleted.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GitopsApplicationsetApplicationsetSpecSyncPolicyArgs extends 
         }
 
         /**
-         * @param preserveResourcesOnDeletion Label selector used to narrow the scope of targeted clusters.
+         * @param preserveResourcesOnDeletion If true, prevents an Application&#39;s child resources from being deleted when the parent Application is deleted.
          * 
          * @return builder
          * 

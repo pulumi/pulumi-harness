@@ -35,20 +35,6 @@ namespace Pulumi.Harness.Autostopping
     ///             Region = "us-east-1",
     ///             TaskCount = 1,
     ///         },
-    ///         Tcp = new[]
-    ///         {
-    ///             
-    ///             {
-    ///                 { "proxyId", "proxy_id" },
-    ///                 { "forwardRule", new[]
-    ///                 {
-    ///                     
-    ///                     {
-    ///                         { "port", 2233 },
-    ///                     },
-    ///                 } },
-    ///             },
-    ///         },
     ///         Depends = new[]
     ///         {
     ///             new Harness.Autostopping.Inputs.RuleEcsDependArgs

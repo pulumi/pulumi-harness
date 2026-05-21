@@ -47,6 +47,10 @@ export interface GetScheduleResult {
      */
     readonly name: string;
     /**
+     * Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+     */
+    readonly priority: number;
+    /**
      * For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
      */
     readonly repeats: outputs.autostopping.GetScheduleRepeat[];

@@ -27,7 +27,7 @@ class GetScheduleResult:
     """
     A collection of values returned by getSchedule.
     """
-    def __init__(__self__, ending_on=None, id=None, identifier=None, name=None, repeats=None, rules=None, schedule_type=None, starting_from=None, time_zone=None):
+    def __init__(__self__, ending_on=None, id=None, identifier=None, name=None, priority=None, repeats=None, rules=None, schedule_type=None, starting_from=None, time_zone=None):
         if ending_on and not isinstance(ending_on, str):
             raise TypeError("Expected argument 'ending_on' to be a str")
         pulumi.set(__self__, "ending_on", ending_on)
@@ -40,6 +40,9 @@ class GetScheduleResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if priority and not isinstance(priority, int):
+            raise TypeError("Expected argument 'priority' to be a int")
+        pulumi.set(__self__, "priority", priority)
         if repeats and not isinstance(repeats, list):
             raise TypeError("Expected argument 'repeats' to be a list")
         pulumi.set(__self__, "repeats", repeats)
@@ -87,6 +90,14 @@ class GetScheduleResult:
         Name of the schedule
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> _builtins.int:
+        """
+        Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
+        """
+        return pulumi.get(self, "priority")
 
     @_builtins.property
     @pulumi.getter
@@ -139,6 +150,7 @@ class AwaitableGetScheduleResult(GetScheduleResult):
             id=self.id,
             identifier=self.identifier,
             name=self.name,
+            priority=self.priority,
             repeats=self.repeats,
             rules=self.rules,
             schedule_type=self.schedule_type,
@@ -164,6 +176,7 @@ def get_schedule(schedule_type: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         name=pulumi.get(__ret__, 'name'),
+        priority=pulumi.get(__ret__, 'priority'),
         repeats=pulumi.get(__ret__, 'repeats'),
         rules=pulumi.get(__ret__, 'rules'),
         schedule_type=pulumi.get(__ret__, 'schedule_type'),
@@ -186,6 +199,7 @@ def get_schedule_output(schedule_type: pulumi.Input[Optional[_builtins.str]] = N
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
         name=pulumi.get(__response__, 'name'),
+        priority=pulumi.get(__response__, 'priority'),
         repeats=pulumi.get(__response__, 'repeats'),
         rules=pulumi.get(__response__, 'rules'),
         schedule_type=pulumi.get(__response__, 'schedule_type'),

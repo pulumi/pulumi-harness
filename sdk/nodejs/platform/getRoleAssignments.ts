@@ -89,6 +89,10 @@ export interface GetRoleAssignmentsResult {
      * Role identifier.
      */
     readonly roleIdentifier: string;
+    /**
+     * Role reference.
+     */
+    readonly roleReferences: outputs.platform.GetRoleAssignmentsRoleReference[];
 }
 /**
  * Data source for retrieving role assignment.

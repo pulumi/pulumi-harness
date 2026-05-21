@@ -20,6 +20,11 @@ public final class GetAzureKeyVaultConnectorResult {
      */
     private String azureEnvironmentType;
     /**
+     * @return Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity.
+     * 
+     */
+    private String azureManagedIdentityType;
+    /**
      * @return Application ID of the Azure App.
      * 
      */
@@ -35,6 +40,11 @@ public final class GetAzureKeyVaultConnectorResult {
      */
     private String description;
     /**
+     * @return Boolean value to indicate if purge is enabled.
+     * 
+     */
+    private Boolean enablePurge;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -49,6 +59,11 @@ public final class GetAzureKeyVaultConnectorResult {
      * 
      */
     private Boolean isDefault;
+    /**
+     * @return Client Id of the ManagedIdentity resource.
+     * 
+     */
+    private String managedClientId;
     /**
      * @return Name of the resource.
      * 
@@ -85,6 +100,11 @@ public final class GetAzureKeyVaultConnectorResult {
      */
     private String tenantId;
     /**
+     * @return Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+     * 
+     */
+    private Boolean useManagedIdentity;
+    /**
      * @return Name of the vault.
      * 
      */
@@ -97,6 +117,13 @@ public final class GetAzureKeyVaultConnectorResult {
      */
     public String azureEnvironmentType() {
         return this.azureEnvironmentType;
+    }
+    /**
+     * @return Azure Managed Identity type. Possible values: SystemAssignedManagedIdentity or UserAssignedManagedIdentity.
+     * 
+     */
+    public String azureManagedIdentityType() {
+        return this.azureManagedIdentityType;
     }
     /**
      * @return Application ID of the Azure App.
@@ -120,6 +147,13 @@ public final class GetAzureKeyVaultConnectorResult {
         return this.description;
     }
     /**
+     * @return Boolean value to indicate if purge is enabled.
+     * 
+     */
+    public Boolean enablePurge() {
+        return this.enablePurge;
+    }
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -139,6 +173,13 @@ public final class GetAzureKeyVaultConnectorResult {
      */
     public Boolean isDefault() {
         return this.isDefault;
+    }
+    /**
+     * @return Client Id of the ManagedIdentity resource.
+     * 
+     */
+    public String managedClientId() {
+        return this.managedClientId;
     }
     /**
      * @return Name of the resource.
@@ -190,6 +231,13 @@ public final class GetAzureKeyVaultConnectorResult {
         return this.tenantId;
     }
     /**
+     * @return Boolean value to indicate if managed identity is used to authenticate to Azure Key Vault.
+     * 
+     */
+    public Boolean useManagedIdentity() {
+        return this.useManagedIdentity;
+    }
+    /**
      * @return Name of the vault.
      * 
      */
@@ -207,12 +255,15 @@ public final class GetAzureKeyVaultConnectorResult {
     @CustomType.Builder
     public static final class Builder {
         private String azureEnvironmentType;
+        private String azureManagedIdentityType;
         private String clientId;
         private List<String> delegateSelectors;
         private String description;
+        private Boolean enablePurge;
         private String id;
         private String identifier;
         private Boolean isDefault;
+        private String managedClientId;
         private @Nullable String name;
         private @Nullable String orgId;
         private @Nullable String projectId;
@@ -220,17 +271,21 @@ public final class GetAzureKeyVaultConnectorResult {
         private String subscription;
         private List<String> tags;
         private String tenantId;
+        private Boolean useManagedIdentity;
         private String vaultName;
         public Builder() {}
         public Builder(GetAzureKeyVaultConnectorResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.azureEnvironmentType = defaults.azureEnvironmentType;
+    	      this.azureManagedIdentityType = defaults.azureManagedIdentityType;
     	      this.clientId = defaults.clientId;
     	      this.delegateSelectors = defaults.delegateSelectors;
     	      this.description = defaults.description;
+    	      this.enablePurge = defaults.enablePurge;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.isDefault = defaults.isDefault;
+    	      this.managedClientId = defaults.managedClientId;
     	      this.name = defaults.name;
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
@@ -238,6 +293,7 @@ public final class GetAzureKeyVaultConnectorResult {
     	      this.subscription = defaults.subscription;
     	      this.tags = defaults.tags;
     	      this.tenantId = defaults.tenantId;
+    	      this.useManagedIdentity = defaults.useManagedIdentity;
     	      this.vaultName = defaults.vaultName;
         }
 
@@ -247,6 +303,14 @@ public final class GetAzureKeyVaultConnectorResult {
               throw new MissingRequiredPropertyException("GetAzureKeyVaultConnectorResult", "azureEnvironmentType");
             }
             this.azureEnvironmentType = azureEnvironmentType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder azureManagedIdentityType(String azureManagedIdentityType) {
+            if (azureManagedIdentityType == null) {
+              throw new MissingRequiredPropertyException("GetAzureKeyVaultConnectorResult", "azureManagedIdentityType");
+            }
+            this.azureManagedIdentityType = azureManagedIdentityType;
             return this;
         }
         @CustomType.Setter
@@ -277,6 +341,14 @@ public final class GetAzureKeyVaultConnectorResult {
             return this;
         }
         @CustomType.Setter
+        public Builder enablePurge(Boolean enablePurge) {
+            if (enablePurge == null) {
+              throw new MissingRequiredPropertyException("GetAzureKeyVaultConnectorResult", "enablePurge");
+            }
+            this.enablePurge = enablePurge;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetAzureKeyVaultConnectorResult", "id");
@@ -298,6 +370,14 @@ public final class GetAzureKeyVaultConnectorResult {
               throw new MissingRequiredPropertyException("GetAzureKeyVaultConnectorResult", "isDefault");
             }
             this.isDefault = isDefault;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder managedClientId(String managedClientId) {
+            if (managedClientId == null) {
+              throw new MissingRequiredPropertyException("GetAzureKeyVaultConnectorResult", "managedClientId");
+            }
+            this.managedClientId = managedClientId;
             return this;
         }
         @CustomType.Setter
@@ -354,6 +434,14 @@ public final class GetAzureKeyVaultConnectorResult {
             return this;
         }
         @CustomType.Setter
+        public Builder useManagedIdentity(Boolean useManagedIdentity) {
+            if (useManagedIdentity == null) {
+              throw new MissingRequiredPropertyException("GetAzureKeyVaultConnectorResult", "useManagedIdentity");
+            }
+            this.useManagedIdentity = useManagedIdentity;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vaultName(String vaultName) {
             if (vaultName == null) {
               throw new MissingRequiredPropertyException("GetAzureKeyVaultConnectorResult", "vaultName");
@@ -364,12 +452,15 @@ public final class GetAzureKeyVaultConnectorResult {
         public GetAzureKeyVaultConnectorResult build() {
             final var _resultValue = new GetAzureKeyVaultConnectorResult();
             _resultValue.azureEnvironmentType = azureEnvironmentType;
+            _resultValue.azureManagedIdentityType = azureManagedIdentityType;
             _resultValue.clientId = clientId;
             _resultValue.delegateSelectors = delegateSelectors;
             _resultValue.description = description;
+            _resultValue.enablePurge = enablePurge;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.isDefault = isDefault;
+            _resultValue.managedClientId = managedClientId;
             _resultValue.name = name;
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;
@@ -377,6 +468,7 @@ public final class GetAzureKeyVaultConnectorResult {
             _resultValue.subscription = subscription;
             _resultValue.tags = tags;
             _resultValue.tenantId = tenantId;
+            _resultValue.useManagedIdentity = useManagedIdentity;
             _resultValue.vaultName = vaultName;
             return _resultValue;
         }

@@ -19,7 +19,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// Scope level.
+        /// Scope level. Valid values are 'account', 'organization', or 'project'.
         /// </summary>
         [Input("scopeLevel")]
         public Input<string>? ScopeLevel { get; set; }
