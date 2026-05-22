@@ -627,7 +627,7 @@ class RuleRdsTcpArgsDict(TypedDict):
     """
     Id of the Proxy
     """
-    forward_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleRdsTcpForwardRuleArgs']]]]]
+    forward_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleRdsTcpForwardRuleArgsDict']]]]]
     """
     Additional tcp forwarding rules
     """
@@ -771,11 +771,11 @@ class RuleScaleGroupHttpArgsDict(TypedDict):
     """
     Id of the proxy
     """
-    healths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleScaleGroupHttpHealthArgs']]]]]
+    healths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleScaleGroupHttpHealthArgsDict']]]]]
     """
     Health Check Details
     """
-    routings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleScaleGroupHttpRoutingArgs']]]]]
+    routings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleScaleGroupHttpRoutingArgsDict']]]]]
     """
     Routing configuration used to access the scaling group
     """
@@ -1304,7 +1304,7 @@ class RuleVmFilterArgsDict(TypedDict):
     """
     Regions of instances that needs to be managed using the AutoStopping rules
     """
-    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmFilterTagArgs']]]]]
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmFilterTagArgsDict']]]]]
     """
     Tags of instances that needs to be managed using the AutoStopping rules
     """
@@ -1424,11 +1424,11 @@ class RuleVmHttpArgsDict(TypedDict):
     """
     Id of the proxy
     """
-    healths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmHttpHealthArgs']]]]]
+    healths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmHttpHealthArgsDict']]]]]
     """
     Health Check Details
     """
-    routings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmHttpRoutingArgs']]]]]
+    routings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmHttpRoutingArgsDict']]]]]
     """
     Routing configuration used to access the instances
     """
@@ -1746,15 +1746,15 @@ class RuleVmTcpArgsDict(TypedDict):
     """
     Id of the Proxy
     """
-    forward_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmTcpForwardRuleArgs']]]]]
+    forward_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmTcpForwardRuleArgsDict']]]]]
     """
     Additional tcp forwarding rules
     """
-    rdps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmTcpRdpArgs']]]]]
+    rdps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmTcpRdpArgsDict']]]]]
     """
     RDP configuration
     """
-    sshes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmTcpSshArgs']]]]]
+    sshes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuleVmTcpSshArgsDict']]]]]
     """
     SSH configuration
     """

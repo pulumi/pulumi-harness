@@ -304,7 +304,7 @@ class ActionTemplateContainerActionArgsDict(TypedDict):
     """
     Command to run in the container.
     """
-    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionEnvArgs']]]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionEnvArgsDict']]]]]
     """
     Environment variables for the container.
     """
@@ -340,7 +340,7 @@ class ActionTemplateContainerActionArgsDict(TypedDict):
     """
     Node selector for pod scheduling.
     """
-    resources: NotRequired[pulumi.Input[Optional['ActionTemplateContainerActionResourcesArgs']]]
+    resources: NotRequired[pulumi.Input[Optional['ActionTemplateContainerActionResourcesArgsDict']]]
     """
     Resource requirements for the container.
     """
@@ -348,15 +348,15 @@ class ActionTemplateContainerActionArgsDict(TypedDict):
     """
     Kubernetes service account name.
     """
-    tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionTolerationArgs']]]]]
+    tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionTolerationArgsDict']]]]]
     """
     Tolerations for pod scheduling on tainted nodes.
     """
-    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionVolumeMountArgs']]]]]
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionVolumeMountArgsDict']]]]]
     """
     Volume mounts for the container.
     """
-    volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionVolumeArgs']]]]]
+    volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateContainerActionVolumeArgsDict']]]]]
     """
     Volumes to attach to the pod.
     """
@@ -866,23 +866,23 @@ class ActionTemplateContainerActionVolumeArgsDict(TypedDict):
     """
     Volume name.
     """
-    config_map: NotRequired[pulumi.Input[Optional['ActionTemplateContainerActionVolumeConfigMapArgs']]]
+    config_map: NotRequired[pulumi.Input[Optional['ActionTemplateContainerActionVolumeConfigMapArgsDict']]]
     """
     ConfigMap volume configuration.
     """
-    empty_dir: NotRequired[pulumi.Input[Optional['ActionTemplateContainerActionVolumeEmptyDirArgs']]]
+    empty_dir: NotRequired[pulumi.Input[Optional['ActionTemplateContainerActionVolumeEmptyDirArgsDict']]]
     """
     EmptyDir volume configuration.
     """
-    host_path: NotRequired[pulumi.Input[Optional['ActionTemplateContainerActionVolumeHostPathArgs']]]
+    host_path: NotRequired[pulumi.Input[Optional['ActionTemplateContainerActionVolumeHostPathArgsDict']]]
     """
     HostPath volume configuration.
     """
-    persistent_volume_claim: NotRequired[pulumi.Input[Optional['ActionTemplateContainerActionVolumePersistentVolumeClaimArgs']]]
+    persistent_volume_claim: NotRequired[pulumi.Input[Optional['ActionTemplateContainerActionVolumePersistentVolumeClaimArgsDict']]]
     """
     PersistentVolumeClaim configuration.
     """
-    secret: NotRequired[pulumi.Input[Optional['ActionTemplateContainerActionVolumeSecretArgs']]]
+    secret: NotRequired[pulumi.Input[Optional['ActionTemplateContainerActionVolumeSecretArgsDict']]]
     """
     Secret volume configuration.
     """
@@ -1326,7 +1326,7 @@ class ActionTemplateCustomScriptActionArgsDict(TypedDict):
     """
     Arguments to pass to the command.
     """
-    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateCustomScriptActionEnvArgs']]]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ActionTemplateCustomScriptActionEnvArgsDict']]]]]
     """
     Environment variables for the script.
     """
@@ -1790,7 +1790,7 @@ class ExperimentTemplateSpecArgsDict(TypedDict):
     """
     Infrastructure type (Windows, Linux, CloudFoundry, Container, Kubernetes, KubernetesV2)
     """
-    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecActionArgs']]]]]
+    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecActionArgsDict']]]]]
     """
     List of actions in the experiment
     """
@@ -1798,7 +1798,7 @@ class ExperimentTemplateSpecArgsDict(TypedDict):
     """
     Cleanup policy for experiment resources (retain, delete)
     """
-    faults: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecFaultArgs']]]]]
+    faults: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecFaultArgsDict']]]]]
     """
     List of faults in the experiment
     """
@@ -1806,15 +1806,15 @@ class ExperimentTemplateSpecArgsDict(TypedDict):
     """
     Infrastructure identifier (supports runtime input: <+input>)
     """
-    probes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecProbeArgs']]]]]
+    probes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecProbeArgsDict']]]]]
     """
     List of probes in the experiment
     """
-    status_check_timeouts: NotRequired[pulumi.Input[Optional['ExperimentTemplateSpecStatusCheckTimeoutsArgs']]]
+    status_check_timeouts: NotRequired[pulumi.Input[Optional['ExperimentTemplateSpecStatusCheckTimeoutsArgsDict']]]
     """
     Status check timeout configuration
     """
-    vertices: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexArgs']]]]]
+    vertices: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexArgsDict']]]]]
     """
     Workflow graph vertices defining execution order
     """
@@ -1978,7 +1978,7 @@ class ExperimentTemplateSpecActionArgsDict(TypedDict):
     """
     Action template revision
     """
-    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecActionValueArgs']]]]]
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecActionValueArgsDict']]]]]
     """
     Variable values for the action
     """
@@ -2172,7 +2172,7 @@ class ExperimentTemplateSpecFaultArgsDict(TypedDict):
     """
     Fault template revision
     """
-    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecFaultValueArgs']]]]]
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecFaultValueArgsDict']]]]]
     """
     Variable values for the fault
     """
@@ -2350,7 +2350,7 @@ class ExperimentTemplateSpecProbeArgsDict(TypedDict):
     """
     Probe name
     """
-    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecProbeConditionArgs']]]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecProbeConditionArgsDict']]]]]
     """
     Probe execution conditions
     """
@@ -2374,7 +2374,7 @@ class ExperimentTemplateSpecProbeArgsDict(TypedDict):
     """
     Probe template revision
     """
-    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecProbeValueArgs']]]]]
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecProbeValueArgsDict']]]]]
     """
     Variable values for the probe
     """
@@ -2677,11 +2677,11 @@ class ExperimentTemplateSpecVertexArgsDict(TypedDict):
     """
     Vertex name
     """
-    end: NotRequired[pulumi.Input[Optional['ExperimentTemplateSpecVertexEndArgs']]]
+    end: NotRequired[pulumi.Input[Optional['ExperimentTemplateSpecVertexEndArgsDict']]]
     """
     End configuration for the vertex
     """
-    start: NotRequired[pulumi.Input[Optional['ExperimentTemplateSpecVertexStartArgs']]]
+    start: NotRequired[pulumi.Input[Optional['ExperimentTemplateSpecVertexStartArgsDict']]]
     """
     Start configuration for the vertex
     """
@@ -2741,15 +2741,15 @@ class ExperimentTemplateSpecVertexArgs:
 
 
 class ExperimentTemplateSpecVertexEndArgsDict(TypedDict):
-    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndActionArgs']]]]]
+    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndActionArgsDict']]]]]
     """
     Actions to execute at end
     """
-    faults: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndFaultArgs']]]]]
+    faults: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndFaultArgsDict']]]]]
     """
     Faults to execute at end
     """
-    probes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndProbeArgs']]]]]
+    probes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexEndProbeArgsDict']]]]]
     """
     Probes to execute at end
     """
@@ -2894,15 +2894,15 @@ class ExperimentTemplateSpecVertexEndProbeArgs:
 
 
 class ExperimentTemplateSpecVertexStartArgsDict(TypedDict):
-    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartActionArgs']]]]]
+    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartActionArgsDict']]]]]
     """
     Actions to execute at start
     """
-    faults: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartFaultArgs']]]]]
+    faults: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartFaultArgsDict']]]]]
     """
     Faults to execute at start
     """
-    probes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartProbeArgs']]]]]
+    probes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentTemplateSpecVertexStartProbeArgsDict']]]]]
     """
     Probes to execute at start
     """
@@ -3094,11 +3094,11 @@ class FaultTemplateLinkArgs:
 
 
 class FaultTemplateSpecArgsDict(TypedDict):
-    chaos: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosArgs']]]
+    chaos: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosArgsDict']]]
     """
     Chaos configuration
     """
-    target: NotRequired[pulumi.Input[Optional['FaultTemplateSpecTargetArgs']]]
+    target: NotRequired[pulumi.Input[Optional['FaultTemplateSpecTargetArgsDict']]]
     """
     Target configuration
     """
@@ -3143,7 +3143,7 @@ class FaultTemplateSpecArgs:
 
 
 class FaultTemplateSpecChaosArgsDict(TypedDict):
-    auth: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosAuthArgs']]]
+    auth: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosAuthArgsDict']]]
     """
     Authentication configuration
     """
@@ -3151,19 +3151,19 @@ class FaultTemplateSpecChaosArgsDict(TypedDict):
     """
     Name of the fault. Note: API may return a default value (e.g., 'byoc-injector') instead of the configured value due to API limitations.
     """
-    kubernetes: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesArgs']]]
+    kubernetes: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesArgsDict']]]
     """
     Kubernetes-specific chaos configuration
     """
-    params: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosParamArgs']]]]]
+    params: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosParamArgsDict']]]]]
     """
     Fault parameters
     """
-    status_check_timeouts: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosStatusCheckTimeoutsArgs']]]
+    status_check_timeouts: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosStatusCheckTimeoutsArgsDict']]]
     """
     Status check timeout configuration
     """
-    tls: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosTlsArgs']]]
+    tls: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosTlsArgsDict']]]
     """
     TLS configuration
     """
@@ -3272,27 +3272,27 @@ class FaultTemplateSpecChaosArgs:
 
 
 class FaultTemplateSpecChaosAuthArgsDict(TypedDict):
-    aws: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosAuthAwsArgs']]]
+    aws: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosAuthAwsArgsDict']]]
     """
     AWS authentication
     """
-    azure: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosAuthAzureArgs']]]
+    azure: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosAuthAzureArgsDict']]]
     """
     Azure authentication
     """
-    gcp: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosAuthGcpArgs']]]
+    gcp: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosAuthGcpArgsDict']]]
     """
     GCP authentication
     """
-    redis: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosAuthRedisArgs']]]
+    redis: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosAuthRedisArgsDict']]]
     """
     Redis authentication
     """
-    ssh: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosAuthSshArgs']]]
+    ssh: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosAuthSshArgsDict']]]
     """
     SSH authentication
     """
-    vmware: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosAuthVmwareArgs']]]
+    vmware: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosAuthVmwareArgsDict']]]
     """
     VMware authentication
     """
@@ -3793,19 +3793,19 @@ class FaultTemplateSpecChaosKubernetesArgsDict(TypedDict):
     """
     Container command
     """
-    config_maps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesConfigMapArgs']]]]]
+    config_maps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesConfigMapArgsDict']]]]]
     """
     ConfigMap volumes
     """
-    container_security_context: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesContainerSecurityContextArgs']]]
+    container_security_context: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesContainerSecurityContextArgsDict']]]
     """
     Container security context
     """
-    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesEnvArgs']]]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesEnvArgsDict']]]]]
     """
     Environment variables
     """
-    host_file_volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesHostFileVolumeArgs']]]]]
+    host_file_volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesHostFileVolumeArgsDict']]]]]
     """
     Host path volumes
     """
@@ -3841,19 +3841,19 @@ class FaultTemplateSpecChaosKubernetesArgsDict(TypedDict):
     """
     Node selector for pod scheduling
     """
-    pod_security_context: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesPodSecurityContextArgs']]]
+    pod_security_context: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesPodSecurityContextArgsDict']]]
     """
     Pod security context
     """
-    resources: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesResourcesArgs']]]
+    resources: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesResourcesArgsDict']]]
     """
     Resource requirements
     """
-    secrets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesSecretArgs']]]]]
+    secrets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesSecretArgsDict']]]]]
     """
     Secret volumes
     """
-    tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesTolerationArgs']]]]]
+    tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecChaosKubernetesTolerationArgsDict']]]]]
     """
     Pod tolerations
     """
@@ -4241,7 +4241,7 @@ class FaultTemplateSpecChaosKubernetesContainerSecurityContextArgsDict(TypedDict
     """
     Allow privilege escalation
     """
-    capabilities: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilitiesArgs']]]
+    capabilities: NotRequired[pulumi.Input[Optional['FaultTemplateSpecChaosKubernetesContainerSecurityContextCapabilitiesArgsDict']]]
     """
     Linux capabilities
     """
@@ -5049,11 +5049,11 @@ class FaultTemplateSpecChaosTlsArgs:
 
 
 class FaultTemplateSpecTargetArgsDict(TypedDict):
-    application: NotRequired[pulumi.Input[Optional['FaultTemplateSpecTargetApplicationArgs']]]
+    application: NotRequired[pulumi.Input[Optional['FaultTemplateSpecTargetApplicationArgsDict']]]
     """
     Application target configuration
     """
-    kubernetes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecTargetKuberneteArgs']]]]]
+    kubernetes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FaultTemplateSpecTargetKuberneteArgsDict']]]]]
     """
     Kubernetes target configuration
     """
@@ -5624,11 +5624,11 @@ class InfrastructureV2ImageRegistryArgsDict(TypedDict):
     """
     Timestamp when the registry was created.
     """
-    custom_images: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2ImageRegistryCustomImageArgs']]]]]
+    custom_images: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2ImageRegistryCustomImageArgsDict']]]]]
     """
     Custom image configurations. Required when use*custom*images is true.
     """
-    identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2ImageRegistryIdentifierArgs']]]]]
+    identifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureV2ImageRegistryIdentifierArgsDict']]]]]
     """
     Scoped identifiers for the registry.
     """
@@ -6489,35 +6489,35 @@ class ProbeTemplateApmProbeArgsDict(TypedDict):
     """
     APM provider type. Valid values: Prometheus, AppDynamics, SplunkObservability, Dynatrace, NewRelic, Datadog, GCPCloudMonitoring.
     """
-    app_dynamics_inputs: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeAppDynamicsInputsArgs']]]
+    app_dynamics_inputs: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeAppDynamicsInputsArgsDict']]]
     """
     AppDynamics-specific inputs. Required when apm*type is 'AppDynamics'.
     """
-    comparator: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeComparatorArgs']]]
+    comparator: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeComparatorArgsDict']]]
     """
     Comparator for APM metric validation.
     """
-    datadog_inputs: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeDatadogInputsArgs']]]
+    datadog_inputs: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeDatadogInputsArgsDict']]]
     """
     Datadog-specific inputs. Required when apm*type is 'Datadog'.
     """
-    dynatrace_inputs: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeDynatraceInputsArgs']]]
+    dynatrace_inputs: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeDynatraceInputsArgsDict']]]
     """
     Dynatrace-specific inputs. Required when apm*type is 'Dynatrace'.
     """
-    gcp_cloud_monitoring_inputs: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeGcpCloudMonitoringInputsArgs']]]
+    gcp_cloud_monitoring_inputs: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeGcpCloudMonitoringInputsArgsDict']]]
     """
     GCP Cloud Monitoring-specific inputs. Required when apm*type is 'GCPCloudMonitoring'.
     """
-    new_relic_inputs: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeNewRelicInputsArgs']]]
+    new_relic_inputs: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeNewRelicInputsArgsDict']]]
     """
     NewRelic-specific inputs. Required when apm*type is 'NewRelic'.
     """
-    prometheus_inputs: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbePrometheusInputsArgs']]]
+    prometheus_inputs: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbePrometheusInputsArgsDict']]]
     """
     Prometheus-specific inputs. Required when apm*type is 'Prometheus'.
     """
-    splunk_observability_inputs: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeSplunkObservabilityInputsArgs']]]
+    splunk_observability_inputs: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeSplunkObservabilityInputsArgsDict']]]
     """
     SplunkObservability-specific inputs. Required when apm*type is 'SplunkObservability'.
     """
@@ -6677,7 +6677,7 @@ class ProbeTemplateApmProbeAppDynamicsInputsArgsDict(TypedDict):
     """
     Harness connector ID for AppDynamics.
     """
-    appd_metrics: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs']]]
+    appd_metrics: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgsDict']]]
     """
     AppDynamics metrics configuration.
     """
@@ -6868,7 +6868,7 @@ class ProbeTemplateApmProbeDatadogInputsArgsDict(TypedDict):
     """
     Datadog query string.
     """
-    synthetics_test: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs']]]
+    synthetics_test: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeDatadogInputsSyntheticsTestArgsDict']]]
     """
     Datadog Synthetics test configuration.
     """
@@ -7000,7 +7000,7 @@ class ProbeTemplateApmProbeDynatraceInputsArgsDict(TypedDict):
     """
     Duration in minutes for the Dynatrace query.
     """
-    metrics: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeDynatraceInputsMetricsArgs']]]
+    metrics: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeDynatraceInputsMetricsArgsDict']]]
     """
     Dynatrace metrics configuration.
     """
@@ -7179,7 +7179,7 @@ class ProbeTemplateApmProbeNewRelicInputsArgsDict(TypedDict):
     """
     Harness connector ID for NewRelic.
     """
-    new_relic_metric: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs']]]
+    new_relic_metric: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgsDict']]]
     """
     NewRelic metric configuration.
     """
@@ -7280,7 +7280,7 @@ class ProbeTemplateApmProbePrometheusInputsArgsDict(TypedDict):
     """
     PromQL query string.
     """
-    tls_config: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbePrometheusInputsTlsConfigArgs']]]
+    tls_config: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbePrometheusInputsTlsConfigArgsDict']]]
     """
     TLS configuration for Prometheus connection.
     """
@@ -7432,7 +7432,7 @@ class ProbeTemplateApmProbeSplunkObservabilityInputsArgsDict(TypedDict):
     """
     Harness connector ID for Splunk Observability.
     """
-    splunk_observability_metrics: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs']]]
+    splunk_observability_metrics: NotRequired[pulumi.Input[Optional['ProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgsDict']]]
     """
     Splunk Observability metrics configuration.
     """
@@ -7529,11 +7529,11 @@ class ProbeTemplateCmdProbeArgsDict(TypedDict):
     """
     Command to execute.
     """
-    comparator: NotRequired[pulumi.Input[Optional['ProbeTemplateCmdProbeComparatorArgs']]]
+    comparator: NotRequired[pulumi.Input[Optional['ProbeTemplateCmdProbeComparatorArgsDict']]]
     """
     Comparator for command output validation.
     """
-    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ProbeTemplateCmdProbeEnvArgs']]]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ProbeTemplateCmdProbeEnvArgsDict']]]]]
     """
     Environment variables for the command.
     """
@@ -7730,7 +7730,7 @@ class ProbeTemplateHttpProbeArgsDict(TypedDict):
     """
     URL to probe.
     """
-    auth: NotRequired[pulumi.Input[Optional['ProbeTemplateHttpProbeAuthArgs']]]
+    auth: NotRequired[pulumi.Input[Optional['ProbeTemplateHttpProbeAuthArgsDict']]]
     """
     Authentication configuration.
     """
@@ -7738,11 +7738,11 @@ class ProbeTemplateHttpProbeArgsDict(TypedDict):
     """
     HTTP headers.
     """
-    method: NotRequired[pulumi.Input[Optional['ProbeTemplateHttpProbeMethodArgs']]]
+    method: NotRequired[pulumi.Input[Optional['ProbeTemplateHttpProbeMethodArgsDict']]]
     """
     HTTP method configuration with GET or POST.
     """
-    tls_config: NotRequired[pulumi.Input[Optional['ProbeTemplateHttpProbeTlsConfigArgs']]]
+    tls_config: NotRequired[pulumi.Input[Optional['ProbeTemplateHttpProbeTlsConfigArgsDict']]]
     """
     TLS configuration.
     """
@@ -7922,11 +7922,11 @@ class ProbeTemplateHttpProbeAuthArgs:
 
 
 class ProbeTemplateHttpProbeMethodArgsDict(TypedDict):
-    get_method: NotRequired[pulumi.Input[Optional['ProbeTemplateHttpProbeMethodGetMethodArgs']]]
+    get_method: NotRequired[pulumi.Input[Optional['ProbeTemplateHttpProbeMethodGetMethodArgsDict']]]
     """
     GET method configuration.
     """
-    post: NotRequired[pulumi.Input[Optional['ProbeTemplateHttpProbeMethodPostArgs']]]
+    post: NotRequired[pulumi.Input[Optional['ProbeTemplateHttpProbeMethodPostArgsDict']]]
     """
     POST method configuration.
     """
@@ -8795,15 +8795,15 @@ class SecurityGovernanceConditionFaultSpecFaultArgs:
 
 
 class SecurityGovernanceConditionK8sSpecArgsDict(TypedDict):
-    application_spec: NotRequired[pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecApplicationSpecArgs']]]
+    application_spec: NotRequired[pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecApplicationSpecArgsDict']]]
     """
     Application specification
     """
-    chaos_service_account_spec: NotRequired[pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecChaosServiceAccountSpecArgs']]]
+    chaos_service_account_spec: NotRequired[pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecChaosServiceAccountSpecArgsDict']]]
     """
     Chaos service account specification
     """
-    infra_spec: NotRequired[pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecInfraSpecArgs']]]
+    infra_spec: NotRequired[pulumi.Input[Optional['SecurityGovernanceConditionK8sSpecInfraSpecArgsDict']]]
     """
     Infrastructure specification
     """
@@ -8868,7 +8868,7 @@ class SecurityGovernanceConditionK8sSpecApplicationSpecArgsDict(TypedDict):
     """
     Operator for application matching (EQUAL*TO or NOT*EQUAL_TO)
     """
-    workloads: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgs']]]]]
+    workloads: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgsDict']]]]]
     """
     List of workloads to include/exclude
     """
@@ -9114,7 +9114,7 @@ class SecurityGovernanceConditionK8sSpecInfraSpecArgs:
 
 
 class SecurityGovernanceConditionMachineSpecArgsDict(TypedDict):
-    infra_spec: NotRequired[pulumi.Input[Optional['SecurityGovernanceConditionMachineSpecInfraSpecArgs']]]
+    infra_spec: NotRequired[pulumi.Input[Optional['SecurityGovernanceConditionMachineSpecInfraSpecArgsDict']]]
     """
     Infrastructure specification
     """
@@ -9194,7 +9194,7 @@ class SecurityGovernanceRuleTimeWindowArgsDict(TypedDict):
     time_zone: pulumi.Input[_builtins.str]
     duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     end_time: NotRequired[pulumi.Input[Optional[_builtins.int]]]
-    recurrence: NotRequired[pulumi.Input[Optional['SecurityGovernanceRuleTimeWindowRecurrenceArgs']]]
+    recurrence: NotRequired[pulumi.Input[Optional['SecurityGovernanceRuleTimeWindowRecurrenceArgsDict']]]
 
 @pulumi.input_type
 class SecurityGovernanceRuleTimeWindowArgs:

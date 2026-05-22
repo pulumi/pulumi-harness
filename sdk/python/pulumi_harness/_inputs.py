@@ -1009,7 +1009,7 @@ class InfrastructureDefinitionAwsSshArgsDict(TypedDict):
     """
     The name of the load balancer to use.
     """
-    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureDefinitionAwsSshTagArgs']]]]]
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureDefinitionAwsSshTagArgsDict']]]]]
     """
     The tags to use when selecting the instances.
     """
@@ -1626,7 +1626,7 @@ class InfrastructureDefinitionCustomArgsDict(TypedDict):
     """
     The template version
     """
-    variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureDefinitionCustomVariableArgs']]]]]
+    variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InfrastructureDefinitionCustomVariableArgsDict']]]]]
     """
     Variables to be used in the service
     """
@@ -2126,7 +2126,7 @@ class SshCredentialKerberosAuthenticationArgsDict(TypedDict):
     """
     Realm associated with the Kerberos authentication
     """
-    tgt_generation_method: NotRequired[pulumi.Input[Optional['SshCredentialKerberosAuthenticationTgtGenerationMethodArgs']]]
+    tgt_generation_method: NotRequired[pulumi.Input[Optional['SshCredentialKerberosAuthenticationTgtGenerationMethodArgsDict']]]
     """
     TGT generation method
     """
@@ -2257,15 +2257,15 @@ class SshCredentialSshAuthenticationArgsDict(TypedDict):
     """
     The username to use when connecting to ssh
     """
-    inline_ssh: NotRequired[pulumi.Input[Optional['SshCredentialSshAuthenticationInlineSshArgs']]]
+    inline_ssh: NotRequired[pulumi.Input[Optional['SshCredentialSshAuthenticationInlineSshArgsDict']]]
     """
     Inline SSH authentication configuration. Only ond of `passphrase_secret_id` or `ssh_key_file_id` should be used
     """
-    server_password: NotRequired[pulumi.Input[Optional['SshCredentialSshAuthenticationServerPasswordArgs']]]
+    server_password: NotRequired[pulumi.Input[Optional['SshCredentialSshAuthenticationServerPasswordArgsDict']]]
     """
     Server password authentication configuration
     """
-    ssh_key_file: NotRequired[pulumi.Input[Optional['SshCredentialSshAuthenticationSshKeyFileArgs']]]
+    ssh_key_file: NotRequired[pulumi.Input[Optional['SshCredentialSshAuthenticationSshKeyFileArgsDict']]]
     """
     Use ssh key file for authentication
     """
@@ -2751,7 +2751,7 @@ class UserGroupPermissionsArgsDict(TypedDict):
     """
     The account permissions of the user group. Valid options are ADMINISTER*OTHER*ACCOUNT*FUNCTIONS, CREATE*AND*DELETE*APPLICATION, CREATE*CUSTOM*DASHBOARDS, MANAGE*ALERT*NOTIFICATION*RULES, MANAGE*API*KEYS, MANAGE*APPLICATION*STACKS, MANAGE*AUTHENTICATION*SETTINGS, MANAGE*CLOUD*PROVIDERS, MANAGE*CONFIG*AS*CODE, MANAGE*CONNECTORS, MANAGE*CUSTOM*DASHBOARDS, MANAGE*DELEGATE*PROFILES, MANAGE*DELEGATES, MANAGE*DEPLOYMENT*FREEZES, MANAGE*IP*WHITELIST, MANAGE*PIPELINE*GOVERNANCE*STANDARDS, MANAGE*RESTRICTED*ACCESS, MANAGE*SECRET*MANAGERS, MANAGE*SECRETS, MANAGE*SSH*AND*WINRM, MANAGE*TAGS, MANAGE*TEMPLATE*LIBRARY, MANAGE*USER*AND*USER*GROUPS*AND*API*KEYS, MANAGE*USERS*AND*GROUPS, READ*USERS*AND*GROUPS, VIEW*AUDITS, VIEW*USER*AND*USER*GROUPS*AND*API_KEYS
     """
-    app_permissions: NotRequired[pulumi.Input[Optional['UserGroupPermissionsAppPermissionsArgs']]]
+    app_permissions: NotRequired[pulumi.Input[Optional['UserGroupPermissionsAppPermissionsArgsDict']]]
     """
     Application specific permissions
     """
@@ -2796,35 +2796,35 @@ class UserGroupPermissionsArgs:
 
 
 class UserGroupPermissionsAppPermissionsArgsDict(TypedDict):
-    alls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsAllArgs']]]]]
+    alls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsAllArgsDict']]]]]
     """
     The permission to perform actions against all resources.
     """
-    deployments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsDeploymentArgs']]]]]
+    deployments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsDeploymentArgsDict']]]]]
     """
     Permission configuration to perform actions against deployments.
     """
-    environments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsEnvironmentArgs']]]]]
+    environments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsEnvironmentArgsDict']]]]]
     """
     Permission configuration to perform actions against workflows.
     """
-    pipelines: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsPipelineArgs']]]]]
+    pipelines: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsPipelineArgsDict']]]]]
     """
     Permission configuration to perform actions against pipelines.
     """
-    provisioners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsProvisionerArgs']]]]]
+    provisioners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsProvisionerArgsDict']]]]]
     """
     Permission configuration to perform actions against provisioners.
     """
-    services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsServiceArgs']]]]]
+    services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsServiceArgsDict']]]]]
     """
     Permission configuration to perform actions against services.
     """
-    templates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsTemplateArgs']]]]]
+    templates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsTemplateArgsDict']]]]]
     """
     Permission configuration to perform actions against templates.
     """
-    workflows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsWorkflowArgs']]]]]
+    workflows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserGroupPermissionsAppPermissionsWorkflowArgsDict']]]]]
     """
     Permission configuration to perform actions against workflows.
     """

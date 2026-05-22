@@ -295,15 +295,15 @@ class KubernetesAuthenticationArgsDict(TypedDict):
     """
     Delegate selectors to inherit the GCP credentials from.
     """
-    oidc: NotRequired[pulumi.Input[Optional['KubernetesAuthenticationOidcArgs']]]
+    oidc: NotRequired[pulumi.Input[Optional['KubernetesAuthenticationOidcArgsDict']]]
     """
     Service account configuration for connecting to the Kubernetes cluster
     """
-    service_account: NotRequired[pulumi.Input[Optional['KubernetesAuthenticationServiceAccountArgs']]]
+    service_account: NotRequired[pulumi.Input[Optional['KubernetesAuthenticationServiceAccountArgsDict']]]
     """
     Username and password for authentication to the cluster
     """
-    username_password: NotRequired[pulumi.Input[Optional['KubernetesAuthenticationUsernamePasswordArgs']]]
+    username_password: NotRequired[pulumi.Input[Optional['KubernetesAuthenticationUsernamePasswordArgsDict']]]
     """
     Username and password for authentication to the cluster
     """
