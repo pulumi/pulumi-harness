@@ -66,11 +66,11 @@ __all__ = [
 ]
 
 class OrchestratorConfigBinpackingArgsDict(TypedDict):
-    disruption: NotRequired[pulumi.Input[Optional['OrchestratorConfigBinpackingDisruptionArgs']]]
+    disruption: NotRequired[pulumi.Input[Optional['OrchestratorConfigBinpackingDisruptionArgsDict']]]
     """
     Harness disruption configuration
     """
-    pod_eviction: NotRequired[pulumi.Input[Optional['OrchestratorConfigBinpackingPodEvictionArgs']]]
+    pod_eviction: NotRequired[pulumi.Input[Optional['OrchestratorConfigBinpackingPodEvictionArgsDict']]]
     """
     Harness Pod Evictor Configuration
     """
@@ -115,7 +115,7 @@ class OrchestratorConfigBinpackingArgs:
 
 
 class OrchestratorConfigBinpackingDisruptionArgsDict(TypedDict):
-    budgets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OrchestratorConfigBinpackingDisruptionBudgetArgs']]]]]
+    budgets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OrchestratorConfigBinpackingDisruptionBudgetArgsDict']]]]]
     """
     Budgets for disruption
     """
@@ -192,7 +192,7 @@ class OrchestratorConfigBinpackingDisruptionBudgetArgsDict(TypedDict):
     """
     Reasons for disruption
     """
-    schedule: NotRequired[pulumi.Input[Optional['OrchestratorConfigBinpackingDisruptionBudgetScheduleArgs']]]
+    schedule: NotRequired[pulumi.Input[Optional['OrchestratorConfigBinpackingDisruptionBudgetScheduleArgsDict']]]
     """
     Schedule for disruption budget
     """
@@ -566,7 +566,7 @@ class OrchestratorConfigReplacementScheduleArgsDict(TypedDict):
     """
     Window type for replacement schedule
     """
-    window_details: NotRequired[pulumi.Input[Optional['OrchestratorConfigReplacementScheduleWindowDetailsArgs']]]
+    window_details: NotRequired[pulumi.Input[Optional['OrchestratorConfigReplacementScheduleWindowDetailsArgsDict']]]
 
 @pulumi.input_type
 class OrchestratorConfigReplacementScheduleArgs:

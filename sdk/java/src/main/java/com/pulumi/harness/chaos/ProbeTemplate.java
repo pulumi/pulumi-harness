@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
 /**
  * Resource for managing Harness Chaos Probe Templates.
  * 
+ * ## Example Usage
+ * 
  * ## Import
  * 
  * The `pulumi import` command can be used, for example:

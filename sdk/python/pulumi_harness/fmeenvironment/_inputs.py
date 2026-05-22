@@ -28,11 +28,11 @@ class FmeEnvironmentChangePermissionsArgsDict(TypedDict):
     """
     Whether kill operations are allowed in this environment.
     """
-    approval_skippable_bies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FmeEnvironmentChangePermissionsApprovalSkippableByArgs']]]]]
+    approval_skippable_bies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FmeEnvironmentChangePermissionsApprovalSkippableByArgsDict']]]]]
     """
     Users, groups, or API keys that can skip the approval requirement.
     """
-    approvers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FmeEnvironmentChangePermissionsApproverArgs']]]]]
+    approvers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FmeEnvironmentChangePermissionsApproverArgsDict']]]]]
     """
     Users, groups, or API keys that can approve changes.
     """

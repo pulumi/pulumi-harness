@@ -204,7 +204,7 @@ class DiscoveryAgentConfigArgsDict(TypedDict):
     """
     Docker image for the collector.
     """
-    datas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentConfigDataArgs']]]]]
+    datas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentConfigDataArgsDict']]]]]
     """
     Data collection configuration.
     """
@@ -216,11 +216,11 @@ class DiscoveryAgentConfigArgsDict(TypedDict):
     """
     Docker image for the log watcher.
     """
-    mtls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentConfigMtlArgs']]]]]
+    mtls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentConfigMtlArgsDict']]]]]
     """
     mTLS configuration.
     """
-    proxies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentConfigProxyArgs']]]]]
+    proxies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentConfigProxyArgsDict']]]]]
     """
     Proxy configuration.
     """
@@ -372,7 +372,7 @@ class DiscoveryAgentConfigDataArgsDict(TypedDict):
     """
     Collection window in minutes.
     """
-    crons: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentConfigDataCronArgs']]]]]
+    crons: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentConfigDataCronArgsDict']]]]]
     """
     Cron schedule for data collection.
     """
@@ -610,7 +610,7 @@ class DiscoveryAgentConfigKuberneteArgsDict(TypedDict):
     """
     Node selector labels.
     """
-    resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceArgs']]]]]
+    resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceArgsDict']]]]]
     """
     Compute resource requirements for the agent container.
     """
@@ -626,7 +626,7 @@ class DiscoveryAgentConfigKuberneteArgsDict(TypedDict):
     """
     Service account to use
     """
-    tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteTolerationArgs']]]]]
+    tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteTolerationArgsDict']]]]]
     """
     Tolerations for pod assignment.
     """
@@ -830,11 +830,11 @@ class DiscoveryAgentConfigKuberneteArgs:
 
 
 class DiscoveryAgentConfigKuberneteResourceArgsDict(TypedDict):
-    limits: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceLimitArgs']]]]]
+    limits: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceLimitArgsDict']]]]]
     """
     Maximum amount of compute resources allowed.
     """
-    requests: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceRequestArgs']]]]]
+    requests: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentConfigKuberneteResourceRequestArgsDict']]]]]
     """
     Minimum amount of compute resources required.
     """
@@ -1265,7 +1265,7 @@ class DiscoveryAgentInstallationDetailArgsDict(TypedDict):
     """
     The account identifier for the installation.
     """
-    agent_details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailAgentDetailArgs']]]]]
+    agent_details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailAgentDetailArgsDict']]]]]
     """
     Details about the installed agent.
     """
@@ -1650,7 +1650,7 @@ class DiscoveryAgentInstallationDetailArgs:
 
 
 class DiscoveryAgentInstallationDetailAgentDetailArgsDict(TypedDict):
-    clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailAgentDetailClusterArgs']]]]]
+    clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DiscoveryAgentInstallationDetailAgentDetailClusterArgsDict']]]]]
     """
     Details about the cluster where the agent is installed.
     """
