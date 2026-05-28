@@ -161,6 +161,26 @@ namespace Pulumi.Harness.Platform
     ///         },
     ///     });
     /// 
+    ///     var harnessCodeRepo = new Harness.Platform.DbSchema("harness_code_repo", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Name = "name",
+    ///         Service = "service1",
+    ///         Type = "Repository",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///             "bar:foo",
+    ///         },
+    ///         SchemaSource = new Harness.Platform.Inputs.DbSchemaSchemaSourceArgs
+    ///         {
+    ///             Repo = "my-harness-code-repo",
+    ///             Location = "db/example-changelog.yaml",
+    ///         },
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -220,7 +240,7 @@ namespace Pulumi.Harness.Platform
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Provides a connector and path at which to find the database schema representation
+        /// Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
         /// </summary>
         [Output("schemaSource")]
         public Output<Outputs.DbSchemaSchemaSource?> SchemaSource { get; private set; } = null!;
@@ -339,7 +359,7 @@ namespace Pulumi.Harness.Platform
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// Provides a connector and path at which to find the database schema representation
+        /// Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
         /// </summary>
         [Input("schemaSource")]
         public Input<Inputs.DbSchemaSchemaSourceArgs>? SchemaSource { get; set; }
@@ -425,7 +445,7 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Provides a connector and path at which to find the database schema representation
+        /// Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
         /// </summary>
         [Input("schemaSource")]
         public Input<Inputs.DbSchemaSchemaSourceGetArgs>? SchemaSource { get; set; }

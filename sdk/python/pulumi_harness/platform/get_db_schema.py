@@ -136,7 +136,7 @@ class GetDbSchemaResult:
     @pulumi.getter(name="schemaSources")
     def schema_sources(self) -> Sequence['outputs.GetDbSchemaSchemaSourceResult']:
         """
-        Provides a connector and path at which to find the database schema representation
+        Provides a connector and path at which to find the database schema representation. For Harness Code Repository, connector will be empty.
         """
         return pulumi.get(self, "schema_sources")
 

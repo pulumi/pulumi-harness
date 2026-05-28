@@ -86,7 +86,7 @@ type LookupDbSchemaResult struct {
 	OrgId string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId string `pulumi:"projectId"`
-	// Provides a connector and path at which to find the database schema representation
+	// Provides a connector and path at which to find the database schema representation. For Harness Code Repository, connector will be empty.
 	SchemaSources []GetDbSchemaSchemaSource `pulumi:"schemaSources"`
 	// The service associated with schema
 	Service string `pulumi:"service"`
@@ -184,7 +184,7 @@ func (o LookupDbSchemaResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDbSchemaResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Provides a connector and path at which to find the database schema representation
+// Provides a connector and path at which to find the database schema representation. For Harness Code Repository, connector will be empty.
 func (o LookupDbSchemaResultOutput) SchemaSources() GetDbSchemaSchemaSourceArrayOutput {
 	return o.ApplyT(func(v LookupDbSchemaResult) []GetDbSchemaSchemaSource { return v.SchemaSources }).(GetDbSchemaSchemaSourceArrayOutput)
 }

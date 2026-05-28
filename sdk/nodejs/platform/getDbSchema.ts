@@ -106,7 +106,7 @@ export interface GetDbSchemaResult {
      */
     readonly projectId: string;
     /**
-     * Provides a connector and path at which to find the database schema representation
+     * Provides a connector and path at which to find the database schema representation. For Harness Code Repository, connector will be empty.
      */
     readonly schemaSources: outputs.platform.GetDbSchemaSchemaSource[];
     /**

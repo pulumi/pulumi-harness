@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetConnectorJdbcCredentialKeyPair;
+import com.pulumi.harness.platform.outputs.GetConnectorJdbcCredentialOidc;
 import com.pulumi.harness.platform.outputs.GetConnectorJdbcCredentialServiceAccount;
 import com.pulumi.harness.platform.outputs.GetConnectorJdbcCredentialUsernamePassword;
 import java.lang.String;
@@ -24,6 +25,11 @@ public final class GetConnectorJdbcCredential {
      * 
      */
     private List<GetConnectorJdbcCredentialKeyPair> keyPairs;
+    /**
+     * @return Authenticate using OIDC.
+     * 
+     */
+    private List<GetConnectorJdbcCredentialOidc> oidcs;
     /**
      * @return The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
@@ -64,6 +70,13 @@ public final class GetConnectorJdbcCredential {
      */
     public List<GetConnectorJdbcCredentialKeyPair> keyPairs() {
         return this.keyPairs;
+    }
+    /**
+     * @return Authenticate using OIDC.
+     * 
+     */
+    public List<GetConnectorJdbcCredentialOidc> oidcs() {
+        return this.oidcs;
     }
     /**
      * @return The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
@@ -112,6 +125,7 @@ public final class GetConnectorJdbcCredential {
     public static final class Builder {
         private String authType;
         private List<GetConnectorJdbcCredentialKeyPair> keyPairs;
+        private List<GetConnectorJdbcCredentialOidc> oidcs;
         private String passwordRef;
         private List<GetConnectorJdbcCredentialServiceAccount> serviceAccounts;
         private String username;
@@ -122,6 +136,7 @@ public final class GetConnectorJdbcCredential {
     	      Objects.requireNonNull(defaults);
     	      this.authType = defaults.authType;
     	      this.keyPairs = defaults.keyPairs;
+    	      this.oidcs = defaults.oidcs;
     	      this.passwordRef = defaults.passwordRef;
     	      this.serviceAccounts = defaults.serviceAccounts;
     	      this.username = defaults.username;
@@ -147,6 +162,17 @@ public final class GetConnectorJdbcCredential {
         }
         public Builder keyPairs(GetConnectorJdbcCredentialKeyPair... keyPairs) {
             return keyPairs(List.of(keyPairs));
+        }
+        @CustomType.Setter
+        public Builder oidcs(List<GetConnectorJdbcCredentialOidc> oidcs) {
+            if (oidcs == null) {
+              throw new MissingRequiredPropertyException("GetConnectorJdbcCredential", "oidcs");
+            }
+            this.oidcs = oidcs;
+            return this;
+        }
+        public Builder oidcs(GetConnectorJdbcCredentialOidc... oidcs) {
+            return oidcs(List.of(oidcs));
         }
         @CustomType.Setter
         public Builder passwordRef(String passwordRef) {
@@ -198,6 +224,7 @@ public final class GetConnectorJdbcCredential {
             final var _resultValue = new GetConnectorJdbcCredential();
             _resultValue.authType = authType;
             _resultValue.keyPairs = keyPairs;
+            _resultValue.oidcs = oidcs;
             _resultValue.passwordRef = passwordRef;
             _resultValue.serviceAccounts = serviceAccounts;
             _resultValue.username = username;

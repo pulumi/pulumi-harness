@@ -130,6 +130,22 @@ import * as utilities from "../utilities";
  *         archivePath: "path/to/archive.zip",
  *     },
  * });
+ * const harnessCodeRepo = new harness.platform.DbSchema("harness_code_repo", {
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     name: "name",
+ *     service: "service1",
+ *     type: "Repository",
+ *     tags: [
+ *         "foo:bar",
+ *         "bar:foo",
+ *     ],
+ *     schemaSource: {
+ *         repo: "my-harness-code-repo",
+ *         location: "db/example-changelog.yaml",
+ *     },
+ * });
  * ```
  *
  * ## Import
@@ -199,7 +215,7 @@ export class DbSchema extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
-     * Provides a connector and path at which to find the database schema representation
+     * Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
      */
     declare public readonly schemaSource: pulumi.Output<outputs.platform.DbSchemaSchemaSource | undefined>;
     /**
@@ -306,7 +322,7 @@ export interface DbSchemaState {
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
-     * Provides a connector and path at which to find the database schema representation
+     * Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
      */
     schemaSource?: pulumi.Input<inputs.platform.DbSchemaSchemaSource | undefined>;
     /**
@@ -360,7 +376,7 @@ export interface DbSchemaArgs {
      */
     projectId: pulumi.Input<string>;
     /**
-     * Provides a connector and path at which to find the database schema representation
+     * Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
      */
     schemaSource?: pulumi.Input<inputs.platform.DbSchemaSchemaSource | undefined>;
     /**

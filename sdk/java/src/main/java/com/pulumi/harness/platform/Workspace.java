@@ -12,6 +12,7 @@ import com.pulumi.harness.platform.WorkspaceArgs;
 import com.pulumi.harness.platform.inputs.WorkspaceState;
 import com.pulumi.harness.platform.outputs.WorkspaceConnector;
 import com.pulumi.harness.platform.outputs.WorkspaceEnvironmentVariable;
+import com.pulumi.harness.platform.outputs.WorkspaceProvisionerConfig;
 import com.pulumi.harness.platform.outputs.WorkspaceTerraformVariable;
 import com.pulumi.harness.platform.outputs.WorkspaceTerraformVariableFile;
 import java.lang.Boolean;
@@ -272,6 +273,20 @@ public class Workspace extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> providerConnector() {
         return Codegen.optional(this.providerConnector);
+    }
+    /**
+     * Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+     * 
+     */
+    @Export(name="provisionerConfig", refs={WorkspaceProvisionerConfig.class}, tree="[0]")
+    private Output</* @Nullable */ WorkspaceProvisionerConfig> provisionerConfig;
+
+    /**
+     * @return Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+     * 
+     */
+    public Output<Optional<WorkspaceProvisionerConfig>> provisionerConfig() {
+        return Codegen.optional(this.provisionerConfig);
     }
     /**
      * Provisioner type defines the provisioning tool to use (terraform or opentofu)

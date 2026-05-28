@@ -5878,6 +5878,10 @@ export namespace platform {
          */
         keyPair?: outputs.platform.ConnectorJdbcCredentialsKeyPair;
         /**
+         * Authenticate using OIDC.
+         */
+        oidc?: outputs.platform.ConnectorJdbcCredentialsOidc;
+        /**
          * The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         passwordRef?: string;
@@ -5916,6 +5920,36 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: string;
+    }
+
+    export interface ConnectorJdbcCredentialsOidc {
+        /**
+         * GCP OIDC configuration.
+         */
+        gcpOidc: outputs.platform.ConnectorJdbcCredentialsOidcGcpOidc;
+        /**
+         * The OIDC provider type. Currently supported: Gcp.
+         */
+        providerType: string;
+    }
+
+    export interface ConnectorJdbcCredentialsOidcGcpOidc {
+        /**
+         * The GCP project number (numeric).
+         */
+        projectNumber: string;
+        /**
+         * The OIDC Provider ID within the pool.
+         */
+        providerId: string;
+        /**
+         * The GCP Service Account email for impersonation.
+         */
+        serviceAccountEmail: string;
+        /**
+         * The Workload Identity Pool ID.
+         */
+        workloadPoolId: string;
     }
 
     export interface ConnectorJdbcCredentialsServiceAccount {
@@ -5983,19 +6017,19 @@ export namespace platform {
 
     export interface DbSchemaSchemaSource {
         /**
-         * If connector type is artifactory, path to the archive file which contains the changeLog
+         * If connector type is artifactory, path to the archive file which contains the changeLog. Not supported with Harness Code Repository.
          */
         archivePath?: string;
         /**
-         * Connector to repository at which to find details about the database schema
+         * Connector to repository at which to find details about the database schema. Leave empty when using Harness Code Repository.
          */
-        connector: string;
+        connector?: string;
         /**
          * The path within the specified repository at which to find details about the database schema
          */
         location: string;
         /**
-         * If connector url is of account, which repository to connect to using the connector
+         * Repository name. Required for Harness Code Repository or when connector connection type is Account.
          */
         repo?: string;
         /**
@@ -7091,6 +7125,10 @@ export namespace platform {
          */
         keyPairs: outputs.platform.GetConnectorJdbcCredentialKeyPair[];
         /**
+         * Authenticate using OIDC.
+         */
+        oidcs: outputs.platform.GetConnectorJdbcCredentialOidc[];
+        /**
          * The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         passwordRef: string;
@@ -7129,6 +7167,36 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef: string;
+    }
+
+    export interface GetConnectorJdbcCredentialOidc {
+        /**
+         * GCP OIDC configuration.
+         */
+        gcpOidcs: outputs.platform.GetConnectorJdbcCredentialOidcGcpOidc[];
+        /**
+         * The OIDC provider type.
+         */
+        providerType: string;
+    }
+
+    export interface GetConnectorJdbcCredentialOidcGcpOidc {
+        /**
+         * The GCP project number (numeric).
+         */
+        projectNumber: string;
+        /**
+         * The OIDC Provider ID within the pool.
+         */
+        providerId: string;
+        /**
+         * The GCP Service Account email for impersonation.
+         */
+        serviceAccountEmail: string;
+        /**
+         * The Workload Identity Pool ID.
+         */
+        workloadPoolId: string;
     }
 
     export interface GetConnectorJdbcCredentialServiceAccount {
@@ -7204,7 +7272,7 @@ export namespace platform {
          */
         archivePath: string;
         /**
-         * Connector to repository at which to find details about the database schema
+         * Connector to repository at which to find details about the database schema. Empty when using Harness Code Repository.
          */
         connector: string;
         /**
@@ -40561,6 +40629,25 @@ export namespace platform {
          * Value type indicates the value type of the variable. Currently we support string and secret.
          */
         valueType: string;
+    }
+
+    export interface WorkspaceProvisionerConfig {
+        /**
+         * Programming language for AWS CDK (e.g., python, typescript)
+         */
+        language: string;
+        /**
+         * Version of the programming language (e.g., 3.12 for Python)
+         */
+        languageVersion: string;
+        /**
+         * Package manager to use (e.g., pip, npm)
+         */
+        packageManager: string;
+        /**
+         * Version of the package manager (e.g., 25.3 for pip)
+         */
+        packageManagerVersion: string;
     }
 
     export interface WorkspaceTerraformVariable {
