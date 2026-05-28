@@ -1988,6 +1988,16 @@
                                 "key_pair": {
                                     "maxItemsOne": true
                                 },
+                                "oidc": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "gcp_oidc": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
                                 "service_account": {
                                     "maxItemsOne": true
                                 },
@@ -15604,6 +15614,9 @@
                     "environment_variable": {
                         "maxItemsOne": false
                     },
+                    "provisioner_config": {
+                        "maxItemsOne": true
+                    },
                     "tags": {
                         "maxItemsOne": false
                     },
@@ -17620,6 +17633,16 @@
                             "fields": {
                                 "key_pair": {
                                     "maxItemsOne": false
+                                },
+                                "oidc": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "gcp_oidc": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "service_account": {
                                     "maxItemsOne": false
