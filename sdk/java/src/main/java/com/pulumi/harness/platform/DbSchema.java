@@ -162,6 +162,22 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         var harnessCodeRepo = new DbSchema("harnessCodeRepo", DbSchemaArgs.builder()
+ *             .identifier("identifier")
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .name("name")
+ *             .service("service1")
+ *             .type("Repository")
+ *             .tags(            
+ *                 "foo:bar",
+ *                 "bar:foo")
+ *             .schemaSource(DbSchemaSchemaSourceArgs.builder()
+ *                 .repo("my-harness-code-repo")
+ *                 .location("db/example-changelog.yaml")
+ *                 .build())
+ *             .build());
+ * 
  *     }
  * }
  * }
@@ -279,14 +295,14 @@ public class DbSchema extends com.pulumi.resources.CustomResource {
         return this.projectId;
     }
     /**
-     * Provides a connector and path at which to find the database schema representation
+     * Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
      * 
      */
     @Export(name="schemaSource", refs={DbSchemaSchemaSource.class}, tree="[0]")
     private Output</* @Nullable */ DbSchemaSchemaSource> schemaSource;
 
     /**
-     * @return Provides a connector and path at which to find the database schema representation
+     * @return Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
      * 
      */
     public Output<Optional<DbSchemaSchemaSource>> schemaSource() {

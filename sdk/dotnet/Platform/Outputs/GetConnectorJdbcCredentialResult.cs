@@ -22,6 +22,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectorJdbcCredentialKeyPairResult> KeyPairs;
         /// <summary>
+        /// Authenticate using OIDC.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetConnectorJdbcCredentialOidcResult> Oidcs;
+        /// <summary>
         /// The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string PasswordRef;
@@ -48,6 +52,8 @@ namespace Pulumi.Harness.Platform.Outputs
 
             ImmutableArray<Outputs.GetConnectorJdbcCredentialKeyPairResult> keyPairs,
 
+            ImmutableArray<Outputs.GetConnectorJdbcCredentialOidcResult> oidcs,
+
             string passwordRef,
 
             ImmutableArray<Outputs.GetConnectorJdbcCredentialServiceAccountResult> serviceAccounts,
@@ -60,6 +66,7 @@ namespace Pulumi.Harness.Platform.Outputs
         {
             AuthType = authType;
             KeyPairs = keyPairs;
+            Oidcs = oidcs;
             PasswordRef = passwordRef;
             ServiceAccounts = serviceAccounts;
             Username = username;

@@ -13,16 +13,16 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class DbSchemaSchemaSourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If connector type is artifactory, path to the archive file which contains the changeLog
+        /// If connector type is artifactory, path to the archive file which contains the changeLog. Not supported with Harness Code Repository.
         /// </summary>
         [Input("archivePath")]
         public Input<string>? ArchivePath { get; set; }
 
         /// <summary>
-        /// Connector to repository at which to find details about the database schema
+        /// Connector to repository at which to find details about the database schema. Leave empty when using Harness Code Repository.
         /// </summary>
-        [Input("connector", required: true)]
-        public Input<string> Connector { get; set; } = null!;
+        [Input("connector")]
+        public Input<string>? Connector { get; set; }
 
         /// <summary>
         /// The path within the specified repository at which to find details about the database schema
@@ -31,7 +31,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// If connector url is of account, which repository to connect to using the connector
+        /// Repository name. Required for Harness Code Repository or when connector connection type is Account.
         /// </summary>
         [Input("repo")]
         public Input<string>? Repo { get; set; }

@@ -18,7 +18,7 @@ public final class GetDbSchemaSchemaSource {
      */
     private String archivePath;
     /**
-     * @return Connector to repository at which to find details about the database schema
+     * @return Connector to repository at which to find details about the database schema. Empty when using Harness Code Repository.
      * 
      */
     private String connector;
@@ -47,7 +47,7 @@ public final class GetDbSchemaSchemaSource {
         return this.archivePath;
     }
     /**
-     * @return Connector to repository at which to find details about the database schema
+     * @return Connector to repository at which to find details about the database schema. Empty when using Harness Code Repository.
      * 
      */
     public String connector() {

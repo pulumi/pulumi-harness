@@ -183,6 +183,12 @@ namespace Pulumi.Harness.Platform
         public Output<string?> ProviderConnector { get; private set; } = null!;
 
         /// <summary>
+        /// Provisioner configuration for awscdk provisioner type. Required when ProvisionerType is awscdk.
+        /// </summary>
+        [Output("provisionerConfig")]
+        public Output<Outputs.WorkspaceProvisionerConfig?> ProvisionerConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Provisioner type defines the provisioning tool to use (terraform or opentofu)
         /// </summary>
         [Output("provisionerType")]
@@ -398,6 +404,12 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProviderConnector { get; set; }
 
         /// <summary>
+        /// Provisioner configuration for awscdk provisioner type. Required when ProvisionerType is awscdk.
+        /// </summary>
+        [Input("provisionerConfig")]
+        public Input<Inputs.WorkspaceProvisionerConfigArgs>? ProvisionerConfig { get; set; }
+
+        /// <summary>
         /// Provisioner type defines the provisioning tool to use (terraform or opentofu)
         /// </summary>
         [Input("provisionerType", required: true)]
@@ -596,6 +608,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("providerConnector")]
         public Input<string>? ProviderConnector { get; set; }
+
+        /// <summary>
+        /// Provisioner configuration for awscdk provisioner type. Required when ProvisionerType is awscdk.
+        /// </summary>
+        [Input("provisionerConfig")]
+        public Input<Inputs.WorkspaceProvisionerConfigGetArgs>? ProvisionerConfig { get; set; }
 
         /// <summary>
         /// Provisioner type defines the provisioning tool to use (terraform or opentofu)

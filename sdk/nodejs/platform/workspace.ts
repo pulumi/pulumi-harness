@@ -163,6 +163,10 @@ export class Workspace extends pulumi.CustomResource {
      */
     declare public readonly providerConnector: pulumi.Output<string | undefined>;
     /**
+     * Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+     */
+    declare public readonly provisionerConfig: pulumi.Output<outputs.platform.WorkspaceProvisionerConfig | undefined>;
+    /**
      * Provisioner type defines the provisioning tool to use (terraform or opentofu)
      */
     declare public readonly provisionerType: pulumi.Output<string>;
@@ -246,6 +250,7 @@ export class Workspace extends pulumi.CustomResource {
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["providerConnector"] = state?.providerConnector;
+            resourceInputs["provisionerConfig"] = state?.provisionerConfig;
             resourceInputs["provisionerType"] = state?.provisionerType;
             resourceInputs["provisionerVersion"] = state?.provisionerVersion;
             resourceInputs["repository"] = state?.repository;
@@ -300,6 +305,7 @@ export class Workspace extends pulumi.CustomResource {
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["providerConnector"] = args?.providerConnector;
+            resourceInputs["provisionerConfig"] = args?.provisionerConfig;
             resourceInputs["provisionerType"] = args?.provisionerType;
             resourceInputs["provisionerVersion"] = args?.provisionerVersion;
             resourceInputs["repository"] = args?.repository;
@@ -365,6 +371,10 @@ export interface WorkspaceState {
      * Provider connector is the reference to the connector for the infrastructure provider
      */
     providerConnector?: pulumi.Input<string | undefined>;
+    /**
+     * Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+     */
+    provisionerConfig?: pulumi.Input<inputs.platform.WorkspaceProvisionerConfig | undefined>;
     /**
      * Provisioner type defines the provisioning tool to use (terraform or opentofu)
      */
@@ -471,6 +481,10 @@ export interface WorkspaceArgs {
      * Provider connector is the reference to the connector for the infrastructure provider
      */
     providerConnector?: pulumi.Input<string | undefined>;
+    /**
+     * Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+     */
+    provisionerConfig?: pulumi.Input<inputs.platform.WorkspaceProvisionerConfig | undefined>;
     /**
      * Provisioner type defines the provisioning tool to use (terraform or opentofu)
      */

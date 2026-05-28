@@ -13,22 +13,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DbSchemaSchemaSource {
     /**
-     * @return If connector type is artifactory, path to the archive file which contains the changeLog
+     * @return If connector type is artifactory, path to the archive file which contains the changeLog. Not supported with Harness Code Repository.
      * 
      */
     private @Nullable String archivePath;
     /**
-     * @return Connector to repository at which to find details about the database schema
+     * @return Connector to repository at which to find details about the database schema. Leave empty when using Harness Code Repository.
      * 
      */
-    private String connector;
+    private @Nullable String connector;
     /**
      * @return The path within the specified repository at which to find details about the database schema
      * 
      */
     private String location;
     /**
-     * @return If connector url is of account, which repository to connect to using the connector
+     * @return Repository name. Required for Harness Code Repository or when connector connection type is Account.
      * 
      */
     private @Nullable String repo;
@@ -40,18 +40,18 @@ public final class DbSchemaSchemaSource {
 
     private DbSchemaSchemaSource() {}
     /**
-     * @return If connector type is artifactory, path to the archive file which contains the changeLog
+     * @return If connector type is artifactory, path to the archive file which contains the changeLog. Not supported with Harness Code Repository.
      * 
      */
     public Optional<String> archivePath() {
         return Optional.ofNullable(this.archivePath);
     }
     /**
-     * @return Connector to repository at which to find details about the database schema
+     * @return Connector to repository at which to find details about the database schema. Leave empty when using Harness Code Repository.
      * 
      */
-    public String connector() {
-        return this.connector;
+    public Optional<String> connector() {
+        return Optional.ofNullable(this.connector);
     }
     /**
      * @return The path within the specified repository at which to find details about the database schema
@@ -61,7 +61,7 @@ public final class DbSchemaSchemaSource {
         return this.location;
     }
     /**
-     * @return If connector url is of account, which repository to connect to using the connector
+     * @return Repository name. Required for Harness Code Repository or when connector connection type is Account.
      * 
      */
     public Optional<String> repo() {
@@ -85,7 +85,7 @@ public final class DbSchemaSchemaSource {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String archivePath;
-        private String connector;
+        private @Nullable String connector;
         private String location;
         private @Nullable String repo;
         private @Nullable String toml;
@@ -106,10 +106,8 @@ public final class DbSchemaSchemaSource {
             return this;
         }
         @CustomType.Setter
-        public Builder connector(String connector) {
-            if (connector == null) {
-              throw new MissingRequiredPropertyException("DbSchemaSchemaSource", "connector");
-            }
+        public Builder connector(@Nullable String connector) {
+
             this.connector = connector;
             return this;
         }

@@ -13,6 +13,276 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePlugin struct {
+	// Environment variables passed to the plugin.
+	Envs []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnv `pulumi:"envs"`
+	// Name of the plugin. Only set the plugin name if the plugin is defined in `argocd-cm`. If the plugin is defined as a sidecar, omit the name. The plugin will be automatically matched with the Application according to the plugin's discovery rules.
+	Name *string `pulumi:"name"`
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginArgs and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginArgs{...}
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginArgs struct {
+	// Environment variables passed to the plugin.
+	Envs GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayInput `pulumi:"envs"`
+	// Name of the plugin. Only set the plugin name if the plugin is defined in `argocd-cm`. If the plugin is defined as a sidecar, omit the name. The plugin will be automatically matched with the Application according to the plugin's discovery rules.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePlugin)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput)
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput).ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutputWithContext(ctx)
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginArgs, GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtr and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrInput` via:
+//
+//	        GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput
+}
+
+type gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrType GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginArgs
+
+func GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtr(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginArgs) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrInput {
+	return (*gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrType)(v)
+}
+
+func (*gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePlugin)(nil)).Elem()
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutputWithContext(context.Background())
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePlugin)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput {
+	return o.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutputWithContext(context.Background())
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePlugin) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePlugin {
+		return &v
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput)
+}
+
+// Environment variables passed to the plugin.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput) Envs() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePlugin) []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnv {
+		return v.Envs
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutput)
+}
+
+// Name of the plugin. Only set the plugin name if the plugin is defined in `argocd-cm`. If the plugin is defined as a sidecar, omit the name. The plugin will be automatically matched with the Application according to the plugin's discovery rules.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePlugin) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePlugin)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePlugin) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePlugin {
+		if v != nil {
+			return *v
+		}
+		var ret GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePlugin
+		return ret
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput)
+}
+
+// Environment variables passed to the plugin.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput) Envs() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePlugin) []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnv {
+		if v == nil {
+			return nil
+		}
+		return v.Envs
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutput)
+}
+
+// Name of the plugin. Only set the plugin name if the plugin is defined in `argocd-cm`. If the plugin is defined as a sidecar, omit the name. The plugin will be automatically matched with the Application according to the plugin's discovery rules.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePlugin) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnv struct {
+	// Name of the environment variable.
+	Name *string `pulumi:"name"`
+	// Value of the environment variable.
+	Value *string `pulumi:"value"`
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArgs and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArgs{...}
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArgs struct {
+	// Name of the environment variable.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the environment variable.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnv)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutput)
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArray and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArray{ GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArgs{...} }
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArray []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvInput
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnv)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnv)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutput {
+	return o
+}
+
+// Name of the environment variable.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnv) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value of the environment variable.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnv) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnv)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnv {
+		return vs[0].([]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnv)[vs[1].(int)]
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutput)
+}
+
 type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicy struct {
 	// Whether to automatically keep an application synced to the target revision.
 	Automated *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyAutomated `pulumi:"automated"`
@@ -26392,6 +26662,200 @@ func (o WorkspaceEnvironmentVariableArrayOutput) Index(i pulumi.IntInput) Worksp
 	}).(WorkspaceEnvironmentVariableOutput)
 }
 
+type WorkspaceProvisionerConfig struct {
+	// Programming language for AWS CDK (e.g., python, typescript)
+	Language string `pulumi:"language"`
+	// Version of the programming language (e.g., 3.12 for Python)
+	LanguageVersion string `pulumi:"languageVersion"`
+	// Package manager to use (e.g., pip, npm)
+	PackageManager string `pulumi:"packageManager"`
+	// Version of the package manager (e.g., 25.3 for pip)
+	PackageManagerVersion string `pulumi:"packageManagerVersion"`
+}
+
+// WorkspaceProvisionerConfigInput is an input type that accepts WorkspaceProvisionerConfigArgs and WorkspaceProvisionerConfigOutput values.
+// You can construct a concrete instance of `WorkspaceProvisionerConfigInput` via:
+//
+//	WorkspaceProvisionerConfigArgs{...}
+type WorkspaceProvisionerConfigInput interface {
+	pulumi.Input
+
+	ToWorkspaceProvisionerConfigOutput() WorkspaceProvisionerConfigOutput
+	ToWorkspaceProvisionerConfigOutputWithContext(context.Context) WorkspaceProvisionerConfigOutput
+}
+
+type WorkspaceProvisionerConfigArgs struct {
+	// Programming language for AWS CDK (e.g., python, typescript)
+	Language pulumi.StringInput `pulumi:"language"`
+	// Version of the programming language (e.g., 3.12 for Python)
+	LanguageVersion pulumi.StringInput `pulumi:"languageVersion"`
+	// Package manager to use (e.g., pip, npm)
+	PackageManager pulumi.StringInput `pulumi:"packageManager"`
+	// Version of the package manager (e.g., 25.3 for pip)
+	PackageManagerVersion pulumi.StringInput `pulumi:"packageManagerVersion"`
+}
+
+func (WorkspaceProvisionerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceProvisionerConfig)(nil)).Elem()
+}
+
+func (i WorkspaceProvisionerConfigArgs) ToWorkspaceProvisionerConfigOutput() WorkspaceProvisionerConfigOutput {
+	return i.ToWorkspaceProvisionerConfigOutputWithContext(context.Background())
+}
+
+func (i WorkspaceProvisionerConfigArgs) ToWorkspaceProvisionerConfigOutputWithContext(ctx context.Context) WorkspaceProvisionerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceProvisionerConfigOutput)
+}
+
+func (i WorkspaceProvisionerConfigArgs) ToWorkspaceProvisionerConfigPtrOutput() WorkspaceProvisionerConfigPtrOutput {
+	return i.ToWorkspaceProvisionerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkspaceProvisionerConfigArgs) ToWorkspaceProvisionerConfigPtrOutputWithContext(ctx context.Context) WorkspaceProvisionerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceProvisionerConfigOutput).ToWorkspaceProvisionerConfigPtrOutputWithContext(ctx)
+}
+
+// WorkspaceProvisionerConfigPtrInput is an input type that accepts WorkspaceProvisionerConfigArgs, WorkspaceProvisionerConfigPtr and WorkspaceProvisionerConfigPtrOutput values.
+// You can construct a concrete instance of `WorkspaceProvisionerConfigPtrInput` via:
+//
+//	        WorkspaceProvisionerConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkspaceProvisionerConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkspaceProvisionerConfigPtrOutput() WorkspaceProvisionerConfigPtrOutput
+	ToWorkspaceProvisionerConfigPtrOutputWithContext(context.Context) WorkspaceProvisionerConfigPtrOutput
+}
+
+type workspaceProvisionerConfigPtrType WorkspaceProvisionerConfigArgs
+
+func WorkspaceProvisionerConfigPtr(v *WorkspaceProvisionerConfigArgs) WorkspaceProvisionerConfigPtrInput {
+	return (*workspaceProvisionerConfigPtrType)(v)
+}
+
+func (*workspaceProvisionerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceProvisionerConfig)(nil)).Elem()
+}
+
+func (i *workspaceProvisionerConfigPtrType) ToWorkspaceProvisionerConfigPtrOutput() WorkspaceProvisionerConfigPtrOutput {
+	return i.ToWorkspaceProvisionerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workspaceProvisionerConfigPtrType) ToWorkspaceProvisionerConfigPtrOutputWithContext(ctx context.Context) WorkspaceProvisionerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceProvisionerConfigPtrOutput)
+}
+
+type WorkspaceProvisionerConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceProvisionerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceProvisionerConfig)(nil)).Elem()
+}
+
+func (o WorkspaceProvisionerConfigOutput) ToWorkspaceProvisionerConfigOutput() WorkspaceProvisionerConfigOutput {
+	return o
+}
+
+func (o WorkspaceProvisionerConfigOutput) ToWorkspaceProvisionerConfigOutputWithContext(ctx context.Context) WorkspaceProvisionerConfigOutput {
+	return o
+}
+
+func (o WorkspaceProvisionerConfigOutput) ToWorkspaceProvisionerConfigPtrOutput() WorkspaceProvisionerConfigPtrOutput {
+	return o.ToWorkspaceProvisionerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkspaceProvisionerConfigOutput) ToWorkspaceProvisionerConfigPtrOutputWithContext(ctx context.Context) WorkspaceProvisionerConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceProvisionerConfig) *WorkspaceProvisionerConfig {
+		return &v
+	}).(WorkspaceProvisionerConfigPtrOutput)
+}
+
+// Programming language for AWS CDK (e.g., python, typescript)
+func (o WorkspaceProvisionerConfigOutput) Language() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkspaceProvisionerConfig) string { return v.Language }).(pulumi.StringOutput)
+}
+
+// Version of the programming language (e.g., 3.12 for Python)
+func (o WorkspaceProvisionerConfigOutput) LanguageVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkspaceProvisionerConfig) string { return v.LanguageVersion }).(pulumi.StringOutput)
+}
+
+// Package manager to use (e.g., pip, npm)
+func (o WorkspaceProvisionerConfigOutput) PackageManager() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkspaceProvisionerConfig) string { return v.PackageManager }).(pulumi.StringOutput)
+}
+
+// Version of the package manager (e.g., 25.3 for pip)
+func (o WorkspaceProvisionerConfigOutput) PackageManagerVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkspaceProvisionerConfig) string { return v.PackageManagerVersion }).(pulumi.StringOutput)
+}
+
+type WorkspaceProvisionerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceProvisionerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceProvisionerConfig)(nil)).Elem()
+}
+
+func (o WorkspaceProvisionerConfigPtrOutput) ToWorkspaceProvisionerConfigPtrOutput() WorkspaceProvisionerConfigPtrOutput {
+	return o
+}
+
+func (o WorkspaceProvisionerConfigPtrOutput) ToWorkspaceProvisionerConfigPtrOutputWithContext(ctx context.Context) WorkspaceProvisionerConfigPtrOutput {
+	return o
+}
+
+func (o WorkspaceProvisionerConfigPtrOutput) Elem() WorkspaceProvisionerConfigOutput {
+	return o.ApplyT(func(v *WorkspaceProvisionerConfig) WorkspaceProvisionerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceProvisionerConfig
+		return ret
+	}).(WorkspaceProvisionerConfigOutput)
+}
+
+// Programming language for AWS CDK (e.g., python, typescript)
+func (o WorkspaceProvisionerConfigPtrOutput) Language() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceProvisionerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Language
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the programming language (e.g., 3.12 for Python)
+func (o WorkspaceProvisionerConfigPtrOutput) LanguageVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceProvisionerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LanguageVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Package manager to use (e.g., pip, npm)
+func (o WorkspaceProvisionerConfigPtrOutput) PackageManager() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceProvisionerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PackageManager
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the package manager (e.g., 25.3 for pip)
+func (o WorkspaceProvisionerConfigPtrOutput) PackageManagerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceProvisionerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PackageManagerVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkspaceTerraformVariable struct {
 	// Key is the identifier for the variable. Must be unique within the workspace.
 	Key string `pulumi:"key"`
@@ -32733,6 +33197,8 @@ type GetConnectorJdbcCredential struct {
 	AuthType string `pulumi:"authType"`
 	// Authenticate using key pair.
 	KeyPairs []GetConnectorJdbcCredentialKeyPair `pulumi:"keyPairs"`
+	// Authenticate using OIDC.
+	Oidcs []GetConnectorJdbcCredentialOidc `pulumi:"oidcs"`
 	// The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef string `pulumi:"passwordRef"`
 	// Authenticate using service account.
@@ -32761,6 +33227,8 @@ type GetConnectorJdbcCredentialArgs struct {
 	AuthType pulumi.StringInput `pulumi:"authType"`
 	// Authenticate using key pair.
 	KeyPairs GetConnectorJdbcCredentialKeyPairArrayInput `pulumi:"keyPairs"`
+	// Authenticate using OIDC.
+	Oidcs GetConnectorJdbcCredentialOidcArrayInput `pulumi:"oidcs"`
 	// The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	PasswordRef pulumi.StringInput `pulumi:"passwordRef"`
 	// Authenticate using service account.
@@ -32832,6 +33300,11 @@ func (o GetConnectorJdbcCredentialOutput) AuthType() pulumi.StringOutput {
 // Authenticate using key pair.
 func (o GetConnectorJdbcCredentialOutput) KeyPairs() GetConnectorJdbcCredentialKeyPairArrayOutput {
 	return o.ApplyT(func(v GetConnectorJdbcCredential) []GetConnectorJdbcCredentialKeyPair { return v.KeyPairs }).(GetConnectorJdbcCredentialKeyPairArrayOutput)
+}
+
+// Authenticate using OIDC.
+func (o GetConnectorJdbcCredentialOutput) Oidcs() GetConnectorJdbcCredentialOidcArrayOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredential) []GetConnectorJdbcCredentialOidc { return v.Oidcs }).(GetConnectorJdbcCredentialOidcArrayOutput)
 }
 
 // The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -33005,6 +33478,236 @@ func (o GetConnectorJdbcCredentialKeyPairArrayOutput) Index(i pulumi.IntInput) G
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorJdbcCredentialKeyPair {
 		return vs[0].([]GetConnectorJdbcCredentialKeyPair)[vs[1].(int)]
 	}).(GetConnectorJdbcCredentialKeyPairOutput)
+}
+
+type GetConnectorJdbcCredentialOidc struct {
+	// GCP OIDC configuration.
+	GcpOidcs []GetConnectorJdbcCredentialOidcGcpOidc `pulumi:"gcpOidcs"`
+	// The OIDC provider type.
+	ProviderType string `pulumi:"providerType"`
+}
+
+// GetConnectorJdbcCredentialOidcInput is an input type that accepts GetConnectorJdbcCredentialOidcArgs and GetConnectorJdbcCredentialOidcOutput values.
+// You can construct a concrete instance of `GetConnectorJdbcCredentialOidcInput` via:
+//
+//	GetConnectorJdbcCredentialOidcArgs{...}
+type GetConnectorJdbcCredentialOidcInput interface {
+	pulumi.Input
+
+	ToGetConnectorJdbcCredentialOidcOutput() GetConnectorJdbcCredentialOidcOutput
+	ToGetConnectorJdbcCredentialOidcOutputWithContext(context.Context) GetConnectorJdbcCredentialOidcOutput
+}
+
+type GetConnectorJdbcCredentialOidcArgs struct {
+	// GCP OIDC configuration.
+	GcpOidcs GetConnectorJdbcCredentialOidcGcpOidcArrayInput `pulumi:"gcpOidcs"`
+	// The OIDC provider type.
+	ProviderType pulumi.StringInput `pulumi:"providerType"`
+}
+
+func (GetConnectorJdbcCredentialOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorJdbcCredentialOidc)(nil)).Elem()
+}
+
+func (i GetConnectorJdbcCredentialOidcArgs) ToGetConnectorJdbcCredentialOidcOutput() GetConnectorJdbcCredentialOidcOutput {
+	return i.ToGetConnectorJdbcCredentialOidcOutputWithContext(context.Background())
+}
+
+func (i GetConnectorJdbcCredentialOidcArgs) ToGetConnectorJdbcCredentialOidcOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorJdbcCredentialOidcOutput)
+}
+
+// GetConnectorJdbcCredentialOidcArrayInput is an input type that accepts GetConnectorJdbcCredentialOidcArray and GetConnectorJdbcCredentialOidcArrayOutput values.
+// You can construct a concrete instance of `GetConnectorJdbcCredentialOidcArrayInput` via:
+//
+//	GetConnectorJdbcCredentialOidcArray{ GetConnectorJdbcCredentialOidcArgs{...} }
+type GetConnectorJdbcCredentialOidcArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorJdbcCredentialOidcArrayOutput() GetConnectorJdbcCredentialOidcArrayOutput
+	ToGetConnectorJdbcCredentialOidcArrayOutputWithContext(context.Context) GetConnectorJdbcCredentialOidcArrayOutput
+}
+
+type GetConnectorJdbcCredentialOidcArray []GetConnectorJdbcCredentialOidcInput
+
+func (GetConnectorJdbcCredentialOidcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorJdbcCredentialOidc)(nil)).Elem()
+}
+
+func (i GetConnectorJdbcCredentialOidcArray) ToGetConnectorJdbcCredentialOidcArrayOutput() GetConnectorJdbcCredentialOidcArrayOutput {
+	return i.ToGetConnectorJdbcCredentialOidcArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorJdbcCredentialOidcArray) ToGetConnectorJdbcCredentialOidcArrayOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialOidcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorJdbcCredentialOidcArrayOutput)
+}
+
+type GetConnectorJdbcCredentialOidcOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorJdbcCredentialOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorJdbcCredentialOidc)(nil)).Elem()
+}
+
+func (o GetConnectorJdbcCredentialOidcOutput) ToGetConnectorJdbcCredentialOidcOutput() GetConnectorJdbcCredentialOidcOutput {
+	return o
+}
+
+func (o GetConnectorJdbcCredentialOidcOutput) ToGetConnectorJdbcCredentialOidcOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialOidcOutput {
+	return o
+}
+
+// GCP OIDC configuration.
+func (o GetConnectorJdbcCredentialOidcOutput) GcpOidcs() GetConnectorJdbcCredentialOidcGcpOidcArrayOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredentialOidc) []GetConnectorJdbcCredentialOidcGcpOidc { return v.GcpOidcs }).(GetConnectorJdbcCredentialOidcGcpOidcArrayOutput)
+}
+
+// The OIDC provider type.
+func (o GetConnectorJdbcCredentialOidcOutput) ProviderType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredentialOidc) string { return v.ProviderType }).(pulumi.StringOutput)
+}
+
+type GetConnectorJdbcCredentialOidcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorJdbcCredentialOidcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorJdbcCredentialOidc)(nil)).Elem()
+}
+
+func (o GetConnectorJdbcCredentialOidcArrayOutput) ToGetConnectorJdbcCredentialOidcArrayOutput() GetConnectorJdbcCredentialOidcArrayOutput {
+	return o
+}
+
+func (o GetConnectorJdbcCredentialOidcArrayOutput) ToGetConnectorJdbcCredentialOidcArrayOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialOidcArrayOutput {
+	return o
+}
+
+func (o GetConnectorJdbcCredentialOidcArrayOutput) Index(i pulumi.IntInput) GetConnectorJdbcCredentialOidcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorJdbcCredentialOidc {
+		return vs[0].([]GetConnectorJdbcCredentialOidc)[vs[1].(int)]
+	}).(GetConnectorJdbcCredentialOidcOutput)
+}
+
+type GetConnectorJdbcCredentialOidcGcpOidc struct {
+	// The GCP project number (numeric).
+	ProjectNumber string `pulumi:"projectNumber"`
+	// The OIDC Provider ID within the pool.
+	ProviderId string `pulumi:"providerId"`
+	// The GCP Service Account email for impersonation.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+	// The Workload Identity Pool ID.
+	WorkloadPoolId string `pulumi:"workloadPoolId"`
+}
+
+// GetConnectorJdbcCredentialOidcGcpOidcInput is an input type that accepts GetConnectorJdbcCredentialOidcGcpOidcArgs and GetConnectorJdbcCredentialOidcGcpOidcOutput values.
+// You can construct a concrete instance of `GetConnectorJdbcCredentialOidcGcpOidcInput` via:
+//
+//	GetConnectorJdbcCredentialOidcGcpOidcArgs{...}
+type GetConnectorJdbcCredentialOidcGcpOidcInput interface {
+	pulumi.Input
+
+	ToGetConnectorJdbcCredentialOidcGcpOidcOutput() GetConnectorJdbcCredentialOidcGcpOidcOutput
+	ToGetConnectorJdbcCredentialOidcGcpOidcOutputWithContext(context.Context) GetConnectorJdbcCredentialOidcGcpOidcOutput
+}
+
+type GetConnectorJdbcCredentialOidcGcpOidcArgs struct {
+	// The GCP project number (numeric).
+	ProjectNumber pulumi.StringInput `pulumi:"projectNumber"`
+	// The OIDC Provider ID within the pool.
+	ProviderId pulumi.StringInput `pulumi:"providerId"`
+	// The GCP Service Account email for impersonation.
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+	// The Workload Identity Pool ID.
+	WorkloadPoolId pulumi.StringInput `pulumi:"workloadPoolId"`
+}
+
+func (GetConnectorJdbcCredentialOidcGcpOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorJdbcCredentialOidcGcpOidc)(nil)).Elem()
+}
+
+func (i GetConnectorJdbcCredentialOidcGcpOidcArgs) ToGetConnectorJdbcCredentialOidcGcpOidcOutput() GetConnectorJdbcCredentialOidcGcpOidcOutput {
+	return i.ToGetConnectorJdbcCredentialOidcGcpOidcOutputWithContext(context.Background())
+}
+
+func (i GetConnectorJdbcCredentialOidcGcpOidcArgs) ToGetConnectorJdbcCredentialOidcGcpOidcOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialOidcGcpOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorJdbcCredentialOidcGcpOidcOutput)
+}
+
+// GetConnectorJdbcCredentialOidcGcpOidcArrayInput is an input type that accepts GetConnectorJdbcCredentialOidcGcpOidcArray and GetConnectorJdbcCredentialOidcGcpOidcArrayOutput values.
+// You can construct a concrete instance of `GetConnectorJdbcCredentialOidcGcpOidcArrayInput` via:
+//
+//	GetConnectorJdbcCredentialOidcGcpOidcArray{ GetConnectorJdbcCredentialOidcGcpOidcArgs{...} }
+type GetConnectorJdbcCredentialOidcGcpOidcArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorJdbcCredentialOidcGcpOidcArrayOutput() GetConnectorJdbcCredentialOidcGcpOidcArrayOutput
+	ToGetConnectorJdbcCredentialOidcGcpOidcArrayOutputWithContext(context.Context) GetConnectorJdbcCredentialOidcGcpOidcArrayOutput
+}
+
+type GetConnectorJdbcCredentialOidcGcpOidcArray []GetConnectorJdbcCredentialOidcGcpOidcInput
+
+func (GetConnectorJdbcCredentialOidcGcpOidcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorJdbcCredentialOidcGcpOidc)(nil)).Elem()
+}
+
+func (i GetConnectorJdbcCredentialOidcGcpOidcArray) ToGetConnectorJdbcCredentialOidcGcpOidcArrayOutput() GetConnectorJdbcCredentialOidcGcpOidcArrayOutput {
+	return i.ToGetConnectorJdbcCredentialOidcGcpOidcArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorJdbcCredentialOidcGcpOidcArray) ToGetConnectorJdbcCredentialOidcGcpOidcArrayOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialOidcGcpOidcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorJdbcCredentialOidcGcpOidcArrayOutput)
+}
+
+type GetConnectorJdbcCredentialOidcGcpOidcOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorJdbcCredentialOidcGcpOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorJdbcCredentialOidcGcpOidc)(nil)).Elem()
+}
+
+func (o GetConnectorJdbcCredentialOidcGcpOidcOutput) ToGetConnectorJdbcCredentialOidcGcpOidcOutput() GetConnectorJdbcCredentialOidcGcpOidcOutput {
+	return o
+}
+
+func (o GetConnectorJdbcCredentialOidcGcpOidcOutput) ToGetConnectorJdbcCredentialOidcGcpOidcOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialOidcGcpOidcOutput {
+	return o
+}
+
+// The GCP project number (numeric).
+func (o GetConnectorJdbcCredentialOidcGcpOidcOutput) ProjectNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredentialOidcGcpOidc) string { return v.ProjectNumber }).(pulumi.StringOutput)
+}
+
+// The OIDC Provider ID within the pool.
+func (o GetConnectorJdbcCredentialOidcGcpOidcOutput) ProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredentialOidcGcpOidc) string { return v.ProviderId }).(pulumi.StringOutput)
+}
+
+// The GCP Service Account email for impersonation.
+func (o GetConnectorJdbcCredentialOidcGcpOidcOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredentialOidcGcpOidc) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+// The Workload Identity Pool ID.
+func (o GetConnectorJdbcCredentialOidcGcpOidcOutput) WorkloadPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredentialOidcGcpOidc) string { return v.WorkloadPoolId }).(pulumi.StringOutput)
+}
+
+type GetConnectorJdbcCredentialOidcGcpOidcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorJdbcCredentialOidcGcpOidcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorJdbcCredentialOidcGcpOidc)(nil)).Elem()
+}
+
+func (o GetConnectorJdbcCredentialOidcGcpOidcArrayOutput) ToGetConnectorJdbcCredentialOidcGcpOidcArrayOutput() GetConnectorJdbcCredentialOidcGcpOidcArrayOutput {
+	return o
+}
+
+func (o GetConnectorJdbcCredentialOidcGcpOidcArrayOutput) ToGetConnectorJdbcCredentialOidcGcpOidcArrayOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialOidcGcpOidcArrayOutput {
+	return o
+}
+
+func (o GetConnectorJdbcCredentialOidcGcpOidcArrayOutput) Index(i pulumi.IntInput) GetConnectorJdbcCredentialOidcGcpOidcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorJdbcCredentialOidcGcpOidc {
+		return vs[0].([]GetConnectorJdbcCredentialOidcGcpOidc)[vs[1].(int)]
+	}).(GetConnectorJdbcCredentialOidcGcpOidcOutput)
 }
 
 type GetConnectorJdbcCredentialServiceAccount struct {
@@ -33572,7 +34275,7 @@ func (o GetDbSchemaChangelogScriptOutput) Toml() pulumi.StringPtrOutput {
 type GetDbSchemaSchemaSource struct {
 	// If connector type is artifactory, path to the archive file which contains the changeLog
 	ArchivePath string `pulumi:"archivePath"`
-	// Connector to repository at which to find details about the database schema
+	// Connector to repository at which to find details about the database schema. Empty when using Harness Code Repository.
 	Connector string `pulumi:"connector"`
 	// The path within the specified repository at which to find details about the database schema
 	Location string `pulumi:"location"`
@@ -33596,7 +34299,7 @@ type GetDbSchemaSchemaSourceInput interface {
 type GetDbSchemaSchemaSourceArgs struct {
 	// If connector type is artifactory, path to the archive file which contains the changeLog
 	ArchivePath pulumi.StringInput `pulumi:"archivePath"`
-	// Connector to repository at which to find details about the database schema
+	// Connector to repository at which to find details about the database schema. Empty when using Harness Code Repository.
 	Connector pulumi.StringInput `pulumi:"connector"`
 	// The path within the specified repository at which to find details about the database schema
 	Location pulumi.StringInput `pulumi:"location"`
@@ -33662,7 +34365,7 @@ func (o GetDbSchemaSchemaSourceOutput) ArchivePath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbSchemaSchemaSource) string { return v.ArchivePath }).(pulumi.StringOutput)
 }
 
-// Connector to repository at which to find details about the database schema
+// Connector to repository at which to find details about the database schema. Empty when using Harness Code Repository.
 func (o GetDbSchemaSchemaSourceOutput) Connector() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbSchemaSchemaSource) string { return v.Connector }).(pulumi.StringOutput)
 }
@@ -57908,6 +58611,10 @@ func (o GetWorkspacesWorkspaceArrayOutput) Index(i pulumi.IntInput) GetWorkspace
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyAutomatedInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyAutomatedArgs{})
@@ -58220,6 +58927,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceConnectorArrayInput)(nil)).Elem(), WorkspaceConnectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceEnvironmentVariableInput)(nil)).Elem(), WorkspaceEnvironmentVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceEnvironmentVariableArrayInput)(nil)).Elem(), WorkspaceEnvironmentVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceProvisionerConfigInput)(nil)).Elem(), WorkspaceProvisionerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceProvisionerConfigPtrInput)(nil)).Elem(), WorkspaceProvisionerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceTerraformVariableInput)(nil)).Elem(), WorkspaceTerraformVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceTerraformVariableArrayInput)(nil)).Elem(), WorkspaceTerraformVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceTerraformVariableFileInput)(nil)).Elem(), WorkspaceTerraformVariableFileArgs{})
@@ -58334,6 +59043,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialArrayInput)(nil)).Elem(), GetConnectorJdbcCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialKeyPairInput)(nil)).Elem(), GetConnectorJdbcCredentialKeyPairArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialKeyPairArrayInput)(nil)).Elem(), GetConnectorJdbcCredentialKeyPairArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialOidcInput)(nil)).Elem(), GetConnectorJdbcCredentialOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialOidcArrayInput)(nil)).Elem(), GetConnectorJdbcCredentialOidcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialOidcGcpOidcInput)(nil)).Elem(), GetConnectorJdbcCredentialOidcGcpOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialOidcGcpOidcArrayInput)(nil)).Elem(), GetConnectorJdbcCredentialOidcGcpOidcArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialServiceAccountInput)(nil)).Elem(), GetConnectorJdbcCredentialServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialServiceAccountArrayInput)(nil)).Elem(), GetConnectorJdbcCredentialServiceAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialUsernamePasswordInput)(nil)).Elem(), GetConnectorJdbcCredentialUsernamePasswordArgs{})
@@ -58721,6 +59434,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableFileArrayInput)(nil)).Elem(), GetWorkspaceTerraformVariableFileArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspacesWorkspaceInput)(nil)).Elem(), GetWorkspacesWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspacesWorkspaceArrayInput)(nil)).Elem(), GetWorkspacesWorkspaceArray{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArrayOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyPtrOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSyncPolicyAutomatedOutput{})
@@ -59033,6 +59750,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkspaceConnectorArrayOutput{})
 	pulumi.RegisterOutputType(WorkspaceEnvironmentVariableOutput{})
 	pulumi.RegisterOutputType(WorkspaceEnvironmentVariableArrayOutput{})
+	pulumi.RegisterOutputType(WorkspaceProvisionerConfigOutput{})
+	pulumi.RegisterOutputType(WorkspaceProvisionerConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceTerraformVariableOutput{})
 	pulumi.RegisterOutputType(WorkspaceTerraformVariableArrayOutput{})
 	pulumi.RegisterOutputType(WorkspaceTerraformVariableFileOutput{})
@@ -59147,6 +59866,10 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialKeyPairOutput{})
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialKeyPairArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorJdbcCredentialOidcOutput{})
+	pulumi.RegisterOutputType(GetConnectorJdbcCredentialOidcArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorJdbcCredentialOidcGcpOidcOutput{})
+	pulumi.RegisterOutputType(GetConnectorJdbcCredentialOidcGcpOidcArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialServiceAccountOutput{})
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialServiceAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialUsernamePasswordOutput{})

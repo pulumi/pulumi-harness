@@ -17,14 +17,14 @@ public final class DbSchemaSchemaSourceArgs extends com.pulumi.resources.Resourc
     public static final DbSchemaSchemaSourceArgs Empty = new DbSchemaSchemaSourceArgs();
 
     /**
-     * If connector type is artifactory, path to the archive file which contains the changeLog
+     * If connector type is artifactory, path to the archive file which contains the changeLog. Not supported with Harness Code Repository.
      * 
      */
     @Import(name="archivePath")
     private @Nullable Output<String> archivePath;
 
     /**
-     * @return If connector type is artifactory, path to the archive file which contains the changeLog
+     * @return If connector type is artifactory, path to the archive file which contains the changeLog. Not supported with Harness Code Repository.
      * 
      */
     public Optional<Output<String>> archivePath() {
@@ -32,18 +32,18 @@ public final class DbSchemaSchemaSourceArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Connector to repository at which to find details about the database schema
+     * Connector to repository at which to find details about the database schema. Leave empty when using Harness Code Repository.
      * 
      */
-    @Import(name="connector", required=true)
-    private Output<String> connector;
+    @Import(name="connector")
+    private @Nullable Output<String> connector;
 
     /**
-     * @return Connector to repository at which to find details about the database schema
+     * @return Connector to repository at which to find details about the database schema. Leave empty when using Harness Code Repository.
      * 
      */
-    public Output<String> connector() {
-        return this.connector;
+    public Optional<Output<String>> connector() {
+        return Optional.ofNullable(this.connector);
     }
 
     /**
@@ -62,14 +62,14 @@ public final class DbSchemaSchemaSourceArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * If connector url is of account, which repository to connect to using the connector
+     * Repository name. Required for Harness Code Repository or when connector connection type is Account.
      * 
      */
     @Import(name="repo")
     private @Nullable Output<String> repo;
 
     /**
-     * @return If connector url is of account, which repository to connect to using the connector
+     * @return Repository name. Required for Harness Code Repository or when connector connection type is Account.
      * 
      */
     public Optional<Output<String>> repo() {
@@ -120,7 +120,7 @@ public final class DbSchemaSchemaSourceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param archivePath If connector type is artifactory, path to the archive file which contains the changeLog
+         * @param archivePath If connector type is artifactory, path to the archive file which contains the changeLog. Not supported with Harness Code Repository.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class DbSchemaSchemaSourceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param archivePath If connector type is artifactory, path to the archive file which contains the changeLog
+         * @param archivePath If connector type is artifactory, path to the archive file which contains the changeLog. Not supported with Harness Code Repository.
          * 
          * @return builder
          * 
@@ -141,18 +141,18 @@ public final class DbSchemaSchemaSourceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param connector Connector to repository at which to find details about the database schema
+         * @param connector Connector to repository at which to find details about the database schema. Leave empty when using Harness Code Repository.
          * 
          * @return builder
          * 
          */
-        public Builder connector(Output<String> connector) {
+        public Builder connector(@Nullable Output<String> connector) {
             $.connector = connector;
             return this;
         }
 
         /**
-         * @param connector Connector to repository at which to find details about the database schema
+         * @param connector Connector to repository at which to find details about the database schema. Leave empty when using Harness Code Repository.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class DbSchemaSchemaSourceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param repo If connector url is of account, which repository to connect to using the connector
+         * @param repo Repository name. Required for Harness Code Repository or when connector connection type is Account.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class DbSchemaSchemaSourceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param repo If connector url is of account, which repository to connect to using the connector
+         * @param repo Repository name. Required for Harness Code Repository or when connector connection type is Account.
          * 
          * @return builder
          * 
@@ -225,9 +225,6 @@ public final class DbSchemaSchemaSourceArgs extends com.pulumi.resources.Resourc
         }
 
         public DbSchemaSchemaSourceArgs build() {
-            if ($.connector == null) {
-                throw new MissingRequiredPropertyException("DbSchemaSchemaSourceArgs", "connector");
-            }
             if ($.location == null) {
                 throw new MissingRequiredPropertyException("DbSchemaSchemaSourceArgs", "location");
             }

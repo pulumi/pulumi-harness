@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.inputs.WorkspaceConnectorArgs;
 import com.pulumi.harness.platform.inputs.WorkspaceEnvironmentVariableArgs;
+import com.pulumi.harness.platform.inputs.WorkspaceProvisionerConfigArgs;
 import com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableArgs;
 import com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableFileArgs;
 import java.lang.Boolean;
@@ -171,6 +172,21 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> providerConnector() {
         return Optional.ofNullable(this.providerConnector);
+    }
+
+    /**
+     * Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+     * 
+     */
+    @Import(name="provisionerConfig")
+    private @Nullable Output<WorkspaceProvisionerConfigArgs> provisionerConfig;
+
+    /**
+     * @return Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+     * 
+     */
+    public Optional<Output<WorkspaceProvisionerConfigArgs>> provisionerConfig() {
+        return Optional.ofNullable(this.provisionerConfig);
     }
 
     /**
@@ -411,6 +427,7 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
         this.orgId = $.orgId;
         this.projectId = $.projectId;
         this.providerConnector = $.providerConnector;
+        this.provisionerConfig = $.provisionerConfig;
         this.provisionerType = $.provisionerType;
         this.provisionerVersion = $.provisionerVersion;
         this.repository = $.repository;
@@ -674,6 +691,27 @@ public final class WorkspaceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder providerConnector(String providerConnector) {
             return providerConnector(Output.of(providerConnector));
+        }
+
+        /**
+         * @param provisionerConfig Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionerConfig(@Nullable Output<WorkspaceProvisionerConfigArgs> provisionerConfig) {
+            $.provisionerConfig = provisionerConfig;
+            return this;
+        }
+
+        /**
+         * @param provisionerConfig Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionerConfig(WorkspaceProvisionerConfigArgs provisionerConfig) {
+            return provisionerConfig(Output.of(provisionerConfig));
         }
 
         /**

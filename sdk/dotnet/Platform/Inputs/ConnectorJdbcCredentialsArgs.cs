@@ -25,6 +25,12 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<Inputs.ConnectorJdbcCredentialsKeyPairArgs>? KeyPair { get; set; }
 
         /// <summary>
+        /// Authenticate using OIDC.
+        /// </summary>
+        [Input("oidc")]
+        public Input<Inputs.ConnectorJdbcCredentialsOidcArgs>? Oidc { get; set; }
+
+        /// <summary>
         /// The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         [Input("passwordRef")]

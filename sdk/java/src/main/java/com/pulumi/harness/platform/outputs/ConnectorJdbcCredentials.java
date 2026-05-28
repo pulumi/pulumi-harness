@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.harness.platform.outputs.ConnectorJdbcCredentialsKeyPair;
+import com.pulumi.harness.platform.outputs.ConnectorJdbcCredentialsOidc;
 import com.pulumi.harness.platform.outputs.ConnectorJdbcCredentialsServiceAccount;
 import com.pulumi.harness.platform.outputs.ConnectorJdbcCredentialsUsernamePassword;
 import java.lang.String;
@@ -24,6 +25,11 @@ public final class ConnectorJdbcCredentials {
      * 
      */
     private @Nullable ConnectorJdbcCredentialsKeyPair keyPair;
+    /**
+     * @return Authenticate using OIDC.
+     * 
+     */
+    private @Nullable ConnectorJdbcCredentialsOidc oidc;
     /**
      * @return The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
@@ -64,6 +70,13 @@ public final class ConnectorJdbcCredentials {
      */
     public Optional<ConnectorJdbcCredentialsKeyPair> keyPair() {
         return Optional.ofNullable(this.keyPair);
+    }
+    /**
+     * @return Authenticate using OIDC.
+     * 
+     */
+    public Optional<ConnectorJdbcCredentialsOidc> oidc() {
+        return Optional.ofNullable(this.oidc);
     }
     /**
      * @return The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
@@ -112,6 +125,7 @@ public final class ConnectorJdbcCredentials {
     public static final class Builder {
         private @Nullable String authType;
         private @Nullable ConnectorJdbcCredentialsKeyPair keyPair;
+        private @Nullable ConnectorJdbcCredentialsOidc oidc;
         private @Nullable String passwordRef;
         private @Nullable ConnectorJdbcCredentialsServiceAccount serviceAccount;
         private @Nullable String username;
@@ -122,6 +136,7 @@ public final class ConnectorJdbcCredentials {
     	      Objects.requireNonNull(defaults);
     	      this.authType = defaults.authType;
     	      this.keyPair = defaults.keyPair;
+    	      this.oidc = defaults.oidc;
     	      this.passwordRef = defaults.passwordRef;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.username = defaults.username;
@@ -139,6 +154,12 @@ public final class ConnectorJdbcCredentials {
         public Builder keyPair(@Nullable ConnectorJdbcCredentialsKeyPair keyPair) {
 
             this.keyPair = keyPair;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oidc(@Nullable ConnectorJdbcCredentialsOidc oidc) {
+
+            this.oidc = oidc;
             return this;
         }
         @CustomType.Setter
@@ -175,6 +196,7 @@ public final class ConnectorJdbcCredentials {
             final var _resultValue = new ConnectorJdbcCredentials();
             _resultValue.authType = authType;
             _resultValue.keyPair = keyPair;
+            _resultValue.oidc = oidc;
             _resultValue.passwordRef = passwordRef;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.username = username;

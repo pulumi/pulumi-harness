@@ -18,7 +18,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string ArchivePath;
         /// <summary>
-        /// Connector to repository at which to find details about the database schema
+        /// Connector to repository at which to find details about the database schema. Empty when using Harness Code Repository.
         /// </summary>
         public readonly string Connector;
         /// <summary>

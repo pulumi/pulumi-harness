@@ -138,6 +138,8 @@ type Workspace struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Provider connector is the reference to the connector for the infrastructure provider
 	ProviderConnector pulumi.StringPtrOutput `pulumi:"providerConnector"`
+	// Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+	ProvisionerConfig WorkspaceProvisionerConfigPtrOutput `pulumi:"provisionerConfig"`
 	// Provisioner type defines the provisioning tool to use (terraform or opentofu)
 	ProvisionerType pulumi.StringOutput `pulumi:"provisionerType"`
 	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
@@ -247,6 +249,8 @@ type workspaceState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Provider connector is the reference to the connector for the infrastructure provider
 	ProviderConnector *string `pulumi:"providerConnector"`
+	// Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+	ProvisionerConfig *WorkspaceProvisionerConfig `pulumi:"provisionerConfig"`
 	// Provisioner type defines the provisioning tool to use (terraform or opentofu)
 	ProvisionerType *string `pulumi:"provisionerType"`
 	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
@@ -300,6 +304,8 @@ type WorkspaceState struct {
 	ProjectId pulumi.StringPtrInput
 	// Provider connector is the reference to the connector for the infrastructure provider
 	ProviderConnector pulumi.StringPtrInput
+	// Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+	ProvisionerConfig WorkspaceProvisionerConfigPtrInput
 	// Provisioner type defines the provisioning tool to use (terraform or opentofu)
 	ProvisionerType pulumi.StringPtrInput
 	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
@@ -357,6 +363,8 @@ type workspaceArgs struct {
 	ProjectId string `pulumi:"projectId"`
 	// Provider connector is the reference to the connector for the infrastructure provider
 	ProviderConnector *string `pulumi:"providerConnector"`
+	// Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+	ProvisionerConfig *WorkspaceProvisionerConfig `pulumi:"provisionerConfig"`
 	// Provisioner type defines the provisioning tool to use (terraform or opentofu)
 	ProvisionerType string `pulumi:"provisionerType"`
 	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
@@ -411,6 +419,8 @@ type WorkspaceArgs struct {
 	ProjectId pulumi.StringInput
 	// Provider connector is the reference to the connector for the infrastructure provider
 	ProviderConnector pulumi.StringPtrInput
+	// Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+	ProvisionerConfig WorkspaceProvisionerConfigPtrInput
 	// Provisioner type defines the provisioning tool to use (terraform or opentofu)
 	ProvisionerType pulumi.StringInput
 	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
@@ -578,6 +588,11 @@ func (o WorkspaceOutput) ProjectId() pulumi.StringOutput {
 // Provider connector is the reference to the connector for the infrastructure provider
 func (o WorkspaceOutput) ProviderConnector() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.ProviderConnector }).(pulumi.StringPtrOutput)
+}
+
+// Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+func (o WorkspaceOutput) ProvisionerConfig() WorkspaceProvisionerConfigPtrOutput {
+	return o.ApplyT(func(v *Workspace) WorkspaceProvisionerConfigPtrOutput { return v.ProvisionerConfig }).(WorkspaceProvisionerConfigPtrOutput)
 }
 
 // Provisioner type defines the provisioning tool to use (terraform or opentofu)

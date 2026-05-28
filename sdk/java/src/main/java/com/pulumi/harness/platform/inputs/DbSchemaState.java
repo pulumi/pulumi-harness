@@ -125,14 +125,14 @@ public final class DbSchemaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Provides a connector and path at which to find the database schema representation
+     * Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
      * 
      */
     @Import(name="schemaSource")
     private @Nullable Output<DbSchemaSchemaSourceArgs> schemaSource;
 
     /**
-     * @return Provides a connector and path at which to find the database schema representation
+     * @return Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
      * 
      */
     public Optional<Output<DbSchemaSchemaSourceArgs>> schemaSource() {
@@ -382,7 +382,7 @@ public final class DbSchemaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemaSource Provides a connector and path at which to find the database schema representation
+         * @param schemaSource Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class DbSchemaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemaSource Provides a connector and path at which to find the database schema representation
+         * @param schemaSource Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
          * 
          * @return builder
          * 

@@ -36,6 +36,7 @@ class WorkspaceArgs:
                  environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioner_config: pulumi.Input[Optional['WorkspaceProvisionerConfigArgs']] = None,
                  repository_branch: pulumi.Input[Optional[_builtins.str]] = None,
                  repository_commit: pulumi.Input[Optional[_builtins.str]] = None,
                  repository_sha: pulumi.Input[Optional[_builtins.str]] = None,
@@ -64,6 +65,7 @@ class WorkspaceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]] environment_variables: Environment variables configured on the workspace
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider
+        :param pulumi.Input['WorkspaceProvisionerConfigArgs'] provisioner_config: Provisioner configuration for awscdk provisioner type. Required when provisioner_type is awscdk.
         :param pulumi.Input[_builtins.str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
         :param pulumi.Input[_builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
         :param pulumi.Input[_builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
@@ -96,6 +98,8 @@ class WorkspaceArgs:
             pulumi.set(__self__, "name", name)
         if provider_connector is not None:
             pulumi.set(__self__, "provider_connector", provider_connector)
+        if provisioner_config is not None:
+            pulumi.set(__self__, "provisioner_config", provisioner_config)
         if repository_branch is not None:
             pulumi.set(__self__, "repository_branch", repository_branch)
         if repository_commit is not None:
@@ -298,6 +302,18 @@ class WorkspaceArgs:
         pulumi.set(self, "provider_connector", value)
 
     @_builtins.property
+    @pulumi.getter(name="provisionerConfig")
+    def provisioner_config(self) -> pulumi.Input[Optional['WorkspaceProvisionerConfigArgs']]:
+        """
+        Provisioner configuration for awscdk provisioner type. Required when provisioner_type is awscdk.
+        """
+        return pulumi.get(self, "provisioner_config")
+
+    @provisioner_config.setter
+    def provisioner_config(self, value: pulumi.Input[Optional['WorkspaceProvisionerConfigArgs']]):
+        pulumi.set(self, "provisioner_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="repositoryBranch")
     def repository_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -431,6 +447,7 @@ class _WorkspaceState:
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioner_config: pulumi.Input[Optional['WorkspaceProvisionerConfigArgs']] = None,
                  provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioner_version: pulumi.Input[Optional[_builtins.str]] = None,
                  repository: pulumi.Input[Optional[_builtins.str]] = None,
@@ -459,6 +476,7 @@ class _WorkspaceState:
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider
+        :param pulumi.Input['WorkspaceProvisionerConfigArgs'] provisioner_config: Provisioner configuration for awscdk provisioner type. Required when provisioner_type is awscdk.
         :param pulumi.Input[_builtins.str] provisioner_type: Provisioner type defines the provisioning tool to use (terraform or opentofu)
         :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
         :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from.
@@ -495,6 +513,8 @@ class _WorkspaceState:
             pulumi.set(__self__, "project_id", project_id)
         if provider_connector is not None:
             pulumi.set(__self__, "provider_connector", provider_connector)
+        if provisioner_config is not None:
+            pulumi.set(__self__, "provisioner_config", provisioner_config)
         if provisioner_type is not None:
             pulumi.set(__self__, "provisioner_type", provisioner_type)
         if provisioner_version is not None:
@@ -645,6 +665,18 @@ class _WorkspaceState:
     @provider_connector.setter
     def provider_connector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provider_connector", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisionerConfig")
+    def provisioner_config(self) -> pulumi.Input[Optional['WorkspaceProvisionerConfigArgs']]:
+        """
+        Provisioner configuration for awscdk provisioner type. Required when provisioner_type is awscdk.
+        """
+        return pulumi.get(self, "provisioner_config")
+
+    @provisioner_config.setter
+    def provisioner_config(self, value: pulumi.Input[Optional['WorkspaceProvisionerConfigArgs']]):
+        pulumi.set(self, "provisioner_config", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionerType")
@@ -843,6 +875,7 @@ class Workspace(pulumi.CustomResource):
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioner_config: pulumi.Input[Optional[Union['WorkspaceProvisionerConfigArgs', 'WorkspaceProvisionerConfigArgsDict']]] = None,
                  provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioner_version: pulumi.Input[Optional[_builtins.str]] = None,
                  repository: pulumi.Input[Optional[_builtins.str]] = None,
@@ -959,6 +992,7 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider
+        :param pulumi.Input[Union['WorkspaceProvisionerConfigArgs', 'WorkspaceProvisionerConfigArgsDict']] provisioner_config: Provisioner configuration for awscdk provisioner type. Required when provisioner_type is awscdk.
         :param pulumi.Input[_builtins.str] provisioner_type: Provisioner type defines the provisioning tool to use (terraform or opentofu)
         :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
         :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from.
@@ -1094,6 +1128,7 @@ class Workspace(pulumi.CustomResource):
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioner_config: pulumi.Input[Optional[Union['WorkspaceProvisionerConfigArgs', 'WorkspaceProvisionerConfigArgsDict']]] = None,
                  provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioner_version: pulumi.Input[Optional[_builtins.str]] = None,
                  repository: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1136,6 +1171,7 @@ class Workspace(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["provider_connector"] = provider_connector
+            __props__.__dict__["provisioner_config"] = provisioner_config
             if provisioner_type is None and not opts.urn:
                 raise TypeError("Missing required property 'provisioner_type'")
             __props__.__dict__["provisioner_type"] = provisioner_type
@@ -1181,6 +1217,7 @@ class Workspace(pulumi.CustomResource):
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             provider_connector: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioner_config: pulumi.Input[Optional[Union['WorkspaceProvisionerConfigArgs', 'WorkspaceProvisionerConfigArgsDict']]] = None,
             provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
             provisioner_version: pulumi.Input[Optional[_builtins.str]] = None,
             repository: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1213,6 +1250,7 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider
+        :param pulumi.Input[Union['WorkspaceProvisionerConfigArgs', 'WorkspaceProvisionerConfigArgsDict']] provisioner_config: Provisioner configuration for awscdk provisioner type. Required when provisioner_type is awscdk.
         :param pulumi.Input[_builtins.str] provisioner_type: Provisioner type defines the provisioning tool to use (terraform or opentofu)
         :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
         :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from.
@@ -1243,6 +1281,7 @@ class Workspace(pulumi.CustomResource):
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["provider_connector"] = provider_connector
+        __props__.__dict__["provisioner_config"] = provisioner_config
         __props__.__dict__["provisioner_type"] = provisioner_type
         __props__.__dict__["provisioner_version"] = provisioner_version
         __props__.__dict__["repository"] = repository
@@ -1339,6 +1378,14 @@ class Workspace(pulumi.CustomResource):
         Provider connector is the reference to the connector for the infrastructure provider
         """
         return pulumi.get(self, "provider_connector")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionerConfig")
+    def provisioner_config(self) -> pulumi.Output[Optional['outputs.WorkspaceProvisionerConfig']]:
+        """
+        Provisioner configuration for awscdk provisioner type. Required when provisioner_type is awscdk.
+        """
+        return pulumi.get(self, "provisioner_config")
 
     @_builtins.property
     @pulumi.getter(name="provisionerType")

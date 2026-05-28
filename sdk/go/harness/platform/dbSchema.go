@@ -161,6 +161,25 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = platform.NewDbSchema(ctx, "harness_code_repo", &platform.DbSchemaArgs{
+//				Identifier: pulumi.String("identifier"),
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Name:       pulumi.String("name"),
+//				Service:    pulumi.String("service1"),
+//				Type:       pulumi.String("Repository"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//					pulumi.String("bar:foo"),
+//				},
+//				SchemaSource: &platform.DbSchemaSchemaSourceArgs{
+//					Repo:     pulumi.String("my-harness-code-repo"),
+//					Location: pulumi.String("db/example-changelog.yaml"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -193,7 +212,7 @@ type DbSchema struct {
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// Provides a connector and path at which to find the database schema representation
+	// Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
 	SchemaSource DbSchemaSchemaSourcePtrOutput `pulumi:"schemaSource"`
 	// The service associated with schema
 	Service pulumi.StringPtrOutput `pulumi:"service"`
@@ -258,7 +277,7 @@ type dbSchemaState struct {
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Provides a connector and path at which to find the database schema representation
+	// Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
 	SchemaSource *DbSchemaSchemaSource `pulumi:"schemaSource"`
 	// The service associated with schema
 	Service *string `pulumi:"service"`
@@ -285,7 +304,7 @@ type DbSchemaState struct {
 	OrgId pulumi.StringPtrInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
-	// Provides a connector and path at which to find the database schema representation
+	// Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
 	SchemaSource DbSchemaSchemaSourcePtrInput
 	// The service associated with schema
 	Service pulumi.StringPtrInput
@@ -316,7 +335,7 @@ type dbSchemaArgs struct {
 	OrgId string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId string `pulumi:"projectId"`
-	// Provides a connector and path at which to find the database schema representation
+	// Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
 	SchemaSource *DbSchemaSchemaSource `pulumi:"schemaSource"`
 	// The service associated with schema
 	Service *string `pulumi:"service"`
@@ -344,7 +363,7 @@ type DbSchemaArgs struct {
 	OrgId pulumi.StringInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringInput
-	// Provides a connector and path at which to find the database schema representation
+	// Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
 	SchemaSource DbSchemaSchemaSourcePtrInput
 	// The service associated with schema
 	Service pulumi.StringPtrInput
@@ -478,7 +497,7 @@ func (o DbSchemaOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbSchema) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Provides a connector and path at which to find the database schema representation
+// Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
 func (o DbSchemaOutput) SchemaSource() DbSchemaSchemaSourcePtrOutput {
 	return o.ApplyT(func(v *DbSchema) DbSchemaSchemaSourcePtrOutput { return v.SchemaSource }).(DbSchemaSchemaSourcePtrOutput)
 }

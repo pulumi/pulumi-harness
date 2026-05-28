@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.platform.inputs.ConnectorJdbcCredentialsKeyPairArgs;
+import com.pulumi.harness.platform.inputs.ConnectorJdbcCredentialsOidcArgs;
 import com.pulumi.harness.platform.inputs.ConnectorJdbcCredentialsServiceAccountArgs;
 import com.pulumi.harness.platform.inputs.ConnectorJdbcCredentialsUsernamePasswordArgs;
 import java.lang.String;
@@ -46,6 +47,21 @@ public final class ConnectorJdbcCredentialsArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<ConnectorJdbcCredentialsKeyPairArgs>> keyPair() {
         return Optional.ofNullable(this.keyPair);
+    }
+
+    /**
+     * Authenticate using OIDC.
+     * 
+     */
+    @Import(name="oidc")
+    private @Nullable Output<ConnectorJdbcCredentialsOidcArgs> oidc;
+
+    /**
+     * @return Authenticate using OIDC.
+     * 
+     */
+    public Optional<Output<ConnectorJdbcCredentialsOidcArgs>> oidc() {
+        return Optional.ofNullable(this.oidc);
     }
 
     /**
@@ -128,6 +144,7 @@ public final class ConnectorJdbcCredentialsArgs extends com.pulumi.resources.Res
     private ConnectorJdbcCredentialsArgs(ConnectorJdbcCredentialsArgs $) {
         this.authType = $.authType;
         this.keyPair = $.keyPair;
+        this.oidc = $.oidc;
         this.passwordRef = $.passwordRef;
         this.serviceAccount = $.serviceAccount;
         this.username = $.username;
@@ -193,6 +210,27 @@ public final class ConnectorJdbcCredentialsArgs extends com.pulumi.resources.Res
          */
         public Builder keyPair(ConnectorJdbcCredentialsKeyPairArgs keyPair) {
             return keyPair(Output.of(keyPair));
+        }
+
+        /**
+         * @param oidc Authenticate using OIDC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidc(@Nullable Output<ConnectorJdbcCredentialsOidcArgs> oidc) {
+            $.oidc = oidc;
+            return this;
+        }
+
+        /**
+         * @param oidc Authenticate using OIDC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidc(ConnectorJdbcCredentialsOidcArgs oidc) {
+            return oidc(Output.of(oidc));
         }
 
         /**

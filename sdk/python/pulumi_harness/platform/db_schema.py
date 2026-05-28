@@ -43,7 +43,7 @@ class DbSchemaArgs:
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] migration_type: DB Migration tool type. Valid values are: Liquibase, Flyway
         :param pulumi.Input[_builtins.str] name: Name of the resource.
-        :param pulumi.Input['DbSchemaSchemaSourceArgs'] schema_source: Provides a connector and path at which to find the database schema representation
+        :param pulumi.Input['DbSchemaSchemaSourceArgs'] schema_source: Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
         :param pulumi.Input[_builtins.str] service: The service associated with schema
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] type: Type of the database schema. Valid values are: SCRIPT, REPOSITORY
@@ -159,7 +159,7 @@ class DbSchemaArgs:
     @pulumi.getter(name="schemaSource")
     def schema_source(self) -> pulumi.Input[Optional['DbSchemaSchemaSourceArgs']]:
         """
-        Provides a connector and path at which to find the database schema representation
+        Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
         """
         return pulumi.get(self, "schema_source")
 
@@ -241,7 +241,7 @@ class _DbSchemaState:
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input['DbSchemaSchemaSourceArgs'] schema_source: Provides a connector and path at which to find the database schema representation
+        :param pulumi.Input['DbSchemaSchemaSourceArgs'] schema_source: Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
         :param pulumi.Input[_builtins.str] service: The service associated with schema
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] type: Type of the database schema. Valid values are: SCRIPT, REPOSITORY
@@ -360,7 +360,7 @@ class _DbSchemaState:
     @pulumi.getter(name="schemaSource")
     def schema_source(self) -> pulumi.Input[Optional['DbSchemaSchemaSourceArgs']]:
         """
-        Provides a connector and path at which to find the database schema representation
+        Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
         """
         return pulumi.get(self, "schema_source")
 
@@ -554,6 +554,21 @@ class DbSchema(pulumi.CustomResource):
                 "location": "db/example-changelog.yaml",
                 "archive_path": "path/to/archive.zip",
             })
+        harness_code_repo = harness.platform.DbSchema("harness_code_repo",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            name="name",
+            service="service1",
+            type="Repository",
+            tags=[
+                "foo:bar",
+                "bar:foo",
+            ],
+            schema_source={
+                "repo": "my-harness-code-repo",
+                "location": "db/example-changelog.yaml",
+            })
         ```
 
         ## Import
@@ -576,7 +591,7 @@ class DbSchema(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']] schema_source: Provides a connector and path at which to find the database schema representation
+        :param pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']] schema_source: Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
         :param pulumi.Input[_builtins.str] service: The service associated with schema
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] type: Type of the database schema. Valid values are: SCRIPT, REPOSITORY
@@ -706,6 +721,21 @@ class DbSchema(pulumi.CustomResource):
                 "location": "db/example-changelog.yaml",
                 "archive_path": "path/to/archive.zip",
             })
+        harness_code_repo = harness.platform.DbSchema("harness_code_repo",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            name="name",
+            service="service1",
+            type="Repository",
+            tags=[
+                "foo:bar",
+                "bar:foo",
+            ],
+            schema_source={
+                "repo": "my-harness-code-repo",
+                "location": "db/example-changelog.yaml",
+            })
         ```
 
         ## Import
@@ -809,7 +839,7 @@ class DbSchema(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']] schema_source: Provides a connector and path at which to find the database schema representation
+        :param pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']] schema_source: Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
         :param pulumi.Input[_builtins.str] service: The service associated with schema
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] type: Type of the database schema. Valid values are: SCRIPT, REPOSITORY
@@ -893,7 +923,7 @@ class DbSchema(pulumi.CustomResource):
     @pulumi.getter(name="schemaSource")
     def schema_source(self) -> pulumi.Output[Optional['outputs.DbSchemaSchemaSource']]:
         """
-        Provides a connector and path at which to find the database schema representation
+        Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
         """
         return pulumi.get(self, "schema_source")
 

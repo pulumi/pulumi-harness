@@ -57,7 +57,7 @@ public final class GetDbSchemaResult {
      */
     private String projectId;
     /**
-     * @return Provides a connector and path at which to find the database schema representation
+     * @return Provides a connector and path at which to find the database schema representation. For Harness Code Repository, connector will be empty.
      * 
      */
     private List<GetDbSchemaSchemaSource> schemaSources;
@@ -140,7 +140,7 @@ public final class GetDbSchemaResult {
         return this.projectId;
     }
     /**
-     * @return Provides a connector and path at which to find the database schema representation
+     * @return Provides a connector and path at which to find the database schema representation. For Harness Code Repository, connector will be empty.
      * 
      */
     public List<GetDbSchemaSchemaSource> schemaSources() {

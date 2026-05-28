@@ -228,7 +228,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// Provides a connector and path at which to find the database schema representation
+        /// Provides a connector and path at which to find the database schema representation. For Harness Code Repository, connector will be empty.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDbSchemaSchemaSourceResult> SchemaSources;
         /// <summary>

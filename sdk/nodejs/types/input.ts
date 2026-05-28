@@ -6387,6 +6387,10 @@ export namespace platform {
          */
         keyPair?: pulumi.Input<inputs.platform.ConnectorJdbcCredentialsKeyPair | undefined>;
         /**
+         * Authenticate using OIDC.
+         */
+        oidc?: pulumi.Input<inputs.platform.ConnectorJdbcCredentialsOidc | undefined>;
+        /**
          * The reference to the Harness secret containing the password to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         passwordRef?: pulumi.Input<string | undefined>;
@@ -6425,6 +6429,36 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ConnectorJdbcCredentialsOidc {
+        /**
+         * GCP OIDC configuration.
+         */
+        gcpOidc: pulumi.Input<inputs.platform.ConnectorJdbcCredentialsOidcGcpOidc>;
+        /**
+         * The OIDC provider type. Currently supported: Gcp.
+         */
+        providerType: pulumi.Input<string>;
+    }
+
+    export interface ConnectorJdbcCredentialsOidcGcpOidc {
+        /**
+         * The GCP project number (numeric).
+         */
+        projectNumber: pulumi.Input<string>;
+        /**
+         * The OIDC Provider ID within the pool.
+         */
+        providerId: pulumi.Input<string>;
+        /**
+         * The GCP Service Account email for impersonation.
+         */
+        serviceAccountEmail: pulumi.Input<string>;
+        /**
+         * The Workload Identity Pool ID.
+         */
+        workloadPoolId: pulumi.Input<string>;
     }
 
     export interface ConnectorJdbcCredentialsServiceAccount {
@@ -6492,19 +6526,19 @@ export namespace platform {
 
     export interface DbSchemaSchemaSource {
         /**
-         * If connector type is artifactory, path to the archive file which contains the changeLog
+         * If connector type is artifactory, path to the archive file which contains the changeLog. Not supported with Harness Code Repository.
          */
         archivePath?: pulumi.Input<string | undefined>;
         /**
-         * Connector to repository at which to find details about the database schema
+         * Connector to repository at which to find details about the database schema. Leave empty when using Harness Code Repository.
          */
-        connector: pulumi.Input<string>;
+        connector?: pulumi.Input<string | undefined>;
         /**
          * The path within the specified repository at which to find details about the database schema
          */
         location: pulumi.Input<string>;
         /**
-         * If connector url is of account, which repository to connect to using the connector
+         * Repository name. Required for Harness Code Repository or when connector connection type is Account.
          */
         repo?: pulumi.Input<string | undefined>;
         /**
@@ -38727,6 +38761,25 @@ export namespace platform {
          * Value type indicates the value type of the variable. Currently we support string and secret.
          */
         valueType: pulumi.Input<string>;
+    }
+
+    export interface WorkspaceProvisionerConfig {
+        /**
+         * Programming language for AWS CDK (e.g., python, typescript)
+         */
+        language: pulumi.Input<string>;
+        /**
+         * Version of the programming language (e.g., 3.12 for Python)
+         */
+        languageVersion: pulumi.Input<string>;
+        /**
+         * Package manager to use (e.g., pip, npm)
+         */
+        packageManager: pulumi.Input<string>;
+        /**
+         * Version of the package manager (e.g., 25.3 for pip)
+         */
+        packageManagerVersion: pulumi.Input<string>;
     }
 
     export interface WorkspaceTerraformVariable {
