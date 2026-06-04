@@ -18,9 +18,18 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? AwsClusterName;
         /// <summary>
-        /// Bearer authentication token the cluster.
+        /// Bearer authentication token the cluster. Use BearerTokenWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public readonly string? BearerToken;
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Bearer authentication token for the cluster. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public readonly string? BearerTokenWo;
+        /// <summary>
+        /// Increment to rotate the credential when using bearer_token_wo.
+        /// </summary>
+        public readonly int? BearerTokenWoVersion;
         /// <summary>
         /// Identifies the authentication method used to connect to the cluster.
         /// </summary>
@@ -34,9 +43,18 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GitOpsClusterRequestClusterConfigExecProviderConfig> ExecProviderConfigs;
         /// <summary>
-        /// Password of the server of the cluster.
+        /// Password of the server of the cluster. Use PasswordWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public readonly string? Password;
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Password of the server of the cluster. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public readonly string? PasswordWo;
+        /// <summary>
+        /// Increment to rotate the credential when using password_wo.
+        /// </summary>
+        public readonly int? PasswordWoVersion;
         /// <summary>
         /// The URL to the proxy to be used for all requests send to the cluster's API server
         /// </summary>
@@ -60,6 +78,10 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string? bearerToken,
 
+            string? bearerTokenWo,
+
+            int? bearerTokenWoVersion,
+
             string? clusterConnectionType,
 
             bool? disableCompression,
@@ -67,6 +89,10 @@ namespace Pulumi.Harness.Platform.Outputs
             ImmutableArray<Outputs.GitOpsClusterRequestClusterConfigExecProviderConfig> execProviderConfigs,
 
             string? password,
+
+            string? passwordWo,
+
+            int? passwordWoVersion,
 
             string? proxyUrl,
 
@@ -78,10 +104,14 @@ namespace Pulumi.Harness.Platform.Outputs
         {
             AwsClusterName = awsClusterName;
             BearerToken = bearerToken;
+            BearerTokenWo = bearerTokenWo;
+            BearerTokenWoVersion = bearerTokenWoVersion;
             ClusterConnectionType = clusterConnectionType;
             DisableCompression = disableCompression;
             ExecProviderConfigs = execProviderConfigs;
             Password = password;
+            PasswordWo = passwordWo;
+            PasswordWoVersion = passwordWoVersion;
             ProxyUrl = proxyUrl;
             RoleARN = roleARN;
             TlsClientConfigs = tlsClientConfigs;

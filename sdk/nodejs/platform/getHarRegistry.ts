@@ -65,7 +65,7 @@ export interface GetHarRegistryArgs {
      */
     metadata?: {[key: string]: string};
     /**
-     * Type of package (DOCKER, HELM, MAVEN, etc.)
+     * Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
      */
     packageType?: string;
     /**
@@ -115,7 +115,7 @@ export interface GetHarRegistryResult {
      */
     readonly metadata?: {[key: string]: string};
     /**
-     * Type of package (DOCKER, HELM, MAVEN, etc.)
+     * Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
      */
     readonly packageType?: string;
     /**
@@ -190,7 +190,7 @@ export interface GetHarRegistryOutputArgs {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Type of package (DOCKER, HELM, MAVEN, etc.)
+     * Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
      */
     packageType?: pulumi.Input<string | undefined>;
     /**

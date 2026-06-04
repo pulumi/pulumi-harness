@@ -1985,6 +1985,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "inherit_from_delegate": {
+                                    "maxItemsOne": true
+                                },
                                 "key_pair": {
                                     "maxItemsOne": true
                                 },
@@ -17631,6 +17634,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "inherit_from_delegate": {
+                                    "maxItemsOne": false
+                                },
                                 "key_pair": {
                                     "maxItemsOne": false
                                 },

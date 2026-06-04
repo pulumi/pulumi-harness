@@ -18,6 +18,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string AuthType;
         /// <summary>
+        /// Authenticate using credentials inherited from the Harness delegate runtime identity.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetConnectorJdbcCredentialInheritFromDelegateResult> InheritFromDelegates;
+        /// <summary>
         /// Authenticate using key pair.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetConnectorJdbcCredentialKeyPairResult> KeyPairs;
@@ -50,6 +54,8 @@ namespace Pulumi.Harness.Platform.Outputs
         private GetConnectorJdbcCredentialResult(
             string authType,
 
+            ImmutableArray<Outputs.GetConnectorJdbcCredentialInheritFromDelegateResult> inheritFromDelegates,
+
             ImmutableArray<Outputs.GetConnectorJdbcCredentialKeyPairResult> keyPairs,
 
             ImmutableArray<Outputs.GetConnectorJdbcCredentialOidcResult> oidcs,
@@ -65,6 +71,7 @@ namespace Pulumi.Harness.Platform.Outputs
             string usernameRef)
         {
             AuthType = authType;
+            InheritFromDelegates = inheritFromDelegates;
             KeyPairs = keyPairs;
             Oidcs = oidcs;
             PasswordRef = passwordRef;

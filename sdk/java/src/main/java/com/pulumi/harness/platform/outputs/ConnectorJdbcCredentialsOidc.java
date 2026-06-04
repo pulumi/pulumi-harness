@@ -8,14 +8,16 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.ConnectorJdbcCredentialsOidcGcpOidc;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectorJdbcCredentialsOidc {
     /**
-     * @return GCP OIDC configuration.
+     * @return GCP OIDC configuration. Required when provider*type is Gcp.
      * 
      */
-    private ConnectorJdbcCredentialsOidcGcpOidc gcpOidc;
+    private @Nullable ConnectorJdbcCredentialsOidcGcpOidc gcpOidc;
     /**
      * @return The OIDC provider type. Currently supported: Gcp.
      * 
@@ -24,11 +26,11 @@ public final class ConnectorJdbcCredentialsOidc {
 
     private ConnectorJdbcCredentialsOidc() {}
     /**
-     * @return GCP OIDC configuration.
+     * @return GCP OIDC configuration. Required when provider*type is Gcp.
      * 
      */
-    public ConnectorJdbcCredentialsOidcGcpOidc gcpOidc() {
-        return this.gcpOidc;
+    public Optional<ConnectorJdbcCredentialsOidcGcpOidc> gcpOidc() {
+        return Optional.ofNullable(this.gcpOidc);
     }
     /**
      * @return The OIDC provider type. Currently supported: Gcp.
@@ -47,7 +49,7 @@ public final class ConnectorJdbcCredentialsOidc {
     }
     @CustomType.Builder
     public static final class Builder {
-        private ConnectorJdbcCredentialsOidcGcpOidc gcpOidc;
+        private @Nullable ConnectorJdbcCredentialsOidcGcpOidc gcpOidc;
         private String providerType;
         public Builder() {}
         public Builder(ConnectorJdbcCredentialsOidc defaults) {
@@ -57,10 +59,8 @@ public final class ConnectorJdbcCredentialsOidc {
         }
 
         @CustomType.Setter
-        public Builder gcpOidc(ConnectorJdbcCredentialsOidcGcpOidc gcpOidc) {
-            if (gcpOidc == null) {
-              throw new MissingRequiredPropertyException("ConnectorJdbcCredentialsOidc", "gcpOidc");
-            }
+        public Builder gcpOidc(@Nullable ConnectorJdbcCredentialsOidcGcpOidc gcpOidc) {
+
             this.gcpOidc = gcpOidc;
             return this;
         }

@@ -47,7 +47,7 @@ class GitOpsRepositoryArgs:
         :param pulumi.Input[_builtins.bool] force_delete: Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
         :param pulumi.Input['GitOpsRepositoryGcrGenArgs'] gcr_gen: GCR access token generator specific configuration.
         :param pulumi.Input[_builtins.str] gen_type: Default: "UNSET"
-               Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+               Enum: "UNSET" "AWS_ECR" "GOOGLE_GCR"
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the GitOps repository.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps repository.
         :param pulumi.Input[_builtins.str] refresh_interval: For OCI repos, this is the interval to refresh the token to access the registry.
@@ -188,7 +188,7 @@ class GitOpsRepositoryArgs:
     def gen_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default: "UNSET"
-        Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+        Enum: "UNSET" "AWS_ECR" "GOOGLE_GCR"
         """
         return pulumi.get(self, "gen_type")
 
@@ -285,7 +285,7 @@ class _GitOpsRepositoryState:
         :param pulumi.Input[_builtins.bool] force_delete: Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
         :param pulumi.Input['GitOpsRepositoryGcrGenArgs'] gcr_gen: GCR access token generator specific configuration.
         :param pulumi.Input[_builtins.str] gen_type: Default: "UNSET"
-               Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+               Enum: "UNSET" "AWS_ECR" "GOOGLE_GCR"
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps repository.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the GitOps repository.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps repository.
@@ -407,7 +407,7 @@ class _GitOpsRepositoryState:
     def gen_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default: "UNSET"
-        Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+        Enum: "UNSET" "AWS_ECR" "GOOGLE_GCR"
         """
         return pulumi.get(self, "gen_type")
 
@@ -557,7 +557,7 @@ class GitOpsRepository(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force_delete: Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
         :param pulumi.Input[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict']] gcr_gen: GCR access token generator specific configuration.
         :param pulumi.Input[_builtins.str] gen_type: Default: "UNSET"
-               Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+               Enum: "UNSET" "AWS_ECR" "GOOGLE_GCR"
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps repository.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the GitOps repository.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps repository.
@@ -694,7 +694,7 @@ class GitOpsRepository(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force_delete: Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
         :param pulumi.Input[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict']] gcr_gen: GCR access token generator specific configuration.
         :param pulumi.Input[_builtins.str] gen_type: Default: "UNSET"
-               Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+               Enum: "UNSET" "AWS_ECR" "GOOGLE_GCR"
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps repository.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the GitOps repository.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps repository.
@@ -777,7 +777,7 @@ class GitOpsRepository(pulumi.CustomResource):
     def gen_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Default: "UNSET"
-        Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+        Enum: "UNSET" "AWS_ECR" "GOOGLE_GCR"
         """
         return pulumi.get(self, "gen_type")
 

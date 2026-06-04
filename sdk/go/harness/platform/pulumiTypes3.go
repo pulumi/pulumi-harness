@@ -13,6 +13,292 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize struct {
+	// List of additional annotations to add to rendered manifests.
+	CommonAnnotations map[string]string `pulumi:"commonAnnotations"`
+	// List of additional labels to add to rendered manifests.
+	CommonLabels map[string]string `pulumi:"commonLabels"`
+	// Indicates if to force applying common annotations to resources for kustomize apps.
+	ForceCommonAnnotations *bool `pulumi:"forceCommonAnnotations"`
+	// Indicates if to force apply common labels to resources for kustomize apps.
+	ForceCommonLabels *bool `pulumi:"forceCommonLabels"`
+	// List of Kustomize image override specifications.
+	Images []string `pulumi:"images"`
+	// Prefix appended to resources for Kustomize apps.
+	NamePrefix *string `pulumi:"namePrefix"`
+	// Suffix appended to resources for Kustomize apps.
+	NameSuffix *string `pulumi:"nameSuffix"`
+	// Version of Kustomize to use for rendering manifests.
+	Version *string `pulumi:"version"`
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeArgs and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeArgs{...}
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeArgs struct {
+	// List of additional annotations to add to rendered manifests.
+	CommonAnnotations pulumi.StringMapInput `pulumi:"commonAnnotations"`
+	// List of additional labels to add to rendered manifests.
+	CommonLabels pulumi.StringMapInput `pulumi:"commonLabels"`
+	// Indicates if to force applying common annotations to resources for kustomize apps.
+	ForceCommonAnnotations pulumi.BoolPtrInput `pulumi:"forceCommonAnnotations"`
+	// Indicates if to force apply common labels to resources for kustomize apps.
+	ForceCommonLabels pulumi.BoolPtrInput `pulumi:"forceCommonLabels"`
+	// List of Kustomize image override specifications.
+	Images pulumi.StringArrayInput `pulumi:"images"`
+	// Prefix appended to resources for Kustomize apps.
+	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
+	// Suffix appended to resources for Kustomize apps.
+	NameSuffix pulumi.StringPtrInput `pulumi:"nameSuffix"`
+	// Version of Kustomize to use for rendering manifests.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput)
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput).ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutputWithContext(ctx)
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeArgs, GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtr and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrInput` via:
+//
+//	        GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput
+}
+
+type gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrType GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeArgs
+
+func GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtr(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeArgs) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrInput {
+	return (*gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrType)(v)
+}
+
+func (*gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize)(nil)).Elem()
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutputWithContext(context.Background())
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput {
+	return o.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutputWithContext(context.Background())
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize {
+		return &v
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput)
+}
+
+// List of additional annotations to add to rendered manifests.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput) CommonAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize) map[string]string {
+		return v.CommonAnnotations
+	}).(pulumi.StringMapOutput)
+}
+
+// List of additional labels to add to rendered manifests.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput) CommonLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize) map[string]string {
+		return v.CommonLabels
+	}).(pulumi.StringMapOutput)
+}
+
+// Indicates if to force applying common annotations to resources for kustomize apps.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput) ForceCommonAnnotations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize) *bool {
+		return v.ForceCommonAnnotations
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if to force apply common labels to resources for kustomize apps.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput) ForceCommonLabels() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize) *bool {
+		return v.ForceCommonLabels
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of Kustomize image override specifications.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput) Images() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize) []string {
+		return v.Images
+	}).(pulumi.StringArrayOutput)
+}
+
+// Prefix appended to resources for Kustomize apps.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize) *string {
+		return v.NamePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Suffix appended to resources for Kustomize apps.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput) NameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize) *string {
+		return v.NameSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of Kustomize to use for rendering manifests.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize) *string {
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput) Elem() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize {
+		if v != nil {
+			return *v
+		}
+		var ret GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize
+		return ret
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput)
+}
+
+// List of additional annotations to add to rendered manifests.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput) CommonAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.CommonAnnotations
+	}).(pulumi.StringMapOutput)
+}
+
+// List of additional labels to add to rendered manifests.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput) CommonLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.CommonLabels
+	}).(pulumi.StringMapOutput)
+}
+
+// Indicates if to force applying common annotations to resources for kustomize apps.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput) ForceCommonAnnotations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForceCommonAnnotations
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if to force apply common labels to resources for kustomize apps.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput) ForceCommonLabels() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForceCommonLabels
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of Kustomize image override specifications.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput) Images() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Images
+	}).(pulumi.StringArrayOutput)
+}
+
+// Prefix appended to resources for Kustomize apps.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NamePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Suffix appended to resources for Kustomize apps.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput) NameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of Kustomize to use for rendering manifests.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePlugin struct {
 	// Environment variables passed to the plugin.
 	Envs []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnv `pulumi:"envs"`
@@ -33195,6 +33481,8 @@ func (o GetConnectorGcpKmsOidcAuthenticationArrayOutput) Index(i pulumi.IntInput
 type GetConnectorJdbcCredential struct {
 	// Authentication types for JDBC connector
 	AuthType string `pulumi:"authType"`
+	// Authenticate using credentials inherited from the Harness delegate runtime identity.
+	InheritFromDelegates []GetConnectorJdbcCredentialInheritFromDelegate `pulumi:"inheritFromDelegates"`
 	// Authenticate using key pair.
 	KeyPairs []GetConnectorJdbcCredentialKeyPair `pulumi:"keyPairs"`
 	// Authenticate using OIDC.
@@ -33225,6 +33513,8 @@ type GetConnectorJdbcCredentialInput interface {
 type GetConnectorJdbcCredentialArgs struct {
 	// Authentication types for JDBC connector
 	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Authenticate using credentials inherited from the Harness delegate runtime identity.
+	InheritFromDelegates GetConnectorJdbcCredentialInheritFromDelegateArrayInput `pulumi:"inheritFromDelegates"`
 	// Authenticate using key pair.
 	KeyPairs GetConnectorJdbcCredentialKeyPairArrayInput `pulumi:"keyPairs"`
 	// Authenticate using OIDC.
@@ -33297,6 +33587,13 @@ func (o GetConnectorJdbcCredentialOutput) AuthType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorJdbcCredential) string { return v.AuthType }).(pulumi.StringOutput)
 }
 
+// Authenticate using credentials inherited from the Harness delegate runtime identity.
+func (o GetConnectorJdbcCredentialOutput) InheritFromDelegates() GetConnectorJdbcCredentialInheritFromDelegateArrayOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredential) []GetConnectorJdbcCredentialInheritFromDelegate {
+		return v.InheritFromDelegates
+	}).(GetConnectorJdbcCredentialInheritFromDelegateArrayOutput)
+}
+
 // Authenticate using key pair.
 func (o GetConnectorJdbcCredentialOutput) KeyPairs() GetConnectorJdbcCredentialKeyPairArrayOutput {
 	return o.ApplyT(func(v GetConnectorJdbcCredential) []GetConnectorJdbcCredentialKeyPair { return v.KeyPairs }).(GetConnectorJdbcCredentialKeyPairArrayOutput)
@@ -33354,6 +33651,112 @@ func (o GetConnectorJdbcCredentialArrayOutput) Index(i pulumi.IntInput) GetConne
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorJdbcCredential {
 		return vs[0].([]GetConnectorJdbcCredential)[vs[1].(int)]
 	}).(GetConnectorJdbcCredentialOutput)
+}
+
+type GetConnectorJdbcCredentialInheritFromDelegate struct {
+	// Username to use for authentication.
+	Username string `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	UsernameRef string `pulumi:"usernameRef"`
+}
+
+// GetConnectorJdbcCredentialInheritFromDelegateInput is an input type that accepts GetConnectorJdbcCredentialInheritFromDelegateArgs and GetConnectorJdbcCredentialInheritFromDelegateOutput values.
+// You can construct a concrete instance of `GetConnectorJdbcCredentialInheritFromDelegateInput` via:
+//
+//	GetConnectorJdbcCredentialInheritFromDelegateArgs{...}
+type GetConnectorJdbcCredentialInheritFromDelegateInput interface {
+	pulumi.Input
+
+	ToGetConnectorJdbcCredentialInheritFromDelegateOutput() GetConnectorJdbcCredentialInheritFromDelegateOutput
+	ToGetConnectorJdbcCredentialInheritFromDelegateOutputWithContext(context.Context) GetConnectorJdbcCredentialInheritFromDelegateOutput
+}
+
+type GetConnectorJdbcCredentialInheritFromDelegateArgs struct {
+	// Username to use for authentication.
+	Username pulumi.StringInput `pulumi:"username"`
+	// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+	UsernameRef pulumi.StringInput `pulumi:"usernameRef"`
+}
+
+func (GetConnectorJdbcCredentialInheritFromDelegateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorJdbcCredentialInheritFromDelegate)(nil)).Elem()
+}
+
+func (i GetConnectorJdbcCredentialInheritFromDelegateArgs) ToGetConnectorJdbcCredentialInheritFromDelegateOutput() GetConnectorJdbcCredentialInheritFromDelegateOutput {
+	return i.ToGetConnectorJdbcCredentialInheritFromDelegateOutputWithContext(context.Background())
+}
+
+func (i GetConnectorJdbcCredentialInheritFromDelegateArgs) ToGetConnectorJdbcCredentialInheritFromDelegateOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialInheritFromDelegateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorJdbcCredentialInheritFromDelegateOutput)
+}
+
+// GetConnectorJdbcCredentialInheritFromDelegateArrayInput is an input type that accepts GetConnectorJdbcCredentialInheritFromDelegateArray and GetConnectorJdbcCredentialInheritFromDelegateArrayOutput values.
+// You can construct a concrete instance of `GetConnectorJdbcCredentialInheritFromDelegateArrayInput` via:
+//
+//	GetConnectorJdbcCredentialInheritFromDelegateArray{ GetConnectorJdbcCredentialInheritFromDelegateArgs{...} }
+type GetConnectorJdbcCredentialInheritFromDelegateArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorJdbcCredentialInheritFromDelegateArrayOutput() GetConnectorJdbcCredentialInheritFromDelegateArrayOutput
+	ToGetConnectorJdbcCredentialInheritFromDelegateArrayOutputWithContext(context.Context) GetConnectorJdbcCredentialInheritFromDelegateArrayOutput
+}
+
+type GetConnectorJdbcCredentialInheritFromDelegateArray []GetConnectorJdbcCredentialInheritFromDelegateInput
+
+func (GetConnectorJdbcCredentialInheritFromDelegateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorJdbcCredentialInheritFromDelegate)(nil)).Elem()
+}
+
+func (i GetConnectorJdbcCredentialInheritFromDelegateArray) ToGetConnectorJdbcCredentialInheritFromDelegateArrayOutput() GetConnectorJdbcCredentialInheritFromDelegateArrayOutput {
+	return i.ToGetConnectorJdbcCredentialInheritFromDelegateArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorJdbcCredentialInheritFromDelegateArray) ToGetConnectorJdbcCredentialInheritFromDelegateArrayOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialInheritFromDelegateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorJdbcCredentialInheritFromDelegateArrayOutput)
+}
+
+type GetConnectorJdbcCredentialInheritFromDelegateOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorJdbcCredentialInheritFromDelegateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorJdbcCredentialInheritFromDelegate)(nil)).Elem()
+}
+
+func (o GetConnectorJdbcCredentialInheritFromDelegateOutput) ToGetConnectorJdbcCredentialInheritFromDelegateOutput() GetConnectorJdbcCredentialInheritFromDelegateOutput {
+	return o
+}
+
+func (o GetConnectorJdbcCredentialInheritFromDelegateOutput) ToGetConnectorJdbcCredentialInheritFromDelegateOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialInheritFromDelegateOutput {
+	return o
+}
+
+// Username to use for authentication.
+func (o GetConnectorJdbcCredentialInheritFromDelegateOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredentialInheritFromDelegate) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+func (o GetConnectorJdbcCredentialInheritFromDelegateOutput) UsernameRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorJdbcCredentialInheritFromDelegate) string { return v.UsernameRef }).(pulumi.StringOutput)
+}
+
+type GetConnectorJdbcCredentialInheritFromDelegateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorJdbcCredentialInheritFromDelegateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorJdbcCredentialInheritFromDelegate)(nil)).Elem()
+}
+
+func (o GetConnectorJdbcCredentialInheritFromDelegateArrayOutput) ToGetConnectorJdbcCredentialInheritFromDelegateArrayOutput() GetConnectorJdbcCredentialInheritFromDelegateArrayOutput {
+	return o
+}
+
+func (o GetConnectorJdbcCredentialInheritFromDelegateArrayOutput) ToGetConnectorJdbcCredentialInheritFromDelegateArrayOutputWithContext(ctx context.Context) GetConnectorJdbcCredentialInheritFromDelegateArrayOutput {
+	return o
+}
+
+func (o GetConnectorJdbcCredentialInheritFromDelegateArrayOutput) Index(i pulumi.IntInput) GetConnectorJdbcCredentialInheritFromDelegateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorJdbcCredentialInheritFromDelegate {
+		return vs[0].([]GetConnectorJdbcCredentialInheritFromDelegate)[vs[1].(int)]
+	}).(GetConnectorJdbcCredentialInheritFromDelegateOutput)
 }
 
 type GetConnectorJdbcCredentialKeyPair struct {
@@ -58611,6 +59014,8 @@ func (o GetWorkspacesWorkspaceArrayOutput) Index(i pulumi.IntInput) GetWorkspace
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvArgs{})
@@ -59041,6 +59446,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorGcpKmsOidcAuthenticationArrayInput)(nil)).Elem(), GetConnectorGcpKmsOidcAuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialInput)(nil)).Elem(), GetConnectorJdbcCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialArrayInput)(nil)).Elem(), GetConnectorJdbcCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialInheritFromDelegateInput)(nil)).Elem(), GetConnectorJdbcCredentialInheritFromDelegateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialInheritFromDelegateArrayInput)(nil)).Elem(), GetConnectorJdbcCredentialInheritFromDelegateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialKeyPairInput)(nil)).Elem(), GetConnectorJdbcCredentialKeyPairArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialKeyPairArrayInput)(nil)).Elem(), GetConnectorJdbcCredentialKeyPairArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialOidcInput)(nil)).Elem(), GetConnectorJdbcCredentialOidcArgs{})
@@ -59434,6 +59841,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableFileArrayInput)(nil)).Elem(), GetWorkspaceTerraformVariableFileArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspacesWorkspaceInput)(nil)).Elem(), GetWorkspacesWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspacesWorkspaceArrayInput)(nil)).Elem(), GetWorkspacesWorkspaceArray{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginEnvOutput{})
@@ -59864,6 +60273,8 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectorGcpKmsOidcAuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialOutput{})
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorJdbcCredentialInheritFromDelegateOutput{})
+	pulumi.RegisterOutputType(GetConnectorJdbcCredentialInheritFromDelegateArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialKeyPairOutput{})
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialKeyPairArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialOidcOutput{})

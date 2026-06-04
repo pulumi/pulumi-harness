@@ -22,7 +22,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private Input<string>? _bearerToken;
 
         /// <summary>
-        /// Bearer authentication token the cluster.
+        /// Bearer authentication token the cluster. Use BearerTokenWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public Input<string>? BearerToken
         {
@@ -33,6 +33,29 @@ namespace Pulumi.Harness.Platform.Inputs
                 _bearerToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("bearerTokenWo")]
+        private Input<string>? _bearerTokenWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Bearer authentication token for the cluster. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public Input<string>? BearerTokenWo
+        {
+            get => _bearerTokenWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _bearerTokenWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Increment to rotate the credential when using bearer_token_wo.
+        /// </summary>
+        [Input("bearerTokenWoVersion")]
+        public Input<int>? BearerTokenWoVersion { get; set; }
 
         /// <summary>
         /// Identifies the authentication method used to connect to the cluster.
@@ -62,7 +85,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// Password of the server of the cluster.
+        /// Password of the server of the cluster. Use PasswordWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public Input<string>? Password
         {
@@ -73,6 +96,29 @@ namespace Pulumi.Harness.Platform.Inputs
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Password of the server of the cluster. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Increment to rotate the credential when using password_wo.
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<int>? PasswordWoVersion { get; set; }
 
         /// <summary>
         /// The URL to the proxy to be used for all requests send to the cluster's API server

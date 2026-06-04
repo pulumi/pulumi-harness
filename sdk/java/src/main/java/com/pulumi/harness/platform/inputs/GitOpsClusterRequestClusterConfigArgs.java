@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.platform.inputs.GitOpsClusterRequestClusterConfigExecProviderConfigArgs;
 import com.pulumi.harness.platform.inputs.GitOpsClusterRequestClusterConfigTlsClientConfigArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -35,18 +36,50 @@ public final class GitOpsClusterRequestClusterConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * Bearer authentication token the cluster.
+     * Bearer authentication token the cluster. Use bearerTokenWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     @Import(name="bearerToken")
     private @Nullable Output<String> bearerToken;
 
     /**
-     * @return Bearer authentication token the cluster.
+     * @return Bearer authentication token the cluster. Use bearerTokenWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     public Optional<Output<String>> bearerToken() {
         return Optional.ofNullable(this.bearerToken);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Bearer authentication token for the cluster. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    @Import(name="bearerTokenWo")
+    private @Nullable Output<String> bearerTokenWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Bearer authentication token for the cluster. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    public Optional<Output<String>> bearerTokenWo() {
+        return Optional.ofNullable(this.bearerTokenWo);
+    }
+
+    /**
+     * Increment to rotate the credential when using bearer_token_wo.
+     * 
+     */
+    @Import(name="bearerTokenWoVersion")
+    private @Nullable Output<Integer> bearerTokenWoVersion;
+
+    /**
+     * @return Increment to rotate the credential when using bearer_token_wo.
+     * 
+     */
+    public Optional<Output<Integer>> bearerTokenWoVersion() {
+        return Optional.ofNullable(this.bearerTokenWoVersion);
     }
 
     /**
@@ -95,18 +128,50 @@ public final class GitOpsClusterRequestClusterConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * Password of the server of the cluster.
+     * Password of the server of the cluster. Use passwordWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Password of the server of the cluster.
+     * @return Password of the server of the cluster. Use passwordWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Password of the server of the cluster. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    @Import(name="passwordWo")
+    private @Nullable Output<String> passwordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Password of the server of the cluster. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    public Optional<Output<String>> passwordWo() {
+        return Optional.ofNullable(this.passwordWo);
+    }
+
+    /**
+     * Increment to rotate the credential when using password_wo.
+     * 
+     */
+    @Import(name="passwordWoVersion")
+    private @Nullable Output<Integer> passwordWoVersion;
+
+    /**
+     * @return Increment to rotate the credential when using password_wo.
+     * 
+     */
+    public Optional<Output<Integer>> passwordWoVersion() {
+        return Optional.ofNullable(this.passwordWoVersion);
     }
 
     /**
@@ -174,10 +239,14 @@ public final class GitOpsClusterRequestClusterConfigArgs extends com.pulumi.reso
     private GitOpsClusterRequestClusterConfigArgs(GitOpsClusterRequestClusterConfigArgs $) {
         this.awsClusterName = $.awsClusterName;
         this.bearerToken = $.bearerToken;
+        this.bearerTokenWo = $.bearerTokenWo;
+        this.bearerTokenWoVersion = $.bearerTokenWoVersion;
         this.clusterConnectionType = $.clusterConnectionType;
         this.disableCompression = $.disableCompression;
         this.execProviderConfigs = $.execProviderConfigs;
         this.password = $.password;
+        this.passwordWo = $.passwordWo;
+        this.passwordWoVersion = $.passwordWoVersion;
         this.proxyUrl = $.proxyUrl;
         this.roleARN = $.roleARN;
         this.tlsClientConfigs = $.tlsClientConfigs;
@@ -224,7 +293,7 @@ public final class GitOpsClusterRequestClusterConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param bearerToken Bearer authentication token the cluster.
+         * @param bearerToken Bearer authentication token the cluster. Use bearerTokenWo for write-only support (Terraform &gt;= 1.11).
          * 
          * @return builder
          * 
@@ -235,13 +304,57 @@ public final class GitOpsClusterRequestClusterConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param bearerToken Bearer authentication token the cluster.
+         * @param bearerToken Bearer authentication token the cluster. Use bearerTokenWo for write-only support (Terraform &gt;= 1.11).
          * 
          * @return builder
          * 
          */
         public Builder bearerToken(String bearerToken) {
             return bearerToken(Output.of(bearerToken));
+        }
+
+        /**
+         * @param bearerTokenWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Bearer authentication token for the cluster. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bearerTokenWo(@Nullable Output<String> bearerTokenWo) {
+            $.bearerTokenWo = bearerTokenWo;
+            return this;
+        }
+
+        /**
+         * @param bearerTokenWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Bearer authentication token for the cluster. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bearerTokenWo(String bearerTokenWo) {
+            return bearerTokenWo(Output.of(bearerTokenWo));
+        }
+
+        /**
+         * @param bearerTokenWoVersion Increment to rotate the credential when using bearer_token_wo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bearerTokenWoVersion(@Nullable Output<Integer> bearerTokenWoVersion) {
+            $.bearerTokenWoVersion = bearerTokenWoVersion;
+            return this;
+        }
+
+        /**
+         * @param bearerTokenWoVersion Increment to rotate the credential when using bearer_token_wo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bearerTokenWoVersion(Integer bearerTokenWoVersion) {
+            return bearerTokenWoVersion(Output.of(bearerTokenWoVersion));
         }
 
         /**
@@ -318,7 +431,7 @@ public final class GitOpsClusterRequestClusterConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param password Password of the server of the cluster.
+         * @param password Password of the server of the cluster. Use passwordWo for write-only support (Terraform &gt;= 1.11).
          * 
          * @return builder
          * 
@@ -329,13 +442,57 @@ public final class GitOpsClusterRequestClusterConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param password Password of the server of the cluster.
+         * @param password Password of the server of the cluster. Use passwordWo for write-only support (Terraform &gt;= 1.11).
          * 
          * @return builder
          * 
          */
         public Builder password(String password) {
             return password(Output.of(password));
+        }
+
+        /**
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Password of the server of the cluster. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWo(@Nullable Output<String> passwordWo) {
+            $.passwordWo = passwordWo;
+            return this;
+        }
+
+        /**
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Password of the server of the cluster. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWo(String passwordWo) {
+            return passwordWo(Output.of(passwordWo));
+        }
+
+        /**
+         * @param passwordWoVersion Increment to rotate the credential when using password_wo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(@Nullable Output<Integer> passwordWoVersion) {
+            $.passwordWoVersion = passwordWoVersion;
+            return this;
+        }
+
+        /**
+         * @param passwordWoVersion Increment to rotate the credential when using password_wo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(Integer passwordWoVersion) {
+            return passwordWoVersion(Output.of(passwordWoVersion));
         }
 
         /**

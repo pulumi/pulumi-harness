@@ -13,16 +13,39 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class GitOpsClusterRequestClusterConfigTlsClientConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded.
+        /// CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded. Use CaDataWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         [Input("caData")]
         public Input<string>? CaData { get; set; }
+
+        [Input("caDataWo")]
+        private Input<string>? _caDataWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// CA data holds PEM-encoded bytes. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public Input<string>? CaDataWo
+        {
+            get => _caDataWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _caDataWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Increment to rotate the credential when using ca_data_wo.
+        /// </summary>
+        [Input("caDataWoVersion")]
+        public Input<int>? CaDataWoVersion { get; set; }
 
         [Input("certData")]
         private Input<string>? _certData;
 
         /// <summary>
-        /// Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded.
+        /// Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded. Use CertDataWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public Input<string>? CertData
         {
@@ -34,6 +57,29 @@ namespace Pulumi.Harness.Platform.Inputs
             }
         }
 
+        [Input("certDataWo")]
+        private Input<string>? _certDataWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Certificate data for mTLS authentication. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public Input<string>? CertDataWo
+        {
+            get => _certDataWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certDataWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Increment to rotate the credential when using cert_data_wo.
+        /// </summary>
+        [Input("certDataWoVersion")]
+        public Input<int>? CertDataWoVersion { get; set; }
+
         /// <summary>
         /// Indicates if the TLS connection to the cluster should be insecure.
         /// </summary>
@@ -44,7 +90,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private Input<string>? _keyData;
 
         /// <summary>
-        /// Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded.
+        /// Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded. Use KeyDataWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public Input<string>? KeyData
         {
@@ -55,6 +101,29 @@ namespace Pulumi.Harness.Platform.Inputs
                 _keyData = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("keyDataWo")]
+        private Input<string>? _keyDataWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Key data for mTLS authentication. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public Input<string>? KeyDataWo
+        {
+            get => _keyDataWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _keyDataWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Increment to rotate the credential when using key_data_wo.
+        /// </summary>
+        [Input("keyDataWoVersion")]
+        public Input<int>? KeyDataWoVersion { get; set; }
 
         /// <summary>
         /// Server name for SNI in the client to check server certificates against. If ServerName is empty, the hostname used to contact the server is used.

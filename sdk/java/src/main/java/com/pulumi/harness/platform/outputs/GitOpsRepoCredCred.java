@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -33,30 +34,85 @@ public final class GitOpsRepoCredCred {
      */
     private @Nullable String githubAppInstallationId;
     /**
-     * @return github*app*private_key specifies the private key PEM data for authentication via GitHub app.
+     * @return github_app_private_key specifies the private key PEM data for authentication via GitHub app. Use githubAppPrivateKeyWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     private @Nullable String githubAppPrivateKey;
     /**
-     * @return Password or PAT to be used for authenticating the remote repository.
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * GitHub app private key PEM data. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    private @Nullable String githubAppPrivateKeyWo;
+    /**
+     * @return Increment to rotate the credential when using github_app_private_key_wo.
+     * 
+     */
+    private @Nullable Integer githubAppPrivateKeyWoVersion;
+    /**
+     * @return Password or PAT to be used for authenticating the remote repository. Use passwordWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     private @Nullable String password;
     /**
-     * @return SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Password or PAT for authenticating the remote repository. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    private @Nullable String passwordWo;
+    /**
+     * @return Increment to rotate the credential when using password_wo.
+     * 
+     */
+    private @Nullable Integer passwordWoVersion;
+    /**
+     * @return SSH Key in PEM format for authenticating the repository. Used only for Git repository. Use sshPrivateKeyWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     private @Nullable String sshPrivateKey;
     /**
-     * @return Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * SSH Key in PEM format for authenticating the repository. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    private @Nullable String sshPrivateKeyWo;
+    /**
+     * @return Increment to rotate the credential when using ssh_private_key_wo.
+     * 
+     */
+    private @Nullable Integer sshPrivateKeyWoVersion;
+    /**
+     * @return Certificate in PEM format for authenticating at the repo server. This is used for mTLS. Use tlsClientCertDataWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     private @Nullable String tlsClientCertData;
     /**
-     * @return Private key in PEM format for authenticating at the repo server. This is used for mTLS.
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Certificate in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    private @Nullable String tlsClientCertDataWo;
+    /**
+     * @return Increment to rotate the credential when using tls_client_cert_data_wo.
+     * 
+     */
+    private @Nullable Integer tlsClientCertDataWoVersion;
+    /**
+     * @return Private key in PEM format for authenticating at the repo server. This is used for mTLS. Use tlsClientCertKeyWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     private @Nullable String tlsClientCertKey;
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Private key in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    private @Nullable String tlsClientCertKeyWo;
+    /**
+     * @return Increment to rotate the credential when using tls_client_cert_key_wo.
+     * 
+     */
+    private @Nullable Integer tlsClientCertKeyWoVersion;
     /**
      * @return Type specifies the type of the repoCreds.Can be either &#39;git&#39; or &#39;helm. &#39;git&#39; is assumed if empty or absent
      * 
@@ -103,39 +159,114 @@ public final class GitOpsRepoCredCred {
         return Optional.ofNullable(this.githubAppInstallationId);
     }
     /**
-     * @return github*app*private_key specifies the private key PEM data for authentication via GitHub app.
+     * @return github_app_private_key specifies the private key PEM data for authentication via GitHub app. Use githubAppPrivateKeyWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     public Optional<String> githubAppPrivateKey() {
         return Optional.ofNullable(this.githubAppPrivateKey);
     }
     /**
-     * @return Password or PAT to be used for authenticating the remote repository.
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * GitHub app private key PEM data. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    public Optional<String> githubAppPrivateKeyWo() {
+        return Optional.ofNullable(this.githubAppPrivateKeyWo);
+    }
+    /**
+     * @return Increment to rotate the credential when using github_app_private_key_wo.
+     * 
+     */
+    public Optional<Integer> githubAppPrivateKeyWoVersion() {
+        return Optional.ofNullable(this.githubAppPrivateKeyWoVersion);
+    }
+    /**
+     * @return Password or PAT to be used for authenticating the remote repository. Use passwordWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Password or PAT for authenticating the remote repository. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    public Optional<String> passwordWo() {
+        return Optional.ofNullable(this.passwordWo);
+    }
+    /**
+     * @return Increment to rotate the credential when using password_wo.
+     * 
+     */
+    public Optional<Integer> passwordWoVersion() {
+        return Optional.ofNullable(this.passwordWoVersion);
+    }
+    /**
+     * @return SSH Key in PEM format for authenticating the repository. Used only for Git repository. Use sshPrivateKeyWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     public Optional<String> sshPrivateKey() {
         return Optional.ofNullable(this.sshPrivateKey);
     }
     /**
-     * @return Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * SSH Key in PEM format for authenticating the repository. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    public Optional<String> sshPrivateKeyWo() {
+        return Optional.ofNullable(this.sshPrivateKeyWo);
+    }
+    /**
+     * @return Increment to rotate the credential when using ssh_private_key_wo.
+     * 
+     */
+    public Optional<Integer> sshPrivateKeyWoVersion() {
+        return Optional.ofNullable(this.sshPrivateKeyWoVersion);
+    }
+    /**
+     * @return Certificate in PEM format for authenticating at the repo server. This is used for mTLS. Use tlsClientCertDataWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     public Optional<String> tlsClientCertData() {
         return Optional.ofNullable(this.tlsClientCertData);
     }
     /**
-     * @return Private key in PEM format for authenticating at the repo server. This is used for mTLS.
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Certificate in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    public Optional<String> tlsClientCertDataWo() {
+        return Optional.ofNullable(this.tlsClientCertDataWo);
+    }
+    /**
+     * @return Increment to rotate the credential when using tls_client_cert_data_wo.
+     * 
+     */
+    public Optional<Integer> tlsClientCertDataWoVersion() {
+        return Optional.ofNullable(this.tlsClientCertDataWoVersion);
+    }
+    /**
+     * @return Private key in PEM format for authenticating at the repo server. This is used for mTLS. Use tlsClientCertKeyWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     public Optional<String> tlsClientCertKey() {
         return Optional.ofNullable(this.tlsClientCertKey);
+    }
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Private key in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    public Optional<String> tlsClientCertKeyWo() {
+        return Optional.ofNullable(this.tlsClientCertKeyWo);
+    }
+    /**
+     * @return Increment to rotate the credential when using tls_client_cert_key_wo.
+     * 
+     */
+    public Optional<Integer> tlsClientCertKeyWoVersion() {
+        return Optional.ofNullable(this.tlsClientCertKeyWoVersion);
     }
     /**
      * @return Type specifies the type of the repoCreds.Can be either &#39;git&#39; or &#39;helm. &#39;git&#39; is assumed if empty or absent
@@ -173,10 +304,20 @@ public final class GitOpsRepoCredCred {
         private @Nullable String githubAppId;
         private @Nullable String githubAppInstallationId;
         private @Nullable String githubAppPrivateKey;
+        private @Nullable String githubAppPrivateKeyWo;
+        private @Nullable Integer githubAppPrivateKeyWoVersion;
         private @Nullable String password;
+        private @Nullable String passwordWo;
+        private @Nullable Integer passwordWoVersion;
         private @Nullable String sshPrivateKey;
+        private @Nullable String sshPrivateKeyWo;
+        private @Nullable Integer sshPrivateKeyWoVersion;
         private @Nullable String tlsClientCertData;
+        private @Nullable String tlsClientCertDataWo;
+        private @Nullable Integer tlsClientCertDataWoVersion;
         private @Nullable String tlsClientCertKey;
+        private @Nullable String tlsClientCertKeyWo;
+        private @Nullable Integer tlsClientCertKeyWoVersion;
         private @Nullable String type;
         private @Nullable String url;
         private @Nullable String username;
@@ -188,10 +329,20 @@ public final class GitOpsRepoCredCred {
     	      this.githubAppId = defaults.githubAppId;
     	      this.githubAppInstallationId = defaults.githubAppInstallationId;
     	      this.githubAppPrivateKey = defaults.githubAppPrivateKey;
+    	      this.githubAppPrivateKeyWo = defaults.githubAppPrivateKeyWo;
+    	      this.githubAppPrivateKeyWoVersion = defaults.githubAppPrivateKeyWoVersion;
     	      this.password = defaults.password;
+    	      this.passwordWo = defaults.passwordWo;
+    	      this.passwordWoVersion = defaults.passwordWoVersion;
     	      this.sshPrivateKey = defaults.sshPrivateKey;
+    	      this.sshPrivateKeyWo = defaults.sshPrivateKeyWo;
+    	      this.sshPrivateKeyWoVersion = defaults.sshPrivateKeyWoVersion;
     	      this.tlsClientCertData = defaults.tlsClientCertData;
+    	      this.tlsClientCertDataWo = defaults.tlsClientCertDataWo;
+    	      this.tlsClientCertDataWoVersion = defaults.tlsClientCertDataWoVersion;
     	      this.tlsClientCertKey = defaults.tlsClientCertKey;
+    	      this.tlsClientCertKeyWo = defaults.tlsClientCertKeyWo;
+    	      this.tlsClientCertKeyWoVersion = defaults.tlsClientCertKeyWoVersion;
     	      this.type = defaults.type;
     	      this.url = defaults.url;
     	      this.username = defaults.username;
@@ -228,9 +379,33 @@ public final class GitOpsRepoCredCred {
             return this;
         }
         @CustomType.Setter
+        public Builder githubAppPrivateKeyWo(@Nullable String githubAppPrivateKeyWo) {
+
+            this.githubAppPrivateKeyWo = githubAppPrivateKeyWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder githubAppPrivateKeyWoVersion(@Nullable Integer githubAppPrivateKeyWoVersion) {
+
+            this.githubAppPrivateKeyWoVersion = githubAppPrivateKeyWoVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder password(@Nullable String password) {
 
             this.password = password;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder passwordWo(@Nullable String passwordWo) {
+
+            this.passwordWo = passwordWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder passwordWoVersion(@Nullable Integer passwordWoVersion) {
+
+            this.passwordWoVersion = passwordWoVersion;
             return this;
         }
         @CustomType.Setter
@@ -240,15 +415,51 @@ public final class GitOpsRepoCredCred {
             return this;
         }
         @CustomType.Setter
+        public Builder sshPrivateKeyWo(@Nullable String sshPrivateKeyWo) {
+
+            this.sshPrivateKeyWo = sshPrivateKeyWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sshPrivateKeyWoVersion(@Nullable Integer sshPrivateKeyWoVersion) {
+
+            this.sshPrivateKeyWoVersion = sshPrivateKeyWoVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tlsClientCertData(@Nullable String tlsClientCertData) {
 
             this.tlsClientCertData = tlsClientCertData;
             return this;
         }
         @CustomType.Setter
+        public Builder tlsClientCertDataWo(@Nullable String tlsClientCertDataWo) {
+
+            this.tlsClientCertDataWo = tlsClientCertDataWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tlsClientCertDataWoVersion(@Nullable Integer tlsClientCertDataWoVersion) {
+
+            this.tlsClientCertDataWoVersion = tlsClientCertDataWoVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tlsClientCertKey(@Nullable String tlsClientCertKey) {
 
             this.tlsClientCertKey = tlsClientCertKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tlsClientCertKeyWo(@Nullable String tlsClientCertKeyWo) {
+
+            this.tlsClientCertKeyWo = tlsClientCertKeyWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tlsClientCertKeyWoVersion(@Nullable Integer tlsClientCertKeyWoVersion) {
+
+            this.tlsClientCertKeyWoVersion = tlsClientCertKeyWoVersion;
             return this;
         }
         @CustomType.Setter
@@ -276,10 +487,20 @@ public final class GitOpsRepoCredCred {
             _resultValue.githubAppId = githubAppId;
             _resultValue.githubAppInstallationId = githubAppInstallationId;
             _resultValue.githubAppPrivateKey = githubAppPrivateKey;
+            _resultValue.githubAppPrivateKeyWo = githubAppPrivateKeyWo;
+            _resultValue.githubAppPrivateKeyWoVersion = githubAppPrivateKeyWoVersion;
             _resultValue.password = password;
+            _resultValue.passwordWo = passwordWo;
+            _resultValue.passwordWoVersion = passwordWoVersion;
             _resultValue.sshPrivateKey = sshPrivateKey;
+            _resultValue.sshPrivateKeyWo = sshPrivateKeyWo;
+            _resultValue.sshPrivateKeyWoVersion = sshPrivateKeyWoVersion;
             _resultValue.tlsClientCertData = tlsClientCertData;
+            _resultValue.tlsClientCertDataWo = tlsClientCertDataWo;
+            _resultValue.tlsClientCertDataWoVersion = tlsClientCertDataWoVersion;
             _resultValue.tlsClientCertKey = tlsClientCertKey;
+            _resultValue.tlsClientCertKeyWo = tlsClientCertKeyWo;
+            _resultValue.tlsClientCertKeyWoVersion = tlsClientCertKeyWoVersion;
             _resultValue.type = type;
             _resultValue.url = url;
             _resultValue.username = username;

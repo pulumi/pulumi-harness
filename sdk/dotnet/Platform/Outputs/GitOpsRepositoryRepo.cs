@@ -38,9 +38,18 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? GithubAppInstallationId;
         /// <summary>
-        /// GitHub app private key PEM data.
+        /// GitHub app private key PEM data. Use GithubAppPrivateKeyWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public readonly string? GithubAppPrivateKey;
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// GitHub app private key PEM data. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public readonly string? GithubAppPrivateKeyWo;
+        /// <summary>
+        /// Increment to rotate the credential when using github_app_private_key_wo.
+        /// </summary>
+        public readonly int? GithubAppPrivateKeyWoVersion;
         /// <summary>
         /// Indicates if the credentials were inherited from a repository credential.
         /// </summary>
@@ -58,9 +67,18 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Password or PAT to be used for authenticating the remote repository.
+        /// Password or PAT to be used for authenticating the remote repository. Use PasswordWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public readonly string? Password;
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Password or PAT for authenticating the remote repository. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public readonly string? PasswordWo;
+        /// <summary>
+        /// Increment to rotate the credential when using password_wo.
+        /// </summary>
+        public readonly int? PasswordWoVersion;
         /// <summary>
         /// The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
         /// </summary>
@@ -74,17 +92,44 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string Repo;
         /// <summary>
-        /// SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+        /// SSH Key in PEM format for authenticating the repository. Used only for Git repository. Use SshPrivateKeyWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public readonly string? SshPrivateKey;
         /// <summary>
-        /// Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// SSH Key in PEM format for authenticating the repository. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public readonly string? SshPrivateKeyWo;
+        /// <summary>
+        /// Increment to rotate the credential when using ssh_private_key_wo.
+        /// </summary>
+        public readonly int? SshPrivateKeyWoVersion;
+        /// <summary>
+        /// Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded. Use TlsClientCertDataWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public readonly string? TlsClientCertData;
         /// <summary>
-        /// Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Certificate in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public readonly string? TlsClientCertDataWo;
+        /// <summary>
+        /// Increment to rotate the credential when using tls_client_cert_data_wo.
+        /// </summary>
+        public readonly int? TlsClientCertDataWoVersion;
+        /// <summary>
+        /// Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded. Use TlsClientCertKeyWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public readonly string? TlsClientCertKey;
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Private key in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public readonly string? TlsClientCertKeyWo;
+        /// <summary>
+        /// Increment to rotate the credential when using tls_client_cert_key_wo.
+        /// </summary>
+        public readonly int? TlsClientCertKeyWoVersion;
         /// <summary>
         /// Type specifies the type of the repo. Can be either "git" or "helm. "git" is assumed if empty or absent.
         /// </summary>
@@ -110,6 +155,10 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string? githubAppPrivateKey,
 
+            string? githubAppPrivateKeyWo,
+
+            int? githubAppPrivateKeyWoVersion,
+
             bool? inheritedCreds,
 
             bool? insecure,
@@ -120,6 +169,10 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string? password,
 
+            string? passwordWo,
+
+            int? passwordWoVersion,
+
             string? project,
 
             string? proxy,
@@ -128,9 +181,21 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string? sshPrivateKey,
 
+            string? sshPrivateKeyWo,
+
+            int? sshPrivateKeyWoVersion,
+
             string? tlsClientCertData,
 
+            string? tlsClientCertDataWo,
+
+            int? tlsClientCertDataWoVersion,
+
             string? tlsClientCertKey,
+
+            string? tlsClientCertKeyWo,
+
+            int? tlsClientCertKeyWoVersion,
 
             string? type_,
 
@@ -143,17 +208,27 @@ namespace Pulumi.Harness.Platform.Outputs
             GithubAppId = githubAppId;
             GithubAppInstallationId = githubAppInstallationId;
             GithubAppPrivateKey = githubAppPrivateKey;
+            GithubAppPrivateKeyWo = githubAppPrivateKeyWo;
+            GithubAppPrivateKeyWoVersion = githubAppPrivateKeyWoVersion;
             InheritedCreds = inheritedCreds;
             Insecure = insecure;
             InsecureIgnoreHostKey = insecureIgnoreHostKey;
             Name = name;
             Password = password;
+            PasswordWo = passwordWo;
+            PasswordWoVersion = passwordWoVersion;
             Project = project;
             Proxy = proxy;
             Repo = repo;
             SshPrivateKey = sshPrivateKey;
+            SshPrivateKeyWo = sshPrivateKeyWo;
+            SshPrivateKeyWoVersion = sshPrivateKeyWoVersion;
             TlsClientCertData = tlsClientCertData;
+            TlsClientCertDataWo = tlsClientCertDataWo;
+            TlsClientCertDataWoVersion = tlsClientCertDataWoVersion;
             TlsClientCertKey = tlsClientCertKey;
+            TlsClientCertKeyWo = tlsClientCertKeyWo;
+            TlsClientCertKeyWoVersion = tlsClientCertKeyWoVersion;
             Type_ = type_;
             Username = username;
         }

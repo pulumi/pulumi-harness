@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.inputs.ConnectorJdbcCredentialsOidcGcpOidcArgs;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ConnectorJdbcCredentialsOidcArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,18 +18,18 @@ public final class ConnectorJdbcCredentialsOidcArgs extends com.pulumi.resources
     public static final ConnectorJdbcCredentialsOidcArgs Empty = new ConnectorJdbcCredentialsOidcArgs();
 
     /**
-     * GCP OIDC configuration.
+     * GCP OIDC configuration. Required when provider*type is Gcp.
      * 
      */
-    @Import(name="gcpOidc", required=true)
-    private Output<ConnectorJdbcCredentialsOidcGcpOidcArgs> gcpOidc;
+    @Import(name="gcpOidc")
+    private @Nullable Output<ConnectorJdbcCredentialsOidcGcpOidcArgs> gcpOidc;
 
     /**
-     * @return GCP OIDC configuration.
+     * @return GCP OIDC configuration. Required when provider*type is Gcp.
      * 
      */
-    public Output<ConnectorJdbcCredentialsOidcGcpOidcArgs> gcpOidc() {
-        return this.gcpOidc;
+    public Optional<Output<ConnectorJdbcCredentialsOidcGcpOidcArgs>> gcpOidc() {
+        return Optional.ofNullable(this.gcpOidc);
     }
 
     /**
@@ -71,18 +73,18 @@ public final class ConnectorJdbcCredentialsOidcArgs extends com.pulumi.resources
         }
 
         /**
-         * @param gcpOidc GCP OIDC configuration.
+         * @param gcpOidc GCP OIDC configuration. Required when provider*type is Gcp.
          * 
          * @return builder
          * 
          */
-        public Builder gcpOidc(Output<ConnectorJdbcCredentialsOidcGcpOidcArgs> gcpOidc) {
+        public Builder gcpOidc(@Nullable Output<ConnectorJdbcCredentialsOidcGcpOidcArgs> gcpOidc) {
             $.gcpOidc = gcpOidc;
             return this;
         }
 
         /**
-         * @param gcpOidc GCP OIDC configuration.
+         * @param gcpOidc GCP OIDC configuration. Required when provider*type is Gcp.
          * 
          * @return builder
          * 
@@ -113,9 +115,6 @@ public final class ConnectorJdbcCredentialsOidcArgs extends com.pulumi.resources
         }
 
         public ConnectorJdbcCredentialsOidcArgs build() {
-            if ($.gcpOidc == null) {
-                throw new MissingRequiredPropertyException("ConnectorJdbcCredentialsOidcArgs", "gcpOidc");
-            }
             if ($.providerType == null) {
                 throw new MissingRequiredPropertyException("ConnectorJdbcCredentialsOidcArgs", "providerType");
             }

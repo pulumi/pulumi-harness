@@ -110,14 +110,14 @@ public final class GetHarRegistryArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Type of package (DOCKER, HELM, MAVEN, etc.)
+     * Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
      * 
      */
     @Import(name="packageType")
     private @Nullable Output<String> packageType;
 
     /**
-     * @return Type of package (DOCKER, HELM, MAVEN, etc.)
+     * @return Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
      * 
      */
     public Optional<Output<String>> packageType() {
@@ -343,7 +343,7 @@ public final class GetHarRegistryArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param packageType Type of package (DOCKER, HELM, MAVEN, etc.)
+         * @param packageType Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class GetHarRegistryArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param packageType Type of package (DOCKER, HELM, MAVEN, etc.)
+         * @param packageType Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
          * 
          * @return builder
          * 

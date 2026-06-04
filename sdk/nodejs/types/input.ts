@@ -6383,6 +6383,10 @@ export namespace platform {
          */
         authType?: pulumi.Input<string | undefined>;
         /**
+         * Authenticate using credentials inherited from the Harness delegate runtime identity (e.g. GCP ADC, AWS IAM).
+         */
+        inheritFromDelegate?: pulumi.Input<inputs.platform.ConnectorJdbcCredentialsInheritFromDelegate | undefined>;
+        /**
          * Authenticate using key pair.
          */
         keyPair?: pulumi.Input<inputs.platform.ConnectorJdbcCredentialsKeyPair | undefined>;
@@ -6412,6 +6416,17 @@ export namespace platform {
         usernameRef?: pulumi.Input<string | undefined>;
     }
 
+    export interface ConnectorJdbcCredentialsInheritFromDelegate {
+        /**
+         * Username to use for authentication.
+         */
+        username?: pulumi.Input<string | undefined>;
+        /**
+         * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        usernameRef?: pulumi.Input<string | undefined>;
+    }
+
     export interface ConnectorJdbcCredentialsKeyPair {
         /**
          * Reference to a secret containing the private key file to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -6433,9 +6448,9 @@ export namespace platform {
 
     export interface ConnectorJdbcCredentialsOidc {
         /**
-         * GCP OIDC configuration.
+         * GCP OIDC configuration. Required when provider*type is Gcp.
          */
-        gcpOidc: pulumi.Input<inputs.platform.ConnectorJdbcCredentialsOidcGcpOidc>;
+        gcpOidc?: pulumi.Input<inputs.platform.ConnectorJdbcCredentialsOidcGcpOidc | undefined>;
         /**
          * The OIDC provider type. Currently supported: Gcp.
          */
@@ -9400,9 +9415,18 @@ export namespace platform {
          */
         awsClusterName?: pulumi.Input<string | undefined>;
         /**
-         * Bearer authentication token the cluster.
+         * Bearer authentication token the cluster. Use bearerTokenWo for write-only support (Terraform >= 1.11).
          */
         bearerToken?: pulumi.Input<string | undefined>;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Bearer authentication token for the cluster. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        bearerTokenWo?: pulumi.Input<string | undefined>;
+        /**
+         * Increment to rotate the credential when using bearer_token_wo.
+         */
+        bearerTokenWoVersion?: pulumi.Input<number | undefined>;
         /**
          * Identifies the authentication method used to connect to the cluster.
          */
@@ -9416,9 +9440,18 @@ export namespace platform {
          */
         execProviderConfigs?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequestClusterConfigExecProviderConfig>[] | undefined>;
         /**
-         * Password of the server of the cluster.
+         * Password of the server of the cluster. Use passwordWo for write-only support (Terraform >= 1.11).
          */
         password?: pulumi.Input<string | undefined>;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Password of the server of the cluster. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        passwordWo?: pulumi.Input<string | undefined>;
+        /**
+         * Increment to rotate the credential when using password_wo.
+         */
+        passwordWoVersion?: pulumi.Input<number | undefined>;
         /**
          * The URL to the proxy to be used for all requests send to the cluster's API server
          */
@@ -9462,21 +9495,48 @@ export namespace platform {
 
     export interface GitOpsClusterRequestClusterConfigTlsClientConfig {
         /**
-         * CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded.
+         * CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded. Use caDataWo for write-only support (Terraform >= 1.11).
          */
         caData?: pulumi.Input<string | undefined>;
         /**
-         * Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded.
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * CA data holds PEM-encoded bytes. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        caDataWo?: pulumi.Input<string | undefined>;
+        /**
+         * Increment to rotate the credential when using ca_data_wo.
+         */
+        caDataWoVersion?: pulumi.Input<number | undefined>;
+        /**
+         * Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded. Use certDataWo for write-only support (Terraform >= 1.11).
          */
         certData?: pulumi.Input<string | undefined>;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Certificate data for mTLS authentication. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        certDataWo?: pulumi.Input<string | undefined>;
+        /**
+         * Increment to rotate the credential when using cert_data_wo.
+         */
+        certDataWoVersion?: pulumi.Input<number | undefined>;
         /**
          * Indicates if the TLS connection to the cluster should be insecure.
          */
         insecure?: pulumi.Input<boolean | undefined>;
         /**
-         * Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded.
+         * Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded. Use keyDataWo for write-only support (Terraform >= 1.11).
          */
         keyData?: pulumi.Input<string | undefined>;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Key data for mTLS authentication. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        keyDataWo?: pulumi.Input<string | undefined>;
+        /**
+         * Increment to rotate the credential when using key_data_wo.
+         */
+        keyDataWoVersion?: pulumi.Input<number | undefined>;
         /**
          * Server name for SNI in the client to check server certificates against. If ServerName is empty, the hostname used to contact the server is used.
          */
@@ -9678,25 +9738,70 @@ export namespace platform {
          */
         githubAppInstallationId?: pulumi.Input<string | undefined>;
         /**
-         * github*app*private_key specifies the private key PEM data for authentication via GitHub app.
+         * github_app_private_key specifies the private key PEM data for authentication via GitHub app. Use githubAppPrivateKeyWo for write-only support (Terraform >= 1.11).
          */
         githubAppPrivateKey?: pulumi.Input<string | undefined>;
         /**
-         * Password or PAT to be used for authenticating the remote repository.
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * GitHub app private key PEM data. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        githubAppPrivateKeyWo?: pulumi.Input<string | undefined>;
+        /**
+         * Increment to rotate the credential when using github_app_private_key_wo.
+         */
+        githubAppPrivateKeyWoVersion?: pulumi.Input<number | undefined>;
+        /**
+         * Password or PAT to be used for authenticating the remote repository. Use passwordWo for write-only support (Terraform >= 1.11).
          */
         password?: pulumi.Input<string | undefined>;
         /**
-         * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Password or PAT for authenticating the remote repository. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        passwordWo?: pulumi.Input<string | undefined>;
+        /**
+         * Increment to rotate the credential when using password_wo.
+         */
+        passwordWoVersion?: pulumi.Input<number | undefined>;
+        /**
+         * SSH Key in PEM format for authenticating the repository. Used only for Git repository. Use sshPrivateKeyWo for write-only support (Terraform >= 1.11).
          */
         sshPrivateKey?: pulumi.Input<string | undefined>;
         /**
-         * Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * SSH Key in PEM format for authenticating the repository. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        sshPrivateKeyWo?: pulumi.Input<string | undefined>;
+        /**
+         * Increment to rotate the credential when using ssh_private_key_wo.
+         */
+        sshPrivateKeyWoVersion?: pulumi.Input<number | undefined>;
+        /**
+         * Certificate in PEM format for authenticating at the repo server. This is used for mTLS. Use tlsClientCertDataWo for write-only support (Terraform >= 1.11).
          */
         tlsClientCertData?: pulumi.Input<string | undefined>;
         /**
-         * Private key in PEM format for authenticating at the repo server. This is used for mTLS.
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Certificate in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        tlsClientCertDataWo?: pulumi.Input<string | undefined>;
+        /**
+         * Increment to rotate the credential when using tls_client_cert_data_wo.
+         */
+        tlsClientCertDataWoVersion?: pulumi.Input<number | undefined>;
+        /**
+         * Private key in PEM format for authenticating at the repo server. This is used for mTLS. Use tlsClientCertKeyWo for write-only support (Terraform >= 1.11).
          */
         tlsClientCertKey?: pulumi.Input<string | undefined>;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Private key in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        tlsClientCertKeyWo?: pulumi.Input<string | undefined>;
+        /**
+         * Increment to rotate the credential when using tls_client_cert_key_wo.
+         */
+        tlsClientCertKeyWoVersion?: pulumi.Input<number | undefined>;
         /**
          * Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
          */
@@ -9831,9 +9936,18 @@ export namespace platform {
          */
         githubAppInstallationId?: pulumi.Input<string | undefined>;
         /**
-         * GitHub app private key PEM data.
+         * GitHub app private key PEM data. Use githubAppPrivateKeyWo for write-only support (Terraform >= 1.11).
          */
         githubAppPrivateKey?: pulumi.Input<string | undefined>;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * GitHub app private key PEM data. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        githubAppPrivateKeyWo?: pulumi.Input<string | undefined>;
+        /**
+         * Increment to rotate the credential when using github_app_private_key_wo.
+         */
+        githubAppPrivateKeyWoVersion?: pulumi.Input<number | undefined>;
         /**
          * Indicates if the credentials were inherited from a repository credential.
          */
@@ -9851,9 +9965,18 @@ export namespace platform {
          */
         name?: pulumi.Input<string | undefined>;
         /**
-         * Password or PAT to be used for authenticating the remote repository.
+         * Password or PAT to be used for authenticating the remote repository. Use passwordWo for write-only support (Terraform >= 1.11).
          */
         password?: pulumi.Input<string | undefined>;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Password or PAT for authenticating the remote repository. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        passwordWo?: pulumi.Input<string | undefined>;
+        /**
+         * Increment to rotate the credential when using password_wo.
+         */
+        passwordWoVersion?: pulumi.Input<number | undefined>;
         /**
          * The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
          */
@@ -9867,17 +9990,44 @@ export namespace platform {
          */
         repo: pulumi.Input<string>;
         /**
-         * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+         * SSH Key in PEM format for authenticating the repository. Used only for Git repository. Use sshPrivateKeyWo for write-only support (Terraform >= 1.11).
          */
         sshPrivateKey?: pulumi.Input<string | undefined>;
         /**
-         * Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * SSH Key in PEM format for authenticating the repository. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        sshPrivateKeyWo?: pulumi.Input<string | undefined>;
+        /**
+         * Increment to rotate the credential when using ssh_private_key_wo.
+         */
+        sshPrivateKeyWoVersion?: pulumi.Input<number | undefined>;
+        /**
+         * Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded. Use tlsClientCertDataWo for write-only support (Terraform >= 1.11).
          */
         tlsClientCertData?: pulumi.Input<string | undefined>;
         /**
-         * Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Certificate in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        tlsClientCertDataWo?: pulumi.Input<string | undefined>;
+        /**
+         * Increment to rotate the credential when using tls_client_cert_data_wo.
+         */
+        tlsClientCertDataWoVersion?: pulumi.Input<number | undefined>;
+        /**
+         * Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded. Use tlsClientCertKeyWo for write-only support (Terraform >= 1.11).
          */
         tlsClientCertKey?: pulumi.Input<string | undefined>;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Private key in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        tlsClientCertKeyWo?: pulumi.Input<string | undefined>;
+        /**
+         * Increment to rotate the credential when using tls_client_cert_key_wo.
+         */
+        tlsClientCertKeyWoVersion?: pulumi.Input<number | undefined>;
         /**
          * Type specifies the type of the repo. Can be either "git" or "helm. "git" is assumed if empty or absent.
          */
@@ -10397,7 +10547,7 @@ export namespace platform {
          */
         strategy?: pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecStrategy | undefined>;
         /**
-         * Application Set sync policy
+         * Sync policy configures how generated Applications will relate to their ApplicationSet.
          */
         syncPolicy?: pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecSyncPolicy | undefined>;
         /**

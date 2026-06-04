@@ -75,7 +75,7 @@ namespace Pulumi.Harness.Platform
 
         /// <summary>
         /// Default: "UNSET"
-        /// Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+        /// Enum: "UNSET" "AWS_ECR" "GOOGLE_GCR"
         /// </summary>
         [Output("genType")]
         public Output<string?> GenType { get; private set; } = null!;
@@ -207,7 +207,7 @@ namespace Pulumi.Harness.Platform
 
         /// <summary>
         /// Default: "UNSET"
-        /// Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+        /// Enum: "UNSET" "AWS_ECR" "GOOGLE_GCR"
         /// </summary>
         [Input("genType")]
         public Input<string>? GenType { get; set; }
@@ -313,7 +313,7 @@ namespace Pulumi.Harness.Platform
 
         /// <summary>
         /// Default: "UNSET"
-        /// Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+        /// Enum: "UNSET" "AWS_ECR" "GOOGLE_GCR"
         /// </summary>
         [Input("genType")]
         public Input<string>? GenType { get; set; }

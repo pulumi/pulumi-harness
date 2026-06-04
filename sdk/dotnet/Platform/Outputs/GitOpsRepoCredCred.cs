@@ -30,25 +30,70 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? GithubAppInstallationId;
         /// <summary>
-        /// github*app*private_key specifies the private key PEM data for authentication via GitHub app.
+        /// github_app_private_key specifies the private key PEM data for authentication via GitHub app. Use GithubAppPrivateKeyWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public readonly string? GithubAppPrivateKey;
         /// <summary>
-        /// Password or PAT to be used for authenticating the remote repository.
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// GitHub app private key PEM data. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public readonly string? GithubAppPrivateKeyWo;
+        /// <summary>
+        /// Increment to rotate the credential when using github_app_private_key_wo.
+        /// </summary>
+        public readonly int? GithubAppPrivateKeyWoVersion;
+        /// <summary>
+        /// Password or PAT to be used for authenticating the remote repository. Use PasswordWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Password or PAT for authenticating the remote repository. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public readonly string? PasswordWo;
+        /// <summary>
+        /// Increment to rotate the credential when using password_wo.
+        /// </summary>
+        public readonly int? PasswordWoVersion;
+        /// <summary>
+        /// SSH Key in PEM format for authenticating the repository. Used only for Git repository. Use SshPrivateKeyWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public readonly string? SshPrivateKey;
         /// <summary>
-        /// Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// SSH Key in PEM format for authenticating the repository. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public readonly string? SshPrivateKeyWo;
+        /// <summary>
+        /// Increment to rotate the credential when using ssh_private_key_wo.
+        /// </summary>
+        public readonly int? SshPrivateKeyWoVersion;
+        /// <summary>
+        /// Certificate in PEM format for authenticating at the repo server. This is used for mTLS. Use TlsClientCertDataWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public readonly string? TlsClientCertData;
         /// <summary>
-        /// Private key in PEM format for authenticating at the repo server. This is used for mTLS.
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Certificate in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public readonly string? TlsClientCertDataWo;
+        /// <summary>
+        /// Increment to rotate the credential when using tls_client_cert_data_wo.
+        /// </summary>
+        public readonly int? TlsClientCertDataWoVersion;
+        /// <summary>
+        /// Private key in PEM format for authenticating at the repo server. This is used for mTLS. Use TlsClientCertKeyWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public readonly string? TlsClientCertKey;
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Private key in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public readonly string? TlsClientCertKeyWo;
+        /// <summary>
+        /// Increment to rotate the credential when using tls_client_cert_key_wo.
+        /// </summary>
+        public readonly int? TlsClientCertKeyWoVersion;
         /// <summary>
         /// Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
         /// </summary>
@@ -74,13 +119,33 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string? githubAppPrivateKey,
 
+            string? githubAppPrivateKeyWo,
+
+            int? githubAppPrivateKeyWoVersion,
+
             string? password,
+
+            string? passwordWo,
+
+            int? passwordWoVersion,
 
             string? sshPrivateKey,
 
+            string? sshPrivateKeyWo,
+
+            int? sshPrivateKeyWoVersion,
+
             string? tlsClientCertData,
 
+            string? tlsClientCertDataWo,
+
+            int? tlsClientCertDataWoVersion,
+
             string? tlsClientCertKey,
+
+            string? tlsClientCertKeyWo,
+
+            int? tlsClientCertKeyWoVersion,
 
             string? type,
 
@@ -93,10 +158,20 @@ namespace Pulumi.Harness.Platform.Outputs
             GithubAppId = githubAppId;
             GithubAppInstallationId = githubAppInstallationId;
             GithubAppPrivateKey = githubAppPrivateKey;
+            GithubAppPrivateKeyWo = githubAppPrivateKeyWo;
+            GithubAppPrivateKeyWoVersion = githubAppPrivateKeyWoVersion;
             Password = password;
+            PasswordWo = passwordWo;
+            PasswordWoVersion = passwordWoVersion;
             SshPrivateKey = sshPrivateKey;
+            SshPrivateKeyWo = sshPrivateKeyWo;
+            SshPrivateKeyWoVersion = sshPrivateKeyWoVersion;
             TlsClientCertData = tlsClientCertData;
+            TlsClientCertDataWo = tlsClientCertDataWo;
+            TlsClientCertDataWoVersion = tlsClientCertDataWoVersion;
             TlsClientCertKey = tlsClientCertKey;
+            TlsClientCertKeyWo = tlsClientCertKeyWo;
+            TlsClientCertKeyWoVersion = tlsClientCertKeyWoVersion;
             Type = type;
             Url = url;
             Username = username;

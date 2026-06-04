@@ -99,14 +99,14 @@ public final class GitopsApplicationsetApplicationsetSpecArgs extends com.pulumi
     }
 
     /**
-     * Application Set sync policy
+     * Sync policy configures how generated Applications will relate to their ApplicationSet.
      * 
      */
     @Import(name="syncPolicy")
     private @Nullable Output<GitopsApplicationsetApplicationsetSpecSyncPolicyArgs> syncPolicy;
 
     /**
-     * @return Application Set sync policy
+     * @return Sync policy configures how generated Applications will relate to their ApplicationSet.
      * 
      */
     public Optional<Output<GitopsApplicationsetApplicationsetSpecSyncPolicyArgs>> syncPolicy() {
@@ -294,7 +294,7 @@ public final class GitopsApplicationsetApplicationsetSpecArgs extends com.pulumi
         }
 
         /**
-         * @param syncPolicy Application Set sync policy
+         * @param syncPolicy Sync policy configures how generated Applications will relate to their ApplicationSet.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class GitopsApplicationsetApplicationsetSpecArgs extends com.pulumi
         }
 
         /**
-         * @param syncPolicy Application Set sync policy
+         * @param syncPolicy Sync policy configures how generated Applications will relate to their ApplicationSet.
          * 
          * @return builder
          * 

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -108,18 +109,50 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * GitHub app private key PEM data.
+     * GitHub app private key PEM data. Use githubAppPrivateKeyWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     @Import(name="githubAppPrivateKey")
     private @Nullable Output<String> githubAppPrivateKey;
 
     /**
-     * @return GitHub app private key PEM data.
+     * @return GitHub app private key PEM data. Use githubAppPrivateKeyWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     public Optional<Output<String>> githubAppPrivateKey() {
         return Optional.ofNullable(this.githubAppPrivateKey);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * GitHub app private key PEM data. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    @Import(name="githubAppPrivateKeyWo")
+    private @Nullable Output<String> githubAppPrivateKeyWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * GitHub app private key PEM data. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    public Optional<Output<String>> githubAppPrivateKeyWo() {
+        return Optional.ofNullable(this.githubAppPrivateKeyWo);
+    }
+
+    /**
+     * Increment to rotate the credential when using github_app_private_key_wo.
+     * 
+     */
+    @Import(name="githubAppPrivateKeyWoVersion")
+    private @Nullable Output<Integer> githubAppPrivateKeyWoVersion;
+
+    /**
+     * @return Increment to rotate the credential when using github_app_private_key_wo.
+     * 
+     */
+    public Optional<Output<Integer>> githubAppPrivateKeyWoVersion() {
+        return Optional.ofNullable(this.githubAppPrivateKeyWoVersion);
     }
 
     /**
@@ -183,18 +216,50 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Password or PAT to be used for authenticating the remote repository.
+     * Password or PAT to be used for authenticating the remote repository. Use passwordWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Password or PAT to be used for authenticating the remote repository.
+     * @return Password or PAT to be used for authenticating the remote repository. Use passwordWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Password or PAT for authenticating the remote repository. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    @Import(name="passwordWo")
+    private @Nullable Output<String> passwordWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Password or PAT for authenticating the remote repository. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    public Optional<Output<String>> passwordWo() {
+        return Optional.ofNullable(this.passwordWo);
+    }
+
+    /**
+     * Increment to rotate the credential when using password_wo.
+     * 
+     */
+    @Import(name="passwordWoVersion")
+    private @Nullable Output<Integer> passwordWoVersion;
+
+    /**
+     * @return Increment to rotate the credential when using password_wo.
+     * 
+     */
+    public Optional<Output<Integer>> passwordWoVersion() {
+        return Optional.ofNullable(this.passwordWoVersion);
     }
 
     /**
@@ -243,14 +308,14 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+     * SSH Key in PEM format for authenticating the repository. Used only for Git repository. Use sshPrivateKeyWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     @Import(name="sshPrivateKey")
     private @Nullable Output<String> sshPrivateKey;
 
     /**
-     * @return SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+     * @return SSH Key in PEM format for authenticating the repository. Used only for Git repository. Use sshPrivateKeyWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     public Optional<Output<String>> sshPrivateKey() {
@@ -258,14 +323,46 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * SSH Key in PEM format for authenticating the repository. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    @Import(name="sshPrivateKeyWo")
+    private @Nullable Output<String> sshPrivateKeyWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * SSH Key in PEM format for authenticating the repository. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    public Optional<Output<String>> sshPrivateKeyWo() {
+        return Optional.ofNullable(this.sshPrivateKeyWo);
+    }
+
+    /**
+     * Increment to rotate the credential when using ssh_private_key_wo.
+     * 
+     */
+    @Import(name="sshPrivateKeyWoVersion")
+    private @Nullable Output<Integer> sshPrivateKeyWoVersion;
+
+    /**
+     * @return Increment to rotate the credential when using ssh_private_key_wo.
+     * 
+     */
+    public Optional<Output<Integer>> sshPrivateKeyWoVersion() {
+        return Optional.ofNullable(this.sshPrivateKeyWoVersion);
+    }
+
+    /**
+     * Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded. Use tlsClientCertDataWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     @Import(name="tlsClientCertData")
     private @Nullable Output<String> tlsClientCertData;
 
     /**
-     * @return Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
+     * @return Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded. Use tlsClientCertDataWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     public Optional<Output<String>> tlsClientCertData() {
@@ -273,18 +370,82 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Certificate in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    @Import(name="tlsClientCertDataWo")
+    private @Nullable Output<String> tlsClientCertDataWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Certificate in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    public Optional<Output<String>> tlsClientCertDataWo() {
+        return Optional.ofNullable(this.tlsClientCertDataWo);
+    }
+
+    /**
+     * Increment to rotate the credential when using tls_client_cert_data_wo.
+     * 
+     */
+    @Import(name="tlsClientCertDataWoVersion")
+    private @Nullable Output<Integer> tlsClientCertDataWoVersion;
+
+    /**
+     * @return Increment to rotate the credential when using tls_client_cert_data_wo.
+     * 
+     */
+    public Optional<Output<Integer>> tlsClientCertDataWoVersion() {
+        return Optional.ofNullable(this.tlsClientCertDataWoVersion);
+    }
+
+    /**
+     * Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded. Use tlsClientCertKeyWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     @Import(name="tlsClientCertKey")
     private @Nullable Output<String> tlsClientCertKey;
 
     /**
-     * @return Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
+     * @return Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded. Use tlsClientCertKeyWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     public Optional<Output<String>> tlsClientCertKey() {
         return Optional.ofNullable(this.tlsClientCertKey);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Private key in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    @Import(name="tlsClientCertKeyWo")
+    private @Nullable Output<String> tlsClientCertKeyWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Private key in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    public Optional<Output<String>> tlsClientCertKeyWo() {
+        return Optional.ofNullable(this.tlsClientCertKeyWo);
+    }
+
+    /**
+     * Increment to rotate the credential when using tls_client_cert_key_wo.
+     * 
+     */
+    @Import(name="tlsClientCertKeyWoVersion")
+    private @Nullable Output<Integer> tlsClientCertKeyWoVersion;
+
+    /**
+     * @return Increment to rotate the credential when using tls_client_cert_key_wo.
+     * 
+     */
+    public Optional<Output<Integer>> tlsClientCertKeyWoVersion() {
+        return Optional.ofNullable(this.tlsClientCertKeyWoVersion);
     }
 
     /**
@@ -327,17 +488,27 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         this.githubAppId = $.githubAppId;
         this.githubAppInstallationId = $.githubAppInstallationId;
         this.githubAppPrivateKey = $.githubAppPrivateKey;
+        this.githubAppPrivateKeyWo = $.githubAppPrivateKeyWo;
+        this.githubAppPrivateKeyWoVersion = $.githubAppPrivateKeyWoVersion;
         this.inheritedCreds = $.inheritedCreds;
         this.insecure = $.insecure;
         this.insecureIgnoreHostKey = $.insecureIgnoreHostKey;
         this.name = $.name;
         this.password = $.password;
+        this.passwordWo = $.passwordWo;
+        this.passwordWoVersion = $.passwordWoVersion;
         this.project = $.project;
         this.proxy = $.proxy;
         this.repo = $.repo;
         this.sshPrivateKey = $.sshPrivateKey;
+        this.sshPrivateKeyWo = $.sshPrivateKeyWo;
+        this.sshPrivateKeyWoVersion = $.sshPrivateKeyWoVersion;
         this.tlsClientCertData = $.tlsClientCertData;
+        this.tlsClientCertDataWo = $.tlsClientCertDataWo;
+        this.tlsClientCertDataWoVersion = $.tlsClientCertDataWoVersion;
         this.tlsClientCertKey = $.tlsClientCertKey;
+        this.tlsClientCertKeyWo = $.tlsClientCertKeyWo;
+        this.tlsClientCertKeyWoVersion = $.tlsClientCertKeyWoVersion;
         this.type_ = $.type_;
         this.username = $.username;
     }
@@ -487,7 +658,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param githubAppPrivateKey GitHub app private key PEM data.
+         * @param githubAppPrivateKey GitHub app private key PEM data. Use githubAppPrivateKeyWo for write-only support (Terraform &gt;= 1.11).
          * 
          * @return builder
          * 
@@ -498,13 +669,57 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param githubAppPrivateKey GitHub app private key PEM data.
+         * @param githubAppPrivateKey GitHub app private key PEM data. Use githubAppPrivateKeyWo for write-only support (Terraform &gt;= 1.11).
          * 
          * @return builder
          * 
          */
         public Builder githubAppPrivateKey(String githubAppPrivateKey) {
             return githubAppPrivateKey(Output.of(githubAppPrivateKey));
+        }
+
+        /**
+         * @param githubAppPrivateKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * GitHub app private key PEM data. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder githubAppPrivateKeyWo(@Nullable Output<String> githubAppPrivateKeyWo) {
+            $.githubAppPrivateKeyWo = githubAppPrivateKeyWo;
+            return this;
+        }
+
+        /**
+         * @param githubAppPrivateKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * GitHub app private key PEM data. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder githubAppPrivateKeyWo(String githubAppPrivateKeyWo) {
+            return githubAppPrivateKeyWo(Output.of(githubAppPrivateKeyWo));
+        }
+
+        /**
+         * @param githubAppPrivateKeyWoVersion Increment to rotate the credential when using github_app_private_key_wo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder githubAppPrivateKeyWoVersion(@Nullable Output<Integer> githubAppPrivateKeyWoVersion) {
+            $.githubAppPrivateKeyWoVersion = githubAppPrivateKeyWoVersion;
+            return this;
+        }
+
+        /**
+         * @param githubAppPrivateKeyWoVersion Increment to rotate the credential when using github_app_private_key_wo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder githubAppPrivateKeyWoVersion(Integer githubAppPrivateKeyWoVersion) {
+            return githubAppPrivateKeyWoVersion(Output.of(githubAppPrivateKeyWoVersion));
         }
 
         /**
@@ -592,7 +807,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param password Password or PAT to be used for authenticating the remote repository.
+         * @param password Password or PAT to be used for authenticating the remote repository. Use passwordWo for write-only support (Terraform &gt;= 1.11).
          * 
          * @return builder
          * 
@@ -603,13 +818,57 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param password Password or PAT to be used for authenticating the remote repository.
+         * @param password Password or PAT to be used for authenticating the remote repository. Use passwordWo for write-only support (Terraform &gt;= 1.11).
          * 
          * @return builder
          * 
          */
         public Builder password(String password) {
             return password(Output.of(password));
+        }
+
+        /**
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Password or PAT for authenticating the remote repository. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWo(@Nullable Output<String> passwordWo) {
+            $.passwordWo = passwordWo;
+            return this;
+        }
+
+        /**
+         * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Password or PAT for authenticating the remote repository. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWo(String passwordWo) {
+            return passwordWo(Output.of(passwordWo));
+        }
+
+        /**
+         * @param passwordWoVersion Increment to rotate the credential when using password_wo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(@Nullable Output<Integer> passwordWoVersion) {
+            $.passwordWoVersion = passwordWoVersion;
+            return this;
+        }
+
+        /**
+         * @param passwordWoVersion Increment to rotate the credential when using password_wo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordWoVersion(Integer passwordWoVersion) {
+            return passwordWoVersion(Output.of(passwordWoVersion));
         }
 
         /**
@@ -676,7 +935,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param sshPrivateKey SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+         * @param sshPrivateKey SSH Key in PEM format for authenticating the repository. Used only for Git repository. Use sshPrivateKeyWo for write-only support (Terraform &gt;= 1.11).
          * 
          * @return builder
          * 
@@ -687,7 +946,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param sshPrivateKey SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+         * @param sshPrivateKey SSH Key in PEM format for authenticating the repository. Used only for Git repository. Use sshPrivateKeyWo for write-only support (Terraform &gt;= 1.11).
          * 
          * @return builder
          * 
@@ -697,7 +956,51 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tlsClientCertData Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
+         * @param sshPrivateKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * SSH Key in PEM format for authenticating the repository. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sshPrivateKeyWo(@Nullable Output<String> sshPrivateKeyWo) {
+            $.sshPrivateKeyWo = sshPrivateKeyWo;
+            return this;
+        }
+
+        /**
+         * @param sshPrivateKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * SSH Key in PEM format for authenticating the repository. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sshPrivateKeyWo(String sshPrivateKeyWo) {
+            return sshPrivateKeyWo(Output.of(sshPrivateKeyWo));
+        }
+
+        /**
+         * @param sshPrivateKeyWoVersion Increment to rotate the credential when using ssh_private_key_wo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sshPrivateKeyWoVersion(@Nullable Output<Integer> sshPrivateKeyWoVersion) {
+            $.sshPrivateKeyWoVersion = sshPrivateKeyWoVersion;
+            return this;
+        }
+
+        /**
+         * @param sshPrivateKeyWoVersion Increment to rotate the credential when using ssh_private_key_wo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sshPrivateKeyWoVersion(Integer sshPrivateKeyWoVersion) {
+            return sshPrivateKeyWoVersion(Output.of(sshPrivateKeyWoVersion));
+        }
+
+        /**
+         * @param tlsClientCertData Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded. Use tlsClientCertDataWo for write-only support (Terraform &gt;= 1.11).
          * 
          * @return builder
          * 
@@ -708,7 +1011,7 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tlsClientCertData Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
+         * @param tlsClientCertData Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded. Use tlsClientCertDataWo for write-only support (Terraform &gt;= 1.11).
          * 
          * @return builder
          * 
@@ -718,7 +1021,51 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tlsClientCertKey Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
+         * @param tlsClientCertDataWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Certificate in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsClientCertDataWo(@Nullable Output<String> tlsClientCertDataWo) {
+            $.tlsClientCertDataWo = tlsClientCertDataWo;
+            return this;
+        }
+
+        /**
+         * @param tlsClientCertDataWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Certificate in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsClientCertDataWo(String tlsClientCertDataWo) {
+            return tlsClientCertDataWo(Output.of(tlsClientCertDataWo));
+        }
+
+        /**
+         * @param tlsClientCertDataWoVersion Increment to rotate the credential when using tls_client_cert_data_wo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsClientCertDataWoVersion(@Nullable Output<Integer> tlsClientCertDataWoVersion) {
+            $.tlsClientCertDataWoVersion = tlsClientCertDataWoVersion;
+            return this;
+        }
+
+        /**
+         * @param tlsClientCertDataWoVersion Increment to rotate the credential when using tls_client_cert_data_wo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsClientCertDataWoVersion(Integer tlsClientCertDataWoVersion) {
+            return tlsClientCertDataWoVersion(Output.of(tlsClientCertDataWoVersion));
+        }
+
+        /**
+         * @param tlsClientCertKey Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded. Use tlsClientCertKeyWo for write-only support (Terraform &gt;= 1.11).
          * 
          * @return builder
          * 
@@ -729,13 +1076,57 @@ public final class GitOpsRepositoryRepoArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tlsClientCertKey Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
+         * @param tlsClientCertKey Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded. Use tlsClientCertKeyWo for write-only support (Terraform &gt;= 1.11).
          * 
          * @return builder
          * 
          */
         public Builder tlsClientCertKey(String tlsClientCertKey) {
             return tlsClientCertKey(Output.of(tlsClientCertKey));
+        }
+
+        /**
+         * @param tlsClientCertKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Private key in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsClientCertKeyWo(@Nullable Output<String> tlsClientCertKeyWo) {
+            $.tlsClientCertKeyWo = tlsClientCertKeyWo;
+            return this;
+        }
+
+        /**
+         * @param tlsClientCertKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Private key in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsClientCertKeyWo(String tlsClientCertKeyWo) {
+            return tlsClientCertKeyWo(Output.of(tlsClientCertKeyWo));
+        }
+
+        /**
+         * @param tlsClientCertKeyWoVersion Increment to rotate the credential when using tls_client_cert_key_wo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsClientCertKeyWoVersion(@Nullable Output<Integer> tlsClientCertKeyWoVersion) {
+            $.tlsClientCertKeyWoVersion = tlsClientCertKeyWoVersion;
+            return this;
+        }
+
+        /**
+         * @param tlsClientCertKeyWoVersion Increment to rotate the credential when using tls_client_cert_key_wo.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsClientCertKeyWoVersion(Integer tlsClientCertKeyWoVersion) {
+            return tlsClientCertKeyWoVersion(Output.of(tlsClientCertKeyWoVersion));
         }
 
         /**

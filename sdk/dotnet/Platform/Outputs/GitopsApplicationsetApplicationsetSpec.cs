@@ -34,7 +34,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly Outputs.GitopsApplicationsetApplicationsetSpecStrategy? Strategy;
         /// <summary>
-        /// Application Set sync policy
+        /// Sync policy configures how generated Applications will relate to their ApplicationSet.
         /// </summary>
         public readonly Outputs.GitopsApplicationsetApplicationsetSpecSyncPolicy? SyncPolicy;
         /// <summary>

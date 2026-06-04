@@ -5874,6 +5874,10 @@ export namespace platform {
          */
         authType?: string;
         /**
+         * Authenticate using credentials inherited from the Harness delegate runtime identity (e.g. GCP ADC, AWS IAM).
+         */
+        inheritFromDelegate?: outputs.platform.ConnectorJdbcCredentialsInheritFromDelegate;
+        /**
          * Authenticate using key pair.
          */
         keyPair?: outputs.platform.ConnectorJdbcCredentialsKeyPair;
@@ -5903,6 +5907,17 @@ export namespace platform {
         usernameRef?: string;
     }
 
+    export interface ConnectorJdbcCredentialsInheritFromDelegate {
+        /**
+         * Username to use for authentication.
+         */
+        username?: string;
+        /**
+         * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        usernameRef?: string;
+    }
+
     export interface ConnectorJdbcCredentialsKeyPair {
         /**
          * Reference to a secret containing the private key file to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -5924,9 +5939,9 @@ export namespace platform {
 
     export interface ConnectorJdbcCredentialsOidc {
         /**
-         * GCP OIDC configuration.
+         * GCP OIDC configuration. Required when provider*type is Gcp.
          */
-        gcpOidc: outputs.platform.ConnectorJdbcCredentialsOidcGcpOidc;
+        gcpOidc?: outputs.platform.ConnectorJdbcCredentialsOidcGcpOidc;
         /**
          * The OIDC provider type. Currently supported: Gcp.
          */
@@ -7121,6 +7136,10 @@ export namespace platform {
          */
         authType: string;
         /**
+         * Authenticate using credentials inherited from the Harness delegate runtime identity.
+         */
+        inheritFromDelegates: outputs.platform.GetConnectorJdbcCredentialInheritFromDelegate[];
+        /**
          * Authenticate using key pair.
          */
         keyPairs: outputs.platform.GetConnectorJdbcCredentialKeyPair[];
@@ -7146,6 +7165,17 @@ export namespace platform {
         usernamePasswords: outputs.platform.GetConnectorJdbcCredentialUsernamePassword[];
         /**
          * The reference to the Harness secret containing the username to use for the database server. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
+         */
+        usernameRef: string;
+    }
+
+    export interface GetConnectorJdbcCredentialInheritFromDelegate {
+        /**
+         * Username to use for authentication.
+         */
+        username: string;
+        /**
+         * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef: string;
     }
@@ -11268,9 +11298,18 @@ export namespace platform {
          */
         awsClusterName?: string;
         /**
-         * Bearer authentication token the cluster.
+         * Bearer authentication token the cluster. Use bearerTokenWo for write-only support (Terraform >= 1.11).
          */
         bearerToken: string;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Bearer authentication token for the cluster. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        bearerTokenWo?: string;
+        /**
+         * Increment to rotate the credential when using bearer_token_wo.
+         */
+        bearerTokenWoVersion?: number;
         /**
          * Identifies the authentication method used to connect to the cluster.
          */
@@ -11284,9 +11323,18 @@ export namespace platform {
          */
         execProviderConfigs?: outputs.platform.GitOpsClusterRequestClusterConfigExecProviderConfig[];
         /**
-         * Password of the server of the cluster.
+         * Password of the server of the cluster. Use passwordWo for write-only support (Terraform >= 1.11).
          */
         password?: string;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Password of the server of the cluster. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        passwordWo?: string;
+        /**
+         * Increment to rotate the credential when using password_wo.
+         */
+        passwordWoVersion?: number;
         /**
          * The URL to the proxy to be used for all requests send to the cluster's API server
          */
@@ -11330,21 +11378,48 @@ export namespace platform {
 
     export interface GitOpsClusterRequestClusterConfigTlsClientConfig {
         /**
-         * CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded.
+         * CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded. Use caDataWo for write-only support (Terraform >= 1.11).
          */
         caData?: string;
         /**
-         * Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded.
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * CA data holds PEM-encoded bytes. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        caDataWo?: string;
+        /**
+         * Increment to rotate the credential when using ca_data_wo.
+         */
+        caDataWoVersion?: number;
+        /**
+         * Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded. Use certDataWo for write-only support (Terraform >= 1.11).
          */
         certData?: string;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Certificate data for mTLS authentication. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        certDataWo?: string;
+        /**
+         * Increment to rotate the credential when using cert_data_wo.
+         */
+        certDataWoVersion?: number;
         /**
          * Indicates if the TLS connection to the cluster should be insecure.
          */
         insecure?: boolean;
         /**
-         * Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded.
+         * Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded. Use keyDataWo for write-only support (Terraform >= 1.11).
          */
         keyData?: string;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Key data for mTLS authentication. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        keyDataWo?: string;
+        /**
+         * Increment to rotate the credential when using key_data_wo.
+         */
+        keyDataWoVersion?: number;
         /**
          * Server name for SNI in the client to check server certificates against. If ServerName is empty, the hostname used to contact the server is used.
          */
@@ -11546,25 +11621,70 @@ export namespace platform {
          */
         githubAppInstallationId: string;
         /**
-         * github*app*private_key specifies the private key PEM data for authentication via GitHub app.
+         * github_app_private_key specifies the private key PEM data for authentication via GitHub app. Use githubAppPrivateKeyWo for write-only support (Terraform >= 1.11).
          */
         githubAppPrivateKey: string;
         /**
-         * Password or PAT to be used for authenticating the remote repository.
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * GitHub app private key PEM data. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        githubAppPrivateKeyWo?: string;
+        /**
+         * Increment to rotate the credential when using github_app_private_key_wo.
+         */
+        githubAppPrivateKeyWoVersion?: number;
+        /**
+         * Password or PAT to be used for authenticating the remote repository. Use passwordWo for write-only support (Terraform >= 1.11).
          */
         password: string;
         /**
-         * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Password or PAT for authenticating the remote repository. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        passwordWo?: string;
+        /**
+         * Increment to rotate the credential when using password_wo.
+         */
+        passwordWoVersion?: number;
+        /**
+         * SSH Key in PEM format for authenticating the repository. Used only for Git repository. Use sshPrivateKeyWo for write-only support (Terraform >= 1.11).
          */
         sshPrivateKey: string;
         /**
-         * Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * SSH Key in PEM format for authenticating the repository. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        sshPrivateKeyWo?: string;
+        /**
+         * Increment to rotate the credential when using ssh_private_key_wo.
+         */
+        sshPrivateKeyWoVersion?: number;
+        /**
+         * Certificate in PEM format for authenticating at the repo server. This is used for mTLS. Use tlsClientCertDataWo for write-only support (Terraform >= 1.11).
          */
         tlsClientCertData: string;
         /**
-         * Private key in PEM format for authenticating at the repo server. This is used for mTLS.
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Certificate in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        tlsClientCertDataWo?: string;
+        /**
+         * Increment to rotate the credential when using tls_client_cert_data_wo.
+         */
+        tlsClientCertDataWoVersion?: number;
+        /**
+         * Private key in PEM format for authenticating at the repo server. This is used for mTLS. Use tlsClientCertKeyWo for write-only support (Terraform >= 1.11).
          */
         tlsClientCertKey: string;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Private key in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        tlsClientCertKeyWo?: string;
+        /**
+         * Increment to rotate the credential when using tls_client_cert_key_wo.
+         */
+        tlsClientCertKeyWoVersion?: number;
         /**
          * Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent
          */
@@ -11699,9 +11819,18 @@ export namespace platform {
          */
         githubAppInstallationId: string;
         /**
-         * GitHub app private key PEM data.
+         * GitHub app private key PEM data. Use githubAppPrivateKeyWo for write-only support (Terraform >= 1.11).
          */
         githubAppPrivateKey: string;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * GitHub app private key PEM data. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        githubAppPrivateKeyWo?: string;
+        /**
+         * Increment to rotate the credential when using github_app_private_key_wo.
+         */
+        githubAppPrivateKeyWoVersion?: number;
         /**
          * Indicates if the credentials were inherited from a repository credential.
          */
@@ -11719,9 +11848,18 @@ export namespace platform {
          */
         name?: string;
         /**
-         * Password or PAT to be used for authenticating the remote repository.
+         * Password or PAT to be used for authenticating the remote repository. Use passwordWo for write-only support (Terraform >= 1.11).
          */
         password: string;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Password or PAT for authenticating the remote repository. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        passwordWo?: string;
+        /**
+         * Increment to rotate the credential when using password_wo.
+         */
+        passwordWoVersion?: number;
         /**
          * The ArgoCD project name corresponding to this GitOps repository. An empty string means that the GitOps repository belongs to the default project created by Harness.
          */
@@ -11735,17 +11873,44 @@ export namespace platform {
          */
         repo: string;
         /**
-         * SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+         * SSH Key in PEM format for authenticating the repository. Used only for Git repository. Use sshPrivateKeyWo for write-only support (Terraform >= 1.11).
          */
         sshPrivateKey: string;
         /**
-         * Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * SSH Key in PEM format for authenticating the repository. Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        sshPrivateKeyWo?: string;
+        /**
+         * Increment to rotate the credential when using ssh_private_key_wo.
+         */
+        sshPrivateKeyWoVersion?: number;
+        /**
+         * Certificate in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded. Use tlsClientCertDataWo for write-only support (Terraform >= 1.11).
          */
         tlsClientCertData: string;
         /**
-         * Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded.
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Certificate in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        tlsClientCertDataWo?: string;
+        /**
+         * Increment to rotate the credential when using tls_client_cert_data_wo.
+         */
+        tlsClientCertDataWoVersion?: number;
+        /**
+         * Private key in PEM format for authenticating at the repo server. This is used for mTLS. The value should be base64 encoded. Use tlsClientCertKeyWo for write-only support (Terraform >= 1.11).
          */
         tlsClientCertKey: string;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * Private key in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform >= 1.11.
+         */
+        tlsClientCertKeyWo?: string;
+        /**
+         * Increment to rotate the credential when using tls_client_cert_key_wo.
+         */
+        tlsClientCertKeyWoVersion?: number;
         /**
          * Type specifies the type of the repo. Can be either "git" or "helm. "git" is assumed if empty or absent.
          */
@@ -12265,7 +12430,7 @@ export namespace platform {
          */
         strategy?: outputs.platform.GitopsApplicationsetApplicationsetSpecStrategy;
         /**
-         * Application Set sync policy
+         * Sync policy configures how generated Applications will relate to their ApplicationSet.
          */
         syncPolicy?: outputs.platform.GitopsApplicationsetApplicationsetSpecSyncPolicy;
         /**

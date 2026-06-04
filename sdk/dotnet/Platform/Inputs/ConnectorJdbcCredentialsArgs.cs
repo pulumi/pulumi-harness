@@ -19,6 +19,12 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string>? AuthType { get; set; }
 
         /// <summary>
+        /// Authenticate using credentials inherited from the Harness delegate runtime identity (e.g. GCP ADC, AWS IAM).
+        /// </summary>
+        [Input("inheritFromDelegate")]
+        public Input<Inputs.ConnectorJdbcCredentialsInheritFromDelegateArgs>? InheritFromDelegate { get; set; }
+
+        /// <summary>
         /// Authenticate using key pair.
         /// </summary>
         [Input("keyPair")]
