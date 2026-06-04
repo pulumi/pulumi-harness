@@ -61,7 +61,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<Inputs.GitopsApplicationsetApplicationsetSpecStrategyArgs>? Strategy { get; set; }
 
         /// <summary>
-        /// Application Set sync policy
+        /// Sync policy configures how generated Applications will relate to their ApplicationSet.
         /// </summary>
         [Input("syncPolicy")]
         public Input<Inputs.GitopsApplicationsetApplicationsetSpecSyncPolicyArgs>? SyncPolicy { get; set; }

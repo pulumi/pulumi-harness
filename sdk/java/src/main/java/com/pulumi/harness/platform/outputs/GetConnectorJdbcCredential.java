@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetConnectorJdbcCredentialInheritFromDelegate;
 import com.pulumi.harness.platform.outputs.GetConnectorJdbcCredentialKeyPair;
 import com.pulumi.harness.platform.outputs.GetConnectorJdbcCredentialOidc;
 import com.pulumi.harness.platform.outputs.GetConnectorJdbcCredentialServiceAccount;
@@ -20,6 +21,11 @@ public final class GetConnectorJdbcCredential {
      * 
      */
     private String authType;
+    /**
+     * @return Authenticate using credentials inherited from the Harness delegate runtime identity.
+     * 
+     */
+    private List<GetConnectorJdbcCredentialInheritFromDelegate> inheritFromDelegates;
     /**
      * @return Authenticate using key pair.
      * 
@@ -63,6 +69,13 @@ public final class GetConnectorJdbcCredential {
      */
     public String authType() {
         return this.authType;
+    }
+    /**
+     * @return Authenticate using credentials inherited from the Harness delegate runtime identity.
+     * 
+     */
+    public List<GetConnectorJdbcCredentialInheritFromDelegate> inheritFromDelegates() {
+        return this.inheritFromDelegates;
     }
     /**
      * @return Authenticate using key pair.
@@ -124,6 +137,7 @@ public final class GetConnectorJdbcCredential {
     @CustomType.Builder
     public static final class Builder {
         private String authType;
+        private List<GetConnectorJdbcCredentialInheritFromDelegate> inheritFromDelegates;
         private List<GetConnectorJdbcCredentialKeyPair> keyPairs;
         private List<GetConnectorJdbcCredentialOidc> oidcs;
         private String passwordRef;
@@ -135,6 +149,7 @@ public final class GetConnectorJdbcCredential {
         public Builder(GetConnectorJdbcCredential defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authType = defaults.authType;
+    	      this.inheritFromDelegates = defaults.inheritFromDelegates;
     	      this.keyPairs = defaults.keyPairs;
     	      this.oidcs = defaults.oidcs;
     	      this.passwordRef = defaults.passwordRef;
@@ -151,6 +166,17 @@ public final class GetConnectorJdbcCredential {
             }
             this.authType = authType;
             return this;
+        }
+        @CustomType.Setter
+        public Builder inheritFromDelegates(List<GetConnectorJdbcCredentialInheritFromDelegate> inheritFromDelegates) {
+            if (inheritFromDelegates == null) {
+              throw new MissingRequiredPropertyException("GetConnectorJdbcCredential", "inheritFromDelegates");
+            }
+            this.inheritFromDelegates = inheritFromDelegates;
+            return this;
+        }
+        public Builder inheritFromDelegates(GetConnectorJdbcCredentialInheritFromDelegate... inheritFromDelegates) {
+            return inheritFromDelegates(List.of(inheritFromDelegates));
         }
         @CustomType.Setter
         public Builder keyPairs(List<GetConnectorJdbcCredentialKeyPair> keyPairs) {
@@ -223,6 +249,7 @@ public final class GetConnectorJdbcCredential {
         public GetConnectorJdbcCredential build() {
             final var _resultValue = new GetConnectorJdbcCredential();
             _resultValue.authType = authType;
+            _resultValue.inheritFromDelegates = inheritFromDelegates;
             _resultValue.keyPairs = keyPairs;
             _resultValue.oidcs = oidcs;
             _resultValue.passwordRef = passwordRef;

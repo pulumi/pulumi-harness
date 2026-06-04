@@ -13,10 +13,10 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class ConnectorJdbcCredentialsOidcArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// GCP OIDC configuration.
+        /// GCP OIDC configuration. Required when provider*type is Gcp.
         /// </summary>
-        [Input("gcpOidc", required: true)]
-        public Input<Inputs.ConnectorJdbcCredentialsOidcGcpOidcArgs> GcpOidc { get; set; } = null!;
+        [Input("gcpOidc")]
+        public Input<Inputs.ConnectorJdbcCredentialsOidcGcpOidcArgs>? GcpOidc { get; set; }
 
         /// <summary>
         /// The OIDC provider type. Currently supported: Gcp.

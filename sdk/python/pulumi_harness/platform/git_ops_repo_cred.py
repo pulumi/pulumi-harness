@@ -510,7 +510,7 @@ class GitOpsRepoCred(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def creds(self) -> pulumi.Output[Sequence['outputs.GitOpsRepoCredCred']]:
+    def creds(self) -> pulumi.Output[Optional[Sequence['outputs.GitOpsRepoCredCred']]]:
         """
         credential details.
         """

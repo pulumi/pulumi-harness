@@ -122,7 +122,7 @@ public final class GitOpsRepositoryArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Default: &#34;UNSET&#34;
-     * Enum: &#34;UNSET&#34; &#34;AWS*ECR&#34; &#34;GOOGLE*GCR&#34;
+     * Enum: &#34;UNSET&#34; &#34;AWS_ECR&#34; &#34;GOOGLE_GCR&#34;
      * 
      */
     @Import(name="genType")
@@ -130,7 +130,7 @@ public final class GitOpsRepositoryArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Default: &#34;UNSET&#34;
-     * Enum: &#34;UNSET&#34; &#34;AWS*ECR&#34; &#34;GOOGLE*GCR&#34;
+     * Enum: &#34;UNSET&#34; &#34;AWS_ECR&#34; &#34;GOOGLE_GCR&#34;
      * 
      */
     public Optional<Output<String>> genType() {
@@ -423,7 +423,7 @@ public final class GitOpsRepositoryArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param genType Default: &#34;UNSET&#34;
-         * Enum: &#34;UNSET&#34; &#34;AWS*ECR&#34; &#34;GOOGLE*GCR&#34;
+         * Enum: &#34;UNSET&#34; &#34;AWS_ECR&#34; &#34;GOOGLE_GCR&#34;
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class GitOpsRepositoryArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param genType Default: &#34;UNSET&#34;
-         * Enum: &#34;UNSET&#34; &#34;AWS*ECR&#34; &#34;GOOGLE*GCR&#34;
+         * Enum: &#34;UNSET&#34; &#34;AWS_ECR&#34; &#34;GOOGLE_GCR&#34;
          * 
          * @return builder
          * 

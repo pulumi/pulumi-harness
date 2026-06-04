@@ -4,6 +4,7 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.harness.platform.outputs.ConnectorJdbcCredentialsInheritFromDelegate;
 import com.pulumi.harness.platform.outputs.ConnectorJdbcCredentialsKeyPair;
 import com.pulumi.harness.platform.outputs.ConnectorJdbcCredentialsOidc;
 import com.pulumi.harness.platform.outputs.ConnectorJdbcCredentialsServiceAccount;
@@ -20,6 +21,11 @@ public final class ConnectorJdbcCredentials {
      * 
      */
     private @Nullable String authType;
+    /**
+     * @return Authenticate using credentials inherited from the Harness delegate runtime identity (e.g. GCP ADC, AWS IAM).
+     * 
+     */
+    private @Nullable ConnectorJdbcCredentialsInheritFromDelegate inheritFromDelegate;
     /**
      * @return Authenticate using key pair.
      * 
@@ -63,6 +69,13 @@ public final class ConnectorJdbcCredentials {
      */
     public Optional<String> authType() {
         return Optional.ofNullable(this.authType);
+    }
+    /**
+     * @return Authenticate using credentials inherited from the Harness delegate runtime identity (e.g. GCP ADC, AWS IAM).
+     * 
+     */
+    public Optional<ConnectorJdbcCredentialsInheritFromDelegate> inheritFromDelegate() {
+        return Optional.ofNullable(this.inheritFromDelegate);
     }
     /**
      * @return Authenticate using key pair.
@@ -124,6 +137,7 @@ public final class ConnectorJdbcCredentials {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String authType;
+        private @Nullable ConnectorJdbcCredentialsInheritFromDelegate inheritFromDelegate;
         private @Nullable ConnectorJdbcCredentialsKeyPair keyPair;
         private @Nullable ConnectorJdbcCredentialsOidc oidc;
         private @Nullable String passwordRef;
@@ -135,6 +149,7 @@ public final class ConnectorJdbcCredentials {
         public Builder(ConnectorJdbcCredentials defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authType = defaults.authType;
+    	      this.inheritFromDelegate = defaults.inheritFromDelegate;
     	      this.keyPair = defaults.keyPair;
     	      this.oidc = defaults.oidc;
     	      this.passwordRef = defaults.passwordRef;
@@ -148,6 +163,12 @@ public final class ConnectorJdbcCredentials {
         public Builder authType(@Nullable String authType) {
 
             this.authType = authType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder inheritFromDelegate(@Nullable ConnectorJdbcCredentialsInheritFromDelegate inheritFromDelegate) {
+
+            this.inheritFromDelegate = inheritFromDelegate;
             return this;
         }
         @CustomType.Setter
@@ -195,6 +216,7 @@ public final class ConnectorJdbcCredentials {
         public ConnectorJdbcCredentials build() {
             final var _resultValue = new ConnectorJdbcCredentials();
             _resultValue.authType = authType;
+            _resultValue.inheritFromDelegate = inheritFromDelegate;
             _resultValue.keyPair = keyPair;
             _resultValue.oidc = oidc;
             _resultValue.passwordRef = passwordRef;

@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.harness.platform.inputs.ConnectorJdbcCredentialsInheritFromDelegateArgs;
 import com.pulumi.harness.platform.inputs.ConnectorJdbcCredentialsKeyPairArgs;
 import com.pulumi.harness.platform.inputs.ConnectorJdbcCredentialsOidcArgs;
 import com.pulumi.harness.platform.inputs.ConnectorJdbcCredentialsServiceAccountArgs;
@@ -32,6 +33,21 @@ public final class ConnectorJdbcCredentialsArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<String>> authType() {
         return Optional.ofNullable(this.authType);
+    }
+
+    /**
+     * Authenticate using credentials inherited from the Harness delegate runtime identity (e.g. GCP ADC, AWS IAM).
+     * 
+     */
+    @Import(name="inheritFromDelegate")
+    private @Nullable Output<ConnectorJdbcCredentialsInheritFromDelegateArgs> inheritFromDelegate;
+
+    /**
+     * @return Authenticate using credentials inherited from the Harness delegate runtime identity (e.g. GCP ADC, AWS IAM).
+     * 
+     */
+    public Optional<Output<ConnectorJdbcCredentialsInheritFromDelegateArgs>> inheritFromDelegate() {
+        return Optional.ofNullable(this.inheritFromDelegate);
     }
 
     /**
@@ -143,6 +159,7 @@ public final class ConnectorJdbcCredentialsArgs extends com.pulumi.resources.Res
 
     private ConnectorJdbcCredentialsArgs(ConnectorJdbcCredentialsArgs $) {
         this.authType = $.authType;
+        this.inheritFromDelegate = $.inheritFromDelegate;
         this.keyPair = $.keyPair;
         this.oidc = $.oidc;
         this.passwordRef = $.passwordRef;
@@ -189,6 +206,27 @@ public final class ConnectorJdbcCredentialsArgs extends com.pulumi.resources.Res
          */
         public Builder authType(String authType) {
             return authType(Output.of(authType));
+        }
+
+        /**
+         * @param inheritFromDelegate Authenticate using credentials inherited from the Harness delegate runtime identity (e.g. GCP ADC, AWS IAM).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inheritFromDelegate(@Nullable Output<ConnectorJdbcCredentialsInheritFromDelegateArgs> inheritFromDelegate) {
+            $.inheritFromDelegate = inheritFromDelegate;
+            return this;
+        }
+
+        /**
+         * @param inheritFromDelegate Authenticate using credentials inherited from the Harness delegate runtime identity (e.g. GCP ADC, AWS IAM).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inheritFromDelegate(ConnectorJdbcCredentialsInheritFromDelegateArgs inheritFromDelegate) {
+            return inheritFromDelegate(Output.of(inheritFromDelegate));
         }
 
         /**

@@ -87,7 +87,7 @@ export class GitOpsRepository extends pulumi.CustomResource {
     declare public readonly gcrGen: pulumi.Output<outputs.platform.GitOpsRepositoryGcrGen | undefined>;
     /**
      * Default: "UNSET"
-     * Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+     * Enum: "UNSET" "AWS_ECR" "GOOGLE_GCR"
      */
     declare public readonly genType: pulumi.Output<string | undefined>;
     /**
@@ -211,7 +211,7 @@ export interface GitOpsRepositoryState {
     gcrGen?: pulumi.Input<inputs.platform.GitOpsRepositoryGcrGen | undefined>;
     /**
      * Default: "UNSET"
-     * Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+     * Enum: "UNSET" "AWS_ECR" "GOOGLE_GCR"
      */
     genType?: pulumi.Input<string | undefined>;
     /**
@@ -278,7 +278,7 @@ export interface GitOpsRepositoryArgs {
     gcrGen?: pulumi.Input<inputs.platform.GitOpsRepositoryGcrGen | undefined>;
     /**
      * Default: "UNSET"
-     * Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+     * Enum: "UNSET" "AWS_ECR" "GOOGLE_GCR"
      */
     genType?: pulumi.Input<string | undefined>;
     /**

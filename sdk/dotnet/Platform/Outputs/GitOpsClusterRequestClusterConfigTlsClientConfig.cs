@@ -14,21 +14,48 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GitOpsClusterRequestClusterConfigTlsClientConfig
     {
         /// <summary>
-        /// CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded.
+        /// CA data holds PEM-encoded bytes (typically read from a root certificates bundle). Use this if you are using self-signed certificates. CAData takes precedence over CAFile. The value should be base64 encoded. Use CaDataWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public readonly string? CaData;
         /// <summary>
-        /// Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded.
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// CA data holds PEM-encoded bytes. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public readonly string? CaDataWo;
+        /// <summary>
+        /// Increment to rotate the credential when using ca_data_wo.
+        /// </summary>
+        public readonly int? CaDataWoVersion;
+        /// <summary>
+        /// Certificate data holds PEM-encoded bytes (typically read from a client certificate file). CertData takes precedence over CertFile. Use this if you are using mTLS. The value should be base64 encoded. Use CertDataWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public readonly string? CertData;
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Certificate data for mTLS authentication. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public readonly string? CertDataWo;
+        /// <summary>
+        /// Increment to rotate the credential when using cert_data_wo.
+        /// </summary>
+        public readonly int? CertDataWoVersion;
         /// <summary>
         /// Indicates if the TLS connection to the cluster should be insecure.
         /// </summary>
         public readonly bool? Insecure;
         /// <summary>
-        /// Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded.
+        /// Key data holds PEM-encoded bytes (typically read from a client certificate key file). KeyData takes precedence over KeyFile. Use this if you are using mTLS. The value should be base64 encoded. Use KeyDataWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public readonly string? KeyData;
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Key data for mTLS authentication. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public readonly string? KeyDataWo;
+        /// <summary>
+        /// Increment to rotate the credential when using key_data_wo.
+        /// </summary>
+        public readonly int? KeyDataWoVersion;
         /// <summary>
         /// Server name for SNI in the client to check server certificates against. If ServerName is empty, the hostname used to contact the server is used.
         /// </summary>
@@ -38,18 +65,36 @@ namespace Pulumi.Harness.Platform.Outputs
         private GitOpsClusterRequestClusterConfigTlsClientConfig(
             string? caData,
 
+            string? caDataWo,
+
+            int? caDataWoVersion,
+
             string? certData,
+
+            string? certDataWo,
+
+            int? certDataWoVersion,
 
             bool? insecure,
 
             string? keyData,
 
+            string? keyDataWo,
+
+            int? keyDataWoVersion,
+
             string? serverName)
         {
             CaData = caData;
+            CaDataWo = caDataWo;
+            CaDataWoVersion = caDataWoVersion;
             CertData = certData;
+            CertDataWo = certDataWo;
+            CertDataWoVersion = certDataWoVersion;
             Insecure = insecure;
             KeyData = keyData;
+            KeyDataWo = keyDataWo;
+            KeyDataWoVersion = keyDataWoVersion;
             ServerName = serverName;
         }
     }

@@ -60,7 +60,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private Input<string>? _githubAppPrivateKey;
 
         /// <summary>
-        /// github*app*private_key specifies the private key PEM data for authentication via GitHub app.
+        /// github_app_private_key specifies the private key PEM data for authentication via GitHub app. Use GithubAppPrivateKeyWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public Input<string>? GithubAppPrivateKey
         {
@@ -72,11 +72,34 @@ namespace Pulumi.Harness.Platform.Inputs
             }
         }
 
+        [Input("githubAppPrivateKeyWo")]
+        private Input<string>? _githubAppPrivateKeyWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// GitHub app private key PEM data. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public Input<string>? GithubAppPrivateKeyWo
+        {
+            get => _githubAppPrivateKeyWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _githubAppPrivateKeyWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Increment to rotate the credential when using github_app_private_key_wo.
+        /// </summary>
+        [Input("githubAppPrivateKeyWoVersion")]
+        public Input<int>? GithubAppPrivateKeyWoVersion { get; set; }
+
         [Input("password")]
         private Input<string>? _password;
 
         /// <summary>
-        /// Password or PAT to be used for authenticating the remote repository.
+        /// Password or PAT to be used for authenticating the remote repository. Use PasswordWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public Input<string>? Password
         {
@@ -88,11 +111,34 @@ namespace Pulumi.Harness.Platform.Inputs
             }
         }
 
+        [Input("passwordWo")]
+        private Input<string>? _passwordWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Password or PAT for authenticating the remote repository. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public Input<string>? PasswordWo
+        {
+            get => _passwordWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _passwordWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Increment to rotate the credential when using password_wo.
+        /// </summary>
+        [Input("passwordWoVersion")]
+        public Input<int>? PasswordWoVersion { get; set; }
+
         [Input("sshPrivateKey")]
         private Input<string>? _sshPrivateKey;
 
         /// <summary>
-        /// SSH Key in PEM format for authenticating the repository. Used only for Git repository.
+        /// SSH Key in PEM format for authenticating the repository. Used only for Git repository. Use SshPrivateKeyWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public Input<string>? SshPrivateKey
         {
@@ -104,11 +150,34 @@ namespace Pulumi.Harness.Platform.Inputs
             }
         }
 
+        [Input("sshPrivateKeyWo")]
+        private Input<string>? _sshPrivateKeyWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// SSH Key in PEM format for authenticating the repository. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public Input<string>? SshPrivateKeyWo
+        {
+            get => _sshPrivateKeyWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sshPrivateKeyWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Increment to rotate the credential when using ssh_private_key_wo.
+        /// </summary>
+        [Input("sshPrivateKeyWoVersion")]
+        public Input<int>? SshPrivateKeyWoVersion { get; set; }
+
         [Input("tlsClientCertData")]
         private Input<string>? _tlsClientCertData;
 
         /// <summary>
-        /// Certificate in PEM format for authenticating at the repo server. This is used for mTLS.
+        /// Certificate in PEM format for authenticating at the repo server. This is used for mTLS. Use TlsClientCertDataWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public Input<string>? TlsClientCertData
         {
@@ -120,11 +189,34 @@ namespace Pulumi.Harness.Platform.Inputs
             }
         }
 
+        [Input("tlsClientCertDataWo")]
+        private Input<string>? _tlsClientCertDataWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Certificate in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public Input<string>? TlsClientCertDataWo
+        {
+            get => _tlsClientCertDataWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tlsClientCertDataWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Increment to rotate the credential when using tls_client_cert_data_wo.
+        /// </summary>
+        [Input("tlsClientCertDataWoVersion")]
+        public Input<int>? TlsClientCertDataWoVersion { get; set; }
+
         [Input("tlsClientCertKey")]
         private Input<string>? _tlsClientCertKey;
 
         /// <summary>
-        /// Private key in PEM format for authenticating at the repo server. This is used for mTLS.
+        /// Private key in PEM format for authenticating at the repo server. This is used for mTLS. Use TlsClientCertKeyWo for write-only support (Terraform &gt;= 1.11).
         /// </summary>
         public Input<string>? TlsClientCertKey
         {
@@ -135,6 +227,29 @@ namespace Pulumi.Harness.Platform.Inputs
                 _tlsClientCertKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("tlsClientCertKeyWo")]
+        private Input<string>? _tlsClientCertKeyWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Private key in PEM format for authenticating at the repo server (mTLS). Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+        /// </summary>
+        public Input<string>? TlsClientCertKeyWo
+        {
+            get => _tlsClientCertKeyWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tlsClientCertKeyWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Increment to rotate the credential when using tls_client_cert_key_wo.
+        /// </summary>
+        [Input("tlsClientCertKeyWoVersion")]
+        public Input<int>? TlsClientCertKeyWoVersion { get; set; }
 
         /// <summary>
         /// Type specifies the type of the repoCreds.Can be either 'git' or 'helm. 'git' is assumed if empty or absent

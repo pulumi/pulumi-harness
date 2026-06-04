@@ -45,7 +45,7 @@ public final class GitopsApplicationsetApplicationsetSpec {
      */
     private @Nullable GitopsApplicationsetApplicationsetSpecStrategy strategy;
     /**
-     * @return Application Set sync policy
+     * @return Sync policy configures how generated Applications will relate to their ApplicationSet.
      * 
      */
     private @Nullable GitopsApplicationsetApplicationsetSpecSyncPolicy syncPolicy;
@@ -92,7 +92,7 @@ public final class GitopsApplicationsetApplicationsetSpec {
         return Optional.ofNullable(this.strategy);
     }
     /**
-     * @return Application Set sync policy
+     * @return Sync policy configures how generated Applications will relate to their ApplicationSet.
      * 
      */
     public Optional<GitopsApplicationsetApplicationsetSpecSyncPolicy> syncPolicy() {

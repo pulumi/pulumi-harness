@@ -14,9 +14,9 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class ConnectorJdbcCredentialsOidc
     {
         /// <summary>
-        /// GCP OIDC configuration.
+        /// GCP OIDC configuration. Required when provider*type is Gcp.
         /// </summary>
-        public readonly Outputs.ConnectorJdbcCredentialsOidcGcpOidc GcpOidc;
+        public readonly Outputs.ConnectorJdbcCredentialsOidcGcpOidc? GcpOidc;
         /// <summary>
         /// The OIDC provider type. Currently supported: Gcp.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Harness.Platform.Outputs
 
         [OutputConstructor]
         private ConnectorJdbcCredentialsOidc(
-            Outputs.ConnectorJdbcCredentialsOidcGcpOidc gcpOidc,
+            Outputs.ConnectorJdbcCredentialsOidcGcpOidc? gcpOidc,
 
             string providerType)
         {

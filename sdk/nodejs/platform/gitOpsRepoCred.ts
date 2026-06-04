@@ -102,7 +102,7 @@ export class GitOpsRepoCred extends pulumi.CustomResource {
     /**
      * credential details.
      */
-    declare public readonly creds: pulumi.Output<outputs.platform.GitOpsRepoCredCred[]>;
+    declare public readonly creds: pulumi.Output<outputs.platform.GitOpsRepoCredCred[] | undefined>;
     /**
      * Identifier of the Repository Credentials.
      */

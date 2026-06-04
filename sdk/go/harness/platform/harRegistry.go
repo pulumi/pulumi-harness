@@ -125,7 +125,7 @@ type HarRegistry struct {
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
-	// Type of package (DOCKER, HELM, MAVEN, etc.)
+	// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
 	PackageType pulumi.StringOutput `pulumi:"packageType"`
 	// Parent reference for the registry (required for creation)
 	ParentRef pulumi.StringOutput `pulumi:"parentRef"`
@@ -191,7 +191,7 @@ type harRegistryState struct {
 	Identifier *string `pulumi:"identifier"`
 	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Type of package (DOCKER, HELM, MAVEN, etc.)
+	// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
 	PackageType *string `pulumi:"packageType"`
 	// Parent reference for the registry (required for creation)
 	ParentRef *string `pulumi:"parentRef"`
@@ -216,7 +216,7 @@ type HarRegistryState struct {
 	Identifier pulumi.StringPtrInput
 	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
 	Metadata pulumi.StringMapInput
-	// Type of package (DOCKER, HELM, MAVEN, etc.)
+	// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
 	PackageType pulumi.StringPtrInput
 	// Parent reference for the registry (required for creation)
 	ParentRef pulumi.StringPtrInput
@@ -243,7 +243,7 @@ type harRegistryArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Type of package (DOCKER, HELM, MAVEN, etc.)
+	// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
 	PackageType string `pulumi:"packageType"`
 	// Parent reference for the registry (required for creation)
 	ParentRef string `pulumi:"parentRef"`
@@ -265,7 +265,7 @@ type HarRegistryArgs struct {
 	Identifier pulumi.StringInput
 	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
 	Metadata pulumi.StringMapInput
-	// Type of package (DOCKER, HELM, MAVEN, etc.)
+	// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
 	PackageType pulumi.StringInput
 	// Parent reference for the registry (required for creation)
 	ParentRef pulumi.StringInput
@@ -395,7 +395,7 @@ func (o HarRegistryOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *HarRegistry) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// Type of package (DOCKER, HELM, MAVEN, etc.)
+// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
 func (o HarRegistryOutput) PackageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *HarRegistry) pulumi.StringOutput { return v.PackageType }).(pulumi.StringOutput)
 }

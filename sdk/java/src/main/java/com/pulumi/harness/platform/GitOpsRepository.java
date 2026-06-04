@@ -138,7 +138,7 @@ public class GitOpsRepository extends com.pulumi.resources.CustomResource {
     }
     /**
      * Default: &#34;UNSET&#34;
-     * Enum: &#34;UNSET&#34; &#34;AWS*ECR&#34; &#34;GOOGLE*GCR&#34;
+     * Enum: &#34;UNSET&#34; &#34;AWS_ECR&#34; &#34;GOOGLE_GCR&#34;
      * 
      */
     @Export(name="genType", refs={String.class}, tree="[0]")
@@ -146,7 +146,7 @@ public class GitOpsRepository extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Default: &#34;UNSET&#34;
-     * Enum: &#34;UNSET&#34; &#34;AWS*ECR&#34; &#34;GOOGLE*GCR&#34;
+     * Enum: &#34;UNSET&#34; &#34;AWS_ECR&#34; &#34;GOOGLE_GCR&#34;
      * 
      */
     public Output<Optional<String>> genType() {

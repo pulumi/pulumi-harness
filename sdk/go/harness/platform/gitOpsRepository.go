@@ -53,7 +53,7 @@ type GitOpsRepository struct {
 	// GCR access token generator specific configuration.
 	GcrGen GitOpsRepositoryGcrGenPtrOutput `pulumi:"gcrGen"`
 	// Default: "UNSET"
-	// Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+	// Enum: "UNSET" "AWS_ECR" "GOOGLE_GCR"
 	GenType pulumi.StringPtrOutput `pulumi:"genType"`
 	// Identifier of the GitOps repository.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
@@ -127,7 +127,7 @@ type gitOpsRepositoryState struct {
 	// GCR access token generator specific configuration.
 	GcrGen *GitOpsRepositoryGcrGen `pulumi:"gcrGen"`
 	// Default: "UNSET"
-	// Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+	// Enum: "UNSET" "AWS_ECR" "GOOGLE_GCR"
 	GenType *string `pulumi:"genType"`
 	// Identifier of the GitOps repository.
 	Identifier *string `pulumi:"identifier"`
@@ -163,7 +163,7 @@ type GitOpsRepositoryState struct {
 	// GCR access token generator specific configuration.
 	GcrGen GitOpsRepositoryGcrGenPtrInput
 	// Default: "UNSET"
-	// Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+	// Enum: "UNSET" "AWS_ECR" "GOOGLE_GCR"
 	GenType pulumi.StringPtrInput
 	// Identifier of the GitOps repository.
 	Identifier pulumi.StringPtrInput
@@ -203,7 +203,7 @@ type gitOpsRepositoryArgs struct {
 	// GCR access token generator specific configuration.
 	GcrGen *GitOpsRepositoryGcrGen `pulumi:"gcrGen"`
 	// Default: "UNSET"
-	// Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+	// Enum: "UNSET" "AWS_ECR" "GOOGLE_GCR"
 	GenType *string `pulumi:"genType"`
 	// Identifier of the GitOps repository.
 	Identifier string `pulumi:"identifier"`
@@ -240,7 +240,7 @@ type GitOpsRepositoryArgs struct {
 	// GCR access token generator specific configuration.
 	GcrGen GitOpsRepositoryGcrGenPtrInput
 	// Default: "UNSET"
-	// Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+	// Enum: "UNSET" "AWS_ECR" "GOOGLE_GCR"
 	GenType pulumi.StringPtrInput
 	// Identifier of the GitOps repository.
 	Identifier pulumi.StringInput
@@ -380,7 +380,7 @@ func (o GitOpsRepositoryOutput) GcrGen() GitOpsRepositoryGcrGenPtrOutput {
 }
 
 // Default: "UNSET"
-// Enum: "UNSET" "AWS*ECR" "GOOGLE*GCR"
+// Enum: "UNSET" "AWS_ECR" "GOOGLE_GCR"
 func (o GitOpsRepositoryOutput) GenType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitOpsRepository) pulumi.StringPtrOutput { return v.GenType }).(pulumi.StringPtrOutput)
 }

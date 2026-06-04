@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.harness.platform.outputs.GitOpsClusterRequestClusterConfigExecProviderConfig;
 import com.pulumi.harness.platform.outputs.GitOpsClusterRequestClusterConfigTlsClientConfig;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -21,10 +22,21 @@ public final class GitOpsClusterRequestClusterConfig {
      */
     private @Nullable String awsClusterName;
     /**
-     * @return Bearer authentication token the cluster.
+     * @return Bearer authentication token the cluster. Use bearerTokenWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     private @Nullable String bearerToken;
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Bearer authentication token for the cluster. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    private @Nullable String bearerTokenWo;
+    /**
+     * @return Increment to rotate the credential when using bearer_token_wo.
+     * 
+     */
+    private @Nullable Integer bearerTokenWoVersion;
     /**
      * @return Identifies the authentication method used to connect to the cluster.
      * 
@@ -41,10 +53,21 @@ public final class GitOpsClusterRequestClusterConfig {
      */
     private @Nullable List<GitOpsClusterRequestClusterConfigExecProviderConfig> execProviderConfigs;
     /**
-     * @return Password of the server of the cluster.
+     * @return Password of the server of the cluster. Use passwordWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     private @Nullable String password;
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Password of the server of the cluster. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    private @Nullable String passwordWo;
+    /**
+     * @return Increment to rotate the credential when using password_wo.
+     * 
+     */
+    private @Nullable Integer passwordWoVersion;
     /**
      * @return The URL to the proxy to be used for all requests send to the cluster&#39;s API server
      * 
@@ -75,11 +98,26 @@ public final class GitOpsClusterRequestClusterConfig {
         return Optional.ofNullable(this.awsClusterName);
     }
     /**
-     * @return Bearer authentication token the cluster.
+     * @return Bearer authentication token the cluster. Use bearerTokenWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     public Optional<String> bearerToken() {
         return Optional.ofNullable(this.bearerToken);
+    }
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Bearer authentication token for the cluster. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    public Optional<String> bearerTokenWo() {
+        return Optional.ofNullable(this.bearerTokenWo);
+    }
+    /**
+     * @return Increment to rotate the credential when using bearer_token_wo.
+     * 
+     */
+    public Optional<Integer> bearerTokenWoVersion() {
+        return Optional.ofNullable(this.bearerTokenWoVersion);
     }
     /**
      * @return Identifies the authentication method used to connect to the cluster.
@@ -103,11 +141,26 @@ public final class GitOpsClusterRequestClusterConfig {
         return this.execProviderConfigs == null ? List.of() : this.execProviderConfigs;
     }
     /**
-     * @return Password of the server of the cluster.
+     * @return Password of the server of the cluster. Use passwordWo for write-only support (Terraform &gt;= 1.11).
      * 
      */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
+    }
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Password of the server of the cluster. Write-only: never stored in state. Requires Terraform &gt;= 1.11.
+     * 
+     */
+    public Optional<String> passwordWo() {
+        return Optional.ofNullable(this.passwordWo);
+    }
+    /**
+     * @return Increment to rotate the credential when using password_wo.
+     * 
+     */
+    public Optional<Integer> passwordWoVersion() {
+        return Optional.ofNullable(this.passwordWoVersion);
     }
     /**
      * @return The URL to the proxy to be used for all requests send to the cluster&#39;s API server
@@ -149,10 +202,14 @@ public final class GitOpsClusterRequestClusterConfig {
     public static final class Builder {
         private @Nullable String awsClusterName;
         private @Nullable String bearerToken;
+        private @Nullable String bearerTokenWo;
+        private @Nullable Integer bearerTokenWoVersion;
         private @Nullable String clusterConnectionType;
         private @Nullable Boolean disableCompression;
         private @Nullable List<GitOpsClusterRequestClusterConfigExecProviderConfig> execProviderConfigs;
         private @Nullable String password;
+        private @Nullable String passwordWo;
+        private @Nullable Integer passwordWoVersion;
         private @Nullable String proxyUrl;
         private @Nullable String roleARN;
         private @Nullable List<GitOpsClusterRequestClusterConfigTlsClientConfig> tlsClientConfigs;
@@ -162,10 +219,14 @@ public final class GitOpsClusterRequestClusterConfig {
     	      Objects.requireNonNull(defaults);
     	      this.awsClusterName = defaults.awsClusterName;
     	      this.bearerToken = defaults.bearerToken;
+    	      this.bearerTokenWo = defaults.bearerTokenWo;
+    	      this.bearerTokenWoVersion = defaults.bearerTokenWoVersion;
     	      this.clusterConnectionType = defaults.clusterConnectionType;
     	      this.disableCompression = defaults.disableCompression;
     	      this.execProviderConfigs = defaults.execProviderConfigs;
     	      this.password = defaults.password;
+    	      this.passwordWo = defaults.passwordWo;
+    	      this.passwordWoVersion = defaults.passwordWoVersion;
     	      this.proxyUrl = defaults.proxyUrl;
     	      this.roleARN = defaults.roleARN;
     	      this.tlsClientConfigs = defaults.tlsClientConfigs;
@@ -182,6 +243,18 @@ public final class GitOpsClusterRequestClusterConfig {
         public Builder bearerToken(@Nullable String bearerToken) {
 
             this.bearerToken = bearerToken;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bearerTokenWo(@Nullable String bearerTokenWo) {
+
+            this.bearerTokenWo = bearerTokenWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bearerTokenWoVersion(@Nullable Integer bearerTokenWoVersion) {
+
+            this.bearerTokenWoVersion = bearerTokenWoVersion;
             return this;
         }
         @CustomType.Setter
@@ -209,6 +282,18 @@ public final class GitOpsClusterRequestClusterConfig {
         public Builder password(@Nullable String password) {
 
             this.password = password;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder passwordWo(@Nullable String passwordWo) {
+
+            this.passwordWo = passwordWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder passwordWoVersion(@Nullable Integer passwordWoVersion) {
+
+            this.passwordWoVersion = passwordWoVersion;
             return this;
         }
         @CustomType.Setter
@@ -242,10 +327,14 @@ public final class GitOpsClusterRequestClusterConfig {
             final var _resultValue = new GitOpsClusterRequestClusterConfig();
             _resultValue.awsClusterName = awsClusterName;
             _resultValue.bearerToken = bearerToken;
+            _resultValue.bearerTokenWo = bearerTokenWo;
+            _resultValue.bearerTokenWoVersion = bearerTokenWoVersion;
             _resultValue.clusterConnectionType = clusterConnectionType;
             _resultValue.disableCompression = disableCompression;
             _resultValue.execProviderConfigs = execProviderConfigs;
             _resultValue.password = password;
+            _resultValue.passwordWo = passwordWo;
+            _resultValue.passwordWoVersion = passwordWoVersion;
             _resultValue.proxyUrl = proxyUrl;
             _resultValue.roleARN = roleARN;
             _resultValue.tlsClientConfigs = tlsClientConfigs;

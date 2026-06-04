@@ -134,7 +134,7 @@ class GetHarRegistryResult:
     @pulumi.getter(name="packageType")
     def package_type(self) -> Optional[_builtins.str]:
         """
-        Type of package (DOCKER, HELM, MAVEN, etc.)
+        Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
         """
         return pulumi.get(self, "package_type")
 
@@ -213,7 +213,7 @@ def get_har_registry(allowed_patterns: Optional[Sequence[_builtins.str]] = None,
     :param _builtins.str description: Description of the registry
     :param _builtins.str identifier: Unique identifier of the registry
     :param Mapping[str, _builtins.str] metadata: Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
-    :param _builtins.str package_type: Type of package (DOCKER, HELM, MAVEN, etc.)
+    :param _builtins.str package_type: Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
     :param _builtins.str parent_ref: Parent reference for the registry
     :param _builtins.str space_ref: Space reference for the registry
     """
@@ -273,7 +273,7 @@ def get_har_registry_output(allowed_patterns: pulumi.Input[Optional[Optional[Seq
     :param _builtins.str description: Description of the registry
     :param _builtins.str identifier: Unique identifier of the registry
     :param Mapping[str, _builtins.str] metadata: Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
-    :param _builtins.str package_type: Type of package (DOCKER, HELM, MAVEN, etc.)
+    :param _builtins.str package_type: Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
     :param _builtins.str parent_ref: Parent reference for the registry
     :param _builtins.str space_ref: Space reference for the registry
     """

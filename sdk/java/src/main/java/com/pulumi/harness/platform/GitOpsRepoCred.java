@@ -134,14 +134,14 @@ public class GitOpsRepoCred extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="creds", refs={List.class,GitOpsRepoCredCred.class}, tree="[0,1]")
-    private Output<List<GitOpsRepoCredCred>> creds;
+    private Output</* @Nullable */ List<GitOpsRepoCredCred>> creds;
 
     /**
      * @return credential details.
      * 
      */
-    public Output<List<GitOpsRepoCredCred>> creds() {
-        return this.creds;
+    public Output<Optional<List<GitOpsRepoCredCred>>> creds() {
+        return Codegen.optional(this.creds);
     }
     /**
      * Identifier of the Repository Credentials.

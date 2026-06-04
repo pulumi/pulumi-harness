@@ -18,6 +18,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? AuthType;
         /// <summary>
+        /// Authenticate using credentials inherited from the Harness delegate runtime identity (e.g. GCP ADC, AWS IAM).
+        /// </summary>
+        public readonly Outputs.ConnectorJdbcCredentialsInheritFromDelegate? InheritFromDelegate;
+        /// <summary>
         /// Authenticate using key pair.
         /// </summary>
         public readonly Outputs.ConnectorJdbcCredentialsKeyPair? KeyPair;
@@ -50,6 +54,8 @@ namespace Pulumi.Harness.Platform.Outputs
         private ConnectorJdbcCredentials(
             string? authType,
 
+            Outputs.ConnectorJdbcCredentialsInheritFromDelegate? inheritFromDelegate,
+
             Outputs.ConnectorJdbcCredentialsKeyPair? keyPair,
 
             Outputs.ConnectorJdbcCredentialsOidc? oidc,
@@ -65,6 +71,7 @@ namespace Pulumi.Harness.Platform.Outputs
             string? usernameRef)
         {
             AuthType = authType;
+            InheritFromDelegate = inheritFromDelegate;
             KeyPair = keyPair;
             Oidc = oidc;
             PasswordRef = passwordRef;
