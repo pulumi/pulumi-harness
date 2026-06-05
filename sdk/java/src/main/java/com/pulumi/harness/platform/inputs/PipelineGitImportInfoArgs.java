@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -61,6 +62,21 @@ public final class PipelineGitImportInfoArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Force import from Git even if the file path is already imported.
+     * 
+     */
+    @Import(name="isForceImport")
+    private @Nullable Output<Boolean> isForceImport;
+
+    /**
+     * @return Force import from Git even if the file path is already imported.
+     * 
+     */
+    public Optional<Output<Boolean>> isForceImport() {
+        return Optional.ofNullable(this.isForceImport);
+    }
+
+    /**
      * Name of the repository.
      * 
      */
@@ -81,6 +97,7 @@ public final class PipelineGitImportInfoArgs extends com.pulumi.resources.Resour
         this.branchName = $.branchName;
         this.connectorRef = $.connectorRef;
         this.filePath = $.filePath;
+        this.isForceImport = $.isForceImport;
         this.repoName = $.repoName;
     }
 
@@ -163,6 +180,27 @@ public final class PipelineGitImportInfoArgs extends com.pulumi.resources.Resour
          */
         public Builder filePath(String filePath) {
             return filePath(Output.of(filePath));
+        }
+
+        /**
+         * @param isForceImport Force import from Git even if the file path is already imported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isForceImport(@Nullable Output<Boolean> isForceImport) {
+            $.isForceImport = isForceImport;
+            return this;
+        }
+
+        /**
+         * @param isForceImport Force import from Git even if the file path is already imported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isForceImport(Boolean isForceImport) {
+            return isForceImport(Output.of(isForceImport));
         }
 
         /**

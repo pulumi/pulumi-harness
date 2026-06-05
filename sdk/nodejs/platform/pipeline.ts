@@ -132,6 +132,7 @@ import * as utilities from "../utilities";
  *         filePath: ".harness/gitx.yaml",
  *         connectorRef: "account.DoNotDeleteGithub",
  *         repoName: "open-repo",
+ *         isForceImport: true,
  *     },
  *     pipelineImportRequest: {
  *         pipelineName: "gitx",

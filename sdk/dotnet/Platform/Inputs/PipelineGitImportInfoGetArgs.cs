@@ -31,6 +31,12 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string>? FilePath { get; set; }
 
         /// <summary>
+        /// Force import from Git even if the file path is already imported.
+        /// </summary>
+        [Input("isForceImport")]
+        public Input<bool>? IsForceImport { get; set; }
+
+        /// <summary>
         /// Name of the repository.
         /// </summary>
         [Input("repoName")]

@@ -593,6 +593,7 @@ class Pipeline(pulumi.CustomResource):
                 "file_path": ".harness/gitx.yaml",
                 "connector_ref": "account.DoNotDeleteGithub",
                 "repo_name": "open-repo",
+                "is_force_import": True,
             },
             pipeline_import_request={
                 "pipeline_name": "gitx",
@@ -763,6 +764,7 @@ class Pipeline(pulumi.CustomResource):
                 "file_path": ".harness/gitx.yaml",
                 "connector_ref": "account.DoNotDeleteGithub",
                 "repo_name": "open-repo",
+                "is_force_import": True,
             },
             pipeline_import_request={
                 "pipeline_name": "gitx",

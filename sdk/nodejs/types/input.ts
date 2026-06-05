@@ -37910,6 +37910,10 @@ export namespace platform {
          */
         filePath?: pulumi.Input<string | undefined>;
         /**
+         * Force import from Git even if the file path is already imported.
+         */
+        isForceImport?: pulumi.Input<boolean | undefined>;
+        /**
          * Name of the repository.
          */
         repoName?: pulumi.Input<string | undefined>;

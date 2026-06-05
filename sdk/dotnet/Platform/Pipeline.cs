@@ -146,6 +146,7 @@ namespace Pulumi.Harness.Platform
     ///             FilePath = ".harness/gitx.yaml",
     ///             ConnectorRef = "account.DoNotDeleteGithub",
     ///             RepoName = "open-repo",
+    ///             IsForceImport = true,
     ///         },
     ///         PipelineImportRequest = new Harness.Platform.Inputs.PipelinePipelineImportRequestArgs
     ///         {
