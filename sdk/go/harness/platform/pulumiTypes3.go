@@ -17408,6 +17408,8 @@ type PipelineGitImportInfo struct {
 	ConnectorRef *string `pulumi:"connectorRef"`
 	// File path of the Entity in the repository.
 	FilePath *string `pulumi:"filePath"`
+	// Force import from Git even if the file path is already imported.
+	IsForceImport *bool `pulumi:"isForceImport"`
 	// Name of the repository.
 	RepoName *string `pulumi:"repoName"`
 }
@@ -17430,6 +17432,8 @@ type PipelineGitImportInfoArgs struct {
 	ConnectorRef pulumi.StringPtrInput `pulumi:"connectorRef"`
 	// File path of the Entity in the repository.
 	FilePath pulumi.StringPtrInput `pulumi:"filePath"`
+	// Force import from Git even if the file path is already imported.
+	IsForceImport pulumi.BoolPtrInput `pulumi:"isForceImport"`
 	// Name of the repository.
 	RepoName pulumi.StringPtrInput `pulumi:"repoName"`
 }
@@ -17526,6 +17530,11 @@ func (o PipelineGitImportInfoOutput) FilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PipelineGitImportInfo) *string { return v.FilePath }).(pulumi.StringPtrOutput)
 }
 
+// Force import from Git even if the file path is already imported.
+func (o PipelineGitImportInfoOutput) IsForceImport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PipelineGitImportInfo) *bool { return v.IsForceImport }).(pulumi.BoolPtrOutput)
+}
+
 // Name of the repository.
 func (o PipelineGitImportInfoOutput) RepoName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PipelineGitImportInfo) *string { return v.RepoName }).(pulumi.StringPtrOutput)
@@ -17583,6 +17592,16 @@ func (o PipelineGitImportInfoPtrOutput) FilePath() pulumi.StringPtrOutput {
 		}
 		return v.FilePath
 	}).(pulumi.StringPtrOutput)
+}
+
+// Force import from Git even if the file path is already imported.
+func (o PipelineGitImportInfoPtrOutput) IsForceImport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PipelineGitImportInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsForceImport
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Name of the repository.

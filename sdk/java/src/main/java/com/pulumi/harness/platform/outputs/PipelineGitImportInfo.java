@@ -4,6 +4,7 @@
 package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -26,6 +27,11 @@ public final class PipelineGitImportInfo {
      * 
      */
     private @Nullable String filePath;
+    /**
+     * @return Force import from Git even if the file path is already imported.
+     * 
+     */
+    private @Nullable Boolean isForceImport;
     /**
      * @return Name of the repository.
      * 
@@ -55,6 +61,13 @@ public final class PipelineGitImportInfo {
         return Optional.ofNullable(this.filePath);
     }
     /**
+     * @return Force import from Git even if the file path is already imported.
+     * 
+     */
+    public Optional<Boolean> isForceImport() {
+        return Optional.ofNullable(this.isForceImport);
+    }
+    /**
      * @return Name of the repository.
      * 
      */
@@ -74,6 +87,7 @@ public final class PipelineGitImportInfo {
         private @Nullable String branchName;
         private @Nullable String connectorRef;
         private @Nullable String filePath;
+        private @Nullable Boolean isForceImport;
         private @Nullable String repoName;
         public Builder() {}
         public Builder(PipelineGitImportInfo defaults) {
@@ -81,6 +95,7 @@ public final class PipelineGitImportInfo {
     	      this.branchName = defaults.branchName;
     	      this.connectorRef = defaults.connectorRef;
     	      this.filePath = defaults.filePath;
+    	      this.isForceImport = defaults.isForceImport;
     	      this.repoName = defaults.repoName;
         }
 
@@ -103,6 +118,12 @@ public final class PipelineGitImportInfo {
             return this;
         }
         @CustomType.Setter
+        public Builder isForceImport(@Nullable Boolean isForceImport) {
+
+            this.isForceImport = isForceImport;
+            return this;
+        }
+        @CustomType.Setter
         public Builder repoName(@Nullable String repoName) {
 
             this.repoName = repoName;
@@ -113,6 +134,7 @@ public final class PipelineGitImportInfo {
             _resultValue.branchName = branchName;
             _resultValue.connectorRef = connectorRef;
             _resultValue.filePath = filePath;
+            _resultValue.isForceImport = isForceImport;
             _resultValue.repoName = repoName;
             return _resultValue;
         }

@@ -172,6 +172,7 @@ import javax.annotation.Nullable;
  *                 .filePath(".harness/gitx.yaml")
  *                 .connectorRef("account.DoNotDeleteGithub")
  *                 .repoName("open-repo")
+ *                 .isForceImport(true)
  *                 .build())
  *             .pipelineImportRequest(PipelinePipelineImportRequestArgs.builder()
  *                 .pipelineName("gitx")

@@ -149,10 +149,11 @@ import (
 //				Name:          pulumi.String("gitx"),
 //				ImportFromGit: pulumi.Bool(true),
 //				GitImportInfo: &platform.PipelineGitImportInfoArgs{
-//					BranchName:   pulumi.String("main"),
-//					FilePath:     pulumi.String(".harness/gitx.yaml"),
-//					ConnectorRef: pulumi.String("account.DoNotDeleteGithub"),
-//					RepoName:     pulumi.String("open-repo"),
+//					BranchName:    pulumi.String("main"),
+//					FilePath:      pulumi.String(".harness/gitx.yaml"),
+//					ConnectorRef:  pulumi.String("account.DoNotDeleteGithub"),
+//					RepoName:      pulumi.String("open-repo"),
+//					IsForceImport: pulumi.Bool(true),
 //				},
 //				PipelineImportRequest: &platform.PipelinePipelineImportRequestArgs{
 //					PipelineName:        pulumi.String("gitx"),

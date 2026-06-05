@@ -39793,6 +39793,10 @@ export namespace platform {
          */
         filePath?: string;
         /**
+         * Force import from Git even if the file path is already imported.
+         */
+        isForceImport?: boolean;
+        /**
          * Name of the repository.
          */
         repoName?: string;

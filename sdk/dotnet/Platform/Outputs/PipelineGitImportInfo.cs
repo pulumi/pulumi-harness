@@ -26,6 +26,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? FilePath;
         /// <summary>
+        /// Force import from Git even if the file path is already imported.
+        /// </summary>
+        public readonly bool? IsForceImport;
+        /// <summary>
         /// Name of the repository.
         /// </summary>
         public readonly string? RepoName;
@@ -38,11 +42,14 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string? filePath,
 
+            bool? isForceImport,
+
             string? repoName)
         {
             BranchName = branchName;
             ConnectorRef = connectorRef;
             FilePath = filePath;
+            IsForceImport = isForceImport;
             RepoName = repoName;
         }
     }
