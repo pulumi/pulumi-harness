@@ -18,7 +18,7 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string ConnectorRef;
         /// <summary>
-        /// Type is the connector type of the connector. Supported types: aws, azure, gcp
+        /// Type is the connector type of the connector. Supported types: aws, azure, gcp, vault
         /// </summary>
         public readonly string Type;
 

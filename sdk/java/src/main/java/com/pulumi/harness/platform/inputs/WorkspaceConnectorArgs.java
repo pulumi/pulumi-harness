@@ -30,14 +30,14 @@ public final class WorkspaceConnectorArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Type is the connector type of the connector. Supported types: aws, azure, gcp
+     * Type is the connector type of the connector. Supported types: aws, azure, gcp, vault
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Type is the connector type of the connector. Supported types: aws, azure, gcp
+     * @return Type is the connector type of the connector. Supported types: aws, azure, gcp, vault
      * 
      */
     public Output<String> type() {
@@ -91,7 +91,7 @@ public final class WorkspaceConnectorArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param type Type is the connector type of the connector. Supported types: aws, azure, gcp
+         * @param type Type is the connector type of the connector. Supported types: aws, azure, gcp, vault
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class WorkspaceConnectorArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param type Type is the connector type of the connector. Supported types: aws, azure, gcp
+         * @param type Type is the connector type of the connector. Supported types: aws, azure, gcp, vault
          * 
          * @return builder
          * 

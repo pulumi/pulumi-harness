@@ -233,10 +233,32 @@ __all__ = [
     'SecurityGovernanceConditionMachineSpecArgsDict',
     'SecurityGovernanceConditionMachineSpecInfraSpecArgs',
     'SecurityGovernanceConditionMachineSpecInfraSpecArgsDict',
+    'SecurityGovernanceConditionV3FaultSpecArgs',
+    'SecurityGovernanceConditionV3FaultSpecArgsDict',
+    'SecurityGovernanceConditionV3FaultSpecFaultArgs',
+    'SecurityGovernanceConditionV3FaultSpecFaultArgsDict',
+    'SecurityGovernanceConditionV3K8sSpecArgs',
+    'SecurityGovernanceConditionV3K8sSpecArgsDict',
+    'SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs',
+    'SecurityGovernanceConditionV3K8sSpecApplicationSpecArgsDict',
+    'SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs',
+    'SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgsDict',
+    'SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs',
+    'SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgsDict',
+    'SecurityGovernanceConditionV3K8sSpecInfraSpecArgs',
+    'SecurityGovernanceConditionV3K8sSpecInfraSpecArgsDict',
+    'SecurityGovernanceConditionV3MachineSpecArgs',
+    'SecurityGovernanceConditionV3MachineSpecArgsDict',
+    'SecurityGovernanceConditionV3MachineSpecInfraSpecArgs',
+    'SecurityGovernanceConditionV3MachineSpecInfraSpecArgsDict',
     'SecurityGovernanceRuleTimeWindowArgs',
     'SecurityGovernanceRuleTimeWindowArgsDict',
     'SecurityGovernanceRuleTimeWindowRecurrenceArgs',
     'SecurityGovernanceRuleTimeWindowRecurrenceArgsDict',
+    'SecurityGovernanceRuleV3TimeWindowArgs',
+    'SecurityGovernanceRuleV3TimeWindowArgsDict',
+    'SecurityGovernanceRuleV3TimeWindowRecurrenceArgs',
+    'SecurityGovernanceRuleV3TimeWindowRecurrenceArgsDict',
     'GetActionTemplateContainerActionArgs',
     'GetActionTemplateContainerActionArgsDict',
     'GetActionTemplateContainerActionEnvArgs',
@@ -9189,6 +9211,515 @@ class SecurityGovernanceConditionMachineSpecInfraSpecArgs:
         pulumi.set(self, "operator", value)
 
 
+class SecurityGovernanceConditionV3FaultSpecArgsDict(TypedDict):
+    faults: pulumi.Input[Sequence[pulumi.Input['SecurityGovernanceConditionV3FaultSpecFaultArgsDict']]]
+    """
+    List of fault specifications
+    """
+    operator: pulumi.Input[_builtins.str]
+    """
+    Operator for comparing faults (EQUAL*TO or NOT*EQUAL_TO)
+    """
+
+@pulumi.input_type
+class SecurityGovernanceConditionV3FaultSpecArgs:
+    def __init__(__self__, *,
+                 faults: pulumi.Input[Sequence[pulumi.Input['SecurityGovernanceConditionV3FaultSpecFaultArgs']]],
+                 operator: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityGovernanceConditionV3FaultSpecFaultArgs']]] faults: List of fault specifications
+        :param pulumi.Input[_builtins.str] operator: Operator for comparing faults (EQUAL*TO or NOT*EQUAL_TO)
+        """
+        pulumi.set(__self__, "faults", faults)
+        pulumi.set(__self__, "operator", operator)
+
+    @_builtins.property
+    @pulumi.getter
+    def faults(self) -> pulumi.Input[Sequence[pulumi.Input['SecurityGovernanceConditionV3FaultSpecFaultArgs']]]:
+        """
+        List of fault specifications
+        """
+        return pulumi.get(self, "faults")
+
+    @faults.setter
+    def faults(self, value: pulumi.Input[Sequence[pulumi.Input['SecurityGovernanceConditionV3FaultSpecFaultArgs']]]):
+        pulumi.set(self, "faults", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        Operator for comparing faults (EQUAL*TO or NOT*EQUAL_TO)
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "operator", value)
+
+
+class SecurityGovernanceConditionV3FaultSpecFaultArgsDict(TypedDict):
+    fault_type: pulumi.Input[_builtins.str]
+    """
+    Type of the fault (FAULT or FAULT_GROUP)
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the fault
+    """
+
+@pulumi.input_type
+class SecurityGovernanceConditionV3FaultSpecFaultArgs:
+    def __init__(__self__, *,
+                 fault_type: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] fault_type: Type of the fault (FAULT or FAULT_GROUP)
+        :param pulumi.Input[_builtins.str] name: Name of the fault
+        """
+        pulumi.set(__self__, "fault_type", fault_type)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="faultType")
+    def fault_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Type of the fault (FAULT or FAULT_GROUP)
+        """
+        return pulumi.get(self, "fault_type")
+
+    @fault_type.setter
+    def fault_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "fault_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the fault
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+
+class SecurityGovernanceConditionV3K8sSpecArgsDict(TypedDict):
+    application_spec: NotRequired[pulumi.Input[Optional['SecurityGovernanceConditionV3K8sSpecApplicationSpecArgsDict']]]
+    """
+    Application specification
+    """
+    chaos_service_account_spec: NotRequired[pulumi.Input[Optional['SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgsDict']]]
+    """
+    Chaos service account specification
+    """
+    infra_spec: NotRequired[pulumi.Input[Optional['SecurityGovernanceConditionV3K8sSpecInfraSpecArgsDict']]]
+    """
+    Infrastructure specification
+    """
+
+@pulumi.input_type
+class SecurityGovernanceConditionV3K8sSpecArgs:
+    def __init__(__self__, *,
+                 application_spec: pulumi.Input[Optional['SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs']] = None,
+                 chaos_service_account_spec: pulumi.Input[Optional['SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs']] = None,
+                 infra_spec: pulumi.Input[Optional['SecurityGovernanceConditionV3K8sSpecInfraSpecArgs']] = None):
+        """
+        :param pulumi.Input['SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs'] application_spec: Application specification
+        :param pulumi.Input['SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs'] chaos_service_account_spec: Chaos service account specification
+        :param pulumi.Input['SecurityGovernanceConditionV3K8sSpecInfraSpecArgs'] infra_spec: Infrastructure specification
+        """
+        if application_spec is not None:
+            pulumi.set(__self__, "application_spec", application_spec)
+        if chaos_service_account_spec is not None:
+            pulumi.set(__self__, "chaos_service_account_spec", chaos_service_account_spec)
+        if infra_spec is not None:
+            pulumi.set(__self__, "infra_spec", infra_spec)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationSpec")
+    def application_spec(self) -> pulumi.Input[Optional['SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs']]:
+        """
+        Application specification
+        """
+        return pulumi.get(self, "application_spec")
+
+    @application_spec.setter
+    def application_spec(self, value: pulumi.Input[Optional['SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs']]):
+        pulumi.set(self, "application_spec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="chaosServiceAccountSpec")
+    def chaos_service_account_spec(self) -> pulumi.Input[Optional['SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs']]:
+        """
+        Chaos service account specification
+        """
+        return pulumi.get(self, "chaos_service_account_spec")
+
+    @chaos_service_account_spec.setter
+    def chaos_service_account_spec(self, value: pulumi.Input[Optional['SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs']]):
+        pulumi.set(self, "chaos_service_account_spec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="infraSpec")
+    def infra_spec(self) -> pulumi.Input[Optional['SecurityGovernanceConditionV3K8sSpecInfraSpecArgs']]:
+        """
+        Infrastructure specification
+        """
+        return pulumi.get(self, "infra_spec")
+
+    @infra_spec.setter
+    def infra_spec(self, value: pulumi.Input[Optional['SecurityGovernanceConditionV3K8sSpecInfraSpecArgs']]):
+        pulumi.set(self, "infra_spec", value)
+
+
+class SecurityGovernanceConditionV3K8sSpecApplicationSpecArgsDict(TypedDict):
+    operator: pulumi.Input[_builtins.str]
+    """
+    Operator for application matching (EQUAL*TO or NOT*EQUAL_TO)
+    """
+    workloads: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgsDict']]]]]
+    """
+    List of workloads to include/exclude
+    """
+
+@pulumi.input_type
+class SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs:
+    def __init__(__self__, *,
+                 operator: pulumi.Input[_builtins.str],
+                 workloads: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] operator: Operator for application matching (EQUAL*TO or NOT*EQUAL_TO)
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs']]] workloads: List of workloads to include/exclude
+        """
+        pulumi.set(__self__, "operator", operator)
+        if workloads is not None:
+            pulumi.set(__self__, "workloads", workloads)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        Operator for application matching (EQUAL*TO or NOT*EQUAL_TO)
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def workloads(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs']]]]:
+        """
+        List of workloads to include/exclude
+        """
+        return pulumi.get(self, "workloads")
+
+    @workloads.setter
+    def workloads(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs']]]]):
+        pulumi.set(self, "workloads", value)
+
+
+class SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgsDict(TypedDict):
+    namespace: pulumi.Input[_builtins.str]
+    """
+    Namespace of the workload
+    """
+    application_map_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    ID for the application map
+    """
+    kind: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Kind of the workload (e.g., deployment, statefulset)
+    """
+    label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Label selector for the workload
+    """
+    namespace_labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    Namespace labels to match against, as key-value pairs
+    """
+    services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    List of services associated with the workload
+    """
+
+@pulumi.input_type
+class SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs:
+    def __init__(__self__, *,
+                 namespace: pulumi.Input[_builtins.str],
+                 application_map_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] namespace: Namespace of the workload
+        :param pulumi.Input[_builtins.str] application_map_id: ID for the application map
+        :param pulumi.Input[_builtins.str] kind: Kind of the workload (e.g., deployment, statefulset)
+        :param pulumi.Input[_builtins.str] label: Label selector for the workload
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] namespace_labels: Namespace labels to match against, as key-value pairs
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] services: List of services associated with the workload
+        """
+        pulumi.set(__self__, "namespace", namespace)
+        if application_map_id is not None:
+            pulumi.set(__self__, "application_map_id", application_map_id)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if namespace_labels is not None:
+            pulumi.set(__self__, "namespace_labels", namespace_labels)
+        if services is not None:
+            pulumi.set(__self__, "services", services)
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> pulumi.Input[_builtins.str]:
+        """
+        Namespace of the workload
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "namespace", value)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationMapId")
+    def application_map_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        ID for the application map
+        """
+        return pulumi.get(self, "application_map_id")
+
+    @application_map_id.setter
+    def application_map_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "application_map_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Kind of the workload (e.g., deployment, statefulset)
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "kind", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Label selector for the workload
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "label", value)
+
+    @_builtins.property
+    @pulumi.getter(name="namespaceLabels")
+    def namespace_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Namespace labels to match against, as key-value pairs
+        """
+        return pulumi.get(self, "namespace_labels")
+
+    @namespace_labels.setter
+    def namespace_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "namespace_labels", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of services associated with the workload
+        """
+        return pulumi.get(self, "services")
+
+    @services.setter
+    def services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "services", value)
+
+
+class SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgsDict(TypedDict):
+    operator: pulumi.Input[_builtins.str]
+    """
+    Operator for service account matching (EQUAL*TO or NOT*EQUAL_TO)
+    """
+    service_accounts: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    List of service accounts to include/exclude
+    """
+
+@pulumi.input_type
+class SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs:
+    def __init__(__self__, *,
+                 operator: pulumi.Input[_builtins.str],
+                 service_accounts: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[_builtins.str] operator: Operator for service account matching (EQUAL*TO or NOT*EQUAL_TO)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] service_accounts: List of service accounts to include/exclude
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "service_accounts", service_accounts)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        Operator for service account matching (EQUAL*TO or NOT*EQUAL_TO)
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccounts")
+    def service_accounts(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        List of service accounts to include/exclude
+        """
+        return pulumi.get(self, "service_accounts")
+
+    @service_accounts.setter
+    def service_accounts(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "service_accounts", value)
+
+
+class SecurityGovernanceConditionV3K8sSpecInfraSpecArgsDict(TypedDict):
+    infra_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    List of infrastructure IDs to apply the condition to
+    """
+    operator: pulumi.Input[_builtins.str]
+    """
+    Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+    """
+
+@pulumi.input_type
+class SecurityGovernanceConditionV3K8sSpecInfraSpecArgs:
+    def __init__(__self__, *,
+                 infra_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 operator: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] infra_ids: List of infrastructure IDs to apply the condition to
+        :param pulumi.Input[_builtins.str] operator: Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+        """
+        pulumi.set(__self__, "infra_ids", infra_ids)
+        pulumi.set(__self__, "operator", operator)
+
+    @_builtins.property
+    @pulumi.getter(name="infraIds")
+    def infra_ids(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        List of infrastructure IDs to apply the condition to
+        """
+        return pulumi.get(self, "infra_ids")
+
+    @infra_ids.setter
+    def infra_ids(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "infra_ids", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "operator", value)
+
+
+class SecurityGovernanceConditionV3MachineSpecArgsDict(TypedDict):
+    infra_spec: NotRequired[pulumi.Input[Optional['SecurityGovernanceConditionV3MachineSpecInfraSpecArgsDict']]]
+    """
+    Infrastructure specification
+    """
+
+@pulumi.input_type
+class SecurityGovernanceConditionV3MachineSpecArgs:
+    def __init__(__self__, *,
+                 infra_spec: pulumi.Input[Optional['SecurityGovernanceConditionV3MachineSpecInfraSpecArgs']] = None):
+        """
+        :param pulumi.Input['SecurityGovernanceConditionV3MachineSpecInfraSpecArgs'] infra_spec: Infrastructure specification
+        """
+        if infra_spec is not None:
+            pulumi.set(__self__, "infra_spec", infra_spec)
+
+    @_builtins.property
+    @pulumi.getter(name="infraSpec")
+    def infra_spec(self) -> pulumi.Input[Optional['SecurityGovernanceConditionV3MachineSpecInfraSpecArgs']]:
+        """
+        Infrastructure specification
+        """
+        return pulumi.get(self, "infra_spec")
+
+    @infra_spec.setter
+    def infra_spec(self, value: pulumi.Input[Optional['SecurityGovernanceConditionV3MachineSpecInfraSpecArgs']]):
+        pulumi.set(self, "infra_spec", value)
+
+
+class SecurityGovernanceConditionV3MachineSpecInfraSpecArgsDict(TypedDict):
+    infra_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    List of infrastructure IDs to apply the condition to
+    """
+    operator: pulumi.Input[_builtins.str]
+    """
+    Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+    """
+
+@pulumi.input_type
+class SecurityGovernanceConditionV3MachineSpecInfraSpecArgs:
+    def __init__(__self__, *,
+                 infra_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 operator: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] infra_ids: List of infrastructure IDs to apply the condition to
+        :param pulumi.Input[_builtins.str] operator: Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+        """
+        pulumi.set(__self__, "infra_ids", infra_ids)
+        pulumi.set(__self__, "operator", operator)
+
+    @_builtins.property
+    @pulumi.getter(name="infraIds")
+    def infra_ids(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        List of infrastructure IDs to apply the condition to
+        """
+        return pulumi.get(self, "infra_ids")
+
+    @infra_ids.setter
+    def infra_ids(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "infra_ids", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "operator", value)
+
+
 class SecurityGovernanceRuleTimeWindowArgsDict(TypedDict):
     start_time: pulumi.Input[_builtins.int]
     time_zone: pulumi.Input[_builtins.str]
@@ -9296,6 +9827,180 @@ class SecurityGovernanceRuleTimeWindowRecurrenceArgs:
     @_builtins.property
     @pulumi.getter
     def value(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "value", value)
+
+
+class SecurityGovernanceRuleV3TimeWindowArgsDict(TypedDict):
+    start_time: pulumi.Input[_builtins.int]
+    """
+    Start of the window as a Unix epoch timestamp in milliseconds.
+    """
+    time_zone: pulumi.Input[_builtins.str]
+    """
+    IANA time zone for the window (e.g., UTC, America/New_York).
+    """
+    duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Duration of the window (e.g., 30m, 1h). Computed from end_time when not set.
+    """
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    End of the window as a Unix epoch timestamp in milliseconds. Computed from duration when not set.
+    """
+    recurrence: NotRequired[pulumi.Input[Optional['SecurityGovernanceRuleV3TimeWindowRecurrenceArgsDict']]]
+    """
+    Recurrence specification for the time window.
+    """
+
+@pulumi.input_type
+class SecurityGovernanceRuleV3TimeWindowArgs:
+    def __init__(__self__, *,
+                 start_time: pulumi.Input[_builtins.int],
+                 time_zone: pulumi.Input[_builtins.str],
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 recurrence: pulumi.Input[Optional['SecurityGovernanceRuleV3TimeWindowRecurrenceArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.int] start_time: Start of the window as a Unix epoch timestamp in milliseconds.
+        :param pulumi.Input[_builtins.str] time_zone: IANA time zone for the window (e.g., UTC, America/New_York).
+        :param pulumi.Input[_builtins.str] duration: Duration of the window (e.g., 30m, 1h). Computed from end_time when not set.
+        :param pulumi.Input[_builtins.int] end_time: End of the window as a Unix epoch timestamp in milliseconds. Computed from duration when not set.
+        :param pulumi.Input['SecurityGovernanceRuleV3TimeWindowRecurrenceArgs'] recurrence: Recurrence specification for the time window.
+        """
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "time_zone", time_zone)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if recurrence is not None:
+            pulumi.set(__self__, "recurrence", recurrence)
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[_builtins.int]:
+        """
+        Start of the window as a Unix epoch timestamp in milliseconds.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "start_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> pulumi.Input[_builtins.str]:
+        """
+        IANA time zone for the window (e.g., UTC, America/New_York).
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "time_zone", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Duration of the window (e.g., 30m, 1h). Computed from end_time when not set.
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        End of the window as a Unix epoch timestamp in milliseconds. Computed from duration when not set.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "end_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def recurrence(self) -> pulumi.Input[Optional['SecurityGovernanceRuleV3TimeWindowRecurrenceArgs']]:
+        """
+        Recurrence specification for the time window.
+        """
+        return pulumi.get(self, "recurrence")
+
+    @recurrence.setter
+    def recurrence(self, value: pulumi.Input[Optional['SecurityGovernanceRuleV3TimeWindowRecurrenceArgs']]):
+        pulumi.set(self, "recurrence", value)
+
+
+class SecurityGovernanceRuleV3TimeWindowRecurrenceArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    Recurrence type (None, Daily, Weekly, Monthly, Yearly).
+    """
+    until: pulumi.Input[_builtins.int]
+    """
+    End of the recurrence as a Unix epoch timestamp in milliseconds. Use -1 for no end.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Day of month for Monthly recurrence. Only used when type is Monthly.
+    """
+
+@pulumi.input_type
+class SecurityGovernanceRuleV3TimeWindowRecurrenceArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[_builtins.str],
+                 until: pulumi.Input[_builtins.int],
+                 value: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] type: Recurrence type (None, Daily, Weekly, Monthly, Yearly).
+        :param pulumi.Input[_builtins.int] until: End of the recurrence as a Unix epoch timestamp in milliseconds. Use -1 for no end.
+        :param pulumi.Input[_builtins.int] value: Day of month for Monthly recurrence. Only used when type is Monthly.
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "until", until)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Recurrence type (None, Daily, Weekly, Monthly, Yearly).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def until(self) -> pulumi.Input[_builtins.int]:
+        """
+        End of the recurrence as a Unix epoch timestamp in milliseconds. Use -1 for no end.
+        """
+        return pulumi.get(self, "until")
+
+    @until.setter
+    def until(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "until", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Day of month for Monthly recurrence. Only used when type is Monthly.
+        """
         return pulumi.get(self, "value")
 
     @value.setter

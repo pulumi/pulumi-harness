@@ -28,6 +28,8 @@ type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourc
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Suffix appended to resources for Kustomize apps.
 	NameSuffix *string `pulumi:"nameSuffix"`
+	// Override the namespace of the Kustomize application.
+	Namespace *string `pulumi:"namespace"`
 	// Version of Kustomize to use for rendering manifests.
 	Version *string `pulumi:"version"`
 }
@@ -58,6 +60,8 @@ type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourc
 	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
 	// Suffix appended to resources for Kustomize apps.
 	NameSuffix pulumi.StringPtrInput `pulumi:"nameSuffix"`
+	// Override the namespace of the Kustomize application.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	// Version of Kustomize to use for rendering manifests.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -188,6 +192,13 @@ func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSo
 	}).(pulumi.StringPtrOutput)
 }
 
+// Override the namespace of the Kustomize application.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize) *string {
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
 // Version of Kustomize to use for rendering manifests.
 func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize) *string {
@@ -286,6 +297,16 @@ func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSo
 			return nil
 		}
 		return v.NameSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Override the namespace of the Kustomize application.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4969,6 +4990,8 @@ type GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomize struct {
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Suffix appended to resources for Kustomize apps.
 	NameSuffix *string `pulumi:"nameSuffix"`
+	// Override the namespace of the Kustomize application.
+	Namespace *string `pulumi:"namespace"`
 	// Version of Kustomize to use for rendering manifests.
 	Version *string `pulumi:"version"`
 }
@@ -4999,6 +5022,8 @@ type GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomizeArgs struc
 	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
 	// Suffix appended to resources for Kustomize apps.
 	NameSuffix pulumi.StringPtrInput `pulumi:"nameSuffix"`
+	// Override the namespace of the Kustomize application.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	// Version of Kustomize to use for rendering manifests.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -5123,6 +5148,11 @@ func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomizeOutput)
 	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomize) *string { return v.NameSuffix }).(pulumi.StringPtrOutput)
 }
 
+// Override the namespace of the Kustomize application.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomizeOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomize) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
 // Version of Kustomize to use for rendering manifests.
 func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomizeOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomize) *string { return v.Version }).(pulumi.StringPtrOutput)
@@ -5219,6 +5249,16 @@ func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomizePtrOutp
 			return nil
 		}
 		return v.NameSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Override the namespace of the Kustomize application.
+func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomizePtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpecSourceKustomize) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -26749,7 +26789,7 @@ func (o VariablesSpecPtrOutput) ValueType() pulumi.StringPtrOutput {
 type WorkspaceConnector struct {
 	// Connector Ref is the reference to the connector
 	ConnectorRef string `pulumi:"connectorRef"`
-	// Type is the connector type of the connector. Supported types: aws, azure, gcp
+	// Type is the connector type of the connector. Supported types: aws, azure, gcp, vault
 	Type string `pulumi:"type"`
 }
 
@@ -26767,7 +26807,7 @@ type WorkspaceConnectorInput interface {
 type WorkspaceConnectorArgs struct {
 	// Connector Ref is the reference to the connector
 	ConnectorRef pulumi.StringInput `pulumi:"connectorRef"`
-	// Type is the connector type of the connector. Supported types: aws, azure, gcp
+	// Type is the connector type of the connector. Supported types: aws, azure, gcp, vault
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -26827,7 +26867,7 @@ func (o WorkspaceConnectorOutput) ConnectorRef() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkspaceConnector) string { return v.ConnectorRef }).(pulumi.StringOutput)
 }
 
-// Type is the connector type of the connector. Supported types: aws, azure, gcp
+// Type is the connector type of the connector. Supported types: aws, azure, gcp, vault
 func (o WorkspaceConnectorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkspaceConnector) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -41244,6 +41284,8 @@ type GetGitopsApplicationsApplicationSpecSourceKustomize struct {
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Suffix appended to resources for kustomize apps.
 	NameSuffix *string `pulumi:"nameSuffix"`
+	// Override the namespace of the Kustomize application.
+	Namespace *string `pulumi:"namespace"`
 	// Version of kustomize to use for rendering manifests.
 	Version *string `pulumi:"version"`
 }
@@ -41274,6 +41316,8 @@ type GetGitopsApplicationsApplicationSpecSourceKustomizeArgs struct {
 	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
 	// Suffix appended to resources for kustomize apps.
 	NameSuffix pulumi.StringPtrInput `pulumi:"nameSuffix"`
+	// Override the namespace of the Kustomize application.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	// Version of kustomize to use for rendering manifests.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -41364,6 +41408,11 @@ func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) NamePrefix() 
 // Suffix appended to resources for kustomize apps.
 func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) NameSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKustomize) *string { return v.NameSuffix }).(pulumi.StringPtrOutput)
+}
+
+// Override the namespace of the Kustomize application.
+func (o GetGitopsApplicationsApplicationSpecSourceKustomizeOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsApplicationsApplicationSpecSourceKustomize) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
 // Version of kustomize to use for rendering manifests.

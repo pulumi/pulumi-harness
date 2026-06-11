@@ -19,7 +19,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string> ConnectorRef { get; set; } = null!;
 
         /// <summary>
-        /// Type is the connector type of the connector. Supported types: aws, azure, gcp
+        /// Type is the connector type of the connector. Supported types: aws, azure, gcp, vault
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

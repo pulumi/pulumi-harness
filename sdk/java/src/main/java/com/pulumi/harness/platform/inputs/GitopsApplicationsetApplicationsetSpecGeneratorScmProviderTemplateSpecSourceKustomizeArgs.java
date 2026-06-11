@@ -124,6 +124,21 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTem
     }
 
     /**
+     * Override the namespace of the Kustomize application.
+     * 
+     */
+    @Import(name="namespace")
+    private @Nullable Output<String> namespace;
+
+    /**
+     * @return Override the namespace of the Kustomize application.
+     * 
+     */
+    public Optional<Output<String>> namespace() {
+        return Optional.ofNullable(this.namespace);
+    }
+
+    /**
      * Version of Kustomize to use for rendering manifests.
      * 
      */
@@ -148,6 +163,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTem
         this.images = $.images;
         this.namePrefix = $.namePrefix;
         this.nameSuffix = $.nameSuffix;
+        this.namespace = $.namespace;
         this.version = $.version;
     }
 
@@ -324,6 +340,27 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTem
          */
         public Builder nameSuffix(String nameSuffix) {
             return nameSuffix(Output.of(nameSuffix));
+        }
+
+        /**
+         * @param namespace Override the namespace of the Kustomize application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder namespace(@Nullable Output<String> namespace) {
+            $.namespace = namespace;
+            return this;
+        }
+
+        /**
+         * @param namespace Override the namespace of the Kustomize application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder namespace(String namespace) {
+            return namespace(Output.of(namespace));
         }
 
         /**

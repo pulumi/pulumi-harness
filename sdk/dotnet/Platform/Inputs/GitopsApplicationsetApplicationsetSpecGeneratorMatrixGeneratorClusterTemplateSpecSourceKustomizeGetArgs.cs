@@ -73,6 +73,12 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string>? NameSuffix { get; set; }
 
         /// <summary>
+        /// Override the namespace of the Kustomize application.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
+        /// <summary>
         /// Version of Kustomize to use for rendering manifests.
         /// </summary>
         [Input("version")]

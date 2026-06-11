@@ -3815,6 +3815,121 @@ export namespace chaos {
         operator: string;
     }
 
+    export interface GetSecurityGovernanceConditionV3FaultSpec {
+        /**
+         * List of fault specifications
+         */
+        faults: outputs.chaos.GetSecurityGovernanceConditionV3FaultSpecFault[];
+        /**
+         * Operator for comparing faults (EQUAL_TO or NOT_EQUAL_TO)
+         */
+        operator: string;
+    }
+
+    export interface GetSecurityGovernanceConditionV3FaultSpecFault {
+        /**
+         * Type of the fault (FAULT or FAULT_GROUP)
+         */
+        faultType: string;
+        /**
+         * Name of the fault
+         */
+        name: string;
+    }
+
+    export interface GetSecurityGovernanceConditionV3K8sSpec {
+        /**
+         * Application specification
+         */
+        applicationSpecs: outputs.chaos.GetSecurityGovernanceConditionV3K8sSpecApplicationSpec[];
+        /**
+         * Chaos service account specification
+         */
+        chaosServiceAccountSpecs: outputs.chaos.GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec[];
+        /**
+         * Infrastructure specification
+         */
+        infraSpecs: outputs.chaos.GetSecurityGovernanceConditionV3K8sSpecInfraSpec[];
+    }
+
+    export interface GetSecurityGovernanceConditionV3K8sSpecApplicationSpec {
+        /**
+         * Operator for application matching (EQUAL_TO or NOT_EQUAL_TO)
+         */
+        operator: string;
+        /**
+         * List of workloads to include/exclude
+         */
+        workloads: outputs.chaos.GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload[];
+    }
+
+    export interface GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload {
+        /**
+         * ID for the application map
+         */
+        applicationMapId: string;
+        /**
+         * Kind of the workload (e.g., deployment, statefulset)
+         */
+        kind: string;
+        /**
+         * Label selector for the workload
+         */
+        label: string;
+        /**
+         * Namespace of the workload
+         */
+        namespace: string;
+        /**
+         * Namespace labels to match against, as key-value pairs
+         */
+        namespaceLabels: {[key: string]: string};
+        /**
+         * List of services associated with the workload
+         */
+        services: string[];
+    }
+
+    export interface GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec {
+        /**
+         * Operator for service account matching (EQUAL_TO or NOT_EQUAL_TO)
+         */
+        operator: string;
+        /**
+         * List of service accounts to include/exclude
+         */
+        serviceAccounts: string[];
+    }
+
+    export interface GetSecurityGovernanceConditionV3K8sSpecInfraSpec {
+        /**
+         * List of infrastructure IDs to apply the condition to
+         */
+        infraIds: string[];
+        /**
+         * Operator for comparing infrastructure IDs (EQUAL_TO or NOT_EQUAL_TO)
+         */
+        operator: string;
+    }
+
+    export interface GetSecurityGovernanceConditionV3MachineSpec {
+        /**
+         * Infrastructure specification
+         */
+        infraSpecs: outputs.chaos.GetSecurityGovernanceConditionV3MachineSpecInfraSpec[];
+    }
+
+    export interface GetSecurityGovernanceConditionV3MachineSpecInfraSpec {
+        /**
+         * List of infrastructure IDs to apply the condition to
+         */
+        infraIds: string[];
+        /**
+         * Operator for comparing infrastructure IDs (EQUAL_TO or NOT_EQUAL_TO)
+         */
+        operator: string;
+    }
+
     export interface GetSecurityGovernanceRuleTimeWindow {
         /**
          * Duration of the time window (e.g., '30m', '2h').
@@ -3849,6 +3964,44 @@ export namespace chaos {
         until: number;
         /**
          * Recurrence value (e.g., interval for daily recurrence).
+         */
+        value: number;
+    }
+
+    export interface GetSecurityGovernanceRuleV3TimeWindow {
+        /**
+         * Duration of the window (e.g., 30m, 1h). Computed from endTime when not set.
+         */
+        duration: string;
+        /**
+         * End of the window as a Unix epoch timestamp in milliseconds. Computed from duration when not set.
+         */
+        endTime: number;
+        /**
+         * Recurrence specification for the time window.
+         */
+        recurrences: outputs.chaos.GetSecurityGovernanceRuleV3TimeWindowRecurrence[];
+        /**
+         * Start of the window as a Unix epoch timestamp in milliseconds.
+         */
+        startTime: number;
+        /**
+         * IANA time zone for the window (e.g., UTC, America/New_York).
+         */
+        timeZone: string;
+    }
+
+    export interface GetSecurityGovernanceRuleV3TimeWindowRecurrence {
+        /**
+         * Recurrence type (None, Daily, Weekly, Monthly, Yearly).
+         */
+        type: string;
+        /**
+         * End of the recurrence as a Unix epoch timestamp in milliseconds. Use -1 for no end.
+         */
+        until: number;
+        /**
+         * Day of month for Monthly recurrence. Only used when type is Monthly.
          */
         value: number;
     }
@@ -4670,6 +4823,121 @@ export namespace chaos {
         operator: string;
     }
 
+    export interface SecurityGovernanceConditionV3FaultSpec {
+        /**
+         * List of fault specifications
+         */
+        faults: outputs.chaos.SecurityGovernanceConditionV3FaultSpecFault[];
+        /**
+         * Operator for comparing faults (EQUAL*TO or NOT*EQUAL_TO)
+         */
+        operator: string;
+    }
+
+    export interface SecurityGovernanceConditionV3FaultSpecFault {
+        /**
+         * Type of the fault (FAULT or FAULT_GROUP)
+         */
+        faultType: string;
+        /**
+         * Name of the fault
+         */
+        name: string;
+    }
+
+    export interface SecurityGovernanceConditionV3K8sSpec {
+        /**
+         * Application specification
+         */
+        applicationSpec?: outputs.chaos.SecurityGovernanceConditionV3K8sSpecApplicationSpec;
+        /**
+         * Chaos service account specification
+         */
+        chaosServiceAccountSpec?: outputs.chaos.SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec;
+        /**
+         * Infrastructure specification
+         */
+        infraSpec?: outputs.chaos.SecurityGovernanceConditionV3K8sSpecInfraSpec;
+    }
+
+    export interface SecurityGovernanceConditionV3K8sSpecApplicationSpec {
+        /**
+         * Operator for application matching (EQUAL*TO or NOT*EQUAL_TO)
+         */
+        operator: string;
+        /**
+         * List of workloads to include/exclude
+         */
+        workloads?: outputs.chaos.SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload[];
+    }
+
+    export interface SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload {
+        /**
+         * ID for the application map
+         */
+        applicationMapId?: string;
+        /**
+         * Kind of the workload (e.g., deployment, statefulset)
+         */
+        kind?: string;
+        /**
+         * Label selector for the workload
+         */
+        label?: string;
+        /**
+         * Namespace of the workload
+         */
+        namespace: string;
+        /**
+         * Namespace labels to match against, as key-value pairs
+         */
+        namespaceLabels?: {[key: string]: string};
+        /**
+         * List of services associated with the workload
+         */
+        services?: string[];
+    }
+
+    export interface SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec {
+        /**
+         * Operator for service account matching (EQUAL*TO or NOT*EQUAL_TO)
+         */
+        operator: string;
+        /**
+         * List of service accounts to include/exclude
+         */
+        serviceAccounts: string[];
+    }
+
+    export interface SecurityGovernanceConditionV3K8sSpecInfraSpec {
+        /**
+         * List of infrastructure IDs to apply the condition to
+         */
+        infraIds: string[];
+        /**
+         * Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+         */
+        operator: string;
+    }
+
+    export interface SecurityGovernanceConditionV3MachineSpec {
+        /**
+         * Infrastructure specification
+         */
+        infraSpec?: outputs.chaos.SecurityGovernanceConditionV3MachineSpecInfraSpec;
+    }
+
+    export interface SecurityGovernanceConditionV3MachineSpecInfraSpec {
+        /**
+         * List of infrastructure IDs to apply the condition to
+         */
+        infraIds: string[];
+        /**
+         * Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+         */
+        operator: string;
+    }
+
     export interface SecurityGovernanceRuleTimeWindow {
         duration: string;
         endTime: number;
@@ -4681,6 +4949,44 @@ export namespace chaos {
     export interface SecurityGovernanceRuleTimeWindowRecurrence {
         type: string;
         until: number;
+        value?: number;
+    }
+
+    export interface SecurityGovernanceRuleV3TimeWindow {
+        /**
+         * Duration of the window (e.g., 30m, 1h). Computed from endTime when not set.
+         */
+        duration: string;
+        /**
+         * End of the window as a Unix epoch timestamp in milliseconds. Computed from duration when not set.
+         */
+        endTime: number;
+        /**
+         * Recurrence specification for the time window.
+         */
+        recurrence?: outputs.chaos.SecurityGovernanceRuleV3TimeWindowRecurrence;
+        /**
+         * Start of the window as a Unix epoch timestamp in milliseconds.
+         */
+        startTime: number;
+        /**
+         * IANA time zone for the window (e.g., UTC, America/New_York).
+         */
+        timeZone: string;
+    }
+
+    export interface SecurityGovernanceRuleV3TimeWindowRecurrence {
+        /**
+         * Recurrence type (None, Daily, Weekly, Monthly, Yearly).
+         */
+        type: string;
+        /**
+         * End of the recurrence as a Unix epoch timestamp in milliseconds. Use -1 for no end.
+         */
+        until: number;
+        /**
+         * Day of month for Monthly recurrence. Only used when type is Monthly.
+         */
         value?: number;
     }
 
@@ -8180,6 +8486,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of kustomize to use for rendering manifests.
          */
         version?: string;
@@ -11143,6 +11453,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of kustomize to use for rendering manifests.
          */
         version?: string;
@@ -11325,7 +11639,7 @@ export namespace platform {
         /**
          * Password of the server of the cluster. Use passwordWo for write-only support (Terraform >= 1.11).
          */
-        password?: string;
+        password: string;
         /**
          * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
          * Password of the server of the cluster. Write-only: never stored in state. Requires Terraform >= 1.11.
@@ -12882,6 +13196,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: string;
@@ -13337,6 +13655,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -13813,6 +14135,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: string;
@@ -14253,6 +14579,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -14806,6 +15136,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: string;
@@ -15261,6 +15595,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -15737,6 +16075,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: string;
@@ -16177,6 +16519,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -16722,6 +17068,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: string;
@@ -17177,6 +17527,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -17653,6 +18007,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: string;
@@ -18093,6 +18451,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -18708,6 +19070,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -19427,6 +19793,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: string;
@@ -19882,6 +20252,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -20431,6 +20805,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: string;
@@ -20886,6 +21264,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -21362,6 +21744,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: string;
@@ -21802,6 +22188,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -22417,6 +22807,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -23136,6 +23530,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: string;
@@ -23591,6 +23989,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -24206,6 +24608,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -24925,6 +25331,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: string;
@@ -25380,6 +25790,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -25937,6 +26351,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: string;
@@ -26392,6 +26810,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -26868,6 +27290,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: string;
@@ -27308,6 +27734,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -27853,6 +28283,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: string;
@@ -28308,6 +28742,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -28784,6 +29222,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: string;
@@ -29224,6 +29666,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -29839,6 +30285,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -30558,6 +31008,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: string;
@@ -31013,6 +31467,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -31562,6 +32020,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: string;
@@ -32017,6 +32479,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -32493,6 +32959,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: string;
@@ -32933,6 +33403,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -33548,6 +34022,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -34267,6 +34745,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: string;
@@ -34722,6 +35204,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -35337,6 +35823,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -36056,6 +36546,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: string;
@@ -36511,6 +37005,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -37126,6 +37624,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -37845,6 +38347,10 @@ export namespace platform {
          */
         nameSuffix?: string;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: string;
@@ -38370,6 +38876,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: string;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: string;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -40780,7 +41290,7 @@ export namespace platform {
          */
         connectorRef: string;
         /**
-         * Type is the connector type of the connector. Supported types: aws, azure, gcp
+         * Type is the connector type of the connector. Supported types: aws, azure, gcp, vault
          */
         type: string;
     }

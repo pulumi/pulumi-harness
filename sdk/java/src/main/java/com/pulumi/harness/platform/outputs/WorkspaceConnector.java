@@ -16,7 +16,7 @@ public final class WorkspaceConnector {
      */
     private String connectorRef;
     /**
-     * @return Type is the connector type of the connector. Supported types: aws, azure, gcp
+     * @return Type is the connector type of the connector. Supported types: aws, azure, gcp, vault
      * 
      */
     private String type;
@@ -30,7 +30,7 @@ public final class WorkspaceConnector {
         return this.connectorRef;
     }
     /**
-     * @return Type is the connector type of the connector. Supported types: aws, azure, gcp
+     * @return Type is the connector type of the connector. Supported types: aws, azure, gcp, vault
      * 
      */
     public String type() {

@@ -43,8 +43,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProbeTemplate{}
 	case "harness:chaos/securityGovernanceCondition:SecurityGovernanceCondition":
 		r = &SecurityGovernanceCondition{}
+	case "harness:chaos/securityGovernanceConditionV3:SecurityGovernanceConditionV3":
+		r = &SecurityGovernanceConditionV3{}
 	case "harness:chaos/securityGovernanceRule:SecurityGovernanceRule":
 		r = &SecurityGovernanceRule{}
+	case "harness:chaos/securityGovernanceRuleV3:SecurityGovernanceRuleV3":
+		r = &SecurityGovernanceRuleV3{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -115,7 +119,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
+		"chaos/securityGovernanceConditionV3",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
 		"chaos/securityGovernanceRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"chaos/securityGovernanceRuleV3",
 		&module{version},
 	)
 }

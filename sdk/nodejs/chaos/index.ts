@@ -75,10 +75,20 @@ export const getSecurityGovernanceCondition: typeof import("./getSecurityGoverna
 export const getSecurityGovernanceConditionOutput: typeof import("./getSecurityGovernanceCondition").getSecurityGovernanceConditionOutput = null as any;
 utilities.lazyLoad(exports, ["getSecurityGovernanceCondition","getSecurityGovernanceConditionOutput"], () => require("./getSecurityGovernanceCondition"));
 
+export { GetSecurityGovernanceConditionV3Args, GetSecurityGovernanceConditionV3Result, GetSecurityGovernanceConditionV3OutputArgs } from "./getSecurityGovernanceConditionV3";
+export const getSecurityGovernanceConditionV3: typeof import("./getSecurityGovernanceConditionV3").getSecurityGovernanceConditionV3 = null as any;
+export const getSecurityGovernanceConditionV3Output: typeof import("./getSecurityGovernanceConditionV3").getSecurityGovernanceConditionV3Output = null as any;
+utilities.lazyLoad(exports, ["getSecurityGovernanceConditionV3","getSecurityGovernanceConditionV3Output"], () => require("./getSecurityGovernanceConditionV3"));
+
 export { GetSecurityGovernanceRuleArgs, GetSecurityGovernanceRuleResult, GetSecurityGovernanceRuleOutputArgs } from "./getSecurityGovernanceRule";
 export const getSecurityGovernanceRule: typeof import("./getSecurityGovernanceRule").getSecurityGovernanceRule = null as any;
 export const getSecurityGovernanceRuleOutput: typeof import("./getSecurityGovernanceRule").getSecurityGovernanceRuleOutput = null as any;
 utilities.lazyLoad(exports, ["getSecurityGovernanceRule","getSecurityGovernanceRuleOutput"], () => require("./getSecurityGovernanceRule"));
+
+export { GetSecurityGovernanceRuleV3Args, GetSecurityGovernanceRuleV3Result, GetSecurityGovernanceRuleV3OutputArgs } from "./getSecurityGovernanceRuleV3";
+export const getSecurityGovernanceRuleV3: typeof import("./getSecurityGovernanceRuleV3").getSecurityGovernanceRuleV3 = null as any;
+export const getSecurityGovernanceRuleV3Output: typeof import("./getSecurityGovernanceRuleV3").getSecurityGovernanceRuleV3Output = null as any;
+utilities.lazyLoad(exports, ["getSecurityGovernanceRuleV3","getSecurityGovernanceRuleV3Output"], () => require("./getSecurityGovernanceRuleV3"));
 
 export { HubArgs, HubState } from "./hub";
 export type Hub = import("./hub").Hub;
@@ -115,10 +125,20 @@ export type SecurityGovernanceCondition = import("./securityGovernanceCondition"
 export const SecurityGovernanceCondition: typeof import("./securityGovernanceCondition").SecurityGovernanceCondition = null as any;
 utilities.lazyLoad(exports, ["SecurityGovernanceCondition"], () => require("./securityGovernanceCondition"));
 
+export { SecurityGovernanceConditionV3Args, SecurityGovernanceConditionV3State } from "./securityGovernanceConditionV3";
+export type SecurityGovernanceConditionV3 = import("./securityGovernanceConditionV3").SecurityGovernanceConditionV3;
+export const SecurityGovernanceConditionV3: typeof import("./securityGovernanceConditionV3").SecurityGovernanceConditionV3 = null as any;
+utilities.lazyLoad(exports, ["SecurityGovernanceConditionV3"], () => require("./securityGovernanceConditionV3"));
+
 export { SecurityGovernanceRuleArgs, SecurityGovernanceRuleState } from "./securityGovernanceRule";
 export type SecurityGovernanceRule = import("./securityGovernanceRule").SecurityGovernanceRule;
 export const SecurityGovernanceRule: typeof import("./securityGovernanceRule").SecurityGovernanceRule = null as any;
 utilities.lazyLoad(exports, ["SecurityGovernanceRule"], () => require("./securityGovernanceRule"));
+
+export { SecurityGovernanceRuleV3Args, SecurityGovernanceRuleV3State } from "./securityGovernanceRuleV3";
+export type SecurityGovernanceRuleV3 = import("./securityGovernanceRuleV3").SecurityGovernanceRuleV3;
+export const SecurityGovernanceRuleV3: typeof import("./securityGovernanceRuleV3").SecurityGovernanceRuleV3 = null as any;
+utilities.lazyLoad(exports, ["SecurityGovernanceRuleV3"], () => require("./securityGovernanceRuleV3"));
 
 
 const _module = {
@@ -147,8 +167,12 @@ const _module = {
                 return new ProbeTemplate(name, <any>undefined, { urn })
             case "harness:chaos/securityGovernanceCondition:SecurityGovernanceCondition":
                 return new SecurityGovernanceCondition(name, <any>undefined, { urn })
+            case "harness:chaos/securityGovernanceConditionV3:SecurityGovernanceConditionV3":
+                return new SecurityGovernanceConditionV3(name, <any>undefined, { urn })
             case "harness:chaos/securityGovernanceRule:SecurityGovernanceRule":
                 return new SecurityGovernanceRule(name, <any>undefined, { urn })
+            case "harness:chaos/securityGovernanceRuleV3:SecurityGovernanceRuleV3":
+                return new SecurityGovernanceRuleV3(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -165,4 +189,6 @@ pulumi.runtime.registerResourceModule("harness", "chaos/imageRegistry", _module)
 pulumi.runtime.registerResourceModule("harness", "chaos/infrastructureV2", _module)
 pulumi.runtime.registerResourceModule("harness", "chaos/probeTemplate", _module)
 pulumi.runtime.registerResourceModule("harness", "chaos/securityGovernanceCondition", _module)
+pulumi.runtime.registerResourceModule("harness", "chaos/securityGovernanceConditionV3", _module)
 pulumi.runtime.registerResourceModule("harness", "chaos/securityGovernanceRule", _module)
+pulumi.runtime.registerResourceModule("harness", "chaos/securityGovernanceRuleV3", _module)

@@ -29,8 +29,12 @@ import com.pulumi.harness.chaos.inputs.GetProbeTemplateArgs;
 import com.pulumi.harness.chaos.inputs.GetProbeTemplatePlainArgs;
 import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceConditionArgs;
 import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceConditionPlainArgs;
+import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceConditionV3Args;
+import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceConditionV3PlainArgs;
 import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceRuleArgs;
 import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceRulePlainArgs;
+import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceRuleV3Args;
+import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceRuleV3PlainArgs;
 import com.pulumi.harness.chaos.outputs.GetActionTemplateResult;
 import com.pulumi.harness.chaos.outputs.GetExperimentResult;
 import com.pulumi.harness.chaos.outputs.GetExperimentTemplateResult;
@@ -41,7 +45,9 @@ import com.pulumi.harness.chaos.outputs.GetImageRegistryResult;
 import com.pulumi.harness.chaos.outputs.GetInfrastructureV2Result;
 import com.pulumi.harness.chaos.outputs.GetProbeTemplateResult;
 import com.pulumi.harness.chaos.outputs.GetSecurityGovernanceConditionResult;
+import com.pulumi.harness.chaos.outputs.GetSecurityGovernanceConditionV3Result;
 import com.pulumi.harness.chaos.outputs.GetSecurityGovernanceRuleResult;
+import com.pulumi.harness.chaos.outputs.GetSecurityGovernanceRuleV3Result;
 import java.util.concurrent.CompletableFuture;
 
 public final class ChaosFunctions {
@@ -2701,6 +2707,266 @@ public final class ChaosFunctions {
         return Deployment.getInstance().invokeAsync("harness:chaos/getSecurityGovernanceCondition:getSecurityGovernanceCondition", TypeShape.of(GetSecurityGovernanceConditionResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Data source for retrieving a Harness Chaos Security Governance Condition (V3 / REST API).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceConditionV3Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Look up a security governance condition (V3) by identity
+     *         final var byIdentity = ChaosFunctions.getSecurityGovernanceConditionV3(GetSecurityGovernanceConditionV3Args.builder()
+     *             .orgId(orgId)
+     *             .projectId(projectId)
+     *             .identity("<condition_id>")
+     *             .build());
+     * 
+     *         // Look up a security governance condition (V3) by name
+     *         final var byName = ChaosFunctions.getSecurityGovernanceConditionV3(GetSecurityGovernanceConditionV3Args.builder()
+     *             .orgId(orgId)
+     *             .projectId(projectId)
+     *             .name("k8s-security-condition")
+     *             .build());
+     * 
+     *         ctx.export("securityGovernanceConditionV3ByIdentity", byIdentity);
+     *         ctx.export("securityGovernanceConditionV3ByName", byName);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSecurityGovernanceConditionV3Result> getSecurityGovernanceConditionV3(GetSecurityGovernanceConditionV3Args args) {
+        return getSecurityGovernanceConditionV3(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness Chaos Security Governance Condition (V3 / REST API).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceConditionV3Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Look up a security governance condition (V3) by identity
+     *         final var byIdentity = ChaosFunctions.getSecurityGovernanceConditionV3(GetSecurityGovernanceConditionV3Args.builder()
+     *             .orgId(orgId)
+     *             .projectId(projectId)
+     *             .identity("<condition_id>")
+     *             .build());
+     * 
+     *         // Look up a security governance condition (V3) by name
+     *         final var byName = ChaosFunctions.getSecurityGovernanceConditionV3(GetSecurityGovernanceConditionV3Args.builder()
+     *             .orgId(orgId)
+     *             .projectId(projectId)
+     *             .name("k8s-security-condition")
+     *             .build());
+     * 
+     *         ctx.export("securityGovernanceConditionV3ByIdentity", byIdentity);
+     *         ctx.export("securityGovernanceConditionV3ByName", byName);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSecurityGovernanceConditionV3Result> getSecurityGovernanceConditionV3Plain(GetSecurityGovernanceConditionV3PlainArgs args) {
+        return getSecurityGovernanceConditionV3Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness Chaos Security Governance Condition (V3 / REST API).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceConditionV3Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Look up a security governance condition (V3) by identity
+     *         final var byIdentity = ChaosFunctions.getSecurityGovernanceConditionV3(GetSecurityGovernanceConditionV3Args.builder()
+     *             .orgId(orgId)
+     *             .projectId(projectId)
+     *             .identity("<condition_id>")
+     *             .build());
+     * 
+     *         // Look up a security governance condition (V3) by name
+     *         final var byName = ChaosFunctions.getSecurityGovernanceConditionV3(GetSecurityGovernanceConditionV3Args.builder()
+     *             .orgId(orgId)
+     *             .projectId(projectId)
+     *             .name("k8s-security-condition")
+     *             .build());
+     * 
+     *         ctx.export("securityGovernanceConditionV3ByIdentity", byIdentity);
+     *         ctx.export("securityGovernanceConditionV3ByName", byName);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSecurityGovernanceConditionV3Result> getSecurityGovernanceConditionV3(GetSecurityGovernanceConditionV3Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:chaos/getSecurityGovernanceConditionV3:getSecurityGovernanceConditionV3", TypeShape.of(GetSecurityGovernanceConditionV3Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Chaos Security Governance Condition (V3 / REST API).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceConditionV3Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Look up a security governance condition (V3) by identity
+     *         final var byIdentity = ChaosFunctions.getSecurityGovernanceConditionV3(GetSecurityGovernanceConditionV3Args.builder()
+     *             .orgId(orgId)
+     *             .projectId(projectId)
+     *             .identity("<condition_id>")
+     *             .build());
+     * 
+     *         // Look up a security governance condition (V3) by name
+     *         final var byName = ChaosFunctions.getSecurityGovernanceConditionV3(GetSecurityGovernanceConditionV3Args.builder()
+     *             .orgId(orgId)
+     *             .projectId(projectId)
+     *             .name("k8s-security-condition")
+     *             .build());
+     * 
+     *         ctx.export("securityGovernanceConditionV3ByIdentity", byIdentity);
+     *         ctx.export("securityGovernanceConditionV3ByName", byName);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSecurityGovernanceConditionV3Result> getSecurityGovernanceConditionV3(GetSecurityGovernanceConditionV3Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:chaos/getSecurityGovernanceConditionV3:getSecurityGovernanceConditionV3", TypeShape.of(GetSecurityGovernanceConditionV3Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Chaos Security Governance Condition (V3 / REST API).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceConditionV3Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Look up a security governance condition (V3) by identity
+     *         final var byIdentity = ChaosFunctions.getSecurityGovernanceConditionV3(GetSecurityGovernanceConditionV3Args.builder()
+     *             .orgId(orgId)
+     *             .projectId(projectId)
+     *             .identity("<condition_id>")
+     *             .build());
+     * 
+     *         // Look up a security governance condition (V3) by name
+     *         final var byName = ChaosFunctions.getSecurityGovernanceConditionV3(GetSecurityGovernanceConditionV3Args.builder()
+     *             .orgId(orgId)
+     *             .projectId(projectId)
+     *             .name("k8s-security-condition")
+     *             .build());
+     * 
+     *         ctx.export("securityGovernanceConditionV3ByIdentity", byIdentity);
+     *         ctx.export("securityGovernanceConditionV3ByName", byName);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSecurityGovernanceConditionV3Result> getSecurityGovernanceConditionV3Plain(GetSecurityGovernanceConditionV3PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:chaos/getSecurityGovernanceConditionV3:getSecurityGovernanceConditionV3", TypeShape.of(GetSecurityGovernanceConditionV3Result.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Data source for retrieving a Harness Chaos Security Governance Rule.
      * 
      * ## Example Usage
@@ -2974,5 +3240,265 @@ public final class ChaosFunctions {
      */
     public static CompletableFuture<GetSecurityGovernanceRuleResult> getSecurityGovernanceRulePlain(GetSecurityGovernanceRulePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:chaos/getSecurityGovernanceRule:getSecurityGovernanceRule", TypeShape.of(GetSecurityGovernanceRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Chaos Security Governance Rule (V3 / REST API).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceRuleV3Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Look up a security governance rule (V3) by identity
+     *         final var byIdentity = ChaosFunctions.getSecurityGovernanceRuleV3(GetSecurityGovernanceRuleV3Args.builder()
+     *             .orgId(orgId)
+     *             .projectId(projectId)
+     *             .identity("<rule_id>")
+     *             .build());
+     * 
+     *         // Look up a security governance rule (V3) by name
+     *         final var byName = ChaosFunctions.getSecurityGovernanceRuleV3(GetSecurityGovernanceRuleV3Args.builder()
+     *             .orgId(orgId)
+     *             .projectId(projectId)
+     *             .name("k8s-security-rule")
+     *             .build());
+     * 
+     *         ctx.export("securityGovernanceRuleV3ByIdentity", byIdentity);
+     *         ctx.export("securityGovernanceRuleV3ByName", byName);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSecurityGovernanceRuleV3Result> getSecurityGovernanceRuleV3(GetSecurityGovernanceRuleV3Args args) {
+        return getSecurityGovernanceRuleV3(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness Chaos Security Governance Rule (V3 / REST API).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceRuleV3Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Look up a security governance rule (V3) by identity
+     *         final var byIdentity = ChaosFunctions.getSecurityGovernanceRuleV3(GetSecurityGovernanceRuleV3Args.builder()
+     *             .orgId(orgId)
+     *             .projectId(projectId)
+     *             .identity("<rule_id>")
+     *             .build());
+     * 
+     *         // Look up a security governance rule (V3) by name
+     *         final var byName = ChaosFunctions.getSecurityGovernanceRuleV3(GetSecurityGovernanceRuleV3Args.builder()
+     *             .orgId(orgId)
+     *             .projectId(projectId)
+     *             .name("k8s-security-rule")
+     *             .build());
+     * 
+     *         ctx.export("securityGovernanceRuleV3ByIdentity", byIdentity);
+     *         ctx.export("securityGovernanceRuleV3ByName", byName);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSecurityGovernanceRuleV3Result> getSecurityGovernanceRuleV3Plain(GetSecurityGovernanceRuleV3PlainArgs args) {
+        return getSecurityGovernanceRuleV3Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness Chaos Security Governance Rule (V3 / REST API).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceRuleV3Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Look up a security governance rule (V3) by identity
+     *         final var byIdentity = ChaosFunctions.getSecurityGovernanceRuleV3(GetSecurityGovernanceRuleV3Args.builder()
+     *             .orgId(orgId)
+     *             .projectId(projectId)
+     *             .identity("<rule_id>")
+     *             .build());
+     * 
+     *         // Look up a security governance rule (V3) by name
+     *         final var byName = ChaosFunctions.getSecurityGovernanceRuleV3(GetSecurityGovernanceRuleV3Args.builder()
+     *             .orgId(orgId)
+     *             .projectId(projectId)
+     *             .name("k8s-security-rule")
+     *             .build());
+     * 
+     *         ctx.export("securityGovernanceRuleV3ByIdentity", byIdentity);
+     *         ctx.export("securityGovernanceRuleV3ByName", byName);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSecurityGovernanceRuleV3Result> getSecurityGovernanceRuleV3(GetSecurityGovernanceRuleV3Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:chaos/getSecurityGovernanceRuleV3:getSecurityGovernanceRuleV3", TypeShape.of(GetSecurityGovernanceRuleV3Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Chaos Security Governance Rule (V3 / REST API).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceRuleV3Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Look up a security governance rule (V3) by identity
+     *         final var byIdentity = ChaosFunctions.getSecurityGovernanceRuleV3(GetSecurityGovernanceRuleV3Args.builder()
+     *             .orgId(orgId)
+     *             .projectId(projectId)
+     *             .identity("<rule_id>")
+     *             .build());
+     * 
+     *         // Look up a security governance rule (V3) by name
+     *         final var byName = ChaosFunctions.getSecurityGovernanceRuleV3(GetSecurityGovernanceRuleV3Args.builder()
+     *             .orgId(orgId)
+     *             .projectId(projectId)
+     *             .name("k8s-security-rule")
+     *             .build());
+     * 
+     *         ctx.export("securityGovernanceRuleV3ByIdentity", byIdentity);
+     *         ctx.export("securityGovernanceRuleV3ByName", byName);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSecurityGovernanceRuleV3Result> getSecurityGovernanceRuleV3(GetSecurityGovernanceRuleV3Args args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:chaos/getSecurityGovernanceRuleV3:getSecurityGovernanceRuleV3", TypeShape.of(GetSecurityGovernanceRuleV3Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Chaos Security Governance Rule (V3 / REST API).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetSecurityGovernanceRuleV3Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Look up a security governance rule (V3) by identity
+     *         final var byIdentity = ChaosFunctions.getSecurityGovernanceRuleV3(GetSecurityGovernanceRuleV3Args.builder()
+     *             .orgId(orgId)
+     *             .projectId(projectId)
+     *             .identity("<rule_id>")
+     *             .build());
+     * 
+     *         // Look up a security governance rule (V3) by name
+     *         final var byName = ChaosFunctions.getSecurityGovernanceRuleV3(GetSecurityGovernanceRuleV3Args.builder()
+     *             .orgId(orgId)
+     *             .projectId(projectId)
+     *             .name("k8s-security-rule")
+     *             .build());
+     * 
+     *         ctx.export("securityGovernanceRuleV3ByIdentity", byIdentity);
+     *         ctx.export("securityGovernanceRuleV3ByName", byName);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSecurityGovernanceRuleV3Result> getSecurityGovernanceRuleV3Plain(GetSecurityGovernanceRuleV3PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:chaos/getSecurityGovernanceRuleV3:getSecurityGovernanceRuleV3", TypeShape.of(GetSecurityGovernanceRuleV3Result.class), args, Utilities.withVersion(options));
     }
 }

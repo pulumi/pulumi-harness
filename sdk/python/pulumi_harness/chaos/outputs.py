@@ -125,8 +125,19 @@ __all__ = [
     'SecurityGovernanceConditionK8sSpecInfraSpec',
     'SecurityGovernanceConditionMachineSpec',
     'SecurityGovernanceConditionMachineSpecInfraSpec',
+    'SecurityGovernanceConditionV3FaultSpec',
+    'SecurityGovernanceConditionV3FaultSpecFault',
+    'SecurityGovernanceConditionV3K8sSpec',
+    'SecurityGovernanceConditionV3K8sSpecApplicationSpec',
+    'SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload',
+    'SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec',
+    'SecurityGovernanceConditionV3K8sSpecInfraSpec',
+    'SecurityGovernanceConditionV3MachineSpec',
+    'SecurityGovernanceConditionV3MachineSpecInfraSpec',
     'SecurityGovernanceRuleTimeWindow',
     'SecurityGovernanceRuleTimeWindowRecurrence',
+    'SecurityGovernanceRuleV3TimeWindow',
+    'SecurityGovernanceRuleV3TimeWindowRecurrence',
     'GetActionTemplateContainerActionResult',
     'GetActionTemplateContainerActionEnvResult',
     'GetActionTemplateContainerActionResourcesResult',
@@ -188,8 +199,19 @@ __all__ = [
     'GetSecurityGovernanceConditionK8sSpecInfraSpecResult',
     'GetSecurityGovernanceConditionMachineSpecResult',
     'GetSecurityGovernanceConditionMachineSpecInfraSpecResult',
+    'GetSecurityGovernanceConditionV3FaultSpecResult',
+    'GetSecurityGovernanceConditionV3FaultSpecFaultResult',
+    'GetSecurityGovernanceConditionV3K8sSpecResult',
+    'GetSecurityGovernanceConditionV3K8sSpecApplicationSpecResult',
+    'GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadResult',
+    'GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecResult',
+    'GetSecurityGovernanceConditionV3K8sSpecInfraSpecResult',
+    'GetSecurityGovernanceConditionV3MachineSpecResult',
+    'GetSecurityGovernanceConditionV3MachineSpecInfraSpecResult',
     'GetSecurityGovernanceRuleTimeWindowResult',
     'GetSecurityGovernanceRuleTimeWindowRecurrenceResult',
+    'GetSecurityGovernanceRuleV3TimeWindowResult',
+    'GetSecurityGovernanceRuleV3TimeWindowRecurrenceResult',
 ]
 
 @pulumi.output_type
@@ -7068,6 +7090,446 @@ class SecurityGovernanceConditionMachineSpecInfraSpec(dict):
 
 
 @pulumi.output_type
+class SecurityGovernanceConditionV3FaultSpec(dict):
+    def __init__(__self__, *,
+                 faults: Sequence['outputs.SecurityGovernanceConditionV3FaultSpecFault'],
+                 operator: _builtins.str):
+        """
+        :param Sequence['SecurityGovernanceConditionV3FaultSpecFaultArgs'] faults: List of fault specifications
+        :param _builtins.str operator: Operator for comparing faults (EQUAL*TO or NOT*EQUAL_TO)
+        """
+        pulumi.set(__self__, "faults", faults)
+        pulumi.set(__self__, "operator", operator)
+
+    @_builtins.property
+    @pulumi.getter
+    def faults(self) -> Sequence['outputs.SecurityGovernanceConditionV3FaultSpecFault']:
+        """
+        List of fault specifications
+        """
+        return pulumi.get(self, "faults")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Operator for comparing faults (EQUAL*TO or NOT*EQUAL_TO)
+        """
+        return pulumi.get(self, "operator")
+
+
+@pulumi.output_type
+class SecurityGovernanceConditionV3FaultSpecFault(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "faultType":
+            suggest = "fault_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGovernanceConditionV3FaultSpecFault. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGovernanceConditionV3FaultSpecFault.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGovernanceConditionV3FaultSpecFault.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fault_type: _builtins.str,
+                 name: _builtins.str):
+        """
+        :param _builtins.str fault_type: Type of the fault (FAULT or FAULT_GROUP)
+        :param _builtins.str name: Name of the fault
+        """
+        pulumi.set(__self__, "fault_type", fault_type)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="faultType")
+    def fault_type(self) -> _builtins.str:
+        """
+        Type of the fault (FAULT or FAULT_GROUP)
+        """
+        return pulumi.get(self, "fault_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the fault
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class SecurityGovernanceConditionV3K8sSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applicationSpec":
+            suggest = "application_spec"
+        elif key == "chaosServiceAccountSpec":
+            suggest = "chaos_service_account_spec"
+        elif key == "infraSpec":
+            suggest = "infra_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGovernanceConditionV3K8sSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGovernanceConditionV3K8sSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGovernanceConditionV3K8sSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 application_spec: Optional['outputs.SecurityGovernanceConditionV3K8sSpecApplicationSpec'] = None,
+                 chaos_service_account_spec: Optional['outputs.SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec'] = None,
+                 infra_spec: Optional['outputs.SecurityGovernanceConditionV3K8sSpecInfraSpec'] = None):
+        """
+        :param 'SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs' application_spec: Application specification
+        :param 'SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs' chaos_service_account_spec: Chaos service account specification
+        :param 'SecurityGovernanceConditionV3K8sSpecInfraSpecArgs' infra_spec: Infrastructure specification
+        """
+        if application_spec is not None:
+            pulumi.set(__self__, "application_spec", application_spec)
+        if chaos_service_account_spec is not None:
+            pulumi.set(__self__, "chaos_service_account_spec", chaos_service_account_spec)
+        if infra_spec is not None:
+            pulumi.set(__self__, "infra_spec", infra_spec)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationSpec")
+    def application_spec(self) -> Optional['outputs.SecurityGovernanceConditionV3K8sSpecApplicationSpec']:
+        """
+        Application specification
+        """
+        return pulumi.get(self, "application_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="chaosServiceAccountSpec")
+    def chaos_service_account_spec(self) -> Optional['outputs.SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec']:
+        """
+        Chaos service account specification
+        """
+        return pulumi.get(self, "chaos_service_account_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="infraSpec")
+    def infra_spec(self) -> Optional['outputs.SecurityGovernanceConditionV3K8sSpecInfraSpec']:
+        """
+        Infrastructure specification
+        """
+        return pulumi.get(self, "infra_spec")
+
+
+@pulumi.output_type
+class SecurityGovernanceConditionV3K8sSpecApplicationSpec(dict):
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 workloads: Optional[Sequence['outputs.SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload']] = None):
+        """
+        :param _builtins.str operator: Operator for application matching (EQUAL*TO or NOT*EQUAL_TO)
+        :param Sequence['SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs'] workloads: List of workloads to include/exclude
+        """
+        pulumi.set(__self__, "operator", operator)
+        if workloads is not None:
+            pulumi.set(__self__, "workloads", workloads)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Operator for application matching (EQUAL*TO or NOT*EQUAL_TO)
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def workloads(self) -> Optional[Sequence['outputs.SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload']]:
+        """
+        List of workloads to include/exclude
+        """
+        return pulumi.get(self, "workloads")
+
+
+@pulumi.output_type
+class SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applicationMapId":
+            suggest = "application_map_id"
+        elif key == "namespaceLabels":
+            suggest = "namespace_labels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 namespace: _builtins.str,
+                 application_map_id: Optional[_builtins.str] = None,
+                 kind: Optional[_builtins.str] = None,
+                 label: Optional[_builtins.str] = None,
+                 namespace_labels: Optional[Mapping[str, _builtins.str]] = None,
+                 services: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str namespace: Namespace of the workload
+        :param _builtins.str application_map_id: ID for the application map
+        :param _builtins.str kind: Kind of the workload (e.g., deployment, statefulset)
+        :param _builtins.str label: Label selector for the workload
+        :param Mapping[str, _builtins.str] namespace_labels: Namespace labels to match against, as key-value pairs
+        :param Sequence[_builtins.str] services: List of services associated with the workload
+        """
+        pulumi.set(__self__, "namespace", namespace)
+        if application_map_id is not None:
+            pulumi.set(__self__, "application_map_id", application_map_id)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if namespace_labels is not None:
+            pulumi.set(__self__, "namespace_labels", namespace_labels)
+        if services is not None:
+            pulumi.set(__self__, "services", services)
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> _builtins.str:
+        """
+        Namespace of the workload
+        """
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter(name="applicationMapId")
+    def application_map_id(self) -> Optional[_builtins.str]:
+        """
+        ID for the application map
+        """
+        return pulumi.get(self, "application_map_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def kind(self) -> Optional[_builtins.str]:
+        """
+        Kind of the workload (e.g., deployment, statefulset)
+        """
+        return pulumi.get(self, "kind")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> Optional[_builtins.str]:
+        """
+        Label selector for the workload
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter(name="namespaceLabels")
+    def namespace_labels(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Namespace labels to match against, as key-value pairs
+        """
+        return pulumi.get(self, "namespace_labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def services(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of services associated with the workload
+        """
+        return pulumi.get(self, "services")
+
+
+@pulumi.output_type
+class SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccounts":
+            suggest = "service_accounts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 service_accounts: Sequence[_builtins.str]):
+        """
+        :param _builtins.str operator: Operator for service account matching (EQUAL*TO or NOT*EQUAL_TO)
+        :param Sequence[_builtins.str] service_accounts: List of service accounts to include/exclude
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "service_accounts", service_accounts)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Operator for service account matching (EQUAL*TO or NOT*EQUAL_TO)
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccounts")
+    def service_accounts(self) -> Sequence[_builtins.str]:
+        """
+        List of service accounts to include/exclude
+        """
+        return pulumi.get(self, "service_accounts")
+
+
+@pulumi.output_type
+class SecurityGovernanceConditionV3K8sSpecInfraSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "infraIds":
+            suggest = "infra_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGovernanceConditionV3K8sSpecInfraSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGovernanceConditionV3K8sSpecInfraSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGovernanceConditionV3K8sSpecInfraSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 infra_ids: Sequence[_builtins.str],
+                 operator: _builtins.str):
+        """
+        :param Sequence[_builtins.str] infra_ids: List of infrastructure IDs to apply the condition to
+        :param _builtins.str operator: Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+        """
+        pulumi.set(__self__, "infra_ids", infra_ids)
+        pulumi.set(__self__, "operator", operator)
+
+    @_builtins.property
+    @pulumi.getter(name="infraIds")
+    def infra_ids(self) -> Sequence[_builtins.str]:
+        """
+        List of infrastructure IDs to apply the condition to
+        """
+        return pulumi.get(self, "infra_ids")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+        """
+        return pulumi.get(self, "operator")
+
+
+@pulumi.output_type
+class SecurityGovernanceConditionV3MachineSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "infraSpec":
+            suggest = "infra_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGovernanceConditionV3MachineSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGovernanceConditionV3MachineSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGovernanceConditionV3MachineSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 infra_spec: Optional['outputs.SecurityGovernanceConditionV3MachineSpecInfraSpec'] = None):
+        """
+        :param 'SecurityGovernanceConditionV3MachineSpecInfraSpecArgs' infra_spec: Infrastructure specification
+        """
+        if infra_spec is not None:
+            pulumi.set(__self__, "infra_spec", infra_spec)
+
+    @_builtins.property
+    @pulumi.getter(name="infraSpec")
+    def infra_spec(self) -> Optional['outputs.SecurityGovernanceConditionV3MachineSpecInfraSpec']:
+        """
+        Infrastructure specification
+        """
+        return pulumi.get(self, "infra_spec")
+
+
+@pulumi.output_type
+class SecurityGovernanceConditionV3MachineSpecInfraSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "infraIds":
+            suggest = "infra_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGovernanceConditionV3MachineSpecInfraSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGovernanceConditionV3MachineSpecInfraSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGovernanceConditionV3MachineSpecInfraSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 infra_ids: Sequence[_builtins.str],
+                 operator: _builtins.str):
+        """
+        :param Sequence[_builtins.str] infra_ids: List of infrastructure IDs to apply the condition to
+        :param _builtins.str operator: Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+        """
+        pulumi.set(__self__, "infra_ids", infra_ids)
+        pulumi.set(__self__, "operator", operator)
+
+    @_builtins.property
+    @pulumi.getter(name="infraIds")
+    def infra_ids(self) -> Sequence[_builtins.str]:
+        """
+        List of infrastructure IDs to apply the condition to
+        """
+        return pulumi.get(self, "infra_ids")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+        """
+        return pulumi.get(self, "operator")
+
+
+@pulumi.output_type
 class SecurityGovernanceRuleTimeWindow(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -7155,6 +7617,133 @@ class SecurityGovernanceRuleTimeWindowRecurrence(dict):
     @_builtins.property
     @pulumi.getter
     def value(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class SecurityGovernanceRuleV3TimeWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "startTime":
+            suggest = "start_time"
+        elif key == "timeZone":
+            suggest = "time_zone"
+        elif key == "endTime":
+            suggest = "end_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGovernanceRuleV3TimeWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGovernanceRuleV3TimeWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGovernanceRuleV3TimeWindow.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 start_time: _builtins.int,
+                 time_zone: _builtins.str,
+                 duration: Optional[_builtins.str] = None,
+                 end_time: Optional[_builtins.int] = None,
+                 recurrence: Optional['outputs.SecurityGovernanceRuleV3TimeWindowRecurrence'] = None):
+        """
+        :param _builtins.int start_time: Start of the window as a Unix epoch timestamp in milliseconds.
+        :param _builtins.str time_zone: IANA time zone for the window (e.g., UTC, America/New_York).
+        :param _builtins.str duration: Duration of the window (e.g., 30m, 1h). Computed from end_time when not set.
+        :param _builtins.int end_time: End of the window as a Unix epoch timestamp in milliseconds. Computed from duration when not set.
+        :param 'SecurityGovernanceRuleV3TimeWindowRecurrenceArgs' recurrence: Recurrence specification for the time window.
+        """
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "time_zone", time_zone)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if recurrence is not None:
+            pulumi.set(__self__, "recurrence", recurrence)
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> _builtins.int:
+        """
+        Start of the window as a Unix epoch timestamp in milliseconds.
+        """
+        return pulumi.get(self, "start_time")
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> _builtins.str:
+        """
+        IANA time zone for the window (e.g., UTC, America/New_York).
+        """
+        return pulumi.get(self, "time_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> Optional[_builtins.str]:
+        """
+        Duration of the window (e.g., 30m, 1h). Computed from end_time when not set.
+        """
+        return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[_builtins.int]:
+        """
+        End of the window as a Unix epoch timestamp in milliseconds. Computed from duration when not set.
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def recurrence(self) -> Optional['outputs.SecurityGovernanceRuleV3TimeWindowRecurrence']:
+        """
+        Recurrence specification for the time window.
+        """
+        return pulumi.get(self, "recurrence")
+
+
+@pulumi.output_type
+class SecurityGovernanceRuleV3TimeWindowRecurrence(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 until: _builtins.int,
+                 value: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str type: Recurrence type (None, Daily, Weekly, Monthly, Yearly).
+        :param _builtins.int until: End of the recurrence as a Unix epoch timestamp in milliseconds. Use -1 for no end.
+        :param _builtins.int value: Day of month for Monthly recurrence. Only used when type is Monthly.
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "until", until)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Recurrence type (None, Daily, Weekly, Monthly, Yearly).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def until(self) -> _builtins.int:
+        """
+        End of the recurrence as a Unix epoch timestamp in milliseconds. Use -1 for no end.
+        """
+        return pulumi.get(self, "until")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.int]:
+        """
+        Day of month for Monthly recurrence. Only used when type is Monthly.
+        """
         return pulumi.get(self, "value")
 
 
@@ -9896,6 +10485,311 @@ class GetSecurityGovernanceConditionMachineSpecInfraSpecResult(dict):
 
 
 @pulumi.output_type
+class GetSecurityGovernanceConditionV3FaultSpecResult(dict):
+    def __init__(__self__, *,
+                 faults: Sequence['outputs.GetSecurityGovernanceConditionV3FaultSpecFaultResult'],
+                 operator: _builtins.str):
+        """
+        :param Sequence['GetSecurityGovernanceConditionV3FaultSpecFaultArgs'] faults: List of fault specifications
+        :param _builtins.str operator: Operator for comparing faults (EQUAL_TO or NOT_EQUAL_TO)
+        """
+        pulumi.set(__self__, "faults", faults)
+        pulumi.set(__self__, "operator", operator)
+
+    @_builtins.property
+    @pulumi.getter
+    def faults(self) -> Sequence['outputs.GetSecurityGovernanceConditionV3FaultSpecFaultResult']:
+        """
+        List of fault specifications
+        """
+        return pulumi.get(self, "faults")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Operator for comparing faults (EQUAL_TO or NOT_EQUAL_TO)
+        """
+        return pulumi.get(self, "operator")
+
+
+@pulumi.output_type
+class GetSecurityGovernanceConditionV3FaultSpecFaultResult(dict):
+    def __init__(__self__, *,
+                 fault_type: _builtins.str,
+                 name: _builtins.str):
+        """
+        :param _builtins.str fault_type: Type of the fault (FAULT or FAULT_GROUP)
+        :param _builtins.str name: Name of the fault
+        """
+        pulumi.set(__self__, "fault_type", fault_type)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="faultType")
+    def fault_type(self) -> _builtins.str:
+        """
+        Type of the fault (FAULT or FAULT_GROUP)
+        """
+        return pulumi.get(self, "fault_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the fault
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetSecurityGovernanceConditionV3K8sSpecResult(dict):
+    def __init__(__self__, *,
+                 application_specs: Sequence['outputs.GetSecurityGovernanceConditionV3K8sSpecApplicationSpecResult'],
+                 chaos_service_account_specs: Sequence['outputs.GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecResult'],
+                 infra_specs: Sequence['outputs.GetSecurityGovernanceConditionV3K8sSpecInfraSpecResult']):
+        """
+        :param Sequence['GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArgs'] application_specs: Application specification
+        :param Sequence['GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs'] chaos_service_account_specs: Chaos service account specification
+        :param Sequence['GetSecurityGovernanceConditionV3K8sSpecInfraSpecArgs'] infra_specs: Infrastructure specification
+        """
+        pulumi.set(__self__, "application_specs", application_specs)
+        pulumi.set(__self__, "chaos_service_account_specs", chaos_service_account_specs)
+        pulumi.set(__self__, "infra_specs", infra_specs)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationSpecs")
+    def application_specs(self) -> Sequence['outputs.GetSecurityGovernanceConditionV3K8sSpecApplicationSpecResult']:
+        """
+        Application specification
+        """
+        return pulumi.get(self, "application_specs")
+
+    @_builtins.property
+    @pulumi.getter(name="chaosServiceAccountSpecs")
+    def chaos_service_account_specs(self) -> Sequence['outputs.GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecResult']:
+        """
+        Chaos service account specification
+        """
+        return pulumi.get(self, "chaos_service_account_specs")
+
+    @_builtins.property
+    @pulumi.getter(name="infraSpecs")
+    def infra_specs(self) -> Sequence['outputs.GetSecurityGovernanceConditionV3K8sSpecInfraSpecResult']:
+        """
+        Infrastructure specification
+        """
+        return pulumi.get(self, "infra_specs")
+
+
+@pulumi.output_type
+class GetSecurityGovernanceConditionV3K8sSpecApplicationSpecResult(dict):
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 workloads: Sequence['outputs.GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadResult']):
+        """
+        :param _builtins.str operator: Operator for application matching (EQUAL_TO or NOT_EQUAL_TO)
+        :param Sequence['GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs'] workloads: List of workloads to include/exclude
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "workloads", workloads)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Operator for application matching (EQUAL_TO or NOT_EQUAL_TO)
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def workloads(self) -> Sequence['outputs.GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadResult']:
+        """
+        List of workloads to include/exclude
+        """
+        return pulumi.get(self, "workloads")
+
+
+@pulumi.output_type
+class GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadResult(dict):
+    def __init__(__self__, *,
+                 application_map_id: _builtins.str,
+                 kind: _builtins.str,
+                 label: _builtins.str,
+                 namespace: _builtins.str,
+                 namespace_labels: Mapping[str, _builtins.str],
+                 services: Sequence[_builtins.str]):
+        """
+        :param _builtins.str application_map_id: ID for the application map
+        :param _builtins.str kind: Kind of the workload (e.g., deployment, statefulset)
+        :param _builtins.str label: Label selector for the workload
+        :param _builtins.str namespace: Namespace of the workload
+        :param Mapping[str, _builtins.str] namespace_labels: Namespace labels to match against, as key-value pairs
+        :param Sequence[_builtins.str] services: List of services associated with the workload
+        """
+        pulumi.set(__self__, "application_map_id", application_map_id)
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "namespace_labels", namespace_labels)
+        pulumi.set(__self__, "services", services)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationMapId")
+    def application_map_id(self) -> _builtins.str:
+        """
+        ID for the application map
+        """
+        return pulumi.get(self, "application_map_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def kind(self) -> _builtins.str:
+        """
+        Kind of the workload (e.g., deployment, statefulset)
+        """
+        return pulumi.get(self, "kind")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        Label selector for the workload
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> _builtins.str:
+        """
+        Namespace of the workload
+        """
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter(name="namespaceLabels")
+    def namespace_labels(self) -> Mapping[str, _builtins.str]:
+        """
+        Namespace labels to match against, as key-value pairs
+        """
+        return pulumi.get(self, "namespace_labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def services(self) -> Sequence[_builtins.str]:
+        """
+        List of services associated with the workload
+        """
+        return pulumi.get(self, "services")
+
+
+@pulumi.output_type
+class GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecResult(dict):
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 service_accounts: Sequence[_builtins.str]):
+        """
+        :param _builtins.str operator: Operator for service account matching (EQUAL_TO or NOT_EQUAL_TO)
+        :param Sequence[_builtins.str] service_accounts: List of service accounts to include/exclude
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "service_accounts", service_accounts)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Operator for service account matching (EQUAL_TO or NOT_EQUAL_TO)
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccounts")
+    def service_accounts(self) -> Sequence[_builtins.str]:
+        """
+        List of service accounts to include/exclude
+        """
+        return pulumi.get(self, "service_accounts")
+
+
+@pulumi.output_type
+class GetSecurityGovernanceConditionV3K8sSpecInfraSpecResult(dict):
+    def __init__(__self__, *,
+                 infra_ids: Sequence[_builtins.str],
+                 operator: _builtins.str):
+        """
+        :param Sequence[_builtins.str] infra_ids: List of infrastructure IDs to apply the condition to
+        :param _builtins.str operator: Operator for comparing infrastructure IDs (EQUAL_TO or NOT_EQUAL_TO)
+        """
+        pulumi.set(__self__, "infra_ids", infra_ids)
+        pulumi.set(__self__, "operator", operator)
+
+    @_builtins.property
+    @pulumi.getter(name="infraIds")
+    def infra_ids(self) -> Sequence[_builtins.str]:
+        """
+        List of infrastructure IDs to apply the condition to
+        """
+        return pulumi.get(self, "infra_ids")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Operator for comparing infrastructure IDs (EQUAL_TO or NOT_EQUAL_TO)
+        """
+        return pulumi.get(self, "operator")
+
+
+@pulumi.output_type
+class GetSecurityGovernanceConditionV3MachineSpecResult(dict):
+    def __init__(__self__, *,
+                 infra_specs: Sequence['outputs.GetSecurityGovernanceConditionV3MachineSpecInfraSpecResult']):
+        """
+        :param Sequence['GetSecurityGovernanceConditionV3MachineSpecInfraSpecArgs'] infra_specs: Infrastructure specification
+        """
+        pulumi.set(__self__, "infra_specs", infra_specs)
+
+    @_builtins.property
+    @pulumi.getter(name="infraSpecs")
+    def infra_specs(self) -> Sequence['outputs.GetSecurityGovernanceConditionV3MachineSpecInfraSpecResult']:
+        """
+        Infrastructure specification
+        """
+        return pulumi.get(self, "infra_specs")
+
+
+@pulumi.output_type
+class GetSecurityGovernanceConditionV3MachineSpecInfraSpecResult(dict):
+    def __init__(__self__, *,
+                 infra_ids: Sequence[_builtins.str],
+                 operator: _builtins.str):
+        """
+        :param Sequence[_builtins.str] infra_ids: List of infrastructure IDs to apply the condition to
+        :param _builtins.str operator: Operator for comparing infrastructure IDs (EQUAL_TO or NOT_EQUAL_TO)
+        """
+        pulumi.set(__self__, "infra_ids", infra_ids)
+        pulumi.set(__self__, "operator", operator)
+
+    @_builtins.property
+    @pulumi.getter(name="infraIds")
+    def infra_ids(self) -> Sequence[_builtins.str]:
+        """
+        List of infrastructure IDs to apply the condition to
+        """
+        return pulumi.get(self, "infra_ids")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Operator for comparing infrastructure IDs (EQUAL_TO or NOT_EQUAL_TO)
+        """
+        return pulumi.get(self, "operator")
+
+
+@pulumi.output_type
 class GetSecurityGovernanceRuleTimeWindowResult(dict):
     def __init__(__self__, *,
                  duration: _builtins.str,
@@ -9993,6 +10887,108 @@ class GetSecurityGovernanceRuleTimeWindowRecurrenceResult(dict):
     def value(self) -> _builtins.int:
         """
         Recurrence value (e.g., interval for daily recurrence).
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetSecurityGovernanceRuleV3TimeWindowResult(dict):
+    def __init__(__self__, *,
+                 duration: _builtins.str,
+                 end_time: _builtins.int,
+                 recurrences: Sequence['outputs.GetSecurityGovernanceRuleV3TimeWindowRecurrenceResult'],
+                 start_time: _builtins.int,
+                 time_zone: _builtins.str):
+        """
+        :param _builtins.str duration: Duration of the window (e.g., 30m, 1h). Computed from end_time when not set.
+        :param _builtins.int end_time: End of the window as a Unix epoch timestamp in milliseconds. Computed from duration when not set.
+        :param Sequence['GetSecurityGovernanceRuleV3TimeWindowRecurrenceArgs'] recurrences: Recurrence specification for the time window.
+        :param _builtins.int start_time: Start of the window as a Unix epoch timestamp in milliseconds.
+        :param _builtins.str time_zone: IANA time zone for the window (e.g., UTC, America/New_York).
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "recurrences", recurrences)
+        pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "time_zone", time_zone)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> _builtins.str:
+        """
+        Duration of the window (e.g., 30m, 1h). Computed from end_time when not set.
+        """
+        return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> _builtins.int:
+        """
+        End of the window as a Unix epoch timestamp in milliseconds. Computed from duration when not set.
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def recurrences(self) -> Sequence['outputs.GetSecurityGovernanceRuleV3TimeWindowRecurrenceResult']:
+        """
+        Recurrence specification for the time window.
+        """
+        return pulumi.get(self, "recurrences")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> _builtins.int:
+        """
+        Start of the window as a Unix epoch timestamp in milliseconds.
+        """
+        return pulumi.get(self, "start_time")
+
+    @_builtins.property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> _builtins.str:
+        """
+        IANA time zone for the window (e.g., UTC, America/New_York).
+        """
+        return pulumi.get(self, "time_zone")
+
+
+@pulumi.output_type
+class GetSecurityGovernanceRuleV3TimeWindowRecurrenceResult(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 until: _builtins.int,
+                 value: _builtins.int):
+        """
+        :param _builtins.str type: Recurrence type (None, Daily, Weekly, Monthly, Yearly).
+        :param _builtins.int until: End of the recurrence as a Unix epoch timestamp in milliseconds. Use -1 for no end.
+        :param _builtins.int value: Day of month for Monthly recurrence. Only used when type is Monthly.
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "until", until)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Recurrence type (None, Daily, Weekly, Monthly, Yearly).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def until(self) -> _builtins.int:
+        """
+        End of the recurrence as a Unix epoch timestamp in milliseconds. Use -1 for no end.
+        """
+        return pulumi.get(self, "until")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.int:
+        """
+        Day of month for Monthly recurrence. Only used when type is Monthly.
         """
         return pulumi.get(self, "value")
 
