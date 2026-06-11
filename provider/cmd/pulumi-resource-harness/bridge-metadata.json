@@ -850,8 +850,111 @@
                     }
                 }
             },
+            "harness_chaos_security_governance_condition_v3": {
+                "current": "harness:chaos/securityGovernanceConditionV3:SecurityGovernanceConditionV3",
+                "fields": {
+                    "fault_spec": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "faults": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "k8s_spec": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "application_spec": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "workloads": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "services": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "chaos_service_account_spec": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "service_accounts": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "infra_spec": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "infra_ids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "machine_spec": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "infra_spec": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "infra_ids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_chaos_security_governance_rule": {
                 "current": "harness:chaos/securityGovernanceRule:SecurityGovernanceRule",
+                "fields": {
+                    "condition_ids": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "time_windows": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "recurrence": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "user_group_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_security_governance_rule_v3": {
+                "current": "harness:chaos/securityGovernanceRuleV3:SecurityGovernanceRuleV3",
                 "fields": {
                     "condition_ids": {
                         "maxItemsOne": false
@@ -16761,8 +16864,111 @@
                     }
                 }
             },
+            "harness_chaos_security_governance_condition_v3": {
+                "current": "harness:chaos/getSecurityGovernanceConditionV3:getSecurityGovernanceConditionV3",
+                "fields": {
+                    "fault_spec": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "faults": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "k8s_spec": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "application_spec": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "workloads": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "services": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "chaos_service_account_spec": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "service_accounts": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "infra_spec": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "infra_ids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "machine_spec": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "infra_spec": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "infra_ids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_chaos_security_governance_rule": {
                 "current": "harness:chaos/getSecurityGovernanceRule:getSecurityGovernanceRule",
+                "fields": {
+                    "condition_ids": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "time_windows": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "recurrence": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "user_group_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_chaos_security_governance_rule_v3": {
+                "current": "harness:chaos/getSecurityGovernanceRuleV3:getSecurityGovernanceRuleV3",
                 "fields": {
                     "condition_ids": {
                         "maxItemsOne": false
