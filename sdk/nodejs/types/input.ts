@@ -5034,6 +5034,121 @@ export namespace chaos {
         operator: pulumi.Input<string>;
     }
 
+    export interface SecurityGovernanceConditionV3FaultSpec {
+        /**
+         * List of fault specifications
+         */
+        faults: pulumi.Input<pulumi.Input<inputs.chaos.SecurityGovernanceConditionV3FaultSpecFault>[]>;
+        /**
+         * Operator for comparing faults (EQUAL*TO or NOT*EQUAL_TO)
+         */
+        operator: pulumi.Input<string>;
+    }
+
+    export interface SecurityGovernanceConditionV3FaultSpecFault {
+        /**
+         * Type of the fault (FAULT or FAULT_GROUP)
+         */
+        faultType: pulumi.Input<string>;
+        /**
+         * Name of the fault
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface SecurityGovernanceConditionV3K8sSpec {
+        /**
+         * Application specification
+         */
+        applicationSpec?: pulumi.Input<inputs.chaos.SecurityGovernanceConditionV3K8sSpecApplicationSpec | undefined>;
+        /**
+         * Chaos service account specification
+         */
+        chaosServiceAccountSpec?: pulumi.Input<inputs.chaos.SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec | undefined>;
+        /**
+         * Infrastructure specification
+         */
+        infraSpec?: pulumi.Input<inputs.chaos.SecurityGovernanceConditionV3K8sSpecInfraSpec | undefined>;
+    }
+
+    export interface SecurityGovernanceConditionV3K8sSpecApplicationSpec {
+        /**
+         * Operator for application matching (EQUAL*TO or NOT*EQUAL_TO)
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * List of workloads to include/exclude
+         */
+        workloads?: pulumi.Input<pulumi.Input<inputs.chaos.SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload>[] | undefined>;
+    }
+
+    export interface SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload {
+        /**
+         * ID for the application map
+         */
+        applicationMapId?: pulumi.Input<string | undefined>;
+        /**
+         * Kind of the workload (e.g., deployment, statefulset)
+         */
+        kind?: pulumi.Input<string | undefined>;
+        /**
+         * Label selector for the workload
+         */
+        label?: pulumi.Input<string | undefined>;
+        /**
+         * Namespace of the workload
+         */
+        namespace: pulumi.Input<string>;
+        /**
+         * Namespace labels to match against, as key-value pairs
+         */
+        namespaceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        /**
+         * List of services associated with the workload
+         */
+        services?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec {
+        /**
+         * Operator for service account matching (EQUAL*TO or NOT*EQUAL_TO)
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * List of service accounts to include/exclude
+         */
+        serviceAccounts: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface SecurityGovernanceConditionV3K8sSpecInfraSpec {
+        /**
+         * List of infrastructure IDs to apply the condition to
+         */
+        infraIds: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+         */
+        operator: pulumi.Input<string>;
+    }
+
+    export interface SecurityGovernanceConditionV3MachineSpec {
+        /**
+         * Infrastructure specification
+         */
+        infraSpec?: pulumi.Input<inputs.chaos.SecurityGovernanceConditionV3MachineSpecInfraSpec | undefined>;
+    }
+
+    export interface SecurityGovernanceConditionV3MachineSpecInfraSpec {
+        /**
+         * List of infrastructure IDs to apply the condition to
+         */
+        infraIds: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+         */
+        operator: pulumi.Input<string>;
+    }
+
     export interface SecurityGovernanceRuleTimeWindow {
         duration?: pulumi.Input<string | undefined>;
         endTime?: pulumi.Input<number | undefined>;
@@ -5045,6 +5160,44 @@ export namespace chaos {
     export interface SecurityGovernanceRuleTimeWindowRecurrence {
         type: pulumi.Input<string>;
         until: pulumi.Input<number>;
+        value?: pulumi.Input<number | undefined>;
+    }
+
+    export interface SecurityGovernanceRuleV3TimeWindow {
+        /**
+         * Duration of the window (e.g., 30m, 1h). Computed from endTime when not set.
+         */
+        duration?: pulumi.Input<string | undefined>;
+        /**
+         * End of the window as a Unix epoch timestamp in milliseconds. Computed from duration when not set.
+         */
+        endTime?: pulumi.Input<number | undefined>;
+        /**
+         * Recurrence specification for the time window.
+         */
+        recurrence?: pulumi.Input<inputs.chaos.SecurityGovernanceRuleV3TimeWindowRecurrence | undefined>;
+        /**
+         * Start of the window as a Unix epoch timestamp in milliseconds.
+         */
+        startTime: pulumi.Input<number>;
+        /**
+         * IANA time zone for the window (e.g., UTC, America/New_York).
+         */
+        timeZone: pulumi.Input<string>;
+    }
+
+    export interface SecurityGovernanceRuleV3TimeWindowRecurrence {
+        /**
+         * Recurrence type (None, Daily, Weekly, Monthly, Yearly).
+         */
+        type: pulumi.Input<string>;
+        /**
+         * End of the recurrence as a Unix epoch timestamp in milliseconds. Use -1 for no end.
+         */
+        until: pulumi.Input<number>;
+        /**
+         * Day of month for Monthly recurrence. Only used when type is Monthly.
+         */
         value?: pulumi.Input<number | undefined>;
     }
 }
@@ -9260,6 +9413,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -10999,6 +11156,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -11454,6 +11615,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -11930,6 +12095,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -12370,6 +12539,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -12923,6 +13096,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -13378,6 +13555,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -13854,6 +14035,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -14294,6 +14479,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -14839,6 +15028,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -15294,6 +15487,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -15770,6 +15967,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -16210,6 +16411,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -16825,6 +17030,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -17544,6 +17753,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -17999,6 +18212,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -18548,6 +18765,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -19003,6 +19224,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -19479,6 +19704,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -19919,6 +20148,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -20534,6 +20767,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -21253,6 +21490,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -21708,6 +21949,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -22323,6 +22568,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -23042,6 +23291,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -23497,6 +23750,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -24054,6 +24311,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -24509,6 +24770,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -24985,6 +25250,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -25425,6 +25694,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -25970,6 +26243,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -26425,6 +26702,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -26901,6 +27182,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -27341,6 +27626,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -27956,6 +28245,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -28675,6 +28968,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -29130,6 +29427,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -29679,6 +29980,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -30134,6 +30439,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -30610,6 +30919,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -31050,6 +31363,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -31665,6 +31982,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -32384,6 +32705,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -32839,6 +33164,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -33454,6 +33783,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -34173,6 +34506,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -34628,6 +34965,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -35243,6 +35584,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -35962,6 +36307,10 @@ export namespace platform {
          */
         nameSuffix?: pulumi.Input<string | undefined>;
         /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
          * Version of Kustomize to use for rendering manifests.
          */
         version?: pulumi.Input<string | undefined>;
@@ -36487,6 +36836,10 @@ export namespace platform {
          * Suffix appended to resources for Kustomize apps.
          */
         nameSuffix?: pulumi.Input<string | undefined>;
+        /**
+         * Override the namespace of the Kustomize application.
+         */
+        namespace?: pulumi.Input<string | undefined>;
         /**
          * Version of Kustomize to use for rendering manifests.
          */
@@ -38897,7 +39250,7 @@ export namespace platform {
          */
         connectorRef: pulumi.Input<string>;
         /**
-         * Type is the connector type of the connector. Supported types: aws, azure, gcp
+         * Type is the connector type of the connector. Supported types: aws, azure, gcp, vault
          */
         type: pulumi.Input<string>;
     }

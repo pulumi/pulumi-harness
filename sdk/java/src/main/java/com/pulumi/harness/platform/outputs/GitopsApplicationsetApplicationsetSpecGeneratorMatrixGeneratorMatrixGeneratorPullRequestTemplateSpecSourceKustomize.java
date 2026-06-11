@@ -50,6 +50,11 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
      */
     private @Nullable String nameSuffix;
     /**
+     * @return Override the namespace of the Kustomize application.
+     * 
+     */
+    private @Nullable String namespace;
+    /**
      * @return Version of Kustomize to use for rendering manifests.
      * 
      */
@@ -106,6 +111,13 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
         return Optional.ofNullable(this.nameSuffix);
     }
     /**
+     * @return Override the namespace of the Kustomize application.
+     * 
+     */
+    public Optional<String> namespace() {
+        return Optional.ofNullable(this.namespace);
+    }
+    /**
      * @return Version of Kustomize to use for rendering manifests.
      * 
      */
@@ -129,6 +141,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
         private @Nullable List<String> images;
         private @Nullable String namePrefix;
         private @Nullable String nameSuffix;
+        private @Nullable String namespace;
         private @Nullable String version;
         public Builder() {}
         public Builder(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize defaults) {
@@ -140,6 +153,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
     	      this.images = defaults.images;
     	      this.namePrefix = defaults.namePrefix;
     	      this.nameSuffix = defaults.nameSuffix;
+    	      this.namespace = defaults.namespace;
     	      this.version = defaults.version;
         }
 
@@ -189,6 +203,12 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
             return this;
         }
         @CustomType.Setter
+        public Builder namespace(@Nullable String namespace) {
+
+            this.namespace = namespace;
+            return this;
+        }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
 
             this.version = version;
@@ -203,6 +223,7 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorMatrixGenerato
             _resultValue.images = images;
             _resultValue.namePrefix = namePrefix;
             _resultValue.nameSuffix = nameSuffix;
+            _resultValue.namespace = namespace;
             _resultValue.version = version;
             return _resultValue;
         }

@@ -279,10 +279,26 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "chaos/securityGovernanceConditionV3",
+  "fqn": "pulumi_harness.chaos",
+  "classes": {
+   "harness:chaos/securityGovernanceConditionV3:SecurityGovernanceConditionV3": "SecurityGovernanceConditionV3"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "chaos/securityGovernanceRule",
   "fqn": "pulumi_harness.chaos",
   "classes": {
    "harness:chaos/securityGovernanceRule:SecurityGovernanceRule": "SecurityGovernanceRule"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "chaos/securityGovernanceRuleV3",
+  "fqn": "pulumi_harness.chaos",
+  "classes": {
+   "harness:chaos/securityGovernanceRuleV3:SecurityGovernanceRuleV3": "SecurityGovernanceRuleV3"
   }
  },
  {

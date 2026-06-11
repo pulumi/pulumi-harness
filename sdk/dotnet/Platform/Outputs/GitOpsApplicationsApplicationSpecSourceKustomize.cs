@@ -42,6 +42,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? NameSuffix;
         /// <summary>
+        /// Override the namespace of the Kustomize application.
+        /// </summary>
+        public readonly string? Namespace;
+        /// <summary>
         /// Version of kustomize to use for rendering manifests.
         /// </summary>
         public readonly string? Version;
@@ -62,6 +66,8 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string? nameSuffix,
 
+            string? @namespace,
+
             string? version)
         {
             CommonAnnotations = commonAnnotations;
@@ -71,6 +77,7 @@ namespace Pulumi.Harness.Platform.Outputs
             Images = images;
             NamePrefix = namePrefix;
             NameSuffix = nameSuffix;
+            Namespace = @namespace;
             Version = version;
         }
     }

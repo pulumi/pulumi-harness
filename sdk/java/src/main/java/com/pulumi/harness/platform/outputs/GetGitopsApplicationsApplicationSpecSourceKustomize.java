@@ -50,6 +50,11 @@ public final class GetGitopsApplicationsApplicationSpecSourceKustomize {
      */
     private @Nullable String nameSuffix;
     /**
+     * @return Override the namespace of the Kustomize application.
+     * 
+     */
+    private @Nullable String namespace;
+    /**
      * @return Version of kustomize to use for rendering manifests.
      * 
      */
@@ -106,6 +111,13 @@ public final class GetGitopsApplicationsApplicationSpecSourceKustomize {
         return Optional.ofNullable(this.nameSuffix);
     }
     /**
+     * @return Override the namespace of the Kustomize application.
+     * 
+     */
+    public Optional<String> namespace() {
+        return Optional.ofNullable(this.namespace);
+    }
+    /**
      * @return Version of kustomize to use for rendering manifests.
      * 
      */
@@ -129,6 +141,7 @@ public final class GetGitopsApplicationsApplicationSpecSourceKustomize {
         private @Nullable List<String> images;
         private @Nullable String namePrefix;
         private @Nullable String nameSuffix;
+        private @Nullable String namespace;
         private @Nullable String version;
         public Builder() {}
         public Builder(GetGitopsApplicationsApplicationSpecSourceKustomize defaults) {
@@ -140,6 +153,7 @@ public final class GetGitopsApplicationsApplicationSpecSourceKustomize {
     	      this.images = defaults.images;
     	      this.namePrefix = defaults.namePrefix;
     	      this.nameSuffix = defaults.nameSuffix;
+    	      this.namespace = defaults.namespace;
     	      this.version = defaults.version;
         }
 
@@ -189,6 +203,12 @@ public final class GetGitopsApplicationsApplicationSpecSourceKustomize {
             return this;
         }
         @CustomType.Setter
+        public Builder namespace(@Nullable String namespace) {
+
+            this.namespace = namespace;
+            return this;
+        }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
 
             this.version = version;
@@ -203,6 +223,7 @@ public final class GetGitopsApplicationsApplicationSpecSourceKustomize {
             _resultValue.images = images;
             _resultValue.namePrefix = namePrefix;
             _resultValue.nameSuffix = nameSuffix;
+            _resultValue.namespace = namespace;
             _resultValue.version = version;
             return _resultValue;
         }

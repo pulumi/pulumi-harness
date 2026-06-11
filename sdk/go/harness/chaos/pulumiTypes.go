@@ -17728,6 +17728,1360 @@ func (o SecurityGovernanceConditionMachineSpecInfraSpecPtrOutput) Operator() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+type SecurityGovernanceConditionV3FaultSpec struct {
+	// List of fault specifications
+	Faults []SecurityGovernanceConditionV3FaultSpecFault `pulumi:"faults"`
+	// Operator for comparing faults (EQUAL*TO or NOT*EQUAL_TO)
+	Operator string `pulumi:"operator"`
+}
+
+// SecurityGovernanceConditionV3FaultSpecInput is an input type that accepts SecurityGovernanceConditionV3FaultSpecArgs and SecurityGovernanceConditionV3FaultSpecOutput values.
+// You can construct a concrete instance of `SecurityGovernanceConditionV3FaultSpecInput` via:
+//
+//	SecurityGovernanceConditionV3FaultSpecArgs{...}
+type SecurityGovernanceConditionV3FaultSpecInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceConditionV3FaultSpecOutput() SecurityGovernanceConditionV3FaultSpecOutput
+	ToSecurityGovernanceConditionV3FaultSpecOutputWithContext(context.Context) SecurityGovernanceConditionV3FaultSpecOutput
+}
+
+type SecurityGovernanceConditionV3FaultSpecArgs struct {
+	// List of fault specifications
+	Faults SecurityGovernanceConditionV3FaultSpecFaultArrayInput `pulumi:"faults"`
+	// Operator for comparing faults (EQUAL*TO or NOT*EQUAL_TO)
+	Operator pulumi.StringInput `pulumi:"operator"`
+}
+
+func (SecurityGovernanceConditionV3FaultSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceConditionV3FaultSpec)(nil)).Elem()
+}
+
+func (i SecurityGovernanceConditionV3FaultSpecArgs) ToSecurityGovernanceConditionV3FaultSpecOutput() SecurityGovernanceConditionV3FaultSpecOutput {
+	return i.ToSecurityGovernanceConditionV3FaultSpecOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceConditionV3FaultSpecArgs) ToSecurityGovernanceConditionV3FaultSpecOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3FaultSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3FaultSpecOutput)
+}
+
+func (i SecurityGovernanceConditionV3FaultSpecArgs) ToSecurityGovernanceConditionV3FaultSpecPtrOutput() SecurityGovernanceConditionV3FaultSpecPtrOutput {
+	return i.ToSecurityGovernanceConditionV3FaultSpecPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceConditionV3FaultSpecArgs) ToSecurityGovernanceConditionV3FaultSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3FaultSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3FaultSpecOutput).ToSecurityGovernanceConditionV3FaultSpecPtrOutputWithContext(ctx)
+}
+
+// SecurityGovernanceConditionV3FaultSpecPtrInput is an input type that accepts SecurityGovernanceConditionV3FaultSpecArgs, SecurityGovernanceConditionV3FaultSpecPtr and SecurityGovernanceConditionV3FaultSpecPtrOutput values.
+// You can construct a concrete instance of `SecurityGovernanceConditionV3FaultSpecPtrInput` via:
+//
+//	        SecurityGovernanceConditionV3FaultSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGovernanceConditionV3FaultSpecPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceConditionV3FaultSpecPtrOutput() SecurityGovernanceConditionV3FaultSpecPtrOutput
+	ToSecurityGovernanceConditionV3FaultSpecPtrOutputWithContext(context.Context) SecurityGovernanceConditionV3FaultSpecPtrOutput
+}
+
+type securityGovernanceConditionV3FaultSpecPtrType SecurityGovernanceConditionV3FaultSpecArgs
+
+func SecurityGovernanceConditionV3FaultSpecPtr(v *SecurityGovernanceConditionV3FaultSpecArgs) SecurityGovernanceConditionV3FaultSpecPtrInput {
+	return (*securityGovernanceConditionV3FaultSpecPtrType)(v)
+}
+
+func (*securityGovernanceConditionV3FaultSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGovernanceConditionV3FaultSpec)(nil)).Elem()
+}
+
+func (i *securityGovernanceConditionV3FaultSpecPtrType) ToSecurityGovernanceConditionV3FaultSpecPtrOutput() SecurityGovernanceConditionV3FaultSpecPtrOutput {
+	return i.ToSecurityGovernanceConditionV3FaultSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGovernanceConditionV3FaultSpecPtrType) ToSecurityGovernanceConditionV3FaultSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3FaultSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3FaultSpecPtrOutput)
+}
+
+type SecurityGovernanceConditionV3FaultSpecOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceConditionV3FaultSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceConditionV3FaultSpec)(nil)).Elem()
+}
+
+func (o SecurityGovernanceConditionV3FaultSpecOutput) ToSecurityGovernanceConditionV3FaultSpecOutput() SecurityGovernanceConditionV3FaultSpecOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3FaultSpecOutput) ToSecurityGovernanceConditionV3FaultSpecOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3FaultSpecOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3FaultSpecOutput) ToSecurityGovernanceConditionV3FaultSpecPtrOutput() SecurityGovernanceConditionV3FaultSpecPtrOutput {
+	return o.ToSecurityGovernanceConditionV3FaultSpecPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGovernanceConditionV3FaultSpecOutput) ToSecurityGovernanceConditionV3FaultSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3FaultSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGovernanceConditionV3FaultSpec) *SecurityGovernanceConditionV3FaultSpec {
+		return &v
+	}).(SecurityGovernanceConditionV3FaultSpecPtrOutput)
+}
+
+// List of fault specifications
+func (o SecurityGovernanceConditionV3FaultSpecOutput) Faults() SecurityGovernanceConditionV3FaultSpecFaultArrayOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3FaultSpec) []SecurityGovernanceConditionV3FaultSpecFault {
+		return v.Faults
+	}).(SecurityGovernanceConditionV3FaultSpecFaultArrayOutput)
+}
+
+// Operator for comparing faults (EQUAL*TO or NOT*EQUAL_TO)
+func (o SecurityGovernanceConditionV3FaultSpecOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3FaultSpec) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+type SecurityGovernanceConditionV3FaultSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceConditionV3FaultSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGovernanceConditionV3FaultSpec)(nil)).Elem()
+}
+
+func (o SecurityGovernanceConditionV3FaultSpecPtrOutput) ToSecurityGovernanceConditionV3FaultSpecPtrOutput() SecurityGovernanceConditionV3FaultSpecPtrOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3FaultSpecPtrOutput) ToSecurityGovernanceConditionV3FaultSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3FaultSpecPtrOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3FaultSpecPtrOutput) Elem() SecurityGovernanceConditionV3FaultSpecOutput {
+	return o.ApplyT(func(v *SecurityGovernanceConditionV3FaultSpec) SecurityGovernanceConditionV3FaultSpec {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGovernanceConditionV3FaultSpec
+		return ret
+	}).(SecurityGovernanceConditionV3FaultSpecOutput)
+}
+
+// List of fault specifications
+func (o SecurityGovernanceConditionV3FaultSpecPtrOutput) Faults() SecurityGovernanceConditionV3FaultSpecFaultArrayOutput {
+	return o.ApplyT(func(v *SecurityGovernanceConditionV3FaultSpec) []SecurityGovernanceConditionV3FaultSpecFault {
+		if v == nil {
+			return nil
+		}
+		return v.Faults
+	}).(SecurityGovernanceConditionV3FaultSpecFaultArrayOutput)
+}
+
+// Operator for comparing faults (EQUAL*TO or NOT*EQUAL_TO)
+func (o SecurityGovernanceConditionV3FaultSpecPtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGovernanceConditionV3FaultSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityGovernanceConditionV3FaultSpecFault struct {
+	// Type of the fault (FAULT or FAULT_GROUP)
+	FaultType string `pulumi:"faultType"`
+	// Name of the fault
+	Name string `pulumi:"name"`
+}
+
+// SecurityGovernanceConditionV3FaultSpecFaultInput is an input type that accepts SecurityGovernanceConditionV3FaultSpecFaultArgs and SecurityGovernanceConditionV3FaultSpecFaultOutput values.
+// You can construct a concrete instance of `SecurityGovernanceConditionV3FaultSpecFaultInput` via:
+//
+//	SecurityGovernanceConditionV3FaultSpecFaultArgs{...}
+type SecurityGovernanceConditionV3FaultSpecFaultInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceConditionV3FaultSpecFaultOutput() SecurityGovernanceConditionV3FaultSpecFaultOutput
+	ToSecurityGovernanceConditionV3FaultSpecFaultOutputWithContext(context.Context) SecurityGovernanceConditionV3FaultSpecFaultOutput
+}
+
+type SecurityGovernanceConditionV3FaultSpecFaultArgs struct {
+	// Type of the fault (FAULT or FAULT_GROUP)
+	FaultType pulumi.StringInput `pulumi:"faultType"`
+	// Name of the fault
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (SecurityGovernanceConditionV3FaultSpecFaultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceConditionV3FaultSpecFault)(nil)).Elem()
+}
+
+func (i SecurityGovernanceConditionV3FaultSpecFaultArgs) ToSecurityGovernanceConditionV3FaultSpecFaultOutput() SecurityGovernanceConditionV3FaultSpecFaultOutput {
+	return i.ToSecurityGovernanceConditionV3FaultSpecFaultOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceConditionV3FaultSpecFaultArgs) ToSecurityGovernanceConditionV3FaultSpecFaultOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3FaultSpecFaultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3FaultSpecFaultOutput)
+}
+
+// SecurityGovernanceConditionV3FaultSpecFaultArrayInput is an input type that accepts SecurityGovernanceConditionV3FaultSpecFaultArray and SecurityGovernanceConditionV3FaultSpecFaultArrayOutput values.
+// You can construct a concrete instance of `SecurityGovernanceConditionV3FaultSpecFaultArrayInput` via:
+//
+//	SecurityGovernanceConditionV3FaultSpecFaultArray{ SecurityGovernanceConditionV3FaultSpecFaultArgs{...} }
+type SecurityGovernanceConditionV3FaultSpecFaultArrayInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceConditionV3FaultSpecFaultArrayOutput() SecurityGovernanceConditionV3FaultSpecFaultArrayOutput
+	ToSecurityGovernanceConditionV3FaultSpecFaultArrayOutputWithContext(context.Context) SecurityGovernanceConditionV3FaultSpecFaultArrayOutput
+}
+
+type SecurityGovernanceConditionV3FaultSpecFaultArray []SecurityGovernanceConditionV3FaultSpecFaultInput
+
+func (SecurityGovernanceConditionV3FaultSpecFaultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGovernanceConditionV3FaultSpecFault)(nil)).Elem()
+}
+
+func (i SecurityGovernanceConditionV3FaultSpecFaultArray) ToSecurityGovernanceConditionV3FaultSpecFaultArrayOutput() SecurityGovernanceConditionV3FaultSpecFaultArrayOutput {
+	return i.ToSecurityGovernanceConditionV3FaultSpecFaultArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceConditionV3FaultSpecFaultArray) ToSecurityGovernanceConditionV3FaultSpecFaultArrayOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3FaultSpecFaultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3FaultSpecFaultArrayOutput)
+}
+
+type SecurityGovernanceConditionV3FaultSpecFaultOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceConditionV3FaultSpecFaultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceConditionV3FaultSpecFault)(nil)).Elem()
+}
+
+func (o SecurityGovernanceConditionV3FaultSpecFaultOutput) ToSecurityGovernanceConditionV3FaultSpecFaultOutput() SecurityGovernanceConditionV3FaultSpecFaultOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3FaultSpecFaultOutput) ToSecurityGovernanceConditionV3FaultSpecFaultOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3FaultSpecFaultOutput {
+	return o
+}
+
+// Type of the fault (FAULT or FAULT_GROUP)
+func (o SecurityGovernanceConditionV3FaultSpecFaultOutput) FaultType() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3FaultSpecFault) string { return v.FaultType }).(pulumi.StringOutput)
+}
+
+// Name of the fault
+func (o SecurityGovernanceConditionV3FaultSpecFaultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3FaultSpecFault) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type SecurityGovernanceConditionV3FaultSpecFaultArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceConditionV3FaultSpecFaultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGovernanceConditionV3FaultSpecFault)(nil)).Elem()
+}
+
+func (o SecurityGovernanceConditionV3FaultSpecFaultArrayOutput) ToSecurityGovernanceConditionV3FaultSpecFaultArrayOutput() SecurityGovernanceConditionV3FaultSpecFaultArrayOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3FaultSpecFaultArrayOutput) ToSecurityGovernanceConditionV3FaultSpecFaultArrayOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3FaultSpecFaultArrayOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3FaultSpecFaultArrayOutput) Index(i pulumi.IntInput) SecurityGovernanceConditionV3FaultSpecFaultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityGovernanceConditionV3FaultSpecFault {
+		return vs[0].([]SecurityGovernanceConditionV3FaultSpecFault)[vs[1].(int)]
+	}).(SecurityGovernanceConditionV3FaultSpecFaultOutput)
+}
+
+type SecurityGovernanceConditionV3K8sSpec struct {
+	// Application specification
+	ApplicationSpec *SecurityGovernanceConditionV3K8sSpecApplicationSpec `pulumi:"applicationSpec"`
+	// Chaos service account specification
+	ChaosServiceAccountSpec *SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec `pulumi:"chaosServiceAccountSpec"`
+	// Infrastructure specification
+	InfraSpec *SecurityGovernanceConditionV3K8sSpecInfraSpec `pulumi:"infraSpec"`
+}
+
+// SecurityGovernanceConditionV3K8sSpecInput is an input type that accepts SecurityGovernanceConditionV3K8sSpecArgs and SecurityGovernanceConditionV3K8sSpecOutput values.
+// You can construct a concrete instance of `SecurityGovernanceConditionV3K8sSpecInput` via:
+//
+//	SecurityGovernanceConditionV3K8sSpecArgs{...}
+type SecurityGovernanceConditionV3K8sSpecInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceConditionV3K8sSpecOutput() SecurityGovernanceConditionV3K8sSpecOutput
+	ToSecurityGovernanceConditionV3K8sSpecOutputWithContext(context.Context) SecurityGovernanceConditionV3K8sSpecOutput
+}
+
+type SecurityGovernanceConditionV3K8sSpecArgs struct {
+	// Application specification
+	ApplicationSpec SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrInput `pulumi:"applicationSpec"`
+	// Chaos service account specification
+	ChaosServiceAccountSpec SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrInput `pulumi:"chaosServiceAccountSpec"`
+	// Infrastructure specification
+	InfraSpec SecurityGovernanceConditionV3K8sSpecInfraSpecPtrInput `pulumi:"infraSpec"`
+}
+
+func (SecurityGovernanceConditionV3K8sSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceConditionV3K8sSpec)(nil)).Elem()
+}
+
+func (i SecurityGovernanceConditionV3K8sSpecArgs) ToSecurityGovernanceConditionV3K8sSpecOutput() SecurityGovernanceConditionV3K8sSpecOutput {
+	return i.ToSecurityGovernanceConditionV3K8sSpecOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceConditionV3K8sSpecArgs) ToSecurityGovernanceConditionV3K8sSpecOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3K8sSpecOutput)
+}
+
+func (i SecurityGovernanceConditionV3K8sSpecArgs) ToSecurityGovernanceConditionV3K8sSpecPtrOutput() SecurityGovernanceConditionV3K8sSpecPtrOutput {
+	return i.ToSecurityGovernanceConditionV3K8sSpecPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceConditionV3K8sSpecArgs) ToSecurityGovernanceConditionV3K8sSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3K8sSpecOutput).ToSecurityGovernanceConditionV3K8sSpecPtrOutputWithContext(ctx)
+}
+
+// SecurityGovernanceConditionV3K8sSpecPtrInput is an input type that accepts SecurityGovernanceConditionV3K8sSpecArgs, SecurityGovernanceConditionV3K8sSpecPtr and SecurityGovernanceConditionV3K8sSpecPtrOutput values.
+// You can construct a concrete instance of `SecurityGovernanceConditionV3K8sSpecPtrInput` via:
+//
+//	        SecurityGovernanceConditionV3K8sSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGovernanceConditionV3K8sSpecPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceConditionV3K8sSpecPtrOutput() SecurityGovernanceConditionV3K8sSpecPtrOutput
+	ToSecurityGovernanceConditionV3K8sSpecPtrOutputWithContext(context.Context) SecurityGovernanceConditionV3K8sSpecPtrOutput
+}
+
+type securityGovernanceConditionV3K8sSpecPtrType SecurityGovernanceConditionV3K8sSpecArgs
+
+func SecurityGovernanceConditionV3K8sSpecPtr(v *SecurityGovernanceConditionV3K8sSpecArgs) SecurityGovernanceConditionV3K8sSpecPtrInput {
+	return (*securityGovernanceConditionV3K8sSpecPtrType)(v)
+}
+
+func (*securityGovernanceConditionV3K8sSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGovernanceConditionV3K8sSpec)(nil)).Elem()
+}
+
+func (i *securityGovernanceConditionV3K8sSpecPtrType) ToSecurityGovernanceConditionV3K8sSpecPtrOutput() SecurityGovernanceConditionV3K8sSpecPtrOutput {
+	return i.ToSecurityGovernanceConditionV3K8sSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGovernanceConditionV3K8sSpecPtrType) ToSecurityGovernanceConditionV3K8sSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3K8sSpecPtrOutput)
+}
+
+type SecurityGovernanceConditionV3K8sSpecOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceConditionV3K8sSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceConditionV3K8sSpec)(nil)).Elem()
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecOutput) ToSecurityGovernanceConditionV3K8sSpecOutput() SecurityGovernanceConditionV3K8sSpecOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecOutput) ToSecurityGovernanceConditionV3K8sSpecOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecOutput) ToSecurityGovernanceConditionV3K8sSpecPtrOutput() SecurityGovernanceConditionV3K8sSpecPtrOutput {
+	return o.ToSecurityGovernanceConditionV3K8sSpecPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecOutput) ToSecurityGovernanceConditionV3K8sSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGovernanceConditionV3K8sSpec) *SecurityGovernanceConditionV3K8sSpec {
+		return &v
+	}).(SecurityGovernanceConditionV3K8sSpecPtrOutput)
+}
+
+// Application specification
+func (o SecurityGovernanceConditionV3K8sSpecOutput) ApplicationSpec() SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3K8sSpec) *SecurityGovernanceConditionV3K8sSpecApplicationSpec {
+		return v.ApplicationSpec
+	}).(SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput)
+}
+
+// Chaos service account specification
+func (o SecurityGovernanceConditionV3K8sSpecOutput) ChaosServiceAccountSpec() SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3K8sSpec) *SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec {
+		return v.ChaosServiceAccountSpec
+	}).(SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput)
+}
+
+// Infrastructure specification
+func (o SecurityGovernanceConditionV3K8sSpecOutput) InfraSpec() SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3K8sSpec) *SecurityGovernanceConditionV3K8sSpecInfraSpec {
+		return v.InfraSpec
+	}).(SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput)
+}
+
+type SecurityGovernanceConditionV3K8sSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceConditionV3K8sSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGovernanceConditionV3K8sSpec)(nil)).Elem()
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecPtrOutput) ToSecurityGovernanceConditionV3K8sSpecPtrOutput() SecurityGovernanceConditionV3K8sSpecPtrOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecPtrOutput) ToSecurityGovernanceConditionV3K8sSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecPtrOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecPtrOutput) Elem() SecurityGovernanceConditionV3K8sSpecOutput {
+	return o.ApplyT(func(v *SecurityGovernanceConditionV3K8sSpec) SecurityGovernanceConditionV3K8sSpec {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGovernanceConditionV3K8sSpec
+		return ret
+	}).(SecurityGovernanceConditionV3K8sSpecOutput)
+}
+
+// Application specification
+func (o SecurityGovernanceConditionV3K8sSpecPtrOutput) ApplicationSpec() SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput {
+	return o.ApplyT(func(v *SecurityGovernanceConditionV3K8sSpec) *SecurityGovernanceConditionV3K8sSpecApplicationSpec {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationSpec
+	}).(SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput)
+}
+
+// Chaos service account specification
+func (o SecurityGovernanceConditionV3K8sSpecPtrOutput) ChaosServiceAccountSpec() SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput {
+	return o.ApplyT(func(v *SecurityGovernanceConditionV3K8sSpec) *SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec {
+		if v == nil {
+			return nil
+		}
+		return v.ChaosServiceAccountSpec
+	}).(SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput)
+}
+
+// Infrastructure specification
+func (o SecurityGovernanceConditionV3K8sSpecPtrOutput) InfraSpec() SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput {
+	return o.ApplyT(func(v *SecurityGovernanceConditionV3K8sSpec) *SecurityGovernanceConditionV3K8sSpecInfraSpec {
+		if v == nil {
+			return nil
+		}
+		return v.InfraSpec
+	}).(SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput)
+}
+
+type SecurityGovernanceConditionV3K8sSpecApplicationSpec struct {
+	// Operator for application matching (EQUAL*TO or NOT*EQUAL_TO)
+	Operator string `pulumi:"operator"`
+	// List of workloads to include/exclude
+	Workloads []SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload `pulumi:"workloads"`
+}
+
+// SecurityGovernanceConditionV3K8sSpecApplicationSpecInput is an input type that accepts SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs and SecurityGovernanceConditionV3K8sSpecApplicationSpecOutput values.
+// You can construct a concrete instance of `SecurityGovernanceConditionV3K8sSpecApplicationSpecInput` via:
+//
+//	SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs{...}
+type SecurityGovernanceConditionV3K8sSpecApplicationSpecInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput() SecurityGovernanceConditionV3K8sSpecApplicationSpecOutput
+	ToSecurityGovernanceConditionV3K8sSpecApplicationSpecOutputWithContext(context.Context) SecurityGovernanceConditionV3K8sSpecApplicationSpecOutput
+}
+
+type SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs struct {
+	// Operator for application matching (EQUAL*TO or NOT*EQUAL_TO)
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// List of workloads to include/exclude
+	Workloads SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayInput `pulumi:"workloads"`
+}
+
+func (SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceConditionV3K8sSpecApplicationSpec)(nil)).Elem()
+}
+
+func (i SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs) ToSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput() SecurityGovernanceConditionV3K8sSpecApplicationSpecOutput {
+	return i.ToSecurityGovernanceConditionV3K8sSpecApplicationSpecOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs) ToSecurityGovernanceConditionV3K8sSpecApplicationSpecOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecApplicationSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3K8sSpecApplicationSpecOutput)
+}
+
+func (i SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs) ToSecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput() SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput {
+	return i.ToSecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs) ToSecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3K8sSpecApplicationSpecOutput).ToSecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutputWithContext(ctx)
+}
+
+// SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrInput is an input type that accepts SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs, SecurityGovernanceConditionV3K8sSpecApplicationSpecPtr and SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput values.
+// You can construct a concrete instance of `SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrInput` via:
+//
+//	        SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput() SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput
+	ToSecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutputWithContext(context.Context) SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput
+}
+
+type securityGovernanceConditionV3K8sSpecApplicationSpecPtrType SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs
+
+func SecurityGovernanceConditionV3K8sSpecApplicationSpecPtr(v *SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs) SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrInput {
+	return (*securityGovernanceConditionV3K8sSpecApplicationSpecPtrType)(v)
+}
+
+func (*securityGovernanceConditionV3K8sSpecApplicationSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGovernanceConditionV3K8sSpecApplicationSpec)(nil)).Elem()
+}
+
+func (i *securityGovernanceConditionV3K8sSpecApplicationSpecPtrType) ToSecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput() SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput {
+	return i.ToSecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGovernanceConditionV3K8sSpecApplicationSpecPtrType) ToSecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput)
+}
+
+type SecurityGovernanceConditionV3K8sSpecApplicationSpecOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceConditionV3K8sSpecApplicationSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceConditionV3K8sSpecApplicationSpec)(nil)).Elem()
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecOutput) ToSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput() SecurityGovernanceConditionV3K8sSpecApplicationSpecOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecOutput) ToSecurityGovernanceConditionV3K8sSpecApplicationSpecOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecApplicationSpecOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecOutput) ToSecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput() SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput {
+	return o.ToSecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecOutput) ToSecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGovernanceConditionV3K8sSpecApplicationSpec) *SecurityGovernanceConditionV3K8sSpecApplicationSpec {
+		return &v
+	}).(SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput)
+}
+
+// Operator for application matching (EQUAL*TO or NOT*EQUAL_TO)
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3K8sSpecApplicationSpec) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// List of workloads to include/exclude
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecOutput) Workloads() SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3K8sSpecApplicationSpec) []SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload {
+		return v.Workloads
+	}).(SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput)
+}
+
+type SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGovernanceConditionV3K8sSpecApplicationSpec)(nil)).Elem()
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput) ToSecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput() SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput) ToSecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput) Elem() SecurityGovernanceConditionV3K8sSpecApplicationSpecOutput {
+	return o.ApplyT(func(v *SecurityGovernanceConditionV3K8sSpecApplicationSpec) SecurityGovernanceConditionV3K8sSpecApplicationSpec {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGovernanceConditionV3K8sSpecApplicationSpec
+		return ret
+	}).(SecurityGovernanceConditionV3K8sSpecApplicationSpecOutput)
+}
+
+// Operator for application matching (EQUAL*TO or NOT*EQUAL_TO)
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGovernanceConditionV3K8sSpecApplicationSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of workloads to include/exclude
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput) Workloads() SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput {
+	return o.ApplyT(func(v *SecurityGovernanceConditionV3K8sSpecApplicationSpec) []SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload {
+		if v == nil {
+			return nil
+		}
+		return v.Workloads
+	}).(SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput)
+}
+
+type SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload struct {
+	// ID for the application map
+	ApplicationMapId *string `pulumi:"applicationMapId"`
+	// Kind of the workload (e.g., deployment, statefulset)
+	Kind *string `pulumi:"kind"`
+	// Label selector for the workload
+	Label *string `pulumi:"label"`
+	// Namespace of the workload
+	Namespace string `pulumi:"namespace"`
+	// Namespace labels to match against, as key-value pairs
+	NamespaceLabels map[string]string `pulumi:"namespaceLabels"`
+	// List of services associated with the workload
+	Services []string `pulumi:"services"`
+}
+
+// SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadInput is an input type that accepts SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs and SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput values.
+// You can construct a concrete instance of `SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadInput` via:
+//
+//	SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs{...}
+type SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput() SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput
+	ToSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutputWithContext(context.Context) SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput
+}
+
+type SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs struct {
+	// ID for the application map
+	ApplicationMapId pulumi.StringPtrInput `pulumi:"applicationMapId"`
+	// Kind of the workload (e.g., deployment, statefulset)
+	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// Label selector for the workload
+	Label pulumi.StringPtrInput `pulumi:"label"`
+	// Namespace of the workload
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// Namespace labels to match against, as key-value pairs
+	NamespaceLabels pulumi.StringMapInput `pulumi:"namespaceLabels"`
+	// List of services associated with the workload
+	Services pulumi.StringArrayInput `pulumi:"services"`
+}
+
+func (SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload)(nil)).Elem()
+}
+
+func (i SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs) ToSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput() SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput {
+	return i.ToSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs) ToSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput)
+}
+
+// SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayInput is an input type that accepts SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArray and SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput values.
+// You can construct a concrete instance of `SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayInput` via:
+//
+//	SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArray{ SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs{...} }
+type SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput() SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput
+	ToSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutputWithContext(context.Context) SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput
+}
+
+type SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArray []SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadInput
+
+func (SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload)(nil)).Elem()
+}
+
+func (i SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArray) ToSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput() SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput {
+	return i.ToSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArray) ToSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput)
+}
+
+type SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload)(nil)).Elem()
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput) ToSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput() SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput) ToSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput {
+	return o
+}
+
+// ID for the application map
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput) ApplicationMapId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload) *string { return v.ApplicationMapId }).(pulumi.StringPtrOutput)
+}
+
+// Kind of the workload (e.g., deployment, statefulset)
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// Label selector for the workload
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Namespace of the workload
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// Namespace labels to match against, as key-value pairs
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput) NamespaceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload) map[string]string {
+		return v.NamespaceLabels
+	}).(pulumi.StringMapOutput)
+}
+
+// List of services associated with the workload
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput) Services() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload) []string { return v.Services }).(pulumi.StringArrayOutput)
+}
+
+type SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload)(nil)).Elem()
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput) ToSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput() SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput) ToSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput) Index(i pulumi.IntInput) SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload {
+		return vs[0].([]SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload)[vs[1].(int)]
+	}).(SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput)
+}
+
+type SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec struct {
+	// Operator for service account matching (EQUAL*TO or NOT*EQUAL_TO)
+	Operator string `pulumi:"operator"`
+	// List of service accounts to include/exclude
+	ServiceAccounts []string `pulumi:"serviceAccounts"`
+}
+
+// SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecInput is an input type that accepts SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs and SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput values.
+// You can construct a concrete instance of `SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecInput` via:
+//
+//	SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs{...}
+type SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput() SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput
+	ToSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutputWithContext(context.Context) SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput
+}
+
+type SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs struct {
+	// Operator for service account matching (EQUAL*TO or NOT*EQUAL_TO)
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// List of service accounts to include/exclude
+	ServiceAccounts pulumi.StringArrayInput `pulumi:"serviceAccounts"`
+}
+
+func (SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec)(nil)).Elem()
+}
+
+func (i SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs) ToSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput() SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput {
+	return i.ToSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs) ToSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput)
+}
+
+func (i SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs) ToSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput() SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput {
+	return i.ToSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs) ToSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput).ToSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutputWithContext(ctx)
+}
+
+// SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrInput is an input type that accepts SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs, SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtr and SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput values.
+// You can construct a concrete instance of `SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrInput` via:
+//
+//	        SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput() SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput
+	ToSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutputWithContext(context.Context) SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput
+}
+
+type securityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrType SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs
+
+func SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtr(v *SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs) SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrInput {
+	return (*securityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrType)(v)
+}
+
+func (*securityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec)(nil)).Elem()
+}
+
+func (i *securityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrType) ToSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput() SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput {
+	return i.ToSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrType) ToSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput)
+}
+
+type SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec)(nil)).Elem()
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput) ToSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput() SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput) ToSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput) ToSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput() SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput {
+	return o.ToSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput) ToSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec) *SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec {
+		return &v
+	}).(SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput)
+}
+
+// Operator for service account matching (EQUAL*TO or NOT*EQUAL_TO)
+func (o SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// List of service accounts to include/exclude
+func (o SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput) ServiceAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec) []string { return v.ServiceAccounts }).(pulumi.StringArrayOutput)
+}
+
+type SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec)(nil)).Elem()
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput) ToSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput() SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput) ToSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput) Elem() SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput {
+	return o.ApplyT(func(v *SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec) SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec
+		return ret
+	}).(SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput)
+}
+
+// Operator for service account matching (EQUAL*TO or NOT*EQUAL_TO)
+func (o SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of service accounts to include/exclude
+func (o SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput) ServiceAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccounts
+	}).(pulumi.StringArrayOutput)
+}
+
+type SecurityGovernanceConditionV3K8sSpecInfraSpec struct {
+	// List of infrastructure IDs to apply the condition to
+	InfraIds []string `pulumi:"infraIds"`
+	// Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+	Operator string `pulumi:"operator"`
+}
+
+// SecurityGovernanceConditionV3K8sSpecInfraSpecInput is an input type that accepts SecurityGovernanceConditionV3K8sSpecInfraSpecArgs and SecurityGovernanceConditionV3K8sSpecInfraSpecOutput values.
+// You can construct a concrete instance of `SecurityGovernanceConditionV3K8sSpecInfraSpecInput` via:
+//
+//	SecurityGovernanceConditionV3K8sSpecInfraSpecArgs{...}
+type SecurityGovernanceConditionV3K8sSpecInfraSpecInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceConditionV3K8sSpecInfraSpecOutput() SecurityGovernanceConditionV3K8sSpecInfraSpecOutput
+	ToSecurityGovernanceConditionV3K8sSpecInfraSpecOutputWithContext(context.Context) SecurityGovernanceConditionV3K8sSpecInfraSpecOutput
+}
+
+type SecurityGovernanceConditionV3K8sSpecInfraSpecArgs struct {
+	// List of infrastructure IDs to apply the condition to
+	InfraIds pulumi.StringArrayInput `pulumi:"infraIds"`
+	// Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+	Operator pulumi.StringInput `pulumi:"operator"`
+}
+
+func (SecurityGovernanceConditionV3K8sSpecInfraSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceConditionV3K8sSpecInfraSpec)(nil)).Elem()
+}
+
+func (i SecurityGovernanceConditionV3K8sSpecInfraSpecArgs) ToSecurityGovernanceConditionV3K8sSpecInfraSpecOutput() SecurityGovernanceConditionV3K8sSpecInfraSpecOutput {
+	return i.ToSecurityGovernanceConditionV3K8sSpecInfraSpecOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceConditionV3K8sSpecInfraSpecArgs) ToSecurityGovernanceConditionV3K8sSpecInfraSpecOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecInfraSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3K8sSpecInfraSpecOutput)
+}
+
+func (i SecurityGovernanceConditionV3K8sSpecInfraSpecArgs) ToSecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput() SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput {
+	return i.ToSecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceConditionV3K8sSpecInfraSpecArgs) ToSecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3K8sSpecInfraSpecOutput).ToSecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutputWithContext(ctx)
+}
+
+// SecurityGovernanceConditionV3K8sSpecInfraSpecPtrInput is an input type that accepts SecurityGovernanceConditionV3K8sSpecInfraSpecArgs, SecurityGovernanceConditionV3K8sSpecInfraSpecPtr and SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput values.
+// You can construct a concrete instance of `SecurityGovernanceConditionV3K8sSpecInfraSpecPtrInput` via:
+//
+//	        SecurityGovernanceConditionV3K8sSpecInfraSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGovernanceConditionV3K8sSpecInfraSpecPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput() SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput
+	ToSecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutputWithContext(context.Context) SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput
+}
+
+type securityGovernanceConditionV3K8sSpecInfraSpecPtrType SecurityGovernanceConditionV3K8sSpecInfraSpecArgs
+
+func SecurityGovernanceConditionV3K8sSpecInfraSpecPtr(v *SecurityGovernanceConditionV3K8sSpecInfraSpecArgs) SecurityGovernanceConditionV3K8sSpecInfraSpecPtrInput {
+	return (*securityGovernanceConditionV3K8sSpecInfraSpecPtrType)(v)
+}
+
+func (*securityGovernanceConditionV3K8sSpecInfraSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGovernanceConditionV3K8sSpecInfraSpec)(nil)).Elem()
+}
+
+func (i *securityGovernanceConditionV3K8sSpecInfraSpecPtrType) ToSecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput() SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput {
+	return i.ToSecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGovernanceConditionV3K8sSpecInfraSpecPtrType) ToSecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput)
+}
+
+type SecurityGovernanceConditionV3K8sSpecInfraSpecOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceConditionV3K8sSpecInfraSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceConditionV3K8sSpecInfraSpec)(nil)).Elem()
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecInfraSpecOutput) ToSecurityGovernanceConditionV3K8sSpecInfraSpecOutput() SecurityGovernanceConditionV3K8sSpecInfraSpecOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecInfraSpecOutput) ToSecurityGovernanceConditionV3K8sSpecInfraSpecOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecInfraSpecOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecInfraSpecOutput) ToSecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput() SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput {
+	return o.ToSecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecInfraSpecOutput) ToSecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGovernanceConditionV3K8sSpecInfraSpec) *SecurityGovernanceConditionV3K8sSpecInfraSpec {
+		return &v
+	}).(SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput)
+}
+
+// List of infrastructure IDs to apply the condition to
+func (o SecurityGovernanceConditionV3K8sSpecInfraSpecOutput) InfraIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3K8sSpecInfraSpec) []string { return v.InfraIds }).(pulumi.StringArrayOutput)
+}
+
+// Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+func (o SecurityGovernanceConditionV3K8sSpecInfraSpecOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3K8sSpecInfraSpec) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+type SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGovernanceConditionV3K8sSpecInfraSpec)(nil)).Elem()
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput) ToSecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput() SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput) ToSecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput) Elem() SecurityGovernanceConditionV3K8sSpecInfraSpecOutput {
+	return o.ApplyT(func(v *SecurityGovernanceConditionV3K8sSpecInfraSpec) SecurityGovernanceConditionV3K8sSpecInfraSpec {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGovernanceConditionV3K8sSpecInfraSpec
+		return ret
+	}).(SecurityGovernanceConditionV3K8sSpecInfraSpecOutput)
+}
+
+// List of infrastructure IDs to apply the condition to
+func (o SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput) InfraIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityGovernanceConditionV3K8sSpecInfraSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InfraIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+func (o SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGovernanceConditionV3K8sSpecInfraSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityGovernanceConditionV3MachineSpec struct {
+	// Infrastructure specification
+	InfraSpec *SecurityGovernanceConditionV3MachineSpecInfraSpec `pulumi:"infraSpec"`
+}
+
+// SecurityGovernanceConditionV3MachineSpecInput is an input type that accepts SecurityGovernanceConditionV3MachineSpecArgs and SecurityGovernanceConditionV3MachineSpecOutput values.
+// You can construct a concrete instance of `SecurityGovernanceConditionV3MachineSpecInput` via:
+//
+//	SecurityGovernanceConditionV3MachineSpecArgs{...}
+type SecurityGovernanceConditionV3MachineSpecInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceConditionV3MachineSpecOutput() SecurityGovernanceConditionV3MachineSpecOutput
+	ToSecurityGovernanceConditionV3MachineSpecOutputWithContext(context.Context) SecurityGovernanceConditionV3MachineSpecOutput
+}
+
+type SecurityGovernanceConditionV3MachineSpecArgs struct {
+	// Infrastructure specification
+	InfraSpec SecurityGovernanceConditionV3MachineSpecInfraSpecPtrInput `pulumi:"infraSpec"`
+}
+
+func (SecurityGovernanceConditionV3MachineSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceConditionV3MachineSpec)(nil)).Elem()
+}
+
+func (i SecurityGovernanceConditionV3MachineSpecArgs) ToSecurityGovernanceConditionV3MachineSpecOutput() SecurityGovernanceConditionV3MachineSpecOutput {
+	return i.ToSecurityGovernanceConditionV3MachineSpecOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceConditionV3MachineSpecArgs) ToSecurityGovernanceConditionV3MachineSpecOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3MachineSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3MachineSpecOutput)
+}
+
+func (i SecurityGovernanceConditionV3MachineSpecArgs) ToSecurityGovernanceConditionV3MachineSpecPtrOutput() SecurityGovernanceConditionV3MachineSpecPtrOutput {
+	return i.ToSecurityGovernanceConditionV3MachineSpecPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceConditionV3MachineSpecArgs) ToSecurityGovernanceConditionV3MachineSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3MachineSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3MachineSpecOutput).ToSecurityGovernanceConditionV3MachineSpecPtrOutputWithContext(ctx)
+}
+
+// SecurityGovernanceConditionV3MachineSpecPtrInput is an input type that accepts SecurityGovernanceConditionV3MachineSpecArgs, SecurityGovernanceConditionV3MachineSpecPtr and SecurityGovernanceConditionV3MachineSpecPtrOutput values.
+// You can construct a concrete instance of `SecurityGovernanceConditionV3MachineSpecPtrInput` via:
+//
+//	        SecurityGovernanceConditionV3MachineSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGovernanceConditionV3MachineSpecPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceConditionV3MachineSpecPtrOutput() SecurityGovernanceConditionV3MachineSpecPtrOutput
+	ToSecurityGovernanceConditionV3MachineSpecPtrOutputWithContext(context.Context) SecurityGovernanceConditionV3MachineSpecPtrOutput
+}
+
+type securityGovernanceConditionV3MachineSpecPtrType SecurityGovernanceConditionV3MachineSpecArgs
+
+func SecurityGovernanceConditionV3MachineSpecPtr(v *SecurityGovernanceConditionV3MachineSpecArgs) SecurityGovernanceConditionV3MachineSpecPtrInput {
+	return (*securityGovernanceConditionV3MachineSpecPtrType)(v)
+}
+
+func (*securityGovernanceConditionV3MachineSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGovernanceConditionV3MachineSpec)(nil)).Elem()
+}
+
+func (i *securityGovernanceConditionV3MachineSpecPtrType) ToSecurityGovernanceConditionV3MachineSpecPtrOutput() SecurityGovernanceConditionV3MachineSpecPtrOutput {
+	return i.ToSecurityGovernanceConditionV3MachineSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGovernanceConditionV3MachineSpecPtrType) ToSecurityGovernanceConditionV3MachineSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3MachineSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3MachineSpecPtrOutput)
+}
+
+type SecurityGovernanceConditionV3MachineSpecOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceConditionV3MachineSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceConditionV3MachineSpec)(nil)).Elem()
+}
+
+func (o SecurityGovernanceConditionV3MachineSpecOutput) ToSecurityGovernanceConditionV3MachineSpecOutput() SecurityGovernanceConditionV3MachineSpecOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3MachineSpecOutput) ToSecurityGovernanceConditionV3MachineSpecOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3MachineSpecOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3MachineSpecOutput) ToSecurityGovernanceConditionV3MachineSpecPtrOutput() SecurityGovernanceConditionV3MachineSpecPtrOutput {
+	return o.ToSecurityGovernanceConditionV3MachineSpecPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGovernanceConditionV3MachineSpecOutput) ToSecurityGovernanceConditionV3MachineSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3MachineSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGovernanceConditionV3MachineSpec) *SecurityGovernanceConditionV3MachineSpec {
+		return &v
+	}).(SecurityGovernanceConditionV3MachineSpecPtrOutput)
+}
+
+// Infrastructure specification
+func (o SecurityGovernanceConditionV3MachineSpecOutput) InfraSpec() SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3MachineSpec) *SecurityGovernanceConditionV3MachineSpecInfraSpec {
+		return v.InfraSpec
+	}).(SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput)
+}
+
+type SecurityGovernanceConditionV3MachineSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceConditionV3MachineSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGovernanceConditionV3MachineSpec)(nil)).Elem()
+}
+
+func (o SecurityGovernanceConditionV3MachineSpecPtrOutput) ToSecurityGovernanceConditionV3MachineSpecPtrOutput() SecurityGovernanceConditionV3MachineSpecPtrOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3MachineSpecPtrOutput) ToSecurityGovernanceConditionV3MachineSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3MachineSpecPtrOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3MachineSpecPtrOutput) Elem() SecurityGovernanceConditionV3MachineSpecOutput {
+	return o.ApplyT(func(v *SecurityGovernanceConditionV3MachineSpec) SecurityGovernanceConditionV3MachineSpec {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGovernanceConditionV3MachineSpec
+		return ret
+	}).(SecurityGovernanceConditionV3MachineSpecOutput)
+}
+
+// Infrastructure specification
+func (o SecurityGovernanceConditionV3MachineSpecPtrOutput) InfraSpec() SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput {
+	return o.ApplyT(func(v *SecurityGovernanceConditionV3MachineSpec) *SecurityGovernanceConditionV3MachineSpecInfraSpec {
+		if v == nil {
+			return nil
+		}
+		return v.InfraSpec
+	}).(SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput)
+}
+
+type SecurityGovernanceConditionV3MachineSpecInfraSpec struct {
+	// List of infrastructure IDs to apply the condition to
+	InfraIds []string `pulumi:"infraIds"`
+	// Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+	Operator string `pulumi:"operator"`
+}
+
+// SecurityGovernanceConditionV3MachineSpecInfraSpecInput is an input type that accepts SecurityGovernanceConditionV3MachineSpecInfraSpecArgs and SecurityGovernanceConditionV3MachineSpecInfraSpecOutput values.
+// You can construct a concrete instance of `SecurityGovernanceConditionV3MachineSpecInfraSpecInput` via:
+//
+//	SecurityGovernanceConditionV3MachineSpecInfraSpecArgs{...}
+type SecurityGovernanceConditionV3MachineSpecInfraSpecInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceConditionV3MachineSpecInfraSpecOutput() SecurityGovernanceConditionV3MachineSpecInfraSpecOutput
+	ToSecurityGovernanceConditionV3MachineSpecInfraSpecOutputWithContext(context.Context) SecurityGovernanceConditionV3MachineSpecInfraSpecOutput
+}
+
+type SecurityGovernanceConditionV3MachineSpecInfraSpecArgs struct {
+	// List of infrastructure IDs to apply the condition to
+	InfraIds pulumi.StringArrayInput `pulumi:"infraIds"`
+	// Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+	Operator pulumi.StringInput `pulumi:"operator"`
+}
+
+func (SecurityGovernanceConditionV3MachineSpecInfraSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceConditionV3MachineSpecInfraSpec)(nil)).Elem()
+}
+
+func (i SecurityGovernanceConditionV3MachineSpecInfraSpecArgs) ToSecurityGovernanceConditionV3MachineSpecInfraSpecOutput() SecurityGovernanceConditionV3MachineSpecInfraSpecOutput {
+	return i.ToSecurityGovernanceConditionV3MachineSpecInfraSpecOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceConditionV3MachineSpecInfraSpecArgs) ToSecurityGovernanceConditionV3MachineSpecInfraSpecOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3MachineSpecInfraSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3MachineSpecInfraSpecOutput)
+}
+
+func (i SecurityGovernanceConditionV3MachineSpecInfraSpecArgs) ToSecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput() SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput {
+	return i.ToSecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceConditionV3MachineSpecInfraSpecArgs) ToSecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3MachineSpecInfraSpecOutput).ToSecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutputWithContext(ctx)
+}
+
+// SecurityGovernanceConditionV3MachineSpecInfraSpecPtrInput is an input type that accepts SecurityGovernanceConditionV3MachineSpecInfraSpecArgs, SecurityGovernanceConditionV3MachineSpecInfraSpecPtr and SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput values.
+// You can construct a concrete instance of `SecurityGovernanceConditionV3MachineSpecInfraSpecPtrInput` via:
+//
+//	        SecurityGovernanceConditionV3MachineSpecInfraSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGovernanceConditionV3MachineSpecInfraSpecPtrInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput() SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput
+	ToSecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutputWithContext(context.Context) SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput
+}
+
+type securityGovernanceConditionV3MachineSpecInfraSpecPtrType SecurityGovernanceConditionV3MachineSpecInfraSpecArgs
+
+func SecurityGovernanceConditionV3MachineSpecInfraSpecPtr(v *SecurityGovernanceConditionV3MachineSpecInfraSpecArgs) SecurityGovernanceConditionV3MachineSpecInfraSpecPtrInput {
+	return (*securityGovernanceConditionV3MachineSpecInfraSpecPtrType)(v)
+}
+
+func (*securityGovernanceConditionV3MachineSpecInfraSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGovernanceConditionV3MachineSpecInfraSpec)(nil)).Elem()
+}
+
+func (i *securityGovernanceConditionV3MachineSpecInfraSpecPtrType) ToSecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput() SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput {
+	return i.ToSecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *securityGovernanceConditionV3MachineSpecInfraSpecPtrType) ToSecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput)
+}
+
+type SecurityGovernanceConditionV3MachineSpecInfraSpecOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceConditionV3MachineSpecInfraSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceConditionV3MachineSpecInfraSpec)(nil)).Elem()
+}
+
+func (o SecurityGovernanceConditionV3MachineSpecInfraSpecOutput) ToSecurityGovernanceConditionV3MachineSpecInfraSpecOutput() SecurityGovernanceConditionV3MachineSpecInfraSpecOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3MachineSpecInfraSpecOutput) ToSecurityGovernanceConditionV3MachineSpecInfraSpecOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3MachineSpecInfraSpecOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3MachineSpecInfraSpecOutput) ToSecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput() SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput {
+	return o.ToSecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGovernanceConditionV3MachineSpecInfraSpecOutput) ToSecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGovernanceConditionV3MachineSpecInfraSpec) *SecurityGovernanceConditionV3MachineSpecInfraSpec {
+		return &v
+	}).(SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput)
+}
+
+// List of infrastructure IDs to apply the condition to
+func (o SecurityGovernanceConditionV3MachineSpecInfraSpecOutput) InfraIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3MachineSpecInfraSpec) []string { return v.InfraIds }).(pulumi.StringArrayOutput)
+}
+
+// Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+func (o SecurityGovernanceConditionV3MachineSpecInfraSpecOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGovernanceConditionV3MachineSpecInfraSpec) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+type SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGovernanceConditionV3MachineSpecInfraSpec)(nil)).Elem()
+}
+
+func (o SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput) ToSecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput() SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput) ToSecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutputWithContext(ctx context.Context) SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput {
+	return o
+}
+
+func (o SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput) Elem() SecurityGovernanceConditionV3MachineSpecInfraSpecOutput {
+	return o.ApplyT(func(v *SecurityGovernanceConditionV3MachineSpecInfraSpec) SecurityGovernanceConditionV3MachineSpecInfraSpec {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGovernanceConditionV3MachineSpecInfraSpec
+		return ret
+	}).(SecurityGovernanceConditionV3MachineSpecInfraSpecOutput)
+}
+
+// List of infrastructure IDs to apply the condition to
+func (o SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput) InfraIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityGovernanceConditionV3MachineSpecInfraSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InfraIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Operator for comparing infrastructure IDs (EQUAL*TO or NOT*EQUAL_TO)
+func (o SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGovernanceConditionV3MachineSpecInfraSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
 type SecurityGovernanceRuleTimeWindow struct {
 	Duration   *string                                     `pulumi:"duration"`
 	EndTime    *int                                        `pulumi:"endTime"`
@@ -18004,6 +19358,316 @@ func (o SecurityGovernanceRuleTimeWindowRecurrencePtrOutput) Until() pulumi.IntP
 
 func (o SecurityGovernanceRuleTimeWindowRecurrencePtrOutput) Value() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SecurityGovernanceRuleTimeWindowRecurrence) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.IntPtrOutput)
+}
+
+type SecurityGovernanceRuleV3TimeWindow struct {
+	// Duration of the window (e.g., 30m, 1h). Computed from endTime when not set.
+	Duration *string `pulumi:"duration"`
+	// End of the window as a Unix epoch timestamp in milliseconds. Computed from duration when not set.
+	EndTime *int `pulumi:"endTime"`
+	// Recurrence specification for the time window.
+	Recurrence *SecurityGovernanceRuleV3TimeWindowRecurrence `pulumi:"recurrence"`
+	// Start of the window as a Unix epoch timestamp in milliseconds.
+	StartTime int `pulumi:"startTime"`
+	// IANA time zone for the window (e.g., UTC, America/New_York).
+	TimeZone string `pulumi:"timeZone"`
+}
+
+// SecurityGovernanceRuleV3TimeWindowInput is an input type that accepts SecurityGovernanceRuleV3TimeWindowArgs and SecurityGovernanceRuleV3TimeWindowOutput values.
+// You can construct a concrete instance of `SecurityGovernanceRuleV3TimeWindowInput` via:
+//
+//	SecurityGovernanceRuleV3TimeWindowArgs{...}
+type SecurityGovernanceRuleV3TimeWindowInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceRuleV3TimeWindowOutput() SecurityGovernanceRuleV3TimeWindowOutput
+	ToSecurityGovernanceRuleV3TimeWindowOutputWithContext(context.Context) SecurityGovernanceRuleV3TimeWindowOutput
+}
+
+type SecurityGovernanceRuleV3TimeWindowArgs struct {
+	// Duration of the window (e.g., 30m, 1h). Computed from endTime when not set.
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
+	// End of the window as a Unix epoch timestamp in milliseconds. Computed from duration when not set.
+	EndTime pulumi.IntPtrInput `pulumi:"endTime"`
+	// Recurrence specification for the time window.
+	Recurrence SecurityGovernanceRuleV3TimeWindowRecurrencePtrInput `pulumi:"recurrence"`
+	// Start of the window as a Unix epoch timestamp in milliseconds.
+	StartTime pulumi.IntInput `pulumi:"startTime"`
+	// IANA time zone for the window (e.g., UTC, America/New_York).
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
+}
+
+func (SecurityGovernanceRuleV3TimeWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceRuleV3TimeWindow)(nil)).Elem()
+}
+
+func (i SecurityGovernanceRuleV3TimeWindowArgs) ToSecurityGovernanceRuleV3TimeWindowOutput() SecurityGovernanceRuleV3TimeWindowOutput {
+	return i.ToSecurityGovernanceRuleV3TimeWindowOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceRuleV3TimeWindowArgs) ToSecurityGovernanceRuleV3TimeWindowOutputWithContext(ctx context.Context) SecurityGovernanceRuleV3TimeWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceRuleV3TimeWindowOutput)
+}
+
+// SecurityGovernanceRuleV3TimeWindowArrayInput is an input type that accepts SecurityGovernanceRuleV3TimeWindowArray and SecurityGovernanceRuleV3TimeWindowArrayOutput values.
+// You can construct a concrete instance of `SecurityGovernanceRuleV3TimeWindowArrayInput` via:
+//
+//	SecurityGovernanceRuleV3TimeWindowArray{ SecurityGovernanceRuleV3TimeWindowArgs{...} }
+type SecurityGovernanceRuleV3TimeWindowArrayInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceRuleV3TimeWindowArrayOutput() SecurityGovernanceRuleV3TimeWindowArrayOutput
+	ToSecurityGovernanceRuleV3TimeWindowArrayOutputWithContext(context.Context) SecurityGovernanceRuleV3TimeWindowArrayOutput
+}
+
+type SecurityGovernanceRuleV3TimeWindowArray []SecurityGovernanceRuleV3TimeWindowInput
+
+func (SecurityGovernanceRuleV3TimeWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGovernanceRuleV3TimeWindow)(nil)).Elem()
+}
+
+func (i SecurityGovernanceRuleV3TimeWindowArray) ToSecurityGovernanceRuleV3TimeWindowArrayOutput() SecurityGovernanceRuleV3TimeWindowArrayOutput {
+	return i.ToSecurityGovernanceRuleV3TimeWindowArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceRuleV3TimeWindowArray) ToSecurityGovernanceRuleV3TimeWindowArrayOutputWithContext(ctx context.Context) SecurityGovernanceRuleV3TimeWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceRuleV3TimeWindowArrayOutput)
+}
+
+type SecurityGovernanceRuleV3TimeWindowOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceRuleV3TimeWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceRuleV3TimeWindow)(nil)).Elem()
+}
+
+func (o SecurityGovernanceRuleV3TimeWindowOutput) ToSecurityGovernanceRuleV3TimeWindowOutput() SecurityGovernanceRuleV3TimeWindowOutput {
+	return o
+}
+
+func (o SecurityGovernanceRuleV3TimeWindowOutput) ToSecurityGovernanceRuleV3TimeWindowOutputWithContext(ctx context.Context) SecurityGovernanceRuleV3TimeWindowOutput {
+	return o
+}
+
+// Duration of the window (e.g., 30m, 1h). Computed from endTime when not set.
+func (o SecurityGovernanceRuleV3TimeWindowOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityGovernanceRuleV3TimeWindow) *string { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+// End of the window as a Unix epoch timestamp in milliseconds. Computed from duration when not set.
+func (o SecurityGovernanceRuleV3TimeWindowOutput) EndTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityGovernanceRuleV3TimeWindow) *int { return v.EndTime }).(pulumi.IntPtrOutput)
+}
+
+// Recurrence specification for the time window.
+func (o SecurityGovernanceRuleV3TimeWindowOutput) Recurrence() SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput {
+	return o.ApplyT(func(v SecurityGovernanceRuleV3TimeWindow) *SecurityGovernanceRuleV3TimeWindowRecurrence {
+		return v.Recurrence
+	}).(SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput)
+}
+
+// Start of the window as a Unix epoch timestamp in milliseconds.
+func (o SecurityGovernanceRuleV3TimeWindowOutput) StartTime() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityGovernanceRuleV3TimeWindow) int { return v.StartTime }).(pulumi.IntOutput)
+}
+
+// IANA time zone for the window (e.g., UTC, America/New_York).
+func (o SecurityGovernanceRuleV3TimeWindowOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGovernanceRuleV3TimeWindow) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+type SecurityGovernanceRuleV3TimeWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceRuleV3TimeWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityGovernanceRuleV3TimeWindow)(nil)).Elem()
+}
+
+func (o SecurityGovernanceRuleV3TimeWindowArrayOutput) ToSecurityGovernanceRuleV3TimeWindowArrayOutput() SecurityGovernanceRuleV3TimeWindowArrayOutput {
+	return o
+}
+
+func (o SecurityGovernanceRuleV3TimeWindowArrayOutput) ToSecurityGovernanceRuleV3TimeWindowArrayOutputWithContext(ctx context.Context) SecurityGovernanceRuleV3TimeWindowArrayOutput {
+	return o
+}
+
+func (o SecurityGovernanceRuleV3TimeWindowArrayOutput) Index(i pulumi.IntInput) SecurityGovernanceRuleV3TimeWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityGovernanceRuleV3TimeWindow {
+		return vs[0].([]SecurityGovernanceRuleV3TimeWindow)[vs[1].(int)]
+	}).(SecurityGovernanceRuleV3TimeWindowOutput)
+}
+
+type SecurityGovernanceRuleV3TimeWindowRecurrence struct {
+	// Recurrence type (None, Daily, Weekly, Monthly, Yearly).
+	Type string `pulumi:"type"`
+	// End of the recurrence as a Unix epoch timestamp in milliseconds. Use -1 for no end.
+	Until int `pulumi:"until"`
+	// Day of month for Monthly recurrence. Only used when type is Monthly.
+	Value *int `pulumi:"value"`
+}
+
+// SecurityGovernanceRuleV3TimeWindowRecurrenceInput is an input type that accepts SecurityGovernanceRuleV3TimeWindowRecurrenceArgs and SecurityGovernanceRuleV3TimeWindowRecurrenceOutput values.
+// You can construct a concrete instance of `SecurityGovernanceRuleV3TimeWindowRecurrenceInput` via:
+//
+//	SecurityGovernanceRuleV3TimeWindowRecurrenceArgs{...}
+type SecurityGovernanceRuleV3TimeWindowRecurrenceInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceRuleV3TimeWindowRecurrenceOutput() SecurityGovernanceRuleV3TimeWindowRecurrenceOutput
+	ToSecurityGovernanceRuleV3TimeWindowRecurrenceOutputWithContext(context.Context) SecurityGovernanceRuleV3TimeWindowRecurrenceOutput
+}
+
+type SecurityGovernanceRuleV3TimeWindowRecurrenceArgs struct {
+	// Recurrence type (None, Daily, Weekly, Monthly, Yearly).
+	Type pulumi.StringInput `pulumi:"type"`
+	// End of the recurrence as a Unix epoch timestamp in milliseconds. Use -1 for no end.
+	Until pulumi.IntInput `pulumi:"until"`
+	// Day of month for Monthly recurrence. Only used when type is Monthly.
+	Value pulumi.IntPtrInput `pulumi:"value"`
+}
+
+func (SecurityGovernanceRuleV3TimeWindowRecurrenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceRuleV3TimeWindowRecurrence)(nil)).Elem()
+}
+
+func (i SecurityGovernanceRuleV3TimeWindowRecurrenceArgs) ToSecurityGovernanceRuleV3TimeWindowRecurrenceOutput() SecurityGovernanceRuleV3TimeWindowRecurrenceOutput {
+	return i.ToSecurityGovernanceRuleV3TimeWindowRecurrenceOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceRuleV3TimeWindowRecurrenceArgs) ToSecurityGovernanceRuleV3TimeWindowRecurrenceOutputWithContext(ctx context.Context) SecurityGovernanceRuleV3TimeWindowRecurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceRuleV3TimeWindowRecurrenceOutput)
+}
+
+func (i SecurityGovernanceRuleV3TimeWindowRecurrenceArgs) ToSecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput() SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput {
+	return i.ToSecurityGovernanceRuleV3TimeWindowRecurrencePtrOutputWithContext(context.Background())
+}
+
+func (i SecurityGovernanceRuleV3TimeWindowRecurrenceArgs) ToSecurityGovernanceRuleV3TimeWindowRecurrencePtrOutputWithContext(ctx context.Context) SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceRuleV3TimeWindowRecurrenceOutput).ToSecurityGovernanceRuleV3TimeWindowRecurrencePtrOutputWithContext(ctx)
+}
+
+// SecurityGovernanceRuleV3TimeWindowRecurrencePtrInput is an input type that accepts SecurityGovernanceRuleV3TimeWindowRecurrenceArgs, SecurityGovernanceRuleV3TimeWindowRecurrencePtr and SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput values.
+// You can construct a concrete instance of `SecurityGovernanceRuleV3TimeWindowRecurrencePtrInput` via:
+//
+//	        SecurityGovernanceRuleV3TimeWindowRecurrenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityGovernanceRuleV3TimeWindowRecurrencePtrInput interface {
+	pulumi.Input
+
+	ToSecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput() SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput
+	ToSecurityGovernanceRuleV3TimeWindowRecurrencePtrOutputWithContext(context.Context) SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput
+}
+
+type securityGovernanceRuleV3TimeWindowRecurrencePtrType SecurityGovernanceRuleV3TimeWindowRecurrenceArgs
+
+func SecurityGovernanceRuleV3TimeWindowRecurrencePtr(v *SecurityGovernanceRuleV3TimeWindowRecurrenceArgs) SecurityGovernanceRuleV3TimeWindowRecurrencePtrInput {
+	return (*securityGovernanceRuleV3TimeWindowRecurrencePtrType)(v)
+}
+
+func (*securityGovernanceRuleV3TimeWindowRecurrencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGovernanceRuleV3TimeWindowRecurrence)(nil)).Elem()
+}
+
+func (i *securityGovernanceRuleV3TimeWindowRecurrencePtrType) ToSecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput() SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput {
+	return i.ToSecurityGovernanceRuleV3TimeWindowRecurrencePtrOutputWithContext(context.Background())
+}
+
+func (i *securityGovernanceRuleV3TimeWindowRecurrencePtrType) ToSecurityGovernanceRuleV3TimeWindowRecurrencePtrOutputWithContext(ctx context.Context) SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput)
+}
+
+type SecurityGovernanceRuleV3TimeWindowRecurrenceOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceRuleV3TimeWindowRecurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityGovernanceRuleV3TimeWindowRecurrence)(nil)).Elem()
+}
+
+func (o SecurityGovernanceRuleV3TimeWindowRecurrenceOutput) ToSecurityGovernanceRuleV3TimeWindowRecurrenceOutput() SecurityGovernanceRuleV3TimeWindowRecurrenceOutput {
+	return o
+}
+
+func (o SecurityGovernanceRuleV3TimeWindowRecurrenceOutput) ToSecurityGovernanceRuleV3TimeWindowRecurrenceOutputWithContext(ctx context.Context) SecurityGovernanceRuleV3TimeWindowRecurrenceOutput {
+	return o
+}
+
+func (o SecurityGovernanceRuleV3TimeWindowRecurrenceOutput) ToSecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput() SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput {
+	return o.ToSecurityGovernanceRuleV3TimeWindowRecurrencePtrOutputWithContext(context.Background())
+}
+
+func (o SecurityGovernanceRuleV3TimeWindowRecurrenceOutput) ToSecurityGovernanceRuleV3TimeWindowRecurrencePtrOutputWithContext(ctx context.Context) SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityGovernanceRuleV3TimeWindowRecurrence) *SecurityGovernanceRuleV3TimeWindowRecurrence {
+		return &v
+	}).(SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput)
+}
+
+// Recurrence type (None, Daily, Weekly, Monthly, Yearly).
+func (o SecurityGovernanceRuleV3TimeWindowRecurrenceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityGovernanceRuleV3TimeWindowRecurrence) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// End of the recurrence as a Unix epoch timestamp in milliseconds. Use -1 for no end.
+func (o SecurityGovernanceRuleV3TimeWindowRecurrenceOutput) Until() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityGovernanceRuleV3TimeWindowRecurrence) int { return v.Until }).(pulumi.IntOutput)
+}
+
+// Day of month for Monthly recurrence. Only used when type is Monthly.
+func (o SecurityGovernanceRuleV3TimeWindowRecurrenceOutput) Value() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityGovernanceRuleV3TimeWindowRecurrence) *int { return v.Value }).(pulumi.IntPtrOutput)
+}
+
+type SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityGovernanceRuleV3TimeWindowRecurrence)(nil)).Elem()
+}
+
+func (o SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput) ToSecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput() SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput {
+	return o
+}
+
+func (o SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput) ToSecurityGovernanceRuleV3TimeWindowRecurrencePtrOutputWithContext(ctx context.Context) SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput {
+	return o
+}
+
+func (o SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput) Elem() SecurityGovernanceRuleV3TimeWindowRecurrenceOutput {
+	return o.ApplyT(func(v *SecurityGovernanceRuleV3TimeWindowRecurrence) SecurityGovernanceRuleV3TimeWindowRecurrence {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityGovernanceRuleV3TimeWindowRecurrence
+		return ret
+	}).(SecurityGovernanceRuleV3TimeWindowRecurrenceOutput)
+}
+
+// Recurrence type (None, Daily, Weekly, Monthly, Yearly).
+func (o SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityGovernanceRuleV3TimeWindowRecurrence) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// End of the recurrence as a Unix epoch timestamp in milliseconds. Use -1 for no end.
+func (o SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput) Until() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecurityGovernanceRuleV3TimeWindowRecurrence) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Until
+	}).(pulumi.IntPtrOutput)
+}
+
+// Day of month for Monthly recurrence. Only used when type is Monthly.
+func (o SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput) Value() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecurityGovernanceRuleV3TimeWindowRecurrence) *int {
 		if v == nil {
 			return nil
 		}
@@ -26115,6 +27779,1014 @@ func (o GetSecurityGovernanceConditionMachineSpecInfraSpecArrayOutput) Index(i p
 	}).(GetSecurityGovernanceConditionMachineSpecInfraSpecOutput)
 }
 
+type GetSecurityGovernanceConditionV3FaultSpec struct {
+	// List of fault specifications
+	Faults []GetSecurityGovernanceConditionV3FaultSpecFault `pulumi:"faults"`
+	// Operator for comparing faults (EQUAL_TO or NOT_EQUAL_TO)
+	Operator string `pulumi:"operator"`
+}
+
+// GetSecurityGovernanceConditionV3FaultSpecInput is an input type that accepts GetSecurityGovernanceConditionV3FaultSpecArgs and GetSecurityGovernanceConditionV3FaultSpecOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceConditionV3FaultSpecInput` via:
+//
+//	GetSecurityGovernanceConditionV3FaultSpecArgs{...}
+type GetSecurityGovernanceConditionV3FaultSpecInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceConditionV3FaultSpecOutput() GetSecurityGovernanceConditionV3FaultSpecOutput
+	ToGetSecurityGovernanceConditionV3FaultSpecOutputWithContext(context.Context) GetSecurityGovernanceConditionV3FaultSpecOutput
+}
+
+type GetSecurityGovernanceConditionV3FaultSpecArgs struct {
+	// List of fault specifications
+	Faults GetSecurityGovernanceConditionV3FaultSpecFaultArrayInput `pulumi:"faults"`
+	// Operator for comparing faults (EQUAL_TO or NOT_EQUAL_TO)
+	Operator pulumi.StringInput `pulumi:"operator"`
+}
+
+func (GetSecurityGovernanceConditionV3FaultSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceConditionV3FaultSpec)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceConditionV3FaultSpecArgs) ToGetSecurityGovernanceConditionV3FaultSpecOutput() GetSecurityGovernanceConditionV3FaultSpecOutput {
+	return i.ToGetSecurityGovernanceConditionV3FaultSpecOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceConditionV3FaultSpecArgs) ToGetSecurityGovernanceConditionV3FaultSpecOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3FaultSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceConditionV3FaultSpecOutput)
+}
+
+// GetSecurityGovernanceConditionV3FaultSpecArrayInput is an input type that accepts GetSecurityGovernanceConditionV3FaultSpecArray and GetSecurityGovernanceConditionV3FaultSpecArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceConditionV3FaultSpecArrayInput` via:
+//
+//	GetSecurityGovernanceConditionV3FaultSpecArray{ GetSecurityGovernanceConditionV3FaultSpecArgs{...} }
+type GetSecurityGovernanceConditionV3FaultSpecArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceConditionV3FaultSpecArrayOutput() GetSecurityGovernanceConditionV3FaultSpecArrayOutput
+	ToGetSecurityGovernanceConditionV3FaultSpecArrayOutputWithContext(context.Context) GetSecurityGovernanceConditionV3FaultSpecArrayOutput
+}
+
+type GetSecurityGovernanceConditionV3FaultSpecArray []GetSecurityGovernanceConditionV3FaultSpecInput
+
+func (GetSecurityGovernanceConditionV3FaultSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceConditionV3FaultSpec)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceConditionV3FaultSpecArray) ToGetSecurityGovernanceConditionV3FaultSpecArrayOutput() GetSecurityGovernanceConditionV3FaultSpecArrayOutput {
+	return i.ToGetSecurityGovernanceConditionV3FaultSpecArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceConditionV3FaultSpecArray) ToGetSecurityGovernanceConditionV3FaultSpecArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3FaultSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceConditionV3FaultSpecArrayOutput)
+}
+
+type GetSecurityGovernanceConditionV3FaultSpecOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceConditionV3FaultSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceConditionV3FaultSpec)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceConditionV3FaultSpecOutput) ToGetSecurityGovernanceConditionV3FaultSpecOutput() GetSecurityGovernanceConditionV3FaultSpecOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3FaultSpecOutput) ToGetSecurityGovernanceConditionV3FaultSpecOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3FaultSpecOutput {
+	return o
+}
+
+// List of fault specifications
+func (o GetSecurityGovernanceConditionV3FaultSpecOutput) Faults() GetSecurityGovernanceConditionV3FaultSpecFaultArrayOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3FaultSpec) []GetSecurityGovernanceConditionV3FaultSpecFault {
+		return v.Faults
+	}).(GetSecurityGovernanceConditionV3FaultSpecFaultArrayOutput)
+}
+
+// Operator for comparing faults (EQUAL_TO or NOT_EQUAL_TO)
+func (o GetSecurityGovernanceConditionV3FaultSpecOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3FaultSpec) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+type GetSecurityGovernanceConditionV3FaultSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceConditionV3FaultSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceConditionV3FaultSpec)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceConditionV3FaultSpecArrayOutput) ToGetSecurityGovernanceConditionV3FaultSpecArrayOutput() GetSecurityGovernanceConditionV3FaultSpecArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3FaultSpecArrayOutput) ToGetSecurityGovernanceConditionV3FaultSpecArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3FaultSpecArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3FaultSpecArrayOutput) Index(i pulumi.IntInput) GetSecurityGovernanceConditionV3FaultSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGovernanceConditionV3FaultSpec {
+		return vs[0].([]GetSecurityGovernanceConditionV3FaultSpec)[vs[1].(int)]
+	}).(GetSecurityGovernanceConditionV3FaultSpecOutput)
+}
+
+type GetSecurityGovernanceConditionV3FaultSpecFault struct {
+	// Type of the fault (FAULT or FAULT_GROUP)
+	FaultType string `pulumi:"faultType"`
+	// Name of the fault
+	Name string `pulumi:"name"`
+}
+
+// GetSecurityGovernanceConditionV3FaultSpecFaultInput is an input type that accepts GetSecurityGovernanceConditionV3FaultSpecFaultArgs and GetSecurityGovernanceConditionV3FaultSpecFaultOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceConditionV3FaultSpecFaultInput` via:
+//
+//	GetSecurityGovernanceConditionV3FaultSpecFaultArgs{...}
+type GetSecurityGovernanceConditionV3FaultSpecFaultInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceConditionV3FaultSpecFaultOutput() GetSecurityGovernanceConditionV3FaultSpecFaultOutput
+	ToGetSecurityGovernanceConditionV3FaultSpecFaultOutputWithContext(context.Context) GetSecurityGovernanceConditionV3FaultSpecFaultOutput
+}
+
+type GetSecurityGovernanceConditionV3FaultSpecFaultArgs struct {
+	// Type of the fault (FAULT or FAULT_GROUP)
+	FaultType pulumi.StringInput `pulumi:"faultType"`
+	// Name of the fault
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetSecurityGovernanceConditionV3FaultSpecFaultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceConditionV3FaultSpecFault)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceConditionV3FaultSpecFaultArgs) ToGetSecurityGovernanceConditionV3FaultSpecFaultOutput() GetSecurityGovernanceConditionV3FaultSpecFaultOutput {
+	return i.ToGetSecurityGovernanceConditionV3FaultSpecFaultOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceConditionV3FaultSpecFaultArgs) ToGetSecurityGovernanceConditionV3FaultSpecFaultOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3FaultSpecFaultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceConditionV3FaultSpecFaultOutput)
+}
+
+// GetSecurityGovernanceConditionV3FaultSpecFaultArrayInput is an input type that accepts GetSecurityGovernanceConditionV3FaultSpecFaultArray and GetSecurityGovernanceConditionV3FaultSpecFaultArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceConditionV3FaultSpecFaultArrayInput` via:
+//
+//	GetSecurityGovernanceConditionV3FaultSpecFaultArray{ GetSecurityGovernanceConditionV3FaultSpecFaultArgs{...} }
+type GetSecurityGovernanceConditionV3FaultSpecFaultArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceConditionV3FaultSpecFaultArrayOutput() GetSecurityGovernanceConditionV3FaultSpecFaultArrayOutput
+	ToGetSecurityGovernanceConditionV3FaultSpecFaultArrayOutputWithContext(context.Context) GetSecurityGovernanceConditionV3FaultSpecFaultArrayOutput
+}
+
+type GetSecurityGovernanceConditionV3FaultSpecFaultArray []GetSecurityGovernanceConditionV3FaultSpecFaultInput
+
+func (GetSecurityGovernanceConditionV3FaultSpecFaultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceConditionV3FaultSpecFault)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceConditionV3FaultSpecFaultArray) ToGetSecurityGovernanceConditionV3FaultSpecFaultArrayOutput() GetSecurityGovernanceConditionV3FaultSpecFaultArrayOutput {
+	return i.ToGetSecurityGovernanceConditionV3FaultSpecFaultArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceConditionV3FaultSpecFaultArray) ToGetSecurityGovernanceConditionV3FaultSpecFaultArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3FaultSpecFaultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceConditionV3FaultSpecFaultArrayOutput)
+}
+
+type GetSecurityGovernanceConditionV3FaultSpecFaultOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceConditionV3FaultSpecFaultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceConditionV3FaultSpecFault)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceConditionV3FaultSpecFaultOutput) ToGetSecurityGovernanceConditionV3FaultSpecFaultOutput() GetSecurityGovernanceConditionV3FaultSpecFaultOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3FaultSpecFaultOutput) ToGetSecurityGovernanceConditionV3FaultSpecFaultOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3FaultSpecFaultOutput {
+	return o
+}
+
+// Type of the fault (FAULT or FAULT_GROUP)
+func (o GetSecurityGovernanceConditionV3FaultSpecFaultOutput) FaultType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3FaultSpecFault) string { return v.FaultType }).(pulumi.StringOutput)
+}
+
+// Name of the fault
+func (o GetSecurityGovernanceConditionV3FaultSpecFaultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3FaultSpecFault) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetSecurityGovernanceConditionV3FaultSpecFaultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceConditionV3FaultSpecFaultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceConditionV3FaultSpecFault)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceConditionV3FaultSpecFaultArrayOutput) ToGetSecurityGovernanceConditionV3FaultSpecFaultArrayOutput() GetSecurityGovernanceConditionV3FaultSpecFaultArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3FaultSpecFaultArrayOutput) ToGetSecurityGovernanceConditionV3FaultSpecFaultArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3FaultSpecFaultArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3FaultSpecFaultArrayOutput) Index(i pulumi.IntInput) GetSecurityGovernanceConditionV3FaultSpecFaultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGovernanceConditionV3FaultSpecFault {
+		return vs[0].([]GetSecurityGovernanceConditionV3FaultSpecFault)[vs[1].(int)]
+	}).(GetSecurityGovernanceConditionV3FaultSpecFaultOutput)
+}
+
+type GetSecurityGovernanceConditionV3K8sSpec struct {
+	// Application specification
+	ApplicationSpecs []GetSecurityGovernanceConditionV3K8sSpecApplicationSpec `pulumi:"applicationSpecs"`
+	// Chaos service account specification
+	ChaosServiceAccountSpecs []GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec `pulumi:"chaosServiceAccountSpecs"`
+	// Infrastructure specification
+	InfraSpecs []GetSecurityGovernanceConditionV3K8sSpecInfraSpec `pulumi:"infraSpecs"`
+}
+
+// GetSecurityGovernanceConditionV3K8sSpecInput is an input type that accepts GetSecurityGovernanceConditionV3K8sSpecArgs and GetSecurityGovernanceConditionV3K8sSpecOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceConditionV3K8sSpecInput` via:
+//
+//	GetSecurityGovernanceConditionV3K8sSpecArgs{...}
+type GetSecurityGovernanceConditionV3K8sSpecInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceConditionV3K8sSpecOutput() GetSecurityGovernanceConditionV3K8sSpecOutput
+	ToGetSecurityGovernanceConditionV3K8sSpecOutputWithContext(context.Context) GetSecurityGovernanceConditionV3K8sSpecOutput
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecArgs struct {
+	// Application specification
+	ApplicationSpecs GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayInput `pulumi:"applicationSpecs"`
+	// Chaos service account specification
+	ChaosServiceAccountSpecs GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayInput `pulumi:"chaosServiceAccountSpecs"`
+	// Infrastructure specification
+	InfraSpecs GetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayInput `pulumi:"infraSpecs"`
+}
+
+func (GetSecurityGovernanceConditionV3K8sSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceConditionV3K8sSpec)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceConditionV3K8sSpecArgs) ToGetSecurityGovernanceConditionV3K8sSpecOutput() GetSecurityGovernanceConditionV3K8sSpecOutput {
+	return i.ToGetSecurityGovernanceConditionV3K8sSpecOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceConditionV3K8sSpecArgs) ToGetSecurityGovernanceConditionV3K8sSpecOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3K8sSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceConditionV3K8sSpecOutput)
+}
+
+// GetSecurityGovernanceConditionV3K8sSpecArrayInput is an input type that accepts GetSecurityGovernanceConditionV3K8sSpecArray and GetSecurityGovernanceConditionV3K8sSpecArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceConditionV3K8sSpecArrayInput` via:
+//
+//	GetSecurityGovernanceConditionV3K8sSpecArray{ GetSecurityGovernanceConditionV3K8sSpecArgs{...} }
+type GetSecurityGovernanceConditionV3K8sSpecArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceConditionV3K8sSpecArrayOutput() GetSecurityGovernanceConditionV3K8sSpecArrayOutput
+	ToGetSecurityGovernanceConditionV3K8sSpecArrayOutputWithContext(context.Context) GetSecurityGovernanceConditionV3K8sSpecArrayOutput
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecArray []GetSecurityGovernanceConditionV3K8sSpecInput
+
+func (GetSecurityGovernanceConditionV3K8sSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceConditionV3K8sSpec)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceConditionV3K8sSpecArray) ToGetSecurityGovernanceConditionV3K8sSpecArrayOutput() GetSecurityGovernanceConditionV3K8sSpecArrayOutput {
+	return i.ToGetSecurityGovernanceConditionV3K8sSpecArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceConditionV3K8sSpecArray) ToGetSecurityGovernanceConditionV3K8sSpecArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3K8sSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceConditionV3K8sSpecArrayOutput)
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceConditionV3K8sSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceConditionV3K8sSpec)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecOutput) ToGetSecurityGovernanceConditionV3K8sSpecOutput() GetSecurityGovernanceConditionV3K8sSpecOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecOutput) ToGetSecurityGovernanceConditionV3K8sSpecOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3K8sSpecOutput {
+	return o
+}
+
+// Application specification
+func (o GetSecurityGovernanceConditionV3K8sSpecOutput) ApplicationSpecs() GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3K8sSpec) []GetSecurityGovernanceConditionV3K8sSpecApplicationSpec {
+		return v.ApplicationSpecs
+	}).(GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutput)
+}
+
+// Chaos service account specification
+func (o GetSecurityGovernanceConditionV3K8sSpecOutput) ChaosServiceAccountSpecs() GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3K8sSpec) []GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec {
+		return v.ChaosServiceAccountSpecs
+	}).(GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutput)
+}
+
+// Infrastructure specification
+func (o GetSecurityGovernanceConditionV3K8sSpecOutput) InfraSpecs() GetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3K8sSpec) []GetSecurityGovernanceConditionV3K8sSpecInfraSpec {
+		return v.InfraSpecs
+	}).(GetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutput)
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceConditionV3K8sSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceConditionV3K8sSpec)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecArrayOutput) ToGetSecurityGovernanceConditionV3K8sSpecArrayOutput() GetSecurityGovernanceConditionV3K8sSpecArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecArrayOutput) ToGetSecurityGovernanceConditionV3K8sSpecArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3K8sSpecArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecArrayOutput) Index(i pulumi.IntInput) GetSecurityGovernanceConditionV3K8sSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGovernanceConditionV3K8sSpec {
+		return vs[0].([]GetSecurityGovernanceConditionV3K8sSpec)[vs[1].(int)]
+	}).(GetSecurityGovernanceConditionV3K8sSpecOutput)
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecApplicationSpec struct {
+	// Operator for application matching (EQUAL_TO or NOT_EQUAL_TO)
+	Operator string `pulumi:"operator"`
+	// List of workloads to include/exclude
+	Workloads []GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload `pulumi:"workloads"`
+}
+
+// GetSecurityGovernanceConditionV3K8sSpecApplicationSpecInput is an input type that accepts GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArgs and GetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceConditionV3K8sSpecApplicationSpecInput` via:
+//
+//	GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArgs{...}
+type GetSecurityGovernanceConditionV3K8sSpecApplicationSpecInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput() GetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput
+	ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutputWithContext(context.Context) GetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArgs struct {
+	// Operator for application matching (EQUAL_TO or NOT_EQUAL_TO)
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// List of workloads to include/exclude
+	Workloads GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayInput `pulumi:"workloads"`
+}
+
+func (GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceConditionV3K8sSpecApplicationSpec)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArgs) ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput() GetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput {
+	return i.ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArgs) ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput)
+}
+
+// GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayInput is an input type that accepts GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArray and GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayInput` via:
+//
+//	GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArray{ GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArgs{...} }
+type GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutput() GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutput
+	ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutputWithContext(context.Context) GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutput
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArray []GetSecurityGovernanceConditionV3K8sSpecApplicationSpecInput
+
+func (GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceConditionV3K8sSpecApplicationSpec)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArray) ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutput() GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutput {
+	return i.ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArray) ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutput)
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceConditionV3K8sSpecApplicationSpec)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput) ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput() GetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput) ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput {
+	return o
+}
+
+// Operator for application matching (EQUAL_TO or NOT_EQUAL_TO)
+func (o GetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3K8sSpecApplicationSpec) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// List of workloads to include/exclude
+func (o GetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput) Workloads() GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3K8sSpecApplicationSpec) []GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload {
+		return v.Workloads
+	}).(GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput)
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceConditionV3K8sSpecApplicationSpec)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutput) ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutput() GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutput) ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutput) Index(i pulumi.IntInput) GetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGovernanceConditionV3K8sSpecApplicationSpec {
+		return vs[0].([]GetSecurityGovernanceConditionV3K8sSpecApplicationSpec)[vs[1].(int)]
+	}).(GetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput)
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload struct {
+	// ID for the application map
+	ApplicationMapId string `pulumi:"applicationMapId"`
+	// Kind of the workload (e.g., deployment, statefulset)
+	Kind string `pulumi:"kind"`
+	// Label selector for the workload
+	Label string `pulumi:"label"`
+	// Namespace of the workload
+	Namespace string `pulumi:"namespace"`
+	// Namespace labels to match against, as key-value pairs
+	NamespaceLabels map[string]string `pulumi:"namespaceLabels"`
+	// List of services associated with the workload
+	Services []string `pulumi:"services"`
+}
+
+// GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadInput is an input type that accepts GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs and GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadInput` via:
+//
+//	GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs{...}
+type GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput() GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput
+	ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutputWithContext(context.Context) GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs struct {
+	// ID for the application map
+	ApplicationMapId pulumi.StringInput `pulumi:"applicationMapId"`
+	// Kind of the workload (e.g., deployment, statefulset)
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// Label selector for the workload
+	Label pulumi.StringInput `pulumi:"label"`
+	// Namespace of the workload
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// Namespace labels to match against, as key-value pairs
+	NamespaceLabels pulumi.StringMapInput `pulumi:"namespaceLabels"`
+	// List of services associated with the workload
+	Services pulumi.StringArrayInput `pulumi:"services"`
+}
+
+func (GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs) ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput() GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput {
+	return i.ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs) ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput)
+}
+
+// GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayInput is an input type that accepts GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArray and GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayInput` via:
+//
+//	GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArray{ GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs{...} }
+type GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput() GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput
+	ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutputWithContext(context.Context) GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArray []GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadInput
+
+func (GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArray) ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput() GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput {
+	return i.ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArray) ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput)
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput) ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput() GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput) ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput {
+	return o
+}
+
+// ID for the application map
+func (o GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput) ApplicationMapId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload) string {
+		return v.ApplicationMapId
+	}).(pulumi.StringOutput)
+}
+
+// Kind of the workload (e.g., deployment, statefulset)
+func (o GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Label selector for the workload
+func (o GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Namespace of the workload
+func (o GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// Namespace labels to match against, as key-value pairs
+func (o GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput) NamespaceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload) map[string]string {
+		return v.NamespaceLabels
+	}).(pulumi.StringMapOutput)
+}
+
+// List of services associated with the workload
+func (o GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput) Services() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload) []string { return v.Services }).(pulumi.StringArrayOutput)
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput) ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput() GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput) ToGetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput) Index(i pulumi.IntInput) GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload {
+		return vs[0].([]GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkload)[vs[1].(int)]
+	}).(GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput)
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec struct {
+	// Operator for service account matching (EQUAL_TO or NOT_EQUAL_TO)
+	Operator string `pulumi:"operator"`
+	// List of service accounts to include/exclude
+	ServiceAccounts []string `pulumi:"serviceAccounts"`
+}
+
+// GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecInput is an input type that accepts GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs and GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecInput` via:
+//
+//	GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs{...}
+type GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput() GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput
+	ToGetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutputWithContext(context.Context) GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs struct {
+	// Operator for service account matching (EQUAL_TO or NOT_EQUAL_TO)
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// List of service accounts to include/exclude
+	ServiceAccounts pulumi.StringArrayInput `pulumi:"serviceAccounts"`
+}
+
+func (GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs) ToGetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput() GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput {
+	return i.ToGetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs) ToGetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput)
+}
+
+// GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayInput is an input type that accepts GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArray and GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayInput` via:
+//
+//	GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArray{ GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs{...} }
+type GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutput() GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutput
+	ToGetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutputWithContext(context.Context) GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutput
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArray []GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecInput
+
+func (GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArray) ToGetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutput() GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutput {
+	return i.ToGetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArray) ToGetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutput)
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput) ToGetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput() GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput) ToGetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput {
+	return o
+}
+
+// Operator for service account matching (EQUAL_TO or NOT_EQUAL_TO)
+func (o GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// List of service accounts to include/exclude
+func (o GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput) ServiceAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec) []string {
+		return v.ServiceAccounts
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutput) ToGetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutput() GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutput) ToGetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutput) Index(i pulumi.IntInput) GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec {
+		return vs[0].([]GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpec)[vs[1].(int)]
+	}).(GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput)
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecInfraSpec struct {
+	// List of infrastructure IDs to apply the condition to
+	InfraIds []string `pulumi:"infraIds"`
+	// Operator for comparing infrastructure IDs (EQUAL_TO or NOT_EQUAL_TO)
+	Operator string `pulumi:"operator"`
+}
+
+// GetSecurityGovernanceConditionV3K8sSpecInfraSpecInput is an input type that accepts GetSecurityGovernanceConditionV3K8sSpecInfraSpecArgs and GetSecurityGovernanceConditionV3K8sSpecInfraSpecOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceConditionV3K8sSpecInfraSpecInput` via:
+//
+//	GetSecurityGovernanceConditionV3K8sSpecInfraSpecArgs{...}
+type GetSecurityGovernanceConditionV3K8sSpecInfraSpecInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceConditionV3K8sSpecInfraSpecOutput() GetSecurityGovernanceConditionV3K8sSpecInfraSpecOutput
+	ToGetSecurityGovernanceConditionV3K8sSpecInfraSpecOutputWithContext(context.Context) GetSecurityGovernanceConditionV3K8sSpecInfraSpecOutput
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecInfraSpecArgs struct {
+	// List of infrastructure IDs to apply the condition to
+	InfraIds pulumi.StringArrayInput `pulumi:"infraIds"`
+	// Operator for comparing infrastructure IDs (EQUAL_TO or NOT_EQUAL_TO)
+	Operator pulumi.StringInput `pulumi:"operator"`
+}
+
+func (GetSecurityGovernanceConditionV3K8sSpecInfraSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceConditionV3K8sSpecInfraSpec)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceConditionV3K8sSpecInfraSpecArgs) ToGetSecurityGovernanceConditionV3K8sSpecInfraSpecOutput() GetSecurityGovernanceConditionV3K8sSpecInfraSpecOutput {
+	return i.ToGetSecurityGovernanceConditionV3K8sSpecInfraSpecOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceConditionV3K8sSpecInfraSpecArgs) ToGetSecurityGovernanceConditionV3K8sSpecInfraSpecOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3K8sSpecInfraSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceConditionV3K8sSpecInfraSpecOutput)
+}
+
+// GetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayInput is an input type that accepts GetSecurityGovernanceConditionV3K8sSpecInfraSpecArray and GetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayInput` via:
+//
+//	GetSecurityGovernanceConditionV3K8sSpecInfraSpecArray{ GetSecurityGovernanceConditionV3K8sSpecInfraSpecArgs{...} }
+type GetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutput() GetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutput
+	ToGetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutputWithContext(context.Context) GetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutput
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecInfraSpecArray []GetSecurityGovernanceConditionV3K8sSpecInfraSpecInput
+
+func (GetSecurityGovernanceConditionV3K8sSpecInfraSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceConditionV3K8sSpecInfraSpec)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceConditionV3K8sSpecInfraSpecArray) ToGetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutput() GetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutput {
+	return i.ToGetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceConditionV3K8sSpecInfraSpecArray) ToGetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutput)
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecInfraSpecOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceConditionV3K8sSpecInfraSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceConditionV3K8sSpecInfraSpec)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecInfraSpecOutput) ToGetSecurityGovernanceConditionV3K8sSpecInfraSpecOutput() GetSecurityGovernanceConditionV3K8sSpecInfraSpecOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecInfraSpecOutput) ToGetSecurityGovernanceConditionV3K8sSpecInfraSpecOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3K8sSpecInfraSpecOutput {
+	return o
+}
+
+// List of infrastructure IDs to apply the condition to
+func (o GetSecurityGovernanceConditionV3K8sSpecInfraSpecOutput) InfraIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3K8sSpecInfraSpec) []string { return v.InfraIds }).(pulumi.StringArrayOutput)
+}
+
+// Operator for comparing infrastructure IDs (EQUAL_TO or NOT_EQUAL_TO)
+func (o GetSecurityGovernanceConditionV3K8sSpecInfraSpecOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3K8sSpecInfraSpec) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+type GetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceConditionV3K8sSpecInfraSpec)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutput) ToGetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutput() GetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutput) ToGetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutput) Index(i pulumi.IntInput) GetSecurityGovernanceConditionV3K8sSpecInfraSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGovernanceConditionV3K8sSpecInfraSpec {
+		return vs[0].([]GetSecurityGovernanceConditionV3K8sSpecInfraSpec)[vs[1].(int)]
+	}).(GetSecurityGovernanceConditionV3K8sSpecInfraSpecOutput)
+}
+
+type GetSecurityGovernanceConditionV3MachineSpec struct {
+	// Infrastructure specification
+	InfraSpecs []GetSecurityGovernanceConditionV3MachineSpecInfraSpec `pulumi:"infraSpecs"`
+}
+
+// GetSecurityGovernanceConditionV3MachineSpecInput is an input type that accepts GetSecurityGovernanceConditionV3MachineSpecArgs and GetSecurityGovernanceConditionV3MachineSpecOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceConditionV3MachineSpecInput` via:
+//
+//	GetSecurityGovernanceConditionV3MachineSpecArgs{...}
+type GetSecurityGovernanceConditionV3MachineSpecInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceConditionV3MachineSpecOutput() GetSecurityGovernanceConditionV3MachineSpecOutput
+	ToGetSecurityGovernanceConditionV3MachineSpecOutputWithContext(context.Context) GetSecurityGovernanceConditionV3MachineSpecOutput
+}
+
+type GetSecurityGovernanceConditionV3MachineSpecArgs struct {
+	// Infrastructure specification
+	InfraSpecs GetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayInput `pulumi:"infraSpecs"`
+}
+
+func (GetSecurityGovernanceConditionV3MachineSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceConditionV3MachineSpec)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceConditionV3MachineSpecArgs) ToGetSecurityGovernanceConditionV3MachineSpecOutput() GetSecurityGovernanceConditionV3MachineSpecOutput {
+	return i.ToGetSecurityGovernanceConditionV3MachineSpecOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceConditionV3MachineSpecArgs) ToGetSecurityGovernanceConditionV3MachineSpecOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3MachineSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceConditionV3MachineSpecOutput)
+}
+
+// GetSecurityGovernanceConditionV3MachineSpecArrayInput is an input type that accepts GetSecurityGovernanceConditionV3MachineSpecArray and GetSecurityGovernanceConditionV3MachineSpecArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceConditionV3MachineSpecArrayInput` via:
+//
+//	GetSecurityGovernanceConditionV3MachineSpecArray{ GetSecurityGovernanceConditionV3MachineSpecArgs{...} }
+type GetSecurityGovernanceConditionV3MachineSpecArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceConditionV3MachineSpecArrayOutput() GetSecurityGovernanceConditionV3MachineSpecArrayOutput
+	ToGetSecurityGovernanceConditionV3MachineSpecArrayOutputWithContext(context.Context) GetSecurityGovernanceConditionV3MachineSpecArrayOutput
+}
+
+type GetSecurityGovernanceConditionV3MachineSpecArray []GetSecurityGovernanceConditionV3MachineSpecInput
+
+func (GetSecurityGovernanceConditionV3MachineSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceConditionV3MachineSpec)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceConditionV3MachineSpecArray) ToGetSecurityGovernanceConditionV3MachineSpecArrayOutput() GetSecurityGovernanceConditionV3MachineSpecArrayOutput {
+	return i.ToGetSecurityGovernanceConditionV3MachineSpecArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceConditionV3MachineSpecArray) ToGetSecurityGovernanceConditionV3MachineSpecArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3MachineSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceConditionV3MachineSpecArrayOutput)
+}
+
+type GetSecurityGovernanceConditionV3MachineSpecOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceConditionV3MachineSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceConditionV3MachineSpec)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceConditionV3MachineSpecOutput) ToGetSecurityGovernanceConditionV3MachineSpecOutput() GetSecurityGovernanceConditionV3MachineSpecOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3MachineSpecOutput) ToGetSecurityGovernanceConditionV3MachineSpecOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3MachineSpecOutput {
+	return o
+}
+
+// Infrastructure specification
+func (o GetSecurityGovernanceConditionV3MachineSpecOutput) InfraSpecs() GetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3MachineSpec) []GetSecurityGovernanceConditionV3MachineSpecInfraSpec {
+		return v.InfraSpecs
+	}).(GetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutput)
+}
+
+type GetSecurityGovernanceConditionV3MachineSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceConditionV3MachineSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceConditionV3MachineSpec)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceConditionV3MachineSpecArrayOutput) ToGetSecurityGovernanceConditionV3MachineSpecArrayOutput() GetSecurityGovernanceConditionV3MachineSpecArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3MachineSpecArrayOutput) ToGetSecurityGovernanceConditionV3MachineSpecArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3MachineSpecArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3MachineSpecArrayOutput) Index(i pulumi.IntInput) GetSecurityGovernanceConditionV3MachineSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGovernanceConditionV3MachineSpec {
+		return vs[0].([]GetSecurityGovernanceConditionV3MachineSpec)[vs[1].(int)]
+	}).(GetSecurityGovernanceConditionV3MachineSpecOutput)
+}
+
+type GetSecurityGovernanceConditionV3MachineSpecInfraSpec struct {
+	// List of infrastructure IDs to apply the condition to
+	InfraIds []string `pulumi:"infraIds"`
+	// Operator for comparing infrastructure IDs (EQUAL_TO or NOT_EQUAL_TO)
+	Operator string `pulumi:"operator"`
+}
+
+// GetSecurityGovernanceConditionV3MachineSpecInfraSpecInput is an input type that accepts GetSecurityGovernanceConditionV3MachineSpecInfraSpecArgs and GetSecurityGovernanceConditionV3MachineSpecInfraSpecOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceConditionV3MachineSpecInfraSpecInput` via:
+//
+//	GetSecurityGovernanceConditionV3MachineSpecInfraSpecArgs{...}
+type GetSecurityGovernanceConditionV3MachineSpecInfraSpecInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceConditionV3MachineSpecInfraSpecOutput() GetSecurityGovernanceConditionV3MachineSpecInfraSpecOutput
+	ToGetSecurityGovernanceConditionV3MachineSpecInfraSpecOutputWithContext(context.Context) GetSecurityGovernanceConditionV3MachineSpecInfraSpecOutput
+}
+
+type GetSecurityGovernanceConditionV3MachineSpecInfraSpecArgs struct {
+	// List of infrastructure IDs to apply the condition to
+	InfraIds pulumi.StringArrayInput `pulumi:"infraIds"`
+	// Operator for comparing infrastructure IDs (EQUAL_TO or NOT_EQUAL_TO)
+	Operator pulumi.StringInput `pulumi:"operator"`
+}
+
+func (GetSecurityGovernanceConditionV3MachineSpecInfraSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceConditionV3MachineSpecInfraSpec)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceConditionV3MachineSpecInfraSpecArgs) ToGetSecurityGovernanceConditionV3MachineSpecInfraSpecOutput() GetSecurityGovernanceConditionV3MachineSpecInfraSpecOutput {
+	return i.ToGetSecurityGovernanceConditionV3MachineSpecInfraSpecOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceConditionV3MachineSpecInfraSpecArgs) ToGetSecurityGovernanceConditionV3MachineSpecInfraSpecOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3MachineSpecInfraSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceConditionV3MachineSpecInfraSpecOutput)
+}
+
+// GetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayInput is an input type that accepts GetSecurityGovernanceConditionV3MachineSpecInfraSpecArray and GetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayInput` via:
+//
+//	GetSecurityGovernanceConditionV3MachineSpecInfraSpecArray{ GetSecurityGovernanceConditionV3MachineSpecInfraSpecArgs{...} }
+type GetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutput() GetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutput
+	ToGetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutputWithContext(context.Context) GetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutput
+}
+
+type GetSecurityGovernanceConditionV3MachineSpecInfraSpecArray []GetSecurityGovernanceConditionV3MachineSpecInfraSpecInput
+
+func (GetSecurityGovernanceConditionV3MachineSpecInfraSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceConditionV3MachineSpecInfraSpec)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceConditionV3MachineSpecInfraSpecArray) ToGetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutput() GetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutput {
+	return i.ToGetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceConditionV3MachineSpecInfraSpecArray) ToGetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutput)
+}
+
+type GetSecurityGovernanceConditionV3MachineSpecInfraSpecOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceConditionV3MachineSpecInfraSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceConditionV3MachineSpecInfraSpec)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceConditionV3MachineSpecInfraSpecOutput) ToGetSecurityGovernanceConditionV3MachineSpecInfraSpecOutput() GetSecurityGovernanceConditionV3MachineSpecInfraSpecOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3MachineSpecInfraSpecOutput) ToGetSecurityGovernanceConditionV3MachineSpecInfraSpecOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3MachineSpecInfraSpecOutput {
+	return o
+}
+
+// List of infrastructure IDs to apply the condition to
+func (o GetSecurityGovernanceConditionV3MachineSpecInfraSpecOutput) InfraIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3MachineSpecInfraSpec) []string { return v.InfraIds }).(pulumi.StringArrayOutput)
+}
+
+// Operator for comparing infrastructure IDs (EQUAL_TO or NOT_EQUAL_TO)
+func (o GetSecurityGovernanceConditionV3MachineSpecInfraSpecOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceConditionV3MachineSpecInfraSpec) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+type GetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceConditionV3MachineSpecInfraSpec)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutput) ToGetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutput() GetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutput) ToGetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutput) Index(i pulumi.IntInput) GetSecurityGovernanceConditionV3MachineSpecInfraSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGovernanceConditionV3MachineSpecInfraSpec {
+		return vs[0].([]GetSecurityGovernanceConditionV3MachineSpecInfraSpec)[vs[1].(int)]
+	}).(GetSecurityGovernanceConditionV3MachineSpecInfraSpecOutput)
+}
+
 type GetSecurityGovernanceRuleTimeWindow struct {
 	// Duration of the time window (e.g., '30m', '2h').
 	Duration string `pulumi:"duration"`
@@ -26365,6 +29037,256 @@ func (o GetSecurityGovernanceRuleTimeWindowRecurrenceArrayOutput) Index(i pulumi
 	}).(GetSecurityGovernanceRuleTimeWindowRecurrenceOutput)
 }
 
+type GetSecurityGovernanceRuleV3TimeWindow struct {
+	// Duration of the window (e.g., 30m, 1h). Computed from endTime when not set.
+	Duration string `pulumi:"duration"`
+	// End of the window as a Unix epoch timestamp in milliseconds. Computed from duration when not set.
+	EndTime int `pulumi:"endTime"`
+	// Recurrence specification for the time window.
+	Recurrences []GetSecurityGovernanceRuleV3TimeWindowRecurrence `pulumi:"recurrences"`
+	// Start of the window as a Unix epoch timestamp in milliseconds.
+	StartTime int `pulumi:"startTime"`
+	// IANA time zone for the window (e.g., UTC, America/New_York).
+	TimeZone string `pulumi:"timeZone"`
+}
+
+// GetSecurityGovernanceRuleV3TimeWindowInput is an input type that accepts GetSecurityGovernanceRuleV3TimeWindowArgs and GetSecurityGovernanceRuleV3TimeWindowOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceRuleV3TimeWindowInput` via:
+//
+//	GetSecurityGovernanceRuleV3TimeWindowArgs{...}
+type GetSecurityGovernanceRuleV3TimeWindowInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceRuleV3TimeWindowOutput() GetSecurityGovernanceRuleV3TimeWindowOutput
+	ToGetSecurityGovernanceRuleV3TimeWindowOutputWithContext(context.Context) GetSecurityGovernanceRuleV3TimeWindowOutput
+}
+
+type GetSecurityGovernanceRuleV3TimeWindowArgs struct {
+	// Duration of the window (e.g., 30m, 1h). Computed from endTime when not set.
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// End of the window as a Unix epoch timestamp in milliseconds. Computed from duration when not set.
+	EndTime pulumi.IntInput `pulumi:"endTime"`
+	// Recurrence specification for the time window.
+	Recurrences GetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayInput `pulumi:"recurrences"`
+	// Start of the window as a Unix epoch timestamp in milliseconds.
+	StartTime pulumi.IntInput `pulumi:"startTime"`
+	// IANA time zone for the window (e.g., UTC, America/New_York).
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
+}
+
+func (GetSecurityGovernanceRuleV3TimeWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceRuleV3TimeWindow)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceRuleV3TimeWindowArgs) ToGetSecurityGovernanceRuleV3TimeWindowOutput() GetSecurityGovernanceRuleV3TimeWindowOutput {
+	return i.ToGetSecurityGovernanceRuleV3TimeWindowOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceRuleV3TimeWindowArgs) ToGetSecurityGovernanceRuleV3TimeWindowOutputWithContext(ctx context.Context) GetSecurityGovernanceRuleV3TimeWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceRuleV3TimeWindowOutput)
+}
+
+// GetSecurityGovernanceRuleV3TimeWindowArrayInput is an input type that accepts GetSecurityGovernanceRuleV3TimeWindowArray and GetSecurityGovernanceRuleV3TimeWindowArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceRuleV3TimeWindowArrayInput` via:
+//
+//	GetSecurityGovernanceRuleV3TimeWindowArray{ GetSecurityGovernanceRuleV3TimeWindowArgs{...} }
+type GetSecurityGovernanceRuleV3TimeWindowArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceRuleV3TimeWindowArrayOutput() GetSecurityGovernanceRuleV3TimeWindowArrayOutput
+	ToGetSecurityGovernanceRuleV3TimeWindowArrayOutputWithContext(context.Context) GetSecurityGovernanceRuleV3TimeWindowArrayOutput
+}
+
+type GetSecurityGovernanceRuleV3TimeWindowArray []GetSecurityGovernanceRuleV3TimeWindowInput
+
+func (GetSecurityGovernanceRuleV3TimeWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceRuleV3TimeWindow)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceRuleV3TimeWindowArray) ToGetSecurityGovernanceRuleV3TimeWindowArrayOutput() GetSecurityGovernanceRuleV3TimeWindowArrayOutput {
+	return i.ToGetSecurityGovernanceRuleV3TimeWindowArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceRuleV3TimeWindowArray) ToGetSecurityGovernanceRuleV3TimeWindowArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceRuleV3TimeWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceRuleV3TimeWindowArrayOutput)
+}
+
+type GetSecurityGovernanceRuleV3TimeWindowOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceRuleV3TimeWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceRuleV3TimeWindow)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceRuleV3TimeWindowOutput) ToGetSecurityGovernanceRuleV3TimeWindowOutput() GetSecurityGovernanceRuleV3TimeWindowOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceRuleV3TimeWindowOutput) ToGetSecurityGovernanceRuleV3TimeWindowOutputWithContext(ctx context.Context) GetSecurityGovernanceRuleV3TimeWindowOutput {
+	return o
+}
+
+// Duration of the window (e.g., 30m, 1h). Computed from endTime when not set.
+func (o GetSecurityGovernanceRuleV3TimeWindowOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceRuleV3TimeWindow) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// End of the window as a Unix epoch timestamp in milliseconds. Computed from duration when not set.
+func (o GetSecurityGovernanceRuleV3TimeWindowOutput) EndTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceRuleV3TimeWindow) int { return v.EndTime }).(pulumi.IntOutput)
+}
+
+// Recurrence specification for the time window.
+func (o GetSecurityGovernanceRuleV3TimeWindowOutput) Recurrences() GetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceRuleV3TimeWindow) []GetSecurityGovernanceRuleV3TimeWindowRecurrence {
+		return v.Recurrences
+	}).(GetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutput)
+}
+
+// Start of the window as a Unix epoch timestamp in milliseconds.
+func (o GetSecurityGovernanceRuleV3TimeWindowOutput) StartTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceRuleV3TimeWindow) int { return v.StartTime }).(pulumi.IntOutput)
+}
+
+// IANA time zone for the window (e.g., UTC, America/New_York).
+func (o GetSecurityGovernanceRuleV3TimeWindowOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceRuleV3TimeWindow) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+type GetSecurityGovernanceRuleV3TimeWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceRuleV3TimeWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceRuleV3TimeWindow)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceRuleV3TimeWindowArrayOutput) ToGetSecurityGovernanceRuleV3TimeWindowArrayOutput() GetSecurityGovernanceRuleV3TimeWindowArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceRuleV3TimeWindowArrayOutput) ToGetSecurityGovernanceRuleV3TimeWindowArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceRuleV3TimeWindowArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceRuleV3TimeWindowArrayOutput) Index(i pulumi.IntInput) GetSecurityGovernanceRuleV3TimeWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGovernanceRuleV3TimeWindow {
+		return vs[0].([]GetSecurityGovernanceRuleV3TimeWindow)[vs[1].(int)]
+	}).(GetSecurityGovernanceRuleV3TimeWindowOutput)
+}
+
+type GetSecurityGovernanceRuleV3TimeWindowRecurrence struct {
+	// Recurrence type (None, Daily, Weekly, Monthly, Yearly).
+	Type string `pulumi:"type"`
+	// End of the recurrence as a Unix epoch timestamp in milliseconds. Use -1 for no end.
+	Until int `pulumi:"until"`
+	// Day of month for Monthly recurrence. Only used when type is Monthly.
+	Value int `pulumi:"value"`
+}
+
+// GetSecurityGovernanceRuleV3TimeWindowRecurrenceInput is an input type that accepts GetSecurityGovernanceRuleV3TimeWindowRecurrenceArgs and GetSecurityGovernanceRuleV3TimeWindowRecurrenceOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceRuleV3TimeWindowRecurrenceInput` via:
+//
+//	GetSecurityGovernanceRuleV3TimeWindowRecurrenceArgs{...}
+type GetSecurityGovernanceRuleV3TimeWindowRecurrenceInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceRuleV3TimeWindowRecurrenceOutput() GetSecurityGovernanceRuleV3TimeWindowRecurrenceOutput
+	ToGetSecurityGovernanceRuleV3TimeWindowRecurrenceOutputWithContext(context.Context) GetSecurityGovernanceRuleV3TimeWindowRecurrenceOutput
+}
+
+type GetSecurityGovernanceRuleV3TimeWindowRecurrenceArgs struct {
+	// Recurrence type (None, Daily, Weekly, Monthly, Yearly).
+	Type pulumi.StringInput `pulumi:"type"`
+	// End of the recurrence as a Unix epoch timestamp in milliseconds. Use -1 for no end.
+	Until pulumi.IntInput `pulumi:"until"`
+	// Day of month for Monthly recurrence. Only used when type is Monthly.
+	Value pulumi.IntInput `pulumi:"value"`
+}
+
+func (GetSecurityGovernanceRuleV3TimeWindowRecurrenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceRuleV3TimeWindowRecurrence)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceRuleV3TimeWindowRecurrenceArgs) ToGetSecurityGovernanceRuleV3TimeWindowRecurrenceOutput() GetSecurityGovernanceRuleV3TimeWindowRecurrenceOutput {
+	return i.ToGetSecurityGovernanceRuleV3TimeWindowRecurrenceOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceRuleV3TimeWindowRecurrenceArgs) ToGetSecurityGovernanceRuleV3TimeWindowRecurrenceOutputWithContext(ctx context.Context) GetSecurityGovernanceRuleV3TimeWindowRecurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceRuleV3TimeWindowRecurrenceOutput)
+}
+
+// GetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayInput is an input type that accepts GetSecurityGovernanceRuleV3TimeWindowRecurrenceArray and GetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutput values.
+// You can construct a concrete instance of `GetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayInput` via:
+//
+//	GetSecurityGovernanceRuleV3TimeWindowRecurrenceArray{ GetSecurityGovernanceRuleV3TimeWindowRecurrenceArgs{...} }
+type GetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutput() GetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutput
+	ToGetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutputWithContext(context.Context) GetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutput
+}
+
+type GetSecurityGovernanceRuleV3TimeWindowRecurrenceArray []GetSecurityGovernanceRuleV3TimeWindowRecurrenceInput
+
+func (GetSecurityGovernanceRuleV3TimeWindowRecurrenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceRuleV3TimeWindowRecurrence)(nil)).Elem()
+}
+
+func (i GetSecurityGovernanceRuleV3TimeWindowRecurrenceArray) ToGetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutput() GetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutput {
+	return i.ToGetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityGovernanceRuleV3TimeWindowRecurrenceArray) ToGetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutput)
+}
+
+type GetSecurityGovernanceRuleV3TimeWindowRecurrenceOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceRuleV3TimeWindowRecurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityGovernanceRuleV3TimeWindowRecurrence)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceRuleV3TimeWindowRecurrenceOutput) ToGetSecurityGovernanceRuleV3TimeWindowRecurrenceOutput() GetSecurityGovernanceRuleV3TimeWindowRecurrenceOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceRuleV3TimeWindowRecurrenceOutput) ToGetSecurityGovernanceRuleV3TimeWindowRecurrenceOutputWithContext(ctx context.Context) GetSecurityGovernanceRuleV3TimeWindowRecurrenceOutput {
+	return o
+}
+
+// Recurrence type (None, Daily, Weekly, Monthly, Yearly).
+func (o GetSecurityGovernanceRuleV3TimeWindowRecurrenceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceRuleV3TimeWindowRecurrence) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// End of the recurrence as a Unix epoch timestamp in milliseconds. Use -1 for no end.
+func (o GetSecurityGovernanceRuleV3TimeWindowRecurrenceOutput) Until() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceRuleV3TimeWindowRecurrence) int { return v.Until }).(pulumi.IntOutput)
+}
+
+// Day of month for Monthly recurrence. Only used when type is Monthly.
+func (o GetSecurityGovernanceRuleV3TimeWindowRecurrenceOutput) Value() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSecurityGovernanceRuleV3TimeWindowRecurrence) int { return v.Value }).(pulumi.IntOutput)
+}
+
+type GetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityGovernanceRuleV3TimeWindowRecurrence)(nil)).Elem()
+}
+
+func (o GetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutput) ToGetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutput() GetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutput) ToGetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutputWithContext(ctx context.Context) GetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutput {
+	return o
+}
+
+func (o GetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutput) Index(i pulumi.IntInput) GetSecurityGovernanceRuleV3TimeWindowRecurrenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityGovernanceRuleV3TimeWindowRecurrence {
+		return vs[0].([]GetSecurityGovernanceRuleV3TimeWindowRecurrence)[vs[1].(int)]
+	}).(GetSecurityGovernanceRuleV3TimeWindowRecurrenceOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionTemplateContainerActionInput)(nil)).Elem(), ActionTemplateContainerActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ActionTemplateContainerActionPtrInput)(nil)).Elem(), ActionTemplateContainerActionArgs{})
@@ -26584,10 +29506,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceConditionMachineSpecPtrInput)(nil)).Elem(), SecurityGovernanceConditionMachineSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceConditionMachineSpecInfraSpecInput)(nil)).Elem(), SecurityGovernanceConditionMachineSpecInfraSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceConditionMachineSpecInfraSpecPtrInput)(nil)).Elem(), SecurityGovernanceConditionMachineSpecInfraSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceConditionV3FaultSpecInput)(nil)).Elem(), SecurityGovernanceConditionV3FaultSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceConditionV3FaultSpecPtrInput)(nil)).Elem(), SecurityGovernanceConditionV3FaultSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceConditionV3FaultSpecFaultInput)(nil)).Elem(), SecurityGovernanceConditionV3FaultSpecFaultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceConditionV3FaultSpecFaultArrayInput)(nil)).Elem(), SecurityGovernanceConditionV3FaultSpecFaultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceConditionV3K8sSpecInput)(nil)).Elem(), SecurityGovernanceConditionV3K8sSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceConditionV3K8sSpecPtrInput)(nil)).Elem(), SecurityGovernanceConditionV3K8sSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceConditionV3K8sSpecApplicationSpecInput)(nil)).Elem(), SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrInput)(nil)).Elem(), SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadInput)(nil)).Elem(), SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayInput)(nil)).Elem(), SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecInput)(nil)).Elem(), SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrInput)(nil)).Elem(), SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceConditionV3K8sSpecInfraSpecInput)(nil)).Elem(), SecurityGovernanceConditionV3K8sSpecInfraSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceConditionV3K8sSpecInfraSpecPtrInput)(nil)).Elem(), SecurityGovernanceConditionV3K8sSpecInfraSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceConditionV3MachineSpecInput)(nil)).Elem(), SecurityGovernanceConditionV3MachineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceConditionV3MachineSpecPtrInput)(nil)).Elem(), SecurityGovernanceConditionV3MachineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceConditionV3MachineSpecInfraSpecInput)(nil)).Elem(), SecurityGovernanceConditionV3MachineSpecInfraSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceConditionV3MachineSpecInfraSpecPtrInput)(nil)).Elem(), SecurityGovernanceConditionV3MachineSpecInfraSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceRuleTimeWindowInput)(nil)).Elem(), SecurityGovernanceRuleTimeWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceRuleTimeWindowArrayInput)(nil)).Elem(), SecurityGovernanceRuleTimeWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceRuleTimeWindowRecurrenceInput)(nil)).Elem(), SecurityGovernanceRuleTimeWindowRecurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceRuleTimeWindowRecurrencePtrInput)(nil)).Elem(), SecurityGovernanceRuleTimeWindowRecurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceRuleV3TimeWindowInput)(nil)).Elem(), SecurityGovernanceRuleV3TimeWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceRuleV3TimeWindowArrayInput)(nil)).Elem(), SecurityGovernanceRuleV3TimeWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceRuleV3TimeWindowRecurrenceInput)(nil)).Elem(), SecurityGovernanceRuleV3TimeWindowRecurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGovernanceRuleV3TimeWindowRecurrencePtrInput)(nil)).Elem(), SecurityGovernanceRuleV3TimeWindowRecurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionTemplateContainerActionInput)(nil)).Elem(), GetActionTemplateContainerActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionTemplateContainerActionPtrInput)(nil)).Elem(), GetActionTemplateContainerActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActionTemplateContainerActionEnvInput)(nil)).Elem(), GetActionTemplateContainerActionEnvArgs{})
@@ -26710,10 +29654,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceConditionMachineSpecArrayInput)(nil)).Elem(), GetSecurityGovernanceConditionMachineSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceConditionMachineSpecInfraSpecInput)(nil)).Elem(), GetSecurityGovernanceConditionMachineSpecInfraSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceConditionMachineSpecInfraSpecArrayInput)(nil)).Elem(), GetSecurityGovernanceConditionMachineSpecInfraSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceConditionV3FaultSpecInput)(nil)).Elem(), GetSecurityGovernanceConditionV3FaultSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceConditionV3FaultSpecArrayInput)(nil)).Elem(), GetSecurityGovernanceConditionV3FaultSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceConditionV3FaultSpecFaultInput)(nil)).Elem(), GetSecurityGovernanceConditionV3FaultSpecFaultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceConditionV3FaultSpecFaultArrayInput)(nil)).Elem(), GetSecurityGovernanceConditionV3FaultSpecFaultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceConditionV3K8sSpecInput)(nil)).Elem(), GetSecurityGovernanceConditionV3K8sSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceConditionV3K8sSpecArrayInput)(nil)).Elem(), GetSecurityGovernanceConditionV3K8sSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceConditionV3K8sSpecApplicationSpecInput)(nil)).Elem(), GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayInput)(nil)).Elem(), GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadInput)(nil)).Elem(), GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayInput)(nil)).Elem(), GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecInput)(nil)).Elem(), GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayInput)(nil)).Elem(), GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceConditionV3K8sSpecInfraSpecInput)(nil)).Elem(), GetSecurityGovernanceConditionV3K8sSpecInfraSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayInput)(nil)).Elem(), GetSecurityGovernanceConditionV3K8sSpecInfraSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceConditionV3MachineSpecInput)(nil)).Elem(), GetSecurityGovernanceConditionV3MachineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceConditionV3MachineSpecArrayInput)(nil)).Elem(), GetSecurityGovernanceConditionV3MachineSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceConditionV3MachineSpecInfraSpecInput)(nil)).Elem(), GetSecurityGovernanceConditionV3MachineSpecInfraSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayInput)(nil)).Elem(), GetSecurityGovernanceConditionV3MachineSpecInfraSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceRuleTimeWindowInput)(nil)).Elem(), GetSecurityGovernanceRuleTimeWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceRuleTimeWindowArrayInput)(nil)).Elem(), GetSecurityGovernanceRuleTimeWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceRuleTimeWindowRecurrenceInput)(nil)).Elem(), GetSecurityGovernanceRuleTimeWindowRecurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceRuleTimeWindowRecurrenceArrayInput)(nil)).Elem(), GetSecurityGovernanceRuleTimeWindowRecurrenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceRuleV3TimeWindowInput)(nil)).Elem(), GetSecurityGovernanceRuleV3TimeWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceRuleV3TimeWindowArrayInput)(nil)).Elem(), GetSecurityGovernanceRuleV3TimeWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceRuleV3TimeWindowRecurrenceInput)(nil)).Elem(), GetSecurityGovernanceRuleV3TimeWindowRecurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayInput)(nil)).Elem(), GetSecurityGovernanceRuleV3TimeWindowRecurrenceArray{})
 	pulumi.RegisterOutputType(ActionTemplateContainerActionOutput{})
 	pulumi.RegisterOutputType(ActionTemplateContainerActionPtrOutput{})
 	pulumi.RegisterOutputType(ActionTemplateContainerActionEnvOutput{})
@@ -26932,10 +29898,32 @@ func init() {
 	pulumi.RegisterOutputType(SecurityGovernanceConditionMachineSpecPtrOutput{})
 	pulumi.RegisterOutputType(SecurityGovernanceConditionMachineSpecInfraSpecOutput{})
 	pulumi.RegisterOutputType(SecurityGovernanceConditionMachineSpecInfraSpecPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceConditionV3FaultSpecOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceConditionV3FaultSpecPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceConditionV3FaultSpecFaultOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceConditionV3FaultSpecFaultArrayOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceConditionV3K8sSpecOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceConditionV3K8sSpecPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceConditionV3K8sSpecApplicationSpecOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceConditionV3K8sSpecApplicationSpecPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceConditionV3K8sSpecInfraSpecOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceConditionV3K8sSpecInfraSpecPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceConditionV3MachineSpecOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceConditionV3MachineSpecPtrOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceConditionV3MachineSpecInfraSpecOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceConditionV3MachineSpecInfraSpecPtrOutput{})
 	pulumi.RegisterOutputType(SecurityGovernanceRuleTimeWindowOutput{})
 	pulumi.RegisterOutputType(SecurityGovernanceRuleTimeWindowArrayOutput{})
 	pulumi.RegisterOutputType(SecurityGovernanceRuleTimeWindowRecurrenceOutput{})
 	pulumi.RegisterOutputType(SecurityGovernanceRuleTimeWindowRecurrencePtrOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceRuleV3TimeWindowOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceRuleV3TimeWindowArrayOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceRuleV3TimeWindowRecurrenceOutput{})
+	pulumi.RegisterOutputType(SecurityGovernanceRuleV3TimeWindowRecurrencePtrOutput{})
 	pulumi.RegisterOutputType(GetActionTemplateContainerActionOutput{})
 	pulumi.RegisterOutputType(GetActionTemplateContainerActionPtrOutput{})
 	pulumi.RegisterOutputType(GetActionTemplateContainerActionEnvOutput{})
@@ -27058,8 +30046,30 @@ func init() {
 	pulumi.RegisterOutputType(GetSecurityGovernanceConditionMachineSpecArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityGovernanceConditionMachineSpecInfraSpecOutput{})
 	pulumi.RegisterOutputType(GetSecurityGovernanceConditionMachineSpecInfraSpecArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceConditionV3FaultSpecOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceConditionV3FaultSpecArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceConditionV3FaultSpecFaultOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceConditionV3FaultSpecFaultArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceConditionV3K8sSpecOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceConditionV3K8sSpecArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceConditionV3K8sSpecApplicationSpecOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceConditionV3K8sSpecApplicationSpecArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceConditionV3K8sSpecInfraSpecOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceConditionV3K8sSpecInfraSpecArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceConditionV3MachineSpecOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceConditionV3MachineSpecArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceConditionV3MachineSpecInfraSpecOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceConditionV3MachineSpecInfraSpecArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityGovernanceRuleTimeWindowOutput{})
 	pulumi.RegisterOutputType(GetSecurityGovernanceRuleTimeWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityGovernanceRuleTimeWindowRecurrenceOutput{})
 	pulumi.RegisterOutputType(GetSecurityGovernanceRuleTimeWindowRecurrenceArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceRuleV3TimeWindowOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceRuleV3TimeWindowArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceRuleV3TimeWindowRecurrenceOutput{})
+	pulumi.RegisterOutputType(GetSecurityGovernanceRuleV3TimeWindowRecurrenceArrayOutput{})
 }
