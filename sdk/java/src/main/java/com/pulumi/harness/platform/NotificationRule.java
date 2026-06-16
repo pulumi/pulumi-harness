@@ -31,6 +31,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.NotificationRuleArgs;
  * import com.pulumi.harness.platform.inputs.NotificationRuleRequestArgs;
  * import com.pulumi.harness.platform.inputs.NotificationRuleRequestNotificationMethodArgs;
+ * import com.pulumi.harness.platform.inputs.NotificationRuleRequestConditionArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
  * import java.util.Arrays;

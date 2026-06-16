@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *             .accountId("MY_ACCOUNT_ID")
  *             .includeds("target_id_1")
  *             .excludeds("target_id_2")
- *             .rules(FeatureFlagTargetGroupRuleArgs.builder()
+ *             .rules(com.pulumi.harness.platform.inputs.FeatureFlagTargetGroupRuleArgs.builder()
  *                 .attribute("MY_ATTRIBUTE")
  *                 .operator("equal")
  *                 .value("MY_VALUE")

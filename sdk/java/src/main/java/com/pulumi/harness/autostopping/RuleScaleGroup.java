@@ -36,6 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.autostopping.RuleScaleGroupArgs;
  * import com.pulumi.harness.autostopping.inputs.RuleScaleGroupScaleGroupArgs;
  * import com.pulumi.harness.autostopping.inputs.RuleScaleGroupHttpArgs;
+ * import com.pulumi.harness.autostopping.inputs.RuleScaleGroupHttpRoutingArgs;
+ * import com.pulumi.harness.autostopping.inputs.RuleScaleGroupHttpHealthArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

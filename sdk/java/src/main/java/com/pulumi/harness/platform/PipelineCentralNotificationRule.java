@@ -33,6 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.PipelineCentralNotificationRule;
  * import com.pulumi.harness.platform.PipelineCentralNotificationRuleArgs;
  * import com.pulumi.harness.platform.inputs.PipelineCentralNotificationRuleNotificationConditionArgs;
+ * import com.pulumi.harness.platform.inputs.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs;
+ * import com.pulumi.harness.platform.inputs.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

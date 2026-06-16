@@ -36,6 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.autostopping.RuleRdsArgs;
  * import com.pulumi.harness.autostopping.inputs.RuleRdsDatabaseArgs;
  * import com.pulumi.harness.autostopping.inputs.RuleRdsTcpArgs;
+ * import com.pulumi.harness.autostopping.inputs.RuleRdsTcpForwardRuleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

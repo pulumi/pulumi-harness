@@ -8107,6 +8107,7 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingArgs;
+     * import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingClusterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8176,6 +8177,7 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingArgs;
+     * import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingClusterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8245,6 +8247,7 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingArgs;
+     * import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingClusterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8314,6 +8317,7 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingArgs;
+     * import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingClusterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8383,6 +8387,7 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingArgs;
+     * import com.pulumi.harness.platform.inputs.GetEnvironmentClustersMappingClusterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -18432,6 +18437,7 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPolicySetArgs;
+     * import com.pulumi.harness.platform.inputs.GetPolicySetPolicyReferenceArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -18480,6 +18486,7 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPolicySetArgs;
+     * import com.pulumi.harness.platform.inputs.GetPolicySetPolicyReferenceArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -18528,6 +18535,7 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPolicySetArgs;
+     * import com.pulumi.harness.platform.inputs.GetPolicySetPolicyReferenceArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -18576,6 +18584,7 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPolicySetArgs;
+     * import com.pulumi.harness.platform.inputs.GetPolicySetPolicyReferenceArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -18624,6 +18633,7 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetPolicySetArgs;
+     * import com.pulumi.harness.platform.inputs.GetPolicySetPolicyReferenceArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -20704,7 +20714,7 @@ public final class PlatformFunctions {
      *             .build());
      * 
      *         ctx.export("winrmPort", example.port());
-     *         ctx.export("winrmAuthType", example.ntlms().length().applyValue(_length -> _length > 0 ? "NTLM" : "Kerberos"));
+     *         ctx.export("winrmAuthType", example.ntlms().size().applyValue(_length -> _length > 0 ? "NTLM" : "Kerberos"));
      *     }
      * }
      * }
@@ -20760,7 +20770,7 @@ public final class PlatformFunctions {
      *             .build());
      * 
      *         ctx.export("winrmPort", example.port());
-     *         ctx.export("winrmAuthType", example.ntlms().length().applyValue(_length -> _length > 0 ? "NTLM" : "Kerberos"));
+     *         ctx.export("winrmAuthType", example.ntlms().size().applyValue(_length -> _length > 0 ? "NTLM" : "Kerberos"));
      *     }
      * }
      * }
@@ -20816,7 +20826,7 @@ public final class PlatformFunctions {
      *             .build());
      * 
      *         ctx.export("winrmPort", example.port());
-     *         ctx.export("winrmAuthType", example.ntlms().length().applyValue(_length -> _length > 0 ? "NTLM" : "Kerberos"));
+     *         ctx.export("winrmAuthType", example.ntlms().size().applyValue(_length -> _length > 0 ? "NTLM" : "Kerberos"));
      *     }
      * }
      * }
@@ -20872,7 +20882,7 @@ public final class PlatformFunctions {
      *             .build());
      * 
      *         ctx.export("winrmPort", example.port());
-     *         ctx.export("winrmAuthType", example.ntlms().length().applyValue(_length -> _length > 0 ? "NTLM" : "Kerberos"));
+     *         ctx.export("winrmAuthType", example.ntlms().size().applyValue(_length -> _length > 0 ? "NTLM" : "Kerberos"));
      *     }
      * }
      * }
@@ -20928,7 +20938,7 @@ public final class PlatformFunctions {
      *             .build());
      * 
      *         ctx.export("winrmPort", example.port());
-     *         ctx.export("winrmAuthType", example.ntlms().length().applyValue(_length -> _length > 0 ? "NTLM" : "Kerberos"));
+     *         ctx.export("winrmAuthType", example.ntlms().size().applyValue(_length -> _length > 0 ? "NTLM" : "Kerberos"));
      *     }
      * }
      * }

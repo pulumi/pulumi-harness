@@ -31,6 +31,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.SloArgs;
  * import com.pulumi.harness.platform.inputs.SloRequestArgs;
  * import com.pulumi.harness.platform.inputs.SloRequestSloTargetArgs;
+ * import com.pulumi.harness.platform.inputs.SloRequestNotificationRuleRefArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
  * import java.util.Arrays;
