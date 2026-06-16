@@ -36,6 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.SecretText;
  * import com.pulumi.harness.platform.SecretTextArgs;
  * import com.pulumi.harness.platform.inputs.SecretTextAdditionalMetadataArgs;
+ * import com.pulumi.harness.platform.inputs.SecretTextAdditionalMetadataValueArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

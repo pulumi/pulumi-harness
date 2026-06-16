@@ -790,10 +790,10 @@ public final class ChaosFunctions {
      *         ctx.export("experimentId", byIdentity.id());
      *         ctx.export("experimentIdentity", byIdentity.identity());
      *         ctx.export("experimentSpec", byIdentity.specs());
-     *         ctx.export("faultsCount", byIdentity.specs()[0].faults().length());
-     *         ctx.export("probesCount", byIdentity.specs()[0].probes().length());
-     *         ctx.export("actionsCount", byIdentity.specs()[0].actions().length());
-     *         ctx.export("verticesCount", byIdentity.specs()[0].vertices().length());
+     *         ctx.export("faultsCount", byIdentity.specs()[0].faults().size());
+     *         ctx.export("probesCount", byIdentity.specs()[0].probes().size());
+     *         ctx.export("actionsCount", byIdentity.specs()[0].actions().size());
+     *         ctx.export("verticesCount", byIdentity.specs()[0].vertices().size());
      *     }
      * }
      * }
@@ -862,10 +862,10 @@ public final class ChaosFunctions {
      *         ctx.export("experimentId", byIdentity.id());
      *         ctx.export("experimentIdentity", byIdentity.identity());
      *         ctx.export("experimentSpec", byIdentity.specs());
-     *         ctx.export("faultsCount", byIdentity.specs()[0].faults().length());
-     *         ctx.export("probesCount", byIdentity.specs()[0].probes().length());
-     *         ctx.export("actionsCount", byIdentity.specs()[0].actions().length());
-     *         ctx.export("verticesCount", byIdentity.specs()[0].vertices().length());
+     *         ctx.export("faultsCount", byIdentity.specs()[0].faults().size());
+     *         ctx.export("probesCount", byIdentity.specs()[0].probes().size());
+     *         ctx.export("actionsCount", byIdentity.specs()[0].actions().size());
+     *         ctx.export("verticesCount", byIdentity.specs()[0].vertices().size());
      *     }
      * }
      * }
@@ -934,10 +934,10 @@ public final class ChaosFunctions {
      *         ctx.export("experimentId", byIdentity.id());
      *         ctx.export("experimentIdentity", byIdentity.identity());
      *         ctx.export("experimentSpec", byIdentity.specs());
-     *         ctx.export("faultsCount", byIdentity.specs()[0].faults().length());
-     *         ctx.export("probesCount", byIdentity.specs()[0].probes().length());
-     *         ctx.export("actionsCount", byIdentity.specs()[0].actions().length());
-     *         ctx.export("verticesCount", byIdentity.specs()[0].vertices().length());
+     *         ctx.export("faultsCount", byIdentity.specs()[0].faults().size());
+     *         ctx.export("probesCount", byIdentity.specs()[0].probes().size());
+     *         ctx.export("actionsCount", byIdentity.specs()[0].actions().size());
+     *         ctx.export("verticesCount", byIdentity.specs()[0].vertices().size());
      *     }
      * }
      * }
@@ -1006,10 +1006,10 @@ public final class ChaosFunctions {
      *         ctx.export("experimentId", byIdentity.id());
      *         ctx.export("experimentIdentity", byIdentity.identity());
      *         ctx.export("experimentSpec", byIdentity.specs());
-     *         ctx.export("faultsCount", byIdentity.specs()[0].faults().length());
-     *         ctx.export("probesCount", byIdentity.specs()[0].probes().length());
-     *         ctx.export("actionsCount", byIdentity.specs()[0].actions().length());
-     *         ctx.export("verticesCount", byIdentity.specs()[0].vertices().length());
+     *         ctx.export("faultsCount", byIdentity.specs()[0].faults().size());
+     *         ctx.export("probesCount", byIdentity.specs()[0].probes().size());
+     *         ctx.export("actionsCount", byIdentity.specs()[0].actions().size());
+     *         ctx.export("verticesCount", byIdentity.specs()[0].vertices().size());
      *     }
      * }
      * }
@@ -1078,10 +1078,10 @@ public final class ChaosFunctions {
      *         ctx.export("experimentId", byIdentity.id());
      *         ctx.export("experimentIdentity", byIdentity.identity());
      *         ctx.export("experimentSpec", byIdentity.specs());
-     *         ctx.export("faultsCount", byIdentity.specs()[0].faults().length());
-     *         ctx.export("probesCount", byIdentity.specs()[0].probes().length());
-     *         ctx.export("actionsCount", byIdentity.specs()[0].actions().length());
-     *         ctx.export("verticesCount", byIdentity.specs()[0].vertices().length());
+     *         ctx.export("faultsCount", byIdentity.specs()[0].faults().size());
+     *         ctx.export("probesCount", byIdentity.specs()[0].probes().size());
+     *         ctx.export("actionsCount", byIdentity.specs()[0].actions().size());
+     *         ctx.export("verticesCount", byIdentity.specs()[0].vertices().size());
      *     }
      * }
      * }

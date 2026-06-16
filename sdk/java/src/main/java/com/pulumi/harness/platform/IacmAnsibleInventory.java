@@ -34,6 +34,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.IacmAnsibleInventory;
  * import com.pulumi.harness.platform.IacmAnsibleInventoryArgs;
  * import com.pulumi.harness.platform.inputs.IacmAnsibleInventoryGroupArgs;
+ * import com.pulumi.harness.platform.inputs.IacmAnsibleInventoryGroupVarArgs;
  * import com.pulumi.harness.platform.inputs.IacmAnsibleInventoryVarArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;

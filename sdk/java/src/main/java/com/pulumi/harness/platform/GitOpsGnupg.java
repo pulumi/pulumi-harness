@@ -31,6 +31,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.GitOpsGnupg;
  * import com.pulumi.harness.platform.GitOpsGnupgArgs;
  * import com.pulumi.harness.platform.inputs.GitOpsGnupgRequestArgs;
+ * import com.pulumi.harness.platform.inputs.GitOpsGnupgRequestPublickeyArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;

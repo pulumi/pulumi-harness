@@ -53,6 +53,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.YamlConfig;
  * import com.pulumi.harness.YamlConfigArgs;
  * import com.pulumi.harness.inputs.InfrastructureDefinitionCustomArgs;
+ * import com.pulumi.harness.inputs.InfrastructureDefinitionCustomVariableArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

@@ -34,6 +34,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.HarRegistry;
  * import com.pulumi.harness.platform.HarRegistryArgs;
  * import com.pulumi.harness.platform.inputs.HarRegistryConfigArgs;
+ * import com.pulumi.harness.platform.inputs.HarRegistryConfigAuthArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

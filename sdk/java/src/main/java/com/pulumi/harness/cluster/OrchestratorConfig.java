@@ -39,6 +39,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.cluster.inputs.OrchestratorConfigBinpackingPodEvictionArgs;
  * import com.pulumi.harness.cluster.inputs.OrchestratorConfigBinpackingPodEvictionThresholdArgs;
  * import com.pulumi.harness.cluster.inputs.OrchestratorConfigBinpackingDisruptionArgs;
+ * import com.pulumi.harness.cluster.inputs.OrchestratorConfigBinpackingDisruptionBudgetArgs;
+ * import com.pulumi.harness.cluster.inputs.OrchestratorConfigBinpackingDisruptionBudgetScheduleArgs;
  * import com.pulumi.harness.cluster.inputs.OrchestratorConfigNodePreferencesArgs;
  * import com.pulumi.harness.cluster.inputs.OrchestratorConfigCommitmentIntegrationArgs;
  * import com.pulumi.harness.cluster.inputs.OrchestratorConfigReplacementScheduleArgs;

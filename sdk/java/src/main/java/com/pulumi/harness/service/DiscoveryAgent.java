@@ -36,6 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.service.DiscoveryAgent;
  * import com.pulumi.harness.service.DiscoveryAgentArgs;
  * import com.pulumi.harness.service.inputs.DiscoveryAgentConfigArgs;
+ * import com.pulumi.harness.service.inputs.DiscoveryAgentConfigKuberneteArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -81,6 +82,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.service.DiscoveryAgent;
  * import com.pulumi.harness.service.DiscoveryAgentArgs;
  * import com.pulumi.harness.service.inputs.DiscoveryAgentConfigArgs;
+ * import com.pulumi.harness.service.inputs.DiscoveryAgentConfigKuberneteArgs;
+ * import com.pulumi.harness.service.inputs.DiscoveryAgentConfigDataArgs;
+ * import com.pulumi.harness.service.inputs.DiscoveryAgentConfigKuberneteResourceArgs;
+ * import com.pulumi.harness.service.inputs.DiscoveryAgentConfigKuberneteTolerationArgs;
+ * import com.pulumi.harness.service.inputs.DiscoveryAgentConfigDataCronArgs;
+ * import com.pulumi.harness.service.inputs.DiscoveryAgentConfigMtlArgs;
+ * import com.pulumi.harness.service.inputs.DiscoveryAgentConfigProxyArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -151,11 +159,11 @@ import javax.annotation.Nullable;
  *                     .annotations(Map.of("example.com/annotation", "value"))
  *                     .nodeSelector(Map.of("kubernetes.io/os", "linux"))
  *                     .resources(DiscoveryAgentConfigKuberneteResourceArgs.builder()
- *                         .limits(DiscoveryAgentConfigKuberneteResourceLimitArgs.builder()
+ *                         .limits(com.pulumi.harness.service.inputs.DiscoveryAgentConfigKuberneteResourceLimitArgs.builder()
  *                             .cpu("500m")
  *                             .memory("512Mi")
  *                             .build())
- *                         .requests(DiscoveryAgentConfigKuberneteResourceRequestArgs.builder()
+ *                         .requests(com.pulumi.harness.service.inputs.DiscoveryAgentConfigKuberneteResourceRequestArgs.builder()
  *                             .cpu("250m")
  *                             .memory("256Mi")
  *                             .build())
