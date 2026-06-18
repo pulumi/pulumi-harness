@@ -133,6 +133,10 @@ export class HarRegistry extends pulumi.CustomResource {
      */
     declare public readonly identifier: pulumi.Output<string>;
     /**
+     * Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
+     */
+    declare public readonly isPublic: pulumi.Output<boolean | undefined>;
+    /**
      * Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
      */
     declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
@@ -172,6 +176,7 @@ export class HarRegistry extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["description"] = state?.description;
             resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["isPublic"] = state?.isPublic;
             resourceInputs["metadata"] = state?.metadata;
             resourceInputs["packageType"] = state?.packageType;
             resourceInputs["parentRef"] = state?.parentRef;
@@ -196,6 +201,7 @@ export class HarRegistry extends pulumi.CustomResource {
             resourceInputs["configs"] = args?.configs;
             resourceInputs["description"] = args?.description;
             resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["isPublic"] = args?.isPublic;
             resourceInputs["metadata"] = args?.metadata;
             resourceInputs["packageType"] = args?.packageType;
             resourceInputs["parentRef"] = args?.parentRef;
@@ -236,6 +242,10 @@ export interface HarRegistryState {
      * Unique identifier of the registry
      */
     identifier?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
+     */
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
      */
@@ -282,6 +292,10 @@ export interface HarRegistryArgs {
      * Unique identifier of the registry
      */
     identifier: pulumi.Input<string>;
+    /**
+     * Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
+     */
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
      */

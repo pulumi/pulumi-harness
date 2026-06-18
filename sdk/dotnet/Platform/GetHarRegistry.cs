@@ -293,6 +293,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Identifier;
         /// <summary>
+        /// Whether the registry is public. When true, the registry is publicly accessible without authentication.
+        /// </summary>
+        public readonly bool IsPublic;
+        /// <summary>
         /// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Metadata;
@@ -329,6 +333,8 @@ namespace Pulumi.Harness.Platform
 
             string identifier,
 
+            bool isPublic,
+
             ImmutableDictionary<string, string>? metadata,
 
             string? packageType,
@@ -346,6 +352,7 @@ namespace Pulumi.Harness.Platform
             Description = description;
             Id = id;
             Identifier = identifier;
+            IsPublic = isPublic;
             Metadata = metadata;
             PackageType = packageType;
             ParentRef = parentRef;

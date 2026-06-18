@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.harness.platform.inputs.HarRegistryConfigArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -109,6 +110,21 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
+     * 
+     */
+    @Import(name="isPublic")
+    private @Nullable Output<Boolean> isPublic;
+
+    /**
+     * @return Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
+     * 
+     */
+    public Optional<Output<Boolean>> isPublic() {
+        return Optional.ofNullable(this.isPublic);
+    }
+
+    /**
      * Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - {@literal @}. Keys are case-sensitive. Maximum 49 entries allowed.
      * 
      */
@@ -192,6 +208,7 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
         this.createdAt = $.createdAt;
         this.description = $.description;
         this.identifier = $.identifier;
+        this.isPublic = $.isPublic;
         this.metadata = $.metadata;
         this.packageType = $.packageType;
         this.parentRef = $.parentRef;
@@ -371,6 +388,27 @@ public final class HarRegistryState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
+        }
+
+        /**
+         * @param isPublic Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isPublic(@Nullable Output<Boolean> isPublic) {
+            $.isPublic = isPublic;
+            return this;
+        }
+
+        /**
+         * @param isPublic Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isPublic(Boolean isPublic) {
+            return isPublic(Output.of(isPublic));
         }
 
         /**

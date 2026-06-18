@@ -123,6 +123,8 @@ type HarRegistry struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Unique identifier of the registry
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
+	// Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
+	IsPublic pulumi.BoolPtrOutput `pulumi:"isPublic"`
 	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
@@ -189,6 +191,8 @@ type harRegistryState struct {
 	Description *string `pulumi:"description"`
 	// Unique identifier of the registry
 	Identifier *string `pulumi:"identifier"`
+	// Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
+	IsPublic *bool `pulumi:"isPublic"`
 	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
 	Metadata map[string]string `pulumi:"metadata"`
 	// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
@@ -214,6 +218,8 @@ type HarRegistryState struct {
 	Description pulumi.StringPtrInput
 	// Unique identifier of the registry
 	Identifier pulumi.StringPtrInput
+	// Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
+	IsPublic pulumi.BoolPtrInput
 	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
 	Metadata pulumi.StringMapInput
 	// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
@@ -241,6 +247,8 @@ type harRegistryArgs struct {
 	Description *string `pulumi:"description"`
 	// Unique identifier of the registry
 	Identifier string `pulumi:"identifier"`
+	// Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
+	IsPublic *bool `pulumi:"isPublic"`
 	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
 	Metadata map[string]string `pulumi:"metadata"`
 	// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
@@ -263,6 +271,8 @@ type HarRegistryArgs struct {
 	Description pulumi.StringPtrInput
 	// Unique identifier of the registry
 	Identifier pulumi.StringInput
+	// Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
+	IsPublic pulumi.BoolPtrInput
 	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
 	Metadata pulumi.StringMapInput
 	// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
@@ -388,6 +398,11 @@ func (o HarRegistryOutput) Description() pulumi.StringPtrOutput {
 // Unique identifier of the registry
 func (o HarRegistryOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *HarRegistry) pulumi.StringOutput { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
+func (o HarRegistryOutput) IsPublic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HarRegistry) pulumi.BoolPtrOutput { return v.IsPublic }).(pulumi.BoolPtrOutput)
 }
 
 // Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.

@@ -11,6 +11,7 @@ import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.HarRegistryArgs;
 import com.pulumi.harness.platform.inputs.HarRegistryState;
 import com.pulumi.harness.platform.outputs.HarRegistryConfig;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -201,6 +202,20 @@ public class HarRegistry extends com.pulumi.resources.CustomResource {
      */
     public Output<String> identifier() {
         return this.identifier;
+    }
+    /**
+     * Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
+     * 
+     */
+    @Export(name="isPublic", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isPublic;
+
+    /**
+     * @return Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
+     * 
+     */
+    public Output<Optional<Boolean>> isPublic() {
+        return Codegen.optional(this.isPublic);
     }
     /**
      * Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - {@literal @}. Keys are case-sensitive. Maximum 49 entries allowed.
