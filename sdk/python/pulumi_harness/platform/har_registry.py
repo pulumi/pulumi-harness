@@ -29,6 +29,7 @@ class HarRegistryArgs:
                  blocked_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  configs: pulumi.Input[Optional[Sequence[pulumi.Input['HarRegistryConfigArgs']]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a HarRegistry resource.
@@ -41,6 +42,7 @@ class HarRegistryArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_patterns: Blocked artifact patterns
         :param pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigArgs']]] configs: Configuration for the registry
         :param pulumi.Input[_builtins.str] description: Description of the registry
+        :param pulumi.Input[_builtins.bool] is_public: Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
         """
         pulumi.set(__self__, "identifier", identifier)
@@ -55,6 +57,8 @@ class HarRegistryArgs:
             pulumi.set(__self__, "configs", configs)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if is_public is not None:
+            pulumi.set(__self__, "is_public", is_public)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
 
@@ -155,6 +159,18 @@ class HarRegistryArgs:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
+        """
+        return pulumi.get(self, "is_public")
+
+    @is_public.setter
+    def is_public(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "is_public", value)
+
+    @_builtins.property
     @pulumi.getter
     def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -176,6 +192,7 @@ class _HarRegistryState:
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  package_type: pulumi.Input[Optional[_builtins.str]] = None,
                  parent_ref: pulumi.Input[Optional[_builtins.str]] = None,
@@ -190,6 +207,7 @@ class _HarRegistryState:
         :param pulumi.Input[_builtins.str] created_at: Creation timestamp
         :param pulumi.Input[_builtins.str] description: Description of the registry
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry
+        :param pulumi.Input[_builtins.bool] is_public: Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
         :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
         :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry (required for creation)
@@ -208,6 +226,8 @@ class _HarRegistryState:
             pulumi.set(__self__, "description", description)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
+        if is_public is not None:
+            pulumi.set(__self__, "is_public", is_public)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if package_type is not None:
@@ -292,6 +312,18 @@ class _HarRegistryState:
         pulumi.set(self, "identifier", value)
 
     @_builtins.property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
+        """
+        return pulumi.get(self, "is_public")
+
+    @is_public.setter
+    def is_public(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "is_public", value)
+
+    @_builtins.property
     @pulumi.getter
     def metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -363,6 +395,7 @@ class HarRegistry(pulumi.CustomResource):
                  configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  package_type: pulumi.Input[Optional[_builtins.str]] = None,
                  parent_ref: pulumi.Input[Optional[_builtins.str]] = None,
@@ -448,6 +481,7 @@ class HarRegistry(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict']]]] configs: Configuration for the registry
         :param pulumi.Input[_builtins.str] description: Description of the registry
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry
+        :param pulumi.Input[_builtins.bool] is_public: Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
         :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
         :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry (required for creation)
@@ -552,6 +586,7 @@ class HarRegistry(pulumi.CustomResource):
                  configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_public: pulumi.Input[Optional[_builtins.bool]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  package_type: pulumi.Input[Optional[_builtins.str]] = None,
                  parent_ref: pulumi.Input[Optional[_builtins.str]] = None,
@@ -572,6 +607,7 @@ class HarRegistry(pulumi.CustomResource):
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
+            __props__.__dict__["is_public"] = is_public
             __props__.__dict__["metadata"] = metadata
             if package_type is None and not opts.urn:
                 raise TypeError("Missing required property 'package_type'")
@@ -600,6 +636,7 @@ class HarRegistry(pulumi.CustomResource):
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            is_public: pulumi.Input[Optional[_builtins.bool]] = None,
             metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             package_type: pulumi.Input[Optional[_builtins.str]] = None,
             parent_ref: pulumi.Input[Optional[_builtins.str]] = None,
@@ -618,6 +655,7 @@ class HarRegistry(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_at: Creation timestamp
         :param pulumi.Input[_builtins.str] description: Description of the registry
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry
+        :param pulumi.Input[_builtins.bool] is_public: Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
         :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
         :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry (required for creation)
@@ -634,6 +672,7 @@ class HarRegistry(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["description"] = description
         __props__.__dict__["identifier"] = identifier
+        __props__.__dict__["is_public"] = is_public
         __props__.__dict__["metadata"] = metadata
         __props__.__dict__["package_type"] = package_type
         __props__.__dict__["parent_ref"] = parent_ref
@@ -688,6 +727,14 @@ class HarRegistry(pulumi.CustomResource):
         Unique identifier of the registry
         """
         return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
+        """
+        return pulumi.get(self, "is_public")
 
     @_builtins.property
     @pulumi.getter

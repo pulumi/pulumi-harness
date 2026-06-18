@@ -28,7 +28,7 @@ class GetHarRegistryResult:
     """
     A collection of values returned by getHarRegistry.
     """
-    def __init__(__self__, allowed_patterns=None, blocked_patterns=None, configs=None, created_at=None, description=None, id=None, identifier=None, metadata=None, package_type=None, parent_ref=None, space_ref=None, url=None):
+    def __init__(__self__, allowed_patterns=None, blocked_patterns=None, configs=None, created_at=None, description=None, id=None, identifier=None, is_public=None, metadata=None, package_type=None, parent_ref=None, space_ref=None, url=None):
         if allowed_patterns and not isinstance(allowed_patterns, list):
             raise TypeError("Expected argument 'allowed_patterns' to be a list")
         pulumi.set(__self__, "allowed_patterns", allowed_patterns)
@@ -50,6 +50,9 @@ class GetHarRegistryResult:
         if identifier and not isinstance(identifier, str):
             raise TypeError("Expected argument 'identifier' to be a str")
         pulumi.set(__self__, "identifier", identifier)
+        if is_public and not isinstance(is_public, bool):
+            raise TypeError("Expected argument 'is_public' to be a bool")
+        pulumi.set(__self__, "is_public", is_public)
         if metadata and not isinstance(metadata, dict):
             raise TypeError("Expected argument 'metadata' to be a dict")
         pulumi.set(__self__, "metadata", metadata)
@@ -123,6 +126,14 @@ class GetHarRegistryResult:
         return pulumi.get(self, "identifier")
 
     @_builtins.property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> _builtins.bool:
+        """
+        Whether the registry is public. When true, the registry is publicly accessible without authentication.
+        """
+        return pulumi.get(self, "is_public")
+
+    @_builtins.property
     @pulumi.getter
     def metadata(self) -> Optional[Mapping[str, _builtins.str]]:
         """
@@ -176,6 +187,7 @@ class AwaitableGetHarRegistryResult(GetHarRegistryResult):
             description=self.description,
             id=self.id,
             identifier=self.identifier,
+            is_public=self.is_public,
             metadata=self.metadata,
             package_type=self.package_type,
             parent_ref=self.parent_ref,
@@ -238,6 +250,7 @@ def get_har_registry(allowed_patterns: Optional[Sequence[_builtins.str]] = None,
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
+        is_public=pulumi.get(__ret__, 'is_public'),
         metadata=pulumi.get(__ret__, 'metadata'),
         package_type=pulumi.get(__ret__, 'package_type'),
         parent_ref=pulumi.get(__ret__, 'parent_ref'),
@@ -297,6 +310,7 @@ def get_har_registry_output(allowed_patterns: pulumi.Input[Optional[Optional[Seq
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
+        is_public=pulumi.get(__response__, 'is_public'),
         metadata=pulumi.get(__response__, 'metadata'),
         package_type=pulumi.get(__response__, 'package_type'),
         parent_ref=pulumi.get(__response__, 'parent_ref'),

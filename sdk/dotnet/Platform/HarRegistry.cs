@@ -145,6 +145,12 @@ namespace Pulumi.Harness.Platform
         public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
+        /// </summary>
+        [Output("isPublic")]
+        public Output<bool?> IsPublic { get; private set; } = null!;
+
+        /// <summary>
         /// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
         /// </summary>
         [Output("metadata")]
@@ -269,6 +275,12 @@ namespace Pulumi.Harness.Platform
         [Input("identifier", required: true)]
         public Input<string> Identifier { get; set; } = null!;
 
+        /// <summary>
+        /// Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
+        /// </summary>
+        [Input("isPublic")]
+        public Input<bool>? IsPublic { get; set; }
+
         [Input("metadata")]
         private InputMap<string>? _metadata;
 
@@ -360,6 +372,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
+
+        /// <summary>
+        /// Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
+        /// </summary>
+        [Input("isPublic")]
+        public Input<bool>? IsPublic { get; set; }
 
         [Input("metadata")]
         private InputMap<string>? _metadata;

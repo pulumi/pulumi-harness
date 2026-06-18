@@ -111,6 +111,10 @@ export interface GetHarRegistryResult {
      */
     readonly identifier: string;
     /**
+     * Whether the registry is public. When true, the registry is publicly accessible without authentication.
+     */
+    readonly isPublic: boolean;
+    /**
      * Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
      */
     readonly metadata?: {[key: string]: string};

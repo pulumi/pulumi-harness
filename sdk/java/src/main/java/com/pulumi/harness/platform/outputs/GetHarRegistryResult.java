@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetHarRegistryConfig;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +51,11 @@ public final class GetHarRegistryResult {
      * 
      */
     private String identifier;
+    /**
+     * @return Whether the registry is public. When true, the registry is publicly accessible without authentication.
+     * 
+     */
+    private Boolean isPublic;
     /**
      * @return Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - {@literal @}. Keys are case-sensitive. Maximum 49 entries allowed.
      * 
@@ -127,6 +133,13 @@ public final class GetHarRegistryResult {
         return this.identifier;
     }
     /**
+     * @return Whether the registry is public. When true, the registry is publicly accessible without authentication.
+     * 
+     */
+    public Boolean isPublic() {
+        return this.isPublic;
+    }
+    /**
      * @return Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - {@literal @}. Keys are case-sensitive. Maximum 49 entries allowed.
      * 
      */
@@ -178,6 +191,7 @@ public final class GetHarRegistryResult {
         private @Nullable String description;
         private String id;
         private String identifier;
+        private Boolean isPublic;
         private @Nullable Map<String,String> metadata;
         private @Nullable String packageType;
         private String parentRef;
@@ -193,6 +207,7 @@ public final class GetHarRegistryResult {
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
+    	      this.isPublic = defaults.isPublic;
     	      this.metadata = defaults.metadata;
     	      this.packageType = defaults.packageType;
     	      this.parentRef = defaults.parentRef;
@@ -258,6 +273,14 @@ public final class GetHarRegistryResult {
             return this;
         }
         @CustomType.Setter
+        public Builder isPublic(Boolean isPublic) {
+            if (isPublic == null) {
+              throw new MissingRequiredPropertyException("GetHarRegistryResult", "isPublic");
+            }
+            this.isPublic = isPublic;
+            return this;
+        }
+        @CustomType.Setter
         public Builder metadata(@Nullable Map<String,String> metadata) {
 
             this.metadata = metadata;
@@ -302,6 +325,7 @@ public final class GetHarRegistryResult {
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
+            _resultValue.isPublic = isPublic;
             _resultValue.metadata = metadata;
             _resultValue.packageType = packageType;
             _resultValue.parentRef = parentRef;

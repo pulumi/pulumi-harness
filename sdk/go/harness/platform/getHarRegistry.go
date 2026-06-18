@@ -87,6 +87,8 @@ type LookupHarRegistryResult struct {
 	Id string `pulumi:"id"`
 	// Unique identifier of the registry
 	Identifier string `pulumi:"identifier"`
+	// Whether the registry is public. When true, the registry is publicly accessible without authentication.
+	IsPublic bool `pulumi:"isPublic"`
 	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
 	Metadata map[string]string `pulumi:"metadata"`
 	// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
@@ -182,6 +184,11 @@ func (o LookupHarRegistryResultOutput) Id() pulumi.StringOutput {
 // Unique identifier of the registry
 func (o LookupHarRegistryResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHarRegistryResult) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Whether the registry is public. When true, the registry is publicly accessible without authentication.
+func (o LookupHarRegistryResultOutput) IsPublic() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupHarRegistryResult) bool { return v.IsPublic }).(pulumi.BoolOutput)
 }
 
 // Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
