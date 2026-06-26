@@ -31,6 +31,36 @@ import * as utilities from "../utilities";
  *         key2: "value2",
  *     },
  * });
+ * // Using commit_sha to pin changelog to a specific revision
+ * const withCommitSha = new harness.platform.DbInstance("with_commit_sha", {
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     name: "name",
+ *     tags: [
+ *         "foo:bar",
+ *         "bar:foo",
+ *     ],
+ *     schema: "schema1",
+ *     commitSha: "abc123def456",
+ *     connector: "jdbcConnector",
+ *     context: "ctx",
+ * });
+ * // Using git_tag to pin changelog to a specific tagged revision
+ * const withGitTag = new harness.platform.DbInstance("with_git_tag", {
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     name: "name",
+ *     tags: [
+ *         "foo:bar",
+ *         "bar:foo",
+ *     ],
+ *     schema: "schema1",
+ *     gitTag: "v1.0.0",
+ *     connector: "jdbcConnector",
+ *     context: "ctx",
+ * });
  * ```
  *
  * ## Import
@@ -76,6 +106,10 @@ export class DbInstance extends pulumi.CustomResource {
      */
     declare public readonly branch: pulumi.Output<string | undefined>;
     /**
+     * The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+     */
+    declare public readonly commitSha: pulumi.Output<string | undefined>;
+    /**
      * The connector to database
      */
     declare public readonly connector: pulumi.Output<string>;
@@ -87,6 +121,10 @@ export class DbInstance extends pulumi.CustomResource {
      * Description of the resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+     */
+    declare public readonly gitTag: pulumi.Output<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -130,9 +168,11 @@ export class DbInstance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DbInstanceState | undefined;
             resourceInputs["branch"] = state?.branch;
+            resourceInputs["commitSha"] = state?.commitSha;
             resourceInputs["connector"] = state?.connector;
             resourceInputs["context"] = state?.context;
             resourceInputs["description"] = state?.description;
+            resourceInputs["gitTag"] = state?.gitTag;
             resourceInputs["identifier"] = state?.identifier;
             resourceInputs["name"] = state?.name;
             resourceInputs["orgId"] = state?.orgId;
@@ -158,9 +198,11 @@ export class DbInstance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'schema'");
             }
             resourceInputs["branch"] = args?.branch;
+            resourceInputs["commitSha"] = args?.commitSha;
             resourceInputs["connector"] = args?.connector;
             resourceInputs["context"] = args?.context;
             resourceInputs["description"] = args?.description;
+            resourceInputs["gitTag"] = args?.gitTag;
             resourceInputs["identifier"] = args?.identifier;
             resourceInputs["name"] = args?.name;
             resourceInputs["orgId"] = args?.orgId;
@@ -183,6 +225,10 @@ export interface DbInstanceState {
      */
     branch?: pulumi.Input<string | undefined>;
     /**
+     * The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+     */
+    commitSha?: pulumi.Input<string | undefined>;
+    /**
      * The connector to database
      */
     connector?: pulumi.Input<string | undefined>;
@@ -194,6 +240,10 @@ export interface DbInstanceState {
      * Description of the resource.
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+     */
+    gitTag?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */
@@ -233,6 +283,10 @@ export interface DbInstanceArgs {
      */
     branch?: pulumi.Input<string | undefined>;
     /**
+     * The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+     */
+    commitSha?: pulumi.Input<string | undefined>;
+    /**
      * The connector to database
      */
     connector: pulumi.Input<string>;
@@ -244,6 +298,10 @@ export interface DbInstanceArgs {
      * Description of the resource.
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+     */
+    gitTag?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the resource.
      */

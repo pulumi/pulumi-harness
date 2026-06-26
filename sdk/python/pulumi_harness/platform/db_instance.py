@@ -25,8 +25,10 @@ class DbInstanceArgs:
                  project_id: pulumi.Input[_builtins.str],
                  schema: pulumi.Input[_builtins.str],
                  branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_sha: pulumi.Input[Optional[_builtins.str]] = None,
                  context: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_tag: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  substitute_properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
@@ -39,8 +41,10 @@ class DbInstanceArgs:
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[_builtins.str] schema: The identifier of the parent database schema
         :param pulumi.Input[_builtins.str] branch: The branch of changeSet repository
+        :param pulumi.Input[_builtins.str] commit_sha: The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
         :param pulumi.Input[_builtins.str] context: The liquibase context
         :param pulumi.Input[_builtins.str] description: Description of the resource.
+        :param pulumi.Input[_builtins.str] git_tag: The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] substitute_properties: The properties to substitute in changelog migration script
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
@@ -52,10 +56,14 @@ class DbInstanceArgs:
         pulumi.set(__self__, "schema", schema)
         if branch is not None:
             pulumi.set(__self__, "branch", branch)
+        if commit_sha is not None:
+            pulumi.set(__self__, "commit_sha", commit_sha)
         if context is not None:
             pulumi.set(__self__, "context", context)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if git_tag is not None:
+            pulumi.set(__self__, "git_tag", git_tag)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if substitute_properties is not None:
@@ -136,6 +144,18 @@ class DbInstanceArgs:
         pulumi.set(self, "branch", value)
 
     @_builtins.property
+    @pulumi.getter(name="commitSha")
+    def commit_sha(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+        """
+        return pulumi.get(self, "commit_sha")
+
+    @commit_sha.setter
+    def commit_sha(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "commit_sha", value)
+
+    @_builtins.property
     @pulumi.getter
     def context(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -158,6 +178,18 @@ class DbInstanceArgs:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gitTag")
+    def git_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+        """
+        return pulumi.get(self, "git_tag")
+
+    @git_tag.setter
+    def git_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "git_tag", value)
 
     @_builtins.property
     @pulumi.getter
@@ -200,9 +232,11 @@ class DbInstanceArgs:
 class _DbInstanceState:
     def __init__(__self__, *,
                  branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_sha: pulumi.Input[Optional[_builtins.str]] = None,
                  connector: pulumi.Input[Optional[_builtins.str]] = None,
                  context: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_tag: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -214,9 +248,11 @@ class _DbInstanceState:
         Input properties used for looking up and filtering DbInstance resources.
 
         :param pulumi.Input[_builtins.str] branch: The branch of changeSet repository
+        :param pulumi.Input[_builtins.str] commit_sha: The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
         :param pulumi.Input[_builtins.str] connector: The connector to database
         :param pulumi.Input[_builtins.str] context: The liquibase context
         :param pulumi.Input[_builtins.str] description: Description of the resource.
+        :param pulumi.Input[_builtins.str] git_tag: The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -227,12 +263,16 @@ class _DbInstanceState:
         """
         if branch is not None:
             pulumi.set(__self__, "branch", branch)
+        if commit_sha is not None:
+            pulumi.set(__self__, "commit_sha", commit_sha)
         if connector is not None:
             pulumi.set(__self__, "connector", connector)
         if context is not None:
             pulumi.set(__self__, "context", context)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if git_tag is not None:
+            pulumi.set(__self__, "git_tag", git_tag)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if name is not None:
@@ -259,6 +299,18 @@ class _DbInstanceState:
     @branch.setter
     def branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branch", value)
+
+    @_builtins.property
+    @pulumi.getter(name="commitSha")
+    def commit_sha(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+        """
+        return pulumi.get(self, "commit_sha")
+
+    @commit_sha.setter
+    def commit_sha(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "commit_sha", value)
 
     @_builtins.property
     @pulumi.getter
@@ -295,6 +347,18 @@ class _DbInstanceState:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gitTag")
+    def git_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+        """
+        return pulumi.get(self, "git_tag")
+
+    @git_tag.setter
+    def git_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "git_tag", value)
 
     @_builtins.property
     @pulumi.getter
@@ -388,9 +452,11 @@ class DbInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_sha: pulumi.Input[Optional[_builtins.str]] = None,
                  connector: pulumi.Input[Optional[_builtins.str]] = None,
                  context: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_tag: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -425,6 +491,34 @@ class DbInstance(pulumi.CustomResource):
                 "key1": "value1",
                 "key2": "value2",
             })
+        # Using commit_sha to pin changelog to a specific revision
+        with_commit_sha = harness.platform.DbInstance("with_commit_sha",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            name="name",
+            tags=[
+                "foo:bar",
+                "bar:foo",
+            ],
+            schema="schema1",
+            commit_sha="abc123def456",
+            connector="jdbcConnector",
+            context="ctx")
+        # Using git_tag to pin changelog to a specific tagged revision
+        with_git_tag = harness.platform.DbInstance("with_git_tag",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            name="name",
+            tags=[
+                "foo:bar",
+                "bar:foo",
+            ],
+            schema="schema1",
+            git_tag="v1.0.0",
+            connector="jdbcConnector",
+            context="ctx")
         ```
 
         ## Import
@@ -441,9 +535,11 @@ class DbInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] branch: The branch of changeSet repository
+        :param pulumi.Input[_builtins.str] commit_sha: The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
         :param pulumi.Input[_builtins.str] connector: The connector to database
         :param pulumi.Input[_builtins.str] context: The liquibase context
         :param pulumi.Input[_builtins.str] description: Description of the resource.
+        :param pulumi.Input[_builtins.str] git_tag: The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -484,6 +580,34 @@ class DbInstance(pulumi.CustomResource):
                 "key1": "value1",
                 "key2": "value2",
             })
+        # Using commit_sha to pin changelog to a specific revision
+        with_commit_sha = harness.platform.DbInstance("with_commit_sha",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            name="name",
+            tags=[
+                "foo:bar",
+                "bar:foo",
+            ],
+            schema="schema1",
+            commit_sha="abc123def456",
+            connector="jdbcConnector",
+            context="ctx")
+        # Using git_tag to pin changelog to a specific tagged revision
+        with_git_tag = harness.platform.DbInstance("with_git_tag",
+            identifier="identifier",
+            org_id="org_id",
+            project_id="project_id",
+            name="name",
+            tags=[
+                "foo:bar",
+                "bar:foo",
+            ],
+            schema="schema1",
+            git_tag="v1.0.0",
+            connector="jdbcConnector",
+            context="ctx")
         ```
 
         ## Import
@@ -513,9 +637,11 @@ class DbInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_sha: pulumi.Input[Optional[_builtins.str]] = None,
                  connector: pulumi.Input[Optional[_builtins.str]] = None,
                  context: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_tag: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -533,11 +659,13 @@ class DbInstance(pulumi.CustomResource):
             __props__ = DbInstanceArgs.__new__(DbInstanceArgs)
 
             __props__.__dict__["branch"] = branch
+            __props__.__dict__["commit_sha"] = commit_sha
             if connector is None and not opts.urn:
                 raise TypeError("Missing required property 'connector'")
             __props__.__dict__["connector"] = connector
             __props__.__dict__["context"] = context
             __props__.__dict__["description"] = description
+            __props__.__dict__["git_tag"] = git_tag
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
@@ -564,9 +692,11 @@ class DbInstance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             branch: pulumi.Input[Optional[_builtins.str]] = None,
+            commit_sha: pulumi.Input[Optional[_builtins.str]] = None,
             connector: pulumi.Input[Optional[_builtins.str]] = None,
             context: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            git_tag: pulumi.Input[Optional[_builtins.str]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -582,9 +712,11 @@ class DbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] branch: The branch of changeSet repository
+        :param pulumi.Input[_builtins.str] commit_sha: The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
         :param pulumi.Input[_builtins.str] connector: The connector to database
         :param pulumi.Input[_builtins.str] context: The liquibase context
         :param pulumi.Input[_builtins.str] description: Description of the resource.
+        :param pulumi.Input[_builtins.str] git_tag: The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -598,9 +730,11 @@ class DbInstance(pulumi.CustomResource):
         __props__ = _DbInstanceState.__new__(_DbInstanceState)
 
         __props__.__dict__["branch"] = branch
+        __props__.__dict__["commit_sha"] = commit_sha
         __props__.__dict__["connector"] = connector
         __props__.__dict__["context"] = context
         __props__.__dict__["description"] = description
+        __props__.__dict__["git_tag"] = git_tag
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
@@ -617,6 +751,14 @@ class DbInstance(pulumi.CustomResource):
         The branch of changeSet repository
         """
         return pulumi.get(self, "branch")
+
+    @_builtins.property
+    @pulumi.getter(name="commitSha")
+    def commit_sha(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+        """
+        return pulumi.get(self, "commit_sha")
 
     @_builtins.property
     @pulumi.getter
@@ -641,6 +783,14 @@ class DbInstance(pulumi.CustomResource):
         Description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="gitTag")
+    def git_tag(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+        """
+        return pulumi.get(self, "git_tag")
 
     @_builtins.property
     @pulumi.getter

@@ -72,6 +72,10 @@ export interface GetDbInstanceResult {
      */
     readonly branch: string;
     /**
+     * The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+     */
+    readonly commitSha: string;
+    /**
      * The connector to database
      */
     readonly connector: string;
@@ -83,6 +87,10 @@ export interface GetDbInstanceResult {
      * Description of the resource.
      */
     readonly description: string;
+    /**
+     * The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+     */
+    readonly gitTag: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

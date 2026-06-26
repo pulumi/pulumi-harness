@@ -34,6 +34,21 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+     * 
+     */
+    @Import(name="commitSha")
+    private @Nullable Output<String> commitSha;
+
+    /**
+     * @return The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+     * 
+     */
+    public Optional<Output<String>> commitSha() {
+        return Optional.ofNullable(this.commitSha);
+    }
+
+    /**
      * The connector to database
      * 
      */
@@ -76,6 +91,21 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+     * 
+     */
+    @Import(name="gitTag")
+    private @Nullable Output<String> gitTag;
+
+    /**
+     * @return The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+     * 
+     */
+    public Optional<Output<String>> gitTag() {
+        return Optional.ofNullable(this.gitTag);
     }
 
     /**
@@ -187,9 +217,11 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     private DbInstanceArgs(DbInstanceArgs $) {
         this.branch = $.branch;
+        this.commitSha = $.commitSha;
         this.connector = $.connector;
         this.context = $.context;
         this.description = $.description;
+        this.gitTag = $.gitTag;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -236,6 +268,27 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder branch(String branch) {
             return branch(Output.of(branch));
+        }
+
+        /**
+         * @param commitSha The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder commitSha(@Nullable Output<String> commitSha) {
+            $.commitSha = commitSha;
+            return this;
+        }
+
+        /**
+         * @param commitSha The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder commitSha(String commitSha) {
+            return commitSha(Output.of(commitSha));
         }
 
         /**
@@ -299,6 +352,27 @@ public final class DbInstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param gitTag The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitTag(@Nullable Output<String> gitTag) {
+            $.gitTag = gitTag;
+            return this;
+        }
+
+        /**
+         * @param gitTag The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitTag(String gitTag) {
+            return gitTag(Output.of(gitTag));
         }
 
         /**

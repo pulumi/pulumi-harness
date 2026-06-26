@@ -71,12 +71,16 @@ type LookupDbInstanceArgs struct {
 type LookupDbInstanceResult struct {
 	// The branch of changeSet repository
 	Branch string `pulumi:"branch"`
+	// The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+	CommitSha string `pulumi:"commitSha"`
 	// The connector to database
 	Connector string `pulumi:"connector"`
 	// The liquibase context
 	Context string `pulumi:"context"`
 	// Description of the resource.
 	Description string `pulumi:"description"`
+	// The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+	GitTag string `pulumi:"gitTag"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Unique identifier of the resource.
@@ -144,6 +148,11 @@ func (o LookupDbInstanceResultOutput) Branch() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDbInstanceResult) string { return v.Branch }).(pulumi.StringOutput)
 }
 
+// The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+func (o LookupDbInstanceResultOutput) CommitSha() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDbInstanceResult) string { return v.CommitSha }).(pulumi.StringOutput)
+}
+
 // The connector to database
 func (o LookupDbInstanceResultOutput) Connector() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDbInstanceResult) string { return v.Connector }).(pulumi.StringOutput)
@@ -157,6 +166,11 @@ func (o LookupDbInstanceResultOutput) Context() pulumi.StringOutput {
 // Description of the resource.
 func (o LookupDbInstanceResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDbInstanceResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+func (o LookupDbInstanceResultOutput) GitTag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDbInstanceResult) string { return v.GitTag }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

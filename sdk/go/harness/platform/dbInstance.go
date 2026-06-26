@@ -49,6 +49,42 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Using commit_sha to pin changelog to a specific revision
+//			_, err = platform.NewDbInstance(ctx, "with_commit_sha", &platform.DbInstanceArgs{
+//				Identifier: pulumi.String("identifier"),
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Name:       pulumi.String("name"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//					pulumi.String("bar:foo"),
+//				},
+//				Schema:    pulumi.String("schema1"),
+//				CommitSha: pulumi.String("abc123def456"),
+//				Connector: pulumi.String("jdbcConnector"),
+//				Context:   pulumi.String("ctx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Using git_tag to pin changelog to a specific tagged revision
+//			_, err = platform.NewDbInstance(ctx, "with_git_tag", &platform.DbInstanceArgs{
+//				Identifier: pulumi.String("identifier"),
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Name:       pulumi.String("name"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//					pulumi.String("bar:foo"),
+//				},
+//				Schema:    pulumi.String("schema1"),
+//				GitTag:    pulumi.String("v1.0.0"),
+//				Connector: pulumi.String("jdbcConnector"),
+//				Context:   pulumi.String("ctx"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -69,12 +105,16 @@ type DbInstance struct {
 
 	// The branch of changeSet repository
 	Branch pulumi.StringPtrOutput `pulumi:"branch"`
+	// The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+	CommitSha pulumi.StringPtrOutput `pulumi:"commitSha"`
 	// The connector to database
 	Connector pulumi.StringOutput `pulumi:"connector"`
 	// The liquibase context
 	Context pulumi.StringPtrOutput `pulumi:"context"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+	GitTag pulumi.StringPtrOutput `pulumi:"gitTag"`
 	// Unique identifier of the resource.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Name of the resource.
@@ -138,12 +178,16 @@ func GetDbInstance(ctx *pulumi.Context,
 type dbInstanceState struct {
 	// The branch of changeSet repository
 	Branch *string `pulumi:"branch"`
+	// The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+	CommitSha *string `pulumi:"commitSha"`
 	// The connector to database
 	Connector *string `pulumi:"connector"`
 	// The liquibase context
 	Context *string `pulumi:"context"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+	GitTag *string `pulumi:"gitTag"`
 	// Unique identifier of the resource.
 	Identifier *string `pulumi:"identifier"`
 	// Name of the resource.
@@ -163,12 +207,16 @@ type dbInstanceState struct {
 type DbInstanceState struct {
 	// The branch of changeSet repository
 	Branch pulumi.StringPtrInput
+	// The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+	CommitSha pulumi.StringPtrInput
 	// The connector to database
 	Connector pulumi.StringPtrInput
 	// The liquibase context
 	Context pulumi.StringPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+	GitTag pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringPtrInput
 	// Name of the resource.
@@ -192,12 +240,16 @@ func (DbInstanceState) ElementType() reflect.Type {
 type dbInstanceArgs struct {
 	// The branch of changeSet repository
 	Branch *string `pulumi:"branch"`
+	// The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+	CommitSha *string `pulumi:"commitSha"`
 	// The connector to database
 	Connector string `pulumi:"connector"`
 	// The liquibase context
 	Context *string `pulumi:"context"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
+	// The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+	GitTag *string `pulumi:"gitTag"`
 	// Unique identifier of the resource.
 	Identifier string `pulumi:"identifier"`
 	// Name of the resource.
@@ -218,12 +270,16 @@ type dbInstanceArgs struct {
 type DbInstanceArgs struct {
 	// The branch of changeSet repository
 	Branch pulumi.StringPtrInput
+	// The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+	CommitSha pulumi.StringPtrInput
 	// The connector to database
 	Connector pulumi.StringInput
 	// The liquibase context
 	Context pulumi.StringPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
+	// The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+	GitTag pulumi.StringPtrInput
 	// Unique identifier of the resource.
 	Identifier pulumi.StringInput
 	// Name of the resource.
@@ -332,6 +388,11 @@ func (o DbInstanceOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbInstance) pulumi.StringPtrOutput { return v.Branch }).(pulumi.StringPtrOutput)
 }
 
+// The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+func (o DbInstanceOutput) CommitSha() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstance) pulumi.StringPtrOutput { return v.CommitSha }).(pulumi.StringPtrOutput)
+}
+
 // The connector to database
 func (o DbInstanceOutput) Connector() pulumi.StringOutput {
 	return o.ApplyT(func(v *DbInstance) pulumi.StringOutput { return v.Connector }).(pulumi.StringOutput)
@@ -345,6 +406,11 @@ func (o DbInstanceOutput) Context() pulumi.StringPtrOutput {
 // Description of the resource.
 func (o DbInstanceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbInstance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+func (o DbInstanceOutput) GitTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstance) pulumi.StringPtrOutput { return v.GitTag }).(pulumi.StringPtrOutput)
 }
 
 // Unique identifier of the resource.

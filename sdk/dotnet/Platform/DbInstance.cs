@@ -44,6 +44,42 @@ namespace Pulumi.Harness.Platform
     ///         },
     ///     });
     /// 
+    ///     // Using commit_sha to pin changelog to a specific revision
+    ///     var withCommitSha = new Harness.Platform.DbInstance("with_commit_sha", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Name = "name",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///             "bar:foo",
+    ///         },
+    ///         Schema = "schema1",
+    ///         CommitSha = "abc123def456",
+    ///         Connector = "jdbcConnector",
+    ///         Context = "ctx",
+    ///     });
+    /// 
+    ///     // Using git_tag to pin changelog to a specific tagged revision
+    ///     var withGitTag = new Harness.Platform.DbInstance("with_git_tag", new()
+    ///     {
+    ///         Identifier = "identifier",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Name = "name",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///             "bar:foo",
+    ///         },
+    ///         Schema = "schema1",
+    ///         GitTag = "v1.0.0",
+    ///         Connector = "jdbcConnector",
+    ///         Context = "ctx",
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -67,6 +103,12 @@ namespace Pulumi.Harness.Platform
         public Output<string?> Branch { get; private set; } = null!;
 
         /// <summary>
+        /// The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+        /// </summary>
+        [Output("commitSha")]
+        public Output<string?> CommitSha { get; private set; } = null!;
+
+        /// <summary>
         /// The connector to database
         /// </summary>
         [Output("connector")]
@@ -83,6 +125,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+        /// </summary>
+        [Output("gitTag")]
+        public Output<string?> GitTag { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the resource.
@@ -180,6 +228,12 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Branch { get; set; }
 
         /// <summary>
+        /// The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+        /// </summary>
+        [Input("commitSha")]
+        public Input<string>? CommitSha { get; set; }
+
+        /// <summary>
         /// The connector to database
         /// </summary>
         [Input("connector", required: true)]
@@ -196,6 +250,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+        /// </summary>
+        [Input("gitTag")]
+        public Input<string>? GitTag { get; set; }
 
         /// <summary>
         /// Unique identifier of the resource.
@@ -266,6 +326,12 @@ namespace Pulumi.Harness.Platform
         public Input<string>? Branch { get; set; }
 
         /// <summary>
+        /// The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+        /// </summary>
+        [Input("commitSha")]
+        public Input<string>? CommitSha { get; set; }
+
+        /// <summary>
         /// The connector to database
         /// </summary>
         [Input("connector")]
@@ -282,6 +348,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+        /// </summary>
+        [Input("gitTag")]
+        public Input<string>? GitTag { get; set; }
 
         /// <summary>
         /// Unique identifier of the resource.
