@@ -20,6 +20,11 @@ public final class GetDbInstanceResult {
      */
     private String branch;
     /**
+     * @return The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+     * 
+     */
+    private String commitSha;
+    /**
      * @return The connector to database
      * 
      */
@@ -34,6 +39,11 @@ public final class GetDbInstanceResult {
      * 
      */
     private String description;
+    /**
+     * @return The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+     * 
+     */
+    private String gitTag;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -84,6 +94,13 @@ public final class GetDbInstanceResult {
         return this.branch;
     }
     /**
+     * @return The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+     * 
+     */
+    public String commitSha() {
+        return this.commitSha;
+    }
+    /**
      * @return The connector to database
      * 
      */
@@ -103,6 +120,13 @@ public final class GetDbInstanceResult {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+     * 
+     */
+    public String gitTag() {
+        return this.gitTag;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -171,9 +195,11 @@ public final class GetDbInstanceResult {
     @CustomType.Builder
     public static final class Builder {
         private String branch;
+        private String commitSha;
         private String connector;
         private String context;
         private String description;
+        private String gitTag;
         private String id;
         private String identifier;
         private @Nullable String name;
@@ -186,9 +212,11 @@ public final class GetDbInstanceResult {
         public Builder(GetDbInstanceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.branch = defaults.branch;
+    	      this.commitSha = defaults.commitSha;
     	      this.connector = defaults.connector;
     	      this.context = defaults.context;
     	      this.description = defaults.description;
+    	      this.gitTag = defaults.gitTag;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.name = defaults.name;
@@ -205,6 +233,14 @@ public final class GetDbInstanceResult {
               throw new MissingRequiredPropertyException("GetDbInstanceResult", "branch");
             }
             this.branch = branch;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder commitSha(String commitSha) {
+            if (commitSha == null) {
+              throw new MissingRequiredPropertyException("GetDbInstanceResult", "commitSha");
+            }
+            this.commitSha = commitSha;
             return this;
         }
         @CustomType.Setter
@@ -229,6 +265,14 @@ public final class GetDbInstanceResult {
               throw new MissingRequiredPropertyException("GetDbInstanceResult", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gitTag(String gitTag) {
+            if (gitTag == null) {
+              throw new MissingRequiredPropertyException("GetDbInstanceResult", "gitTag");
+            }
+            this.gitTag = gitTag;
             return this;
         }
         @CustomType.Setter
@@ -297,9 +341,11 @@ public final class GetDbInstanceResult {
         public GetDbInstanceResult build() {
             final var _resultValue = new GetDbInstanceResult();
             _resultValue.branch = branch;
+            _resultValue.commitSha = commitSha;
             _resultValue.connector = connector;
             _resultValue.context = context;
             _resultValue.description = description;
+            _resultValue.gitTag = gitTag;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.name = name;

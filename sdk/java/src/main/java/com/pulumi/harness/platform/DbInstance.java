@@ -61,6 +61,36 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
+ *         // Using commit_sha to pin changelog to a specific revision
+ *         var withCommitSha = new DbInstance("withCommitSha", DbInstanceArgs.builder()
+ *             .identifier("identifier")
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .name("name")
+ *             .tags(            
+ *                 "foo:bar",
+ *                 "bar:foo")
+ *             .schema("schema1")
+ *             .commitSha("abc123def456")
+ *             .connector("jdbcConnector")
+ *             .context("ctx")
+ *             .build());
+ * 
+ *         // Using git_tag to pin changelog to a specific tagged revision
+ *         var withGitTag = new DbInstance("withGitTag", DbInstanceArgs.builder()
+ *             .identifier("identifier")
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .name("name")
+ *             .tags(            
+ *                 "foo:bar",
+ *                 "bar:foo")
+ *             .schema("schema1")
+ *             .gitTag("v1.0.0")
+ *             .connector("jdbcConnector")
+ *             .context("ctx")
+ *             .build());
+ * 
  *     }
  * }
  * }
@@ -92,6 +122,20 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> branch() {
         return Codegen.optional(this.branch);
+    }
+    /**
+     * The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+     * 
+     */
+    @Export(name="commitSha", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> commitSha;
+
+    /**
+     * @return The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+     * 
+     */
+    public Output<Optional<String>> commitSha() {
+        return Codegen.optional(this.commitSha);
     }
     /**
      * The connector to database
@@ -134,6 +178,20 @@ public class DbInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+     * 
+     */
+    @Export(name="gitTag", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> gitTag;
+
+    /**
+     * @return The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+     * 
+     */
+    public Output<Optional<String>> gitTag() {
+        return Codegen.optional(this.gitTag);
     }
     /**
      * Unique identifier of the resource.

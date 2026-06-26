@@ -26,10 +26,13 @@ class GetDbInstanceResult:
     """
     A collection of values returned by getDbInstance.
     """
-    def __init__(__self__, branch=None, connector=None, context=None, description=None, id=None, identifier=None, name=None, org_id=None, project_id=None, schema=None, substitute_properties=None, tags=None):
+    def __init__(__self__, branch=None, commit_sha=None, connector=None, context=None, description=None, git_tag=None, id=None, identifier=None, name=None, org_id=None, project_id=None, schema=None, substitute_properties=None, tags=None):
         if branch and not isinstance(branch, str):
             raise TypeError("Expected argument 'branch' to be a str")
         pulumi.set(__self__, "branch", branch)
+        if commit_sha and not isinstance(commit_sha, str):
+            raise TypeError("Expected argument 'commit_sha' to be a str")
+        pulumi.set(__self__, "commit_sha", commit_sha)
         if connector and not isinstance(connector, str):
             raise TypeError("Expected argument 'connector' to be a str")
         pulumi.set(__self__, "connector", connector)
@@ -39,6 +42,9 @@ class GetDbInstanceResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if git_tag and not isinstance(git_tag, str):
+            raise TypeError("Expected argument 'git_tag' to be a str")
+        pulumi.set(__self__, "git_tag", git_tag)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -73,6 +79,14 @@ class GetDbInstanceResult:
         return pulumi.get(self, "branch")
 
     @_builtins.property
+    @pulumi.getter(name="commitSha")
+    def commit_sha(self) -> _builtins.str:
+        """
+        The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+        """
+        return pulumi.get(self, "commit_sha")
+
+    @_builtins.property
     @pulumi.getter
     def connector(self) -> _builtins.str:
         """
@@ -95,6 +109,14 @@ class GetDbInstanceResult:
         Description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="gitTag")
+    def git_tag(self) -> _builtins.str:
+        """
+        The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+        """
+        return pulumi.get(self, "git_tag")
 
     @_builtins.property
     @pulumi.getter
@@ -168,9 +190,11 @@ class AwaitableGetDbInstanceResult(GetDbInstanceResult):
             yield self
         return GetDbInstanceResult(
             branch=self.branch,
+            commit_sha=self.commit_sha,
             connector=self.connector,
             context=self.context,
             description=self.description,
+            git_tag=self.git_tag,
             id=self.id,
             identifier=self.identifier,
             name=self.name,
@@ -223,9 +247,11 @@ def get_db_instance(identifier: Optional[_builtins.str] = None,
 
     return AwaitableGetDbInstanceResult(
         branch=pulumi.get(__ret__, 'branch'),
+        commit_sha=pulumi.get(__ret__, 'commit_sha'),
         connector=pulumi.get(__ret__, 'connector'),
         context=pulumi.get(__ret__, 'context'),
         description=pulumi.get(__ret__, 'description'),
+        git_tag=pulumi.get(__ret__, 'git_tag'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         name=pulumi.get(__ret__, 'name'),
@@ -275,9 +301,11 @@ def get_db_instance_output(identifier: pulumi.Input[Optional[_builtins.str]] = N
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getDbInstance:getDbInstance', __args__, opts=opts, typ=GetDbInstanceResult)
     return __ret__.apply(lambda __response__: GetDbInstanceResult(
         branch=pulumi.get(__response__, 'branch'),
+        commit_sha=pulumi.get(__response__, 'commit_sha'),
         connector=pulumi.get(__response__, 'connector'),
         context=pulumi.get(__response__, 'context'),
         description=pulumi.get(__response__, 'description'),
+        git_tag=pulumi.get(__response__, 'git_tag'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
         name=pulumi.get(__response__, 'name'),

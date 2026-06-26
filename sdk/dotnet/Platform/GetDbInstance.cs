@@ -203,6 +203,10 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string Branch;
         /// <summary>
+        /// The commit SHA to pin the changelog to a specific revision. Mutually exclusive with branch and git_tag.
+        /// </summary>
+        public readonly string CommitSha;
+        /// <summary>
         /// The connector to database
         /// </summary>
         public readonly string Connector;
@@ -214,6 +218,10 @@ namespace Pulumi.Harness.Platform
         /// Description of the resource.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The git tag to pin the changelog to a specific tagged revision. Mutually exclusive with branch and commit_sha.
+        /// </summary>
+        public readonly string GitTag;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -251,11 +259,15 @@ namespace Pulumi.Harness.Platform
         private GetDbInstanceResult(
             string branch,
 
+            string commitSha,
+
             string connector,
 
             string context,
 
             string description,
+
+            string gitTag,
 
             string id,
 
@@ -274,9 +286,11 @@ namespace Pulumi.Harness.Platform
             ImmutableArray<string> tags)
         {
             Branch = branch;
+            CommitSha = commitSha;
             Connector = connector;
             Context = context;
             Description = description;
+            GitTag = gitTag;
             Id = id;
             Identifier = identifier;
             Name = name;
