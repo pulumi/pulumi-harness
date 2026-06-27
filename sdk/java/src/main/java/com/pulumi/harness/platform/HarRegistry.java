@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .packageType("HELM")
  *             .configs(HarRegistryConfigArgs.builder()
  *                 .type("UPSTREAM")
- *                 .source("CUSTOM")
+ *                 .source("Custom")
  *                 .url("https://helm.sh")
  *                 .auths(HarRegistryConfigAuthArgs.builder()
  *                     .authType("UserPassword")
@@ -80,6 +80,49 @@ import javax.annotation.Nullable;
  *                     .secretIdentifier("registry_password")
  *                     .secretSpacePath("accountId/orgId/projectId")
  *                     .build())
+ *                 .build())
+ *             .parentRef("accountId/orgId/projectId")
+ *             .build());
+ * 
+ *         // Example of an Upstream Go Registry (GoProxy source needs no url)
+ *         var goUpstream = new HarRegistry("goUpstream", HarRegistryArgs.builder()
+ *             .identifier("upstream_go_registry")
+ *             .description("Upstream Go Registry")
+ *             .spaceRef("accountId/orgId/projectId")
+ *             .packageType("GO")
+ *             .configs(HarRegistryConfigArgs.builder()
+ *                 .type("UPSTREAM")
+ *                 .source("GoProxy")
+ *                 .authType("Anonymous")
+ *                 .build())
+ *             .parentRef("accountId/orgId/projectId")
+ *             .build());
+ * 
+ *         // Example of an Upstream Conda Registry (Anaconda source needs no url)
+ *         var condaUpstream = new HarRegistry("condaUpstream", HarRegistryArgs.builder()
+ *             .identifier("upstream_conda_registry")
+ *             .description("Upstream Conda Registry")
+ *             .spaceRef("accountId/orgId/projectId")
+ *             .packageType("CONDA")
+ *             .configs(HarRegistryConfigArgs.builder()
+ *                 .type("UPSTREAM")
+ *                 .source("Anaconda")
+ *                 .authType("Anonymous")
+ *                 .build())
+ *             .parentRef("accountId/orgId/projectId")
+ *             .build());
+ * 
+ *         // Example of an Upstream Helm HTTP Registry (HelmChartRepo source requires url)
+ *         var helmHttpUpstream = new HarRegistry("helmHttpUpstream", HarRegistryArgs.builder()
+ *             .identifier("upstream_helm_http_registry")
+ *             .description("Upstream Helm HTTP Registry")
+ *             .spaceRef("accountId/orgId/projectId")
+ *             .packageType("HELM_HTTP")
+ *             .configs(HarRegistryConfigArgs.builder()
+ *                 .type("UPSTREAM")
+ *                 .source("HelmChartRepo")
+ *                 .url("https://charts.bitnami.com/bitnami")
+ *                 .authType("Anonymous")
  *                 .build())
  *             .parentRef("accountId/orgId/projectId")
  *             .build());
@@ -232,14 +275,14 @@ public class HarRegistry extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metadata);
     }
     /**
-     * Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA)
      * 
      */
     @Export(name="packageType", refs={String.class}, tree="[0]")
     private Output<String> packageType;
 
     /**
-     * @return Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
+     * @return Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA)
      * 
      */
     public Output<String> packageType() {

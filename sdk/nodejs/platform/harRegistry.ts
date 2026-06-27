@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *     packageType: "HELM",
  *     configs: [{
  *         type: "UPSTREAM",
- *         source: "CUSTOM",
+ *         source: "Custom",
  *         url: "https://helm.sh",
  *         auths: [{
  *             authType: "UserPassword",
@@ -48,6 +48,46 @@ import * as utilities from "../utilities";
  *             secretIdentifier: "registry_password",
  *             secretSpacePath: "accountId/orgId/projectId",
  *         }],
+ *     }],
+ *     parentRef: "accountId/orgId/projectId",
+ * });
+ * // Example of an Upstream Go Registry (GoProxy source needs no url)
+ * const goUpstream = new harness.platform.HarRegistry("go_upstream", {
+ *     identifier: "upstream_go_registry",
+ *     description: "Upstream Go Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "GO",
+ *     configs: [{
+ *         type: "UPSTREAM",
+ *         source: "GoProxy",
+ *         authType: "Anonymous",
+ *     }],
+ *     parentRef: "accountId/orgId/projectId",
+ * });
+ * // Example of an Upstream Conda Registry (Anaconda source needs no url)
+ * const condaUpstream = new harness.platform.HarRegistry("conda_upstream", {
+ *     identifier: "upstream_conda_registry",
+ *     description: "Upstream Conda Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "CONDA",
+ *     configs: [{
+ *         type: "UPSTREAM",
+ *         source: "Anaconda",
+ *         authType: "Anonymous",
+ *     }],
+ *     parentRef: "accountId/orgId/projectId",
+ * });
+ * // Example of an Upstream Helm HTTP Registry (HelmChartRepo source requires url)
+ * const helmHttpUpstream = new harness.platform.HarRegistry("helm_http_upstream", {
+ *     identifier: "upstream_helm_http_registry",
+ *     description: "Upstream Helm HTTP Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "HELM_HTTP",
+ *     configs: [{
+ *         type: "UPSTREAM",
+ *         source: "HelmChartRepo",
+ *         url: "https://charts.bitnami.com/bitnami",
+ *         authType: "Anonymous",
  *     }],
  *     parentRef: "accountId/orgId/projectId",
  * });
@@ -141,7 +181,7 @@ export class HarRegistry extends pulumi.CustomResource {
      */
     declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA)
      */
     declare public readonly packageType: pulumi.Output<string>;
     /**
@@ -251,7 +291,7 @@ export interface HarRegistryState {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA)
      */
     packageType?: pulumi.Input<string | undefined>;
     /**
@@ -301,7 +341,7 @@ export interface HarRegistryArgs {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA)
      */
     packageType: pulumi.Input<string>;
     /**
