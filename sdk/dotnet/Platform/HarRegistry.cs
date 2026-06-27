@@ -58,7 +58,7 @@ namespace Pulumi.Harness.Platform
     ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
     ///             {
     ///                 Type = "UPSTREAM",
-    ///                 Source = "CUSTOM",
+    ///                 Source = "Custom",
     ///                 Url = "https://helm.sh",
     ///                 Auths = new[]
     ///                 {
@@ -70,6 +70,64 @@ namespace Pulumi.Harness.Platform
     ///                         SecretSpacePath = "accountId/orgId/projectId",
     ///                     },
     ///                 },
+    ///             },
+    ///         },
+    ///         ParentRef = "accountId/orgId/projectId",
+    ///     });
+    /// 
+    ///     // Example of an Upstream Go Registry (GoProxy source needs no url)
+    ///     var goUpstream = new Harness.Platform.HarRegistry("go_upstream", new()
+    ///     {
+    ///         Identifier = "upstream_go_registry",
+    ///         Description = "Upstream Go Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "GO",
+    ///         Configs = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
+    ///             {
+    ///                 Type = "UPSTREAM",
+    ///                 Source = "GoProxy",
+    ///                 AuthType = "Anonymous",
+    ///             },
+    ///         },
+    ///         ParentRef = "accountId/orgId/projectId",
+    ///     });
+    /// 
+    ///     // Example of an Upstream Conda Registry (Anaconda source needs no url)
+    ///     var condaUpstream = new Harness.Platform.HarRegistry("conda_upstream", new()
+    ///     {
+    ///         Identifier = "upstream_conda_registry",
+    ///         Description = "Upstream Conda Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "CONDA",
+    ///         Configs = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
+    ///             {
+    ///                 Type = "UPSTREAM",
+    ///                 Source = "Anaconda",
+    ///                 AuthType = "Anonymous",
+    ///             },
+    ///         },
+    ///         ParentRef = "accountId/orgId/projectId",
+    ///     });
+    /// 
+    ///     // Example of an Upstream Helm HTTP Registry (HelmChartRepo source requires url)
+    ///     var helmHttpUpstream = new Harness.Platform.HarRegistry("helm_http_upstream", new()
+    ///     {
+    ///         Identifier = "upstream_helm_http_registry",
+    ///         Description = "Upstream Helm HTTP Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "HELM_HTTP",
+    ///         Configs = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
+    ///             {
+    ///                 Type = "UPSTREAM",
+    ///                 Source = "HelmChartRepo",
+    ///                 Url = "https://charts.bitnami.com/bitnami",
+    ///                 AuthType = "Anonymous",
     ///             },
     ///         },
     ///         ParentRef = "accountId/orgId/projectId",
@@ -157,7 +215,7 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
+        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA)
         /// </summary>
         [Output("packageType")]
         public Output<string> PackageType { get; private set; } = null!;
@@ -294,7 +352,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
+        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA)
         /// </summary>
         [Input("packageType", required: true)]
         public Input<string> PackageType { get; set; } = null!;
@@ -392,7 +450,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
+        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA)
         /// </summary>
         [Input("packageType")]
         public Input<string>? PackageType { get; set; }
