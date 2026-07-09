@@ -205,11 +205,13 @@ from .gitops_app_project_mapping import *
 from .gitops_applicationset import *
 from .gitops_filters import *
 from .gitx_webhook import *
+from .har_lifecycle_rule import *
 from .har_registry import *
 from .helm_connector import *
 from .iacm_ansible_inventory import *
 from .iacm_ansible_playbook import *
 from .iacm_default_pipeline import *
+from .iacm_workspace_template import *
 from .idp_catalog_entity import *
 from .idp_environment import *
 from .idp_environment_blueprint import *

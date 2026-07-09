@@ -114,6 +114,8 @@ type GitOpsApplications struct {
 	Applications GitOpsApplicationsApplicationArrayOutput `pulumi:"applications"`
 	// Cluster identifier of the GitOps application.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
+	// Indicates if the GitOps application should be force deleted from harness.
+	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
 	// Identifier of the GitOps application.
 	//
 	// Deprecated: This field is deprecated and will be removed in a future release.
@@ -201,6 +203,8 @@ type gitOpsApplicationsState struct {
 	Applications []GitOpsApplicationsApplication `pulumi:"applications"`
 	// Cluster identifier of the GitOps application.
 	ClusterId *string `pulumi:"clusterId"`
+	// Indicates if the GitOps application should be force deleted from harness.
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Identifier of the GitOps application.
 	//
 	// Deprecated: This field is deprecated and will be removed in a future release.
@@ -244,6 +248,8 @@ type GitOpsApplicationsState struct {
 	Applications GitOpsApplicationsApplicationArrayInput
 	// Cluster identifier of the GitOps application.
 	ClusterId pulumi.StringPtrInput
+	// Indicates if the GitOps application should be force deleted from harness.
+	ForceDelete pulumi.BoolPtrInput
 	// Identifier of the GitOps application.
 	//
 	// Deprecated: This field is deprecated and will be removed in a future release.
@@ -291,6 +297,8 @@ type gitOpsApplicationsArgs struct {
 	Applications []GitOpsApplicationsApplication `pulumi:"applications"`
 	// Cluster identifier of the GitOps application.
 	ClusterId string `pulumi:"clusterId"`
+	// Indicates if the GitOps application should be force deleted from harness.
+	ForceDelete *bool `pulumi:"forceDelete"`
 	// Identifier of the GitOps application.
 	//
 	// Deprecated: This field is deprecated and will be removed in a future release.
@@ -335,6 +343,8 @@ type GitOpsApplicationsArgs struct {
 	Applications GitOpsApplicationsApplicationArrayInput
 	// Cluster identifier of the GitOps application.
 	ClusterId pulumi.StringInput
+	// Indicates if the GitOps application should be force deleted from harness.
+	ForceDelete pulumi.BoolPtrInput
 	// Identifier of the GitOps application.
 	//
 	// Deprecated: This field is deprecated and will be removed in a future release.
@@ -474,6 +484,11 @@ func (o GitOpsApplicationsOutput) Applications() GitOpsApplicationsApplicationAr
 // Cluster identifier of the GitOps application.
 func (o GitOpsApplicationsOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsApplications) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// Indicates if the GitOps application should be force deleted from harness.
+func (o GitOpsApplicationsOutput) ForceDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitOpsApplications) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
 }
 
 // Identifier of the GitOps application.

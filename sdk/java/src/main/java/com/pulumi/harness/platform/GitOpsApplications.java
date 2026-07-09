@@ -173,6 +173,20 @@ public class GitOpsApplications extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
+     * Indicates if the GitOps application should be force deleted from harness.
+     * 
+     */
+    @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> forceDelete;
+
+    /**
+     * @return Indicates if the GitOps application should be force deleted from harness.
+     * 
+     */
+    public Output<Optional<Boolean>> forceDelete() {
+        return Codegen.optional(this.forceDelete);
+    }
+    /**
      * Identifier of the GitOps application.
      * 
      * @deprecated

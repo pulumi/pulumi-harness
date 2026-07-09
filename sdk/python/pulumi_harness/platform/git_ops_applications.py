@@ -27,6 +27,7 @@ class GitOpsApplicationsArgs:
                  org_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -48,6 +49,7 @@ class GitOpsApplicationsArgs:
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the GitOps application.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps application.
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps application.
+        :param pulumi.Input[_builtins.bool] force_delete: Indicates if the GitOps application should be force deleted from harness.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps application.
         :param pulumi.Input[_builtins.str] kind: Kind of the GitOps application.
         :param pulumi.Input[_builtins.str] name: Name of the GitOps application.
@@ -71,6 +73,8 @@ class GitOpsApplicationsArgs:
             pulumi.log.warn("""account_id is deprecated: This field is deprecated and will be removed in a future release.""")
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if identifier is not None:
             warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
             pulumi.log.warn("""identifier is deprecated: This field is deprecated and will be removed in a future release.""")
@@ -171,6 +175,18 @@ class GitOpsApplicationsArgs:
     @account_id.setter
     def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates if the GitOps application should be force deleted from harness.
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter
@@ -325,6 +341,7 @@ class _GitOpsApplicationsState:
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  applications: pulumi.Input[Optional[Sequence[pulumi.Input['GitOpsApplicationsApplicationArgs']]]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -346,6 +363,7 @@ class _GitOpsApplicationsState:
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps application.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsApplicationsApplicationArgs']]] applications: Definition of the GitOps application resource.
         :param pulumi.Input[_builtins.str] cluster_id: Cluster identifier of the GitOps application.
+        :param pulumi.Input[_builtins.bool] force_delete: Indicates if the GitOps application should be force deleted from harness.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps application.
         :param pulumi.Input[_builtins.str] kind: Kind of the GitOps application.
         :param pulumi.Input[_builtins.str] name: Name of the GitOps application.
@@ -372,6 +390,8 @@ class _GitOpsApplicationsState:
             pulumi.set(__self__, "applications", applications)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
+        if force_delete is not None:
+            pulumi.set(__self__, "force_delete", force_delete)
         if identifier is not None:
             warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
             pulumi.log.warn("""identifier is deprecated: This field is deprecated and will be removed in a future release.""")
@@ -452,6 +472,18 @@ class _GitOpsApplicationsState:
     @cluster_id.setter
     def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates if the GitOps application should be force deleted from harness.
+        """
+        return pulumi.get(self, "force_delete")
+
+    @force_delete.setter
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter
@@ -633,6 +665,7 @@ class GitOpsApplications(pulumi.CustomResource):
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  applications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict']]]]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -718,6 +751,7 @@ class GitOpsApplications(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps application.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict']]]] applications: Definition of the GitOps application resource.
         :param pulumi.Input[_builtins.str] cluster_id: Cluster identifier of the GitOps application.
+        :param pulumi.Input[_builtins.bool] force_delete: Indicates if the GitOps application should be force deleted from harness.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps application.
         :param pulumi.Input[_builtins.str] kind: Kind of the GitOps application.
         :param pulumi.Input[_builtins.str] name: Name of the GitOps application.
@@ -822,6 +856,7 @@ class GitOpsApplications(pulumi.CustomResource):
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  applications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict']]]]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -855,6 +890,7 @@ class GitOpsApplications(pulumi.CustomResource):
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
+            __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["identifier"] = identifier
             __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
@@ -887,6 +923,7 @@ class GitOpsApplications(pulumi.CustomResource):
             agent_id: pulumi.Input[Optional[_builtins.str]] = None,
             applications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict']]]]] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -912,6 +949,7 @@ class GitOpsApplications(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps application.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict']]]] applications: Definition of the GitOps application resource.
         :param pulumi.Input[_builtins.str] cluster_id: Cluster identifier of the GitOps application.
+        :param pulumi.Input[_builtins.bool] force_delete: Indicates if the GitOps application should be force deleted from harness.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps application.
         :param pulumi.Input[_builtins.str] kind: Kind of the GitOps application.
         :param pulumi.Input[_builtins.str] name: Name of the GitOps application.
@@ -935,6 +973,7 @@ class GitOpsApplications(pulumi.CustomResource):
         __props__.__dict__["agent_id"] = agent_id
         __props__.__dict__["applications"] = applications
         __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["kind"] = kind
         __props__.__dict__["name"] = name
@@ -983,6 +1022,14 @@ class GitOpsApplications(pulumi.CustomResource):
         Cluster identifier of the GitOps application.
         """
         return pulumi.get(self, "cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="forceDelete")
+    def force_delete(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Indicates if the GitOps application should be force deleted from harness.
+        """
+        return pulumi.get(self, "force_delete")
 
     @_builtins.property
     @pulumi.getter

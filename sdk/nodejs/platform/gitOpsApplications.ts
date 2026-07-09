@@ -117,6 +117,10 @@ export class GitOpsApplications extends pulumi.CustomResource {
      */
     declare public readonly clusterId: pulumi.Output<string>;
     /**
+     * Indicates if the GitOps application should be force deleted from harness.
+     */
+    declare public readonly forceDelete: pulumi.Output<boolean | undefined>;
+    /**
      * Identifier of the GitOps application.
      *
      * @deprecated This field is deprecated and will be removed in a future release.
@@ -192,6 +196,7 @@ export class GitOpsApplications extends pulumi.CustomResource {
             resourceInputs["agentId"] = state?.agentId;
             resourceInputs["applications"] = state?.applications;
             resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["forceDelete"] = state?.forceDelete;
             resourceInputs["identifier"] = state?.identifier;
             resourceInputs["kind"] = state?.kind;
             resourceInputs["name"] = state?.name;
@@ -227,6 +232,7 @@ export class GitOpsApplications extends pulumi.CustomResource {
             resourceInputs["agentId"] = args?.agentId;
             resourceInputs["applications"] = args?.applications;
             resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["forceDelete"] = args?.forceDelete;
             resourceInputs["identifier"] = args?.identifier;
             resourceInputs["kind"] = args?.kind;
             resourceInputs["name"] = args?.name;
@@ -269,6 +275,10 @@ export interface GitOpsApplicationsState {
      * Cluster identifier of the GitOps application.
      */
     clusterId?: pulumi.Input<string | undefined>;
+    /**
+     * Indicates if the GitOps application should be force deleted from harness.
+     */
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier of the GitOps application.
      *
@@ -351,6 +361,10 @@ export interface GitOpsApplicationsArgs {
      * Cluster identifier of the GitOps application.
      */
     clusterId: pulumi.Input<string>;
+    /**
+     * Indicates if the GitOps application should be force deleted from harness.
+     */
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier of the GitOps application.
      *

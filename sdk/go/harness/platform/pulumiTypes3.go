@@ -6412,6 +6412,840 @@ func (o GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyRetryBackoff
 	}).(pulumi.StringPtrOutput)
 }
 
+type HarLifecycleRuleApplyTo struct {
+	// Mode: ALL*IN*SCOPE or EXPLICIT.
+	Mode string `pulumi:"mode"`
+	// List of registry identifiers (required when mode=EXPLICIT).
+	Registries []string `pulumi:"registries"`
+}
+
+// HarLifecycleRuleApplyToInput is an input type that accepts HarLifecycleRuleApplyToArgs and HarLifecycleRuleApplyToOutput values.
+// You can construct a concrete instance of `HarLifecycleRuleApplyToInput` via:
+//
+//	HarLifecycleRuleApplyToArgs{...}
+type HarLifecycleRuleApplyToInput interface {
+	pulumi.Input
+
+	ToHarLifecycleRuleApplyToOutput() HarLifecycleRuleApplyToOutput
+	ToHarLifecycleRuleApplyToOutputWithContext(context.Context) HarLifecycleRuleApplyToOutput
+}
+
+type HarLifecycleRuleApplyToArgs struct {
+	// Mode: ALL*IN*SCOPE or EXPLICIT.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// List of registry identifiers (required when mode=EXPLICIT).
+	Registries pulumi.StringArrayInput `pulumi:"registries"`
+}
+
+func (HarLifecycleRuleApplyToArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HarLifecycleRuleApplyTo)(nil)).Elem()
+}
+
+func (i HarLifecycleRuleApplyToArgs) ToHarLifecycleRuleApplyToOutput() HarLifecycleRuleApplyToOutput {
+	return i.ToHarLifecycleRuleApplyToOutputWithContext(context.Background())
+}
+
+func (i HarLifecycleRuleApplyToArgs) ToHarLifecycleRuleApplyToOutputWithContext(ctx context.Context) HarLifecycleRuleApplyToOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HarLifecycleRuleApplyToOutput)
+}
+
+func (i HarLifecycleRuleApplyToArgs) ToHarLifecycleRuleApplyToPtrOutput() HarLifecycleRuleApplyToPtrOutput {
+	return i.ToHarLifecycleRuleApplyToPtrOutputWithContext(context.Background())
+}
+
+func (i HarLifecycleRuleApplyToArgs) ToHarLifecycleRuleApplyToPtrOutputWithContext(ctx context.Context) HarLifecycleRuleApplyToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HarLifecycleRuleApplyToOutput).ToHarLifecycleRuleApplyToPtrOutputWithContext(ctx)
+}
+
+// HarLifecycleRuleApplyToPtrInput is an input type that accepts HarLifecycleRuleApplyToArgs, HarLifecycleRuleApplyToPtr and HarLifecycleRuleApplyToPtrOutput values.
+// You can construct a concrete instance of `HarLifecycleRuleApplyToPtrInput` via:
+//
+//	        HarLifecycleRuleApplyToArgs{...}
+//
+//	or:
+//
+//	        nil
+type HarLifecycleRuleApplyToPtrInput interface {
+	pulumi.Input
+
+	ToHarLifecycleRuleApplyToPtrOutput() HarLifecycleRuleApplyToPtrOutput
+	ToHarLifecycleRuleApplyToPtrOutputWithContext(context.Context) HarLifecycleRuleApplyToPtrOutput
+}
+
+type harLifecycleRuleApplyToPtrType HarLifecycleRuleApplyToArgs
+
+func HarLifecycleRuleApplyToPtr(v *HarLifecycleRuleApplyToArgs) HarLifecycleRuleApplyToPtrInput {
+	return (*harLifecycleRuleApplyToPtrType)(v)
+}
+
+func (*harLifecycleRuleApplyToPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HarLifecycleRuleApplyTo)(nil)).Elem()
+}
+
+func (i *harLifecycleRuleApplyToPtrType) ToHarLifecycleRuleApplyToPtrOutput() HarLifecycleRuleApplyToPtrOutput {
+	return i.ToHarLifecycleRuleApplyToPtrOutputWithContext(context.Background())
+}
+
+func (i *harLifecycleRuleApplyToPtrType) ToHarLifecycleRuleApplyToPtrOutputWithContext(ctx context.Context) HarLifecycleRuleApplyToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HarLifecycleRuleApplyToPtrOutput)
+}
+
+type HarLifecycleRuleApplyToOutput struct{ *pulumi.OutputState }
+
+func (HarLifecycleRuleApplyToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HarLifecycleRuleApplyTo)(nil)).Elem()
+}
+
+func (o HarLifecycleRuleApplyToOutput) ToHarLifecycleRuleApplyToOutput() HarLifecycleRuleApplyToOutput {
+	return o
+}
+
+func (o HarLifecycleRuleApplyToOutput) ToHarLifecycleRuleApplyToOutputWithContext(ctx context.Context) HarLifecycleRuleApplyToOutput {
+	return o
+}
+
+func (o HarLifecycleRuleApplyToOutput) ToHarLifecycleRuleApplyToPtrOutput() HarLifecycleRuleApplyToPtrOutput {
+	return o.ToHarLifecycleRuleApplyToPtrOutputWithContext(context.Background())
+}
+
+func (o HarLifecycleRuleApplyToOutput) ToHarLifecycleRuleApplyToPtrOutputWithContext(ctx context.Context) HarLifecycleRuleApplyToPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HarLifecycleRuleApplyTo) *HarLifecycleRuleApplyTo {
+		return &v
+	}).(HarLifecycleRuleApplyToPtrOutput)
+}
+
+// Mode: ALL*IN*SCOPE or EXPLICIT.
+func (o HarLifecycleRuleApplyToOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v HarLifecycleRuleApplyTo) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// List of registry identifiers (required when mode=EXPLICIT).
+func (o HarLifecycleRuleApplyToOutput) Registries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HarLifecycleRuleApplyTo) []string { return v.Registries }).(pulumi.StringArrayOutput)
+}
+
+type HarLifecycleRuleApplyToPtrOutput struct{ *pulumi.OutputState }
+
+func (HarLifecycleRuleApplyToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HarLifecycleRuleApplyTo)(nil)).Elem()
+}
+
+func (o HarLifecycleRuleApplyToPtrOutput) ToHarLifecycleRuleApplyToPtrOutput() HarLifecycleRuleApplyToPtrOutput {
+	return o
+}
+
+func (o HarLifecycleRuleApplyToPtrOutput) ToHarLifecycleRuleApplyToPtrOutputWithContext(ctx context.Context) HarLifecycleRuleApplyToPtrOutput {
+	return o
+}
+
+func (o HarLifecycleRuleApplyToPtrOutput) Elem() HarLifecycleRuleApplyToOutput {
+	return o.ApplyT(func(v *HarLifecycleRuleApplyTo) HarLifecycleRuleApplyTo {
+		if v != nil {
+			return *v
+		}
+		var ret HarLifecycleRuleApplyTo
+		return ret
+	}).(HarLifecycleRuleApplyToOutput)
+}
+
+// Mode: ALL*IN*SCOPE or EXPLICIT.
+func (o HarLifecycleRuleApplyToPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HarLifecycleRuleApplyTo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of registry identifiers (required when mode=EXPLICIT).
+func (o HarLifecycleRuleApplyToPtrOutput) Registries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HarLifecycleRuleApplyTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Registries
+	}).(pulumi.StringArrayOutput)
+}
+
+type HarLifecycleRuleCriteria struct {
+	// How criteria rules are combined: ALL or ANY.
+	Match string `pulumi:"match"`
+	// List of individual criteria rules.
+	Rules []HarLifecycleRuleCriteriaRule `pulumi:"rules"`
+}
+
+// HarLifecycleRuleCriteriaInput is an input type that accepts HarLifecycleRuleCriteriaArgs and HarLifecycleRuleCriteriaOutput values.
+// You can construct a concrete instance of `HarLifecycleRuleCriteriaInput` via:
+//
+//	HarLifecycleRuleCriteriaArgs{...}
+type HarLifecycleRuleCriteriaInput interface {
+	pulumi.Input
+
+	ToHarLifecycleRuleCriteriaOutput() HarLifecycleRuleCriteriaOutput
+	ToHarLifecycleRuleCriteriaOutputWithContext(context.Context) HarLifecycleRuleCriteriaOutput
+}
+
+type HarLifecycleRuleCriteriaArgs struct {
+	// How criteria rules are combined: ALL or ANY.
+	Match pulumi.StringInput `pulumi:"match"`
+	// List of individual criteria rules.
+	Rules HarLifecycleRuleCriteriaRuleArrayInput `pulumi:"rules"`
+}
+
+func (HarLifecycleRuleCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HarLifecycleRuleCriteria)(nil)).Elem()
+}
+
+func (i HarLifecycleRuleCriteriaArgs) ToHarLifecycleRuleCriteriaOutput() HarLifecycleRuleCriteriaOutput {
+	return i.ToHarLifecycleRuleCriteriaOutputWithContext(context.Background())
+}
+
+func (i HarLifecycleRuleCriteriaArgs) ToHarLifecycleRuleCriteriaOutputWithContext(ctx context.Context) HarLifecycleRuleCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HarLifecycleRuleCriteriaOutput)
+}
+
+func (i HarLifecycleRuleCriteriaArgs) ToHarLifecycleRuleCriteriaPtrOutput() HarLifecycleRuleCriteriaPtrOutput {
+	return i.ToHarLifecycleRuleCriteriaPtrOutputWithContext(context.Background())
+}
+
+func (i HarLifecycleRuleCriteriaArgs) ToHarLifecycleRuleCriteriaPtrOutputWithContext(ctx context.Context) HarLifecycleRuleCriteriaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HarLifecycleRuleCriteriaOutput).ToHarLifecycleRuleCriteriaPtrOutputWithContext(ctx)
+}
+
+// HarLifecycleRuleCriteriaPtrInput is an input type that accepts HarLifecycleRuleCriteriaArgs, HarLifecycleRuleCriteriaPtr and HarLifecycleRuleCriteriaPtrOutput values.
+// You can construct a concrete instance of `HarLifecycleRuleCriteriaPtrInput` via:
+//
+//	        HarLifecycleRuleCriteriaArgs{...}
+//
+//	or:
+//
+//	        nil
+type HarLifecycleRuleCriteriaPtrInput interface {
+	pulumi.Input
+
+	ToHarLifecycleRuleCriteriaPtrOutput() HarLifecycleRuleCriteriaPtrOutput
+	ToHarLifecycleRuleCriteriaPtrOutputWithContext(context.Context) HarLifecycleRuleCriteriaPtrOutput
+}
+
+type harLifecycleRuleCriteriaPtrType HarLifecycleRuleCriteriaArgs
+
+func HarLifecycleRuleCriteriaPtr(v *HarLifecycleRuleCriteriaArgs) HarLifecycleRuleCriteriaPtrInput {
+	return (*harLifecycleRuleCriteriaPtrType)(v)
+}
+
+func (*harLifecycleRuleCriteriaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HarLifecycleRuleCriteria)(nil)).Elem()
+}
+
+func (i *harLifecycleRuleCriteriaPtrType) ToHarLifecycleRuleCriteriaPtrOutput() HarLifecycleRuleCriteriaPtrOutput {
+	return i.ToHarLifecycleRuleCriteriaPtrOutputWithContext(context.Background())
+}
+
+func (i *harLifecycleRuleCriteriaPtrType) ToHarLifecycleRuleCriteriaPtrOutputWithContext(ctx context.Context) HarLifecycleRuleCriteriaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HarLifecycleRuleCriteriaPtrOutput)
+}
+
+type HarLifecycleRuleCriteriaOutput struct{ *pulumi.OutputState }
+
+func (HarLifecycleRuleCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HarLifecycleRuleCriteria)(nil)).Elem()
+}
+
+func (o HarLifecycleRuleCriteriaOutput) ToHarLifecycleRuleCriteriaOutput() HarLifecycleRuleCriteriaOutput {
+	return o
+}
+
+func (o HarLifecycleRuleCriteriaOutput) ToHarLifecycleRuleCriteriaOutputWithContext(ctx context.Context) HarLifecycleRuleCriteriaOutput {
+	return o
+}
+
+func (o HarLifecycleRuleCriteriaOutput) ToHarLifecycleRuleCriteriaPtrOutput() HarLifecycleRuleCriteriaPtrOutput {
+	return o.ToHarLifecycleRuleCriteriaPtrOutputWithContext(context.Background())
+}
+
+func (o HarLifecycleRuleCriteriaOutput) ToHarLifecycleRuleCriteriaPtrOutputWithContext(ctx context.Context) HarLifecycleRuleCriteriaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HarLifecycleRuleCriteria) *HarLifecycleRuleCriteria {
+		return &v
+	}).(HarLifecycleRuleCriteriaPtrOutput)
+}
+
+// How criteria rules are combined: ALL or ANY.
+func (o HarLifecycleRuleCriteriaOutput) Match() pulumi.StringOutput {
+	return o.ApplyT(func(v HarLifecycleRuleCriteria) string { return v.Match }).(pulumi.StringOutput)
+}
+
+// List of individual criteria rules.
+func (o HarLifecycleRuleCriteriaOutput) Rules() HarLifecycleRuleCriteriaRuleArrayOutput {
+	return o.ApplyT(func(v HarLifecycleRuleCriteria) []HarLifecycleRuleCriteriaRule { return v.Rules }).(HarLifecycleRuleCriteriaRuleArrayOutput)
+}
+
+type HarLifecycleRuleCriteriaPtrOutput struct{ *pulumi.OutputState }
+
+func (HarLifecycleRuleCriteriaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HarLifecycleRuleCriteria)(nil)).Elem()
+}
+
+func (o HarLifecycleRuleCriteriaPtrOutput) ToHarLifecycleRuleCriteriaPtrOutput() HarLifecycleRuleCriteriaPtrOutput {
+	return o
+}
+
+func (o HarLifecycleRuleCriteriaPtrOutput) ToHarLifecycleRuleCriteriaPtrOutputWithContext(ctx context.Context) HarLifecycleRuleCriteriaPtrOutput {
+	return o
+}
+
+func (o HarLifecycleRuleCriteriaPtrOutput) Elem() HarLifecycleRuleCriteriaOutput {
+	return o.ApplyT(func(v *HarLifecycleRuleCriteria) HarLifecycleRuleCriteria {
+		if v != nil {
+			return *v
+		}
+		var ret HarLifecycleRuleCriteria
+		return ret
+	}).(HarLifecycleRuleCriteriaOutput)
+}
+
+// How criteria rules are combined: ALL or ANY.
+func (o HarLifecycleRuleCriteriaPtrOutput) Match() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HarLifecycleRuleCriteria) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Match
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of individual criteria rules.
+func (o HarLifecycleRuleCriteriaPtrOutput) Rules() HarLifecycleRuleCriteriaRuleArrayOutput {
+	return o.ApplyT(func(v *HarLifecycleRuleCriteria) []HarLifecycleRuleCriteriaRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(HarLifecycleRuleCriteriaRuleArrayOutput)
+}
+
+type HarLifecycleRuleCriteriaRule struct {
+	// Criteria type: KEEP*LAST*N, AGE*BASED, or UNUSED*FOR.
+	Type string `pulumi:"type"`
+	// Time unit for age/unused-for criteria: DAYS, MONTHS, or YEARS.
+	Unit *string `pulumi:"unit"`
+	// Numeric value for the criteria (e.g. number of versions, number of days).
+	Value *int `pulumi:"value"`
+}
+
+// HarLifecycleRuleCriteriaRuleInput is an input type that accepts HarLifecycleRuleCriteriaRuleArgs and HarLifecycleRuleCriteriaRuleOutput values.
+// You can construct a concrete instance of `HarLifecycleRuleCriteriaRuleInput` via:
+//
+//	HarLifecycleRuleCriteriaRuleArgs{...}
+type HarLifecycleRuleCriteriaRuleInput interface {
+	pulumi.Input
+
+	ToHarLifecycleRuleCriteriaRuleOutput() HarLifecycleRuleCriteriaRuleOutput
+	ToHarLifecycleRuleCriteriaRuleOutputWithContext(context.Context) HarLifecycleRuleCriteriaRuleOutput
+}
+
+type HarLifecycleRuleCriteriaRuleArgs struct {
+	// Criteria type: KEEP*LAST*N, AGE*BASED, or UNUSED*FOR.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Time unit for age/unused-for criteria: DAYS, MONTHS, or YEARS.
+	Unit pulumi.StringPtrInput `pulumi:"unit"`
+	// Numeric value for the criteria (e.g. number of versions, number of days).
+	Value pulumi.IntPtrInput `pulumi:"value"`
+}
+
+func (HarLifecycleRuleCriteriaRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HarLifecycleRuleCriteriaRule)(nil)).Elem()
+}
+
+func (i HarLifecycleRuleCriteriaRuleArgs) ToHarLifecycleRuleCriteriaRuleOutput() HarLifecycleRuleCriteriaRuleOutput {
+	return i.ToHarLifecycleRuleCriteriaRuleOutputWithContext(context.Background())
+}
+
+func (i HarLifecycleRuleCriteriaRuleArgs) ToHarLifecycleRuleCriteriaRuleOutputWithContext(ctx context.Context) HarLifecycleRuleCriteriaRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HarLifecycleRuleCriteriaRuleOutput)
+}
+
+// HarLifecycleRuleCriteriaRuleArrayInput is an input type that accepts HarLifecycleRuleCriteriaRuleArray and HarLifecycleRuleCriteriaRuleArrayOutput values.
+// You can construct a concrete instance of `HarLifecycleRuleCriteriaRuleArrayInput` via:
+//
+//	HarLifecycleRuleCriteriaRuleArray{ HarLifecycleRuleCriteriaRuleArgs{...} }
+type HarLifecycleRuleCriteriaRuleArrayInput interface {
+	pulumi.Input
+
+	ToHarLifecycleRuleCriteriaRuleArrayOutput() HarLifecycleRuleCriteriaRuleArrayOutput
+	ToHarLifecycleRuleCriteriaRuleArrayOutputWithContext(context.Context) HarLifecycleRuleCriteriaRuleArrayOutput
+}
+
+type HarLifecycleRuleCriteriaRuleArray []HarLifecycleRuleCriteriaRuleInput
+
+func (HarLifecycleRuleCriteriaRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HarLifecycleRuleCriteriaRule)(nil)).Elem()
+}
+
+func (i HarLifecycleRuleCriteriaRuleArray) ToHarLifecycleRuleCriteriaRuleArrayOutput() HarLifecycleRuleCriteriaRuleArrayOutput {
+	return i.ToHarLifecycleRuleCriteriaRuleArrayOutputWithContext(context.Background())
+}
+
+func (i HarLifecycleRuleCriteriaRuleArray) ToHarLifecycleRuleCriteriaRuleArrayOutputWithContext(ctx context.Context) HarLifecycleRuleCriteriaRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HarLifecycleRuleCriteriaRuleArrayOutput)
+}
+
+type HarLifecycleRuleCriteriaRuleOutput struct{ *pulumi.OutputState }
+
+func (HarLifecycleRuleCriteriaRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HarLifecycleRuleCriteriaRule)(nil)).Elem()
+}
+
+func (o HarLifecycleRuleCriteriaRuleOutput) ToHarLifecycleRuleCriteriaRuleOutput() HarLifecycleRuleCriteriaRuleOutput {
+	return o
+}
+
+func (o HarLifecycleRuleCriteriaRuleOutput) ToHarLifecycleRuleCriteriaRuleOutputWithContext(ctx context.Context) HarLifecycleRuleCriteriaRuleOutput {
+	return o
+}
+
+// Criteria type: KEEP*LAST*N, AGE*BASED, or UNUSED*FOR.
+func (o HarLifecycleRuleCriteriaRuleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v HarLifecycleRuleCriteriaRule) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Time unit for age/unused-for criteria: DAYS, MONTHS, or YEARS.
+func (o HarLifecycleRuleCriteriaRuleOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HarLifecycleRuleCriteriaRule) *string { return v.Unit }).(pulumi.StringPtrOutput)
+}
+
+// Numeric value for the criteria (e.g. number of versions, number of days).
+func (o HarLifecycleRuleCriteriaRuleOutput) Value() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HarLifecycleRuleCriteriaRule) *int { return v.Value }).(pulumi.IntPtrOutput)
+}
+
+type HarLifecycleRuleCriteriaRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (HarLifecycleRuleCriteriaRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HarLifecycleRuleCriteriaRule)(nil)).Elem()
+}
+
+func (o HarLifecycleRuleCriteriaRuleArrayOutput) ToHarLifecycleRuleCriteriaRuleArrayOutput() HarLifecycleRuleCriteriaRuleArrayOutput {
+	return o
+}
+
+func (o HarLifecycleRuleCriteriaRuleArrayOutput) ToHarLifecycleRuleCriteriaRuleArrayOutputWithContext(ctx context.Context) HarLifecycleRuleCriteriaRuleArrayOutput {
+	return o
+}
+
+func (o HarLifecycleRuleCriteriaRuleArrayOutput) Index(i pulumi.IntInput) HarLifecycleRuleCriteriaRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HarLifecycleRuleCriteriaRule {
+		return vs[0].([]HarLifecycleRuleCriteriaRule)[vs[1].(int)]
+	}).(HarLifecycleRuleCriteriaRuleOutput)
+}
+
+type HarLifecycleRuleFilterConfig struct {
+	// Glob patterns for HuggingFace dataset names to include (HUGGINGFACE only).
+	DatasetAllowedPatterns []string `pulumi:"datasetAllowedPatterns"`
+	// Glob patterns for Maven group IDs to include (MAVEN only).
+	GroupIdAllowedPatterns []string `pulumi:"groupIdAllowedPatterns"`
+	// Glob patterns for HuggingFace model names to include (HUGGINGFACE only).
+	ModelAllowedPatterns []string `pulumi:"modelAllowedPatterns"`
+	// Glob patterns for package/image names to include.
+	PackageNameAllowedPatterns []string `pulumi:"packageNameAllowedPatterns"`
+	// Package type this filter applies to (e.g. DOCKER, MAVEN, HUGGINGFACE).
+	PackageType string `pulumi:"packageType"`
+	// Glob patterns for Docker tag names to include (DOCKER only).
+	TagNameAllowedPatterns []string `pulumi:"tagNameAllowedPatterns"`
+	// Glob patterns for version/tag names to include.
+	VersionNameAllowedPatterns []string `pulumi:"versionNameAllowedPatterns"`
+}
+
+// HarLifecycleRuleFilterConfigInput is an input type that accepts HarLifecycleRuleFilterConfigArgs and HarLifecycleRuleFilterConfigOutput values.
+// You can construct a concrete instance of `HarLifecycleRuleFilterConfigInput` via:
+//
+//	HarLifecycleRuleFilterConfigArgs{...}
+type HarLifecycleRuleFilterConfigInput interface {
+	pulumi.Input
+
+	ToHarLifecycleRuleFilterConfigOutput() HarLifecycleRuleFilterConfigOutput
+	ToHarLifecycleRuleFilterConfigOutputWithContext(context.Context) HarLifecycleRuleFilterConfigOutput
+}
+
+type HarLifecycleRuleFilterConfigArgs struct {
+	// Glob patterns for HuggingFace dataset names to include (HUGGINGFACE only).
+	DatasetAllowedPatterns pulumi.StringArrayInput `pulumi:"datasetAllowedPatterns"`
+	// Glob patterns for Maven group IDs to include (MAVEN only).
+	GroupIdAllowedPatterns pulumi.StringArrayInput `pulumi:"groupIdAllowedPatterns"`
+	// Glob patterns for HuggingFace model names to include (HUGGINGFACE only).
+	ModelAllowedPatterns pulumi.StringArrayInput `pulumi:"modelAllowedPatterns"`
+	// Glob patterns for package/image names to include.
+	PackageNameAllowedPatterns pulumi.StringArrayInput `pulumi:"packageNameAllowedPatterns"`
+	// Package type this filter applies to (e.g. DOCKER, MAVEN, HUGGINGFACE).
+	PackageType pulumi.StringInput `pulumi:"packageType"`
+	// Glob patterns for Docker tag names to include (DOCKER only).
+	TagNameAllowedPatterns pulumi.StringArrayInput `pulumi:"tagNameAllowedPatterns"`
+	// Glob patterns for version/tag names to include.
+	VersionNameAllowedPatterns pulumi.StringArrayInput `pulumi:"versionNameAllowedPatterns"`
+}
+
+func (HarLifecycleRuleFilterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HarLifecycleRuleFilterConfig)(nil)).Elem()
+}
+
+func (i HarLifecycleRuleFilterConfigArgs) ToHarLifecycleRuleFilterConfigOutput() HarLifecycleRuleFilterConfigOutput {
+	return i.ToHarLifecycleRuleFilterConfigOutputWithContext(context.Background())
+}
+
+func (i HarLifecycleRuleFilterConfigArgs) ToHarLifecycleRuleFilterConfigOutputWithContext(ctx context.Context) HarLifecycleRuleFilterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HarLifecycleRuleFilterConfigOutput)
+}
+
+func (i HarLifecycleRuleFilterConfigArgs) ToHarLifecycleRuleFilterConfigPtrOutput() HarLifecycleRuleFilterConfigPtrOutput {
+	return i.ToHarLifecycleRuleFilterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i HarLifecycleRuleFilterConfigArgs) ToHarLifecycleRuleFilterConfigPtrOutputWithContext(ctx context.Context) HarLifecycleRuleFilterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HarLifecycleRuleFilterConfigOutput).ToHarLifecycleRuleFilterConfigPtrOutputWithContext(ctx)
+}
+
+// HarLifecycleRuleFilterConfigPtrInput is an input type that accepts HarLifecycleRuleFilterConfigArgs, HarLifecycleRuleFilterConfigPtr and HarLifecycleRuleFilterConfigPtrOutput values.
+// You can construct a concrete instance of `HarLifecycleRuleFilterConfigPtrInput` via:
+//
+//	        HarLifecycleRuleFilterConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type HarLifecycleRuleFilterConfigPtrInput interface {
+	pulumi.Input
+
+	ToHarLifecycleRuleFilterConfigPtrOutput() HarLifecycleRuleFilterConfigPtrOutput
+	ToHarLifecycleRuleFilterConfigPtrOutputWithContext(context.Context) HarLifecycleRuleFilterConfigPtrOutput
+}
+
+type harLifecycleRuleFilterConfigPtrType HarLifecycleRuleFilterConfigArgs
+
+func HarLifecycleRuleFilterConfigPtr(v *HarLifecycleRuleFilterConfigArgs) HarLifecycleRuleFilterConfigPtrInput {
+	return (*harLifecycleRuleFilterConfigPtrType)(v)
+}
+
+func (*harLifecycleRuleFilterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HarLifecycleRuleFilterConfig)(nil)).Elem()
+}
+
+func (i *harLifecycleRuleFilterConfigPtrType) ToHarLifecycleRuleFilterConfigPtrOutput() HarLifecycleRuleFilterConfigPtrOutput {
+	return i.ToHarLifecycleRuleFilterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *harLifecycleRuleFilterConfigPtrType) ToHarLifecycleRuleFilterConfigPtrOutputWithContext(ctx context.Context) HarLifecycleRuleFilterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HarLifecycleRuleFilterConfigPtrOutput)
+}
+
+type HarLifecycleRuleFilterConfigOutput struct{ *pulumi.OutputState }
+
+func (HarLifecycleRuleFilterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HarLifecycleRuleFilterConfig)(nil)).Elem()
+}
+
+func (o HarLifecycleRuleFilterConfigOutput) ToHarLifecycleRuleFilterConfigOutput() HarLifecycleRuleFilterConfigOutput {
+	return o
+}
+
+func (o HarLifecycleRuleFilterConfigOutput) ToHarLifecycleRuleFilterConfigOutputWithContext(ctx context.Context) HarLifecycleRuleFilterConfigOutput {
+	return o
+}
+
+func (o HarLifecycleRuleFilterConfigOutput) ToHarLifecycleRuleFilterConfigPtrOutput() HarLifecycleRuleFilterConfigPtrOutput {
+	return o.ToHarLifecycleRuleFilterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o HarLifecycleRuleFilterConfigOutput) ToHarLifecycleRuleFilterConfigPtrOutputWithContext(ctx context.Context) HarLifecycleRuleFilterConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HarLifecycleRuleFilterConfig) *HarLifecycleRuleFilterConfig {
+		return &v
+	}).(HarLifecycleRuleFilterConfigPtrOutput)
+}
+
+// Glob patterns for HuggingFace dataset names to include (HUGGINGFACE only).
+func (o HarLifecycleRuleFilterConfigOutput) DatasetAllowedPatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HarLifecycleRuleFilterConfig) []string { return v.DatasetAllowedPatterns }).(pulumi.StringArrayOutput)
+}
+
+// Glob patterns for Maven group IDs to include (MAVEN only).
+func (o HarLifecycleRuleFilterConfigOutput) GroupIdAllowedPatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HarLifecycleRuleFilterConfig) []string { return v.GroupIdAllowedPatterns }).(pulumi.StringArrayOutput)
+}
+
+// Glob patterns for HuggingFace model names to include (HUGGINGFACE only).
+func (o HarLifecycleRuleFilterConfigOutput) ModelAllowedPatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HarLifecycleRuleFilterConfig) []string { return v.ModelAllowedPatterns }).(pulumi.StringArrayOutput)
+}
+
+// Glob patterns for package/image names to include.
+func (o HarLifecycleRuleFilterConfigOutput) PackageNameAllowedPatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HarLifecycleRuleFilterConfig) []string { return v.PackageNameAllowedPatterns }).(pulumi.StringArrayOutput)
+}
+
+// Package type this filter applies to (e.g. DOCKER, MAVEN, HUGGINGFACE).
+func (o HarLifecycleRuleFilterConfigOutput) PackageType() pulumi.StringOutput {
+	return o.ApplyT(func(v HarLifecycleRuleFilterConfig) string { return v.PackageType }).(pulumi.StringOutput)
+}
+
+// Glob patterns for Docker tag names to include (DOCKER only).
+func (o HarLifecycleRuleFilterConfigOutput) TagNameAllowedPatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HarLifecycleRuleFilterConfig) []string { return v.TagNameAllowedPatterns }).(pulumi.StringArrayOutput)
+}
+
+// Glob patterns for version/tag names to include.
+func (o HarLifecycleRuleFilterConfigOutput) VersionNameAllowedPatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HarLifecycleRuleFilterConfig) []string { return v.VersionNameAllowedPatterns }).(pulumi.StringArrayOutput)
+}
+
+type HarLifecycleRuleFilterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (HarLifecycleRuleFilterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HarLifecycleRuleFilterConfig)(nil)).Elem()
+}
+
+func (o HarLifecycleRuleFilterConfigPtrOutput) ToHarLifecycleRuleFilterConfigPtrOutput() HarLifecycleRuleFilterConfigPtrOutput {
+	return o
+}
+
+func (o HarLifecycleRuleFilterConfigPtrOutput) ToHarLifecycleRuleFilterConfigPtrOutputWithContext(ctx context.Context) HarLifecycleRuleFilterConfigPtrOutput {
+	return o
+}
+
+func (o HarLifecycleRuleFilterConfigPtrOutput) Elem() HarLifecycleRuleFilterConfigOutput {
+	return o.ApplyT(func(v *HarLifecycleRuleFilterConfig) HarLifecycleRuleFilterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret HarLifecycleRuleFilterConfig
+		return ret
+	}).(HarLifecycleRuleFilterConfigOutput)
+}
+
+// Glob patterns for HuggingFace dataset names to include (HUGGINGFACE only).
+func (o HarLifecycleRuleFilterConfigPtrOutput) DatasetAllowedPatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HarLifecycleRuleFilterConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DatasetAllowedPatterns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Glob patterns for Maven group IDs to include (MAVEN only).
+func (o HarLifecycleRuleFilterConfigPtrOutput) GroupIdAllowedPatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HarLifecycleRuleFilterConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupIdAllowedPatterns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Glob patterns for HuggingFace model names to include (HUGGINGFACE only).
+func (o HarLifecycleRuleFilterConfigPtrOutput) ModelAllowedPatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HarLifecycleRuleFilterConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ModelAllowedPatterns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Glob patterns for package/image names to include.
+func (o HarLifecycleRuleFilterConfigPtrOutput) PackageNameAllowedPatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HarLifecycleRuleFilterConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageNameAllowedPatterns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Package type this filter applies to (e.g. DOCKER, MAVEN, HUGGINGFACE).
+func (o HarLifecycleRuleFilterConfigPtrOutput) PackageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HarLifecycleRuleFilterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PackageType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Glob patterns for Docker tag names to include (DOCKER only).
+func (o HarLifecycleRuleFilterConfigPtrOutput) TagNameAllowedPatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HarLifecycleRuleFilterConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TagNameAllowedPatterns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Glob patterns for version/tag names to include.
+func (o HarLifecycleRuleFilterConfigPtrOutput) VersionNameAllowedPatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HarLifecycleRuleFilterConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VersionNameAllowedPatterns
+	}).(pulumi.StringArrayOutput)
+}
+
+type HarLifecycleRuleSchedule struct {
+	// Cron expression (e.g. '0 2 * * *').
+	Expression string `pulumi:"expression"`
+	// Timezone for the cron schedule (e.g. 'UTC', 'America/New_York').
+	Timezone string `pulumi:"timezone"`
+}
+
+// HarLifecycleRuleScheduleInput is an input type that accepts HarLifecycleRuleScheduleArgs and HarLifecycleRuleScheduleOutput values.
+// You can construct a concrete instance of `HarLifecycleRuleScheduleInput` via:
+//
+//	HarLifecycleRuleScheduleArgs{...}
+type HarLifecycleRuleScheduleInput interface {
+	pulumi.Input
+
+	ToHarLifecycleRuleScheduleOutput() HarLifecycleRuleScheduleOutput
+	ToHarLifecycleRuleScheduleOutputWithContext(context.Context) HarLifecycleRuleScheduleOutput
+}
+
+type HarLifecycleRuleScheduleArgs struct {
+	// Cron expression (e.g. '0 2 * * *').
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// Timezone for the cron schedule (e.g. 'UTC', 'America/New_York').
+	Timezone pulumi.StringInput `pulumi:"timezone"`
+}
+
+func (HarLifecycleRuleScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HarLifecycleRuleSchedule)(nil)).Elem()
+}
+
+func (i HarLifecycleRuleScheduleArgs) ToHarLifecycleRuleScheduleOutput() HarLifecycleRuleScheduleOutput {
+	return i.ToHarLifecycleRuleScheduleOutputWithContext(context.Background())
+}
+
+func (i HarLifecycleRuleScheduleArgs) ToHarLifecycleRuleScheduleOutputWithContext(ctx context.Context) HarLifecycleRuleScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HarLifecycleRuleScheduleOutput)
+}
+
+func (i HarLifecycleRuleScheduleArgs) ToHarLifecycleRuleSchedulePtrOutput() HarLifecycleRuleSchedulePtrOutput {
+	return i.ToHarLifecycleRuleSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i HarLifecycleRuleScheduleArgs) ToHarLifecycleRuleSchedulePtrOutputWithContext(ctx context.Context) HarLifecycleRuleSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HarLifecycleRuleScheduleOutput).ToHarLifecycleRuleSchedulePtrOutputWithContext(ctx)
+}
+
+// HarLifecycleRuleSchedulePtrInput is an input type that accepts HarLifecycleRuleScheduleArgs, HarLifecycleRuleSchedulePtr and HarLifecycleRuleSchedulePtrOutput values.
+// You can construct a concrete instance of `HarLifecycleRuleSchedulePtrInput` via:
+//
+//	        HarLifecycleRuleScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type HarLifecycleRuleSchedulePtrInput interface {
+	pulumi.Input
+
+	ToHarLifecycleRuleSchedulePtrOutput() HarLifecycleRuleSchedulePtrOutput
+	ToHarLifecycleRuleSchedulePtrOutputWithContext(context.Context) HarLifecycleRuleSchedulePtrOutput
+}
+
+type harLifecycleRuleSchedulePtrType HarLifecycleRuleScheduleArgs
+
+func HarLifecycleRuleSchedulePtr(v *HarLifecycleRuleScheduleArgs) HarLifecycleRuleSchedulePtrInput {
+	return (*harLifecycleRuleSchedulePtrType)(v)
+}
+
+func (*harLifecycleRuleSchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HarLifecycleRuleSchedule)(nil)).Elem()
+}
+
+func (i *harLifecycleRuleSchedulePtrType) ToHarLifecycleRuleSchedulePtrOutput() HarLifecycleRuleSchedulePtrOutput {
+	return i.ToHarLifecycleRuleSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *harLifecycleRuleSchedulePtrType) ToHarLifecycleRuleSchedulePtrOutputWithContext(ctx context.Context) HarLifecycleRuleSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HarLifecycleRuleSchedulePtrOutput)
+}
+
+type HarLifecycleRuleScheduleOutput struct{ *pulumi.OutputState }
+
+func (HarLifecycleRuleScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HarLifecycleRuleSchedule)(nil)).Elem()
+}
+
+func (o HarLifecycleRuleScheduleOutput) ToHarLifecycleRuleScheduleOutput() HarLifecycleRuleScheduleOutput {
+	return o
+}
+
+func (o HarLifecycleRuleScheduleOutput) ToHarLifecycleRuleScheduleOutputWithContext(ctx context.Context) HarLifecycleRuleScheduleOutput {
+	return o
+}
+
+func (o HarLifecycleRuleScheduleOutput) ToHarLifecycleRuleSchedulePtrOutput() HarLifecycleRuleSchedulePtrOutput {
+	return o.ToHarLifecycleRuleSchedulePtrOutputWithContext(context.Background())
+}
+
+func (o HarLifecycleRuleScheduleOutput) ToHarLifecycleRuleSchedulePtrOutputWithContext(ctx context.Context) HarLifecycleRuleSchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HarLifecycleRuleSchedule) *HarLifecycleRuleSchedule {
+		return &v
+	}).(HarLifecycleRuleSchedulePtrOutput)
+}
+
+// Cron expression (e.g. '0 2 * * *').
+func (o HarLifecycleRuleScheduleOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v HarLifecycleRuleSchedule) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Timezone for the cron schedule (e.g. 'UTC', 'America/New_York').
+func (o HarLifecycleRuleScheduleOutput) Timezone() pulumi.StringOutput {
+	return o.ApplyT(func(v HarLifecycleRuleSchedule) string { return v.Timezone }).(pulumi.StringOutput)
+}
+
+type HarLifecycleRuleSchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (HarLifecycleRuleSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HarLifecycleRuleSchedule)(nil)).Elem()
+}
+
+func (o HarLifecycleRuleSchedulePtrOutput) ToHarLifecycleRuleSchedulePtrOutput() HarLifecycleRuleSchedulePtrOutput {
+	return o
+}
+
+func (o HarLifecycleRuleSchedulePtrOutput) ToHarLifecycleRuleSchedulePtrOutputWithContext(ctx context.Context) HarLifecycleRuleSchedulePtrOutput {
+	return o
+}
+
+func (o HarLifecycleRuleSchedulePtrOutput) Elem() HarLifecycleRuleScheduleOutput {
+	return o.ApplyT(func(v *HarLifecycleRuleSchedule) HarLifecycleRuleSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret HarLifecycleRuleSchedule
+		return ret
+	}).(HarLifecycleRuleScheduleOutput)
+}
+
+// Cron expression (e.g. '0 2 * * *').
+func (o HarLifecycleRuleSchedulePtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HarLifecycleRuleSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Timezone for the cron schedule (e.g. 'UTC', 'America/New_York').
+func (o HarLifecycleRuleSchedulePtrOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HarLifecycleRuleSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Timezone
+	}).(pulumi.StringPtrOutput)
+}
+
 type HarRegistryConfig struct {
 	// Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
 	AuthType *string `pulumi:"authType"`
@@ -26783,6 +27617,162 @@ func (o VariablesSpecPtrOutput) ValueType() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.ValueType
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceAssociatedTemplate struct {
+	// Template identifier. Changing this forces a new resource.
+	TemplateId string `pulumi:"templateId"`
+	// Template version. Can be updated in place.
+	Version *string `pulumi:"version"`
+}
+
+// WorkspaceAssociatedTemplateInput is an input type that accepts WorkspaceAssociatedTemplateArgs and WorkspaceAssociatedTemplateOutput values.
+// You can construct a concrete instance of `WorkspaceAssociatedTemplateInput` via:
+//
+//	WorkspaceAssociatedTemplateArgs{...}
+type WorkspaceAssociatedTemplateInput interface {
+	pulumi.Input
+
+	ToWorkspaceAssociatedTemplateOutput() WorkspaceAssociatedTemplateOutput
+	ToWorkspaceAssociatedTemplateOutputWithContext(context.Context) WorkspaceAssociatedTemplateOutput
+}
+
+type WorkspaceAssociatedTemplateArgs struct {
+	// Template identifier. Changing this forces a new resource.
+	TemplateId pulumi.StringInput `pulumi:"templateId"`
+	// Template version. Can be updated in place.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (WorkspaceAssociatedTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceAssociatedTemplate)(nil)).Elem()
+}
+
+func (i WorkspaceAssociatedTemplateArgs) ToWorkspaceAssociatedTemplateOutput() WorkspaceAssociatedTemplateOutput {
+	return i.ToWorkspaceAssociatedTemplateOutputWithContext(context.Background())
+}
+
+func (i WorkspaceAssociatedTemplateArgs) ToWorkspaceAssociatedTemplateOutputWithContext(ctx context.Context) WorkspaceAssociatedTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceAssociatedTemplateOutput)
+}
+
+func (i WorkspaceAssociatedTemplateArgs) ToWorkspaceAssociatedTemplatePtrOutput() WorkspaceAssociatedTemplatePtrOutput {
+	return i.ToWorkspaceAssociatedTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i WorkspaceAssociatedTemplateArgs) ToWorkspaceAssociatedTemplatePtrOutputWithContext(ctx context.Context) WorkspaceAssociatedTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceAssociatedTemplateOutput).ToWorkspaceAssociatedTemplatePtrOutputWithContext(ctx)
+}
+
+// WorkspaceAssociatedTemplatePtrInput is an input type that accepts WorkspaceAssociatedTemplateArgs, WorkspaceAssociatedTemplatePtr and WorkspaceAssociatedTemplatePtrOutput values.
+// You can construct a concrete instance of `WorkspaceAssociatedTemplatePtrInput` via:
+//
+//	        WorkspaceAssociatedTemplateArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkspaceAssociatedTemplatePtrInput interface {
+	pulumi.Input
+
+	ToWorkspaceAssociatedTemplatePtrOutput() WorkspaceAssociatedTemplatePtrOutput
+	ToWorkspaceAssociatedTemplatePtrOutputWithContext(context.Context) WorkspaceAssociatedTemplatePtrOutput
+}
+
+type workspaceAssociatedTemplatePtrType WorkspaceAssociatedTemplateArgs
+
+func WorkspaceAssociatedTemplatePtr(v *WorkspaceAssociatedTemplateArgs) WorkspaceAssociatedTemplatePtrInput {
+	return (*workspaceAssociatedTemplatePtrType)(v)
+}
+
+func (*workspaceAssociatedTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceAssociatedTemplate)(nil)).Elem()
+}
+
+func (i *workspaceAssociatedTemplatePtrType) ToWorkspaceAssociatedTemplatePtrOutput() WorkspaceAssociatedTemplatePtrOutput {
+	return i.ToWorkspaceAssociatedTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *workspaceAssociatedTemplatePtrType) ToWorkspaceAssociatedTemplatePtrOutputWithContext(ctx context.Context) WorkspaceAssociatedTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceAssociatedTemplatePtrOutput)
+}
+
+type WorkspaceAssociatedTemplateOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceAssociatedTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceAssociatedTemplate)(nil)).Elem()
+}
+
+func (o WorkspaceAssociatedTemplateOutput) ToWorkspaceAssociatedTemplateOutput() WorkspaceAssociatedTemplateOutput {
+	return o
+}
+
+func (o WorkspaceAssociatedTemplateOutput) ToWorkspaceAssociatedTemplateOutputWithContext(ctx context.Context) WorkspaceAssociatedTemplateOutput {
+	return o
+}
+
+func (o WorkspaceAssociatedTemplateOutput) ToWorkspaceAssociatedTemplatePtrOutput() WorkspaceAssociatedTemplatePtrOutput {
+	return o.ToWorkspaceAssociatedTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o WorkspaceAssociatedTemplateOutput) ToWorkspaceAssociatedTemplatePtrOutputWithContext(ctx context.Context) WorkspaceAssociatedTemplatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceAssociatedTemplate) *WorkspaceAssociatedTemplate {
+		return &v
+	}).(WorkspaceAssociatedTemplatePtrOutput)
+}
+
+// Template identifier. Changing this forces a new resource.
+func (o WorkspaceAssociatedTemplateOutput) TemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkspaceAssociatedTemplate) string { return v.TemplateId }).(pulumi.StringOutput)
+}
+
+// Template version. Can be updated in place.
+func (o WorkspaceAssociatedTemplateOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceAssociatedTemplate) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceAssociatedTemplatePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceAssociatedTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceAssociatedTemplate)(nil)).Elem()
+}
+
+func (o WorkspaceAssociatedTemplatePtrOutput) ToWorkspaceAssociatedTemplatePtrOutput() WorkspaceAssociatedTemplatePtrOutput {
+	return o
+}
+
+func (o WorkspaceAssociatedTemplatePtrOutput) ToWorkspaceAssociatedTemplatePtrOutputWithContext(ctx context.Context) WorkspaceAssociatedTemplatePtrOutput {
+	return o
+}
+
+func (o WorkspaceAssociatedTemplatePtrOutput) Elem() WorkspaceAssociatedTemplateOutput {
+	return o.ApplyT(func(v *WorkspaceAssociatedTemplate) WorkspaceAssociatedTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceAssociatedTemplate
+		return ret
+	}).(WorkspaceAssociatedTemplateOutput)
+}
+
+// Template identifier. Changing this forces a new resource.
+func (o WorkspaceAssociatedTemplatePtrOutput) TemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceAssociatedTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TemplateId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Template version. Can be updated in place.
+func (o WorkspaceAssociatedTemplatePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceAssociatedTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -59158,6 +60148,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyRetryPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyRetryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyRetryBackoffInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyRetryBackoffArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyRetryBackoffPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyRetryBackoffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HarLifecycleRuleApplyToInput)(nil)).Elem(), HarLifecycleRuleApplyToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HarLifecycleRuleApplyToPtrInput)(nil)).Elem(), HarLifecycleRuleApplyToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HarLifecycleRuleCriteriaInput)(nil)).Elem(), HarLifecycleRuleCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HarLifecycleRuleCriteriaPtrInput)(nil)).Elem(), HarLifecycleRuleCriteriaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HarLifecycleRuleCriteriaRuleInput)(nil)).Elem(), HarLifecycleRuleCriteriaRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HarLifecycleRuleCriteriaRuleArrayInput)(nil)).Elem(), HarLifecycleRuleCriteriaRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HarLifecycleRuleFilterConfigInput)(nil)).Elem(), HarLifecycleRuleFilterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HarLifecycleRuleFilterConfigPtrInput)(nil)).Elem(), HarLifecycleRuleFilterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HarLifecycleRuleScheduleInput)(nil)).Elem(), HarLifecycleRuleScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HarLifecycleRuleSchedulePtrInput)(nil)).Elem(), HarLifecycleRuleScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HarRegistryConfigInput)(nil)).Elem(), HarRegistryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HarRegistryConfigArrayInput)(nil)).Elem(), HarRegistryConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HarRegistryConfigAuthInput)(nil)).Elem(), HarRegistryConfigAuthArgs{})
@@ -59396,6 +60396,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UsergroupNotificationConfigArrayInput)(nil)).Elem(), UsergroupNotificationConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VariablesSpecInput)(nil)).Elem(), VariablesSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VariablesSpecPtrInput)(nil)).Elem(), VariablesSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceAssociatedTemplateInput)(nil)).Elem(), WorkspaceAssociatedTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceAssociatedTemplatePtrInput)(nil)).Elem(), WorkspaceAssociatedTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceConnectorInput)(nil)).Elem(), WorkspaceConnectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceConnectorArrayInput)(nil)).Elem(), WorkspaceConnectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceEnvironmentVariableInput)(nil)).Elem(), WorkspaceEnvironmentVariableArgs{})
@@ -59985,6 +60987,16 @@ func init() {
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyRetryPtrOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyRetryBackoffOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyRetryBackoffPtrOutput{})
+	pulumi.RegisterOutputType(HarLifecycleRuleApplyToOutput{})
+	pulumi.RegisterOutputType(HarLifecycleRuleApplyToPtrOutput{})
+	pulumi.RegisterOutputType(HarLifecycleRuleCriteriaOutput{})
+	pulumi.RegisterOutputType(HarLifecycleRuleCriteriaPtrOutput{})
+	pulumi.RegisterOutputType(HarLifecycleRuleCriteriaRuleOutput{})
+	pulumi.RegisterOutputType(HarLifecycleRuleCriteriaRuleArrayOutput{})
+	pulumi.RegisterOutputType(HarLifecycleRuleFilterConfigOutput{})
+	pulumi.RegisterOutputType(HarLifecycleRuleFilterConfigPtrOutput{})
+	pulumi.RegisterOutputType(HarLifecycleRuleScheduleOutput{})
+	pulumi.RegisterOutputType(HarLifecycleRuleSchedulePtrOutput{})
 	pulumi.RegisterOutputType(HarRegistryConfigOutput{})
 	pulumi.RegisterOutputType(HarRegistryConfigArrayOutput{})
 	pulumi.RegisterOutputType(HarRegistryConfigAuthOutput{})
@@ -60223,6 +61235,8 @@ func init() {
 	pulumi.RegisterOutputType(UsergroupNotificationConfigArrayOutput{})
 	pulumi.RegisterOutputType(VariablesSpecOutput{})
 	pulumi.RegisterOutputType(VariablesSpecPtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceAssociatedTemplateOutput{})
+	pulumi.RegisterOutputType(WorkspaceAssociatedTemplatePtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectorOutput{})
 	pulumi.RegisterOutputType(WorkspaceConnectorArrayOutput{})
 	pulumi.RegisterOutputType(WorkspaceEnvironmentVariableOutput{})

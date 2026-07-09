@@ -83,6 +83,10 @@ import * as utilities from "../utilities";
  *         plan: "plan_pipeline_id",
  *         apply: "apply_pipeline_id",
  *     },
+ *     associatedTemplate: {
+ *         templateId: "my_template",
+ *         version: "v1.0.0",
+ *     },
  * });
  * ```
  *
@@ -122,6 +126,10 @@ export class Workspace extends pulumi.CustomResource {
         return obj['__pulumiType'] === Workspace.__pulumiType;
     }
 
+    /**
+     * Template associated with the workspace.
+     */
+    declare public readonly associatedTemplate: pulumi.Output<outputs.platform.WorkspaceAssociatedTemplate | undefined>;
     /**
      * Provider connectors configured on the Workspace. Only one connector of a type is supported
      */
@@ -163,11 +171,11 @@ export class Workspace extends pulumi.CustomResource {
      */
     declare public readonly providerConnector: pulumi.Output<string | undefined>;
     /**
-     * Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+     * Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
      */
     declare public readonly provisionerConfig: pulumi.Output<outputs.platform.WorkspaceProvisionerConfig | undefined>;
     /**
-     * Provisioner type defines the provisioning tool to use (terraform or opentofu)
+     * Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
      */
     declare public readonly provisionerType: pulumi.Output<string>;
     /**
@@ -240,6 +248,7 @@ export class Workspace extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkspaceState | undefined;
+            resourceInputs["associatedTemplate"] = state?.associatedTemplate;
             resourceInputs["connectors"] = state?.connectors;
             resourceInputs["costEstimationEnabled"] = state?.costEstimationEnabled;
             resourceInputs["defaultPipelines"] = state?.defaultPipelines;
@@ -295,6 +304,7 @@ export class Workspace extends pulumi.CustomResource {
             if (args?.repositoryPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'repositoryPath'");
             }
+            resourceInputs["associatedTemplate"] = args?.associatedTemplate;
             resourceInputs["connectors"] = args?.connectors;
             resourceInputs["costEstimationEnabled"] = args?.costEstimationEnabled;
             resourceInputs["defaultPipelines"] = args?.defaultPipelines;
@@ -331,6 +341,10 @@ export class Workspace extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Workspace resources.
  */
 export interface WorkspaceState {
+    /**
+     * Template associated with the workspace.
+     */
+    associatedTemplate?: pulumi.Input<inputs.platform.WorkspaceAssociatedTemplate | undefined>;
     /**
      * Provider connectors configured on the Workspace. Only one connector of a type is supported
      */
@@ -372,11 +386,11 @@ export interface WorkspaceState {
      */
     providerConnector?: pulumi.Input<string | undefined>;
     /**
-     * Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+     * Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
      */
     provisionerConfig?: pulumi.Input<inputs.platform.WorkspaceProvisionerConfig | undefined>;
     /**
-     * Provisioner type defines the provisioning tool to use (terraform or opentofu)
+     * Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
      */
     provisionerType?: pulumi.Input<string | undefined>;
     /**
@@ -442,6 +456,10 @@ export interface WorkspaceState {
  */
 export interface WorkspaceArgs {
     /**
+     * Template associated with the workspace.
+     */
+    associatedTemplate?: pulumi.Input<inputs.platform.WorkspaceAssociatedTemplate | undefined>;
+    /**
      * Provider connectors configured on the Workspace. Only one connector of a type is supported
      */
     connectors?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceConnector>[] | undefined>;
@@ -482,11 +500,11 @@ export interface WorkspaceArgs {
      */
     providerConnector?: pulumi.Input<string | undefined>;
     /**
-     * Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+     * Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
      */
     provisionerConfig?: pulumi.Input<inputs.platform.WorkspaceProvisionerConfig | undefined>;
     /**
-     * Provisioner type defines the provisioning tool to use (terraform or opentofu)
+     * Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
      */
     provisionerType: pulumi.Input<string>;
     /**

@@ -88,6 +88,21 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Indicates if the GitOps application should be force deleted from harness.
+     * 
+     */
+    @Import(name="forceDelete")
+    private @Nullable Output<Boolean> forceDelete;
+
+    /**
+     * @return Indicates if the GitOps application should be force deleted from harness.
+     * 
+     */
+    public Optional<Output<Boolean>> forceDelete() {
+        return Optional.ofNullable(this.forceDelete);
+    }
+
+    /**
      * Identifier of the GitOps application.
      * 
      * @deprecated
@@ -312,6 +327,7 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
         this.agentId = $.agentId;
         this.applications = $.applications;
         this.clusterId = $.clusterId;
+        this.forceDelete = $.forceDelete;
         this.identifier = $.identifier;
         this.kind = $.kind;
         this.name = $.name;
@@ -446,6 +462,27 @@ public final class GitOpsApplicationsArgs extends com.pulumi.resources.ResourceA
          */
         public Builder clusterId(String clusterId) {
             return clusterId(Output.of(clusterId));
+        }
+
+        /**
+         * @param forceDelete Indicates if the GitOps application should be force deleted from harness.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
+            $.forceDelete = forceDelete;
+            return this;
+        }
+
+        /**
+         * @param forceDelete Indicates if the GitOps application should be force deleted from harness.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(Boolean forceDelete) {
+            return forceDelete(Output.of(forceDelete));
         }
 
         /**
