@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.harness.platform.inputs.WorkspaceAssociatedTemplateArgs;
 import com.pulumi.harness.platform.inputs.WorkspaceConnectorArgs;
 import com.pulumi.harness.platform.inputs.WorkspaceEnvironmentVariableArgs;
 import com.pulumi.harness.platform.inputs.WorkspaceProvisionerConfigArgs;
@@ -22,6 +23,21 @@ import javax.annotation.Nullable;
 public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkspaceState Empty = new WorkspaceState();
+
+    /**
+     * Template associated with the workspace.
+     * 
+     */
+    @Import(name="associatedTemplate")
+    private @Nullable Output<WorkspaceAssociatedTemplateArgs> associatedTemplate;
+
+    /**
+     * @return Template associated with the workspace.
+     * 
+     */
+    public Optional<Output<WorkspaceAssociatedTemplateArgs>> associatedTemplate() {
+        return Optional.ofNullable(this.associatedTemplate);
+    }
 
     /**
      * Provider connectors configured on the Workspace. Only one connector of a type is supported
@@ -174,14 +190,14 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+     * Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
      * 
      */
     @Import(name="provisionerConfig")
     private @Nullable Output<WorkspaceProvisionerConfigArgs> provisionerConfig;
 
     /**
-     * @return Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+     * @return Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
      * 
      */
     public Optional<Output<WorkspaceProvisionerConfigArgs>> provisionerConfig() {
@@ -189,14 +205,14 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Provisioner type defines the provisioning tool to use (terraform or opentofu)
+     * Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
      * 
      */
     @Import(name="provisionerType")
     private @Nullable Output<String> provisionerType;
 
     /**
-     * @return Provisioner type defines the provisioning tool to use (terraform or opentofu)
+     * @return Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
      * 
      */
     public Optional<Output<String>> provisionerType() {
@@ -416,6 +432,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
     private WorkspaceState() {}
 
     private WorkspaceState(WorkspaceState $) {
+        this.associatedTemplate = $.associatedTemplate;
         this.connectors = $.connectors;
         this.costEstimationEnabled = $.costEstimationEnabled;
         this.defaultPipelines = $.defaultPipelines;
@@ -460,6 +477,27 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(WorkspaceState defaults) {
             $ = new WorkspaceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param associatedTemplate Template associated with the workspace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder associatedTemplate(@Nullable Output<WorkspaceAssociatedTemplateArgs> associatedTemplate) {
+            $.associatedTemplate = associatedTemplate;
+            return this;
+        }
+
+        /**
+         * @param associatedTemplate Template associated with the workspace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder associatedTemplate(WorkspaceAssociatedTemplateArgs associatedTemplate) {
+            return associatedTemplate(Output.of(associatedTemplate));
         }
 
         /**
@@ -693,7 +731,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param provisionerConfig Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+         * @param provisionerConfig Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
          * 
          * @return builder
          * 
@@ -704,7 +742,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param provisionerConfig Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+         * @param provisionerConfig Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
          * 
          * @return builder
          * 
@@ -714,7 +752,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param provisionerType Provisioner type defines the provisioning tool to use (terraform or opentofu)
+         * @param provisionerType Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
          * 
          * @return builder
          * 
@@ -725,7 +763,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param provisionerType Provisioner type defines the provisioning tool to use (terraform or opentofu)
+         * @param provisionerType Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
          * 
          * @return builder
          * 

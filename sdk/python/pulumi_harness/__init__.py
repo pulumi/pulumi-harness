@@ -1119,6 +1119,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/harLifecycleRule",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/harLifecycleRule:HarLifecycleRule": "HarLifecycleRule"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/harRegistry",
   "fqn": "pulumi_harness.platform",
   "classes": {
@@ -1155,6 +1163,14 @@ _utilities.register(
   "fqn": "pulumi_harness.platform",
   "classes": {
    "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline": "IacmDefaultPipeline"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/iacmWorkspaceTemplate",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/iacmWorkspaceTemplate:IacmWorkspaceTemplate": "IacmWorkspaceTemplate"
   }
  },
  {

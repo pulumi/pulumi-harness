@@ -38979,6 +38979,85 @@ export namespace platform {
         maxDuration?: string;
     }
 
+    export interface HarLifecycleRuleApplyTo {
+        /**
+         * Mode: ALL*IN*SCOPE or EXPLICIT.
+         */
+        mode: string;
+        /**
+         * List of registry identifiers (required when mode=EXPLICIT).
+         */
+        registries?: string[];
+    }
+
+    export interface HarLifecycleRuleCriteria {
+        /**
+         * How criteria rules are combined: ALL or ANY.
+         */
+        match: string;
+        /**
+         * List of individual criteria rules.
+         */
+        rules: outputs.platform.HarLifecycleRuleCriteriaRule[];
+    }
+
+    export interface HarLifecycleRuleCriteriaRule {
+        /**
+         * Criteria type: KEEP*LAST*N, AGE*BASED, or UNUSED*FOR.
+         */
+        type: string;
+        /**
+         * Time unit for age/unused-for criteria: DAYS, MONTHS, or YEARS.
+         */
+        unit?: string;
+        /**
+         * Numeric value for the criteria (e.g. number of versions, number of days).
+         */
+        value?: number;
+    }
+
+    export interface HarLifecycleRuleFilterConfig {
+        /**
+         * Glob patterns for HuggingFace dataset names to include (HUGGINGFACE only).
+         */
+        datasetAllowedPatterns?: string[];
+        /**
+         * Glob patterns for Maven group IDs to include (MAVEN only).
+         */
+        groupIdAllowedPatterns?: string[];
+        /**
+         * Glob patterns for HuggingFace model names to include (HUGGINGFACE only).
+         */
+        modelAllowedPatterns?: string[];
+        /**
+         * Glob patterns for package/image names to include.
+         */
+        packageNameAllowedPatterns?: string[];
+        /**
+         * Package type this filter applies to (e.g. DOCKER, MAVEN, HUGGINGFACE).
+         */
+        packageType: string;
+        /**
+         * Glob patterns for Docker tag names to include (DOCKER only).
+         */
+        tagNameAllowedPatterns?: string[];
+        /**
+         * Glob patterns for version/tag names to include.
+         */
+        versionNameAllowedPatterns?: string[];
+    }
+
+    export interface HarLifecycleRuleSchedule {
+        /**
+         * Cron expression (e.g. '0 2 * * *').
+         */
+        expression: string;
+        /**
+         * Timezone for the cron schedule (e.g. 'UTC', 'America/New_York').
+         */
+        timezone: string;
+    }
+
     export interface HarRegistryConfig {
         /**
          * Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
@@ -41282,6 +41361,17 @@ export namespace platform {
          * Type of Value of the Variable. For now only FIXED is supported
          */
         valueType: string;
+    }
+
+    export interface WorkspaceAssociatedTemplate {
+        /**
+         * Template identifier. Changing this forces a new resource.
+         */
+        templateId: string;
+        /**
+         * Template version. Can be updated in place.
+         */
+        version?: string;
     }
 
     export interface WorkspaceConnector {

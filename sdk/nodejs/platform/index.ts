@@ -1000,6 +1000,11 @@ export type GitxWebhook = import("./gitxWebhook").GitxWebhook;
 export const GitxWebhook: typeof import("./gitxWebhook").GitxWebhook = null as any;
 utilities.lazyLoad(exports, ["GitxWebhook"], () => require("./gitxWebhook"));
 
+export { HarLifecycleRuleArgs, HarLifecycleRuleState } from "./harLifecycleRule";
+export type HarLifecycleRule = import("./harLifecycleRule").HarLifecycleRule;
+export const HarLifecycleRule: typeof import("./harLifecycleRule").HarLifecycleRule = null as any;
+utilities.lazyLoad(exports, ["HarLifecycleRule"], () => require("./harLifecycleRule"));
+
 export { HarRegistryArgs, HarRegistryState } from "./harRegistry";
 export type HarRegistry = import("./harRegistry").HarRegistry;
 export const HarRegistry: typeof import("./harRegistry").HarRegistry = null as any;
@@ -1024,6 +1029,11 @@ export { IacmDefaultPipelineArgs, IacmDefaultPipelineState } from "./iacmDefault
 export type IacmDefaultPipeline = import("./iacmDefaultPipeline").IacmDefaultPipeline;
 export const IacmDefaultPipeline: typeof import("./iacmDefaultPipeline").IacmDefaultPipeline = null as any;
 utilities.lazyLoad(exports, ["IacmDefaultPipeline"], () => require("./iacmDefaultPipeline"));
+
+export { IacmWorkspaceTemplateArgs, IacmWorkspaceTemplateState } from "./iacmWorkspaceTemplate";
+export type IacmWorkspaceTemplate = import("./iacmWorkspaceTemplate").IacmWorkspaceTemplate;
+export const IacmWorkspaceTemplate: typeof import("./iacmWorkspaceTemplate").IacmWorkspaceTemplate = null as any;
+utilities.lazyLoad(exports, ["IacmWorkspaceTemplate"], () => require("./iacmWorkspaceTemplate"));
 
 export { IdpCatalogEntityArgs, IdpCatalogEntityState } from "./idpCatalogEntity";
 export type IdpCatalogEntity = import("./idpCatalogEntity").IdpCatalogEntity;
@@ -1470,6 +1480,8 @@ const _module = {
                 return new GitopsFilters(name, <any>undefined, { urn })
             case "harness:platform/gitxWebhook:GitxWebhook":
                 return new GitxWebhook(name, <any>undefined, { urn })
+            case "harness:platform/harLifecycleRule:HarLifecycleRule":
+                return new HarLifecycleRule(name, <any>undefined, { urn })
             case "harness:platform/harRegistry:HarRegistry":
                 return new HarRegistry(name, <any>undefined, { urn })
             case "harness:platform/helmConnector:HelmConnector":
@@ -1480,6 +1492,8 @@ const _module = {
                 return new IacmAnsiblePlaybook(name, <any>undefined, { urn })
             case "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline":
                 return new IacmDefaultPipeline(name, <any>undefined, { urn })
+            case "harness:platform/iacmWorkspaceTemplate:IacmWorkspaceTemplate":
+                return new IacmWorkspaceTemplate(name, <any>undefined, { urn })
             case "harness:platform/idpCatalogEntity:IdpCatalogEntity":
                 return new IdpCatalogEntity(name, <any>undefined, { urn })
             case "harness:platform/idpEnvironment:IdpEnvironment":
@@ -1673,11 +1687,13 @@ pulumi.runtime.registerResourceModule("harness", "platform/gitopsAppProjectMappi
 pulumi.runtime.registerResourceModule("harness", "platform/gitopsApplicationset", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gitopsFilters", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/gitxWebhook", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/harLifecycleRule", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/harRegistry", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/helmConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/iacmAnsibleInventory", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/iacmAnsiblePlaybook", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/iacmDefaultPipeline", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/iacmWorkspaceTemplate", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/idpCatalogEntity", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/idpEnvironment", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/idpEnvironmentBlueprint", _module)

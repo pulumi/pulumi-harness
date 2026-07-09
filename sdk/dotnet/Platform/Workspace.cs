@@ -106,6 +106,11 @@ namespace Pulumi.Harness.Platform
     ///             { "plan", "plan_pipeline_id" },
     ///             { "apply", "apply_pipeline_id" },
     ///         },
+    ///         AssociatedTemplate = new Harness.Platform.Inputs.WorkspaceAssociatedTemplateArgs
+    ///         {
+    ///             TemplateId = "my_template",
+    ///             Version = "v1.0.0",
+    ///         },
     ///     });
     /// 
     /// });
@@ -122,6 +127,12 @@ namespace Pulumi.Harness.Platform
     [HarnessResourceType("harness:platform/workspace:Workspace")]
     public partial class Workspace : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Template associated with the workspace.
+        /// </summary>
+        [Output("associatedTemplate")]
+        public Output<Outputs.WorkspaceAssociatedTemplate?> AssociatedTemplate { get; private set; } = null!;
+
         /// <summary>
         /// Provider connectors configured on the Workspace. Only one connector of a type is supported
         /// </summary>
@@ -183,13 +194,13 @@ namespace Pulumi.Harness.Platform
         public Output<string?> ProviderConnector { get; private set; } = null!;
 
         /// <summary>
-        /// Provisioner configuration for awscdk provisioner type. Required when ProvisionerType is awscdk.
+        /// Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
         /// </summary>
         [Output("provisionerConfig")]
         public Output<Outputs.WorkspaceProvisionerConfig?> ProvisionerConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Provisioner type defines the provisioning tool to use (terraform or opentofu)
+        /// Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
         /// </summary>
         [Output("provisionerType")]
         public Output<string> ProvisionerType { get; private set; } = null!;
@@ -325,6 +336,12 @@ namespace Pulumi.Harness.Platform
 
     public sealed class WorkspaceArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Template associated with the workspace.
+        /// </summary>
+        [Input("associatedTemplate")]
+        public Input<Inputs.WorkspaceAssociatedTemplateArgs>? AssociatedTemplate { get; set; }
+
         [Input("connectors")]
         private InputList<Inputs.WorkspaceConnectorArgs>? _connectors;
 
@@ -404,13 +421,13 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProviderConnector { get; set; }
 
         /// <summary>
-        /// Provisioner configuration for awscdk provisioner type. Required when ProvisionerType is awscdk.
+        /// Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
         /// </summary>
         [Input("provisionerConfig")]
         public Input<Inputs.WorkspaceProvisionerConfigArgs>? ProvisionerConfig { get; set; }
 
         /// <summary>
-        /// Provisioner type defines the provisioning tool to use (terraform or opentofu)
+        /// Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
         /// </summary>
         [Input("provisionerType", required: true)]
         public Input<string> ProvisionerType { get; set; } = null!;
@@ -531,6 +548,12 @@ namespace Pulumi.Harness.Platform
 
     public sealed class WorkspaceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Template associated with the workspace.
+        /// </summary>
+        [Input("associatedTemplate")]
+        public Input<Inputs.WorkspaceAssociatedTemplateGetArgs>? AssociatedTemplate { get; set; }
+
         [Input("connectors")]
         private InputList<Inputs.WorkspaceConnectorGetArgs>? _connectors;
 
@@ -610,13 +633,13 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProviderConnector { get; set; }
 
         /// <summary>
-        /// Provisioner configuration for awscdk provisioner type. Required when ProvisionerType is awscdk.
+        /// Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
         /// </summary>
         [Input("provisionerConfig")]
         public Input<Inputs.WorkspaceProvisionerConfigGetArgs>? ProvisionerConfig { get; set; }
 
         /// <summary>
-        /// Provisioner type defines the provisioning tool to use (terraform or opentofu)
+        /// Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
         /// </summary>
         [Input("provisionerType")]
         public Input<string>? ProvisionerType { get; set; }

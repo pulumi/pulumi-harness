@@ -14862,6 +14862,59 @@
                     }
                 }
             },
+            "harness_platform_har_lifecycle_rule": {
+                "current": "harness:platform/harLifecycleRule:HarLifecycleRule",
+                "fields": {
+                    "apply_to": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "registries": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "criteria": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "rules": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "filter_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "dataset_allowed_pattern": {
+                                    "maxItemsOne": false
+                                },
+                                "group_id_allowed_pattern": {
+                                    "maxItemsOne": false
+                                },
+                                "model_allowed_pattern": {
+                                    "maxItemsOne": false
+                                },
+                                "package_name_allowed_pattern": {
+                                    "maxItemsOne": false
+                                },
+                                "tag_name_allowed_pattern": {
+                                    "maxItemsOne": false
+                                },
+                                "version_name_allowed_pattern": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "schedule": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "harness_platform_har_registry": {
                 "current": "harness:platform/harRegistry:HarRegistry",
                 "fields": {
@@ -14952,6 +15005,9 @@
             },
             "harness_platform_iacm_default_pipeline": {
                 "current": "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline"
+            },
+            "harness_platform_iacm_workspace_template": {
+                "current": "harness:platform/iacmWorkspaceTemplate:IacmWorkspaceTemplate"
             },
             "harness_platform_idp_catalog_entity": {
                 "current": "harness:platform/idpCatalogEntity:IdpCatalogEntity",
@@ -15714,6 +15770,9 @@
             "harness_platform_workspace": {
                 "current": "harness:platform/workspace:Workspace",
                 "fields": {
+                    "associated_template": {
+                        "maxItemsOne": true
+                    },
                     "connector": {
                         "maxItemsOne": false
                     },

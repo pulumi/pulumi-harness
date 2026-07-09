@@ -134,6 +134,12 @@ namespace Pulumi.Harness.Platform
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates if the GitOps application should be force deleted from harness.
+        /// </summary>
+        [Output("forceDelete")]
+        public Output<bool?> ForceDelete { get; private set; } = null!;
+
+        /// <summary>
         /// Identifier of the GitOps application.
         /// </summary>
         [Output("identifier")]
@@ -295,6 +301,12 @@ namespace Pulumi.Harness.Platform
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
+        /// Indicates if the GitOps application should be force deleted from harness.
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<bool>? ForceDelete { get; set; }
+
+        /// <summary>
         /// Identifier of the GitOps application.
         /// </summary>
         [Input("identifier")]
@@ -421,6 +433,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
+
+        /// <summary>
+        /// Indicates if the GitOps application should be force deleted from harness.
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<bool>? ForceDelete { get; set; }
 
         /// <summary>
         /// Identifier of the GitOps application.

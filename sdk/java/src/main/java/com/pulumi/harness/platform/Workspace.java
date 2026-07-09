@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.harness.Utilities;
 import com.pulumi.harness.platform.WorkspaceArgs;
 import com.pulumi.harness.platform.inputs.WorkspaceState;
+import com.pulumi.harness.platform.outputs.WorkspaceAssociatedTemplate;
 import com.pulumi.harness.platform.outputs.WorkspaceConnector;
 import com.pulumi.harness.platform.outputs.WorkspaceEnvironmentVariable;
 import com.pulumi.harness.platform.outputs.WorkspaceProvisionerConfig;
@@ -39,6 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableArgs;
  * import com.pulumi.harness.platform.inputs.WorkspaceEnvironmentVariableArgs;
  * import com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableFileArgs;
+ * import com.pulumi.harness.platform.inputs.WorkspaceAssociatedTemplateArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -116,6 +118,10 @@ import javax.annotation.Nullable;
  *                 Map.entry("plan", "plan_pipeline_id"),
  *                 Map.entry("apply", "apply_pipeline_id")
  *             ))
+ *             .associatedTemplate(WorkspaceAssociatedTemplateArgs.builder()
+ *                 .templateId("my_template")
+ *                 .version("v1.0.0")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -134,6 +140,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="harness:platform/workspace:Workspace")
 public class Workspace extends com.pulumi.resources.CustomResource {
+    /**
+     * Template associated with the workspace.
+     * 
+     */
+    @Export(name="associatedTemplate", refs={WorkspaceAssociatedTemplate.class}, tree="[0]")
+    private Output</* @Nullable */ WorkspaceAssociatedTemplate> associatedTemplate;
+
+    /**
+     * @return Template associated with the workspace.
+     * 
+     */
+    public Output<Optional<WorkspaceAssociatedTemplate>> associatedTemplate() {
+        return Codegen.optional(this.associatedTemplate);
+    }
     /**
      * Provider connectors configured on the Workspace. Only one connector of a type is supported
      * 
@@ -275,28 +295,28 @@ public class Workspace extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.providerConnector);
     }
     /**
-     * Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+     * Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
      * 
      */
     @Export(name="provisionerConfig", refs={WorkspaceProvisionerConfig.class}, tree="[0]")
     private Output</* @Nullable */ WorkspaceProvisionerConfig> provisionerConfig;
 
     /**
-     * @return Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+     * @return Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
      * 
      */
     public Output<Optional<WorkspaceProvisionerConfig>> provisionerConfig() {
         return Codegen.optional(this.provisionerConfig);
     }
     /**
-     * Provisioner type defines the provisioning tool to use (terraform or opentofu)
+     * Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
      * 
      */
     @Export(name="provisionerType", refs={String.class}, tree="[0]")
     private Output<String> provisionerType;
 
     /**
-     * @return Provisioner type defines the provisioning tool to use (terraform or opentofu)
+     * @return Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
      * 
      */
     public Output<String> provisionerType() {

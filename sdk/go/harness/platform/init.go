@@ -141,6 +141,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GitopsFilters{}
 	case "harness:platform/gitxWebhook:GitxWebhook":
 		r = &GitxWebhook{}
+	case "harness:platform/harLifecycleRule:HarLifecycleRule":
+		r = &HarLifecycleRule{}
 	case "harness:platform/harRegistry:HarRegistry":
 		r = &HarRegistry{}
 	case "harness:platform/helmConnector:HelmConnector":
@@ -151,6 +153,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IacmAnsiblePlaybook{}
 	case "harness:platform/iacmDefaultPipeline:IacmDefaultPipeline":
 		r = &IacmDefaultPipeline{}
+	case "harness:platform/iacmWorkspaceTemplate:IacmWorkspaceTemplate":
+		r = &IacmWorkspaceTemplate{}
 	case "harness:platform/idpCatalogEntity:IdpCatalogEntity":
 		r = &IdpCatalogEntity{}
 	case "harness:platform/idpEnvironment:IdpEnvironment":
@@ -594,6 +598,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
+		"platform/harLifecycleRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
 		"platform/harRegistry",
 		&module{version},
 	)
@@ -615,6 +624,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/iacmDefaultPipeline",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/iacmWorkspaceTemplate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

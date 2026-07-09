@@ -98,6 +98,10 @@ import (
 //					"plan":    pulumi.String("plan_pipeline_id"),
 //					"apply":   pulumi.String("apply_pipeline_id"),
 //				},
+//				AssociatedTemplate: &platform.WorkspaceAssociatedTemplateArgs{
+//					TemplateId: pulumi.String("my_template"),
+//					Version:    pulumi.String("v1.0.0"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -118,6 +122,8 @@ import (
 type Workspace struct {
 	pulumi.CustomResourceState
 
+	// Template associated with the workspace.
+	AssociatedTemplate WorkspaceAssociatedTemplatePtrOutput `pulumi:"associatedTemplate"`
 	// Provider connectors configured on the Workspace. Only one connector of a type is supported
 	Connectors WorkspaceConnectorArrayOutput `pulumi:"connectors"`
 	// Cost estimation enabled determines if cost estimation operations are performed.
@@ -138,9 +144,9 @@ type Workspace struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Provider connector is the reference to the connector for the infrastructure provider
 	ProviderConnector pulumi.StringPtrOutput `pulumi:"providerConnector"`
-	// Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+	// Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
 	ProvisionerConfig WorkspaceProvisionerConfigPtrOutput `pulumi:"provisionerConfig"`
-	// Provisioner type defines the provisioning tool to use (terraform or opentofu)
+	// Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
 	ProvisionerType pulumi.StringOutput `pulumi:"provisionerType"`
 	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
 	ProvisionerVersion pulumi.StringOutput `pulumi:"provisionerVersion"`
@@ -229,6 +235,8 @@ func GetWorkspace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Workspace resources.
 type workspaceState struct {
+	// Template associated with the workspace.
+	AssociatedTemplate *WorkspaceAssociatedTemplate `pulumi:"associatedTemplate"`
 	// Provider connectors configured on the Workspace. Only one connector of a type is supported
 	Connectors []WorkspaceConnector `pulumi:"connectors"`
 	// Cost estimation enabled determines if cost estimation operations are performed.
@@ -249,9 +257,9 @@ type workspaceState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Provider connector is the reference to the connector for the infrastructure provider
 	ProviderConnector *string `pulumi:"providerConnector"`
-	// Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+	// Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
 	ProvisionerConfig *WorkspaceProvisionerConfig `pulumi:"provisionerConfig"`
-	// Provisioner type defines the provisioning tool to use (terraform or opentofu)
+	// Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
 	ProvisionerType *string `pulumi:"provisionerType"`
 	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
 	ProvisionerVersion *string `pulumi:"provisionerVersion"`
@@ -284,6 +292,8 @@ type workspaceState struct {
 }
 
 type WorkspaceState struct {
+	// Template associated with the workspace.
+	AssociatedTemplate WorkspaceAssociatedTemplatePtrInput
 	// Provider connectors configured on the Workspace. Only one connector of a type is supported
 	Connectors WorkspaceConnectorArrayInput
 	// Cost estimation enabled determines if cost estimation operations are performed.
@@ -304,9 +314,9 @@ type WorkspaceState struct {
 	ProjectId pulumi.StringPtrInput
 	// Provider connector is the reference to the connector for the infrastructure provider
 	ProviderConnector pulumi.StringPtrInput
-	// Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+	// Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
 	ProvisionerConfig WorkspaceProvisionerConfigPtrInput
-	// Provisioner type defines the provisioning tool to use (terraform or opentofu)
+	// Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
 	ProvisionerType pulumi.StringPtrInput
 	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
 	ProvisionerVersion pulumi.StringPtrInput
@@ -343,6 +353,8 @@ func (WorkspaceState) ElementType() reflect.Type {
 }
 
 type workspaceArgs struct {
+	// Template associated with the workspace.
+	AssociatedTemplate *WorkspaceAssociatedTemplate `pulumi:"associatedTemplate"`
 	// Provider connectors configured on the Workspace. Only one connector of a type is supported
 	Connectors []WorkspaceConnector `pulumi:"connectors"`
 	// Cost estimation enabled determines if cost estimation operations are performed.
@@ -363,9 +375,9 @@ type workspaceArgs struct {
 	ProjectId string `pulumi:"projectId"`
 	// Provider connector is the reference to the connector for the infrastructure provider
 	ProviderConnector *string `pulumi:"providerConnector"`
-	// Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+	// Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
 	ProvisionerConfig *WorkspaceProvisionerConfig `pulumi:"provisionerConfig"`
-	// Provisioner type defines the provisioning tool to use (terraform or opentofu)
+	// Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
 	ProvisionerType string `pulumi:"provisionerType"`
 	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
 	ProvisionerVersion string `pulumi:"provisionerVersion"`
@@ -399,6 +411,8 @@ type workspaceArgs struct {
 
 // The set of arguments for constructing a Workspace resource.
 type WorkspaceArgs struct {
+	// Template associated with the workspace.
+	AssociatedTemplate WorkspaceAssociatedTemplatePtrInput
 	// Provider connectors configured on the Workspace. Only one connector of a type is supported
 	Connectors WorkspaceConnectorArrayInput
 	// Cost estimation enabled determines if cost estimation operations are performed.
@@ -419,9 +433,9 @@ type WorkspaceArgs struct {
 	ProjectId pulumi.StringInput
 	// Provider connector is the reference to the connector for the infrastructure provider
 	ProviderConnector pulumi.StringPtrInput
-	// Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+	// Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
 	ProvisionerConfig WorkspaceProvisionerConfigPtrInput
-	// Provisioner type defines the provisioning tool to use (terraform or opentofu)
+	// Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
 	ProvisionerType pulumi.StringInput
 	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
 	ProvisionerVersion pulumi.StringInput
@@ -540,6 +554,11 @@ func (o WorkspaceOutput) ToWorkspaceOutputWithContext(ctx context.Context) Works
 	return o
 }
 
+// Template associated with the workspace.
+func (o WorkspaceOutput) AssociatedTemplate() WorkspaceAssociatedTemplatePtrOutput {
+	return o.ApplyT(func(v *Workspace) WorkspaceAssociatedTemplatePtrOutput { return v.AssociatedTemplate }).(WorkspaceAssociatedTemplatePtrOutput)
+}
+
 // Provider connectors configured on the Workspace. Only one connector of a type is supported
 func (o WorkspaceOutput) Connectors() WorkspaceConnectorArrayOutput {
 	return o.ApplyT(func(v *Workspace) WorkspaceConnectorArrayOutput { return v.Connectors }).(WorkspaceConnectorArrayOutput)
@@ -590,12 +609,12 @@ func (o WorkspaceOutput) ProviderConnector() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.ProviderConnector }).(pulumi.StringPtrOutput)
 }
 
-// Provisioner configuration for awscdk provisioner type. Required when provisionerType is awscdk.
+// Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
 func (o WorkspaceOutput) ProvisionerConfig() WorkspaceProvisionerConfigPtrOutput {
 	return o.ApplyT(func(v *Workspace) WorkspaceProvisionerConfigPtrOutput { return v.ProvisionerConfig }).(WorkspaceProvisionerConfigPtrOutput)
 }
 
-// Provisioner type defines the provisioning tool to use (terraform or opentofu)
+// Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
 func (o WorkspaceOutput) ProvisionerType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.ProvisionerType }).(pulumi.StringOutput)
 }

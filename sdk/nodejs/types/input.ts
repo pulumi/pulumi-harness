@@ -36939,6 +36939,85 @@ export namespace platform {
         maxDuration?: pulumi.Input<string | undefined>;
     }
 
+    export interface HarLifecycleRuleApplyTo {
+        /**
+         * Mode: ALL*IN*SCOPE or EXPLICIT.
+         */
+        mode: pulumi.Input<string>;
+        /**
+         * List of registry identifiers (required when mode=EXPLICIT).
+         */
+        registries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface HarLifecycleRuleCriteria {
+        /**
+         * How criteria rules are combined: ALL or ANY.
+         */
+        match: pulumi.Input<string>;
+        /**
+         * List of individual criteria rules.
+         */
+        rules: pulumi.Input<pulumi.Input<inputs.platform.HarLifecycleRuleCriteriaRule>[]>;
+    }
+
+    export interface HarLifecycleRuleCriteriaRule {
+        /**
+         * Criteria type: KEEP*LAST*N, AGE*BASED, or UNUSED*FOR.
+         */
+        type: pulumi.Input<string>;
+        /**
+         * Time unit for age/unused-for criteria: DAYS, MONTHS, or YEARS.
+         */
+        unit?: pulumi.Input<string | undefined>;
+        /**
+         * Numeric value for the criteria (e.g. number of versions, number of days).
+         */
+        value?: pulumi.Input<number | undefined>;
+    }
+
+    export interface HarLifecycleRuleFilterConfig {
+        /**
+         * Glob patterns for HuggingFace dataset names to include (HUGGINGFACE only).
+         */
+        datasetAllowedPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Glob patterns for Maven group IDs to include (MAVEN only).
+         */
+        groupIdAllowedPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Glob patterns for HuggingFace model names to include (HUGGINGFACE only).
+         */
+        modelAllowedPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Glob patterns for package/image names to include.
+         */
+        packageNameAllowedPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Package type this filter applies to (e.g. DOCKER, MAVEN, HUGGINGFACE).
+         */
+        packageType: pulumi.Input<string>;
+        /**
+         * Glob patterns for Docker tag names to include (DOCKER only).
+         */
+        tagNameAllowedPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Glob patterns for version/tag names to include.
+         */
+        versionNameAllowedPatterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface HarLifecycleRuleSchedule {
+        /**
+         * Cron expression (e.g. '0 2 * * *').
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * Timezone for the cron schedule (e.g. 'UTC', 'America/New_York').
+         */
+        timezone: pulumi.Input<string>;
+    }
+
     export interface HarRegistryConfig {
         /**
          * Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
@@ -39242,6 +39321,17 @@ export namespace platform {
          * Type of Value of the Variable. For now only FIXED is supported
          */
         valueType: pulumi.Input<string>;
+    }
+
+    export interface WorkspaceAssociatedTemplate {
+        /**
+         * Template identifier. Changing this forces a new resource.
+         */
+        templateId: pulumi.Input<string>;
+        /**
+         * Template version. Can be updated in place.
+         */
+        version?: pulumi.Input<string | undefined>;
     }
 
     export interface WorkspaceConnector {
