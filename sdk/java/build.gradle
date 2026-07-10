@@ -96,7 +96,7 @@ publishing {
                 inceptionYear = "2022"
                 name = "pulumi-harness"
                 packaging = "jar"
-                description = "A Pulumi package for creating and managing Harness  resources."
+                description = $/A Pulumi package for creating and managing Harness  resources./$
 
                 url = "https://github.com/pulumi/pulumi-harness"
 
