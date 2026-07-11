@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FaultTemplateSpecChaos {
     /**
-     * @return Authentication configuration
+     * @return Authentication configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault authentication in the Harness UI/API instead.
      * 
      */
     private @Nullable FaultTemplateSpecChaosAuth auth;
@@ -43,14 +43,14 @@ public final class FaultTemplateSpecChaos {
      */
     private @Nullable FaultTemplateSpecChaosStatusCheckTimeouts statusCheckTimeouts;
     /**
-     * @return TLS configuration
+     * @return TLS configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault TLS in the Harness UI/API instead.
      * 
      */
     private @Nullable FaultTemplateSpecChaosTls tls;
 
     private FaultTemplateSpecChaos() {}
     /**
-     * @return Authentication configuration
+     * @return Authentication configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault authentication in the Harness UI/API instead.
      * 
      */
     public Optional<FaultTemplateSpecChaosAuth> auth() {
@@ -85,7 +85,7 @@ public final class FaultTemplateSpecChaos {
         return Optional.ofNullable(this.statusCheckTimeouts);
     }
     /**
-     * @return TLS configuration
+     * @return TLS configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault TLS in the Harness UI/API instead.
      * 
      */
     public Optional<FaultTemplateSpecChaosTls> tls() {

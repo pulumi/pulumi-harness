@@ -20,35 +20,26 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-harness/sdk/go/harness/service"
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/chaos"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Data source to fetch a specific agent by name
-//			byName, err := service.LookupDiscoveryAgent(ctx, &service.LookupDiscoveryAgentArgs{
-//				Name:                  pulumi.StringRef("example-agent"),
-//				OrgIdentifier:         pulumi.StringRef(orgIdentifier),
-//				ProjectIdentifier:     pulumi.StringRef(projectIdentifier),
-//				EnvironmentIdentifier: environmentIdentifier,
+//			// Fetch an existing chaos infrastructure V2 by its identifiers
+//			example, err := chaos.LookupInfrastructureV2(ctx, &chaos.LookupInfrastructureV2Args{
+//				OrgId:         "<org_id>",
+//				ProjectId:     "<project_id>",
+//				EnvironmentId: "<environment_id>",
+//				InfraId:       "<infra_id>",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("agentDetailsByName", byName)
-//			// Data source to fetch a specific agent by identity
-//			byIdentity, err := service.LookupDiscoveryAgent(ctx, &service.LookupDiscoveryAgentArgs{
-//				Identity:              pulumi.StringRef("example-infra"),
-//				OrgIdentifier:         pulumi.StringRef(orgIdentifier),
-//				ProjectIdentifier:     pulumi.StringRef(projectIdentifier),
-//				EnvironmentIdentifier: environmentIdentifier,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("agentDetailsByIdentity", byIdentity)
+//			ctx.Export("chaosInfraResources", example.Resources)
+//			ctx.Export("chaosInfraAutopilotEnabled", example.AutopilotEnabled)
+//			ctx.Export("chaosInfraDiscoveryAgentId", example.DiscoveryAgentId)
 //			return nil
 //		})
 //	}
@@ -80,6 +71,8 @@ type LookupInfrastructureV2Args struct {
 	ProjectId string `pulumi:"projectId"`
 	// Proxy configuration for the infrastructure.
 	Proxy *GetInfrastructureV2Proxy `pulumi:"proxy"`
+	// Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+	Resources *GetInfrastructureV2Resources `pulumi:"resources"`
 	// If specified, the pod's tolerations.
 	Tolerations []GetInfrastructureV2Toleration `pulumi:"tolerations"`
 	// Volume mounts for the container.
@@ -91,6 +84,8 @@ type LookupInfrastructureV2Args struct {
 // A collection of values returned by getInfrastructureV2.
 type LookupInfrastructureV2Result struct {
 	Annotation map[string]string `pulumi:"annotation"`
+	// Whether autopilot mode is enabled for the infrastructure.
+	AutopilotEnabled bool `pulumi:"autopilotEnabled"`
 	// List of containers in the infrastructure.
 	Containers string `pulumi:"containers"`
 	// Created at of the infrastructure.
@@ -99,6 +94,8 @@ type LookupInfrastructureV2Result struct {
 	CreatedBy string `pulumi:"createdBy"`
 	// Description of the infrastructure.
 	Description string `pulumi:"description"`
+	// ID of the discovery agent used by the infrastructure.
+	DiscoveryAgentId string `pulumi:"discoveryAgentId"`
 	// The ID of the environment.
 	EnvironmentId string `pulumi:"environmentId"`
 	// The provider-assigned unique ID for this managed resource.
@@ -139,9 +136,11 @@ type LookupInfrastructureV2Result struct {
 	// The ID of the project.
 	ProjectId string `pulumi:"projectId"`
 	// Proxy configuration for the infrastructure.
-	Proxy      *GetInfrastructureV2Proxy `pulumi:"proxy"`
-	RunAsGroup int                       `pulumi:"runAsGroup"`
-	RunAsUser  int                       `pulumi:"runAsUser"`
+	Proxy *GetInfrastructureV2Proxy `pulumi:"proxy"`
+	// Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+	Resources  *GetInfrastructureV2Resources `pulumi:"resources"`
+	RunAsGroup int                           `pulumi:"runAsGroup"`
+	RunAsUser  int                           `pulumi:"runAsUser"`
 	// Service account used by the infrastructure.
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// Status of the infrastructure.
@@ -187,6 +186,8 @@ type LookupInfrastructureV2OutputArgs struct {
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// Proxy configuration for the infrastructure.
 	Proxy GetInfrastructureV2ProxyPtrInput `pulumi:"proxy"`
+	// Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+	Resources GetInfrastructureV2ResourcesPtrInput `pulumi:"resources"`
 	// If specified, the pod's tolerations.
 	Tolerations GetInfrastructureV2TolerationArrayInput `pulumi:"tolerations"`
 	// Volume mounts for the container.
@@ -218,6 +219,11 @@ func (o LookupInfrastructureV2ResultOutput) Annotation() pulumi.StringMapOutput 
 	return o.ApplyT(func(v LookupInfrastructureV2Result) map[string]string { return v.Annotation }).(pulumi.StringMapOutput)
 }
 
+// Whether autopilot mode is enabled for the infrastructure.
+func (o LookupInfrastructureV2ResultOutput) AutopilotEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInfrastructureV2Result) bool { return v.AutopilotEnabled }).(pulumi.BoolOutput)
+}
+
 // List of containers in the infrastructure.
 func (o LookupInfrastructureV2ResultOutput) Containers() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfrastructureV2Result) string { return v.Containers }).(pulumi.StringOutput)
@@ -236,6 +242,11 @@ func (o LookupInfrastructureV2ResultOutput) CreatedBy() pulumi.StringOutput {
 // Description of the infrastructure.
 func (o LookupInfrastructureV2ResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfrastructureV2Result) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// ID of the discovery agent used by the infrastructure.
+func (o LookupInfrastructureV2ResultOutput) DiscoveryAgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInfrastructureV2Result) string { return v.DiscoveryAgentId }).(pulumi.StringOutput)
 }
 
 // The ID of the environment.
@@ -346,6 +357,11 @@ func (o LookupInfrastructureV2ResultOutput) ProjectId() pulumi.StringOutput {
 // Proxy configuration for the infrastructure.
 func (o LookupInfrastructureV2ResultOutput) Proxy() GetInfrastructureV2ProxyPtrOutput {
 	return o.ApplyT(func(v LookupInfrastructureV2Result) *GetInfrastructureV2Proxy { return v.Proxy }).(GetInfrastructureV2ProxyPtrOutput)
+}
+
+// Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+func (o LookupInfrastructureV2ResultOutput) Resources() GetInfrastructureV2ResourcesPtrOutput {
+	return o.ApplyT(func(v LookupInfrastructureV2Result) *GetInfrastructureV2Resources { return v.Resources }).(GetInfrastructureV2ResourcesPtrOutput)
 }
 
 func (o LookupInfrastructureV2ResultOutput) RunAsGroup() pulumi.IntOutput {

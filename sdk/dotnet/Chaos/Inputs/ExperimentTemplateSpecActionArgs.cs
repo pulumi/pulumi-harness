@@ -13,6 +13,12 @@ namespace Pulumi.Harness.Chaos.Inputs
     public sealed class ExperimentTemplateSpecActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Execution conditions gating whether this action runs, evaluated as boolean values combined by the operator.
+        /// </summary>
+        [Input("conditionsV2")]
+        public Input<Inputs.ExperimentTemplateSpecActionConditionsV2Args>? ConditionsV2 { get; set; }
+
+        /// <summary>
         /// Whether to continue on completion
         /// </summary>
         [Input("continueOnCompletion")]

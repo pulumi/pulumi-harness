@@ -2112,6 +2112,10 @@ export namespace chaos {
 
     export interface ExperimentTemplateSpecAction {
         /**
+         * Execution conditions gating whether this action runs, evaluated as boolean values combined by the operator.
+         */
+        conditionsV2?: outputs.chaos.ExperimentTemplateSpecActionConditionsV2;
+        /**
          * Whether to continue on completion
          */
         continueOnCompletion?: boolean;
@@ -2141,6 +2145,17 @@ export namespace chaos {
         values?: outputs.chaos.ExperimentTemplateSpecActionValue[];
     }
 
+    export interface ExperimentTemplateSpecActionConditionsV2 {
+        /**
+         * Logical operator combining values: AND (all true) or OR (any true).
+         */
+        operator: string;
+        /**
+         * Boolean-parseable condition values (supports runtime input: <+input>).
+         */
+        values: string[];
+    }
+
     export interface ExperimentTemplateSpecActionValue {
         /**
          * Variable name
@@ -2157,6 +2172,10 @@ export namespace chaos {
          * Whether authentication is enabled
          */
         authEnabled?: boolean;
+        /**
+         * Execution conditions gating whether this fault runs, evaluated as boolean values combined by the operator.
+         */
+        conditionsV2?: outputs.chaos.ExperimentTemplateSpecFaultConditionsV2;
         /**
          * Fault template identity
          */
@@ -2183,6 +2202,17 @@ export namespace chaos {
         values?: outputs.chaos.ExperimentTemplateSpecFaultValue[];
     }
 
+    export interface ExperimentTemplateSpecFaultConditionsV2 {
+        /**
+         * Logical operator combining values: AND (all true) or OR (any true).
+         */
+        operator: string;
+        /**
+         * Boolean-parseable condition values (supports runtime input: <+input>).
+         */
+        values: string[];
+    }
+
     export interface ExperimentTemplateSpecFaultValue {
         /**
          * Variable name
@@ -2196,9 +2226,15 @@ export namespace chaos {
 
     export interface ExperimentTemplateSpecProbe {
         /**
-         * Probe execution conditions
+         * Deprecated: no longer part of the experiment template API; use conditionsV2 instead. This field is ignored.
+         *
+         * @deprecated conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
          */
         conditions?: outputs.chaos.ExperimentTemplateSpecProbeCondition[];
+        /**
+         * Execution conditions gating whether this probe runs, evaluated as boolean values combined by the operator.
+         */
+        conditionsV2?: outputs.chaos.ExperimentTemplateSpecProbeConditionsV2;
         /**
          * Probe duration
          */
@@ -2241,7 +2277,18 @@ export namespace chaos {
         /**
          * When to execute the probe (onChaosStart, duringChaos, afterChaos)
          */
-        executeUpon: string;
+        executeUpon?: string;
+    }
+
+    export interface ExperimentTemplateSpecProbeConditionsV2 {
+        /**
+         * Logical operator combining values: AND (all true) or OR (any true).
+         */
+        operator: string;
+        /**
+         * Boolean-parseable condition values (supports runtime input: <+input>).
+         */
+        values: string[];
     }
 
     export interface ExperimentTemplateSpecProbeValue {
@@ -2377,7 +2424,7 @@ export namespace chaos {
 
     export interface FaultTemplateSpecChaos {
         /**
-         * Authentication configuration
+         * Authentication configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault authentication in the Harness UI/API instead.
          */
         auth?: outputs.chaos.FaultTemplateSpecChaosAuth;
         /**
@@ -2397,7 +2444,7 @@ export namespace chaos {
          */
         statusCheckTimeouts?: outputs.chaos.FaultTemplateSpecChaosStatusCheckTimeouts;
         /**
-         * TLS configuration
+         * TLS configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault TLS in the Harness UI/API instead.
          */
         tls?: outputs.chaos.FaultTemplateSpecChaosTls;
     }
@@ -3222,6 +3269,10 @@ export namespace chaos {
 
     export interface GetExperimentTemplateSpecAction {
         /**
+         * Execution conditions (operator + values) gating whether this runs.
+         */
+        conditionsV2s: outputs.chaos.GetExperimentTemplateSpecActionConditionsV2[];
+        /**
          * Whether to continue on completion
          */
         continueOnCompletion: boolean;
@@ -3251,6 +3302,17 @@ export namespace chaos {
         values: outputs.chaos.GetExperimentTemplateSpecActionValue[];
     }
 
+    export interface GetExperimentTemplateSpecActionConditionsV2 {
+        /**
+         * Logical operator combining values (AND/OR).
+         */
+        operator: string;
+        /**
+         * Boolean-parseable condition values (may include <+input>).
+         */
+        values: string[];
+    }
+
     export interface GetExperimentTemplateSpecActionValue {
         /**
          * Variable name
@@ -3267,6 +3329,10 @@ export namespace chaos {
          * Whether authentication is enabled
          */
         authEnabled: boolean;
+        /**
+         * Execution conditions (operator + values) gating whether this runs.
+         */
+        conditionsV2s: outputs.chaos.GetExperimentTemplateSpecFaultConditionsV2[];
         /**
          * Fault template identity
          */
@@ -3293,6 +3359,17 @@ export namespace chaos {
         values: outputs.chaos.GetExperimentTemplateSpecFaultValue[];
     }
 
+    export interface GetExperimentTemplateSpecFaultConditionsV2 {
+        /**
+         * Logical operator combining values (AND/OR).
+         */
+        operator: string;
+        /**
+         * Boolean-parseable condition values (may include <+input>).
+         */
+        values: string[];
+    }
+
     export interface GetExperimentTemplateSpecFaultValue {
         /**
          * Variable name
@@ -3306,9 +3383,15 @@ export namespace chaos {
 
     export interface GetExperimentTemplateSpecProbe {
         /**
-         * Probe execution conditions
+         * Deprecated: not part of the experiment template API; use conditions_v2.
+         *
+         * @deprecated conditions (execute_upon) is not supported by the experiment template API. Use conditionsV2 instead.
          */
         conditions: outputs.chaos.GetExperimentTemplateSpecProbeCondition[];
+        /**
+         * Execution conditions (operator + values) gating whether this runs.
+         */
+        conditionsV2s: outputs.chaos.GetExperimentTemplateSpecProbeConditionsV2[];
         /**
          * Probe duration
          */
@@ -3352,6 +3435,17 @@ export namespace chaos {
          * When to execute the probe
          */
         executeUpon: string;
+    }
+
+    export interface GetExperimentTemplateSpecProbeConditionsV2 {
+        /**
+         * Logical operator combining values (AND/OR).
+         */
+        operator: string;
+        /**
+         * Boolean-parseable condition values (may include <+input>).
+         */
+        values: string[];
     }
 
     export interface GetExperimentTemplateSpecProbeValue {
@@ -3616,6 +3710,39 @@ export namespace chaos {
         url: string;
     }
 
+    export interface GetInfrastructureV2Resources {
+        /**
+         * Maximum compute resources allowed for the infrastructure pods.
+         */
+        limits?: outputs.chaos.GetInfrastructureV2ResourcesLimits;
+        /**
+         * Minimum compute resources requested for the infrastructure pods.
+         */
+        requests?: outputs.chaos.GetInfrastructureV2ResourcesRequests;
+    }
+
+    export interface GetInfrastructureV2ResourcesLimits {
+        /**
+         * CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+         */
+        cpu?: string;
+        /**
+         * Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+         */
+        memory?: string;
+    }
+
+    export interface GetInfrastructureV2ResourcesRequests {
+        /**
+         * CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+         */
+        cpu?: string;
+        /**
+         * Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+         */
+        memory?: string;
+    }
+
     export interface GetInfrastructureV2Toleration {
         /**
          * Effect indicates the taint effect to match. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
@@ -3677,83 +3804,484 @@ export namespace chaos {
         subPathExpr?: string;
     }
 
+    export interface GetProbeTemplateApmProbe {
+        /**
+         * APM provider type. Valid values: Prometheus, AppDynamics, SplunkObservability, Dynatrace, NewRelic, Datadog, GCPCloudMonitoring.
+         */
+        apmType: string;
+        /**
+         * AppDynamics-specific inputs. Required when apm*type is 'AppDynamics'.
+         */
+        appDynamicsInputs?: outputs.chaos.GetProbeTemplateApmProbeAppDynamicsInputs;
+        /**
+         * Comparator for APM metric validation.
+         */
+        comparator?: outputs.chaos.GetProbeTemplateApmProbeComparator;
+        /**
+         * Datadog-specific inputs. Required when apm*type is 'Datadog'.
+         */
+        datadogInputs?: outputs.chaos.GetProbeTemplateApmProbeDatadogInputs;
+        /**
+         * Dynatrace-specific inputs. Required when apm*type is 'Dynatrace'.
+         */
+        dynatraceInputs?: outputs.chaos.GetProbeTemplateApmProbeDynatraceInputs;
+        /**
+         * GCP Cloud Monitoring-specific inputs. Required when apm*type is 'GCPCloudMonitoring'.
+         */
+        gcpCloudMonitoringInputs?: outputs.chaos.GetProbeTemplateApmProbeGcpCloudMonitoringInputs;
+        /**
+         * NewRelic-specific inputs. Required when apm*type is 'NewRelic'.
+         */
+        newRelicInputs?: outputs.chaos.GetProbeTemplateApmProbeNewRelicInputs;
+        /**
+         * Prometheus-specific inputs. Required when apm*type is 'Prometheus'.
+         */
+        prometheusInputs?: outputs.chaos.GetProbeTemplateApmProbePrometheusInputs;
+        /**
+         * SplunkObservability-specific inputs. Required when apm*type is 'SplunkObservability'.
+         */
+        splunkObservabilityInputs?: outputs.chaos.GetProbeTemplateApmProbeSplunkObservabilityInputs;
+    }
+
+    export interface GetProbeTemplateApmProbeAppDynamicsInputs {
+        /**
+         * AppDynamics metrics configuration.
+         */
+        appdMetrics?: outputs.chaos.GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics;
+        /**
+         * Harness connector ID for AppDynamics.
+         */
+        connectorId: string;
+    }
+
+    export interface GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics {
+        /**
+         * AppDynamics application name.
+         */
+        applicationName?: string;
+        /**
+         * Duration in minutes for the AppDynamics query.
+         */
+        durationInMin?: number;
+        /**
+         * Full path to the AppDynamics metric.
+         */
+        metricsFullPath?: string;
+    }
+
+    export interface GetProbeTemplateApmProbeComparator {
+        /**
+         * Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+         */
+        criteria: string;
+        /**
+         * Comparator type (string, int, float).
+         */
+        type: string;
+        /**
+         * Expected value.
+         */
+        value: string;
+    }
+
+    export interface GetProbeTemplateApmProbeDatadogInputs {
+        /**
+         * Harness connector ID for Datadog.
+         */
+        connectorId: string;
+        /**
+         * Duration in minutes for the Datadog query.
+         */
+        durationInMin?: number;
+        /**
+         * Datadog query string.
+         */
+        query?: string;
+        /**
+         * Datadog Synthetics test configuration.
+         */
+        syntheticsTest?: outputs.chaos.GetProbeTemplateApmProbeDatadogInputsSyntheticsTest;
+    }
+
+    export interface GetProbeTemplateApmProbeDatadogInputsSyntheticsTest {
+        /**
+         * Public ID of the Datadog Synthetics test.
+         */
+        publicId: string;
+        /**
+         * Type of Synthetics test (api, browser).
+         */
+        testType?: string;
+    }
+
+    export interface GetProbeTemplateApmProbeDynatraceInputs {
+        /**
+         * Harness connector ID for Dynatrace.
+         */
+        connectorId: string;
+        /**
+         * Duration in minutes for the Dynatrace query.
+         */
+        durationInMin?: number;
+        /**
+         * Dynatrace metrics configuration.
+         */
+        metrics?: outputs.chaos.GetProbeTemplateApmProbeDynatraceInputsMetrics;
+    }
+
+    export interface GetProbeTemplateApmProbeDynatraceInputsMetrics {
+        /**
+         * Dynatrace entity selector.
+         */
+        entitySelector?: string;
+        /**
+         * Dynatrace metrics selector.
+         */
+        metricsSelector?: string;
+    }
+
+    export interface GetProbeTemplateApmProbeGcpCloudMonitoringInputs {
+        /**
+         * GCP project ID.
+         */
+        projectId: string;
+        /**
+         * GCP monitoring query string.
+         */
+        query: string;
+        /**
+         * GCP service account key (JSON).
+         */
+        serviceAccountKey: string;
+    }
+
+    export interface GetProbeTemplateApmProbeNewRelicInputs {
+        /**
+         * Harness connector ID for NewRelic.
+         */
+        connectorId: string;
+        /**
+         * NewRelic metric configuration.
+         */
+        newRelicMetric?: outputs.chaos.GetProbeTemplateApmProbeNewRelicInputsNewRelicMetric;
+    }
+
+    export interface GetProbeTemplateApmProbeNewRelicInputsNewRelicMetric {
+        /**
+         * NRQL query string.
+         */
+        query?: string;
+        /**
+         * NewRelic query metric name.
+         */
+        queryMetric?: string;
+    }
+
+    export interface GetProbeTemplateApmProbePrometheusInputs {
+        /**
+         * Harness connector ID for Prometheus.
+         */
+        connectorId: string;
+        /**
+         * PromQL query string.
+         */
+        query: string;
+        /**
+         * TLS configuration for Prometheus connection.
+         */
+        tlsConfig?: outputs.chaos.GetProbeTemplateApmProbePrometheusInputsTlsConfig;
+    }
+
+    export interface GetProbeTemplateApmProbePrometheusInputsTlsConfig {
+        /**
+         * Harness secret identifier for CA certificate.
+         */
+        caCertSecret?: string;
+        /**
+         * Harness secret identifier for client certificate.
+         */
+        clientCertSecret?: string;
+        /**
+         * Harness secret identifier for client key.
+         */
+        clientKeySecret?: string;
+        /**
+         * Skip TLS certificate verification.
+         */
+        insecureSkipVerify?: boolean;
+    }
+
+    export interface GetProbeTemplateApmProbeSplunkObservabilityInputs {
+        /**
+         * Harness connector ID for Splunk Observability.
+         */
+        connectorId: string;
+        /**
+         * Splunk Observability metrics configuration.
+         */
+        splunkObservabilityMetrics?: outputs.chaos.GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics;
+    }
+
+    export interface GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics {
+        /**
+         * Duration in minutes for the Splunk query.
+         */
+        durationInMin?: number;
+        /**
+         * Splunk Observability query string.
+         */
+        query?: string;
+    }
+
     export interface GetProbeTemplateCmdProbe {
+        /**
+         * Command to execute.
+         */
         command: string;
         /**
-         * Comparator configuration.
+         * Comparator for command output validation.
          */
-        comparators: outputs.chaos.GetProbeTemplateCmdProbeComparator[];
+        comparators?: outputs.chaos.GetProbeTemplateCmdProbeComparator[];
         /**
-         * Environment variables.
+         * Environment variables for the command.
          */
-        envs: outputs.chaos.GetProbeTemplateCmdProbeEnv[];
-        source: string;
+        envs?: outputs.chaos.GetProbeTemplateCmdProbeEnv[];
+        /**
+         * Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as "inline", "configMap", or "secret" is INVALID and fails with "cannot unmarshal string into Go value of type v1.SourceDetails". To run inline, omit this field entirely.
+         */
+        source?: string;
     }
 
     export interface GetProbeTemplateCmdProbeComparator {
+        /**
+         * Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+         */
         criteria: string;
+        /**
+         * Comparator type (string, int, float).
+         */
         type: string;
+        /**
+         * Expected value.
+         */
         value: string;
     }
 
     export interface GetProbeTemplateCmdProbeEnv {
+        /**
+         * Environment variable name.
+         */
         name: string;
+        /**
+         * Environment variable value.
+         */
         value: string;
     }
 
     export interface GetProbeTemplateHttpProbe {
         /**
+         * Authentication configuration.
+         */
+        auth?: outputs.chaos.GetProbeTemplateHttpProbeAuth;
+        /**
+         * HTTP headers.
+         */
+        headers?: {[key: string]: string};
+        /**
          * HTTP method configuration with GET or POST.
          */
-        methods: outputs.chaos.GetProbeTemplateHttpProbeMethod[];
+        methods?: outputs.chaos.GetProbeTemplateHttpProbeMethod[];
+        /**
+         * TLS configuration.
+         */
+        tlsConfig?: outputs.chaos.GetProbeTemplateHttpProbeTlsConfig;
+        /**
+         * URL to probe.
+         */
         url: string;
+    }
+
+    export interface GetProbeTemplateHttpProbeAuth {
+        /**
+         * Password for basic auth.
+         */
+        password?: string;
+        /**
+         * Token for bearer auth.
+         */
+        token?: string;
+        /**
+         * Auth type (basic, bearer, etc.).
+         */
+        type: string;
+        /**
+         * Username for basic auth.
+         */
+        username?: string;
     }
 
     export interface GetProbeTemplateHttpProbeMethod {
         /**
          * GET method configuration.
          */
-        gets: outputs.chaos.GetProbeTemplateHttpProbeMethodGet[];
+        gets?: outputs.chaos.GetProbeTemplateHttpProbeMethodGet[];
         /**
          * POST method configuration.
          */
-        posts: outputs.chaos.GetProbeTemplateHttpProbeMethodPost[];
+        posts?: outputs.chaos.GetProbeTemplateHttpProbeMethodPost[];
     }
 
     export interface GetProbeTemplateHttpProbeMethodGet {
-        criteria: string;
-        responseBody: string;
-        responseCode: string;
+        /**
+         * Response criteria (e.g., '==', '!=', 'contains').
+         */
+        criteria?: string;
+        /**
+         * Expected response body.
+         */
+        responseBody?: string;
+        /**
+         * Expected HTTP response code (e.g., '200', '404').
+         */
+        responseCode?: string;
     }
 
     export interface GetProbeTemplateHttpProbeMethodPost {
-        body: string;
-        bodyPath: string;
-        contentType: string;
-        criteria: string;
-        responseBody: string;
-        responseCode: string;
+        /**
+         * POST request body.
+         */
+        body?: string;
+        /**
+         * Path to file containing POST body.
+         */
+        bodyPath?: string;
+        /**
+         * Content-Type header for POST request.
+         */
+        contentType?: string;
+        /**
+         * Response criteria (e.g., '==', '!=', 'contains').
+         */
+        criteria?: string;
+        /**
+         * Expected response body.
+         */
+        responseBody?: string;
+        /**
+         * Expected HTTP response code (e.g., '200', '404').
+         */
+        responseCode?: string;
+    }
+
+    export interface GetProbeTemplateHttpProbeTlsConfig {
+        /**
+         * CA certificate.
+         */
+        caCert?: string;
+        /**
+         * Client certificate.
+         */
+        clientCert?: string;
+        /**
+         * Client key.
+         */
+        clientKey?: string;
+        /**
+         * Skip TLS certificate verification.
+         */
+        insecureSkipVerify?: boolean;
     }
 
     export interface GetProbeTemplateK8sProbe {
-        fieldSelector: string;
-        labelSelector: string;
-        namespace: string;
-        operation: string;
+        /**
+         * Field selector for filtering resources.
+         */
+        fieldSelector?: string;
+        /**
+         * API group (e.g., 'apps', 'batch').
+         */
+        group?: string;
+        /**
+         * Label selector for filtering resources.
+         */
+        labelSelector?: string;
+        /**
+         * Kubernetes namespace.
+         */
+        namespace?: string;
+        /**
+         * Operation to perform (create, delete, present, absent, etc.).
+         */
+        operation?: string;
+        /**
+         * Resource type (e.g., 'pods', 'deployments').
+         */
         resource: string;
+        /**
+         * Comma-separated list of resource names.
+         */
+        resourceNames?: string;
+        /**
+         * API version (e.g., 'v1', 'v1beta1').
+         */
         version: string;
     }
 
     export interface GetProbeTemplateRunProperty {
-        interval: string;
-        stopOnFailure: boolean;
-        timeout: string;
+        /**
+         * Number of attempts.
+         */
+        attempt?: number;
+        /**
+         * Initial delay before probe execution (e.g., '5s', '1m').
+         */
+        initialDelay?: string;
+        /**
+         * Interval between probe executions (e.g., '10s', '30s').
+         */
+        interval?: string;
+        /**
+         * Polling interval for continuous probes (e.g., '2s', '5s').
+         */
+        pollingInterval?: string;
+        /**
+         * Number of retries.
+         */
+        retry?: number;
+        /**
+         * Whether to stop on failure.
+         */
+        stopOnFailure?: boolean;
+        /**
+         * Timeout for probe execution (e.g., '30s', '5m').
+         */
+        timeout?: string;
+        /**
+         * Verbosity level for logging.
+         */
+        verbosity?: string;
     }
 
     export interface GetProbeTemplateVariable {
+        /**
+         * Variable description.
+         */
+        description?: string;
+        /**
+         * Variable name.
+         */
         name: string;
-        required: boolean;
-        type: string;
+        /**
+         * Whether the variable is required.
+         */
+        required?: boolean;
+        /**
+         * Variable type (e.g., 'string', 'number', 'boolean').
+         */
+        type?: string;
+        /**
+         * Variable value.
+         */
         value: string;
     }
 
@@ -4170,6 +4698,39 @@ export namespace chaos {
         url: string;
     }
 
+    export interface InfrastructureV2Resources {
+        /**
+         * Maximum compute resources allowed for the infrastructure pods.
+         */
+        limits?: outputs.chaos.InfrastructureV2ResourcesLimits;
+        /**
+         * Minimum compute resources requested for the infrastructure pods.
+         */
+        requests?: outputs.chaos.InfrastructureV2ResourcesRequests;
+    }
+
+    export interface InfrastructureV2ResourcesLimits {
+        /**
+         * CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+         */
+        cpu?: string;
+        /**
+         * Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+         */
+        memory?: string;
+    }
+
+    export interface InfrastructureV2ResourcesRequests {
+        /**
+         * CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+         */
+        cpu?: string;
+        /**
+         * Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+         */
+        memory?: string;
+    }
+
     export interface InfrastructureV2Toleration {
         /**
          * Effect indicates the taint effect to match. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
@@ -4474,7 +5035,7 @@ export namespace chaos {
          */
         envs?: outputs.chaos.ProbeTemplateCmdProbeEnv[];
         /**
-         * Source of the command (inline, configMap, secret).
+         * Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as "inline", "configMap", or "secret" is INVALID and fails with "cannot unmarshal string into Go value of type v1.SourceDetails". To run inline, omit this field entirely.
          */
         source?: string;
     }
@@ -11545,6 +12106,10 @@ export namespace platform {
          * GitOps cluster details.
          */
         clusters?: outputs.platform.GitOpsClusterRequestCluster[];
+        /**
+         * Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. "username", "password", "bearerToken", "certData", "keyData", "caData") and values are Harness expressions referencing secrets (e.g. "<+secrets.getValue(\"account.my_secret\")>").
+         */
+        secretExpressions?: {[key: string]: string};
         /**
          * Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
          */

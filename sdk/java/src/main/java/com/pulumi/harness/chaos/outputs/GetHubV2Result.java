@@ -31,7 +31,7 @@ public final class GetHubV2Result {
      */
     private String connectorId;
     /**
-     * @return Reference to the Git connector.
+     * @return Reference to the Git connector. Git-backed Chaos Hub V2 is not supported yet.
      * 
      */
     private String connectorRef;
@@ -111,17 +111,17 @@ public final class GetHubV2Result {
      */
     private @Nullable String projectId;
     /**
-     * @return Git repository branch.
+     * @return Git repository branch. Git-backed Chaos Hub V2 is not supported yet.
      * 
      */
     private String repoBranch;
     /**
-     * @return Name of the Git repository.
+     * @return Name of the Git repository. Git-backed Chaos Hub V2 is not supported yet.
      * 
      */
     private String repoName;
     /**
-     * @return Git repository URL.
+     * @return Git repository URL. Git-backed Chaos Hub V2 is not supported yet.
      * 
      */
     private String repoUrl;
@@ -164,7 +164,7 @@ public final class GetHubV2Result {
         return this.connectorId;
     }
     /**
-     * @return Reference to the Git connector.
+     * @return Reference to the Git connector. Git-backed Chaos Hub V2 is not supported yet.
      * 
      */
     public String connectorRef() {
@@ -276,21 +276,21 @@ public final class GetHubV2Result {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return Git repository branch.
+     * @return Git repository branch. Git-backed Chaos Hub V2 is not supported yet.
      * 
      */
     public String repoBranch() {
         return this.repoBranch;
     }
     /**
-     * @return Name of the Git repository.
+     * @return Name of the Git repository. Git-backed Chaos Hub V2 is not supported yet.
      * 
      */
     public String repoName() {
         return this.repoName;
     }
     /**
-     * @return Git repository URL.
+     * @return Git repository URL. Git-backed Chaos Hub V2 is not supported yet.
      * 
      */
     public String repoUrl() {

@@ -13,21 +13,40 @@ namespace Pulumi.Harness.Chaos.Outputs
     [OutputType]
     public sealed class GetProbeTemplateVariableResult
     {
+        /// <summary>
+        /// Variable description.
+        /// </summary>
+        public readonly string? Description;
+        /// <summary>
+        /// Variable name.
+        /// </summary>
         public readonly string Name;
-        public readonly bool Required;
-        public readonly string Type;
+        /// <summary>
+        /// Whether the variable is required.
+        /// </summary>
+        public readonly bool? Required;
+        /// <summary>
+        /// Variable type (e.g., 'string', 'number', 'boolean').
+        /// </summary>
+        public readonly string? Type;
+        /// <summary>
+        /// Variable value.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]
         private GetProbeTemplateVariableResult(
+            string? description,
+
             string name,
 
-            bool required,
+            bool? required,
 
-            string type,
+            string? type,
 
             string value)
         {
+            Description = description;
             Name = name;
             Required = required;
             Type = type;

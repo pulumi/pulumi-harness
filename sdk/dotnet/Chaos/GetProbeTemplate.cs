@@ -181,16 +181,70 @@ namespace Pulumi.Harness.Chaos
     public sealed class GetProbeTemplateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identity of the chaos hub.
+        /// APM probe configuration. Required when type is 'apmProbe'.
+        /// </summary>
+        [Input("apmProbe")]
+        public Inputs.GetProbeTemplateApmProbeArgs? ApmProbe { get; set; }
+
+        [Input("cmdProbes")]
+        private List<Inputs.GetProbeTemplateCmdProbeArgs>? _cmdProbes;
+
+        /// <summary>
+        /// Command probe configuration. Required when type is 'cmdProbe'.
+        /// </summary>
+        public List<Inputs.GetProbeTemplateCmdProbeArgs> CmdProbes
+        {
+            get => _cmdProbes ?? (_cmdProbes = new List<Inputs.GetProbeTemplateCmdProbeArgs>());
+            set => _cmdProbes = value;
+        }
+
+        /// <summary>
+        /// Description of the probe template.
+        /// </summary>
+        [Input("description")]
+        public string? Description { get; set; }
+
+        [Input("httpProbes")]
+        private List<Inputs.GetProbeTemplateHttpProbeArgs>? _httpProbes;
+
+        /// <summary>
+        /// HTTP probe configuration. Required when type is 'httpProbe'.
+        /// </summary>
+        public List<Inputs.GetProbeTemplateHttpProbeArgs> HttpProbes
+        {
+            get => _httpProbes ?? (_httpProbes = new List<Inputs.GetProbeTemplateHttpProbeArgs>());
+            set => _httpProbes = value;
+        }
+
+        /// <summary>
+        /// Identity of the chaos hub this probe template belongs to.
         /// </summary>
         [Input("hubIdentity", required: true)]
         public string HubIdentity { get; set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the probe template.
+        /// Unique identifier for the probe template (immutable).
         /// </summary>
         [Input("identity")]
         public string? Identity { get; set; }
+
+        /// <summary>
+        /// Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
+        /// </summary>
+        [Input("infrastructureType")]
+        public string? InfrastructureType { get; set; }
+
+        [Input("k8sProbes")]
+        private List<Inputs.GetProbeTemplateK8sProbeArgs>? _k8sProbes;
+
+        /// <summary>
+        /// Kubernetes probe configuration. Required when type is 'k8sProbe'.
+        /// </summary>
+        public List<Inputs.GetProbeTemplateK8sProbeArgs> K8sProbes
+        {
+            get => _k8sProbes ?? (_k8sProbes = new List<Inputs.GetProbeTemplateK8sProbeArgs>());
+            set => _k8sProbes = value;
+        }
 
         /// <summary>
         /// Name of the probe template.
@@ -210,6 +264,48 @@ namespace Pulumi.Harness.Chaos
         [Input("projectId")]
         public string? ProjectId { get; set; }
 
+        [Input("runProperties")]
+        private List<Inputs.GetProbeTemplateRunPropertyArgs>? _runProperties;
+
+        /// <summary>
+        /// Run properties for the probe template execution.
+        /// </summary>
+        public List<Inputs.GetProbeTemplateRunPropertyArgs> RunProperties
+        {
+            get => _runProperties ?? (_runProperties = new List<Inputs.GetProbeTemplateRunPropertyArgs>());
+            set => _runProperties = value;
+        }
+
+        [Input("tags")]
+        private List<string>? _tags;
+
+        /// <summary>
+        /// Tags to associate with the probe template.
+        /// </summary>
+        public List<string> Tags
+        {
+            get => _tags ?? (_tags = new List<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
+        /// </summary>
+        [Input("type")]
+        public string? Type { get; set; }
+
+        [Input("variables")]
+        private List<Inputs.GetProbeTemplateVariableArgs>? _variables;
+
+        /// <summary>
+        /// Template variables that can be used in the probe.
+        /// </summary>
+        public List<Inputs.GetProbeTemplateVariableArgs> Variables
+        {
+            get => _variables ?? (_variables = new List<Inputs.GetProbeTemplateVariableArgs>());
+            set => _variables = value;
+        }
+
         public GetProbeTemplateArgs()
         {
         }
@@ -219,16 +315,70 @@ namespace Pulumi.Harness.Chaos
     public sealed class GetProbeTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identity of the chaos hub.
+        /// APM probe configuration. Required when type is 'apmProbe'.
+        /// </summary>
+        [Input("apmProbe")]
+        public Input<Inputs.GetProbeTemplateApmProbeInputArgs>? ApmProbe { get; set; }
+
+        [Input("cmdProbes")]
+        private InputList<Inputs.GetProbeTemplateCmdProbeInputArgs>? _cmdProbes;
+
+        /// <summary>
+        /// Command probe configuration. Required when type is 'cmdProbe'.
+        /// </summary>
+        public InputList<Inputs.GetProbeTemplateCmdProbeInputArgs> CmdProbes
+        {
+            get => _cmdProbes ?? (_cmdProbes = new InputList<Inputs.GetProbeTemplateCmdProbeInputArgs>());
+            set => _cmdProbes = value;
+        }
+
+        /// <summary>
+        /// Description of the probe template.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        [Input("httpProbes")]
+        private InputList<Inputs.GetProbeTemplateHttpProbeInputArgs>? _httpProbes;
+
+        /// <summary>
+        /// HTTP probe configuration. Required when type is 'httpProbe'.
+        /// </summary>
+        public InputList<Inputs.GetProbeTemplateHttpProbeInputArgs> HttpProbes
+        {
+            get => _httpProbes ?? (_httpProbes = new InputList<Inputs.GetProbeTemplateHttpProbeInputArgs>());
+            set => _httpProbes = value;
+        }
+
+        /// <summary>
+        /// Identity of the chaos hub this probe template belongs to.
         /// </summary>
         [Input("hubIdentity", required: true)]
         public Input<string> HubIdentity { get; set; } = null!;
 
         /// <summary>
-        /// Unique identifier of the probe template.
+        /// Unique identifier for the probe template (immutable).
         /// </summary>
         [Input("identity")]
         public Input<string>? Identity { get; set; }
+
+        /// <summary>
+        /// Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
+        /// </summary>
+        [Input("infrastructureType")]
+        public Input<string>? InfrastructureType { get; set; }
+
+        [Input("k8sProbes")]
+        private InputList<Inputs.GetProbeTemplateK8sProbeInputArgs>? _k8sProbes;
+
+        /// <summary>
+        /// Kubernetes probe configuration. Required when type is 'k8sProbe'.
+        /// </summary>
+        public InputList<Inputs.GetProbeTemplateK8sProbeInputArgs> K8sProbes
+        {
+            get => _k8sProbes ?? (_k8sProbes = new InputList<Inputs.GetProbeTemplateK8sProbeInputArgs>());
+            set => _k8sProbes = value;
+        }
 
         /// <summary>
         /// Name of the probe template.
@@ -248,6 +398,48 @@ namespace Pulumi.Harness.Chaos
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
+        [Input("runProperties")]
+        private InputList<Inputs.GetProbeTemplateRunPropertyInputArgs>? _runProperties;
+
+        /// <summary>
+        /// Run properties for the probe template execution.
+        /// </summary>
+        public InputList<Inputs.GetProbeTemplateRunPropertyInputArgs> RunProperties
+        {
+            get => _runProperties ?? (_runProperties = new InputList<Inputs.GetProbeTemplateRunPropertyInputArgs>());
+            set => _runProperties = value;
+        }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags to associate with the probe template.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        [Input("variables")]
+        private InputList<Inputs.GetProbeTemplateVariableInputArgs>? _variables;
+
+        /// <summary>
+        /// Template variables that can be used in the probe.
+        /// </summary>
+        public InputList<Inputs.GetProbeTemplateVariableInputArgs> Variables
+        {
+            get => _variables ?? (_variables = new InputList<Inputs.GetProbeTemplateVariableInputArgs>());
+            set => _variables = value;
+        }
+
         public GetProbeTemplateInvokeArgs()
         {
         }
@@ -263,19 +455,23 @@ namespace Pulumi.Harness.Chaos
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// Command probe configuration.
+        /// APM probe configuration. Required when type is 'apmProbe'.
+        /// </summary>
+        public readonly Outputs.GetProbeTemplateApmProbeResult? ApmProbe;
+        /// <summary>
+        /// Command probe configuration. Required when type is 'cmdProbe'.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProbeTemplateCmdProbeResult> CmdProbes;
         /// <summary>
         /// Description of the probe template.
         /// </summary>
-        public readonly string Description;
+        public readonly string? Description;
         /// <summary>
-        /// HTTP probe configuration.
+        /// HTTP probe configuration. Required when type is 'httpProbe'.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProbeTemplateHttpProbeResult> HttpProbes;
         /// <summary>
-        /// Identity of the chaos hub.
+        /// Identity of the chaos hub this probe template belongs to.
         /// </summary>
         public readonly string HubIdentity;
         /// <summary>
@@ -287,25 +483,25 @@ namespace Pulumi.Harness.Chaos
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Unique identifier of the probe template.
+        /// Unique identifier for the probe template (immutable).
         /// </summary>
-        public readonly string? Identity;
+        public readonly string Identity;
         /// <summary>
-        /// Infrastructure type.
+        /// Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
         /// </summary>
-        public readonly string InfrastructureType;
+        public readonly string? InfrastructureType;
         /// <summary>
-        /// Whether this is the default version.
+        /// Whether this is the default version for predefined probes.
         /// </summary>
         public readonly bool IsDefault;
         /// <summary>
-        /// Kubernetes probe configuration.
+        /// Kubernetes probe configuration. Required when type is 'k8sProbe'.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProbeTemplateK8sProbeResult> K8sProbes;
         /// <summary>
         /// Name of the probe template.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// Organization identifier.
         /// </summary>
@@ -315,23 +511,23 @@ namespace Pulumi.Harness.Chaos
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
-        /// Revision number.
+        /// Revision number of the probe template.
         /// </summary>
         public readonly int Revision;
         /// <summary>
-        /// Run properties.
+        /// Run properties for the probe template execution.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProbeTemplateRunPropertyResult> RunProperties;
         /// <summary>
-        /// Tags associated with the probe template.
+        /// Tags to associate with the probe template.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Type of the probe template.
+        /// Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// Template variables.
+        /// Template variables that can be used in the probe.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProbeTemplateVariableResult> Variables;
 
@@ -339,9 +535,11 @@ namespace Pulumi.Harness.Chaos
         private GetProbeTemplateResult(
             string accountId,
 
+            Outputs.GetProbeTemplateApmProbeResult? apmProbe,
+
             ImmutableArray<Outputs.GetProbeTemplateCmdProbeResult> cmdProbes,
 
-            string description,
+            string? description,
 
             ImmutableArray<Outputs.GetProbeTemplateHttpProbeResult> httpProbes,
 
@@ -351,15 +549,15 @@ namespace Pulumi.Harness.Chaos
 
             string id,
 
-            string? identity,
+            string identity,
 
-            string infrastructureType,
+            string? infrastructureType,
 
             bool isDefault,
 
             ImmutableArray<Outputs.GetProbeTemplateK8sProbeResult> k8sProbes,
 
-            string? name,
+            string name,
 
             string? orgId,
 
@@ -376,6 +574,7 @@ namespace Pulumi.Harness.Chaos
             ImmutableArray<Outputs.GetProbeTemplateVariableResult> variables)
         {
             AccountId = accountId;
+            ApmProbe = apmProbe;
             CmdProbes = cmdProbes;
             Description = description;
             HttpProbes = httpProbes;

@@ -41,11 +41,21 @@ import * as utilities from "../utilities";
 export function getProbeTemplate(args: GetProbeTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetProbeTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:chaos/getProbeTemplate:getProbeTemplate", {
+        "apmProbe": args.apmProbe,
+        "cmdProbes": args.cmdProbes,
+        "description": args.description,
+        "httpProbes": args.httpProbes,
         "hubIdentity": args.hubIdentity,
         "identity": args.identity,
+        "infrastructureType": args.infrastructureType,
+        "k8sProbes": args.k8sProbes,
         "name": args.name,
         "orgId": args.orgId,
         "projectId": args.projectId,
+        "runProperties": args.runProperties,
+        "tags": args.tags,
+        "type": args.type,
+        "variables": args.variables,
     }, opts);
 }
 
@@ -54,13 +64,37 @@ export function getProbeTemplate(args: GetProbeTemplateArgs, opts?: pulumi.Invok
  */
 export interface GetProbeTemplateArgs {
     /**
-     * Identity of the chaos hub.
+     * APM probe configuration. Required when type is 'apmProbe'.
+     */
+    apmProbe?: inputs.chaos.GetProbeTemplateApmProbe;
+    /**
+     * Command probe configuration. Required when type is 'cmdProbe'.
+     */
+    cmdProbes?: inputs.chaos.GetProbeTemplateCmdProbe[];
+    /**
+     * Description of the probe template.
+     */
+    description?: string;
+    /**
+     * HTTP probe configuration. Required when type is 'httpProbe'.
+     */
+    httpProbes?: inputs.chaos.GetProbeTemplateHttpProbe[];
+    /**
+     * Identity of the chaos hub this probe template belongs to.
      */
     hubIdentity: string;
     /**
-     * Unique identifier of the probe template.
+     * Unique identifier for the probe template (immutable).
      */
     identity?: string;
+    /**
+     * Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
+     */
+    infrastructureType?: string;
+    /**
+     * Kubernetes probe configuration. Required when type is 'k8sProbe'.
+     */
+    k8sProbes?: inputs.chaos.GetProbeTemplateK8sProbe[];
     /**
      * Name of the probe template.
      */
@@ -73,6 +107,22 @@ export interface GetProbeTemplateArgs {
      * Project identifier.
      */
     projectId?: string;
+    /**
+     * Run properties for the probe template execution.
+     */
+    runProperties?: inputs.chaos.GetProbeTemplateRunProperty[];
+    /**
+     * Tags to associate with the probe template.
+     */
+    tags?: string[];
+    /**
+     * Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
+     */
+    type?: string;
+    /**
+     * Template variables that can be used in the probe.
+     */
+    variables?: inputs.chaos.GetProbeTemplateVariable[];
 }
 
 /**
@@ -84,19 +134,23 @@ export interface GetProbeTemplateResult {
      */
     readonly accountId: string;
     /**
-     * Command probe configuration.
+     * APM probe configuration. Required when type is 'apmProbe'.
      */
-    readonly cmdProbes: outputs.chaos.GetProbeTemplateCmdProbe[];
+    readonly apmProbe?: outputs.chaos.GetProbeTemplateApmProbe;
+    /**
+     * Command probe configuration. Required when type is 'cmdProbe'.
+     */
+    readonly cmdProbes?: outputs.chaos.GetProbeTemplateCmdProbe[];
     /**
      * Description of the probe template.
      */
-    readonly description: string;
+    readonly description?: string;
     /**
-     * HTTP probe configuration.
+     * HTTP probe configuration. Required when type is 'httpProbe'.
      */
-    readonly httpProbes: outputs.chaos.GetProbeTemplateHttpProbe[];
+    readonly httpProbes?: outputs.chaos.GetProbeTemplateHttpProbe[];
     /**
-     * Identity of the chaos hub.
+     * Identity of the chaos hub this probe template belongs to.
      */
     readonly hubIdentity: string;
     /**
@@ -108,25 +162,25 @@ export interface GetProbeTemplateResult {
      */
     readonly id: string;
     /**
-     * Unique identifier of the probe template.
+     * Unique identifier for the probe template (immutable).
      */
-    readonly identity?: string;
+    readonly identity: string;
     /**
-     * Infrastructure type.
+     * Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
      */
-    readonly infrastructureType: string;
+    readonly infrastructureType?: string;
     /**
-     * Whether this is the default version.
+     * Whether this is the default version for predefined probes.
      */
     readonly isDefault: boolean;
     /**
-     * Kubernetes probe configuration.
+     * Kubernetes probe configuration. Required when type is 'k8sProbe'.
      */
-    readonly k8sProbes: outputs.chaos.GetProbeTemplateK8sProbe[];
+    readonly k8sProbes?: outputs.chaos.GetProbeTemplateK8sProbe[];
     /**
      * Name of the probe template.
      */
-    readonly name?: string;
+    readonly name: string;
     /**
      * Organization identifier.
      */
@@ -136,25 +190,25 @@ export interface GetProbeTemplateResult {
      */
     readonly projectId?: string;
     /**
-     * Revision number.
+     * Revision number of the probe template.
      */
     readonly revision: number;
     /**
-     * Run properties.
+     * Run properties for the probe template execution.
      */
-    readonly runProperties: outputs.chaos.GetProbeTemplateRunProperty[];
+    readonly runProperties?: outputs.chaos.GetProbeTemplateRunProperty[];
     /**
-     * Tags associated with the probe template.
+     * Tags to associate with the probe template.
      */
-    readonly tags: string[];
+    readonly tags?: string[];
     /**
-     * Type of the probe template.
+     * Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
      */
     readonly type: string;
     /**
-     * Template variables.
+     * Template variables that can be used in the probe.
      */
-    readonly variables: outputs.chaos.GetProbeTemplateVariable[];
+    readonly variables?: outputs.chaos.GetProbeTemplateVariable[];
 }
 /**
  * Data source for retrieving a Harness Chaos Probe Template.
@@ -191,11 +245,21 @@ export interface GetProbeTemplateResult {
 export function getProbeTemplateOutput(args: GetProbeTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProbeTemplateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:chaos/getProbeTemplate:getProbeTemplate", {
+        "apmProbe": args.apmProbe,
+        "cmdProbes": args.cmdProbes,
+        "description": args.description,
+        "httpProbes": args.httpProbes,
         "hubIdentity": args.hubIdentity,
         "identity": args.identity,
+        "infrastructureType": args.infrastructureType,
+        "k8sProbes": args.k8sProbes,
         "name": args.name,
         "orgId": args.orgId,
         "projectId": args.projectId,
+        "runProperties": args.runProperties,
+        "tags": args.tags,
+        "type": args.type,
+        "variables": args.variables,
     }, opts);
 }
 
@@ -204,13 +268,37 @@ export function getProbeTemplateOutput(args: GetProbeTemplateOutputArgs, opts?: 
  */
 export interface GetProbeTemplateOutputArgs {
     /**
-     * Identity of the chaos hub.
+     * APM probe configuration. Required when type is 'apmProbe'.
+     */
+    apmProbe?: pulumi.Input<inputs.chaos.GetProbeTemplateApmProbeArgs | undefined>;
+    /**
+     * Command probe configuration. Required when type is 'cmdProbe'.
+     */
+    cmdProbes?: pulumi.Input<pulumi.Input<inputs.chaos.GetProbeTemplateCmdProbeArgs>[] | undefined>;
+    /**
+     * Description of the probe template.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * HTTP probe configuration. Required when type is 'httpProbe'.
+     */
+    httpProbes?: pulumi.Input<pulumi.Input<inputs.chaos.GetProbeTemplateHttpProbeArgs>[] | undefined>;
+    /**
+     * Identity of the chaos hub this probe template belongs to.
      */
     hubIdentity: pulumi.Input<string>;
     /**
-     * Unique identifier of the probe template.
+     * Unique identifier for the probe template (immutable).
      */
     identity?: pulumi.Input<string | undefined>;
+    /**
+     * Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
+     */
+    infrastructureType?: pulumi.Input<string | undefined>;
+    /**
+     * Kubernetes probe configuration. Required when type is 'k8sProbe'.
+     */
+    k8sProbes?: pulumi.Input<pulumi.Input<inputs.chaos.GetProbeTemplateK8sProbeArgs>[] | undefined>;
     /**
      * Name of the probe template.
      */
@@ -223,4 +311,20 @@ export interface GetProbeTemplateOutputArgs {
      * Project identifier.
      */
     projectId?: pulumi.Input<string | undefined>;
+    /**
+     * Run properties for the probe template execution.
+     */
+    runProperties?: pulumi.Input<pulumi.Input<inputs.chaos.GetProbeTemplateRunPropertyArgs>[] | undefined>;
+    /**
+     * Tags to associate with the probe template.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
+     */
+    type?: pulumi.Input<string | undefined>;
+    /**
+     * Template variables that can be used in the probe.
+     */
+    variables?: pulumi.Input<pulumi.Input<inputs.chaos.GetProbeTemplateVariableArgs>[] | undefined>;
 }

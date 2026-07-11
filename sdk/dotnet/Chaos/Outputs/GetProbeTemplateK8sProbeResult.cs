@@ -13,32 +13,64 @@ namespace Pulumi.Harness.Chaos.Outputs
     [OutputType]
     public sealed class GetProbeTemplateK8sProbeResult
     {
-        public readonly string FieldSelector;
-        public readonly string LabelSelector;
-        public readonly string Namespace;
-        public readonly string Operation;
+        /// <summary>
+        /// Field selector for filtering resources.
+        /// </summary>
+        public readonly string? FieldSelector;
+        /// <summary>
+        /// API group (e.g., 'apps', 'batch').
+        /// </summary>
+        public readonly string? Group;
+        /// <summary>
+        /// Label selector for filtering resources.
+        /// </summary>
+        public readonly string? LabelSelector;
+        /// <summary>
+        /// Kubernetes namespace.
+        /// </summary>
+        public readonly string? Namespace;
+        /// <summary>
+        /// Operation to perform (create, delete, present, absent, etc.).
+        /// </summary>
+        public readonly string? Operation;
+        /// <summary>
+        /// Resource type (e.g., 'pods', 'deployments').
+        /// </summary>
         public readonly string Resource;
+        /// <summary>
+        /// Comma-separated list of resource names.
+        /// </summary>
+        public readonly string? ResourceNames;
+        /// <summary>
+        /// API version (e.g., 'v1', 'v1beta1').
+        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]
         private GetProbeTemplateK8sProbeResult(
-            string fieldSelector,
+            string? fieldSelector,
 
-            string labelSelector,
+            string? group,
 
-            string @namespace,
+            string? labelSelector,
 
-            string operation,
+            string? @namespace,
+
+            string? operation,
 
             string resource,
+
+            string? resourceNames,
 
             string version)
         {
             FieldSelector = fieldSelector;
+            Group = group;
             LabelSelector = labelSelector;
             Namespace = @namespace;
             Operation = operation;
             Resource = resource;
+            ResourceNames = resourceNames;
             Version = version;
         }
     }

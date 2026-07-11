@@ -78,41 +78,21 @@ func LookupProbeTemplate(ctx *pulumi.Context, args *LookupProbeTemplateArgs, opt
 
 // A collection of arguments for invoking getProbeTemplate.
 type LookupProbeTemplateArgs struct {
-	// Identity of the chaos hub.
-	HubIdentity string `pulumi:"hubIdentity"`
-	// Unique identifier of the probe template.
-	Identity *string `pulumi:"identity"`
-	// Name of the probe template.
-	Name *string `pulumi:"name"`
-	// Organization identifier.
-	OrgId *string `pulumi:"orgId"`
-	// Project identifier.
-	ProjectId *string `pulumi:"projectId"`
-}
-
-// A collection of values returned by getProbeTemplate.
-type LookupProbeTemplateResult struct {
-	// Account identifier.
-	AccountId string `pulumi:"accountId"`
-	// Command probe configuration.
+	// APM probe configuration. Required when type is 'apmProbe'.
+	ApmProbe *GetProbeTemplateApmProbe `pulumi:"apmProbe"`
+	// Command probe configuration. Required when type is 'cmdProbe'.
 	CmdProbes []GetProbeTemplateCmdProbe `pulumi:"cmdProbes"`
 	// Description of the probe template.
-	Description string `pulumi:"description"`
-	// HTTP probe configuration.
+	Description *string `pulumi:"description"`
+	// HTTP probe configuration. Required when type is 'httpProbe'.
 	HttpProbes []GetProbeTemplateHttpProbe `pulumi:"httpProbes"`
-	// Identity of the chaos hub.
+	// Identity of the chaos hub this probe template belongs to.
 	HubIdentity string `pulumi:"hubIdentity"`
-	// Hub reference.
-	HubRef string `pulumi:"hubRef"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Unique identifier of the probe template.
+	// Unique identifier for the probe template (immutable).
 	Identity *string `pulumi:"identity"`
-	// Infrastructure type.
-	InfrastructureType string `pulumi:"infrastructureType"`
-	// Whether this is the default version.
-	IsDefault bool `pulumi:"isDefault"`
-	// Kubernetes probe configuration.
+	// Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
+	InfrastructureType *string `pulumi:"infrastructureType"`
+	// Kubernetes probe configuration. Required when type is 'k8sProbe'.
 	K8sProbes []GetProbeTemplateK8sProbe `pulumi:"k8sProbes"`
 	// Name of the probe template.
 	Name *string `pulumi:"name"`
@@ -120,15 +100,57 @@ type LookupProbeTemplateResult struct {
 	OrgId *string `pulumi:"orgId"`
 	// Project identifier.
 	ProjectId *string `pulumi:"projectId"`
-	// Revision number.
-	Revision int `pulumi:"revision"`
-	// Run properties.
+	// Run properties for the probe template execution.
 	RunProperties []GetProbeTemplateRunProperty `pulumi:"runProperties"`
-	// Tags associated with the probe template.
+	// Tags to associate with the probe template.
 	Tags []string `pulumi:"tags"`
-	// Type of the probe template.
+	// Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
+	Type *string `pulumi:"type"`
+	// Template variables that can be used in the probe.
+	Variables []GetProbeTemplateVariable `pulumi:"variables"`
+}
+
+// A collection of values returned by getProbeTemplate.
+type LookupProbeTemplateResult struct {
+	// Account identifier.
+	AccountId string `pulumi:"accountId"`
+	// APM probe configuration. Required when type is 'apmProbe'.
+	ApmProbe *GetProbeTemplateApmProbe `pulumi:"apmProbe"`
+	// Command probe configuration. Required when type is 'cmdProbe'.
+	CmdProbes []GetProbeTemplateCmdProbe `pulumi:"cmdProbes"`
+	// Description of the probe template.
+	Description *string `pulumi:"description"`
+	// HTTP probe configuration. Required when type is 'httpProbe'.
+	HttpProbes []GetProbeTemplateHttpProbe `pulumi:"httpProbes"`
+	// Identity of the chaos hub this probe template belongs to.
+	HubIdentity string `pulumi:"hubIdentity"`
+	// Hub reference.
+	HubRef string `pulumi:"hubRef"`
+	// The provider-assigned unique ID for this managed resource.
+	Id string `pulumi:"id"`
+	// Unique identifier for the probe template (immutable).
+	Identity string `pulumi:"identity"`
+	// Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
+	InfrastructureType *string `pulumi:"infrastructureType"`
+	// Whether this is the default version for predefined probes.
+	IsDefault bool `pulumi:"isDefault"`
+	// Kubernetes probe configuration. Required when type is 'k8sProbe'.
+	K8sProbes []GetProbeTemplateK8sProbe `pulumi:"k8sProbes"`
+	// Name of the probe template.
+	Name string `pulumi:"name"`
+	// Organization identifier.
+	OrgId *string `pulumi:"orgId"`
+	// Project identifier.
+	ProjectId *string `pulumi:"projectId"`
+	// Revision number of the probe template.
+	Revision int `pulumi:"revision"`
+	// Run properties for the probe template execution.
+	RunProperties []GetProbeTemplateRunProperty `pulumi:"runProperties"`
+	// Tags to associate with the probe template.
+	Tags []string `pulumi:"tags"`
+	// Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
 	Type string `pulumi:"type"`
-	// Template variables.
+	// Template variables that can be used in the probe.
 	Variables []GetProbeTemplateVariable `pulumi:"variables"`
 }
 
@@ -143,16 +165,36 @@ func LookupProbeTemplateOutput(ctx *pulumi.Context, args LookupProbeTemplateOutp
 
 // A collection of arguments for invoking getProbeTemplate.
 type LookupProbeTemplateOutputArgs struct {
-	// Identity of the chaos hub.
+	// APM probe configuration. Required when type is 'apmProbe'.
+	ApmProbe GetProbeTemplateApmProbePtrInput `pulumi:"apmProbe"`
+	// Command probe configuration. Required when type is 'cmdProbe'.
+	CmdProbes GetProbeTemplateCmdProbeArrayInput `pulumi:"cmdProbes"`
+	// Description of the probe template.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// HTTP probe configuration. Required when type is 'httpProbe'.
+	HttpProbes GetProbeTemplateHttpProbeArrayInput `pulumi:"httpProbes"`
+	// Identity of the chaos hub this probe template belongs to.
 	HubIdentity pulumi.StringInput `pulumi:"hubIdentity"`
-	// Unique identifier of the probe template.
+	// Unique identifier for the probe template (immutable).
 	Identity pulumi.StringPtrInput `pulumi:"identity"`
+	// Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
+	InfrastructureType pulumi.StringPtrInput `pulumi:"infrastructureType"`
+	// Kubernetes probe configuration. Required when type is 'k8sProbe'.
+	K8sProbes GetProbeTemplateK8sProbeArrayInput `pulumi:"k8sProbes"`
 	// Name of the probe template.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Organization identifier.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
 	// Project identifier.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// Run properties for the probe template execution.
+	RunProperties GetProbeTemplateRunPropertyArrayInput `pulumi:"runProperties"`
+	// Tags to associate with the probe template.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Template variables that can be used in the probe.
+	Variables GetProbeTemplateVariableArrayInput `pulumi:"variables"`
 }
 
 func (LookupProbeTemplateOutputArgs) ElementType() reflect.Type {
@@ -179,22 +221,27 @@ func (o LookupProbeTemplateResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProbeTemplateResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Command probe configuration.
+// APM probe configuration. Required when type is 'apmProbe'.
+func (o LookupProbeTemplateResultOutput) ApmProbe() GetProbeTemplateApmProbePtrOutput {
+	return o.ApplyT(func(v LookupProbeTemplateResult) *GetProbeTemplateApmProbe { return v.ApmProbe }).(GetProbeTemplateApmProbePtrOutput)
+}
+
+// Command probe configuration. Required when type is 'cmdProbe'.
 func (o LookupProbeTemplateResultOutput) CmdProbes() GetProbeTemplateCmdProbeArrayOutput {
 	return o.ApplyT(func(v LookupProbeTemplateResult) []GetProbeTemplateCmdProbe { return v.CmdProbes }).(GetProbeTemplateCmdProbeArrayOutput)
 }
 
 // Description of the probe template.
-func (o LookupProbeTemplateResultOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProbeTemplateResult) string { return v.Description }).(pulumi.StringOutput)
+func (o LookupProbeTemplateResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProbeTemplateResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// HTTP probe configuration.
+// HTTP probe configuration. Required when type is 'httpProbe'.
 func (o LookupProbeTemplateResultOutput) HttpProbes() GetProbeTemplateHttpProbeArrayOutput {
 	return o.ApplyT(func(v LookupProbeTemplateResult) []GetProbeTemplateHttpProbe { return v.HttpProbes }).(GetProbeTemplateHttpProbeArrayOutput)
 }
 
-// Identity of the chaos hub.
+// Identity of the chaos hub this probe template belongs to.
 func (o LookupProbeTemplateResultOutput) HubIdentity() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProbeTemplateResult) string { return v.HubIdentity }).(pulumi.StringOutput)
 }
@@ -209,29 +256,29 @@ func (o LookupProbeTemplateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProbeTemplateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the probe template.
-func (o LookupProbeTemplateResultOutput) Identity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupProbeTemplateResult) *string { return v.Identity }).(pulumi.StringPtrOutput)
+// Unique identifier for the probe template (immutable).
+func (o LookupProbeTemplateResultOutput) Identity() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProbeTemplateResult) string { return v.Identity }).(pulumi.StringOutput)
 }
 
-// Infrastructure type.
-func (o LookupProbeTemplateResultOutput) InfrastructureType() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProbeTemplateResult) string { return v.InfrastructureType }).(pulumi.StringOutput)
+// Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
+func (o LookupProbeTemplateResultOutput) InfrastructureType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupProbeTemplateResult) *string { return v.InfrastructureType }).(pulumi.StringPtrOutput)
 }
 
-// Whether this is the default version.
+// Whether this is the default version for predefined probes.
 func (o LookupProbeTemplateResultOutput) IsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProbeTemplateResult) bool { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
-// Kubernetes probe configuration.
+// Kubernetes probe configuration. Required when type is 'k8sProbe'.
 func (o LookupProbeTemplateResultOutput) K8sProbes() GetProbeTemplateK8sProbeArrayOutput {
 	return o.ApplyT(func(v LookupProbeTemplateResult) []GetProbeTemplateK8sProbe { return v.K8sProbes }).(GetProbeTemplateK8sProbeArrayOutput)
 }
 
 // Name of the probe template.
-func (o LookupProbeTemplateResultOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupProbeTemplateResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o LookupProbeTemplateResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProbeTemplateResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Organization identifier.
@@ -244,27 +291,27 @@ func (o LookupProbeTemplateResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProbeTemplateResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Revision number.
+// Revision number of the probe template.
 func (o LookupProbeTemplateResultOutput) Revision() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupProbeTemplateResult) int { return v.Revision }).(pulumi.IntOutput)
 }
 
-// Run properties.
+// Run properties for the probe template execution.
 func (o LookupProbeTemplateResultOutput) RunProperties() GetProbeTemplateRunPropertyArrayOutput {
 	return o.ApplyT(func(v LookupProbeTemplateResult) []GetProbeTemplateRunProperty { return v.RunProperties }).(GetProbeTemplateRunPropertyArrayOutput)
 }
 
-// Tags associated with the probe template.
+// Tags to associate with the probe template.
 func (o LookupProbeTemplateResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupProbeTemplateResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Type of the probe template.
+// Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
 func (o LookupProbeTemplateResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProbeTemplateResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Template variables.
+// Template variables that can be used in the probe.
 func (o LookupProbeTemplateResultOutput) Variables() GetProbeTemplateVariableArrayOutput {
 	return o.ApplyT(func(v LookupProbeTemplateResult) []GetProbeTemplateVariable { return v.Variables }).(GetProbeTemplateVariableArrayOutput)
 }

@@ -371,6 +371,12 @@ class ExperimentTemplate(pulumi.CustomResource):
         """
         Resource for managing Harness Chaos Experiment Templates. Experiment templates define reusable chaos experiments with actions, faults, and probes.
 
+        Execution conditions for faults, probes, and actions are configured via the `conditions_v2` block (`operator` = `AND`/`OR`, plus `values` which support the `<+input>` runtime input).
+
+        ## Deprecated / not supported
+
+        - The probe `conditions` (`execute_upon`) block is **deprecated and ignored** - it is not part of the current experiment template API. Use `conditions_v2` instead.
+
         ## Example Usage
 
         ```python
@@ -594,11 +600,10 @@ class ExperimentTemplate(pulumi.CustomResource):
                         "duration": "30",
                         "weightage": 10,
                         "enable_data_collection": False,
-                        "conditions": [
-                            "onChaosStart",
-                            "duringChaos",
-                            "afterChaos",
-                        ],
+                        "conditions_v2": {
+                            "operator": "AND",
+                            "values": ["true"],
+                        },
                         "values": [{
                             "name": "TARGET_NAMESPACE",
                             "value": "<+input>",
@@ -612,10 +617,13 @@ class ExperimentTemplate(pulumi.CustomResource):
                         "duration": "30",
                         "weightage": 10,
                         "enable_data_collection": False,
-                        "conditions": [
-                            "duringChaos",
-                            "afterChaos",
-                        ],
+                        "conditions_v2": {
+                            "operator": "OR",
+                            "values": [
+                                "true",
+                                "<+input>",
+                            ],
+                        },
                         "values": [{
                             "name": "URL",
                             "value": "<+input>",
@@ -727,6 +735,12 @@ class ExperimentTemplate(pulumi.CustomResource):
         """
         Resource for managing Harness Chaos Experiment Templates. Experiment templates define reusable chaos experiments with actions, faults, and probes.
 
+        Execution conditions for faults, probes, and actions are configured via the `conditions_v2` block (`operator` = `AND`/`OR`, plus `values` which support the `<+input>` runtime input).
+
+        ## Deprecated / not supported
+
+        - The probe `conditions` (`execute_upon`) block is **deprecated and ignored** - it is not part of the current experiment template API. Use `conditions_v2` instead.
+
         ## Example Usage
 
         ```python
@@ -950,11 +964,10 @@ class ExperimentTemplate(pulumi.CustomResource):
                         "duration": "30",
                         "weightage": 10,
                         "enable_data_collection": False,
-                        "conditions": [
-                            "onChaosStart",
-                            "duringChaos",
-                            "afterChaos",
-                        ],
+                        "conditions_v2": {
+                            "operator": "AND",
+                            "values": ["true"],
+                        },
                         "values": [{
                             "name": "TARGET_NAMESPACE",
                             "value": "<+input>",
@@ -968,10 +981,13 @@ class ExperimentTemplate(pulumi.CustomResource):
                         "duration": "30",
                         "weightage": 10,
                         "enable_data_collection": False,
-                        "conditions": [
-                            "duringChaos",
-                            "afterChaos",
-                        ],
+                        "conditions_v2": {
+                            "operator": "OR",
+                            "values": [
+                                "true",
+                                "<+input>",
+                            ],
+                        },
                         "values": [{
                             "name": "URL",
                             "value": "<+input>",

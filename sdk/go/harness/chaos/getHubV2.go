@@ -44,7 +44,7 @@ type LookupHubV2Result struct {
 	ActionTemplateCount int `pulumi:"actionTemplateCount"`
 	// Connector ID (deprecated).
 	ConnectorId string `pulumi:"connectorId"`
-	// Reference to the Git connector.
+	// Reference to the Git connector. Git-backed Chaos Hub V2 is not supported yet.
 	ConnectorRef string `pulumi:"connectorRef"`
 	// Creation timestamp (Unix epoch).
 	CreatedAt int `pulumi:"createdAt"`
@@ -76,11 +76,11 @@ type LookupHubV2Result struct {
 	ProbeTemplateCount int `pulumi:"probeTemplateCount"`
 	// The ID of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Git repository branch.
+	// Git repository branch. Git-backed Chaos Hub V2 is not supported yet.
 	RepoBranch string `pulumi:"repoBranch"`
-	// Name of the Git repository.
+	// Name of the Git repository. Git-backed Chaos Hub V2 is not supported yet.
 	RepoName string `pulumi:"repoName"`
-	// Git repository URL.
+	// Git repository URL. Git-backed Chaos Hub V2 is not supported yet.
 	RepoUrl string `pulumi:"repoUrl"`
 	// Tags associated with the chaos hub.
 	Tags []string `pulumi:"tags"`
@@ -145,7 +145,7 @@ func (o LookupHubV2ResultOutput) ConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHubV2Result) string { return v.ConnectorId }).(pulumi.StringOutput)
 }
 
-// Reference to the Git connector.
+// Reference to the Git connector. Git-backed Chaos Hub V2 is not supported yet.
 func (o LookupHubV2ResultOutput) ConnectorRef() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHubV2Result) string { return v.ConnectorRef }).(pulumi.StringOutput)
 }
@@ -225,17 +225,17 @@ func (o LookupHubV2ResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHubV2Result) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Git repository branch.
+// Git repository branch. Git-backed Chaos Hub V2 is not supported yet.
 func (o LookupHubV2ResultOutput) RepoBranch() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHubV2Result) string { return v.RepoBranch }).(pulumi.StringOutput)
 }
 
-// Name of the Git repository.
+// Name of the Git repository. Git-backed Chaos Hub V2 is not supported yet.
 func (o LookupHubV2ResultOutput) RepoName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHubV2Result) string { return v.RepoName }).(pulumi.StringOutput)
 }
 
-// Git repository URL.
+// Git repository URL. Git-backed Chaos Hub V2 is not supported yet.
 func (o LookupHubV2ResultOutput) RepoUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHubV2Result) string { return v.RepoUrl }).(pulumi.StringOutput)
 }

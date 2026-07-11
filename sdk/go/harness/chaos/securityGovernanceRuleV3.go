@@ -12,7 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for managing a Harness Chaos Security Governance Rule (V3 / REST API).
+// Resource for managing a Harness Chaos Security Governance Rule (V3 / REST API). A rule binds one or more governance conditions to user groups and active time windows to control when chaos experiments may run.
+//
+// ## Usage notes
+//
+// - `conditionIds` is required and must contain at least one condition (references may be bare IDs or `org/project/condition-id` - only the trailing ID segment is used).
+// - `timeWindows` is required. Within a window, provide **either** `duration` **or** `endTime` (they are mutually exclusive; the backend derives the other). `endTime` must be within one year of `startTime`, so `duration` is often easier.
+// - `recurrence.type` accepts `None`, `Daily`, `Weekly`, `Monthly`, `Yearly`; `recurrence.value` (day of month) applies only when `type = Monthly`; use `until = -1` for no end.
 //
 // ## Example Usage
 //

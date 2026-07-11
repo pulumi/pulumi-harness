@@ -5,6 +5,7 @@ package com.pulumi.harness.chaos.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.chaos.outputs.ExperimentTemplateSpecFaultConditionsV2;
 import com.pulumi.harness.chaos.outputs.ExperimentTemplateSpecFaultValue;
 import java.lang.Boolean;
 import java.lang.String;
@@ -20,6 +21,11 @@ public final class ExperimentTemplateSpecFault {
      * 
      */
     private @Nullable Boolean authEnabled;
+    /**
+     * @return Execution conditions gating whether this fault runs, evaluated as boolean values combined by the operator.
+     * 
+     */
+    private @Nullable ExperimentTemplateSpecFaultConditionsV2 conditionsV2;
     /**
      * @return Fault template identity
      * 
@@ -58,6 +64,13 @@ public final class ExperimentTemplateSpecFault {
      */
     public Optional<Boolean> authEnabled() {
         return Optional.ofNullable(this.authEnabled);
+    }
+    /**
+     * @return Execution conditions gating whether this fault runs, evaluated as boolean values combined by the operator.
+     * 
+     */
+    public Optional<ExperimentTemplateSpecFaultConditionsV2> conditionsV2() {
+        return Optional.ofNullable(this.conditionsV2);
     }
     /**
      * @return Fault template identity
@@ -112,6 +125,7 @@ public final class ExperimentTemplateSpecFault {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean authEnabled;
+        private @Nullable ExperimentTemplateSpecFaultConditionsV2 conditionsV2;
         private String identity;
         private @Nullable String infraId;
         private @Nullable Boolean isEnterprise;
@@ -122,6 +136,7 @@ public final class ExperimentTemplateSpecFault {
         public Builder(ExperimentTemplateSpecFault defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authEnabled = defaults.authEnabled;
+    	      this.conditionsV2 = defaults.conditionsV2;
     	      this.identity = defaults.identity;
     	      this.infraId = defaults.infraId;
     	      this.isEnterprise = defaults.isEnterprise;
@@ -134,6 +149,12 @@ public final class ExperimentTemplateSpecFault {
         public Builder authEnabled(@Nullable Boolean authEnabled) {
 
             this.authEnabled = authEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder conditionsV2(@Nullable ExperimentTemplateSpecFaultConditionsV2 conditionsV2) {
+
+            this.conditionsV2 = conditionsV2;
             return this;
         }
         @CustomType.Setter
@@ -182,6 +203,7 @@ public final class ExperimentTemplateSpecFault {
         public ExperimentTemplateSpecFault build() {
             final var _resultValue = new ExperimentTemplateSpecFault();
             _resultValue.authEnabled = authEnabled;
+            _resultValue.conditionsV2 = conditionsV2;
             _resultValue.identity = identity;
             _resultValue.infraId = infraId;
             _resultValue.isEnterprise = isEnterprise;

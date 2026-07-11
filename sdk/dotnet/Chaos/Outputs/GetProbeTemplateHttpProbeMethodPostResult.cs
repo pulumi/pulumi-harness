@@ -13,26 +13,44 @@ namespace Pulumi.Harness.Chaos.Outputs
     [OutputType]
     public sealed class GetProbeTemplateHttpProbeMethodPostResult
     {
-        public readonly string Body;
-        public readonly string BodyPath;
-        public readonly string ContentType;
-        public readonly string Criteria;
-        public readonly string ResponseBody;
-        public readonly string ResponseCode;
+        /// <summary>
+        /// POST request body.
+        /// </summary>
+        public readonly string? Body;
+        /// <summary>
+        /// Path to file containing POST body.
+        /// </summary>
+        public readonly string? BodyPath;
+        /// <summary>
+        /// Content-Type header for POST request.
+        /// </summary>
+        public readonly string? ContentType;
+        /// <summary>
+        /// Response criteria (e.g., '==', '!=', 'contains').
+        /// </summary>
+        public readonly string? Criteria;
+        /// <summary>
+        /// Expected response body.
+        /// </summary>
+        public readonly string? ResponseBody;
+        /// <summary>
+        /// Expected HTTP response code (e.g., '200', '404').
+        /// </summary>
+        public readonly string? ResponseCode;
 
         [OutputConstructor]
         private GetProbeTemplateHttpProbeMethodPostResult(
-            string body,
+            string? body,
 
-            string bodyPath,
+            string? bodyPath,
 
-            string contentType,
+            string? contentType,
 
-            string criteria,
+            string? criteria,
 
-            string responseBody,
+            string? responseBody,
 
-            string responseCode)
+            string? responseCode)
         {
             Body = body;
             BodyPath = bodyPath;

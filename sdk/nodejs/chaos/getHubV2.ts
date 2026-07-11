@@ -59,7 +59,7 @@ export interface GetHubV2Result {
      */
     readonly connectorId: string;
     /**
-     * Reference to the Git connector.
+     * Reference to the Git connector. Git-backed Chaos Hub V2 is not supported yet.
      */
     readonly connectorRef: string;
     /**
@@ -123,15 +123,15 @@ export interface GetHubV2Result {
      */
     readonly projectId?: string;
     /**
-     * Git repository branch.
+     * Git repository branch. Git-backed Chaos Hub V2 is not supported yet.
      */
     readonly repoBranch: string;
     /**
-     * Name of the Git repository.
+     * Name of the Git repository. Git-backed Chaos Hub V2 is not supported yet.
      */
     readonly repoName: string;
     /**
-     * Git repository URL.
+     * Git repository URL. Git-backed Chaos Hub V2 is not supported yet.
      */
     readonly repoUrl: string;
     /**

@@ -12,6 +12,14 @@ namespace Pulumi.Harness.Chaos
     /// <summary>
     /// Resource for managing Harness Chaos Hub V2.
     /// 
+    /// ## Git-backed hubs (not supported yet)
+    /// 
+    /// The `ConnectorRef`, `RepoBranch`, and `RepoName` fields describe a Git-backed chaos hub. **Git-backed Chaos Hub V2 is not supported yet** - these fields are accepted by the schema but have no functional effect today. Create hubs without them; they are retained only for forward compatibility and may be deprecated.
+    /// 
+    /// ## Updatable vs. immutable fields
+    /// 
+    /// Only `Name`, `Description`, and `Tags` can be updated in place. Changing any of `Identity`, `OrgId`, `ProjectId`, `ConnectorRef`, `RepoBranch`, or `RepoName` forces recreation, because the update API does not accept those fields.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -161,7 +169,7 @@ namespace Pulumi.Harness.Chaos
         public Output<string> ConnectorId { get; private set; } = null!;
 
         /// <summary>
-        /// Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+        /// Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
         /// </summary>
         [Output("connectorRef")]
         public Output<string?> ConnectorRef { get; private set; } = null!;
@@ -251,13 +259,13 @@ namespace Pulumi.Harness.Chaos
         public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Git repository branch.
+        /// Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
         /// </summary>
         [Output("repoBranch")]
         public Output<string?> RepoBranch { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the Git repository (required for account-level connectors).
+        /// Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
         /// </summary>
         [Output("repoName")]
         public Output<string?> RepoName { get; private set; } = null!;
@@ -334,7 +342,7 @@ namespace Pulumi.Harness.Chaos
     public sealed class HubV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+        /// Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
         /// </summary>
         [Input("connectorRef")]
         public Input<string>? ConnectorRef { get; set; }
@@ -370,13 +378,13 @@ namespace Pulumi.Harness.Chaos
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Git repository branch.
+        /// Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
         /// </summary>
         [Input("repoBranch")]
         public Input<string>? RepoBranch { get; set; }
 
         /// <summary>
-        /// Name of the Git repository (required for account-level connectors).
+        /// Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
         /// </summary>
         [Input("repoName")]
         public Input<string>? RepoName { get; set; }
@@ -420,7 +428,7 @@ namespace Pulumi.Harness.Chaos
         public Input<string>? ConnectorId { get; set; }
 
         /// <summary>
-        /// Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+        /// Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
         /// </summary>
         [Input("connectorRef")]
         public Input<string>? ConnectorRef { get; set; }
@@ -510,13 +518,13 @@ namespace Pulumi.Harness.Chaos
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// Git repository branch.
+        /// Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
         /// </summary>
         [Input("repoBranch")]
         public Input<string>? RepoBranch { get; set; }
 
         /// <summary>
-        /// Name of the Git repository (required for account-level connectors).
+        /// Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
         /// </summary>
         [Input("repoName")]
         public Input<string>? RepoName { get; set; }

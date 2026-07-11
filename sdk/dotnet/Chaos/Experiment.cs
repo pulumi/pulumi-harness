@@ -12,6 +12,10 @@ namespace Pulumi.Harness.Chaos
     /// <summary>
     /// Resource for creating chaos experiments from experiment templates.
     /// 
+    /// ## Not currently supported
+    /// 
+    /// - In-place updates: experiments are created from templates and cannot be updated directly. Changing `TemplateIdentity`, `HubIdentity`, `InfraRef`, or `Revision` forces recreation, and changing `Name`, `Description`, or `Tags` alone is not supported by the API.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

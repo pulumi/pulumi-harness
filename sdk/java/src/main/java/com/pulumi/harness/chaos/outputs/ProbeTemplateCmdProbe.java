@@ -31,7 +31,7 @@ public final class ProbeTemplateCmdProbe {
      */
     private @Nullable List<ProbeTemplateCmdProbeEnv> envs;
     /**
-     * @return Source of the command (inline, configMap, secret).
+     * @return Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as &#34;inline&#34;, &#34;configMap&#34;, or &#34;secret&#34; is INVALID and fails with &#34;cannot unmarshal string into Go value of type v1.SourceDetails&#34;. To run inline, omit this field entirely.
      * 
      */
     private @Nullable String source;
@@ -59,7 +59,7 @@ public final class ProbeTemplateCmdProbe {
         return this.envs == null ? List.of() : this.envs;
     }
     /**
-     * @return Source of the command (inline, configMap, secret).
+     * @return Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as &#34;inline&#34;, &#34;configMap&#34;, or &#34;secret&#34; is INVALID and fails with &#34;cannot unmarshal string into Go value of type v1.SourceDetails&#34;. To run inline, omit this field entirely.
      * 
      */
     public Optional<String> source() {

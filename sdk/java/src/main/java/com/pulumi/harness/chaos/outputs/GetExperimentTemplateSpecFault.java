@@ -5,6 +5,7 @@ package com.pulumi.harness.chaos.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.chaos.outputs.GetExperimentTemplateSpecFaultConditionsV2;
 import com.pulumi.harness.chaos.outputs.GetExperimentTemplateSpecFaultValue;
 import java.lang.Boolean;
 import java.lang.String;
@@ -18,6 +19,11 @@ public final class GetExperimentTemplateSpecFault {
      * 
      */
     private Boolean authEnabled;
+    /**
+     * @return Execution conditions (operator + values) gating whether this runs.
+     * 
+     */
+    private List<GetExperimentTemplateSpecFaultConditionsV2> conditionsV2s;
     /**
      * @return Fault template identity
      * 
@@ -56,6 +62,13 @@ public final class GetExperimentTemplateSpecFault {
      */
     public Boolean authEnabled() {
         return this.authEnabled;
+    }
+    /**
+     * @return Execution conditions (operator + values) gating whether this runs.
+     * 
+     */
+    public List<GetExperimentTemplateSpecFaultConditionsV2> conditionsV2s() {
+        return this.conditionsV2s;
     }
     /**
      * @return Fault template identity
@@ -110,6 +123,7 @@ public final class GetExperimentTemplateSpecFault {
     @CustomType.Builder
     public static final class Builder {
         private Boolean authEnabled;
+        private List<GetExperimentTemplateSpecFaultConditionsV2> conditionsV2s;
         private String identity;
         private String infraId;
         private Boolean isEnterprise;
@@ -120,6 +134,7 @@ public final class GetExperimentTemplateSpecFault {
         public Builder(GetExperimentTemplateSpecFault defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authEnabled = defaults.authEnabled;
+    	      this.conditionsV2s = defaults.conditionsV2s;
     	      this.identity = defaults.identity;
     	      this.infraId = defaults.infraId;
     	      this.isEnterprise = defaults.isEnterprise;
@@ -135,6 +150,17 @@ public final class GetExperimentTemplateSpecFault {
             }
             this.authEnabled = authEnabled;
             return this;
+        }
+        @CustomType.Setter
+        public Builder conditionsV2s(List<GetExperimentTemplateSpecFaultConditionsV2> conditionsV2s) {
+            if (conditionsV2s == null) {
+              throw new MissingRequiredPropertyException("GetExperimentTemplateSpecFault", "conditionsV2s");
+            }
+            this.conditionsV2s = conditionsV2s;
+            return this;
+        }
+        public Builder conditionsV2s(GetExperimentTemplateSpecFaultConditionsV2... conditionsV2s) {
+            return conditionsV2s(List.of(conditionsV2s));
         }
         @CustomType.Setter
         public Builder identity(String identity) {
@@ -190,6 +216,7 @@ public final class GetExperimentTemplateSpecFault {
         public GetExperimentTemplateSpecFault build() {
             final var _resultValue = new GetExperimentTemplateSpecFault();
             _resultValue.authEnabled = authEnabled;
+            _resultValue.conditionsV2s = conditionsV2s;
             _resultValue.identity = identity;
             _resultValue.infraId = infraId;
             _resultValue.isEnterprise = isEnterprise;

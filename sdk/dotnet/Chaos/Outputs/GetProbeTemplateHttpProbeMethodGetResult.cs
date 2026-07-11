@@ -13,17 +13,26 @@ namespace Pulumi.Harness.Chaos.Outputs
     [OutputType]
     public sealed class GetProbeTemplateHttpProbeMethodGetResult
     {
-        public readonly string Criteria;
-        public readonly string ResponseBody;
-        public readonly string ResponseCode;
+        /// <summary>
+        /// Response criteria (e.g., '==', '!=', 'contains').
+        /// </summary>
+        public readonly string? Criteria;
+        /// <summary>
+        /// Expected response body.
+        /// </summary>
+        public readonly string? ResponseBody;
+        /// <summary>
+        /// Expected HTTP response code (e.g., '200', '404').
+        /// </summary>
+        public readonly string? ResponseCode;
 
         [OutputConstructor]
         private GetProbeTemplateHttpProbeMethodGetResult(
-            string criteria,
+            string? criteria,
 
-            string responseBody,
+            string? responseBody,
 
-            string responseCode)
+            string? responseCode)
         {
             Criteria = criteria;
             ResponseBody = responseBody;

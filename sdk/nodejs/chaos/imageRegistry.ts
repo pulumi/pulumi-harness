@@ -7,7 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Resource for managing a Harness Chaos Image Registry
+ * Resource for managing a Harness Chaos Image Registry.
+ *
+ * ## Not currently supported
+ *
+ * - Importing account-scoped registries: `pulumi import` requires an `orgId` (`org_id/project_id` or `org_id/project_id/infra_id`).
  *
  * ## Example Usage
  *
@@ -32,6 +36,22 @@ import * as utilities from "../utilities";
  *         ddcrFault: "<ddcr_fault_image>",
  *     }],
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * The `pulumi import` command can be used, for example:
+ *
+ * Import a project-level Chaos Image Registry
+ *
+ * ```sh
+ * $ pulumi import harness:chaos/imageRegistry:ImageRegistry example <org_id>/<project_id>
+ * ```
+ *
+ * Import an infrastructure-scoped Chaos Image Registry
+ *
+ * ```sh
+ * $ pulumi import harness:chaos/imageRegistry:ImageRegistry example <org_id>/<project_id>/<infra_id>
  * ```
  */
 export class ImageRegistry extends pulumi.CustomResource {

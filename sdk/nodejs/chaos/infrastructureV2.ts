@@ -7,7 +7,18 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Resource for managing Harness Chaos Infrastructure V2.
+ * Resource for managing Harness Chaos Infrastructure V2 (the chaos execution infrastructure installed into a Kubernetes cluster).
+ *
+ * After `pulumi up`, use the computed `installCommand` output to deploy the infrastructure manifest into your target cluster - creating this resource registers the infrastructure with Harness but does not itself install anything into the cluster.
+ *
+ * ## Notes
+ *
+ * - `infraType`: use `KubernetesV2` (recommended); `Kubernetes` is the legacy V1 type.
+ * - `infraScope` (`NAMESPACE` or `CLUSTER`) is immutable - changing it forces recreation.
+ * - `containers` is a raw JSON string used to override container specs; leave unset unless you need advanced overrides.
+ * - Some fields (`volumes`, `volumeMounts`, `env`, `imageRegistry`, `label`, `annotation`, `containers`, `insecureSkipVerify`) are applied via an automatic update immediately after creation; this is transparent and should not produce drift.
+ * - `resources` (CPU/memory `requests` and `limits`) and `autopilotEnabled` can be set both at creation and on update. Resource values are standard Kubernetes quantity strings (e.g. `250m`, `1`, `256Mi`, `1Gi`).
+ * - `discoveryAgentId` is applied at registration (create) time only; it is not sent on update, so changing it on an existing resource has no effect unless the resource is recreated.
  *
  * ## Import
  *
@@ -55,6 +66,10 @@ export class InfrastructureV2 extends pulumi.CustomResource {
      * Annotations to apply to the infrastructure pods.
      */
     declare public readonly annotation: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Enable autopilot mode for the infrastructure.
+     */
+    declare public readonly autopilotEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Container configurations.
      */
@@ -156,6 +171,10 @@ export class InfrastructureV2 extends pulumi.CustomResource {
      */
     declare public readonly proxy: pulumi.Output<outputs.chaos.InfrastructureV2Proxy | undefined>;
     /**
+     * Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+     */
+    declare public readonly resources: pulumi.Output<outputs.chaos.InfrastructureV2Resources | undefined>;
+    /**
      * Group ID to run the infrastructure as.
      */
     declare public readonly runAsGroup: pulumi.Output<number | undefined>;
@@ -207,6 +226,7 @@ export class InfrastructureV2 extends pulumi.CustomResource {
             const state = argsOrState as InfrastructureV2State | undefined;
             resourceInputs["aiEnabled"] = state?.aiEnabled;
             resourceInputs["annotation"] = state?.annotation;
+            resourceInputs["autopilotEnabled"] = state?.autopilotEnabled;
             resourceInputs["containers"] = state?.containers;
             resourceInputs["correlationId"] = state?.correlationId;
             resourceInputs["createdAt"] = state?.createdAt;
@@ -232,6 +252,7 @@ export class InfrastructureV2 extends pulumi.CustomResource {
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["proxy"] = state?.proxy;
+            resourceInputs["resources"] = state?.resources;
             resourceInputs["runAsGroup"] = state?.runAsGroup;
             resourceInputs["runAsUser"] = state?.runAsUser;
             resourceInputs["serviceAccount"] = state?.serviceAccount;
@@ -257,6 +278,7 @@ export class InfrastructureV2 extends pulumi.CustomResource {
             }
             resourceInputs["aiEnabled"] = args?.aiEnabled;
             resourceInputs["annotation"] = args?.annotation;
+            resourceInputs["autopilotEnabled"] = args?.autopilotEnabled;
             resourceInputs["containers"] = args?.containers;
             resourceInputs["correlationId"] = args?.correlationId;
             resourceInputs["description"] = args?.description;
@@ -276,6 +298,7 @@ export class InfrastructureV2 extends pulumi.CustomResource {
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["proxy"] = args?.proxy;
+            resourceInputs["resources"] = args?.resources;
             resourceInputs["runAsGroup"] = args?.runAsGroup;
             resourceInputs["runAsUser"] = args?.runAsUser;
             resourceInputs["serviceAccount"] = args?.serviceAccount;
@@ -309,6 +332,10 @@ export interface InfrastructureV2State {
      * Annotations to apply to the infrastructure pods.
      */
     annotation?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Enable autopilot mode for the infrastructure.
+     */
+    autopilotEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Container configurations.
      */
@@ -410,6 +437,10 @@ export interface InfrastructureV2State {
      */
     proxy?: pulumi.Input<inputs.chaos.InfrastructureV2Proxy | undefined>;
     /**
+     * Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+     */
+    resources?: pulumi.Input<inputs.chaos.InfrastructureV2Resources | undefined>;
+    /**
      * Group ID to run the infrastructure as.
      */
     runAsGroup?: pulumi.Input<number | undefined>;
@@ -459,6 +490,10 @@ export interface InfrastructureV2Args {
      * Annotations to apply to the infrastructure pods.
      */
     annotation?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Enable autopilot mode for the infrastructure.
+     */
+    autopilotEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Container configurations.
      */
@@ -535,6 +570,10 @@ export interface InfrastructureV2Args {
      * Proxy configuration for the infrastructure.
      */
     proxy?: pulumi.Input<inputs.chaos.InfrastructureV2Proxy | undefined>;
+    /**
+     * Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+     */
+    resources?: pulumi.Input<inputs.chaos.InfrastructureV2Resources | undefined>;
     /**
      * Group ID to run the infrastructure as.
      */

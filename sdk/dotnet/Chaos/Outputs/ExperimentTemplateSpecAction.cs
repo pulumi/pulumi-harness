@@ -14,6 +14,10 @@ namespace Pulumi.Harness.Chaos.Outputs
     public sealed class ExperimentTemplateSpecAction
     {
         /// <summary>
+        /// Execution conditions gating whether this action runs, evaluated as boolean values combined by the operator.
+        /// </summary>
+        public readonly Outputs.ExperimentTemplateSpecActionConditionsV2? ConditionsV2;
+        /// <summary>
         /// Whether to continue on completion
         /// </summary>
         public readonly bool? ContinueOnCompletion;
@@ -44,6 +48,8 @@ namespace Pulumi.Harness.Chaos.Outputs
 
         [OutputConstructor]
         private ExperimentTemplateSpecAction(
+            Outputs.ExperimentTemplateSpecActionConditionsV2? conditionsV2,
+
             bool? continueOnCompletion,
 
             string identity,
@@ -58,6 +64,7 @@ namespace Pulumi.Harness.Chaos.Outputs
 
             ImmutableArray<Outputs.ExperimentTemplateSpecActionValue> values)
         {
+            ConditionsV2 = conditionsV2;
             ContinueOnCompletion = continueOnCompletion;
             Identity = identity;
             InfraId = infraId;

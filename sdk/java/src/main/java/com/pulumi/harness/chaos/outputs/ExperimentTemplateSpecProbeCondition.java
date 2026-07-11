@@ -4,9 +4,10 @@
 package com.pulumi.harness.chaos.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ExperimentTemplateSpecProbeCondition {
@@ -14,15 +15,15 @@ public final class ExperimentTemplateSpecProbeCondition {
      * @return When to execute the probe (onChaosStart, duringChaos, afterChaos)
      * 
      */
-    private String executeUpon;
+    private @Nullable String executeUpon;
 
     private ExperimentTemplateSpecProbeCondition() {}
     /**
      * @return When to execute the probe (onChaosStart, duringChaos, afterChaos)
      * 
      */
-    public String executeUpon() {
-        return this.executeUpon;
+    public Optional<String> executeUpon() {
+        return Optional.ofNullable(this.executeUpon);
     }
 
     public static Builder builder() {
@@ -34,7 +35,7 @@ public final class ExperimentTemplateSpecProbeCondition {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String executeUpon;
+        private @Nullable String executeUpon;
         public Builder() {}
         public Builder(ExperimentTemplateSpecProbeCondition defaults) {
     	      Objects.requireNonNull(defaults);
@@ -42,10 +43,8 @@ public final class ExperimentTemplateSpecProbeCondition {
         }
 
         @CustomType.Setter
-        public Builder executeUpon(String executeUpon) {
-            if (executeUpon == null) {
-              throw new MissingRequiredPropertyException("ExperimentTemplateSpecProbeCondition", "executeUpon");
-            }
+        public Builder executeUpon(@Nullable String executeUpon) {
+
             this.executeUpon = executeUpon;
             return this;
         }

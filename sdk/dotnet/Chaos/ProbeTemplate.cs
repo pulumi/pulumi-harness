@@ -12,6 +12,24 @@ namespace Pulumi.Harness.Chaos
     /// <summary>
     /// Resource for managing Harness Chaos Probe Templates.
     /// 
+    /// ## Supported probe types
+    /// 
+    /// The `Type` attribute accepts the following values, each configured via its matching block:
+    /// 
+    /// - `httpProbe` (`HttpProbe`) - HTTP/HTTPS endpoint checks.
+    /// - `cmdProbe` (`CmdProbe`) - command / shell output checks.
+    /// - `k8sProbe` (`K8sProbe`) - Kubernetes resource checks.
+    /// - `apmProbe` (`ApmProbe`) - APM provider checks.
+    /// 
+    /// For `ApmProbe`, the following providers are supported: Prometheus, Datadog, Dynatrace, AppDynamics, New Relic, Splunk Observability, and GCP Cloud Monitoring.
+    /// 
+    /// ## Not currently supported
+    /// 
+    /// The following exist in the Harness API but are **not yet supported** by this resource:
+    /// 
+    /// - Probe types other than `httpProbe`, `cmdProbe`, `k8sProbe`, and `apmProbe`.
+    /// - `HttpProbe`: the `Headers`, `Auth`, and `TlsConfig` options are not yet configurable.
+    /// 
     /// ## Example Usage
     /// 
     /// ## Import

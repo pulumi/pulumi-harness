@@ -14,6 +14,14 @@ import (
 
 // Resource for managing Harness Chaos Hub V2.
 //
+// ## Git-backed hubs (not supported yet)
+//
+// The `connectorRef`, `repoBranch`, and `repoName` fields describe a Git-backed chaos hub. **Git-backed Chaos Hub V2 is not supported yet** - these fields are accepted by the schema but have no functional effect today. Create hubs without them; they are retained only for forward compatibility and may be deprecated.
+//
+// ## Updatable vs. immutable fields
+//
+// Only `name`, `description`, and `tags` can be updated in place. Changing any of `identity`, `orgId`, `projectId`, `connectorRef`, `repoBranch`, or `repoName` forces recreation, because the update API does not accept those fields.
+//
 // ## Example Usage
 //
 // ```go
@@ -140,7 +148,7 @@ type HubV2 struct {
 	ActionTemplateCount pulumi.IntOutput `pulumi:"actionTemplateCount"`
 	// Connector ID (deprecated, use connector_ref).
 	ConnectorId pulumi.StringOutput `pulumi:"connectorId"`
-	// Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+	// Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
 	ConnectorRef pulumi.StringPtrOutput `pulumi:"connectorRef"`
 	// Creation timestamp (Unix epoch).
 	CreatedAt pulumi.IntOutput `pulumi:"createdAt"`
@@ -170,9 +178,9 @@ type HubV2 struct {
 	ProbeTemplateCount pulumi.IntOutput `pulumi:"probeTemplateCount"`
 	// The ID of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
-	// Git repository branch.
+	// Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
 	RepoBranch pulumi.StringPtrOutput `pulumi:"repoBranch"`
-	// Name of the Git repository (required for account-level connectors).
+	// Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
 	RepoName pulumi.StringPtrOutput `pulumi:"repoName"`
 	// Git repository URL.
 	RepoUrl pulumi.StringOutput `pulumi:"repoUrl"`
@@ -223,7 +231,7 @@ type hubV2State struct {
 	ActionTemplateCount *int `pulumi:"actionTemplateCount"`
 	// Connector ID (deprecated, use connector_ref).
 	ConnectorId *string `pulumi:"connectorId"`
-	// Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+	// Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
 	ConnectorRef *string `pulumi:"connectorRef"`
 	// Creation timestamp (Unix epoch).
 	CreatedAt *int `pulumi:"createdAt"`
@@ -253,9 +261,9 @@ type hubV2State struct {
 	ProbeTemplateCount *int `pulumi:"probeTemplateCount"`
 	// The ID of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Git repository branch.
+	// Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
 	RepoBranch *string `pulumi:"repoBranch"`
-	// Name of the Git repository (required for account-level connectors).
+	// Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
 	RepoName *string `pulumi:"repoName"`
 	// Git repository URL.
 	RepoUrl *string `pulumi:"repoUrl"`
@@ -274,7 +282,7 @@ type HubV2State struct {
 	ActionTemplateCount pulumi.IntPtrInput
 	// Connector ID (deprecated, use connector_ref).
 	ConnectorId pulumi.StringPtrInput
-	// Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+	// Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
 	ConnectorRef pulumi.StringPtrInput
 	// Creation timestamp (Unix epoch).
 	CreatedAt pulumi.IntPtrInput
@@ -304,9 +312,9 @@ type HubV2State struct {
 	ProbeTemplateCount pulumi.IntPtrInput
 	// The ID of the project.
 	ProjectId pulumi.StringPtrInput
-	// Git repository branch.
+	// Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
 	RepoBranch pulumi.StringPtrInput
-	// Name of the Git repository (required for account-level connectors).
+	// Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
 	RepoName pulumi.StringPtrInput
 	// Git repository URL.
 	RepoUrl pulumi.StringPtrInput
@@ -323,7 +331,7 @@ func (HubV2State) ElementType() reflect.Type {
 }
 
 type hubV2Args struct {
-	// Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+	// Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
 	ConnectorRef *string `pulumi:"connectorRef"`
 	// Description of the chaos hub.
 	Description *string `pulumi:"description"`
@@ -335,9 +343,9 @@ type hubV2Args struct {
 	OrgId *string `pulumi:"orgId"`
 	// The ID of the project.
 	ProjectId *string `pulumi:"projectId"`
-	// Git repository branch.
+	// Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
 	RepoBranch *string `pulumi:"repoBranch"`
-	// Name of the Git repository (required for account-level connectors).
+	// Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
 	RepoName *string `pulumi:"repoName"`
 	// Tags to associate with the chaos hub.
 	Tags []string `pulumi:"tags"`
@@ -345,7 +353,7 @@ type hubV2Args struct {
 
 // The set of arguments for constructing a HubV2 resource.
 type HubV2Args struct {
-	// Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+	// Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
 	ConnectorRef pulumi.StringPtrInput
 	// Description of the chaos hub.
 	Description pulumi.StringPtrInput
@@ -357,9 +365,9 @@ type HubV2Args struct {
 	OrgId pulumi.StringPtrInput
 	// The ID of the project.
 	ProjectId pulumi.StringPtrInput
-	// Git repository branch.
+	// Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
 	RepoBranch pulumi.StringPtrInput
-	// Name of the Git repository (required for account-level connectors).
+	// Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
 	RepoName pulumi.StringPtrInput
 	// Tags to associate with the chaos hub.
 	Tags pulumi.StringArrayInput
@@ -467,7 +475,7 @@ func (o HubV2Output) ConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HubV2) pulumi.StringOutput { return v.ConnectorId }).(pulumi.StringOutput)
 }
 
-// Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+// Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
 func (o HubV2Output) ConnectorRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HubV2) pulumi.StringPtrOutput { return v.ConnectorRef }).(pulumi.StringPtrOutput)
 }
@@ -542,12 +550,12 @@ func (o HubV2Output) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HubV2) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Git repository branch.
+// Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
 func (o HubV2Output) RepoBranch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HubV2) pulumi.StringPtrOutput { return v.RepoBranch }).(pulumi.StringPtrOutput)
 }
 
-// Name of the Git repository (required for account-level connectors).
+// Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
 func (o HubV2Output) RepoName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HubV2) pulumi.StringPtrOutput { return v.RepoName }).(pulumi.StringPtrOutput)
 }

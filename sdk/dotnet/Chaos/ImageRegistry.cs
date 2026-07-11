@@ -10,7 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Chaos
 {
     /// <summary>
-    /// Resource for managing a Harness Chaos Image Registry
+    /// Resource for managing a Harness Chaos Image Registry.
+    /// 
+    /// ## Not currently supported
+    /// 
+    /// - Importing account-scoped registries: `pulumi import` requires an `OrgId` (`org_id/project_id` or `org_id/project_id/infra_id`).
     /// 
     /// ## Example Usage
     /// 
@@ -46,6 +50,22 @@ namespace Pulumi.Harness.Chaos
     ///     });
     /// 
     /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The `pulumi import` command can be used, for example:
+    /// 
+    /// Import a project-level Chaos Image Registry
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:chaos/imageRegistry:ImageRegistry example &lt;org_id&gt;/&lt;project_id&gt;
+    /// ```
+    /// 
+    /// Import an infrastructure-scoped Chaos Image Registry
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:chaos/imageRegistry:ImageRegistry example &lt;org_id&gt;/&lt;project_id&gt;/&lt;infra_id&gt;
     /// ```
     /// </summary>
     [HarnessResourceType("harness:chaos/imageRegistry:ImageRegistry")]

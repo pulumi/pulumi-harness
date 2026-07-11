@@ -758,6 +758,10 @@ class Experiment(pulumi.CustomResource):
         """
         Resource for creating chaos experiments from experiment templates.
 
+        ## Not currently supported
+
+        - In-place updates: experiments are created from templates and cannot be updated directly. Changing `template_identity`, `hub_identity`, `infra_ref`, or `revision` forces recreation, and changing `name`, `description`, or `tags` alone is not supported by the API.
+
         ## Example Usage
 
         ```python
@@ -917,6 +921,10 @@ class Experiment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating chaos experiments from experiment templates.
+
+        ## Not currently supported
+
+        - In-place updates: experiments are created from templates and cannot be updated directly. Changing `template_identity`, `hub_identity`, `infra_ref`, or `revision` forces recreation, and changing `name`, `description`, or `tags` alone is not supported by the API.
 
         ## Example Usage
 

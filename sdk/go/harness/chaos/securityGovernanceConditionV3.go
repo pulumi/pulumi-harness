@@ -12,7 +12,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for managing a Harness Chaos Security Governance Condition (V3 / REST API).
+// Resource for managing a Harness Chaos Security Governance Condition (V3 / REST API). A condition defines which faults and infrastructure a governance rule applies to.
+//
+// ## Usage notes
+//
+// - `infraType` (required, immutable) accepts `Kubernetes`, `KubernetesV2`, `Linux`, `Windows`, `CloudFoundry`, `Container`.
+// - `faultSpec` is always required.
+// - Use `k8sSpec` when `infraType` is `Kubernetes` or `KubernetesV2`; use `machineSpec` when `infraType` is `Linux` or `Windows`. For `CloudFoundry`/`Container`, only `faultSpec` applies.
+// - All `operator` fields accept `EQUAL_TO` or `NOT_EQUAL_TO`.
+//
+// ## Behavior notes
+//
+// - `fault_spec.fault_type`: the legacy value `FAULT_NAME` is normalized to `FAULT` to stay consistent with the Harness UI, GraphQL, and existing conditions. If you set `FAULT_NAME`, it is stored and read back as `FAULT`. Use `FAULT` or `FAULT_GROUP`.
 //
 // ## Example Usage
 //

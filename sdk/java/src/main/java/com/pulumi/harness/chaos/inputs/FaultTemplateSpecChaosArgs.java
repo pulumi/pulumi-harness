@@ -22,14 +22,14 @@ public final class FaultTemplateSpecChaosArgs extends com.pulumi.resources.Resou
     public static final FaultTemplateSpecChaosArgs Empty = new FaultTemplateSpecChaosArgs();
 
     /**
-     * Authentication configuration
+     * Authentication configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault authentication in the Harness UI/API instead.
      * 
      */
     @Import(name="auth")
     private @Nullable Output<FaultTemplateSpecChaosAuthArgs> auth;
 
     /**
-     * @return Authentication configuration
+     * @return Authentication configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault authentication in the Harness UI/API instead.
      * 
      */
     public Optional<Output<FaultTemplateSpecChaosAuthArgs>> auth() {
@@ -97,14 +97,14 @@ public final class FaultTemplateSpecChaosArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * TLS configuration
+     * TLS configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault TLS in the Harness UI/API instead.
      * 
      */
     @Import(name="tls")
     private @Nullable Output<FaultTemplateSpecChaosTlsArgs> tls;
 
     /**
-     * @return TLS configuration
+     * @return TLS configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault TLS in the Harness UI/API instead.
      * 
      */
     public Optional<Output<FaultTemplateSpecChaosTlsArgs>> tls() {
@@ -141,7 +141,7 @@ public final class FaultTemplateSpecChaosArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param auth Authentication configuration
+         * @param auth Authentication configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault authentication in the Harness UI/API instead.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class FaultTemplateSpecChaosArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param auth Authentication configuration
+         * @param auth Authentication configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault authentication in the Harness UI/API instead.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class FaultTemplateSpecChaosArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tls TLS configuration
+         * @param tls TLS configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault TLS in the Harness UI/API instead.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class FaultTemplateSpecChaosArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tls TLS configuration
+         * @param tls TLS configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault TLS in the Harness UI/API instead.
          * 
          * @return builder
          * 

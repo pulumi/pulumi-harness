@@ -27,6 +27,7 @@ class InfrastructureV2Args:
                  project_id: pulumi.Input[_builtins.str],
                  ai_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  annotation: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 autopilot_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  containers: pulumi.Input[Optional[_builtins.str]] = None,
                  correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -42,6 +43,7 @@ class InfrastructureV2Args:
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  node_selector: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  proxy: pulumi.Input[Optional['InfrastructureV2ProxyArgs']] = None,
+                 resources: pulumi.Input[Optional['InfrastructureV2ResourcesArgs']] = None,
                  run_as_group: pulumi.Input[Optional[_builtins.int]] = None,
                  run_as_user: pulumi.Input[Optional[_builtins.int]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
@@ -58,6 +60,7 @@ class InfrastructureV2Args:
         :param pulumi.Input[_builtins.str] project_id: The ID of the project.
         :param pulumi.Input[_builtins.bool] ai_enabled: Enable AI features for the infrastructure.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotation: Annotations to apply to the infrastructure pods.
+        :param pulumi.Input[_builtins.bool] autopilot_enabled: Enable autopilot mode for the infrastructure.
         :param pulumi.Input[_builtins.str] containers: Container configurations.
         :param pulumi.Input[_builtins.str] correlation_id: Correlation ID for the request.
         :param pulumi.Input[_builtins.str] description: Description of the infrastructure.
@@ -73,6 +76,7 @@ class InfrastructureV2Args:
         :param pulumi.Input[_builtins.str] namespace: Kubernetes namespace where the infrastructure will be installed. Maps to the infrastructure namespace.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] node_selector: Node selector for the infrastructure pods.
         :param pulumi.Input['InfrastructureV2ProxyArgs'] proxy: Proxy configuration for the infrastructure.
+        :param pulumi.Input['InfrastructureV2ResourcesArgs'] resources: Compute resource requirements (requests and limits) for the chaos infrastructure pods.
         :param pulumi.Input[_builtins.int] run_as_group: Group ID to run the infrastructure as.
         :param pulumi.Input[_builtins.int] run_as_user: User ID to run the infrastructure as.
         :param pulumi.Input[_builtins.str] service_account: Service account used by the infrastructure.
@@ -89,6 +93,8 @@ class InfrastructureV2Args:
             pulumi.set(__self__, "ai_enabled", ai_enabled)
         if annotation is not None:
             pulumi.set(__self__, "annotation", annotation)
+        if autopilot_enabled is not None:
+            pulumi.set(__self__, "autopilot_enabled", autopilot_enabled)
         if containers is not None:
             pulumi.set(__self__, "containers", containers)
         if correlation_id is not None:
@@ -119,6 +125,8 @@ class InfrastructureV2Args:
             pulumi.set(__self__, "node_selector", node_selector)
         if proxy is not None:
             pulumi.set(__self__, "proxy", proxy)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
         if run_as_group is not None:
             pulumi.set(__self__, "run_as_group", run_as_group)
         if run_as_user is not None:
@@ -205,6 +213,18 @@ class InfrastructureV2Args:
     @annotation.setter
     def annotation(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autopilotEnabled")
+    def autopilot_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable autopilot mode for the infrastructure.
+        """
+        return pulumi.get(self, "autopilot_enabled")
+
+    @autopilot_enabled.setter
+    def autopilot_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "autopilot_enabled", value)
 
     @_builtins.property
     @pulumi.getter
@@ -387,6 +407,18 @@ class InfrastructureV2Args:
         pulumi.set(self, "proxy", value)
 
     @_builtins.property
+    @pulumi.getter
+    def resources(self) -> pulumi.Input[Optional['InfrastructureV2ResourcesArgs']]:
+        """
+        Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: pulumi.Input[Optional['InfrastructureV2ResourcesArgs']]):
+        pulumi.set(self, "resources", value)
+
+    @_builtins.property
     @pulumi.getter(name="runAsGroup")
     def run_as_group(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -476,6 +508,7 @@ class _InfrastructureV2State:
     def __init__(__self__, *,
                  ai_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  annotation: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 autopilot_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  containers: pulumi.Input[Optional[_builtins.str]] = None,
                  correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
@@ -501,6 +534,7 @@ class _InfrastructureV2State:
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy: pulumi.Input[Optional['InfrastructureV2ProxyArgs']] = None,
+                 resources: pulumi.Input[Optional['InfrastructureV2ResourcesArgs']] = None,
                  run_as_group: pulumi.Input[Optional[_builtins.int]] = None,
                  run_as_user: pulumi.Input[Optional[_builtins.int]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
@@ -515,6 +549,7 @@ class _InfrastructureV2State:
 
         :param pulumi.Input[_builtins.bool] ai_enabled: Enable AI features for the infrastructure.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotation: Annotations to apply to the infrastructure pods.
+        :param pulumi.Input[_builtins.bool] autopilot_enabled: Enable autopilot mode for the infrastructure.
         :param pulumi.Input[_builtins.str] containers: Container configurations.
         :param pulumi.Input[_builtins.str] correlation_id: Correlation ID for the request.
         :param pulumi.Input[_builtins.str] created_at: Creation timestamp.
@@ -540,6 +575,7 @@ class _InfrastructureV2State:
         :param pulumi.Input[_builtins.str] org_id: The ID of the organization.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project.
         :param pulumi.Input['InfrastructureV2ProxyArgs'] proxy: Proxy configuration for the infrastructure.
+        :param pulumi.Input['InfrastructureV2ResourcesArgs'] resources: Compute resource requirements (requests and limits) for the chaos infrastructure pods.
         :param pulumi.Input[_builtins.int] run_as_group: Group ID to run the infrastructure as.
         :param pulumi.Input[_builtins.int] run_as_user: User ID to run the infrastructure as.
         :param pulumi.Input[_builtins.str] service_account: Service account used by the infrastructure.
@@ -554,6 +590,8 @@ class _InfrastructureV2State:
             pulumi.set(__self__, "ai_enabled", ai_enabled)
         if annotation is not None:
             pulumi.set(__self__, "annotation", annotation)
+        if autopilot_enabled is not None:
+            pulumi.set(__self__, "autopilot_enabled", autopilot_enabled)
         if containers is not None:
             pulumi.set(__self__, "containers", containers)
         if correlation_id is not None:
@@ -604,6 +642,8 @@ class _InfrastructureV2State:
             pulumi.set(__self__, "project_id", project_id)
         if proxy is not None:
             pulumi.set(__self__, "proxy", proxy)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
         if run_as_group is not None:
             pulumi.set(__self__, "run_as_group", run_as_group)
         if run_as_user is not None:
@@ -646,6 +686,18 @@ class _InfrastructureV2State:
     @annotation.setter
     def annotation(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autopilotEnabled")
+    def autopilot_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable autopilot mode for the infrastructure.
+        """
+        return pulumi.get(self, "autopilot_enabled")
+
+    @autopilot_enabled.setter
+    def autopilot_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "autopilot_enabled", value)
 
     @_builtins.property
     @pulumi.getter
@@ -948,6 +1000,18 @@ class _InfrastructureV2State:
         pulumi.set(self, "proxy", value)
 
     @_builtins.property
+    @pulumi.getter
+    def resources(self) -> pulumi.Input[Optional['InfrastructureV2ResourcesArgs']]:
+        """
+        Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: pulumi.Input[Optional['InfrastructureV2ResourcesArgs']]):
+        pulumi.set(self, "resources", value)
+
+    @_builtins.property
     @pulumi.getter(name="runAsGroup")
     def run_as_group(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -1064,6 +1128,7 @@ class InfrastructureV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ai_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  annotation: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 autopilot_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  containers: pulumi.Input[Optional[_builtins.str]] = None,
                  correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1083,6 +1148,7 @@ class InfrastructureV2(pulumi.CustomResource):
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy: pulumi.Input[Optional[Union['InfrastructureV2ProxyArgs', 'InfrastructureV2ProxyArgsDict']]] = None,
+                 resources: pulumi.Input[Optional[Union['InfrastructureV2ResourcesArgs', 'InfrastructureV2ResourcesArgsDict']]] = None,
                  run_as_group: pulumi.Input[Optional[_builtins.int]] = None,
                  run_as_user: pulumi.Input[Optional[_builtins.int]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1092,7 +1158,18 @@ class InfrastructureV2(pulumi.CustomResource):
                  volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2VolumeArgs', 'InfrastructureV2VolumeArgsDict']]]]] = None,
                  __props__=None):
         """
-        Resource for managing Harness Chaos Infrastructure V2.
+        Resource for managing Harness Chaos Infrastructure V2 (the chaos execution infrastructure installed into a Kubernetes cluster).
+
+        After `pulumi up`, use the computed `install_command` output to deploy the infrastructure manifest into your target cluster - creating this resource registers the infrastructure with Harness but does not itself install anything into the cluster.
+
+        ## Notes
+
+        - `infra_type`: use `KubernetesV2` (recommended); `Kubernetes` is the legacy V1 type.
+        - `infra_scope` (`NAMESPACE` or `CLUSTER`) is immutable - changing it forces recreation.
+        - `containers` is a raw JSON string used to override container specs; leave unset unless you need advanced overrides.
+        - Some fields (`volumes`, `volume_mounts`, `env`, `image_registry`, `label`, `annotation`, `containers`, `insecure_skip_verify`) are applied via an automatic update immediately after creation; this is transparent and should not produce drift.
+        - `resources` (CPU/memory `requests` and `limits`) and `autopilot_enabled` can be set both at creation and on update. Resource values are standard Kubernetes quantity strings (e.g. `250m`, `1`, `256Mi`, `1Gi`).
+        - `discovery_agent_id` is applied at registration (create) time only; it is not sent on update, so changing it on an existing resource has no effect unless the resource is recreated.
 
         ## Import
 
@@ -1109,6 +1186,7 @@ class InfrastructureV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] ai_enabled: Enable AI features for the infrastructure.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotation: Annotations to apply to the infrastructure pods.
+        :param pulumi.Input[_builtins.bool] autopilot_enabled: Enable autopilot mode for the infrastructure.
         :param pulumi.Input[_builtins.str] containers: Container configurations.
         :param pulumi.Input[_builtins.str] correlation_id: Correlation ID for the request.
         :param pulumi.Input[_builtins.str] description: Description of the infrastructure.
@@ -1128,6 +1206,7 @@ class InfrastructureV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: The ID of the organization.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project.
         :param pulumi.Input[Union['InfrastructureV2ProxyArgs', 'InfrastructureV2ProxyArgsDict']] proxy: Proxy configuration for the infrastructure.
+        :param pulumi.Input[Union['InfrastructureV2ResourcesArgs', 'InfrastructureV2ResourcesArgsDict']] resources: Compute resource requirements (requests and limits) for the chaos infrastructure pods.
         :param pulumi.Input[_builtins.int] run_as_group: Group ID to run the infrastructure as.
         :param pulumi.Input[_builtins.int] run_as_user: User ID to run the infrastructure as.
         :param pulumi.Input[_builtins.str] service_account: Service account used by the infrastructure.
@@ -1143,7 +1222,18 @@ class InfrastructureV2(pulumi.CustomResource):
                  args: InfrastructureV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for managing Harness Chaos Infrastructure V2.
+        Resource for managing Harness Chaos Infrastructure V2 (the chaos execution infrastructure installed into a Kubernetes cluster).
+
+        After `pulumi up`, use the computed `install_command` output to deploy the infrastructure manifest into your target cluster - creating this resource registers the infrastructure with Harness but does not itself install anything into the cluster.
+
+        ## Notes
+
+        - `infra_type`: use `KubernetesV2` (recommended); `Kubernetes` is the legacy V1 type.
+        - `infra_scope` (`NAMESPACE` or `CLUSTER`) is immutable - changing it forces recreation.
+        - `containers` is a raw JSON string used to override container specs; leave unset unless you need advanced overrides.
+        - Some fields (`volumes`, `volume_mounts`, `env`, `image_registry`, `label`, `annotation`, `containers`, `insecure_skip_verify`) are applied via an automatic update immediately after creation; this is transparent and should not produce drift.
+        - `resources` (CPU/memory `requests` and `limits`) and `autopilot_enabled` can be set both at creation and on update. Resource values are standard Kubernetes quantity strings (e.g. `250m`, `1`, `256Mi`, `1Gi`).
+        - `discovery_agent_id` is applied at registration (create) time only; it is not sent on update, so changing it on an existing resource has no effect unless the resource is recreated.
 
         ## Import
 
@@ -1173,6 +1263,7 @@ class InfrastructureV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ai_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  annotation: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 autopilot_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  containers: pulumi.Input[Optional[_builtins.str]] = None,
                  correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1192,6 +1283,7 @@ class InfrastructureV2(pulumi.CustomResource):
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy: pulumi.Input[Optional[Union['InfrastructureV2ProxyArgs', 'InfrastructureV2ProxyArgsDict']]] = None,
+                 resources: pulumi.Input[Optional[Union['InfrastructureV2ResourcesArgs', 'InfrastructureV2ResourcesArgsDict']]] = None,
                  run_as_group: pulumi.Input[Optional[_builtins.int]] = None,
                  run_as_user: pulumi.Input[Optional[_builtins.int]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1210,6 +1302,7 @@ class InfrastructureV2(pulumi.CustomResource):
 
             __props__.__dict__["ai_enabled"] = ai_enabled
             __props__.__dict__["annotation"] = annotation
+            __props__.__dict__["autopilot_enabled"] = autopilot_enabled
             __props__.__dict__["containers"] = containers
             __props__.__dict__["correlation_id"] = correlation_id
             __props__.__dict__["description"] = description
@@ -1237,6 +1330,7 @@ class InfrastructureV2(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["proxy"] = proxy
+            __props__.__dict__["resources"] = resources
             __props__.__dict__["run_as_group"] = run_as_group
             __props__.__dict__["run_as_user"] = run_as_user
             __props__.__dict__["service_account"] = service_account
@@ -1264,6 +1358,7 @@ class InfrastructureV2(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             ai_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             annotation: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            autopilot_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             containers: pulumi.Input[Optional[_builtins.str]] = None,
             correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1289,6 +1384,7 @@ class InfrastructureV2(pulumi.CustomResource):
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             proxy: pulumi.Input[Optional[Union['InfrastructureV2ProxyArgs', 'InfrastructureV2ProxyArgsDict']]] = None,
+            resources: pulumi.Input[Optional[Union['InfrastructureV2ResourcesArgs', 'InfrastructureV2ResourcesArgsDict']]] = None,
             run_as_group: pulumi.Input[Optional[_builtins.int]] = None,
             run_as_user: pulumi.Input[Optional[_builtins.int]] = None,
             service_account: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1307,6 +1403,7 @@ class InfrastructureV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] ai_enabled: Enable AI features for the infrastructure.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotation: Annotations to apply to the infrastructure pods.
+        :param pulumi.Input[_builtins.bool] autopilot_enabled: Enable autopilot mode for the infrastructure.
         :param pulumi.Input[_builtins.str] containers: Container configurations.
         :param pulumi.Input[_builtins.str] correlation_id: Correlation ID for the request.
         :param pulumi.Input[_builtins.str] created_at: Creation timestamp.
@@ -1332,6 +1429,7 @@ class InfrastructureV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: The ID of the organization.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project.
         :param pulumi.Input[Union['InfrastructureV2ProxyArgs', 'InfrastructureV2ProxyArgsDict']] proxy: Proxy configuration for the infrastructure.
+        :param pulumi.Input[Union['InfrastructureV2ResourcesArgs', 'InfrastructureV2ResourcesArgsDict']] resources: Compute resource requirements (requests and limits) for the chaos infrastructure pods.
         :param pulumi.Input[_builtins.int] run_as_group: Group ID to run the infrastructure as.
         :param pulumi.Input[_builtins.int] run_as_user: User ID to run the infrastructure as.
         :param pulumi.Input[_builtins.str] service_account: Service account used by the infrastructure.
@@ -1348,6 +1446,7 @@ class InfrastructureV2(pulumi.CustomResource):
 
         __props__.__dict__["ai_enabled"] = ai_enabled
         __props__.__dict__["annotation"] = annotation
+        __props__.__dict__["autopilot_enabled"] = autopilot_enabled
         __props__.__dict__["containers"] = containers
         __props__.__dict__["correlation_id"] = correlation_id
         __props__.__dict__["created_at"] = created_at
@@ -1373,6 +1472,7 @@ class InfrastructureV2(pulumi.CustomResource):
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["proxy"] = proxy
+        __props__.__dict__["resources"] = resources
         __props__.__dict__["run_as_group"] = run_as_group
         __props__.__dict__["run_as_user"] = run_as_user
         __props__.__dict__["service_account"] = service_account
@@ -1399,6 +1499,14 @@ class InfrastructureV2(pulumi.CustomResource):
         Annotations to apply to the infrastructure pods.
         """
         return pulumi.get(self, "annotation")
+
+    @_builtins.property
+    @pulumi.getter(name="autopilotEnabled")
+    def autopilot_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Enable autopilot mode for the infrastructure.
+        """
+        return pulumi.get(self, "autopilot_enabled")
 
     @_builtins.property
     @pulumi.getter
@@ -1599,6 +1707,14 @@ class InfrastructureV2(pulumi.CustomResource):
         Proxy configuration for the infrastructure.
         """
         return pulumi.get(self, "proxy")
+
+    @_builtins.property
+    @pulumi.getter
+    def resources(self) -> pulumi.Output[Optional['outputs.InfrastructureV2Resources']]:
+        """
+        Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+        """
+        return pulumi.get(self, "resources")
 
     @_builtins.property
     @pulumi.getter(name="runAsGroup")

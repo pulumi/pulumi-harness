@@ -3106,6 +3106,8 @@ func (o ExperimentTemplateSpecPtrOutput) Vertices() ExperimentTemplateSpecVertex
 }
 
 type ExperimentTemplateSpecAction struct {
+	// Execution conditions gating whether this action runs, evaluated as boolean values combined by the operator.
+	ConditionsV2 *ExperimentTemplateSpecActionConditionsV2 `pulumi:"conditionsV2"`
 	// Whether to continue on completion
 	ContinueOnCompletion *bool `pulumi:"continueOnCompletion"`
 	// Action template identity
@@ -3134,6 +3136,8 @@ type ExperimentTemplateSpecActionInput interface {
 }
 
 type ExperimentTemplateSpecActionArgs struct {
+	// Execution conditions gating whether this action runs, evaluated as boolean values combined by the operator.
+	ConditionsV2 ExperimentTemplateSpecActionConditionsV2PtrInput `pulumi:"conditionsV2"`
 	// Whether to continue on completion
 	ContinueOnCompletion pulumi.BoolPtrInput `pulumi:"continueOnCompletion"`
 	// Action template identity
@@ -3201,6 +3205,11 @@ func (o ExperimentTemplateSpecActionOutput) ToExperimentTemplateSpecActionOutput
 	return o
 }
 
+// Execution conditions gating whether this action runs, evaluated as boolean values combined by the operator.
+func (o ExperimentTemplateSpecActionOutput) ConditionsV2() ExperimentTemplateSpecActionConditionsV2PtrOutput {
+	return o.ApplyT(func(v ExperimentTemplateSpecAction) *ExperimentTemplateSpecActionConditionsV2 { return v.ConditionsV2 }).(ExperimentTemplateSpecActionConditionsV2PtrOutput)
+}
+
 // Whether to continue on completion
 func (o ExperimentTemplateSpecActionOutput) ContinueOnCompletion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ExperimentTemplateSpecAction) *bool { return v.ContinueOnCompletion }).(pulumi.BoolPtrOutput)
@@ -3254,6 +3263,162 @@ func (o ExperimentTemplateSpecActionArrayOutput) Index(i pulumi.IntInput) Experi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExperimentTemplateSpecAction {
 		return vs[0].([]ExperimentTemplateSpecAction)[vs[1].(int)]
 	}).(ExperimentTemplateSpecActionOutput)
+}
+
+type ExperimentTemplateSpecActionConditionsV2 struct {
+	// Logical operator combining values: AND (all true) or OR (any true).
+	Operator string `pulumi:"operator"`
+	// Boolean-parseable condition values (supports runtime input: <+input>).
+	Values []string `pulumi:"values"`
+}
+
+// ExperimentTemplateSpecActionConditionsV2Input is an input type that accepts ExperimentTemplateSpecActionConditionsV2Args and ExperimentTemplateSpecActionConditionsV2Output values.
+// You can construct a concrete instance of `ExperimentTemplateSpecActionConditionsV2Input` via:
+//
+//	ExperimentTemplateSpecActionConditionsV2Args{...}
+type ExperimentTemplateSpecActionConditionsV2Input interface {
+	pulumi.Input
+
+	ToExperimentTemplateSpecActionConditionsV2Output() ExperimentTemplateSpecActionConditionsV2Output
+	ToExperimentTemplateSpecActionConditionsV2OutputWithContext(context.Context) ExperimentTemplateSpecActionConditionsV2Output
+}
+
+type ExperimentTemplateSpecActionConditionsV2Args struct {
+	// Logical operator combining values: AND (all true) or OR (any true).
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Boolean-parseable condition values (supports runtime input: <+input>).
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (ExperimentTemplateSpecActionConditionsV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExperimentTemplateSpecActionConditionsV2)(nil)).Elem()
+}
+
+func (i ExperimentTemplateSpecActionConditionsV2Args) ToExperimentTemplateSpecActionConditionsV2Output() ExperimentTemplateSpecActionConditionsV2Output {
+	return i.ToExperimentTemplateSpecActionConditionsV2OutputWithContext(context.Background())
+}
+
+func (i ExperimentTemplateSpecActionConditionsV2Args) ToExperimentTemplateSpecActionConditionsV2OutputWithContext(ctx context.Context) ExperimentTemplateSpecActionConditionsV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ExperimentTemplateSpecActionConditionsV2Output)
+}
+
+func (i ExperimentTemplateSpecActionConditionsV2Args) ToExperimentTemplateSpecActionConditionsV2PtrOutput() ExperimentTemplateSpecActionConditionsV2PtrOutput {
+	return i.ToExperimentTemplateSpecActionConditionsV2PtrOutputWithContext(context.Background())
+}
+
+func (i ExperimentTemplateSpecActionConditionsV2Args) ToExperimentTemplateSpecActionConditionsV2PtrOutputWithContext(ctx context.Context) ExperimentTemplateSpecActionConditionsV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExperimentTemplateSpecActionConditionsV2Output).ToExperimentTemplateSpecActionConditionsV2PtrOutputWithContext(ctx)
+}
+
+// ExperimentTemplateSpecActionConditionsV2PtrInput is an input type that accepts ExperimentTemplateSpecActionConditionsV2Args, ExperimentTemplateSpecActionConditionsV2Ptr and ExperimentTemplateSpecActionConditionsV2PtrOutput values.
+// You can construct a concrete instance of `ExperimentTemplateSpecActionConditionsV2PtrInput` via:
+//
+//	        ExperimentTemplateSpecActionConditionsV2Args{...}
+//
+//	or:
+//
+//	        nil
+type ExperimentTemplateSpecActionConditionsV2PtrInput interface {
+	pulumi.Input
+
+	ToExperimentTemplateSpecActionConditionsV2PtrOutput() ExperimentTemplateSpecActionConditionsV2PtrOutput
+	ToExperimentTemplateSpecActionConditionsV2PtrOutputWithContext(context.Context) ExperimentTemplateSpecActionConditionsV2PtrOutput
+}
+
+type experimentTemplateSpecActionConditionsV2PtrType ExperimentTemplateSpecActionConditionsV2Args
+
+func ExperimentTemplateSpecActionConditionsV2Ptr(v *ExperimentTemplateSpecActionConditionsV2Args) ExperimentTemplateSpecActionConditionsV2PtrInput {
+	return (*experimentTemplateSpecActionConditionsV2PtrType)(v)
+}
+
+func (*experimentTemplateSpecActionConditionsV2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExperimentTemplateSpecActionConditionsV2)(nil)).Elem()
+}
+
+func (i *experimentTemplateSpecActionConditionsV2PtrType) ToExperimentTemplateSpecActionConditionsV2PtrOutput() ExperimentTemplateSpecActionConditionsV2PtrOutput {
+	return i.ToExperimentTemplateSpecActionConditionsV2PtrOutputWithContext(context.Background())
+}
+
+func (i *experimentTemplateSpecActionConditionsV2PtrType) ToExperimentTemplateSpecActionConditionsV2PtrOutputWithContext(ctx context.Context) ExperimentTemplateSpecActionConditionsV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExperimentTemplateSpecActionConditionsV2PtrOutput)
+}
+
+type ExperimentTemplateSpecActionConditionsV2Output struct{ *pulumi.OutputState }
+
+func (ExperimentTemplateSpecActionConditionsV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExperimentTemplateSpecActionConditionsV2)(nil)).Elem()
+}
+
+func (o ExperimentTemplateSpecActionConditionsV2Output) ToExperimentTemplateSpecActionConditionsV2Output() ExperimentTemplateSpecActionConditionsV2Output {
+	return o
+}
+
+func (o ExperimentTemplateSpecActionConditionsV2Output) ToExperimentTemplateSpecActionConditionsV2OutputWithContext(ctx context.Context) ExperimentTemplateSpecActionConditionsV2Output {
+	return o
+}
+
+func (o ExperimentTemplateSpecActionConditionsV2Output) ToExperimentTemplateSpecActionConditionsV2PtrOutput() ExperimentTemplateSpecActionConditionsV2PtrOutput {
+	return o.ToExperimentTemplateSpecActionConditionsV2PtrOutputWithContext(context.Background())
+}
+
+func (o ExperimentTemplateSpecActionConditionsV2Output) ToExperimentTemplateSpecActionConditionsV2PtrOutputWithContext(ctx context.Context) ExperimentTemplateSpecActionConditionsV2PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExperimentTemplateSpecActionConditionsV2) *ExperimentTemplateSpecActionConditionsV2 {
+		return &v
+	}).(ExperimentTemplateSpecActionConditionsV2PtrOutput)
+}
+
+// Logical operator combining values: AND (all true) or OR (any true).
+func (o ExperimentTemplateSpecActionConditionsV2Output) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v ExperimentTemplateSpecActionConditionsV2) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Boolean-parseable condition values (supports runtime input: <+input>).
+func (o ExperimentTemplateSpecActionConditionsV2Output) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ExperimentTemplateSpecActionConditionsV2) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type ExperimentTemplateSpecActionConditionsV2PtrOutput struct{ *pulumi.OutputState }
+
+func (ExperimentTemplateSpecActionConditionsV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExperimentTemplateSpecActionConditionsV2)(nil)).Elem()
+}
+
+func (o ExperimentTemplateSpecActionConditionsV2PtrOutput) ToExperimentTemplateSpecActionConditionsV2PtrOutput() ExperimentTemplateSpecActionConditionsV2PtrOutput {
+	return o
+}
+
+func (o ExperimentTemplateSpecActionConditionsV2PtrOutput) ToExperimentTemplateSpecActionConditionsV2PtrOutputWithContext(ctx context.Context) ExperimentTemplateSpecActionConditionsV2PtrOutput {
+	return o
+}
+
+func (o ExperimentTemplateSpecActionConditionsV2PtrOutput) Elem() ExperimentTemplateSpecActionConditionsV2Output {
+	return o.ApplyT(func(v *ExperimentTemplateSpecActionConditionsV2) ExperimentTemplateSpecActionConditionsV2 {
+		if v != nil {
+			return *v
+		}
+		var ret ExperimentTemplateSpecActionConditionsV2
+		return ret
+	}).(ExperimentTemplateSpecActionConditionsV2Output)
+}
+
+// Logical operator combining values: AND (all true) or OR (any true).
+func (o ExperimentTemplateSpecActionConditionsV2PtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExperimentTemplateSpecActionConditionsV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// Boolean-parseable condition values (supports runtime input: <+input>).
+func (o ExperimentTemplateSpecActionConditionsV2PtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ExperimentTemplateSpecActionConditionsV2) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
 }
 
 type ExperimentTemplateSpecActionValue struct {
@@ -3365,6 +3530,8 @@ func (o ExperimentTemplateSpecActionValueArrayOutput) Index(i pulumi.IntInput) E
 type ExperimentTemplateSpecFault struct {
 	// Whether authentication is enabled
 	AuthEnabled *bool `pulumi:"authEnabled"`
+	// Execution conditions gating whether this fault runs, evaluated as boolean values combined by the operator.
+	ConditionsV2 *ExperimentTemplateSpecFaultConditionsV2 `pulumi:"conditionsV2"`
 	// Fault template identity
 	Identity string `pulumi:"identity"`
 	// Infrastructure identifier for this fault
@@ -3393,6 +3560,8 @@ type ExperimentTemplateSpecFaultInput interface {
 type ExperimentTemplateSpecFaultArgs struct {
 	// Whether authentication is enabled
 	AuthEnabled pulumi.BoolPtrInput `pulumi:"authEnabled"`
+	// Execution conditions gating whether this fault runs, evaluated as boolean values combined by the operator.
+	ConditionsV2 ExperimentTemplateSpecFaultConditionsV2PtrInput `pulumi:"conditionsV2"`
 	// Fault template identity
 	Identity pulumi.StringInput `pulumi:"identity"`
 	// Infrastructure identifier for this fault
@@ -3463,6 +3632,11 @@ func (o ExperimentTemplateSpecFaultOutput) AuthEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ExperimentTemplateSpecFault) *bool { return v.AuthEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Execution conditions gating whether this fault runs, evaluated as boolean values combined by the operator.
+func (o ExperimentTemplateSpecFaultOutput) ConditionsV2() ExperimentTemplateSpecFaultConditionsV2PtrOutput {
+	return o.ApplyT(func(v ExperimentTemplateSpecFault) *ExperimentTemplateSpecFaultConditionsV2 { return v.ConditionsV2 }).(ExperimentTemplateSpecFaultConditionsV2PtrOutput)
+}
+
 // Fault template identity
 func (o ExperimentTemplateSpecFaultOutput) Identity() pulumi.StringOutput {
 	return o.ApplyT(func(v ExperimentTemplateSpecFault) string { return v.Identity }).(pulumi.StringOutput)
@@ -3511,6 +3685,162 @@ func (o ExperimentTemplateSpecFaultArrayOutput) Index(i pulumi.IntInput) Experim
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExperimentTemplateSpecFault {
 		return vs[0].([]ExperimentTemplateSpecFault)[vs[1].(int)]
 	}).(ExperimentTemplateSpecFaultOutput)
+}
+
+type ExperimentTemplateSpecFaultConditionsV2 struct {
+	// Logical operator combining values: AND (all true) or OR (any true).
+	Operator string `pulumi:"operator"`
+	// Boolean-parseable condition values (supports runtime input: <+input>).
+	Values []string `pulumi:"values"`
+}
+
+// ExperimentTemplateSpecFaultConditionsV2Input is an input type that accepts ExperimentTemplateSpecFaultConditionsV2Args and ExperimentTemplateSpecFaultConditionsV2Output values.
+// You can construct a concrete instance of `ExperimentTemplateSpecFaultConditionsV2Input` via:
+//
+//	ExperimentTemplateSpecFaultConditionsV2Args{...}
+type ExperimentTemplateSpecFaultConditionsV2Input interface {
+	pulumi.Input
+
+	ToExperimentTemplateSpecFaultConditionsV2Output() ExperimentTemplateSpecFaultConditionsV2Output
+	ToExperimentTemplateSpecFaultConditionsV2OutputWithContext(context.Context) ExperimentTemplateSpecFaultConditionsV2Output
+}
+
+type ExperimentTemplateSpecFaultConditionsV2Args struct {
+	// Logical operator combining values: AND (all true) or OR (any true).
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Boolean-parseable condition values (supports runtime input: <+input>).
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (ExperimentTemplateSpecFaultConditionsV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExperimentTemplateSpecFaultConditionsV2)(nil)).Elem()
+}
+
+func (i ExperimentTemplateSpecFaultConditionsV2Args) ToExperimentTemplateSpecFaultConditionsV2Output() ExperimentTemplateSpecFaultConditionsV2Output {
+	return i.ToExperimentTemplateSpecFaultConditionsV2OutputWithContext(context.Background())
+}
+
+func (i ExperimentTemplateSpecFaultConditionsV2Args) ToExperimentTemplateSpecFaultConditionsV2OutputWithContext(ctx context.Context) ExperimentTemplateSpecFaultConditionsV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ExperimentTemplateSpecFaultConditionsV2Output)
+}
+
+func (i ExperimentTemplateSpecFaultConditionsV2Args) ToExperimentTemplateSpecFaultConditionsV2PtrOutput() ExperimentTemplateSpecFaultConditionsV2PtrOutput {
+	return i.ToExperimentTemplateSpecFaultConditionsV2PtrOutputWithContext(context.Background())
+}
+
+func (i ExperimentTemplateSpecFaultConditionsV2Args) ToExperimentTemplateSpecFaultConditionsV2PtrOutputWithContext(ctx context.Context) ExperimentTemplateSpecFaultConditionsV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExperimentTemplateSpecFaultConditionsV2Output).ToExperimentTemplateSpecFaultConditionsV2PtrOutputWithContext(ctx)
+}
+
+// ExperimentTemplateSpecFaultConditionsV2PtrInput is an input type that accepts ExperimentTemplateSpecFaultConditionsV2Args, ExperimentTemplateSpecFaultConditionsV2Ptr and ExperimentTemplateSpecFaultConditionsV2PtrOutput values.
+// You can construct a concrete instance of `ExperimentTemplateSpecFaultConditionsV2PtrInput` via:
+//
+//	        ExperimentTemplateSpecFaultConditionsV2Args{...}
+//
+//	or:
+//
+//	        nil
+type ExperimentTemplateSpecFaultConditionsV2PtrInput interface {
+	pulumi.Input
+
+	ToExperimentTemplateSpecFaultConditionsV2PtrOutput() ExperimentTemplateSpecFaultConditionsV2PtrOutput
+	ToExperimentTemplateSpecFaultConditionsV2PtrOutputWithContext(context.Context) ExperimentTemplateSpecFaultConditionsV2PtrOutput
+}
+
+type experimentTemplateSpecFaultConditionsV2PtrType ExperimentTemplateSpecFaultConditionsV2Args
+
+func ExperimentTemplateSpecFaultConditionsV2Ptr(v *ExperimentTemplateSpecFaultConditionsV2Args) ExperimentTemplateSpecFaultConditionsV2PtrInput {
+	return (*experimentTemplateSpecFaultConditionsV2PtrType)(v)
+}
+
+func (*experimentTemplateSpecFaultConditionsV2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExperimentTemplateSpecFaultConditionsV2)(nil)).Elem()
+}
+
+func (i *experimentTemplateSpecFaultConditionsV2PtrType) ToExperimentTemplateSpecFaultConditionsV2PtrOutput() ExperimentTemplateSpecFaultConditionsV2PtrOutput {
+	return i.ToExperimentTemplateSpecFaultConditionsV2PtrOutputWithContext(context.Background())
+}
+
+func (i *experimentTemplateSpecFaultConditionsV2PtrType) ToExperimentTemplateSpecFaultConditionsV2PtrOutputWithContext(ctx context.Context) ExperimentTemplateSpecFaultConditionsV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExperimentTemplateSpecFaultConditionsV2PtrOutput)
+}
+
+type ExperimentTemplateSpecFaultConditionsV2Output struct{ *pulumi.OutputState }
+
+func (ExperimentTemplateSpecFaultConditionsV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExperimentTemplateSpecFaultConditionsV2)(nil)).Elem()
+}
+
+func (o ExperimentTemplateSpecFaultConditionsV2Output) ToExperimentTemplateSpecFaultConditionsV2Output() ExperimentTemplateSpecFaultConditionsV2Output {
+	return o
+}
+
+func (o ExperimentTemplateSpecFaultConditionsV2Output) ToExperimentTemplateSpecFaultConditionsV2OutputWithContext(ctx context.Context) ExperimentTemplateSpecFaultConditionsV2Output {
+	return o
+}
+
+func (o ExperimentTemplateSpecFaultConditionsV2Output) ToExperimentTemplateSpecFaultConditionsV2PtrOutput() ExperimentTemplateSpecFaultConditionsV2PtrOutput {
+	return o.ToExperimentTemplateSpecFaultConditionsV2PtrOutputWithContext(context.Background())
+}
+
+func (o ExperimentTemplateSpecFaultConditionsV2Output) ToExperimentTemplateSpecFaultConditionsV2PtrOutputWithContext(ctx context.Context) ExperimentTemplateSpecFaultConditionsV2PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExperimentTemplateSpecFaultConditionsV2) *ExperimentTemplateSpecFaultConditionsV2 {
+		return &v
+	}).(ExperimentTemplateSpecFaultConditionsV2PtrOutput)
+}
+
+// Logical operator combining values: AND (all true) or OR (any true).
+func (o ExperimentTemplateSpecFaultConditionsV2Output) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v ExperimentTemplateSpecFaultConditionsV2) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Boolean-parseable condition values (supports runtime input: <+input>).
+func (o ExperimentTemplateSpecFaultConditionsV2Output) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ExperimentTemplateSpecFaultConditionsV2) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type ExperimentTemplateSpecFaultConditionsV2PtrOutput struct{ *pulumi.OutputState }
+
+func (ExperimentTemplateSpecFaultConditionsV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExperimentTemplateSpecFaultConditionsV2)(nil)).Elem()
+}
+
+func (o ExperimentTemplateSpecFaultConditionsV2PtrOutput) ToExperimentTemplateSpecFaultConditionsV2PtrOutput() ExperimentTemplateSpecFaultConditionsV2PtrOutput {
+	return o
+}
+
+func (o ExperimentTemplateSpecFaultConditionsV2PtrOutput) ToExperimentTemplateSpecFaultConditionsV2PtrOutputWithContext(ctx context.Context) ExperimentTemplateSpecFaultConditionsV2PtrOutput {
+	return o
+}
+
+func (o ExperimentTemplateSpecFaultConditionsV2PtrOutput) Elem() ExperimentTemplateSpecFaultConditionsV2Output {
+	return o.ApplyT(func(v *ExperimentTemplateSpecFaultConditionsV2) ExperimentTemplateSpecFaultConditionsV2 {
+		if v != nil {
+			return *v
+		}
+		var ret ExperimentTemplateSpecFaultConditionsV2
+		return ret
+	}).(ExperimentTemplateSpecFaultConditionsV2Output)
+}
+
+// Logical operator combining values: AND (all true) or OR (any true).
+func (o ExperimentTemplateSpecFaultConditionsV2PtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExperimentTemplateSpecFaultConditionsV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// Boolean-parseable condition values (supports runtime input: <+input>).
+func (o ExperimentTemplateSpecFaultConditionsV2PtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ExperimentTemplateSpecFaultConditionsV2) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
 }
 
 type ExperimentTemplateSpecFaultValue struct {
@@ -3620,8 +3950,12 @@ func (o ExperimentTemplateSpecFaultValueArrayOutput) Index(i pulumi.IntInput) Ex
 }
 
 type ExperimentTemplateSpecProbe struct {
-	// Probe execution conditions
+	// Deprecated: no longer part of the experiment template API; use conditionsV2 instead. This field is ignored.
+	//
+	// Deprecated: conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
 	Conditions []ExperimentTemplateSpecProbeCondition `pulumi:"conditions"`
+	// Execution conditions gating whether this probe runs, evaluated as boolean values combined by the operator.
+	ConditionsV2 *ExperimentTemplateSpecProbeConditionsV2 `pulumi:"conditionsV2"`
 	// Probe duration
 	Duration *string `pulumi:"duration"`
 	// Whether to enable data collection
@@ -3654,8 +3988,12 @@ type ExperimentTemplateSpecProbeInput interface {
 }
 
 type ExperimentTemplateSpecProbeArgs struct {
-	// Probe execution conditions
+	// Deprecated: no longer part of the experiment template API; use conditionsV2 instead. This field is ignored.
+	//
+	// Deprecated: conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
 	Conditions ExperimentTemplateSpecProbeConditionArrayInput `pulumi:"conditions"`
+	// Execution conditions gating whether this probe runs, evaluated as boolean values combined by the operator.
+	ConditionsV2 ExperimentTemplateSpecProbeConditionsV2PtrInput `pulumi:"conditionsV2"`
 	// Probe duration
 	Duration pulumi.StringPtrInput `pulumi:"duration"`
 	// Whether to enable data collection
@@ -3727,9 +4065,16 @@ func (o ExperimentTemplateSpecProbeOutput) ToExperimentTemplateSpecProbeOutputWi
 	return o
 }
 
-// Probe execution conditions
+// Deprecated: no longer part of the experiment template API; use conditionsV2 instead. This field is ignored.
+//
+// Deprecated: conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
 func (o ExperimentTemplateSpecProbeOutput) Conditions() ExperimentTemplateSpecProbeConditionArrayOutput {
 	return o.ApplyT(func(v ExperimentTemplateSpecProbe) []ExperimentTemplateSpecProbeCondition { return v.Conditions }).(ExperimentTemplateSpecProbeConditionArrayOutput)
+}
+
+// Execution conditions gating whether this probe runs, evaluated as boolean values combined by the operator.
+func (o ExperimentTemplateSpecProbeOutput) ConditionsV2() ExperimentTemplateSpecProbeConditionsV2PtrOutput {
+	return o.ApplyT(func(v ExperimentTemplateSpecProbe) *ExperimentTemplateSpecProbeConditionsV2 { return v.ConditionsV2 }).(ExperimentTemplateSpecProbeConditionsV2PtrOutput)
 }
 
 // Probe duration
@@ -3799,7 +4144,7 @@ func (o ExperimentTemplateSpecProbeArrayOutput) Index(i pulumi.IntInput) Experim
 
 type ExperimentTemplateSpecProbeCondition struct {
 	// When to execute the probe (onChaosStart, duringChaos, afterChaos)
-	ExecuteUpon string `pulumi:"executeUpon"`
+	ExecuteUpon *string `pulumi:"executeUpon"`
 }
 
 // ExperimentTemplateSpecProbeConditionInput is an input type that accepts ExperimentTemplateSpecProbeConditionArgs and ExperimentTemplateSpecProbeConditionOutput values.
@@ -3815,7 +4160,7 @@ type ExperimentTemplateSpecProbeConditionInput interface {
 
 type ExperimentTemplateSpecProbeConditionArgs struct {
 	// When to execute the probe (onChaosStart, duringChaos, afterChaos)
-	ExecuteUpon pulumi.StringInput `pulumi:"executeUpon"`
+	ExecuteUpon pulumi.StringPtrInput `pulumi:"executeUpon"`
 }
 
 func (ExperimentTemplateSpecProbeConditionArgs) ElementType() reflect.Type {
@@ -3870,8 +4215,8 @@ func (o ExperimentTemplateSpecProbeConditionOutput) ToExperimentTemplateSpecProb
 }
 
 // When to execute the probe (onChaosStart, duringChaos, afterChaos)
-func (o ExperimentTemplateSpecProbeConditionOutput) ExecuteUpon() pulumi.StringOutput {
-	return o.ApplyT(func(v ExperimentTemplateSpecProbeCondition) string { return v.ExecuteUpon }).(pulumi.StringOutput)
+func (o ExperimentTemplateSpecProbeConditionOutput) ExecuteUpon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExperimentTemplateSpecProbeCondition) *string { return v.ExecuteUpon }).(pulumi.StringPtrOutput)
 }
 
 type ExperimentTemplateSpecProbeConditionArrayOutput struct{ *pulumi.OutputState }
@@ -3892,6 +4237,162 @@ func (o ExperimentTemplateSpecProbeConditionArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExperimentTemplateSpecProbeCondition {
 		return vs[0].([]ExperimentTemplateSpecProbeCondition)[vs[1].(int)]
 	}).(ExperimentTemplateSpecProbeConditionOutput)
+}
+
+type ExperimentTemplateSpecProbeConditionsV2 struct {
+	// Logical operator combining values: AND (all true) or OR (any true).
+	Operator string `pulumi:"operator"`
+	// Boolean-parseable condition values (supports runtime input: <+input>).
+	Values []string `pulumi:"values"`
+}
+
+// ExperimentTemplateSpecProbeConditionsV2Input is an input type that accepts ExperimentTemplateSpecProbeConditionsV2Args and ExperimentTemplateSpecProbeConditionsV2Output values.
+// You can construct a concrete instance of `ExperimentTemplateSpecProbeConditionsV2Input` via:
+//
+//	ExperimentTemplateSpecProbeConditionsV2Args{...}
+type ExperimentTemplateSpecProbeConditionsV2Input interface {
+	pulumi.Input
+
+	ToExperimentTemplateSpecProbeConditionsV2Output() ExperimentTemplateSpecProbeConditionsV2Output
+	ToExperimentTemplateSpecProbeConditionsV2OutputWithContext(context.Context) ExperimentTemplateSpecProbeConditionsV2Output
+}
+
+type ExperimentTemplateSpecProbeConditionsV2Args struct {
+	// Logical operator combining values: AND (all true) or OR (any true).
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Boolean-parseable condition values (supports runtime input: <+input>).
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (ExperimentTemplateSpecProbeConditionsV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExperimentTemplateSpecProbeConditionsV2)(nil)).Elem()
+}
+
+func (i ExperimentTemplateSpecProbeConditionsV2Args) ToExperimentTemplateSpecProbeConditionsV2Output() ExperimentTemplateSpecProbeConditionsV2Output {
+	return i.ToExperimentTemplateSpecProbeConditionsV2OutputWithContext(context.Background())
+}
+
+func (i ExperimentTemplateSpecProbeConditionsV2Args) ToExperimentTemplateSpecProbeConditionsV2OutputWithContext(ctx context.Context) ExperimentTemplateSpecProbeConditionsV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ExperimentTemplateSpecProbeConditionsV2Output)
+}
+
+func (i ExperimentTemplateSpecProbeConditionsV2Args) ToExperimentTemplateSpecProbeConditionsV2PtrOutput() ExperimentTemplateSpecProbeConditionsV2PtrOutput {
+	return i.ToExperimentTemplateSpecProbeConditionsV2PtrOutputWithContext(context.Background())
+}
+
+func (i ExperimentTemplateSpecProbeConditionsV2Args) ToExperimentTemplateSpecProbeConditionsV2PtrOutputWithContext(ctx context.Context) ExperimentTemplateSpecProbeConditionsV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExperimentTemplateSpecProbeConditionsV2Output).ToExperimentTemplateSpecProbeConditionsV2PtrOutputWithContext(ctx)
+}
+
+// ExperimentTemplateSpecProbeConditionsV2PtrInput is an input type that accepts ExperimentTemplateSpecProbeConditionsV2Args, ExperimentTemplateSpecProbeConditionsV2Ptr and ExperimentTemplateSpecProbeConditionsV2PtrOutput values.
+// You can construct a concrete instance of `ExperimentTemplateSpecProbeConditionsV2PtrInput` via:
+//
+//	        ExperimentTemplateSpecProbeConditionsV2Args{...}
+//
+//	or:
+//
+//	        nil
+type ExperimentTemplateSpecProbeConditionsV2PtrInput interface {
+	pulumi.Input
+
+	ToExperimentTemplateSpecProbeConditionsV2PtrOutput() ExperimentTemplateSpecProbeConditionsV2PtrOutput
+	ToExperimentTemplateSpecProbeConditionsV2PtrOutputWithContext(context.Context) ExperimentTemplateSpecProbeConditionsV2PtrOutput
+}
+
+type experimentTemplateSpecProbeConditionsV2PtrType ExperimentTemplateSpecProbeConditionsV2Args
+
+func ExperimentTemplateSpecProbeConditionsV2Ptr(v *ExperimentTemplateSpecProbeConditionsV2Args) ExperimentTemplateSpecProbeConditionsV2PtrInput {
+	return (*experimentTemplateSpecProbeConditionsV2PtrType)(v)
+}
+
+func (*experimentTemplateSpecProbeConditionsV2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExperimentTemplateSpecProbeConditionsV2)(nil)).Elem()
+}
+
+func (i *experimentTemplateSpecProbeConditionsV2PtrType) ToExperimentTemplateSpecProbeConditionsV2PtrOutput() ExperimentTemplateSpecProbeConditionsV2PtrOutput {
+	return i.ToExperimentTemplateSpecProbeConditionsV2PtrOutputWithContext(context.Background())
+}
+
+func (i *experimentTemplateSpecProbeConditionsV2PtrType) ToExperimentTemplateSpecProbeConditionsV2PtrOutputWithContext(ctx context.Context) ExperimentTemplateSpecProbeConditionsV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExperimentTemplateSpecProbeConditionsV2PtrOutput)
+}
+
+type ExperimentTemplateSpecProbeConditionsV2Output struct{ *pulumi.OutputState }
+
+func (ExperimentTemplateSpecProbeConditionsV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExperimentTemplateSpecProbeConditionsV2)(nil)).Elem()
+}
+
+func (o ExperimentTemplateSpecProbeConditionsV2Output) ToExperimentTemplateSpecProbeConditionsV2Output() ExperimentTemplateSpecProbeConditionsV2Output {
+	return o
+}
+
+func (o ExperimentTemplateSpecProbeConditionsV2Output) ToExperimentTemplateSpecProbeConditionsV2OutputWithContext(ctx context.Context) ExperimentTemplateSpecProbeConditionsV2Output {
+	return o
+}
+
+func (o ExperimentTemplateSpecProbeConditionsV2Output) ToExperimentTemplateSpecProbeConditionsV2PtrOutput() ExperimentTemplateSpecProbeConditionsV2PtrOutput {
+	return o.ToExperimentTemplateSpecProbeConditionsV2PtrOutputWithContext(context.Background())
+}
+
+func (o ExperimentTemplateSpecProbeConditionsV2Output) ToExperimentTemplateSpecProbeConditionsV2PtrOutputWithContext(ctx context.Context) ExperimentTemplateSpecProbeConditionsV2PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExperimentTemplateSpecProbeConditionsV2) *ExperimentTemplateSpecProbeConditionsV2 {
+		return &v
+	}).(ExperimentTemplateSpecProbeConditionsV2PtrOutput)
+}
+
+// Logical operator combining values: AND (all true) or OR (any true).
+func (o ExperimentTemplateSpecProbeConditionsV2Output) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v ExperimentTemplateSpecProbeConditionsV2) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Boolean-parseable condition values (supports runtime input: <+input>).
+func (o ExperimentTemplateSpecProbeConditionsV2Output) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ExperimentTemplateSpecProbeConditionsV2) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type ExperimentTemplateSpecProbeConditionsV2PtrOutput struct{ *pulumi.OutputState }
+
+func (ExperimentTemplateSpecProbeConditionsV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExperimentTemplateSpecProbeConditionsV2)(nil)).Elem()
+}
+
+func (o ExperimentTemplateSpecProbeConditionsV2PtrOutput) ToExperimentTemplateSpecProbeConditionsV2PtrOutput() ExperimentTemplateSpecProbeConditionsV2PtrOutput {
+	return o
+}
+
+func (o ExperimentTemplateSpecProbeConditionsV2PtrOutput) ToExperimentTemplateSpecProbeConditionsV2PtrOutputWithContext(ctx context.Context) ExperimentTemplateSpecProbeConditionsV2PtrOutput {
+	return o
+}
+
+func (o ExperimentTemplateSpecProbeConditionsV2PtrOutput) Elem() ExperimentTemplateSpecProbeConditionsV2Output {
+	return o.ApplyT(func(v *ExperimentTemplateSpecProbeConditionsV2) ExperimentTemplateSpecProbeConditionsV2 {
+		if v != nil {
+			return *v
+		}
+		var ret ExperimentTemplateSpecProbeConditionsV2
+		return ret
+	}).(ExperimentTemplateSpecProbeConditionsV2Output)
+}
+
+// Logical operator combining values: AND (all true) or OR (any true).
+func (o ExperimentTemplateSpecProbeConditionsV2PtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExperimentTemplateSpecProbeConditionsV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// Boolean-parseable condition values (supports runtime input: <+input>).
+func (o ExperimentTemplateSpecProbeConditionsV2PtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ExperimentTemplateSpecProbeConditionsV2) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
 }
 
 type ExperimentTemplateSpecProbeValue struct {
@@ -5466,7 +5967,7 @@ func (o FaultTemplateSpecPtrOutput) Target() FaultTemplateSpecTargetPtrOutput {
 }
 
 type FaultTemplateSpecChaos struct {
-	// Authentication configuration
+	// Authentication configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault authentication in the Harness UI/API instead.
 	Auth *FaultTemplateSpecChaosAuth `pulumi:"auth"`
 	// Name of the fault. Note: API may return a default value (e.g., 'byoc-injector') instead of the configured value due to API limitations.
 	FaultName *string `pulumi:"faultName"`
@@ -5476,7 +5977,7 @@ type FaultTemplateSpecChaos struct {
 	Params []FaultTemplateSpecChaosParam `pulumi:"params"`
 	// Status check timeout configuration
 	StatusCheckTimeouts *FaultTemplateSpecChaosStatusCheckTimeouts `pulumi:"statusCheckTimeouts"`
-	// TLS configuration
+	// TLS configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault TLS in the Harness UI/API instead.
 	Tls *FaultTemplateSpecChaosTls `pulumi:"tls"`
 }
 
@@ -5492,7 +5993,7 @@ type FaultTemplateSpecChaosInput interface {
 }
 
 type FaultTemplateSpecChaosArgs struct {
-	// Authentication configuration
+	// Authentication configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault authentication in the Harness UI/API instead.
 	Auth FaultTemplateSpecChaosAuthPtrInput `pulumi:"auth"`
 	// Name of the fault. Note: API may return a default value (e.g., 'byoc-injector') instead of the configured value due to API limitations.
 	FaultName pulumi.StringPtrInput `pulumi:"faultName"`
@@ -5502,7 +6003,7 @@ type FaultTemplateSpecChaosArgs struct {
 	Params FaultTemplateSpecChaosParamArrayInput `pulumi:"params"`
 	// Status check timeout configuration
 	StatusCheckTimeouts FaultTemplateSpecChaosStatusCheckTimeoutsPtrInput `pulumi:"statusCheckTimeouts"`
-	// TLS configuration
+	// TLS configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault TLS in the Harness UI/API instead.
 	Tls FaultTemplateSpecChaosTlsPtrInput `pulumi:"tls"`
 }
 
@@ -5583,7 +6084,7 @@ func (o FaultTemplateSpecChaosOutput) ToFaultTemplateSpecChaosPtrOutputWithConte
 	}).(FaultTemplateSpecChaosPtrOutput)
 }
 
-// Authentication configuration
+// Authentication configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault authentication in the Harness UI/API instead.
 func (o FaultTemplateSpecChaosOutput) Auth() FaultTemplateSpecChaosAuthPtrOutput {
 	return o.ApplyT(func(v FaultTemplateSpecChaos) *FaultTemplateSpecChaosAuth { return v.Auth }).(FaultTemplateSpecChaosAuthPtrOutput)
 }
@@ -5610,7 +6111,7 @@ func (o FaultTemplateSpecChaosOutput) StatusCheckTimeouts() FaultTemplateSpecCha
 	}).(FaultTemplateSpecChaosStatusCheckTimeoutsPtrOutput)
 }
 
-// TLS configuration
+// TLS configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault TLS in the Harness UI/API instead.
 func (o FaultTemplateSpecChaosOutput) Tls() FaultTemplateSpecChaosTlsPtrOutput {
 	return o.ApplyT(func(v FaultTemplateSpecChaos) *FaultTemplateSpecChaosTls { return v.Tls }).(FaultTemplateSpecChaosTlsPtrOutput)
 }
@@ -5639,7 +6140,7 @@ func (o FaultTemplateSpecChaosPtrOutput) Elem() FaultTemplateSpecChaosOutput {
 	}).(FaultTemplateSpecChaosOutput)
 }
 
-// Authentication configuration
+// Authentication configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault authentication in the Harness UI/API instead.
 func (o FaultTemplateSpecChaosPtrOutput) Auth() FaultTemplateSpecChaosAuthPtrOutput {
 	return o.ApplyT(func(v *FaultTemplateSpecChaos) *FaultTemplateSpecChaosAuth {
 		if v == nil {
@@ -5689,7 +6190,7 @@ func (o FaultTemplateSpecChaosPtrOutput) StatusCheckTimeouts() FaultTemplateSpec
 	}).(FaultTemplateSpecChaosStatusCheckTimeoutsPtrOutput)
 }
 
-// TLS configuration
+// TLS configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault TLS in the Harness UI/API instead.
 func (o FaultTemplateSpecChaosPtrOutput) Tls() FaultTemplateSpecChaosTlsPtrOutput {
 	return o.ApplyT(func(v *FaultTemplateSpecChaos) *FaultTemplateSpecChaosTls {
 		if v == nil {
@@ -11028,6 +11529,474 @@ func (o InfrastructureV2ProxyPtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type InfrastructureV2Resources struct {
+	// Maximum compute resources allowed for the infrastructure pods.
+	Limits *InfrastructureV2ResourcesLimits `pulumi:"limits"`
+	// Minimum compute resources requested for the infrastructure pods.
+	Requests *InfrastructureV2ResourcesRequests `pulumi:"requests"`
+}
+
+// InfrastructureV2ResourcesInput is an input type that accepts InfrastructureV2ResourcesArgs and InfrastructureV2ResourcesOutput values.
+// You can construct a concrete instance of `InfrastructureV2ResourcesInput` via:
+//
+//	InfrastructureV2ResourcesArgs{...}
+type InfrastructureV2ResourcesInput interface {
+	pulumi.Input
+
+	ToInfrastructureV2ResourcesOutput() InfrastructureV2ResourcesOutput
+	ToInfrastructureV2ResourcesOutputWithContext(context.Context) InfrastructureV2ResourcesOutput
+}
+
+type InfrastructureV2ResourcesArgs struct {
+	// Maximum compute resources allowed for the infrastructure pods.
+	Limits InfrastructureV2ResourcesLimitsPtrInput `pulumi:"limits"`
+	// Minimum compute resources requested for the infrastructure pods.
+	Requests InfrastructureV2ResourcesRequestsPtrInput `pulumi:"requests"`
+}
+
+func (InfrastructureV2ResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureV2Resources)(nil)).Elem()
+}
+
+func (i InfrastructureV2ResourcesArgs) ToInfrastructureV2ResourcesOutput() InfrastructureV2ResourcesOutput {
+	return i.ToInfrastructureV2ResourcesOutputWithContext(context.Background())
+}
+
+func (i InfrastructureV2ResourcesArgs) ToInfrastructureV2ResourcesOutputWithContext(ctx context.Context) InfrastructureV2ResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureV2ResourcesOutput)
+}
+
+func (i InfrastructureV2ResourcesArgs) ToInfrastructureV2ResourcesPtrOutput() InfrastructureV2ResourcesPtrOutput {
+	return i.ToInfrastructureV2ResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i InfrastructureV2ResourcesArgs) ToInfrastructureV2ResourcesPtrOutputWithContext(ctx context.Context) InfrastructureV2ResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureV2ResourcesOutput).ToInfrastructureV2ResourcesPtrOutputWithContext(ctx)
+}
+
+// InfrastructureV2ResourcesPtrInput is an input type that accepts InfrastructureV2ResourcesArgs, InfrastructureV2ResourcesPtr and InfrastructureV2ResourcesPtrOutput values.
+// You can construct a concrete instance of `InfrastructureV2ResourcesPtrInput` via:
+//
+//	        InfrastructureV2ResourcesArgs{...}
+//
+//	or:
+//
+//	        nil
+type InfrastructureV2ResourcesPtrInput interface {
+	pulumi.Input
+
+	ToInfrastructureV2ResourcesPtrOutput() InfrastructureV2ResourcesPtrOutput
+	ToInfrastructureV2ResourcesPtrOutputWithContext(context.Context) InfrastructureV2ResourcesPtrOutput
+}
+
+type infrastructureV2ResourcesPtrType InfrastructureV2ResourcesArgs
+
+func InfrastructureV2ResourcesPtr(v *InfrastructureV2ResourcesArgs) InfrastructureV2ResourcesPtrInput {
+	return (*infrastructureV2ResourcesPtrType)(v)
+}
+
+func (*infrastructureV2ResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureV2Resources)(nil)).Elem()
+}
+
+func (i *infrastructureV2ResourcesPtrType) ToInfrastructureV2ResourcesPtrOutput() InfrastructureV2ResourcesPtrOutput {
+	return i.ToInfrastructureV2ResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *infrastructureV2ResourcesPtrType) ToInfrastructureV2ResourcesPtrOutputWithContext(ctx context.Context) InfrastructureV2ResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureV2ResourcesPtrOutput)
+}
+
+type InfrastructureV2ResourcesOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureV2ResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureV2Resources)(nil)).Elem()
+}
+
+func (o InfrastructureV2ResourcesOutput) ToInfrastructureV2ResourcesOutput() InfrastructureV2ResourcesOutput {
+	return o
+}
+
+func (o InfrastructureV2ResourcesOutput) ToInfrastructureV2ResourcesOutputWithContext(ctx context.Context) InfrastructureV2ResourcesOutput {
+	return o
+}
+
+func (o InfrastructureV2ResourcesOutput) ToInfrastructureV2ResourcesPtrOutput() InfrastructureV2ResourcesPtrOutput {
+	return o.ToInfrastructureV2ResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o InfrastructureV2ResourcesOutput) ToInfrastructureV2ResourcesPtrOutputWithContext(ctx context.Context) InfrastructureV2ResourcesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InfrastructureV2Resources) *InfrastructureV2Resources {
+		return &v
+	}).(InfrastructureV2ResourcesPtrOutput)
+}
+
+// Maximum compute resources allowed for the infrastructure pods.
+func (o InfrastructureV2ResourcesOutput) Limits() InfrastructureV2ResourcesLimitsPtrOutput {
+	return o.ApplyT(func(v InfrastructureV2Resources) *InfrastructureV2ResourcesLimits { return v.Limits }).(InfrastructureV2ResourcesLimitsPtrOutput)
+}
+
+// Minimum compute resources requested for the infrastructure pods.
+func (o InfrastructureV2ResourcesOutput) Requests() InfrastructureV2ResourcesRequestsPtrOutput {
+	return o.ApplyT(func(v InfrastructureV2Resources) *InfrastructureV2ResourcesRequests { return v.Requests }).(InfrastructureV2ResourcesRequestsPtrOutput)
+}
+
+type InfrastructureV2ResourcesPtrOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureV2ResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureV2Resources)(nil)).Elem()
+}
+
+func (o InfrastructureV2ResourcesPtrOutput) ToInfrastructureV2ResourcesPtrOutput() InfrastructureV2ResourcesPtrOutput {
+	return o
+}
+
+func (o InfrastructureV2ResourcesPtrOutput) ToInfrastructureV2ResourcesPtrOutputWithContext(ctx context.Context) InfrastructureV2ResourcesPtrOutput {
+	return o
+}
+
+func (o InfrastructureV2ResourcesPtrOutput) Elem() InfrastructureV2ResourcesOutput {
+	return o.ApplyT(func(v *InfrastructureV2Resources) InfrastructureV2Resources {
+		if v != nil {
+			return *v
+		}
+		var ret InfrastructureV2Resources
+		return ret
+	}).(InfrastructureV2ResourcesOutput)
+}
+
+// Maximum compute resources allowed for the infrastructure pods.
+func (o InfrastructureV2ResourcesPtrOutput) Limits() InfrastructureV2ResourcesLimitsPtrOutput {
+	return o.ApplyT(func(v *InfrastructureV2Resources) *InfrastructureV2ResourcesLimits {
+		if v == nil {
+			return nil
+		}
+		return v.Limits
+	}).(InfrastructureV2ResourcesLimitsPtrOutput)
+}
+
+// Minimum compute resources requested for the infrastructure pods.
+func (o InfrastructureV2ResourcesPtrOutput) Requests() InfrastructureV2ResourcesRequestsPtrOutput {
+	return o.ApplyT(func(v *InfrastructureV2Resources) *InfrastructureV2ResourcesRequests {
+		if v == nil {
+			return nil
+		}
+		return v.Requests
+	}).(InfrastructureV2ResourcesRequestsPtrOutput)
+}
+
+type InfrastructureV2ResourcesLimits struct {
+	// CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+	Cpu *string `pulumi:"cpu"`
+	// Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+	Memory *string `pulumi:"memory"`
+}
+
+// InfrastructureV2ResourcesLimitsInput is an input type that accepts InfrastructureV2ResourcesLimitsArgs and InfrastructureV2ResourcesLimitsOutput values.
+// You can construct a concrete instance of `InfrastructureV2ResourcesLimitsInput` via:
+//
+//	InfrastructureV2ResourcesLimitsArgs{...}
+type InfrastructureV2ResourcesLimitsInput interface {
+	pulumi.Input
+
+	ToInfrastructureV2ResourcesLimitsOutput() InfrastructureV2ResourcesLimitsOutput
+	ToInfrastructureV2ResourcesLimitsOutputWithContext(context.Context) InfrastructureV2ResourcesLimitsOutput
+}
+
+type InfrastructureV2ResourcesLimitsArgs struct {
+	// CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+	Cpu pulumi.StringPtrInput `pulumi:"cpu"`
+	// Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+	Memory pulumi.StringPtrInput `pulumi:"memory"`
+}
+
+func (InfrastructureV2ResourcesLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureV2ResourcesLimits)(nil)).Elem()
+}
+
+func (i InfrastructureV2ResourcesLimitsArgs) ToInfrastructureV2ResourcesLimitsOutput() InfrastructureV2ResourcesLimitsOutput {
+	return i.ToInfrastructureV2ResourcesLimitsOutputWithContext(context.Background())
+}
+
+func (i InfrastructureV2ResourcesLimitsArgs) ToInfrastructureV2ResourcesLimitsOutputWithContext(ctx context.Context) InfrastructureV2ResourcesLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureV2ResourcesLimitsOutput)
+}
+
+func (i InfrastructureV2ResourcesLimitsArgs) ToInfrastructureV2ResourcesLimitsPtrOutput() InfrastructureV2ResourcesLimitsPtrOutput {
+	return i.ToInfrastructureV2ResourcesLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i InfrastructureV2ResourcesLimitsArgs) ToInfrastructureV2ResourcesLimitsPtrOutputWithContext(ctx context.Context) InfrastructureV2ResourcesLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureV2ResourcesLimitsOutput).ToInfrastructureV2ResourcesLimitsPtrOutputWithContext(ctx)
+}
+
+// InfrastructureV2ResourcesLimitsPtrInput is an input type that accepts InfrastructureV2ResourcesLimitsArgs, InfrastructureV2ResourcesLimitsPtr and InfrastructureV2ResourcesLimitsPtrOutput values.
+// You can construct a concrete instance of `InfrastructureV2ResourcesLimitsPtrInput` via:
+//
+//	        InfrastructureV2ResourcesLimitsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InfrastructureV2ResourcesLimitsPtrInput interface {
+	pulumi.Input
+
+	ToInfrastructureV2ResourcesLimitsPtrOutput() InfrastructureV2ResourcesLimitsPtrOutput
+	ToInfrastructureV2ResourcesLimitsPtrOutputWithContext(context.Context) InfrastructureV2ResourcesLimitsPtrOutput
+}
+
+type infrastructureV2ResourcesLimitsPtrType InfrastructureV2ResourcesLimitsArgs
+
+func InfrastructureV2ResourcesLimitsPtr(v *InfrastructureV2ResourcesLimitsArgs) InfrastructureV2ResourcesLimitsPtrInput {
+	return (*infrastructureV2ResourcesLimitsPtrType)(v)
+}
+
+func (*infrastructureV2ResourcesLimitsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureV2ResourcesLimits)(nil)).Elem()
+}
+
+func (i *infrastructureV2ResourcesLimitsPtrType) ToInfrastructureV2ResourcesLimitsPtrOutput() InfrastructureV2ResourcesLimitsPtrOutput {
+	return i.ToInfrastructureV2ResourcesLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i *infrastructureV2ResourcesLimitsPtrType) ToInfrastructureV2ResourcesLimitsPtrOutputWithContext(ctx context.Context) InfrastructureV2ResourcesLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureV2ResourcesLimitsPtrOutput)
+}
+
+type InfrastructureV2ResourcesLimitsOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureV2ResourcesLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureV2ResourcesLimits)(nil)).Elem()
+}
+
+func (o InfrastructureV2ResourcesLimitsOutput) ToInfrastructureV2ResourcesLimitsOutput() InfrastructureV2ResourcesLimitsOutput {
+	return o
+}
+
+func (o InfrastructureV2ResourcesLimitsOutput) ToInfrastructureV2ResourcesLimitsOutputWithContext(ctx context.Context) InfrastructureV2ResourcesLimitsOutput {
+	return o
+}
+
+func (o InfrastructureV2ResourcesLimitsOutput) ToInfrastructureV2ResourcesLimitsPtrOutput() InfrastructureV2ResourcesLimitsPtrOutput {
+	return o.ToInfrastructureV2ResourcesLimitsPtrOutputWithContext(context.Background())
+}
+
+func (o InfrastructureV2ResourcesLimitsOutput) ToInfrastructureV2ResourcesLimitsPtrOutputWithContext(ctx context.Context) InfrastructureV2ResourcesLimitsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InfrastructureV2ResourcesLimits) *InfrastructureV2ResourcesLimits {
+		return &v
+	}).(InfrastructureV2ResourcesLimitsPtrOutput)
+}
+
+// CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+func (o InfrastructureV2ResourcesLimitsOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureV2ResourcesLimits) *string { return v.Cpu }).(pulumi.StringPtrOutput)
+}
+
+// Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+func (o InfrastructureV2ResourcesLimitsOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureV2ResourcesLimits) *string { return v.Memory }).(pulumi.StringPtrOutput)
+}
+
+type InfrastructureV2ResourcesLimitsPtrOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureV2ResourcesLimitsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureV2ResourcesLimits)(nil)).Elem()
+}
+
+func (o InfrastructureV2ResourcesLimitsPtrOutput) ToInfrastructureV2ResourcesLimitsPtrOutput() InfrastructureV2ResourcesLimitsPtrOutput {
+	return o
+}
+
+func (o InfrastructureV2ResourcesLimitsPtrOutput) ToInfrastructureV2ResourcesLimitsPtrOutputWithContext(ctx context.Context) InfrastructureV2ResourcesLimitsPtrOutput {
+	return o
+}
+
+func (o InfrastructureV2ResourcesLimitsPtrOutput) Elem() InfrastructureV2ResourcesLimitsOutput {
+	return o.ApplyT(func(v *InfrastructureV2ResourcesLimits) InfrastructureV2ResourcesLimits {
+		if v != nil {
+			return *v
+		}
+		var ret InfrastructureV2ResourcesLimits
+		return ret
+	}).(InfrastructureV2ResourcesLimitsOutput)
+}
+
+// CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+func (o InfrastructureV2ResourcesLimitsPtrOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureV2ResourcesLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+func (o InfrastructureV2ResourcesLimitsPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureV2ResourcesLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type InfrastructureV2ResourcesRequests struct {
+	// CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+	Cpu *string `pulumi:"cpu"`
+	// Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+	Memory *string `pulumi:"memory"`
+}
+
+// InfrastructureV2ResourcesRequestsInput is an input type that accepts InfrastructureV2ResourcesRequestsArgs and InfrastructureV2ResourcesRequestsOutput values.
+// You can construct a concrete instance of `InfrastructureV2ResourcesRequestsInput` via:
+//
+//	InfrastructureV2ResourcesRequestsArgs{...}
+type InfrastructureV2ResourcesRequestsInput interface {
+	pulumi.Input
+
+	ToInfrastructureV2ResourcesRequestsOutput() InfrastructureV2ResourcesRequestsOutput
+	ToInfrastructureV2ResourcesRequestsOutputWithContext(context.Context) InfrastructureV2ResourcesRequestsOutput
+}
+
+type InfrastructureV2ResourcesRequestsArgs struct {
+	// CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+	Cpu pulumi.StringPtrInput `pulumi:"cpu"`
+	// Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+	Memory pulumi.StringPtrInput `pulumi:"memory"`
+}
+
+func (InfrastructureV2ResourcesRequestsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureV2ResourcesRequests)(nil)).Elem()
+}
+
+func (i InfrastructureV2ResourcesRequestsArgs) ToInfrastructureV2ResourcesRequestsOutput() InfrastructureV2ResourcesRequestsOutput {
+	return i.ToInfrastructureV2ResourcesRequestsOutputWithContext(context.Background())
+}
+
+func (i InfrastructureV2ResourcesRequestsArgs) ToInfrastructureV2ResourcesRequestsOutputWithContext(ctx context.Context) InfrastructureV2ResourcesRequestsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureV2ResourcesRequestsOutput)
+}
+
+func (i InfrastructureV2ResourcesRequestsArgs) ToInfrastructureV2ResourcesRequestsPtrOutput() InfrastructureV2ResourcesRequestsPtrOutput {
+	return i.ToInfrastructureV2ResourcesRequestsPtrOutputWithContext(context.Background())
+}
+
+func (i InfrastructureV2ResourcesRequestsArgs) ToInfrastructureV2ResourcesRequestsPtrOutputWithContext(ctx context.Context) InfrastructureV2ResourcesRequestsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureV2ResourcesRequestsOutput).ToInfrastructureV2ResourcesRequestsPtrOutputWithContext(ctx)
+}
+
+// InfrastructureV2ResourcesRequestsPtrInput is an input type that accepts InfrastructureV2ResourcesRequestsArgs, InfrastructureV2ResourcesRequestsPtr and InfrastructureV2ResourcesRequestsPtrOutput values.
+// You can construct a concrete instance of `InfrastructureV2ResourcesRequestsPtrInput` via:
+//
+//	        InfrastructureV2ResourcesRequestsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InfrastructureV2ResourcesRequestsPtrInput interface {
+	pulumi.Input
+
+	ToInfrastructureV2ResourcesRequestsPtrOutput() InfrastructureV2ResourcesRequestsPtrOutput
+	ToInfrastructureV2ResourcesRequestsPtrOutputWithContext(context.Context) InfrastructureV2ResourcesRequestsPtrOutput
+}
+
+type infrastructureV2ResourcesRequestsPtrType InfrastructureV2ResourcesRequestsArgs
+
+func InfrastructureV2ResourcesRequestsPtr(v *InfrastructureV2ResourcesRequestsArgs) InfrastructureV2ResourcesRequestsPtrInput {
+	return (*infrastructureV2ResourcesRequestsPtrType)(v)
+}
+
+func (*infrastructureV2ResourcesRequestsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureV2ResourcesRequests)(nil)).Elem()
+}
+
+func (i *infrastructureV2ResourcesRequestsPtrType) ToInfrastructureV2ResourcesRequestsPtrOutput() InfrastructureV2ResourcesRequestsPtrOutput {
+	return i.ToInfrastructureV2ResourcesRequestsPtrOutputWithContext(context.Background())
+}
+
+func (i *infrastructureV2ResourcesRequestsPtrType) ToInfrastructureV2ResourcesRequestsPtrOutputWithContext(ctx context.Context) InfrastructureV2ResourcesRequestsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureV2ResourcesRequestsPtrOutput)
+}
+
+type InfrastructureV2ResourcesRequestsOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureV2ResourcesRequestsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureV2ResourcesRequests)(nil)).Elem()
+}
+
+func (o InfrastructureV2ResourcesRequestsOutput) ToInfrastructureV2ResourcesRequestsOutput() InfrastructureV2ResourcesRequestsOutput {
+	return o
+}
+
+func (o InfrastructureV2ResourcesRequestsOutput) ToInfrastructureV2ResourcesRequestsOutputWithContext(ctx context.Context) InfrastructureV2ResourcesRequestsOutput {
+	return o
+}
+
+func (o InfrastructureV2ResourcesRequestsOutput) ToInfrastructureV2ResourcesRequestsPtrOutput() InfrastructureV2ResourcesRequestsPtrOutput {
+	return o.ToInfrastructureV2ResourcesRequestsPtrOutputWithContext(context.Background())
+}
+
+func (o InfrastructureV2ResourcesRequestsOutput) ToInfrastructureV2ResourcesRequestsPtrOutputWithContext(ctx context.Context) InfrastructureV2ResourcesRequestsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InfrastructureV2ResourcesRequests) *InfrastructureV2ResourcesRequests {
+		return &v
+	}).(InfrastructureV2ResourcesRequestsPtrOutput)
+}
+
+// CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+func (o InfrastructureV2ResourcesRequestsOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureV2ResourcesRequests) *string { return v.Cpu }).(pulumi.StringPtrOutput)
+}
+
+// Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+func (o InfrastructureV2ResourcesRequestsOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InfrastructureV2ResourcesRequests) *string { return v.Memory }).(pulumi.StringPtrOutput)
+}
+
+type InfrastructureV2ResourcesRequestsPtrOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureV2ResourcesRequestsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureV2ResourcesRequests)(nil)).Elem()
+}
+
+func (o InfrastructureV2ResourcesRequestsPtrOutput) ToInfrastructureV2ResourcesRequestsPtrOutput() InfrastructureV2ResourcesRequestsPtrOutput {
+	return o
+}
+
+func (o InfrastructureV2ResourcesRequestsPtrOutput) ToInfrastructureV2ResourcesRequestsPtrOutputWithContext(ctx context.Context) InfrastructureV2ResourcesRequestsPtrOutput {
+	return o
+}
+
+func (o InfrastructureV2ResourcesRequestsPtrOutput) Elem() InfrastructureV2ResourcesRequestsOutput {
+	return o.ApplyT(func(v *InfrastructureV2ResourcesRequests) InfrastructureV2ResourcesRequests {
+		if v != nil {
+			return *v
+		}
+		var ret InfrastructureV2ResourcesRequests
+		return ret
+	}).(InfrastructureV2ResourcesRequestsOutput)
+}
+
+// CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+func (o InfrastructureV2ResourcesRequestsPtrOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureV2ResourcesRequests) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+func (o InfrastructureV2ResourcesRequestsPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InfrastructureV2ResourcesRequests) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
 type InfrastructureV2Toleration struct {
 	// Effect indicates the taint effect to match. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
 	Effect string `pulumi:"effect"`
@@ -14080,7 +15049,7 @@ type ProbeTemplateCmdProbe struct {
 	Comparator *ProbeTemplateCmdProbeComparator `pulumi:"comparator"`
 	// Environment variables for the command.
 	Envs []ProbeTemplateCmdProbeEnv `pulumi:"envs"`
-	// Source of the command (inline, configMap, secret).
+	// Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as "inline", "configMap", or "secret" is INVALID and fails with "cannot unmarshal string into Go value of type v1.SourceDetails". To run inline, omit this field entirely.
 	Source *string `pulumi:"source"`
 }
 
@@ -14102,7 +15071,7 @@ type ProbeTemplateCmdProbeArgs struct {
 	Comparator ProbeTemplateCmdProbeComparatorPtrInput `pulumi:"comparator"`
 	// Environment variables for the command.
 	Envs ProbeTemplateCmdProbeEnvArrayInput `pulumi:"envs"`
-	// Source of the command (inline, configMap, secret).
+	// Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as "inline", "configMap", or "secret" is INVALID and fails with "cannot unmarshal string into Go value of type v1.SourceDetails". To run inline, omit this field entirely.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
@@ -14198,7 +15167,7 @@ func (o ProbeTemplateCmdProbeOutput) Envs() ProbeTemplateCmdProbeEnvArrayOutput 
 	return o.ApplyT(func(v ProbeTemplateCmdProbe) []ProbeTemplateCmdProbeEnv { return v.Envs }).(ProbeTemplateCmdProbeEnvArrayOutput)
 }
 
-// Source of the command (inline, configMap, secret).
+// Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as "inline", "configMap", or "secret" is INVALID and fails with "cannot unmarshal string into Go value of type v1.SourceDetails". To run inline, omit this field entirely.
 func (o ProbeTemplateCmdProbeOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProbeTemplateCmdProbe) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -14257,7 +15226,7 @@ func (o ProbeTemplateCmdProbePtrOutput) Envs() ProbeTemplateCmdProbeEnvArrayOutp
 	}).(ProbeTemplateCmdProbeEnvArrayOutput)
 }
 
-// Source of the command (inline, configMap, secret).
+// Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as "inline", "configMap", or "secret" is INVALID and fails with "cannot unmarshal string into Go value of type v1.SourceDetails". To run inline, omit this field entirely.
 func (o ProbeTemplateCmdProbePtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProbeTemplateCmdProbe) *string {
 		if v == nil {
@@ -22662,6 +23631,8 @@ func (o GetExperimentTemplateSpecArrayOutput) Index(i pulumi.IntInput) GetExperi
 }
 
 type GetExperimentTemplateSpecAction struct {
+	// Execution conditions (operator + values) gating whether this runs.
+	ConditionsV2s []GetExperimentTemplateSpecActionConditionsV2 `pulumi:"conditionsV2s"`
 	// Whether to continue on completion
 	ContinueOnCompletion bool `pulumi:"continueOnCompletion"`
 	// Action template identity
@@ -22690,6 +23661,8 @@ type GetExperimentTemplateSpecActionInput interface {
 }
 
 type GetExperimentTemplateSpecActionArgs struct {
+	// Execution conditions (operator + values) gating whether this runs.
+	ConditionsV2s GetExperimentTemplateSpecActionConditionsV2ArrayInput `pulumi:"conditionsV2s"`
 	// Whether to continue on completion
 	ContinueOnCompletion pulumi.BoolInput `pulumi:"continueOnCompletion"`
 	// Action template identity
@@ -22757,6 +23730,13 @@ func (o GetExperimentTemplateSpecActionOutput) ToGetExperimentTemplateSpecAction
 	return o
 }
 
+// Execution conditions (operator + values) gating whether this runs.
+func (o GetExperimentTemplateSpecActionOutput) ConditionsV2s() GetExperimentTemplateSpecActionConditionsV2ArrayOutput {
+	return o.ApplyT(func(v GetExperimentTemplateSpecAction) []GetExperimentTemplateSpecActionConditionsV2 {
+		return v.ConditionsV2s
+	}).(GetExperimentTemplateSpecActionConditionsV2ArrayOutput)
+}
+
 // Whether to continue on completion
 func (o GetExperimentTemplateSpecActionOutput) ContinueOnCompletion() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetExperimentTemplateSpecAction) bool { return v.ContinueOnCompletion }).(pulumi.BoolOutput)
@@ -22810,6 +23790,112 @@ func (o GetExperimentTemplateSpecActionArrayOutput) Index(i pulumi.IntInput) Get
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentTemplateSpecAction {
 		return vs[0].([]GetExperimentTemplateSpecAction)[vs[1].(int)]
 	}).(GetExperimentTemplateSpecActionOutput)
+}
+
+type GetExperimentTemplateSpecActionConditionsV2 struct {
+	// Logical operator combining values (AND/OR).
+	Operator string `pulumi:"operator"`
+	// Boolean-parseable condition values (may include <+input>).
+	Values []string `pulumi:"values"`
+}
+
+// GetExperimentTemplateSpecActionConditionsV2Input is an input type that accepts GetExperimentTemplateSpecActionConditionsV2Args and GetExperimentTemplateSpecActionConditionsV2Output values.
+// You can construct a concrete instance of `GetExperimentTemplateSpecActionConditionsV2Input` via:
+//
+//	GetExperimentTemplateSpecActionConditionsV2Args{...}
+type GetExperimentTemplateSpecActionConditionsV2Input interface {
+	pulumi.Input
+
+	ToGetExperimentTemplateSpecActionConditionsV2Output() GetExperimentTemplateSpecActionConditionsV2Output
+	ToGetExperimentTemplateSpecActionConditionsV2OutputWithContext(context.Context) GetExperimentTemplateSpecActionConditionsV2Output
+}
+
+type GetExperimentTemplateSpecActionConditionsV2Args struct {
+	// Logical operator combining values (AND/OR).
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Boolean-parseable condition values (may include <+input>).
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetExperimentTemplateSpecActionConditionsV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentTemplateSpecActionConditionsV2)(nil)).Elem()
+}
+
+func (i GetExperimentTemplateSpecActionConditionsV2Args) ToGetExperimentTemplateSpecActionConditionsV2Output() GetExperimentTemplateSpecActionConditionsV2Output {
+	return i.ToGetExperimentTemplateSpecActionConditionsV2OutputWithContext(context.Background())
+}
+
+func (i GetExperimentTemplateSpecActionConditionsV2Args) ToGetExperimentTemplateSpecActionConditionsV2OutputWithContext(ctx context.Context) GetExperimentTemplateSpecActionConditionsV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentTemplateSpecActionConditionsV2Output)
+}
+
+// GetExperimentTemplateSpecActionConditionsV2ArrayInput is an input type that accepts GetExperimentTemplateSpecActionConditionsV2Array and GetExperimentTemplateSpecActionConditionsV2ArrayOutput values.
+// You can construct a concrete instance of `GetExperimentTemplateSpecActionConditionsV2ArrayInput` via:
+//
+//	GetExperimentTemplateSpecActionConditionsV2Array{ GetExperimentTemplateSpecActionConditionsV2Args{...} }
+type GetExperimentTemplateSpecActionConditionsV2ArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentTemplateSpecActionConditionsV2ArrayOutput() GetExperimentTemplateSpecActionConditionsV2ArrayOutput
+	ToGetExperimentTemplateSpecActionConditionsV2ArrayOutputWithContext(context.Context) GetExperimentTemplateSpecActionConditionsV2ArrayOutput
+}
+
+type GetExperimentTemplateSpecActionConditionsV2Array []GetExperimentTemplateSpecActionConditionsV2Input
+
+func (GetExperimentTemplateSpecActionConditionsV2Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentTemplateSpecActionConditionsV2)(nil)).Elem()
+}
+
+func (i GetExperimentTemplateSpecActionConditionsV2Array) ToGetExperimentTemplateSpecActionConditionsV2ArrayOutput() GetExperimentTemplateSpecActionConditionsV2ArrayOutput {
+	return i.ToGetExperimentTemplateSpecActionConditionsV2ArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentTemplateSpecActionConditionsV2Array) ToGetExperimentTemplateSpecActionConditionsV2ArrayOutputWithContext(ctx context.Context) GetExperimentTemplateSpecActionConditionsV2ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentTemplateSpecActionConditionsV2ArrayOutput)
+}
+
+type GetExperimentTemplateSpecActionConditionsV2Output struct{ *pulumi.OutputState }
+
+func (GetExperimentTemplateSpecActionConditionsV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentTemplateSpecActionConditionsV2)(nil)).Elem()
+}
+
+func (o GetExperimentTemplateSpecActionConditionsV2Output) ToGetExperimentTemplateSpecActionConditionsV2Output() GetExperimentTemplateSpecActionConditionsV2Output {
+	return o
+}
+
+func (o GetExperimentTemplateSpecActionConditionsV2Output) ToGetExperimentTemplateSpecActionConditionsV2OutputWithContext(ctx context.Context) GetExperimentTemplateSpecActionConditionsV2Output {
+	return o
+}
+
+// Logical operator combining values (AND/OR).
+func (o GetExperimentTemplateSpecActionConditionsV2Output) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentTemplateSpecActionConditionsV2) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Boolean-parseable condition values (may include <+input>).
+func (o GetExperimentTemplateSpecActionConditionsV2Output) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentTemplateSpecActionConditionsV2) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentTemplateSpecActionConditionsV2ArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentTemplateSpecActionConditionsV2ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentTemplateSpecActionConditionsV2)(nil)).Elem()
+}
+
+func (o GetExperimentTemplateSpecActionConditionsV2ArrayOutput) ToGetExperimentTemplateSpecActionConditionsV2ArrayOutput() GetExperimentTemplateSpecActionConditionsV2ArrayOutput {
+	return o
+}
+
+func (o GetExperimentTemplateSpecActionConditionsV2ArrayOutput) ToGetExperimentTemplateSpecActionConditionsV2ArrayOutputWithContext(ctx context.Context) GetExperimentTemplateSpecActionConditionsV2ArrayOutput {
+	return o
+}
+
+func (o GetExperimentTemplateSpecActionConditionsV2ArrayOutput) Index(i pulumi.IntInput) GetExperimentTemplateSpecActionConditionsV2Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentTemplateSpecActionConditionsV2 {
+		return vs[0].([]GetExperimentTemplateSpecActionConditionsV2)[vs[1].(int)]
+	}).(GetExperimentTemplateSpecActionConditionsV2Output)
 }
 
 type GetExperimentTemplateSpecActionValue struct {
@@ -22921,6 +24007,8 @@ func (o GetExperimentTemplateSpecActionValueArrayOutput) Index(i pulumi.IntInput
 type GetExperimentTemplateSpecFault struct {
 	// Whether authentication is enabled
 	AuthEnabled bool `pulumi:"authEnabled"`
+	// Execution conditions (operator + values) gating whether this runs.
+	ConditionsV2s []GetExperimentTemplateSpecFaultConditionsV2 `pulumi:"conditionsV2s"`
 	// Fault template identity
 	Identity string `pulumi:"identity"`
 	// Infrastructure identifier for this fault
@@ -22949,6 +24037,8 @@ type GetExperimentTemplateSpecFaultInput interface {
 type GetExperimentTemplateSpecFaultArgs struct {
 	// Whether authentication is enabled
 	AuthEnabled pulumi.BoolInput `pulumi:"authEnabled"`
+	// Execution conditions (operator + values) gating whether this runs.
+	ConditionsV2s GetExperimentTemplateSpecFaultConditionsV2ArrayInput `pulumi:"conditionsV2s"`
 	// Fault template identity
 	Identity pulumi.StringInput `pulumi:"identity"`
 	// Infrastructure identifier for this fault
@@ -23019,6 +24109,13 @@ func (o GetExperimentTemplateSpecFaultOutput) AuthEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetExperimentTemplateSpecFault) bool { return v.AuthEnabled }).(pulumi.BoolOutput)
 }
 
+// Execution conditions (operator + values) gating whether this runs.
+func (o GetExperimentTemplateSpecFaultOutput) ConditionsV2s() GetExperimentTemplateSpecFaultConditionsV2ArrayOutput {
+	return o.ApplyT(func(v GetExperimentTemplateSpecFault) []GetExperimentTemplateSpecFaultConditionsV2 {
+		return v.ConditionsV2s
+	}).(GetExperimentTemplateSpecFaultConditionsV2ArrayOutput)
+}
+
 // Fault template identity
 func (o GetExperimentTemplateSpecFaultOutput) Identity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExperimentTemplateSpecFault) string { return v.Identity }).(pulumi.StringOutput)
@@ -23067,6 +24164,112 @@ func (o GetExperimentTemplateSpecFaultArrayOutput) Index(i pulumi.IntInput) GetE
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentTemplateSpecFault {
 		return vs[0].([]GetExperimentTemplateSpecFault)[vs[1].(int)]
 	}).(GetExperimentTemplateSpecFaultOutput)
+}
+
+type GetExperimentTemplateSpecFaultConditionsV2 struct {
+	// Logical operator combining values (AND/OR).
+	Operator string `pulumi:"operator"`
+	// Boolean-parseable condition values (may include <+input>).
+	Values []string `pulumi:"values"`
+}
+
+// GetExperimentTemplateSpecFaultConditionsV2Input is an input type that accepts GetExperimentTemplateSpecFaultConditionsV2Args and GetExperimentTemplateSpecFaultConditionsV2Output values.
+// You can construct a concrete instance of `GetExperimentTemplateSpecFaultConditionsV2Input` via:
+//
+//	GetExperimentTemplateSpecFaultConditionsV2Args{...}
+type GetExperimentTemplateSpecFaultConditionsV2Input interface {
+	pulumi.Input
+
+	ToGetExperimentTemplateSpecFaultConditionsV2Output() GetExperimentTemplateSpecFaultConditionsV2Output
+	ToGetExperimentTemplateSpecFaultConditionsV2OutputWithContext(context.Context) GetExperimentTemplateSpecFaultConditionsV2Output
+}
+
+type GetExperimentTemplateSpecFaultConditionsV2Args struct {
+	// Logical operator combining values (AND/OR).
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Boolean-parseable condition values (may include <+input>).
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetExperimentTemplateSpecFaultConditionsV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentTemplateSpecFaultConditionsV2)(nil)).Elem()
+}
+
+func (i GetExperimentTemplateSpecFaultConditionsV2Args) ToGetExperimentTemplateSpecFaultConditionsV2Output() GetExperimentTemplateSpecFaultConditionsV2Output {
+	return i.ToGetExperimentTemplateSpecFaultConditionsV2OutputWithContext(context.Background())
+}
+
+func (i GetExperimentTemplateSpecFaultConditionsV2Args) ToGetExperimentTemplateSpecFaultConditionsV2OutputWithContext(ctx context.Context) GetExperimentTemplateSpecFaultConditionsV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentTemplateSpecFaultConditionsV2Output)
+}
+
+// GetExperimentTemplateSpecFaultConditionsV2ArrayInput is an input type that accepts GetExperimentTemplateSpecFaultConditionsV2Array and GetExperimentTemplateSpecFaultConditionsV2ArrayOutput values.
+// You can construct a concrete instance of `GetExperimentTemplateSpecFaultConditionsV2ArrayInput` via:
+//
+//	GetExperimentTemplateSpecFaultConditionsV2Array{ GetExperimentTemplateSpecFaultConditionsV2Args{...} }
+type GetExperimentTemplateSpecFaultConditionsV2ArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentTemplateSpecFaultConditionsV2ArrayOutput() GetExperimentTemplateSpecFaultConditionsV2ArrayOutput
+	ToGetExperimentTemplateSpecFaultConditionsV2ArrayOutputWithContext(context.Context) GetExperimentTemplateSpecFaultConditionsV2ArrayOutput
+}
+
+type GetExperimentTemplateSpecFaultConditionsV2Array []GetExperimentTemplateSpecFaultConditionsV2Input
+
+func (GetExperimentTemplateSpecFaultConditionsV2Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentTemplateSpecFaultConditionsV2)(nil)).Elem()
+}
+
+func (i GetExperimentTemplateSpecFaultConditionsV2Array) ToGetExperimentTemplateSpecFaultConditionsV2ArrayOutput() GetExperimentTemplateSpecFaultConditionsV2ArrayOutput {
+	return i.ToGetExperimentTemplateSpecFaultConditionsV2ArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentTemplateSpecFaultConditionsV2Array) ToGetExperimentTemplateSpecFaultConditionsV2ArrayOutputWithContext(ctx context.Context) GetExperimentTemplateSpecFaultConditionsV2ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentTemplateSpecFaultConditionsV2ArrayOutput)
+}
+
+type GetExperimentTemplateSpecFaultConditionsV2Output struct{ *pulumi.OutputState }
+
+func (GetExperimentTemplateSpecFaultConditionsV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentTemplateSpecFaultConditionsV2)(nil)).Elem()
+}
+
+func (o GetExperimentTemplateSpecFaultConditionsV2Output) ToGetExperimentTemplateSpecFaultConditionsV2Output() GetExperimentTemplateSpecFaultConditionsV2Output {
+	return o
+}
+
+func (o GetExperimentTemplateSpecFaultConditionsV2Output) ToGetExperimentTemplateSpecFaultConditionsV2OutputWithContext(ctx context.Context) GetExperimentTemplateSpecFaultConditionsV2Output {
+	return o
+}
+
+// Logical operator combining values (AND/OR).
+func (o GetExperimentTemplateSpecFaultConditionsV2Output) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentTemplateSpecFaultConditionsV2) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Boolean-parseable condition values (may include <+input>).
+func (o GetExperimentTemplateSpecFaultConditionsV2Output) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentTemplateSpecFaultConditionsV2) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentTemplateSpecFaultConditionsV2ArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentTemplateSpecFaultConditionsV2ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentTemplateSpecFaultConditionsV2)(nil)).Elem()
+}
+
+func (o GetExperimentTemplateSpecFaultConditionsV2ArrayOutput) ToGetExperimentTemplateSpecFaultConditionsV2ArrayOutput() GetExperimentTemplateSpecFaultConditionsV2ArrayOutput {
+	return o
+}
+
+func (o GetExperimentTemplateSpecFaultConditionsV2ArrayOutput) ToGetExperimentTemplateSpecFaultConditionsV2ArrayOutputWithContext(ctx context.Context) GetExperimentTemplateSpecFaultConditionsV2ArrayOutput {
+	return o
+}
+
+func (o GetExperimentTemplateSpecFaultConditionsV2ArrayOutput) Index(i pulumi.IntInput) GetExperimentTemplateSpecFaultConditionsV2Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentTemplateSpecFaultConditionsV2 {
+		return vs[0].([]GetExperimentTemplateSpecFaultConditionsV2)[vs[1].(int)]
+	}).(GetExperimentTemplateSpecFaultConditionsV2Output)
 }
 
 type GetExperimentTemplateSpecFaultValue struct {
@@ -23176,8 +24379,12 @@ func (o GetExperimentTemplateSpecFaultValueArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetExperimentTemplateSpecProbe struct {
-	// Probe execution conditions
+	// Deprecated: not part of the experiment template API; use conditions_v2.
+	//
+	// Deprecated: conditions (execute_upon) is not supported by the experiment template API. Use conditionsV2 instead.
 	Conditions []GetExperimentTemplateSpecProbeCondition `pulumi:"conditions"`
+	// Execution conditions (operator + values) gating whether this runs.
+	ConditionsV2s []GetExperimentTemplateSpecProbeConditionsV2 `pulumi:"conditionsV2s"`
 	// Probe duration
 	Duration string `pulumi:"duration"`
 	// Whether to enable data collection
@@ -23210,8 +24417,12 @@ type GetExperimentTemplateSpecProbeInput interface {
 }
 
 type GetExperimentTemplateSpecProbeArgs struct {
-	// Probe execution conditions
+	// Deprecated: not part of the experiment template API; use conditions_v2.
+	//
+	// Deprecated: conditions (execute_upon) is not supported by the experiment template API. Use conditionsV2 instead.
 	Conditions GetExperimentTemplateSpecProbeConditionArrayInput `pulumi:"conditions"`
+	// Execution conditions (operator + values) gating whether this runs.
+	ConditionsV2s GetExperimentTemplateSpecProbeConditionsV2ArrayInput `pulumi:"conditionsV2s"`
 	// Probe duration
 	Duration pulumi.StringInput `pulumi:"duration"`
 	// Whether to enable data collection
@@ -23283,9 +24494,18 @@ func (o GetExperimentTemplateSpecProbeOutput) ToGetExperimentTemplateSpecProbeOu
 	return o
 }
 
-// Probe execution conditions
+// Deprecated: not part of the experiment template API; use conditions_v2.
+//
+// Deprecated: conditions (execute_upon) is not supported by the experiment template API. Use conditionsV2 instead.
 func (o GetExperimentTemplateSpecProbeOutput) Conditions() GetExperimentTemplateSpecProbeConditionArrayOutput {
 	return o.ApplyT(func(v GetExperimentTemplateSpecProbe) []GetExperimentTemplateSpecProbeCondition { return v.Conditions }).(GetExperimentTemplateSpecProbeConditionArrayOutput)
+}
+
+// Execution conditions (operator + values) gating whether this runs.
+func (o GetExperimentTemplateSpecProbeOutput) ConditionsV2s() GetExperimentTemplateSpecProbeConditionsV2ArrayOutput {
+	return o.ApplyT(func(v GetExperimentTemplateSpecProbe) []GetExperimentTemplateSpecProbeConditionsV2 {
+		return v.ConditionsV2s
+	}).(GetExperimentTemplateSpecProbeConditionsV2ArrayOutput)
 }
 
 // Probe duration
@@ -23448,6 +24668,112 @@ func (o GetExperimentTemplateSpecProbeConditionArrayOutput) Index(i pulumi.IntIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentTemplateSpecProbeCondition {
 		return vs[0].([]GetExperimentTemplateSpecProbeCondition)[vs[1].(int)]
 	}).(GetExperimentTemplateSpecProbeConditionOutput)
+}
+
+type GetExperimentTemplateSpecProbeConditionsV2 struct {
+	// Logical operator combining values (AND/OR).
+	Operator string `pulumi:"operator"`
+	// Boolean-parseable condition values (may include <+input>).
+	Values []string `pulumi:"values"`
+}
+
+// GetExperimentTemplateSpecProbeConditionsV2Input is an input type that accepts GetExperimentTemplateSpecProbeConditionsV2Args and GetExperimentTemplateSpecProbeConditionsV2Output values.
+// You can construct a concrete instance of `GetExperimentTemplateSpecProbeConditionsV2Input` via:
+//
+//	GetExperimentTemplateSpecProbeConditionsV2Args{...}
+type GetExperimentTemplateSpecProbeConditionsV2Input interface {
+	pulumi.Input
+
+	ToGetExperimentTemplateSpecProbeConditionsV2Output() GetExperimentTemplateSpecProbeConditionsV2Output
+	ToGetExperimentTemplateSpecProbeConditionsV2OutputWithContext(context.Context) GetExperimentTemplateSpecProbeConditionsV2Output
+}
+
+type GetExperimentTemplateSpecProbeConditionsV2Args struct {
+	// Logical operator combining values (AND/OR).
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Boolean-parseable condition values (may include <+input>).
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetExperimentTemplateSpecProbeConditionsV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentTemplateSpecProbeConditionsV2)(nil)).Elem()
+}
+
+func (i GetExperimentTemplateSpecProbeConditionsV2Args) ToGetExperimentTemplateSpecProbeConditionsV2Output() GetExperimentTemplateSpecProbeConditionsV2Output {
+	return i.ToGetExperimentTemplateSpecProbeConditionsV2OutputWithContext(context.Background())
+}
+
+func (i GetExperimentTemplateSpecProbeConditionsV2Args) ToGetExperimentTemplateSpecProbeConditionsV2OutputWithContext(ctx context.Context) GetExperimentTemplateSpecProbeConditionsV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentTemplateSpecProbeConditionsV2Output)
+}
+
+// GetExperimentTemplateSpecProbeConditionsV2ArrayInput is an input type that accepts GetExperimentTemplateSpecProbeConditionsV2Array and GetExperimentTemplateSpecProbeConditionsV2ArrayOutput values.
+// You can construct a concrete instance of `GetExperimentTemplateSpecProbeConditionsV2ArrayInput` via:
+//
+//	GetExperimentTemplateSpecProbeConditionsV2Array{ GetExperimentTemplateSpecProbeConditionsV2Args{...} }
+type GetExperimentTemplateSpecProbeConditionsV2ArrayInput interface {
+	pulumi.Input
+
+	ToGetExperimentTemplateSpecProbeConditionsV2ArrayOutput() GetExperimentTemplateSpecProbeConditionsV2ArrayOutput
+	ToGetExperimentTemplateSpecProbeConditionsV2ArrayOutputWithContext(context.Context) GetExperimentTemplateSpecProbeConditionsV2ArrayOutput
+}
+
+type GetExperimentTemplateSpecProbeConditionsV2Array []GetExperimentTemplateSpecProbeConditionsV2Input
+
+func (GetExperimentTemplateSpecProbeConditionsV2Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentTemplateSpecProbeConditionsV2)(nil)).Elem()
+}
+
+func (i GetExperimentTemplateSpecProbeConditionsV2Array) ToGetExperimentTemplateSpecProbeConditionsV2ArrayOutput() GetExperimentTemplateSpecProbeConditionsV2ArrayOutput {
+	return i.ToGetExperimentTemplateSpecProbeConditionsV2ArrayOutputWithContext(context.Background())
+}
+
+func (i GetExperimentTemplateSpecProbeConditionsV2Array) ToGetExperimentTemplateSpecProbeConditionsV2ArrayOutputWithContext(ctx context.Context) GetExperimentTemplateSpecProbeConditionsV2ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExperimentTemplateSpecProbeConditionsV2ArrayOutput)
+}
+
+type GetExperimentTemplateSpecProbeConditionsV2Output struct{ *pulumi.OutputState }
+
+func (GetExperimentTemplateSpecProbeConditionsV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExperimentTemplateSpecProbeConditionsV2)(nil)).Elem()
+}
+
+func (o GetExperimentTemplateSpecProbeConditionsV2Output) ToGetExperimentTemplateSpecProbeConditionsV2Output() GetExperimentTemplateSpecProbeConditionsV2Output {
+	return o
+}
+
+func (o GetExperimentTemplateSpecProbeConditionsV2Output) ToGetExperimentTemplateSpecProbeConditionsV2OutputWithContext(ctx context.Context) GetExperimentTemplateSpecProbeConditionsV2Output {
+	return o
+}
+
+// Logical operator combining values (AND/OR).
+func (o GetExperimentTemplateSpecProbeConditionsV2Output) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExperimentTemplateSpecProbeConditionsV2) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Boolean-parseable condition values (may include <+input>).
+func (o GetExperimentTemplateSpecProbeConditionsV2Output) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExperimentTemplateSpecProbeConditionsV2) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetExperimentTemplateSpecProbeConditionsV2ArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExperimentTemplateSpecProbeConditionsV2ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExperimentTemplateSpecProbeConditionsV2)(nil)).Elem()
+}
+
+func (o GetExperimentTemplateSpecProbeConditionsV2ArrayOutput) ToGetExperimentTemplateSpecProbeConditionsV2ArrayOutput() GetExperimentTemplateSpecProbeConditionsV2ArrayOutput {
+	return o
+}
+
+func (o GetExperimentTemplateSpecProbeConditionsV2ArrayOutput) ToGetExperimentTemplateSpecProbeConditionsV2ArrayOutputWithContext(ctx context.Context) GetExperimentTemplateSpecProbeConditionsV2ArrayOutput {
+	return o
+}
+
+func (o GetExperimentTemplateSpecProbeConditionsV2ArrayOutput) Index(i pulumi.IntInput) GetExperimentTemplateSpecProbeConditionsV2Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExperimentTemplateSpecProbeConditionsV2 {
+		return vs[0].([]GetExperimentTemplateSpecProbeConditionsV2)[vs[1].(int)]
+	}).(GetExperimentTemplateSpecProbeConditionsV2Output)
 }
 
 type GetExperimentTemplateSpecProbeValue struct {
@@ -25669,6 +26995,474 @@ func (o GetInfrastructureV2ProxyPtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetInfrastructureV2Resources struct {
+	// Maximum compute resources allowed for the infrastructure pods.
+	Limits *GetInfrastructureV2ResourcesLimits `pulumi:"limits"`
+	// Minimum compute resources requested for the infrastructure pods.
+	Requests *GetInfrastructureV2ResourcesRequests `pulumi:"requests"`
+}
+
+// GetInfrastructureV2ResourcesInput is an input type that accepts GetInfrastructureV2ResourcesArgs and GetInfrastructureV2ResourcesOutput values.
+// You can construct a concrete instance of `GetInfrastructureV2ResourcesInput` via:
+//
+//	GetInfrastructureV2ResourcesArgs{...}
+type GetInfrastructureV2ResourcesInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureV2ResourcesOutput() GetInfrastructureV2ResourcesOutput
+	ToGetInfrastructureV2ResourcesOutputWithContext(context.Context) GetInfrastructureV2ResourcesOutput
+}
+
+type GetInfrastructureV2ResourcesArgs struct {
+	// Maximum compute resources allowed for the infrastructure pods.
+	Limits GetInfrastructureV2ResourcesLimitsPtrInput `pulumi:"limits"`
+	// Minimum compute resources requested for the infrastructure pods.
+	Requests GetInfrastructureV2ResourcesRequestsPtrInput `pulumi:"requests"`
+}
+
+func (GetInfrastructureV2ResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureV2Resources)(nil)).Elem()
+}
+
+func (i GetInfrastructureV2ResourcesArgs) ToGetInfrastructureV2ResourcesOutput() GetInfrastructureV2ResourcesOutput {
+	return i.ToGetInfrastructureV2ResourcesOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureV2ResourcesArgs) ToGetInfrastructureV2ResourcesOutputWithContext(ctx context.Context) GetInfrastructureV2ResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureV2ResourcesOutput)
+}
+
+func (i GetInfrastructureV2ResourcesArgs) ToGetInfrastructureV2ResourcesPtrOutput() GetInfrastructureV2ResourcesPtrOutput {
+	return i.ToGetInfrastructureV2ResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureV2ResourcesArgs) ToGetInfrastructureV2ResourcesPtrOutputWithContext(ctx context.Context) GetInfrastructureV2ResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureV2ResourcesOutput).ToGetInfrastructureV2ResourcesPtrOutputWithContext(ctx)
+}
+
+// GetInfrastructureV2ResourcesPtrInput is an input type that accepts GetInfrastructureV2ResourcesArgs, GetInfrastructureV2ResourcesPtr and GetInfrastructureV2ResourcesPtrOutput values.
+// You can construct a concrete instance of `GetInfrastructureV2ResourcesPtrInput` via:
+//
+//	        GetInfrastructureV2ResourcesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetInfrastructureV2ResourcesPtrInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureV2ResourcesPtrOutput() GetInfrastructureV2ResourcesPtrOutput
+	ToGetInfrastructureV2ResourcesPtrOutputWithContext(context.Context) GetInfrastructureV2ResourcesPtrOutput
+}
+
+type getInfrastructureV2ResourcesPtrType GetInfrastructureV2ResourcesArgs
+
+func GetInfrastructureV2ResourcesPtr(v *GetInfrastructureV2ResourcesArgs) GetInfrastructureV2ResourcesPtrInput {
+	return (*getInfrastructureV2ResourcesPtrType)(v)
+}
+
+func (*getInfrastructureV2ResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInfrastructureV2Resources)(nil)).Elem()
+}
+
+func (i *getInfrastructureV2ResourcesPtrType) ToGetInfrastructureV2ResourcesPtrOutput() GetInfrastructureV2ResourcesPtrOutput {
+	return i.ToGetInfrastructureV2ResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *getInfrastructureV2ResourcesPtrType) ToGetInfrastructureV2ResourcesPtrOutputWithContext(ctx context.Context) GetInfrastructureV2ResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureV2ResourcesPtrOutput)
+}
+
+type GetInfrastructureV2ResourcesOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureV2ResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureV2Resources)(nil)).Elem()
+}
+
+func (o GetInfrastructureV2ResourcesOutput) ToGetInfrastructureV2ResourcesOutput() GetInfrastructureV2ResourcesOutput {
+	return o
+}
+
+func (o GetInfrastructureV2ResourcesOutput) ToGetInfrastructureV2ResourcesOutputWithContext(ctx context.Context) GetInfrastructureV2ResourcesOutput {
+	return o
+}
+
+func (o GetInfrastructureV2ResourcesOutput) ToGetInfrastructureV2ResourcesPtrOutput() GetInfrastructureV2ResourcesPtrOutput {
+	return o.ToGetInfrastructureV2ResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o GetInfrastructureV2ResourcesOutput) ToGetInfrastructureV2ResourcesPtrOutputWithContext(ctx context.Context) GetInfrastructureV2ResourcesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInfrastructureV2Resources) *GetInfrastructureV2Resources {
+		return &v
+	}).(GetInfrastructureV2ResourcesPtrOutput)
+}
+
+// Maximum compute resources allowed for the infrastructure pods.
+func (o GetInfrastructureV2ResourcesOutput) Limits() GetInfrastructureV2ResourcesLimitsPtrOutput {
+	return o.ApplyT(func(v GetInfrastructureV2Resources) *GetInfrastructureV2ResourcesLimits { return v.Limits }).(GetInfrastructureV2ResourcesLimitsPtrOutput)
+}
+
+// Minimum compute resources requested for the infrastructure pods.
+func (o GetInfrastructureV2ResourcesOutput) Requests() GetInfrastructureV2ResourcesRequestsPtrOutput {
+	return o.ApplyT(func(v GetInfrastructureV2Resources) *GetInfrastructureV2ResourcesRequests { return v.Requests }).(GetInfrastructureV2ResourcesRequestsPtrOutput)
+}
+
+type GetInfrastructureV2ResourcesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureV2ResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInfrastructureV2Resources)(nil)).Elem()
+}
+
+func (o GetInfrastructureV2ResourcesPtrOutput) ToGetInfrastructureV2ResourcesPtrOutput() GetInfrastructureV2ResourcesPtrOutput {
+	return o
+}
+
+func (o GetInfrastructureV2ResourcesPtrOutput) ToGetInfrastructureV2ResourcesPtrOutputWithContext(ctx context.Context) GetInfrastructureV2ResourcesPtrOutput {
+	return o
+}
+
+func (o GetInfrastructureV2ResourcesPtrOutput) Elem() GetInfrastructureV2ResourcesOutput {
+	return o.ApplyT(func(v *GetInfrastructureV2Resources) GetInfrastructureV2Resources {
+		if v != nil {
+			return *v
+		}
+		var ret GetInfrastructureV2Resources
+		return ret
+	}).(GetInfrastructureV2ResourcesOutput)
+}
+
+// Maximum compute resources allowed for the infrastructure pods.
+func (o GetInfrastructureV2ResourcesPtrOutput) Limits() GetInfrastructureV2ResourcesLimitsPtrOutput {
+	return o.ApplyT(func(v *GetInfrastructureV2Resources) *GetInfrastructureV2ResourcesLimits {
+		if v == nil {
+			return nil
+		}
+		return v.Limits
+	}).(GetInfrastructureV2ResourcesLimitsPtrOutput)
+}
+
+// Minimum compute resources requested for the infrastructure pods.
+func (o GetInfrastructureV2ResourcesPtrOutput) Requests() GetInfrastructureV2ResourcesRequestsPtrOutput {
+	return o.ApplyT(func(v *GetInfrastructureV2Resources) *GetInfrastructureV2ResourcesRequests {
+		if v == nil {
+			return nil
+		}
+		return v.Requests
+	}).(GetInfrastructureV2ResourcesRequestsPtrOutput)
+}
+
+type GetInfrastructureV2ResourcesLimits struct {
+	// CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+	Cpu *string `pulumi:"cpu"`
+	// Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+	Memory *string `pulumi:"memory"`
+}
+
+// GetInfrastructureV2ResourcesLimitsInput is an input type that accepts GetInfrastructureV2ResourcesLimitsArgs and GetInfrastructureV2ResourcesLimitsOutput values.
+// You can construct a concrete instance of `GetInfrastructureV2ResourcesLimitsInput` via:
+//
+//	GetInfrastructureV2ResourcesLimitsArgs{...}
+type GetInfrastructureV2ResourcesLimitsInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureV2ResourcesLimitsOutput() GetInfrastructureV2ResourcesLimitsOutput
+	ToGetInfrastructureV2ResourcesLimitsOutputWithContext(context.Context) GetInfrastructureV2ResourcesLimitsOutput
+}
+
+type GetInfrastructureV2ResourcesLimitsArgs struct {
+	// CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+	Cpu pulumi.StringPtrInput `pulumi:"cpu"`
+	// Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+	Memory pulumi.StringPtrInput `pulumi:"memory"`
+}
+
+func (GetInfrastructureV2ResourcesLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureV2ResourcesLimits)(nil)).Elem()
+}
+
+func (i GetInfrastructureV2ResourcesLimitsArgs) ToGetInfrastructureV2ResourcesLimitsOutput() GetInfrastructureV2ResourcesLimitsOutput {
+	return i.ToGetInfrastructureV2ResourcesLimitsOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureV2ResourcesLimitsArgs) ToGetInfrastructureV2ResourcesLimitsOutputWithContext(ctx context.Context) GetInfrastructureV2ResourcesLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureV2ResourcesLimitsOutput)
+}
+
+func (i GetInfrastructureV2ResourcesLimitsArgs) ToGetInfrastructureV2ResourcesLimitsPtrOutput() GetInfrastructureV2ResourcesLimitsPtrOutput {
+	return i.ToGetInfrastructureV2ResourcesLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureV2ResourcesLimitsArgs) ToGetInfrastructureV2ResourcesLimitsPtrOutputWithContext(ctx context.Context) GetInfrastructureV2ResourcesLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureV2ResourcesLimitsOutput).ToGetInfrastructureV2ResourcesLimitsPtrOutputWithContext(ctx)
+}
+
+// GetInfrastructureV2ResourcesLimitsPtrInput is an input type that accepts GetInfrastructureV2ResourcesLimitsArgs, GetInfrastructureV2ResourcesLimitsPtr and GetInfrastructureV2ResourcesLimitsPtrOutput values.
+// You can construct a concrete instance of `GetInfrastructureV2ResourcesLimitsPtrInput` via:
+//
+//	        GetInfrastructureV2ResourcesLimitsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetInfrastructureV2ResourcesLimitsPtrInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureV2ResourcesLimitsPtrOutput() GetInfrastructureV2ResourcesLimitsPtrOutput
+	ToGetInfrastructureV2ResourcesLimitsPtrOutputWithContext(context.Context) GetInfrastructureV2ResourcesLimitsPtrOutput
+}
+
+type getInfrastructureV2ResourcesLimitsPtrType GetInfrastructureV2ResourcesLimitsArgs
+
+func GetInfrastructureV2ResourcesLimitsPtr(v *GetInfrastructureV2ResourcesLimitsArgs) GetInfrastructureV2ResourcesLimitsPtrInput {
+	return (*getInfrastructureV2ResourcesLimitsPtrType)(v)
+}
+
+func (*getInfrastructureV2ResourcesLimitsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInfrastructureV2ResourcesLimits)(nil)).Elem()
+}
+
+func (i *getInfrastructureV2ResourcesLimitsPtrType) ToGetInfrastructureV2ResourcesLimitsPtrOutput() GetInfrastructureV2ResourcesLimitsPtrOutput {
+	return i.ToGetInfrastructureV2ResourcesLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i *getInfrastructureV2ResourcesLimitsPtrType) ToGetInfrastructureV2ResourcesLimitsPtrOutputWithContext(ctx context.Context) GetInfrastructureV2ResourcesLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureV2ResourcesLimitsPtrOutput)
+}
+
+type GetInfrastructureV2ResourcesLimitsOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureV2ResourcesLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureV2ResourcesLimits)(nil)).Elem()
+}
+
+func (o GetInfrastructureV2ResourcesLimitsOutput) ToGetInfrastructureV2ResourcesLimitsOutput() GetInfrastructureV2ResourcesLimitsOutput {
+	return o
+}
+
+func (o GetInfrastructureV2ResourcesLimitsOutput) ToGetInfrastructureV2ResourcesLimitsOutputWithContext(ctx context.Context) GetInfrastructureV2ResourcesLimitsOutput {
+	return o
+}
+
+func (o GetInfrastructureV2ResourcesLimitsOutput) ToGetInfrastructureV2ResourcesLimitsPtrOutput() GetInfrastructureV2ResourcesLimitsPtrOutput {
+	return o.ToGetInfrastructureV2ResourcesLimitsPtrOutputWithContext(context.Background())
+}
+
+func (o GetInfrastructureV2ResourcesLimitsOutput) ToGetInfrastructureV2ResourcesLimitsPtrOutputWithContext(ctx context.Context) GetInfrastructureV2ResourcesLimitsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInfrastructureV2ResourcesLimits) *GetInfrastructureV2ResourcesLimits {
+		return &v
+	}).(GetInfrastructureV2ResourcesLimitsPtrOutput)
+}
+
+// CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+func (o GetInfrastructureV2ResourcesLimitsOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInfrastructureV2ResourcesLimits) *string { return v.Cpu }).(pulumi.StringPtrOutput)
+}
+
+// Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+func (o GetInfrastructureV2ResourcesLimitsOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInfrastructureV2ResourcesLimits) *string { return v.Memory }).(pulumi.StringPtrOutput)
+}
+
+type GetInfrastructureV2ResourcesLimitsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureV2ResourcesLimitsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInfrastructureV2ResourcesLimits)(nil)).Elem()
+}
+
+func (o GetInfrastructureV2ResourcesLimitsPtrOutput) ToGetInfrastructureV2ResourcesLimitsPtrOutput() GetInfrastructureV2ResourcesLimitsPtrOutput {
+	return o
+}
+
+func (o GetInfrastructureV2ResourcesLimitsPtrOutput) ToGetInfrastructureV2ResourcesLimitsPtrOutputWithContext(ctx context.Context) GetInfrastructureV2ResourcesLimitsPtrOutput {
+	return o
+}
+
+func (o GetInfrastructureV2ResourcesLimitsPtrOutput) Elem() GetInfrastructureV2ResourcesLimitsOutput {
+	return o.ApplyT(func(v *GetInfrastructureV2ResourcesLimits) GetInfrastructureV2ResourcesLimits {
+		if v != nil {
+			return *v
+		}
+		var ret GetInfrastructureV2ResourcesLimits
+		return ret
+	}).(GetInfrastructureV2ResourcesLimitsOutput)
+}
+
+// CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+func (o GetInfrastructureV2ResourcesLimitsPtrOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfrastructureV2ResourcesLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+func (o GetInfrastructureV2ResourcesLimitsPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfrastructureV2ResourcesLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetInfrastructureV2ResourcesRequests struct {
+	// CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+	Cpu *string `pulumi:"cpu"`
+	// Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+	Memory *string `pulumi:"memory"`
+}
+
+// GetInfrastructureV2ResourcesRequestsInput is an input type that accepts GetInfrastructureV2ResourcesRequestsArgs and GetInfrastructureV2ResourcesRequestsOutput values.
+// You can construct a concrete instance of `GetInfrastructureV2ResourcesRequestsInput` via:
+//
+//	GetInfrastructureV2ResourcesRequestsArgs{...}
+type GetInfrastructureV2ResourcesRequestsInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureV2ResourcesRequestsOutput() GetInfrastructureV2ResourcesRequestsOutput
+	ToGetInfrastructureV2ResourcesRequestsOutputWithContext(context.Context) GetInfrastructureV2ResourcesRequestsOutput
+}
+
+type GetInfrastructureV2ResourcesRequestsArgs struct {
+	// CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+	Cpu pulumi.StringPtrInput `pulumi:"cpu"`
+	// Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+	Memory pulumi.StringPtrInput `pulumi:"memory"`
+}
+
+func (GetInfrastructureV2ResourcesRequestsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureV2ResourcesRequests)(nil)).Elem()
+}
+
+func (i GetInfrastructureV2ResourcesRequestsArgs) ToGetInfrastructureV2ResourcesRequestsOutput() GetInfrastructureV2ResourcesRequestsOutput {
+	return i.ToGetInfrastructureV2ResourcesRequestsOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureV2ResourcesRequestsArgs) ToGetInfrastructureV2ResourcesRequestsOutputWithContext(ctx context.Context) GetInfrastructureV2ResourcesRequestsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureV2ResourcesRequestsOutput)
+}
+
+func (i GetInfrastructureV2ResourcesRequestsArgs) ToGetInfrastructureV2ResourcesRequestsPtrOutput() GetInfrastructureV2ResourcesRequestsPtrOutput {
+	return i.ToGetInfrastructureV2ResourcesRequestsPtrOutputWithContext(context.Background())
+}
+
+func (i GetInfrastructureV2ResourcesRequestsArgs) ToGetInfrastructureV2ResourcesRequestsPtrOutputWithContext(ctx context.Context) GetInfrastructureV2ResourcesRequestsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureV2ResourcesRequestsOutput).ToGetInfrastructureV2ResourcesRequestsPtrOutputWithContext(ctx)
+}
+
+// GetInfrastructureV2ResourcesRequestsPtrInput is an input type that accepts GetInfrastructureV2ResourcesRequestsArgs, GetInfrastructureV2ResourcesRequestsPtr and GetInfrastructureV2ResourcesRequestsPtrOutput values.
+// You can construct a concrete instance of `GetInfrastructureV2ResourcesRequestsPtrInput` via:
+//
+//	        GetInfrastructureV2ResourcesRequestsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetInfrastructureV2ResourcesRequestsPtrInput interface {
+	pulumi.Input
+
+	ToGetInfrastructureV2ResourcesRequestsPtrOutput() GetInfrastructureV2ResourcesRequestsPtrOutput
+	ToGetInfrastructureV2ResourcesRequestsPtrOutputWithContext(context.Context) GetInfrastructureV2ResourcesRequestsPtrOutput
+}
+
+type getInfrastructureV2ResourcesRequestsPtrType GetInfrastructureV2ResourcesRequestsArgs
+
+func GetInfrastructureV2ResourcesRequestsPtr(v *GetInfrastructureV2ResourcesRequestsArgs) GetInfrastructureV2ResourcesRequestsPtrInput {
+	return (*getInfrastructureV2ResourcesRequestsPtrType)(v)
+}
+
+func (*getInfrastructureV2ResourcesRequestsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInfrastructureV2ResourcesRequests)(nil)).Elem()
+}
+
+func (i *getInfrastructureV2ResourcesRequestsPtrType) ToGetInfrastructureV2ResourcesRequestsPtrOutput() GetInfrastructureV2ResourcesRequestsPtrOutput {
+	return i.ToGetInfrastructureV2ResourcesRequestsPtrOutputWithContext(context.Background())
+}
+
+func (i *getInfrastructureV2ResourcesRequestsPtrType) ToGetInfrastructureV2ResourcesRequestsPtrOutputWithContext(ctx context.Context) GetInfrastructureV2ResourcesRequestsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInfrastructureV2ResourcesRequestsPtrOutput)
+}
+
+type GetInfrastructureV2ResourcesRequestsOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureV2ResourcesRequestsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInfrastructureV2ResourcesRequests)(nil)).Elem()
+}
+
+func (o GetInfrastructureV2ResourcesRequestsOutput) ToGetInfrastructureV2ResourcesRequestsOutput() GetInfrastructureV2ResourcesRequestsOutput {
+	return o
+}
+
+func (o GetInfrastructureV2ResourcesRequestsOutput) ToGetInfrastructureV2ResourcesRequestsOutputWithContext(ctx context.Context) GetInfrastructureV2ResourcesRequestsOutput {
+	return o
+}
+
+func (o GetInfrastructureV2ResourcesRequestsOutput) ToGetInfrastructureV2ResourcesRequestsPtrOutput() GetInfrastructureV2ResourcesRequestsPtrOutput {
+	return o.ToGetInfrastructureV2ResourcesRequestsPtrOutputWithContext(context.Background())
+}
+
+func (o GetInfrastructureV2ResourcesRequestsOutput) ToGetInfrastructureV2ResourcesRequestsPtrOutputWithContext(ctx context.Context) GetInfrastructureV2ResourcesRequestsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetInfrastructureV2ResourcesRequests) *GetInfrastructureV2ResourcesRequests {
+		return &v
+	}).(GetInfrastructureV2ResourcesRequestsPtrOutput)
+}
+
+// CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+func (o GetInfrastructureV2ResourcesRequestsOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInfrastructureV2ResourcesRequests) *string { return v.Cpu }).(pulumi.StringPtrOutput)
+}
+
+// Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+func (o GetInfrastructureV2ResourcesRequestsOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInfrastructureV2ResourcesRequests) *string { return v.Memory }).(pulumi.StringPtrOutput)
+}
+
+type GetInfrastructureV2ResourcesRequestsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetInfrastructureV2ResourcesRequestsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetInfrastructureV2ResourcesRequests)(nil)).Elem()
+}
+
+func (o GetInfrastructureV2ResourcesRequestsPtrOutput) ToGetInfrastructureV2ResourcesRequestsPtrOutput() GetInfrastructureV2ResourcesRequestsPtrOutput {
+	return o
+}
+
+func (o GetInfrastructureV2ResourcesRequestsPtrOutput) ToGetInfrastructureV2ResourcesRequestsPtrOutputWithContext(ctx context.Context) GetInfrastructureV2ResourcesRequestsPtrOutput {
+	return o
+}
+
+func (o GetInfrastructureV2ResourcesRequestsPtrOutput) Elem() GetInfrastructureV2ResourcesRequestsOutput {
+	return o.ApplyT(func(v *GetInfrastructureV2ResourcesRequests) GetInfrastructureV2ResourcesRequests {
+		if v != nil {
+			return *v
+		}
+		var ret GetInfrastructureV2ResourcesRequests
+		return ret
+	}).(GetInfrastructureV2ResourcesRequestsOutput)
+}
+
+// CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+func (o GetInfrastructureV2ResourcesRequestsPtrOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfrastructureV2ResourcesRequests) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+func (o GetInfrastructureV2ResourcesRequestsPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetInfrastructureV2ResourcesRequests) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetInfrastructureV2Toleration struct {
 	// Effect indicates the taint effect to match. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
 	Effect string `pulumi:"effect"`
@@ -26050,13 +27844,2681 @@ func (o GetInfrastructureV2VolumeMountArrayOutput) Index(i pulumi.IntInput) GetI
 	}).(GetInfrastructureV2VolumeMountOutput)
 }
 
+type GetProbeTemplateApmProbe struct {
+	// APM provider type. Valid values: Prometheus, AppDynamics, SplunkObservability, Dynatrace, NewRelic, Datadog, GCPCloudMonitoring.
+	ApmType string `pulumi:"apmType"`
+	// AppDynamics-specific inputs. Required when apm*type is 'AppDynamics'.
+	AppDynamicsInputs *GetProbeTemplateApmProbeAppDynamicsInputs `pulumi:"appDynamicsInputs"`
+	// Comparator for APM metric validation.
+	Comparator *GetProbeTemplateApmProbeComparator `pulumi:"comparator"`
+	// Datadog-specific inputs. Required when apm*type is 'Datadog'.
+	DatadogInputs *GetProbeTemplateApmProbeDatadogInputs `pulumi:"datadogInputs"`
+	// Dynatrace-specific inputs. Required when apm*type is 'Dynatrace'.
+	DynatraceInputs *GetProbeTemplateApmProbeDynatraceInputs `pulumi:"dynatraceInputs"`
+	// GCP Cloud Monitoring-specific inputs. Required when apm*type is 'GCPCloudMonitoring'.
+	GcpCloudMonitoringInputs *GetProbeTemplateApmProbeGcpCloudMonitoringInputs `pulumi:"gcpCloudMonitoringInputs"`
+	// NewRelic-specific inputs. Required when apm*type is 'NewRelic'.
+	NewRelicInputs *GetProbeTemplateApmProbeNewRelicInputs `pulumi:"newRelicInputs"`
+	// Prometheus-specific inputs. Required when apm*type is 'Prometheus'.
+	PrometheusInputs *GetProbeTemplateApmProbePrometheusInputs `pulumi:"prometheusInputs"`
+	// SplunkObservability-specific inputs. Required when apm*type is 'SplunkObservability'.
+	SplunkObservabilityInputs *GetProbeTemplateApmProbeSplunkObservabilityInputs `pulumi:"splunkObservabilityInputs"`
+}
+
+// GetProbeTemplateApmProbeInput is an input type that accepts GetProbeTemplateApmProbeArgs and GetProbeTemplateApmProbeOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeInput` via:
+//
+//	GetProbeTemplateApmProbeArgs{...}
+type GetProbeTemplateApmProbeInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeOutput() GetProbeTemplateApmProbeOutput
+	ToGetProbeTemplateApmProbeOutputWithContext(context.Context) GetProbeTemplateApmProbeOutput
+}
+
+type GetProbeTemplateApmProbeArgs struct {
+	// APM provider type. Valid values: Prometheus, AppDynamics, SplunkObservability, Dynatrace, NewRelic, Datadog, GCPCloudMonitoring.
+	ApmType pulumi.StringInput `pulumi:"apmType"`
+	// AppDynamics-specific inputs. Required when apm*type is 'AppDynamics'.
+	AppDynamicsInputs GetProbeTemplateApmProbeAppDynamicsInputsPtrInput `pulumi:"appDynamicsInputs"`
+	// Comparator for APM metric validation.
+	Comparator GetProbeTemplateApmProbeComparatorPtrInput `pulumi:"comparator"`
+	// Datadog-specific inputs. Required when apm*type is 'Datadog'.
+	DatadogInputs GetProbeTemplateApmProbeDatadogInputsPtrInput `pulumi:"datadogInputs"`
+	// Dynatrace-specific inputs. Required when apm*type is 'Dynatrace'.
+	DynatraceInputs GetProbeTemplateApmProbeDynatraceInputsPtrInput `pulumi:"dynatraceInputs"`
+	// GCP Cloud Monitoring-specific inputs. Required when apm*type is 'GCPCloudMonitoring'.
+	GcpCloudMonitoringInputs GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrInput `pulumi:"gcpCloudMonitoringInputs"`
+	// NewRelic-specific inputs. Required when apm*type is 'NewRelic'.
+	NewRelicInputs GetProbeTemplateApmProbeNewRelicInputsPtrInput `pulumi:"newRelicInputs"`
+	// Prometheus-specific inputs. Required when apm*type is 'Prometheus'.
+	PrometheusInputs GetProbeTemplateApmProbePrometheusInputsPtrInput `pulumi:"prometheusInputs"`
+	// SplunkObservability-specific inputs. Required when apm*type is 'SplunkObservability'.
+	SplunkObservabilityInputs GetProbeTemplateApmProbeSplunkObservabilityInputsPtrInput `pulumi:"splunkObservabilityInputs"`
+}
+
+func (GetProbeTemplateApmProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbe)(nil)).Elem()
+}
+
+func (i GetProbeTemplateApmProbeArgs) ToGetProbeTemplateApmProbeOutput() GetProbeTemplateApmProbeOutput {
+	return i.ToGetProbeTemplateApmProbeOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeArgs) ToGetProbeTemplateApmProbeOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeOutput)
+}
+
+func (i GetProbeTemplateApmProbeArgs) ToGetProbeTemplateApmProbePtrOutput() GetProbeTemplateApmProbePtrOutput {
+	return i.ToGetProbeTemplateApmProbePtrOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeArgs) ToGetProbeTemplateApmProbePtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeOutput).ToGetProbeTemplateApmProbePtrOutputWithContext(ctx)
+}
+
+// GetProbeTemplateApmProbePtrInput is an input type that accepts GetProbeTemplateApmProbeArgs, GetProbeTemplateApmProbePtr and GetProbeTemplateApmProbePtrOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbePtrInput` via:
+//
+//	        GetProbeTemplateApmProbeArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetProbeTemplateApmProbePtrInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbePtrOutput() GetProbeTemplateApmProbePtrOutput
+	ToGetProbeTemplateApmProbePtrOutputWithContext(context.Context) GetProbeTemplateApmProbePtrOutput
+}
+
+type getProbeTemplateApmProbePtrType GetProbeTemplateApmProbeArgs
+
+func GetProbeTemplateApmProbePtr(v *GetProbeTemplateApmProbeArgs) GetProbeTemplateApmProbePtrInput {
+	return (*getProbeTemplateApmProbePtrType)(v)
+}
+
+func (*getProbeTemplateApmProbePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbe)(nil)).Elem()
+}
+
+func (i *getProbeTemplateApmProbePtrType) ToGetProbeTemplateApmProbePtrOutput() GetProbeTemplateApmProbePtrOutput {
+	return i.ToGetProbeTemplateApmProbePtrOutputWithContext(context.Background())
+}
+
+func (i *getProbeTemplateApmProbePtrType) ToGetProbeTemplateApmProbePtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbePtrOutput)
+}
+
+type GetProbeTemplateApmProbeOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbe)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeOutput) ToGetProbeTemplateApmProbeOutput() GetProbeTemplateApmProbeOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeOutput) ToGetProbeTemplateApmProbeOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeOutput) ToGetProbeTemplateApmProbePtrOutput() GetProbeTemplateApmProbePtrOutput {
+	return o.ToGetProbeTemplateApmProbePtrOutputWithContext(context.Background())
+}
+
+func (o GetProbeTemplateApmProbeOutput) ToGetProbeTemplateApmProbePtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetProbeTemplateApmProbe) *GetProbeTemplateApmProbe {
+		return &v
+	}).(GetProbeTemplateApmProbePtrOutput)
+}
+
+// APM provider type. Valid values: Prometheus, AppDynamics, SplunkObservability, Dynatrace, NewRelic, Datadog, GCPCloudMonitoring.
+func (o GetProbeTemplateApmProbeOutput) ApmType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbe) string { return v.ApmType }).(pulumi.StringOutput)
+}
+
+// AppDynamics-specific inputs. Required when apm*type is 'AppDynamics'.
+func (o GetProbeTemplateApmProbeOutput) AppDynamicsInputs() GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbe) *GetProbeTemplateApmProbeAppDynamicsInputs {
+		return v.AppDynamicsInputs
+	}).(GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput)
+}
+
+// Comparator for APM metric validation.
+func (o GetProbeTemplateApmProbeOutput) Comparator() GetProbeTemplateApmProbeComparatorPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbe) *GetProbeTemplateApmProbeComparator { return v.Comparator }).(GetProbeTemplateApmProbeComparatorPtrOutput)
+}
+
+// Datadog-specific inputs. Required when apm*type is 'Datadog'.
+func (o GetProbeTemplateApmProbeOutput) DatadogInputs() GetProbeTemplateApmProbeDatadogInputsPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbe) *GetProbeTemplateApmProbeDatadogInputs { return v.DatadogInputs }).(GetProbeTemplateApmProbeDatadogInputsPtrOutput)
+}
+
+// Dynatrace-specific inputs. Required when apm*type is 'Dynatrace'.
+func (o GetProbeTemplateApmProbeOutput) DynatraceInputs() GetProbeTemplateApmProbeDynatraceInputsPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbe) *GetProbeTemplateApmProbeDynatraceInputs { return v.DynatraceInputs }).(GetProbeTemplateApmProbeDynatraceInputsPtrOutput)
+}
+
+// GCP Cloud Monitoring-specific inputs. Required when apm*type is 'GCPCloudMonitoring'.
+func (o GetProbeTemplateApmProbeOutput) GcpCloudMonitoringInputs() GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbe) *GetProbeTemplateApmProbeGcpCloudMonitoringInputs {
+		return v.GcpCloudMonitoringInputs
+	}).(GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput)
+}
+
+// NewRelic-specific inputs. Required when apm*type is 'NewRelic'.
+func (o GetProbeTemplateApmProbeOutput) NewRelicInputs() GetProbeTemplateApmProbeNewRelicInputsPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbe) *GetProbeTemplateApmProbeNewRelicInputs { return v.NewRelicInputs }).(GetProbeTemplateApmProbeNewRelicInputsPtrOutput)
+}
+
+// Prometheus-specific inputs. Required when apm*type is 'Prometheus'.
+func (o GetProbeTemplateApmProbeOutput) PrometheusInputs() GetProbeTemplateApmProbePrometheusInputsPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbe) *GetProbeTemplateApmProbePrometheusInputs { return v.PrometheusInputs }).(GetProbeTemplateApmProbePrometheusInputsPtrOutput)
+}
+
+// SplunkObservability-specific inputs. Required when apm*type is 'SplunkObservability'.
+func (o GetProbeTemplateApmProbeOutput) SplunkObservabilityInputs() GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbe) *GetProbeTemplateApmProbeSplunkObservabilityInputs {
+		return v.SplunkObservabilityInputs
+	}).(GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput)
+}
+
+type GetProbeTemplateApmProbePtrOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbe)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbePtrOutput) ToGetProbeTemplateApmProbePtrOutput() GetProbeTemplateApmProbePtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbePtrOutput) ToGetProbeTemplateApmProbePtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbePtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbePtrOutput) Elem() GetProbeTemplateApmProbeOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbe) GetProbeTemplateApmProbe {
+		if v != nil {
+			return *v
+		}
+		var ret GetProbeTemplateApmProbe
+		return ret
+	}).(GetProbeTemplateApmProbeOutput)
+}
+
+// APM provider type. Valid values: Prometheus, AppDynamics, SplunkObservability, Dynatrace, NewRelic, Datadog, GCPCloudMonitoring.
+func (o GetProbeTemplateApmProbePtrOutput) ApmType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbe) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApmType
+	}).(pulumi.StringPtrOutput)
+}
+
+// AppDynamics-specific inputs. Required when apm*type is 'AppDynamics'.
+func (o GetProbeTemplateApmProbePtrOutput) AppDynamicsInputs() GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbe) *GetProbeTemplateApmProbeAppDynamicsInputs {
+		if v == nil {
+			return nil
+		}
+		return v.AppDynamicsInputs
+	}).(GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput)
+}
+
+// Comparator for APM metric validation.
+func (o GetProbeTemplateApmProbePtrOutput) Comparator() GetProbeTemplateApmProbeComparatorPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbe) *GetProbeTemplateApmProbeComparator {
+		if v == nil {
+			return nil
+		}
+		return v.Comparator
+	}).(GetProbeTemplateApmProbeComparatorPtrOutput)
+}
+
+// Datadog-specific inputs. Required when apm*type is 'Datadog'.
+func (o GetProbeTemplateApmProbePtrOutput) DatadogInputs() GetProbeTemplateApmProbeDatadogInputsPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbe) *GetProbeTemplateApmProbeDatadogInputs {
+		if v == nil {
+			return nil
+		}
+		return v.DatadogInputs
+	}).(GetProbeTemplateApmProbeDatadogInputsPtrOutput)
+}
+
+// Dynatrace-specific inputs. Required when apm*type is 'Dynatrace'.
+func (o GetProbeTemplateApmProbePtrOutput) DynatraceInputs() GetProbeTemplateApmProbeDynatraceInputsPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbe) *GetProbeTemplateApmProbeDynatraceInputs {
+		if v == nil {
+			return nil
+		}
+		return v.DynatraceInputs
+	}).(GetProbeTemplateApmProbeDynatraceInputsPtrOutput)
+}
+
+// GCP Cloud Monitoring-specific inputs. Required when apm*type is 'GCPCloudMonitoring'.
+func (o GetProbeTemplateApmProbePtrOutput) GcpCloudMonitoringInputs() GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbe) *GetProbeTemplateApmProbeGcpCloudMonitoringInputs {
+		if v == nil {
+			return nil
+		}
+		return v.GcpCloudMonitoringInputs
+	}).(GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput)
+}
+
+// NewRelic-specific inputs. Required when apm*type is 'NewRelic'.
+func (o GetProbeTemplateApmProbePtrOutput) NewRelicInputs() GetProbeTemplateApmProbeNewRelicInputsPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbe) *GetProbeTemplateApmProbeNewRelicInputs {
+		if v == nil {
+			return nil
+		}
+		return v.NewRelicInputs
+	}).(GetProbeTemplateApmProbeNewRelicInputsPtrOutput)
+}
+
+// Prometheus-specific inputs. Required when apm*type is 'Prometheus'.
+func (o GetProbeTemplateApmProbePtrOutput) PrometheusInputs() GetProbeTemplateApmProbePrometheusInputsPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbe) *GetProbeTemplateApmProbePrometheusInputs {
+		if v == nil {
+			return nil
+		}
+		return v.PrometheusInputs
+	}).(GetProbeTemplateApmProbePrometheusInputsPtrOutput)
+}
+
+// SplunkObservability-specific inputs. Required when apm*type is 'SplunkObservability'.
+func (o GetProbeTemplateApmProbePtrOutput) SplunkObservabilityInputs() GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbe) *GetProbeTemplateApmProbeSplunkObservabilityInputs {
+		if v == nil {
+			return nil
+		}
+		return v.SplunkObservabilityInputs
+	}).(GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput)
+}
+
+type GetProbeTemplateApmProbeAppDynamicsInputs struct {
+	// AppDynamics metrics configuration.
+	AppdMetrics *GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics `pulumi:"appdMetrics"`
+	// Harness connector ID for AppDynamics.
+	ConnectorId string `pulumi:"connectorId"`
+}
+
+// GetProbeTemplateApmProbeAppDynamicsInputsInput is an input type that accepts GetProbeTemplateApmProbeAppDynamicsInputsArgs and GetProbeTemplateApmProbeAppDynamicsInputsOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeAppDynamicsInputsInput` via:
+//
+//	GetProbeTemplateApmProbeAppDynamicsInputsArgs{...}
+type GetProbeTemplateApmProbeAppDynamicsInputsInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeAppDynamicsInputsOutput() GetProbeTemplateApmProbeAppDynamicsInputsOutput
+	ToGetProbeTemplateApmProbeAppDynamicsInputsOutputWithContext(context.Context) GetProbeTemplateApmProbeAppDynamicsInputsOutput
+}
+
+type GetProbeTemplateApmProbeAppDynamicsInputsArgs struct {
+	// AppDynamics metrics configuration.
+	AppdMetrics GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrInput `pulumi:"appdMetrics"`
+	// Harness connector ID for AppDynamics.
+	ConnectorId pulumi.StringInput `pulumi:"connectorId"`
+}
+
+func (GetProbeTemplateApmProbeAppDynamicsInputsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeAppDynamicsInputs)(nil)).Elem()
+}
+
+func (i GetProbeTemplateApmProbeAppDynamicsInputsArgs) ToGetProbeTemplateApmProbeAppDynamicsInputsOutput() GetProbeTemplateApmProbeAppDynamicsInputsOutput {
+	return i.ToGetProbeTemplateApmProbeAppDynamicsInputsOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeAppDynamicsInputsArgs) ToGetProbeTemplateApmProbeAppDynamicsInputsOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeAppDynamicsInputsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeAppDynamicsInputsOutput)
+}
+
+func (i GetProbeTemplateApmProbeAppDynamicsInputsArgs) ToGetProbeTemplateApmProbeAppDynamicsInputsPtrOutput() GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput {
+	return i.ToGetProbeTemplateApmProbeAppDynamicsInputsPtrOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeAppDynamicsInputsArgs) ToGetProbeTemplateApmProbeAppDynamicsInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeAppDynamicsInputsOutput).ToGetProbeTemplateApmProbeAppDynamicsInputsPtrOutputWithContext(ctx)
+}
+
+// GetProbeTemplateApmProbeAppDynamicsInputsPtrInput is an input type that accepts GetProbeTemplateApmProbeAppDynamicsInputsArgs, GetProbeTemplateApmProbeAppDynamicsInputsPtr and GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeAppDynamicsInputsPtrInput` via:
+//
+//	        GetProbeTemplateApmProbeAppDynamicsInputsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetProbeTemplateApmProbeAppDynamicsInputsPtrInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeAppDynamicsInputsPtrOutput() GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput
+	ToGetProbeTemplateApmProbeAppDynamicsInputsPtrOutputWithContext(context.Context) GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput
+}
+
+type getProbeTemplateApmProbeAppDynamicsInputsPtrType GetProbeTemplateApmProbeAppDynamicsInputsArgs
+
+func GetProbeTemplateApmProbeAppDynamicsInputsPtr(v *GetProbeTemplateApmProbeAppDynamicsInputsArgs) GetProbeTemplateApmProbeAppDynamicsInputsPtrInput {
+	return (*getProbeTemplateApmProbeAppDynamicsInputsPtrType)(v)
+}
+
+func (*getProbeTemplateApmProbeAppDynamicsInputsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeAppDynamicsInputs)(nil)).Elem()
+}
+
+func (i *getProbeTemplateApmProbeAppDynamicsInputsPtrType) ToGetProbeTemplateApmProbeAppDynamicsInputsPtrOutput() GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput {
+	return i.ToGetProbeTemplateApmProbeAppDynamicsInputsPtrOutputWithContext(context.Background())
+}
+
+func (i *getProbeTemplateApmProbeAppDynamicsInputsPtrType) ToGetProbeTemplateApmProbeAppDynamicsInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput)
+}
+
+type GetProbeTemplateApmProbeAppDynamicsInputsOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeAppDynamicsInputsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeAppDynamicsInputs)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeAppDynamicsInputsOutput) ToGetProbeTemplateApmProbeAppDynamicsInputsOutput() GetProbeTemplateApmProbeAppDynamicsInputsOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeAppDynamicsInputsOutput) ToGetProbeTemplateApmProbeAppDynamicsInputsOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeAppDynamicsInputsOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeAppDynamicsInputsOutput) ToGetProbeTemplateApmProbeAppDynamicsInputsPtrOutput() GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput {
+	return o.ToGetProbeTemplateApmProbeAppDynamicsInputsPtrOutputWithContext(context.Background())
+}
+
+func (o GetProbeTemplateApmProbeAppDynamicsInputsOutput) ToGetProbeTemplateApmProbeAppDynamicsInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetProbeTemplateApmProbeAppDynamicsInputs) *GetProbeTemplateApmProbeAppDynamicsInputs {
+		return &v
+	}).(GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput)
+}
+
+// AppDynamics metrics configuration.
+func (o GetProbeTemplateApmProbeAppDynamicsInputsOutput) AppdMetrics() GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeAppDynamicsInputs) *GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics {
+		return v.AppdMetrics
+	}).(GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput)
+}
+
+// Harness connector ID for AppDynamics.
+func (o GetProbeTemplateApmProbeAppDynamicsInputsOutput) ConnectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeAppDynamicsInputs) string { return v.ConnectorId }).(pulumi.StringOutput)
+}
+
+type GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeAppDynamicsInputs)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput) ToGetProbeTemplateApmProbeAppDynamicsInputsPtrOutput() GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput) ToGetProbeTemplateApmProbeAppDynamicsInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput) Elem() GetProbeTemplateApmProbeAppDynamicsInputsOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeAppDynamicsInputs) GetProbeTemplateApmProbeAppDynamicsInputs {
+		if v != nil {
+			return *v
+		}
+		var ret GetProbeTemplateApmProbeAppDynamicsInputs
+		return ret
+	}).(GetProbeTemplateApmProbeAppDynamicsInputsOutput)
+}
+
+// AppDynamics metrics configuration.
+func (o GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput) AppdMetrics() GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeAppDynamicsInputs) *GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics {
+		if v == nil {
+			return nil
+		}
+		return v.AppdMetrics
+	}).(GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput)
+}
+
+// Harness connector ID for AppDynamics.
+func (o GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput) ConnectorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeAppDynamicsInputs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectorId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics struct {
+	// AppDynamics application name.
+	ApplicationName *string `pulumi:"applicationName"`
+	// Duration in minutes for the AppDynamics query.
+	DurationInMin *int `pulumi:"durationInMin"`
+	// Full path to the AppDynamics metric.
+	MetricsFullPath *string `pulumi:"metricsFullPath"`
+}
+
+// GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsInput is an input type that accepts GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs and GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsInput` via:
+//
+//	GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs{...}
+type GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput() GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput
+	ToGetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutputWithContext(context.Context) GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput
+}
+
+type GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs struct {
+	// AppDynamics application name.
+	ApplicationName pulumi.StringPtrInput `pulumi:"applicationName"`
+	// Duration in minutes for the AppDynamics query.
+	DurationInMin pulumi.IntPtrInput `pulumi:"durationInMin"`
+	// Full path to the AppDynamics metric.
+	MetricsFullPath pulumi.StringPtrInput `pulumi:"metricsFullPath"`
+}
+
+func (GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics)(nil)).Elem()
+}
+
+func (i GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs) ToGetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput() GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput {
+	return i.ToGetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs) ToGetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput)
+}
+
+func (i GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs) ToGetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput() GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput {
+	return i.ToGetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs) ToGetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput).ToGetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutputWithContext(ctx)
+}
+
+// GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrInput is an input type that accepts GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs, GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtr and GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrInput` via:
+//
+//	        GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput() GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput
+	ToGetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutputWithContext(context.Context) GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput
+}
+
+type getProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrType GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs
+
+func GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtr(v *GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs) GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrInput {
+	return (*getProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrType)(v)
+}
+
+func (*getProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics)(nil)).Elem()
+}
+
+func (i *getProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrType) ToGetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput() GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput {
+	return i.ToGetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i *getProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrType) ToGetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput)
+}
+
+type GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput) ToGetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput() GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput) ToGetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput) ToGetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput() GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput {
+	return o.ToGetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutputWithContext(context.Background())
+}
+
+func (o GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput) ToGetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics) *GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics {
+		return &v
+	}).(GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput)
+}
+
+// AppDynamics application name.
+func (o GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput) ApplicationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics) *string { return v.ApplicationName }).(pulumi.StringPtrOutput)
+}
+
+// Duration in minutes for the AppDynamics query.
+func (o GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput) DurationInMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics) *int { return v.DurationInMin }).(pulumi.IntPtrOutput)
+}
+
+// Full path to the AppDynamics metric.
+func (o GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput) MetricsFullPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics) *string { return v.MetricsFullPath }).(pulumi.StringPtrOutput)
+}
+
+type GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput) ToGetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput() GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput) ToGetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput) Elem() GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics) GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics {
+		if v != nil {
+			return *v
+		}
+		var ret GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics
+		return ret
+	}).(GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput)
+}
+
+// AppDynamics application name.
+func (o GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput) ApplicationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Duration in minutes for the AppDynamics query.
+func (o GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput) DurationInMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DurationInMin
+	}).(pulumi.IntPtrOutput)
+}
+
+// Full path to the AppDynamics metric.
+func (o GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput) MetricsFullPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetricsFullPath
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetProbeTemplateApmProbeComparator struct {
+	// Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+	Criteria string `pulumi:"criteria"`
+	// Comparator type (string, int, float).
+	Type string `pulumi:"type"`
+	// Expected value.
+	Value string `pulumi:"value"`
+}
+
+// GetProbeTemplateApmProbeComparatorInput is an input type that accepts GetProbeTemplateApmProbeComparatorArgs and GetProbeTemplateApmProbeComparatorOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeComparatorInput` via:
+//
+//	GetProbeTemplateApmProbeComparatorArgs{...}
+type GetProbeTemplateApmProbeComparatorInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeComparatorOutput() GetProbeTemplateApmProbeComparatorOutput
+	ToGetProbeTemplateApmProbeComparatorOutputWithContext(context.Context) GetProbeTemplateApmProbeComparatorOutput
+}
+
+type GetProbeTemplateApmProbeComparatorArgs struct {
+	// Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+	Criteria pulumi.StringInput `pulumi:"criteria"`
+	// Comparator type (string, int, float).
+	Type pulumi.StringInput `pulumi:"type"`
+	// Expected value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetProbeTemplateApmProbeComparatorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeComparator)(nil)).Elem()
+}
+
+func (i GetProbeTemplateApmProbeComparatorArgs) ToGetProbeTemplateApmProbeComparatorOutput() GetProbeTemplateApmProbeComparatorOutput {
+	return i.ToGetProbeTemplateApmProbeComparatorOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeComparatorArgs) ToGetProbeTemplateApmProbeComparatorOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeComparatorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeComparatorOutput)
+}
+
+func (i GetProbeTemplateApmProbeComparatorArgs) ToGetProbeTemplateApmProbeComparatorPtrOutput() GetProbeTemplateApmProbeComparatorPtrOutput {
+	return i.ToGetProbeTemplateApmProbeComparatorPtrOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeComparatorArgs) ToGetProbeTemplateApmProbeComparatorPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeComparatorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeComparatorOutput).ToGetProbeTemplateApmProbeComparatorPtrOutputWithContext(ctx)
+}
+
+// GetProbeTemplateApmProbeComparatorPtrInput is an input type that accepts GetProbeTemplateApmProbeComparatorArgs, GetProbeTemplateApmProbeComparatorPtr and GetProbeTemplateApmProbeComparatorPtrOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeComparatorPtrInput` via:
+//
+//	        GetProbeTemplateApmProbeComparatorArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetProbeTemplateApmProbeComparatorPtrInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeComparatorPtrOutput() GetProbeTemplateApmProbeComparatorPtrOutput
+	ToGetProbeTemplateApmProbeComparatorPtrOutputWithContext(context.Context) GetProbeTemplateApmProbeComparatorPtrOutput
+}
+
+type getProbeTemplateApmProbeComparatorPtrType GetProbeTemplateApmProbeComparatorArgs
+
+func GetProbeTemplateApmProbeComparatorPtr(v *GetProbeTemplateApmProbeComparatorArgs) GetProbeTemplateApmProbeComparatorPtrInput {
+	return (*getProbeTemplateApmProbeComparatorPtrType)(v)
+}
+
+func (*getProbeTemplateApmProbeComparatorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeComparator)(nil)).Elem()
+}
+
+func (i *getProbeTemplateApmProbeComparatorPtrType) ToGetProbeTemplateApmProbeComparatorPtrOutput() GetProbeTemplateApmProbeComparatorPtrOutput {
+	return i.ToGetProbeTemplateApmProbeComparatorPtrOutputWithContext(context.Background())
+}
+
+func (i *getProbeTemplateApmProbeComparatorPtrType) ToGetProbeTemplateApmProbeComparatorPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeComparatorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeComparatorPtrOutput)
+}
+
+type GetProbeTemplateApmProbeComparatorOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeComparatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeComparator)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeComparatorOutput) ToGetProbeTemplateApmProbeComparatorOutput() GetProbeTemplateApmProbeComparatorOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeComparatorOutput) ToGetProbeTemplateApmProbeComparatorOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeComparatorOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeComparatorOutput) ToGetProbeTemplateApmProbeComparatorPtrOutput() GetProbeTemplateApmProbeComparatorPtrOutput {
+	return o.ToGetProbeTemplateApmProbeComparatorPtrOutputWithContext(context.Background())
+}
+
+func (o GetProbeTemplateApmProbeComparatorOutput) ToGetProbeTemplateApmProbeComparatorPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeComparatorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetProbeTemplateApmProbeComparator) *GetProbeTemplateApmProbeComparator {
+		return &v
+	}).(GetProbeTemplateApmProbeComparatorPtrOutput)
+}
+
+// Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+func (o GetProbeTemplateApmProbeComparatorOutput) Criteria() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeComparator) string { return v.Criteria }).(pulumi.StringOutput)
+}
+
+// Comparator type (string, int, float).
+func (o GetProbeTemplateApmProbeComparatorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeComparator) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Expected value.
+func (o GetProbeTemplateApmProbeComparatorOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeComparator) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetProbeTemplateApmProbeComparatorPtrOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeComparatorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeComparator)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeComparatorPtrOutput) ToGetProbeTemplateApmProbeComparatorPtrOutput() GetProbeTemplateApmProbeComparatorPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeComparatorPtrOutput) ToGetProbeTemplateApmProbeComparatorPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeComparatorPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeComparatorPtrOutput) Elem() GetProbeTemplateApmProbeComparatorOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeComparator) GetProbeTemplateApmProbeComparator {
+		if v != nil {
+			return *v
+		}
+		var ret GetProbeTemplateApmProbeComparator
+		return ret
+	}).(GetProbeTemplateApmProbeComparatorOutput)
+}
+
+// Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+func (o GetProbeTemplateApmProbeComparatorPtrOutput) Criteria() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeComparator) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Criteria
+	}).(pulumi.StringPtrOutput)
+}
+
+// Comparator type (string, int, float).
+func (o GetProbeTemplateApmProbeComparatorPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeComparator) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Expected value.
+func (o GetProbeTemplateApmProbeComparatorPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeComparator) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetProbeTemplateApmProbeDatadogInputs struct {
+	// Harness connector ID for Datadog.
+	ConnectorId string `pulumi:"connectorId"`
+	// Duration in minutes for the Datadog query.
+	DurationInMin *int `pulumi:"durationInMin"`
+	// Datadog query string.
+	Query *string `pulumi:"query"`
+	// Datadog Synthetics test configuration.
+	SyntheticsTest *GetProbeTemplateApmProbeDatadogInputsSyntheticsTest `pulumi:"syntheticsTest"`
+}
+
+// GetProbeTemplateApmProbeDatadogInputsInput is an input type that accepts GetProbeTemplateApmProbeDatadogInputsArgs and GetProbeTemplateApmProbeDatadogInputsOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeDatadogInputsInput` via:
+//
+//	GetProbeTemplateApmProbeDatadogInputsArgs{...}
+type GetProbeTemplateApmProbeDatadogInputsInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeDatadogInputsOutput() GetProbeTemplateApmProbeDatadogInputsOutput
+	ToGetProbeTemplateApmProbeDatadogInputsOutputWithContext(context.Context) GetProbeTemplateApmProbeDatadogInputsOutput
+}
+
+type GetProbeTemplateApmProbeDatadogInputsArgs struct {
+	// Harness connector ID for Datadog.
+	ConnectorId pulumi.StringInput `pulumi:"connectorId"`
+	// Duration in minutes for the Datadog query.
+	DurationInMin pulumi.IntPtrInput `pulumi:"durationInMin"`
+	// Datadog query string.
+	Query pulumi.StringPtrInput `pulumi:"query"`
+	// Datadog Synthetics test configuration.
+	SyntheticsTest GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrInput `pulumi:"syntheticsTest"`
+}
+
+func (GetProbeTemplateApmProbeDatadogInputsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeDatadogInputs)(nil)).Elem()
+}
+
+func (i GetProbeTemplateApmProbeDatadogInputsArgs) ToGetProbeTemplateApmProbeDatadogInputsOutput() GetProbeTemplateApmProbeDatadogInputsOutput {
+	return i.ToGetProbeTemplateApmProbeDatadogInputsOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeDatadogInputsArgs) ToGetProbeTemplateApmProbeDatadogInputsOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDatadogInputsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeDatadogInputsOutput)
+}
+
+func (i GetProbeTemplateApmProbeDatadogInputsArgs) ToGetProbeTemplateApmProbeDatadogInputsPtrOutput() GetProbeTemplateApmProbeDatadogInputsPtrOutput {
+	return i.ToGetProbeTemplateApmProbeDatadogInputsPtrOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeDatadogInputsArgs) ToGetProbeTemplateApmProbeDatadogInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDatadogInputsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeDatadogInputsOutput).ToGetProbeTemplateApmProbeDatadogInputsPtrOutputWithContext(ctx)
+}
+
+// GetProbeTemplateApmProbeDatadogInputsPtrInput is an input type that accepts GetProbeTemplateApmProbeDatadogInputsArgs, GetProbeTemplateApmProbeDatadogInputsPtr and GetProbeTemplateApmProbeDatadogInputsPtrOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeDatadogInputsPtrInput` via:
+//
+//	        GetProbeTemplateApmProbeDatadogInputsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetProbeTemplateApmProbeDatadogInputsPtrInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeDatadogInputsPtrOutput() GetProbeTemplateApmProbeDatadogInputsPtrOutput
+	ToGetProbeTemplateApmProbeDatadogInputsPtrOutputWithContext(context.Context) GetProbeTemplateApmProbeDatadogInputsPtrOutput
+}
+
+type getProbeTemplateApmProbeDatadogInputsPtrType GetProbeTemplateApmProbeDatadogInputsArgs
+
+func GetProbeTemplateApmProbeDatadogInputsPtr(v *GetProbeTemplateApmProbeDatadogInputsArgs) GetProbeTemplateApmProbeDatadogInputsPtrInput {
+	return (*getProbeTemplateApmProbeDatadogInputsPtrType)(v)
+}
+
+func (*getProbeTemplateApmProbeDatadogInputsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeDatadogInputs)(nil)).Elem()
+}
+
+func (i *getProbeTemplateApmProbeDatadogInputsPtrType) ToGetProbeTemplateApmProbeDatadogInputsPtrOutput() GetProbeTemplateApmProbeDatadogInputsPtrOutput {
+	return i.ToGetProbeTemplateApmProbeDatadogInputsPtrOutputWithContext(context.Background())
+}
+
+func (i *getProbeTemplateApmProbeDatadogInputsPtrType) ToGetProbeTemplateApmProbeDatadogInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDatadogInputsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeDatadogInputsPtrOutput)
+}
+
+type GetProbeTemplateApmProbeDatadogInputsOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeDatadogInputsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeDatadogInputs)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeDatadogInputsOutput) ToGetProbeTemplateApmProbeDatadogInputsOutput() GetProbeTemplateApmProbeDatadogInputsOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeDatadogInputsOutput) ToGetProbeTemplateApmProbeDatadogInputsOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDatadogInputsOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeDatadogInputsOutput) ToGetProbeTemplateApmProbeDatadogInputsPtrOutput() GetProbeTemplateApmProbeDatadogInputsPtrOutput {
+	return o.ToGetProbeTemplateApmProbeDatadogInputsPtrOutputWithContext(context.Background())
+}
+
+func (o GetProbeTemplateApmProbeDatadogInputsOutput) ToGetProbeTemplateApmProbeDatadogInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDatadogInputsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetProbeTemplateApmProbeDatadogInputs) *GetProbeTemplateApmProbeDatadogInputs {
+		return &v
+	}).(GetProbeTemplateApmProbeDatadogInputsPtrOutput)
+}
+
+// Harness connector ID for Datadog.
+func (o GetProbeTemplateApmProbeDatadogInputsOutput) ConnectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeDatadogInputs) string { return v.ConnectorId }).(pulumi.StringOutput)
+}
+
+// Duration in minutes for the Datadog query.
+func (o GetProbeTemplateApmProbeDatadogInputsOutput) DurationInMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeDatadogInputs) *int { return v.DurationInMin }).(pulumi.IntPtrOutput)
+}
+
+// Datadog query string.
+func (o GetProbeTemplateApmProbeDatadogInputsOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeDatadogInputs) *string { return v.Query }).(pulumi.StringPtrOutput)
+}
+
+// Datadog Synthetics test configuration.
+func (o GetProbeTemplateApmProbeDatadogInputsOutput) SyntheticsTest() GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeDatadogInputs) *GetProbeTemplateApmProbeDatadogInputsSyntheticsTest {
+		return v.SyntheticsTest
+	}).(GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput)
+}
+
+type GetProbeTemplateApmProbeDatadogInputsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeDatadogInputsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeDatadogInputs)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeDatadogInputsPtrOutput) ToGetProbeTemplateApmProbeDatadogInputsPtrOutput() GetProbeTemplateApmProbeDatadogInputsPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeDatadogInputsPtrOutput) ToGetProbeTemplateApmProbeDatadogInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDatadogInputsPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeDatadogInputsPtrOutput) Elem() GetProbeTemplateApmProbeDatadogInputsOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeDatadogInputs) GetProbeTemplateApmProbeDatadogInputs {
+		if v != nil {
+			return *v
+		}
+		var ret GetProbeTemplateApmProbeDatadogInputs
+		return ret
+	}).(GetProbeTemplateApmProbeDatadogInputsOutput)
+}
+
+// Harness connector ID for Datadog.
+func (o GetProbeTemplateApmProbeDatadogInputsPtrOutput) ConnectorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeDatadogInputs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectorId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Duration in minutes for the Datadog query.
+func (o GetProbeTemplateApmProbeDatadogInputsPtrOutput) DurationInMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeDatadogInputs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DurationInMin
+	}).(pulumi.IntPtrOutput)
+}
+
+// Datadog query string.
+func (o GetProbeTemplateApmProbeDatadogInputsPtrOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeDatadogInputs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Query
+	}).(pulumi.StringPtrOutput)
+}
+
+// Datadog Synthetics test configuration.
+func (o GetProbeTemplateApmProbeDatadogInputsPtrOutput) SyntheticsTest() GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeDatadogInputs) *GetProbeTemplateApmProbeDatadogInputsSyntheticsTest {
+		if v == nil {
+			return nil
+		}
+		return v.SyntheticsTest
+	}).(GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput)
+}
+
+type GetProbeTemplateApmProbeDatadogInputsSyntheticsTest struct {
+	// Public ID of the Datadog Synthetics test.
+	PublicId string `pulumi:"publicId"`
+	// Type of Synthetics test (api, browser).
+	TestType *string `pulumi:"testType"`
+}
+
+// GetProbeTemplateApmProbeDatadogInputsSyntheticsTestInput is an input type that accepts GetProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs and GetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeDatadogInputsSyntheticsTestInput` via:
+//
+//	GetProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs{...}
+type GetProbeTemplateApmProbeDatadogInputsSyntheticsTestInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput() GetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput
+	ToGetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutputWithContext(context.Context) GetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput
+}
+
+type GetProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs struct {
+	// Public ID of the Datadog Synthetics test.
+	PublicId pulumi.StringInput `pulumi:"publicId"`
+	// Type of Synthetics test (api, browser).
+	TestType pulumi.StringPtrInput `pulumi:"testType"`
+}
+
+func (GetProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeDatadogInputsSyntheticsTest)(nil)).Elem()
+}
+
+func (i GetProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs) ToGetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput() GetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput {
+	return i.ToGetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs) ToGetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput)
+}
+
+func (i GetProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs) ToGetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput() GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput {
+	return i.ToGetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs) ToGetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput).ToGetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutputWithContext(ctx)
+}
+
+// GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrInput is an input type that accepts GetProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs, GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtr and GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrInput` via:
+//
+//	        GetProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput() GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput
+	ToGetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutputWithContext(context.Context) GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput
+}
+
+type getProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrType GetProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs
+
+func GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtr(v *GetProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs) GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrInput {
+	return (*getProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrType)(v)
+}
+
+func (*getProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeDatadogInputsSyntheticsTest)(nil)).Elem()
+}
+
+func (i *getProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrType) ToGetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput() GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput {
+	return i.ToGetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutputWithContext(context.Background())
+}
+
+func (i *getProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrType) ToGetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput)
+}
+
+type GetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeDatadogInputsSyntheticsTest)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput) ToGetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput() GetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput) ToGetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput) ToGetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput() GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput {
+	return o.ToGetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutputWithContext(context.Background())
+}
+
+func (o GetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput) ToGetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetProbeTemplateApmProbeDatadogInputsSyntheticsTest) *GetProbeTemplateApmProbeDatadogInputsSyntheticsTest {
+		return &v
+	}).(GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput)
+}
+
+// Public ID of the Datadog Synthetics test.
+func (o GetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput) PublicId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeDatadogInputsSyntheticsTest) string { return v.PublicId }).(pulumi.StringOutput)
+}
+
+// Type of Synthetics test (api, browser).
+func (o GetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput) TestType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeDatadogInputsSyntheticsTest) *string { return v.TestType }).(pulumi.StringPtrOutput)
+}
+
+type GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeDatadogInputsSyntheticsTest)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput) ToGetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput() GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput) ToGetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput) Elem() GetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeDatadogInputsSyntheticsTest) GetProbeTemplateApmProbeDatadogInputsSyntheticsTest {
+		if v != nil {
+			return *v
+		}
+		var ret GetProbeTemplateApmProbeDatadogInputsSyntheticsTest
+		return ret
+	}).(GetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput)
+}
+
+// Public ID of the Datadog Synthetics test.
+func (o GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput) PublicId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeDatadogInputsSyntheticsTest) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PublicId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of Synthetics test (api, browser).
+func (o GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput) TestType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeDatadogInputsSyntheticsTest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TestType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetProbeTemplateApmProbeDynatraceInputs struct {
+	// Harness connector ID for Dynatrace.
+	ConnectorId string `pulumi:"connectorId"`
+	// Duration in minutes for the Dynatrace query.
+	DurationInMin *int `pulumi:"durationInMin"`
+	// Dynatrace metrics configuration.
+	Metrics *GetProbeTemplateApmProbeDynatraceInputsMetrics `pulumi:"metrics"`
+}
+
+// GetProbeTemplateApmProbeDynatraceInputsInput is an input type that accepts GetProbeTemplateApmProbeDynatraceInputsArgs and GetProbeTemplateApmProbeDynatraceInputsOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeDynatraceInputsInput` via:
+//
+//	GetProbeTemplateApmProbeDynatraceInputsArgs{...}
+type GetProbeTemplateApmProbeDynatraceInputsInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeDynatraceInputsOutput() GetProbeTemplateApmProbeDynatraceInputsOutput
+	ToGetProbeTemplateApmProbeDynatraceInputsOutputWithContext(context.Context) GetProbeTemplateApmProbeDynatraceInputsOutput
+}
+
+type GetProbeTemplateApmProbeDynatraceInputsArgs struct {
+	// Harness connector ID for Dynatrace.
+	ConnectorId pulumi.StringInput `pulumi:"connectorId"`
+	// Duration in minutes for the Dynatrace query.
+	DurationInMin pulumi.IntPtrInput `pulumi:"durationInMin"`
+	// Dynatrace metrics configuration.
+	Metrics GetProbeTemplateApmProbeDynatraceInputsMetricsPtrInput `pulumi:"metrics"`
+}
+
+func (GetProbeTemplateApmProbeDynatraceInputsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeDynatraceInputs)(nil)).Elem()
+}
+
+func (i GetProbeTemplateApmProbeDynatraceInputsArgs) ToGetProbeTemplateApmProbeDynatraceInputsOutput() GetProbeTemplateApmProbeDynatraceInputsOutput {
+	return i.ToGetProbeTemplateApmProbeDynatraceInputsOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeDynatraceInputsArgs) ToGetProbeTemplateApmProbeDynatraceInputsOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDynatraceInputsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeDynatraceInputsOutput)
+}
+
+func (i GetProbeTemplateApmProbeDynatraceInputsArgs) ToGetProbeTemplateApmProbeDynatraceInputsPtrOutput() GetProbeTemplateApmProbeDynatraceInputsPtrOutput {
+	return i.ToGetProbeTemplateApmProbeDynatraceInputsPtrOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeDynatraceInputsArgs) ToGetProbeTemplateApmProbeDynatraceInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDynatraceInputsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeDynatraceInputsOutput).ToGetProbeTemplateApmProbeDynatraceInputsPtrOutputWithContext(ctx)
+}
+
+// GetProbeTemplateApmProbeDynatraceInputsPtrInput is an input type that accepts GetProbeTemplateApmProbeDynatraceInputsArgs, GetProbeTemplateApmProbeDynatraceInputsPtr and GetProbeTemplateApmProbeDynatraceInputsPtrOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeDynatraceInputsPtrInput` via:
+//
+//	        GetProbeTemplateApmProbeDynatraceInputsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetProbeTemplateApmProbeDynatraceInputsPtrInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeDynatraceInputsPtrOutput() GetProbeTemplateApmProbeDynatraceInputsPtrOutput
+	ToGetProbeTemplateApmProbeDynatraceInputsPtrOutputWithContext(context.Context) GetProbeTemplateApmProbeDynatraceInputsPtrOutput
+}
+
+type getProbeTemplateApmProbeDynatraceInputsPtrType GetProbeTemplateApmProbeDynatraceInputsArgs
+
+func GetProbeTemplateApmProbeDynatraceInputsPtr(v *GetProbeTemplateApmProbeDynatraceInputsArgs) GetProbeTemplateApmProbeDynatraceInputsPtrInput {
+	return (*getProbeTemplateApmProbeDynatraceInputsPtrType)(v)
+}
+
+func (*getProbeTemplateApmProbeDynatraceInputsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeDynatraceInputs)(nil)).Elem()
+}
+
+func (i *getProbeTemplateApmProbeDynatraceInputsPtrType) ToGetProbeTemplateApmProbeDynatraceInputsPtrOutput() GetProbeTemplateApmProbeDynatraceInputsPtrOutput {
+	return i.ToGetProbeTemplateApmProbeDynatraceInputsPtrOutputWithContext(context.Background())
+}
+
+func (i *getProbeTemplateApmProbeDynatraceInputsPtrType) ToGetProbeTemplateApmProbeDynatraceInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDynatraceInputsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeDynatraceInputsPtrOutput)
+}
+
+type GetProbeTemplateApmProbeDynatraceInputsOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeDynatraceInputsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeDynatraceInputs)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeDynatraceInputsOutput) ToGetProbeTemplateApmProbeDynatraceInputsOutput() GetProbeTemplateApmProbeDynatraceInputsOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeDynatraceInputsOutput) ToGetProbeTemplateApmProbeDynatraceInputsOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDynatraceInputsOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeDynatraceInputsOutput) ToGetProbeTemplateApmProbeDynatraceInputsPtrOutput() GetProbeTemplateApmProbeDynatraceInputsPtrOutput {
+	return o.ToGetProbeTemplateApmProbeDynatraceInputsPtrOutputWithContext(context.Background())
+}
+
+func (o GetProbeTemplateApmProbeDynatraceInputsOutput) ToGetProbeTemplateApmProbeDynatraceInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDynatraceInputsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetProbeTemplateApmProbeDynatraceInputs) *GetProbeTemplateApmProbeDynatraceInputs {
+		return &v
+	}).(GetProbeTemplateApmProbeDynatraceInputsPtrOutput)
+}
+
+// Harness connector ID for Dynatrace.
+func (o GetProbeTemplateApmProbeDynatraceInputsOutput) ConnectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeDynatraceInputs) string { return v.ConnectorId }).(pulumi.StringOutput)
+}
+
+// Duration in minutes for the Dynatrace query.
+func (o GetProbeTemplateApmProbeDynatraceInputsOutput) DurationInMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeDynatraceInputs) *int { return v.DurationInMin }).(pulumi.IntPtrOutput)
+}
+
+// Dynatrace metrics configuration.
+func (o GetProbeTemplateApmProbeDynatraceInputsOutput) Metrics() GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeDynatraceInputs) *GetProbeTemplateApmProbeDynatraceInputsMetrics {
+		return v.Metrics
+	}).(GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput)
+}
+
+type GetProbeTemplateApmProbeDynatraceInputsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeDynatraceInputsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeDynatraceInputs)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeDynatraceInputsPtrOutput) ToGetProbeTemplateApmProbeDynatraceInputsPtrOutput() GetProbeTemplateApmProbeDynatraceInputsPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeDynatraceInputsPtrOutput) ToGetProbeTemplateApmProbeDynatraceInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDynatraceInputsPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeDynatraceInputsPtrOutput) Elem() GetProbeTemplateApmProbeDynatraceInputsOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeDynatraceInputs) GetProbeTemplateApmProbeDynatraceInputs {
+		if v != nil {
+			return *v
+		}
+		var ret GetProbeTemplateApmProbeDynatraceInputs
+		return ret
+	}).(GetProbeTemplateApmProbeDynatraceInputsOutput)
+}
+
+// Harness connector ID for Dynatrace.
+func (o GetProbeTemplateApmProbeDynatraceInputsPtrOutput) ConnectorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeDynatraceInputs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectorId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Duration in minutes for the Dynatrace query.
+func (o GetProbeTemplateApmProbeDynatraceInputsPtrOutput) DurationInMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeDynatraceInputs) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DurationInMin
+	}).(pulumi.IntPtrOutput)
+}
+
+// Dynatrace metrics configuration.
+func (o GetProbeTemplateApmProbeDynatraceInputsPtrOutput) Metrics() GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeDynatraceInputs) *GetProbeTemplateApmProbeDynatraceInputsMetrics {
+		if v == nil {
+			return nil
+		}
+		return v.Metrics
+	}).(GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput)
+}
+
+type GetProbeTemplateApmProbeDynatraceInputsMetrics struct {
+	// Dynatrace entity selector.
+	EntitySelector *string `pulumi:"entitySelector"`
+	// Dynatrace metrics selector.
+	MetricsSelector *string `pulumi:"metricsSelector"`
+}
+
+// GetProbeTemplateApmProbeDynatraceInputsMetricsInput is an input type that accepts GetProbeTemplateApmProbeDynatraceInputsMetricsArgs and GetProbeTemplateApmProbeDynatraceInputsMetricsOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeDynatraceInputsMetricsInput` via:
+//
+//	GetProbeTemplateApmProbeDynatraceInputsMetricsArgs{...}
+type GetProbeTemplateApmProbeDynatraceInputsMetricsInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeDynatraceInputsMetricsOutput() GetProbeTemplateApmProbeDynatraceInputsMetricsOutput
+	ToGetProbeTemplateApmProbeDynatraceInputsMetricsOutputWithContext(context.Context) GetProbeTemplateApmProbeDynatraceInputsMetricsOutput
+}
+
+type GetProbeTemplateApmProbeDynatraceInputsMetricsArgs struct {
+	// Dynatrace entity selector.
+	EntitySelector pulumi.StringPtrInput `pulumi:"entitySelector"`
+	// Dynatrace metrics selector.
+	MetricsSelector pulumi.StringPtrInput `pulumi:"metricsSelector"`
+}
+
+func (GetProbeTemplateApmProbeDynatraceInputsMetricsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeDynatraceInputsMetrics)(nil)).Elem()
+}
+
+func (i GetProbeTemplateApmProbeDynatraceInputsMetricsArgs) ToGetProbeTemplateApmProbeDynatraceInputsMetricsOutput() GetProbeTemplateApmProbeDynatraceInputsMetricsOutput {
+	return i.ToGetProbeTemplateApmProbeDynatraceInputsMetricsOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeDynatraceInputsMetricsArgs) ToGetProbeTemplateApmProbeDynatraceInputsMetricsOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDynatraceInputsMetricsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeDynatraceInputsMetricsOutput)
+}
+
+func (i GetProbeTemplateApmProbeDynatraceInputsMetricsArgs) ToGetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput() GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput {
+	return i.ToGetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeDynatraceInputsMetricsArgs) ToGetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeDynatraceInputsMetricsOutput).ToGetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutputWithContext(ctx)
+}
+
+// GetProbeTemplateApmProbeDynatraceInputsMetricsPtrInput is an input type that accepts GetProbeTemplateApmProbeDynatraceInputsMetricsArgs, GetProbeTemplateApmProbeDynatraceInputsMetricsPtr and GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeDynatraceInputsMetricsPtrInput` via:
+//
+//	        GetProbeTemplateApmProbeDynatraceInputsMetricsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetProbeTemplateApmProbeDynatraceInputsMetricsPtrInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput() GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput
+	ToGetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutputWithContext(context.Context) GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput
+}
+
+type getProbeTemplateApmProbeDynatraceInputsMetricsPtrType GetProbeTemplateApmProbeDynatraceInputsMetricsArgs
+
+func GetProbeTemplateApmProbeDynatraceInputsMetricsPtr(v *GetProbeTemplateApmProbeDynatraceInputsMetricsArgs) GetProbeTemplateApmProbeDynatraceInputsMetricsPtrInput {
+	return (*getProbeTemplateApmProbeDynatraceInputsMetricsPtrType)(v)
+}
+
+func (*getProbeTemplateApmProbeDynatraceInputsMetricsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeDynatraceInputsMetrics)(nil)).Elem()
+}
+
+func (i *getProbeTemplateApmProbeDynatraceInputsMetricsPtrType) ToGetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput() GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput {
+	return i.ToGetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i *getProbeTemplateApmProbeDynatraceInputsMetricsPtrType) ToGetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput)
+}
+
+type GetProbeTemplateApmProbeDynatraceInputsMetricsOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeDynatraceInputsMetricsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeDynatraceInputsMetrics)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeDynatraceInputsMetricsOutput) ToGetProbeTemplateApmProbeDynatraceInputsMetricsOutput() GetProbeTemplateApmProbeDynatraceInputsMetricsOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeDynatraceInputsMetricsOutput) ToGetProbeTemplateApmProbeDynatraceInputsMetricsOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDynatraceInputsMetricsOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeDynatraceInputsMetricsOutput) ToGetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput() GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput {
+	return o.ToGetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutputWithContext(context.Background())
+}
+
+func (o GetProbeTemplateApmProbeDynatraceInputsMetricsOutput) ToGetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetProbeTemplateApmProbeDynatraceInputsMetrics) *GetProbeTemplateApmProbeDynatraceInputsMetrics {
+		return &v
+	}).(GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput)
+}
+
+// Dynatrace entity selector.
+func (o GetProbeTemplateApmProbeDynatraceInputsMetricsOutput) EntitySelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeDynatraceInputsMetrics) *string { return v.EntitySelector }).(pulumi.StringPtrOutput)
+}
+
+// Dynatrace metrics selector.
+func (o GetProbeTemplateApmProbeDynatraceInputsMetricsOutput) MetricsSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeDynatraceInputsMetrics) *string { return v.MetricsSelector }).(pulumi.StringPtrOutput)
+}
+
+type GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeDynatraceInputsMetrics)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput) ToGetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput() GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput) ToGetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput) Elem() GetProbeTemplateApmProbeDynatraceInputsMetricsOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeDynatraceInputsMetrics) GetProbeTemplateApmProbeDynatraceInputsMetrics {
+		if v != nil {
+			return *v
+		}
+		var ret GetProbeTemplateApmProbeDynatraceInputsMetrics
+		return ret
+	}).(GetProbeTemplateApmProbeDynatraceInputsMetricsOutput)
+}
+
+// Dynatrace entity selector.
+func (o GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput) EntitySelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeDynatraceInputsMetrics) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EntitySelector
+	}).(pulumi.StringPtrOutput)
+}
+
+// Dynatrace metrics selector.
+func (o GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput) MetricsSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeDynatraceInputsMetrics) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetricsSelector
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetProbeTemplateApmProbeGcpCloudMonitoringInputs struct {
+	// GCP project ID.
+	ProjectId string `pulumi:"projectId"`
+	// GCP monitoring query string.
+	Query string `pulumi:"query"`
+	// GCP service account key (JSON).
+	ServiceAccountKey string `pulumi:"serviceAccountKey"`
+}
+
+// GetProbeTemplateApmProbeGcpCloudMonitoringInputsInput is an input type that accepts GetProbeTemplateApmProbeGcpCloudMonitoringInputsArgs and GetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeGcpCloudMonitoringInputsInput` via:
+//
+//	GetProbeTemplateApmProbeGcpCloudMonitoringInputsArgs{...}
+type GetProbeTemplateApmProbeGcpCloudMonitoringInputsInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput() GetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput
+	ToGetProbeTemplateApmProbeGcpCloudMonitoringInputsOutputWithContext(context.Context) GetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput
+}
+
+type GetProbeTemplateApmProbeGcpCloudMonitoringInputsArgs struct {
+	// GCP project ID.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// GCP monitoring query string.
+	Query pulumi.StringInput `pulumi:"query"`
+	// GCP service account key (JSON).
+	ServiceAccountKey pulumi.StringInput `pulumi:"serviceAccountKey"`
+}
+
+func (GetProbeTemplateApmProbeGcpCloudMonitoringInputsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeGcpCloudMonitoringInputs)(nil)).Elem()
+}
+
+func (i GetProbeTemplateApmProbeGcpCloudMonitoringInputsArgs) ToGetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput() GetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput {
+	return i.ToGetProbeTemplateApmProbeGcpCloudMonitoringInputsOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeGcpCloudMonitoringInputsArgs) ToGetProbeTemplateApmProbeGcpCloudMonitoringInputsOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput)
+}
+
+func (i GetProbeTemplateApmProbeGcpCloudMonitoringInputsArgs) ToGetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput() GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput {
+	return i.ToGetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeGcpCloudMonitoringInputsArgs) ToGetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput).ToGetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutputWithContext(ctx)
+}
+
+// GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrInput is an input type that accepts GetProbeTemplateApmProbeGcpCloudMonitoringInputsArgs, GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtr and GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrInput` via:
+//
+//	        GetProbeTemplateApmProbeGcpCloudMonitoringInputsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput() GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput
+	ToGetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutputWithContext(context.Context) GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput
+}
+
+type getProbeTemplateApmProbeGcpCloudMonitoringInputsPtrType GetProbeTemplateApmProbeGcpCloudMonitoringInputsArgs
+
+func GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtr(v *GetProbeTemplateApmProbeGcpCloudMonitoringInputsArgs) GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrInput {
+	return (*getProbeTemplateApmProbeGcpCloudMonitoringInputsPtrType)(v)
+}
+
+func (*getProbeTemplateApmProbeGcpCloudMonitoringInputsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeGcpCloudMonitoringInputs)(nil)).Elem()
+}
+
+func (i *getProbeTemplateApmProbeGcpCloudMonitoringInputsPtrType) ToGetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput() GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput {
+	return i.ToGetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutputWithContext(context.Background())
+}
+
+func (i *getProbeTemplateApmProbeGcpCloudMonitoringInputsPtrType) ToGetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput)
+}
+
+type GetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeGcpCloudMonitoringInputs)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput) ToGetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput() GetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput) ToGetProbeTemplateApmProbeGcpCloudMonitoringInputsOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput) ToGetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput() GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput {
+	return o.ToGetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutputWithContext(context.Background())
+}
+
+func (o GetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput) ToGetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetProbeTemplateApmProbeGcpCloudMonitoringInputs) *GetProbeTemplateApmProbeGcpCloudMonitoringInputs {
+		return &v
+	}).(GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput)
+}
+
+// GCP project ID.
+func (o GetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeGcpCloudMonitoringInputs) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// GCP monitoring query string.
+func (o GetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeGcpCloudMonitoringInputs) string { return v.Query }).(pulumi.StringOutput)
+}
+
+// GCP service account key (JSON).
+func (o GetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput) ServiceAccountKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeGcpCloudMonitoringInputs) string { return v.ServiceAccountKey }).(pulumi.StringOutput)
+}
+
+type GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeGcpCloudMonitoringInputs)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput) ToGetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput() GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput) ToGetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput) Elem() GetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeGcpCloudMonitoringInputs) GetProbeTemplateApmProbeGcpCloudMonitoringInputs {
+		if v != nil {
+			return *v
+		}
+		var ret GetProbeTemplateApmProbeGcpCloudMonitoringInputs
+		return ret
+	}).(GetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput)
+}
+
+// GCP project ID.
+func (o GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeGcpCloudMonitoringInputs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// GCP monitoring query string.
+func (o GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeGcpCloudMonitoringInputs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Query
+	}).(pulumi.StringPtrOutput)
+}
+
+// GCP service account key (JSON).
+func (o GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput) ServiceAccountKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeGcpCloudMonitoringInputs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccountKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetProbeTemplateApmProbeNewRelicInputs struct {
+	// Harness connector ID for NewRelic.
+	ConnectorId string `pulumi:"connectorId"`
+	// NewRelic metric configuration.
+	NewRelicMetric *GetProbeTemplateApmProbeNewRelicInputsNewRelicMetric `pulumi:"newRelicMetric"`
+}
+
+// GetProbeTemplateApmProbeNewRelicInputsInput is an input type that accepts GetProbeTemplateApmProbeNewRelicInputsArgs and GetProbeTemplateApmProbeNewRelicInputsOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeNewRelicInputsInput` via:
+//
+//	GetProbeTemplateApmProbeNewRelicInputsArgs{...}
+type GetProbeTemplateApmProbeNewRelicInputsInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeNewRelicInputsOutput() GetProbeTemplateApmProbeNewRelicInputsOutput
+	ToGetProbeTemplateApmProbeNewRelicInputsOutputWithContext(context.Context) GetProbeTemplateApmProbeNewRelicInputsOutput
+}
+
+type GetProbeTemplateApmProbeNewRelicInputsArgs struct {
+	// Harness connector ID for NewRelic.
+	ConnectorId pulumi.StringInput `pulumi:"connectorId"`
+	// NewRelic metric configuration.
+	NewRelicMetric GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrInput `pulumi:"newRelicMetric"`
+}
+
+func (GetProbeTemplateApmProbeNewRelicInputsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeNewRelicInputs)(nil)).Elem()
+}
+
+func (i GetProbeTemplateApmProbeNewRelicInputsArgs) ToGetProbeTemplateApmProbeNewRelicInputsOutput() GetProbeTemplateApmProbeNewRelicInputsOutput {
+	return i.ToGetProbeTemplateApmProbeNewRelicInputsOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeNewRelicInputsArgs) ToGetProbeTemplateApmProbeNewRelicInputsOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeNewRelicInputsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeNewRelicInputsOutput)
+}
+
+func (i GetProbeTemplateApmProbeNewRelicInputsArgs) ToGetProbeTemplateApmProbeNewRelicInputsPtrOutput() GetProbeTemplateApmProbeNewRelicInputsPtrOutput {
+	return i.ToGetProbeTemplateApmProbeNewRelicInputsPtrOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeNewRelicInputsArgs) ToGetProbeTemplateApmProbeNewRelicInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeNewRelicInputsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeNewRelicInputsOutput).ToGetProbeTemplateApmProbeNewRelicInputsPtrOutputWithContext(ctx)
+}
+
+// GetProbeTemplateApmProbeNewRelicInputsPtrInput is an input type that accepts GetProbeTemplateApmProbeNewRelicInputsArgs, GetProbeTemplateApmProbeNewRelicInputsPtr and GetProbeTemplateApmProbeNewRelicInputsPtrOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeNewRelicInputsPtrInput` via:
+//
+//	        GetProbeTemplateApmProbeNewRelicInputsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetProbeTemplateApmProbeNewRelicInputsPtrInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeNewRelicInputsPtrOutput() GetProbeTemplateApmProbeNewRelicInputsPtrOutput
+	ToGetProbeTemplateApmProbeNewRelicInputsPtrOutputWithContext(context.Context) GetProbeTemplateApmProbeNewRelicInputsPtrOutput
+}
+
+type getProbeTemplateApmProbeNewRelicInputsPtrType GetProbeTemplateApmProbeNewRelicInputsArgs
+
+func GetProbeTemplateApmProbeNewRelicInputsPtr(v *GetProbeTemplateApmProbeNewRelicInputsArgs) GetProbeTemplateApmProbeNewRelicInputsPtrInput {
+	return (*getProbeTemplateApmProbeNewRelicInputsPtrType)(v)
+}
+
+func (*getProbeTemplateApmProbeNewRelicInputsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeNewRelicInputs)(nil)).Elem()
+}
+
+func (i *getProbeTemplateApmProbeNewRelicInputsPtrType) ToGetProbeTemplateApmProbeNewRelicInputsPtrOutput() GetProbeTemplateApmProbeNewRelicInputsPtrOutput {
+	return i.ToGetProbeTemplateApmProbeNewRelicInputsPtrOutputWithContext(context.Background())
+}
+
+func (i *getProbeTemplateApmProbeNewRelicInputsPtrType) ToGetProbeTemplateApmProbeNewRelicInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeNewRelicInputsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeNewRelicInputsPtrOutput)
+}
+
+type GetProbeTemplateApmProbeNewRelicInputsOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeNewRelicInputsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeNewRelicInputs)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeNewRelicInputsOutput) ToGetProbeTemplateApmProbeNewRelicInputsOutput() GetProbeTemplateApmProbeNewRelicInputsOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeNewRelicInputsOutput) ToGetProbeTemplateApmProbeNewRelicInputsOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeNewRelicInputsOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeNewRelicInputsOutput) ToGetProbeTemplateApmProbeNewRelicInputsPtrOutput() GetProbeTemplateApmProbeNewRelicInputsPtrOutput {
+	return o.ToGetProbeTemplateApmProbeNewRelicInputsPtrOutputWithContext(context.Background())
+}
+
+func (o GetProbeTemplateApmProbeNewRelicInputsOutput) ToGetProbeTemplateApmProbeNewRelicInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeNewRelicInputsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetProbeTemplateApmProbeNewRelicInputs) *GetProbeTemplateApmProbeNewRelicInputs {
+		return &v
+	}).(GetProbeTemplateApmProbeNewRelicInputsPtrOutput)
+}
+
+// Harness connector ID for NewRelic.
+func (o GetProbeTemplateApmProbeNewRelicInputsOutput) ConnectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeNewRelicInputs) string { return v.ConnectorId }).(pulumi.StringOutput)
+}
+
+// NewRelic metric configuration.
+func (o GetProbeTemplateApmProbeNewRelicInputsOutput) NewRelicMetric() GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeNewRelicInputs) *GetProbeTemplateApmProbeNewRelicInputsNewRelicMetric {
+		return v.NewRelicMetric
+	}).(GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput)
+}
+
+type GetProbeTemplateApmProbeNewRelicInputsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeNewRelicInputsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeNewRelicInputs)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeNewRelicInputsPtrOutput) ToGetProbeTemplateApmProbeNewRelicInputsPtrOutput() GetProbeTemplateApmProbeNewRelicInputsPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeNewRelicInputsPtrOutput) ToGetProbeTemplateApmProbeNewRelicInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeNewRelicInputsPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeNewRelicInputsPtrOutput) Elem() GetProbeTemplateApmProbeNewRelicInputsOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeNewRelicInputs) GetProbeTemplateApmProbeNewRelicInputs {
+		if v != nil {
+			return *v
+		}
+		var ret GetProbeTemplateApmProbeNewRelicInputs
+		return ret
+	}).(GetProbeTemplateApmProbeNewRelicInputsOutput)
+}
+
+// Harness connector ID for NewRelic.
+func (o GetProbeTemplateApmProbeNewRelicInputsPtrOutput) ConnectorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeNewRelicInputs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectorId
+	}).(pulumi.StringPtrOutput)
+}
+
+// NewRelic metric configuration.
+func (o GetProbeTemplateApmProbeNewRelicInputsPtrOutput) NewRelicMetric() GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeNewRelicInputs) *GetProbeTemplateApmProbeNewRelicInputsNewRelicMetric {
+		if v == nil {
+			return nil
+		}
+		return v.NewRelicMetric
+	}).(GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput)
+}
+
+type GetProbeTemplateApmProbeNewRelicInputsNewRelicMetric struct {
+	// NRQL query string.
+	Query *string `pulumi:"query"`
+	// NewRelic query metric name.
+	QueryMetric *string `pulumi:"queryMetric"`
+}
+
+// GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricInput is an input type that accepts GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs and GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricInput` via:
+//
+//	GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs{...}
+type GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput() GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput
+	ToGetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutputWithContext(context.Context) GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput
+}
+
+type GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs struct {
+	// NRQL query string.
+	Query pulumi.StringPtrInput `pulumi:"query"`
+	// NewRelic query metric name.
+	QueryMetric pulumi.StringPtrInput `pulumi:"queryMetric"`
+}
+
+func (GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeNewRelicInputsNewRelicMetric)(nil)).Elem()
+}
+
+func (i GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs) ToGetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput() GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput {
+	return i.ToGetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs) ToGetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput)
+}
+
+func (i GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs) ToGetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput() GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput {
+	return i.ToGetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs) ToGetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput).ToGetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutputWithContext(ctx)
+}
+
+// GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrInput is an input type that accepts GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs, GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtr and GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrInput` via:
+//
+//	        GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput() GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput
+	ToGetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutputWithContext(context.Context) GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput
+}
+
+type getProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrType GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs
+
+func GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtr(v *GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs) GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrInput {
+	return (*getProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrType)(v)
+}
+
+func (*getProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeNewRelicInputsNewRelicMetric)(nil)).Elem()
+}
+
+func (i *getProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrType) ToGetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput() GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput {
+	return i.ToGetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutputWithContext(context.Background())
+}
+
+func (i *getProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrType) ToGetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput)
+}
+
+type GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeNewRelicInputsNewRelicMetric)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput) ToGetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput() GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput) ToGetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput) ToGetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput() GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput {
+	return o.ToGetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutputWithContext(context.Background())
+}
+
+func (o GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput) ToGetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetProbeTemplateApmProbeNewRelicInputsNewRelicMetric) *GetProbeTemplateApmProbeNewRelicInputsNewRelicMetric {
+		return &v
+	}).(GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput)
+}
+
+// NRQL query string.
+func (o GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeNewRelicInputsNewRelicMetric) *string { return v.Query }).(pulumi.StringPtrOutput)
+}
+
+// NewRelic query metric name.
+func (o GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput) QueryMetric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeNewRelicInputsNewRelicMetric) *string { return v.QueryMetric }).(pulumi.StringPtrOutput)
+}
+
+type GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeNewRelicInputsNewRelicMetric)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput) ToGetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput() GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput) ToGetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput) Elem() GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeNewRelicInputsNewRelicMetric) GetProbeTemplateApmProbeNewRelicInputsNewRelicMetric {
+		if v != nil {
+			return *v
+		}
+		var ret GetProbeTemplateApmProbeNewRelicInputsNewRelicMetric
+		return ret
+	}).(GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput)
+}
+
+// NRQL query string.
+func (o GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeNewRelicInputsNewRelicMetric) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Query
+	}).(pulumi.StringPtrOutput)
+}
+
+// NewRelic query metric name.
+func (o GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput) QueryMetric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeNewRelicInputsNewRelicMetric) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryMetric
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetProbeTemplateApmProbePrometheusInputs struct {
+	// Harness connector ID for Prometheus.
+	ConnectorId string `pulumi:"connectorId"`
+	// PromQL query string.
+	Query string `pulumi:"query"`
+	// TLS configuration for Prometheus connection.
+	TlsConfig *GetProbeTemplateApmProbePrometheusInputsTlsConfig `pulumi:"tlsConfig"`
+}
+
+// GetProbeTemplateApmProbePrometheusInputsInput is an input type that accepts GetProbeTemplateApmProbePrometheusInputsArgs and GetProbeTemplateApmProbePrometheusInputsOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbePrometheusInputsInput` via:
+//
+//	GetProbeTemplateApmProbePrometheusInputsArgs{...}
+type GetProbeTemplateApmProbePrometheusInputsInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbePrometheusInputsOutput() GetProbeTemplateApmProbePrometheusInputsOutput
+	ToGetProbeTemplateApmProbePrometheusInputsOutputWithContext(context.Context) GetProbeTemplateApmProbePrometheusInputsOutput
+}
+
+type GetProbeTemplateApmProbePrometheusInputsArgs struct {
+	// Harness connector ID for Prometheus.
+	ConnectorId pulumi.StringInput `pulumi:"connectorId"`
+	// PromQL query string.
+	Query pulumi.StringInput `pulumi:"query"`
+	// TLS configuration for Prometheus connection.
+	TlsConfig GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrInput `pulumi:"tlsConfig"`
+}
+
+func (GetProbeTemplateApmProbePrometheusInputsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbePrometheusInputs)(nil)).Elem()
+}
+
+func (i GetProbeTemplateApmProbePrometheusInputsArgs) ToGetProbeTemplateApmProbePrometheusInputsOutput() GetProbeTemplateApmProbePrometheusInputsOutput {
+	return i.ToGetProbeTemplateApmProbePrometheusInputsOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbePrometheusInputsArgs) ToGetProbeTemplateApmProbePrometheusInputsOutputWithContext(ctx context.Context) GetProbeTemplateApmProbePrometheusInputsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbePrometheusInputsOutput)
+}
+
+func (i GetProbeTemplateApmProbePrometheusInputsArgs) ToGetProbeTemplateApmProbePrometheusInputsPtrOutput() GetProbeTemplateApmProbePrometheusInputsPtrOutput {
+	return i.ToGetProbeTemplateApmProbePrometheusInputsPtrOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbePrometheusInputsArgs) ToGetProbeTemplateApmProbePrometheusInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbePrometheusInputsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbePrometheusInputsOutput).ToGetProbeTemplateApmProbePrometheusInputsPtrOutputWithContext(ctx)
+}
+
+// GetProbeTemplateApmProbePrometheusInputsPtrInput is an input type that accepts GetProbeTemplateApmProbePrometheusInputsArgs, GetProbeTemplateApmProbePrometheusInputsPtr and GetProbeTemplateApmProbePrometheusInputsPtrOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbePrometheusInputsPtrInput` via:
+//
+//	        GetProbeTemplateApmProbePrometheusInputsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetProbeTemplateApmProbePrometheusInputsPtrInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbePrometheusInputsPtrOutput() GetProbeTemplateApmProbePrometheusInputsPtrOutput
+	ToGetProbeTemplateApmProbePrometheusInputsPtrOutputWithContext(context.Context) GetProbeTemplateApmProbePrometheusInputsPtrOutput
+}
+
+type getProbeTemplateApmProbePrometheusInputsPtrType GetProbeTemplateApmProbePrometheusInputsArgs
+
+func GetProbeTemplateApmProbePrometheusInputsPtr(v *GetProbeTemplateApmProbePrometheusInputsArgs) GetProbeTemplateApmProbePrometheusInputsPtrInput {
+	return (*getProbeTemplateApmProbePrometheusInputsPtrType)(v)
+}
+
+func (*getProbeTemplateApmProbePrometheusInputsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbePrometheusInputs)(nil)).Elem()
+}
+
+func (i *getProbeTemplateApmProbePrometheusInputsPtrType) ToGetProbeTemplateApmProbePrometheusInputsPtrOutput() GetProbeTemplateApmProbePrometheusInputsPtrOutput {
+	return i.ToGetProbeTemplateApmProbePrometheusInputsPtrOutputWithContext(context.Background())
+}
+
+func (i *getProbeTemplateApmProbePrometheusInputsPtrType) ToGetProbeTemplateApmProbePrometheusInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbePrometheusInputsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbePrometheusInputsPtrOutput)
+}
+
+type GetProbeTemplateApmProbePrometheusInputsOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbePrometheusInputsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbePrometheusInputs)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbePrometheusInputsOutput) ToGetProbeTemplateApmProbePrometheusInputsOutput() GetProbeTemplateApmProbePrometheusInputsOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbePrometheusInputsOutput) ToGetProbeTemplateApmProbePrometheusInputsOutputWithContext(ctx context.Context) GetProbeTemplateApmProbePrometheusInputsOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbePrometheusInputsOutput) ToGetProbeTemplateApmProbePrometheusInputsPtrOutput() GetProbeTemplateApmProbePrometheusInputsPtrOutput {
+	return o.ToGetProbeTemplateApmProbePrometheusInputsPtrOutputWithContext(context.Background())
+}
+
+func (o GetProbeTemplateApmProbePrometheusInputsOutput) ToGetProbeTemplateApmProbePrometheusInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbePrometheusInputsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetProbeTemplateApmProbePrometheusInputs) *GetProbeTemplateApmProbePrometheusInputs {
+		return &v
+	}).(GetProbeTemplateApmProbePrometheusInputsPtrOutput)
+}
+
+// Harness connector ID for Prometheus.
+func (o GetProbeTemplateApmProbePrometheusInputsOutput) ConnectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbePrometheusInputs) string { return v.ConnectorId }).(pulumi.StringOutput)
+}
+
+// PromQL query string.
+func (o GetProbeTemplateApmProbePrometheusInputsOutput) Query() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbePrometheusInputs) string { return v.Query }).(pulumi.StringOutput)
+}
+
+// TLS configuration for Prometheus connection.
+func (o GetProbeTemplateApmProbePrometheusInputsOutput) TlsConfig() GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbePrometheusInputs) *GetProbeTemplateApmProbePrometheusInputsTlsConfig {
+		return v.TlsConfig
+	}).(GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput)
+}
+
+type GetProbeTemplateApmProbePrometheusInputsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbePrometheusInputsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbePrometheusInputs)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbePrometheusInputsPtrOutput) ToGetProbeTemplateApmProbePrometheusInputsPtrOutput() GetProbeTemplateApmProbePrometheusInputsPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbePrometheusInputsPtrOutput) ToGetProbeTemplateApmProbePrometheusInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbePrometheusInputsPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbePrometheusInputsPtrOutput) Elem() GetProbeTemplateApmProbePrometheusInputsOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbePrometheusInputs) GetProbeTemplateApmProbePrometheusInputs {
+		if v != nil {
+			return *v
+		}
+		var ret GetProbeTemplateApmProbePrometheusInputs
+		return ret
+	}).(GetProbeTemplateApmProbePrometheusInputsOutput)
+}
+
+// Harness connector ID for Prometheus.
+func (o GetProbeTemplateApmProbePrometheusInputsPtrOutput) ConnectorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbePrometheusInputs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectorId
+	}).(pulumi.StringPtrOutput)
+}
+
+// PromQL query string.
+func (o GetProbeTemplateApmProbePrometheusInputsPtrOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbePrometheusInputs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Query
+	}).(pulumi.StringPtrOutput)
+}
+
+// TLS configuration for Prometheus connection.
+func (o GetProbeTemplateApmProbePrometheusInputsPtrOutput) TlsConfig() GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbePrometheusInputs) *GetProbeTemplateApmProbePrometheusInputsTlsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TlsConfig
+	}).(GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput)
+}
+
+type GetProbeTemplateApmProbePrometheusInputsTlsConfig struct {
+	// Harness secret identifier for CA certificate.
+	CaCertSecret *string `pulumi:"caCertSecret"`
+	// Harness secret identifier for client certificate.
+	ClientCertSecret *string `pulumi:"clientCertSecret"`
+	// Harness secret identifier for client key.
+	ClientKeySecret *string `pulumi:"clientKeySecret"`
+	// Skip TLS certificate verification.
+	InsecureSkipVerify *bool `pulumi:"insecureSkipVerify"`
+}
+
+// GetProbeTemplateApmProbePrometheusInputsTlsConfigInput is an input type that accepts GetProbeTemplateApmProbePrometheusInputsTlsConfigArgs and GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbePrometheusInputsTlsConfigInput` via:
+//
+//	GetProbeTemplateApmProbePrometheusInputsTlsConfigArgs{...}
+type GetProbeTemplateApmProbePrometheusInputsTlsConfigInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbePrometheusInputsTlsConfigOutput() GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput
+	ToGetProbeTemplateApmProbePrometheusInputsTlsConfigOutputWithContext(context.Context) GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput
+}
+
+type GetProbeTemplateApmProbePrometheusInputsTlsConfigArgs struct {
+	// Harness secret identifier for CA certificate.
+	CaCertSecret pulumi.StringPtrInput `pulumi:"caCertSecret"`
+	// Harness secret identifier for client certificate.
+	ClientCertSecret pulumi.StringPtrInput `pulumi:"clientCertSecret"`
+	// Harness secret identifier for client key.
+	ClientKeySecret pulumi.StringPtrInput `pulumi:"clientKeySecret"`
+	// Skip TLS certificate verification.
+	InsecureSkipVerify pulumi.BoolPtrInput `pulumi:"insecureSkipVerify"`
+}
+
+func (GetProbeTemplateApmProbePrometheusInputsTlsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbePrometheusInputsTlsConfig)(nil)).Elem()
+}
+
+func (i GetProbeTemplateApmProbePrometheusInputsTlsConfigArgs) ToGetProbeTemplateApmProbePrometheusInputsTlsConfigOutput() GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput {
+	return i.ToGetProbeTemplateApmProbePrometheusInputsTlsConfigOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbePrometheusInputsTlsConfigArgs) ToGetProbeTemplateApmProbePrometheusInputsTlsConfigOutputWithContext(ctx context.Context) GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput)
+}
+
+func (i GetProbeTemplateApmProbePrometheusInputsTlsConfigArgs) ToGetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput() GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput {
+	return i.ToGetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbePrometheusInputsTlsConfigArgs) ToGetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput).ToGetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutputWithContext(ctx)
+}
+
+// GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrInput is an input type that accepts GetProbeTemplateApmProbePrometheusInputsTlsConfigArgs, GetProbeTemplateApmProbePrometheusInputsTlsConfigPtr and GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrInput` via:
+//
+//	        GetProbeTemplateApmProbePrometheusInputsTlsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput() GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput
+	ToGetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutputWithContext(context.Context) GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput
+}
+
+type getProbeTemplateApmProbePrometheusInputsTlsConfigPtrType GetProbeTemplateApmProbePrometheusInputsTlsConfigArgs
+
+func GetProbeTemplateApmProbePrometheusInputsTlsConfigPtr(v *GetProbeTemplateApmProbePrometheusInputsTlsConfigArgs) GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrInput {
+	return (*getProbeTemplateApmProbePrometheusInputsTlsConfigPtrType)(v)
+}
+
+func (*getProbeTemplateApmProbePrometheusInputsTlsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbePrometheusInputsTlsConfig)(nil)).Elem()
+}
+
+func (i *getProbeTemplateApmProbePrometheusInputsTlsConfigPtrType) ToGetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput() GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput {
+	return i.ToGetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getProbeTemplateApmProbePrometheusInputsTlsConfigPtrType) ToGetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput)
+}
+
+type GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbePrometheusInputsTlsConfig)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput) ToGetProbeTemplateApmProbePrometheusInputsTlsConfigOutput() GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput) ToGetProbeTemplateApmProbePrometheusInputsTlsConfigOutputWithContext(ctx context.Context) GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput) ToGetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput() GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput {
+	return o.ToGetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput) ToGetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetProbeTemplateApmProbePrometheusInputsTlsConfig) *GetProbeTemplateApmProbePrometheusInputsTlsConfig {
+		return &v
+	}).(GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput)
+}
+
+// Harness secret identifier for CA certificate.
+func (o GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput) CaCertSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbePrometheusInputsTlsConfig) *string { return v.CaCertSecret }).(pulumi.StringPtrOutput)
+}
+
+// Harness secret identifier for client certificate.
+func (o GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput) ClientCertSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbePrometheusInputsTlsConfig) *string { return v.ClientCertSecret }).(pulumi.StringPtrOutput)
+}
+
+// Harness secret identifier for client key.
+func (o GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput) ClientKeySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbePrometheusInputsTlsConfig) *string { return v.ClientKeySecret }).(pulumi.StringPtrOutput)
+}
+
+// Skip TLS certificate verification.
+func (o GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput) InsecureSkipVerify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbePrometheusInputsTlsConfig) *bool { return v.InsecureSkipVerify }).(pulumi.BoolPtrOutput)
+}
+
+type GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbePrometheusInputsTlsConfig)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput) ToGetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput() GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput) ToGetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput) Elem() GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbePrometheusInputsTlsConfig) GetProbeTemplateApmProbePrometheusInputsTlsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetProbeTemplateApmProbePrometheusInputsTlsConfig
+		return ret
+	}).(GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput)
+}
+
+// Harness secret identifier for CA certificate.
+func (o GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput) CaCertSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbePrometheusInputsTlsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaCertSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Harness secret identifier for client certificate.
+func (o GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput) ClientCertSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbePrometheusInputsTlsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientCertSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Harness secret identifier for client key.
+func (o GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput) ClientKeySecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbePrometheusInputsTlsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientKeySecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Skip TLS certificate verification.
+func (o GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput) InsecureSkipVerify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbePrometheusInputsTlsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InsecureSkipVerify
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetProbeTemplateApmProbeSplunkObservabilityInputs struct {
+	// Harness connector ID for Splunk Observability.
+	ConnectorId string `pulumi:"connectorId"`
+	// Splunk Observability metrics configuration.
+	SplunkObservabilityMetrics *GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics `pulumi:"splunkObservabilityMetrics"`
+}
+
+// GetProbeTemplateApmProbeSplunkObservabilityInputsInput is an input type that accepts GetProbeTemplateApmProbeSplunkObservabilityInputsArgs and GetProbeTemplateApmProbeSplunkObservabilityInputsOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeSplunkObservabilityInputsInput` via:
+//
+//	GetProbeTemplateApmProbeSplunkObservabilityInputsArgs{...}
+type GetProbeTemplateApmProbeSplunkObservabilityInputsInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeSplunkObservabilityInputsOutput() GetProbeTemplateApmProbeSplunkObservabilityInputsOutput
+	ToGetProbeTemplateApmProbeSplunkObservabilityInputsOutputWithContext(context.Context) GetProbeTemplateApmProbeSplunkObservabilityInputsOutput
+}
+
+type GetProbeTemplateApmProbeSplunkObservabilityInputsArgs struct {
+	// Harness connector ID for Splunk Observability.
+	ConnectorId pulumi.StringInput `pulumi:"connectorId"`
+	// Splunk Observability metrics configuration.
+	SplunkObservabilityMetrics GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrInput `pulumi:"splunkObservabilityMetrics"`
+}
+
+func (GetProbeTemplateApmProbeSplunkObservabilityInputsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeSplunkObservabilityInputs)(nil)).Elem()
+}
+
+func (i GetProbeTemplateApmProbeSplunkObservabilityInputsArgs) ToGetProbeTemplateApmProbeSplunkObservabilityInputsOutput() GetProbeTemplateApmProbeSplunkObservabilityInputsOutput {
+	return i.ToGetProbeTemplateApmProbeSplunkObservabilityInputsOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeSplunkObservabilityInputsArgs) ToGetProbeTemplateApmProbeSplunkObservabilityInputsOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeSplunkObservabilityInputsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeSplunkObservabilityInputsOutput)
+}
+
+func (i GetProbeTemplateApmProbeSplunkObservabilityInputsArgs) ToGetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput() GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput {
+	return i.ToGetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeSplunkObservabilityInputsArgs) ToGetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeSplunkObservabilityInputsOutput).ToGetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutputWithContext(ctx)
+}
+
+// GetProbeTemplateApmProbeSplunkObservabilityInputsPtrInput is an input type that accepts GetProbeTemplateApmProbeSplunkObservabilityInputsArgs, GetProbeTemplateApmProbeSplunkObservabilityInputsPtr and GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeSplunkObservabilityInputsPtrInput` via:
+//
+//	        GetProbeTemplateApmProbeSplunkObservabilityInputsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetProbeTemplateApmProbeSplunkObservabilityInputsPtrInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput() GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput
+	ToGetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutputWithContext(context.Context) GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput
+}
+
+type getProbeTemplateApmProbeSplunkObservabilityInputsPtrType GetProbeTemplateApmProbeSplunkObservabilityInputsArgs
+
+func GetProbeTemplateApmProbeSplunkObservabilityInputsPtr(v *GetProbeTemplateApmProbeSplunkObservabilityInputsArgs) GetProbeTemplateApmProbeSplunkObservabilityInputsPtrInput {
+	return (*getProbeTemplateApmProbeSplunkObservabilityInputsPtrType)(v)
+}
+
+func (*getProbeTemplateApmProbeSplunkObservabilityInputsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeSplunkObservabilityInputs)(nil)).Elem()
+}
+
+func (i *getProbeTemplateApmProbeSplunkObservabilityInputsPtrType) ToGetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput() GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput {
+	return i.ToGetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutputWithContext(context.Background())
+}
+
+func (i *getProbeTemplateApmProbeSplunkObservabilityInputsPtrType) ToGetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput)
+}
+
+type GetProbeTemplateApmProbeSplunkObservabilityInputsOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeSplunkObservabilityInputsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeSplunkObservabilityInputs)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsOutput) ToGetProbeTemplateApmProbeSplunkObservabilityInputsOutput() GetProbeTemplateApmProbeSplunkObservabilityInputsOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsOutput) ToGetProbeTemplateApmProbeSplunkObservabilityInputsOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeSplunkObservabilityInputsOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsOutput) ToGetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput() GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput {
+	return o.ToGetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutputWithContext(context.Background())
+}
+
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsOutput) ToGetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetProbeTemplateApmProbeSplunkObservabilityInputs) *GetProbeTemplateApmProbeSplunkObservabilityInputs {
+		return &v
+	}).(GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput)
+}
+
+// Harness connector ID for Splunk Observability.
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsOutput) ConnectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeSplunkObservabilityInputs) string { return v.ConnectorId }).(pulumi.StringOutput)
+}
+
+// Splunk Observability metrics configuration.
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsOutput) SplunkObservabilityMetrics() GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeSplunkObservabilityInputs) *GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics {
+		return v.SplunkObservabilityMetrics
+	}).(GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput)
+}
+
+type GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeSplunkObservabilityInputs)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput) ToGetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput() GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput) ToGetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput) Elem() GetProbeTemplateApmProbeSplunkObservabilityInputsOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeSplunkObservabilityInputs) GetProbeTemplateApmProbeSplunkObservabilityInputs {
+		if v != nil {
+			return *v
+		}
+		var ret GetProbeTemplateApmProbeSplunkObservabilityInputs
+		return ret
+	}).(GetProbeTemplateApmProbeSplunkObservabilityInputsOutput)
+}
+
+// Harness connector ID for Splunk Observability.
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput) ConnectorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeSplunkObservabilityInputs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectorId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Splunk Observability metrics configuration.
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput) SplunkObservabilityMetrics() GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeSplunkObservabilityInputs) *GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics {
+		if v == nil {
+			return nil
+		}
+		return v.SplunkObservabilityMetrics
+	}).(GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput)
+}
+
+type GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics struct {
+	// Duration in minutes for the Splunk query.
+	DurationInMin *int `pulumi:"durationInMin"`
+	// Splunk Observability query string.
+	Query *string `pulumi:"query"`
+}
+
+// GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsInput is an input type that accepts GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs and GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsInput` via:
+//
+//	GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs{...}
+type GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput() GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput
+	ToGetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutputWithContext(context.Context) GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput
+}
+
+type GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs struct {
+	// Duration in minutes for the Splunk query.
+	DurationInMin pulumi.IntPtrInput `pulumi:"durationInMin"`
+	// Splunk Observability query string.
+	Query pulumi.StringPtrInput `pulumi:"query"`
+}
+
+func (GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics)(nil)).Elem()
+}
+
+func (i GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs) ToGetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput() GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput {
+	return i.ToGetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs) ToGetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput)
+}
+
+func (i GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs) ToGetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput() GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput {
+	return i.ToGetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs) ToGetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput).ToGetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutputWithContext(ctx)
+}
+
+// GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrInput is an input type that accepts GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs, GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtr and GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput values.
+// You can construct a concrete instance of `GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrInput` via:
+//
+//	        GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput() GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput
+	ToGetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutputWithContext(context.Context) GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput
+}
+
+type getProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrType GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs
+
+func GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtr(v *GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs) GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrInput {
+	return (*getProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrType)(v)
+}
+
+func (*getProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics)(nil)).Elem()
+}
+
+func (i *getProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrType) ToGetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput() GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput {
+	return i.ToGetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i *getProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrType) ToGetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput)
+}
+
+type GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput) ToGetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput() GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput) ToGetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput) ToGetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput() GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput {
+	return o.ToGetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutputWithContext(context.Background())
+}
+
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput) ToGetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics) *GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics {
+		return &v
+	}).(GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput)
+}
+
+// Duration in minutes for the Splunk query.
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput) DurationInMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics) *int {
+		return v.DurationInMin
+	}).(pulumi.IntPtrOutput)
+}
+
+// Splunk Observability query string.
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics) *string {
+		return v.Query
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics)(nil)).Elem()
+}
+
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput) ToGetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput() GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput) ToGetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutputWithContext(ctx context.Context) GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput) Elem() GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics) GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics {
+		if v != nil {
+			return *v
+		}
+		var ret GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics
+		return ret
+	}).(GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput)
+}
+
+// Duration in minutes for the Splunk query.
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput) DurationInMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DurationInMin
+	}).(pulumi.IntPtrOutput)
+}
+
+// Splunk Observability query string.
+func (o GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput) Query() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Query
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetProbeTemplateCmdProbe struct {
+	// Command to execute.
 	Command string `pulumi:"command"`
-	// Comparator configuration.
+	// Comparator for command output validation.
 	Comparators []GetProbeTemplateCmdProbeComparator `pulumi:"comparators"`
-	// Environment variables.
-	Envs   []GetProbeTemplateCmdProbeEnv `pulumi:"envs"`
-	Source string                        `pulumi:"source"`
+	// Environment variables for the command.
+	Envs []GetProbeTemplateCmdProbeEnv `pulumi:"envs"`
+	// Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as "inline", "configMap", or "secret" is INVALID and fails with "cannot unmarshal string into Go value of type v1.SourceDetails". To run inline, omit this field entirely.
+	Source *string `pulumi:"source"`
 }
 
 // GetProbeTemplateCmdProbeInput is an input type that accepts GetProbeTemplateCmdProbeArgs and GetProbeTemplateCmdProbeOutput values.
@@ -26071,12 +30533,14 @@ type GetProbeTemplateCmdProbeInput interface {
 }
 
 type GetProbeTemplateCmdProbeArgs struct {
+	// Command to execute.
 	Command pulumi.StringInput `pulumi:"command"`
-	// Comparator configuration.
+	// Comparator for command output validation.
 	Comparators GetProbeTemplateCmdProbeComparatorArrayInput `pulumi:"comparators"`
-	// Environment variables.
-	Envs   GetProbeTemplateCmdProbeEnvArrayInput `pulumi:"envs"`
-	Source pulumi.StringInput                    `pulumi:"source"`
+	// Environment variables for the command.
+	Envs GetProbeTemplateCmdProbeEnvArrayInput `pulumi:"envs"`
+	// Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as "inline", "configMap", or "secret" is INVALID and fails with "cannot unmarshal string into Go value of type v1.SourceDetails". To run inline, omit this field entirely.
+	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
 func (GetProbeTemplateCmdProbeArgs) ElementType() reflect.Type {
@@ -26130,22 +30594,24 @@ func (o GetProbeTemplateCmdProbeOutput) ToGetProbeTemplateCmdProbeOutputWithCont
 	return o
 }
 
+// Command to execute.
 func (o GetProbeTemplateCmdProbeOutput) Command() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProbeTemplateCmdProbe) string { return v.Command }).(pulumi.StringOutput)
 }
 
-// Comparator configuration.
+// Comparator for command output validation.
 func (o GetProbeTemplateCmdProbeOutput) Comparators() GetProbeTemplateCmdProbeComparatorArrayOutput {
 	return o.ApplyT(func(v GetProbeTemplateCmdProbe) []GetProbeTemplateCmdProbeComparator { return v.Comparators }).(GetProbeTemplateCmdProbeComparatorArrayOutput)
 }
 
-// Environment variables.
+// Environment variables for the command.
 func (o GetProbeTemplateCmdProbeOutput) Envs() GetProbeTemplateCmdProbeEnvArrayOutput {
 	return o.ApplyT(func(v GetProbeTemplateCmdProbe) []GetProbeTemplateCmdProbeEnv { return v.Envs }).(GetProbeTemplateCmdProbeEnvArrayOutput)
 }
 
-func (o GetProbeTemplateCmdProbeOutput) Source() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProbeTemplateCmdProbe) string { return v.Source }).(pulumi.StringOutput)
+// Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as "inline", "configMap", or "secret" is INVALID and fails with "cannot unmarshal string into Go value of type v1.SourceDetails". To run inline, omit this field entirely.
+func (o GetProbeTemplateCmdProbeOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateCmdProbe) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
 type GetProbeTemplateCmdProbeArrayOutput struct{ *pulumi.OutputState }
@@ -26169,9 +30635,12 @@ func (o GetProbeTemplateCmdProbeArrayOutput) Index(i pulumi.IntInput) GetProbeTe
 }
 
 type GetProbeTemplateCmdProbeComparator struct {
+	// Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
 	Criteria string `pulumi:"criteria"`
-	Type     string `pulumi:"type"`
-	Value    string `pulumi:"value"`
+	// Comparator type (string, int, float).
+	Type string `pulumi:"type"`
+	// Expected value.
+	Value string `pulumi:"value"`
 }
 
 // GetProbeTemplateCmdProbeComparatorInput is an input type that accepts GetProbeTemplateCmdProbeComparatorArgs and GetProbeTemplateCmdProbeComparatorOutput values.
@@ -26186,9 +30655,12 @@ type GetProbeTemplateCmdProbeComparatorInput interface {
 }
 
 type GetProbeTemplateCmdProbeComparatorArgs struct {
+	// Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
 	Criteria pulumi.StringInput `pulumi:"criteria"`
-	Type     pulumi.StringInput `pulumi:"type"`
-	Value    pulumi.StringInput `pulumi:"value"`
+	// Comparator type (string, int, float).
+	Type pulumi.StringInput `pulumi:"type"`
+	// Expected value.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetProbeTemplateCmdProbeComparatorArgs) ElementType() reflect.Type {
@@ -26242,14 +30714,17 @@ func (o GetProbeTemplateCmdProbeComparatorOutput) ToGetProbeTemplateCmdProbeComp
 	return o
 }
 
+// Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
 func (o GetProbeTemplateCmdProbeComparatorOutput) Criteria() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProbeTemplateCmdProbeComparator) string { return v.Criteria }).(pulumi.StringOutput)
 }
 
+// Comparator type (string, int, float).
 func (o GetProbeTemplateCmdProbeComparatorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProbeTemplateCmdProbeComparator) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Expected value.
 func (o GetProbeTemplateCmdProbeComparatorOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProbeTemplateCmdProbeComparator) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -26275,7 +30750,9 @@ func (o GetProbeTemplateCmdProbeComparatorArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetProbeTemplateCmdProbeEnv struct {
-	Name  string `pulumi:"name"`
+	// Environment variable name.
+	Name string `pulumi:"name"`
+	// Environment variable value.
 	Value string `pulumi:"value"`
 }
 
@@ -26291,7 +30768,9 @@ type GetProbeTemplateCmdProbeEnvInput interface {
 }
 
 type GetProbeTemplateCmdProbeEnvArgs struct {
-	Name  pulumi.StringInput `pulumi:"name"`
+	// Environment variable name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Environment variable value.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -26346,10 +30825,12 @@ func (o GetProbeTemplateCmdProbeEnvOutput) ToGetProbeTemplateCmdProbeEnvOutputWi
 	return o
 }
 
+// Environment variable name.
 func (o GetProbeTemplateCmdProbeEnvOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProbeTemplateCmdProbeEnv) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Environment variable value.
 func (o GetProbeTemplateCmdProbeEnvOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProbeTemplateCmdProbeEnv) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -26375,9 +30856,16 @@ func (o GetProbeTemplateCmdProbeEnvArrayOutput) Index(i pulumi.IntInput) GetProb
 }
 
 type GetProbeTemplateHttpProbe struct {
+	// Authentication configuration.
+	Auth *GetProbeTemplateHttpProbeAuth `pulumi:"auth"`
+	// HTTP headers.
+	Headers map[string]string `pulumi:"headers"`
 	// HTTP method configuration with GET or POST.
 	Methods []GetProbeTemplateHttpProbeMethod `pulumi:"methods"`
-	Url     string                            `pulumi:"url"`
+	// TLS configuration.
+	TlsConfig *GetProbeTemplateHttpProbeTlsConfig `pulumi:"tlsConfig"`
+	// URL to probe.
+	Url string `pulumi:"url"`
 }
 
 // GetProbeTemplateHttpProbeInput is an input type that accepts GetProbeTemplateHttpProbeArgs and GetProbeTemplateHttpProbeOutput values.
@@ -26392,9 +30880,16 @@ type GetProbeTemplateHttpProbeInput interface {
 }
 
 type GetProbeTemplateHttpProbeArgs struct {
+	// Authentication configuration.
+	Auth GetProbeTemplateHttpProbeAuthPtrInput `pulumi:"auth"`
+	// HTTP headers.
+	Headers pulumi.StringMapInput `pulumi:"headers"`
 	// HTTP method configuration with GET or POST.
 	Methods GetProbeTemplateHttpProbeMethodArrayInput `pulumi:"methods"`
-	Url     pulumi.StringInput                        `pulumi:"url"`
+	// TLS configuration.
+	TlsConfig GetProbeTemplateHttpProbeTlsConfigPtrInput `pulumi:"tlsConfig"`
+	// URL to probe.
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (GetProbeTemplateHttpProbeArgs) ElementType() reflect.Type {
@@ -26448,11 +30943,27 @@ func (o GetProbeTemplateHttpProbeOutput) ToGetProbeTemplateHttpProbeOutputWithCo
 	return o
 }
 
+// Authentication configuration.
+func (o GetProbeTemplateHttpProbeOutput) Auth() GetProbeTemplateHttpProbeAuthPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateHttpProbe) *GetProbeTemplateHttpProbeAuth { return v.Auth }).(GetProbeTemplateHttpProbeAuthPtrOutput)
+}
+
+// HTTP headers.
+func (o GetProbeTemplateHttpProbeOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetProbeTemplateHttpProbe) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+}
+
 // HTTP method configuration with GET or POST.
 func (o GetProbeTemplateHttpProbeOutput) Methods() GetProbeTemplateHttpProbeMethodArrayOutput {
 	return o.ApplyT(func(v GetProbeTemplateHttpProbe) []GetProbeTemplateHttpProbeMethod { return v.Methods }).(GetProbeTemplateHttpProbeMethodArrayOutput)
 }
 
+// TLS configuration.
+func (o GetProbeTemplateHttpProbeOutput) TlsConfig() GetProbeTemplateHttpProbeTlsConfigPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateHttpProbe) *GetProbeTemplateHttpProbeTlsConfig { return v.TlsConfig }).(GetProbeTemplateHttpProbeTlsConfigPtrOutput)
+}
+
+// URL to probe.
 func (o GetProbeTemplateHttpProbeOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProbeTemplateHttpProbe) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -26475,6 +30986,200 @@ func (o GetProbeTemplateHttpProbeArrayOutput) Index(i pulumi.IntInput) GetProbeT
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProbeTemplateHttpProbe {
 		return vs[0].([]GetProbeTemplateHttpProbe)[vs[1].(int)]
 	}).(GetProbeTemplateHttpProbeOutput)
+}
+
+type GetProbeTemplateHttpProbeAuth struct {
+	// Password for basic auth.
+	Password *string `pulumi:"password"`
+	// Token for bearer auth.
+	Token *string `pulumi:"token"`
+	// Auth type (basic, bearer, etc.).
+	Type string `pulumi:"type"`
+	// Username for basic auth.
+	Username *string `pulumi:"username"`
+}
+
+// GetProbeTemplateHttpProbeAuthInput is an input type that accepts GetProbeTemplateHttpProbeAuthArgs and GetProbeTemplateHttpProbeAuthOutput values.
+// You can construct a concrete instance of `GetProbeTemplateHttpProbeAuthInput` via:
+//
+//	GetProbeTemplateHttpProbeAuthArgs{...}
+type GetProbeTemplateHttpProbeAuthInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateHttpProbeAuthOutput() GetProbeTemplateHttpProbeAuthOutput
+	ToGetProbeTemplateHttpProbeAuthOutputWithContext(context.Context) GetProbeTemplateHttpProbeAuthOutput
+}
+
+type GetProbeTemplateHttpProbeAuthArgs struct {
+	// Password for basic auth.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Token for bearer auth.
+	Token pulumi.StringPtrInput `pulumi:"token"`
+	// Auth type (basic, bearer, etc.).
+	Type pulumi.StringInput `pulumi:"type"`
+	// Username for basic auth.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetProbeTemplateHttpProbeAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateHttpProbeAuth)(nil)).Elem()
+}
+
+func (i GetProbeTemplateHttpProbeAuthArgs) ToGetProbeTemplateHttpProbeAuthOutput() GetProbeTemplateHttpProbeAuthOutput {
+	return i.ToGetProbeTemplateHttpProbeAuthOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateHttpProbeAuthArgs) ToGetProbeTemplateHttpProbeAuthOutputWithContext(ctx context.Context) GetProbeTemplateHttpProbeAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateHttpProbeAuthOutput)
+}
+
+func (i GetProbeTemplateHttpProbeAuthArgs) ToGetProbeTemplateHttpProbeAuthPtrOutput() GetProbeTemplateHttpProbeAuthPtrOutput {
+	return i.ToGetProbeTemplateHttpProbeAuthPtrOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateHttpProbeAuthArgs) ToGetProbeTemplateHttpProbeAuthPtrOutputWithContext(ctx context.Context) GetProbeTemplateHttpProbeAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateHttpProbeAuthOutput).ToGetProbeTemplateHttpProbeAuthPtrOutputWithContext(ctx)
+}
+
+// GetProbeTemplateHttpProbeAuthPtrInput is an input type that accepts GetProbeTemplateHttpProbeAuthArgs, GetProbeTemplateHttpProbeAuthPtr and GetProbeTemplateHttpProbeAuthPtrOutput values.
+// You can construct a concrete instance of `GetProbeTemplateHttpProbeAuthPtrInput` via:
+//
+//	        GetProbeTemplateHttpProbeAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetProbeTemplateHttpProbeAuthPtrInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateHttpProbeAuthPtrOutput() GetProbeTemplateHttpProbeAuthPtrOutput
+	ToGetProbeTemplateHttpProbeAuthPtrOutputWithContext(context.Context) GetProbeTemplateHttpProbeAuthPtrOutput
+}
+
+type getProbeTemplateHttpProbeAuthPtrType GetProbeTemplateHttpProbeAuthArgs
+
+func GetProbeTemplateHttpProbeAuthPtr(v *GetProbeTemplateHttpProbeAuthArgs) GetProbeTemplateHttpProbeAuthPtrInput {
+	return (*getProbeTemplateHttpProbeAuthPtrType)(v)
+}
+
+func (*getProbeTemplateHttpProbeAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateHttpProbeAuth)(nil)).Elem()
+}
+
+func (i *getProbeTemplateHttpProbeAuthPtrType) ToGetProbeTemplateHttpProbeAuthPtrOutput() GetProbeTemplateHttpProbeAuthPtrOutput {
+	return i.ToGetProbeTemplateHttpProbeAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *getProbeTemplateHttpProbeAuthPtrType) ToGetProbeTemplateHttpProbeAuthPtrOutputWithContext(ctx context.Context) GetProbeTemplateHttpProbeAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateHttpProbeAuthPtrOutput)
+}
+
+type GetProbeTemplateHttpProbeAuthOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateHttpProbeAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateHttpProbeAuth)(nil)).Elem()
+}
+
+func (o GetProbeTemplateHttpProbeAuthOutput) ToGetProbeTemplateHttpProbeAuthOutput() GetProbeTemplateHttpProbeAuthOutput {
+	return o
+}
+
+func (o GetProbeTemplateHttpProbeAuthOutput) ToGetProbeTemplateHttpProbeAuthOutputWithContext(ctx context.Context) GetProbeTemplateHttpProbeAuthOutput {
+	return o
+}
+
+func (o GetProbeTemplateHttpProbeAuthOutput) ToGetProbeTemplateHttpProbeAuthPtrOutput() GetProbeTemplateHttpProbeAuthPtrOutput {
+	return o.ToGetProbeTemplateHttpProbeAuthPtrOutputWithContext(context.Background())
+}
+
+func (o GetProbeTemplateHttpProbeAuthOutput) ToGetProbeTemplateHttpProbeAuthPtrOutputWithContext(ctx context.Context) GetProbeTemplateHttpProbeAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetProbeTemplateHttpProbeAuth) *GetProbeTemplateHttpProbeAuth {
+		return &v
+	}).(GetProbeTemplateHttpProbeAuthPtrOutput)
+}
+
+// Password for basic auth.
+func (o GetProbeTemplateHttpProbeAuthOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateHttpProbeAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Token for bearer auth.
+func (o GetProbeTemplateHttpProbeAuthOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateHttpProbeAuth) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+// Auth type (basic, bearer, etc.).
+func (o GetProbeTemplateHttpProbeAuthOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProbeTemplateHttpProbeAuth) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Username for basic auth.
+func (o GetProbeTemplateHttpProbeAuthOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateHttpProbeAuth) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetProbeTemplateHttpProbeAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateHttpProbeAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateHttpProbeAuth)(nil)).Elem()
+}
+
+func (o GetProbeTemplateHttpProbeAuthPtrOutput) ToGetProbeTemplateHttpProbeAuthPtrOutput() GetProbeTemplateHttpProbeAuthPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateHttpProbeAuthPtrOutput) ToGetProbeTemplateHttpProbeAuthPtrOutputWithContext(ctx context.Context) GetProbeTemplateHttpProbeAuthPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateHttpProbeAuthPtrOutput) Elem() GetProbeTemplateHttpProbeAuthOutput {
+	return o.ApplyT(func(v *GetProbeTemplateHttpProbeAuth) GetProbeTemplateHttpProbeAuth {
+		if v != nil {
+			return *v
+		}
+		var ret GetProbeTemplateHttpProbeAuth
+		return ret
+	}).(GetProbeTemplateHttpProbeAuthOutput)
+}
+
+// Password for basic auth.
+func (o GetProbeTemplateHttpProbeAuthPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateHttpProbeAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Token for bearer auth.
+func (o GetProbeTemplateHttpProbeAuthPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateHttpProbeAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+// Auth type (basic, bearer, etc.).
+func (o GetProbeTemplateHttpProbeAuthPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateHttpProbeAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username for basic auth.
+func (o GetProbeTemplateHttpProbeAuthPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateHttpProbeAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetProbeTemplateHttpProbeMethod struct {
@@ -26584,9 +31289,12 @@ func (o GetProbeTemplateHttpProbeMethodArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetProbeTemplateHttpProbeMethodGet struct {
-	Criteria     string `pulumi:"criteria"`
-	ResponseBody string `pulumi:"responseBody"`
-	ResponseCode string `pulumi:"responseCode"`
+	// Response criteria (e.g., '==', '!=', 'contains').
+	Criteria *string `pulumi:"criteria"`
+	// Expected response body.
+	ResponseBody *string `pulumi:"responseBody"`
+	// Expected HTTP response code (e.g., '200', '404').
+	ResponseCode *string `pulumi:"responseCode"`
 }
 
 // GetProbeTemplateHttpProbeMethodGetInput is an input type that accepts GetProbeTemplateHttpProbeMethodGetArgs and GetProbeTemplateHttpProbeMethodGetOutput values.
@@ -26601,9 +31309,12 @@ type GetProbeTemplateHttpProbeMethodGetInput interface {
 }
 
 type GetProbeTemplateHttpProbeMethodGetArgs struct {
-	Criteria     pulumi.StringInput `pulumi:"criteria"`
-	ResponseBody pulumi.StringInput `pulumi:"responseBody"`
-	ResponseCode pulumi.StringInput `pulumi:"responseCode"`
+	// Response criteria (e.g., '==', '!=', 'contains').
+	Criteria pulumi.StringPtrInput `pulumi:"criteria"`
+	// Expected response body.
+	ResponseBody pulumi.StringPtrInput `pulumi:"responseBody"`
+	// Expected HTTP response code (e.g., '200', '404').
+	ResponseCode pulumi.StringPtrInput `pulumi:"responseCode"`
 }
 
 func (GetProbeTemplateHttpProbeMethodGetArgs) ElementType() reflect.Type {
@@ -26657,16 +31368,19 @@ func (o GetProbeTemplateHttpProbeMethodGetOutput) ToGetProbeTemplateHttpProbeMet
 	return o
 }
 
-func (o GetProbeTemplateHttpProbeMethodGetOutput) Criteria() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProbeTemplateHttpProbeMethodGet) string { return v.Criteria }).(pulumi.StringOutput)
+// Response criteria (e.g., '==', '!=', 'contains').
+func (o GetProbeTemplateHttpProbeMethodGetOutput) Criteria() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateHttpProbeMethodGet) *string { return v.Criteria }).(pulumi.StringPtrOutput)
 }
 
-func (o GetProbeTemplateHttpProbeMethodGetOutput) ResponseBody() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProbeTemplateHttpProbeMethodGet) string { return v.ResponseBody }).(pulumi.StringOutput)
+// Expected response body.
+func (o GetProbeTemplateHttpProbeMethodGetOutput) ResponseBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateHttpProbeMethodGet) *string { return v.ResponseBody }).(pulumi.StringPtrOutput)
 }
 
-func (o GetProbeTemplateHttpProbeMethodGetOutput) ResponseCode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProbeTemplateHttpProbeMethodGet) string { return v.ResponseCode }).(pulumi.StringOutput)
+// Expected HTTP response code (e.g., '200', '404').
+func (o GetProbeTemplateHttpProbeMethodGetOutput) ResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateHttpProbeMethodGet) *string { return v.ResponseCode }).(pulumi.StringPtrOutput)
 }
 
 type GetProbeTemplateHttpProbeMethodGetArrayOutput struct{ *pulumi.OutputState }
@@ -26690,12 +31404,18 @@ func (o GetProbeTemplateHttpProbeMethodGetArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetProbeTemplateHttpProbeMethodPost struct {
-	Body         string `pulumi:"body"`
-	BodyPath     string `pulumi:"bodyPath"`
-	ContentType  string `pulumi:"contentType"`
-	Criteria     string `pulumi:"criteria"`
-	ResponseBody string `pulumi:"responseBody"`
-	ResponseCode string `pulumi:"responseCode"`
+	// POST request body.
+	Body *string `pulumi:"body"`
+	// Path to file containing POST body.
+	BodyPath *string `pulumi:"bodyPath"`
+	// Content-Type header for POST request.
+	ContentType *string `pulumi:"contentType"`
+	// Response criteria (e.g., '==', '!=', 'contains').
+	Criteria *string `pulumi:"criteria"`
+	// Expected response body.
+	ResponseBody *string `pulumi:"responseBody"`
+	// Expected HTTP response code (e.g., '200', '404').
+	ResponseCode *string `pulumi:"responseCode"`
 }
 
 // GetProbeTemplateHttpProbeMethodPostInput is an input type that accepts GetProbeTemplateHttpProbeMethodPostArgs and GetProbeTemplateHttpProbeMethodPostOutput values.
@@ -26710,12 +31430,18 @@ type GetProbeTemplateHttpProbeMethodPostInput interface {
 }
 
 type GetProbeTemplateHttpProbeMethodPostArgs struct {
-	Body         pulumi.StringInput `pulumi:"body"`
-	BodyPath     pulumi.StringInput `pulumi:"bodyPath"`
-	ContentType  pulumi.StringInput `pulumi:"contentType"`
-	Criteria     pulumi.StringInput `pulumi:"criteria"`
-	ResponseBody pulumi.StringInput `pulumi:"responseBody"`
-	ResponseCode pulumi.StringInput `pulumi:"responseCode"`
+	// POST request body.
+	Body pulumi.StringPtrInput `pulumi:"body"`
+	// Path to file containing POST body.
+	BodyPath pulumi.StringPtrInput `pulumi:"bodyPath"`
+	// Content-Type header for POST request.
+	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
+	// Response criteria (e.g., '==', '!=', 'contains').
+	Criteria pulumi.StringPtrInput `pulumi:"criteria"`
+	// Expected response body.
+	ResponseBody pulumi.StringPtrInput `pulumi:"responseBody"`
+	// Expected HTTP response code (e.g., '200', '404').
+	ResponseCode pulumi.StringPtrInput `pulumi:"responseCode"`
 }
 
 func (GetProbeTemplateHttpProbeMethodPostArgs) ElementType() reflect.Type {
@@ -26769,28 +31495,34 @@ func (o GetProbeTemplateHttpProbeMethodPostOutput) ToGetProbeTemplateHttpProbeMe
 	return o
 }
 
-func (o GetProbeTemplateHttpProbeMethodPostOutput) Body() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProbeTemplateHttpProbeMethodPost) string { return v.Body }).(pulumi.StringOutput)
+// POST request body.
+func (o GetProbeTemplateHttpProbeMethodPostOutput) Body() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateHttpProbeMethodPost) *string { return v.Body }).(pulumi.StringPtrOutput)
 }
 
-func (o GetProbeTemplateHttpProbeMethodPostOutput) BodyPath() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProbeTemplateHttpProbeMethodPost) string { return v.BodyPath }).(pulumi.StringOutput)
+// Path to file containing POST body.
+func (o GetProbeTemplateHttpProbeMethodPostOutput) BodyPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateHttpProbeMethodPost) *string { return v.BodyPath }).(pulumi.StringPtrOutput)
 }
 
-func (o GetProbeTemplateHttpProbeMethodPostOutput) ContentType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProbeTemplateHttpProbeMethodPost) string { return v.ContentType }).(pulumi.StringOutput)
+// Content-Type header for POST request.
+func (o GetProbeTemplateHttpProbeMethodPostOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateHttpProbeMethodPost) *string { return v.ContentType }).(pulumi.StringPtrOutput)
 }
 
-func (o GetProbeTemplateHttpProbeMethodPostOutput) Criteria() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProbeTemplateHttpProbeMethodPost) string { return v.Criteria }).(pulumi.StringOutput)
+// Response criteria (e.g., '==', '!=', 'contains').
+func (o GetProbeTemplateHttpProbeMethodPostOutput) Criteria() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateHttpProbeMethodPost) *string { return v.Criteria }).(pulumi.StringPtrOutput)
 }
 
-func (o GetProbeTemplateHttpProbeMethodPostOutput) ResponseBody() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProbeTemplateHttpProbeMethodPost) string { return v.ResponseBody }).(pulumi.StringOutput)
+// Expected response body.
+func (o GetProbeTemplateHttpProbeMethodPostOutput) ResponseBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateHttpProbeMethodPost) *string { return v.ResponseBody }).(pulumi.StringPtrOutput)
 }
 
-func (o GetProbeTemplateHttpProbeMethodPostOutput) ResponseCode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProbeTemplateHttpProbeMethodPost) string { return v.ResponseCode }).(pulumi.StringOutput)
+// Expected HTTP response code (e.g., '200', '404').
+func (o GetProbeTemplateHttpProbeMethodPostOutput) ResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateHttpProbeMethodPost) *string { return v.ResponseCode }).(pulumi.StringPtrOutput)
 }
 
 type GetProbeTemplateHttpProbeMethodPostArrayOutput struct{ *pulumi.OutputState }
@@ -26813,13 +31545,217 @@ func (o GetProbeTemplateHttpProbeMethodPostArrayOutput) Index(i pulumi.IntInput)
 	}).(GetProbeTemplateHttpProbeMethodPostOutput)
 }
 
+type GetProbeTemplateHttpProbeTlsConfig struct {
+	// CA certificate.
+	CaCert *string `pulumi:"caCert"`
+	// Client certificate.
+	ClientCert *string `pulumi:"clientCert"`
+	// Client key.
+	ClientKey *string `pulumi:"clientKey"`
+	// Skip TLS certificate verification.
+	InsecureSkipVerify *bool `pulumi:"insecureSkipVerify"`
+}
+
+// GetProbeTemplateHttpProbeTlsConfigInput is an input type that accepts GetProbeTemplateHttpProbeTlsConfigArgs and GetProbeTemplateHttpProbeTlsConfigOutput values.
+// You can construct a concrete instance of `GetProbeTemplateHttpProbeTlsConfigInput` via:
+//
+//	GetProbeTemplateHttpProbeTlsConfigArgs{...}
+type GetProbeTemplateHttpProbeTlsConfigInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateHttpProbeTlsConfigOutput() GetProbeTemplateHttpProbeTlsConfigOutput
+	ToGetProbeTemplateHttpProbeTlsConfigOutputWithContext(context.Context) GetProbeTemplateHttpProbeTlsConfigOutput
+}
+
+type GetProbeTemplateHttpProbeTlsConfigArgs struct {
+	// CA certificate.
+	CaCert pulumi.StringPtrInput `pulumi:"caCert"`
+	// Client certificate.
+	ClientCert pulumi.StringPtrInput `pulumi:"clientCert"`
+	// Client key.
+	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
+	// Skip TLS certificate verification.
+	InsecureSkipVerify pulumi.BoolPtrInput `pulumi:"insecureSkipVerify"`
+}
+
+func (GetProbeTemplateHttpProbeTlsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateHttpProbeTlsConfig)(nil)).Elem()
+}
+
+func (i GetProbeTemplateHttpProbeTlsConfigArgs) ToGetProbeTemplateHttpProbeTlsConfigOutput() GetProbeTemplateHttpProbeTlsConfigOutput {
+	return i.ToGetProbeTemplateHttpProbeTlsConfigOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateHttpProbeTlsConfigArgs) ToGetProbeTemplateHttpProbeTlsConfigOutputWithContext(ctx context.Context) GetProbeTemplateHttpProbeTlsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateHttpProbeTlsConfigOutput)
+}
+
+func (i GetProbeTemplateHttpProbeTlsConfigArgs) ToGetProbeTemplateHttpProbeTlsConfigPtrOutput() GetProbeTemplateHttpProbeTlsConfigPtrOutput {
+	return i.ToGetProbeTemplateHttpProbeTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetProbeTemplateHttpProbeTlsConfigArgs) ToGetProbeTemplateHttpProbeTlsConfigPtrOutputWithContext(ctx context.Context) GetProbeTemplateHttpProbeTlsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateHttpProbeTlsConfigOutput).ToGetProbeTemplateHttpProbeTlsConfigPtrOutputWithContext(ctx)
+}
+
+// GetProbeTemplateHttpProbeTlsConfigPtrInput is an input type that accepts GetProbeTemplateHttpProbeTlsConfigArgs, GetProbeTemplateHttpProbeTlsConfigPtr and GetProbeTemplateHttpProbeTlsConfigPtrOutput values.
+// You can construct a concrete instance of `GetProbeTemplateHttpProbeTlsConfigPtrInput` via:
+//
+//	        GetProbeTemplateHttpProbeTlsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetProbeTemplateHttpProbeTlsConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetProbeTemplateHttpProbeTlsConfigPtrOutput() GetProbeTemplateHttpProbeTlsConfigPtrOutput
+	ToGetProbeTemplateHttpProbeTlsConfigPtrOutputWithContext(context.Context) GetProbeTemplateHttpProbeTlsConfigPtrOutput
+}
+
+type getProbeTemplateHttpProbeTlsConfigPtrType GetProbeTemplateHttpProbeTlsConfigArgs
+
+func GetProbeTemplateHttpProbeTlsConfigPtr(v *GetProbeTemplateHttpProbeTlsConfigArgs) GetProbeTemplateHttpProbeTlsConfigPtrInput {
+	return (*getProbeTemplateHttpProbeTlsConfigPtrType)(v)
+}
+
+func (*getProbeTemplateHttpProbeTlsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateHttpProbeTlsConfig)(nil)).Elem()
+}
+
+func (i *getProbeTemplateHttpProbeTlsConfigPtrType) ToGetProbeTemplateHttpProbeTlsConfigPtrOutput() GetProbeTemplateHttpProbeTlsConfigPtrOutput {
+	return i.ToGetProbeTemplateHttpProbeTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getProbeTemplateHttpProbeTlsConfigPtrType) ToGetProbeTemplateHttpProbeTlsConfigPtrOutputWithContext(ctx context.Context) GetProbeTemplateHttpProbeTlsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProbeTemplateHttpProbeTlsConfigPtrOutput)
+}
+
+type GetProbeTemplateHttpProbeTlsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateHttpProbeTlsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProbeTemplateHttpProbeTlsConfig)(nil)).Elem()
+}
+
+func (o GetProbeTemplateHttpProbeTlsConfigOutput) ToGetProbeTemplateHttpProbeTlsConfigOutput() GetProbeTemplateHttpProbeTlsConfigOutput {
+	return o
+}
+
+func (o GetProbeTemplateHttpProbeTlsConfigOutput) ToGetProbeTemplateHttpProbeTlsConfigOutputWithContext(ctx context.Context) GetProbeTemplateHttpProbeTlsConfigOutput {
+	return o
+}
+
+func (o GetProbeTemplateHttpProbeTlsConfigOutput) ToGetProbeTemplateHttpProbeTlsConfigPtrOutput() GetProbeTemplateHttpProbeTlsConfigPtrOutput {
+	return o.ToGetProbeTemplateHttpProbeTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetProbeTemplateHttpProbeTlsConfigOutput) ToGetProbeTemplateHttpProbeTlsConfigPtrOutputWithContext(ctx context.Context) GetProbeTemplateHttpProbeTlsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetProbeTemplateHttpProbeTlsConfig) *GetProbeTemplateHttpProbeTlsConfig {
+		return &v
+	}).(GetProbeTemplateHttpProbeTlsConfigPtrOutput)
+}
+
+// CA certificate.
+func (o GetProbeTemplateHttpProbeTlsConfigOutput) CaCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateHttpProbeTlsConfig) *string { return v.CaCert }).(pulumi.StringPtrOutput)
+}
+
+// Client certificate.
+func (o GetProbeTemplateHttpProbeTlsConfigOutput) ClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateHttpProbeTlsConfig) *string { return v.ClientCert }).(pulumi.StringPtrOutput)
+}
+
+// Client key.
+func (o GetProbeTemplateHttpProbeTlsConfigOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateHttpProbeTlsConfig) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+// Skip TLS certificate verification.
+func (o GetProbeTemplateHttpProbeTlsConfigOutput) InsecureSkipVerify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateHttpProbeTlsConfig) *bool { return v.InsecureSkipVerify }).(pulumi.BoolPtrOutput)
+}
+
+type GetProbeTemplateHttpProbeTlsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetProbeTemplateHttpProbeTlsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetProbeTemplateHttpProbeTlsConfig)(nil)).Elem()
+}
+
+func (o GetProbeTemplateHttpProbeTlsConfigPtrOutput) ToGetProbeTemplateHttpProbeTlsConfigPtrOutput() GetProbeTemplateHttpProbeTlsConfigPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateHttpProbeTlsConfigPtrOutput) ToGetProbeTemplateHttpProbeTlsConfigPtrOutputWithContext(ctx context.Context) GetProbeTemplateHttpProbeTlsConfigPtrOutput {
+	return o
+}
+
+func (o GetProbeTemplateHttpProbeTlsConfigPtrOutput) Elem() GetProbeTemplateHttpProbeTlsConfigOutput {
+	return o.ApplyT(func(v *GetProbeTemplateHttpProbeTlsConfig) GetProbeTemplateHttpProbeTlsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetProbeTemplateHttpProbeTlsConfig
+		return ret
+	}).(GetProbeTemplateHttpProbeTlsConfigOutput)
+}
+
+// CA certificate.
+func (o GetProbeTemplateHttpProbeTlsConfigPtrOutput) CaCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateHttpProbeTlsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaCert
+	}).(pulumi.StringPtrOutput)
+}
+
+// Client certificate.
+func (o GetProbeTemplateHttpProbeTlsConfigPtrOutput) ClientCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateHttpProbeTlsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientCert
+	}).(pulumi.StringPtrOutput)
+}
+
+// Client key.
+func (o GetProbeTemplateHttpProbeTlsConfigPtrOutput) ClientKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateHttpProbeTlsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Skip TLS certificate verification.
+func (o GetProbeTemplateHttpProbeTlsConfigPtrOutput) InsecureSkipVerify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetProbeTemplateHttpProbeTlsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InsecureSkipVerify
+	}).(pulumi.BoolPtrOutput)
+}
+
 type GetProbeTemplateK8sProbe struct {
-	FieldSelector string `pulumi:"fieldSelector"`
-	LabelSelector string `pulumi:"labelSelector"`
-	Namespace     string `pulumi:"namespace"`
-	Operation     string `pulumi:"operation"`
-	Resource      string `pulumi:"resource"`
-	Version       string `pulumi:"version"`
+	// Field selector for filtering resources.
+	FieldSelector *string `pulumi:"fieldSelector"`
+	// API group (e.g., 'apps', 'batch').
+	Group *string `pulumi:"group"`
+	// Label selector for filtering resources.
+	LabelSelector *string `pulumi:"labelSelector"`
+	// Kubernetes namespace.
+	Namespace *string `pulumi:"namespace"`
+	// Operation to perform (create, delete, present, absent, etc.).
+	Operation *string `pulumi:"operation"`
+	// Resource type (e.g., 'pods', 'deployments').
+	Resource string `pulumi:"resource"`
+	// Comma-separated list of resource names.
+	ResourceNames *string `pulumi:"resourceNames"`
+	// API version (e.g., 'v1', 'v1beta1').
+	Version string `pulumi:"version"`
 }
 
 // GetProbeTemplateK8sProbeInput is an input type that accepts GetProbeTemplateK8sProbeArgs and GetProbeTemplateK8sProbeOutput values.
@@ -26834,12 +31770,22 @@ type GetProbeTemplateK8sProbeInput interface {
 }
 
 type GetProbeTemplateK8sProbeArgs struct {
-	FieldSelector pulumi.StringInput `pulumi:"fieldSelector"`
-	LabelSelector pulumi.StringInput `pulumi:"labelSelector"`
-	Namespace     pulumi.StringInput `pulumi:"namespace"`
-	Operation     pulumi.StringInput `pulumi:"operation"`
-	Resource      pulumi.StringInput `pulumi:"resource"`
-	Version       pulumi.StringInput `pulumi:"version"`
+	// Field selector for filtering resources.
+	FieldSelector pulumi.StringPtrInput `pulumi:"fieldSelector"`
+	// API group (e.g., 'apps', 'batch').
+	Group pulumi.StringPtrInput `pulumi:"group"`
+	// Label selector for filtering resources.
+	LabelSelector pulumi.StringPtrInput `pulumi:"labelSelector"`
+	// Kubernetes namespace.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// Operation to perform (create, delete, present, absent, etc.).
+	Operation pulumi.StringPtrInput `pulumi:"operation"`
+	// Resource type (e.g., 'pods', 'deployments').
+	Resource pulumi.StringInput `pulumi:"resource"`
+	// Comma-separated list of resource names.
+	ResourceNames pulumi.StringPtrInput `pulumi:"resourceNames"`
+	// API version (e.g., 'v1', 'v1beta1').
+	Version pulumi.StringInput `pulumi:"version"`
 }
 
 func (GetProbeTemplateK8sProbeArgs) ElementType() reflect.Type {
@@ -26893,26 +31839,42 @@ func (o GetProbeTemplateK8sProbeOutput) ToGetProbeTemplateK8sProbeOutputWithCont
 	return o
 }
 
-func (o GetProbeTemplateK8sProbeOutput) FieldSelector() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProbeTemplateK8sProbe) string { return v.FieldSelector }).(pulumi.StringOutput)
+// Field selector for filtering resources.
+func (o GetProbeTemplateK8sProbeOutput) FieldSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateK8sProbe) *string { return v.FieldSelector }).(pulumi.StringPtrOutput)
 }
 
-func (o GetProbeTemplateK8sProbeOutput) LabelSelector() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProbeTemplateK8sProbe) string { return v.LabelSelector }).(pulumi.StringOutput)
+// API group (e.g., 'apps', 'batch').
+func (o GetProbeTemplateK8sProbeOutput) Group() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateK8sProbe) *string { return v.Group }).(pulumi.StringPtrOutput)
 }
 
-func (o GetProbeTemplateK8sProbeOutput) Namespace() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProbeTemplateK8sProbe) string { return v.Namespace }).(pulumi.StringOutput)
+// Label selector for filtering resources.
+func (o GetProbeTemplateK8sProbeOutput) LabelSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateK8sProbe) *string { return v.LabelSelector }).(pulumi.StringPtrOutput)
 }
 
-func (o GetProbeTemplateK8sProbeOutput) Operation() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProbeTemplateK8sProbe) string { return v.Operation }).(pulumi.StringOutput)
+// Kubernetes namespace.
+func (o GetProbeTemplateK8sProbeOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateK8sProbe) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
+// Operation to perform (create, delete, present, absent, etc.).
+func (o GetProbeTemplateK8sProbeOutput) Operation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateK8sProbe) *string { return v.Operation }).(pulumi.StringPtrOutput)
+}
+
+// Resource type (e.g., 'pods', 'deployments').
 func (o GetProbeTemplateK8sProbeOutput) Resource() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProbeTemplateK8sProbe) string { return v.Resource }).(pulumi.StringOutput)
 }
 
+// Comma-separated list of resource names.
+func (o GetProbeTemplateK8sProbeOutput) ResourceNames() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateK8sProbe) *string { return v.ResourceNames }).(pulumi.StringPtrOutput)
+}
+
+// API version (e.g., 'v1', 'v1beta1').
 func (o GetProbeTemplateK8sProbeOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProbeTemplateK8sProbe) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -26938,9 +31900,22 @@ func (o GetProbeTemplateK8sProbeArrayOutput) Index(i pulumi.IntInput) GetProbeTe
 }
 
 type GetProbeTemplateRunProperty struct {
-	Interval      string `pulumi:"interval"`
-	StopOnFailure bool   `pulumi:"stopOnFailure"`
-	Timeout       string `pulumi:"timeout"`
+	// Number of attempts.
+	Attempt *int `pulumi:"attempt"`
+	// Initial delay before probe execution (e.g., '5s', '1m').
+	InitialDelay *string `pulumi:"initialDelay"`
+	// Interval between probe executions (e.g., '10s', '30s').
+	Interval *string `pulumi:"interval"`
+	// Polling interval for continuous probes (e.g., '2s', '5s').
+	PollingInterval *string `pulumi:"pollingInterval"`
+	// Number of retries.
+	Retry *int `pulumi:"retry"`
+	// Whether to stop on failure.
+	StopOnFailure *bool `pulumi:"stopOnFailure"`
+	// Timeout for probe execution (e.g., '30s', '5m').
+	Timeout *string `pulumi:"timeout"`
+	// Verbosity level for logging.
+	Verbosity *string `pulumi:"verbosity"`
 }
 
 // GetProbeTemplateRunPropertyInput is an input type that accepts GetProbeTemplateRunPropertyArgs and GetProbeTemplateRunPropertyOutput values.
@@ -26955,9 +31930,22 @@ type GetProbeTemplateRunPropertyInput interface {
 }
 
 type GetProbeTemplateRunPropertyArgs struct {
-	Interval      pulumi.StringInput `pulumi:"interval"`
-	StopOnFailure pulumi.BoolInput   `pulumi:"stopOnFailure"`
-	Timeout       pulumi.StringInput `pulumi:"timeout"`
+	// Number of attempts.
+	Attempt pulumi.IntPtrInput `pulumi:"attempt"`
+	// Initial delay before probe execution (e.g., '5s', '1m').
+	InitialDelay pulumi.StringPtrInput `pulumi:"initialDelay"`
+	// Interval between probe executions (e.g., '10s', '30s').
+	Interval pulumi.StringPtrInput `pulumi:"interval"`
+	// Polling interval for continuous probes (e.g., '2s', '5s').
+	PollingInterval pulumi.StringPtrInput `pulumi:"pollingInterval"`
+	// Number of retries.
+	Retry pulumi.IntPtrInput `pulumi:"retry"`
+	// Whether to stop on failure.
+	StopOnFailure pulumi.BoolPtrInput `pulumi:"stopOnFailure"`
+	// Timeout for probe execution (e.g., '30s', '5m').
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
+	// Verbosity level for logging.
+	Verbosity pulumi.StringPtrInput `pulumi:"verbosity"`
 }
 
 func (GetProbeTemplateRunPropertyArgs) ElementType() reflect.Type {
@@ -27011,16 +31999,44 @@ func (o GetProbeTemplateRunPropertyOutput) ToGetProbeTemplateRunPropertyOutputWi
 	return o
 }
 
-func (o GetProbeTemplateRunPropertyOutput) Interval() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProbeTemplateRunProperty) string { return v.Interval }).(pulumi.StringOutput)
+// Number of attempts.
+func (o GetProbeTemplateRunPropertyOutput) Attempt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateRunProperty) *int { return v.Attempt }).(pulumi.IntPtrOutput)
 }
 
-func (o GetProbeTemplateRunPropertyOutput) StopOnFailure() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetProbeTemplateRunProperty) bool { return v.StopOnFailure }).(pulumi.BoolOutput)
+// Initial delay before probe execution (e.g., '5s', '1m').
+func (o GetProbeTemplateRunPropertyOutput) InitialDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateRunProperty) *string { return v.InitialDelay }).(pulumi.StringPtrOutput)
 }
 
-func (o GetProbeTemplateRunPropertyOutput) Timeout() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProbeTemplateRunProperty) string { return v.Timeout }).(pulumi.StringOutput)
+// Interval between probe executions (e.g., '10s', '30s').
+func (o GetProbeTemplateRunPropertyOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateRunProperty) *string { return v.Interval }).(pulumi.StringPtrOutput)
+}
+
+// Polling interval for continuous probes (e.g., '2s', '5s').
+func (o GetProbeTemplateRunPropertyOutput) PollingInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateRunProperty) *string { return v.PollingInterval }).(pulumi.StringPtrOutput)
+}
+
+// Number of retries.
+func (o GetProbeTemplateRunPropertyOutput) Retry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateRunProperty) *int { return v.Retry }).(pulumi.IntPtrOutput)
+}
+
+// Whether to stop on failure.
+func (o GetProbeTemplateRunPropertyOutput) StopOnFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateRunProperty) *bool { return v.StopOnFailure }).(pulumi.BoolPtrOutput)
+}
+
+// Timeout for probe execution (e.g., '30s', '5m').
+func (o GetProbeTemplateRunPropertyOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateRunProperty) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+// Verbosity level for logging.
+func (o GetProbeTemplateRunPropertyOutput) Verbosity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateRunProperty) *string { return v.Verbosity }).(pulumi.StringPtrOutput)
 }
 
 type GetProbeTemplateRunPropertyArrayOutput struct{ *pulumi.OutputState }
@@ -27044,10 +32060,16 @@ func (o GetProbeTemplateRunPropertyArrayOutput) Index(i pulumi.IntInput) GetProb
 }
 
 type GetProbeTemplateVariable struct {
-	Name     string `pulumi:"name"`
-	Required bool   `pulumi:"required"`
-	Type     string `pulumi:"type"`
-	Value    string `pulumi:"value"`
+	// Variable description.
+	Description *string `pulumi:"description"`
+	// Variable name.
+	Name string `pulumi:"name"`
+	// Whether the variable is required.
+	Required *bool `pulumi:"required"`
+	// Variable type (e.g., 'string', 'number', 'boolean').
+	Type *string `pulumi:"type"`
+	// Variable value.
+	Value string `pulumi:"value"`
 }
 
 // GetProbeTemplateVariableInput is an input type that accepts GetProbeTemplateVariableArgs and GetProbeTemplateVariableOutput values.
@@ -27062,10 +32084,16 @@ type GetProbeTemplateVariableInput interface {
 }
 
 type GetProbeTemplateVariableArgs struct {
-	Name     pulumi.StringInput `pulumi:"name"`
-	Required pulumi.BoolInput   `pulumi:"required"`
-	Type     pulumi.StringInput `pulumi:"type"`
-	Value    pulumi.StringInput `pulumi:"value"`
+	// Variable description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Variable name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Whether the variable is required.
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// Variable type (e.g., 'string', 'number', 'boolean').
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Variable value.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetProbeTemplateVariableArgs) ElementType() reflect.Type {
@@ -27119,18 +32147,27 @@ func (o GetProbeTemplateVariableOutput) ToGetProbeTemplateVariableOutputWithCont
 	return o
 }
 
+// Variable description.
+func (o GetProbeTemplateVariableOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateVariable) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Variable name.
 func (o GetProbeTemplateVariableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProbeTemplateVariable) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetProbeTemplateVariableOutput) Required() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetProbeTemplateVariable) bool { return v.Required }).(pulumi.BoolOutput)
+// Whether the variable is required.
+func (o GetProbeTemplateVariableOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateVariable) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
-func (o GetProbeTemplateVariableOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProbeTemplateVariable) string { return v.Type }).(pulumi.StringOutput)
+// Variable type (e.g., 'string', 'number', 'boolean').
+func (o GetProbeTemplateVariableOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProbeTemplateVariable) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// Variable value.
 func (o GetProbeTemplateVariableOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProbeTemplateVariable) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -29326,16 +34363,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecPtrInput)(nil)).Elem(), ExperimentTemplateSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecActionInput)(nil)).Elem(), ExperimentTemplateSpecActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecActionArrayInput)(nil)).Elem(), ExperimentTemplateSpecActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecActionConditionsV2Input)(nil)).Elem(), ExperimentTemplateSpecActionConditionsV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecActionConditionsV2PtrInput)(nil)).Elem(), ExperimentTemplateSpecActionConditionsV2Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecActionValueInput)(nil)).Elem(), ExperimentTemplateSpecActionValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecActionValueArrayInput)(nil)).Elem(), ExperimentTemplateSpecActionValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecFaultInput)(nil)).Elem(), ExperimentTemplateSpecFaultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecFaultArrayInput)(nil)).Elem(), ExperimentTemplateSpecFaultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecFaultConditionsV2Input)(nil)).Elem(), ExperimentTemplateSpecFaultConditionsV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecFaultConditionsV2PtrInput)(nil)).Elem(), ExperimentTemplateSpecFaultConditionsV2Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecFaultValueInput)(nil)).Elem(), ExperimentTemplateSpecFaultValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecFaultValueArrayInput)(nil)).Elem(), ExperimentTemplateSpecFaultValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecProbeInput)(nil)).Elem(), ExperimentTemplateSpecProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecProbeArrayInput)(nil)).Elem(), ExperimentTemplateSpecProbeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecProbeConditionInput)(nil)).Elem(), ExperimentTemplateSpecProbeConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecProbeConditionArrayInput)(nil)).Elem(), ExperimentTemplateSpecProbeConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecProbeConditionsV2Input)(nil)).Elem(), ExperimentTemplateSpecProbeConditionsV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecProbeConditionsV2PtrInput)(nil)).Elem(), ExperimentTemplateSpecProbeConditionsV2Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecProbeValueInput)(nil)).Elem(), ExperimentTemplateSpecProbeValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecProbeValueArrayInput)(nil)).Elem(), ExperimentTemplateSpecProbeValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentTemplateSpecStatusCheckTimeoutsInput)(nil)).Elem(), ExperimentTemplateSpecStatusCheckTimeoutsArgs{})
@@ -29428,6 +34471,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureV2MtlsPtrInput)(nil)).Elem(), InfrastructureV2MtlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureV2ProxyInput)(nil)).Elem(), InfrastructureV2ProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureV2ProxyPtrInput)(nil)).Elem(), InfrastructureV2ProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureV2ResourcesInput)(nil)).Elem(), InfrastructureV2ResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureV2ResourcesPtrInput)(nil)).Elem(), InfrastructureV2ResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureV2ResourcesLimitsInput)(nil)).Elem(), InfrastructureV2ResourcesLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureV2ResourcesLimitsPtrInput)(nil)).Elem(), InfrastructureV2ResourcesLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureV2ResourcesRequestsInput)(nil)).Elem(), InfrastructureV2ResourcesRequestsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureV2ResourcesRequestsPtrInput)(nil)).Elem(), InfrastructureV2ResourcesRequestsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureV2TolerationInput)(nil)).Elem(), InfrastructureV2TolerationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureV2TolerationArrayInput)(nil)).Elem(), InfrastructureV2TolerationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfrastructureV2VolumeInput)(nil)).Elem(), InfrastructureV2VolumeArgs{})
@@ -29570,16 +34619,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecArrayInput)(nil)).Elem(), GetExperimentTemplateSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecActionInput)(nil)).Elem(), GetExperimentTemplateSpecActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecActionArrayInput)(nil)).Elem(), GetExperimentTemplateSpecActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecActionConditionsV2Input)(nil)).Elem(), GetExperimentTemplateSpecActionConditionsV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecActionConditionsV2ArrayInput)(nil)).Elem(), GetExperimentTemplateSpecActionConditionsV2Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecActionValueInput)(nil)).Elem(), GetExperimentTemplateSpecActionValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecActionValueArrayInput)(nil)).Elem(), GetExperimentTemplateSpecActionValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecFaultInput)(nil)).Elem(), GetExperimentTemplateSpecFaultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecFaultArrayInput)(nil)).Elem(), GetExperimentTemplateSpecFaultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecFaultConditionsV2Input)(nil)).Elem(), GetExperimentTemplateSpecFaultConditionsV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecFaultConditionsV2ArrayInput)(nil)).Elem(), GetExperimentTemplateSpecFaultConditionsV2Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecFaultValueInput)(nil)).Elem(), GetExperimentTemplateSpecFaultValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecFaultValueArrayInput)(nil)).Elem(), GetExperimentTemplateSpecFaultValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecProbeInput)(nil)).Elem(), GetExperimentTemplateSpecProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecProbeArrayInput)(nil)).Elem(), GetExperimentTemplateSpecProbeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecProbeConditionInput)(nil)).Elem(), GetExperimentTemplateSpecProbeConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecProbeConditionArrayInput)(nil)).Elem(), GetExperimentTemplateSpecProbeConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecProbeConditionsV2Input)(nil)).Elem(), GetExperimentTemplateSpecProbeConditionsV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecProbeConditionsV2ArrayInput)(nil)).Elem(), GetExperimentTemplateSpecProbeConditionsV2Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecProbeValueInput)(nil)).Elem(), GetExperimentTemplateSpecProbeValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecProbeValueArrayInput)(nil)).Elem(), GetExperimentTemplateSpecProbeValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExperimentTemplateSpecStatusCheckTimeoutInput)(nil)).Elem(), GetExperimentTemplateSpecStatusCheckTimeoutArgs{})
@@ -29616,12 +34671,48 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureV2MtlsPtrInput)(nil)).Elem(), GetInfrastructureV2MtlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureV2ProxyInput)(nil)).Elem(), GetInfrastructureV2ProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureV2ProxyPtrInput)(nil)).Elem(), GetInfrastructureV2ProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureV2ResourcesInput)(nil)).Elem(), GetInfrastructureV2ResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureV2ResourcesPtrInput)(nil)).Elem(), GetInfrastructureV2ResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureV2ResourcesLimitsInput)(nil)).Elem(), GetInfrastructureV2ResourcesLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureV2ResourcesLimitsPtrInput)(nil)).Elem(), GetInfrastructureV2ResourcesLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureV2ResourcesRequestsInput)(nil)).Elem(), GetInfrastructureV2ResourcesRequestsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureV2ResourcesRequestsPtrInput)(nil)).Elem(), GetInfrastructureV2ResourcesRequestsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureV2TolerationInput)(nil)).Elem(), GetInfrastructureV2TolerationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureV2TolerationArrayInput)(nil)).Elem(), GetInfrastructureV2TolerationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureV2VolumeInput)(nil)).Elem(), GetInfrastructureV2VolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureV2VolumeArrayInput)(nil)).Elem(), GetInfrastructureV2VolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureV2VolumeMountInput)(nil)).Elem(), GetInfrastructureV2VolumeMountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfrastructureV2VolumeMountArrayInput)(nil)).Elem(), GetInfrastructureV2VolumeMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeInput)(nil)).Elem(), GetProbeTemplateApmProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbePtrInput)(nil)).Elem(), GetProbeTemplateApmProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeAppDynamicsInputsInput)(nil)).Elem(), GetProbeTemplateApmProbeAppDynamicsInputsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeAppDynamicsInputsPtrInput)(nil)).Elem(), GetProbeTemplateApmProbeAppDynamicsInputsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsInput)(nil)).Elem(), GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrInput)(nil)).Elem(), GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeComparatorInput)(nil)).Elem(), GetProbeTemplateApmProbeComparatorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeComparatorPtrInput)(nil)).Elem(), GetProbeTemplateApmProbeComparatorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeDatadogInputsInput)(nil)).Elem(), GetProbeTemplateApmProbeDatadogInputsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeDatadogInputsPtrInput)(nil)).Elem(), GetProbeTemplateApmProbeDatadogInputsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeDatadogInputsSyntheticsTestInput)(nil)).Elem(), GetProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrInput)(nil)).Elem(), GetProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeDynatraceInputsInput)(nil)).Elem(), GetProbeTemplateApmProbeDynatraceInputsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeDynatraceInputsPtrInput)(nil)).Elem(), GetProbeTemplateApmProbeDynatraceInputsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeDynatraceInputsMetricsInput)(nil)).Elem(), GetProbeTemplateApmProbeDynatraceInputsMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeDynatraceInputsMetricsPtrInput)(nil)).Elem(), GetProbeTemplateApmProbeDynatraceInputsMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeGcpCloudMonitoringInputsInput)(nil)).Elem(), GetProbeTemplateApmProbeGcpCloudMonitoringInputsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrInput)(nil)).Elem(), GetProbeTemplateApmProbeGcpCloudMonitoringInputsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeNewRelicInputsInput)(nil)).Elem(), GetProbeTemplateApmProbeNewRelicInputsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeNewRelicInputsPtrInput)(nil)).Elem(), GetProbeTemplateApmProbeNewRelicInputsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricInput)(nil)).Elem(), GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrInput)(nil)).Elem(), GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbePrometheusInputsInput)(nil)).Elem(), GetProbeTemplateApmProbePrometheusInputsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbePrometheusInputsPtrInput)(nil)).Elem(), GetProbeTemplateApmProbePrometheusInputsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbePrometheusInputsTlsConfigInput)(nil)).Elem(), GetProbeTemplateApmProbePrometheusInputsTlsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrInput)(nil)).Elem(), GetProbeTemplateApmProbePrometheusInputsTlsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeSplunkObservabilityInputsInput)(nil)).Elem(), GetProbeTemplateApmProbeSplunkObservabilityInputsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeSplunkObservabilityInputsPtrInput)(nil)).Elem(), GetProbeTemplateApmProbeSplunkObservabilityInputsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsInput)(nil)).Elem(), GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrInput)(nil)).Elem(), GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateCmdProbeInput)(nil)).Elem(), GetProbeTemplateCmdProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateCmdProbeArrayInput)(nil)).Elem(), GetProbeTemplateCmdProbeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateCmdProbeComparatorInput)(nil)).Elem(), GetProbeTemplateCmdProbeComparatorArgs{})
@@ -29630,12 +34721,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateCmdProbeEnvArrayInput)(nil)).Elem(), GetProbeTemplateCmdProbeEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateHttpProbeInput)(nil)).Elem(), GetProbeTemplateHttpProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateHttpProbeArrayInput)(nil)).Elem(), GetProbeTemplateHttpProbeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateHttpProbeAuthInput)(nil)).Elem(), GetProbeTemplateHttpProbeAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateHttpProbeAuthPtrInput)(nil)).Elem(), GetProbeTemplateHttpProbeAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateHttpProbeMethodInput)(nil)).Elem(), GetProbeTemplateHttpProbeMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateHttpProbeMethodArrayInput)(nil)).Elem(), GetProbeTemplateHttpProbeMethodArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateHttpProbeMethodGetInput)(nil)).Elem(), GetProbeTemplateHttpProbeMethodGetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateHttpProbeMethodGetArrayInput)(nil)).Elem(), GetProbeTemplateHttpProbeMethodGetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateHttpProbeMethodPostInput)(nil)).Elem(), GetProbeTemplateHttpProbeMethodPostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateHttpProbeMethodPostArrayInput)(nil)).Elem(), GetProbeTemplateHttpProbeMethodPostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateHttpProbeTlsConfigInput)(nil)).Elem(), GetProbeTemplateHttpProbeTlsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateHttpProbeTlsConfigPtrInput)(nil)).Elem(), GetProbeTemplateHttpProbeTlsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateK8sProbeInput)(nil)).Elem(), GetProbeTemplateK8sProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateK8sProbeArrayInput)(nil)).Elem(), GetProbeTemplateK8sProbeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProbeTemplateRunPropertyInput)(nil)).Elem(), GetProbeTemplateRunPropertyArgs{})
@@ -29718,16 +34813,22 @@ func init() {
 	pulumi.RegisterOutputType(ExperimentTemplateSpecPtrOutput{})
 	pulumi.RegisterOutputType(ExperimentTemplateSpecActionOutput{})
 	pulumi.RegisterOutputType(ExperimentTemplateSpecActionArrayOutput{})
+	pulumi.RegisterOutputType(ExperimentTemplateSpecActionConditionsV2Output{})
+	pulumi.RegisterOutputType(ExperimentTemplateSpecActionConditionsV2PtrOutput{})
 	pulumi.RegisterOutputType(ExperimentTemplateSpecActionValueOutput{})
 	pulumi.RegisterOutputType(ExperimentTemplateSpecActionValueArrayOutput{})
 	pulumi.RegisterOutputType(ExperimentTemplateSpecFaultOutput{})
 	pulumi.RegisterOutputType(ExperimentTemplateSpecFaultArrayOutput{})
+	pulumi.RegisterOutputType(ExperimentTemplateSpecFaultConditionsV2Output{})
+	pulumi.RegisterOutputType(ExperimentTemplateSpecFaultConditionsV2PtrOutput{})
 	pulumi.RegisterOutputType(ExperimentTemplateSpecFaultValueOutput{})
 	pulumi.RegisterOutputType(ExperimentTemplateSpecFaultValueArrayOutput{})
 	pulumi.RegisterOutputType(ExperimentTemplateSpecProbeOutput{})
 	pulumi.RegisterOutputType(ExperimentTemplateSpecProbeArrayOutput{})
 	pulumi.RegisterOutputType(ExperimentTemplateSpecProbeConditionOutput{})
 	pulumi.RegisterOutputType(ExperimentTemplateSpecProbeConditionArrayOutput{})
+	pulumi.RegisterOutputType(ExperimentTemplateSpecProbeConditionsV2Output{})
+	pulumi.RegisterOutputType(ExperimentTemplateSpecProbeConditionsV2PtrOutput{})
 	pulumi.RegisterOutputType(ExperimentTemplateSpecProbeValueOutput{})
 	pulumi.RegisterOutputType(ExperimentTemplateSpecProbeValueArrayOutput{})
 	pulumi.RegisterOutputType(ExperimentTemplateSpecStatusCheckTimeoutsOutput{})
@@ -29820,6 +34921,12 @@ func init() {
 	pulumi.RegisterOutputType(InfrastructureV2MtlsPtrOutput{})
 	pulumi.RegisterOutputType(InfrastructureV2ProxyOutput{})
 	pulumi.RegisterOutputType(InfrastructureV2ProxyPtrOutput{})
+	pulumi.RegisterOutputType(InfrastructureV2ResourcesOutput{})
+	pulumi.RegisterOutputType(InfrastructureV2ResourcesPtrOutput{})
+	pulumi.RegisterOutputType(InfrastructureV2ResourcesLimitsOutput{})
+	pulumi.RegisterOutputType(InfrastructureV2ResourcesLimitsPtrOutput{})
+	pulumi.RegisterOutputType(InfrastructureV2ResourcesRequestsOutput{})
+	pulumi.RegisterOutputType(InfrastructureV2ResourcesRequestsPtrOutput{})
 	pulumi.RegisterOutputType(InfrastructureV2TolerationOutput{})
 	pulumi.RegisterOutputType(InfrastructureV2TolerationArrayOutput{})
 	pulumi.RegisterOutputType(InfrastructureV2VolumeOutput{})
@@ -29962,16 +35069,22 @@ func init() {
 	pulumi.RegisterOutputType(GetExperimentTemplateSpecArrayOutput{})
 	pulumi.RegisterOutputType(GetExperimentTemplateSpecActionOutput{})
 	pulumi.RegisterOutputType(GetExperimentTemplateSpecActionArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentTemplateSpecActionConditionsV2Output{})
+	pulumi.RegisterOutputType(GetExperimentTemplateSpecActionConditionsV2ArrayOutput{})
 	pulumi.RegisterOutputType(GetExperimentTemplateSpecActionValueOutput{})
 	pulumi.RegisterOutputType(GetExperimentTemplateSpecActionValueArrayOutput{})
 	pulumi.RegisterOutputType(GetExperimentTemplateSpecFaultOutput{})
 	pulumi.RegisterOutputType(GetExperimentTemplateSpecFaultArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentTemplateSpecFaultConditionsV2Output{})
+	pulumi.RegisterOutputType(GetExperimentTemplateSpecFaultConditionsV2ArrayOutput{})
 	pulumi.RegisterOutputType(GetExperimentTemplateSpecFaultValueOutput{})
 	pulumi.RegisterOutputType(GetExperimentTemplateSpecFaultValueArrayOutput{})
 	pulumi.RegisterOutputType(GetExperimentTemplateSpecProbeOutput{})
 	pulumi.RegisterOutputType(GetExperimentTemplateSpecProbeArrayOutput{})
 	pulumi.RegisterOutputType(GetExperimentTemplateSpecProbeConditionOutput{})
 	pulumi.RegisterOutputType(GetExperimentTemplateSpecProbeConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetExperimentTemplateSpecProbeConditionsV2Output{})
+	pulumi.RegisterOutputType(GetExperimentTemplateSpecProbeConditionsV2ArrayOutput{})
 	pulumi.RegisterOutputType(GetExperimentTemplateSpecProbeValueOutput{})
 	pulumi.RegisterOutputType(GetExperimentTemplateSpecProbeValueArrayOutput{})
 	pulumi.RegisterOutputType(GetExperimentTemplateSpecStatusCheckTimeoutOutput{})
@@ -30008,12 +35121,48 @@ func init() {
 	pulumi.RegisterOutputType(GetInfrastructureV2MtlsPtrOutput{})
 	pulumi.RegisterOutputType(GetInfrastructureV2ProxyOutput{})
 	pulumi.RegisterOutputType(GetInfrastructureV2ProxyPtrOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureV2ResourcesOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureV2ResourcesPtrOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureV2ResourcesLimitsOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureV2ResourcesLimitsPtrOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureV2ResourcesRequestsOutput{})
+	pulumi.RegisterOutputType(GetInfrastructureV2ResourcesRequestsPtrOutput{})
 	pulumi.RegisterOutputType(GetInfrastructureV2TolerationOutput{})
 	pulumi.RegisterOutputType(GetInfrastructureV2TolerationArrayOutput{})
 	pulumi.RegisterOutputType(GetInfrastructureV2VolumeOutput{})
 	pulumi.RegisterOutputType(GetInfrastructureV2VolumeArrayOutput{})
 	pulumi.RegisterOutputType(GetInfrastructureV2VolumeMountOutput{})
 	pulumi.RegisterOutputType(GetInfrastructureV2VolumeMountArrayOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbePtrOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeAppDynamicsInputsOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeAppDynamicsInputsPtrOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsPtrOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeComparatorOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeComparatorPtrOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeDatadogInputsOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeDatadogInputsPtrOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeDatadogInputsSyntheticsTestOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeDatadogInputsSyntheticsTestPtrOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeDynatraceInputsOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeDynatraceInputsPtrOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeDynatraceInputsMetricsOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeDynatraceInputsMetricsPtrOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeGcpCloudMonitoringInputsOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeGcpCloudMonitoringInputsPtrOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeNewRelicInputsOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeNewRelicInputsPtrOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricPtrOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbePrometheusInputsOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbePrometheusInputsPtrOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbePrometheusInputsTlsConfigOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbePrometheusInputsTlsConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeSplunkObservabilityInputsOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeSplunkObservabilityInputsPtrOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsPtrOutput{})
 	pulumi.RegisterOutputType(GetProbeTemplateCmdProbeOutput{})
 	pulumi.RegisterOutputType(GetProbeTemplateCmdProbeArrayOutput{})
 	pulumi.RegisterOutputType(GetProbeTemplateCmdProbeComparatorOutput{})
@@ -30022,12 +35171,16 @@ func init() {
 	pulumi.RegisterOutputType(GetProbeTemplateCmdProbeEnvArrayOutput{})
 	pulumi.RegisterOutputType(GetProbeTemplateHttpProbeOutput{})
 	pulumi.RegisterOutputType(GetProbeTemplateHttpProbeArrayOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateHttpProbeAuthOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateHttpProbeAuthPtrOutput{})
 	pulumi.RegisterOutputType(GetProbeTemplateHttpProbeMethodOutput{})
 	pulumi.RegisterOutputType(GetProbeTemplateHttpProbeMethodArrayOutput{})
 	pulumi.RegisterOutputType(GetProbeTemplateHttpProbeMethodGetOutput{})
 	pulumi.RegisterOutputType(GetProbeTemplateHttpProbeMethodGetArrayOutput{})
 	pulumi.RegisterOutputType(GetProbeTemplateHttpProbeMethodPostOutput{})
 	pulumi.RegisterOutputType(GetProbeTemplateHttpProbeMethodPostArrayOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateHttpProbeTlsConfigOutput{})
+	pulumi.RegisterOutputType(GetProbeTemplateHttpProbeTlsConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetProbeTemplateK8sProbeOutput{})
 	pulumi.RegisterOutputType(GetProbeTemplateK8sProbeArrayOutput{})
 	pulumi.RegisterOutputType(GetProbeTemplateRunPropertyOutput{})

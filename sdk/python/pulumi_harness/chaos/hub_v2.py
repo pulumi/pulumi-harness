@@ -32,13 +32,13 @@ class HubV2Args:
         The set of arguments for constructing a HubV2 resource.
 
         :param pulumi.Input[_builtins.str] identity: Unique identifier for the chaos hub.
-        :param pulumi.Input[_builtins.str] connector_ref: Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+        :param pulumi.Input[_builtins.str] connector_ref: Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
         :param pulumi.Input[_builtins.str] description: Description of the chaos hub.
         :param pulumi.Input[_builtins.str] name: Name of the chaos hub.
         :param pulumi.Input[_builtins.str] org_id: The ID of the organization.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project.
-        :param pulumi.Input[_builtins.str] repo_branch: Git repository branch.
-        :param pulumi.Input[_builtins.str] repo_name: Name of the Git repository (required for account-level connectors).
+        :param pulumi.Input[_builtins.str] repo_branch: Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
+        :param pulumi.Input[_builtins.str] repo_name: Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the chaos hub.
         """
         pulumi.set(__self__, "identity", identity)
@@ -75,7 +75,7 @@ class HubV2Args:
     @pulumi.getter(name="connectorRef")
     def connector_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+        Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
         """
         return pulumi.get(self, "connector_ref")
 
@@ -135,7 +135,7 @@ class HubV2Args:
     @pulumi.getter(name="repoBranch")
     def repo_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Git repository branch.
+        Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
         """
         return pulumi.get(self, "repo_branch")
 
@@ -147,7 +147,7 @@ class HubV2Args:
     @pulumi.getter(name="repoName")
     def repo_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the Git repository (required for account-level connectors).
+        Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
         """
         return pulumi.get(self, "repo_name")
 
@@ -201,7 +201,7 @@ class _HubV2State:
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.int] action_template_count: Number of action templates in the hub.
         :param pulumi.Input[_builtins.str] connector_id: Connector ID (deprecated, use connector_ref).
-        :param pulumi.Input[_builtins.str] connector_ref: Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+        :param pulumi.Input[_builtins.str] connector_ref: Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
         :param pulumi.Input[_builtins.int] created_at: Creation timestamp (Unix epoch).
         :param pulumi.Input[_builtins.str] created_by: User who created the chaos hub.
         :param pulumi.Input[_builtins.str] description: Description of the chaos hub.
@@ -216,8 +216,8 @@ class _HubV2State:
         :param pulumi.Input[_builtins.str] org_id: The ID of the organization.
         :param pulumi.Input[_builtins.int] probe_template_count: Number of probe templates in the hub.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project.
-        :param pulumi.Input[_builtins.str] repo_branch: Git repository branch.
-        :param pulumi.Input[_builtins.str] repo_name: Name of the Git repository (required for account-level connectors).
+        :param pulumi.Input[_builtins.str] repo_branch: Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
+        :param pulumi.Input[_builtins.str] repo_name: Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
         :param pulumi.Input[_builtins.str] repo_url: Git repository URL.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the chaos hub.
         :param pulumi.Input[_builtins.int] updated_at: Last update timestamp (Unix epoch).
@@ -312,7 +312,7 @@ class _HubV2State:
     @pulumi.getter(name="connectorRef")
     def connector_ref(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+        Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
         """
         return pulumi.get(self, "connector_ref")
 
@@ -492,7 +492,7 @@ class _HubV2State:
     @pulumi.getter(name="repoBranch")
     def repo_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Git repository branch.
+        Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
         """
         return pulumi.get(self, "repo_branch")
 
@@ -504,7 +504,7 @@ class _HubV2State:
     @pulumi.getter(name="repoName")
     def repo_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the Git repository (required for account-level connectors).
+        Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
         """
         return pulumi.get(self, "repo_name")
 
@@ -579,6 +579,14 @@ class HubV2(pulumi.CustomResource):
                  __props__=None):
         """
         Resource for managing Harness Chaos Hub V2.
+
+        ## Git-backed hubs (not supported yet)
+
+        The `connector_ref`, `repo_branch`, and `repo_name` fields describe a Git-backed chaos hub. **Git-backed Chaos Hub V2 is not supported yet** - these fields are accepted by the schema but have no functional effect today. Create hubs without them; they are retained only for forward compatibility and may be deprecated.
+
+        ## Updatable vs. immutable fields
+
+        Only `name`, `description`, and `tags` can be updated in place. Changing any of `identity`, `org_id`, `project_id`, `connector_ref`, `repo_branch`, or `repo_name` forces recreation, because the update API does not accept those fields.
 
         ## Example Usage
 
@@ -672,14 +680,14 @@ class HubV2(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] connector_ref: Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+        :param pulumi.Input[_builtins.str] connector_ref: Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
         :param pulumi.Input[_builtins.str] description: Description of the chaos hub.
         :param pulumi.Input[_builtins.str] identity: Unique identifier for the chaos hub.
         :param pulumi.Input[_builtins.str] name: Name of the chaos hub.
         :param pulumi.Input[_builtins.str] org_id: The ID of the organization.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project.
-        :param pulumi.Input[_builtins.str] repo_branch: Git repository branch.
-        :param pulumi.Input[_builtins.str] repo_name: Name of the Git repository (required for account-level connectors).
+        :param pulumi.Input[_builtins.str] repo_branch: Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
+        :param pulumi.Input[_builtins.str] repo_name: Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the chaos hub.
         """
         ...
@@ -690,6 +698,14 @@ class HubV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for managing Harness Chaos Hub V2.
+
+        ## Git-backed hubs (not supported yet)
+
+        The `connector_ref`, `repo_branch`, and `repo_name` fields describe a Git-backed chaos hub. **Git-backed Chaos Hub V2 is not supported yet** - these fields are accepted by the schema but have no functional effect today. Create hubs without them; they are retained only for forward compatibility and may be deprecated.
+
+        ## Updatable vs. immutable fields
+
+        Only `name`, `description`, and `tags` can be updated in place. Changing any of `identity`, `org_id`, `project_id`, `connector_ref`, `repo_branch`, or `repo_name` forces recreation, because the update API does not accept those fields.
 
         ## Example Usage
 
@@ -884,7 +900,7 @@ class HubV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Account ID.
         :param pulumi.Input[_builtins.int] action_template_count: Number of action templates in the hub.
         :param pulumi.Input[_builtins.str] connector_id: Connector ID (deprecated, use connector_ref).
-        :param pulumi.Input[_builtins.str] connector_ref: Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+        :param pulumi.Input[_builtins.str] connector_ref: Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
         :param pulumi.Input[_builtins.int] created_at: Creation timestamp (Unix epoch).
         :param pulumi.Input[_builtins.str] created_by: User who created the chaos hub.
         :param pulumi.Input[_builtins.str] description: Description of the chaos hub.
@@ -899,8 +915,8 @@ class HubV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: The ID of the organization.
         :param pulumi.Input[_builtins.int] probe_template_count: Number of probe templates in the hub.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project.
-        :param pulumi.Input[_builtins.str] repo_branch: Git repository branch.
-        :param pulumi.Input[_builtins.str] repo_name: Name of the Git repository (required for account-level connectors).
+        :param pulumi.Input[_builtins.str] repo_branch: Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
+        :param pulumi.Input[_builtins.str] repo_name: Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
         :param pulumi.Input[_builtins.str] repo_url: Git repository URL.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the chaos hub.
         :param pulumi.Input[_builtins.int] updated_at: Last update timestamp (Unix epoch).
@@ -964,7 +980,7 @@ class HubV2(pulumi.CustomResource):
     @pulumi.getter(name="connectorRef")
     def connector_ref(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+        Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
         """
         return pulumi.get(self, "connector_ref")
 
@@ -1084,7 +1100,7 @@ class HubV2(pulumi.CustomResource):
     @pulumi.getter(name="repoBranch")
     def repo_branch(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Git repository branch.
+        Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
         """
         return pulumi.get(self, "repo_branch")
 
@@ -1092,7 +1108,7 @@ class HubV2(pulumi.CustomResource):
     @pulumi.getter(name="repoName")
     def repo_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Name of the Git repository (required for account-level connectors).
+        Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
         """
         return pulumi.get(self, "repo_name")
 

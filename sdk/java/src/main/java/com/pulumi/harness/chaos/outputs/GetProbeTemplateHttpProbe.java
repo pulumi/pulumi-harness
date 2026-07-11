@@ -5,28 +5,77 @@ package com.pulumi.harness.chaos.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.chaos.outputs.GetProbeTemplateHttpProbeAuth;
 import com.pulumi.harness.chaos.outputs.GetProbeTemplateHttpProbeMethod;
+import com.pulumi.harness.chaos.outputs.GetProbeTemplateHttpProbeTlsConfig;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProbeTemplateHttpProbe {
     /**
+     * @return Authentication configuration.
+     * 
+     */
+    private @Nullable GetProbeTemplateHttpProbeAuth auth;
+    /**
+     * @return HTTP headers.
+     * 
+     */
+    private @Nullable Map<String,String> headers;
+    /**
      * @return HTTP method configuration with GET or POST.
      * 
      */
-    private List<GetProbeTemplateHttpProbeMethod> methods;
+    private @Nullable List<GetProbeTemplateHttpProbeMethod> methods;
+    /**
+     * @return TLS configuration.
+     * 
+     */
+    private @Nullable GetProbeTemplateHttpProbeTlsConfig tlsConfig;
+    /**
+     * @return URL to probe.
+     * 
+     */
     private String url;
 
     private GetProbeTemplateHttpProbe() {}
+    /**
+     * @return Authentication configuration.
+     * 
+     */
+    public Optional<GetProbeTemplateHttpProbeAuth> auth() {
+        return Optional.ofNullable(this.auth);
+    }
+    /**
+     * @return HTTP headers.
+     * 
+     */
+    public Map<String,String> headers() {
+        return this.headers == null ? Map.of() : this.headers;
+    }
     /**
      * @return HTTP method configuration with GET or POST.
      * 
      */
     public List<GetProbeTemplateHttpProbeMethod> methods() {
-        return this.methods;
+        return this.methods == null ? List.of() : this.methods;
     }
+    /**
+     * @return TLS configuration.
+     * 
+     */
+    public Optional<GetProbeTemplateHttpProbeTlsConfig> tlsConfig() {
+        return Optional.ofNullable(this.tlsConfig);
+    }
+    /**
+     * @return URL to probe.
+     * 
+     */
     public String url() {
         return this.url;
     }
@@ -40,25 +89,47 @@ public final class GetProbeTemplateHttpProbe {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetProbeTemplateHttpProbeMethod> methods;
+        private @Nullable GetProbeTemplateHttpProbeAuth auth;
+        private @Nullable Map<String,String> headers;
+        private @Nullable List<GetProbeTemplateHttpProbeMethod> methods;
+        private @Nullable GetProbeTemplateHttpProbeTlsConfig tlsConfig;
         private String url;
         public Builder() {}
         public Builder(GetProbeTemplateHttpProbe defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.auth = defaults.auth;
+    	      this.headers = defaults.headers;
     	      this.methods = defaults.methods;
+    	      this.tlsConfig = defaults.tlsConfig;
     	      this.url = defaults.url;
         }
 
         @CustomType.Setter
-        public Builder methods(List<GetProbeTemplateHttpProbeMethod> methods) {
-            if (methods == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateHttpProbe", "methods");
-            }
+        public Builder auth(@Nullable GetProbeTemplateHttpProbeAuth auth) {
+
+            this.auth = auth;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder headers(@Nullable Map<String,String> headers) {
+
+            this.headers = headers;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder methods(@Nullable List<GetProbeTemplateHttpProbeMethod> methods) {
+
             this.methods = methods;
             return this;
         }
         public Builder methods(GetProbeTemplateHttpProbeMethod... methods) {
             return methods(List.of(methods));
+        }
+        @CustomType.Setter
+        public Builder tlsConfig(@Nullable GetProbeTemplateHttpProbeTlsConfig tlsConfig) {
+
+            this.tlsConfig = tlsConfig;
+            return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
@@ -70,7 +141,10 @@ public final class GetProbeTemplateHttpProbe {
         }
         public GetProbeTemplateHttpProbe build() {
             final var _resultValue = new GetProbeTemplateHttpProbe();
+            _resultValue.auth = auth;
+            _resultValue.headers = headers;
             _resultValue.methods = methods;
+            _resultValue.tlsConfig = tlsConfig;
             _resultValue.url = url;
             return _resultValue;
         }

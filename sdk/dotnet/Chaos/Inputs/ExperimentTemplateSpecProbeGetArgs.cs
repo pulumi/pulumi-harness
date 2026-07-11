@@ -16,13 +16,20 @@ namespace Pulumi.Harness.Chaos.Inputs
         private InputList<Inputs.ExperimentTemplateSpecProbeConditionGetArgs>? _conditions;
 
         /// <summary>
-        /// Probe execution conditions
+        /// Deprecated: no longer part of the experiment template API; use ConditionsV2 instead. This field is ignored.
         /// </summary>
+        [Obsolete(@"conditions (execute_upon) is not supported by the experiment template API and is ignored. Use ConditionsV2 (operator + values) instead.")]
         public InputList<Inputs.ExperimentTemplateSpecProbeConditionGetArgs> Conditions
         {
             get => _conditions ?? (_conditions = new InputList<Inputs.ExperimentTemplateSpecProbeConditionGetArgs>());
             set => _conditions = value;
         }
+
+        /// <summary>
+        /// Execution conditions gating whether this probe runs, evaluated as boolean values combined by the operator.
+        /// </summary>
+        [Input("conditionsV2")]
+        public Input<Inputs.ExperimentTemplateSpecProbeConditionsV2GetArgs>? ConditionsV2 { get; set; }
 
         /// <summary>
         /// Probe duration

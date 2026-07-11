@@ -13,8 +13,17 @@ namespace Pulumi.Harness.Chaos.Outputs
     [OutputType]
     public sealed class GetProbeTemplateCmdProbeComparatorResult
     {
+        /// <summary>
+        /// Comparison criteria (==, !=, &lt;, &gt;, &lt;=, &gt;=, contains, matches, notMatches, oneOf).
+        /// </summary>
         public readonly string Criteria;
+        /// <summary>
+        /// Comparator type (string, int, float).
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Expected value.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

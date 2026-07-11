@@ -10,7 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Chaos
 {
     /// <summary>
-    /// Resource for managing Harness Chaos Infrastructure V2.
+    /// Resource for managing Harness Chaos Infrastructure V2 (the chaos execution infrastructure installed into a Kubernetes cluster).
+    /// 
+    /// After `pulumi up`, use the computed `InstallCommand` output to deploy the infrastructure manifest into your target cluster - creating this resource registers the infrastructure with Harness but does not itself install anything into the cluster.
+    /// 
+    /// ## Notes
+    /// 
+    /// - `InfraType`: use `KubernetesV2` (recommended); `Kubernetes` is the legacy V1 type.
+    /// - `InfraScope` (`NAMESPACE` or `CLUSTER`) is immutable - changing it forces recreation.
+    /// - `Containers` is a raw JSON string used to override container specs; leave unset unless you need advanced overrides.
+    /// - Some fields (`Volumes`, `VolumeMounts`, `Env`, `ImageRegistry`, `Label`, `Annotation`, `Containers`, `InsecureSkipVerify`) are applied via an automatic update immediately after creation; this is transparent and should not produce drift.
+    /// - `Resources` (CPU/memory `Requests` and `Limits`) and `AutopilotEnabled` can be set both at creation and on update. Resource values are standard Kubernetes quantity strings (e.g. `250m`, `1`, `256Mi`, `1Gi`).
+    /// - `DiscoveryAgentId` is applied at registration (create) time only; it is not sent on update, so changing it on an existing resource has no effect unless the resource is recreated.
     /// 
     /// ## Import
     /// 
@@ -36,6 +47,12 @@ namespace Pulumi.Harness.Chaos
         /// </summary>
         [Output("annotation")]
         public Output<ImmutableDictionary<string, string>?> Annotation { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable autopilot mode for the infrastructure.
+        /// </summary>
+        [Output("autopilotEnabled")]
+        public Output<bool?> AutopilotEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Container configurations.
@@ -188,6 +205,12 @@ namespace Pulumi.Harness.Chaos
         public Output<Outputs.InfrastructureV2Proxy?> Proxy { get; private set; } = null!;
 
         /// <summary>
+        /// Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+        /// </summary>
+        [Output("resources")]
+        public Output<Outputs.InfrastructureV2Resources?> Resources { get; private set; } = null!;
+
+        /// <summary>
         /// Group ID to run the infrastructure as.
         /// </summary>
         [Output("runAsGroup")]
@@ -305,6 +328,12 @@ namespace Pulumi.Harness.Chaos
             get => _annotation ?? (_annotation = new InputMap<string>());
             set => _annotation = value;
         }
+
+        /// <summary>
+        /// Enable autopilot mode for the infrastructure.
+        /// </summary>
+        [Input("autopilotEnabled")]
+        public Input<bool>? AutopilotEnabled { get; set; }
 
         /// <summary>
         /// Container configurations.
@@ -445,6 +474,12 @@ namespace Pulumi.Harness.Chaos
         public Input<Inputs.InfrastructureV2ProxyArgs>? Proxy { get; set; }
 
         /// <summary>
+        /// Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+        /// </summary>
+        [Input("resources")]
+        public Input<Inputs.InfrastructureV2ResourcesArgs>? Resources { get; set; }
+
+        /// <summary>
         /// Group ID to run the infrastructure as.
         /// </summary>
         [Input("runAsGroup")]
@@ -535,6 +570,12 @@ namespace Pulumi.Harness.Chaos
             get => _annotation ?? (_annotation = new InputMap<string>());
             set => _annotation = value;
         }
+
+        /// <summary>
+        /// Enable autopilot mode for the infrastructure.
+        /// </summary>
+        [Input("autopilotEnabled")]
+        public Input<bool>? AutopilotEnabled { get; set; }
 
         /// <summary>
         /// Container configurations.
@@ -715,6 +756,12 @@ namespace Pulumi.Harness.Chaos
         /// </summary>
         [Input("proxy")]
         public Input<Inputs.InfrastructureV2ProxyGetArgs>? Proxy { get; set; }
+
+        /// <summary>
+        /// Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+        /// </summary>
+        [Input("resources")]
+        public Input<Inputs.InfrastructureV2ResourcesGetArgs>? Resources { get; set; }
 
         /// <summary>
         /// Group ID to run the infrastructure as.

@@ -12,6 +12,12 @@ namespace Pulumi.Harness.Chaos
     /// <summary>
     /// Resource for managing Harness Chaos Experiment Templates. Experiment templates define reusable chaos experiments with actions, faults, and probes.
     /// 
+    /// Execution conditions for faults, probes, and actions are configured via the `ConditionsV2` block (`Operator` = `AND`/`OR`, plus `Values` which support the `&lt;+input&gt;` runtime input).
+    /// 
+    /// ## Deprecated / not supported
+    /// 
+    /// - The probe `Conditions` (`ExecuteUpon`) block is **deprecated and ignored** - it is not part of the current experiment template API. Use `ConditionsV2` instead.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -329,11 +335,13 @@ namespace Pulumi.Harness.Chaos
     ///                     Duration = "30",
     ///                     Weightage = 10,
     ///                     EnableDataCollection = false,
-    ///                     Conditions = new[]
+    ///                     ConditionsV2 = new Harness.Chaos.Inputs.ExperimentTemplateSpecProbeConditionsV2Args
     ///                     {
-    ///                         "onChaosStart",
-    ///                         "duringChaos",
-    ///                         "afterChaos",
+    ///                         Operator = "AND",
+    ///                         Values = new[]
+    ///                         {
+    ///                             "true",
+    ///                         },
     ///                     },
     ///                     Values = new[]
     ///                     {
@@ -353,10 +361,14 @@ namespace Pulumi.Harness.Chaos
     ///                     Duration = "30",
     ///                     Weightage = 10,
     ///                     EnableDataCollection = false,
-    ///                     Conditions = new[]
+    ///                     ConditionsV2 = new Harness.Chaos.Inputs.ExperimentTemplateSpecProbeConditionsV2Args
     ///                     {
-    ///                         "duringChaos",
-    ///                         "afterChaos",
+    ///                         Operator = "OR",
+    ///                         Values = new[]
+    ///                         {
+    ///                             "true",
+    ///                             "&lt;+input&gt;",
+    ///                         },
     ///                     },
     ///                     Values = new[]
     ///                     {

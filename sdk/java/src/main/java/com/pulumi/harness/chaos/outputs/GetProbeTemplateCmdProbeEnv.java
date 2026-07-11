@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProbeTemplateCmdProbeEnv {
+    /**
+     * @return Environment variable name.
+     * 
+     */
     private String name;
+    /**
+     * @return Environment variable value.
+     * 
+     */
     private String value;
 
     private GetProbeTemplateCmdProbeEnv() {}
+    /**
+     * @return Environment variable name.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Environment variable value.
+     * 
+     */
     public String value() {
         return this.value;
     }

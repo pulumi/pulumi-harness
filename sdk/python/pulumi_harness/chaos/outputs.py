@@ -35,11 +35,14 @@ __all__ = [
     'ExperimentTemplateDetail',
     'ExperimentTemplateSpec',
     'ExperimentTemplateSpecAction',
+    'ExperimentTemplateSpecActionConditionsV2',
     'ExperimentTemplateSpecActionValue',
     'ExperimentTemplateSpecFault',
+    'ExperimentTemplateSpecFaultConditionsV2',
     'ExperimentTemplateSpecFaultValue',
     'ExperimentTemplateSpecProbe',
     'ExperimentTemplateSpecProbeCondition',
+    'ExperimentTemplateSpecProbeConditionsV2',
     'ExperimentTemplateSpecProbeValue',
     'ExperimentTemplateSpecStatusCheckTimeouts',
     'ExperimentTemplateSpecVertex',
@@ -86,6 +89,9 @@ __all__ = [
     'InfrastructureV2ImageRegistryIdentifier',
     'InfrastructureV2Mtls',
     'InfrastructureV2Proxy',
+    'InfrastructureV2Resources',
+    'InfrastructureV2ResourcesLimits',
+    'InfrastructureV2ResourcesRequests',
     'InfrastructureV2Toleration',
     'InfrastructureV2Volume',
     'InfrastructureV2VolumeMount',
@@ -157,11 +163,14 @@ __all__ = [
     'GetExperimentTemplateDetailResult',
     'GetExperimentTemplateSpecResult',
     'GetExperimentTemplateSpecActionResult',
+    'GetExperimentTemplateSpecActionConditionsV2Result',
     'GetExperimentTemplateSpecActionValueResult',
     'GetExperimentTemplateSpecFaultResult',
+    'GetExperimentTemplateSpecFaultConditionsV2Result',
     'GetExperimentTemplateSpecFaultValueResult',
     'GetExperimentTemplateSpecProbeResult',
     'GetExperimentTemplateSpecProbeConditionResult',
+    'GetExperimentTemplateSpecProbeConditionsV2Result',
     'GetExperimentTemplateSpecProbeValueResult',
     'GetExperimentTemplateSpecStatusCheckTimeoutResult',
     'GetExperimentTemplateSpecVertexResult',
@@ -180,16 +189,36 @@ __all__ = [
     'GetInfrastructureV2ImageRegistryIdentifierResult',
     'GetInfrastructureV2MtlsResult',
     'GetInfrastructureV2ProxyResult',
+    'GetInfrastructureV2ResourcesResult',
+    'GetInfrastructureV2ResourcesLimitsResult',
+    'GetInfrastructureV2ResourcesRequestsResult',
     'GetInfrastructureV2TolerationResult',
     'GetInfrastructureV2VolumeResult',
     'GetInfrastructureV2VolumeMountResult',
+    'GetProbeTemplateApmProbeResult',
+    'GetProbeTemplateApmProbeAppDynamicsInputsResult',
+    'GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsResult',
+    'GetProbeTemplateApmProbeComparatorResult',
+    'GetProbeTemplateApmProbeDatadogInputsResult',
+    'GetProbeTemplateApmProbeDatadogInputsSyntheticsTestResult',
+    'GetProbeTemplateApmProbeDynatraceInputsResult',
+    'GetProbeTemplateApmProbeDynatraceInputsMetricsResult',
+    'GetProbeTemplateApmProbeGcpCloudMonitoringInputsResult',
+    'GetProbeTemplateApmProbeNewRelicInputsResult',
+    'GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricResult',
+    'GetProbeTemplateApmProbePrometheusInputsResult',
+    'GetProbeTemplateApmProbePrometheusInputsTlsConfigResult',
+    'GetProbeTemplateApmProbeSplunkObservabilityInputsResult',
+    'GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsResult',
     'GetProbeTemplateCmdProbeResult',
     'GetProbeTemplateCmdProbeComparatorResult',
     'GetProbeTemplateCmdProbeEnvResult',
     'GetProbeTemplateHttpProbeResult',
+    'GetProbeTemplateHttpProbeAuthResult',
     'GetProbeTemplateHttpProbeMethodResult',
     'GetProbeTemplateHttpProbeMethodGetResult',
     'GetProbeTemplateHttpProbeMethodPostResult',
+    'GetProbeTemplateHttpProbeTlsConfigResult',
     'GetProbeTemplateK8sProbeResult',
     'GetProbeTemplateRunPropertyResult',
     'GetProbeTemplateVariableResult',
@@ -1447,7 +1476,9 @@ class ExperimentTemplateSpecAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "continueOnCompletion":
+        if key == "conditionsV2":
+            suggest = "conditions_v2"
+        elif key == "continueOnCompletion":
             suggest = "continue_on_completion"
         elif key == "infraId":
             suggest = "infra_id"
@@ -1468,6 +1499,7 @@ class ExperimentTemplateSpecAction(dict):
     def __init__(__self__, *,
                  identity: _builtins.str,
                  name: _builtins.str,
+                 conditions_v2: Optional['outputs.ExperimentTemplateSpecActionConditionsV2'] = None,
                  continue_on_completion: Optional[_builtins.bool] = None,
                  infra_id: Optional[_builtins.str] = None,
                  is_enterprise: Optional[_builtins.bool] = None,
@@ -1476,6 +1508,7 @@ class ExperimentTemplateSpecAction(dict):
         """
         :param _builtins.str identity: Action template identity
         :param _builtins.str name: Action name
+        :param 'ExperimentTemplateSpecActionConditionsV2Args' conditions_v2: Execution conditions gating whether this action runs, evaluated as boolean values combined by the operator.
         :param _builtins.bool continue_on_completion: Whether to continue on completion
         :param _builtins.str infra_id: Infrastructure identifier for this action
         :param _builtins.bool is_enterprise: Whether this is an enterprise action
@@ -1484,6 +1517,8 @@ class ExperimentTemplateSpecAction(dict):
         """
         pulumi.set(__self__, "identity", identity)
         pulumi.set(__self__, "name", name)
+        if conditions_v2 is not None:
+            pulumi.set(__self__, "conditions_v2", conditions_v2)
         if continue_on_completion is not None:
             pulumi.set(__self__, "continue_on_completion", continue_on_completion)
         if infra_id is not None:
@@ -1510,6 +1545,14 @@ class ExperimentTemplateSpecAction(dict):
         Action name
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="conditionsV2")
+    def conditions_v2(self) -> Optional['outputs.ExperimentTemplateSpecActionConditionsV2']:
+        """
+        Execution conditions gating whether this action runs, evaluated as boolean values combined by the operator.
+        """
+        return pulumi.get(self, "conditions_v2")
 
     @_builtins.property
     @pulumi.getter(name="continueOnCompletion")
@@ -1553,6 +1596,35 @@ class ExperimentTemplateSpecAction(dict):
 
 
 @pulumi.output_type
+class ExperimentTemplateSpecActionConditionsV2(dict):
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str operator: Logical operator combining values: AND (all true) or OR (any true).
+        :param Sequence[_builtins.str] values: Boolean-parseable condition values (supports runtime input: <+input>).
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Logical operator combining values: AND (all true) or OR (any true).
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        Boolean-parseable condition values (supports runtime input: <+input>).
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
 class ExperimentTemplateSpecActionValue(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
@@ -1588,6 +1660,8 @@ class ExperimentTemplateSpecFault(dict):
         suggest = None
         if key == "authEnabled":
             suggest = "auth_enabled"
+        elif key == "conditionsV2":
+            suggest = "conditions_v2"
         elif key == "infraId":
             suggest = "infra_id"
         elif key == "isEnterprise":
@@ -1608,6 +1682,7 @@ class ExperimentTemplateSpecFault(dict):
                  identity: _builtins.str,
                  name: _builtins.str,
                  auth_enabled: Optional[_builtins.bool] = None,
+                 conditions_v2: Optional['outputs.ExperimentTemplateSpecFaultConditionsV2'] = None,
                  infra_id: Optional[_builtins.str] = None,
                  is_enterprise: Optional[_builtins.bool] = None,
                  revision: Optional[_builtins.str] = None,
@@ -1616,6 +1691,7 @@ class ExperimentTemplateSpecFault(dict):
         :param _builtins.str identity: Fault template identity
         :param _builtins.str name: Fault name
         :param _builtins.bool auth_enabled: Whether authentication is enabled
+        :param 'ExperimentTemplateSpecFaultConditionsV2Args' conditions_v2: Execution conditions gating whether this fault runs, evaluated as boolean values combined by the operator.
         :param _builtins.str infra_id: Infrastructure identifier for this fault
         :param _builtins.bool is_enterprise: Whether this is an enterprise fault
         :param _builtins.str revision: Fault template revision
@@ -1625,6 +1701,8 @@ class ExperimentTemplateSpecFault(dict):
         pulumi.set(__self__, "name", name)
         if auth_enabled is not None:
             pulumi.set(__self__, "auth_enabled", auth_enabled)
+        if conditions_v2 is not None:
+            pulumi.set(__self__, "conditions_v2", conditions_v2)
         if infra_id is not None:
             pulumi.set(__self__, "infra_id", infra_id)
         if is_enterprise is not None:
@@ -1659,6 +1737,14 @@ class ExperimentTemplateSpecFault(dict):
         return pulumi.get(self, "auth_enabled")
 
     @_builtins.property
+    @pulumi.getter(name="conditionsV2")
+    def conditions_v2(self) -> Optional['outputs.ExperimentTemplateSpecFaultConditionsV2']:
+        """
+        Execution conditions gating whether this fault runs, evaluated as boolean values combined by the operator.
+        """
+        return pulumi.get(self, "conditions_v2")
+
+    @_builtins.property
     @pulumi.getter(name="infraId")
     def infra_id(self) -> Optional[_builtins.str]:
         """
@@ -1687,6 +1773,35 @@ class ExperimentTemplateSpecFault(dict):
     def values(self) -> Optional[Sequence['outputs.ExperimentTemplateSpecFaultValue']]:
         """
         Variable values for the fault
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class ExperimentTemplateSpecFaultConditionsV2(dict):
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str operator: Logical operator combining values: AND (all true) or OR (any true).
+        :param Sequence[_builtins.str] values: Boolean-parseable condition values (supports runtime input: <+input>).
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Logical operator combining values: AND (all true) or OR (any true).
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        Boolean-parseable condition values (supports runtime input: <+input>).
         """
         return pulumi.get(self, "values")
 
@@ -1725,7 +1840,9 @@ class ExperimentTemplateSpecProbe(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "enableDataCollection":
+        if key == "conditionsV2":
+            suggest = "conditions_v2"
+        elif key == "enableDataCollection":
             suggest = "enable_data_collection"
         elif key == "infraId":
             suggest = "infra_id"
@@ -1747,6 +1864,7 @@ class ExperimentTemplateSpecProbe(dict):
                  identity: _builtins.str,
                  name: _builtins.str,
                  conditions: Optional[Sequence['outputs.ExperimentTemplateSpecProbeCondition']] = None,
+                 conditions_v2: Optional['outputs.ExperimentTemplateSpecProbeConditionsV2'] = None,
                  duration: Optional[_builtins.str] = None,
                  enable_data_collection: Optional[_builtins.bool] = None,
                  infra_id: Optional[_builtins.str] = None,
@@ -1757,7 +1875,8 @@ class ExperimentTemplateSpecProbe(dict):
         """
         :param _builtins.str identity: Probe template identity
         :param _builtins.str name: Probe name
-        :param Sequence['ExperimentTemplateSpecProbeConditionArgs'] conditions: Probe execution conditions
+        :param Sequence['ExperimentTemplateSpecProbeConditionArgs'] conditions: Deprecated: no longer part of the experiment template API; use conditions_v2 instead. This field is ignored.
+        :param 'ExperimentTemplateSpecProbeConditionsV2Args' conditions_v2: Execution conditions gating whether this probe runs, evaluated as boolean values combined by the operator.
         :param _builtins.str duration: Probe duration
         :param _builtins.bool enable_data_collection: Whether to enable data collection
         :param _builtins.str infra_id: Infrastructure identifier for this probe
@@ -1770,6 +1889,8 @@ class ExperimentTemplateSpecProbe(dict):
         pulumi.set(__self__, "name", name)
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
+        if conditions_v2 is not None:
+            pulumi.set(__self__, "conditions_v2", conditions_v2)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
         if enable_data_collection is not None:
@@ -1803,11 +1924,20 @@ class ExperimentTemplateSpecProbe(dict):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditions_v2 (operator + values) instead.""")
     def conditions(self) -> Optional[Sequence['outputs.ExperimentTemplateSpecProbeCondition']]:
         """
-        Probe execution conditions
+        Deprecated: no longer part of the experiment template API; use conditions_v2 instead. This field is ignored.
         """
         return pulumi.get(self, "conditions")
+
+    @_builtins.property
+    @pulumi.getter(name="conditionsV2")
+    def conditions_v2(self) -> Optional['outputs.ExperimentTemplateSpecProbeConditionsV2']:
+        """
+        Execution conditions gating whether this probe runs, evaluated as boolean values combined by the operator.
+        """
+        return pulumi.get(self, "conditions_v2")
 
     @_builtins.property
     @pulumi.getter
@@ -1886,19 +2016,49 @@ class ExperimentTemplateSpecProbeCondition(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 execute_upon: _builtins.str):
+                 execute_upon: Optional[_builtins.str] = None):
         """
         :param _builtins.str execute_upon: When to execute the probe (onChaosStart, duringChaos, afterChaos)
         """
-        pulumi.set(__self__, "execute_upon", execute_upon)
+        if execute_upon is not None:
+            pulumi.set(__self__, "execute_upon", execute_upon)
 
     @_builtins.property
     @pulumi.getter(name="executeUpon")
-    def execute_upon(self) -> _builtins.str:
+    def execute_upon(self) -> Optional[_builtins.str]:
         """
         When to execute the probe (onChaosStart, duringChaos, afterChaos)
         """
         return pulumi.get(self, "execute_upon")
+
+
+@pulumi.output_type
+class ExperimentTemplateSpecProbeConditionsV2(dict):
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str operator: Logical operator combining values: AND (all true) or OR (any true).
+        :param Sequence[_builtins.str] values: Boolean-parseable condition values (supports runtime input: <+input>).
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Logical operator combining values: AND (all true) or OR (any true).
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        Boolean-parseable condition values (supports runtime input: <+input>).
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -2286,12 +2446,12 @@ class FaultTemplateSpecChaos(dict):
                  status_check_timeouts: Optional['outputs.FaultTemplateSpecChaosStatusCheckTimeouts'] = None,
                  tls: Optional['outputs.FaultTemplateSpecChaosTls'] = None):
         """
-        :param 'FaultTemplateSpecChaosAuthArgs' auth: Authentication configuration
+        :param 'FaultTemplateSpecChaosAuthArgs' auth: Authentication configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault authentication in the Harness UI/API instead.
         :param _builtins.str fault_name: Name of the fault. Note: API may return a default value (e.g., 'byoc-injector') instead of the configured value due to API limitations.
         :param 'FaultTemplateSpecChaosKubernetesArgs' kubernetes: Kubernetes-specific chaos configuration
         :param Sequence['FaultTemplateSpecChaosParamArgs'] params: Fault parameters
         :param 'FaultTemplateSpecChaosStatusCheckTimeoutsArgs' status_check_timeouts: Status check timeout configuration
-        :param 'FaultTemplateSpecChaosTlsArgs' tls: TLS configuration
+        :param 'FaultTemplateSpecChaosTlsArgs' tls: TLS configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault TLS in the Harness UI/API instead.
         """
         if auth is not None:
             pulumi.set(__self__, "auth", auth)
@@ -2310,7 +2470,7 @@ class FaultTemplateSpecChaos(dict):
     @pulumi.getter
     def auth(self) -> Optional['outputs.FaultTemplateSpecChaosAuth']:
         """
-        Authentication configuration
+        Authentication configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault authentication in the Harness UI/API instead.
         """
         return pulumi.get(self, "auth")
 
@@ -2350,7 +2510,7 @@ class FaultTemplateSpecChaos(dict):
     @pulumi.getter
     def tls(self) -> Optional['outputs.FaultTemplateSpecChaosTls']:
         """
-        TLS configuration
+        TLS configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault TLS in the Harness UI/API instead.
         """
         return pulumi.get(self, "tls")
 
@@ -4649,6 +4809,99 @@ class InfrastructureV2Proxy(dict):
 
 
 @pulumi.output_type
+class InfrastructureV2Resources(dict):
+    def __init__(__self__, *,
+                 limits: Optional['outputs.InfrastructureV2ResourcesLimits'] = None,
+                 requests: Optional['outputs.InfrastructureV2ResourcesRequests'] = None):
+        """
+        :param 'InfrastructureV2ResourcesLimitsArgs' limits: Maximum compute resources allowed for the infrastructure pods.
+        :param 'InfrastructureV2ResourcesRequestsArgs' requests: Minimum compute resources requested for the infrastructure pods.
+        """
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if requests is not None:
+            pulumi.set(__self__, "requests", requests)
+
+    @_builtins.property
+    @pulumi.getter
+    def limits(self) -> Optional['outputs.InfrastructureV2ResourcesLimits']:
+        """
+        Maximum compute resources allowed for the infrastructure pods.
+        """
+        return pulumi.get(self, "limits")
+
+    @_builtins.property
+    @pulumi.getter
+    def requests(self) -> Optional['outputs.InfrastructureV2ResourcesRequests']:
+        """
+        Minimum compute resources requested for the infrastructure pods.
+        """
+        return pulumi.get(self, "requests")
+
+
+@pulumi.output_type
+class InfrastructureV2ResourcesLimits(dict):
+    def __init__(__self__, *,
+                 cpu: Optional[_builtins.str] = None,
+                 memory: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str cpu: CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+        :param _builtins.str memory: Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> Optional[_builtins.str]:
+        """
+        CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+        """
+        return pulumi.get(self, "cpu")
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[_builtins.str]:
+        """
+        Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+        """
+        return pulumi.get(self, "memory")
+
+
+@pulumi.output_type
+class InfrastructureV2ResourcesRequests(dict):
+    def __init__(__self__, *,
+                 cpu: Optional[_builtins.str] = None,
+                 memory: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str cpu: CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+        :param _builtins.str memory: Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> Optional[_builtins.str]:
+        """
+        CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+        """
+        return pulumi.get(self, "cpu")
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[_builtins.str]:
+        """
+        Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+        """
+        return pulumi.get(self, "memory")
+
+
+@pulumi.output_type
 class InfrastructureV2Toleration(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -5813,7 +6066,7 @@ class ProbeTemplateCmdProbe(dict):
         :param _builtins.str command: Command to execute.
         :param 'ProbeTemplateCmdProbeComparatorArgs' comparator: Comparator for command output validation.
         :param Sequence['ProbeTemplateCmdProbeEnvArgs'] envs: Environment variables for the command.
-        :param _builtins.str source: Source of the command (inline, configMap, secret).
+        :param _builtins.str source: Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as "inline", "configMap", or "secret" is INVALID and fails with "cannot unmarshal string into Go value of type v1.SourceDetails". To run inline, omit this field entirely.
         """
         pulumi.set(__self__, "command", command)
         if comparator is not None:
@@ -5851,7 +6104,7 @@ class ProbeTemplateCmdProbe(dict):
     @pulumi.getter
     def source(self) -> Optional[_builtins.str]:
         """
-        Source of the command (inline, configMap, secret).
+        Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as "inline", "configMap", or "secret" is INVALID and fails with "cannot unmarshal string into Go value of type v1.SourceDetails". To run inline, omit this field entirely.
         """
         return pulumi.get(self, "source")
 
@@ -8761,6 +9014,7 @@ class GetExperimentTemplateSpecResult(dict):
 @pulumi.output_type
 class GetExperimentTemplateSpecActionResult(dict):
     def __init__(__self__, *,
+                 conditions_v2s: Sequence['outputs.GetExperimentTemplateSpecActionConditionsV2Result'],
                  continue_on_completion: _builtins.bool,
                  identity: _builtins.str,
                  infra_id: _builtins.str,
@@ -8769,6 +9023,7 @@ class GetExperimentTemplateSpecActionResult(dict):
                  revision: _builtins.int,
                  values: Sequence['outputs.GetExperimentTemplateSpecActionValueResult']):
         """
+        :param Sequence['GetExperimentTemplateSpecActionConditionsV2Args'] conditions_v2s: Execution conditions (operator + values) gating whether this runs.
         :param _builtins.bool continue_on_completion: Whether to continue on completion
         :param _builtins.str identity: Action template identity
         :param _builtins.str infra_id: Infrastructure identifier for this action
@@ -8777,6 +9032,7 @@ class GetExperimentTemplateSpecActionResult(dict):
         :param _builtins.int revision: Action template revision
         :param Sequence['GetExperimentTemplateSpecActionValueArgs'] values: Variable values for the action
         """
+        pulumi.set(__self__, "conditions_v2s", conditions_v2s)
         pulumi.set(__self__, "continue_on_completion", continue_on_completion)
         pulumi.set(__self__, "identity", identity)
         pulumi.set(__self__, "infra_id", infra_id)
@@ -8784,6 +9040,14 @@ class GetExperimentTemplateSpecActionResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "revision", revision)
         pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter(name="conditionsV2s")
+    def conditions_v2s(self) -> Sequence['outputs.GetExperimentTemplateSpecActionConditionsV2Result']:
+        """
+        Execution conditions (operator + values) gating whether this runs.
+        """
+        return pulumi.get(self, "conditions_v2s")
 
     @_builtins.property
     @pulumi.getter(name="continueOnCompletion")
@@ -8843,6 +9107,35 @@ class GetExperimentTemplateSpecActionResult(dict):
 
 
 @pulumi.output_type
+class GetExperimentTemplateSpecActionConditionsV2Result(dict):
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str operator: Logical operator combining values (AND/OR).
+        :param Sequence[_builtins.str] values: Boolean-parseable condition values (may include <+input>).
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Logical operator combining values (AND/OR).
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        Boolean-parseable condition values (may include <+input>).
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
 class GetExperimentTemplateSpecActionValueResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
@@ -8875,6 +9168,7 @@ class GetExperimentTemplateSpecActionValueResult(dict):
 class GetExperimentTemplateSpecFaultResult(dict):
     def __init__(__self__, *,
                  auth_enabled: _builtins.bool,
+                 conditions_v2s: Sequence['outputs.GetExperimentTemplateSpecFaultConditionsV2Result'],
                  identity: _builtins.str,
                  infra_id: _builtins.str,
                  is_enterprise: _builtins.bool,
@@ -8883,6 +9177,7 @@ class GetExperimentTemplateSpecFaultResult(dict):
                  values: Sequence['outputs.GetExperimentTemplateSpecFaultValueResult']):
         """
         :param _builtins.bool auth_enabled: Whether authentication is enabled
+        :param Sequence['GetExperimentTemplateSpecFaultConditionsV2Args'] conditions_v2s: Execution conditions (operator + values) gating whether this runs.
         :param _builtins.str identity: Fault template identity
         :param _builtins.str infra_id: Infrastructure identifier for this fault
         :param _builtins.bool is_enterprise: Whether this is an enterprise fault
@@ -8891,6 +9186,7 @@ class GetExperimentTemplateSpecFaultResult(dict):
         :param Sequence['GetExperimentTemplateSpecFaultValueArgs'] values: Variable values for the fault
         """
         pulumi.set(__self__, "auth_enabled", auth_enabled)
+        pulumi.set(__self__, "conditions_v2s", conditions_v2s)
         pulumi.set(__self__, "identity", identity)
         pulumi.set(__self__, "infra_id", infra_id)
         pulumi.set(__self__, "is_enterprise", is_enterprise)
@@ -8905,6 +9201,14 @@ class GetExperimentTemplateSpecFaultResult(dict):
         Whether authentication is enabled
         """
         return pulumi.get(self, "auth_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="conditionsV2s")
+    def conditions_v2s(self) -> Sequence['outputs.GetExperimentTemplateSpecFaultConditionsV2Result']:
+        """
+        Execution conditions (operator + values) gating whether this runs.
+        """
+        return pulumi.get(self, "conditions_v2s")
 
     @_builtins.property
     @pulumi.getter
@@ -8956,6 +9260,35 @@ class GetExperimentTemplateSpecFaultResult(dict):
 
 
 @pulumi.output_type
+class GetExperimentTemplateSpecFaultConditionsV2Result(dict):
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str operator: Logical operator combining values (AND/OR).
+        :param Sequence[_builtins.str] values: Boolean-parseable condition values (may include <+input>).
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Logical operator combining values (AND/OR).
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        Boolean-parseable condition values (may include <+input>).
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
 class GetExperimentTemplateSpecFaultValueResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
@@ -8988,6 +9321,7 @@ class GetExperimentTemplateSpecFaultValueResult(dict):
 class GetExperimentTemplateSpecProbeResult(dict):
     def __init__(__self__, *,
                  conditions: Sequence['outputs.GetExperimentTemplateSpecProbeConditionResult'],
+                 conditions_v2s: Sequence['outputs.GetExperimentTemplateSpecProbeConditionsV2Result'],
                  duration: _builtins.str,
                  enable_data_collection: _builtins.bool,
                  identity: _builtins.str,
@@ -8998,7 +9332,8 @@ class GetExperimentTemplateSpecProbeResult(dict):
                  values: Sequence['outputs.GetExperimentTemplateSpecProbeValueResult'],
                  weightage: _builtins.int):
         """
-        :param Sequence['GetExperimentTemplateSpecProbeConditionArgs'] conditions: Probe execution conditions
+        :param Sequence['GetExperimentTemplateSpecProbeConditionArgs'] conditions: Deprecated: not part of the experiment template API; use conditions_v2.
+        :param Sequence['GetExperimentTemplateSpecProbeConditionsV2Args'] conditions_v2s: Execution conditions (operator + values) gating whether this runs.
         :param _builtins.str duration: Probe duration
         :param _builtins.bool enable_data_collection: Whether to enable data collection
         :param _builtins.str identity: Probe template identity
@@ -9010,6 +9345,7 @@ class GetExperimentTemplateSpecProbeResult(dict):
         :param _builtins.int weightage: Probe weightage for resilience score calculation
         """
         pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "conditions_v2s", conditions_v2s)
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "enable_data_collection", enable_data_collection)
         pulumi.set(__self__, "identity", identity)
@@ -9022,11 +9358,20 @@ class GetExperimentTemplateSpecProbeResult(dict):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""conditions (execute_upon) is not supported by the experiment template API. Use conditions_v2 instead.""")
     def conditions(self) -> Sequence['outputs.GetExperimentTemplateSpecProbeConditionResult']:
         """
-        Probe execution conditions
+        Deprecated: not part of the experiment template API; use conditions_v2.
         """
         return pulumi.get(self, "conditions")
+
+    @_builtins.property
+    @pulumi.getter(name="conditionsV2s")
+    def conditions_v2s(self) -> Sequence['outputs.GetExperimentTemplateSpecProbeConditionsV2Result']:
+        """
+        Execution conditions (operator + values) gating whether this runs.
+        """
+        return pulumi.get(self, "conditions_v2s")
 
     @_builtins.property
     @pulumi.getter
@@ -9117,6 +9462,35 @@ class GetExperimentTemplateSpecProbeConditionResult(dict):
         When to execute the probe
         """
         return pulumi.get(self, "execute_upon")
+
+
+@pulumi.output_type
+class GetExperimentTemplateSpecProbeConditionsV2Result(dict):
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str operator: Logical operator combining values (AND/OR).
+        :param Sequence[_builtins.str] values: Boolean-parseable condition values (may include <+input>).
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Logical operator combining values (AND/OR).
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        Boolean-parseable condition values (may include <+input>).
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -9841,6 +10215,99 @@ class GetInfrastructureV2ProxyResult(dict):
 
 
 @pulumi.output_type
+class GetInfrastructureV2ResourcesResult(dict):
+    def __init__(__self__, *,
+                 limits: Optional['outputs.GetInfrastructureV2ResourcesLimitsResult'] = None,
+                 requests: Optional['outputs.GetInfrastructureV2ResourcesRequestsResult'] = None):
+        """
+        :param 'GetInfrastructureV2ResourcesLimitsArgs' limits: Maximum compute resources allowed for the infrastructure pods.
+        :param 'GetInfrastructureV2ResourcesRequestsArgs' requests: Minimum compute resources requested for the infrastructure pods.
+        """
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if requests is not None:
+            pulumi.set(__self__, "requests", requests)
+
+    @_builtins.property
+    @pulumi.getter
+    def limits(self) -> Optional['outputs.GetInfrastructureV2ResourcesLimitsResult']:
+        """
+        Maximum compute resources allowed for the infrastructure pods.
+        """
+        return pulumi.get(self, "limits")
+
+    @_builtins.property
+    @pulumi.getter
+    def requests(self) -> Optional['outputs.GetInfrastructureV2ResourcesRequestsResult']:
+        """
+        Minimum compute resources requested for the infrastructure pods.
+        """
+        return pulumi.get(self, "requests")
+
+
+@pulumi.output_type
+class GetInfrastructureV2ResourcesLimitsResult(dict):
+    def __init__(__self__, *,
+                 cpu: Optional[_builtins.str] = None,
+                 memory: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str cpu: CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+        :param _builtins.str memory: Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> Optional[_builtins.str]:
+        """
+        CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+        """
+        return pulumi.get(self, "cpu")
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[_builtins.str]:
+        """
+        Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+        """
+        return pulumi.get(self, "memory")
+
+
+@pulumi.output_type
+class GetInfrastructureV2ResourcesRequestsResult(dict):
+    def __init__(__self__, *,
+                 cpu: Optional[_builtins.str] = None,
+                 memory: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str cpu: CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+        :param _builtins.str memory: Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> Optional[_builtins.str]:
+        """
+        CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+        """
+        return pulumi.get(self, "cpu")
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[_builtins.str]:
+        """
+        Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+        """
+        return pulumi.get(self, "memory")
+
+
+@pulumi.output_type
 class GetInfrastructureV2TolerationResult(dict):
     def __init__(__self__, *,
                  effect: _builtins.str,
@@ -10012,45 +10479,698 @@ class GetInfrastructureV2VolumeMountResult(dict):
 
 
 @pulumi.output_type
+class GetProbeTemplateApmProbeResult(dict):
+    def __init__(__self__, *,
+                 apm_type: _builtins.str,
+                 app_dynamics_inputs: Optional['outputs.GetProbeTemplateApmProbeAppDynamicsInputsResult'] = None,
+                 comparator: Optional['outputs.GetProbeTemplateApmProbeComparatorResult'] = None,
+                 datadog_inputs: Optional['outputs.GetProbeTemplateApmProbeDatadogInputsResult'] = None,
+                 dynatrace_inputs: Optional['outputs.GetProbeTemplateApmProbeDynatraceInputsResult'] = None,
+                 gcp_cloud_monitoring_inputs: Optional['outputs.GetProbeTemplateApmProbeGcpCloudMonitoringInputsResult'] = None,
+                 new_relic_inputs: Optional['outputs.GetProbeTemplateApmProbeNewRelicInputsResult'] = None,
+                 prometheus_inputs: Optional['outputs.GetProbeTemplateApmProbePrometheusInputsResult'] = None,
+                 splunk_observability_inputs: Optional['outputs.GetProbeTemplateApmProbeSplunkObservabilityInputsResult'] = None):
+        """
+        :param _builtins.str apm_type: APM provider type. Valid values: Prometheus, AppDynamics, SplunkObservability, Dynatrace, NewRelic, Datadog, GCPCloudMonitoring.
+        :param 'GetProbeTemplateApmProbeAppDynamicsInputsArgs' app_dynamics_inputs: AppDynamics-specific inputs. Required when apm*type is 'AppDynamics'.
+        :param 'GetProbeTemplateApmProbeComparatorArgs' comparator: Comparator for APM metric validation.
+        :param 'GetProbeTemplateApmProbeDatadogInputsArgs' datadog_inputs: Datadog-specific inputs. Required when apm*type is 'Datadog'.
+        :param 'GetProbeTemplateApmProbeDynatraceInputsArgs' dynatrace_inputs: Dynatrace-specific inputs. Required when apm*type is 'Dynatrace'.
+        :param 'GetProbeTemplateApmProbeGcpCloudMonitoringInputsArgs' gcp_cloud_monitoring_inputs: GCP Cloud Monitoring-specific inputs. Required when apm*type is 'GCPCloudMonitoring'.
+        :param 'GetProbeTemplateApmProbeNewRelicInputsArgs' new_relic_inputs: NewRelic-specific inputs. Required when apm*type is 'NewRelic'.
+        :param 'GetProbeTemplateApmProbePrometheusInputsArgs' prometheus_inputs: Prometheus-specific inputs. Required when apm*type is 'Prometheus'.
+        :param 'GetProbeTemplateApmProbeSplunkObservabilityInputsArgs' splunk_observability_inputs: SplunkObservability-specific inputs. Required when apm*type is 'SplunkObservability'.
+        """
+        pulumi.set(__self__, "apm_type", apm_type)
+        if app_dynamics_inputs is not None:
+            pulumi.set(__self__, "app_dynamics_inputs", app_dynamics_inputs)
+        if comparator is not None:
+            pulumi.set(__self__, "comparator", comparator)
+        if datadog_inputs is not None:
+            pulumi.set(__self__, "datadog_inputs", datadog_inputs)
+        if dynatrace_inputs is not None:
+            pulumi.set(__self__, "dynatrace_inputs", dynatrace_inputs)
+        if gcp_cloud_monitoring_inputs is not None:
+            pulumi.set(__self__, "gcp_cloud_monitoring_inputs", gcp_cloud_monitoring_inputs)
+        if new_relic_inputs is not None:
+            pulumi.set(__self__, "new_relic_inputs", new_relic_inputs)
+        if prometheus_inputs is not None:
+            pulumi.set(__self__, "prometheus_inputs", prometheus_inputs)
+        if splunk_observability_inputs is not None:
+            pulumi.set(__self__, "splunk_observability_inputs", splunk_observability_inputs)
+
+    @_builtins.property
+    @pulumi.getter(name="apmType")
+    def apm_type(self) -> _builtins.str:
+        """
+        APM provider type. Valid values: Prometheus, AppDynamics, SplunkObservability, Dynatrace, NewRelic, Datadog, GCPCloudMonitoring.
+        """
+        return pulumi.get(self, "apm_type")
+
+    @_builtins.property
+    @pulumi.getter(name="appDynamicsInputs")
+    def app_dynamics_inputs(self) -> Optional['outputs.GetProbeTemplateApmProbeAppDynamicsInputsResult']:
+        """
+        AppDynamics-specific inputs. Required when apm*type is 'AppDynamics'.
+        """
+        return pulumi.get(self, "app_dynamics_inputs")
+
+    @_builtins.property
+    @pulumi.getter
+    def comparator(self) -> Optional['outputs.GetProbeTemplateApmProbeComparatorResult']:
+        """
+        Comparator for APM metric validation.
+        """
+        return pulumi.get(self, "comparator")
+
+    @_builtins.property
+    @pulumi.getter(name="datadogInputs")
+    def datadog_inputs(self) -> Optional['outputs.GetProbeTemplateApmProbeDatadogInputsResult']:
+        """
+        Datadog-specific inputs. Required when apm*type is 'Datadog'.
+        """
+        return pulumi.get(self, "datadog_inputs")
+
+    @_builtins.property
+    @pulumi.getter(name="dynatraceInputs")
+    def dynatrace_inputs(self) -> Optional['outputs.GetProbeTemplateApmProbeDynatraceInputsResult']:
+        """
+        Dynatrace-specific inputs. Required when apm*type is 'Dynatrace'.
+        """
+        return pulumi.get(self, "dynatrace_inputs")
+
+    @_builtins.property
+    @pulumi.getter(name="gcpCloudMonitoringInputs")
+    def gcp_cloud_monitoring_inputs(self) -> Optional['outputs.GetProbeTemplateApmProbeGcpCloudMonitoringInputsResult']:
+        """
+        GCP Cloud Monitoring-specific inputs. Required when apm*type is 'GCPCloudMonitoring'.
+        """
+        return pulumi.get(self, "gcp_cloud_monitoring_inputs")
+
+    @_builtins.property
+    @pulumi.getter(name="newRelicInputs")
+    def new_relic_inputs(self) -> Optional['outputs.GetProbeTemplateApmProbeNewRelicInputsResult']:
+        """
+        NewRelic-specific inputs. Required when apm*type is 'NewRelic'.
+        """
+        return pulumi.get(self, "new_relic_inputs")
+
+    @_builtins.property
+    @pulumi.getter(name="prometheusInputs")
+    def prometheus_inputs(self) -> Optional['outputs.GetProbeTemplateApmProbePrometheusInputsResult']:
+        """
+        Prometheus-specific inputs. Required when apm*type is 'Prometheus'.
+        """
+        return pulumi.get(self, "prometheus_inputs")
+
+    @_builtins.property
+    @pulumi.getter(name="splunkObservabilityInputs")
+    def splunk_observability_inputs(self) -> Optional['outputs.GetProbeTemplateApmProbeSplunkObservabilityInputsResult']:
+        """
+        SplunkObservability-specific inputs. Required when apm*type is 'SplunkObservability'.
+        """
+        return pulumi.get(self, "splunk_observability_inputs")
+
+
+@pulumi.output_type
+class GetProbeTemplateApmProbeAppDynamicsInputsResult(dict):
+    def __init__(__self__, *,
+                 connector_id: _builtins.str,
+                 appd_metrics: Optional['outputs.GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsResult'] = None):
+        """
+        :param _builtins.str connector_id: Harness connector ID for AppDynamics.
+        :param 'GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs' appd_metrics: AppDynamics metrics configuration.
+        """
+        pulumi.set(__self__, "connector_id", connector_id)
+        if appd_metrics is not None:
+            pulumi.set(__self__, "appd_metrics", appd_metrics)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorId")
+    def connector_id(self) -> _builtins.str:
+        """
+        Harness connector ID for AppDynamics.
+        """
+        return pulumi.get(self, "connector_id")
+
+    @_builtins.property
+    @pulumi.getter(name="appdMetrics")
+    def appd_metrics(self) -> Optional['outputs.GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsResult']:
+        """
+        AppDynamics metrics configuration.
+        """
+        return pulumi.get(self, "appd_metrics")
+
+
+@pulumi.output_type
+class GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsResult(dict):
+    def __init__(__self__, *,
+                 application_name: Optional[_builtins.str] = None,
+                 duration_in_min: Optional[_builtins.int] = None,
+                 metrics_full_path: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str application_name: AppDynamics application name.
+        :param _builtins.int duration_in_min: Duration in minutes for the AppDynamics query.
+        :param _builtins.str metrics_full_path: Full path to the AppDynamics metric.
+        """
+        if application_name is not None:
+            pulumi.set(__self__, "application_name", application_name)
+        if duration_in_min is not None:
+            pulumi.set(__self__, "duration_in_min", duration_in_min)
+        if metrics_full_path is not None:
+            pulumi.set(__self__, "metrics_full_path", metrics_full_path)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationName")
+    def application_name(self) -> Optional[_builtins.str]:
+        """
+        AppDynamics application name.
+        """
+        return pulumi.get(self, "application_name")
+
+    @_builtins.property
+    @pulumi.getter(name="durationInMin")
+    def duration_in_min(self) -> Optional[_builtins.int]:
+        """
+        Duration in minutes for the AppDynamics query.
+        """
+        return pulumi.get(self, "duration_in_min")
+
+    @_builtins.property
+    @pulumi.getter(name="metricsFullPath")
+    def metrics_full_path(self) -> Optional[_builtins.str]:
+        """
+        Full path to the AppDynamics metric.
+        """
+        return pulumi.get(self, "metrics_full_path")
+
+
+@pulumi.output_type
+class GetProbeTemplateApmProbeComparatorResult(dict):
+    def __init__(__self__, *,
+                 criteria: _builtins.str,
+                 type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str criteria: Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+        :param _builtins.str type: Comparator type (string, int, float).
+        :param _builtins.str value: Expected value.
+        """
+        pulumi.set(__self__, "criteria", criteria)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def criteria(self) -> _builtins.str:
+        """
+        Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+        """
+        return pulumi.get(self, "criteria")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Comparator type (string, int, float).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Expected value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetProbeTemplateApmProbeDatadogInputsResult(dict):
+    def __init__(__self__, *,
+                 connector_id: _builtins.str,
+                 duration_in_min: Optional[_builtins.int] = None,
+                 query: Optional[_builtins.str] = None,
+                 synthetics_test: Optional['outputs.GetProbeTemplateApmProbeDatadogInputsSyntheticsTestResult'] = None):
+        """
+        :param _builtins.str connector_id: Harness connector ID for Datadog.
+        :param _builtins.int duration_in_min: Duration in minutes for the Datadog query.
+        :param _builtins.str query: Datadog query string.
+        :param 'GetProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs' synthetics_test: Datadog Synthetics test configuration.
+        """
+        pulumi.set(__self__, "connector_id", connector_id)
+        if duration_in_min is not None:
+            pulumi.set(__self__, "duration_in_min", duration_in_min)
+        if query is not None:
+            pulumi.set(__self__, "query", query)
+        if synthetics_test is not None:
+            pulumi.set(__self__, "synthetics_test", synthetics_test)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorId")
+    def connector_id(self) -> _builtins.str:
+        """
+        Harness connector ID for Datadog.
+        """
+        return pulumi.get(self, "connector_id")
+
+    @_builtins.property
+    @pulumi.getter(name="durationInMin")
+    def duration_in_min(self) -> Optional[_builtins.int]:
+        """
+        Duration in minutes for the Datadog query.
+        """
+        return pulumi.get(self, "duration_in_min")
+
+    @_builtins.property
+    @pulumi.getter
+    def query(self) -> Optional[_builtins.str]:
+        """
+        Datadog query string.
+        """
+        return pulumi.get(self, "query")
+
+    @_builtins.property
+    @pulumi.getter(name="syntheticsTest")
+    def synthetics_test(self) -> Optional['outputs.GetProbeTemplateApmProbeDatadogInputsSyntheticsTestResult']:
+        """
+        Datadog Synthetics test configuration.
+        """
+        return pulumi.get(self, "synthetics_test")
+
+
+@pulumi.output_type
+class GetProbeTemplateApmProbeDatadogInputsSyntheticsTestResult(dict):
+    def __init__(__self__, *,
+                 public_id: _builtins.str,
+                 test_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str public_id: Public ID of the Datadog Synthetics test.
+        :param _builtins.str test_type: Type of Synthetics test (api, browser).
+        """
+        pulumi.set(__self__, "public_id", public_id)
+        if test_type is not None:
+            pulumi.set(__self__, "test_type", test_type)
+
+    @_builtins.property
+    @pulumi.getter(name="publicId")
+    def public_id(self) -> _builtins.str:
+        """
+        Public ID of the Datadog Synthetics test.
+        """
+        return pulumi.get(self, "public_id")
+
+    @_builtins.property
+    @pulumi.getter(name="testType")
+    def test_type(self) -> Optional[_builtins.str]:
+        """
+        Type of Synthetics test (api, browser).
+        """
+        return pulumi.get(self, "test_type")
+
+
+@pulumi.output_type
+class GetProbeTemplateApmProbeDynatraceInputsResult(dict):
+    def __init__(__self__, *,
+                 connector_id: _builtins.str,
+                 duration_in_min: Optional[_builtins.int] = None,
+                 metrics: Optional['outputs.GetProbeTemplateApmProbeDynatraceInputsMetricsResult'] = None):
+        """
+        :param _builtins.str connector_id: Harness connector ID for Dynatrace.
+        :param _builtins.int duration_in_min: Duration in minutes for the Dynatrace query.
+        :param 'GetProbeTemplateApmProbeDynatraceInputsMetricsArgs' metrics: Dynatrace metrics configuration.
+        """
+        pulumi.set(__self__, "connector_id", connector_id)
+        if duration_in_min is not None:
+            pulumi.set(__self__, "duration_in_min", duration_in_min)
+        if metrics is not None:
+            pulumi.set(__self__, "metrics", metrics)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorId")
+    def connector_id(self) -> _builtins.str:
+        """
+        Harness connector ID for Dynatrace.
+        """
+        return pulumi.get(self, "connector_id")
+
+    @_builtins.property
+    @pulumi.getter(name="durationInMin")
+    def duration_in_min(self) -> Optional[_builtins.int]:
+        """
+        Duration in minutes for the Dynatrace query.
+        """
+        return pulumi.get(self, "duration_in_min")
+
+    @_builtins.property
+    @pulumi.getter
+    def metrics(self) -> Optional['outputs.GetProbeTemplateApmProbeDynatraceInputsMetricsResult']:
+        """
+        Dynatrace metrics configuration.
+        """
+        return pulumi.get(self, "metrics")
+
+
+@pulumi.output_type
+class GetProbeTemplateApmProbeDynatraceInputsMetricsResult(dict):
+    def __init__(__self__, *,
+                 entity_selector: Optional[_builtins.str] = None,
+                 metrics_selector: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str entity_selector: Dynatrace entity selector.
+        :param _builtins.str metrics_selector: Dynatrace metrics selector.
+        """
+        if entity_selector is not None:
+            pulumi.set(__self__, "entity_selector", entity_selector)
+        if metrics_selector is not None:
+            pulumi.set(__self__, "metrics_selector", metrics_selector)
+
+    @_builtins.property
+    @pulumi.getter(name="entitySelector")
+    def entity_selector(self) -> Optional[_builtins.str]:
+        """
+        Dynatrace entity selector.
+        """
+        return pulumi.get(self, "entity_selector")
+
+    @_builtins.property
+    @pulumi.getter(name="metricsSelector")
+    def metrics_selector(self) -> Optional[_builtins.str]:
+        """
+        Dynatrace metrics selector.
+        """
+        return pulumi.get(self, "metrics_selector")
+
+
+@pulumi.output_type
+class GetProbeTemplateApmProbeGcpCloudMonitoringInputsResult(dict):
+    def __init__(__self__, *,
+                 project_id: _builtins.str,
+                 query: _builtins.str,
+                 service_account_key: _builtins.str):
+        """
+        :param _builtins.str project_id: GCP project ID.
+        :param _builtins.str query: GCP monitoring query string.
+        :param _builtins.str service_account_key: GCP service account key (JSON).
+        """
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "service_account_key", service_account_key)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        GCP project ID.
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def query(self) -> _builtins.str:
+        """
+        GCP monitoring query string.
+        """
+        return pulumi.get(self, "query")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountKey")
+    def service_account_key(self) -> _builtins.str:
+        """
+        GCP service account key (JSON).
+        """
+        return pulumi.get(self, "service_account_key")
+
+
+@pulumi.output_type
+class GetProbeTemplateApmProbeNewRelicInputsResult(dict):
+    def __init__(__self__, *,
+                 connector_id: _builtins.str,
+                 new_relic_metric: Optional['outputs.GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricResult'] = None):
+        """
+        :param _builtins.str connector_id: Harness connector ID for NewRelic.
+        :param 'GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs' new_relic_metric: NewRelic metric configuration.
+        """
+        pulumi.set(__self__, "connector_id", connector_id)
+        if new_relic_metric is not None:
+            pulumi.set(__self__, "new_relic_metric", new_relic_metric)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorId")
+    def connector_id(self) -> _builtins.str:
+        """
+        Harness connector ID for NewRelic.
+        """
+        return pulumi.get(self, "connector_id")
+
+    @_builtins.property
+    @pulumi.getter(name="newRelicMetric")
+    def new_relic_metric(self) -> Optional['outputs.GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricResult']:
+        """
+        NewRelic metric configuration.
+        """
+        return pulumi.get(self, "new_relic_metric")
+
+
+@pulumi.output_type
+class GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricResult(dict):
+    def __init__(__self__, *,
+                 query: Optional[_builtins.str] = None,
+                 query_metric: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str query: NRQL query string.
+        :param _builtins.str query_metric: NewRelic query metric name.
+        """
+        if query is not None:
+            pulumi.set(__self__, "query", query)
+        if query_metric is not None:
+            pulumi.set(__self__, "query_metric", query_metric)
+
+    @_builtins.property
+    @pulumi.getter
+    def query(self) -> Optional[_builtins.str]:
+        """
+        NRQL query string.
+        """
+        return pulumi.get(self, "query")
+
+    @_builtins.property
+    @pulumi.getter(name="queryMetric")
+    def query_metric(self) -> Optional[_builtins.str]:
+        """
+        NewRelic query metric name.
+        """
+        return pulumi.get(self, "query_metric")
+
+
+@pulumi.output_type
+class GetProbeTemplateApmProbePrometheusInputsResult(dict):
+    def __init__(__self__, *,
+                 connector_id: _builtins.str,
+                 query: _builtins.str,
+                 tls_config: Optional['outputs.GetProbeTemplateApmProbePrometheusInputsTlsConfigResult'] = None):
+        """
+        :param _builtins.str connector_id: Harness connector ID for Prometheus.
+        :param _builtins.str query: PromQL query string.
+        :param 'GetProbeTemplateApmProbePrometheusInputsTlsConfigArgs' tls_config: TLS configuration for Prometheus connection.
+        """
+        pulumi.set(__self__, "connector_id", connector_id)
+        pulumi.set(__self__, "query", query)
+        if tls_config is not None:
+            pulumi.set(__self__, "tls_config", tls_config)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorId")
+    def connector_id(self) -> _builtins.str:
+        """
+        Harness connector ID for Prometheus.
+        """
+        return pulumi.get(self, "connector_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def query(self) -> _builtins.str:
+        """
+        PromQL query string.
+        """
+        return pulumi.get(self, "query")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsConfig")
+    def tls_config(self) -> Optional['outputs.GetProbeTemplateApmProbePrometheusInputsTlsConfigResult']:
+        """
+        TLS configuration for Prometheus connection.
+        """
+        return pulumi.get(self, "tls_config")
+
+
+@pulumi.output_type
+class GetProbeTemplateApmProbePrometheusInputsTlsConfigResult(dict):
+    def __init__(__self__, *,
+                 ca_cert_secret: Optional[_builtins.str] = None,
+                 client_cert_secret: Optional[_builtins.str] = None,
+                 client_key_secret: Optional[_builtins.str] = None,
+                 insecure_skip_verify: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str ca_cert_secret: Harness secret identifier for CA certificate.
+        :param _builtins.str client_cert_secret: Harness secret identifier for client certificate.
+        :param _builtins.str client_key_secret: Harness secret identifier for client key.
+        :param _builtins.bool insecure_skip_verify: Skip TLS certificate verification.
+        """
+        if ca_cert_secret is not None:
+            pulumi.set(__self__, "ca_cert_secret", ca_cert_secret)
+        if client_cert_secret is not None:
+            pulumi.set(__self__, "client_cert_secret", client_cert_secret)
+        if client_key_secret is not None:
+            pulumi.set(__self__, "client_key_secret", client_key_secret)
+        if insecure_skip_verify is not None:
+            pulumi.set(__self__, "insecure_skip_verify", insecure_skip_verify)
+
+    @_builtins.property
+    @pulumi.getter(name="caCertSecret")
+    def ca_cert_secret(self) -> Optional[_builtins.str]:
+        """
+        Harness secret identifier for CA certificate.
+        """
+        return pulumi.get(self, "ca_cert_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="clientCertSecret")
+    def client_cert_secret(self) -> Optional[_builtins.str]:
+        """
+        Harness secret identifier for client certificate.
+        """
+        return pulumi.get(self, "client_cert_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="clientKeySecret")
+    def client_key_secret(self) -> Optional[_builtins.str]:
+        """
+        Harness secret identifier for client key.
+        """
+        return pulumi.get(self, "client_key_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="insecureSkipVerify")
+    def insecure_skip_verify(self) -> Optional[_builtins.bool]:
+        """
+        Skip TLS certificate verification.
+        """
+        return pulumi.get(self, "insecure_skip_verify")
+
+
+@pulumi.output_type
+class GetProbeTemplateApmProbeSplunkObservabilityInputsResult(dict):
+    def __init__(__self__, *,
+                 connector_id: _builtins.str,
+                 splunk_observability_metrics: Optional['outputs.GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsResult'] = None):
+        """
+        :param _builtins.str connector_id: Harness connector ID for Splunk Observability.
+        :param 'GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs' splunk_observability_metrics: Splunk Observability metrics configuration.
+        """
+        pulumi.set(__self__, "connector_id", connector_id)
+        if splunk_observability_metrics is not None:
+            pulumi.set(__self__, "splunk_observability_metrics", splunk_observability_metrics)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorId")
+    def connector_id(self) -> _builtins.str:
+        """
+        Harness connector ID for Splunk Observability.
+        """
+        return pulumi.get(self, "connector_id")
+
+    @_builtins.property
+    @pulumi.getter(name="splunkObservabilityMetrics")
+    def splunk_observability_metrics(self) -> Optional['outputs.GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsResult']:
+        """
+        Splunk Observability metrics configuration.
+        """
+        return pulumi.get(self, "splunk_observability_metrics")
+
+
+@pulumi.output_type
+class GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsResult(dict):
+    def __init__(__self__, *,
+                 duration_in_min: Optional[_builtins.int] = None,
+                 query: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int duration_in_min: Duration in minutes for the Splunk query.
+        :param _builtins.str query: Splunk Observability query string.
+        """
+        if duration_in_min is not None:
+            pulumi.set(__self__, "duration_in_min", duration_in_min)
+        if query is not None:
+            pulumi.set(__self__, "query", query)
+
+    @_builtins.property
+    @pulumi.getter(name="durationInMin")
+    def duration_in_min(self) -> Optional[_builtins.int]:
+        """
+        Duration in minutes for the Splunk query.
+        """
+        return pulumi.get(self, "duration_in_min")
+
+    @_builtins.property
+    @pulumi.getter
+    def query(self) -> Optional[_builtins.str]:
+        """
+        Splunk Observability query string.
+        """
+        return pulumi.get(self, "query")
+
+
+@pulumi.output_type
 class GetProbeTemplateCmdProbeResult(dict):
     def __init__(__self__, *,
                  command: _builtins.str,
-                 comparators: Sequence['outputs.GetProbeTemplateCmdProbeComparatorResult'],
-                 envs: Sequence['outputs.GetProbeTemplateCmdProbeEnvResult'],
-                 source: _builtins.str):
+                 comparators: Optional[Sequence['outputs.GetProbeTemplateCmdProbeComparatorResult']] = None,
+                 envs: Optional[Sequence['outputs.GetProbeTemplateCmdProbeEnvResult']] = None,
+                 source: Optional[_builtins.str] = None):
         """
-        :param Sequence['GetProbeTemplateCmdProbeComparatorArgs'] comparators: Comparator configuration.
-        :param Sequence['GetProbeTemplateCmdProbeEnvArgs'] envs: Environment variables.
+        :param _builtins.str command: Command to execute.
+        :param Sequence['GetProbeTemplateCmdProbeComparatorArgs'] comparators: Comparator for command output validation.
+        :param Sequence['GetProbeTemplateCmdProbeEnvArgs'] envs: Environment variables for the command.
+        :param _builtins.str source: Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as "inline", "configMap", or "secret" is INVALID and fails with "cannot unmarshal string into Go value of type v1.SourceDetails". To run inline, omit this field entirely.
         """
         pulumi.set(__self__, "command", command)
-        pulumi.set(__self__, "comparators", comparators)
-        pulumi.set(__self__, "envs", envs)
-        pulumi.set(__self__, "source", source)
+        if comparators is not None:
+            pulumi.set(__self__, "comparators", comparators)
+        if envs is not None:
+            pulumi.set(__self__, "envs", envs)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @_builtins.property
     @pulumi.getter
     def command(self) -> _builtins.str:
+        """
+        Command to execute.
+        """
         return pulumi.get(self, "command")
 
     @_builtins.property
     @pulumi.getter
-    def comparators(self) -> Sequence['outputs.GetProbeTemplateCmdProbeComparatorResult']:
+    def comparators(self) -> Optional[Sequence['outputs.GetProbeTemplateCmdProbeComparatorResult']]:
         """
-        Comparator configuration.
+        Comparator for command output validation.
         """
         return pulumi.get(self, "comparators")
 
     @_builtins.property
     @pulumi.getter
-    def envs(self) -> Sequence['outputs.GetProbeTemplateCmdProbeEnvResult']:
+    def envs(self) -> Optional[Sequence['outputs.GetProbeTemplateCmdProbeEnvResult']]:
         """
-        Environment variables.
+        Environment variables for the command.
         """
         return pulumi.get(self, "envs")
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> _builtins.str:
+    def source(self) -> Optional[_builtins.str]:
+        """
+        Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as "inline", "configMap", or "secret" is INVALID and fails with "cannot unmarshal string into Go value of type v1.SourceDetails". To run inline, omit this field entirely.
+        """
         return pulumi.get(self, "source")
 
 
@@ -10060,6 +11180,11 @@ class GetProbeTemplateCmdProbeComparatorResult(dict):
                  criteria: _builtins.str,
                  type: _builtins.str,
                  value: _builtins.str):
+        """
+        :param _builtins.str criteria: Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+        :param _builtins.str type: Comparator type (string, int, float).
+        :param _builtins.str value: Expected value.
+        """
         pulumi.set(__self__, "criteria", criteria)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "value", value)
@@ -10067,16 +11192,25 @@ class GetProbeTemplateCmdProbeComparatorResult(dict):
     @_builtins.property
     @pulumi.getter
     def criteria(self) -> _builtins.str:
+        """
+        Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+        """
         return pulumi.get(self, "criteria")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
+        """
+        Comparator type (string, int, float).
+        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> _builtins.str:
+        """
+        Expected value.
+        """
         return pulumi.get(self, "value")
 
 
@@ -10085,60 +11219,167 @@ class GetProbeTemplateCmdProbeEnvResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  value: _builtins.str):
+        """
+        :param _builtins.str name: Environment variable name.
+        :param _builtins.str value: Environment variable value.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        Environment variable name.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> _builtins.str:
+        """
+        Environment variable value.
+        """
         return pulumi.get(self, "value")
 
 
 @pulumi.output_type
 class GetProbeTemplateHttpProbeResult(dict):
     def __init__(__self__, *,
-                 methods: Sequence['outputs.GetProbeTemplateHttpProbeMethodResult'],
-                 url: _builtins.str):
+                 url: _builtins.str,
+                 auth: Optional['outputs.GetProbeTemplateHttpProbeAuthResult'] = None,
+                 headers: Optional[Mapping[str, _builtins.str]] = None,
+                 methods: Optional[Sequence['outputs.GetProbeTemplateHttpProbeMethodResult']] = None,
+                 tls_config: Optional['outputs.GetProbeTemplateHttpProbeTlsConfigResult'] = None):
         """
+        :param _builtins.str url: URL to probe.
+        :param 'GetProbeTemplateHttpProbeAuthArgs' auth: Authentication configuration.
+        :param Mapping[str, _builtins.str] headers: HTTP headers.
         :param Sequence['GetProbeTemplateHttpProbeMethodArgs'] methods: HTTP method configuration with GET or POST.
+        :param 'GetProbeTemplateHttpProbeTlsConfigArgs' tls_config: TLS configuration.
         """
-        pulumi.set(__self__, "methods", methods)
         pulumi.set(__self__, "url", url)
+        if auth is not None:
+            pulumi.set(__self__, "auth", auth)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if methods is not None:
+            pulumi.set(__self__, "methods", methods)
+        if tls_config is not None:
+            pulumi.set(__self__, "tls_config", tls_config)
 
     @_builtins.property
     @pulumi.getter
-    def methods(self) -> Sequence['outputs.GetProbeTemplateHttpProbeMethodResult']:
+    def url(self) -> _builtins.str:
+        """
+        URL to probe.
+        """
+        return pulumi.get(self, "url")
+
+    @_builtins.property
+    @pulumi.getter
+    def auth(self) -> Optional['outputs.GetProbeTemplateHttpProbeAuthResult']:
+        """
+        Authentication configuration.
+        """
+        return pulumi.get(self, "auth")
+
+    @_builtins.property
+    @pulumi.getter
+    def headers(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        HTTP headers.
+        """
+        return pulumi.get(self, "headers")
+
+    @_builtins.property
+    @pulumi.getter
+    def methods(self) -> Optional[Sequence['outputs.GetProbeTemplateHttpProbeMethodResult']]:
         """
         HTTP method configuration with GET or POST.
         """
         return pulumi.get(self, "methods")
 
     @_builtins.property
+    @pulumi.getter(name="tlsConfig")
+    def tls_config(self) -> Optional['outputs.GetProbeTemplateHttpProbeTlsConfigResult']:
+        """
+        TLS configuration.
+        """
+        return pulumi.get(self, "tls_config")
+
+
+@pulumi.output_type
+class GetProbeTemplateHttpProbeAuthResult(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 password: Optional[_builtins.str] = None,
+                 token: Optional[_builtins.str] = None,
+                 username: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: Auth type (basic, bearer, etc.).
+        :param _builtins.str password: Password for basic auth.
+        :param _builtins.str token: Token for bearer auth.
+        :param _builtins.str username: Username for basic auth.
+        """
+        pulumi.set(__self__, "type", type)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
     @pulumi.getter
-    def url(self) -> _builtins.str:
-        return pulumi.get(self, "url")
+    def type(self) -> _builtins.str:
+        """
+        Auth type (basic, bearer, etc.).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        Password for basic auth.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter
+    def token(self) -> Optional[_builtins.str]:
+        """
+        Token for bearer auth.
+        """
+        return pulumi.get(self, "token")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[_builtins.str]:
+        """
+        Username for basic auth.
+        """
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
 class GetProbeTemplateHttpProbeMethodResult(dict):
     def __init__(__self__, *,
-                 gets: Sequence['outputs.GetProbeTemplateHttpProbeMethodGetResult'],
-                 posts: Sequence['outputs.GetProbeTemplateHttpProbeMethodPostResult']):
+                 gets: Optional[Sequence['outputs.GetProbeTemplateHttpProbeMethodGetResult']] = None,
+                 posts: Optional[Sequence['outputs.GetProbeTemplateHttpProbeMethodPostResult']] = None):
         """
         :param Sequence['GetProbeTemplateHttpProbeMethodGetArgs'] gets: GET method configuration.
         :param Sequence['GetProbeTemplateHttpProbeMethodPostArgs'] posts: POST method configuration.
         """
-        pulumi.set(__self__, "gets", gets)
-        pulumi.set(__self__, "posts", posts)
+        if gets is not None:
+            pulumi.set(__self__, "gets", gets)
+        if posts is not None:
+            pulumi.set(__self__, "posts", posts)
 
     @_builtins.property
     @pulumi.getter
-    def gets(self) -> Sequence['outputs.GetProbeTemplateHttpProbeMethodGetResult']:
+    def gets(self) -> Optional[Sequence['outputs.GetProbeTemplateHttpProbeMethodGetResult']]:
         """
         GET method configuration.
         """
@@ -10146,7 +11387,7 @@ class GetProbeTemplateHttpProbeMethodResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def posts(self) -> Sequence['outputs.GetProbeTemplateHttpProbeMethodPostResult']:
+    def posts(self) -> Optional[Sequence['outputs.GetProbeTemplateHttpProbeMethodPostResult']]:
         """
         POST method configuration.
         """
@@ -10156,180 +11397,447 @@ class GetProbeTemplateHttpProbeMethodResult(dict):
 @pulumi.output_type
 class GetProbeTemplateHttpProbeMethodGetResult(dict):
     def __init__(__self__, *,
-                 criteria: _builtins.str,
-                 response_body: _builtins.str,
-                 response_code: _builtins.str):
-        pulumi.set(__self__, "criteria", criteria)
-        pulumi.set(__self__, "response_body", response_body)
-        pulumi.set(__self__, "response_code", response_code)
+                 criteria: Optional[_builtins.str] = None,
+                 response_body: Optional[_builtins.str] = None,
+                 response_code: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str criteria: Response criteria (e.g., '==', '!=', 'contains').
+        :param _builtins.str response_body: Expected response body.
+        :param _builtins.str response_code: Expected HTTP response code (e.g., '200', '404').
+        """
+        if criteria is not None:
+            pulumi.set(__self__, "criteria", criteria)
+        if response_body is not None:
+            pulumi.set(__self__, "response_body", response_body)
+        if response_code is not None:
+            pulumi.set(__self__, "response_code", response_code)
 
     @_builtins.property
     @pulumi.getter
-    def criteria(self) -> _builtins.str:
+    def criteria(self) -> Optional[_builtins.str]:
+        """
+        Response criteria (e.g., '==', '!=', 'contains').
+        """
         return pulumi.get(self, "criteria")
 
     @_builtins.property
     @pulumi.getter(name="responseBody")
-    def response_body(self) -> _builtins.str:
+    def response_body(self) -> Optional[_builtins.str]:
+        """
+        Expected response body.
+        """
         return pulumi.get(self, "response_body")
 
     @_builtins.property
     @pulumi.getter(name="responseCode")
-    def response_code(self) -> _builtins.str:
+    def response_code(self) -> Optional[_builtins.str]:
+        """
+        Expected HTTP response code (e.g., '200', '404').
+        """
         return pulumi.get(self, "response_code")
 
 
 @pulumi.output_type
 class GetProbeTemplateHttpProbeMethodPostResult(dict):
     def __init__(__self__, *,
-                 body: _builtins.str,
-                 body_path: _builtins.str,
-                 content_type: _builtins.str,
-                 criteria: _builtins.str,
-                 response_body: _builtins.str,
-                 response_code: _builtins.str):
-        pulumi.set(__self__, "body", body)
-        pulumi.set(__self__, "body_path", body_path)
-        pulumi.set(__self__, "content_type", content_type)
-        pulumi.set(__self__, "criteria", criteria)
-        pulumi.set(__self__, "response_body", response_body)
-        pulumi.set(__self__, "response_code", response_code)
+                 body: Optional[_builtins.str] = None,
+                 body_path: Optional[_builtins.str] = None,
+                 content_type: Optional[_builtins.str] = None,
+                 criteria: Optional[_builtins.str] = None,
+                 response_body: Optional[_builtins.str] = None,
+                 response_code: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str body: POST request body.
+        :param _builtins.str body_path: Path to file containing POST body.
+        :param _builtins.str content_type: Content-Type header for POST request.
+        :param _builtins.str criteria: Response criteria (e.g., '==', '!=', 'contains').
+        :param _builtins.str response_body: Expected response body.
+        :param _builtins.str response_code: Expected HTTP response code (e.g., '200', '404').
+        """
+        if body is not None:
+            pulumi.set(__self__, "body", body)
+        if body_path is not None:
+            pulumi.set(__self__, "body_path", body_path)
+        if content_type is not None:
+            pulumi.set(__self__, "content_type", content_type)
+        if criteria is not None:
+            pulumi.set(__self__, "criteria", criteria)
+        if response_body is not None:
+            pulumi.set(__self__, "response_body", response_body)
+        if response_code is not None:
+            pulumi.set(__self__, "response_code", response_code)
 
     @_builtins.property
     @pulumi.getter
-    def body(self) -> _builtins.str:
+    def body(self) -> Optional[_builtins.str]:
+        """
+        POST request body.
+        """
         return pulumi.get(self, "body")
 
     @_builtins.property
     @pulumi.getter(name="bodyPath")
-    def body_path(self) -> _builtins.str:
+    def body_path(self) -> Optional[_builtins.str]:
+        """
+        Path to file containing POST body.
+        """
         return pulumi.get(self, "body_path")
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> _builtins.str:
+    def content_type(self) -> Optional[_builtins.str]:
+        """
+        Content-Type header for POST request.
+        """
         return pulumi.get(self, "content_type")
 
     @_builtins.property
     @pulumi.getter
-    def criteria(self) -> _builtins.str:
+    def criteria(self) -> Optional[_builtins.str]:
+        """
+        Response criteria (e.g., '==', '!=', 'contains').
+        """
         return pulumi.get(self, "criteria")
 
     @_builtins.property
     @pulumi.getter(name="responseBody")
-    def response_body(self) -> _builtins.str:
+    def response_body(self) -> Optional[_builtins.str]:
+        """
+        Expected response body.
+        """
         return pulumi.get(self, "response_body")
 
     @_builtins.property
     @pulumi.getter(name="responseCode")
-    def response_code(self) -> _builtins.str:
+    def response_code(self) -> Optional[_builtins.str]:
+        """
+        Expected HTTP response code (e.g., '200', '404').
+        """
         return pulumi.get(self, "response_code")
+
+
+@pulumi.output_type
+class GetProbeTemplateHttpProbeTlsConfigResult(dict):
+    def __init__(__self__, *,
+                 ca_cert: Optional[_builtins.str] = None,
+                 client_cert: Optional[_builtins.str] = None,
+                 client_key: Optional[_builtins.str] = None,
+                 insecure_skip_verify: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str ca_cert: CA certificate.
+        :param _builtins.str client_cert: Client certificate.
+        :param _builtins.str client_key: Client key.
+        :param _builtins.bool insecure_skip_verify: Skip TLS certificate verification.
+        """
+        if ca_cert is not None:
+            pulumi.set(__self__, "ca_cert", ca_cert)
+        if client_cert is not None:
+            pulumi.set(__self__, "client_cert", client_cert)
+        if client_key is not None:
+            pulumi.set(__self__, "client_key", client_key)
+        if insecure_skip_verify is not None:
+            pulumi.set(__self__, "insecure_skip_verify", insecure_skip_verify)
+
+    @_builtins.property
+    @pulumi.getter(name="caCert")
+    def ca_cert(self) -> Optional[_builtins.str]:
+        """
+        CA certificate.
+        """
+        return pulumi.get(self, "ca_cert")
+
+    @_builtins.property
+    @pulumi.getter(name="clientCert")
+    def client_cert(self) -> Optional[_builtins.str]:
+        """
+        Client certificate.
+        """
+        return pulumi.get(self, "client_cert")
+
+    @_builtins.property
+    @pulumi.getter(name="clientKey")
+    def client_key(self) -> Optional[_builtins.str]:
+        """
+        Client key.
+        """
+        return pulumi.get(self, "client_key")
+
+    @_builtins.property
+    @pulumi.getter(name="insecureSkipVerify")
+    def insecure_skip_verify(self) -> Optional[_builtins.bool]:
+        """
+        Skip TLS certificate verification.
+        """
+        return pulumi.get(self, "insecure_skip_verify")
 
 
 @pulumi.output_type
 class GetProbeTemplateK8sProbeResult(dict):
     def __init__(__self__, *,
-                 field_selector: _builtins.str,
-                 label_selector: _builtins.str,
-                 namespace: _builtins.str,
-                 operation: _builtins.str,
                  resource: _builtins.str,
-                 version: _builtins.str):
-        pulumi.set(__self__, "field_selector", field_selector)
-        pulumi.set(__self__, "label_selector", label_selector)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "operation", operation)
+                 version: _builtins.str,
+                 field_selector: Optional[_builtins.str] = None,
+                 group: Optional[_builtins.str] = None,
+                 label_selector: Optional[_builtins.str] = None,
+                 namespace: Optional[_builtins.str] = None,
+                 operation: Optional[_builtins.str] = None,
+                 resource_names: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str resource: Resource type (e.g., 'pods', 'deployments').
+        :param _builtins.str version: API version (e.g., 'v1', 'v1beta1').
+        :param _builtins.str field_selector: Field selector for filtering resources.
+        :param _builtins.str group: API group (e.g., 'apps', 'batch').
+        :param _builtins.str label_selector: Label selector for filtering resources.
+        :param _builtins.str namespace: Kubernetes namespace.
+        :param _builtins.str operation: Operation to perform (create, delete, present, absent, etc.).
+        :param _builtins.str resource_names: Comma-separated list of resource names.
+        """
         pulumi.set(__self__, "resource", resource)
         pulumi.set(__self__, "version", version)
-
-    @_builtins.property
-    @pulumi.getter(name="fieldSelector")
-    def field_selector(self) -> _builtins.str:
-        return pulumi.get(self, "field_selector")
-
-    @_builtins.property
-    @pulumi.getter(name="labelSelector")
-    def label_selector(self) -> _builtins.str:
-        return pulumi.get(self, "label_selector")
-
-    @_builtins.property
-    @pulumi.getter
-    def namespace(self) -> _builtins.str:
-        return pulumi.get(self, "namespace")
-
-    @_builtins.property
-    @pulumi.getter
-    def operation(self) -> _builtins.str:
-        return pulumi.get(self, "operation")
+        if field_selector is not None:
+            pulumi.set(__self__, "field_selector", field_selector)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if label_selector is not None:
+            pulumi.set(__self__, "label_selector", label_selector)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if operation is not None:
+            pulumi.set(__self__, "operation", operation)
+        if resource_names is not None:
+            pulumi.set(__self__, "resource_names", resource_names)
 
     @_builtins.property
     @pulumi.getter
     def resource(self) -> _builtins.str:
+        """
+        Resource type (e.g., 'pods', 'deployments').
+        """
         return pulumi.get(self, "resource")
 
     @_builtins.property
     @pulumi.getter
     def version(self) -> _builtins.str:
+        """
+        API version (e.g., 'v1', 'v1beta1').
+        """
         return pulumi.get(self, "version")
+
+    @_builtins.property
+    @pulumi.getter(name="fieldSelector")
+    def field_selector(self) -> Optional[_builtins.str]:
+        """
+        Field selector for filtering resources.
+        """
+        return pulumi.get(self, "field_selector")
+
+    @_builtins.property
+    @pulumi.getter
+    def group(self) -> Optional[_builtins.str]:
+        """
+        API group (e.g., 'apps', 'batch').
+        """
+        return pulumi.get(self, "group")
+
+    @_builtins.property
+    @pulumi.getter(name="labelSelector")
+    def label_selector(self) -> Optional[_builtins.str]:
+        """
+        Label selector for filtering resources.
+        """
+        return pulumi.get(self, "label_selector")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> Optional[_builtins.str]:
+        """
+        Kubernetes namespace.
+        """
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter
+    def operation(self) -> Optional[_builtins.str]:
+        """
+        Operation to perform (create, delete, present, absent, etc.).
+        """
+        return pulumi.get(self, "operation")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceNames")
+    def resource_names(self) -> Optional[_builtins.str]:
+        """
+        Comma-separated list of resource names.
+        """
+        return pulumi.get(self, "resource_names")
 
 
 @pulumi.output_type
 class GetProbeTemplateRunPropertyResult(dict):
     def __init__(__self__, *,
-                 interval: _builtins.str,
-                 stop_on_failure: _builtins.bool,
-                 timeout: _builtins.str):
-        pulumi.set(__self__, "interval", interval)
-        pulumi.set(__self__, "stop_on_failure", stop_on_failure)
-        pulumi.set(__self__, "timeout", timeout)
+                 attempt: Optional[_builtins.int] = None,
+                 initial_delay: Optional[_builtins.str] = None,
+                 interval: Optional[_builtins.str] = None,
+                 polling_interval: Optional[_builtins.str] = None,
+                 retry: Optional[_builtins.int] = None,
+                 stop_on_failure: Optional[_builtins.bool] = None,
+                 timeout: Optional[_builtins.str] = None,
+                 verbosity: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int attempt: Number of attempts.
+        :param _builtins.str initial_delay: Initial delay before probe execution (e.g., '5s', '1m').
+        :param _builtins.str interval: Interval between probe executions (e.g., '10s', '30s').
+        :param _builtins.str polling_interval: Polling interval for continuous probes (e.g., '2s', '5s').
+        :param _builtins.int retry: Number of retries.
+        :param _builtins.bool stop_on_failure: Whether to stop on failure.
+        :param _builtins.str timeout: Timeout for probe execution (e.g., '30s', '5m').
+        :param _builtins.str verbosity: Verbosity level for logging.
+        """
+        if attempt is not None:
+            pulumi.set(__self__, "attempt", attempt)
+        if initial_delay is not None:
+            pulumi.set(__self__, "initial_delay", initial_delay)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if polling_interval is not None:
+            pulumi.set(__self__, "polling_interval", polling_interval)
+        if retry is not None:
+            pulumi.set(__self__, "retry", retry)
+        if stop_on_failure is not None:
+            pulumi.set(__self__, "stop_on_failure", stop_on_failure)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if verbosity is not None:
+            pulumi.set(__self__, "verbosity", verbosity)
 
     @_builtins.property
     @pulumi.getter
-    def interval(self) -> _builtins.str:
+    def attempt(self) -> Optional[_builtins.int]:
+        """
+        Number of attempts.
+        """
+        return pulumi.get(self, "attempt")
+
+    @_builtins.property
+    @pulumi.getter(name="initialDelay")
+    def initial_delay(self) -> Optional[_builtins.str]:
+        """
+        Initial delay before probe execution (e.g., '5s', '1m').
+        """
+        return pulumi.get(self, "initial_delay")
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> Optional[_builtins.str]:
+        """
+        Interval between probe executions (e.g., '10s', '30s').
+        """
         return pulumi.get(self, "interval")
 
     @_builtins.property
+    @pulumi.getter(name="pollingInterval")
+    def polling_interval(self) -> Optional[_builtins.str]:
+        """
+        Polling interval for continuous probes (e.g., '2s', '5s').
+        """
+        return pulumi.get(self, "polling_interval")
+
+    @_builtins.property
+    @pulumi.getter
+    def retry(self) -> Optional[_builtins.int]:
+        """
+        Number of retries.
+        """
+        return pulumi.get(self, "retry")
+
+    @_builtins.property
     @pulumi.getter(name="stopOnFailure")
-    def stop_on_failure(self) -> _builtins.bool:
+    def stop_on_failure(self) -> Optional[_builtins.bool]:
+        """
+        Whether to stop on failure.
+        """
         return pulumi.get(self, "stop_on_failure")
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> _builtins.str:
+    def timeout(self) -> Optional[_builtins.str]:
+        """
+        Timeout for probe execution (e.g., '30s', '5m').
+        """
         return pulumi.get(self, "timeout")
+
+    @_builtins.property
+    @pulumi.getter
+    def verbosity(self) -> Optional[_builtins.str]:
+        """
+        Verbosity level for logging.
+        """
+        return pulumi.get(self, "verbosity")
 
 
 @pulumi.output_type
 class GetProbeTemplateVariableResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
-                 required: _builtins.bool,
-                 type: _builtins.str,
-                 value: _builtins.str):
+                 value: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 required: Optional[_builtins.bool] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Variable name.
+        :param _builtins.str value: Variable value.
+        :param _builtins.str description: Variable description.
+        :param _builtins.bool required: Whether the variable is required.
+        :param _builtins.str type: Variable type (e.g., 'string', 'number', 'boolean').
+        """
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "required", required)
-        pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "value", value)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
+        """
+        Variable name.
+        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
-    def required(self) -> _builtins.bool:
+    def value(self) -> _builtins.str:
+        """
+        Variable value.
+        """
+        return pulumi.get(self, "value")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Variable description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def required(self) -> Optional[_builtins.bool]:
+        """
+        Whether the variable is required.
+        """
         return pulumi.get(self, "required")
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> _builtins.str:
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Variable type (e.g., 'string', 'number', 'boolean').
+        """
         return pulumi.get(self, "type")
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> _builtins.str:
-        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

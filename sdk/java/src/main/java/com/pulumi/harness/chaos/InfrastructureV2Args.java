@@ -10,6 +10,7 @@ import com.pulumi.harness.chaos.inputs.InfrastructureV2EnvArgs;
 import com.pulumi.harness.chaos.inputs.InfrastructureV2ImageRegistryArgs;
 import com.pulumi.harness.chaos.inputs.InfrastructureV2MtlsArgs;
 import com.pulumi.harness.chaos.inputs.InfrastructureV2ProxyArgs;
+import com.pulumi.harness.chaos.inputs.InfrastructureV2ResourcesArgs;
 import com.pulumi.harness.chaos.inputs.InfrastructureV2TolerationArgs;
 import com.pulumi.harness.chaos.inputs.InfrastructureV2VolumeArgs;
 import com.pulumi.harness.chaos.inputs.InfrastructureV2VolumeMountArgs;
@@ -55,6 +56,21 @@ public final class InfrastructureV2Args extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<Map<String,String>>> annotation() {
         return Optional.ofNullable(this.annotation);
+    }
+
+    /**
+     * Enable autopilot mode for the infrastructure.
+     * 
+     */
+    @Import(name="autopilotEnabled")
+    private @Nullable Output<Boolean> autopilotEnabled;
+
+    /**
+     * @return Enable autopilot mode for the infrastructure.
+     * 
+     */
+    public Optional<Output<Boolean>> autopilotEnabled() {
+        return Optional.ofNullable(this.autopilotEnabled);
     }
 
     /**
@@ -343,6 +359,21 @@ public final class InfrastructureV2Args extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+     * 
+     */
+    @Import(name="resources")
+    private @Nullable Output<InfrastructureV2ResourcesArgs> resources;
+
+    /**
+     * @return Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+     * 
+     */
+    public Optional<Output<InfrastructureV2ResourcesArgs>> resources() {
+        return Optional.ofNullable(this.resources);
+    }
+
+    /**
      * Group ID to run the infrastructure as.
      * 
      */
@@ -452,6 +483,7 @@ public final class InfrastructureV2Args extends com.pulumi.resources.ResourceArg
     private InfrastructureV2Args(InfrastructureV2Args $) {
         this.aiEnabled = $.aiEnabled;
         this.annotation = $.annotation;
+        this.autopilotEnabled = $.autopilotEnabled;
         this.containers = $.containers;
         this.correlationId = $.correlationId;
         this.description = $.description;
@@ -471,6 +503,7 @@ public final class InfrastructureV2Args extends com.pulumi.resources.ResourceArg
         this.orgId = $.orgId;
         this.projectId = $.projectId;
         this.proxy = $.proxy;
+        this.resources = $.resources;
         this.runAsGroup = $.runAsGroup;
         this.runAsUser = $.runAsUser;
         this.serviceAccount = $.serviceAccount;
@@ -538,6 +571,27 @@ public final class InfrastructureV2Args extends com.pulumi.resources.ResourceArg
          */
         public Builder annotation(Map<String,String> annotation) {
             return annotation(Output.of(annotation));
+        }
+
+        /**
+         * @param autopilotEnabled Enable autopilot mode for the infrastructure.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autopilotEnabled(@Nullable Output<Boolean> autopilotEnabled) {
+            $.autopilotEnabled = autopilotEnabled;
+            return this;
+        }
+
+        /**
+         * @param autopilotEnabled Enable autopilot mode for the infrastructure.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autopilotEnabled(Boolean autopilotEnabled) {
+            return autopilotEnabled(Output.of(autopilotEnabled));
         }
 
         /**
@@ -957,6 +1011,27 @@ public final class InfrastructureV2Args extends com.pulumi.resources.ResourceArg
          */
         public Builder proxy(InfrastructureV2ProxyArgs proxy) {
             return proxy(Output.of(proxy));
+        }
+
+        /**
+         * @param resources Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resources(@Nullable Output<InfrastructureV2ResourcesArgs> resources) {
+            $.resources = resources;
+            return this;
+        }
+
+        /**
+         * @param resources Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resources(InfrastructureV2ResourcesArgs resources) {
+            return resources(Output.of(resources));
         }
 
         /**

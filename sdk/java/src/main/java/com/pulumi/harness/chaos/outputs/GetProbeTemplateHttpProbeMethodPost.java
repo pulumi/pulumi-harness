@@ -4,37 +4,86 @@
 package com.pulumi.harness.chaos.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProbeTemplateHttpProbeMethodPost {
-    private String body;
-    private String bodyPath;
-    private String contentType;
-    private String criteria;
-    private String responseBody;
-    private String responseCode;
+    /**
+     * @return POST request body.
+     * 
+     */
+    private @Nullable String body;
+    /**
+     * @return Path to file containing POST body.
+     * 
+     */
+    private @Nullable String bodyPath;
+    /**
+     * @return Content-Type header for POST request.
+     * 
+     */
+    private @Nullable String contentType;
+    /**
+     * @return Response criteria (e.g., &#39;==&#39;, &#39;!=&#39;, &#39;contains&#39;).
+     * 
+     */
+    private @Nullable String criteria;
+    /**
+     * @return Expected response body.
+     * 
+     */
+    private @Nullable String responseBody;
+    /**
+     * @return Expected HTTP response code (e.g., &#39;200&#39;, &#39;404&#39;).
+     * 
+     */
+    private @Nullable String responseCode;
 
     private GetProbeTemplateHttpProbeMethodPost() {}
-    public String body() {
-        return this.body;
+    /**
+     * @return POST request body.
+     * 
+     */
+    public Optional<String> body() {
+        return Optional.ofNullable(this.body);
     }
-    public String bodyPath() {
-        return this.bodyPath;
+    /**
+     * @return Path to file containing POST body.
+     * 
+     */
+    public Optional<String> bodyPath() {
+        return Optional.ofNullable(this.bodyPath);
     }
-    public String contentType() {
-        return this.contentType;
+    /**
+     * @return Content-Type header for POST request.
+     * 
+     */
+    public Optional<String> contentType() {
+        return Optional.ofNullable(this.contentType);
     }
-    public String criteria() {
-        return this.criteria;
+    /**
+     * @return Response criteria (e.g., &#39;==&#39;, &#39;!=&#39;, &#39;contains&#39;).
+     * 
+     */
+    public Optional<String> criteria() {
+        return Optional.ofNullable(this.criteria);
     }
-    public String responseBody() {
-        return this.responseBody;
+    /**
+     * @return Expected response body.
+     * 
+     */
+    public Optional<String> responseBody() {
+        return Optional.ofNullable(this.responseBody);
     }
-    public String responseCode() {
-        return this.responseCode;
+    /**
+     * @return Expected HTTP response code (e.g., &#39;200&#39;, &#39;404&#39;).
+     * 
+     */
+    public Optional<String> responseCode() {
+        return Optional.ofNullable(this.responseCode);
     }
 
     public static Builder builder() {
@@ -46,12 +95,12 @@ public final class GetProbeTemplateHttpProbeMethodPost {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String body;
-        private String bodyPath;
-        private String contentType;
-        private String criteria;
-        private String responseBody;
-        private String responseCode;
+        private @Nullable String body;
+        private @Nullable String bodyPath;
+        private @Nullable String contentType;
+        private @Nullable String criteria;
+        private @Nullable String responseBody;
+        private @Nullable String responseCode;
         public Builder() {}
         public Builder(GetProbeTemplateHttpProbeMethodPost defaults) {
     	      Objects.requireNonNull(defaults);
@@ -64,50 +113,38 @@ public final class GetProbeTemplateHttpProbeMethodPost {
         }
 
         @CustomType.Setter
-        public Builder body(String body) {
-            if (body == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateHttpProbeMethodPost", "body");
-            }
+        public Builder body(@Nullable String body) {
+
             this.body = body;
             return this;
         }
         @CustomType.Setter
-        public Builder bodyPath(String bodyPath) {
-            if (bodyPath == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateHttpProbeMethodPost", "bodyPath");
-            }
+        public Builder bodyPath(@Nullable String bodyPath) {
+
             this.bodyPath = bodyPath;
             return this;
         }
         @CustomType.Setter
-        public Builder contentType(String contentType) {
-            if (contentType == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateHttpProbeMethodPost", "contentType");
-            }
+        public Builder contentType(@Nullable String contentType) {
+
             this.contentType = contentType;
             return this;
         }
         @CustomType.Setter
-        public Builder criteria(String criteria) {
-            if (criteria == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateHttpProbeMethodPost", "criteria");
-            }
+        public Builder criteria(@Nullable String criteria) {
+
             this.criteria = criteria;
             return this;
         }
         @CustomType.Setter
-        public Builder responseBody(String responseBody) {
-            if (responseBody == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateHttpProbeMethodPost", "responseBody");
-            }
+        public Builder responseBody(@Nullable String responseBody) {
+
             this.responseBody = responseBody;
             return this;
         }
         @CustomType.Setter
-        public Builder responseCode(String responseCode) {
-            if (responseCode == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateHttpProbeMethodPost", "responseCode");
-            }
+        public Builder responseCode(@Nullable String responseCode) {
+
             this.responseCode = responseCode;
             return this;
         }

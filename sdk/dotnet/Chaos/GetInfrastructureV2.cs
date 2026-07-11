@@ -24,28 +24,20 @@ namespace Pulumi.Harness.Chaos
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Data source to fetch a specific agent by name
-        ///     var byName = Harness.Service.GetDiscoveryAgent.Invoke(new()
+        ///     // Fetch an existing chaos infrastructure V2 by its identifiers
+        ///     var example = Harness.Chaos.GetInfrastructureV2.Invoke(new()
         ///     {
-        ///         Name = "example-agent",
-        ///         OrgIdentifier = orgIdentifier,
-        ///         ProjectIdentifier = projectIdentifier,
-        ///         EnvironmentIdentifier = environmentIdentifier,
-        ///     });
-        /// 
-        ///     // Data source to fetch a specific agent by identity
-        ///     var byIdentity = Harness.Service.GetDiscoveryAgent.Invoke(new()
-        ///     {
-        ///         Identity = "example-infra",
-        ///         OrgIdentifier = orgIdentifier,
-        ///         ProjectIdentifier = projectIdentifier,
-        ///         EnvironmentIdentifier = environmentIdentifier,
+        ///         OrgId = "&lt;org_id&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///         EnvironmentId = "&lt;environment_id&gt;",
+        ///         InfraId = "&lt;infra_id&gt;",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["agentDetailsByName"] = byName,
-        ///         ["agentDetailsByIdentity"] = byIdentity,
+        ///         ["chaosInfraResources"] = example.Apply(getInfrastructureV2Result =&gt; getInfrastructureV2Result.Resources),
+        ///         ["chaosInfraAutopilotEnabled"] = example.Apply(getInfrastructureV2Result =&gt; getInfrastructureV2Result.AutopilotEnabled),
+        ///         ["chaosInfraDiscoveryAgentId"] = example.Apply(getInfrastructureV2Result =&gt; getInfrastructureV2Result.DiscoveryAgentId),
         ///     };
         /// });
         /// ```
@@ -66,28 +58,20 @@ namespace Pulumi.Harness.Chaos
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Data source to fetch a specific agent by name
-        ///     var byName = Harness.Service.GetDiscoveryAgent.Invoke(new()
+        ///     // Fetch an existing chaos infrastructure V2 by its identifiers
+        ///     var example = Harness.Chaos.GetInfrastructureV2.Invoke(new()
         ///     {
-        ///         Name = "example-agent",
-        ///         OrgIdentifier = orgIdentifier,
-        ///         ProjectIdentifier = projectIdentifier,
-        ///         EnvironmentIdentifier = environmentIdentifier,
-        ///     });
-        /// 
-        ///     // Data source to fetch a specific agent by identity
-        ///     var byIdentity = Harness.Service.GetDiscoveryAgent.Invoke(new()
-        ///     {
-        ///         Identity = "example-infra",
-        ///         OrgIdentifier = orgIdentifier,
-        ///         ProjectIdentifier = projectIdentifier,
-        ///         EnvironmentIdentifier = environmentIdentifier,
+        ///         OrgId = "&lt;org_id&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///         EnvironmentId = "&lt;environment_id&gt;",
+        ///         InfraId = "&lt;infra_id&gt;",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["agentDetailsByName"] = byName,
-        ///         ["agentDetailsByIdentity"] = byIdentity,
+        ///         ["chaosInfraResources"] = example.Apply(getInfrastructureV2Result =&gt; getInfrastructureV2Result.Resources),
+        ///         ["chaosInfraAutopilotEnabled"] = example.Apply(getInfrastructureV2Result =&gt; getInfrastructureV2Result.AutopilotEnabled),
+        ///         ["chaosInfraDiscoveryAgentId"] = example.Apply(getInfrastructureV2Result =&gt; getInfrastructureV2Result.DiscoveryAgentId),
         ///     };
         /// });
         /// ```
@@ -108,28 +92,20 @@ namespace Pulumi.Harness.Chaos
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Data source to fetch a specific agent by name
-        ///     var byName = Harness.Service.GetDiscoveryAgent.Invoke(new()
+        ///     // Fetch an existing chaos infrastructure V2 by its identifiers
+        ///     var example = Harness.Chaos.GetInfrastructureV2.Invoke(new()
         ///     {
-        ///         Name = "example-agent",
-        ///         OrgIdentifier = orgIdentifier,
-        ///         ProjectIdentifier = projectIdentifier,
-        ///         EnvironmentIdentifier = environmentIdentifier,
-        ///     });
-        /// 
-        ///     // Data source to fetch a specific agent by identity
-        ///     var byIdentity = Harness.Service.GetDiscoveryAgent.Invoke(new()
-        ///     {
-        ///         Identity = "example-infra",
-        ///         OrgIdentifier = orgIdentifier,
-        ///         ProjectIdentifier = projectIdentifier,
-        ///         EnvironmentIdentifier = environmentIdentifier,
+        ///         OrgId = "&lt;org_id&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///         EnvironmentId = "&lt;environment_id&gt;",
+        ///         InfraId = "&lt;infra_id&gt;",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["agentDetailsByName"] = byName,
-        ///         ["agentDetailsByIdentity"] = byIdentity,
+        ///         ["chaosInfraResources"] = example.Apply(getInfrastructureV2Result =&gt; getInfrastructureV2Result.Resources),
+        ///         ["chaosInfraAutopilotEnabled"] = example.Apply(getInfrastructureV2Result =&gt; getInfrastructureV2Result.AutopilotEnabled),
+        ///         ["chaosInfraDiscoveryAgentId"] = example.Apply(getInfrastructureV2Result =&gt; getInfrastructureV2Result.DiscoveryAgentId),
         ///     };
         /// });
         /// ```
@@ -188,6 +164,12 @@ namespace Pulumi.Harness.Chaos
         /// </summary>
         [Input("proxy")]
         public Inputs.GetInfrastructureV2ProxyArgs? Proxy { get; set; }
+
+        /// <summary>
+        /// Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+        /// </summary>
+        [Input("resources")]
+        public Inputs.GetInfrastructureV2ResourcesArgs? Resources { get; set; }
 
         [Input("tolerations")]
         private List<Inputs.GetInfrastructureV2TolerationArgs>? _tolerations;
@@ -281,6 +263,12 @@ namespace Pulumi.Harness.Chaos
         [Input("proxy")]
         public Input<Inputs.GetInfrastructureV2ProxyInputArgs>? Proxy { get; set; }
 
+        /// <summary>
+        /// Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+        /// </summary>
+        [Input("resources")]
+        public Input<Inputs.GetInfrastructureV2ResourcesInputArgs>? Resources { get; set; }
+
         [Input("tolerations")]
         private InputList<Inputs.GetInfrastructureV2TolerationInputArgs>? _tolerations;
 
@@ -329,6 +317,10 @@ namespace Pulumi.Harness.Chaos
     {
         public readonly ImmutableDictionary<string, string> Annotation;
         /// <summary>
+        /// Whether autopilot mode is enabled for the infrastructure.
+        /// </summary>
+        public readonly bool AutopilotEnabled;
+        /// <summary>
         /// List of containers in the infrastructure.
         /// </summary>
         public readonly string Containers;
@@ -344,6 +336,10 @@ namespace Pulumi.Harness.Chaos
         /// Description of the infrastructure.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// ID of the discovery agent used by the infrastructure.
+        /// </summary>
+        public readonly string DiscoveryAgentId;
         /// <summary>
         /// The ID of the environment.
         /// </summary>
@@ -421,6 +417,10 @@ namespace Pulumi.Harness.Chaos
         /// Proxy configuration for the infrastructure.
         /// </summary>
         public readonly Outputs.GetInfrastructureV2ProxyResult? Proxy;
+        /// <summary>
+        /// Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+        /// </summary>
+        public readonly Outputs.GetInfrastructureV2ResourcesResult? Resources;
         public readonly int RunAsGroup;
         public readonly int RunAsUser;
         /// <summary>
@@ -464,6 +464,8 @@ namespace Pulumi.Harness.Chaos
         private GetInfrastructureV2Result(
             ImmutableDictionary<string, string> annotation,
 
+            bool autopilotEnabled,
+
             string containers,
 
             string createdAt,
@@ -471,6 +473,8 @@ namespace Pulumi.Harness.Chaos
             string createdBy,
 
             string description,
+
+            string discoveryAgentId,
 
             string environmentId,
 
@@ -518,6 +522,8 @@ namespace Pulumi.Harness.Chaos
 
             Outputs.GetInfrastructureV2ProxyResult? proxy,
 
+            Outputs.GetInfrastructureV2ResourcesResult? resources,
+
             int runAsGroup,
 
             int runAsUser,
@@ -541,10 +547,12 @@ namespace Pulumi.Harness.Chaos
             ImmutableArray<Outputs.GetInfrastructureV2VolumeResult> volumes)
         {
             Annotation = annotation;
+            AutopilotEnabled = autopilotEnabled;
             Containers = containers;
             CreatedAt = createdAt;
             CreatedBy = createdBy;
             Description = description;
+            DiscoveryAgentId = discoveryAgentId;
             EnvironmentId = environmentId;
             Id = id;
             Identifier = identifier;
@@ -568,6 +576,7 @@ namespace Pulumi.Harness.Chaos
             OrgId = orgId;
             ProjectId = projectId;
             Proxy = proxy;
+            Resources = resources;
             RunAsGroup = runAsGroup;
             RunAsUser = runAsUser;
             ServiceAccount = serviceAccount;

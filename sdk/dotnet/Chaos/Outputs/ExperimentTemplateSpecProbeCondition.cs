@@ -16,10 +16,10 @@ namespace Pulumi.Harness.Chaos.Outputs
         /// <summary>
         /// When to execute the probe (onChaosStart, duringChaos, afterChaos)
         /// </summary>
-        public readonly string ExecuteUpon;
+        public readonly string? ExecuteUpon;
 
         [OutputConstructor]
-        private ExperimentTemplateSpecProbeCondition(string executeUpon)
+        private ExperimentTemplateSpecProbeCondition(string? executeUpon)
         {
             ExecuteUpon = executeUpon;
         }

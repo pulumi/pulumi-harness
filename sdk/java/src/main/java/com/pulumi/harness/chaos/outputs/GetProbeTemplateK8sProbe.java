@@ -7,32 +7,106 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProbeTemplateK8sProbe {
-    private String fieldSelector;
-    private String labelSelector;
-    private String namespace;
-    private String operation;
+    /**
+     * @return Field selector for filtering resources.
+     * 
+     */
+    private @Nullable String fieldSelector;
+    /**
+     * @return API group (e.g., &#39;apps&#39;, &#39;batch&#39;).
+     * 
+     */
+    private @Nullable String group;
+    /**
+     * @return Label selector for filtering resources.
+     * 
+     */
+    private @Nullable String labelSelector;
+    /**
+     * @return Kubernetes namespace.
+     * 
+     */
+    private @Nullable String namespace;
+    /**
+     * @return Operation to perform (create, delete, present, absent, etc.).
+     * 
+     */
+    private @Nullable String operation;
+    /**
+     * @return Resource type (e.g., &#39;pods&#39;, &#39;deployments&#39;).
+     * 
+     */
     private String resource;
+    /**
+     * @return Comma-separated list of resource names.
+     * 
+     */
+    private @Nullable String resourceNames;
+    /**
+     * @return API version (e.g., &#39;v1&#39;, &#39;v1beta1&#39;).
+     * 
+     */
     private String version;
 
     private GetProbeTemplateK8sProbe() {}
-    public String fieldSelector() {
-        return this.fieldSelector;
+    /**
+     * @return Field selector for filtering resources.
+     * 
+     */
+    public Optional<String> fieldSelector() {
+        return Optional.ofNullable(this.fieldSelector);
     }
-    public String labelSelector() {
-        return this.labelSelector;
+    /**
+     * @return API group (e.g., &#39;apps&#39;, &#39;batch&#39;).
+     * 
+     */
+    public Optional<String> group() {
+        return Optional.ofNullable(this.group);
     }
-    public String namespace() {
-        return this.namespace;
+    /**
+     * @return Label selector for filtering resources.
+     * 
+     */
+    public Optional<String> labelSelector() {
+        return Optional.ofNullable(this.labelSelector);
     }
-    public String operation() {
-        return this.operation;
+    /**
+     * @return Kubernetes namespace.
+     * 
+     */
+    public Optional<String> namespace() {
+        return Optional.ofNullable(this.namespace);
     }
+    /**
+     * @return Operation to perform (create, delete, present, absent, etc.).
+     * 
+     */
+    public Optional<String> operation() {
+        return Optional.ofNullable(this.operation);
+    }
+    /**
+     * @return Resource type (e.g., &#39;pods&#39;, &#39;deployments&#39;).
+     * 
+     */
     public String resource() {
         return this.resource;
     }
+    /**
+     * @return Comma-separated list of resource names.
+     * 
+     */
+    public Optional<String> resourceNames() {
+        return Optional.ofNullable(this.resourceNames);
+    }
+    /**
+     * @return API version (e.g., &#39;v1&#39;, &#39;v1beta1&#39;).
+     * 
+     */
     public String version() {
         return this.version;
     }
@@ -46,52 +120,54 @@ public final class GetProbeTemplateK8sProbe {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String fieldSelector;
-        private String labelSelector;
-        private String namespace;
-        private String operation;
+        private @Nullable String fieldSelector;
+        private @Nullable String group;
+        private @Nullable String labelSelector;
+        private @Nullable String namespace;
+        private @Nullable String operation;
         private String resource;
+        private @Nullable String resourceNames;
         private String version;
         public Builder() {}
         public Builder(GetProbeTemplateK8sProbe defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fieldSelector = defaults.fieldSelector;
+    	      this.group = defaults.group;
     	      this.labelSelector = defaults.labelSelector;
     	      this.namespace = defaults.namespace;
     	      this.operation = defaults.operation;
     	      this.resource = defaults.resource;
+    	      this.resourceNames = defaults.resourceNames;
     	      this.version = defaults.version;
         }
 
         @CustomType.Setter
-        public Builder fieldSelector(String fieldSelector) {
-            if (fieldSelector == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateK8sProbe", "fieldSelector");
-            }
+        public Builder fieldSelector(@Nullable String fieldSelector) {
+
             this.fieldSelector = fieldSelector;
             return this;
         }
         @CustomType.Setter
-        public Builder labelSelector(String labelSelector) {
-            if (labelSelector == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateK8sProbe", "labelSelector");
-            }
+        public Builder group(@Nullable String group) {
+
+            this.group = group;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder labelSelector(@Nullable String labelSelector) {
+
             this.labelSelector = labelSelector;
             return this;
         }
         @CustomType.Setter
-        public Builder namespace(String namespace) {
-            if (namespace == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateK8sProbe", "namespace");
-            }
+        public Builder namespace(@Nullable String namespace) {
+
             this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
-        public Builder operation(String operation) {
-            if (operation == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateK8sProbe", "operation");
-            }
+        public Builder operation(@Nullable String operation) {
+
             this.operation = operation;
             return this;
         }
@@ -101,6 +177,12 @@ public final class GetProbeTemplateK8sProbe {
               throw new MissingRequiredPropertyException("GetProbeTemplateK8sProbe", "resource");
             }
             this.resource = resource;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder resourceNames(@Nullable String resourceNames) {
+
+            this.resourceNames = resourceNames;
             return this;
         }
         @CustomType.Setter
@@ -114,10 +196,12 @@ public final class GetProbeTemplateK8sProbe {
         public GetProbeTemplateK8sProbe build() {
             final var _resultValue = new GetProbeTemplateK8sProbe();
             _resultValue.fieldSelector = fieldSelector;
+            _resultValue.group = group;
             _resultValue.labelSelector = labelSelector;
             _resultValue.namespace = namespace;
             _resultValue.operation = operation;
             _resultValue.resource = resource;
+            _resultValue.resourceNames = resourceNames;
             _resultValue.version = version;
             return _resultValue;
         }

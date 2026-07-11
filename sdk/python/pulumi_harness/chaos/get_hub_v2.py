@@ -131,7 +131,7 @@ class GetHubV2Result:
     @pulumi.getter(name="connectorRef")
     def connector_ref(self) -> _builtins.str:
         """
-        Reference to the Git connector.
+        Reference to the Git connector. Git-backed Chaos Hub V2 is not supported yet.
         """
         return pulumi.get(self, "connector_ref")
 
@@ -259,7 +259,7 @@ class GetHubV2Result:
     @pulumi.getter(name="repoBranch")
     def repo_branch(self) -> _builtins.str:
         """
-        Git repository branch.
+        Git repository branch. Git-backed Chaos Hub V2 is not supported yet.
         """
         return pulumi.get(self, "repo_branch")
 
@@ -267,7 +267,7 @@ class GetHubV2Result:
     @pulumi.getter(name="repoName")
     def repo_name(self) -> _builtins.str:
         """
-        Name of the Git repository.
+        Name of the Git repository. Git-backed Chaos Hub V2 is not supported yet.
         """
         return pulumi.get(self, "repo_name")
 
@@ -275,7 +275,7 @@ class GetHubV2Result:
     @pulumi.getter(name="repoUrl")
     def repo_url(self) -> _builtins.str:
         """
-        Git repository URL.
+        Git repository URL. Git-backed Chaos Hub V2 is not supported yet.
         """
         return pulumi.get(self, "repo_url")
 
