@@ -335,6 +335,16 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "conditions_v2": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "values": {
                                                 "maxItemsOne": false
                                             }
@@ -345,6 +355,16 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "conditions_v2": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "values": {
                                                 "maxItemsOne": false
                                             }
@@ -357,6 +377,16 @@
                                         "fields": {
                                             "conditions": {
                                                 "maxItemsOne": false
+                                            },
+                                            "conditions_v2": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "values": {
                                                 "maxItemsOne": false
@@ -627,6 +657,19 @@
                     },
                     "proxy": {
                         "maxItemsOne": true
+                    },
+                    "resources": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "limits": {
+                                    "maxItemsOne": true
+                                },
+                                "requests": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     },
                     "tags": {
                         "maxItemsOne": false
@@ -16662,6 +16705,16 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "conditions_v2": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "values": {
                                                 "maxItemsOne": false
                                             }
@@ -16672,6 +16725,16 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "conditions_v2": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "values": {
                                                 "maxItemsOne": false
                                             }
@@ -16684,6 +16747,16 @@
                                         "fields": {
                                             "conditions": {
                                                 "maxItemsOne": false
+                                            },
+                                            "conditions_v2": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "values": {
                                                 "maxItemsOne": false
@@ -16807,6 +16880,19 @@
                     "proxy": {
                         "maxItemsOne": true
                     },
+                    "resources": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "limits": {
+                                    "maxItemsOne": true
+                                },
+                                "requests": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "tags": {
                         "maxItemsOne": false
                     },
@@ -16824,6 +16910,79 @@
             "harness_chaos_probe_template": {
                 "current": "harness:chaos/getProbeTemplate:getProbeTemplate",
                 "fields": {
+                    "apm_probe": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "app_dynamics_inputs": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "appd_metrics": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "comparator": {
+                                    "maxItemsOne": true
+                                },
+                                "datadog_inputs": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "synthetics_test": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "dynatrace_inputs": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "metrics": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "gcp_cloud_monitoring_inputs": {
+                                    "maxItemsOne": true
+                                },
+                                "new_relic_inputs": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "new_relic_metric": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "prometheus_inputs": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "tls_config": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "splunk_observability_inputs": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "splunk_observability_metrics": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "cmd_probe": {
                         "maxItemsOne": false,
                         "elem": {
@@ -16841,6 +17000,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "auth": {
+                                    "maxItemsOne": true
+                                },
                                 "method": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -16853,6 +17015,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "tls_config": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -19873,6 +20038,18 @@
             }
         },
         "datasources": {
+            "harness_chaos_probe_template": {
+                "maxItemsOneOverrides": {
+                    "cmd_probe": false,
+                    "cmd_probe.$.comparator": false,
+                    "http_probe": false,
+                    "http_probe.$.method": false,
+                    "http_probe.$.method.$.get": false,
+                    "http_probe.$.method.$.post": false,
+                    "k8s_probe": false,
+                    "run_properties": false
+                }
+            },
             "harness_platform_db_schema": {
                 "maxItemsOneOverrides": {
                     "changelog_script": true
