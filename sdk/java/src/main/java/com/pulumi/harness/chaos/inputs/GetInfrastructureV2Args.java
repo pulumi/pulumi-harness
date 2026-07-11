@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.chaos.inputs.GetInfrastructureV2ImageRegistryArgs;
 import com.pulumi.harness.chaos.inputs.GetInfrastructureV2MtlsArgs;
 import com.pulumi.harness.chaos.inputs.GetInfrastructureV2ProxyArgs;
+import com.pulumi.harness.chaos.inputs.GetInfrastructureV2ResourcesArgs;
 import com.pulumi.harness.chaos.inputs.GetInfrastructureV2TolerationArgs;
 import com.pulumi.harness.chaos.inputs.GetInfrastructureV2VolumeArgs;
 import com.pulumi.harness.chaos.inputs.GetInfrastructureV2VolumeMountArgs;
@@ -129,6 +130,21 @@ public final class GetInfrastructureV2Args extends com.pulumi.resources.InvokeAr
     }
 
     /**
+     * Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+     * 
+     */
+    @Import(name="resources")
+    private @Nullable Output<GetInfrastructureV2ResourcesArgs> resources;
+
+    /**
+     * @return Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+     * 
+     */
+    public Optional<Output<GetInfrastructureV2ResourcesArgs>> resources() {
+        return Optional.ofNullable(this.resources);
+    }
+
+    /**
      * If specified, the pod&#39;s tolerations.
      * 
      */
@@ -183,6 +199,7 @@ public final class GetInfrastructureV2Args extends com.pulumi.resources.InvokeAr
         this.orgId = $.orgId;
         this.projectId = $.projectId;
         this.proxy = $.proxy;
+        this.resources = $.resources;
         this.tolerations = $.tolerations;
         this.volumeMounts = $.volumeMounts;
         this.volumes = $.volumes;
@@ -361,6 +378,27 @@ public final class GetInfrastructureV2Args extends com.pulumi.resources.InvokeAr
          */
         public Builder proxy(GetInfrastructureV2ProxyArgs proxy) {
             return proxy(Output.of(proxy));
+        }
+
+        /**
+         * @param resources Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resources(@Nullable Output<GetInfrastructureV2ResourcesArgs> resources) {
+            $.resources = resources;
+            return this;
+        }
+
+        /**
+         * @param resources Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resources(GetInfrastructureV2ResourcesArgs resources) {
+            return resources(Output.of(resources));
         }
 
         /**

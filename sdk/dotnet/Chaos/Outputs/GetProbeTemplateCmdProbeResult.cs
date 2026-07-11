@@ -13,16 +13,22 @@ namespace Pulumi.Harness.Chaos.Outputs
     [OutputType]
     public sealed class GetProbeTemplateCmdProbeResult
     {
+        /// <summary>
+        /// Command to execute.
+        /// </summary>
         public readonly string Command;
         /// <summary>
-        /// Comparator configuration.
+        /// Comparator for command output validation.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProbeTemplateCmdProbeComparatorResult> Comparators;
         /// <summary>
-        /// Environment variables.
+        /// Environment variables for the command.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProbeTemplateCmdProbeEnvResult> Envs;
-        public readonly string Source;
+        /// <summary>
+        /// Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `Image`, `Command`, `Args`, `Env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as "inline", "configMap", or "secret" is INVALID and fails with "cannot unmarshal string into Go value of type v1.SourceDetails". To run inline, omit this field entirely.
+        /// </summary>
+        public readonly string? Source;
 
         [OutputConstructor]
         private GetProbeTemplateCmdProbeResult(
@@ -32,7 +38,7 @@ namespace Pulumi.Harness.Chaos.Outputs
 
             ImmutableArray<Outputs.GetProbeTemplateCmdProbeEnvResult> envs,
 
-            string source)
+            string? source)
         {
             Command = command;
             Comparators = comparators;

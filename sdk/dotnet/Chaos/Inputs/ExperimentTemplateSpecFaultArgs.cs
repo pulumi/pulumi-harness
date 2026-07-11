@@ -19,6 +19,12 @@ namespace Pulumi.Harness.Chaos.Inputs
         public Input<bool>? AuthEnabled { get; set; }
 
         /// <summary>
+        /// Execution conditions gating whether this fault runs, evaluated as boolean values combined by the operator.
+        /// </summary>
+        [Input("conditionsV2")]
+        public Input<Inputs.ExperimentTemplateSpecFaultConditionsV2Args>? ConditionsV2 { get; set; }
+
+        /// <summary>
         /// Fault template identity
         /// </summary>
         [Input("identity", required: true)]

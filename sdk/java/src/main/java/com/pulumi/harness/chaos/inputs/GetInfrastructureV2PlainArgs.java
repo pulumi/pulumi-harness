@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.chaos.inputs.GetInfrastructureV2ImageRegistry;
 import com.pulumi.harness.chaos.inputs.GetInfrastructureV2Mtls;
 import com.pulumi.harness.chaos.inputs.GetInfrastructureV2Proxy;
+import com.pulumi.harness.chaos.inputs.GetInfrastructureV2Resources;
 import com.pulumi.harness.chaos.inputs.GetInfrastructureV2Toleration;
 import com.pulumi.harness.chaos.inputs.GetInfrastructureV2Volume;
 import com.pulumi.harness.chaos.inputs.GetInfrastructureV2VolumeMount;
@@ -128,6 +129,21 @@ public final class GetInfrastructureV2PlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
+     * Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+     * 
+     */
+    @Import(name="resources")
+    private @Nullable GetInfrastructureV2Resources resources;
+
+    /**
+     * @return Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+     * 
+     */
+    public Optional<GetInfrastructureV2Resources> resources() {
+        return Optional.ofNullable(this.resources);
+    }
+
+    /**
      * If specified, the pod&#39;s tolerations.
      * 
      */
@@ -182,6 +198,7 @@ public final class GetInfrastructureV2PlainArgs extends com.pulumi.resources.Inv
         this.orgId = $.orgId;
         this.projectId = $.projectId;
         this.proxy = $.proxy;
+        this.resources = $.resources;
         this.tolerations = $.tolerations;
         this.volumeMounts = $.volumeMounts;
         this.volumes = $.volumes;
@@ -289,6 +306,17 @@ public final class GetInfrastructureV2PlainArgs extends com.pulumi.resources.Inv
          */
         public Builder proxy(@Nullable GetInfrastructureV2Proxy proxy) {
             $.proxy = proxy;
+            return this;
+        }
+
+        /**
+         * @param resources Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resources(@Nullable GetInfrastructureV2Resources resources) {
+            $.resources = resources;
             return this;
         }
 

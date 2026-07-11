@@ -9,6 +9,24 @@ import * as utilities from "../utilities";
 /**
  * Resource for managing Harness Chaos Probe Templates.
  *
+ * ## Supported probe types
+ *
+ * The `type` attribute accepts the following values, each configured via its matching block:
+ *
+ * - `httpProbe` (`httpProbe`) - HTTP/HTTPS endpoint checks.
+ * - `cmdProbe` (`cmdProbe`) - command / shell output checks.
+ * - `k8sProbe` (`k8sProbe`) - Kubernetes resource checks.
+ * - `apmProbe` (`apmProbe`) - APM provider checks.
+ *
+ * For `apmProbe`, the following providers are supported: Prometheus, Datadog, Dynatrace, AppDynamics, New Relic, Splunk Observability, and GCP Cloud Monitoring.
+ *
+ * ## Not currently supported
+ *
+ * The following exist in the Harness API but are **not yet supported** by this resource:
+ *
+ * - Probe types other than `httpProbe`, `cmdProbe`, `k8sProbe`, and `apmProbe`.
+ * - `httpProbe`: the `headers`, `auth`, and `tlsConfig` options are not yet configurable.
+ *
  * ## Example Usage
  *
  * ## Import

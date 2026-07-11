@@ -15,8 +15,8 @@ namespace Pulumi.Harness.Chaos.Inputs
         /// <summary>
         /// When to execute the probe (onChaosStart, duringChaos, afterChaos)
         /// </summary>
-        [Input("executeUpon", required: true)]
-        public Input<string> ExecuteUpon { get; set; } = null!;
+        [Input("executeUpon")]
+        public Input<string>? ExecuteUpon { get; set; }
 
         public ExperimentTemplateSpecProbeConditionArgs()
         {

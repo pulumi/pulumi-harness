@@ -10,42 +10,60 @@ import com.pulumi.harness.chaos.outputs.GetProbeTemplateCmdProbeEnv;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProbeTemplateCmdProbe {
+    /**
+     * @return Command to execute.
+     * 
+     */
     private String command;
     /**
-     * @return Comparator configuration.
+     * @return Comparator for command output validation.
      * 
      */
-    private List<GetProbeTemplateCmdProbeComparator> comparators;
+    private @Nullable List<GetProbeTemplateCmdProbeComparator> comparators;
     /**
-     * @return Environment variables.
+     * @return Environment variables for the command.
      * 
      */
-    private List<GetProbeTemplateCmdProbeEnv> envs;
-    private String source;
+    private @Nullable List<GetProbeTemplateCmdProbeEnv> envs;
+    /**
+     * @return Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as &#34;inline&#34;, &#34;configMap&#34;, or &#34;secret&#34; is INVALID and fails with &#34;cannot unmarshal string into Go value of type v1.SourceDetails&#34;. To run inline, omit this field entirely.
+     * 
+     */
+    private @Nullable String source;
 
     private GetProbeTemplateCmdProbe() {}
+    /**
+     * @return Command to execute.
+     * 
+     */
     public String command() {
         return this.command;
     }
     /**
-     * @return Comparator configuration.
+     * @return Comparator for command output validation.
      * 
      */
     public List<GetProbeTemplateCmdProbeComparator> comparators() {
-        return this.comparators;
+        return this.comparators == null ? List.of() : this.comparators;
     }
     /**
-     * @return Environment variables.
+     * @return Environment variables for the command.
      * 
      */
     public List<GetProbeTemplateCmdProbeEnv> envs() {
-        return this.envs;
+        return this.envs == null ? List.of() : this.envs;
     }
-    public String source() {
-        return this.source;
+    /**
+     * @return Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as &#34;inline&#34;, &#34;configMap&#34;, or &#34;secret&#34; is INVALID and fails with &#34;cannot unmarshal string into Go value of type v1.SourceDetails&#34;. To run inline, omit this field entirely.
+     * 
+     */
+    public Optional<String> source() {
+        return Optional.ofNullable(this.source);
     }
 
     public static Builder builder() {
@@ -58,9 +76,9 @@ public final class GetProbeTemplateCmdProbe {
     @CustomType.Builder
     public static final class Builder {
         private String command;
-        private List<GetProbeTemplateCmdProbeComparator> comparators;
-        private List<GetProbeTemplateCmdProbeEnv> envs;
-        private String source;
+        private @Nullable List<GetProbeTemplateCmdProbeComparator> comparators;
+        private @Nullable List<GetProbeTemplateCmdProbeEnv> envs;
+        private @Nullable String source;
         public Builder() {}
         public Builder(GetProbeTemplateCmdProbe defaults) {
     	      Objects.requireNonNull(defaults);
@@ -79,10 +97,8 @@ public final class GetProbeTemplateCmdProbe {
             return this;
         }
         @CustomType.Setter
-        public Builder comparators(List<GetProbeTemplateCmdProbeComparator> comparators) {
-            if (comparators == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateCmdProbe", "comparators");
-            }
+        public Builder comparators(@Nullable List<GetProbeTemplateCmdProbeComparator> comparators) {
+
             this.comparators = comparators;
             return this;
         }
@@ -90,10 +106,8 @@ public final class GetProbeTemplateCmdProbe {
             return comparators(List.of(comparators));
         }
         @CustomType.Setter
-        public Builder envs(List<GetProbeTemplateCmdProbeEnv> envs) {
-            if (envs == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateCmdProbe", "envs");
-            }
+        public Builder envs(@Nullable List<GetProbeTemplateCmdProbeEnv> envs) {
+
             this.envs = envs;
             return this;
         }
@@ -101,10 +115,8 @@ public final class GetProbeTemplateCmdProbe {
             return envs(List.of(envs));
         }
         @CustomType.Setter
-        public Builder source(String source) {
-            if (source == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateCmdProbe", "source");
-            }
+        public Builder source(@Nullable String source) {
+
             this.source = source;
             return this;
         }

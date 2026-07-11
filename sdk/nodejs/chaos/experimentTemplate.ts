@@ -9,6 +9,12 @@ import * as utilities from "../utilities";
 /**
  * Resource for managing Harness Chaos Experiment Templates. Experiment templates define reusable chaos experiments with actions, faults, and probes.
  *
+ * Execution conditions for faults, probes, and actions are configured via the `conditionsV2` block (`operator` = `AND`/`OR`, plus `values` which support the `<+input>` runtime input).
+ *
+ * ## Deprecated / not supported
+ *
+ * - The probe `conditions` (`executeUpon`) block is **deprecated and ignored** - it is not part of the current experiment template API. Use `conditionsV2` instead.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -236,11 +242,10 @@ import * as utilities from "../utilities";
  *                 duration: "30",
  *                 weightage: 10,
  *                 enableDataCollection: false,
- *                 conditions: [
- *                     "onChaosStart",
- *                     "duringChaos",
- *                     "afterChaos",
- *                 ],
+ *                 conditionsV2: {
+ *                     operator: "AND",
+ *                     values: ["true"],
+ *                 },
  *                 values: [{
  *                     name: "TARGET_NAMESPACE",
  *                     value: "<+input>",
@@ -254,10 +259,13 @@ import * as utilities from "../utilities";
  *                 duration: "30",
  *                 weightage: 10,
  *                 enableDataCollection: false,
- *                 conditions: [
- *                     "duringChaos",
- *                     "afterChaos",
- *                 ],
+ *                 conditionsV2: {
+ *                     operator: "OR",
+ *                     values: [
+ *                         "true",
+ *                         "<+input>",
+ *                     ],
+ *                 },
  *                 values: [{
  *                     name: "URL",
  *                     value: "<+input>",

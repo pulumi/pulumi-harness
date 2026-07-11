@@ -65,14 +65,14 @@ public final class ProbeTemplateCmdProbeArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Source of the command (inline, configMap, secret).
+     * Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as &#34;inline&#34;, &#34;configMap&#34;, or &#34;secret&#34; is INVALID and fails with &#34;cannot unmarshal string into Go value of type v1.SourceDetails&#34;. To run inline, omit this field entirely.
      * 
      */
     @Import(name="source")
     private @Nullable Output<String> source;
 
     /**
-     * @return Source of the command (inline, configMap, secret).
+     * @return Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as &#34;inline&#34;, &#34;configMap&#34;, or &#34;secret&#34; is INVALID and fails with &#34;cannot unmarshal string into Go value of type v1.SourceDetails&#34;. To run inline, omit this field entirely.
      * 
      */
     public Optional<Output<String>> source() {
@@ -180,7 +180,7 @@ public final class ProbeTemplateCmdProbeArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param source Source of the command (inline, configMap, secret).
+         * @param source Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as &#34;inline&#34;, &#34;configMap&#34;, or &#34;secret&#34; is INVALID and fails with &#34;cannot unmarshal string into Go value of type v1.SourceDetails&#34;. To run inline, omit this field entirely.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class ProbeTemplateCmdProbeArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param source Source of the command (inline, configMap, secret).
+         * @param source Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as &#34;inline&#34;, &#34;configMap&#34;, or &#34;secret&#34; is INVALID and fails with &#34;cannot unmarshal string into Go value of type v1.SourceDetails&#34;. To run inline, omit this field entirely.
          * 
          * @return builder
          * 

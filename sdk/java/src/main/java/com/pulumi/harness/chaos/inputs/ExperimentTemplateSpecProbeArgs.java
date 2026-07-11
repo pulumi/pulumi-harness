@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecProbeConditionArgs;
+import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecProbeConditionsV2Args;
 import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecProbeValueArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -22,18 +23,41 @@ public final class ExperimentTemplateSpecProbeArgs extends com.pulumi.resources.
     public static final ExperimentTemplateSpecProbeArgs Empty = new ExperimentTemplateSpecProbeArgs();
 
     /**
-     * Probe execution conditions
+     * Deprecated: no longer part of the experiment template API; use conditionsV2 instead. This field is ignored.
+     * 
+     * @deprecated
+     * conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
      * 
      */
+    @Deprecated /* conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead. */
     @Import(name="conditions")
     private @Nullable Output<List<ExperimentTemplateSpecProbeConditionArgs>> conditions;
 
     /**
-     * @return Probe execution conditions
+     * @return Deprecated: no longer part of the experiment template API; use conditionsV2 instead. This field is ignored.
+     * 
+     * @deprecated
+     * conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
      * 
      */
+    @Deprecated /* conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead. */
     public Optional<Output<List<ExperimentTemplateSpecProbeConditionArgs>>> conditions() {
         return Optional.ofNullable(this.conditions);
+    }
+
+    /**
+     * Execution conditions gating whether this probe runs, evaluated as boolean values combined by the operator.
+     * 
+     */
+    @Import(name="conditionsV2")
+    private @Nullable Output<ExperimentTemplateSpecProbeConditionsV2Args> conditionsV2;
+
+    /**
+     * @return Execution conditions gating whether this probe runs, evaluated as boolean values combined by the operator.
+     * 
+     */
+    public Optional<Output<ExperimentTemplateSpecProbeConditionsV2Args>> conditionsV2() {
+        return Optional.ofNullable(this.conditionsV2);
     }
 
     /**
@@ -175,6 +199,7 @@ public final class ExperimentTemplateSpecProbeArgs extends com.pulumi.resources.
 
     private ExperimentTemplateSpecProbeArgs(ExperimentTemplateSpecProbeArgs $) {
         this.conditions = $.conditions;
+        this.conditionsV2 = $.conditionsV2;
         this.duration = $.duration;
         this.enableDataCollection = $.enableDataCollection;
         this.identity = $.identity;
@@ -205,34 +230,67 @@ public final class ExperimentTemplateSpecProbeArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param conditions Probe execution conditions
+         * @param conditions Deprecated: no longer part of the experiment template API; use conditionsV2 instead. This field is ignored.
          * 
          * @return builder
          * 
+         * @deprecated
+         * conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
+         * 
          */
+        @Deprecated /* conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead. */
         public Builder conditions(@Nullable Output<List<ExperimentTemplateSpecProbeConditionArgs>> conditions) {
             $.conditions = conditions;
             return this;
         }
 
         /**
-         * @param conditions Probe execution conditions
+         * @param conditions Deprecated: no longer part of the experiment template API; use conditionsV2 instead. This field is ignored.
          * 
          * @return builder
          * 
+         * @deprecated
+         * conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
+         * 
          */
+        @Deprecated /* conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead. */
         public Builder conditions(List<ExperimentTemplateSpecProbeConditionArgs> conditions) {
             return conditions(Output.of(conditions));
         }
 
         /**
-         * @param conditions Probe execution conditions
+         * @param conditions Deprecated: no longer part of the experiment template API; use conditionsV2 instead. This field is ignored.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
+         * 
+         */
+        @Deprecated /* conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead. */
+        public Builder conditions(ExperimentTemplateSpecProbeConditionArgs... conditions) {
+            return conditions(List.of(conditions));
+        }
+
+        /**
+         * @param conditionsV2 Execution conditions gating whether this probe runs, evaluated as boolean values combined by the operator.
          * 
          * @return builder
          * 
          */
-        public Builder conditions(ExperimentTemplateSpecProbeConditionArgs... conditions) {
-            return conditions(List.of(conditions));
+        public Builder conditionsV2(@Nullable Output<ExperimentTemplateSpecProbeConditionsV2Args> conditionsV2) {
+            $.conditionsV2 = conditionsV2;
+            return this;
+        }
+
+        /**
+         * @param conditionsV2 Execution conditions gating whether this probe runs, evaluated as boolean values combined by the operator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditionsV2(ExperimentTemplateSpecProbeConditionsV2Args conditionsV2) {
+            return conditionsV2(Output.of(conditionsV2));
         }
 
         /**

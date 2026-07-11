@@ -9,6 +9,7 @@ import com.pulumi.harness.platform.inputs.GitOpsClusterRequestClusterArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -31,6 +32,21 @@ public final class GitOpsClusterRequestArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<List<GitOpsClusterRequestClusterArgs>>> clusters() {
         return Optional.ofNullable(this.clusters);
+    }
+
+    /**
+     * Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. &#34;username&#34;, &#34;password&#34;, &#34;bearerToken&#34;, &#34;certData&#34;, &#34;keyData&#34;, &#34;caData&#34;) and values are Harness expressions referencing secrets (e.g. &#34;&lt;+secrets.getValue(\&#34;account.my_secret\&#34;)&gt;&#34;).
+     * 
+     */
+    @Import(name="secretExpressions")
+    private @Nullable Output<Map<String,String>> secretExpressions;
+
+    /**
+     * @return Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. &#34;username&#34;, &#34;password&#34;, &#34;bearerToken&#34;, &#34;certData&#34;, &#34;keyData&#34;, &#34;caData&#34;) and values are Harness expressions referencing secrets (e.g. &#34;&lt;+secrets.getValue(\&#34;account.my_secret\&#34;)&gt;&#34;).
+     * 
+     */
+    public Optional<Output<Map<String,String>>> secretExpressions() {
+        return Optional.ofNullable(this.secretExpressions);
     }
 
     /**
@@ -82,6 +98,7 @@ public final class GitOpsClusterRequestArgs extends com.pulumi.resources.Resourc
 
     private GitOpsClusterRequestArgs(GitOpsClusterRequestArgs $) {
         this.clusters = $.clusters;
+        this.secretExpressions = $.secretExpressions;
         this.tags = $.tags;
         this.updatedFields = $.updatedFields;
         this.upsert = $.upsert;
@@ -134,6 +151,27 @@ public final class GitOpsClusterRequestArgs extends com.pulumi.resources.Resourc
          */
         public Builder clusters(GitOpsClusterRequestClusterArgs... clusters) {
             return clusters(List.of(clusters));
+        }
+
+        /**
+         * @param secretExpressions Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. &#34;username&#34;, &#34;password&#34;, &#34;bearerToken&#34;, &#34;certData&#34;, &#34;keyData&#34;, &#34;caData&#34;) and values are Harness expressions referencing secrets (e.g. &#34;&lt;+secrets.getValue(\&#34;account.my_secret\&#34;)&gt;&#34;).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretExpressions(@Nullable Output<Map<String,String>> secretExpressions) {
+            $.secretExpressions = secretExpressions;
+            return this;
+        }
+
+        /**
+         * @param secretExpressions Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. &#34;username&#34;, &#34;password&#34;, &#34;bearerToken&#34;, &#34;certData&#34;, &#34;keyData&#34;, &#34;caData&#34;) and values are Harness expressions referencing secrets (e.g. &#34;&lt;+secrets.getValue(\&#34;account.my_secret\&#34;)&gt;&#34;).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder secretExpressions(Map<String,String> secretExpressions) {
+            return secretExpressions(Output.of(secretExpressions));
         }
 
         /**

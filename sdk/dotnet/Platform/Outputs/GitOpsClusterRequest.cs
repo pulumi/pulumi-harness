@@ -18,6 +18,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GitOpsClusterRequestCluster> Clusters;
         /// <summary>
+        /// Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. "username", "password", "bearerToken", "certData", "keyData", "caData") and values are Harness expressions referencing secrets (e.g. "&lt;+secrets.getValue(\"account.my_secret\")&gt;").
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? SecretExpressions;
+        /// <summary>
         /// Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
@@ -34,6 +38,8 @@ namespace Pulumi.Harness.Platform.Outputs
         private GitOpsClusterRequest(
             ImmutableArray<Outputs.GitOpsClusterRequestCluster> clusters,
 
+            ImmutableDictionary<string, string>? secretExpressions,
+
             ImmutableArray<string> tags,
 
             ImmutableArray<string> updatedFields,
@@ -41,6 +47,7 @@ namespace Pulumi.Harness.Platform.Outputs
             bool? upsert)
         {
             Clusters = clusters;
+            SecretExpressions = secretExpressions;
             Tags = tags;
             UpdatedFields = updatedFields;
             Upsert = upsert;

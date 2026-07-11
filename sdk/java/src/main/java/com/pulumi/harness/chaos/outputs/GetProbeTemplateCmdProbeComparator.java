@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProbeTemplateCmdProbeComparator {
+    /**
+     * @return Comparison criteria (==, !=, &lt;, &gt;, &lt;=, &gt;=, contains, matches, notMatches, oneOf).
+     * 
+     */
     private String criteria;
+    /**
+     * @return Comparator type (string, int, float).
+     * 
+     */
     private String type;
+    /**
+     * @return Expected value.
+     * 
+     */
     private String value;
 
     private GetProbeTemplateCmdProbeComparator() {}
+    /**
+     * @return Comparison criteria (==, !=, &lt;, &gt;, &lt;=, &gt;=, contains, matches, notMatches, oneOf).
+     * 
+     */
     public String criteria() {
         return this.criteria;
     }
+    /**
+     * @return Comparator type (string, int, float).
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return Expected value.
+     * 
+     */
     public String value() {
         return this.value;
     }

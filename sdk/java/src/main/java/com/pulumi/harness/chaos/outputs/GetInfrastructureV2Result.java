@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.chaos.outputs.GetInfrastructureV2ImageRegistry;
 import com.pulumi.harness.chaos.outputs.GetInfrastructureV2Mtls;
 import com.pulumi.harness.chaos.outputs.GetInfrastructureV2Proxy;
+import com.pulumi.harness.chaos.outputs.GetInfrastructureV2Resources;
 import com.pulumi.harness.chaos.outputs.GetInfrastructureV2Toleration;
 import com.pulumi.harness.chaos.outputs.GetInfrastructureV2Volume;
 import com.pulumi.harness.chaos.outputs.GetInfrastructureV2VolumeMount;
@@ -23,6 +24,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetInfrastructureV2Result {
     private Map<String,String> annotation;
+    /**
+     * @return Whether autopilot mode is enabled for the infrastructure.
+     * 
+     */
+    private Boolean autopilotEnabled;
     /**
      * @return List of containers in the infrastructure.
      * 
@@ -43,6 +49,11 @@ public final class GetInfrastructureV2Result {
      * 
      */
     private String description;
+    /**
+     * @return ID of the discovery agent used by the infrastructure.
+     * 
+     */
+    private String discoveryAgentId;
     /**
      * @return The ID of the environment.
      * 
@@ -138,6 +149,11 @@ public final class GetInfrastructureV2Result {
      * 
      */
     private @Nullable GetInfrastructureV2Proxy proxy;
+    /**
+     * @return Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+     * 
+     */
+    private @Nullable GetInfrastructureV2Resources resources;
     private Integer runAsGroup;
     private Integer runAsUser;
     /**
@@ -191,6 +207,13 @@ public final class GetInfrastructureV2Result {
         return this.annotation;
     }
     /**
+     * @return Whether autopilot mode is enabled for the infrastructure.
+     * 
+     */
+    public Boolean autopilotEnabled() {
+        return this.autopilotEnabled;
+    }
+    /**
      * @return List of containers in the infrastructure.
      * 
      */
@@ -217,6 +240,13 @@ public final class GetInfrastructureV2Result {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return ID of the discovery agent used by the infrastructure.
+     * 
+     */
+    public String discoveryAgentId() {
+        return this.discoveryAgentId;
     }
     /**
      * @return The ID of the environment.
@@ -359,6 +389,13 @@ public final class GetInfrastructureV2Result {
     public Optional<GetInfrastructureV2Proxy> proxy() {
         return Optional.ofNullable(this.proxy);
     }
+    /**
+     * @return Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+     * 
+     */
+    public Optional<GetInfrastructureV2Resources> resources() {
+        return Optional.ofNullable(this.resources);
+    }
     public Integer runAsGroup() {
         return this.runAsGroup;
     }
@@ -439,10 +476,12 @@ public final class GetInfrastructureV2Result {
     @CustomType.Builder
     public static final class Builder {
         private Map<String,String> annotation;
+        private Boolean autopilotEnabled;
         private String containers;
         private String createdAt;
         private String createdBy;
         private String description;
+        private String discoveryAgentId;
         private String environmentId;
         private String id;
         private String identifier;
@@ -466,6 +505,7 @@ public final class GetInfrastructureV2Result {
         private String orgId;
         private String projectId;
         private @Nullable GetInfrastructureV2Proxy proxy;
+        private @Nullable GetInfrastructureV2Resources resources;
         private Integer runAsGroup;
         private Integer runAsUser;
         private String serviceAccount;
@@ -481,10 +521,12 @@ public final class GetInfrastructureV2Result {
         public Builder(GetInfrastructureV2Result defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.annotation = defaults.annotation;
+    	      this.autopilotEnabled = defaults.autopilotEnabled;
     	      this.containers = defaults.containers;
     	      this.createdAt = defaults.createdAt;
     	      this.createdBy = defaults.createdBy;
     	      this.description = defaults.description;
+    	      this.discoveryAgentId = defaults.discoveryAgentId;
     	      this.environmentId = defaults.environmentId;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
@@ -508,6 +550,7 @@ public final class GetInfrastructureV2Result {
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
     	      this.proxy = defaults.proxy;
+    	      this.resources = defaults.resources;
     	      this.runAsGroup = defaults.runAsGroup;
     	      this.runAsUser = defaults.runAsUser;
     	      this.serviceAccount = defaults.serviceAccount;
@@ -527,6 +570,14 @@ public final class GetInfrastructureV2Result {
               throw new MissingRequiredPropertyException("GetInfrastructureV2Result", "annotation");
             }
             this.annotation = annotation;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder autopilotEnabled(Boolean autopilotEnabled) {
+            if (autopilotEnabled == null) {
+              throw new MissingRequiredPropertyException("GetInfrastructureV2Result", "autopilotEnabled");
+            }
+            this.autopilotEnabled = autopilotEnabled;
             return this;
         }
         @CustomType.Setter
@@ -559,6 +610,14 @@ public final class GetInfrastructureV2Result {
               throw new MissingRequiredPropertyException("GetInfrastructureV2Result", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder discoveryAgentId(String discoveryAgentId) {
+            if (discoveryAgentId == null) {
+              throw new MissingRequiredPropertyException("GetInfrastructureV2Result", "discoveryAgentId");
+            }
+            this.discoveryAgentId = discoveryAgentId;
             return this;
         }
         @CustomType.Setter
@@ -745,6 +804,12 @@ public final class GetInfrastructureV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder resources(@Nullable GetInfrastructureV2Resources resources) {
+
+            this.resources = resources;
+            return this;
+        }
+        @CustomType.Setter
         public Builder runAsGroup(Integer runAsGroup) {
             if (runAsGroup == null) {
               throw new MissingRequiredPropertyException("GetInfrastructureV2Result", "runAsGroup");
@@ -841,10 +906,12 @@ public final class GetInfrastructureV2Result {
         public GetInfrastructureV2Result build() {
             final var _resultValue = new GetInfrastructureV2Result();
             _resultValue.annotation = annotation;
+            _resultValue.autopilotEnabled = autopilotEnabled;
             _resultValue.containers = containers;
             _resultValue.createdAt = createdAt;
             _resultValue.createdBy = createdBy;
             _resultValue.description = description;
+            _resultValue.discoveryAgentId = discoveryAgentId;
             _resultValue.environmentId = environmentId;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
@@ -868,6 +935,7 @@ public final class GetInfrastructureV2Result {
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;
             _resultValue.proxy = proxy;
+            _resultValue.resources = resources;
             _resultValue.runAsGroup = runAsGroup;
             _resultValue.runAsUser = runAsUser;
             _resultValue.serviceAccount = serviceAccount;

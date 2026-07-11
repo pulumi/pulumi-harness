@@ -20,6 +20,14 @@ import javax.annotation.Nullable;
 /**
  * Resource for managing Harness Chaos Hub V2.
  * 
+ * ## Git-backed hubs (not supported yet)
+ * 
+ * The `connectorRef`, `repoBranch`, and `repoName` fields describe a Git-backed chaos hub. **Git-backed Chaos Hub V2 is not supported yet** - these fields are accepted by the schema but have no functional effect today. Create hubs without them; they are retained only for forward compatibility and may be deprecated.
+ * 
+ * ## Updatable vs. immutable fields
+ * 
+ * Only `name`, `description`, and `tags` can be updated in place. Changing any of `identity`, `orgId`, `projectId`, `connectorRef`, `repoBranch`, or `repoName` forces recreation, because the update API does not accept those fields.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -183,14 +191,14 @@ public class HubV2 extends com.pulumi.resources.CustomResource {
         return this.connectorId;
     }
     /**
-     * Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+     * Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
      * 
      */
     @Export(name="connectorRef", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> connectorRef;
 
     /**
-     * @return Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+     * @return Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
      * 
      */
     public Output<Optional<String>> connectorRef() {
@@ -393,28 +401,28 @@ public class HubV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.projectId);
     }
     /**
-     * Git repository branch.
+     * Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
      * 
      */
     @Export(name="repoBranch", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> repoBranch;
 
     /**
-     * @return Git repository branch.
+     * @return Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
      * 
      */
     public Output<Optional<String>> repoBranch() {
         return Codegen.optional(this.repoBranch);
     }
     /**
-     * Name of the Git repository (required for account-level connectors).
+     * Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
      * 
      */
     @Export(name="repoName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> repoName;
 
     /**
-     * @return Name of the Git repository (required for account-level connectors).
+     * @return Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
      * 
      */
     public Output<Optional<String>> repoName() {

@@ -5,6 +5,7 @@ package com.pulumi.harness.chaos.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.chaos.outputs.GetProbeTemplateApmProbe;
 import com.pulumi.harness.chaos.outputs.GetProbeTemplateCmdProbe;
 import com.pulumi.harness.chaos.outputs.GetProbeTemplateHttpProbe;
 import com.pulumi.harness.chaos.outputs.GetProbeTemplateK8sProbe;
@@ -26,22 +27,27 @@ public final class GetProbeTemplateResult {
      */
     private String accountId;
     /**
-     * @return Command probe configuration.
+     * @return APM probe configuration. Required when type is &#39;apmProbe&#39;.
      * 
      */
-    private List<GetProbeTemplateCmdProbe> cmdProbes;
+    private @Nullable GetProbeTemplateApmProbe apmProbe;
+    /**
+     * @return Command probe configuration. Required when type is &#39;cmdProbe&#39;.
+     * 
+     */
+    private @Nullable List<GetProbeTemplateCmdProbe> cmdProbes;
     /**
      * @return Description of the probe template.
      * 
      */
-    private String description;
+    private @Nullable String description;
     /**
-     * @return HTTP probe configuration.
+     * @return HTTP probe configuration. Required when type is &#39;httpProbe&#39;.
      * 
      */
-    private List<GetProbeTemplateHttpProbe> httpProbes;
+    private @Nullable List<GetProbeTemplateHttpProbe> httpProbes;
     /**
-     * @return Identity of the chaos hub.
+     * @return Identity of the chaos hub this probe template belongs to.
      * 
      */
     private String hubIdentity;
@@ -56,30 +62,30 @@ public final class GetProbeTemplateResult {
      */
     private String id;
     /**
-     * @return Unique identifier of the probe template.
+     * @return Unique identifier for the probe template (immutable).
      * 
      */
-    private @Nullable String identity;
+    private String identity;
     /**
-     * @return Infrastructure type.
+     * @return Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
      * 
      */
-    private String infrastructureType;
+    private @Nullable String infrastructureType;
     /**
-     * @return Whether this is the default version.
+     * @return Whether this is the default version for predefined probes.
      * 
      */
     private Boolean isDefault;
     /**
-     * @return Kubernetes probe configuration.
+     * @return Kubernetes probe configuration. Required when type is &#39;k8sProbe&#39;.
      * 
      */
-    private List<GetProbeTemplateK8sProbe> k8sProbes;
+    private @Nullable List<GetProbeTemplateK8sProbe> k8sProbes;
     /**
      * @return Name of the probe template.
      * 
      */
-    private @Nullable String name;
+    private String name;
     /**
      * @return Organization identifier.
      * 
@@ -91,30 +97,30 @@ public final class GetProbeTemplateResult {
      */
     private @Nullable String projectId;
     /**
-     * @return Revision number.
+     * @return Revision number of the probe template.
      * 
      */
     private Integer revision;
     /**
-     * @return Run properties.
+     * @return Run properties for the probe template execution.
      * 
      */
-    private List<GetProbeTemplateRunProperty> runProperties;
+    private @Nullable List<GetProbeTemplateRunProperty> runProperties;
     /**
-     * @return Tags associated with the probe template.
+     * @return Tags to associate with the probe template.
      * 
      */
-    private List<String> tags;
+    private @Nullable List<String> tags;
     /**
-     * @return Type of the probe template.
+     * @return Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
      * 
      */
     private String type;
     /**
-     * @return Template variables.
+     * @return Template variables that can be used in the probe.
      * 
      */
-    private List<GetProbeTemplateVariable> variables;
+    private @Nullable List<GetProbeTemplateVariable> variables;
 
     private GetProbeTemplateResult() {}
     /**
@@ -125,28 +131,35 @@ public final class GetProbeTemplateResult {
         return this.accountId;
     }
     /**
-     * @return Command probe configuration.
+     * @return APM probe configuration. Required when type is &#39;apmProbe&#39;.
+     * 
+     */
+    public Optional<GetProbeTemplateApmProbe> apmProbe() {
+        return Optional.ofNullable(this.apmProbe);
+    }
+    /**
+     * @return Command probe configuration. Required when type is &#39;cmdProbe&#39;.
      * 
      */
     public List<GetProbeTemplateCmdProbe> cmdProbes() {
-        return this.cmdProbes;
+        return this.cmdProbes == null ? List.of() : this.cmdProbes;
     }
     /**
      * @return Description of the probe template.
      * 
      */
-    public String description() {
-        return this.description;
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
     }
     /**
-     * @return HTTP probe configuration.
+     * @return HTTP probe configuration. Required when type is &#39;httpProbe&#39;.
      * 
      */
     public List<GetProbeTemplateHttpProbe> httpProbes() {
-        return this.httpProbes;
+        return this.httpProbes == null ? List.of() : this.httpProbes;
     }
     /**
-     * @return Identity of the chaos hub.
+     * @return Identity of the chaos hub this probe template belongs to.
      * 
      */
     public String hubIdentity() {
@@ -167,39 +180,39 @@ public final class GetProbeTemplateResult {
         return this.id;
     }
     /**
-     * @return Unique identifier of the probe template.
+     * @return Unique identifier for the probe template (immutable).
      * 
      */
-    public Optional<String> identity() {
-        return Optional.ofNullable(this.identity);
+    public String identity() {
+        return this.identity;
     }
     /**
-     * @return Infrastructure type.
+     * @return Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
      * 
      */
-    public String infrastructureType() {
-        return this.infrastructureType;
+    public Optional<String> infrastructureType() {
+        return Optional.ofNullable(this.infrastructureType);
     }
     /**
-     * @return Whether this is the default version.
+     * @return Whether this is the default version for predefined probes.
      * 
      */
     public Boolean isDefault() {
         return this.isDefault;
     }
     /**
-     * @return Kubernetes probe configuration.
+     * @return Kubernetes probe configuration. Required when type is &#39;k8sProbe&#39;.
      * 
      */
     public List<GetProbeTemplateK8sProbe> k8sProbes() {
-        return this.k8sProbes;
+        return this.k8sProbes == null ? List.of() : this.k8sProbes;
     }
     /**
      * @return Name of the probe template.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
      * @return Organization identifier.
@@ -216,39 +229,39 @@ public final class GetProbeTemplateResult {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return Revision number.
+     * @return Revision number of the probe template.
      * 
      */
     public Integer revision() {
         return this.revision;
     }
     /**
-     * @return Run properties.
+     * @return Run properties for the probe template execution.
      * 
      */
     public List<GetProbeTemplateRunProperty> runProperties() {
-        return this.runProperties;
+        return this.runProperties == null ? List.of() : this.runProperties;
     }
     /**
-     * @return Tags associated with the probe template.
+     * @return Tags to associate with the probe template.
      * 
      */
     public List<String> tags() {
-        return this.tags;
+        return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return Type of the probe template.
+     * @return Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return Template variables.
+     * @return Template variables that can be used in the probe.
      * 
      */
     public List<GetProbeTemplateVariable> variables() {
-        return this.variables;
+        return this.variables == null ? List.of() : this.variables;
     }
 
     public static Builder builder() {
@@ -261,28 +274,30 @@ public final class GetProbeTemplateResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
-        private List<GetProbeTemplateCmdProbe> cmdProbes;
-        private String description;
-        private List<GetProbeTemplateHttpProbe> httpProbes;
+        private @Nullable GetProbeTemplateApmProbe apmProbe;
+        private @Nullable List<GetProbeTemplateCmdProbe> cmdProbes;
+        private @Nullable String description;
+        private @Nullable List<GetProbeTemplateHttpProbe> httpProbes;
         private String hubIdentity;
         private String hubRef;
         private String id;
-        private @Nullable String identity;
-        private String infrastructureType;
+        private String identity;
+        private @Nullable String infrastructureType;
         private Boolean isDefault;
-        private List<GetProbeTemplateK8sProbe> k8sProbes;
-        private @Nullable String name;
+        private @Nullable List<GetProbeTemplateK8sProbe> k8sProbes;
+        private String name;
         private @Nullable String orgId;
         private @Nullable String projectId;
         private Integer revision;
-        private List<GetProbeTemplateRunProperty> runProperties;
-        private List<String> tags;
+        private @Nullable List<GetProbeTemplateRunProperty> runProperties;
+        private @Nullable List<String> tags;
         private String type;
-        private List<GetProbeTemplateVariable> variables;
+        private @Nullable List<GetProbeTemplateVariable> variables;
         public Builder() {}
         public Builder(GetProbeTemplateResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.apmProbe = defaults.apmProbe;
     	      this.cmdProbes = defaults.cmdProbes;
     	      this.description = defaults.description;
     	      this.httpProbes = defaults.httpProbes;
@@ -312,10 +327,14 @@ public final class GetProbeTemplateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder cmdProbes(List<GetProbeTemplateCmdProbe> cmdProbes) {
-            if (cmdProbes == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateResult", "cmdProbes");
-            }
+        public Builder apmProbe(@Nullable GetProbeTemplateApmProbe apmProbe) {
+
+            this.apmProbe = apmProbe;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cmdProbes(@Nullable List<GetProbeTemplateCmdProbe> cmdProbes) {
+
             this.cmdProbes = cmdProbes;
             return this;
         }
@@ -323,18 +342,14 @@ public final class GetProbeTemplateResult {
             return cmdProbes(List.of(cmdProbes));
         }
         @CustomType.Setter
-        public Builder description(String description) {
-            if (description == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateResult", "description");
-            }
+        public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
-        public Builder httpProbes(List<GetProbeTemplateHttpProbe> httpProbes) {
-            if (httpProbes == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateResult", "httpProbes");
-            }
+        public Builder httpProbes(@Nullable List<GetProbeTemplateHttpProbe> httpProbes) {
+
             this.httpProbes = httpProbes;
             return this;
         }
@@ -366,16 +381,16 @@ public final class GetProbeTemplateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder identity(@Nullable String identity) {
-
+        public Builder identity(String identity) {
+            if (identity == null) {
+              throw new MissingRequiredPropertyException("GetProbeTemplateResult", "identity");
+            }
             this.identity = identity;
             return this;
         }
         @CustomType.Setter
-        public Builder infrastructureType(String infrastructureType) {
-            if (infrastructureType == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateResult", "infrastructureType");
-            }
+        public Builder infrastructureType(@Nullable String infrastructureType) {
+
             this.infrastructureType = infrastructureType;
             return this;
         }
@@ -388,10 +403,8 @@ public final class GetProbeTemplateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder k8sProbes(List<GetProbeTemplateK8sProbe> k8sProbes) {
-            if (k8sProbes == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateResult", "k8sProbes");
-            }
+        public Builder k8sProbes(@Nullable List<GetProbeTemplateK8sProbe> k8sProbes) {
+
             this.k8sProbes = k8sProbes;
             return this;
         }
@@ -399,8 +412,10 @@ public final class GetProbeTemplateResult {
             return k8sProbes(List.of(k8sProbes));
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetProbeTemplateResult", "name");
+            }
             this.name = name;
             return this;
         }
@@ -425,10 +440,8 @@ public final class GetProbeTemplateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder runProperties(List<GetProbeTemplateRunProperty> runProperties) {
-            if (runProperties == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateResult", "runProperties");
-            }
+        public Builder runProperties(@Nullable List<GetProbeTemplateRunProperty> runProperties) {
+
             this.runProperties = runProperties;
             return this;
         }
@@ -436,10 +449,8 @@ public final class GetProbeTemplateResult {
             return runProperties(List.of(runProperties));
         }
         @CustomType.Setter
-        public Builder tags(List<String> tags) {
-            if (tags == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateResult", "tags");
-            }
+        public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -455,10 +466,8 @@ public final class GetProbeTemplateResult {
             return this;
         }
         @CustomType.Setter
-        public Builder variables(List<GetProbeTemplateVariable> variables) {
-            if (variables == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateResult", "variables");
-            }
+        public Builder variables(@Nullable List<GetProbeTemplateVariable> variables) {
+
             this.variables = variables;
             return this;
         }
@@ -468,6 +477,7 @@ public final class GetProbeTemplateResult {
         public GetProbeTemplateResult build() {
             final var _resultValue = new GetProbeTemplateResult();
             _resultValue.accountId = accountId;
+            _resultValue.apmProbe = apmProbe;
             _resultValue.cmdProbes = cmdProbes;
             _resultValue.description = description;
             _resultValue.httpProbes = httpProbes;

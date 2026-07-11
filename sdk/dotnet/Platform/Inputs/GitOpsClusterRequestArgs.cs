@@ -24,6 +24,18 @@ namespace Pulumi.Harness.Platform.Inputs
             set => _clusters = value;
         }
 
+        [Input("secretExpressions")]
+        private InputMap<string>? _secretExpressions;
+
+        /// <summary>
+        /// Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. "username", "password", "bearerToken", "certData", "keyData", "caData") and values are Harness expressions referencing secrets (e.g. "&lt;+secrets.getValue(\"account.my_secret\")&gt;").
+        /// </summary>
+        public InputMap<string> SecretExpressions
+        {
+            get => _secretExpressions ?? (_secretExpressions = new InputMap<string>());
+            set => _secretExpressions = value;
+        }
+
         [Input("tags")]
         private InputList<string>? _tags;
 

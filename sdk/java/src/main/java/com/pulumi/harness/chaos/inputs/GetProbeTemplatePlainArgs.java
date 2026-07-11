@@ -5,7 +5,14 @@ package com.pulumi.harness.chaos.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.chaos.inputs.GetProbeTemplateApmProbe;
+import com.pulumi.harness.chaos.inputs.GetProbeTemplateCmdProbe;
+import com.pulumi.harness.chaos.inputs.GetProbeTemplateHttpProbe;
+import com.pulumi.harness.chaos.inputs.GetProbeTemplateK8sProbe;
+import com.pulumi.harness.chaos.inputs.GetProbeTemplateRunProperty;
+import com.pulumi.harness.chaos.inputs.GetProbeTemplateVariable;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,14 +23,74 @@ public final class GetProbeTemplatePlainArgs extends com.pulumi.resources.Invoke
     public static final GetProbeTemplatePlainArgs Empty = new GetProbeTemplatePlainArgs();
 
     /**
-     * Identity of the chaos hub.
+     * APM probe configuration. Required when type is &#39;apmProbe&#39;.
+     * 
+     */
+    @Import(name="apmProbe")
+    private @Nullable GetProbeTemplateApmProbe apmProbe;
+
+    /**
+     * @return APM probe configuration. Required when type is &#39;apmProbe&#39;.
+     * 
+     */
+    public Optional<GetProbeTemplateApmProbe> apmProbe() {
+        return Optional.ofNullable(this.apmProbe);
+    }
+
+    /**
+     * Command probe configuration. Required when type is &#39;cmdProbe&#39;.
+     * 
+     */
+    @Import(name="cmdProbes")
+    private @Nullable List<GetProbeTemplateCmdProbe> cmdProbes;
+
+    /**
+     * @return Command probe configuration. Required when type is &#39;cmdProbe&#39;.
+     * 
+     */
+    public Optional<List<GetProbeTemplateCmdProbe>> cmdProbes() {
+        return Optional.ofNullable(this.cmdProbes);
+    }
+
+    /**
+     * Description of the probe template.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable String description;
+
+    /**
+     * @return Description of the probe template.
+     * 
+     */
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * HTTP probe configuration. Required when type is &#39;httpProbe&#39;.
+     * 
+     */
+    @Import(name="httpProbes")
+    private @Nullable List<GetProbeTemplateHttpProbe> httpProbes;
+
+    /**
+     * @return HTTP probe configuration. Required when type is &#39;httpProbe&#39;.
+     * 
+     */
+    public Optional<List<GetProbeTemplateHttpProbe>> httpProbes() {
+        return Optional.ofNullable(this.httpProbes);
+    }
+
+    /**
+     * Identity of the chaos hub this probe template belongs to.
      * 
      */
     @Import(name="hubIdentity", required=true)
     private String hubIdentity;
 
     /**
-     * @return Identity of the chaos hub.
+     * @return Identity of the chaos hub this probe template belongs to.
      * 
      */
     public String hubIdentity() {
@@ -31,18 +98,48 @@ public final class GetProbeTemplatePlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * Unique identifier of the probe template.
+     * Unique identifier for the probe template (immutable).
      * 
      */
     @Import(name="identity")
     private @Nullable String identity;
 
     /**
-     * @return Unique identifier of the probe template.
+     * @return Unique identifier for the probe template (immutable).
      * 
      */
     public Optional<String> identity() {
         return Optional.ofNullable(this.identity);
+    }
+
+    /**
+     * Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
+     * 
+     */
+    @Import(name="infrastructureType")
+    private @Nullable String infrastructureType;
+
+    /**
+     * @return Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
+     * 
+     */
+    public Optional<String> infrastructureType() {
+        return Optional.ofNullable(this.infrastructureType);
+    }
+
+    /**
+     * Kubernetes probe configuration. Required when type is &#39;k8sProbe&#39;.
+     * 
+     */
+    @Import(name="k8sProbes")
+    private @Nullable List<GetProbeTemplateK8sProbe> k8sProbes;
+
+    /**
+     * @return Kubernetes probe configuration. Required when type is &#39;k8sProbe&#39;.
+     * 
+     */
+    public Optional<List<GetProbeTemplateK8sProbe>> k8sProbes() {
+        return Optional.ofNullable(this.k8sProbes);
     }
 
     /**
@@ -90,14 +187,84 @@ public final class GetProbeTemplatePlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.projectId);
     }
 
+    /**
+     * Run properties for the probe template execution.
+     * 
+     */
+    @Import(name="runProperties")
+    private @Nullable List<GetProbeTemplateRunProperty> runProperties;
+
+    /**
+     * @return Run properties for the probe template execution.
+     * 
+     */
+    public Optional<List<GetProbeTemplateRunProperty>> runProperties() {
+        return Optional.ofNullable(this.runProperties);
+    }
+
+    /**
+     * Tags to associate with the probe template.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable List<String> tags;
+
+    /**
+     * @return Tags to associate with the probe template.
+     * 
+     */
+    public Optional<List<String>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable String type;
+
+    /**
+     * @return Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
+     * 
+     */
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
+    }
+
+    /**
+     * Template variables that can be used in the probe.
+     * 
+     */
+    @Import(name="variables")
+    private @Nullable List<GetProbeTemplateVariable> variables;
+
+    /**
+     * @return Template variables that can be used in the probe.
+     * 
+     */
+    public Optional<List<GetProbeTemplateVariable>> variables() {
+        return Optional.ofNullable(this.variables);
+    }
+
     private GetProbeTemplatePlainArgs() {}
 
     private GetProbeTemplatePlainArgs(GetProbeTemplatePlainArgs $) {
+        this.apmProbe = $.apmProbe;
+        this.cmdProbes = $.cmdProbes;
+        this.description = $.description;
+        this.httpProbes = $.httpProbes;
         this.hubIdentity = $.hubIdentity;
         this.identity = $.identity;
+        this.infrastructureType = $.infrastructureType;
+        this.k8sProbes = $.k8sProbes;
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
+        this.runProperties = $.runProperties;
+        this.tags = $.tags;
+        this.type = $.type;
+        this.variables = $.variables;
     }
 
     public static Builder builder() {
@@ -119,7 +286,71 @@ public final class GetProbeTemplatePlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param hubIdentity Identity of the chaos hub.
+         * @param apmProbe APM probe configuration. Required when type is &#39;apmProbe&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apmProbe(@Nullable GetProbeTemplateApmProbe apmProbe) {
+            $.apmProbe = apmProbe;
+            return this;
+        }
+
+        /**
+         * @param cmdProbes Command probe configuration. Required when type is &#39;cmdProbe&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cmdProbes(@Nullable List<GetProbeTemplateCmdProbe> cmdProbes) {
+            $.cmdProbes = cmdProbes;
+            return this;
+        }
+
+        /**
+         * @param cmdProbes Command probe configuration. Required when type is &#39;cmdProbe&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cmdProbes(GetProbeTemplateCmdProbe... cmdProbes) {
+            return cmdProbes(List.of(cmdProbes));
+        }
+
+        /**
+         * @param description Description of the probe template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable String description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param httpProbes HTTP probe configuration. Required when type is &#39;httpProbe&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpProbes(@Nullable List<GetProbeTemplateHttpProbe> httpProbes) {
+            $.httpProbes = httpProbes;
+            return this;
+        }
+
+        /**
+         * @param httpProbes HTTP probe configuration. Required when type is &#39;httpProbe&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpProbes(GetProbeTemplateHttpProbe... httpProbes) {
+            return httpProbes(List.of(httpProbes));
+        }
+
+        /**
+         * @param hubIdentity Identity of the chaos hub this probe template belongs to.
          * 
          * @return builder
          * 
@@ -130,7 +361,7 @@ public final class GetProbeTemplatePlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param identity Unique identifier of the probe template.
+         * @param identity Unique identifier for the probe template (immutable).
          * 
          * @return builder
          * 
@@ -138,6 +369,38 @@ public final class GetProbeTemplatePlainArgs extends com.pulumi.resources.Invoke
         public Builder identity(@Nullable String identity) {
             $.identity = identity;
             return this;
+        }
+
+        /**
+         * @param infrastructureType Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder infrastructureType(@Nullable String infrastructureType) {
+            $.infrastructureType = infrastructureType;
+            return this;
+        }
+
+        /**
+         * @param k8sProbes Kubernetes probe configuration. Required when type is &#39;k8sProbe&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder k8sProbes(@Nullable List<GetProbeTemplateK8sProbe> k8sProbes) {
+            $.k8sProbes = k8sProbes;
+            return this;
+        }
+
+        /**
+         * @param k8sProbes Kubernetes probe configuration. Required when type is &#39;k8sProbe&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder k8sProbes(GetProbeTemplateK8sProbe... k8sProbes) {
+            return k8sProbes(List.of(k8sProbes));
         }
 
         /**
@@ -171,6 +434,80 @@ public final class GetProbeTemplatePlainArgs extends com.pulumi.resources.Invoke
         public Builder projectId(@Nullable String projectId) {
             $.projectId = projectId;
             return this;
+        }
+
+        /**
+         * @param runProperties Run properties for the probe template execution.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runProperties(@Nullable List<GetProbeTemplateRunProperty> runProperties) {
+            $.runProperties = runProperties;
+            return this;
+        }
+
+        /**
+         * @param runProperties Run properties for the probe template execution.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runProperties(GetProbeTemplateRunProperty... runProperties) {
+            return runProperties(List.of(runProperties));
+        }
+
+        /**
+         * @param tags Tags to associate with the probe template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable List<String> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Tags to associate with the probe template.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
+        }
+
+        /**
+         * @param type Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable String type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param variables Template variables that can be used in the probe.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder variables(@Nullable List<GetProbeTemplateVariable> variables) {
+            $.variables = variables;
+            return this;
+        }
+
+        /**
+         * @param variables Template variables that can be used in the probe.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder variables(GetProbeTemplateVariable... variables) {
+            return variables(List.of(variables));
         }
 
         public GetProbeTemplatePlainArgs build() {

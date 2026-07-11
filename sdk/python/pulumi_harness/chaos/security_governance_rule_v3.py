@@ -337,7 +337,13 @@ class SecurityGovernanceRuleV3(pulumi.CustomResource):
                  user_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Resource for managing a Harness Chaos Security Governance Rule (V3 / REST API).
+        Resource for managing a Harness Chaos Security Governance Rule (V3 / REST API). A rule binds one or more governance conditions to user groups and active time windows to control when chaos experiments may run.
+
+        ## Usage notes
+
+        - `condition_ids` is required and must contain at least one condition (references may be bare IDs or `org/project/condition-id` - only the trailing ID segment is used).
+        - `time_windows` is required. Within a window, provide **either** `duration` **or** `end_time` (they are mutually exclusive; the backend derives the other). `end_time` must be within one year of `start_time`, so `duration` is often easier.
+        - `recurrence.type` accepts `None`, `Daily`, `Weekly`, `Monthly`, `Yearly`; `recurrence.value` (day of month) applies only when `type = Monthly`; use `until = -1` for no end.
 
         ## Example Usage
 
@@ -400,7 +406,13 @@ class SecurityGovernanceRuleV3(pulumi.CustomResource):
                  args: SecurityGovernanceRuleV3Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for managing a Harness Chaos Security Governance Rule (V3 / REST API).
+        Resource for managing a Harness Chaos Security Governance Rule (V3 / REST API). A rule binds one or more governance conditions to user groups and active time windows to control when chaos experiments may run.
+
+        ## Usage notes
+
+        - `condition_ids` is required and must contain at least one condition (references may be bare IDs or `org/project/condition-id` - only the trailing ID segment is used).
+        - `time_windows` is required. Within a window, provide **either** `duration` **or** `end_time` (they are mutually exclusive; the backend derives the other). `end_time` must be within one year of `start_time`, so `duration` is often easier.
+        - `recurrence.type` accepts `None`, `Daily`, `Weekly`, `Monthly`, `Yearly`; `recurrence.value` (day of month) applies only when `type = Monthly`; use `until = -1` for no end.
 
         ## Example Usage
 

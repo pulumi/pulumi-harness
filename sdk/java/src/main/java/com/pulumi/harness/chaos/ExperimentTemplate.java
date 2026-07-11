@@ -20,6 +20,12 @@ import javax.annotation.Nullable;
 /**
  * Resource for managing Harness Chaos Experiment Templates. Experiment templates define reusable chaos experiments with actions, faults, and probes.
  * 
+ * Execution conditions for faults, probes, and actions are configured via the `conditionsV2` block (`operator` = `AND`/`OR`, plus `values` which support the `&lt;+input&gt;` runtime input).
+ * 
+ * ## Deprecated / not supported
+ * 
+ * - The probe `conditions` (`executeUpon`) block is **deprecated and ignored** - it is not part of the current experiment template API. Use `conditionsV2` instead.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -42,6 +48,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecActionValueArgs;
  * import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecVertexStartActionArgs;
  * import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecProbeArgs;
+ * import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecProbeConditionsV2Args;
  * import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecProbeValueArgs;
  * import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecVertexStartProbeArgs;
  * import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecStatusCheckTimeoutsArgs;
@@ -276,10 +283,10 @@ import javax.annotation.Nullable;
  *                         .duration("30")
  *                         .weightage(10)
  *                         .enableDataCollection(false)
- *                         .conditions(                        
- *                             "onChaosStart",
- *                             "duringChaos",
- *                             "afterChaos")
+ *                         .conditionsV2(ExperimentTemplateSpecProbeConditionsV2Args.builder()
+ *                             .operator("AND")
+ *                             .values("true")
+ *                             .build())
  *                         .values(ExperimentTemplateSpecProbeValueArgs.builder()
  *                             .name("TARGET_NAMESPACE")
  *                             .value("<+input>")
@@ -293,9 +300,12 @@ import javax.annotation.Nullable;
  *                         .duration("30")
  *                         .weightage(10)
  *                         .enableDataCollection(false)
- *                         .conditions(                        
- *                             "duringChaos",
- *                             "afterChaos")
+ *                         .conditionsV2(ExperimentTemplateSpecProbeConditionsV2Args.builder()
+ *                             .operator("OR")
+ *                             .values(                            
+ *                                 "true",
+ *                                 "<+input>")
+ *                             .build())
  *                         .values(ExperimentTemplateSpecProbeValueArgs.builder()
  *                             .name("URL")
  *                             .value("<+input>")

@@ -14,7 +14,7 @@ namespace Pulumi.Harness.Chaos.Outputs
     public sealed class FaultTemplateSpecChaos
     {
         /// <summary>
-        /// Authentication configuration
+        /// Authentication configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault authentication in the Harness UI/API instead.
         /// </summary>
         public readonly Outputs.FaultTemplateSpecChaosAuth? Auth;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Harness.Chaos.Outputs
         /// </summary>
         public readonly Outputs.FaultTemplateSpecChaosStatusCheckTimeouts? StatusCheckTimeouts;
         /// <summary>
-        /// TLS configuration
+        /// TLS configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault TLS in the Harness UI/API instead.
         /// </summary>
         public readonly Outputs.FaultTemplateSpecChaosTls? Tls;
 

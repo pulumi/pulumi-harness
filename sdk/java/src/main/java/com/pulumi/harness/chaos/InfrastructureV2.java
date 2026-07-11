@@ -15,6 +15,7 @@ import com.pulumi.harness.chaos.outputs.InfrastructureV2Identifier;
 import com.pulumi.harness.chaos.outputs.InfrastructureV2ImageRegistry;
 import com.pulumi.harness.chaos.outputs.InfrastructureV2Mtls;
 import com.pulumi.harness.chaos.outputs.InfrastructureV2Proxy;
+import com.pulumi.harness.chaos.outputs.InfrastructureV2Resources;
 import com.pulumi.harness.chaos.outputs.InfrastructureV2Toleration;
 import com.pulumi.harness.chaos.outputs.InfrastructureV2Volume;
 import com.pulumi.harness.chaos.outputs.InfrastructureV2VolumeMount;
@@ -27,7 +28,18 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Resource for managing Harness Chaos Infrastructure V2.
+ * Resource for managing Harness Chaos Infrastructure V2 (the chaos execution infrastructure installed into a Kubernetes cluster).
+ * 
+ * After `pulumi up`, use the computed `installCommand` output to deploy the infrastructure manifest into your target cluster - creating this resource registers the infrastructure with Harness but does not itself install anything into the cluster.
+ * 
+ * ## Notes
+ * 
+ * - `infraType`: use `KubernetesV2` (recommended); `Kubernetes` is the legacy V1 type.
+ * - `infraScope` (`NAMESPACE` or `CLUSTER`) is immutable - changing it forces recreation.
+ * - `containers` is a raw JSON string used to override container specs; leave unset unless you need advanced overrides.
+ * - Some fields (`volumes`, `volumeMounts`, `env`, `imageRegistry`, `label`, `annotation`, `containers`, `insecureSkipVerify`) are applied via an automatic update immediately after creation; this is transparent and should not produce drift.
+ * - `resources` (CPU/memory `requests` and `limits`) and `autopilotEnabled` can be set both at creation and on update. Resource values are standard Kubernetes quantity strings (e.g. `250m`, `1`, `256Mi`, `1Gi`).
+ * - `discoveryAgentId` is applied at registration (create) time only; it is not sent on update, so changing it on an existing resource has no effect unless the resource is recreated.
  * 
  * ## Import
  * 
@@ -69,6 +81,20 @@ public class InfrastructureV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> annotation() {
         return Codegen.optional(this.annotation);
+    }
+    /**
+     * Enable autopilot mode for the infrastructure.
+     * 
+     */
+    @Export(name="autopilotEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autopilotEnabled;
+
+    /**
+     * @return Enable autopilot mode for the infrastructure.
+     * 
+     */
+    public Output<Optional<Boolean>> autopilotEnabled() {
+        return Codegen.optional(this.autopilotEnabled);
     }
     /**
      * Container configurations.
@@ -419,6 +445,20 @@ public class InfrastructureV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<InfrastructureV2Proxy>> proxy() {
         return Codegen.optional(this.proxy);
+    }
+    /**
+     * Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+     * 
+     */
+    @Export(name="resources", refs={InfrastructureV2Resources.class}, tree="[0]")
+    private Output</* @Nullable */ InfrastructureV2Resources> resources;
+
+    /**
+     * @return Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+     * 
+     */
+    public Output<Optional<InfrastructureV2Resources>> resources() {
+        return Codegen.optional(this.resources);
     }
     /**
      * Group ID to run the infrastructure as.

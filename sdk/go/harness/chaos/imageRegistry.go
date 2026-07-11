@@ -12,7 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for managing a Harness Chaos Image Registry
+// Resource for managing a Harness Chaos Image Registry.
+//
+// ## Not currently supported
+//
+// - Importing account-scoped registries: `pulumi import` requires an `orgId` (`org_id/project_id` or `org_id/project_id/infra_id`).
 //
 // ## Example Usage
 //
@@ -54,6 +58,22 @@ import (
 //		})
 //	}
 //
+// ```
+//
+// ## Import
+//
+// The `pulumi import` command can be used, for example:
+//
+// # Import a project-level Chaos Image Registry
+//
+// ```sh
+// $ pulumi import harness:chaos/imageRegistry:ImageRegistry example <org_id>/<project_id>
+// ```
+//
+// # Import an infrastructure-scoped Chaos Image Registry
+//
+// ```sh
+// $ pulumi import harness:chaos/imageRegistry:ImageRegistry example <org_id>/<project_id>/<infra_id>
 // ```
 type ImageRegistry struct {
 	pulumi.CustomResourceState

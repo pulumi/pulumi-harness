@@ -18,6 +18,10 @@ namespace Pulumi.Harness.Chaos.Outputs
         /// </summary>
         public readonly bool AuthEnabled;
         /// <summary>
+        /// Execution conditions (operator + values) gating whether this runs.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetExperimentTemplateSpecFaultConditionsV2Result> ConditionsV2s;
+        /// <summary>
         /// Fault template identity
         /// </summary>
         public readonly string Identity;
@@ -46,6 +50,8 @@ namespace Pulumi.Harness.Chaos.Outputs
         private GetExperimentTemplateSpecFaultResult(
             bool authEnabled,
 
+            ImmutableArray<Outputs.GetExperimentTemplateSpecFaultConditionsV2Result> conditionsV2s,
+
             string identity,
 
             string infraId,
@@ -59,6 +65,7 @@ namespace Pulumi.Harness.Chaos.Outputs
             ImmutableArray<Outputs.GetExperimentTemplateSpecFaultValueResult> values)
         {
             AuthEnabled = authEnabled;
+            ConditionsV2s = conditionsV2s;
             Identity = identity;
             InfraId = infraId;
             IsEnterprise = isEnterprise;

@@ -10,7 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Harness.Chaos
 {
     /// <summary>
-    /// Resource for managing a Harness Chaos Security Governance Rule (V3 / REST API).
+    /// Resource for managing a Harness Chaos Security Governance Rule (V3 / REST API). A rule binds one or more governance conditions to user groups and active time windows to control when chaos experiments may run.
+    /// 
+    /// ## Usage notes
+    /// 
+    /// - `ConditionIds` is required and must contain at least one condition (references may be bare IDs or `org/project/condition-id` - only the trailing ID segment is used).
+    /// - `TimeWindows` is required. Within a window, provide **either** `Duration` **or** `EndTime` (they are mutually exclusive; the backend derives the other). `EndTime` must be within one year of `StartTime`, so `Duration` is often easier.
+    /// - `recurrence.type` accepts `None`, `Daily`, `Weekly`, `Monthly`, `Yearly`; `recurrence.value` (day of month) applies only when `type = Monthly`; use `until = -1` for no end.
     /// 
     /// ## Example Usage
     /// 

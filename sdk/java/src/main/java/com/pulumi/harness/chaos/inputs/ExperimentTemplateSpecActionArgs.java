@@ -6,6 +6,7 @@ package com.pulumi.harness.chaos.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecActionConditionsV2Args;
 import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecActionValueArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -19,6 +20,21 @@ import javax.annotation.Nullable;
 public final class ExperimentTemplateSpecActionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ExperimentTemplateSpecActionArgs Empty = new ExperimentTemplateSpecActionArgs();
+
+    /**
+     * Execution conditions gating whether this action runs, evaluated as boolean values combined by the operator.
+     * 
+     */
+    @Import(name="conditionsV2")
+    private @Nullable Output<ExperimentTemplateSpecActionConditionsV2Args> conditionsV2;
+
+    /**
+     * @return Execution conditions gating whether this action runs, evaluated as boolean values combined by the operator.
+     * 
+     */
+    public Optional<Output<ExperimentTemplateSpecActionConditionsV2Args>> conditionsV2() {
+        return Optional.ofNullable(this.conditionsV2);
+    }
 
     /**
      * Whether to continue on completion
@@ -128,6 +144,7 @@ public final class ExperimentTemplateSpecActionArgs extends com.pulumi.resources
     private ExperimentTemplateSpecActionArgs() {}
 
     private ExperimentTemplateSpecActionArgs(ExperimentTemplateSpecActionArgs $) {
+        this.conditionsV2 = $.conditionsV2;
         this.continueOnCompletion = $.continueOnCompletion;
         this.identity = $.identity;
         this.infraId = $.infraId;
@@ -153,6 +170,27 @@ public final class ExperimentTemplateSpecActionArgs extends com.pulumi.resources
 
         public Builder(ExperimentTemplateSpecActionArgs defaults) {
             $ = new ExperimentTemplateSpecActionArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param conditionsV2 Execution conditions gating whether this action runs, evaluated as boolean values combined by the operator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditionsV2(@Nullable Output<ExperimentTemplateSpecActionConditionsV2Args> conditionsV2) {
+            $.conditionsV2 = conditionsV2;
+            return this;
+        }
+
+        /**
+         * @param conditionsV2 Execution conditions gating whether this action runs, evaluated as boolean values combined by the operator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditionsV2(ExperimentTemplateSpecActionConditionsV2Args conditionsV2) {
+            return conditionsV2(Output.of(conditionsV2));
         }
 
         /**

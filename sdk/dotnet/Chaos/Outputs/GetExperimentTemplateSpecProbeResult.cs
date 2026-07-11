@@ -14,9 +14,13 @@ namespace Pulumi.Harness.Chaos.Outputs
     public sealed class GetExperimentTemplateSpecProbeResult
     {
         /// <summary>
-        /// Probe execution conditions
+        /// Deprecated: not part of the experiment template API; use conditions_v2.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetExperimentTemplateSpecProbeConditionResult> Conditions;
+        /// <summary>
+        /// Execution conditions (operator + values) gating whether this runs.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetExperimentTemplateSpecProbeConditionsV2Result> ConditionsV2s;
         /// <summary>
         /// Probe duration
         /// </summary>
@@ -58,6 +62,8 @@ namespace Pulumi.Harness.Chaos.Outputs
         private GetExperimentTemplateSpecProbeResult(
             ImmutableArray<Outputs.GetExperimentTemplateSpecProbeConditionResult> conditions,
 
+            ImmutableArray<Outputs.GetExperimentTemplateSpecProbeConditionsV2Result> conditionsV2s,
+
             string duration,
 
             bool enableDataCollection,
@@ -77,6 +83,7 @@ namespace Pulumi.Harness.Chaos.Outputs
             int weightage)
         {
             Conditions = conditions;
+            ConditionsV2s = conditionsV2s;
             Duration = duration;
             EnableDataCollection = enableDataCollection;
             Identity = identity;

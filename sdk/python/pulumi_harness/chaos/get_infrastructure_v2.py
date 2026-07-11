@@ -28,10 +28,13 @@ class GetInfrastructureV2Result:
     """
     A collection of values returned by getInfrastructureV2.
     """
-    def __init__(__self__, annotation=None, containers=None, created_at=None, created_by=None, description=None, environment_id=None, id=None, identifier=None, identity=None, image_registries=None, infra_id=None, infra_scope=None, infra_type=None, insecure_skip_verify=None, is_ai_enabled=None, is_chaos_enabled=None, label=None, last_heartbeat=None, last_workflow_timestamp=None, mtls=None, name=None, namespace=None, no_of_schedules=None, no_of_workflows=None, node_selector=None, org_id=None, project_id=None, proxy=None, run_as_group=None, run_as_user=None, service_account=None, status=None, tags=None, tolerations=None, update_status=None, updated_at=None, updated_by=None, volume_mounts=None, volumes=None):
+    def __init__(__self__, annotation=None, autopilot_enabled=None, containers=None, created_at=None, created_by=None, description=None, discovery_agent_id=None, environment_id=None, id=None, identifier=None, identity=None, image_registries=None, infra_id=None, infra_scope=None, infra_type=None, insecure_skip_verify=None, is_ai_enabled=None, is_chaos_enabled=None, label=None, last_heartbeat=None, last_workflow_timestamp=None, mtls=None, name=None, namespace=None, no_of_schedules=None, no_of_workflows=None, node_selector=None, org_id=None, project_id=None, proxy=None, resources=None, run_as_group=None, run_as_user=None, service_account=None, status=None, tags=None, tolerations=None, update_status=None, updated_at=None, updated_by=None, volume_mounts=None, volumes=None):
         if annotation and not isinstance(annotation, dict):
             raise TypeError("Expected argument 'annotation' to be a dict")
         pulumi.set(__self__, "annotation", annotation)
+        if autopilot_enabled and not isinstance(autopilot_enabled, bool):
+            raise TypeError("Expected argument 'autopilot_enabled' to be a bool")
+        pulumi.set(__self__, "autopilot_enabled", autopilot_enabled)
         if containers and not isinstance(containers, str):
             raise TypeError("Expected argument 'containers' to be a str")
         pulumi.set(__self__, "containers", containers)
@@ -44,6 +47,9 @@ class GetInfrastructureV2Result:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if discovery_agent_id and not isinstance(discovery_agent_id, str):
+            raise TypeError("Expected argument 'discovery_agent_id' to be a str")
+        pulumi.set(__self__, "discovery_agent_id", discovery_agent_id)
         if environment_id and not isinstance(environment_id, str):
             raise TypeError("Expected argument 'environment_id' to be a str")
         pulumi.set(__self__, "environment_id", environment_id)
@@ -113,6 +119,9 @@ class GetInfrastructureV2Result:
         if proxy and not isinstance(proxy, dict):
             raise TypeError("Expected argument 'proxy' to be a dict")
         pulumi.set(__self__, "proxy", proxy)
+        if resources and not isinstance(resources, dict):
+            raise TypeError("Expected argument 'resources' to be a dict")
+        pulumi.set(__self__, "resources", resources)
         if run_as_group and not isinstance(run_as_group, int):
             raise TypeError("Expected argument 'run_as_group' to be a int")
         pulumi.set(__self__, "run_as_group", run_as_group)
@@ -153,6 +162,14 @@ class GetInfrastructureV2Result:
         return pulumi.get(self, "annotation")
 
     @_builtins.property
+    @pulumi.getter(name="autopilotEnabled")
+    def autopilot_enabled(self) -> _builtins.bool:
+        """
+        Whether autopilot mode is enabled for the infrastructure.
+        """
+        return pulumi.get(self, "autopilot_enabled")
+
+    @_builtins.property
     @pulumi.getter
     def containers(self) -> _builtins.str:
         """
@@ -183,6 +200,14 @@ class GetInfrastructureV2Result:
         Description of the infrastructure.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="discoveryAgentId")
+    def discovery_agent_id(self) -> _builtins.str:
+        """
+        ID of the discovery agent used by the infrastructure.
+        """
+        return pulumi.get(self, "discovery_agent_id")
 
     @_builtins.property
     @pulumi.getter(name="environmentId")
@@ -354,6 +379,14 @@ class GetInfrastructureV2Result:
         return pulumi.get(self, "proxy")
 
     @_builtins.property
+    @pulumi.getter
+    def resources(self) -> Optional['outputs.GetInfrastructureV2ResourcesResult']:
+        """
+        Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+        """
+        return pulumi.get(self, "resources")
+
+    @_builtins.property
     @pulumi.getter(name="runAsGroup")
     def run_as_group(self) -> _builtins.int:
         return pulumi.get(self, "run_as_group")
@@ -443,10 +476,12 @@ class AwaitableGetInfrastructureV2Result(GetInfrastructureV2Result):
             yield self
         return GetInfrastructureV2Result(
             annotation=self.annotation,
+            autopilot_enabled=self.autopilot_enabled,
             containers=self.containers,
             created_at=self.created_at,
             created_by=self.created_by,
             description=self.description,
+            discovery_agent_id=self.discovery_agent_id,
             environment_id=self.environment_id,
             id=self.id,
             identifier=self.identifier,
@@ -470,6 +505,7 @@ class AwaitableGetInfrastructureV2Result(GetInfrastructureV2Result):
             org_id=self.org_id,
             project_id=self.project_id,
             proxy=self.proxy,
+            resources=self.resources,
             run_as_group=self.run_as_group,
             run_as_user=self.run_as_user,
             service_account=self.service_account,
@@ -490,6 +526,7 @@ def get_infrastructure_v2(environment_id: Optional[_builtins.str] = None,
                           org_id: Optional[_builtins.str] = None,
                           project_id: Optional[_builtins.str] = None,
                           proxy: Optional[Union['GetInfrastructureV2ProxyArgs', 'GetInfrastructureV2ProxyArgsDict']] = None,
+                          resources: Optional[Union['GetInfrastructureV2ResourcesArgs', 'GetInfrastructureV2ResourcesArgsDict']] = None,
                           tolerations: Optional[Sequence[Union['GetInfrastructureV2TolerationArgs', 'GetInfrastructureV2TolerationArgsDict']]] = None,
                           volume_mounts: Optional[Sequence[Union['GetInfrastructureV2VolumeMountArgs', 'GetInfrastructureV2VolumeMountArgsDict']]] = None,
                           volumes: Optional[Sequence[Union['GetInfrastructureV2VolumeArgs', 'GetInfrastructureV2VolumeArgsDict']]] = None,
@@ -503,18 +540,14 @@ def get_infrastructure_v2(environment_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_harness as harness
 
-    # Data source to fetch a specific agent by name
-    by_name = harness.service.get_discovery_agent(name="example-agent",
-        org_identifier=org_identifier,
-        project_identifier=project_identifier,
-        environment_identifier=environment_identifier)
-    pulumi.export("agentDetailsByName", by_name)
-    # Data source to fetch a specific agent by identity
-    by_identity = harness.service.get_discovery_agent(identity="example-infra",
-        org_identifier=org_identifier,
-        project_identifier=project_identifier,
-        environment_identifier=environment_identifier)
-    pulumi.export("agentDetailsByIdentity", by_identity)
+    # Fetch an existing chaos infrastructure V2 by its identifiers
+    example = harness.chaos.get_infrastructure_v2(org_id="<org_id>",
+        project_id="<project_id>",
+        environment_id="<environment_id>",
+        infra_id="<infra_id>")
+    pulumi.export("chaosInfraResources", example.resources)
+    pulumi.export("chaosInfraAutopilotEnabled", example.autopilot_enabled)
+    pulumi.export("chaosInfraDiscoveryAgentId", example.discovery_agent_id)
     ```
 
 
@@ -525,6 +558,7 @@ def get_infrastructure_v2(environment_id: Optional[_builtins.str] = None,
     :param _builtins.str org_id: The ID of the organization.
     :param _builtins.str project_id: The ID of the project.
     :param Union['GetInfrastructureV2ProxyArgs', 'GetInfrastructureV2ProxyArgsDict'] proxy: Proxy configuration for the infrastructure.
+    :param Union['GetInfrastructureV2ResourcesArgs', 'GetInfrastructureV2ResourcesArgsDict'] resources: Compute resource requirements (requests and limits) for the chaos infrastructure pods.
     :param Sequence[Union['GetInfrastructureV2TolerationArgs', 'GetInfrastructureV2TolerationArgsDict']] tolerations: If specified, the pod's tolerations.
     :param Sequence[Union['GetInfrastructureV2VolumeMountArgs', 'GetInfrastructureV2VolumeMountArgsDict']] volume_mounts: Volume mounts for the container.
     :param Sequence[Union['GetInfrastructureV2VolumeArgs', 'GetInfrastructureV2VolumeArgsDict']] volumes: Volumes to be created in the infrastructure.
@@ -537,6 +571,7 @@ def get_infrastructure_v2(environment_id: Optional[_builtins.str] = None,
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
     __args__['proxy'] = proxy
+    __args__['resources'] = resources
     __args__['tolerations'] = tolerations
     __args__['volumeMounts'] = volume_mounts
     __args__['volumes'] = volumes
@@ -545,10 +580,12 @@ def get_infrastructure_v2(environment_id: Optional[_builtins.str] = None,
 
     return AwaitableGetInfrastructureV2Result(
         annotation=pulumi.get(__ret__, 'annotation'),
+        autopilot_enabled=pulumi.get(__ret__, 'autopilot_enabled'),
         containers=pulumi.get(__ret__, 'containers'),
         created_at=pulumi.get(__ret__, 'created_at'),
         created_by=pulumi.get(__ret__, 'created_by'),
         description=pulumi.get(__ret__, 'description'),
+        discovery_agent_id=pulumi.get(__ret__, 'discovery_agent_id'),
         environment_id=pulumi.get(__ret__, 'environment_id'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
@@ -572,6 +609,7 @@ def get_infrastructure_v2(environment_id: Optional[_builtins.str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         proxy=pulumi.get(__ret__, 'proxy'),
+        resources=pulumi.get(__ret__, 'resources'),
         run_as_group=pulumi.get(__ret__, 'run_as_group'),
         run_as_user=pulumi.get(__ret__, 'run_as_user'),
         service_account=pulumi.get(__ret__, 'service_account'),
@@ -590,6 +628,7 @@ def get_infrastructure_v2_output(environment_id: pulumi.Input[Optional[_builtins
                                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  proxy: pulumi.Input[Optional[Optional[Union['GetInfrastructureV2ProxyArgs', 'GetInfrastructureV2ProxyArgsDict']]]] = None,
+                                 resources: pulumi.Input[Optional[Optional[Union['GetInfrastructureV2ResourcesArgs', 'GetInfrastructureV2ResourcesArgsDict']]]] = None,
                                  tolerations: pulumi.Input[Optional[Optional[Sequence[Union['GetInfrastructureV2TolerationArgs', 'GetInfrastructureV2TolerationArgsDict']]]]] = None,
                                  volume_mounts: pulumi.Input[Optional[Optional[Sequence[Union['GetInfrastructureV2VolumeMountArgs', 'GetInfrastructureV2VolumeMountArgsDict']]]]] = None,
                                  volumes: pulumi.Input[Optional[Optional[Sequence[Union['GetInfrastructureV2VolumeArgs', 'GetInfrastructureV2VolumeArgsDict']]]]] = None,
@@ -603,18 +642,14 @@ def get_infrastructure_v2_output(environment_id: pulumi.Input[Optional[_builtins
     import pulumi
     import pulumi_harness as harness
 
-    # Data source to fetch a specific agent by name
-    by_name = harness.service.get_discovery_agent(name="example-agent",
-        org_identifier=org_identifier,
-        project_identifier=project_identifier,
-        environment_identifier=environment_identifier)
-    pulumi.export("agentDetailsByName", by_name)
-    # Data source to fetch a specific agent by identity
-    by_identity = harness.service.get_discovery_agent(identity="example-infra",
-        org_identifier=org_identifier,
-        project_identifier=project_identifier,
-        environment_identifier=environment_identifier)
-    pulumi.export("agentDetailsByIdentity", by_identity)
+    # Fetch an existing chaos infrastructure V2 by its identifiers
+    example = harness.chaos.get_infrastructure_v2(org_id="<org_id>",
+        project_id="<project_id>",
+        environment_id="<environment_id>",
+        infra_id="<infra_id>")
+    pulumi.export("chaosInfraResources", example.resources)
+    pulumi.export("chaosInfraAutopilotEnabled", example.autopilot_enabled)
+    pulumi.export("chaosInfraDiscoveryAgentId", example.discovery_agent_id)
     ```
 
 
@@ -625,6 +660,7 @@ def get_infrastructure_v2_output(environment_id: pulumi.Input[Optional[_builtins
     :param _builtins.str org_id: The ID of the organization.
     :param _builtins.str project_id: The ID of the project.
     :param Union['GetInfrastructureV2ProxyArgs', 'GetInfrastructureV2ProxyArgsDict'] proxy: Proxy configuration for the infrastructure.
+    :param Union['GetInfrastructureV2ResourcesArgs', 'GetInfrastructureV2ResourcesArgsDict'] resources: Compute resource requirements (requests and limits) for the chaos infrastructure pods.
     :param Sequence[Union['GetInfrastructureV2TolerationArgs', 'GetInfrastructureV2TolerationArgsDict']] tolerations: If specified, the pod's tolerations.
     :param Sequence[Union['GetInfrastructureV2VolumeMountArgs', 'GetInfrastructureV2VolumeMountArgsDict']] volume_mounts: Volume mounts for the container.
     :param Sequence[Union['GetInfrastructureV2VolumeArgs', 'GetInfrastructureV2VolumeArgsDict']] volumes: Volumes to be created in the infrastructure.
@@ -637,6 +673,7 @@ def get_infrastructure_v2_output(environment_id: pulumi.Input[Optional[_builtins
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
     __args__['proxy'] = proxy
+    __args__['resources'] = resources
     __args__['tolerations'] = tolerations
     __args__['volumeMounts'] = volume_mounts
     __args__['volumes'] = volumes
@@ -644,10 +681,12 @@ def get_infrastructure_v2_output(environment_id: pulumi.Input[Optional[_builtins
     __ret__ = pulumi.runtime.invoke_output('harness:chaos/getInfrastructureV2:getInfrastructureV2', __args__, opts=opts, typ=GetInfrastructureV2Result)
     return __ret__.apply(lambda __response__: GetInfrastructureV2Result(
         annotation=pulumi.get(__response__, 'annotation'),
+        autopilot_enabled=pulumi.get(__response__, 'autopilot_enabled'),
         containers=pulumi.get(__response__, 'containers'),
         created_at=pulumi.get(__response__, 'created_at'),
         created_by=pulumi.get(__response__, 'created_by'),
         description=pulumi.get(__response__, 'description'),
+        discovery_agent_id=pulumi.get(__response__, 'discovery_agent_id'),
         environment_id=pulumi.get(__response__, 'environment_id'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
@@ -671,6 +710,7 @@ def get_infrastructure_v2_output(environment_id: pulumi.Input[Optional[_builtins
         org_id=pulumi.get(__response__, 'org_id'),
         project_id=pulumi.get(__response__, 'project_id'),
         proxy=pulumi.get(__response__, 'proxy'),
+        resources=pulumi.get(__response__, 'resources'),
         run_as_group=pulumi.get(__response__, 'run_as_group'),
         run_as_user=pulumi.get(__response__, 'run_as_user'),
         service_account=pulumi.get(__response__, 'service_account'),

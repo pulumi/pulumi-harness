@@ -5,6 +5,7 @@ package com.pulumi.harness.chaos.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.chaos.outputs.ExperimentTemplateSpecActionConditionsV2;
 import com.pulumi.harness.chaos.outputs.ExperimentTemplateSpecActionValue;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -16,6 +17,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ExperimentTemplateSpecAction {
+    /**
+     * @return Execution conditions gating whether this action runs, evaluated as boolean values combined by the operator.
+     * 
+     */
+    private @Nullable ExperimentTemplateSpecActionConditionsV2 conditionsV2;
     /**
      * @return Whether to continue on completion
      * 
@@ -53,6 +59,13 @@ public final class ExperimentTemplateSpecAction {
     private @Nullable List<ExperimentTemplateSpecActionValue> values;
 
     private ExperimentTemplateSpecAction() {}
+    /**
+     * @return Execution conditions gating whether this action runs, evaluated as boolean values combined by the operator.
+     * 
+     */
+    public Optional<ExperimentTemplateSpecActionConditionsV2> conditionsV2() {
+        return Optional.ofNullable(this.conditionsV2);
+    }
     /**
      * @return Whether to continue on completion
      * 
@@ -112,6 +125,7 @@ public final class ExperimentTemplateSpecAction {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ExperimentTemplateSpecActionConditionsV2 conditionsV2;
         private @Nullable Boolean continueOnCompletion;
         private String identity;
         private @Nullable String infraId;
@@ -122,6 +136,7 @@ public final class ExperimentTemplateSpecAction {
         public Builder() {}
         public Builder(ExperimentTemplateSpecAction defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.conditionsV2 = defaults.conditionsV2;
     	      this.continueOnCompletion = defaults.continueOnCompletion;
     	      this.identity = defaults.identity;
     	      this.infraId = defaults.infraId;
@@ -131,6 +146,12 @@ public final class ExperimentTemplateSpecAction {
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
+        public Builder conditionsV2(@Nullable ExperimentTemplateSpecActionConditionsV2 conditionsV2) {
+
+            this.conditionsV2 = conditionsV2;
+            return this;
+        }
         @CustomType.Setter
         public Builder continueOnCompletion(@Nullable Boolean continueOnCompletion) {
 
@@ -182,6 +203,7 @@ public final class ExperimentTemplateSpecAction {
         }
         public ExperimentTemplateSpecAction build() {
             final var _resultValue = new ExperimentTemplateSpecAction();
+            _resultValue.conditionsV2 = conditionsV2;
             _resultValue.continueOnCompletion = continueOnCompletion;
             _resultValue.identity = identity;
             _resultValue.infraId = infraId;

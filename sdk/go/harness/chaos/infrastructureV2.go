@@ -12,7 +12,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Resource for managing Harness Chaos Infrastructure V2.
+// Resource for managing Harness Chaos Infrastructure V2 (the chaos execution infrastructure installed into a Kubernetes cluster).
+//
+// After `pulumi up`, use the computed `installCommand` output to deploy the infrastructure manifest into your target cluster - creating this resource registers the infrastructure with Harness but does not itself install anything into the cluster.
+//
+// ## Notes
+//
+// - `infraType`: use `KubernetesV2` (recommended); `Kubernetes` is the legacy V1 type.
+// - `infraScope` (`NAMESPACE` or `CLUSTER`) is immutable - changing it forces recreation.
+// - `containers` is a raw JSON string used to override container specs; leave unset unless you need advanced overrides.
+// - Some fields (`volumes`, `volumeMounts`, `env`, `imageRegistry`, `label`, `annotation`, `containers`, `insecureSkipVerify`) are applied via an automatic update immediately after creation; this is transparent and should not produce drift.
+// - `resources` (CPU/memory `requests` and `limits`) and `autopilotEnabled` can be set both at creation and on update. Resource values are standard Kubernetes quantity strings (e.g. `250m`, `1`, `256Mi`, `1Gi`).
+// - `discoveryAgentId` is applied at registration (create) time only; it is not sent on update, so changing it on an existing resource has no effect unless the resource is recreated.
 //
 // ## Import
 //
@@ -30,6 +41,8 @@ type InfrastructureV2 struct {
 	AiEnabled pulumi.BoolPtrOutput `pulumi:"aiEnabled"`
 	// Annotations to apply to the infrastructure pods.
 	Annotation pulumi.StringMapOutput `pulumi:"annotation"`
+	// Enable autopilot mode for the infrastructure.
+	AutopilotEnabled pulumi.BoolPtrOutput `pulumi:"autopilotEnabled"`
 	// Container configurations.
 	Containers pulumi.StringPtrOutput `pulumi:"containers"`
 	// Correlation ID for the request.
@@ -80,6 +93,8 @@ type InfrastructureV2 struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Proxy configuration for the infrastructure.
 	Proxy InfrastructureV2ProxyPtrOutput `pulumi:"proxy"`
+	// Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+	Resources InfrastructureV2ResourcesPtrOutput `pulumi:"resources"`
 	// Group ID to run the infrastructure as.
 	RunAsGroup pulumi.IntPtrOutput `pulumi:"runAsGroup"`
 	// User ID to run the infrastructure as.
@@ -146,6 +161,8 @@ type infrastructureV2State struct {
 	AiEnabled *bool `pulumi:"aiEnabled"`
 	// Annotations to apply to the infrastructure pods.
 	Annotation map[string]string `pulumi:"annotation"`
+	// Enable autopilot mode for the infrastructure.
+	AutopilotEnabled *bool `pulumi:"autopilotEnabled"`
 	// Container configurations.
 	Containers *string `pulumi:"containers"`
 	// Correlation ID for the request.
@@ -196,6 +213,8 @@ type infrastructureV2State struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Proxy configuration for the infrastructure.
 	Proxy *InfrastructureV2Proxy `pulumi:"proxy"`
+	// Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+	Resources *InfrastructureV2Resources `pulumi:"resources"`
 	// Group ID to run the infrastructure as.
 	RunAsGroup *int `pulumi:"runAsGroup"`
 	// User ID to run the infrastructure as.
@@ -221,6 +240,8 @@ type InfrastructureV2State struct {
 	AiEnabled pulumi.BoolPtrInput
 	// Annotations to apply to the infrastructure pods.
 	Annotation pulumi.StringMapInput
+	// Enable autopilot mode for the infrastructure.
+	AutopilotEnabled pulumi.BoolPtrInput
 	// Container configurations.
 	Containers pulumi.StringPtrInput
 	// Correlation ID for the request.
@@ -271,6 +292,8 @@ type InfrastructureV2State struct {
 	ProjectId pulumi.StringPtrInput
 	// Proxy configuration for the infrastructure.
 	Proxy InfrastructureV2ProxyPtrInput
+	// Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+	Resources InfrastructureV2ResourcesPtrInput
 	// Group ID to run the infrastructure as.
 	RunAsGroup pulumi.IntPtrInput
 	// User ID to run the infrastructure as.
@@ -300,6 +323,8 @@ type infrastructureV2Args struct {
 	AiEnabled *bool `pulumi:"aiEnabled"`
 	// Annotations to apply to the infrastructure pods.
 	Annotation map[string]string `pulumi:"annotation"`
+	// Enable autopilot mode for the infrastructure.
+	AutopilotEnabled *bool `pulumi:"autopilotEnabled"`
 	// Container configurations.
 	Containers *string `pulumi:"containers"`
 	// Correlation ID for the request.
@@ -338,6 +363,8 @@ type infrastructureV2Args struct {
 	ProjectId string `pulumi:"projectId"`
 	// Proxy configuration for the infrastructure.
 	Proxy *InfrastructureV2Proxy `pulumi:"proxy"`
+	// Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+	Resources *InfrastructureV2Resources `pulumi:"resources"`
 	// Group ID to run the infrastructure as.
 	RunAsGroup *int `pulumi:"runAsGroup"`
 	// User ID to run the infrastructure as.
@@ -360,6 +387,8 @@ type InfrastructureV2Args struct {
 	AiEnabled pulumi.BoolPtrInput
 	// Annotations to apply to the infrastructure pods.
 	Annotation pulumi.StringMapInput
+	// Enable autopilot mode for the infrastructure.
+	AutopilotEnabled pulumi.BoolPtrInput
 	// Container configurations.
 	Containers pulumi.StringPtrInput
 	// Correlation ID for the request.
@@ -398,6 +427,8 @@ type InfrastructureV2Args struct {
 	ProjectId pulumi.StringInput
 	// Proxy configuration for the infrastructure.
 	Proxy InfrastructureV2ProxyPtrInput
+	// Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+	Resources InfrastructureV2ResourcesPtrInput
 	// Group ID to run the infrastructure as.
 	RunAsGroup pulumi.IntPtrInput
 	// User ID to run the infrastructure as.
@@ -509,6 +540,11 @@ func (o InfrastructureV2Output) AiEnabled() pulumi.BoolPtrOutput {
 // Annotations to apply to the infrastructure pods.
 func (o InfrastructureV2Output) Annotation() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InfrastructureV2) pulumi.StringMapOutput { return v.Annotation }).(pulumi.StringMapOutput)
+}
+
+// Enable autopilot mode for the infrastructure.
+func (o InfrastructureV2Output) AutopilotEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InfrastructureV2) pulumi.BoolPtrOutput { return v.AutopilotEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Container configurations.
@@ -634,6 +670,11 @@ func (o InfrastructureV2Output) ProjectId() pulumi.StringOutput {
 // Proxy configuration for the infrastructure.
 func (o InfrastructureV2Output) Proxy() InfrastructureV2ProxyPtrOutput {
 	return o.ApplyT(func(v *InfrastructureV2) InfrastructureV2ProxyPtrOutput { return v.Proxy }).(InfrastructureV2ProxyPtrOutput)
+}
+
+// Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+func (o InfrastructureV2Output) Resources() InfrastructureV2ResourcesPtrOutput {
+	return o.ApplyT(func(v *InfrastructureV2) InfrastructureV2ResourcesPtrOutput { return v.Resources }).(InfrastructureV2ResourcesPtrOutput)
 }
 
 // Group ID to run the infrastructure as.

@@ -6,6 +6,7 @@ package com.pulumi.harness.chaos.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecFaultConditionsV2Args;
 import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecFaultValueArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -32,6 +33,21 @@ public final class ExperimentTemplateSpecFaultArgs extends com.pulumi.resources.
      */
     public Optional<Output<Boolean>> authEnabled() {
         return Optional.ofNullable(this.authEnabled);
+    }
+
+    /**
+     * Execution conditions gating whether this fault runs, evaluated as boolean values combined by the operator.
+     * 
+     */
+    @Import(name="conditionsV2")
+    private @Nullable Output<ExperimentTemplateSpecFaultConditionsV2Args> conditionsV2;
+
+    /**
+     * @return Execution conditions gating whether this fault runs, evaluated as boolean values combined by the operator.
+     * 
+     */
+    public Optional<Output<ExperimentTemplateSpecFaultConditionsV2Args>> conditionsV2() {
+        return Optional.ofNullable(this.conditionsV2);
     }
 
     /**
@@ -128,6 +144,7 @@ public final class ExperimentTemplateSpecFaultArgs extends com.pulumi.resources.
 
     private ExperimentTemplateSpecFaultArgs(ExperimentTemplateSpecFaultArgs $) {
         this.authEnabled = $.authEnabled;
+        this.conditionsV2 = $.conditionsV2;
         this.identity = $.identity;
         this.infraId = $.infraId;
         this.isEnterprise = $.isEnterprise;
@@ -173,6 +190,27 @@ public final class ExperimentTemplateSpecFaultArgs extends com.pulumi.resources.
          */
         public Builder authEnabled(Boolean authEnabled) {
             return authEnabled(Output.of(authEnabled));
+        }
+
+        /**
+         * @param conditionsV2 Execution conditions gating whether this fault runs, evaluated as boolean values combined by the operator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditionsV2(@Nullable Output<ExperimentTemplateSpecFaultConditionsV2Args> conditionsV2) {
+            $.conditionsV2 = conditionsV2;
+            return this;
+        }
+
+        /**
+         * @param conditionsV2 Execution conditions gating whether this fault runs, evaluated as boolean values combined by the operator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditionsV2(ExperimentTemplateSpecFaultConditionsV2Args conditionsV2) {
+            return conditionsV2(Output.of(conditionsV2));
         }
 
         /**

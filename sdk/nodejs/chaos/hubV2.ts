@@ -7,6 +7,14 @@ import * as utilities from "../utilities";
 /**
  * Resource for managing Harness Chaos Hub V2.
  *
+ * ## Git-backed hubs (not supported yet)
+ *
+ * The `connectorRef`, `repoBranch`, and `repoName` fields describe a Git-backed chaos hub. **Git-backed Chaos Hub V2 is not supported yet** - these fields are accepted by the schema but have no functional effect today. Create hubs without them; they are retained only for forward compatibility and may be deprecated.
+ *
+ * ## Updatable vs. immutable fields
+ *
+ * Only `name`, `description`, and `tags` can be updated in place. Changing any of `identity`, `orgId`, `projectId`, `connectorRef`, `repoBranch`, or `repoName` forces recreation, because the update API does not accept those fields.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -143,7 +151,7 @@ export class HubV2 extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly connectorId: pulumi.Output<string>;
     /**
-     * Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+     * Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
      */
     declare public readonly connectorRef: pulumi.Output<string | undefined>;
     /**
@@ -203,11 +211,11 @@ export class HubV2 extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
-     * Git repository branch.
+     * Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
      */
     declare public readonly repoBranch: pulumi.Output<string | undefined>;
     /**
-     * Name of the Git repository (required for account-level connectors).
+     * Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
      */
     declare public readonly repoName: pulumi.Output<string | undefined>;
     /**
@@ -316,7 +324,7 @@ export interface HubV2State {
      */
     connectorId?: pulumi.Input<string | undefined>;
     /**
-     * Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+     * Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
      */
     connectorRef?: pulumi.Input<string | undefined>;
     /**
@@ -376,11 +384,11 @@ export interface HubV2State {
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
-     * Git repository branch.
+     * Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
      */
     repoBranch?: pulumi.Input<string | undefined>;
     /**
-     * Name of the Git repository (required for account-level connectors).
+     * Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
      */
     repoName?: pulumi.Input<string | undefined>;
     /**
@@ -406,7 +414,7 @@ export interface HubV2State {
  */
 export interface HubV2Args {
     /**
-     * Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+     * Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
      */
     connectorRef?: pulumi.Input<string | undefined>;
     /**
@@ -430,11 +438,11 @@ export interface HubV2Args {
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
-     * Git repository branch.
+     * Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
      */
     repoBranch?: pulumi.Input<string | undefined>;
     /**
-     * Name of the Git repository (required for account-level connectors).
+     * Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
      */
     repoName?: pulumi.Input<string | undefined>;
     /**

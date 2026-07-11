@@ -8,6 +8,7 @@ import com.pulumi.harness.platform.outputs.GitOpsClusterRequestCluster;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,6 +20,11 @@ public final class GitOpsClusterRequest {
      * 
      */
     private @Nullable List<GitOpsClusterRequestCluster> clusters;
+    /**
+     * @return Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. &#34;username&#34;, &#34;password&#34;, &#34;bearerToken&#34;, &#34;certData&#34;, &#34;keyData&#34;, &#34;caData&#34;) and values are Harness expressions referencing secrets (e.g. &#34;&lt;+secrets.getValue(\&#34;account.my_secret\&#34;)&gt;&#34;).
+     * 
+     */
+    private @Nullable Map<String,String> secretExpressions;
     /**
      * @return Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
      * 
@@ -42,6 +48,13 @@ public final class GitOpsClusterRequest {
      */
     public List<GitOpsClusterRequestCluster> clusters() {
         return this.clusters == null ? List.of() : this.clusters;
+    }
+    /**
+     * @return Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. &#34;username&#34;, &#34;password&#34;, &#34;bearerToken&#34;, &#34;certData&#34;, &#34;keyData&#34;, &#34;caData&#34;) and values are Harness expressions referencing secrets (e.g. &#34;&lt;+secrets.getValue(\&#34;account.my_secret\&#34;)&gt;&#34;).
+     * 
+     */
+    public Map<String,String> secretExpressions() {
+        return this.secretExpressions == null ? Map.of() : this.secretExpressions;
     }
     /**
      * @return Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
@@ -75,6 +88,7 @@ public final class GitOpsClusterRequest {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GitOpsClusterRequestCluster> clusters;
+        private @Nullable Map<String,String> secretExpressions;
         private @Nullable List<String> tags;
         private @Nullable List<String> updatedFields;
         private @Nullable Boolean upsert;
@@ -82,6 +96,7 @@ public final class GitOpsClusterRequest {
         public Builder(GitOpsClusterRequest defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusters = defaults.clusters;
+    	      this.secretExpressions = defaults.secretExpressions;
     	      this.tags = defaults.tags;
     	      this.updatedFields = defaults.updatedFields;
     	      this.upsert = defaults.upsert;
@@ -95,6 +110,12 @@ public final class GitOpsClusterRequest {
         }
         public Builder clusters(GitOpsClusterRequestCluster... clusters) {
             return clusters(List.of(clusters));
+        }
+        @CustomType.Setter
+        public Builder secretExpressions(@Nullable Map<String,String> secretExpressions) {
+
+            this.secretExpressions = secretExpressions;
+            return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
@@ -123,6 +144,7 @@ public final class GitOpsClusterRequest {
         public GitOpsClusterRequest build() {
             final var _resultValue = new GitOpsClusterRequest();
             _resultValue.clusters = clusters;
+            _resultValue.secretExpressions = secretExpressions;
             _resultValue.tags = tags;
             _resultValue.updatedFields = updatedFields;
             _resultValue.upsert = upsert;

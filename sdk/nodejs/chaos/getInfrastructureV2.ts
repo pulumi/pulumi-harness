@@ -15,22 +15,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * // Data source to fetch a specific agent by name
- * const byName = harness.service.getDiscoveryAgent({
- *     name: "example-agent",
- *     orgIdentifier: orgIdentifier,
- *     projectIdentifier: projectIdentifier,
- *     environmentIdentifier: environmentIdentifier,
+ * // Fetch an existing chaos infrastructure V2 by its identifiers
+ * const example = harness.chaos.getInfrastructureV2({
+ *     orgId: "<org_id>",
+ *     projectId: "<project_id>",
+ *     environmentId: "<environment_id>",
+ *     infraId: "<infra_id>",
  * });
- * export const agentDetailsByName = byName;
- * // Data source to fetch a specific agent by identity
- * const byIdentity = harness.service.getDiscoveryAgent({
- *     identity: "example-infra",
- *     orgIdentifier: orgIdentifier,
- *     projectIdentifier: projectIdentifier,
- *     environmentIdentifier: environmentIdentifier,
- * });
- * export const agentDetailsByIdentity = byIdentity;
+ * export const chaosInfraResources = example.then(example => example.resources);
+ * export const chaosInfraAutopilotEnabled = example.then(example => example.autopilotEnabled);
+ * export const chaosInfraDiscoveryAgentId = example.then(example => example.discoveryAgentId);
  * ```
  */
 export function getInfrastructureV2(args: GetInfrastructureV2Args, opts?: pulumi.InvokeOptions): Promise<GetInfrastructureV2Result> {
@@ -43,6 +37,7 @@ export function getInfrastructureV2(args: GetInfrastructureV2Args, opts?: pulumi
         "orgId": args.orgId,
         "projectId": args.projectId,
         "proxy": args.proxy,
+        "resources": args.resources,
         "tolerations": args.tolerations,
         "volumeMounts": args.volumeMounts,
         "volumes": args.volumes,
@@ -82,6 +77,10 @@ export interface GetInfrastructureV2Args {
      */
     proxy?: inputs.chaos.GetInfrastructureV2Proxy;
     /**
+     * Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+     */
+    resources?: inputs.chaos.GetInfrastructureV2Resources;
+    /**
      * If specified, the pod's tolerations.
      */
     tolerations?: inputs.chaos.GetInfrastructureV2Toleration[];
@@ -101,6 +100,10 @@ export interface GetInfrastructureV2Args {
 export interface GetInfrastructureV2Result {
     readonly annotation: {[key: string]: string};
     /**
+     * Whether autopilot mode is enabled for the infrastructure.
+     */
+    readonly autopilotEnabled: boolean;
+    /**
      * List of containers in the infrastructure.
      */
     readonly containers: string;
@@ -116,6 +119,10 @@ export interface GetInfrastructureV2Result {
      * Description of the infrastructure.
      */
     readonly description: string;
+    /**
+     * ID of the discovery agent used by the infrastructure.
+     */
+    readonly discoveryAgentId: string;
     /**
      * The ID of the environment.
      */
@@ -193,6 +200,10 @@ export interface GetInfrastructureV2Result {
      * Proxy configuration for the infrastructure.
      */
     readonly proxy?: outputs.chaos.GetInfrastructureV2Proxy;
+    /**
+     * Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+     */
+    readonly resources?: outputs.chaos.GetInfrastructureV2Resources;
     readonly runAsGroup: number;
     readonly runAsUser: number;
     /**
@@ -241,22 +252,16 @@ export interface GetInfrastructureV2Result {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * // Data source to fetch a specific agent by name
- * const byName = harness.service.getDiscoveryAgent({
- *     name: "example-agent",
- *     orgIdentifier: orgIdentifier,
- *     projectIdentifier: projectIdentifier,
- *     environmentIdentifier: environmentIdentifier,
+ * // Fetch an existing chaos infrastructure V2 by its identifiers
+ * const example = harness.chaos.getInfrastructureV2({
+ *     orgId: "<org_id>",
+ *     projectId: "<project_id>",
+ *     environmentId: "<environment_id>",
+ *     infraId: "<infra_id>",
  * });
- * export const agentDetailsByName = byName;
- * // Data source to fetch a specific agent by identity
- * const byIdentity = harness.service.getDiscoveryAgent({
- *     identity: "example-infra",
- *     orgIdentifier: orgIdentifier,
- *     projectIdentifier: projectIdentifier,
- *     environmentIdentifier: environmentIdentifier,
- * });
- * export const agentDetailsByIdentity = byIdentity;
+ * export const chaosInfraResources = example.then(example => example.resources);
+ * export const chaosInfraAutopilotEnabled = example.then(example => example.autopilotEnabled);
+ * export const chaosInfraDiscoveryAgentId = example.then(example => example.discoveryAgentId);
  * ```
  */
 export function getInfrastructureV2Output(args: GetInfrastructureV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInfrastructureV2Result> {
@@ -269,6 +274,7 @@ export function getInfrastructureV2Output(args: GetInfrastructureV2OutputArgs, o
         "orgId": args.orgId,
         "projectId": args.projectId,
         "proxy": args.proxy,
+        "resources": args.resources,
         "tolerations": args.tolerations,
         "volumeMounts": args.volumeMounts,
         "volumes": args.volumes,
@@ -307,6 +313,10 @@ export interface GetInfrastructureV2OutputArgs {
      * Proxy configuration for the infrastructure.
      */
     proxy?: pulumi.Input<inputs.chaos.GetInfrastructureV2ProxyArgs | undefined>;
+    /**
+     * Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+     */
+    resources?: pulumi.Input<inputs.chaos.GetInfrastructureV2ResourcesArgs | undefined>;
     /**
      * If specified, the pod's tolerations.
      */

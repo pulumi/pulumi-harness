@@ -9,6 +9,19 @@ import * as utilities from "../utilities";
 /**
  * Resource for managing Harness Chaos Action Templates. Action templates define reusable actions that can be used in chaos experiments.
  *
+ * ## Supported action types
+ *
+ * The `type` attribute accepts the following values, each configured via its matching block:
+ *
+ * - `delay` (`delayAction`) - wait for a configured duration.
+ * - `customScript` (`customScriptAction`) - run a custom script.
+ * - `container` (`containerAction`) - run a container.
+ *
+ * ## Not currently supported
+ *
+ * - Action types other than `delay`, `customScript`, and `container`.
+ * - Runtime input (`<+input>`) is not supported for container `resources` limits/requests due to API validation; use concrete values or template `variables`.
+ *
  * ## Example Usage
  *
  * ```typescript

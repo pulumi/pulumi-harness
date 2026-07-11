@@ -6,6 +6,7 @@ package com.pulumi.harness.chaos.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.chaos.outputs.ExperimentTemplateSpecProbeCondition;
+import com.pulumi.harness.chaos.outputs.ExperimentTemplateSpecProbeConditionsV2;
 import com.pulumi.harness.chaos.outputs.ExperimentTemplateSpecProbeValue;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -18,10 +19,19 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ExperimentTemplateSpecProbe {
     /**
-     * @return Probe execution conditions
+     * @return Deprecated: no longer part of the experiment template API; use conditionsV2 instead. This field is ignored.
+     * 
+     * @deprecated
+     * conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
      * 
      */
+    @Deprecated /* conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead. */
     private @Nullable List<ExperimentTemplateSpecProbeCondition> conditions;
+    /**
+     * @return Execution conditions gating whether this probe runs, evaluated as boolean values combined by the operator.
+     * 
+     */
+    private @Nullable ExperimentTemplateSpecProbeConditionsV2 conditionsV2;
     /**
      * @return Probe duration
      * 
@@ -70,11 +80,22 @@ public final class ExperimentTemplateSpecProbe {
 
     private ExperimentTemplateSpecProbe() {}
     /**
-     * @return Probe execution conditions
+     * @return Deprecated: no longer part of the experiment template API; use conditionsV2 instead. This field is ignored.
+     * 
+     * @deprecated
+     * conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
      * 
      */
+    @Deprecated /* conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead. */
     public List<ExperimentTemplateSpecProbeCondition> conditions() {
         return this.conditions == null ? List.of() : this.conditions;
+    }
+    /**
+     * @return Execution conditions gating whether this probe runs, evaluated as boolean values combined by the operator.
+     * 
+     */
+    public Optional<ExperimentTemplateSpecProbeConditionsV2> conditionsV2() {
+        return Optional.ofNullable(this.conditionsV2);
     }
     /**
      * @return Probe duration
@@ -150,6 +171,7 @@ public final class ExperimentTemplateSpecProbe {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ExperimentTemplateSpecProbeCondition> conditions;
+        private @Nullable ExperimentTemplateSpecProbeConditionsV2 conditionsV2;
         private @Nullable String duration;
         private @Nullable Boolean enableDataCollection;
         private String identity;
@@ -163,6 +185,7 @@ public final class ExperimentTemplateSpecProbe {
         public Builder(ExperimentTemplateSpecProbe defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.conditions = defaults.conditions;
+    	      this.conditionsV2 = defaults.conditionsV2;
     	      this.duration = defaults.duration;
     	      this.enableDataCollection = defaults.enableDataCollection;
     	      this.identity = defaults.identity;
@@ -182,6 +205,12 @@ public final class ExperimentTemplateSpecProbe {
         }
         public Builder conditions(ExperimentTemplateSpecProbeCondition... conditions) {
             return conditions(List.of(conditions));
+        }
+        @CustomType.Setter
+        public Builder conditionsV2(@Nullable ExperimentTemplateSpecProbeConditionsV2 conditionsV2) {
+
+            this.conditionsV2 = conditionsV2;
+            return this;
         }
         @CustomType.Setter
         public Builder duration(@Nullable String duration) {
@@ -247,6 +276,7 @@ public final class ExperimentTemplateSpecProbe {
         public ExperimentTemplateSpecProbe build() {
             final var _resultValue = new ExperimentTemplateSpecProbe();
             _resultValue.conditions = conditions;
+            _resultValue.conditionsV2 = conditionsV2;
             _resultValue.duration = duration;
             _resultValue.enableDataCollection = enableDataCollection;
             _resultValue.identity = identity;

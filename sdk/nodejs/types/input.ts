@@ -2491,6 +2491,10 @@ export namespace chaos {
 
     export interface ExperimentTemplateSpecAction {
         /**
+         * Execution conditions gating whether this action runs, evaluated as boolean values combined by the operator.
+         */
+        conditionsV2?: pulumi.Input<inputs.chaos.ExperimentTemplateSpecActionConditionsV2 | undefined>;
+        /**
          * Whether to continue on completion
          */
         continueOnCompletion?: pulumi.Input<boolean | undefined>;
@@ -2520,6 +2524,17 @@ export namespace chaos {
         values?: pulumi.Input<pulumi.Input<inputs.chaos.ExperimentTemplateSpecActionValue>[] | undefined>;
     }
 
+    export interface ExperimentTemplateSpecActionConditionsV2 {
+        /**
+         * Logical operator combining values: AND (all true) or OR (any true).
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * Boolean-parseable condition values (supports runtime input: <+input>).
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface ExperimentTemplateSpecActionValue {
         /**
          * Variable name
@@ -2536,6 +2551,10 @@ export namespace chaos {
          * Whether authentication is enabled
          */
         authEnabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * Execution conditions gating whether this fault runs, evaluated as boolean values combined by the operator.
+         */
+        conditionsV2?: pulumi.Input<inputs.chaos.ExperimentTemplateSpecFaultConditionsV2 | undefined>;
         /**
          * Fault template identity
          */
@@ -2562,6 +2581,17 @@ export namespace chaos {
         values?: pulumi.Input<pulumi.Input<inputs.chaos.ExperimentTemplateSpecFaultValue>[] | undefined>;
     }
 
+    export interface ExperimentTemplateSpecFaultConditionsV2 {
+        /**
+         * Logical operator combining values: AND (all true) or OR (any true).
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * Boolean-parseable condition values (supports runtime input: <+input>).
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface ExperimentTemplateSpecFaultValue {
         /**
          * Variable name
@@ -2575,9 +2605,15 @@ export namespace chaos {
 
     export interface ExperimentTemplateSpecProbe {
         /**
-         * Probe execution conditions
+         * Deprecated: no longer part of the experiment template API; use conditionsV2 instead. This field is ignored.
+         *
+         * @deprecated conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
          */
         conditions?: pulumi.Input<pulumi.Input<inputs.chaos.ExperimentTemplateSpecProbeCondition>[] | undefined>;
+        /**
+         * Execution conditions gating whether this probe runs, evaluated as boolean values combined by the operator.
+         */
+        conditionsV2?: pulumi.Input<inputs.chaos.ExperimentTemplateSpecProbeConditionsV2 | undefined>;
         /**
          * Probe duration
          */
@@ -2620,7 +2656,18 @@ export namespace chaos {
         /**
          * When to execute the probe (onChaosStart, duringChaos, afterChaos)
          */
-        executeUpon: pulumi.Input<string>;
+        executeUpon?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ExperimentTemplateSpecProbeConditionsV2 {
+        /**
+         * Logical operator combining values: AND (all true) or OR (any true).
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * Boolean-parseable condition values (supports runtime input: <+input>).
+         */
+        values: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ExperimentTemplateSpecProbeValue {
@@ -2756,7 +2803,7 @@ export namespace chaos {
 
     export interface FaultTemplateSpecChaos {
         /**
-         * Authentication configuration
+         * Authentication configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault authentication in the Harness UI/API instead.
          */
         auth?: pulumi.Input<inputs.chaos.FaultTemplateSpecChaosAuth | undefined>;
         /**
@@ -2776,7 +2823,7 @@ export namespace chaos {
          */
         statusCheckTimeouts?: pulumi.Input<inputs.chaos.FaultTemplateSpecChaosStatusCheckTimeouts | undefined>;
         /**
-         * TLS configuration
+         * TLS configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault TLS in the Harness UI/API instead.
          */
         tls?: pulumi.Input<inputs.chaos.FaultTemplateSpecChaosTls | undefined>;
     }
@@ -4095,6 +4142,72 @@ export namespace chaos {
         url: pulumi.Input<string>;
     }
 
+    export interface GetInfrastructureV2Resources {
+        /**
+         * Maximum compute resources allowed for the infrastructure pods.
+         */
+        limits?: inputs.chaos.GetInfrastructureV2ResourcesLimits;
+        /**
+         * Minimum compute resources requested for the infrastructure pods.
+         */
+        requests?: inputs.chaos.GetInfrastructureV2ResourcesRequests;
+    }
+
+    export interface GetInfrastructureV2ResourcesArgs {
+        /**
+         * Maximum compute resources allowed for the infrastructure pods.
+         */
+        limits?: pulumi.Input<inputs.chaos.GetInfrastructureV2ResourcesLimitsArgs | undefined>;
+        /**
+         * Minimum compute resources requested for the infrastructure pods.
+         */
+        requests?: pulumi.Input<inputs.chaos.GetInfrastructureV2ResourcesRequestsArgs | undefined>;
+    }
+
+    export interface GetInfrastructureV2ResourcesLimits {
+        /**
+         * CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+         */
+        cpu?: string;
+        /**
+         * Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+         */
+        memory?: string;
+    }
+
+    export interface GetInfrastructureV2ResourcesLimitsArgs {
+        /**
+         * CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+         */
+        cpu?: pulumi.Input<string | undefined>;
+        /**
+         * Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+         */
+        memory?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GetInfrastructureV2ResourcesRequests {
+        /**
+         * CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+         */
+        cpu?: string;
+        /**
+         * Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+         */
+        memory?: string;
+    }
+
+    export interface GetInfrastructureV2ResourcesRequestsArgs {
+        /**
+         * CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+         */
+        cpu?: pulumi.Input<string | undefined>;
+        /**
+         * Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+         */
+        memory?: pulumi.Input<string | undefined>;
+    }
+
     export interface GetInfrastructureV2Toleration {
         /**
          * Effect indicates the taint effect to match. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.
@@ -4215,6 +4328,968 @@ export namespace chaos {
          * Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to sub*path but environment variable references $(VAR*NAME) are expanded using the container's environment. Mutually exclusive with sub_path.
          */
         subPathExpr?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GetProbeTemplateApmProbe {
+        /**
+         * APM provider type. Valid values: Prometheus, AppDynamics, SplunkObservability, Dynatrace, NewRelic, Datadog, GCPCloudMonitoring.
+         */
+        apmType: string;
+        /**
+         * AppDynamics-specific inputs. Required when apm*type is 'AppDynamics'.
+         */
+        appDynamicsInputs?: inputs.chaos.GetProbeTemplateApmProbeAppDynamicsInputs;
+        /**
+         * Comparator for APM metric validation.
+         */
+        comparator?: inputs.chaos.GetProbeTemplateApmProbeComparator;
+        /**
+         * Datadog-specific inputs. Required when apm*type is 'Datadog'.
+         */
+        datadogInputs?: inputs.chaos.GetProbeTemplateApmProbeDatadogInputs;
+        /**
+         * Dynatrace-specific inputs. Required when apm*type is 'Dynatrace'.
+         */
+        dynatraceInputs?: inputs.chaos.GetProbeTemplateApmProbeDynatraceInputs;
+        /**
+         * GCP Cloud Monitoring-specific inputs. Required when apm*type is 'GCPCloudMonitoring'.
+         */
+        gcpCloudMonitoringInputs?: inputs.chaos.GetProbeTemplateApmProbeGcpCloudMonitoringInputs;
+        /**
+         * NewRelic-specific inputs. Required when apm*type is 'NewRelic'.
+         */
+        newRelicInputs?: inputs.chaos.GetProbeTemplateApmProbeNewRelicInputs;
+        /**
+         * Prometheus-specific inputs. Required when apm*type is 'Prometheus'.
+         */
+        prometheusInputs?: inputs.chaos.GetProbeTemplateApmProbePrometheusInputs;
+        /**
+         * SplunkObservability-specific inputs. Required when apm*type is 'SplunkObservability'.
+         */
+        splunkObservabilityInputs?: inputs.chaos.GetProbeTemplateApmProbeSplunkObservabilityInputs;
+    }
+
+    export interface GetProbeTemplateApmProbeArgs {
+        /**
+         * APM provider type. Valid values: Prometheus, AppDynamics, SplunkObservability, Dynatrace, NewRelic, Datadog, GCPCloudMonitoring.
+         */
+        apmType: pulumi.Input<string>;
+        /**
+         * AppDynamics-specific inputs. Required when apm*type is 'AppDynamics'.
+         */
+        appDynamicsInputs?: pulumi.Input<inputs.chaos.GetProbeTemplateApmProbeAppDynamicsInputsArgs | undefined>;
+        /**
+         * Comparator for APM metric validation.
+         */
+        comparator?: pulumi.Input<inputs.chaos.GetProbeTemplateApmProbeComparatorArgs | undefined>;
+        /**
+         * Datadog-specific inputs. Required when apm*type is 'Datadog'.
+         */
+        datadogInputs?: pulumi.Input<inputs.chaos.GetProbeTemplateApmProbeDatadogInputsArgs | undefined>;
+        /**
+         * Dynatrace-specific inputs. Required when apm*type is 'Dynatrace'.
+         */
+        dynatraceInputs?: pulumi.Input<inputs.chaos.GetProbeTemplateApmProbeDynatraceInputsArgs | undefined>;
+        /**
+         * GCP Cloud Monitoring-specific inputs. Required when apm*type is 'GCPCloudMonitoring'.
+         */
+        gcpCloudMonitoringInputs?: pulumi.Input<inputs.chaos.GetProbeTemplateApmProbeGcpCloudMonitoringInputsArgs | undefined>;
+        /**
+         * NewRelic-specific inputs. Required when apm*type is 'NewRelic'.
+         */
+        newRelicInputs?: pulumi.Input<inputs.chaos.GetProbeTemplateApmProbeNewRelicInputsArgs | undefined>;
+        /**
+         * Prometheus-specific inputs. Required when apm*type is 'Prometheus'.
+         */
+        prometheusInputs?: pulumi.Input<inputs.chaos.GetProbeTemplateApmProbePrometheusInputsArgs | undefined>;
+        /**
+         * SplunkObservability-specific inputs. Required when apm*type is 'SplunkObservability'.
+         */
+        splunkObservabilityInputs?: pulumi.Input<inputs.chaos.GetProbeTemplateApmProbeSplunkObservabilityInputsArgs | undefined>;
+    }
+
+    export interface GetProbeTemplateApmProbeAppDynamicsInputs {
+        /**
+         * AppDynamics metrics configuration.
+         */
+        appdMetrics?: inputs.chaos.GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics;
+        /**
+         * Harness connector ID for AppDynamics.
+         */
+        connectorId: string;
+    }
+
+    export interface GetProbeTemplateApmProbeAppDynamicsInputsArgs {
+        /**
+         * AppDynamics metrics configuration.
+         */
+        appdMetrics?: pulumi.Input<inputs.chaos.GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs | undefined>;
+        /**
+         * Harness connector ID for AppDynamics.
+         */
+        connectorId: pulumi.Input<string>;
+    }
+
+    export interface GetProbeTemplateApmProbeAppDynamicsInputsAppdMetrics {
+        /**
+         * AppDynamics application name.
+         */
+        applicationName?: string;
+        /**
+         * Duration in minutes for the AppDynamics query.
+         */
+        durationInMin?: number;
+        /**
+         * Full path to the AppDynamics metric.
+         */
+        metricsFullPath?: string;
+    }
+
+    export interface GetProbeTemplateApmProbeAppDynamicsInputsAppdMetricsArgs {
+        /**
+         * AppDynamics application name.
+         */
+        applicationName?: pulumi.Input<string | undefined>;
+        /**
+         * Duration in minutes for the AppDynamics query.
+         */
+        durationInMin?: pulumi.Input<number | undefined>;
+        /**
+         * Full path to the AppDynamics metric.
+         */
+        metricsFullPath?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GetProbeTemplateApmProbeComparator {
+        /**
+         * Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+         */
+        criteria: string;
+        /**
+         * Comparator type (string, int, float).
+         */
+        type: string;
+        /**
+         * Expected value.
+         */
+        value: string;
+    }
+
+    export interface GetProbeTemplateApmProbeComparatorArgs {
+        /**
+         * Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+         */
+        criteria: pulumi.Input<string>;
+        /**
+         * Comparator type (string, int, float).
+         */
+        type: pulumi.Input<string>;
+        /**
+         * Expected value.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface GetProbeTemplateApmProbeDatadogInputs {
+        /**
+         * Harness connector ID for Datadog.
+         */
+        connectorId: string;
+        /**
+         * Duration in minutes for the Datadog query.
+         */
+        durationInMin?: number;
+        /**
+         * Datadog query string.
+         */
+        query?: string;
+        /**
+         * Datadog Synthetics test configuration.
+         */
+        syntheticsTest?: inputs.chaos.GetProbeTemplateApmProbeDatadogInputsSyntheticsTest;
+    }
+
+    export interface GetProbeTemplateApmProbeDatadogInputsArgs {
+        /**
+         * Harness connector ID for Datadog.
+         */
+        connectorId: pulumi.Input<string>;
+        /**
+         * Duration in minutes for the Datadog query.
+         */
+        durationInMin?: pulumi.Input<number | undefined>;
+        /**
+         * Datadog query string.
+         */
+        query?: pulumi.Input<string | undefined>;
+        /**
+         * Datadog Synthetics test configuration.
+         */
+        syntheticsTest?: pulumi.Input<inputs.chaos.GetProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs | undefined>;
+    }
+
+    export interface GetProbeTemplateApmProbeDatadogInputsSyntheticsTest {
+        /**
+         * Public ID of the Datadog Synthetics test.
+         */
+        publicId: string;
+        /**
+         * Type of Synthetics test (api, browser).
+         */
+        testType?: string;
+    }
+
+    export interface GetProbeTemplateApmProbeDatadogInputsSyntheticsTestArgs {
+        /**
+         * Public ID of the Datadog Synthetics test.
+         */
+        publicId: pulumi.Input<string>;
+        /**
+         * Type of Synthetics test (api, browser).
+         */
+        testType?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GetProbeTemplateApmProbeDynatraceInputs {
+        /**
+         * Harness connector ID for Dynatrace.
+         */
+        connectorId: string;
+        /**
+         * Duration in minutes for the Dynatrace query.
+         */
+        durationInMin?: number;
+        /**
+         * Dynatrace metrics configuration.
+         */
+        metrics?: inputs.chaos.GetProbeTemplateApmProbeDynatraceInputsMetrics;
+    }
+
+    export interface GetProbeTemplateApmProbeDynatraceInputsArgs {
+        /**
+         * Harness connector ID for Dynatrace.
+         */
+        connectorId: pulumi.Input<string>;
+        /**
+         * Duration in minutes for the Dynatrace query.
+         */
+        durationInMin?: pulumi.Input<number | undefined>;
+        /**
+         * Dynatrace metrics configuration.
+         */
+        metrics?: pulumi.Input<inputs.chaos.GetProbeTemplateApmProbeDynatraceInputsMetricsArgs | undefined>;
+    }
+
+    export interface GetProbeTemplateApmProbeDynatraceInputsMetrics {
+        /**
+         * Dynatrace entity selector.
+         */
+        entitySelector?: string;
+        /**
+         * Dynatrace metrics selector.
+         */
+        metricsSelector?: string;
+    }
+
+    export interface GetProbeTemplateApmProbeDynatraceInputsMetricsArgs {
+        /**
+         * Dynatrace entity selector.
+         */
+        entitySelector?: pulumi.Input<string | undefined>;
+        /**
+         * Dynatrace metrics selector.
+         */
+        metricsSelector?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GetProbeTemplateApmProbeGcpCloudMonitoringInputs {
+        /**
+         * GCP project ID.
+         */
+        projectId: string;
+        /**
+         * GCP monitoring query string.
+         */
+        query: string;
+        /**
+         * GCP service account key (JSON).
+         */
+        serviceAccountKey: string;
+    }
+
+    export interface GetProbeTemplateApmProbeGcpCloudMonitoringInputsArgs {
+        /**
+         * GCP project ID.
+         */
+        projectId: pulumi.Input<string>;
+        /**
+         * GCP monitoring query string.
+         */
+        query: pulumi.Input<string>;
+        /**
+         * GCP service account key (JSON).
+         */
+        serviceAccountKey: pulumi.Input<string>;
+    }
+
+    export interface GetProbeTemplateApmProbeNewRelicInputs {
+        /**
+         * Harness connector ID for NewRelic.
+         */
+        connectorId: string;
+        /**
+         * NewRelic metric configuration.
+         */
+        newRelicMetric?: inputs.chaos.GetProbeTemplateApmProbeNewRelicInputsNewRelicMetric;
+    }
+
+    export interface GetProbeTemplateApmProbeNewRelicInputsArgs {
+        /**
+         * Harness connector ID for NewRelic.
+         */
+        connectorId: pulumi.Input<string>;
+        /**
+         * NewRelic metric configuration.
+         */
+        newRelicMetric?: pulumi.Input<inputs.chaos.GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs | undefined>;
+    }
+
+    export interface GetProbeTemplateApmProbeNewRelicInputsNewRelicMetric {
+        /**
+         * NRQL query string.
+         */
+        query?: string;
+        /**
+         * NewRelic query metric name.
+         */
+        queryMetric?: string;
+    }
+
+    export interface GetProbeTemplateApmProbeNewRelicInputsNewRelicMetricArgs {
+        /**
+         * NRQL query string.
+         */
+        query?: pulumi.Input<string | undefined>;
+        /**
+         * NewRelic query metric name.
+         */
+        queryMetric?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GetProbeTemplateApmProbePrometheusInputs {
+        /**
+         * Harness connector ID for Prometheus.
+         */
+        connectorId: string;
+        /**
+         * PromQL query string.
+         */
+        query: string;
+        /**
+         * TLS configuration for Prometheus connection.
+         */
+        tlsConfig?: inputs.chaos.GetProbeTemplateApmProbePrometheusInputsTlsConfig;
+    }
+
+    export interface GetProbeTemplateApmProbePrometheusInputsArgs {
+        /**
+         * Harness connector ID for Prometheus.
+         */
+        connectorId: pulumi.Input<string>;
+        /**
+         * PromQL query string.
+         */
+        query: pulumi.Input<string>;
+        /**
+         * TLS configuration for Prometheus connection.
+         */
+        tlsConfig?: pulumi.Input<inputs.chaos.GetProbeTemplateApmProbePrometheusInputsTlsConfigArgs | undefined>;
+    }
+
+    export interface GetProbeTemplateApmProbePrometheusInputsTlsConfig {
+        /**
+         * Harness secret identifier for CA certificate.
+         */
+        caCertSecret?: string;
+        /**
+         * Harness secret identifier for client certificate.
+         */
+        clientCertSecret?: string;
+        /**
+         * Harness secret identifier for client key.
+         */
+        clientKeySecret?: string;
+        /**
+         * Skip TLS certificate verification.
+         */
+        insecureSkipVerify?: boolean;
+    }
+
+    export interface GetProbeTemplateApmProbePrometheusInputsTlsConfigArgs {
+        /**
+         * Harness secret identifier for CA certificate.
+         */
+        caCertSecret?: pulumi.Input<string | undefined>;
+        /**
+         * Harness secret identifier for client certificate.
+         */
+        clientCertSecret?: pulumi.Input<string | undefined>;
+        /**
+         * Harness secret identifier for client key.
+         */
+        clientKeySecret?: pulumi.Input<string | undefined>;
+        /**
+         * Skip TLS certificate verification.
+         */
+        insecureSkipVerify?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface GetProbeTemplateApmProbeSplunkObservabilityInputs {
+        /**
+         * Harness connector ID for Splunk Observability.
+         */
+        connectorId: string;
+        /**
+         * Splunk Observability metrics configuration.
+         */
+        splunkObservabilityMetrics?: inputs.chaos.GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics;
+    }
+
+    export interface GetProbeTemplateApmProbeSplunkObservabilityInputsArgs {
+        /**
+         * Harness connector ID for Splunk Observability.
+         */
+        connectorId: pulumi.Input<string>;
+        /**
+         * Splunk Observability metrics configuration.
+         */
+        splunkObservabilityMetrics?: pulumi.Input<inputs.chaos.GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs | undefined>;
+    }
+
+    export interface GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetrics {
+        /**
+         * Duration in minutes for the Splunk query.
+         */
+        durationInMin?: number;
+        /**
+         * Splunk Observability query string.
+         */
+        query?: string;
+    }
+
+    export interface GetProbeTemplateApmProbeSplunkObservabilityInputsSplunkObservabilityMetricsArgs {
+        /**
+         * Duration in minutes for the Splunk query.
+         */
+        durationInMin?: pulumi.Input<number | undefined>;
+        /**
+         * Splunk Observability query string.
+         */
+        query?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GetProbeTemplateCmdProbe {
+        /**
+         * Command to execute.
+         */
+        command: string;
+        /**
+         * Comparator for command output validation.
+         */
+        comparators?: inputs.chaos.GetProbeTemplateCmdProbeComparator[];
+        /**
+         * Environment variables for the command.
+         */
+        envs?: inputs.chaos.GetProbeTemplateCmdProbeEnv[];
+        /**
+         * Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as "inline", "configMap", or "secret" is INVALID and fails with "cannot unmarshal string into Go value of type v1.SourceDetails". To run inline, omit this field entirely.
+         */
+        source?: string;
+    }
+
+    export interface GetProbeTemplateCmdProbeArgs {
+        /**
+         * Command to execute.
+         */
+        command: pulumi.Input<string>;
+        /**
+         * Comparator for command output validation.
+         */
+        comparators?: pulumi.Input<pulumi.Input<inputs.chaos.GetProbeTemplateCmdProbeComparatorArgs>[] | undefined>;
+        /**
+         * Environment variables for the command.
+         */
+        envs?: pulumi.Input<pulumi.Input<inputs.chaos.GetProbeTemplateCmdProbeEnvArgs>[] | undefined>;
+        /**
+         * Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as "inline", "configMap", or "secret" is INVALID and fails with "cannot unmarshal string into Go value of type v1.SourceDetails". To run inline, omit this field entirely.
+         */
+        source?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GetProbeTemplateCmdProbeComparator {
+        /**
+         * Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+         */
+        criteria: string;
+        /**
+         * Comparator type (string, int, float).
+         */
+        type: string;
+        /**
+         * Expected value.
+         */
+        value: string;
+    }
+
+    export interface GetProbeTemplateCmdProbeComparatorArgs {
+        /**
+         * Comparison criteria (==, !=, <, >, <=, >=, contains, matches, notMatches, oneOf).
+         */
+        criteria: pulumi.Input<string>;
+        /**
+         * Comparator type (string, int, float).
+         */
+        type: pulumi.Input<string>;
+        /**
+         * Expected value.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface GetProbeTemplateCmdProbeEnv {
+        /**
+         * Environment variable name.
+         */
+        name: string;
+        /**
+         * Environment variable value.
+         */
+        value: string;
+    }
+
+    export interface GetProbeTemplateCmdProbeEnvArgs {
+        /**
+         * Environment variable name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Environment variable value.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface GetProbeTemplateHttpProbe {
+        /**
+         * Authentication configuration.
+         */
+        auth?: inputs.chaos.GetProbeTemplateHttpProbeAuth;
+        /**
+         * HTTP headers.
+         */
+        headers?: {[key: string]: string};
+        /**
+         * HTTP method configuration with GET or POST.
+         */
+        methods?: inputs.chaos.GetProbeTemplateHttpProbeMethod[];
+        /**
+         * TLS configuration.
+         */
+        tlsConfig?: inputs.chaos.GetProbeTemplateHttpProbeTlsConfig;
+        /**
+         * URL to probe.
+         */
+        url: string;
+    }
+
+    export interface GetProbeTemplateHttpProbeArgs {
+        /**
+         * Authentication configuration.
+         */
+        auth?: pulumi.Input<inputs.chaos.GetProbeTemplateHttpProbeAuthArgs | undefined>;
+        /**
+         * HTTP headers.
+         */
+        headers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        /**
+         * HTTP method configuration with GET or POST.
+         */
+        methods?: pulumi.Input<pulumi.Input<inputs.chaos.GetProbeTemplateHttpProbeMethodArgs>[] | undefined>;
+        /**
+         * TLS configuration.
+         */
+        tlsConfig?: pulumi.Input<inputs.chaos.GetProbeTemplateHttpProbeTlsConfigArgs | undefined>;
+        /**
+         * URL to probe.
+         */
+        url: pulumi.Input<string>;
+    }
+
+    export interface GetProbeTemplateHttpProbeAuth {
+        /**
+         * Password for basic auth.
+         */
+        password?: string;
+        /**
+         * Token for bearer auth.
+         */
+        token?: string;
+        /**
+         * Auth type (basic, bearer, etc.).
+         */
+        type: string;
+        /**
+         * Username for basic auth.
+         */
+        username?: string;
+    }
+
+    export interface GetProbeTemplateHttpProbeAuthArgs {
+        /**
+         * Password for basic auth.
+         */
+        password?: pulumi.Input<string | undefined>;
+        /**
+         * Token for bearer auth.
+         */
+        token?: pulumi.Input<string | undefined>;
+        /**
+         * Auth type (basic, bearer, etc.).
+         */
+        type: pulumi.Input<string>;
+        /**
+         * Username for basic auth.
+         */
+        username?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GetProbeTemplateHttpProbeMethod {
+        /**
+         * GET method configuration.
+         */
+        gets?: inputs.chaos.GetProbeTemplateHttpProbeMethodGet[];
+        /**
+         * POST method configuration.
+         */
+        posts?: inputs.chaos.GetProbeTemplateHttpProbeMethodPost[];
+    }
+
+    export interface GetProbeTemplateHttpProbeMethodArgs {
+        /**
+         * GET method configuration.
+         */
+        gets?: pulumi.Input<pulumi.Input<inputs.chaos.GetProbeTemplateHttpProbeMethodGetArgs>[] | undefined>;
+        /**
+         * POST method configuration.
+         */
+        posts?: pulumi.Input<pulumi.Input<inputs.chaos.GetProbeTemplateHttpProbeMethodPostArgs>[] | undefined>;
+    }
+
+    export interface GetProbeTemplateHttpProbeMethodGet {
+        /**
+         * Response criteria (e.g., '==', '!=', 'contains').
+         */
+        criteria?: string;
+        /**
+         * Expected response body.
+         */
+        responseBody?: string;
+        /**
+         * Expected HTTP response code (e.g., '200', '404').
+         */
+        responseCode?: string;
+    }
+
+    export interface GetProbeTemplateHttpProbeMethodGetArgs {
+        /**
+         * Response criteria (e.g., '==', '!=', 'contains').
+         */
+        criteria?: pulumi.Input<string | undefined>;
+        /**
+         * Expected response body.
+         */
+        responseBody?: pulumi.Input<string | undefined>;
+        /**
+         * Expected HTTP response code (e.g., '200', '404').
+         */
+        responseCode?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GetProbeTemplateHttpProbeMethodPost {
+        /**
+         * POST request body.
+         */
+        body?: string;
+        /**
+         * Path to file containing POST body.
+         */
+        bodyPath?: string;
+        /**
+         * Content-Type header for POST request.
+         */
+        contentType?: string;
+        /**
+         * Response criteria (e.g., '==', '!=', 'contains').
+         */
+        criteria?: string;
+        /**
+         * Expected response body.
+         */
+        responseBody?: string;
+        /**
+         * Expected HTTP response code (e.g., '200', '404').
+         */
+        responseCode?: string;
+    }
+
+    export interface GetProbeTemplateHttpProbeMethodPostArgs {
+        /**
+         * POST request body.
+         */
+        body?: pulumi.Input<string | undefined>;
+        /**
+         * Path to file containing POST body.
+         */
+        bodyPath?: pulumi.Input<string | undefined>;
+        /**
+         * Content-Type header for POST request.
+         */
+        contentType?: pulumi.Input<string | undefined>;
+        /**
+         * Response criteria (e.g., '==', '!=', 'contains').
+         */
+        criteria?: pulumi.Input<string | undefined>;
+        /**
+         * Expected response body.
+         */
+        responseBody?: pulumi.Input<string | undefined>;
+        /**
+         * Expected HTTP response code (e.g., '200', '404').
+         */
+        responseCode?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GetProbeTemplateHttpProbeTlsConfig {
+        /**
+         * CA certificate.
+         */
+        caCert?: string;
+        /**
+         * Client certificate.
+         */
+        clientCert?: string;
+        /**
+         * Client key.
+         */
+        clientKey?: string;
+        /**
+         * Skip TLS certificate verification.
+         */
+        insecureSkipVerify?: boolean;
+    }
+
+    export interface GetProbeTemplateHttpProbeTlsConfigArgs {
+        /**
+         * CA certificate.
+         */
+        caCert?: pulumi.Input<string | undefined>;
+        /**
+         * Client certificate.
+         */
+        clientCert?: pulumi.Input<string | undefined>;
+        /**
+         * Client key.
+         */
+        clientKey?: pulumi.Input<string | undefined>;
+        /**
+         * Skip TLS certificate verification.
+         */
+        insecureSkipVerify?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface GetProbeTemplateK8sProbe {
+        /**
+         * Field selector for filtering resources.
+         */
+        fieldSelector?: string;
+        /**
+         * API group (e.g., 'apps', 'batch').
+         */
+        group?: string;
+        /**
+         * Label selector for filtering resources.
+         */
+        labelSelector?: string;
+        /**
+         * Kubernetes namespace.
+         */
+        namespace?: string;
+        /**
+         * Operation to perform (create, delete, present, absent, etc.).
+         */
+        operation?: string;
+        /**
+         * Resource type (e.g., 'pods', 'deployments').
+         */
+        resource: string;
+        /**
+         * Comma-separated list of resource names.
+         */
+        resourceNames?: string;
+        /**
+         * API version (e.g., 'v1', 'v1beta1').
+         */
+        version: string;
+    }
+
+    export interface GetProbeTemplateK8sProbeArgs {
+        /**
+         * Field selector for filtering resources.
+         */
+        fieldSelector?: pulumi.Input<string | undefined>;
+        /**
+         * API group (e.g., 'apps', 'batch').
+         */
+        group?: pulumi.Input<string | undefined>;
+        /**
+         * Label selector for filtering resources.
+         */
+        labelSelector?: pulumi.Input<string | undefined>;
+        /**
+         * Kubernetes namespace.
+         */
+        namespace?: pulumi.Input<string | undefined>;
+        /**
+         * Operation to perform (create, delete, present, absent, etc.).
+         */
+        operation?: pulumi.Input<string | undefined>;
+        /**
+         * Resource type (e.g., 'pods', 'deployments').
+         */
+        resource: pulumi.Input<string>;
+        /**
+         * Comma-separated list of resource names.
+         */
+        resourceNames?: pulumi.Input<string | undefined>;
+        /**
+         * API version (e.g., 'v1', 'v1beta1').
+         */
+        version: pulumi.Input<string>;
+    }
+
+    export interface GetProbeTemplateRunProperty {
+        /**
+         * Number of attempts.
+         */
+        attempt?: number;
+        /**
+         * Initial delay before probe execution (e.g., '5s', '1m').
+         */
+        initialDelay?: string;
+        /**
+         * Interval between probe executions (e.g., '10s', '30s').
+         */
+        interval?: string;
+        /**
+         * Polling interval for continuous probes (e.g., '2s', '5s').
+         */
+        pollingInterval?: string;
+        /**
+         * Number of retries.
+         */
+        retry?: number;
+        /**
+         * Whether to stop on failure.
+         */
+        stopOnFailure?: boolean;
+        /**
+         * Timeout for probe execution (e.g., '30s', '5m').
+         */
+        timeout?: string;
+        /**
+         * Verbosity level for logging.
+         */
+        verbosity?: string;
+    }
+
+    export interface GetProbeTemplateRunPropertyArgs {
+        /**
+         * Number of attempts.
+         */
+        attempt?: pulumi.Input<number | undefined>;
+        /**
+         * Initial delay before probe execution (e.g., '5s', '1m').
+         */
+        initialDelay?: pulumi.Input<string | undefined>;
+        /**
+         * Interval between probe executions (e.g., '10s', '30s').
+         */
+        interval?: pulumi.Input<string | undefined>;
+        /**
+         * Polling interval for continuous probes (e.g., '2s', '5s').
+         */
+        pollingInterval?: pulumi.Input<string | undefined>;
+        /**
+         * Number of retries.
+         */
+        retry?: pulumi.Input<number | undefined>;
+        /**
+         * Whether to stop on failure.
+         */
+        stopOnFailure?: pulumi.Input<boolean | undefined>;
+        /**
+         * Timeout for probe execution (e.g., '30s', '5m').
+         */
+        timeout?: pulumi.Input<string | undefined>;
+        /**
+         * Verbosity level for logging.
+         */
+        verbosity?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GetProbeTemplateVariable {
+        /**
+         * Variable description.
+         */
+        description?: string;
+        /**
+         * Variable name.
+         */
+        name: string;
+        /**
+         * Whether the variable is required.
+         */
+        required?: boolean;
+        /**
+         * Variable type (e.g., 'string', 'number', 'boolean').
+         */
+        type?: string;
+        /**
+         * Variable value.
+         */
+        value: string;
+    }
+
+    export interface GetProbeTemplateVariableArgs {
+        /**
+         * Variable description.
+         */
+        description?: pulumi.Input<string | undefined>;
+        /**
+         * Variable name.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Whether the variable is required.
+         */
+        required?: pulumi.Input<boolean | undefined>;
+        /**
+         * Variable type (e.g., 'string', 'number', 'boolean').
+         */
+        type?: pulumi.Input<string | undefined>;
+        /**
+         * Variable value.
+         */
+        value: pulumi.Input<string>;
     }
 
     export interface ImageRegistryCustomImage {
@@ -4379,6 +5454,39 @@ export namespace chaos {
          * Proxy URL.
          */
         url: pulumi.Input<string>;
+    }
+
+    export interface InfrastructureV2Resources {
+        /**
+         * Maximum compute resources allowed for the infrastructure pods.
+         */
+        limits?: pulumi.Input<inputs.chaos.InfrastructureV2ResourcesLimits | undefined>;
+        /**
+         * Minimum compute resources requested for the infrastructure pods.
+         */
+        requests?: pulumi.Input<inputs.chaos.InfrastructureV2ResourcesRequests | undefined>;
+    }
+
+    export interface InfrastructureV2ResourcesLimits {
+        /**
+         * CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+         */
+        cpu?: pulumi.Input<string | undefined>;
+        /**
+         * Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+         */
+        memory?: pulumi.Input<string | undefined>;
+    }
+
+    export interface InfrastructureV2ResourcesRequests {
+        /**
+         * CPU quantity as a Kubernetes resource string. Example: '250m', '1'.
+         */
+        cpu?: pulumi.Input<string | undefined>;
+        /**
+         * Memory quantity as a Kubernetes resource string. Example: '256Mi', '1Gi'.
+         */
+        memory?: pulumi.Input<string | undefined>;
     }
 
     export interface InfrastructureV2Toleration {
@@ -4685,7 +5793,7 @@ export namespace chaos {
          */
         envs?: pulumi.Input<pulumi.Input<inputs.chaos.ProbeTemplateCmdProbeEnv>[] | undefined>;
         /**
-         * Source of the command (inline, configMap, secret).
+         * Optional source for the command probe. Leave UNSET for inline execution (the command runs inside the experiment pod). If set, it must be a YAML/JSON-encoded SourceDetails object describing an external source pod (e.g. `image`, `command`, `args`, `env`, `imagePullPolicy`, `nodeSelector`). At experiment execution the backend unmarshals this string into a SourceDetails object, so a bare keyword such as "inline", "configMap", or "secret" is INVALID and fails with "cannot unmarshal string into Go value of type v1.SourceDetails". To run inline, omit this field entirely.
          */
         source?: pulumi.Input<string | undefined>;
     }
@@ -9505,6 +10613,10 @@ export namespace platform {
          * GitOps cluster details.
          */
         clusters?: pulumi.Input<pulumi.Input<inputs.platform.GitOpsClusterRequestCluster>[] | undefined>;
+        /**
+         * Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. "username", "password", "bearerToken", "certData", "keyData", "caData") and values are Harness expressions referencing secrets (e.g. "<+secrets.getValue(\"account.my_secret\")>").
+         */
+        secretExpressions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
         /**
          * Tags for the GitOps cluster. These can be used to search or filter the GitOps agents.
          */

@@ -602,6 +602,24 @@ class ProbeTemplate(pulumi.CustomResource):
         """
         Resource for managing Harness Chaos Probe Templates.
 
+        ## Supported probe types
+
+        The `type` attribute accepts the following values, each configured via its matching block:
+
+        - `httpProbe` (`http_probe`) - HTTP/HTTPS endpoint checks.
+        - `cmdProbe` (`cmd_probe`) - command / shell output checks.
+        - `k8sProbe` (`k8s_probe`) - Kubernetes resource checks.
+        - `apmProbe` (`apm_probe`) - APM provider checks.
+
+        For `apm_probe`, the following providers are supported: Prometheus, Datadog, Dynatrace, AppDynamics, New Relic, Splunk Observability, and GCP Cloud Monitoring.
+
+        ## Not currently supported
+
+        The following exist in the Harness API but are **not yet supported** by this resource:
+
+        - Probe types other than `httpProbe`, `cmdProbe`, `k8sProbe`, and `apmProbe`.
+        - `http_probe`: the `headers`, `auth`, and `tls_config` options are not yet configurable.
+
         ## Example Usage
 
         ## Import
@@ -656,6 +674,24 @@ class ProbeTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for managing Harness Chaos Probe Templates.
+
+        ## Supported probe types
+
+        The `type` attribute accepts the following values, each configured via its matching block:
+
+        - `httpProbe` (`http_probe`) - HTTP/HTTPS endpoint checks.
+        - `cmdProbe` (`cmd_probe`) - command / shell output checks.
+        - `k8sProbe` (`k8s_probe`) - Kubernetes resource checks.
+        - `apmProbe` (`apm_probe`) - APM provider checks.
+
+        For `apm_probe`, the following providers are supported: Prometheus, Datadog, Dynatrace, AppDynamics, New Relic, Splunk Observability, and GCP Cloud Monitoring.
+
+        ## Not currently supported
+
+        The following exist in the Harness API but are **not yet supported** by this resource:
+
+        - Probe types other than `httpProbe`, `cmdProbe`, `k8sProbe`, and `apmProbe`.
+        - `http_probe`: the `headers`, `auth`, and `tls_config` options are not yet configurable.
 
         ## Example Usage
 

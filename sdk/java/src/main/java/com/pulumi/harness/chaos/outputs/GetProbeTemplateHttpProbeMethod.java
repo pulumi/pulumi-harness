@@ -4,11 +4,11 @@
 package com.pulumi.harness.chaos.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.chaos.outputs.GetProbeTemplateHttpProbeMethodGet;
 import com.pulumi.harness.chaos.outputs.GetProbeTemplateHttpProbeMethodPost;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProbeTemplateHttpProbeMethod {
@@ -16,12 +16,12 @@ public final class GetProbeTemplateHttpProbeMethod {
      * @return GET method configuration.
      * 
      */
-    private List<GetProbeTemplateHttpProbeMethodGet> gets;
+    private @Nullable List<GetProbeTemplateHttpProbeMethodGet> gets;
     /**
      * @return POST method configuration.
      * 
      */
-    private List<GetProbeTemplateHttpProbeMethodPost> posts;
+    private @Nullable List<GetProbeTemplateHttpProbeMethodPost> posts;
 
     private GetProbeTemplateHttpProbeMethod() {}
     /**
@@ -29,14 +29,14 @@ public final class GetProbeTemplateHttpProbeMethod {
      * 
      */
     public List<GetProbeTemplateHttpProbeMethodGet> gets() {
-        return this.gets;
+        return this.gets == null ? List.of() : this.gets;
     }
     /**
      * @return POST method configuration.
      * 
      */
     public List<GetProbeTemplateHttpProbeMethodPost> posts() {
-        return this.posts;
+        return this.posts == null ? List.of() : this.posts;
     }
 
     public static Builder builder() {
@@ -48,8 +48,8 @@ public final class GetProbeTemplateHttpProbeMethod {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetProbeTemplateHttpProbeMethodGet> gets;
-        private List<GetProbeTemplateHttpProbeMethodPost> posts;
+        private @Nullable List<GetProbeTemplateHttpProbeMethodGet> gets;
+        private @Nullable List<GetProbeTemplateHttpProbeMethodPost> posts;
         public Builder() {}
         public Builder(GetProbeTemplateHttpProbeMethod defaults) {
     	      Objects.requireNonNull(defaults);
@@ -58,10 +58,8 @@ public final class GetProbeTemplateHttpProbeMethod {
         }
 
         @CustomType.Setter
-        public Builder gets(List<GetProbeTemplateHttpProbeMethodGet> gets) {
-            if (gets == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateHttpProbeMethod", "gets");
-            }
+        public Builder gets(@Nullable List<GetProbeTemplateHttpProbeMethodGet> gets) {
+
             this.gets = gets;
             return this;
         }
@@ -69,10 +67,8 @@ public final class GetProbeTemplateHttpProbeMethod {
             return gets(List.of(gets));
         }
         @CustomType.Setter
-        public Builder posts(List<GetProbeTemplateHttpProbeMethodPost> posts) {
-            if (posts == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateHttpProbeMethod", "posts");
-            }
+        public Builder posts(@Nullable List<GetProbeTemplateHttpProbeMethodPost> posts) {
+
             this.posts = posts;
             return this;
         }

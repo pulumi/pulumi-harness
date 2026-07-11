@@ -12,6 +12,19 @@ namespace Pulumi.Harness.Chaos
     /// <summary>
     /// Resource for managing Harness Chaos Action Templates. Action templates define reusable actions that can be used in chaos experiments.
     /// 
+    /// ## Supported action types
+    /// 
+    /// The `Type` attribute accepts the following values, each configured via its matching block:
+    /// 
+    /// - `Delay` (`DelayAction`) - wait for a configured duration.
+    /// - `customScript` (`CustomScriptAction`) - run a custom script.
+    /// - `Container` (`ContainerAction`) - run a container.
+    /// 
+    /// ## Not currently supported
+    /// 
+    /// - Action types other than `Delay`, `customScript`, and `Container`.
+    /// - Runtime input (`&lt;+input&gt;`) is not supported for container `Resources` limits/requests due to API validation; use concrete values or template `Variables`.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

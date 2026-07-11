@@ -436,7 +436,11 @@ class ImageRegistry(pulumi.CustomResource):
                  use_custom_images: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
-        Resource for managing a Harness Chaos Image Registry
+        Resource for managing a Harness Chaos Image Registry.
+
+        ## Not currently supported
+
+        - Importing account-scoped registries: `pulumi import` requires an `org_id` (`org_id/project_id` or `org_id/project_id/infra_id`).
 
         ## Example Usage
 
@@ -462,6 +466,22 @@ class ImageRegistry(pulumi.CustomResource):
             }])
         ```
 
+        ## Import
+
+        The `pulumi import` command can be used, for example:
+
+        Import a project-level Chaos Image Registry
+
+        ```sh
+        $ pulumi import harness:chaos/imageRegistry:ImageRegistry example <org_id>/<project_id>
+        ```
+
+        Import an infrastructure-scoped Chaos Image Registry
+
+        ```sh
+        $ pulumi import harness:chaos/imageRegistry:ImageRegistry example <org_id>/<project_id>/<infra_id>
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -484,7 +504,11 @@ class ImageRegistry(pulumi.CustomResource):
                  args: ImageRegistryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Resource for managing a Harness Chaos Image Registry
+        Resource for managing a Harness Chaos Image Registry.
+
+        ## Not currently supported
+
+        - Importing account-scoped registries: `pulumi import` requires an `org_id` (`org_id/project_id` or `org_id/project_id/infra_id`).
 
         ## Example Usage
 
@@ -508,6 +532,22 @@ class ImageRegistry(pulumi.CustomResource):
                 "ddcr_lib": "<ddcr_lib_image>",
                 "ddcr_fault": "<ddcr_fault_image>",
             }])
+        ```
+
+        ## Import
+
+        The `pulumi import` command can be used, for example:
+
+        Import a project-level Chaos Image Registry
+
+        ```sh
+        $ pulumi import harness:chaos/imageRegistry:ImageRegistry example <org_id>/<project_id>
+        ```
+
+        Import an infrastructure-scoped Chaos Image Registry
+
+        ```sh
+        $ pulumi import harness:chaos/imageRegistry:ImageRegistry example <org_id>/<project_id>/<infra_id>
         ```
 
 

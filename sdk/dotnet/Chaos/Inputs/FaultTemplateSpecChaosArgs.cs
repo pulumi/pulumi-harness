@@ -13,7 +13,7 @@ namespace Pulumi.Harness.Chaos.Inputs
     public sealed class FaultTemplateSpecChaosArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Authentication configuration
+        /// Authentication configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault authentication in the Harness UI/API instead.
         /// </summary>
         [Input("auth")]
         public Input<Inputs.FaultTemplateSpecChaosAuthArgs>? Auth { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.Harness.Chaos.Inputs
         public Input<Inputs.FaultTemplateSpecChaosStatusCheckTimeoutsArgs>? StatusCheckTimeouts { get; set; }
 
         /// <summary>
-        /// TLS configuration
+        /// TLS configuration. NOT YET SUPPORTED: setting this block returns an error (it is not plumbed through to the API). Configure fault TLS in the Harness UI/API instead.
         /// </summary>
         [Input("tls")]
         public Input<Inputs.FaultTemplateSpecChaosTlsArgs>? Tls { get; set; }

@@ -64,14 +64,14 @@ public final class HubV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+     * Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
      * 
      */
     @Import(name="connectorRef")
     private @Nullable Output<String> connectorRef;
 
     /**
-     * @return Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+     * @return Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
      * 
      */
     public Optional<Output<String>> connectorRef() {
@@ -289,14 +289,14 @@ public final class HubV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Git repository branch.
+     * Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
      * 
      */
     @Import(name="repoBranch")
     private @Nullable Output<String> repoBranch;
 
     /**
-     * @return Git repository branch.
+     * @return Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
      * 
      */
     public Optional<Output<String>> repoBranch() {
@@ -304,14 +304,14 @@ public final class HubV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the Git repository (required for account-level connectors).
+     * Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
      * 
      */
     @Import(name="repoName")
     private @Nullable Output<String> repoName;
 
     /**
-     * @return Name of the Git repository (required for account-level connectors).
+     * @return Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
      * 
      */
     public Optional<Output<String>> repoName() {
@@ -489,7 +489,7 @@ public final class HubV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectorRef Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+         * @param connectorRef Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
          * 
          * @return builder
          * 
@@ -500,7 +500,7 @@ public final class HubV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectorRef Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector).
+         * @param connectorRef Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
          * 
          * @return builder
          * 
@@ -804,7 +804,7 @@ public final class HubV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repoBranch Git repository branch.
+         * @param repoBranch Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
          * 
          * @return builder
          * 
@@ -815,7 +815,7 @@ public final class HubV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repoBranch Git repository branch.
+         * @param repoBranch Git repository branch. Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
          * 
          * @return builder
          * 
@@ -825,7 +825,7 @@ public final class HubV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repoName Name of the Git repository (required for account-level connectors).
+         * @param repoName Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
          * 
          * @return builder
          * 
@@ -836,7 +836,7 @@ public final class HubV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repoName Name of the Git repository (required for account-level connectors).
+         * @param repoName Name of the Git repository (required for account-level connectors). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation (not updatable via the API).
          * 
          * @return builder
          * 

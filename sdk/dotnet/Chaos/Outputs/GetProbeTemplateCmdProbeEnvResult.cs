@@ -13,7 +13,13 @@ namespace Pulumi.Harness.Chaos.Outputs
     [OutputType]
     public sealed class GetProbeTemplateCmdProbeEnvResult
     {
+        /// <summary>
+        /// Environment variable name.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Environment variable value.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

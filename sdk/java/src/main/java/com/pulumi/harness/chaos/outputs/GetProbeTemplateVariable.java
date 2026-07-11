@@ -8,24 +8,70 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetProbeTemplateVariable {
+    /**
+     * @return Variable description.
+     * 
+     */
+    private @Nullable String description;
+    /**
+     * @return Variable name.
+     * 
+     */
     private String name;
-    private Boolean required;
-    private String type;
+    /**
+     * @return Whether the variable is required.
+     * 
+     */
+    private @Nullable Boolean required;
+    /**
+     * @return Variable type (e.g., &#39;string&#39;, &#39;number&#39;, &#39;boolean&#39;).
+     * 
+     */
+    private @Nullable String type;
+    /**
+     * @return Variable value.
+     * 
+     */
     private String value;
 
     private GetProbeTemplateVariable() {}
+    /**
+     * @return Variable description.
+     * 
+     */
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
+    }
+    /**
+     * @return Variable name.
+     * 
+     */
     public String name() {
         return this.name;
     }
-    public Boolean required() {
-        return this.required;
+    /**
+     * @return Whether the variable is required.
+     * 
+     */
+    public Optional<Boolean> required() {
+        return Optional.ofNullable(this.required);
     }
-    public String type() {
-        return this.type;
+    /**
+     * @return Variable type (e.g., &#39;string&#39;, &#39;number&#39;, &#39;boolean&#39;).
+     * 
+     */
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
+    /**
+     * @return Variable value.
+     * 
+     */
     public String value() {
         return this.value;
     }
@@ -39,19 +85,27 @@ public final class GetProbeTemplateVariable {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String description;
         private String name;
-        private Boolean required;
-        private String type;
+        private @Nullable Boolean required;
+        private @Nullable String type;
         private String value;
         public Builder() {}
         public Builder(GetProbeTemplateVariable defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.description = defaults.description;
     	      this.name = defaults.name;
     	      this.required = defaults.required;
     	      this.type = defaults.type;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
+        public Builder description(@Nullable String description) {
+
+            this.description = description;
+            return this;
+        }
         @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
@@ -61,18 +115,14 @@ public final class GetProbeTemplateVariable {
             return this;
         }
         @CustomType.Setter
-        public Builder required(Boolean required) {
-            if (required == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateVariable", "required");
-            }
+        public Builder required(@Nullable Boolean required) {
+
             this.required = required;
             return this;
         }
         @CustomType.Setter
-        public Builder type(String type) {
-            if (type == null) {
-              throw new MissingRequiredPropertyException("GetProbeTemplateVariable", "type");
-            }
+        public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
@@ -86,6 +136,7 @@ public final class GetProbeTemplateVariable {
         }
         public GetProbeTemplateVariable build() {
             final var _resultValue = new GetProbeTemplateVariable();
+            _resultValue.description = description;
             _resultValue.name = name;
             _resultValue.required = required;
             _resultValue.type = type;

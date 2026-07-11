@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetProbeTemplateResult',
@@ -27,10 +28,13 @@ class GetProbeTemplateResult:
     """
     A collection of values returned by getProbeTemplate.
     """
-    def __init__(__self__, account_id=None, cmd_probes=None, description=None, http_probes=None, hub_identity=None, hub_ref=None, id=None, identity=None, infrastructure_type=None, is_default=None, k8s_probes=None, name=None, org_id=None, project_id=None, revision=None, run_properties=None, tags=None, type=None, variables=None):
+    def __init__(__self__, account_id=None, apm_probe=None, cmd_probes=None, description=None, http_probes=None, hub_identity=None, hub_ref=None, id=None, identity=None, infrastructure_type=None, is_default=None, k8s_probes=None, name=None, org_id=None, project_id=None, revision=None, run_properties=None, tags=None, type=None, variables=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if apm_probe and not isinstance(apm_probe, dict):
+            raise TypeError("Expected argument 'apm_probe' to be a dict")
+        pulumi.set(__self__, "apm_probe", apm_probe)
         if cmd_probes and not isinstance(cmd_probes, list):
             raise TypeError("Expected argument 'cmd_probes' to be a list")
         pulumi.set(__self__, "cmd_probes", cmd_probes)
@@ -95,16 +99,24 @@ class GetProbeTemplateResult:
         return pulumi.get(self, "account_id")
 
     @_builtins.property
-    @pulumi.getter(name="cmdProbes")
-    def cmd_probes(self) -> Sequence['outputs.GetProbeTemplateCmdProbeResult']:
+    @pulumi.getter(name="apmProbe")
+    def apm_probe(self) -> Optional['outputs.GetProbeTemplateApmProbeResult']:
         """
-        Command probe configuration.
+        APM probe configuration. Required when type is 'apmProbe'.
+        """
+        return pulumi.get(self, "apm_probe")
+
+    @_builtins.property
+    @pulumi.getter(name="cmdProbes")
+    def cmd_probes(self) -> Optional[Sequence['outputs.GetProbeTemplateCmdProbeResult']]:
+        """
+        Command probe configuration. Required when type is 'cmdProbe'.
         """
         return pulumi.get(self, "cmd_probes")
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> _builtins.str:
+    def description(self) -> Optional[_builtins.str]:
         """
         Description of the probe template.
         """
@@ -112,9 +124,9 @@ class GetProbeTemplateResult:
 
     @_builtins.property
     @pulumi.getter(name="httpProbes")
-    def http_probes(self) -> Sequence['outputs.GetProbeTemplateHttpProbeResult']:
+    def http_probes(self) -> Optional[Sequence['outputs.GetProbeTemplateHttpProbeResult']]:
         """
-        HTTP probe configuration.
+        HTTP probe configuration. Required when type is 'httpProbe'.
         """
         return pulumi.get(self, "http_probes")
 
@@ -122,7 +134,7 @@ class GetProbeTemplateResult:
     @pulumi.getter(name="hubIdentity")
     def hub_identity(self) -> _builtins.str:
         """
-        Identity of the chaos hub.
+        Identity of the chaos hub this probe template belongs to.
         """
         return pulumi.get(self, "hub_identity")
 
@@ -144,17 +156,17 @@ class GetProbeTemplateResult:
 
     @_builtins.property
     @pulumi.getter
-    def identity(self) -> Optional[_builtins.str]:
+    def identity(self) -> _builtins.str:
         """
-        Unique identifier of the probe template.
+        Unique identifier for the probe template (immutable).
         """
         return pulumi.get(self, "identity")
 
     @_builtins.property
     @pulumi.getter(name="infrastructureType")
-    def infrastructure_type(self) -> _builtins.str:
+    def infrastructure_type(self) -> Optional[_builtins.str]:
         """
-        Infrastructure type.
+        Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
         """
         return pulumi.get(self, "infrastructure_type")
 
@@ -162,21 +174,21 @@ class GetProbeTemplateResult:
     @pulumi.getter(name="isDefault")
     def is_default(self) -> _builtins.bool:
         """
-        Whether this is the default version.
+        Whether this is the default version for predefined probes.
         """
         return pulumi.get(self, "is_default")
 
     @_builtins.property
     @pulumi.getter(name="k8sProbes")
-    def k8s_probes(self) -> Sequence['outputs.GetProbeTemplateK8sProbeResult']:
+    def k8s_probes(self) -> Optional[Sequence['outputs.GetProbeTemplateK8sProbeResult']]:
         """
-        Kubernetes probe configuration.
+        Kubernetes probe configuration. Required when type is 'k8sProbe'.
         """
         return pulumi.get(self, "k8s_probes")
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
+    def name(self) -> _builtins.str:
         """
         Name of the probe template.
         """
@@ -202,23 +214,23 @@ class GetProbeTemplateResult:
     @pulumi.getter
     def revision(self) -> _builtins.int:
         """
-        Revision number.
+        Revision number of the probe template.
         """
         return pulumi.get(self, "revision")
 
     @_builtins.property
     @pulumi.getter(name="runProperties")
-    def run_properties(self) -> Sequence['outputs.GetProbeTemplateRunPropertyResult']:
+    def run_properties(self) -> Optional[Sequence['outputs.GetProbeTemplateRunPropertyResult']]:
         """
-        Run properties.
+        Run properties for the probe template execution.
         """
         return pulumi.get(self, "run_properties")
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Sequence[_builtins.str]:
+    def tags(self) -> Optional[Sequence[_builtins.str]]:
         """
-        Tags associated with the probe template.
+        Tags to associate with the probe template.
         """
         return pulumi.get(self, "tags")
 
@@ -226,15 +238,15 @@ class GetProbeTemplateResult:
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Type of the probe template.
+        Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
         """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
-    def variables(self) -> Sequence['outputs.GetProbeTemplateVariableResult']:
+    def variables(self) -> Optional[Sequence['outputs.GetProbeTemplateVariableResult']]:
         """
-        Template variables.
+        Template variables that can be used in the probe.
         """
         return pulumi.get(self, "variables")
 
@@ -246,6 +258,7 @@ class AwaitableGetProbeTemplateResult(GetProbeTemplateResult):
             yield self
         return GetProbeTemplateResult(
             account_id=self.account_id,
+            apm_probe=self.apm_probe,
             cmd_probes=self.cmd_probes,
             description=self.description,
             http_probes=self.http_probes,
@@ -266,11 +279,21 @@ class AwaitableGetProbeTemplateResult(GetProbeTemplateResult):
             variables=self.variables)
 
 
-def get_probe_template(hub_identity: Optional[_builtins.str] = None,
+def get_probe_template(apm_probe: Optional[Union['GetProbeTemplateApmProbeArgs', 'GetProbeTemplateApmProbeArgsDict']] = None,
+                       cmd_probes: Optional[Sequence[Union['GetProbeTemplateCmdProbeArgs', 'GetProbeTemplateCmdProbeArgsDict']]] = None,
+                       description: Optional[_builtins.str] = None,
+                       http_probes: Optional[Sequence[Union['GetProbeTemplateHttpProbeArgs', 'GetProbeTemplateHttpProbeArgsDict']]] = None,
+                       hub_identity: Optional[_builtins.str] = None,
                        identity: Optional[_builtins.str] = None,
+                       infrastructure_type: Optional[_builtins.str] = None,
+                       k8s_probes: Optional[Sequence[Union['GetProbeTemplateK8sProbeArgs', 'GetProbeTemplateK8sProbeArgsDict']]] = None,
                        name: Optional[_builtins.str] = None,
                        org_id: Optional[_builtins.str] = None,
                        project_id: Optional[_builtins.str] = None,
+                       run_properties: Optional[Sequence[Union['GetProbeTemplateRunPropertyArgs', 'GetProbeTemplateRunPropertyArgsDict']]] = None,
+                       tags: Optional[Sequence[_builtins.str]] = None,
+                       type: Optional[_builtins.str] = None,
+                       variables: Optional[Sequence[Union['GetProbeTemplateVariableArgs', 'GetProbeTemplateVariableArgsDict']]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProbeTemplateResult:
     """
     Data source for retrieving a Harness Chaos Probe Template.
@@ -301,23 +324,44 @@ def get_probe_template(hub_identity: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str hub_identity: Identity of the chaos hub.
-    :param _builtins.str identity: Unique identifier of the probe template.
+    :param Union['GetProbeTemplateApmProbeArgs', 'GetProbeTemplateApmProbeArgsDict'] apm_probe: APM probe configuration. Required when type is 'apmProbe'.
+    :param Sequence[Union['GetProbeTemplateCmdProbeArgs', 'GetProbeTemplateCmdProbeArgsDict']] cmd_probes: Command probe configuration. Required when type is 'cmdProbe'.
+    :param _builtins.str description: Description of the probe template.
+    :param Sequence[Union['GetProbeTemplateHttpProbeArgs', 'GetProbeTemplateHttpProbeArgsDict']] http_probes: HTTP probe configuration. Required when type is 'httpProbe'.
+    :param _builtins.str hub_identity: Identity of the chaos hub this probe template belongs to.
+    :param _builtins.str identity: Unique identifier for the probe template (immutable).
+    :param _builtins.str infrastructure_type: Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
+    :param Sequence[Union['GetProbeTemplateK8sProbeArgs', 'GetProbeTemplateK8sProbeArgsDict']] k8s_probes: Kubernetes probe configuration. Required when type is 'k8sProbe'.
     :param _builtins.str name: Name of the probe template.
     :param _builtins.str org_id: Organization identifier.
     :param _builtins.str project_id: Project identifier.
+    :param Sequence[Union['GetProbeTemplateRunPropertyArgs', 'GetProbeTemplateRunPropertyArgsDict']] run_properties: Run properties for the probe template execution.
+    :param Sequence[_builtins.str] tags: Tags to associate with the probe template.
+    :param _builtins.str type: Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
+    :param Sequence[Union['GetProbeTemplateVariableArgs', 'GetProbeTemplateVariableArgsDict']] variables: Template variables that can be used in the probe.
     """
     __args__ = dict()
+    __args__['apmProbe'] = apm_probe
+    __args__['cmdProbes'] = cmd_probes
+    __args__['description'] = description
+    __args__['httpProbes'] = http_probes
     __args__['hubIdentity'] = hub_identity
     __args__['identity'] = identity
+    __args__['infrastructureType'] = infrastructure_type
+    __args__['k8sProbes'] = k8s_probes
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
+    __args__['runProperties'] = run_properties
+    __args__['tags'] = tags
+    __args__['type'] = type
+    __args__['variables'] = variables
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:chaos/getProbeTemplate:getProbeTemplate', __args__, opts=opts, typ=GetProbeTemplateResult).value
 
     return AwaitableGetProbeTemplateResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        apm_probe=pulumi.get(__ret__, 'apm_probe'),
         cmd_probes=pulumi.get(__ret__, 'cmd_probes'),
         description=pulumi.get(__ret__, 'description'),
         http_probes=pulumi.get(__ret__, 'http_probes'),
@@ -336,11 +380,21 @@ def get_probe_template(hub_identity: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'),
         variables=pulumi.get(__ret__, 'variables'))
-def get_probe_template_output(hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+def get_probe_template_output(apm_probe: pulumi.Input[Optional[Optional[Union['GetProbeTemplateApmProbeArgs', 'GetProbeTemplateApmProbeArgsDict']]]] = None,
+                              cmd_probes: pulumi.Input[Optional[Optional[Sequence[Union['GetProbeTemplateCmdProbeArgs', 'GetProbeTemplateCmdProbeArgsDict']]]]] = None,
+                              description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              http_probes: pulumi.Input[Optional[Optional[Sequence[Union['GetProbeTemplateHttpProbeArgs', 'GetProbeTemplateHttpProbeArgsDict']]]]] = None,
+                              hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
                               identity: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              infrastructure_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              k8s_probes: pulumi.Input[Optional[Optional[Sequence[Union['GetProbeTemplateK8sProbeArgs', 'GetProbeTemplateK8sProbeArgsDict']]]]] = None,
                               name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              run_properties: pulumi.Input[Optional[Optional[Sequence[Union['GetProbeTemplateRunPropertyArgs', 'GetProbeTemplateRunPropertyArgsDict']]]]] = None,
+                              tags: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                              type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              variables: pulumi.Input[Optional[Optional[Sequence[Union['GetProbeTemplateVariableArgs', 'GetProbeTemplateVariableArgsDict']]]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProbeTemplateResult]:
     """
     Data source for retrieving a Harness Chaos Probe Template.
@@ -371,22 +425,43 @@ def get_probe_template_output(hub_identity: pulumi.Input[Optional[_builtins.str]
     ```
 
 
-    :param _builtins.str hub_identity: Identity of the chaos hub.
-    :param _builtins.str identity: Unique identifier of the probe template.
+    :param Union['GetProbeTemplateApmProbeArgs', 'GetProbeTemplateApmProbeArgsDict'] apm_probe: APM probe configuration. Required when type is 'apmProbe'.
+    :param Sequence[Union['GetProbeTemplateCmdProbeArgs', 'GetProbeTemplateCmdProbeArgsDict']] cmd_probes: Command probe configuration. Required when type is 'cmdProbe'.
+    :param _builtins.str description: Description of the probe template.
+    :param Sequence[Union['GetProbeTemplateHttpProbeArgs', 'GetProbeTemplateHttpProbeArgsDict']] http_probes: HTTP probe configuration. Required when type is 'httpProbe'.
+    :param _builtins.str hub_identity: Identity of the chaos hub this probe template belongs to.
+    :param _builtins.str identity: Unique identifier for the probe template (immutable).
+    :param _builtins.str infrastructure_type: Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
+    :param Sequence[Union['GetProbeTemplateK8sProbeArgs', 'GetProbeTemplateK8sProbeArgsDict']] k8s_probes: Kubernetes probe configuration. Required when type is 'k8sProbe'.
     :param _builtins.str name: Name of the probe template.
     :param _builtins.str org_id: Organization identifier.
     :param _builtins.str project_id: Project identifier.
+    :param Sequence[Union['GetProbeTemplateRunPropertyArgs', 'GetProbeTemplateRunPropertyArgsDict']] run_properties: Run properties for the probe template execution.
+    :param Sequence[_builtins.str] tags: Tags to associate with the probe template.
+    :param _builtins.str type: Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
+    :param Sequence[Union['GetProbeTemplateVariableArgs', 'GetProbeTemplateVariableArgsDict']] variables: Template variables that can be used in the probe.
     """
     __args__ = dict()
+    __args__['apmProbe'] = apm_probe
+    __args__['cmdProbes'] = cmd_probes
+    __args__['description'] = description
+    __args__['httpProbes'] = http_probes
     __args__['hubIdentity'] = hub_identity
     __args__['identity'] = identity
+    __args__['infrastructureType'] = infrastructure_type
+    __args__['k8sProbes'] = k8s_probes
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
+    __args__['runProperties'] = run_properties
+    __args__['tags'] = tags
+    __args__['type'] = type
+    __args__['variables'] = variables
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:chaos/getProbeTemplate:getProbeTemplate', __args__, opts=opts, typ=GetProbeTemplateResult)
     return __ret__.apply(lambda __response__: GetProbeTemplateResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        apm_probe=pulumi.get(__response__, 'apm_probe'),
         cmd_probes=pulumi.get(__response__, 'cmd_probes'),
         description=pulumi.get(__response__, 'description'),
         http_probes=pulumi.get(__response__, 'http_probes'),

@@ -1764,8 +1764,8 @@ public final class ChaosFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.harness.service.ServiceFunctions;
-     * import com.pulumi.harness.service.inputs.GetDiscoveryAgentArgs;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetInfrastructureV2Args;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1779,24 +1779,17 @@ public final class ChaosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Data source to fetch a specific agent by name
-     *         final var byName = ServiceFunctions.getDiscoveryAgent(GetDiscoveryAgentArgs.builder()
-     *             .name("example-agent")
-     *             .orgIdentifier(orgIdentifier)
-     *             .projectIdentifier(projectIdentifier)
-     *             .environmentIdentifier(environmentIdentifier)
+     *         // Fetch an existing chaos infrastructure V2 by its identifiers
+     *         final var example = ChaosFunctions.getInfrastructureV2(GetInfrastructureV2Args.builder()
+     *             .orgId("<org_id>")
+     *             .projectId("<project_id>")
+     *             .environmentId("<environment_id>")
+     *             .infraId("<infra_id>")
      *             .build());
      * 
-     *         ctx.export("agentDetailsByName", byName);
-     *         // Data source to fetch a specific agent by identity
-     *         final var byIdentity = ServiceFunctions.getDiscoveryAgent(GetDiscoveryAgentArgs.builder()
-     *             .identity("example-infra")
-     *             .orgIdentifier(orgIdentifier)
-     *             .projectIdentifier(projectIdentifier)
-     *             .environmentIdentifier(environmentIdentifier)
-     *             .build());
-     * 
-     *         ctx.export("agentDetailsByIdentity", byIdentity);
+     *         ctx.export("chaosInfraResources", example.resources());
+     *         ctx.export("chaosInfraAutopilotEnabled", example.autopilotEnabled());
+     *         ctx.export("chaosInfraDiscoveryAgentId", example.discoveryAgentId());
      *     }
      * }
      * }
@@ -1818,8 +1811,8 @@ public final class ChaosFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.harness.service.ServiceFunctions;
-     * import com.pulumi.harness.service.inputs.GetDiscoveryAgentArgs;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetInfrastructureV2Args;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1833,24 +1826,17 @@ public final class ChaosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Data source to fetch a specific agent by name
-     *         final var byName = ServiceFunctions.getDiscoveryAgent(GetDiscoveryAgentArgs.builder()
-     *             .name("example-agent")
-     *             .orgIdentifier(orgIdentifier)
-     *             .projectIdentifier(projectIdentifier)
-     *             .environmentIdentifier(environmentIdentifier)
+     *         // Fetch an existing chaos infrastructure V2 by its identifiers
+     *         final var example = ChaosFunctions.getInfrastructureV2(GetInfrastructureV2Args.builder()
+     *             .orgId("<org_id>")
+     *             .projectId("<project_id>")
+     *             .environmentId("<environment_id>")
+     *             .infraId("<infra_id>")
      *             .build());
      * 
-     *         ctx.export("agentDetailsByName", byName);
-     *         // Data source to fetch a specific agent by identity
-     *         final var byIdentity = ServiceFunctions.getDiscoveryAgent(GetDiscoveryAgentArgs.builder()
-     *             .identity("example-infra")
-     *             .orgIdentifier(orgIdentifier)
-     *             .projectIdentifier(projectIdentifier)
-     *             .environmentIdentifier(environmentIdentifier)
-     *             .build());
-     * 
-     *         ctx.export("agentDetailsByIdentity", byIdentity);
+     *         ctx.export("chaosInfraResources", example.resources());
+     *         ctx.export("chaosInfraAutopilotEnabled", example.autopilotEnabled());
+     *         ctx.export("chaosInfraDiscoveryAgentId", example.discoveryAgentId());
      *     }
      * }
      * }
@@ -1872,8 +1858,8 @@ public final class ChaosFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.harness.service.ServiceFunctions;
-     * import com.pulumi.harness.service.inputs.GetDiscoveryAgentArgs;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetInfrastructureV2Args;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1887,24 +1873,17 @@ public final class ChaosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Data source to fetch a specific agent by name
-     *         final var byName = ServiceFunctions.getDiscoveryAgent(GetDiscoveryAgentArgs.builder()
-     *             .name("example-agent")
-     *             .orgIdentifier(orgIdentifier)
-     *             .projectIdentifier(projectIdentifier)
-     *             .environmentIdentifier(environmentIdentifier)
+     *         // Fetch an existing chaos infrastructure V2 by its identifiers
+     *         final var example = ChaosFunctions.getInfrastructureV2(GetInfrastructureV2Args.builder()
+     *             .orgId("<org_id>")
+     *             .projectId("<project_id>")
+     *             .environmentId("<environment_id>")
+     *             .infraId("<infra_id>")
      *             .build());
      * 
-     *         ctx.export("agentDetailsByName", byName);
-     *         // Data source to fetch a specific agent by identity
-     *         final var byIdentity = ServiceFunctions.getDiscoveryAgent(GetDiscoveryAgentArgs.builder()
-     *             .identity("example-infra")
-     *             .orgIdentifier(orgIdentifier)
-     *             .projectIdentifier(projectIdentifier)
-     *             .environmentIdentifier(environmentIdentifier)
-     *             .build());
-     * 
-     *         ctx.export("agentDetailsByIdentity", byIdentity);
+     *         ctx.export("chaosInfraResources", example.resources());
+     *         ctx.export("chaosInfraAutopilotEnabled", example.autopilotEnabled());
+     *         ctx.export("chaosInfraDiscoveryAgentId", example.discoveryAgentId());
      *     }
      * }
      * }
@@ -1926,8 +1905,8 @@ public final class ChaosFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.harness.service.ServiceFunctions;
-     * import com.pulumi.harness.service.inputs.GetDiscoveryAgentArgs;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetInfrastructureV2Args;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1941,24 +1920,17 @@ public final class ChaosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Data source to fetch a specific agent by name
-     *         final var byName = ServiceFunctions.getDiscoveryAgent(GetDiscoveryAgentArgs.builder()
-     *             .name("example-agent")
-     *             .orgIdentifier(orgIdentifier)
-     *             .projectIdentifier(projectIdentifier)
-     *             .environmentIdentifier(environmentIdentifier)
+     *         // Fetch an existing chaos infrastructure V2 by its identifiers
+     *         final var example = ChaosFunctions.getInfrastructureV2(GetInfrastructureV2Args.builder()
+     *             .orgId("<org_id>")
+     *             .projectId("<project_id>")
+     *             .environmentId("<environment_id>")
+     *             .infraId("<infra_id>")
      *             .build());
      * 
-     *         ctx.export("agentDetailsByName", byName);
-     *         // Data source to fetch a specific agent by identity
-     *         final var byIdentity = ServiceFunctions.getDiscoveryAgent(GetDiscoveryAgentArgs.builder()
-     *             .identity("example-infra")
-     *             .orgIdentifier(orgIdentifier)
-     *             .projectIdentifier(projectIdentifier)
-     *             .environmentIdentifier(environmentIdentifier)
-     *             .build());
-     * 
-     *         ctx.export("agentDetailsByIdentity", byIdentity);
+     *         ctx.export("chaosInfraResources", example.resources());
+     *         ctx.export("chaosInfraAutopilotEnabled", example.autopilotEnabled());
+     *         ctx.export("chaosInfraDiscoveryAgentId", example.discoveryAgentId());
      *     }
      * }
      * }
@@ -1980,8 +1952,8 @@ public final class ChaosFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.harness.service.ServiceFunctions;
-     * import com.pulumi.harness.service.inputs.GetDiscoveryAgentArgs;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetInfrastructureV2Args;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1995,24 +1967,17 @@ public final class ChaosFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Data source to fetch a specific agent by name
-     *         final var byName = ServiceFunctions.getDiscoveryAgent(GetDiscoveryAgentArgs.builder()
-     *             .name("example-agent")
-     *             .orgIdentifier(orgIdentifier)
-     *             .projectIdentifier(projectIdentifier)
-     *             .environmentIdentifier(environmentIdentifier)
+     *         // Fetch an existing chaos infrastructure V2 by its identifiers
+     *         final var example = ChaosFunctions.getInfrastructureV2(GetInfrastructureV2Args.builder()
+     *             .orgId("<org_id>")
+     *             .projectId("<project_id>")
+     *             .environmentId("<environment_id>")
+     *             .infraId("<infra_id>")
      *             .build());
      * 
-     *         ctx.export("agentDetailsByName", byName);
-     *         // Data source to fetch a specific agent by identity
-     *         final var byIdentity = ServiceFunctions.getDiscoveryAgent(GetDiscoveryAgentArgs.builder()
-     *             .identity("example-infra")
-     *             .orgIdentifier(orgIdentifier)
-     *             .projectIdentifier(projectIdentifier)
-     *             .environmentIdentifier(environmentIdentifier)
-     *             .build());
-     * 
-     *         ctx.export("agentDetailsByIdentity", byIdentity);
+     *         ctx.export("chaosInfraResources", example.resources());
+     *         ctx.export("chaosInfraAutopilotEnabled", example.autopilotEnabled());
+     *         ctx.export("chaosInfraDiscoveryAgentId", example.discoveryAgentId());
      *     }
      * }
      * }

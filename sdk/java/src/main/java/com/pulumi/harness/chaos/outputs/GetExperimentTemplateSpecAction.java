@@ -5,6 +5,7 @@ package com.pulumi.harness.chaos.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.chaos.outputs.GetExperimentTemplateSpecActionConditionsV2;
 import com.pulumi.harness.chaos.outputs.GetExperimentTemplateSpecActionValue;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -14,6 +15,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetExperimentTemplateSpecAction {
+    /**
+     * @return Execution conditions (operator + values) gating whether this runs.
+     * 
+     */
+    private List<GetExperimentTemplateSpecActionConditionsV2> conditionsV2s;
     /**
      * @return Whether to continue on completion
      * 
@@ -51,6 +57,13 @@ public final class GetExperimentTemplateSpecAction {
     private List<GetExperimentTemplateSpecActionValue> values;
 
     private GetExperimentTemplateSpecAction() {}
+    /**
+     * @return Execution conditions (operator + values) gating whether this runs.
+     * 
+     */
+    public List<GetExperimentTemplateSpecActionConditionsV2> conditionsV2s() {
+        return this.conditionsV2s;
+    }
     /**
      * @return Whether to continue on completion
      * 
@@ -110,6 +123,7 @@ public final class GetExperimentTemplateSpecAction {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetExperimentTemplateSpecActionConditionsV2> conditionsV2s;
         private Boolean continueOnCompletion;
         private String identity;
         private String infraId;
@@ -120,6 +134,7 @@ public final class GetExperimentTemplateSpecAction {
         public Builder() {}
         public Builder(GetExperimentTemplateSpecAction defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.conditionsV2s = defaults.conditionsV2s;
     	      this.continueOnCompletion = defaults.continueOnCompletion;
     	      this.identity = defaults.identity;
     	      this.infraId = defaults.infraId;
@@ -129,6 +144,17 @@ public final class GetExperimentTemplateSpecAction {
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
+        public Builder conditionsV2s(List<GetExperimentTemplateSpecActionConditionsV2> conditionsV2s) {
+            if (conditionsV2s == null) {
+              throw new MissingRequiredPropertyException("GetExperimentTemplateSpecAction", "conditionsV2s");
+            }
+            this.conditionsV2s = conditionsV2s;
+            return this;
+        }
+        public Builder conditionsV2s(GetExperimentTemplateSpecActionConditionsV2... conditionsV2s) {
+            return conditionsV2s(List.of(conditionsV2s));
+        }
         @CustomType.Setter
         public Builder continueOnCompletion(Boolean continueOnCompletion) {
             if (continueOnCompletion == null) {
@@ -190,6 +216,7 @@ public final class GetExperimentTemplateSpecAction {
         }
         public GetExperimentTemplateSpecAction build() {
             final var _resultValue = new GetExperimentTemplateSpecAction();
+            _resultValue.conditionsV2s = conditionsV2s;
             _resultValue.continueOnCompletion = continueOnCompletion;
             _resultValue.identity = identity;
             _resultValue.infraId = infraId;

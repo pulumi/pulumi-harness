@@ -5,9 +5,10 @@ package com.pulumi.harness.chaos.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ExperimentTemplateSpecProbeConditionArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,15 +19,15 @@ public final class ExperimentTemplateSpecProbeConditionArgs extends com.pulumi.r
      * When to execute the probe (onChaosStart, duringChaos, afterChaos)
      * 
      */
-    @Import(name="executeUpon", required=true)
-    private Output<String> executeUpon;
+    @Import(name="executeUpon")
+    private @Nullable Output<String> executeUpon;
 
     /**
      * @return When to execute the probe (onChaosStart, duringChaos, afterChaos)
      * 
      */
-    public Output<String> executeUpon() {
-        return this.executeUpon;
+    public Optional<Output<String>> executeUpon() {
+        return Optional.ofNullable(this.executeUpon);
     }
 
     private ExperimentTemplateSpecProbeConditionArgs() {}
@@ -59,7 +60,7 @@ public final class ExperimentTemplateSpecProbeConditionArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder executeUpon(Output<String> executeUpon) {
+        public Builder executeUpon(@Nullable Output<String> executeUpon) {
             $.executeUpon = executeUpon;
             return this;
         }
@@ -75,9 +76,6 @@ public final class ExperimentTemplateSpecProbeConditionArgs extends com.pulumi.r
         }
 
         public ExperimentTemplateSpecProbeConditionArgs build() {
-            if ($.executeUpon == null) {
-                throw new MissingRequiredPropertyException("ExperimentTemplateSpecProbeConditionArgs", "executeUpon");
-            }
             return $;
         }
     }

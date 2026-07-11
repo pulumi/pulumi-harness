@@ -14,6 +14,12 @@ import (
 
 // Resource for managing Harness Chaos Experiment Templates. Experiment templates define reusable chaos experiments with actions, faults, and probes.
 //
+// Execution conditions for faults, probes, and actions are configured via the `conditionsV2` block (`operator` = `AND`/`OR`, plus `values` which support the `<+input>` runtime input).
+//
+// ## Deprecated / not supported
+//
+// - The probe `conditions` (`executeUpon`) block is **deprecated and ignored** - it is not part of the current experiment template API. Use `conditionsV2` instead.
+//
 // ## Example Usage
 //
 // ```go
@@ -275,10 +281,11 @@ import (
 //							Duration:             pulumi.String("30"),
 //							Weightage:            pulumi.Int(10),
 //							EnableDataCollection: pulumi.Bool(false),
-//							Conditions: chaos.ExperimentTemplateSpecProbeConditionArray{
-//								"onChaosStart",
-//								"duringChaos",
-//								"afterChaos",
+//							ConditionsV2: &chaos.ExperimentTemplateSpecProbeConditionsV2Args{
+//								Operator: pulumi.String("AND"),
+//								Values: pulumi.StringArray{
+//									pulumi.String("true"),
+//								},
 //							},
 //							Values: chaos.ExperimentTemplateSpecProbeValueArray{
 //								&chaos.ExperimentTemplateSpecProbeValueArgs{
@@ -295,9 +302,12 @@ import (
 //							Duration:             pulumi.String("30"),
 //							Weightage:            pulumi.Int(10),
 //							EnableDataCollection: pulumi.Bool(false),
-//							Conditions: chaos.ExperimentTemplateSpecProbeConditionArray{
-//								"duringChaos",
-//								"afterChaos",
+//							ConditionsV2: &chaos.ExperimentTemplateSpecProbeConditionsV2Args{
+//								Operator: pulumi.String("OR"),
+//								Values: pulumi.StringArray{
+//									pulumi.String("true"),
+//									pulumi.String("<+input>"),
+//								},
 //							},
 //							Values: chaos.ExperimentTemplateSpecProbeValueArray{
 //								&chaos.ExperimentTemplateSpecProbeValueArgs{
