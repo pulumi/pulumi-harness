@@ -133,6 +133,26 @@ namespace Pulumi.Harness.Platform
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
+    ///     // Example of an Upstream Custom Debian Registry (Debian source needs url)
+    ///     var debianUpstream = new Harness.Platform.HarRegistry("debian_upstream", new()
+    ///     {
+    ///         Identifier = "upstream_debian_registry",
+    ///         Description = "Upstream Debian Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "DEBIAN",
+    ///         Configs = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
+    ///             {
+    ///                 Type = "UPSTREAM",
+    ///                 Source = "Custom",
+    ///                 Url = "http://deb.debian.org/debian",
+    ///                 AuthType = "Anonymous",
+    ///             },
+    ///         },
+    ///         ParentRef = "accountId/orgId/projectId",
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -215,7 +235,7 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA)
+        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN)
         /// </summary>
         [Output("packageType")]
         public Output<string> PackageType { get; private set; } = null!;
@@ -352,7 +372,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA)
+        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN)
         /// </summary>
         [Input("packageType", required: true)]
         public Input<string> PackageType { get; set; } = null!;
@@ -450,7 +470,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA)
+        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN)
         /// </summary>
         [Input("packageType")]
         public Input<string>? PackageType { get; set; }

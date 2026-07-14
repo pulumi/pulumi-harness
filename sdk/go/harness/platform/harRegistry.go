@@ -131,6 +131,25 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Example of an Upstream Custom Debian Registry (Debian source needs url)
+//			_, err = platform.NewHarRegistry(ctx, "debian_upstream", &platform.HarRegistryArgs{
+//				Identifier:  pulumi.String("upstream_debian_registry"),
+//				Description: pulumi.String("Upstream Debian Registry"),
+//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
+//				PackageType: pulumi.String("DEBIAN"),
+//				Configs: platform.HarRegistryConfigArray{
+//					&platform.HarRegistryConfigArgs{
+//						Type:     pulumi.String("UPSTREAM"),
+//						Source:   pulumi.String("Custom"),
+//						Url:      pulumi.String("http://deb.debian.org/debian"),
+//						AuthType: pulumi.String("Anonymous"),
+//					},
+//				},
+//				ParentRef: pulumi.String("accountId/orgId/projectId"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -182,7 +201,7 @@ type HarRegistry struct {
 	IsPublic pulumi.BoolPtrOutput `pulumi:"isPublic"`
 	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
-	// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA)
+	// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN)
 	PackageType pulumi.StringOutput `pulumi:"packageType"`
 	// Parent reference for the registry (required for creation)
 	ParentRef pulumi.StringOutput `pulumi:"parentRef"`
@@ -250,7 +269,7 @@ type harRegistryState struct {
 	IsPublic *bool `pulumi:"isPublic"`
 	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA)
+	// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN)
 	PackageType *string `pulumi:"packageType"`
 	// Parent reference for the registry (required for creation)
 	ParentRef *string `pulumi:"parentRef"`
@@ -277,7 +296,7 @@ type HarRegistryState struct {
 	IsPublic pulumi.BoolPtrInput
 	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
 	Metadata pulumi.StringMapInput
-	// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA)
+	// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN)
 	PackageType pulumi.StringPtrInput
 	// Parent reference for the registry (required for creation)
 	ParentRef pulumi.StringPtrInput
@@ -306,7 +325,7 @@ type harRegistryArgs struct {
 	IsPublic *bool `pulumi:"isPublic"`
 	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA)
+	// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN)
 	PackageType string `pulumi:"packageType"`
 	// Parent reference for the registry (required for creation)
 	ParentRef string `pulumi:"parentRef"`
@@ -330,7 +349,7 @@ type HarRegistryArgs struct {
 	IsPublic pulumi.BoolPtrInput
 	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
 	Metadata pulumi.StringMapInput
-	// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA)
+	// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN)
 	PackageType pulumi.StringInput
 	// Parent reference for the registry (required for creation)
 	ParentRef pulumi.StringInput
@@ -465,7 +484,7 @@ func (o HarRegistryOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *HarRegistry) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA)
+// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN)
 func (o HarRegistryOutput) PackageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *HarRegistry) pulumi.StringOutput { return v.PackageType }).(pulumi.StringOutput)
 }
