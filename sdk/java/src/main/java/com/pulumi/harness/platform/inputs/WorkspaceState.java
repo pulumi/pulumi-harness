@@ -55,14 +55,14 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cost estimation enabled determines if cost estimation operations are performed.
+     * Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     @Import(name="costEstimationEnabled")
     private @Nullable Output<Boolean> costEstimationEnabled;
 
     /**
-     * @return Cost estimation enabled determines if cost estimation operations are performed.
+     * @return Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     public Optional<Output<Boolean>> costEstimationEnabled() {
@@ -220,14 +220,14 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+     * Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     @Import(name="provisionerVersion")
     private @Nullable Output<String> provisionerVersion;
 
     /**
-     * @return Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+     * @return Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     public Optional<Output<String>> provisionerVersion() {
@@ -235,14 +235,14 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Repository is the name of the repository to fetch the code from.
+     * Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     @Import(name="repository")
     private @Nullable Output<String> repository;
 
     /**
-     * @return Repository is the name of the repository to fetch the code from.
+     * @return Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     public Optional<Output<String>> repository() {
@@ -250,14 +250,14 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+     * Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     @Import(name="repositoryBranch")
     private @Nullable Output<String> repositoryBranch;
 
     /**
-     * @return Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+     * @return Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     public Optional<Output<String>> repositoryBranch() {
@@ -265,14 +265,14 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
+     * Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     @Import(name="repositoryCommit")
     private @Nullable Output<String> repositoryCommit;
 
     /**
-     * @return Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
+     * @return Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     public Optional<Output<String>> repositoryCommit() {
@@ -280,14 +280,14 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Repository connector is the reference to the connector used to fetch the code.
+     * Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     @Import(name="repositoryConnector")
     private @Nullable Output<String> repositoryConnector;
 
     /**
-     * @return Repository connector is the reference to the connector used to fetch the code.
+     * @return Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     public Optional<Output<String>> repositoryConnector() {
@@ -295,14 +295,14 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Repository path is the path in which the code resides.
+     * Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     @Import(name="repositoryPath")
     private @Nullable Output<String> repositoryPath;
 
     /**
-     * @return Repository path is the path in which the code resides.
+     * @return Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     public Optional<Output<String>> repositoryPath() {
@@ -310,14 +310,14 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+     * Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     @Import(name="repositorySha")
     private @Nullable Output<String> repositorySha;
 
     /**
-     * @return Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+     * @return Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     public Optional<Output<String>> repositorySha() {
@@ -532,7 +532,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param costEstimationEnabled Cost estimation enabled determines if cost estimation operations are performed.
+         * @param costEstimationEnabled Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
          * 
          * @return builder
          * 
@@ -543,7 +543,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param costEstimationEnabled Cost estimation enabled determines if cost estimation operations are performed.
+         * @param costEstimationEnabled Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
          * 
          * @return builder
          * 
@@ -773,7 +773,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param provisionerVersion Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+         * @param provisionerVersion Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
          * 
          * @return builder
          * 
@@ -784,7 +784,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param provisionerVersion Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+         * @param provisionerVersion Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
          * 
          * @return builder
          * 
@@ -794,7 +794,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repository Repository is the name of the repository to fetch the code from.
+         * @param repository Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
          * 
          * @return builder
          * 
@@ -805,7 +805,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repository Repository is the name of the repository to fetch the code from.
+         * @param repository Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
          * 
          * @return builder
          * 
@@ -815,7 +815,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repositoryBranch Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+         * @param repositoryBranch Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
          * 
          * @return builder
          * 
@@ -826,7 +826,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repositoryBranch Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+         * @param repositoryBranch Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
          * 
          * @return builder
          * 
@@ -836,7 +836,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repositoryCommit Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
+         * @param repositoryCommit Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
          * 
          * @return builder
          * 
@@ -847,7 +847,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repositoryCommit Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
+         * @param repositoryCommit Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
          * 
          * @return builder
          * 
@@ -857,7 +857,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repositoryConnector Repository connector is the reference to the connector used to fetch the code.
+         * @param repositoryConnector Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
          * 
          * @return builder
          * 
@@ -868,7 +868,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repositoryConnector Repository connector is the reference to the connector used to fetch the code.
+         * @param repositoryConnector Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
          * 
          * @return builder
          * 
@@ -878,7 +878,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repositoryPath Repository path is the path in which the code resides.
+         * @param repositoryPath Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
          * 
          * @return builder
          * 
@@ -889,7 +889,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repositoryPath Repository path is the path in which the code resides.
+         * @param repositoryPath Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
          * 
          * @return builder
          * 
@@ -899,7 +899,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repositorySha Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+         * @param repositorySha Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
          * 
          * @return builder
          * 
@@ -910,7 +910,7 @@ public final class WorkspaceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param repositorySha Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+         * @param repositorySha Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
          * 
          * @return builder
          * 

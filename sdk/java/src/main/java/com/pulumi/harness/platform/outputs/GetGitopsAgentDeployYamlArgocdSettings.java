@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,12 +13,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetGitopsAgentDeployYamlArgocdSettings {
     /**
+     * @return Comma-separated list of namespaces where Application CRs are permitted to reside. Use &#34;*&#34; for all namespaces.
+     * 
+     */
+    private @Nullable String applicationNamespaces;
+    /**
      * @return Controls the Environment variable HELM*SECRETS*VALUES*ALLOW*PATH_TRAVERSAL to allow or deny dot-dot-slash values file paths. Disabled by default for security reasons. This config is pushed as an env variable to the repo-server.
      * 
      */
     private @Nullable Boolean enableHelmPathTraversal;
 
     private GetGitopsAgentDeployYamlArgocdSettings() {}
+    /**
+     * @return Comma-separated list of namespaces where Application CRs are permitted to reside. Use &#34;*&#34; for all namespaces.
+     * 
+     */
+    public Optional<String> applicationNamespaces() {
+        return Optional.ofNullable(this.applicationNamespaces);
+    }
     /**
      * @return Controls the Environment variable HELM*SECRETS*VALUES*ALLOW*PATH_TRAVERSAL to allow or deny dot-dot-slash values file paths. Disabled by default for security reasons. This config is pushed as an env variable to the repo-server.
      * 
@@ -35,13 +48,21 @@ public final class GetGitopsAgentDeployYamlArgocdSettings {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String applicationNamespaces;
         private @Nullable Boolean enableHelmPathTraversal;
         public Builder() {}
         public Builder(GetGitopsAgentDeployYamlArgocdSettings defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.applicationNamespaces = defaults.applicationNamespaces;
     	      this.enableHelmPathTraversal = defaults.enableHelmPathTraversal;
         }
 
+        @CustomType.Setter
+        public Builder applicationNamespaces(@Nullable String applicationNamespaces) {
+
+            this.applicationNamespaces = applicationNamespaces;
+            return this;
+        }
         @CustomType.Setter
         public Builder enableHelmPathTraversal(@Nullable Boolean enableHelmPathTraversal) {
 
@@ -50,6 +71,7 @@ public final class GetGitopsAgentDeployYamlArgocdSettings {
         }
         public GetGitopsAgentDeployYamlArgocdSettings build() {
             final var _resultValue = new GetGitopsAgentDeployYamlArgocdSettings();
+            _resultValue.applicationNamespaces = applicationNamespaces;
             _resultValue.enableHelmPathTraversal = enableHelmPathTraversal;
             return _resultValue;
         }

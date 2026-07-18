@@ -43,12 +43,12 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorClusterDecisio
      */
     private @Nullable String revisionHistoryLimit;
     /**
-     * @return Location of the application&#39;s manifests or chart.
+     * @return Location of the application&#39;s manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
      * 
      */
     private @Nullable List<GitopsApplicationsetApplicationsetSpecGeneratorClusterDecisionResourceTemplateSpecSource> source;
     /**
-     * @return Location of the application&#39;s manifests or chart. Use when specifying multiple fields
+     * @return List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
      * 
      */
     private @Nullable List<GitopsApplicationsetApplicationsetSpecGeneratorClusterDecisionResourceTemplateSpecSource> sources;
@@ -95,14 +95,14 @@ public final class GitopsApplicationsetApplicationsetSpecGeneratorClusterDecisio
         return Optional.ofNullable(this.revisionHistoryLimit);
     }
     /**
-     * @return Location of the application&#39;s manifests or chart.
+     * @return Location of the application&#39;s manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
      * 
      */
     public List<GitopsApplicationsetApplicationsetSpecGeneratorClusterDecisionResourceTemplateSpecSource> source() {
         return this.source == null ? List.of() : this.source;
     }
     /**
-     * @return Location of the application&#39;s manifests or chart. Use when specifying multiple fields
+     * @return List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
      * 
      */
     public List<GitopsApplicationsetApplicationsetSpecGeneratorClusterDecisionResourceTemplateSpecSource> sources() {

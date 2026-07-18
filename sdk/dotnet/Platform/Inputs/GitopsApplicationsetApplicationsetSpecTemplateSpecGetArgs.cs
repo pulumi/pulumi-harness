@@ -54,11 +54,11 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("revisionHistoryLimit")]
         public Input<string>? RevisionHistoryLimit { get; set; }
 
-        [Input("source", required: true)]
+        [Input("source")]
         private InputList<Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceGetArgs>? _source;
 
         /// <summary>
-        /// Location of the application's manifests or chart.
+        /// Location of the application's manifests or chart. Mutually exclusive with `Sources`; specify exactly one of `Source` or `Sources`.
         /// </summary>
         public InputList<Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceGetArgs> Source
         {
@@ -70,7 +70,7 @@ namespace Pulumi.Harness.Platform.Inputs
         private InputList<Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceGetArgs>? _sources;
 
         /// <summary>
-        /// Location of the application's manifests or chart. Use when specifying multiple fields
+        /// List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `Source`; specify exactly one of `Source` or `Sources`.
         /// </summary>
         public InputList<Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceGetArgs> Sources
         {

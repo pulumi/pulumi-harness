@@ -140,7 +140,7 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableArray<Outputs.WorkspaceConnector>> Connectors { get; private set; } = null!;
 
         /// <summary>
-        /// Cost estimation enabled determines if cost estimation operations are performed.
+        /// Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
         [Output("costEstimationEnabled")]
         public Output<bool> CostEstimationEnabled { get; private set; } = null!;
@@ -206,46 +206,46 @@ namespace Pulumi.Harness.Platform
         public Output<string> ProvisionerType { get; private set; } = null!;
 
         /// <summary>
-        /// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+        /// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
         [Output("provisionerVersion")]
         public Output<string> ProvisionerVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Repository is the name of the repository to fetch the code from.
+        /// Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
         [Output("repository")]
         public Output<string> Repository { get; private set; } = null!;
 
         /// <summary>
-        /// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+        /// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and RepositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
         [Output("repositoryBranch")]
-        public Output<string?> RepositoryBranch { get; private set; } = null!;
+        public Output<string> RepositoryBranch { get; private set; } = null!;
 
         /// <summary>
-        /// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
+        /// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and RepositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
         [Output("repositoryCommit")]
-        public Output<string?> RepositoryCommit { get; private set; } = null!;
+        public Output<string> RepositoryCommit { get; private set; } = null!;
 
         /// <summary>
-        /// Repository connector is the reference to the connector used to fetch the code.
+        /// Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
         [Output("repositoryConnector")]
         public Output<string> RepositoryConnector { get; private set; } = null!;
 
         /// <summary>
-        /// Repository path is the path in which the code resides.
+        /// Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
         [Output("repositoryPath")]
         public Output<string> RepositoryPath { get; private set; } = null!;
 
         /// <summary>
-        /// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+        /// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and RepositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
         [Output("repositorySha")]
-        public Output<string?> RepositorySha { get; private set; } = null!;
+        public Output<string> RepositorySha { get; private set; } = null!;
 
         /// <summary>
         /// Boolean flag for run-all terragrunt modules
@@ -355,10 +355,10 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Cost estimation enabled determines if cost estimation operations are performed.
+        /// Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
-        [Input("costEstimationEnabled", required: true)]
-        public Input<bool> CostEstimationEnabled { get; set; } = null!;
+        [Input("costEstimationEnabled")]
+        public Input<bool>? CostEstimationEnabled { get; set; }
 
         [Input("defaultPipelines")]
         private InputMap<string>? _defaultPipelines;
@@ -433,43 +433,43 @@ namespace Pulumi.Harness.Platform
         public Input<string> ProvisionerType { get; set; } = null!;
 
         /// <summary>
-        /// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+        /// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
-        [Input("provisionerVersion", required: true)]
-        public Input<string> ProvisionerVersion { get; set; } = null!;
+        [Input("provisionerVersion")]
+        public Input<string>? ProvisionerVersion { get; set; }
 
         /// <summary>
-        /// Repository is the name of the repository to fetch the code from.
+        /// Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
-        [Input("repository", required: true)]
-        public Input<string> Repository { get; set; } = null!;
+        [Input("repository")]
+        public Input<string>? Repository { get; set; }
 
         /// <summary>
-        /// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+        /// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and RepositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
         [Input("repositoryBranch")]
         public Input<string>? RepositoryBranch { get; set; }
 
         /// <summary>
-        /// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
+        /// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and RepositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
         [Input("repositoryCommit")]
         public Input<string>? RepositoryCommit { get; set; }
 
         /// <summary>
-        /// Repository connector is the reference to the connector used to fetch the code.
+        /// Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
-        [Input("repositoryConnector", required: true)]
-        public Input<string> RepositoryConnector { get; set; } = null!;
+        [Input("repositoryConnector")]
+        public Input<string>? RepositoryConnector { get; set; }
 
         /// <summary>
-        /// Repository path is the path in which the code resides.
+        /// Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
-        [Input("repositoryPath", required: true)]
-        public Input<string> RepositoryPath { get; set; } = null!;
+        [Input("repositoryPath")]
+        public Input<string>? RepositoryPath { get; set; }
 
         /// <summary>
-        /// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+        /// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and RepositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
         [Input("repositorySha")]
         public Input<string>? RepositorySha { get; set; }
@@ -567,7 +567,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Cost estimation enabled determines if cost estimation operations are performed.
+        /// Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
         [Input("costEstimationEnabled")]
         public Input<bool>? CostEstimationEnabled { get; set; }
@@ -645,43 +645,43 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProvisionerType { get; set; }
 
         /// <summary>
-        /// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+        /// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
         [Input("provisionerVersion")]
         public Input<string>? ProvisionerVersion { get; set; }
 
         /// <summary>
-        /// Repository is the name of the repository to fetch the code from.
+        /// Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
         [Input("repository")]
         public Input<string>? Repository { get; set; }
 
         /// <summary>
-        /// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+        /// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and RepositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
         [Input("repositoryBranch")]
         public Input<string>? RepositoryBranch { get; set; }
 
         /// <summary>
-        /// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
+        /// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and RepositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
         [Input("repositoryCommit")]
         public Input<string>? RepositoryCommit { get; set; }
 
         /// <summary>
-        /// Repository connector is the reference to the connector used to fetch the code.
+        /// Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
         [Input("repositoryConnector")]
         public Input<string>? RepositoryConnector { get; set; }
 
         /// <summary>
-        /// Repository path is the path in which the code resides.
+        /// Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
         [Input("repositoryPath")]
         public Input<string>? RepositoryPath { get; set; }
 
         /// <summary>
-        /// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+        /// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and RepositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         /// </summary>
         [Input("repositorySha")]
         public Input<string>? RepositorySha { get; set; }

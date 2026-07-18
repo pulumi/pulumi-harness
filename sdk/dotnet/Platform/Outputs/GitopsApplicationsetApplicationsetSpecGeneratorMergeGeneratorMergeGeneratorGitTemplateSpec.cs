@@ -34,11 +34,11 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? RevisionHistoryLimit;
         /// <summary>
-        /// Location of the application's manifests or chart.
+        /// Location of the application's manifests or chart. Mutually exclusive with `Sources`; specify exactly one of `Source` or `Sources`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorGitTemplateSpecSource> Source;
         /// <summary>
-        /// Location of the application's manifests or chart. Use when specifying multiple fields
+        /// List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `Source`; specify exactly one of `Source` or `Sources`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorGitTemplateSpecSource> Sources;
         /// <summary>

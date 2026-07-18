@@ -43,11 +43,11 @@ import * as utilities from "../utilities";
  *                 },
  *                 spec: {
  *                     project: "default",
- *                     sources: [{
+ *                     source: {
  *                         repoUrl: "https://github.com/argoproj/argocd-example-apps.git",
  *                         path: "helm-guestbook",
  *                         targetRevision: "HEAD",
- *                     }],
+ *                     },
  *                     destination: {
  *                         server: "{{.url}}",
  *                         namespace: "app-ns-{{.name}}",
@@ -90,11 +90,11 @@ import * as utilities from "../utilities";
  *                 },
  *                 spec: {
  *                     project: "default",
- *                     sources: [{
+ *                     source: {
  *                         repoUrl: "https://github.com/argoproj/argocd-example-apps.git",
  *                         path: "helm-guestbook",
  *                         targetRevision: "HEAD",
- *                     }],
+ *                     },
  *                     destination: {
  *                         server: "{{.url}}",
  *                         namespace: "default",
@@ -130,11 +130,11 @@ import * as utilities from "../utilities";
  *                 },
  *                 spec: {
  *                     project: "default",
- *                     sources: [{
+ *                     source: {
  *                         repoUrl: "https://github.com/example/app-repo",
  *                         path: "{{.path.path}}",
  *                         targetRevision: "main",
- *                     }],
+ *                     },
  *                     destination: {
  *                         server: "https://kubernetes.default.svc",
  *                         namespace: "{{.path.basename}}",
@@ -171,11 +171,11 @@ import * as utilities from "../utilities";
  *                 },
  *                 spec: {
  *                     project: "default",
- *                     sources: [{
+ *                     source: {
  *                         repoUrl: "https://github.com/argoproj/argo-cd.git",
  *                         path: "{{.path.path}}",
  *                         targetRevision: "HEAD",
- *                     }],
+ *                     },
  *                     destination: {
  *                         server: "https://kubernetes.default.svc",
  *                         namespace: "{{.path.basename}}",

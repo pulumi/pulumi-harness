@@ -21,25 +21,25 @@ __all__ = ['WorkspaceArgs', 'Workspace']
 @pulumi.input_type
 class WorkspaceArgs:
     def __init__(__self__, *,
-                 cost_estimation_enabled: pulumi.Input[_builtins.bool],
                  identifier: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
                  provisioner_type: pulumi.Input[_builtins.str],
-                 provisioner_version: pulumi.Input[_builtins.str],
-                 repository: pulumi.Input[_builtins.str],
-                 repository_connector: pulumi.Input[_builtins.str],
-                 repository_path: pulumi.Input[_builtins.str],
                  associated_template: pulumi.Input[Optional['WorkspaceAssociatedTemplateArgs']] = None,
                  connectors: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceConnectorArgs']]]] = None,
+                 cost_estimation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  default_pipelines: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_connector: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioner_config: pulumi.Input[Optional['WorkspaceProvisionerConfigArgs']] = None,
+                 provisioner_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository: pulumi.Input[Optional[_builtins.str]] = None,
                  repository_branch: pulumi.Input[Optional[_builtins.str]] = None,
                  repository_commit: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_connector: pulumi.Input[Optional[_builtins.str]] = None,
+                 repository_path: pulumi.Input[Optional[_builtins.str]] = None,
                  repository_sha: pulumi.Input[Optional[_builtins.str]] = None,
                  run_all: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -51,26 +51,26 @@ class WorkspaceArgs:
         """
         The set of arguments for constructing a Workspace resource.
 
-        :param pulumi.Input[_builtins.bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[_builtins.str] provisioner_type: Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
-        :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
-        :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from.
-        :param pulumi.Input[_builtins.str] repository_connector: Repository connector is the reference to the connector used to fetch the code.
-        :param pulumi.Input[_builtins.str] repository_path: Repository path is the path in which the code resides.
         :param pulumi.Input['WorkspaceAssociatedTemplateArgs'] associated_template: Template associated with the workspace.
         :param pulumi.Input[Sequence[pulumi.Input['WorkspaceConnectorArgs']]] connectors: Provider connectors configured on the Workspace. Only one connector of a type is supported
+        :param pulumi.Input[_builtins.bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] default_pipelines: Default pipelines associated with this workspace
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]] environment_variables: Environment variables configured on the workspace
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider
         :param pulumi.Input['WorkspaceProvisionerConfigArgs'] provisioner_config: Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
-        :param pulumi.Input[_builtins.str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
-        :param pulumi.Input[_builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
-        :param pulumi.Input[_builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+        :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository_connector: Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository_path: Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         :param pulumi.Input[_builtins.bool] run_all: Boolean flag for run-all terragrunt modules
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
@@ -79,19 +79,16 @@ class WorkspaceArgs:
         :param pulumi.Input[_builtins.str] terragrunt_version: Terragrunt version to use (e.g., 0.45.0)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] variable_sets: Variable sets to use.
         """
-        pulumi.set(__self__, "cost_estimation_enabled", cost_estimation_enabled)
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "provisioner_type", provisioner_type)
-        pulumi.set(__self__, "provisioner_version", provisioner_version)
-        pulumi.set(__self__, "repository", repository)
-        pulumi.set(__self__, "repository_connector", repository_connector)
-        pulumi.set(__self__, "repository_path", repository_path)
         if associated_template is not None:
             pulumi.set(__self__, "associated_template", associated_template)
         if connectors is not None:
             pulumi.set(__self__, "connectors", connectors)
+        if cost_estimation_enabled is not None:
+            pulumi.set(__self__, "cost_estimation_enabled", cost_estimation_enabled)
         if default_pipelines is not None:
             pulumi.set(__self__, "default_pipelines", default_pipelines)
         if description is not None:
@@ -104,10 +101,18 @@ class WorkspaceArgs:
             pulumi.set(__self__, "provider_connector", provider_connector)
         if provisioner_config is not None:
             pulumi.set(__self__, "provisioner_config", provisioner_config)
+        if provisioner_version is not None:
+            pulumi.set(__self__, "provisioner_version", provisioner_version)
+        if repository is not None:
+            pulumi.set(__self__, "repository", repository)
         if repository_branch is not None:
             pulumi.set(__self__, "repository_branch", repository_branch)
         if repository_commit is not None:
             pulumi.set(__self__, "repository_commit", repository_commit)
+        if repository_connector is not None:
+            pulumi.set(__self__, "repository_connector", repository_connector)
+        if repository_path is not None:
+            pulumi.set(__self__, "repository_path", repository_path)
         if repository_sha is not None:
             pulumi.set(__self__, "repository_sha", repository_sha)
         if run_all is not None:
@@ -124,18 +129,6 @@ class WorkspaceArgs:
             pulumi.set(__self__, "terragrunt_version", terragrunt_version)
         if variable_sets is not None:
             pulumi.set(__self__, "variable_sets", variable_sets)
-
-    @_builtins.property
-    @pulumi.getter(name="costEstimationEnabled")
-    def cost_estimation_enabled(self) -> pulumi.Input[_builtins.bool]:
-        """
-        Cost estimation enabled determines if cost estimation operations are performed.
-        """
-        return pulumi.get(self, "cost_estimation_enabled")
-
-    @cost_estimation_enabled.setter
-    def cost_estimation_enabled(self, value: pulumi.Input[_builtins.bool]):
-        pulumi.set(self, "cost_estimation_enabled", value)
 
     @_builtins.property
     @pulumi.getter
@@ -186,54 +179,6 @@ class WorkspaceArgs:
         pulumi.set(self, "provisioner_type", value)
 
     @_builtins.property
-    @pulumi.getter(name="provisionerVersion")
-    def provisioner_version(self) -> pulumi.Input[_builtins.str]:
-        """
-        Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
-        """
-        return pulumi.get(self, "provisioner_version")
-
-    @provisioner_version.setter
-    def provisioner_version(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "provisioner_version", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def repository(self) -> pulumi.Input[_builtins.str]:
-        """
-        Repository is the name of the repository to fetch the code from.
-        """
-        return pulumi.get(self, "repository")
-
-    @repository.setter
-    def repository(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "repository", value)
-
-    @_builtins.property
-    @pulumi.getter(name="repositoryConnector")
-    def repository_connector(self) -> pulumi.Input[_builtins.str]:
-        """
-        Repository connector is the reference to the connector used to fetch the code.
-        """
-        return pulumi.get(self, "repository_connector")
-
-    @repository_connector.setter
-    def repository_connector(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "repository_connector", value)
-
-    @_builtins.property
-    @pulumi.getter(name="repositoryPath")
-    def repository_path(self) -> pulumi.Input[_builtins.str]:
-        """
-        Repository path is the path in which the code resides.
-        """
-        return pulumi.get(self, "repository_path")
-
-    @repository_path.setter
-    def repository_path(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "repository_path", value)
-
-    @_builtins.property
     @pulumi.getter(name="associatedTemplate")
     def associated_template(self) -> pulumi.Input[Optional['WorkspaceAssociatedTemplateArgs']]:
         """
@@ -256,6 +201,18 @@ class WorkspaceArgs:
     @connectors.setter
     def connectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceConnectorArgs']]]]):
         pulumi.set(self, "connectors", value)
+
+    @_builtins.property
+    @pulumi.getter(name="costEstimationEnabled")
+    def cost_estimation_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        """
+        return pulumi.get(self, "cost_estimation_enabled")
+
+    @cost_estimation_enabled.setter
+    def cost_estimation_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "cost_estimation_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultPipelines")
@@ -330,10 +287,34 @@ class WorkspaceArgs:
         pulumi.set(self, "provisioner_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="provisionerVersion")
+    def provisioner_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        """
+        return pulumi.get(self, "provisioner_version")
+
+    @provisioner_version.setter
+    def provisioner_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "provisioner_version", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def repository(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        """
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "repository", value)
+
+    @_builtins.property
     @pulumi.getter(name="repositoryBranch")
     def repository_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+        Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         """
         return pulumi.get(self, "repository_branch")
 
@@ -345,7 +326,7 @@ class WorkspaceArgs:
     @pulumi.getter(name="repositoryCommit")
     def repository_commit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
+        Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         """
         return pulumi.get(self, "repository_commit")
 
@@ -354,10 +335,34 @@ class WorkspaceArgs:
         pulumi.set(self, "repository_commit", value)
 
     @_builtins.property
+    @pulumi.getter(name="repositoryConnector")
+    def repository_connector(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        """
+        return pulumi.get(self, "repository_connector")
+
+    @repository_connector.setter
+    def repository_connector(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "repository_connector", value)
+
+    @_builtins.property
+    @pulumi.getter(name="repositoryPath")
+    def repository_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        """
+        return pulumi.get(self, "repository_path")
+
+    @repository_path.setter
+    def repository_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "repository_path", value)
+
+    @_builtins.property
     @pulumi.getter(name="repositorySha")
     def repository_sha(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+        Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         """
         return pulumi.get(self, "repository_sha")
 
@@ -485,7 +490,7 @@ class _WorkspaceState:
 
         :param pulumi.Input['WorkspaceAssociatedTemplateArgs'] associated_template: Template associated with the workspace.
         :param pulumi.Input[Sequence[pulumi.Input['WorkspaceConnectorArgs']]] connectors: Provider connectors configured on the Workspace. Only one connector of a type is supported
-        :param pulumi.Input[_builtins.bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed.
+        :param pulumi.Input[_builtins.bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] default_pipelines: Default pipelines associated with this workspace
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['WorkspaceEnvironmentVariableArgs']]] environment_variables: Environment variables configured on the workspace
@@ -496,13 +501,13 @@ class _WorkspaceState:
         :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider
         :param pulumi.Input['WorkspaceProvisionerConfigArgs'] provisioner_config: Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
         :param pulumi.Input[_builtins.str] provisioner_type: Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
-        :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
-        :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from.
-        :param pulumi.Input[_builtins.str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
-        :param pulumi.Input[_builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
-        :param pulumi.Input[_builtins.str] repository_connector: Repository connector is the reference to the connector used to fetch the code.
-        :param pulumi.Input[_builtins.str] repository_path: Repository path is the path in which the code resides.
-        :param pulumi.Input[_builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+        :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository_connector: Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository_path: Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         :param pulumi.Input[_builtins.bool] run_all: Boolean flag for run-all terragrunt modules
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[Sequence[pulumi.Input['WorkspaceTerraformVariableFileArgs']]] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
@@ -594,7 +599,7 @@ class _WorkspaceState:
     @pulumi.getter(name="costEstimationEnabled")
     def cost_estimation_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Cost estimation enabled determines if cost estimation operations are performed.
+        Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         """
         return pulumi.get(self, "cost_estimation_enabled")
 
@@ -726,7 +731,7 @@ class _WorkspaceState:
     @pulumi.getter(name="provisionerVersion")
     def provisioner_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+        Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         """
         return pulumi.get(self, "provisioner_version")
 
@@ -738,7 +743,7 @@ class _WorkspaceState:
     @pulumi.getter
     def repository(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Repository is the name of the repository to fetch the code from.
+        Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         """
         return pulumi.get(self, "repository")
 
@@ -750,7 +755,7 @@ class _WorkspaceState:
     @pulumi.getter(name="repositoryBranch")
     def repository_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+        Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         """
         return pulumi.get(self, "repository_branch")
 
@@ -762,7 +767,7 @@ class _WorkspaceState:
     @pulumi.getter(name="repositoryCommit")
     def repository_commit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
+        Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         """
         return pulumi.get(self, "repository_commit")
 
@@ -774,7 +779,7 @@ class _WorkspaceState:
     @pulumi.getter(name="repositoryConnector")
     def repository_connector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Repository connector is the reference to the connector used to fetch the code.
+        Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         """
         return pulumi.get(self, "repository_connector")
 
@@ -786,7 +791,7 @@ class _WorkspaceState:
     @pulumi.getter(name="repositoryPath")
     def repository_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Repository path is the path in which the code resides.
+        Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         """
         return pulumi.get(self, "repository_path")
 
@@ -798,7 +803,7 @@ class _WorkspaceState:
     @pulumi.getter(name="repositorySha")
     def repository_sha(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+        Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         """
         return pulumi.get(self, "repository_sha")
 
@@ -1021,7 +1026,7 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['WorkspaceAssociatedTemplateArgs', 'WorkspaceAssociatedTemplateArgsDict']] associated_template: Template associated with the workspace.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict']]]] connectors: Provider connectors configured on the Workspace. Only one connector of a type is supported
-        :param pulumi.Input[_builtins.bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed.
+        :param pulumi.Input[_builtins.bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] default_pipelines: Default pipelines associated with this workspace
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]] environment_variables: Environment variables configured on the workspace
@@ -1032,13 +1037,13 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider
         :param pulumi.Input[Union['WorkspaceProvisionerConfigArgs', 'WorkspaceProvisionerConfigArgsDict']] provisioner_config: Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
         :param pulumi.Input[_builtins.str] provisioner_type: Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
-        :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
-        :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from.
-        :param pulumi.Input[_builtins.str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
-        :param pulumi.Input[_builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
-        :param pulumi.Input[_builtins.str] repository_connector: Repository connector is the reference to the connector used to fetch the code.
-        :param pulumi.Input[_builtins.str] repository_path: Repository path is the path in which the code resides.
-        :param pulumi.Input[_builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+        :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository_connector: Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository_path: Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         :param pulumi.Input[_builtins.bool] run_all: Boolean flag for run-all terragrunt modules
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
@@ -1198,8 +1203,6 @@ class Workspace(pulumi.CustomResource):
 
             __props__.__dict__["associated_template"] = associated_template
             __props__.__dict__["connectors"] = connectors
-            if cost_estimation_enabled is None and not opts.urn:
-                raise TypeError("Missing required property 'cost_estimation_enabled'")
             __props__.__dict__["cost_estimation_enabled"] = cost_estimation_enabled
             __props__.__dict__["default_pipelines"] = default_pipelines
             __props__.__dict__["description"] = description
@@ -1219,19 +1222,11 @@ class Workspace(pulumi.CustomResource):
             if provisioner_type is None and not opts.urn:
                 raise TypeError("Missing required property 'provisioner_type'")
             __props__.__dict__["provisioner_type"] = provisioner_type
-            if provisioner_version is None and not opts.urn:
-                raise TypeError("Missing required property 'provisioner_version'")
             __props__.__dict__["provisioner_version"] = provisioner_version
-            if repository is None and not opts.urn:
-                raise TypeError("Missing required property 'repository'")
             __props__.__dict__["repository"] = repository
             __props__.__dict__["repository_branch"] = repository_branch
             __props__.__dict__["repository_commit"] = repository_commit
-            if repository_connector is None and not opts.urn:
-                raise TypeError("Missing required property 'repository_connector'")
             __props__.__dict__["repository_connector"] = repository_connector
-            if repository_path is None and not opts.urn:
-                raise TypeError("Missing required property 'repository_path'")
             __props__.__dict__["repository_path"] = repository_path
             __props__.__dict__["repository_sha"] = repository_sha
             __props__.__dict__["run_all"] = run_all
@@ -1287,7 +1282,7 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['WorkspaceAssociatedTemplateArgs', 'WorkspaceAssociatedTemplateArgsDict']] associated_template: Template associated with the workspace.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict']]]] connectors: Provider connectors configured on the Workspace. Only one connector of a type is supported
-        :param pulumi.Input[_builtins.bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed.
+        :param pulumi.Input[_builtins.bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] default_pipelines: Default pipelines associated with this workspace
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]] environment_variables: Environment variables configured on the workspace
@@ -1298,13 +1293,13 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider
         :param pulumi.Input[Union['WorkspaceProvisionerConfigArgs', 'WorkspaceProvisionerConfigArgsDict']] provisioner_config: Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
         :param pulumi.Input[_builtins.str] provisioner_type: Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
-        :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
-        :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from.
-        :param pulumi.Input[_builtins.str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
-        :param pulumi.Input[_builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
-        :param pulumi.Input[_builtins.str] repository_connector: Repository connector is the reference to the connector used to fetch the code.
-        :param pulumi.Input[_builtins.str] repository_path: Repository path is the path in which the code resides.
-        :param pulumi.Input[_builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+        :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository_branch: Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository_commit: Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository_connector: Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository_path: Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+        :param pulumi.Input[_builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         :param pulumi.Input[_builtins.bool] run_all: Boolean flag for run-all terragrunt modules
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
@@ -1366,7 +1361,7 @@ class Workspace(pulumi.CustomResource):
     @pulumi.getter(name="costEstimationEnabled")
     def cost_estimation_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
-        Cost estimation enabled determines if cost estimation operations are performed.
+        Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         """
         return pulumi.get(self, "cost_estimation_enabled")
 
@@ -1454,7 +1449,7 @@ class Workspace(pulumi.CustomResource):
     @pulumi.getter(name="provisionerVersion")
     def provisioner_version(self) -> pulumi.Output[_builtins.str]:
         """
-        Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+        Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         """
         return pulumi.get(self, "provisioner_version")
 
@@ -1462,23 +1457,23 @@ class Workspace(pulumi.CustomResource):
     @pulumi.getter
     def repository(self) -> pulumi.Output[_builtins.str]:
         """
-        Repository is the name of the repository to fetch the code from.
+        Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         """
         return pulumi.get(self, "repository")
 
     @_builtins.property
     @pulumi.getter(name="repositoryBranch")
-    def repository_branch(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def repository_branch(self) -> pulumi.Output[_builtins.str]:
         """
-        Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+        Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         """
         return pulumi.get(self, "repository_branch")
 
     @_builtins.property
     @pulumi.getter(name="repositoryCommit")
-    def repository_commit(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def repository_commit(self) -> pulumi.Output[_builtins.str]:
         """
-        Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
+        Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         """
         return pulumi.get(self, "repository_commit")
 
@@ -1486,7 +1481,7 @@ class Workspace(pulumi.CustomResource):
     @pulumi.getter(name="repositoryConnector")
     def repository_connector(self) -> pulumi.Output[_builtins.str]:
         """
-        Repository connector is the reference to the connector used to fetch the code.
+        Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         """
         return pulumi.get(self, "repository_connector")
 
@@ -1494,15 +1489,15 @@ class Workspace(pulumi.CustomResource):
     @pulumi.getter(name="repositoryPath")
     def repository_path(self) -> pulumi.Output[_builtins.str]:
         """
-        Repository path is the path in which the code resides.
+        Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         """
         return pulumi.get(self, "repository_path")
 
     @_builtins.property
     @pulumi.getter(name="repositorySha")
-    def repository_sha(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def repository_sha(self) -> pulumi.Output[_builtins.str]:
         """
-        Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+        Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         """
         return pulumi.get(self, "repository_sha")
 

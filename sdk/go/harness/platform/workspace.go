@@ -126,7 +126,7 @@ type Workspace struct {
 	AssociatedTemplate WorkspaceAssociatedTemplatePtrOutput `pulumi:"associatedTemplate"`
 	// Provider connectors configured on the Workspace. Only one connector of a type is supported
 	Connectors WorkspaceConnectorArrayOutput `pulumi:"connectors"`
-	// Cost estimation enabled determines if cost estimation operations are performed.
+	// Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	CostEstimationEnabled pulumi.BoolOutput `pulumi:"costEstimationEnabled"`
 	// Default pipelines associated with this workspace
 	DefaultPipelines pulumi.StringMapOutput `pulumi:"defaultPipelines"`
@@ -148,20 +148,20 @@ type Workspace struct {
 	ProvisionerConfig WorkspaceProvisionerConfigPtrOutput `pulumi:"provisionerConfig"`
 	// Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
 	ProvisionerType pulumi.StringOutput `pulumi:"provisionerType"`
-	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	ProvisionerVersion pulumi.StringOutput `pulumi:"provisionerVersion"`
-	// Repository is the name of the repository to fetch the code from.
+	// Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	Repository pulumi.StringOutput `pulumi:"repository"`
-	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
-	RepositoryBranch pulumi.StringPtrOutput `pulumi:"repositoryBranch"`
-	// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
-	RepositoryCommit pulumi.StringPtrOutput `pulumi:"repositoryCommit"`
-	// Repository connector is the reference to the connector used to fetch the code.
+	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+	RepositoryBranch pulumi.StringOutput `pulumi:"repositoryBranch"`
+	// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+	RepositoryCommit pulumi.StringOutput `pulumi:"repositoryCommit"`
+	// Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	RepositoryConnector pulumi.StringOutput `pulumi:"repositoryConnector"`
-	// Repository path is the path in which the code resides.
+	// Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	RepositoryPath pulumi.StringOutput `pulumi:"repositoryPath"`
-	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
-	RepositorySha pulumi.StringPtrOutput `pulumi:"repositorySha"`
+	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+	RepositorySha pulumi.StringOutput `pulumi:"repositorySha"`
 	// Boolean flag for run-all terragrunt modules
 	RunAll pulumi.BoolPtrOutput `pulumi:"runAll"`
 	// Tags to associate with the resource.
@@ -185,9 +185,6 @@ func NewWorkspace(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CostEstimationEnabled == nil {
-		return nil, errors.New("invalid value for required argument 'CostEstimationEnabled'")
-	}
 	if args.Identifier == nil {
 		return nil, errors.New("invalid value for required argument 'Identifier'")
 	}
@@ -199,18 +196,6 @@ func NewWorkspace(ctx *pulumi.Context,
 	}
 	if args.ProvisionerType == nil {
 		return nil, errors.New("invalid value for required argument 'ProvisionerType'")
-	}
-	if args.ProvisionerVersion == nil {
-		return nil, errors.New("invalid value for required argument 'ProvisionerVersion'")
-	}
-	if args.Repository == nil {
-		return nil, errors.New("invalid value for required argument 'Repository'")
-	}
-	if args.RepositoryConnector == nil {
-		return nil, errors.New("invalid value for required argument 'RepositoryConnector'")
-	}
-	if args.RepositoryPath == nil {
-		return nil, errors.New("invalid value for required argument 'RepositoryPath'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Workspace
@@ -239,7 +224,7 @@ type workspaceState struct {
 	AssociatedTemplate *WorkspaceAssociatedTemplate `pulumi:"associatedTemplate"`
 	// Provider connectors configured on the Workspace. Only one connector of a type is supported
 	Connectors []WorkspaceConnector `pulumi:"connectors"`
-	// Cost estimation enabled determines if cost estimation operations are performed.
+	// Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	CostEstimationEnabled *bool `pulumi:"costEstimationEnabled"`
 	// Default pipelines associated with this workspace
 	DefaultPipelines map[string]string `pulumi:"defaultPipelines"`
@@ -261,19 +246,19 @@ type workspaceState struct {
 	ProvisionerConfig *WorkspaceProvisionerConfig `pulumi:"provisionerConfig"`
 	// Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
 	ProvisionerType *string `pulumi:"provisionerType"`
-	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	ProvisionerVersion *string `pulumi:"provisionerVersion"`
-	// Repository is the name of the repository to fetch the code from.
+	// Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	Repository *string `pulumi:"repository"`
-	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	RepositoryBranch *string `pulumi:"repositoryBranch"`
-	// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
+	// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	RepositoryCommit *string `pulumi:"repositoryCommit"`
-	// Repository connector is the reference to the connector used to fetch the code.
+	// Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	RepositoryConnector *string `pulumi:"repositoryConnector"`
-	// Repository path is the path in which the code resides.
+	// Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	RepositoryPath *string `pulumi:"repositoryPath"`
-	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	RepositorySha *string `pulumi:"repositorySha"`
 	// Boolean flag for run-all terragrunt modules
 	RunAll *bool `pulumi:"runAll"`
@@ -296,7 +281,7 @@ type WorkspaceState struct {
 	AssociatedTemplate WorkspaceAssociatedTemplatePtrInput
 	// Provider connectors configured on the Workspace. Only one connector of a type is supported
 	Connectors WorkspaceConnectorArrayInput
-	// Cost estimation enabled determines if cost estimation operations are performed.
+	// Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	CostEstimationEnabled pulumi.BoolPtrInput
 	// Default pipelines associated with this workspace
 	DefaultPipelines pulumi.StringMapInput
@@ -318,19 +303,19 @@ type WorkspaceState struct {
 	ProvisionerConfig WorkspaceProvisionerConfigPtrInput
 	// Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
 	ProvisionerType pulumi.StringPtrInput
-	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	ProvisionerVersion pulumi.StringPtrInput
-	// Repository is the name of the repository to fetch the code from.
+	// Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	Repository pulumi.StringPtrInput
-	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	RepositoryBranch pulumi.StringPtrInput
-	// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
+	// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	RepositoryCommit pulumi.StringPtrInput
-	// Repository connector is the reference to the connector used to fetch the code.
+	// Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	RepositoryConnector pulumi.StringPtrInput
-	// Repository path is the path in which the code resides.
+	// Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	RepositoryPath pulumi.StringPtrInput
-	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	RepositorySha pulumi.StringPtrInput
 	// Boolean flag for run-all terragrunt modules
 	RunAll pulumi.BoolPtrInput
@@ -357,8 +342,8 @@ type workspaceArgs struct {
 	AssociatedTemplate *WorkspaceAssociatedTemplate `pulumi:"associatedTemplate"`
 	// Provider connectors configured on the Workspace. Only one connector of a type is supported
 	Connectors []WorkspaceConnector `pulumi:"connectors"`
-	// Cost estimation enabled determines if cost estimation operations are performed.
-	CostEstimationEnabled bool `pulumi:"costEstimationEnabled"`
+	// Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+	CostEstimationEnabled *bool `pulumi:"costEstimationEnabled"`
 	// Default pipelines associated with this workspace
 	DefaultPipelines map[string]string `pulumi:"defaultPipelines"`
 	// Description of the resource.
@@ -379,19 +364,19 @@ type workspaceArgs struct {
 	ProvisionerConfig *WorkspaceProvisionerConfig `pulumi:"provisionerConfig"`
 	// Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
 	ProvisionerType string `pulumi:"provisionerType"`
-	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
-	ProvisionerVersion string `pulumi:"provisionerVersion"`
-	// Repository is the name of the repository to fetch the code from.
-	Repository string `pulumi:"repository"`
-	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+	ProvisionerVersion *string `pulumi:"provisionerVersion"`
+	// Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+	Repository *string `pulumi:"repository"`
+	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	RepositoryBranch *string `pulumi:"repositoryBranch"`
-	// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
+	// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	RepositoryCommit *string `pulumi:"repositoryCommit"`
-	// Repository connector is the reference to the connector used to fetch the code.
-	RepositoryConnector string `pulumi:"repositoryConnector"`
-	// Repository path is the path in which the code resides.
-	RepositoryPath string `pulumi:"repositoryPath"`
-	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+	// Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+	RepositoryConnector *string `pulumi:"repositoryConnector"`
+	// Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+	RepositoryPath *string `pulumi:"repositoryPath"`
+	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	RepositorySha *string `pulumi:"repositorySha"`
 	// Boolean flag for run-all terragrunt modules
 	RunAll *bool `pulumi:"runAll"`
@@ -415,8 +400,8 @@ type WorkspaceArgs struct {
 	AssociatedTemplate WorkspaceAssociatedTemplatePtrInput
 	// Provider connectors configured on the Workspace. Only one connector of a type is supported
 	Connectors WorkspaceConnectorArrayInput
-	// Cost estimation enabled determines if cost estimation operations are performed.
-	CostEstimationEnabled pulumi.BoolInput
+	// Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+	CostEstimationEnabled pulumi.BoolPtrInput
 	// Default pipelines associated with this workspace
 	DefaultPipelines pulumi.StringMapInput
 	// Description of the resource.
@@ -437,19 +422,19 @@ type WorkspaceArgs struct {
 	ProvisionerConfig WorkspaceProvisionerConfigPtrInput
 	// Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
 	ProvisionerType pulumi.StringInput
-	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
-	ProvisionerVersion pulumi.StringInput
-	// Repository is the name of the repository to fetch the code from.
-	Repository pulumi.StringInput
-	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+	// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+	ProvisionerVersion pulumi.StringPtrInput
+	// Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+	Repository pulumi.StringPtrInput
+	// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	RepositoryBranch pulumi.StringPtrInput
-	// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
+	// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	RepositoryCommit pulumi.StringPtrInput
-	// Repository connector is the reference to the connector used to fetch the code.
-	RepositoryConnector pulumi.StringInput
-	// Repository path is the path in which the code resides.
-	RepositoryPath pulumi.StringInput
-	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+	// Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+	RepositoryConnector pulumi.StringPtrInput
+	// Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+	RepositoryPath pulumi.StringPtrInput
+	// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 	RepositorySha pulumi.StringPtrInput
 	// Boolean flag for run-all terragrunt modules
 	RunAll pulumi.BoolPtrInput
@@ -564,7 +549,7 @@ func (o WorkspaceOutput) Connectors() WorkspaceConnectorArrayOutput {
 	return o.ApplyT(func(v *Workspace) WorkspaceConnectorArrayOutput { return v.Connectors }).(WorkspaceConnectorArrayOutput)
 }
 
-// Cost estimation enabled determines if cost estimation operations are performed.
+// Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 func (o WorkspaceOutput) CostEstimationEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.BoolOutput { return v.CostEstimationEnabled }).(pulumi.BoolOutput)
 }
@@ -619,39 +604,39 @@ func (o WorkspaceOutput) ProvisionerType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.ProvisionerType }).(pulumi.StringOutput)
 }
 
-// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+// Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 func (o WorkspaceOutput) ProvisionerVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.ProvisionerVersion }).(pulumi.StringOutput)
 }
 
-// Repository is the name of the repository to fetch the code from.
+// Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 func (o WorkspaceOutput) Repository() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.Repository }).(pulumi.StringOutput)
 }
 
-// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
-func (o WorkspaceOutput) RepositoryBranch() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.RepositoryBranch }).(pulumi.StringPtrOutput)
+// Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+func (o WorkspaceOutput) RepositoryBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.RepositoryBranch }).(pulumi.StringOutput)
 }
 
-// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
-func (o WorkspaceOutput) RepositoryCommit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.RepositoryCommit }).(pulumi.StringPtrOutput)
+// Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+func (o WorkspaceOutput) RepositoryCommit() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.RepositoryCommit }).(pulumi.StringOutput)
 }
 
-// Repository connector is the reference to the connector used to fetch the code.
+// Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 func (o WorkspaceOutput) RepositoryConnector() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.RepositoryConnector }).(pulumi.StringOutput)
 }
 
-// Repository path is the path in which the code resides.
+// Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
 func (o WorkspaceOutput) RepositoryPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.RepositoryPath }).(pulumi.StringOutput)
 }
 
-// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
-func (o WorkspaceOutput) RepositorySha() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.RepositorySha }).(pulumi.StringPtrOutput)
+// Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
+func (o WorkspaceOutput) RepositorySha() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.RepositorySha }).(pulumi.StringOutput)
 }
 
 // Boolean flag for run-all terragrunt modules

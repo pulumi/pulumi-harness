@@ -98,29 +98,29 @@ public final class GitopsApplicationsetApplicationsetSpecTemplateSpecArgs extend
     }
 
     /**
-     * Location of the application&#39;s manifests or chart.
+     * Location of the application&#39;s manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
      * 
      */
-    @Import(name="source", required=true)
-    private Output<List<GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs>> source;
+    @Import(name="source")
+    private @Nullable Output<List<GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs>> source;
 
     /**
-     * @return Location of the application&#39;s manifests or chart.
+     * @return Location of the application&#39;s manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
      * 
      */
-    public Output<List<GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs>> source() {
-        return this.source;
+    public Optional<Output<List<GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs>>> source() {
+        return Optional.ofNullable(this.source);
     }
 
     /**
-     * Location of the application&#39;s manifests or chart. Use when specifying multiple fields
+     * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
      * 
      */
     @Import(name="sources")
     private @Nullable Output<List<GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs>> sources;
 
     /**
-     * @return Location of the application&#39;s manifests or chart. Use when specifying multiple fields
+     * @return List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
      * 
      */
     public Optional<Output<List<GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs>>> sources() {
@@ -299,18 +299,18 @@ public final class GitopsApplicationsetApplicationsetSpecTemplateSpecArgs extend
         }
 
         /**
-         * @param source Location of the application&#39;s manifests or chart.
+         * @param source Location of the application&#39;s manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          * 
          * @return builder
          * 
          */
-        public Builder source(Output<List<GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs>> source) {
+        public Builder source(@Nullable Output<List<GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs>> source) {
             $.source = source;
             return this;
         }
 
         /**
-         * @param source Location of the application&#39;s manifests or chart.
+         * @param source Location of the application&#39;s manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          * 
          * @return builder
          * 
@@ -320,7 +320,7 @@ public final class GitopsApplicationsetApplicationsetSpecTemplateSpecArgs extend
         }
 
         /**
-         * @param source Location of the application&#39;s manifests or chart.
+         * @param source Location of the application&#39;s manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class GitopsApplicationsetApplicationsetSpecTemplateSpecArgs extend
         }
 
         /**
-         * @param sources Location of the application&#39;s manifests or chart. Use when specifying multiple fields
+         * @param sources List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class GitopsApplicationsetApplicationsetSpecTemplateSpecArgs extend
         }
 
         /**
-         * @param sources Location of the application&#39;s manifests or chart. Use when specifying multiple fields
+         * @param sources List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          * 
          * @return builder
          * 
@@ -351,7 +351,7 @@ public final class GitopsApplicationsetApplicationsetSpecTemplateSpecArgs extend
         }
 
         /**
-         * @param sources Location of the application&#39;s manifests or chart. Use when specifying multiple fields
+         * @param sources List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          * 
          * @return builder
          * 
@@ -384,9 +384,6 @@ public final class GitopsApplicationsetApplicationsetSpecTemplateSpecArgs extend
         public GitopsApplicationsetApplicationsetSpecTemplateSpecArgs build() {
             if ($.destination == null) {
                 throw new MissingRequiredPropertyException("GitopsApplicationsetApplicationsetSpecTemplateSpecArgs", "destination");
-            }
-            if ($.source == null) {
-                throw new MissingRequiredPropertyException("GitopsApplicationsetApplicationsetSpecTemplateSpecArgs", "source");
             }
             return $;
         }

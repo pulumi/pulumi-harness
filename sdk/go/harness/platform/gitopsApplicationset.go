@@ -62,12 +62,10 @@ import (
 //							},
 //							Spec: &platform.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs{
 //								Project: pulumi.String("default"),
-//								Sources: platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArray{
-//									&platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs{
-//										RepoUrl:        pulumi.String("https://github.com/argoproj/argocd-example-apps.git"),
-//										Path:           pulumi.String("helm-guestbook"),
-//										TargetRevision: pulumi.String("HEAD"),
-//									},
+//								Source: platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArray{
+//									RepoUrl:        "https://github.com/argoproj/argocd-example-apps.git",
+//									Path:           "helm-guestbook",
+//									TargetRevision: "HEAD",
 //								},
 //								Destination: &platform.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs{
 //									Server:    pulumi.String("{{.url}}"),
@@ -120,12 +118,10 @@ import (
 //							},
 //							Spec: &platform.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs{
 //								Project: pulumi.String("default"),
-//								Sources: platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArray{
-//									&platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs{
-//										RepoUrl:        pulumi.String("https://github.com/argoproj/argocd-example-apps.git"),
-//										Path:           pulumi.String("helm-guestbook"),
-//										TargetRevision: pulumi.String("HEAD"),
-//									},
+//								Source: platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArray{
+//									RepoUrl:        "https://github.com/argoproj/argocd-example-apps.git",
+//									Path:           "helm-guestbook",
+//									TargetRevision: "HEAD",
 //								},
 //								Destination: &platform.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs{
 //									Server:    pulumi.String("{{.url}}"),
@@ -171,12 +167,10 @@ import (
 //							},
 //							Spec: &platform.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs{
 //								Project: pulumi.String("default"),
-//								Sources: platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArray{
-//									&platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs{
-//										RepoUrl:        pulumi.String("https://github.com/example/app-repo"),
-//										Path:           pulumi.String("{{.path.path}}"),
-//										TargetRevision: pulumi.String("main"),
-//									},
+//								Source: platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArray{
+//									RepoUrl:        "https://github.com/example/app-repo",
+//									Path:           "{{.path.path}}",
+//									TargetRevision: "main",
 //								},
 //								Destination: &platform.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs{
 //									Server:    pulumi.String("https://kubernetes.default.svc"),
@@ -223,12 +217,10 @@ import (
 //							},
 //							Spec: &platform.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs{
 //								Project: pulumi.String("default"),
-//								Sources: platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArray{
-//									&platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs{
-//										RepoUrl:        pulumi.String("https://github.com/argoproj/argo-cd.git"),
-//										Path:           pulumi.String("{{.path.path}}"),
-//										TargetRevision: pulumi.String("HEAD"),
-//									},
+//								Source: platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArray{
+//									RepoUrl:        "https://github.com/argoproj/argo-cd.git",
+//									Path:           "{{.path.path}}",
+//									TargetRevision: "HEAD",
 //								},
 //								Destination: &platform.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs{
 //									Server:    pulumi.String("https://kubernetes.default.svc"),

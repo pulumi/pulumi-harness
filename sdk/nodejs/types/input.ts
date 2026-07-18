@@ -8510,12 +8510,20 @@ export namespace platform {
 
     export interface GetGitopsAgentDeployYamlArgocdSettings {
         /**
+         * Comma-separated list of namespaces where Application CRs are permitted to reside. Use "*" for all namespaces.
+         */
+        applicationNamespaces?: string;
+        /**
          * Controls the Environment variable HELM*SECRETS*VALUES*ALLOW*PATH_TRAVERSAL to allow or deny dot-dot-slash values file paths. Disabled by default for security reasons. This config is pushed as an env variable to the repo-server.
          */
         enableHelmPathTraversal?: boolean;
     }
 
     export interface GetGitopsAgentDeployYamlArgocdSettingsArgs {
+        /**
+         * Comma-separated list of namespaces where Application CRs are permitted to reside. Use "*" for all namespaces.
+         */
+        applicationNamespaces?: pulumi.Input<string | undefined>;
         /**
          * Controls the Environment variable HELM*SECRETS*VALUES*ALLOW*PATH_TRAVERSAL to allow or deny dot-dot-slash values file paths. Disabled by default for security reasons. This config is pushed as an env variable to the repo-server.
          */
@@ -11992,11 +12000,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorClusterDecisionResourceTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorClusterDecisionResourceTemplateSpecSource>[] | undefined>;
         /**
@@ -12452,11 +12460,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorClusterTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorClusterTemplateSpecSource>[] | undefined>;
         /**
@@ -12931,11 +12939,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorGitTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorGitTemplateSpecSource>[] | undefined>;
         /**
@@ -13376,11 +13384,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorListTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorListTemplateSpecSource>[] | undefined>;
         /**
@@ -13932,11 +13940,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorClusterDecisionResourceTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorClusterDecisionResourceTemplateSpecSource>[] | undefined>;
         /**
@@ -14392,11 +14400,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorClusterTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorClusterTemplateSpecSource>[] | undefined>;
         /**
@@ -14871,11 +14879,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorGitTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorGitTemplateSpecSource>[] | undefined>;
         /**
@@ -15316,11 +15324,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorListTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorListTemplateSpecSource>[] | undefined>;
         /**
@@ -15864,11 +15872,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorClusterDecisionResourceTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorClusterDecisionResourceTemplateSpecSource>[] | undefined>;
         /**
@@ -16324,11 +16332,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorClusterTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorClusterTemplateSpecSource>[] | undefined>;
         /**
@@ -16803,11 +16811,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorGitTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorGitTemplateSpecSource>[] | undefined>;
         /**
@@ -17248,11 +17256,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorListTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorListTemplateSpecSource>[] | undefined>;
         /**
@@ -17867,11 +17875,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSource>[] | undefined>;
         /**
@@ -18589,11 +18597,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorScmProviderTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorScmProviderTemplateSpecSource>[] | undefined>;
         /**
@@ -19049,11 +19057,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixTemplateSpecSource>[] | undefined>;
         /**
@@ -19601,11 +19609,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorClusterDecisionResourceTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorClusterDecisionResourceTemplateSpecSource>[] | undefined>;
         /**
@@ -20061,11 +20069,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorClusterTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorClusterTemplateSpecSource>[] | undefined>;
         /**
@@ -20540,11 +20548,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorGitTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorGitTemplateSpecSource>[] | undefined>;
         /**
@@ -20985,11 +20993,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorListTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorListTemplateSpecSource>[] | undefined>;
         /**
@@ -21604,11 +21612,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorPullRequestTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorPullRequestTemplateSpecSource>[] | undefined>;
         /**
@@ -22326,11 +22334,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderTemplateSpecSource>[] | undefined>;
         /**
@@ -22786,11 +22794,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeTemplateSpecSource>[] | undefined>;
         /**
@@ -23405,11 +23413,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorPullRequestTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorPullRequestTemplateSpecSource>[] | undefined>;
         /**
@@ -24127,11 +24135,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorScmProviderTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorScmProviderTemplateSpecSource>[] | undefined>;
         /**
@@ -24587,11 +24595,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixTemplateSpecSource>[] | undefined>;
         /**
@@ -25147,11 +25155,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorClusterDecisionResourceTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorClusterDecisionResourceTemplateSpecSource>[] | undefined>;
         /**
@@ -25607,11 +25615,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorClusterTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorClusterTemplateSpecSource>[] | undefined>;
         /**
@@ -26086,11 +26094,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorGitTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorGitTemplateSpecSource>[] | undefined>;
         /**
@@ -26531,11 +26539,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorListTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorListTemplateSpecSource>[] | undefined>;
         /**
@@ -27079,11 +27087,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterDecisionResourceTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterDecisionResourceTemplateSpecSource>[] | undefined>;
         /**
@@ -27539,11 +27547,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSource>[] | undefined>;
         /**
@@ -28018,11 +28026,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorGitTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorGitTemplateSpecSource>[] | undefined>;
         /**
@@ -28463,11 +28471,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorListTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorListTemplateSpecSource>[] | undefined>;
         /**
@@ -29082,11 +29090,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorPullRequestTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorPullRequestTemplateSpecSource>[] | undefined>;
         /**
@@ -29804,11 +29812,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderTemplateSpecSource>[] | undefined>;
         /**
@@ -30264,11 +30272,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixTemplateSpecSource>[] | undefined>;
         /**
@@ -30816,11 +30824,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorClusterDecisionResourceTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorClusterDecisionResourceTemplateSpecSource>[] | undefined>;
         /**
@@ -31276,11 +31284,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorClusterTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorClusterTemplateSpecSource>[] | undefined>;
         /**
@@ -31755,11 +31763,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorGitTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorGitTemplateSpecSource>[] | undefined>;
         /**
@@ -32200,11 +32208,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorListTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorListTemplateSpecSource>[] | undefined>;
         /**
@@ -32819,11 +32827,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorPullRequestTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorPullRequestTemplateSpecSource>[] | undefined>;
         /**
@@ -33541,11 +33549,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorScmProviderTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorScmProviderTemplateSpecSource>[] | undefined>;
         /**
@@ -34001,11 +34009,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeTemplateSpecSource>[] | undefined>;
         /**
@@ -34620,11 +34628,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorPullRequestTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorPullRequestTemplateSpecSource>[] | undefined>;
         /**
@@ -35342,11 +35350,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorScmProviderTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorScmProviderTemplateSpecSource>[] | undefined>;
         /**
@@ -35802,11 +35810,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeTemplateSpecSource>[] | undefined>;
         /**
@@ -36421,11 +36429,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorPullRequestTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorPullRequestTemplateSpecSource>[] | undefined>;
         /**
@@ -37143,11 +37151,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource>[] | undefined>;
         /**
@@ -37673,11 +37681,11 @@ export namespace platform {
          */
         revisionHistoryLimit?: pulumi.Input<string | undefined>;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
-        source: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSource>[]>;
+        source?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSource>[] | undefined>;
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: pulumi.Input<pulumi.Input<inputs.platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSource>[] | undefined>;
         /**

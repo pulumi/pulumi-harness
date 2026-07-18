@@ -44,12 +44,12 @@ public final class GitopsApplicationsetApplicationsetSpecTemplateSpec {
      */
     private @Nullable String revisionHistoryLimit;
     /**
-     * @return Location of the application&#39;s manifests or chart.
+     * @return Location of the application&#39;s manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
      * 
      */
-    private List<GitopsApplicationsetApplicationsetSpecTemplateSpecSource> source;
+    private @Nullable List<GitopsApplicationsetApplicationsetSpecTemplateSpecSource> source;
     /**
-     * @return Location of the application&#39;s manifests or chart. Use when specifying multiple fields
+     * @return List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
      * 
      */
     private @Nullable List<GitopsApplicationsetApplicationsetSpecTemplateSpecSource> sources;
@@ -96,14 +96,14 @@ public final class GitopsApplicationsetApplicationsetSpecTemplateSpec {
         return Optional.ofNullable(this.revisionHistoryLimit);
     }
     /**
-     * @return Location of the application&#39;s manifests or chart.
+     * @return Location of the application&#39;s manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
      * 
      */
     public List<GitopsApplicationsetApplicationsetSpecTemplateSpecSource> source() {
-        return this.source;
+        return this.source == null ? List.of() : this.source;
     }
     /**
-     * @return Location of the application&#39;s manifests or chart. Use when specifying multiple fields
+     * @return List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
      * 
      */
     public List<GitopsApplicationsetApplicationsetSpecTemplateSpecSource> sources() {
@@ -131,7 +131,7 @@ public final class GitopsApplicationsetApplicationsetSpecTemplateSpec {
         private @Nullable List<GitopsApplicationsetApplicationsetSpecTemplateSpecInfo> infos;
         private @Nullable String project;
         private @Nullable String revisionHistoryLimit;
-        private List<GitopsApplicationsetApplicationsetSpecTemplateSpecSource> source;
+        private @Nullable List<GitopsApplicationsetApplicationsetSpecTemplateSpecSource> source;
         private @Nullable List<GitopsApplicationsetApplicationsetSpecTemplateSpecSource> sources;
         private @Nullable GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicy syncPolicy;
         public Builder() {}
@@ -186,10 +186,8 @@ public final class GitopsApplicationsetApplicationsetSpecTemplateSpec {
             return this;
         }
         @CustomType.Setter
-        public Builder source(List<GitopsApplicationsetApplicationsetSpecTemplateSpecSource> source) {
-            if (source == null) {
-              throw new MissingRequiredPropertyException("GitopsApplicationsetApplicationsetSpecTemplateSpec", "source");
-            }
+        public Builder source(@Nullable List<GitopsApplicationsetApplicationsetSpecTemplateSpecSource> source) {
+
             this.source = source;
             return this;
         }
