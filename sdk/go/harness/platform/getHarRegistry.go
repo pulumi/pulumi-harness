@@ -63,7 +63,7 @@ type LookupHarRegistryArgs struct {
 	Identifier string `pulumi:"identifier"`
 	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
+	// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
 	PackageType *string `pulumi:"packageType"`
 	// Parent reference for the registry
 	ParentRef string `pulumi:"parentRef"`
@@ -91,7 +91,7 @@ type LookupHarRegistryResult struct {
 	IsPublic bool `pulumi:"isPublic"`
 	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
+	// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
 	PackageType *string `pulumi:"packageType"`
 	// Parent reference for the registry
 	ParentRef string `pulumi:"parentRef"`
@@ -124,7 +124,7 @@ type LookupHarRegistryOutputArgs struct {
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
-	// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
+	// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
 	PackageType pulumi.StringPtrInput `pulumi:"packageType"`
 	// Parent reference for the registry
 	ParentRef pulumi.StringInput `pulumi:"parentRef"`
@@ -196,7 +196,7 @@ func (o LookupHarRegistryResultOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupHarRegistryResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
+// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
 func (o LookupHarRegistryResultOutput) PackageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHarRegistryResult) *string { return v.PackageType }).(pulumi.StringPtrOutput)
 }

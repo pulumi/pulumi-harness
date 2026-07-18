@@ -14,13 +14,21 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GetGitopsAgentDeployYamlArgocdSettingsResult
     {
         /// <summary>
+        /// Comma-separated list of namespaces where Application CRs are permitted to reside. Use "*" for all namespaces.
+        /// </summary>
+        public readonly string? ApplicationNamespaces;
+        /// <summary>
         /// Controls the Environment variable HELM*SECRETS*VALUES*ALLOW*PATH_TRAVERSAL to allow or deny dot-dot-slash values file paths. Disabled by default for security reasons. This config is pushed as an env variable to the repo-server.
         /// </summary>
         public readonly bool? EnableHelmPathTraversal;
 
         [OutputConstructor]
-        private GetGitopsAgentDeployYamlArgocdSettingsResult(bool? enableHelmPathTraversal)
+        private GetGitopsAgentDeployYamlArgocdSettingsResult(
+            string? applicationNamespaces,
+
+            bool? enableHelmPathTraversal)
         {
+            ApplicationNamespaces = applicationNamespaces;
             EnableHelmPathTraversal = enableHelmPathTraversal;
         }
     }

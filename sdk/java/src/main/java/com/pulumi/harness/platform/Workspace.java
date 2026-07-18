@@ -169,14 +169,14 @@ public class Workspace extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.connectors);
     }
     /**
-     * Cost estimation enabled determines if cost estimation operations are performed.
+     * Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     @Export(name="costEstimationEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> costEstimationEnabled;
 
     /**
-     * @return Cost estimation enabled determines if cost estimation operations are performed.
+     * @return Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     public Output<Boolean> costEstimationEnabled() {
@@ -323,102 +323,102 @@ public class Workspace extends com.pulumi.resources.CustomResource {
         return this.provisionerType;
     }
     /**
-     * Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+     * Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     @Export(name="provisionerVersion", refs={String.class}, tree="[0]")
     private Output<String> provisionerVersion;
 
     /**
-     * @return Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+     * @return Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     public Output<String> provisionerVersion() {
         return this.provisionerVersion;
     }
     /**
-     * Repository is the name of the repository to fetch the code from.
+     * Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     @Export(name="repository", refs={String.class}, tree="[0]")
     private Output<String> repository;
 
     /**
-     * @return Repository is the name of the repository to fetch the code from.
+     * @return Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     public Output<String> repository() {
         return this.repository;
     }
     /**
-     * Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+     * Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     @Export(name="repositoryBranch", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> repositoryBranch;
+    private Output<String> repositoryBranch;
 
     /**
-     * @return Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+     * @return Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
-    public Output<Optional<String>> repositoryBranch() {
-        return Codegen.optional(this.repositoryBranch);
+    public Output<String> repositoryBranch() {
+        return this.repositoryBranch;
     }
     /**
-     * Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
+     * Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     @Export(name="repositoryCommit", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> repositoryCommit;
+    private Output<String> repositoryCommit;
 
     /**
-     * @return Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
+     * @return Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
-    public Output<Optional<String>> repositoryCommit() {
-        return Codegen.optional(this.repositoryCommit);
+    public Output<String> repositoryCommit() {
+        return this.repositoryCommit;
     }
     /**
-     * Repository connector is the reference to the connector used to fetch the code.
+     * Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     @Export(name="repositoryConnector", refs={String.class}, tree="[0]")
     private Output<String> repositoryConnector;
 
     /**
-     * @return Repository connector is the reference to the connector used to fetch the code.
+     * @return Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     public Output<String> repositoryConnector() {
         return this.repositoryConnector;
     }
     /**
-     * Repository path is the path in which the code resides.
+     * Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     @Export(name="repositoryPath", refs={String.class}, tree="[0]")
     private Output<String> repositoryPath;
 
     /**
-     * @return Repository path is the path in which the code resides.
+     * @return Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     public Output<String> repositoryPath() {
         return this.repositoryPath;
     }
     /**
-     * Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+     * Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
     @Export(name="repositorySha", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> repositorySha;
+    private Output<String> repositorySha;
 
     /**
-     * @return Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+     * @return Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      * 
      */
-    public Output<Optional<String>> repositorySha() {
-        return Codegen.optional(this.repositorySha);
+    public Output<String> repositorySha() {
+        return this.repositorySha;
     }
     /**
      * Boolean flag for run-all terragrunt modules

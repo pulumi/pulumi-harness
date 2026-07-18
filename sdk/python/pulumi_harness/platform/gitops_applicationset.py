@@ -257,11 +257,11 @@ class GitopsApplicationset(pulumi.CustomResource):
                         },
                         "spec": {
                             "project": "default",
-                            "sources": [{
-                                "repo_url": "https://github.com/argoproj/argocd-example-apps.git",
+                            "source": {
+                                "repoUrl": "https://github.com/argoproj/argocd-example-apps.git",
                                 "path": "helm-guestbook",
-                                "target_revision": "HEAD",
-                            }],
+                                "targetRevision": "HEAD",
+                            },
                             "destination": {
                                 "server": "{{.url}}",
                                 "namespace": "app-ns-{{.name}}",
@@ -303,11 +303,11 @@ class GitopsApplicationset(pulumi.CustomResource):
                         },
                         "spec": {
                             "project": "default",
-                            "sources": [{
-                                "repo_url": "https://github.com/argoproj/argocd-example-apps.git",
+                            "source": {
+                                "repoUrl": "https://github.com/argoproj/argocd-example-apps.git",
                                 "path": "helm-guestbook",
-                                "target_revision": "HEAD",
-                            }],
+                                "targetRevision": "HEAD",
+                            },
                             "destination": {
                                 "server": "{{.url}}",
                                 "namespace": "default",
@@ -342,11 +342,11 @@ class GitopsApplicationset(pulumi.CustomResource):
                         },
                         "spec": {
                             "project": "default",
-                            "sources": [{
-                                "repo_url": "https://github.com/example/app-repo",
+                            "source": {
+                                "repoUrl": "https://github.com/example/app-repo",
                                 "path": "{{.path.path}}",
-                                "target_revision": "main",
-                            }],
+                                "targetRevision": "main",
+                            },
                             "destination": {
                                 "server": "https://kubernetes.default.svc",
                                 "namespace": "{{.path.basename}}",
@@ -382,11 +382,11 @@ class GitopsApplicationset(pulumi.CustomResource):
                         },
                         "spec": {
                             "project": "default",
-                            "sources": [{
-                                "repo_url": "https://github.com/argoproj/argo-cd.git",
+                            "source": {
+                                "repoUrl": "https://github.com/argoproj/argo-cd.git",
                                 "path": "{{.path.path}}",
-                                "target_revision": "HEAD",
-                            }],
+                                "targetRevision": "HEAD",
+                            },
                             "destination": {
                                 "server": "https://kubernetes.default.svc",
                                 "namespace": "{{.path.basename}}",
@@ -477,11 +477,11 @@ class GitopsApplicationset(pulumi.CustomResource):
                         },
                         "spec": {
                             "project": "default",
-                            "sources": [{
-                                "repo_url": "https://github.com/argoproj/argocd-example-apps.git",
+                            "source": {
+                                "repoUrl": "https://github.com/argoproj/argocd-example-apps.git",
                                 "path": "helm-guestbook",
-                                "target_revision": "HEAD",
-                            }],
+                                "targetRevision": "HEAD",
+                            },
                             "destination": {
                                 "server": "{{.url}}",
                                 "namespace": "app-ns-{{.name}}",
@@ -523,11 +523,11 @@ class GitopsApplicationset(pulumi.CustomResource):
                         },
                         "spec": {
                             "project": "default",
-                            "sources": [{
-                                "repo_url": "https://github.com/argoproj/argocd-example-apps.git",
+                            "source": {
+                                "repoUrl": "https://github.com/argoproj/argocd-example-apps.git",
                                 "path": "helm-guestbook",
-                                "target_revision": "HEAD",
-                            }],
+                                "targetRevision": "HEAD",
+                            },
                             "destination": {
                                 "server": "{{.url}}",
                                 "namespace": "default",
@@ -562,11 +562,11 @@ class GitopsApplicationset(pulumi.CustomResource):
                         },
                         "spec": {
                             "project": "default",
-                            "sources": [{
-                                "repo_url": "https://github.com/example/app-repo",
+                            "source": {
+                                "repoUrl": "https://github.com/example/app-repo",
                                 "path": "{{.path.path}}",
-                                "target_revision": "main",
-                            }],
+                                "targetRevision": "main",
+                            },
                             "destination": {
                                 "server": "https://kubernetes.default.svc",
                                 "namespace": "{{.path.basename}}",
@@ -602,11 +602,11 @@ class GitopsApplicationset(pulumi.CustomResource):
                         },
                         "spec": {
                             "project": "default",
-                            "sources": [{
-                                "repo_url": "https://github.com/argoproj/argo-cd.git",
+                            "source": {
+                                "repoUrl": "https://github.com/argoproj/argo-cd.git",
                                 "path": "{{.path.path}}",
-                                "target_revision": "HEAD",
-                            }],
+                                "targetRevision": "HEAD",
+                            },
                             "destination": {
                                 "server": "https://kubernetes.default.svc",
                                 "namespace": "{{.path.basename}}",

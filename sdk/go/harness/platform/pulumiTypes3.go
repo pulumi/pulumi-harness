@@ -2898,9 +2898,9 @@ type GitopsApplicationsetApplicationsetSpecTemplateSpec struct {
 	Project *string `pulumi:"project"`
 	// Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
 	RevisionHistoryLimit *string `pulumi:"revisionHistoryLimit"`
-	// Location of the application's manifests or chart.
+	// Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
 	Source []GitopsApplicationsetApplicationsetSpecTemplateSpecSource `pulumi:"source"`
-	// Location of the application's manifests or chart. Use when specifying multiple fields
+	// List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
 	Sources []GitopsApplicationsetApplicationsetSpecTemplateSpecSource `pulumi:"sources"`
 	// Controls when and how a sync will be performed.
 	SyncPolicy *GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicy `pulumi:"syncPolicy"`
@@ -2928,9 +2928,9 @@ type GitopsApplicationsetApplicationsetSpecTemplateSpecArgs struct {
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Limits the number of items kept in the application's revision history, which is used for informational purposes as well as for rollbacks to previous versions. This should only be changed in exceptional circumstances. Setting to zero will store no history. This will reduce storage used. Increasing will increase the space used to store the history, so we do not recommend increasing it. Default is 10.
 	RevisionHistoryLimit pulumi.StringPtrInput `pulumi:"revisionHistoryLimit"`
-	// Location of the application's manifests or chart.
+	// Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
 	Source GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayInput `pulumi:"source"`
-	// Location of the application's manifests or chart. Use when specifying multiple fields
+	// List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
 	Sources GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayInput `pulumi:"sources"`
 	// Controls when and how a sync will be performed.
 	SyncPolicy GitopsApplicationsetApplicationsetSpecTemplateSpecSyncPolicyPtrInput `pulumi:"syncPolicy"`
@@ -3044,14 +3044,14 @@ func (o GitopsApplicationsetApplicationsetSpecTemplateSpecOutput) RevisionHistor
 	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpec) *string { return v.RevisionHistoryLimit }).(pulumi.StringPtrOutput)
 }
 
-// Location of the application's manifests or chart.
+// Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
 func (o GitopsApplicationsetApplicationsetSpecTemplateSpecOutput) Source() GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput {
 	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpec) []GitopsApplicationsetApplicationsetSpecTemplateSpecSource {
 		return v.Source
 	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput)
 }
 
-// Location of the application's manifests or chart. Use when specifying multiple fields
+// List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
 func (o GitopsApplicationsetApplicationsetSpecTemplateSpecOutput) Sources() GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput {
 	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecTemplateSpec) []GitopsApplicationsetApplicationsetSpecTemplateSpecSource {
 		return v.Sources
@@ -3139,7 +3139,7 @@ func (o GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput) RevisionHis
 	}).(pulumi.StringPtrOutput)
 }
 
-// Location of the application's manifests or chart.
+// Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
 func (o GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput) Source() GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput {
 	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpec) []GitopsApplicationsetApplicationsetSpecTemplateSpecSource {
 		if v == nil {
@@ -3149,7 +3149,7 @@ func (o GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput) Source() Gi
 	}).(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput)
 }
 
-// Location of the application's manifests or chart. Use when specifying multiple fields
+// List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
 func (o GitopsApplicationsetApplicationsetSpecTemplateSpecPtrOutput) Sources() GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArrayOutput {
 	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecTemplateSpec) []GitopsApplicationsetApplicationsetSpecTemplateSpecSource {
 		if v == nil {
@@ -39776,6 +39776,8 @@ func (o GetGitlabConnectorCredentialSshArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetGitopsAgentDeployYamlArgocdSettings struct {
+	// Comma-separated list of namespaces where Application CRs are permitted to reside. Use "*" for all namespaces.
+	ApplicationNamespaces *string `pulumi:"applicationNamespaces"`
 	// Controls the Environment variable HELM*SECRETS*VALUES*ALLOW*PATH_TRAVERSAL to allow or deny dot-dot-slash values file paths. Disabled by default for security reasons. This config is pushed as an env variable to the repo-server.
 	EnableHelmPathTraversal *bool `pulumi:"enableHelmPathTraversal"`
 }
@@ -39792,6 +39794,8 @@ type GetGitopsAgentDeployYamlArgocdSettingsInput interface {
 }
 
 type GetGitopsAgentDeployYamlArgocdSettingsArgs struct {
+	// Comma-separated list of namespaces where Application CRs are permitted to reside. Use "*" for all namespaces.
+	ApplicationNamespaces pulumi.StringPtrInput `pulumi:"applicationNamespaces"`
 	// Controls the Environment variable HELM*SECRETS*VALUES*ALLOW*PATH_TRAVERSAL to allow or deny dot-dot-slash values file paths. Disabled by default for security reasons. This config is pushed as an env variable to the repo-server.
 	EnableHelmPathTraversal pulumi.BoolPtrInput `pulumi:"enableHelmPathTraversal"`
 }
@@ -39873,6 +39877,11 @@ func (o GetGitopsAgentDeployYamlArgocdSettingsOutput) ToGetGitopsAgentDeployYaml
 	}).(GetGitopsAgentDeployYamlArgocdSettingsPtrOutput)
 }
 
+// Comma-separated list of namespaces where Application CRs are permitted to reside. Use "*" for all namespaces.
+func (o GetGitopsAgentDeployYamlArgocdSettingsOutput) ApplicationNamespaces() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGitopsAgentDeployYamlArgocdSettings) *string { return v.ApplicationNamespaces }).(pulumi.StringPtrOutput)
+}
+
 // Controls the Environment variable HELM*SECRETS*VALUES*ALLOW*PATH_TRAVERSAL to allow or deny dot-dot-slash values file paths. Disabled by default for security reasons. This config is pushed as an env variable to the repo-server.
 func (o GetGitopsAgentDeployYamlArgocdSettingsOutput) EnableHelmPathTraversal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetGitopsAgentDeployYamlArgocdSettings) *bool { return v.EnableHelmPathTraversal }).(pulumi.BoolPtrOutput)
@@ -39900,6 +39909,16 @@ func (o GetGitopsAgentDeployYamlArgocdSettingsPtrOutput) Elem() GetGitopsAgentDe
 		var ret GetGitopsAgentDeployYamlArgocdSettings
 		return ret
 	}).(GetGitopsAgentDeployYamlArgocdSettingsOutput)
+}
+
+// Comma-separated list of namespaces where Application CRs are permitted to reside. Use "*" for all namespaces.
+func (o GetGitopsAgentDeployYamlArgocdSettingsPtrOutput) ApplicationNamespaces() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetGitopsAgentDeployYamlArgocdSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationNamespaces
+	}).(pulumi.StringPtrOutput)
 }
 
 // Controls the Environment variable HELM*SECRETS*VALUES*ALLOW*PATH_TRAVERSAL to allow or deny dot-dot-slash values file paths. Disabled by default for security reasons. This config is pushed as an env variable to the repo-server.

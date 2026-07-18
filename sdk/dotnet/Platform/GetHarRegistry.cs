@@ -151,7 +151,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
+        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
         /// </summary>
         [Input("packageType")]
         public string? PackageType { get; set; }
@@ -237,7 +237,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
+        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
         /// </summary>
         [Input("packageType")]
         public Input<string>? PackageType { get; set; }
@@ -301,7 +301,7 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Metadata;
         /// <summary>
-        /// Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
+        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
         /// </summary>
         public readonly string? PackageType;
         /// <summary>

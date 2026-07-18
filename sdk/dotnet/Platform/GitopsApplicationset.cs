@@ -69,14 +69,11 @@ namespace Pulumi.Harness.Platform
     ///                     Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs
     ///                     {
     ///                         Project = "default",
-    ///                         Sources = new[]
+    ///                         Source = 
     ///                         {
-    ///                             new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs
-    ///                             {
-    ///                                 RepoUrl = "https://github.com/argoproj/argocd-example-apps.git",
-    ///                                 Path = "helm-guestbook",
-    ///                                 TargetRevision = "HEAD",
-    ///                             },
+    ///                             { "repoUrl", "https://github.com/argoproj/argocd-example-apps.git" },
+    ///                             { "path", "helm-guestbook" },
+    ///                             { "targetRevision", "HEAD" },
     ///                         },
     ///                         Destination = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs
     ///                         {
@@ -143,14 +140,11 @@ namespace Pulumi.Harness.Platform
     ///                     Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs
     ///                     {
     ///                         Project = "default",
-    ///                         Sources = new[]
+    ///                         Source = 
     ///                         {
-    ///                             new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs
-    ///                             {
-    ///                                 RepoUrl = "https://github.com/argoproj/argocd-example-apps.git",
-    ///                                 Path = "helm-guestbook",
-    ///                                 TargetRevision = "HEAD",
-    ///                             },
+    ///                             { "repoUrl", "https://github.com/argoproj/argocd-example-apps.git" },
+    ///                             { "path", "helm-guestbook" },
+    ///                             { "targetRevision", "HEAD" },
     ///                         },
     ///                         Destination = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs
     ///                         {
@@ -208,14 +202,11 @@ namespace Pulumi.Harness.Platform
     ///                     Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs
     ///                     {
     ///                         Project = "default",
-    ///                         Sources = new[]
+    ///                         Source = 
     ///                         {
-    ///                             new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs
-    ///                             {
-    ///                                 RepoUrl = "https://github.com/example/app-repo",
-    ///                                 Path = "{{.path.path}}",
-    ///                                 TargetRevision = "main",
-    ///                             },
+    ///                             { "repoUrl", "https://github.com/example/app-repo" },
+    ///                             { "path", "{{.path.path}}" },
+    ///                             { "targetRevision", "main" },
     ///                         },
     ///                         Destination = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs
     ///                         {
@@ -274,14 +265,11 @@ namespace Pulumi.Harness.Platform
     ///                     Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs
     ///                     {
     ///                         Project = "default",
-    ///                         Sources = new[]
+    ///                         Source = 
     ///                         {
-    ///                             new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs
-    ///                             {
-    ///                                 RepoUrl = "https://github.com/argoproj/argo-cd.git",
-    ///                                 Path = "{{.path.path}}",
-    ///                                 TargetRevision = "HEAD",
-    ///                             },
+    ///                             { "repoUrl", "https://github.com/argoproj/argo-cd.git" },
+    ///                             { "path", "{{.path.path}}" },
+    ///                             { "targetRevision", "HEAD" },
     ///                         },
     ///                         Destination = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs
     ///                         {

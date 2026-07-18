@@ -135,7 +135,7 @@ export class Workspace extends pulumi.CustomResource {
      */
     declare public readonly connectors: pulumi.Output<outputs.platform.WorkspaceConnector[] | undefined>;
     /**
-     * Cost estimation enabled determines if cost estimation operations are performed.
+     * Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
     declare public readonly costEstimationEnabled: pulumi.Output<boolean>;
     /**
@@ -179,33 +179,33 @@ export class Workspace extends pulumi.CustomResource {
      */
     declare public readonly provisionerType: pulumi.Output<string>;
     /**
-     * Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+     * Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
     declare public readonly provisionerVersion: pulumi.Output<string>;
     /**
-     * Repository is the name of the repository to fetch the code from.
+     * Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
     declare public readonly repository: pulumi.Output<string>;
     /**
-     * Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+     * Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
-    declare public readonly repositoryBranch: pulumi.Output<string | undefined>;
+    declare public readonly repositoryBranch: pulumi.Output<string>;
     /**
-     * Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
+     * Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
-    declare public readonly repositoryCommit: pulumi.Output<string | undefined>;
+    declare public readonly repositoryCommit: pulumi.Output<string>;
     /**
-     * Repository connector is the reference to the connector used to fetch the code.
+     * Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
     declare public readonly repositoryConnector: pulumi.Output<string>;
     /**
-     * Repository path is the path in which the code resides.
+     * Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
     declare public readonly repositoryPath: pulumi.Output<string>;
     /**
-     * Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+     * Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
-    declare public readonly repositorySha: pulumi.Output<string | undefined>;
+    declare public readonly repositorySha: pulumi.Output<string>;
     /**
      * Boolean flag for run-all terragrunt modules
      */
@@ -277,9 +277,6 @@ export class Workspace extends pulumi.CustomResource {
             resourceInputs["variableSets"] = state?.variableSets;
         } else {
             const args = argsOrState as WorkspaceArgs | undefined;
-            if (args?.costEstimationEnabled === undefined && !opts.urn) {
-                throw new Error("Missing required property 'costEstimationEnabled'");
-            }
             if (args?.identifier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'identifier'");
             }
@@ -291,18 +288,6 @@ export class Workspace extends pulumi.CustomResource {
             }
             if (args?.provisionerType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'provisionerType'");
-            }
-            if (args?.provisionerVersion === undefined && !opts.urn) {
-                throw new Error("Missing required property 'provisionerVersion'");
-            }
-            if (args?.repository === undefined && !opts.urn) {
-                throw new Error("Missing required property 'repository'");
-            }
-            if (args?.repositoryConnector === undefined && !opts.urn) {
-                throw new Error("Missing required property 'repositoryConnector'");
-            }
-            if (args?.repositoryPath === undefined && !opts.urn) {
-                throw new Error("Missing required property 'repositoryPath'");
             }
             resourceInputs["associatedTemplate"] = args?.associatedTemplate;
             resourceInputs["connectors"] = args?.connectors;
@@ -350,7 +335,7 @@ export interface WorkspaceState {
      */
     connectors?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceConnector>[] | undefined>;
     /**
-     * Cost estimation enabled determines if cost estimation operations are performed.
+     * Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
     costEstimationEnabled?: pulumi.Input<boolean | undefined>;
     /**
@@ -394,31 +379,31 @@ export interface WorkspaceState {
      */
     provisionerType?: pulumi.Input<string | undefined>;
     /**
-     * Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+     * Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
     provisionerVersion?: pulumi.Input<string | undefined>;
     /**
-     * Repository is the name of the repository to fetch the code from.
+     * Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
     repository?: pulumi.Input<string | undefined>;
     /**
-     * Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+     * Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
     repositoryBranch?: pulumi.Input<string | undefined>;
     /**
-     * Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
+     * Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
     repositoryCommit?: pulumi.Input<string | undefined>;
     /**
-     * Repository connector is the reference to the connector used to fetch the code.
+     * Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
     repositoryConnector?: pulumi.Input<string | undefined>;
     /**
-     * Repository path is the path in which the code resides.
+     * Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
     repositoryPath?: pulumi.Input<string | undefined>;
     /**
-     * Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+     * Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
     repositorySha?: pulumi.Input<string | undefined>;
     /**
@@ -464,9 +449,9 @@ export interface WorkspaceArgs {
      */
     connectors?: pulumi.Input<pulumi.Input<inputs.platform.WorkspaceConnector>[] | undefined>;
     /**
-     * Cost estimation enabled determines if cost estimation operations are performed.
+     * Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
-    costEstimationEnabled: pulumi.Input<boolean>;
+    costEstimationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Default pipelines associated with this workspace
      */
@@ -508,31 +493,31 @@ export interface WorkspaceArgs {
      */
     provisionerType: pulumi.Input<string>;
     /**
-     * Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7.
+     * Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
-    provisionerVersion: pulumi.Input<string>;
+    provisionerVersion?: pulumi.Input<string | undefined>;
     /**
-     * Repository is the name of the repository to fetch the code from.
+     * Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
-    repository: pulumi.Input<string>;
+    repository?: pulumi.Input<string | undefined>;
     /**
-     * Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set.
+     * Repository branch is the name of the branch to fetch the code from. This cannot be set if repository commit or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
     repositoryBranch?: pulumi.Input<string | undefined>;
     /**
-     * Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set.
+     * Repository commit is tag to fetch the code from. This cannot be set if repository branch or sha is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
     repositoryCommit?: pulumi.Input<string | undefined>;
     /**
-     * Repository connector is the reference to the connector used to fetch the code.
+     * Repository connector is the reference to the connector used to fetch the code. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
-    repositoryConnector: pulumi.Input<string>;
+    repositoryConnector?: pulumi.Input<string | undefined>;
     /**
-     * Repository path is the path in which the code resides.
+     * Repository path is the path in which the code resides. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
-    repositoryPath: pulumi.Input<string>;
+    repositoryPath?: pulumi.Input<string | undefined>;
     /**
-     * Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set.
+     * Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repositorySha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
      */
     repositorySha?: pulumi.Input<string | undefined>;
     /**

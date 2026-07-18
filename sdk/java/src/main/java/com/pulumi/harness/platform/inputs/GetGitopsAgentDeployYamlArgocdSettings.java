@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -13,6 +14,21 @@ import javax.annotation.Nullable;
 public final class GetGitopsAgentDeployYamlArgocdSettings extends com.pulumi.resources.InvokeArgs {
 
     public static final GetGitopsAgentDeployYamlArgocdSettings Empty = new GetGitopsAgentDeployYamlArgocdSettings();
+
+    /**
+     * Comma-separated list of namespaces where Application CRs are permitted to reside. Use &#34;*&#34; for all namespaces.
+     * 
+     */
+    @Import(name="applicationNamespaces")
+    private @Nullable String applicationNamespaces;
+
+    /**
+     * @return Comma-separated list of namespaces where Application CRs are permitted to reside. Use &#34;*&#34; for all namespaces.
+     * 
+     */
+    public Optional<String> applicationNamespaces() {
+        return Optional.ofNullable(this.applicationNamespaces);
+    }
 
     /**
      * Controls the Environment variable HELM*SECRETS*VALUES*ALLOW*PATH_TRAVERSAL to allow or deny dot-dot-slash values file paths. Disabled by default for security reasons. This config is pushed as an env variable to the repo-server.
@@ -32,6 +48,7 @@ public final class GetGitopsAgentDeployYamlArgocdSettings extends com.pulumi.res
     private GetGitopsAgentDeployYamlArgocdSettings() {}
 
     private GetGitopsAgentDeployYamlArgocdSettings(GetGitopsAgentDeployYamlArgocdSettings $) {
+        this.applicationNamespaces = $.applicationNamespaces;
         this.enableHelmPathTraversal = $.enableHelmPathTraversal;
     }
 
@@ -51,6 +68,17 @@ public final class GetGitopsAgentDeployYamlArgocdSettings extends com.pulumi.res
 
         public Builder(GetGitopsAgentDeployYamlArgocdSettings defaults) {
             $ = new GetGitopsAgentDeployYamlArgocdSettings(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param applicationNamespaces Comma-separated list of namespaces where Application CRs are permitted to reside. Use &#34;*&#34; for all namespaces.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationNamespaces(@Nullable String applicationNamespaces) {
+            $.applicationNamespaces = applicationNamespaces;
+            return this;
         }
 
         /**

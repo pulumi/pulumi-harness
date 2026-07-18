@@ -105,6 +105,19 @@ import * as utilities from "../utilities";
  *     }],
  *     parentRef: "accountId/orgId/projectId",
  * });
+ * // Example of an Upstream Conan Registry (ConanCenter source needs no url)
+ * const conanUpstream = new harness.platform.HarRegistry("conan_upstream", {
+ *     identifier: "upstream_conan_registry",
+ *     description: "Upstream Conan Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "CONAN",
+ *     configs: [{
+ *         type: "UPSTREAM",
+ *         source: "ConanCenter",
+ *         authType: "Anonymous",
+ *     }],
+ *     parentRef: "accountId/orgId/projectId",
+ * });
  * ```
  *
  * ## Import
@@ -195,7 +208,7 @@ export class HarRegistry extends pulumi.CustomResource {
      */
     declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
      */
     declare public readonly packageType: pulumi.Output<string>;
     /**
@@ -305,7 +318,7 @@ export interface HarRegistryState {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
      */
     packageType?: pulumi.Input<string | undefined>;
     /**
@@ -355,7 +368,7 @@ export interface HarRegistryArgs {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
      */
     packageType: pulumi.Input<string>;
     /**

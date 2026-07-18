@@ -110,14 +110,14 @@ public final class GetHarRegistryArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
      * 
      */
     @Import(name="packageType")
     private @Nullable Output<String> packageType;
 
     /**
-     * @return Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
+     * @return Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
      * 
      */
     public Optional<Output<String>> packageType() {
@@ -343,7 +343,7 @@ public final class GetHarRegistryArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param packageType Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
+         * @param packageType Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class GetHarRegistryArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param packageType Type of package (DOCKER, HELM, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET)
+         * @param packageType Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
          * 
          * @return builder
          * 

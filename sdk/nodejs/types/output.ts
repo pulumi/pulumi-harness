@@ -8634,6 +8634,10 @@ export namespace platform {
 
     export interface GetGitopsAgentDeployYamlArgocdSettings {
         /**
+         * Comma-separated list of namespaces where Application CRs are permitted to reside. Use "*" for all namespaces.
+         */
+        applicationNamespaces?: string;
+        /**
          * Controls the Environment variable HELM*SECRETS*VALUES*ALLOW*PATH_TRAVERSAL to allow or deny dot-dot-slash values file paths. Disabled by default for security reasons. This config is pushed as an env variable to the repo-server.
          */
         enableHelmPathTraversal?: boolean;
@@ -13485,11 +13489,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorClusterDecisionResourceTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorClusterDecisionResourceTemplateSpecSource[];
         /**
@@ -13945,11 +13949,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorClusterTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorClusterTemplateSpecSource[];
         /**
@@ -14424,11 +14428,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorGitTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorGitTemplateSpecSource[];
         /**
@@ -14869,11 +14873,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorListTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorListTemplateSpecSource[];
         /**
@@ -15425,11 +15429,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorClusterDecisionResourceTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorClusterDecisionResourceTemplateSpecSource[];
         /**
@@ -15885,11 +15889,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorClusterTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorClusterTemplateSpecSource[];
         /**
@@ -16364,11 +16368,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorGitTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorGitTemplateSpecSource[];
         /**
@@ -16809,11 +16813,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorListTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorListTemplateSpecSource[];
         /**
@@ -17357,11 +17361,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorClusterDecisionResourceTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorClusterDecisionResourceTemplateSpecSource[];
         /**
@@ -17817,11 +17821,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorClusterTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorClusterTemplateSpecSource[];
         /**
@@ -18296,11 +18300,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorGitTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorGitTemplateSpecSource[];
         /**
@@ -18741,11 +18745,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorListTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorListTemplateSpecSource[];
         /**
@@ -19360,11 +19364,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSource[];
         /**
@@ -20082,11 +20086,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorScmProviderTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorScmProviderTemplateSpecSource[];
         /**
@@ -20542,11 +20546,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixTemplateSpecSource[];
         /**
@@ -21094,11 +21098,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorClusterDecisionResourceTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorClusterDecisionResourceTemplateSpecSource[];
         /**
@@ -21554,11 +21558,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorClusterTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorClusterTemplateSpecSource[];
         /**
@@ -22033,11 +22037,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorGitTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorGitTemplateSpecSource[];
         /**
@@ -22478,11 +22482,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorListTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorListTemplateSpecSource[];
         /**
@@ -23097,11 +23101,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorPullRequestTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorPullRequestTemplateSpecSource[];
         /**
@@ -23819,11 +23823,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeGeneratorScmProviderTemplateSpecSource[];
         /**
@@ -24279,11 +24283,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMergeTemplateSpecSource[];
         /**
@@ -24898,11 +24902,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorPullRequestTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorPullRequestTemplateSpecSource[];
         /**
@@ -25620,11 +25624,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorScmProviderTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorScmProviderTemplateSpecSource[];
         /**
@@ -26080,11 +26084,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMatrixTemplateSpecSource[];
         /**
@@ -26640,11 +26644,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorClusterDecisionResourceTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorClusterDecisionResourceTemplateSpecSource[];
         /**
@@ -27100,11 +27104,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorClusterTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorClusterTemplateSpecSource[];
         /**
@@ -27579,11 +27583,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorGitTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorGitTemplateSpecSource[];
         /**
@@ -28024,11 +28028,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorListTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorListTemplateSpecSource[];
         /**
@@ -28572,11 +28576,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterDecisionResourceTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterDecisionResourceTemplateSpecSource[];
         /**
@@ -29032,11 +29036,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSource[];
         /**
@@ -29511,11 +29515,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorGitTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorGitTemplateSpecSource[];
         /**
@@ -29956,11 +29960,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorListTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorListTemplateSpecSource[];
         /**
@@ -30575,11 +30579,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorPullRequestTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorPullRequestTemplateSpecSource[];
         /**
@@ -31297,11 +31301,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorScmProviderTemplateSpecSource[];
         /**
@@ -31757,11 +31761,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixTemplateSpecSource[];
         /**
@@ -32309,11 +32313,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorClusterDecisionResourceTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorClusterDecisionResourceTemplateSpecSource[];
         /**
@@ -32769,11 +32773,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorClusterTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorClusterTemplateSpecSource[];
         /**
@@ -33248,11 +33252,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorGitTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorGitTemplateSpecSource[];
         /**
@@ -33693,11 +33697,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorListTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorListTemplateSpecSource[];
         /**
@@ -34312,11 +34316,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorPullRequestTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorPullRequestTemplateSpecSource[];
         /**
@@ -35034,11 +35038,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorScmProviderTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeGeneratorScmProviderTemplateSpecSource[];
         /**
@@ -35494,11 +35498,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMergeTemplateSpecSource[];
         /**
@@ -36113,11 +36117,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorPullRequestTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorPullRequestTemplateSpecSource[];
         /**
@@ -36835,11 +36839,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorScmProviderTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorScmProviderTemplateSpecSource[];
         /**
@@ -37295,11 +37299,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorMergeTemplateSpecSource[];
         /**
@@ -37914,11 +37918,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorPullRequestTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorPullRequestTemplateSpecSource[];
         /**
@@ -38636,11 +38640,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
         source?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource[];
         /**
@@ -39166,11 +39170,11 @@ export namespace platform {
          */
         revisionHistoryLimit: string;
         /**
-         * Location of the application's manifests or chart.
+         * Location of the application's manifests or chart. Mutually exclusive with `sources`; specify exactly one of `source` or `sources`.
          */
-        source: outputs.platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSource[];
+        source?: outputs.platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSource[];
         /**
-         * Location of the application's manifests or chart. Use when specifying multiple fields
+         * List of sources for the application, used to specify multiple sources for a multi-source application. Mutually exclusive with `source`; specify exactly one of `source` or `sources`.
          */
         sources?: outputs.platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSource[];
         /**

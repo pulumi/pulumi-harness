@@ -38,7 +38,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecTemplateArgs;
  * import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs;
  * import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs;
- * import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs;
  * import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs;
  * import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecGeneratorListArgs;
  * import com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecGeneratorGitArgs;
@@ -85,7 +84,7 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .spec(GitopsApplicationsetApplicationsetSpecTemplateSpecArgs.builder()
  *                             .project("default")
- *                             .sources(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs.builder()
+ *                             .source(com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs.builder()
  *                                 .repoUrl("https://github.com/argoproj/argocd-example-apps.git")
  *                                 .path("helm-guestbook")
  *                                 .targetRevision("HEAD")
@@ -132,7 +131,7 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .spec(GitopsApplicationsetApplicationsetSpecTemplateSpecArgs.builder()
  *                             .project("default")
- *                             .sources(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs.builder()
+ *                             .source(com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs.builder()
  *                                 .repoUrl("https://github.com/argoproj/argocd-example-apps.git")
  *                                 .path("helm-guestbook")
  *                                 .targetRevision("HEAD")
@@ -173,7 +172,7 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .spec(GitopsApplicationsetApplicationsetSpecTemplateSpecArgs.builder()
  *                             .project("default")
- *                             .sources(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs.builder()
+ *                             .source(com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs.builder()
  *                                 .repoUrl("https://github.com/example/app-repo")
  *                                 .path("}{{{@code .path.path}}}{@code ")
  *                                 .targetRevision("main")
@@ -215,7 +214,7 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .spec(GitopsApplicationsetApplicationsetSpecTemplateSpecArgs.builder()
  *                             .project("default")
- *                             .sources(GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs.builder()
+ *                             .source(com.pulumi.harness.platform.inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArgs.builder()
  *                                 .repoUrl("https://github.com/argoproj/argo-cd.git")
  *                                 .path("}{{{@code .path.path}}}{@code ")
  *                                 .targetRevision("HEAD")
