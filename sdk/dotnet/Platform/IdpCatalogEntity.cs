@@ -19,19 +19,19 @@ namespace Pulumi.Harness.Platform
     /// Import account level entity
     /// 
     /// ```sh
-    /// $ pulumi import harness:platform/idpCatalogEntity:IdpCatalogEntity example &lt;entity_id&gt;
+    /// $ pulumi import harness:platform/idpCatalogEntity:IdpCatalogEntity example &lt;kind&gt;/&lt;entity_id&gt;
     /// ```
     /// 
     /// Import org level entity
     /// 
     /// ```sh
-    /// $ pulumi import harness:platform/idpCatalogEntity:IdpCatalogEntity example &lt;org_id&gt;/&lt;entity_id&gt;
+    /// $ pulumi import harness:platform/idpCatalogEntity:IdpCatalogEntity example &lt;org_id&gt;/&lt;kind&gt;/&lt;entity_id&gt;
     /// ```
     /// 
     /// Import project level entity
     /// 
     /// ```sh
-    /// $ pulumi import harness:platform/idpCatalogEntity:IdpCatalogEntity example &lt;org_id&gt;/&lt;project_id&gt;/&lt;entity_id&gt;
+    /// $ pulumi import harness:platform/idpCatalogEntity:IdpCatalogEntity example &lt;org_id&gt;/&lt;project_id&gt;/&lt;kind&gt;/&lt;entity_id&gt;
     /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/idpCatalogEntity:IdpCatalogEntity")]

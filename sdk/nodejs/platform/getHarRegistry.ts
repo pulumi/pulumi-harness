@@ -65,7 +65,7 @@ export interface GetHarRegistryArgs {
      */
     metadata?: {[key: string]: string};
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
      */
     packageType?: string;
     /**
@@ -119,7 +119,7 @@ export interface GetHarRegistryResult {
      */
     readonly metadata?: {[key: string]: string};
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
      */
     readonly packageType?: string;
     /**
@@ -194,7 +194,7 @@ export interface GetHarRegistryOutputArgs {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
      */
     packageType?: pulumi.Input<string | undefined>;
     /**

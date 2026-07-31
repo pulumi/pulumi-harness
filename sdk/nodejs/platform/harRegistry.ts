@@ -118,6 +118,17 @@ import * as utilities from "../utilities";
  *     }],
  *     parentRef: "accountId/orgId/projectId",
  * });
+ * // Example of a Virtual Terraform Registry
+ * const terraformVirtual = new harness.platform.HarRegistry("terraform_virtual", {
+ *     identifier: "virtual_terraform_registry",
+ *     description: "Virtual Terraform Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "TERRAFORM",
+ *     configs: [{
+ *         type: "VIRTUAL",
+ *     }],
+ *     parentRef: "accountId/orgId/projectId",
+ * });
  * ```
  *
  * ## Import
@@ -208,7 +219,7 @@ export class HarRegistry extends pulumi.CustomResource {
      */
     declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
      */
     declare public readonly packageType: pulumi.Output<string>;
     /**
@@ -318,7 +329,7 @@ export interface HarRegistryState {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
      */
     packageType?: pulumi.Input<string | undefined>;
     /**
@@ -368,7 +379,7 @@ export interface HarRegistryArgs {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
      */
     packageType: pulumi.Input<string>;
     /**

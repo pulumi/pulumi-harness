@@ -156,6 +156,18 @@ import javax.annotation.Nullable;
  *             .parentRef("accountId/orgId/projectId")
  *             .build());
  * 
+ *         // Example of a Virtual Terraform Registry
+ *         var terraformVirtual = new HarRegistry("terraformVirtual", HarRegistryArgs.builder()
+ *             .identifier("virtual_terraform_registry")
+ *             .description("Virtual Terraform Registry")
+ *             .spaceRef("accountId/orgId/projectId")
+ *             .packageType("TERRAFORM")
+ *             .configs(HarRegistryConfigArgs.builder()
+ *                 .type("VIRTUAL")
+ *                 .build())
+ *             .parentRef("accountId/orgId/projectId")
+ *             .build());
+ * 
  *     }
  * }
  * }
@@ -304,14 +316,14 @@ public class HarRegistry extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metadata);
     }
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
      * 
      */
     @Export(name="packageType", refs={String.class}, tree="[0]")
     private Output<String> packageType;
 
     /**
-     * @return Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
+     * @return Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
      * 
      */
     public Output<String> packageType() {
