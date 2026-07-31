@@ -62,7 +62,7 @@ public final class GetHarRegistryResult {
      */
     private @Nullable Map<String,String> metadata;
     /**
-     * @return Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
+     * @return Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
      * 
      */
     private @Nullable String packageType;
@@ -147,7 +147,7 @@ public final class GetHarRegistryResult {
         return this.metadata == null ? Map.of() : this.metadata;
     }
     /**
-     * @return Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN)
+     * @return Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
      * 
      */
     public Optional<String> packageType() {

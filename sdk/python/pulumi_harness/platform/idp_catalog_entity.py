@@ -283,19 +283,19 @@ class IdpCatalogEntity(pulumi.CustomResource):
         Import account level entity
 
         ```sh
-        $ pulumi import harness:platform/idpCatalogEntity:IdpCatalogEntity example <entity_id>
+        $ pulumi import harness:platform/idpCatalogEntity:IdpCatalogEntity example <kind>/<entity_id>
         ```
 
         Import org level entity
 
         ```sh
-        $ pulumi import harness:platform/idpCatalogEntity:IdpCatalogEntity example <org_id>/<entity_id>
+        $ pulumi import harness:platform/idpCatalogEntity:IdpCatalogEntity example <org_id>/<kind>/<entity_id>
         ```
 
         Import project level entity
 
         ```sh
-        $ pulumi import harness:platform/idpCatalogEntity:IdpCatalogEntity example <org_id>/<project_id>/<entity_id>
+        $ pulumi import harness:platform/idpCatalogEntity:IdpCatalogEntity example <org_id>/<project_id>/<kind>/<entity_id>
         ```
 
 
@@ -325,19 +325,19 @@ class IdpCatalogEntity(pulumi.CustomResource):
         Import account level entity
 
         ```sh
-        $ pulumi import harness:platform/idpCatalogEntity:IdpCatalogEntity example <entity_id>
+        $ pulumi import harness:platform/idpCatalogEntity:IdpCatalogEntity example <kind>/<entity_id>
         ```
 
         Import org level entity
 
         ```sh
-        $ pulumi import harness:platform/idpCatalogEntity:IdpCatalogEntity example <org_id>/<entity_id>
+        $ pulumi import harness:platform/idpCatalogEntity:IdpCatalogEntity example <org_id>/<kind>/<entity_id>
         ```
 
         Import project level entity
 
         ```sh
-        $ pulumi import harness:platform/idpCatalogEntity:IdpCatalogEntity example <org_id>/<project_id>/<entity_id>
+        $ pulumi import harness:platform/idpCatalogEntity:IdpCatalogEntity example <org_id>/<project_id>/<kind>/<entity_id>
         ```
 
 
