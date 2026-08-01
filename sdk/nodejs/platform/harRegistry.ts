@@ -105,6 +105,21 @@ import * as utilities from "../utilities";
  *     }],
  *     parentRef: "accountId/orgId/projectId",
  * });
+ * // Example of an Upstream Python Registry with a custom remote URL suffix
+ * const pythonUpstream = new harness.platform.HarRegistry("python_upstream", {
+ *     identifier: "upstream_python_registry",
+ *     description: "Upstream Python Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "PYTHON",
+ *     configs: [{
+ *         type: "UPSTREAM",
+ *         source: "Custom",
+ *         url: "https://pypi.example.com",
+ *         remoteUrlSuffix: "simple",
+ *         authType: "Anonymous",
+ *     }],
+ *     parentRef: "accountId/orgId/projectId",
+ * });
  * // Example of an Upstream Conan Registry (ConanCenter source needs no url)
  * const conanUpstream = new harness.platform.HarRegistry("conan_upstream", {
  *     identifier: "upstream_conan_registry",

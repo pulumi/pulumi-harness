@@ -30,6 +30,11 @@ public final class GetHarRegistryConfig {
      */
     private String firewallMode;
     /**
+     * @return Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
+     * 
+     */
+    private @Nullable String remoteUrlSuffix;
+    /**
      * @return Upstream source
      * 
      */
@@ -73,6 +78,13 @@ public final class GetHarRegistryConfig {
         return this.firewallMode;
     }
     /**
+     * @return Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
+     * 
+     */
+    public Optional<String> remoteUrlSuffix() {
+        return Optional.ofNullable(this.remoteUrlSuffix);
+    }
+    /**
      * @return Upstream source
      * 
      */
@@ -113,6 +125,7 @@ public final class GetHarRegistryConfig {
         private @Nullable String authType;
         private @Nullable List<GetHarRegistryConfigAuth> auths;
         private String firewallMode;
+        private @Nullable String remoteUrlSuffix;
         private @Nullable String source;
         private String type;
         private @Nullable List<String> upstreamProxies;
@@ -123,6 +136,7 @@ public final class GetHarRegistryConfig {
     	      this.authType = defaults.authType;
     	      this.auths = defaults.auths;
     	      this.firewallMode = defaults.firewallMode;
+    	      this.remoteUrlSuffix = defaults.remoteUrlSuffix;
     	      this.source = defaults.source;
     	      this.type = defaults.type;
     	      this.upstreamProxies = defaults.upstreamProxies;
@@ -150,6 +164,12 @@ public final class GetHarRegistryConfig {
               throw new MissingRequiredPropertyException("GetHarRegistryConfig", "firewallMode");
             }
             this.firewallMode = firewallMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder remoteUrlSuffix(@Nullable String remoteUrlSuffix) {
+
+            this.remoteUrlSuffix = remoteUrlSuffix;
             return this;
         }
         @CustomType.Setter
@@ -186,6 +206,7 @@ public final class GetHarRegistryConfig {
             _resultValue.authType = authType;
             _resultValue.auths = auths;
             _resultValue.firewallMode = firewallMode;
+            _resultValue.remoteUrlSuffix = remoteUrlSuffix;
             _resultValue.source = source;
             _resultValue.type = type;
             _resultValue.upstreamProxies = upstreamProxies;

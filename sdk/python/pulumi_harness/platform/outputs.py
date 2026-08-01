@@ -103265,6 +103265,8 @@ class HarRegistryConfig(dict):
             suggest = "auth_type"
         elif key == "firewallMode":
             suggest = "firewall_mode"
+        elif key == "remoteUrlSuffix":
+            suggest = "remote_url_suffix"
         elif key == "upstreamProxies":
             suggest = "upstream_proxies"
 
@@ -103284,6 +103286,7 @@ class HarRegistryConfig(dict):
                  auth_type: Optional[_builtins.str] = None,
                  auths: Optional[Sequence['outputs.HarRegistryConfigAuth']] = None,
                  firewall_mode: Optional[_builtins.str] = None,
+                 remote_url_suffix: Optional[_builtins.str] = None,
                  source: Optional[_builtins.str] = None,
                  upstream_proxies: Optional[Sequence[_builtins.str]] = None,
                  url: Optional[_builtins.str] = None):
@@ -103292,6 +103295,7 @@ class HarRegistryConfig(dict):
         :param _builtins.str auth_type: Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
         :param Sequence['HarRegistryConfigAuthArgs'] auths: Authentication configuration for UPSTREAM registry type
         :param _builtins.str firewall_mode: Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+        :param _builtins.str remote_url_suffix: Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
         :param _builtins.str source: Upstream source
         :param Sequence[_builtins.str] upstream_proxies: List of upstream proxies for VIRTUAL registry type
         :param _builtins.str url: URL of the upstream (required if type=UPSTREAM & package_type=HELM)
@@ -103303,6 +103307,8 @@ class HarRegistryConfig(dict):
             pulumi.set(__self__, "auths", auths)
         if firewall_mode is not None:
             pulumi.set(__self__, "firewall_mode", firewall_mode)
+        if remote_url_suffix is not None:
+            pulumi.set(__self__, "remote_url_suffix", remote_url_suffix)
         if source is not None:
             pulumi.set(__self__, "source", source)
         if upstream_proxies is not None:
@@ -103341,6 +103347,14 @@ class HarRegistryConfig(dict):
         Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
         """
         return pulumi.get(self, "firewall_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteUrlSuffix")
+    def remote_url_suffix(self) -> Optional[_builtins.str]:
+        """
+        Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
+        """
+        return pulumi.get(self, "remote_url_suffix")
 
     @_builtins.property
     @pulumi.getter
@@ -118757,6 +118771,7 @@ class GetHarRegistryConfigResult(dict):
                  type: _builtins.str,
                  auth_type: Optional[_builtins.str] = None,
                  auths: Optional[Sequence['outputs.GetHarRegistryConfigAuthResult']] = None,
+                 remote_url_suffix: Optional[_builtins.str] = None,
                  source: Optional[_builtins.str] = None,
                  upstream_proxies: Optional[Sequence[_builtins.str]] = None,
                  url: Optional[_builtins.str] = None):
@@ -118765,6 +118780,7 @@ class GetHarRegistryConfigResult(dict):
         :param _builtins.str type: Type of registry (VIRTUAL or UPSTREAM)
         :param _builtins.str auth_type: Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
         :param Sequence['GetHarRegistryConfigAuthArgs'] auths: Authentication configuration for UPSTREAM registry type
+        :param _builtins.str remote_url_suffix: Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
         :param _builtins.str source: Upstream source
         :param Sequence[_builtins.str] upstream_proxies: List of upstream proxies for VIRTUAL registry type
         :param _builtins.str url: URL of the upstream (required if type=UPSTREAM & package_type=HELM)
@@ -118775,6 +118791,8 @@ class GetHarRegistryConfigResult(dict):
             pulumi.set(__self__, "auth_type", auth_type)
         if auths is not None:
             pulumi.set(__self__, "auths", auths)
+        if remote_url_suffix is not None:
+            pulumi.set(__self__, "remote_url_suffix", remote_url_suffix)
         if source is not None:
             pulumi.set(__self__, "source", source)
         if upstream_proxies is not None:
@@ -118813,6 +118831,14 @@ class GetHarRegistryConfigResult(dict):
         Authentication configuration for UPSTREAM registry type
         """
         return pulumi.get(self, "auths")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteUrlSuffix")
+    def remote_url_suffix(self) -> Optional[_builtins.str]:
+        """
+        Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
+        """
+        return pulumi.get(self, "remote_url_suffix")
 
     @_builtins.property
     @pulumi.getter

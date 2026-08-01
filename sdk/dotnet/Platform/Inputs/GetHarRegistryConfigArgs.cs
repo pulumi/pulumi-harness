@@ -37,6 +37,12 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string> FirewallMode { get; set; } = null!;
 
         /// <summary>
+        /// Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `Simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
+        /// </summary>
+        [Input("remoteUrlSuffix")]
+        public Input<string>? RemoteUrlSuffix { get; set; }
+
+        /// <summary>
         /// Upstream source
         /// </summary>
         [Input("source")]
