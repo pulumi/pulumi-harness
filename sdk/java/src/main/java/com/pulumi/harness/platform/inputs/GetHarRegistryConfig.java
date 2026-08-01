@@ -63,6 +63,21 @@ public final class GetHarRegistryConfig extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
+     * Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
+     * 
+     */
+    @Import(name="remoteUrlSuffix")
+    private @Nullable String remoteUrlSuffix;
+
+    /**
+     * @return Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
+     * 
+     */
+    public Optional<String> remoteUrlSuffix() {
+        return Optional.ofNullable(this.remoteUrlSuffix);
+    }
+
+    /**
      * Upstream source
      * 
      */
@@ -128,6 +143,7 @@ public final class GetHarRegistryConfig extends com.pulumi.resources.InvokeArgs 
         this.authType = $.authType;
         this.auths = $.auths;
         this.firewallMode = $.firewallMode;
+        this.remoteUrlSuffix = $.remoteUrlSuffix;
         this.source = $.source;
         this.type = $.type;
         this.upstreamProxies = $.upstreamProxies;
@@ -192,6 +208,17 @@ public final class GetHarRegistryConfig extends com.pulumi.resources.InvokeArgs 
          */
         public Builder firewallMode(String firewallMode) {
             $.firewallMode = firewallMode;
+            return this;
+        }
+
+        /**
+         * @param remoteUrlSuffix Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder remoteUrlSuffix(@Nullable String remoteUrlSuffix) {
+            $.remoteUrlSuffix = remoteUrlSuffix;
             return this;
         }
 

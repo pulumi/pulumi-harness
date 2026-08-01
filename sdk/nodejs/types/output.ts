@@ -9554,6 +9554,10 @@ export namespace platform {
          */
         firewallMode: string;
         /**
+         * Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
+         */
+        remoteUrlSuffix?: string;
+        /**
          * Upstream source
          */
         source?: string;
@@ -39640,6 +39644,10 @@ export namespace platform {
          * Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
          */
         firewallMode: string;
+        /**
+         * Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
+         */
+        remoteUrlSuffix?: string;
         /**
          * Upstream source
          */

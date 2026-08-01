@@ -7253,6 +7253,8 @@ type HarRegistryConfig struct {
 	Auths []HarRegistryConfigAuth `pulumi:"auths"`
 	// Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
 	FirewallMode *string `pulumi:"firewallMode"`
+	// Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
+	RemoteUrlSuffix *string `pulumi:"remoteUrlSuffix"`
 	// Upstream source
 	Source *string `pulumi:"source"`
 	// Type of registry (VIRTUAL or UPSTREAM)
@@ -7281,6 +7283,8 @@ type HarRegistryConfigArgs struct {
 	Auths HarRegistryConfigAuthArrayInput `pulumi:"auths"`
 	// Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
 	FirewallMode pulumi.StringPtrInput `pulumi:"firewallMode"`
+	// Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
+	RemoteUrlSuffix pulumi.StringPtrInput `pulumi:"remoteUrlSuffix"`
 	// Upstream source
 	Source pulumi.StringPtrInput `pulumi:"source"`
 	// Type of registry (VIRTUAL or UPSTREAM)
@@ -7355,6 +7359,11 @@ func (o HarRegistryConfigOutput) Auths() HarRegistryConfigAuthArrayOutput {
 // Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
 func (o HarRegistryConfigOutput) FirewallMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HarRegistryConfig) *string { return v.FirewallMode }).(pulumi.StringPtrOutput)
+}
+
+// Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
+func (o HarRegistryConfigOutput) RemoteUrlSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HarRegistryConfig) *string { return v.RemoteUrlSuffix }).(pulumi.StringPtrOutput)
 }
 
 // Upstream source
@@ -45181,6 +45190,8 @@ type GetHarRegistryConfig struct {
 	Auths []GetHarRegistryConfigAuth `pulumi:"auths"`
 	// Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
 	FirewallMode string `pulumi:"firewallMode"`
+	// Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
+	RemoteUrlSuffix *string `pulumi:"remoteUrlSuffix"`
 	// Upstream source
 	Source *string `pulumi:"source"`
 	// Type of registry (VIRTUAL or UPSTREAM)
@@ -45209,6 +45220,8 @@ type GetHarRegistryConfigArgs struct {
 	Auths GetHarRegistryConfigAuthArrayInput `pulumi:"auths"`
 	// Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
 	FirewallMode pulumi.StringInput `pulumi:"firewallMode"`
+	// Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
+	RemoteUrlSuffix pulumi.StringPtrInput `pulumi:"remoteUrlSuffix"`
 	// Upstream source
 	Source pulumi.StringPtrInput `pulumi:"source"`
 	// Type of registry (VIRTUAL or UPSTREAM)
@@ -45283,6 +45296,11 @@ func (o GetHarRegistryConfigOutput) Auths() GetHarRegistryConfigAuthArrayOutput 
 // Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
 func (o GetHarRegistryConfigOutput) FirewallMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHarRegistryConfig) string { return v.FirewallMode }).(pulumi.StringOutput)
+}
+
+// Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
+func (o GetHarRegistryConfigOutput) RemoteUrlSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetHarRegistryConfig) *string { return v.RemoteUrlSuffix }).(pulumi.StringPtrOutput)
 }
 
 // Upstream source

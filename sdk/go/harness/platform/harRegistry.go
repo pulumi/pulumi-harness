@@ -150,6 +150,26 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Example of an Upstream Python Registry with a custom remote URL suffix
+//			_, err = platform.NewHarRegistry(ctx, "python_upstream", &platform.HarRegistryArgs{
+//				Identifier:  pulumi.String("upstream_python_registry"),
+//				Description: pulumi.String("Upstream Python Registry"),
+//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
+//				PackageType: pulumi.String("PYTHON"),
+//				Configs: platform.HarRegistryConfigArray{
+//					&platform.HarRegistryConfigArgs{
+//						Type:            pulumi.String("UPSTREAM"),
+//						Source:          pulumi.String("Custom"),
+//						Url:             pulumi.String("https://pypi.example.com"),
+//						RemoteUrlSuffix: pulumi.String("simple"),
+//						AuthType:        pulumi.String("Anonymous"),
+//					},
+//				},
+//				ParentRef: pulumi.String("accountId/orgId/projectId"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			// Example of an Upstream Conan Registry (ConanCenter source needs no url)
 //			_, err = platform.NewHarRegistry(ctx, "conan_upstream", &platform.HarRegistryArgs{
 //				Identifier:  pulumi.String("upstream_conan_registry"),

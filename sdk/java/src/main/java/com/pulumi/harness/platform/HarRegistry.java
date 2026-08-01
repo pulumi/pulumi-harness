@@ -142,6 +142,22 @@ import javax.annotation.Nullable;
  *             .parentRef("accountId/orgId/projectId")
  *             .build());
  * 
+ *         // Example of an Upstream Python Registry with a custom remote URL suffix
+ *         var pythonUpstream = new HarRegistry("pythonUpstream", HarRegistryArgs.builder()
+ *             .identifier("upstream_python_registry")
+ *             .description("Upstream Python Registry")
+ *             .spaceRef("accountId/orgId/projectId")
+ *             .packageType("PYTHON")
+ *             .configs(HarRegistryConfigArgs.builder()
+ *                 .type("UPSTREAM")
+ *                 .source("Custom")
+ *                 .url("https://pypi.example.com")
+ *                 .remoteUrlSuffix("simple")
+ *                 .authType("Anonymous")
+ *                 .build())
+ *             .parentRef("accountId/orgId/projectId")
+ *             .build());
+ * 
  *         // Example of an Upstream Conan Registry (ConanCenter source needs no url)
  *         var conanUpstream = new HarRegistry("conanUpstream", HarRegistryArgs.builder()
  *             .identifier("upstream_conan_registry")

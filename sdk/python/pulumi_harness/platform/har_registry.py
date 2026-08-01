@@ -494,6 +494,20 @@ class HarRegistry(pulumi.CustomResource):
                 "auth_type": "Anonymous",
             }],
             parent_ref="accountId/orgId/projectId")
+        # Example of an Upstream Python Registry with a custom remote URL suffix
+        python_upstream = harness.platform.HarRegistry("python_upstream",
+            identifier="upstream_python_registry",
+            description="Upstream Python Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="PYTHON",
+            configs=[{
+                "type": "UPSTREAM",
+                "source": "Custom",
+                "url": "https://pypi.example.com",
+                "remote_url_suffix": "simple",
+                "auth_type": "Anonymous",
+            }],
+            parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Conan Registry (ConanCenter source needs no url)
         conan_upstream = harness.platform.HarRegistry("conan_upstream",
             identifier="upstream_conan_registry",
@@ -655,6 +669,20 @@ class HarRegistry(pulumi.CustomResource):
                 "type": "UPSTREAM",
                 "source": "Custom",
                 "url": "http://deb.debian.org/debian",
+                "auth_type": "Anonymous",
+            }],
+            parent_ref="accountId/orgId/projectId")
+        # Example of an Upstream Python Registry with a custom remote URL suffix
+        python_upstream = harness.platform.HarRegistry("python_upstream",
+            identifier="upstream_python_registry",
+            description="Upstream Python Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="PYTHON",
+            configs=[{
+                "type": "UPSTREAM",
+                "source": "Custom",
+                "url": "https://pypi.example.com",
+                "remote_url_suffix": "simple",
                 "auth_type": "Anonymous",
             }],
             parent_ref="accountId/orgId/projectId")

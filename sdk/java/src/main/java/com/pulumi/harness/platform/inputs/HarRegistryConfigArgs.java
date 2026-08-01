@@ -64,6 +64,21 @@ public final class HarRegistryConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
+     * 
+     */
+    @Import(name="remoteUrlSuffix")
+    private @Nullable Output<String> remoteUrlSuffix;
+
+    /**
+     * @return Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
+     * 
+     */
+    public Optional<Output<String>> remoteUrlSuffix() {
+        return Optional.ofNullable(this.remoteUrlSuffix);
+    }
+
+    /**
      * Upstream source
      * 
      */
@@ -129,6 +144,7 @@ public final class HarRegistryConfigArgs extends com.pulumi.resources.ResourceAr
         this.authType = $.authType;
         this.auths = $.auths;
         this.firewallMode = $.firewallMode;
+        this.remoteUrlSuffix = $.remoteUrlSuffix;
         this.source = $.source;
         this.type = $.type;
         this.upstreamProxies = $.upstreamProxies;
@@ -224,6 +240,27 @@ public final class HarRegistryConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder firewallMode(String firewallMode) {
             return firewallMode(Output.of(firewallMode));
+        }
+
+        /**
+         * @param remoteUrlSuffix Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder remoteUrlSuffix(@Nullable Output<String> remoteUrlSuffix) {
+            $.remoteUrlSuffix = remoteUrlSuffix;
+            return this;
+        }
+
+        /**
+         * @param remoteUrlSuffix Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder remoteUrlSuffix(String remoteUrlSuffix) {
+            return remoteUrlSuffix(Output.of(remoteUrlSuffix));
         }
 
         /**

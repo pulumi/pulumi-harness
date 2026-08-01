@@ -153,6 +153,27 @@ namespace Pulumi.Harness.Platform
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
+    ///     // Example of an Upstream Python Registry with a custom remote URL suffix
+    ///     var pythonUpstream = new Harness.Platform.HarRegistry("python_upstream", new()
+    ///     {
+    ///         Identifier = "upstream_python_registry",
+    ///         Description = "Upstream Python Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "PYTHON",
+    ///         Configs = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
+    ///             {
+    ///                 Type = "UPSTREAM",
+    ///                 Source = "Custom",
+    ///                 Url = "https://pypi.example.com",
+    ///                 RemoteUrlSuffix = "simple",
+    ///                 AuthType = "Anonymous",
+    ///             },
+    ///         },
+    ///         ParentRef = "accountId/orgId/projectId",
+    ///     });
+    /// 
     ///     // Example of an Upstream Conan Registry (ConanCenter source needs no url)
     ///     var conanUpstream = new Harness.Platform.HarRegistry("conan_upstream", new()
     ///     {
