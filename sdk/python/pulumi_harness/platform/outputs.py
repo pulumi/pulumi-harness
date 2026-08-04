@@ -120477,9 +120477,9 @@ class GetInfraVariableSetEnvironmentVariableResult(dict):
                  value: _builtins.str,
                  value_type: _builtins.str):
         """
-        :param _builtins.str key: Key is the identifier for the variable. Must be unique within the Variable Set.
-        :param _builtins.str value: Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
-        :param _builtins.str value_type: Value type indicates the value type of the variable. Currently we support string and secret.
+        :param _builtins.str key: Key is the identifier for the variable.
+        :param _builtins.str value: Value is the value of the variable. For string value types this field contains the value of the variable. For secret value types this contains a reference to a Harness secret.
+        :param _builtins.str value_type: Value type indicates the value type of the variable, either string or secret.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -120489,7 +120489,7 @@ class GetInfraVariableSetEnvironmentVariableResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        Key is the identifier for the variable. Must be unique within the Variable Set.
+        Key is the identifier for the variable.
         """
         return pulumi.get(self, "key")
 
@@ -120497,7 +120497,7 @@ class GetInfraVariableSetEnvironmentVariableResult(dict):
     @pulumi.getter
     def value(self) -> _builtins.str:
         """
-        Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+        Value is the value of the variable. For string value types this field contains the value of the variable. For secret value types this contains a reference to a Harness secret.
         """
         return pulumi.get(self, "value")
 
@@ -120505,7 +120505,7 @@ class GetInfraVariableSetEnvironmentVariableResult(dict):
     @pulumi.getter(name="valueType")
     def value_type(self) -> _builtins.str:
         """
-        Value type indicates the value type of the variable. Currently we support string and secret.
+        Value type indicates the value type of the variable, either string or secret.
         """
         return pulumi.get(self, "value_type")
 
@@ -120517,9 +120517,9 @@ class GetInfraVariableSetTerraformVariableResult(dict):
                  value: _builtins.str,
                  value_type: _builtins.str):
         """
-        :param _builtins.str key: Key is the identifier for the variable. Must be unique within the Variable Set.
-        :param _builtins.str value: Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
-        :param _builtins.str value_type: Value type indicates the value type of the variable. Currently we support string and secret.
+        :param _builtins.str key: Key is the identifier for the variable.
+        :param _builtins.str value: Value is the value of the variable. For string value types this field contains the value of the variable. For secret value types this contains a reference to a Harness secret.
+        :param _builtins.str value_type: Value type indicates the value type of the variable, either string or secret.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -120529,7 +120529,7 @@ class GetInfraVariableSetTerraformVariableResult(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        Key is the identifier for the variable. Must be unique within the Variable Set.
+        Key is the identifier for the variable.
         """
         return pulumi.get(self, "key")
 
@@ -120537,7 +120537,7 @@ class GetInfraVariableSetTerraformVariableResult(dict):
     @pulumi.getter
     def value(self) -> _builtins.str:
         """
-        Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+        Value is the value of the variable. For string value types this field contains the value of the variable. For secret value types this contains a reference to a Harness secret.
         """
         return pulumi.get(self, "value")
 
@@ -120545,7 +120545,7 @@ class GetInfraVariableSetTerraformVariableResult(dict):
     @pulumi.getter(name="valueType")
     def value_type(self) -> _builtins.str:
         """
-        Value type indicates the value type of the variable. Currently we support string and secret.
+        Value type indicates the value type of the variable, either string or secret.
         """
         return pulumi.get(self, "value_type")
 
@@ -120554,37 +120554,49 @@ class GetInfraVariableSetTerraformVariableResult(dict):
 class GetInfraVariableSetTerraformVariableFileResult(dict):
     def __init__(__self__, *,
                  repository: _builtins.str,
+                 repository_branch: _builtins.str,
+                 repository_commit: _builtins.str,
                  repository_connector: _builtins.str,
-                 repository_branch: Optional[_builtins.str] = None,
-                 repository_commit: Optional[_builtins.str] = None,
-                 repository_path: Optional[_builtins.str] = None,
-                 repository_sha: Optional[_builtins.str] = None):
+                 repository_path: _builtins.str,
+                 repository_sha: _builtins.str):
         """
-        :param _builtins.str repository: Repository is the name of the repository to fetch the code from.
+        :param _builtins.str repository: Repository is the name of the repository the variables are fetched from.
+        :param _builtins.str repository_branch: Repository branch is the name of the branch the variables are fetched from.
+        :param _builtins.str repository_commit: Repository commit is the tag the variables are fetched from.
         :param _builtins.str repository_connector: Repository connector is the reference to the connector used to fetch the variables.
-        :param _builtins.str repository_branch: Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
-        :param _builtins.str repository_commit: Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
         :param _builtins.str repository_path: Repository path is the path in which the variables reside.
-        :param _builtins.str repository_sha: Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
+        :param _builtins.str repository_sha: Repository sha is the commit SHA the variables are fetched from.
         """
         pulumi.set(__self__, "repository", repository)
+        pulumi.set(__self__, "repository_branch", repository_branch)
+        pulumi.set(__self__, "repository_commit", repository_commit)
         pulumi.set(__self__, "repository_connector", repository_connector)
-        if repository_branch is not None:
-            pulumi.set(__self__, "repository_branch", repository_branch)
-        if repository_commit is not None:
-            pulumi.set(__self__, "repository_commit", repository_commit)
-        if repository_path is not None:
-            pulumi.set(__self__, "repository_path", repository_path)
-        if repository_sha is not None:
-            pulumi.set(__self__, "repository_sha", repository_sha)
+        pulumi.set(__self__, "repository_path", repository_path)
+        pulumi.set(__self__, "repository_sha", repository_sha)
 
     @_builtins.property
     @pulumi.getter
     def repository(self) -> _builtins.str:
         """
-        Repository is the name of the repository to fetch the code from.
+        Repository is the name of the repository the variables are fetched from.
         """
         return pulumi.get(self, "repository")
+
+    @_builtins.property
+    @pulumi.getter(name="repositoryBranch")
+    def repository_branch(self) -> _builtins.str:
+        """
+        Repository branch is the name of the branch the variables are fetched from.
+        """
+        return pulumi.get(self, "repository_branch")
+
+    @_builtins.property
+    @pulumi.getter(name="repositoryCommit")
+    def repository_commit(self) -> _builtins.str:
+        """
+        Repository commit is the tag the variables are fetched from.
+        """
+        return pulumi.get(self, "repository_commit")
 
     @_builtins.property
     @pulumi.getter(name="repositoryConnector")
@@ -120595,24 +120607,8 @@ class GetInfraVariableSetTerraformVariableFileResult(dict):
         return pulumi.get(self, "repository_connector")
 
     @_builtins.property
-    @pulumi.getter(name="repositoryBranch")
-    def repository_branch(self) -> Optional[_builtins.str]:
-        """
-        Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
-        """
-        return pulumi.get(self, "repository_branch")
-
-    @_builtins.property
-    @pulumi.getter(name="repositoryCommit")
-    def repository_commit(self) -> Optional[_builtins.str]:
-        """
-        Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
-        """
-        return pulumi.get(self, "repository_commit")
-
-    @_builtins.property
     @pulumi.getter(name="repositoryPath")
-    def repository_path(self) -> Optional[_builtins.str]:
+    def repository_path(self) -> _builtins.str:
         """
         Repository path is the path in which the variables reside.
         """
@@ -120620,9 +120616,9 @@ class GetInfraVariableSetTerraformVariableFileResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="repositorySha")
-    def repository_sha(self) -> Optional[_builtins.str]:
+    def repository_sha(self) -> _builtins.str:
         """
-        Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
+        Repository sha is the commit SHA the variables are fetched from.
         """
         return pulumi.get(self, "repository_sha")
 

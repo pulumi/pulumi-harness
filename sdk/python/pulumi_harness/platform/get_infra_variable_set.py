@@ -14,7 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetInfraVariableSetResult',
@@ -67,7 +66,7 @@ class GetInfraVariableSetResult:
     @pulumi.getter
     def connectors(self) -> Sequence['outputs.GetInfraVariableSetConnectorResult']:
         """
-        Provider connectors configured on the Variable Set. Only one connector of a type is supported
+        Provider connectors configured on the Variable Set.
         """
         return pulumi.get(self, "connectors")
 
@@ -75,7 +74,7 @@ class GetInfraVariableSetResult:
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        Description of the resource.
+        Description of the Variable Set.
         """
         return pulumi.get(self, "description")
 
@@ -99,15 +98,15 @@ class GetInfraVariableSetResult:
     @pulumi.getter
     def identifier(self) -> _builtins.str:
         """
-        Unique identifier of the resource.
+        Identifier of the Variable Set. Do not include a scope prefix here; use org*id and project*id to select the scope.
         """
         return pulumi.get(self, "identifier")
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
+    def name(self) -> _builtins.str:
         """
-        Name of the resource.
+        Name of the Variable Set. This is an output; a value set here is ignored by the lookup.
         """
         return pulumi.get(self, "name")
 
@@ -115,7 +114,7 @@ class GetInfraVariableSetResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[_builtins.str]:
         """
-        Unique identifier of the organization.
+        Organization identifier of the organization the Variable Set resides in. Leave empty to look up an account level Variable Set.
         """
         return pulumi.get(self, "org_id")
 
@@ -123,7 +122,7 @@ class GetInfraVariableSetResult:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[_builtins.str]:
         """
-        Unique identifier of the project.
+        Project identifier of the project the Variable Set resides in. Leave empty to look up an account or org level Variable Set.
         """
         return pulumi.get(self, "project_id")
 
@@ -131,7 +130,7 @@ class GetInfraVariableSetResult:
     @pulumi.getter
     def tags(self) -> Sequence[_builtins.str]:
         """
-        Tags to associate with the resource.
+        Tags are not supported on Variable Sets. This attribute is always empty.
         """
         return pulumi.get(self, "tags")
 
@@ -147,7 +146,7 @@ class GetInfraVariableSetResult:
     @pulumi.getter(name="terraformVariables")
     def terraform_variables(self) -> Sequence['outputs.GetInfraVariableSetTerraformVariableResult']:
         """
-        Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+        Terraform variables configured on the Variable Set. (see below for nested schema)
         """
         return pulumi.get(self, "terraform_variables")
 
@@ -171,17 +170,22 @@ class AwaitableGetInfraVariableSetResult(GetInfraVariableSetResult):
             terraform_variables=self.terraform_variables)
 
 
-def get_infra_variable_set(connectors: Optional[Sequence[Union['GetInfraVariableSetConnectorArgs', 'GetInfraVariableSetConnectorArgsDict']]] = None,
-                           environment_variables: Optional[Sequence[Union['GetInfraVariableSetEnvironmentVariableArgs', 'GetInfraVariableSetEnvironmentVariableArgsDict']]] = None,
-                           identifier: Optional[_builtins.str] = None,
+def get_infra_variable_set(identifier: Optional[_builtins.str] = None,
                            name: Optional[_builtins.str] = None,
                            org_id: Optional[_builtins.str] = None,
                            project_id: Optional[_builtins.str] = None,
-                           terraform_variable_files: Optional[Sequence[Union['GetInfraVariableSetTerraformVariableFileArgs', 'GetInfraVariableSetTerraformVariableFileArgsDict']]] = None,
-                           terraform_variables: Optional[Sequence[Union['GetInfraVariableSetTerraformVariableArgs', 'GetInfraVariableSetTerraformVariableArgsDict']]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInfraVariableSetResult:
     """
     Data source for retrieving Variable Sets.
+
+    The Variable Set is looked up with `identifier` at the scope implied by `org_id` and `project_id`:
+    omit both for an account level Variable Set, set `org_id` for an org level Variable Set, and set both for a
+    project level Variable Set.
+
+    The exported `id` is the bare identifier, without a scope prefix. When referencing a Variable Set from a
+    resource in a lower scope, such as `platform.Workspace`, prefix the reference with `account.` for an
+    account level Variable Set or `org.` for an org level Variable Set. An unprefixed reference is resolved against
+    the consuming resource's own project.
 
     ## Example Usage
 
@@ -189,33 +193,57 @@ def get_infra_variable_set(connectors: Optional[Sequence[Union['GetInfraVariable
     import pulumi
     import pulumi_harness as harness
 
-    test = harness.platform.get_infra_variable_set(identifier="identifier")
-    testorg = harness.platform.get_infra_variable_set(identifier="identifier",
-        org_id="someorg")
-    testproj = harness.platform.get_infra_variable_set(identifier="identifier",
-        org_id="someorg",
-        project_id="someproj")
+    # Look up an account level Variable Set. Omit both org_id and project_id.
+    account_level = harness.platform.get_infra_variable_set(identifier="account_variable_set")
+    # Look up an org level Variable Set. Set org_id only.
+    org_level = harness.platform.get_infra_variable_set(identifier="org_variable_set",
+        org_id=example_harness_platform_organization["id"])
+    # Look up a project level Variable Set. Set both org_id and project_id.
+    project_level = harness.platform.get_infra_variable_set(identifier="project_variable_set",
+        org_id=example_harness_platform_organization["id"],
+        project_id=example_harness_platform_project["id"])
+    # Consuming a Variable Set from a Workspace.
+    #
+    # The exported `id` is the bare identifier, with no scope prefix. Harness resolves an
+    # unprefixed reference against the Workspace's own org and project, so a Variable Set
+    # that lives above the Workspace must be referenced with a scope prefix:
+    #
+    #   account level -> "account.${...id}"
+    #   org level     -> "org.${...id}"
+    #   project level -> "${...id}" (no prefix, must be the same project as the Workspace)
+    #
+    # Referencing an account or org level Variable Set without the prefix fails with
+    # "404 Not Found ... variable set not found", because the lookup is scoped to the project.
+    example = harness.platform.Workspace("example",
+        identifier="example",
+        name="example",
+        org_id=example_harness_platform_organization["id"],
+        project_id=example_harness_platform_project["id"],
+        provisioner_type="terraform",
+        provisioner_version="1.5.7",
+        repository="https://github.com/org/repo",
+        repository_branch="main",
+        repository_path="tf/aws/basic",
+        repository_connector=example_harness_platform_connector_github["id"],
+        provider_connector=example_harness_platform_connector_aws["id"],
+        variable_sets=[
+            f"account.{account_level.id}",
+            f"org.{org_level.id}",
+            project_level.id,
+        ])
     ```
 
 
-    :param Sequence[Union['GetInfraVariableSetConnectorArgs', 'GetInfraVariableSetConnectorArgsDict']] connectors: Provider connectors configured on the Variable Set. Only one connector of a type is supported
-    :param Sequence[Union['GetInfraVariableSetEnvironmentVariableArgs', 'GetInfraVariableSetEnvironmentVariableArgsDict']] environment_variables: Environment variables configured on the Variable Set
-    :param _builtins.str identifier: Unique identifier of the resource.
-    :param _builtins.str name: Name of the resource.
-    :param _builtins.str org_id: Unique identifier of the organization.
-    :param _builtins.str project_id: Unique identifier of the project.
-    :param Sequence[Union['GetInfraVariableSetTerraformVariableFileArgs', 'GetInfraVariableSetTerraformVariableFileArgsDict']] terraform_variable_files: Terraform variables files configured on the Variable Set (see below for nested schema)
-    :param Sequence[Union['GetInfraVariableSetTerraformVariableArgs', 'GetInfraVariableSetTerraformVariableArgsDict']] terraform_variables: Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+    :param _builtins.str identifier: Identifier of the Variable Set. Do not include a scope prefix here; use org*id and project*id to select the scope.
+    :param _builtins.str name: Name of the Variable Set. This is an output; a value set here is ignored by the lookup.
+    :param _builtins.str org_id: Organization identifier of the organization the Variable Set resides in. Leave empty to look up an account level Variable Set.
+    :param _builtins.str project_id: Project identifier of the project the Variable Set resides in. Leave empty to look up an account or org level Variable Set.
     """
     __args__ = dict()
-    __args__['connectors'] = connectors
-    __args__['environmentVariables'] = environment_variables
     __args__['identifier'] = identifier
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    __args__['terraformVariableFiles'] = terraform_variable_files
-    __args__['terraformVariables'] = terraform_variables
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:platform/getInfraVariableSet:getInfraVariableSet', __args__, opts=opts, typ=GetInfraVariableSetResult).value
 
@@ -231,17 +259,22 @@ def get_infra_variable_set(connectors: Optional[Sequence[Union['GetInfraVariable
         tags=pulumi.get(__ret__, 'tags'),
         terraform_variable_files=pulumi.get(__ret__, 'terraform_variable_files'),
         terraform_variables=pulumi.get(__ret__, 'terraform_variables'))
-def get_infra_variable_set_output(connectors: pulumi.Input[Optional[Optional[Sequence[Union['GetInfraVariableSetConnectorArgs', 'GetInfraVariableSetConnectorArgsDict']]]]] = None,
-                                  environment_variables: pulumi.Input[Optional[Optional[Sequence[Union['GetInfraVariableSetEnvironmentVariableArgs', 'GetInfraVariableSetEnvironmentVariableArgsDict']]]]] = None,
-                                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
+def get_infra_variable_set_output(identifier: pulumi.Input[Optional[_builtins.str]] = None,
                                   name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                  terraform_variable_files: pulumi.Input[Optional[Optional[Sequence[Union['GetInfraVariableSetTerraformVariableFileArgs', 'GetInfraVariableSetTerraformVariableFileArgsDict']]]]] = None,
-                                  terraform_variables: pulumi.Input[Optional[Optional[Sequence[Union['GetInfraVariableSetTerraformVariableArgs', 'GetInfraVariableSetTerraformVariableArgsDict']]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInfraVariableSetResult]:
     """
     Data source for retrieving Variable Sets.
+
+    The Variable Set is looked up with `identifier` at the scope implied by `org_id` and `project_id`:
+    omit both for an account level Variable Set, set `org_id` for an org level Variable Set, and set both for a
+    project level Variable Set.
+
+    The exported `id` is the bare identifier, without a scope prefix. When referencing a Variable Set from a
+    resource in a lower scope, such as `platform.Workspace`, prefix the reference with `account.` for an
+    account level Variable Set or `org.` for an org level Variable Set. An unprefixed reference is resolved against
+    the consuming resource's own project.
 
     ## Example Usage
 
@@ -249,33 +282,57 @@ def get_infra_variable_set_output(connectors: pulumi.Input[Optional[Optional[Seq
     import pulumi
     import pulumi_harness as harness
 
-    test = harness.platform.get_infra_variable_set(identifier="identifier")
-    testorg = harness.platform.get_infra_variable_set(identifier="identifier",
-        org_id="someorg")
-    testproj = harness.platform.get_infra_variable_set(identifier="identifier",
-        org_id="someorg",
-        project_id="someproj")
+    # Look up an account level Variable Set. Omit both org_id and project_id.
+    account_level = harness.platform.get_infra_variable_set(identifier="account_variable_set")
+    # Look up an org level Variable Set. Set org_id only.
+    org_level = harness.platform.get_infra_variable_set(identifier="org_variable_set",
+        org_id=example_harness_platform_organization["id"])
+    # Look up a project level Variable Set. Set both org_id and project_id.
+    project_level = harness.platform.get_infra_variable_set(identifier="project_variable_set",
+        org_id=example_harness_platform_organization["id"],
+        project_id=example_harness_platform_project["id"])
+    # Consuming a Variable Set from a Workspace.
+    #
+    # The exported `id` is the bare identifier, with no scope prefix. Harness resolves an
+    # unprefixed reference against the Workspace's own org and project, so a Variable Set
+    # that lives above the Workspace must be referenced with a scope prefix:
+    #
+    #   account level -> "account.${...id}"
+    #   org level     -> "org.${...id}"
+    #   project level -> "${...id}" (no prefix, must be the same project as the Workspace)
+    #
+    # Referencing an account or org level Variable Set without the prefix fails with
+    # "404 Not Found ... variable set not found", because the lookup is scoped to the project.
+    example = harness.platform.Workspace("example",
+        identifier="example",
+        name="example",
+        org_id=example_harness_platform_organization["id"],
+        project_id=example_harness_platform_project["id"],
+        provisioner_type="terraform",
+        provisioner_version="1.5.7",
+        repository="https://github.com/org/repo",
+        repository_branch="main",
+        repository_path="tf/aws/basic",
+        repository_connector=example_harness_platform_connector_github["id"],
+        provider_connector=example_harness_platform_connector_aws["id"],
+        variable_sets=[
+            f"account.{account_level.id}",
+            f"org.{org_level.id}",
+            project_level.id,
+        ])
     ```
 
 
-    :param Sequence[Union['GetInfraVariableSetConnectorArgs', 'GetInfraVariableSetConnectorArgsDict']] connectors: Provider connectors configured on the Variable Set. Only one connector of a type is supported
-    :param Sequence[Union['GetInfraVariableSetEnvironmentVariableArgs', 'GetInfraVariableSetEnvironmentVariableArgsDict']] environment_variables: Environment variables configured on the Variable Set
-    :param _builtins.str identifier: Unique identifier of the resource.
-    :param _builtins.str name: Name of the resource.
-    :param _builtins.str org_id: Unique identifier of the organization.
-    :param _builtins.str project_id: Unique identifier of the project.
-    :param Sequence[Union['GetInfraVariableSetTerraformVariableFileArgs', 'GetInfraVariableSetTerraformVariableFileArgsDict']] terraform_variable_files: Terraform variables files configured on the Variable Set (see below for nested schema)
-    :param Sequence[Union['GetInfraVariableSetTerraformVariableArgs', 'GetInfraVariableSetTerraformVariableArgsDict']] terraform_variables: Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+    :param _builtins.str identifier: Identifier of the Variable Set. Do not include a scope prefix here; use org*id and project*id to select the scope.
+    :param _builtins.str name: Name of the Variable Set. This is an output; a value set here is ignored by the lookup.
+    :param _builtins.str org_id: Organization identifier of the organization the Variable Set resides in. Leave empty to look up an account level Variable Set.
+    :param _builtins.str project_id: Project identifier of the project the Variable Set resides in. Leave empty to look up an account or org level Variable Set.
     """
     __args__ = dict()
-    __args__['connectors'] = connectors
-    __args__['environmentVariables'] = environment_variables
     __args__['identifier'] = identifier
     __args__['name'] = name
     __args__['orgId'] = org_id
     __args__['projectId'] = project_id
-    __args__['terraformVariableFiles'] = terraform_variable_files
-    __args__['terraformVariables'] = terraform_variables
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getInfraVariableSet:getInfraVariableSet', __args__, opts=opts, typ=GetInfraVariableSetResult)
     return __ret__.apply(lambda __response__: GetInfraVariableSetResult(

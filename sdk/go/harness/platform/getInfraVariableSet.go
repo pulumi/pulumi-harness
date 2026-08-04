@@ -13,6 +13,15 @@ import (
 
 // Data source for retrieving Variable Sets.
 //
+// The Variable Set is looked up with `identifier` at the scope implied by `orgId` and `projectId`:
+// omit both for an account level Variable Set, set `orgId` for an org level Variable Set, and set both for a
+// project level Variable Set.
+//
+// The exported `id` is the bare identifier, without a scope prefix. When referencing a Variable Set from a
+// resource in a lower scope, such as `platform.Workspace`, prefix the reference with `account.` for an
+// account level Variable Set or `org.` for an org level Variable Set. An unprefixed reference is resolved against
+// the consuming resource's own project.
+//
 // ## Example Usage
 //
 // ```go
@@ -27,24 +36,60 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.LookupInfraVariableSet(ctx, &platform.LookupInfraVariableSetArgs{
-//				Identifier: "identifier",
+//			// Look up an account level Variable Set. Omit both org_id and project_id.
+//			accountLevel, err := platform.LookupInfraVariableSet(ctx, &platform.LookupInfraVariableSetArgs{
+//				Identifier: "account_variable_set",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = platform.LookupInfraVariableSet(ctx, &platform.LookupInfraVariableSetArgs{
-//				Identifier: "identifier",
-//				OrgId:      pulumi.StringRef("someorg"),
+//			// Look up an org level Variable Set. Set org_id only.
+//			orgLevel, err := platform.LookupInfraVariableSet(ctx, &platform.LookupInfraVariableSetArgs{
+//				Identifier: "org_variable_set",
+//				OrgId:      pulumi.StringRef(exampleHarnessPlatformOrganization.Id),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = platform.LookupInfraVariableSet(ctx, &platform.LookupInfraVariableSetArgs{
-//				Identifier: "identifier",
-//				OrgId:      pulumi.StringRef("someorg"),
-//				ProjectId:  pulumi.StringRef("someproj"),
+//			// Look up a project level Variable Set. Set both org_id and project_id.
+//			projectLevel, err := platform.LookupInfraVariableSet(ctx, &platform.LookupInfraVariableSetArgs{
+//				Identifier: "project_variable_set",
+//				OrgId:      pulumi.StringRef(exampleHarnessPlatformOrganization.Id),
+//				ProjectId:  pulumi.StringRef(exampleHarnessPlatformProject.Id),
 //			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Consuming a Variable Set from a Workspace.
+//			//
+//			// The exported `id` is the bare identifier, with no scope prefix. Harness resolves an
+//			// unprefixed reference against the Workspace's own org and project, so a Variable Set
+//			// that lives above the Workspace must be referenced with a scope prefix:
+//			//
+//			//	account level -> "account.${...id}"
+//			//	org level     -> "org.${...id}"
+//			//	project level -> "${...id}" (no prefix, must be the same project as the Workspace)
+//			//
+//			// Referencing an account or org level Variable Set without the prefix fails with
+//			// "404 Not Found ... variable set not found", because the lookup is scoped to the project.
+//			_, err = platform.NewWorkspace(ctx, "example", &platform.WorkspaceArgs{
+//				Identifier:          pulumi.String("example"),
+//				Name:                pulumi.String("example"),
+//				OrgId:               pulumi.Any(exampleHarnessPlatformOrganization.Id),
+//				ProjectId:           pulumi.Any(exampleHarnessPlatformProject.Id),
+//				ProvisionerType:     pulumi.String("terraform"),
+//				ProvisionerVersion:  pulumi.String("1.5.7"),
+//				Repository:          pulumi.String("https://github.com/org/repo"),
+//				RepositoryBranch:    pulumi.String("main"),
+//				RepositoryPath:      pulumi.String("tf/aws/basic"),
+//				RepositoryConnector: pulumi.Any(exampleHarnessPlatformConnectorGithub.Id),
+//				ProviderConnector:   pulumi.Any(exampleHarnessPlatformConnectorAws.Id),
+//				VariableSets: pulumi.StringArray{
+//					pulumi.Sprintf("account.%v", accountLevel.Id),
+//					pulumi.Sprintf("org.%v", orgLevel.Id),
+//					pulumi.String(projectLevel.Id),
+//				},
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -65,47 +110,39 @@ func LookupInfraVariableSet(ctx *pulumi.Context, args *LookupInfraVariableSetArg
 
 // A collection of arguments for invoking getInfraVariableSet.
 type LookupInfraVariableSetArgs struct {
-	// Provider connectors configured on the Variable Set. Only one connector of a type is supported
-	Connectors []GetInfraVariableSetConnector `pulumi:"connectors"`
-	// Environment variables configured on the Variable Set
-	EnvironmentVariables []GetInfraVariableSetEnvironmentVariable `pulumi:"environmentVariables"`
-	// Unique identifier of the resource.
+	// Identifier of the Variable Set. Do not include a scope prefix here; use org*id and project*id to select the scope.
 	Identifier string `pulumi:"identifier"`
-	// Name of the resource.
+	// Name of the Variable Set. This is an output; a value set here is ignored by the lookup.
 	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Organization identifier of the organization the Variable Set resides in. Leave empty to look up an account level Variable Set.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Project identifier of the project the Variable Set resides in. Leave empty to look up an account or org level Variable Set.
 	ProjectId *string `pulumi:"projectId"`
-	// Terraform variables files configured on the Variable Set (see below for nested schema)
-	TerraformVariableFiles []GetInfraVariableSetTerraformVariableFile `pulumi:"terraformVariableFiles"`
-	// Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
-	TerraformVariables []GetInfraVariableSetTerraformVariable `pulumi:"terraformVariables"`
 }
 
 // A collection of values returned by getInfraVariableSet.
 type LookupInfraVariableSetResult struct {
-	// Provider connectors configured on the Variable Set. Only one connector of a type is supported
+	// Provider connectors configured on the Variable Set.
 	Connectors []GetInfraVariableSetConnector `pulumi:"connectors"`
-	// Description of the resource.
+	// Description of the Variable Set.
 	Description string `pulumi:"description"`
 	// Environment variables configured on the Variable Set
 	EnvironmentVariables []GetInfraVariableSetEnvironmentVariable `pulumi:"environmentVariables"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Unique identifier of the resource.
+	// Identifier of the Variable Set. Do not include a scope prefix here; use org*id and project*id to select the scope.
 	Identifier string `pulumi:"identifier"`
-	// Name of the resource.
-	Name *string `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Name of the Variable Set. This is an output; a value set here is ignored by the lookup.
+	Name string `pulumi:"name"`
+	// Organization identifier of the organization the Variable Set resides in. Leave empty to look up an account level Variable Set.
 	OrgId *string `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Project identifier of the project the Variable Set resides in. Leave empty to look up an account or org level Variable Set.
 	ProjectId *string `pulumi:"projectId"`
-	// Tags to associate with the resource.
+	// Tags are not supported on Variable Sets. This attribute is always empty.
 	Tags []string `pulumi:"tags"`
 	// Terraform variables files configured on the Variable Set (see below for nested schema)
 	TerraformVariableFiles []GetInfraVariableSetTerraformVariableFile `pulumi:"terraformVariableFiles"`
-	// Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+	// Terraform variables configured on the Variable Set. (see below for nested schema)
 	TerraformVariables []GetInfraVariableSetTerraformVariable `pulumi:"terraformVariables"`
 }
 
@@ -120,22 +157,14 @@ func LookupInfraVariableSetOutput(ctx *pulumi.Context, args LookupInfraVariableS
 
 // A collection of arguments for invoking getInfraVariableSet.
 type LookupInfraVariableSetOutputArgs struct {
-	// Provider connectors configured on the Variable Set. Only one connector of a type is supported
-	Connectors GetInfraVariableSetConnectorArrayInput `pulumi:"connectors"`
-	// Environment variables configured on the Variable Set
-	EnvironmentVariables GetInfraVariableSetEnvironmentVariableArrayInput `pulumi:"environmentVariables"`
-	// Unique identifier of the resource.
+	// Identifier of the Variable Set. Do not include a scope prefix here; use org*id and project*id to select the scope.
 	Identifier pulumi.StringInput `pulumi:"identifier"`
-	// Name of the resource.
+	// Name of the Variable Set. This is an output; a value set here is ignored by the lookup.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Unique identifier of the organization.
+	// Organization identifier of the organization the Variable Set resides in. Leave empty to look up an account level Variable Set.
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Unique identifier of the project.
+	// Project identifier of the project the Variable Set resides in. Leave empty to look up an account or org level Variable Set.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
-	// Terraform variables files configured on the Variable Set (see below for nested schema)
-	TerraformVariableFiles GetInfraVariableSetTerraformVariableFileArrayInput `pulumi:"terraformVariableFiles"`
-	// Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
-	TerraformVariables GetInfraVariableSetTerraformVariableArrayInput `pulumi:"terraformVariables"`
 }
 
 func (LookupInfraVariableSetOutputArgs) ElementType() reflect.Type {
@@ -157,12 +186,12 @@ func (o LookupInfraVariableSetResultOutput) ToLookupInfraVariableSetResultOutput
 	return o
 }
 
-// Provider connectors configured on the Variable Set. Only one connector of a type is supported
+// Provider connectors configured on the Variable Set.
 func (o LookupInfraVariableSetResultOutput) Connectors() GetInfraVariableSetConnectorArrayOutput {
 	return o.ApplyT(func(v LookupInfraVariableSetResult) []GetInfraVariableSetConnector { return v.Connectors }).(GetInfraVariableSetConnectorArrayOutput)
 }
 
-// Description of the resource.
+// Description of the Variable Set.
 func (o LookupInfraVariableSetResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfraVariableSetResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -179,27 +208,27 @@ func (o LookupInfraVariableSetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfraVariableSetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the resource.
+// Identifier of the Variable Set. Do not include a scope prefix here; use org*id and project*id to select the scope.
 func (o LookupInfraVariableSetResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInfraVariableSetResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
-// Name of the resource.
-func (o LookupInfraVariableSetResultOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupInfraVariableSetResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+// Name of the Variable Set. This is an output; a value set here is ignored by the lookup.
+func (o LookupInfraVariableSetResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInfraVariableSetResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the organization.
+// Organization identifier of the organization the Variable Set resides in. Leave empty to look up an account level Variable Set.
 func (o LookupInfraVariableSetResultOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInfraVariableSetResult) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Unique identifier of the project.
+// Project identifier of the project the Variable Set resides in. Leave empty to look up an account or org level Variable Set.
 func (o LookupInfraVariableSetResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInfraVariableSetResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Tags to associate with the resource.
+// Tags are not supported on Variable Sets. This attribute is always empty.
 func (o LookupInfraVariableSetResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInfraVariableSetResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -211,7 +240,7 @@ func (o LookupInfraVariableSetResultOutput) TerraformVariableFiles() GetInfraVar
 	}).(GetInfraVariableSetTerraformVariableFileArrayOutput)
 }
 
-// Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+// Terraform variables configured on the Variable Set. (see below for nested schema)
 func (o LookupInfraVariableSetResultOutput) TerraformVariables() GetInfraVariableSetTerraformVariableArrayOutput {
 	return o.ApplyT(func(v LookupInfraVariableSetResult) []GetInfraVariableSetTerraformVariable {
 		return v.TerraformVariables

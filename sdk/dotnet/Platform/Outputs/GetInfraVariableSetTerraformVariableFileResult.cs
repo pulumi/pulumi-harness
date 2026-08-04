@@ -14,17 +14,17 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GetInfraVariableSetTerraformVariableFileResult
     {
         /// <summary>
-        /// Repository is the name of the repository to fetch the code from.
+        /// Repository is the name of the repository the variables are fetched from.
         /// </summary>
         public readonly string Repository;
         /// <summary>
-        /// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+        /// Repository branch is the name of the branch the variables are fetched from.
         /// </summary>
-        public readonly string? RepositoryBranch;
+        public readonly string RepositoryBranch;
         /// <summary>
-        /// Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
+        /// Repository commit is the tag the variables are fetched from.
         /// </summary>
-        public readonly string? RepositoryCommit;
+        public readonly string RepositoryCommit;
         /// <summary>
         /// Repository connector is the reference to the connector used to fetch the variables.
         /// </summary>
@@ -32,25 +32,25 @@ namespace Pulumi.Harness.Platform.Outputs
         /// <summary>
         /// Repository path is the path in which the variables reside.
         /// </summary>
-        public readonly string? RepositoryPath;
+        public readonly string RepositoryPath;
         /// <summary>
-        /// Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
+        /// Repository sha is the commit SHA the variables are fetched from.
         /// </summary>
-        public readonly string? RepositorySha;
+        public readonly string RepositorySha;
 
         [OutputConstructor]
         private GetInfraVariableSetTerraformVariableFileResult(
             string repository,
 
-            string? repositoryBranch,
+            string repositoryBranch,
 
-            string? repositoryCommit,
+            string repositoryCommit,
 
             string repositoryConnector,
 
-            string? repositoryPath,
+            string repositoryPath,
 
-            string? repositorySha)
+            string repositorySha)
         {
             Repository = repository;
             RepositoryBranch = repositoryBranch;

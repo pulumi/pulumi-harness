@@ -7,26 +7,24 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInfraVariableSetTerraformVariableFile {
     /**
-     * @return Repository is the name of the repository to fetch the code from.
+     * @return Repository is the name of the repository the variables are fetched from.
      * 
      */
     private String repository;
     /**
-     * @return Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+     * @return Repository branch is the name of the branch the variables are fetched from.
      * 
      */
-    private @Nullable String repositoryBranch;
+    private String repositoryBranch;
     /**
-     * @return Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
+     * @return Repository commit is the tag the variables are fetched from.
      * 
      */
-    private @Nullable String repositoryCommit;
+    private String repositoryCommit;
     /**
      * @return Repository connector is the reference to the connector used to fetch the variables.
      * 
@@ -36,34 +34,34 @@ public final class GetInfraVariableSetTerraformVariableFile {
      * @return Repository path is the path in which the variables reside.
      * 
      */
-    private @Nullable String repositoryPath;
+    private String repositoryPath;
     /**
-     * @return Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
+     * @return Repository sha is the commit SHA the variables are fetched from.
      * 
      */
-    private @Nullable String repositorySha;
+    private String repositorySha;
 
     private GetInfraVariableSetTerraformVariableFile() {}
     /**
-     * @return Repository is the name of the repository to fetch the code from.
+     * @return Repository is the name of the repository the variables are fetched from.
      * 
      */
     public String repository() {
         return this.repository;
     }
     /**
-     * @return Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+     * @return Repository branch is the name of the branch the variables are fetched from.
      * 
      */
-    public Optional<String> repositoryBranch() {
-        return Optional.ofNullable(this.repositoryBranch);
+    public String repositoryBranch() {
+        return this.repositoryBranch;
     }
     /**
-     * @return Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
+     * @return Repository commit is the tag the variables are fetched from.
      * 
      */
-    public Optional<String> repositoryCommit() {
-        return Optional.ofNullable(this.repositoryCommit);
+    public String repositoryCommit() {
+        return this.repositoryCommit;
     }
     /**
      * @return Repository connector is the reference to the connector used to fetch the variables.
@@ -76,15 +74,15 @@ public final class GetInfraVariableSetTerraformVariableFile {
      * @return Repository path is the path in which the variables reside.
      * 
      */
-    public Optional<String> repositoryPath() {
-        return Optional.ofNullable(this.repositoryPath);
+    public String repositoryPath() {
+        return this.repositoryPath;
     }
     /**
-     * @return Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
+     * @return Repository sha is the commit SHA the variables are fetched from.
      * 
      */
-    public Optional<String> repositorySha() {
-        return Optional.ofNullable(this.repositorySha);
+    public String repositorySha() {
+        return this.repositorySha;
     }
 
     public static Builder builder() {
@@ -97,11 +95,11 @@ public final class GetInfraVariableSetTerraformVariableFile {
     @CustomType.Builder
     public static final class Builder {
         private String repository;
-        private @Nullable String repositoryBranch;
-        private @Nullable String repositoryCommit;
+        private String repositoryBranch;
+        private String repositoryCommit;
         private String repositoryConnector;
-        private @Nullable String repositoryPath;
-        private @Nullable String repositorySha;
+        private String repositoryPath;
+        private String repositorySha;
         public Builder() {}
         public Builder(GetInfraVariableSetTerraformVariableFile defaults) {
     	      Objects.requireNonNull(defaults);
@@ -122,14 +120,18 @@ public final class GetInfraVariableSetTerraformVariableFile {
             return this;
         }
         @CustomType.Setter
-        public Builder repositoryBranch(@Nullable String repositoryBranch) {
-
+        public Builder repositoryBranch(String repositoryBranch) {
+            if (repositoryBranch == null) {
+              throw new MissingRequiredPropertyException("GetInfraVariableSetTerraformVariableFile", "repositoryBranch");
+            }
             this.repositoryBranch = repositoryBranch;
             return this;
         }
         @CustomType.Setter
-        public Builder repositoryCommit(@Nullable String repositoryCommit) {
-
+        public Builder repositoryCommit(String repositoryCommit) {
+            if (repositoryCommit == null) {
+              throw new MissingRequiredPropertyException("GetInfraVariableSetTerraformVariableFile", "repositoryCommit");
+            }
             this.repositoryCommit = repositoryCommit;
             return this;
         }
@@ -142,14 +144,18 @@ public final class GetInfraVariableSetTerraformVariableFile {
             return this;
         }
         @CustomType.Setter
-        public Builder repositoryPath(@Nullable String repositoryPath) {
-
+        public Builder repositoryPath(String repositoryPath) {
+            if (repositoryPath == null) {
+              throw new MissingRequiredPropertyException("GetInfraVariableSetTerraformVariableFile", "repositoryPath");
+            }
             this.repositoryPath = repositoryPath;
             return this;
         }
         @CustomType.Setter
-        public Builder repositorySha(@Nullable String repositorySha) {
-
+        public Builder repositorySha(String repositorySha) {
+            if (repositorySha == null) {
+              throw new MissingRequiredPropertyException("GetInfraVariableSetTerraformVariableFile", "repositorySha");
+            }
             this.repositorySha = repositorySha;
             return this;
         }

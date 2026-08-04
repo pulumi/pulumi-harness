@@ -6,12 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.harness.platform.inputs.GetInfraVariableSetConnectorArgs;
-import com.pulumi.harness.platform.inputs.GetInfraVariableSetEnvironmentVariableArgs;
-import com.pulumi.harness.platform.inputs.GetInfraVariableSetTerraformVariableArgs;
-import com.pulumi.harness.platform.inputs.GetInfraVariableSetTerraformVariableFileArgs;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -22,44 +17,14 @@ public final class GetInfraVariableSetArgs extends com.pulumi.resources.InvokeAr
     public static final GetInfraVariableSetArgs Empty = new GetInfraVariableSetArgs();
 
     /**
-     * Provider connectors configured on the Variable Set. Only one connector of a type is supported
-     * 
-     */
-    @Import(name="connectors")
-    private @Nullable Output<List<GetInfraVariableSetConnectorArgs>> connectors;
-
-    /**
-     * @return Provider connectors configured on the Variable Set. Only one connector of a type is supported
-     * 
-     */
-    public Optional<Output<List<GetInfraVariableSetConnectorArgs>>> connectors() {
-        return Optional.ofNullable(this.connectors);
-    }
-
-    /**
-     * Environment variables configured on the Variable Set
-     * 
-     */
-    @Import(name="environmentVariables")
-    private @Nullable Output<List<GetInfraVariableSetEnvironmentVariableArgs>> environmentVariables;
-
-    /**
-     * @return Environment variables configured on the Variable Set
-     * 
-     */
-    public Optional<Output<List<GetInfraVariableSetEnvironmentVariableArgs>>> environmentVariables() {
-        return Optional.ofNullable(this.environmentVariables);
-    }
-
-    /**
-     * Unique identifier of the resource.
+     * Identifier of the Variable Set. Do not include a scope prefix here; use org*id and project*id to select the scope.
      * 
      */
     @Import(name="identifier", required=true)
     private Output<String> identifier;
 
     /**
-     * @return Unique identifier of the resource.
+     * @return Identifier of the Variable Set. Do not include a scope prefix here; use org*id and project*id to select the scope.
      * 
      */
     public Output<String> identifier() {
@@ -67,14 +32,14 @@ public final class GetInfraVariableSetArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Name of the resource.
+     * Name of the Variable Set. This is an output; a value set here is ignored by the lookup.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the resource.
+     * @return Name of the Variable Set. This is an output; a value set here is ignored by the lookup.
      * 
      */
     public Optional<Output<String>> name() {
@@ -82,14 +47,14 @@ public final class GetInfraVariableSetArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Unique identifier of the organization.
+     * Organization identifier of the organization the Variable Set resides in. Leave empty to look up an account level Variable Set.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Unique identifier of the organization.
+     * @return Organization identifier of the organization the Variable Set resides in. Leave empty to look up an account level Variable Set.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -97,61 +62,27 @@ public final class GetInfraVariableSetArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Unique identifier of the project.
+     * Project identifier of the project the Variable Set resides in. Leave empty to look up an account or org level Variable Set.
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return Unique identifier of the project.
+     * @return Project identifier of the project the Variable Set resides in. Leave empty to look up an account or org level Variable Set.
      * 
      */
     public Optional<Output<String>> projectId() {
         return Optional.ofNullable(this.projectId);
     }
 
-    /**
-     * Terraform variables files configured on the Variable Set (see below for nested schema)
-     * 
-     */
-    @Import(name="terraformVariableFiles")
-    private @Nullable Output<List<GetInfraVariableSetTerraformVariableFileArgs>> terraformVariableFiles;
-
-    /**
-     * @return Terraform variables files configured on the Variable Set (see below for nested schema)
-     * 
-     */
-    public Optional<Output<List<GetInfraVariableSetTerraformVariableFileArgs>>> terraformVariableFiles() {
-        return Optional.ofNullable(this.terraformVariableFiles);
-    }
-
-    /**
-     * Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
-     * 
-     */
-    @Import(name="terraformVariables")
-    private @Nullable Output<List<GetInfraVariableSetTerraformVariableArgs>> terraformVariables;
-
-    /**
-     * @return Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
-     * 
-     */
-    public Optional<Output<List<GetInfraVariableSetTerraformVariableArgs>>> terraformVariables() {
-        return Optional.ofNullable(this.terraformVariables);
-    }
-
     private GetInfraVariableSetArgs() {}
 
     private GetInfraVariableSetArgs(GetInfraVariableSetArgs $) {
-        this.connectors = $.connectors;
-        this.environmentVariables = $.environmentVariables;
         this.identifier = $.identifier;
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
-        this.terraformVariableFiles = $.terraformVariableFiles;
-        this.terraformVariables = $.terraformVariables;
     }
 
     public static Builder builder() {
@@ -173,69 +104,7 @@ public final class GetInfraVariableSetArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param connectors Provider connectors configured on the Variable Set. Only one connector of a type is supported
-         * 
-         * @return builder
-         * 
-         */
-        public Builder connectors(@Nullable Output<List<GetInfraVariableSetConnectorArgs>> connectors) {
-            $.connectors = connectors;
-            return this;
-        }
-
-        /**
-         * @param connectors Provider connectors configured on the Variable Set. Only one connector of a type is supported
-         * 
-         * @return builder
-         * 
-         */
-        public Builder connectors(List<GetInfraVariableSetConnectorArgs> connectors) {
-            return connectors(Output.of(connectors));
-        }
-
-        /**
-         * @param connectors Provider connectors configured on the Variable Set. Only one connector of a type is supported
-         * 
-         * @return builder
-         * 
-         */
-        public Builder connectors(GetInfraVariableSetConnectorArgs... connectors) {
-            return connectors(List.of(connectors));
-        }
-
-        /**
-         * @param environmentVariables Environment variables configured on the Variable Set
-         * 
-         * @return builder
-         * 
-         */
-        public Builder environmentVariables(@Nullable Output<List<GetInfraVariableSetEnvironmentVariableArgs>> environmentVariables) {
-            $.environmentVariables = environmentVariables;
-            return this;
-        }
-
-        /**
-         * @param environmentVariables Environment variables configured on the Variable Set
-         * 
-         * @return builder
-         * 
-         */
-        public Builder environmentVariables(List<GetInfraVariableSetEnvironmentVariableArgs> environmentVariables) {
-            return environmentVariables(Output.of(environmentVariables));
-        }
-
-        /**
-         * @param environmentVariables Environment variables configured on the Variable Set
-         * 
-         * @return builder
-         * 
-         */
-        public Builder environmentVariables(GetInfraVariableSetEnvironmentVariableArgs... environmentVariables) {
-            return environmentVariables(List.of(environmentVariables));
-        }
-
-        /**
-         * @param identifier Unique identifier of the resource.
+         * @param identifier Identifier of the Variable Set. Do not include a scope prefix here; use org*id and project*id to select the scope.
          * 
          * @return builder
          * 
@@ -246,7 +115,7 @@ public final class GetInfraVariableSetArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param identifier Unique identifier of the resource.
+         * @param identifier Identifier of the Variable Set. Do not include a scope prefix here; use org*id and project*id to select the scope.
          * 
          * @return builder
          * 
@@ -256,7 +125,7 @@ public final class GetInfraVariableSetArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param name Name of the resource.
+         * @param name Name of the Variable Set. This is an output; a value set here is ignored by the lookup.
          * 
          * @return builder
          * 
@@ -267,7 +136,7 @@ public final class GetInfraVariableSetArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param name Name of the resource.
+         * @param name Name of the Variable Set. This is an output; a value set here is ignored by the lookup.
          * 
          * @return builder
          * 
@@ -277,7 +146,7 @@ public final class GetInfraVariableSetArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param orgId Unique identifier of the organization.
+         * @param orgId Organization identifier of the organization the Variable Set resides in. Leave empty to look up an account level Variable Set.
          * 
          * @return builder
          * 
@@ -288,7 +157,7 @@ public final class GetInfraVariableSetArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param orgId Unique identifier of the organization.
+         * @param orgId Organization identifier of the organization the Variable Set resides in. Leave empty to look up an account level Variable Set.
          * 
          * @return builder
          * 
@@ -298,7 +167,7 @@ public final class GetInfraVariableSetArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param projectId Unique identifier of the project.
+         * @param projectId Project identifier of the project the Variable Set resides in. Leave empty to look up an account or org level Variable Set.
          * 
          * @return builder
          * 
@@ -309,75 +178,13 @@ public final class GetInfraVariableSetArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param projectId Unique identifier of the project.
+         * @param projectId Project identifier of the project the Variable Set resides in. Leave empty to look up an account or org level Variable Set.
          * 
          * @return builder
          * 
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
-        }
-
-        /**
-         * @param terraformVariableFiles Terraform variables files configured on the Variable Set (see below for nested schema)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformVariableFiles(@Nullable Output<List<GetInfraVariableSetTerraformVariableFileArgs>> terraformVariableFiles) {
-            $.terraformVariableFiles = terraformVariableFiles;
-            return this;
-        }
-
-        /**
-         * @param terraformVariableFiles Terraform variables files configured on the Variable Set (see below for nested schema)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformVariableFiles(List<GetInfraVariableSetTerraformVariableFileArgs> terraformVariableFiles) {
-            return terraformVariableFiles(Output.of(terraformVariableFiles));
-        }
-
-        /**
-         * @param terraformVariableFiles Terraform variables files configured on the Variable Set (see below for nested schema)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformVariableFiles(GetInfraVariableSetTerraformVariableFileArgs... terraformVariableFiles) {
-            return terraformVariableFiles(List.of(terraformVariableFiles));
-        }
-
-        /**
-         * @param terraformVariables Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformVariables(@Nullable Output<List<GetInfraVariableSetTerraformVariableArgs>> terraformVariables) {
-            $.terraformVariables = terraformVariables;
-            return this;
-        }
-
-        /**
-         * @param terraformVariables Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformVariables(List<GetInfraVariableSetTerraformVariableArgs> terraformVariables) {
-            return terraformVariables(Output.of(terraformVariables));
-        }
-
-        /**
-         * @param terraformVariables Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder terraformVariables(GetInfraVariableSetTerraformVariableArgs... terraformVariables) {
-            return terraformVariables(List.of(terraformVariables));
         }
 
         public GetInfraVariableSetArgs build() {
