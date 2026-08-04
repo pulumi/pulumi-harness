@@ -18,12 +18,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetInfraVariableSetResult {
     /**
-     * @return Provider connectors configured on the Variable Set. Only one connector of a type is supported
+     * @return Provider connectors configured on the Variable Set.
      * 
      */
     private List<GetInfraVariableSetConnector> connectors;
     /**
-     * @return Description of the resource.
+     * @return Description of the Variable Set.
      * 
      */
     private String description;
@@ -38,27 +38,27 @@ public final class GetInfraVariableSetResult {
      */
     private String id;
     /**
-     * @return Unique identifier of the resource.
+     * @return Identifier of the Variable Set. Do not include a scope prefix here; use org*id and project*id to select the scope.
      * 
      */
     private String identifier;
     /**
-     * @return Name of the resource.
+     * @return Name of the Variable Set. This is an output; a value set here is ignored by the lookup.
      * 
      */
-    private @Nullable String name;
+    private String name;
     /**
-     * @return Unique identifier of the organization.
+     * @return Organization identifier of the organization the Variable Set resides in. Leave empty to look up an account level Variable Set.
      * 
      */
     private @Nullable String orgId;
     /**
-     * @return Unique identifier of the project.
+     * @return Project identifier of the project the Variable Set resides in. Leave empty to look up an account or org level Variable Set.
      * 
      */
     private @Nullable String projectId;
     /**
-     * @return Tags to associate with the resource.
+     * @return Tags are not supported on Variable Sets. This attribute is always empty.
      * 
      */
     private List<String> tags;
@@ -68,21 +68,21 @@ public final class GetInfraVariableSetResult {
      */
     private List<GetInfraVariableSetTerraformVariableFile> terraformVariableFiles;
     /**
-     * @return Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+     * @return Terraform variables configured on the Variable Set. (see below for nested schema)
      * 
      */
     private List<GetInfraVariableSetTerraformVariable> terraformVariables;
 
     private GetInfraVariableSetResult() {}
     /**
-     * @return Provider connectors configured on the Variable Set. Only one connector of a type is supported
+     * @return Provider connectors configured on the Variable Set.
      * 
      */
     public List<GetInfraVariableSetConnector> connectors() {
         return this.connectors;
     }
     /**
-     * @return Description of the resource.
+     * @return Description of the Variable Set.
      * 
      */
     public String description() {
@@ -103,35 +103,35 @@ public final class GetInfraVariableSetResult {
         return this.id;
     }
     /**
-     * @return Unique identifier of the resource.
+     * @return Identifier of the Variable Set. Do not include a scope prefix here; use org*id and project*id to select the scope.
      * 
      */
     public String identifier() {
         return this.identifier;
     }
     /**
-     * @return Name of the resource.
+     * @return Name of the Variable Set. This is an output; a value set here is ignored by the lookup.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
-     * @return Unique identifier of the organization.
+     * @return Organization identifier of the organization the Variable Set resides in. Leave empty to look up an account level Variable Set.
      * 
      */
     public Optional<String> orgId() {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return Unique identifier of the project.
+     * @return Project identifier of the project the Variable Set resides in. Leave empty to look up an account or org level Variable Set.
      * 
      */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
     /**
-     * @return Tags to associate with the resource.
+     * @return Tags are not supported on Variable Sets. This attribute is always empty.
      * 
      */
     public List<String> tags() {
@@ -145,7 +145,7 @@ public final class GetInfraVariableSetResult {
         return this.terraformVariableFiles;
     }
     /**
-     * @return Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+     * @return Terraform variables configured on the Variable Set. (see below for nested schema)
      * 
      */
     public List<GetInfraVariableSetTerraformVariable> terraformVariables() {
@@ -166,7 +166,7 @@ public final class GetInfraVariableSetResult {
         private List<GetInfraVariableSetEnvironmentVariable> environmentVariables;
         private String id;
         private String identifier;
-        private @Nullable String name;
+        private String name;
         private @Nullable String orgId;
         private @Nullable String projectId;
         private List<String> tags;
@@ -235,8 +235,10 @@ public final class GetInfraVariableSetResult {
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetInfraVariableSetResult", "name");
+            }
             this.name = name;
             return this;
         }

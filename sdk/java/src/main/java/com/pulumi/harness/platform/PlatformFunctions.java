@@ -14669,6 +14669,15 @@ public final class PlatformFunctions {
     /**
      * Data source for retrieving Variable Sets.
      * 
+     * The Variable Set is looked up with `identifier` at the scope implied by `orgId` and `projectId`:
+     * omit both for an account level Variable Set, set `orgId` for an org level Variable Set, and set both for a
+     * project level Variable Set.
+     * 
+     * The exported `id` is the bare identifier, without a scope prefix. When referencing a Variable Set from a
+     * resource in a lower scope, such as `harness.platform.Workspace`, prefix the reference with `account.` for an
+     * account level Variable Set or `org.` for an org level Variable Set. An unprefixed reference is resolved against
+     * the consuming resource&#39;s own project.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -14680,6 +14689,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraVariableSetArgs;
+     * import com.pulumi.harness.platform.Workspace;
+     * import com.pulumi.harness.platform.WorkspaceArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -14693,19 +14704,52 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
-     *             .identifier("identifier")
+     *         // Look up an account level Variable Set. Omit both org_id and project_id.
+     *         final var accountLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
+     *             .identifier("account_variable_set")
      *             .build());
      * 
-     *         final var testorg = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
-     *             .identifier("identifier")
-     *             .orgId("someorg")
+     *         // Look up an org level Variable Set. Set org_id only.
+     *         final var orgLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
+     *             .identifier("org_variable_set")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
      *             .build());
      * 
-     *         final var testproj = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
-     *             .identifier("identifier")
-     *             .orgId("someorg")
-     *             .projectId("someproj")
+     *         // Look up a project level Variable Set. Set both org_id and project_id.
+     *         final var projectLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
+     *             .identifier("project_variable_set")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .build());
+     * 
+     *         // Consuming a Variable Set from a Workspace.
+     *         //
+     *         // The exported `id` is the bare identifier, with no scope prefix. Harness resolves an
+     *         // unprefixed reference against the Workspace's own org and project, so a Variable Set
+     *         // that lives above the Workspace must be referenced with a scope prefix:
+     *         //
+     *         //   account level -> "account.${...id}"
+     *         //   org level     -> "org.${...id}"
+     *         //   project level -> "${...id}" (no prefix, must be the same project as the Workspace)
+     *         //
+     *         // Referencing an account or org level Variable Set without the prefix fails with
+     *         // "404 Not Found ... variable set not found", because the lookup is scoped to the project.
+     *         var example = new Workspace("example", WorkspaceArgs.builder()
+     *             .identifier("example")
+     *             .name("example")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .provisionerType("terraform")
+     *             .provisionerVersion("1.5.7")
+     *             .repository("https://github.com/org/repo")
+     *             .repositoryBranch("main")
+     *             .repositoryPath("tf/aws/basic")
+     *             .repositoryConnector(exampleHarnessPlatformConnectorGithub.id())
+     *             .providerConnector(exampleHarnessPlatformConnectorAws.id())
+     *             .variableSets(            
+     *                 String.format("account.%s", accountLevel.id()),
+     *                 String.format("org.%s", orgLevel.id()),
+     *                 projectLevel.id())
      *             .build());
      * 
      *     }
@@ -14720,6 +14764,15 @@ public final class PlatformFunctions {
     /**
      * Data source for retrieving Variable Sets.
      * 
+     * The Variable Set is looked up with `identifier` at the scope implied by `orgId` and `projectId`:
+     * omit both for an account level Variable Set, set `orgId` for an org level Variable Set, and set both for a
+     * project level Variable Set.
+     * 
+     * The exported `id` is the bare identifier, without a scope prefix. When referencing a Variable Set from a
+     * resource in a lower scope, such as `harness.platform.Workspace`, prefix the reference with `account.` for an
+     * account level Variable Set or `org.` for an org level Variable Set. An unprefixed reference is resolved against
+     * the consuming resource&#39;s own project.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -14731,6 +14784,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraVariableSetArgs;
+     * import com.pulumi.harness.platform.Workspace;
+     * import com.pulumi.harness.platform.WorkspaceArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -14744,19 +14799,52 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
-     *             .identifier("identifier")
+     *         // Look up an account level Variable Set. Omit both org_id and project_id.
+     *         final var accountLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
+     *             .identifier("account_variable_set")
      *             .build());
      * 
-     *         final var testorg = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
-     *             .identifier("identifier")
-     *             .orgId("someorg")
+     *         // Look up an org level Variable Set. Set org_id only.
+     *         final var orgLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
+     *             .identifier("org_variable_set")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
      *             .build());
      * 
-     *         final var testproj = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
-     *             .identifier("identifier")
-     *             .orgId("someorg")
-     *             .projectId("someproj")
+     *         // Look up a project level Variable Set. Set both org_id and project_id.
+     *         final var projectLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
+     *             .identifier("project_variable_set")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .build());
+     * 
+     *         // Consuming a Variable Set from a Workspace.
+     *         //
+     *         // The exported `id` is the bare identifier, with no scope prefix. Harness resolves an
+     *         // unprefixed reference against the Workspace's own org and project, so a Variable Set
+     *         // that lives above the Workspace must be referenced with a scope prefix:
+     *         //
+     *         //   account level -> "account.${...id}"
+     *         //   org level     -> "org.${...id}"
+     *         //   project level -> "${...id}" (no prefix, must be the same project as the Workspace)
+     *         //
+     *         // Referencing an account or org level Variable Set without the prefix fails with
+     *         // "404 Not Found ... variable set not found", because the lookup is scoped to the project.
+     *         var example = new Workspace("example", WorkspaceArgs.builder()
+     *             .identifier("example")
+     *             .name("example")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .provisionerType("terraform")
+     *             .provisionerVersion("1.5.7")
+     *             .repository("https://github.com/org/repo")
+     *             .repositoryBranch("main")
+     *             .repositoryPath("tf/aws/basic")
+     *             .repositoryConnector(exampleHarnessPlatformConnectorGithub.id())
+     *             .providerConnector(exampleHarnessPlatformConnectorAws.id())
+     *             .variableSets(            
+     *                 String.format("account.%s", accountLevel.id()),
+     *                 String.format("org.%s", orgLevel.id()),
+     *                 projectLevel.id())
      *             .build());
      * 
      *     }
@@ -14771,6 +14859,15 @@ public final class PlatformFunctions {
     /**
      * Data source for retrieving Variable Sets.
      * 
+     * The Variable Set is looked up with `identifier` at the scope implied by `orgId` and `projectId`:
+     * omit both for an account level Variable Set, set `orgId` for an org level Variable Set, and set both for a
+     * project level Variable Set.
+     * 
+     * The exported `id` is the bare identifier, without a scope prefix. When referencing a Variable Set from a
+     * resource in a lower scope, such as `harness.platform.Workspace`, prefix the reference with `account.` for an
+     * account level Variable Set or `org.` for an org level Variable Set. An unprefixed reference is resolved against
+     * the consuming resource&#39;s own project.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -14782,6 +14879,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraVariableSetArgs;
+     * import com.pulumi.harness.platform.Workspace;
+     * import com.pulumi.harness.platform.WorkspaceArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -14795,19 +14894,52 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
-     *             .identifier("identifier")
+     *         // Look up an account level Variable Set. Omit both org_id and project_id.
+     *         final var accountLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
+     *             .identifier("account_variable_set")
      *             .build());
      * 
-     *         final var testorg = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
-     *             .identifier("identifier")
-     *             .orgId("someorg")
+     *         // Look up an org level Variable Set. Set org_id only.
+     *         final var orgLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
+     *             .identifier("org_variable_set")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
      *             .build());
      * 
-     *         final var testproj = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
-     *             .identifier("identifier")
-     *             .orgId("someorg")
-     *             .projectId("someproj")
+     *         // Look up a project level Variable Set. Set both org_id and project_id.
+     *         final var projectLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
+     *             .identifier("project_variable_set")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .build());
+     * 
+     *         // Consuming a Variable Set from a Workspace.
+     *         //
+     *         // The exported `id` is the bare identifier, with no scope prefix. Harness resolves an
+     *         // unprefixed reference against the Workspace's own org and project, so a Variable Set
+     *         // that lives above the Workspace must be referenced with a scope prefix:
+     *         //
+     *         //   account level -> "account.${...id}"
+     *         //   org level     -> "org.${...id}"
+     *         //   project level -> "${...id}" (no prefix, must be the same project as the Workspace)
+     *         //
+     *         // Referencing an account or org level Variable Set without the prefix fails with
+     *         // "404 Not Found ... variable set not found", because the lookup is scoped to the project.
+     *         var example = new Workspace("example", WorkspaceArgs.builder()
+     *             .identifier("example")
+     *             .name("example")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .provisionerType("terraform")
+     *             .provisionerVersion("1.5.7")
+     *             .repository("https://github.com/org/repo")
+     *             .repositoryBranch("main")
+     *             .repositoryPath("tf/aws/basic")
+     *             .repositoryConnector(exampleHarnessPlatformConnectorGithub.id())
+     *             .providerConnector(exampleHarnessPlatformConnectorAws.id())
+     *             .variableSets(            
+     *                 String.format("account.%s", accountLevel.id()),
+     *                 String.format("org.%s", orgLevel.id()),
+     *                 projectLevel.id())
      *             .build());
      * 
      *     }
@@ -14822,6 +14954,15 @@ public final class PlatformFunctions {
     /**
      * Data source for retrieving Variable Sets.
      * 
+     * The Variable Set is looked up with `identifier` at the scope implied by `orgId` and `projectId`:
+     * omit both for an account level Variable Set, set `orgId` for an org level Variable Set, and set both for a
+     * project level Variable Set.
+     * 
+     * The exported `id` is the bare identifier, without a scope prefix. When referencing a Variable Set from a
+     * resource in a lower scope, such as `harness.platform.Workspace`, prefix the reference with `account.` for an
+     * account level Variable Set or `org.` for an org level Variable Set. An unprefixed reference is resolved against
+     * the consuming resource&#39;s own project.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -14833,6 +14974,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraVariableSetArgs;
+     * import com.pulumi.harness.platform.Workspace;
+     * import com.pulumi.harness.platform.WorkspaceArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -14846,19 +14989,52 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
-     *             .identifier("identifier")
+     *         // Look up an account level Variable Set. Omit both org_id and project_id.
+     *         final var accountLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
+     *             .identifier("account_variable_set")
      *             .build());
      * 
-     *         final var testorg = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
-     *             .identifier("identifier")
-     *             .orgId("someorg")
+     *         // Look up an org level Variable Set. Set org_id only.
+     *         final var orgLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
+     *             .identifier("org_variable_set")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
      *             .build());
      * 
-     *         final var testproj = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
-     *             .identifier("identifier")
-     *             .orgId("someorg")
-     *             .projectId("someproj")
+     *         // Look up a project level Variable Set. Set both org_id and project_id.
+     *         final var projectLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
+     *             .identifier("project_variable_set")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .build());
+     * 
+     *         // Consuming a Variable Set from a Workspace.
+     *         //
+     *         // The exported `id` is the bare identifier, with no scope prefix. Harness resolves an
+     *         // unprefixed reference against the Workspace's own org and project, so a Variable Set
+     *         // that lives above the Workspace must be referenced with a scope prefix:
+     *         //
+     *         //   account level -> "account.${...id}"
+     *         //   org level     -> "org.${...id}"
+     *         //   project level -> "${...id}" (no prefix, must be the same project as the Workspace)
+     *         //
+     *         // Referencing an account or org level Variable Set without the prefix fails with
+     *         // "404 Not Found ... variable set not found", because the lookup is scoped to the project.
+     *         var example = new Workspace("example", WorkspaceArgs.builder()
+     *             .identifier("example")
+     *             .name("example")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .provisionerType("terraform")
+     *             .provisionerVersion("1.5.7")
+     *             .repository("https://github.com/org/repo")
+     *             .repositoryBranch("main")
+     *             .repositoryPath("tf/aws/basic")
+     *             .repositoryConnector(exampleHarnessPlatformConnectorGithub.id())
+     *             .providerConnector(exampleHarnessPlatformConnectorAws.id())
+     *             .variableSets(            
+     *                 String.format("account.%s", accountLevel.id()),
+     *                 String.format("org.%s", orgLevel.id()),
+     *                 projectLevel.id())
      *             .build());
      * 
      *     }
@@ -14873,6 +15049,15 @@ public final class PlatformFunctions {
     /**
      * Data source for retrieving Variable Sets.
      * 
+     * The Variable Set is looked up with `identifier` at the scope implied by `orgId` and `projectId`:
+     * omit both for an account level Variable Set, set `orgId` for an org level Variable Set, and set both for a
+     * project level Variable Set.
+     * 
+     * The exported `id` is the bare identifier, without a scope prefix. When referencing a Variable Set from a
+     * resource in a lower scope, such as `harness.platform.Workspace`, prefix the reference with `account.` for an
+     * account level Variable Set or `org.` for an org level Variable Set. An unprefixed reference is resolved against
+     * the consuming resource&#39;s own project.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -14884,6 +15069,8 @@ public final class PlatformFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.platform.PlatformFunctions;
      * import com.pulumi.harness.platform.inputs.GetInfraVariableSetArgs;
+     * import com.pulumi.harness.platform.Workspace;
+     * import com.pulumi.harness.platform.WorkspaceArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -14897,19 +15084,52 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var test = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
-     *             .identifier("identifier")
+     *         // Look up an account level Variable Set. Omit both org_id and project_id.
+     *         final var accountLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
+     *             .identifier("account_variable_set")
      *             .build());
      * 
-     *         final var testorg = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
-     *             .identifier("identifier")
-     *             .orgId("someorg")
+     *         // Look up an org level Variable Set. Set org_id only.
+     *         final var orgLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
+     *             .identifier("org_variable_set")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
      *             .build());
      * 
-     *         final var testproj = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
-     *             .identifier("identifier")
-     *             .orgId("someorg")
-     *             .projectId("someproj")
+     *         // Look up a project level Variable Set. Set both org_id and project_id.
+     *         final var projectLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
+     *             .identifier("project_variable_set")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .build());
+     * 
+     *         // Consuming a Variable Set from a Workspace.
+     *         //
+     *         // The exported `id` is the bare identifier, with no scope prefix. Harness resolves an
+     *         // unprefixed reference against the Workspace's own org and project, so a Variable Set
+     *         // that lives above the Workspace must be referenced with a scope prefix:
+     *         //
+     *         //   account level -> "account.${...id}"
+     *         //   org level     -> "org.${...id}"
+     *         //   project level -> "${...id}" (no prefix, must be the same project as the Workspace)
+     *         //
+     *         // Referencing an account or org level Variable Set without the prefix fails with
+     *         // "404 Not Found ... variable set not found", because the lookup is scoped to the project.
+     *         var example = new Workspace("example", WorkspaceArgs.builder()
+     *             .identifier("example")
+     *             .name("example")
+     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .provisionerType("terraform")
+     *             .provisionerVersion("1.5.7")
+     *             .repository("https://github.com/org/repo")
+     *             .repositoryBranch("main")
+     *             .repositoryPath("tf/aws/basic")
+     *             .repositoryConnector(exampleHarnessPlatformConnectorGithub.id())
+     *             .providerConnector(exampleHarnessPlatformConnectorAws.id())
+     *             .variableSets(            
+     *                 String.format("account.%s", accountLevel.id()),
+     *                 String.format("org.%s", orgLevel.id()),
+     *                 projectLevel.id())
      *             .build());
      * 
      *     }

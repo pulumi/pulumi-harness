@@ -11,38 +11,38 @@ import java.util.Objects;
 @CustomType
 public final class GetInfraVariableSetTerraformVariable {
     /**
-     * @return Key is the identifier for the variable. Must be unique within the Variable Set.
+     * @return Key is the identifier for the variable.
      * 
      */
     private String key;
     /**
-     * @return Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+     * @return Value is the value of the variable. For string value types this field contains the value of the variable. For secret value types this contains a reference to a Harness secret.
      * 
      */
     private String value;
     /**
-     * @return Value type indicates the value type of the variable. Currently we support string and secret.
+     * @return Value type indicates the value type of the variable, either string or secret.
      * 
      */
     private String valueType;
 
     private GetInfraVariableSetTerraformVariable() {}
     /**
-     * @return Key is the identifier for the variable. Must be unique within the Variable Set.
+     * @return Key is the identifier for the variable.
      * 
      */
     public String key() {
         return this.key;
     }
     /**
-     * @return Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+     * @return Value is the value of the variable. For string value types this field contains the value of the variable. For secret value types this contains a reference to a Harness secret.
      * 
      */
     public String value() {
         return this.value;
     }
     /**
-     * @return Value type indicates the value type of the variable. Currently we support string and secret.
+     * @return Value type indicates the value type of the variable, either string or secret.
      * 
      */
     public String valueType() {

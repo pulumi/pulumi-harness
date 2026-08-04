@@ -14,15 +14,15 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GetInfraVariableSetTerraformVariableResult
     {
         /// <summary>
-        /// Key is the identifier for the variable. Must be unique within the Variable Set.
+        /// Key is the identifier for the variable.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+        /// Value is the value of the variable. For string value types this field contains the value of the variable. For secret value types this contains a reference to a Harness secret.
         /// </summary>
         public readonly string Value;
         /// <summary>
-        /// Value type indicates the value type of the variable. Currently we support string and secret.
+        /// Value type indicates the value type of the variable, either string or secret.
         /// </summary>
         public readonly string ValueType;
 

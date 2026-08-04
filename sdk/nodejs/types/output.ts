@@ -10159,47 +10159,47 @@ export namespace platform {
 
     export interface GetInfraVariableSetEnvironmentVariable {
         /**
-         * Key is the identifier for the variable. Must be unique within the Variable Set.
+         * Key is the identifier for the variable.
          */
         key: string;
         /**
-         * Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+         * Value is the value of the variable. For string value types this field contains the value of the variable. For secret value types this contains a reference to a Harness secret.
          */
         value: string;
         /**
-         * Value type indicates the value type of the variable. Currently we support string and secret.
+         * Value type indicates the value type of the variable, either string or secret.
          */
         valueType: string;
     }
 
     export interface GetInfraVariableSetTerraformVariable {
         /**
-         * Key is the identifier for the variable. Must be unique within the Variable Set.
+         * Key is the identifier for the variable.
          */
         key: string;
         /**
-         * Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+         * Value is the value of the variable. For string value types this field contains the value of the variable. For secret value types this contains a reference to a Harness secret.
          */
         value: string;
         /**
-         * Value type indicates the value type of the variable. Currently we support string and secret.
+         * Value type indicates the value type of the variable, either string or secret.
          */
         valueType: string;
     }
 
     export interface GetInfraVariableSetTerraformVariableFile {
         /**
-         * Repository is the name of the repository to fetch the code from.
+         * Repository is the name of the repository the variables are fetched from.
          */
         repository: string;
         /**
-         * Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
+         * Repository branch is the name of the branch the variables are fetched from.
          */
-        repositoryBranch?: string;
+        repositoryBranch: string;
         /**
-         * Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
+         * Repository commit is the tag the variables are fetched from.
          */
-        repositoryCommit?: string;
+        repositoryCommit: string;
         /**
          * Repository connector is the reference to the connector used to fetch the variables.
          */
@@ -10207,11 +10207,11 @@ export namespace platform {
         /**
          * Repository path is the path in which the variables reside.
          */
-        repositoryPath?: string;
+        repositoryPath: string;
         /**
-         * Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
+         * Repository sha is the commit SHA the variables are fetched from.
          */
-        repositorySha?: string;
+        repositorySha: string;
     }
 
     export interface GetInfrastructureGitDetails {

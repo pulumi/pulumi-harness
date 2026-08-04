@@ -48747,11 +48747,11 @@ func (o GetInfraVariableSetConnectorArrayOutput) Index(i pulumi.IntInput) GetInf
 }
 
 type GetInfraVariableSetEnvironmentVariable struct {
-	// Key is the identifier for the variable. Must be unique within the Variable Set.
+	// Key is the identifier for the variable.
 	Key string `pulumi:"key"`
-	// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+	// Value is the value of the variable. For string value types this field contains the value of the variable. For secret value types this contains a reference to a Harness secret.
 	Value string `pulumi:"value"`
-	// Value type indicates the value type of the variable. Currently we support string and secret.
+	// Value type indicates the value type of the variable, either string or secret.
 	ValueType string `pulumi:"valueType"`
 }
 
@@ -48767,11 +48767,11 @@ type GetInfraVariableSetEnvironmentVariableInput interface {
 }
 
 type GetInfraVariableSetEnvironmentVariableArgs struct {
-	// Key is the identifier for the variable. Must be unique within the Variable Set.
+	// Key is the identifier for the variable.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+	// Value is the value of the variable. For string value types this field contains the value of the variable. For secret value types this contains a reference to a Harness secret.
 	Value pulumi.StringInput `pulumi:"value"`
-	// Value type indicates the value type of the variable. Currently we support string and secret.
+	// Value type indicates the value type of the variable, either string or secret.
 	ValueType pulumi.StringInput `pulumi:"valueType"`
 }
 
@@ -48826,17 +48826,17 @@ func (o GetInfraVariableSetEnvironmentVariableOutput) ToGetInfraVariableSetEnvir
 	return o
 }
 
-// Key is the identifier for the variable. Must be unique within the Variable Set.
+// Key is the identifier for the variable.
 func (o GetInfraVariableSetEnvironmentVariableOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfraVariableSetEnvironmentVariable) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+// Value is the value of the variable. For string value types this field contains the value of the variable. For secret value types this contains a reference to a Harness secret.
 func (o GetInfraVariableSetEnvironmentVariableOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfraVariableSetEnvironmentVariable) string { return v.Value }).(pulumi.StringOutput)
 }
 
-// Value type indicates the value type of the variable. Currently we support string and secret.
+// Value type indicates the value type of the variable, either string or secret.
 func (o GetInfraVariableSetEnvironmentVariableOutput) ValueType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfraVariableSetEnvironmentVariable) string { return v.ValueType }).(pulumi.StringOutput)
 }
@@ -48862,11 +48862,11 @@ func (o GetInfraVariableSetEnvironmentVariableArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetInfraVariableSetTerraformVariable struct {
-	// Key is the identifier for the variable. Must be unique within the Variable Set.
+	// Key is the identifier for the variable.
 	Key string `pulumi:"key"`
-	// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+	// Value is the value of the variable. For string value types this field contains the value of the variable. For secret value types this contains a reference to a Harness secret.
 	Value string `pulumi:"value"`
-	// Value type indicates the value type of the variable. Currently we support string and secret.
+	// Value type indicates the value type of the variable, either string or secret.
 	ValueType string `pulumi:"valueType"`
 }
 
@@ -48882,11 +48882,11 @@ type GetInfraVariableSetTerraformVariableInput interface {
 }
 
 type GetInfraVariableSetTerraformVariableArgs struct {
-	// Key is the identifier for the variable. Must be unique within the Variable Set.
+	// Key is the identifier for the variable.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+	// Value is the value of the variable. For string value types this field contains the value of the variable. For secret value types this contains a reference to a Harness secret.
 	Value pulumi.StringInput `pulumi:"value"`
-	// Value type indicates the value type of the variable. Currently we support string and secret.
+	// Value type indicates the value type of the variable, either string or secret.
 	ValueType pulumi.StringInput `pulumi:"valueType"`
 }
 
@@ -48941,17 +48941,17 @@ func (o GetInfraVariableSetTerraformVariableOutput) ToGetInfraVariableSetTerrafo
 	return o
 }
 
-// Key is the identifier for the variable. Must be unique within the Variable Set.
+// Key is the identifier for the variable.
 func (o GetInfraVariableSetTerraformVariableOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfraVariableSetTerraformVariable) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Value is the value of the variable. For string value types this field should contain the value of the variable. For secret value types this should contain a reference to a valid harness secret.
+// Value is the value of the variable. For string value types this field contains the value of the variable. For secret value types this contains a reference to a Harness secret.
 func (o GetInfraVariableSetTerraformVariableOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfraVariableSetTerraformVariable) string { return v.Value }).(pulumi.StringOutput)
 }
 
-// Value type indicates the value type of the variable. Currently we support string and secret.
+// Value type indicates the value type of the variable, either string or secret.
 func (o GetInfraVariableSetTerraformVariableOutput) ValueType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfraVariableSetTerraformVariable) string { return v.ValueType }).(pulumi.StringOutput)
 }
@@ -48977,18 +48977,18 @@ func (o GetInfraVariableSetTerraformVariableArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetInfraVariableSetTerraformVariableFile struct {
-	// Repository is the name of the repository to fetch the code from.
+	// Repository is the name of the repository the variables are fetched from.
 	Repository string `pulumi:"repository"`
-	// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
-	RepositoryBranch *string `pulumi:"repositoryBranch"`
-	// Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
-	RepositoryCommit *string `pulumi:"repositoryCommit"`
+	// Repository branch is the name of the branch the variables are fetched from.
+	RepositoryBranch string `pulumi:"repositoryBranch"`
+	// Repository commit is the tag the variables are fetched from.
+	RepositoryCommit string `pulumi:"repositoryCommit"`
 	// Repository connector is the reference to the connector used to fetch the variables.
 	RepositoryConnector string `pulumi:"repositoryConnector"`
 	// Repository path is the path in which the variables reside.
-	RepositoryPath *string `pulumi:"repositoryPath"`
-	// Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
-	RepositorySha *string `pulumi:"repositorySha"`
+	RepositoryPath string `pulumi:"repositoryPath"`
+	// Repository sha is the commit SHA the variables are fetched from.
+	RepositorySha string `pulumi:"repositorySha"`
 }
 
 // GetInfraVariableSetTerraformVariableFileInput is an input type that accepts GetInfraVariableSetTerraformVariableFileArgs and GetInfraVariableSetTerraformVariableFileOutput values.
@@ -49003,18 +49003,18 @@ type GetInfraVariableSetTerraformVariableFileInput interface {
 }
 
 type GetInfraVariableSetTerraformVariableFileArgs struct {
-	// Repository is the name of the repository to fetch the code from.
+	// Repository is the name of the repository the variables are fetched from.
 	Repository pulumi.StringInput `pulumi:"repository"`
-	// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
-	RepositoryBranch pulumi.StringPtrInput `pulumi:"repositoryBranch"`
-	// Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
-	RepositoryCommit pulumi.StringPtrInput `pulumi:"repositoryCommit"`
+	// Repository branch is the name of the branch the variables are fetched from.
+	RepositoryBranch pulumi.StringInput `pulumi:"repositoryBranch"`
+	// Repository commit is the tag the variables are fetched from.
+	RepositoryCommit pulumi.StringInput `pulumi:"repositoryCommit"`
 	// Repository connector is the reference to the connector used to fetch the variables.
 	RepositoryConnector pulumi.StringInput `pulumi:"repositoryConnector"`
 	// Repository path is the path in which the variables reside.
-	RepositoryPath pulumi.StringPtrInput `pulumi:"repositoryPath"`
-	// Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
-	RepositorySha pulumi.StringPtrInput `pulumi:"repositorySha"`
+	RepositoryPath pulumi.StringInput `pulumi:"repositoryPath"`
+	// Repository sha is the commit SHA the variables are fetched from.
+	RepositorySha pulumi.StringInput `pulumi:"repositorySha"`
 }
 
 func (GetInfraVariableSetTerraformVariableFileArgs) ElementType() reflect.Type {
@@ -49068,19 +49068,19 @@ func (o GetInfraVariableSetTerraformVariableFileOutput) ToGetInfraVariableSetTer
 	return o
 }
 
-// Repository is the name of the repository to fetch the code from.
+// Repository is the name of the repository the variables are fetched from.
 func (o GetInfraVariableSetTerraformVariableFileOutput) Repository() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInfraVariableSetTerraformVariableFile) string { return v.Repository }).(pulumi.StringOutput)
 }
 
-// Repository branch is the name of the branch to fetch the variables from. This cannot be set if repository commit or sha is set
-func (o GetInfraVariableSetTerraformVariableFileOutput) RepositoryBranch() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetInfraVariableSetTerraformVariableFile) *string { return v.RepositoryBranch }).(pulumi.StringPtrOutput)
+// Repository branch is the name of the branch the variables are fetched from.
+func (o GetInfraVariableSetTerraformVariableFileOutput) RepositoryBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraVariableSetTerraformVariableFile) string { return v.RepositoryBranch }).(pulumi.StringOutput)
 }
 
-// Repository commit is tag to fetch the variables from. This cannot be set if repository branch or sha is set.
-func (o GetInfraVariableSetTerraformVariableFileOutput) RepositoryCommit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetInfraVariableSetTerraformVariableFile) *string { return v.RepositoryCommit }).(pulumi.StringPtrOutput)
+// Repository commit is the tag the variables are fetched from.
+func (o GetInfraVariableSetTerraformVariableFileOutput) RepositoryCommit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraVariableSetTerraformVariableFile) string { return v.RepositoryCommit }).(pulumi.StringOutput)
 }
 
 // Repository connector is the reference to the connector used to fetch the variables.
@@ -49089,13 +49089,13 @@ func (o GetInfraVariableSetTerraformVariableFileOutput) RepositoryConnector() pu
 }
 
 // Repository path is the path in which the variables reside.
-func (o GetInfraVariableSetTerraformVariableFileOutput) RepositoryPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetInfraVariableSetTerraformVariableFile) *string { return v.RepositoryPath }).(pulumi.StringPtrOutput)
+func (o GetInfraVariableSetTerraformVariableFileOutput) RepositoryPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraVariableSetTerraformVariableFile) string { return v.RepositoryPath }).(pulumi.StringOutput)
 }
 
-// Repository commit is SHA to fetch the variables from. This cannot be set if repository branch or commit is set.
-func (o GetInfraVariableSetTerraformVariableFileOutput) RepositorySha() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetInfraVariableSetTerraformVariableFile) *string { return v.RepositorySha }).(pulumi.StringPtrOutput)
+// Repository sha is the commit SHA the variables are fetched from.
+func (o GetInfraVariableSetTerraformVariableFileOutput) RepositorySha() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInfraVariableSetTerraformVariableFile) string { return v.RepositorySha }).(pulumi.StringOutput)
 }
 
 type GetInfraVariableSetTerraformVariableFileArrayOutput struct{ *pulumi.OutputState }

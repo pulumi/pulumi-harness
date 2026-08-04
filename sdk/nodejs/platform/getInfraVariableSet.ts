@@ -9,37 +9,75 @@ import * as utilities from "../utilities";
 /**
  * Data source for retrieving Variable Sets.
  *
+ * The Variable Set is looked up with `identifier` at the scope implied by `orgId` and `projectId`:
+ * omit both for an account level Variable Set, set `orgId` for an org level Variable Set, and set both for a
+ * project level Variable Set.
+ *
+ * The exported `id` is the bare identifier, without a scope prefix. When referencing a Variable Set from a
+ * resource in a lower scope, such as `harness.platform.Workspace`, prefix the reference with `account.` for an
+ * account level Variable Set or `org.` for an org level Variable Set. An unprefixed reference is resolved against
+ * the consuming resource's own project.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const test = harness.platform.getInfraVariableSet({
- *     identifier: "identifier",
+ * // Look up an account level Variable Set. Omit both org_id and project_id.
+ * const accountLevel = harness.platform.getInfraVariableSet({
+ *     identifier: "account_variable_set",
  * });
- * const testorg = harness.platform.getInfraVariableSet({
- *     identifier: "identifier",
- *     orgId: "someorg",
+ * // Look up an org level Variable Set. Set org_id only.
+ * const orgLevel = harness.platform.getInfraVariableSet({
+ *     identifier: "org_variable_set",
+ *     orgId: exampleHarnessPlatformOrganization.id,
  * });
- * const testproj = harness.platform.getInfraVariableSet({
- *     identifier: "identifier",
- *     orgId: "someorg",
- *     projectId: "someproj",
+ * // Look up a project level Variable Set. Set both org_id and project_id.
+ * const projectLevel = harness.platform.getInfraVariableSet({
+ *     identifier: "project_variable_set",
+ *     orgId: exampleHarnessPlatformOrganization.id,
+ *     projectId: exampleHarnessPlatformProject.id,
+ * });
+ * // Consuming a Variable Set from a Workspace.
+ * //
+ * // The exported `id` is the bare identifier, with no scope prefix. Harness resolves an
+ * // unprefixed reference against the Workspace's own org and project, so a Variable Set
+ * // that lives above the Workspace must be referenced with a scope prefix:
+ * //
+ * //   account level -> "account.${...id}"
+ * //   org level     -> "org.${...id}"
+ * //   project level -> "${...id}" (no prefix, must be the same project as the Workspace)
+ * //
+ * // Referencing an account or org level Variable Set without the prefix fails with
+ * // "404 Not Found ... variable set not found", because the lookup is scoped to the project.
+ * const example = new harness.platform.Workspace("example", {
+ *     identifier: "example",
+ *     name: "example",
+ *     orgId: exampleHarnessPlatformOrganization.id,
+ *     projectId: exampleHarnessPlatformProject.id,
+ *     provisionerType: "terraform",
+ *     provisionerVersion: "1.5.7",
+ *     repository: "https://github.com/org/repo",
+ *     repositoryBranch: "main",
+ *     repositoryPath: "tf/aws/basic",
+ *     repositoryConnector: exampleHarnessPlatformConnectorGithub.id,
+ *     providerConnector: exampleHarnessPlatformConnectorAws.id,
+ *     variableSets: [
+ *         accountLevel.then(accountLevel => `account.${accountLevel.id}`),
+ *         orgLevel.then(orgLevel => `org.${orgLevel.id}`),
+ *         projectLevel.then(projectLevel => projectLevel.id),
+ *     ],
  * });
  * ```
  */
 export function getInfraVariableSet(args: GetInfraVariableSetArgs, opts?: pulumi.InvokeOptions): Promise<GetInfraVariableSetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getInfraVariableSet:getInfraVariableSet", {
-        "connectors": args.connectors,
-        "environmentVariables": args.environmentVariables,
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,
         "projectId": args.projectId,
-        "terraformVariableFiles": args.terraformVariableFiles,
-        "terraformVariables": args.terraformVariables,
     }, opts);
 }
 
@@ -48,37 +86,21 @@ export function getInfraVariableSet(args: GetInfraVariableSetArgs, opts?: pulumi
  */
 export interface GetInfraVariableSetArgs {
     /**
-     * Provider connectors configured on the Variable Set. Only one connector of a type is supported
-     */
-    connectors?: inputs.platform.GetInfraVariableSetConnector[];
-    /**
-     * Environment variables configured on the Variable Set
-     */
-    environmentVariables?: inputs.platform.GetInfraVariableSetEnvironmentVariable[];
-    /**
-     * Unique identifier of the resource.
+     * Identifier of the Variable Set. Do not include a scope prefix here; use org*id and project*id to select the scope.
      */
     identifier: string;
     /**
-     * Name of the resource.
+     * Name of the Variable Set. This is an output; a value set here is ignored by the lookup.
      */
     name?: string;
     /**
-     * Unique identifier of the organization.
+     * Organization identifier of the organization the Variable Set resides in. Leave empty to look up an account level Variable Set.
      */
     orgId?: string;
     /**
-     * Unique identifier of the project.
+     * Project identifier of the project the Variable Set resides in. Leave empty to look up an account or org level Variable Set.
      */
     projectId?: string;
-    /**
-     * Terraform variables files configured on the Variable Set (see below for nested schema)
-     */
-    terraformVariableFiles?: inputs.platform.GetInfraVariableSetTerraformVariableFile[];
-    /**
-     * Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
-     */
-    terraformVariables?: inputs.platform.GetInfraVariableSetTerraformVariable[];
 }
 
 /**
@@ -86,11 +108,11 @@ export interface GetInfraVariableSetArgs {
  */
 export interface GetInfraVariableSetResult {
     /**
-     * Provider connectors configured on the Variable Set. Only one connector of a type is supported
+     * Provider connectors configured on the Variable Set.
      */
     readonly connectors: outputs.platform.GetInfraVariableSetConnector[];
     /**
-     * Description of the resource.
+     * Description of the Variable Set.
      */
     readonly description: string;
     /**
@@ -102,23 +124,23 @@ export interface GetInfraVariableSetResult {
      */
     readonly id: string;
     /**
-     * Unique identifier of the resource.
+     * Identifier of the Variable Set. Do not include a scope prefix here; use org*id and project*id to select the scope.
      */
     readonly identifier: string;
     /**
-     * Name of the resource.
+     * Name of the Variable Set. This is an output; a value set here is ignored by the lookup.
      */
-    readonly name?: string;
+    readonly name: string;
     /**
-     * Unique identifier of the organization.
+     * Organization identifier of the organization the Variable Set resides in. Leave empty to look up an account level Variable Set.
      */
     readonly orgId?: string;
     /**
-     * Unique identifier of the project.
+     * Project identifier of the project the Variable Set resides in. Leave empty to look up an account or org level Variable Set.
      */
     readonly projectId?: string;
     /**
-     * Tags to associate with the resource.
+     * Tags are not supported on Variable Sets. This attribute is always empty.
      */
     readonly tags: string[];
     /**
@@ -126,12 +148,21 @@ export interface GetInfraVariableSetResult {
      */
     readonly terraformVariableFiles: outputs.platform.GetInfraVariableSetTerraformVariableFile[];
     /**
-     * Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+     * Terraform variables configured on the Variable Set. (see below for nested schema)
      */
     readonly terraformVariables: outputs.platform.GetInfraVariableSetTerraformVariable[];
 }
 /**
  * Data source for retrieving Variable Sets.
+ *
+ * The Variable Set is looked up with `identifier` at the scope implied by `orgId` and `projectId`:
+ * omit both for an account level Variable Set, set `orgId` for an org level Variable Set, and set both for a
+ * project level Variable Set.
+ *
+ * The exported `id` is the bare identifier, without a scope prefix. When referencing a Variable Set from a
+ * resource in a lower scope, such as `harness.platform.Workspace`, prefix the reference with `account.` for an
+ * account level Variable Set or `org.` for an org level Variable Set. An unprefixed reference is resolved against
+ * the consuming resource's own project.
  *
  * ## Example Usage
  *
@@ -139,31 +170,60 @@ export interface GetInfraVariableSetResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const test = harness.platform.getInfraVariableSet({
- *     identifier: "identifier",
+ * // Look up an account level Variable Set. Omit both org_id and project_id.
+ * const accountLevel = harness.platform.getInfraVariableSet({
+ *     identifier: "account_variable_set",
  * });
- * const testorg = harness.platform.getInfraVariableSet({
- *     identifier: "identifier",
- *     orgId: "someorg",
+ * // Look up an org level Variable Set. Set org_id only.
+ * const orgLevel = harness.platform.getInfraVariableSet({
+ *     identifier: "org_variable_set",
+ *     orgId: exampleHarnessPlatformOrganization.id,
  * });
- * const testproj = harness.platform.getInfraVariableSet({
- *     identifier: "identifier",
- *     orgId: "someorg",
- *     projectId: "someproj",
+ * // Look up a project level Variable Set. Set both org_id and project_id.
+ * const projectLevel = harness.platform.getInfraVariableSet({
+ *     identifier: "project_variable_set",
+ *     orgId: exampleHarnessPlatformOrganization.id,
+ *     projectId: exampleHarnessPlatformProject.id,
+ * });
+ * // Consuming a Variable Set from a Workspace.
+ * //
+ * // The exported `id` is the bare identifier, with no scope prefix. Harness resolves an
+ * // unprefixed reference against the Workspace's own org and project, so a Variable Set
+ * // that lives above the Workspace must be referenced with a scope prefix:
+ * //
+ * //   account level -> "account.${...id}"
+ * //   org level     -> "org.${...id}"
+ * //   project level -> "${...id}" (no prefix, must be the same project as the Workspace)
+ * //
+ * // Referencing an account or org level Variable Set without the prefix fails with
+ * // "404 Not Found ... variable set not found", because the lookup is scoped to the project.
+ * const example = new harness.platform.Workspace("example", {
+ *     identifier: "example",
+ *     name: "example",
+ *     orgId: exampleHarnessPlatformOrganization.id,
+ *     projectId: exampleHarnessPlatformProject.id,
+ *     provisionerType: "terraform",
+ *     provisionerVersion: "1.5.7",
+ *     repository: "https://github.com/org/repo",
+ *     repositoryBranch: "main",
+ *     repositoryPath: "tf/aws/basic",
+ *     repositoryConnector: exampleHarnessPlatformConnectorGithub.id,
+ *     providerConnector: exampleHarnessPlatformConnectorAws.id,
+ *     variableSets: [
+ *         accountLevel.then(accountLevel => `account.${accountLevel.id}`),
+ *         orgLevel.then(orgLevel => `org.${orgLevel.id}`),
+ *         projectLevel.then(projectLevel => projectLevel.id),
+ *     ],
  * });
  * ```
  */
 export function getInfraVariableSetOutput(args: GetInfraVariableSetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInfraVariableSetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getInfraVariableSet:getInfraVariableSet", {
-        "connectors": args.connectors,
-        "environmentVariables": args.environmentVariables,
         "identifier": args.identifier,
         "name": args.name,
         "orgId": args.orgId,
         "projectId": args.projectId,
-        "terraformVariableFiles": args.terraformVariableFiles,
-        "terraformVariables": args.terraformVariables,
     }, opts);
 }
 
@@ -172,35 +232,19 @@ export function getInfraVariableSetOutput(args: GetInfraVariableSetOutputArgs, o
  */
 export interface GetInfraVariableSetOutputArgs {
     /**
-     * Provider connectors configured on the Variable Set. Only one connector of a type is supported
-     */
-    connectors?: pulumi.Input<pulumi.Input<inputs.platform.GetInfraVariableSetConnectorArgs>[] | undefined>;
-    /**
-     * Environment variables configured on the Variable Set
-     */
-    environmentVariables?: pulumi.Input<pulumi.Input<inputs.platform.GetInfraVariableSetEnvironmentVariableArgs>[] | undefined>;
-    /**
-     * Unique identifier of the resource.
+     * Identifier of the Variable Set. Do not include a scope prefix here; use org*id and project*id to select the scope.
      */
     identifier: pulumi.Input<string>;
     /**
-     * Name of the resource.
+     * Name of the Variable Set. This is an output; a value set here is ignored by the lookup.
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Unique identifier of the organization.
+     * Organization identifier of the organization the Variable Set resides in. Leave empty to look up an account level Variable Set.
      */
     orgId?: pulumi.Input<string | undefined>;
     /**
-     * Unique identifier of the project.
+     * Project identifier of the project the Variable Set resides in. Leave empty to look up an account or org level Variable Set.
      */
     projectId?: pulumi.Input<string | undefined>;
-    /**
-     * Terraform variables files configured on the Variable Set (see below for nested schema)
-     */
-    terraformVariableFiles?: pulumi.Input<pulumi.Input<inputs.platform.GetInfraVariableSetTerraformVariableFileArgs>[] | undefined>;
-    /**
-     * Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
-     */
-    terraformVariables?: pulumi.Input<pulumi.Input<inputs.platform.GetInfraVariableSetTerraformVariableArgs>[] | undefined>;
 }
