@@ -56,7 +56,7 @@ import (
 //				KeyRing:      pulumi.String("key_ring"),
 //				KeyName:      pulumi.String("key_name"),
 //				Manual: &platform.ConnectorGcpKmsManualArgs{
-//					Credentials: test.ID().ApplyT(func(id string) (string, error) {
+//					Credentials: test.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //						return fmt.Sprintf("account.%v", id), nil
 //					}).(pulumi.StringOutput),
 //					DelegateSelectors: pulumi.StringArray{

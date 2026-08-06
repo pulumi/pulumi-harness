@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			_, err = service.NewEcs(ctx, "example", &service.EcsArgs{
-//				AppId:       example.ID(),
+//				AppId:       example.ID().ToIDOutput().ToStringOutput(),
 //				Name:        pulumi.String("ecs-example-service"),
 //				Description: pulumi.String("Service for deploying AWS ECS tasks."),
 //			})

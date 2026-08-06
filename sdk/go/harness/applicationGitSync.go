@@ -48,7 +48,7 @@ import (
 //				Branch:             pulumi.String("main"),
 //				GenerateWebhookUrl: pulumi.Bool(true),
 //				Username:           pulumi.String("someuser"),
-//				PasswordSecretId:   githubToken.ID(),
+//				PasswordSecretId:   githubToken.ID().ToIDOutput().ToStringOutput(),
 //				UrlType:            pulumi.String("REPO"),
 //			})
 //			if err != nil {
@@ -61,8 +61,8 @@ import (
 //				return err
 //			}
 //			_, err = harness.NewApplicationGitSync(ctx, "example", &harness.ApplicationGitSyncArgs{
-//				AppId:       example.ID(),
-//				ConnectorId: myrepo.ID(),
+//				AppId:       example.ID().ToIDOutput().ToStringOutput(),
+//				ConnectorId: myrepo.ID().ToIDOutput().ToStringOutput(),
 //				Branch:      pulumi.String("main"),
 //				Enabled:     pulumi.Bool(false),
 //			})

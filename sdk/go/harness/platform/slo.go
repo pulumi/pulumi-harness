@@ -32,7 +32,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
 //				"type": "Monthly",
-//				"spec": map[string]interface{}{
+//				"spec": map[string]int{
 //					"dayOfMonth": 5,
 //				},
 //			})

@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = harness.NewAddUserToGroup(ctx, "example_add_user_to_groups", &harness.AddUserToGroupArgs{
-//				GroupId: admin.ID(),
+//				GroupId: admin.ID().ToIDOutput().ToStringOutput(),
 //				UserId:  pulumi.Any(test.Id),
 //			})
 //			if err != nil {

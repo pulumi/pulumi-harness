@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			_, err = service.NewWinrm(ctx, "example", &service.WinrmArgs{
-//				AppId:        example.ID(),
+//				AppId:        example.ID().ToIDOutput().ToStringOutput(),
 //				ArtifactType: pulumi.String("IIS_APP"),
 //				Name:         pulumi.String("iis-app-winrm-svc"),
 //				Description:  pulumi.String("Service for deploying IIS appliactions using winrm."),

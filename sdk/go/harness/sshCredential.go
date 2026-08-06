@@ -55,7 +55,7 @@ import (
 //					Port:     pulumi.Int(22),
 //					Username: pulumi.String("git"),
 //					InlineSsh: &harness.SshCredentialSshAuthenticationInlineSshArgs{
-//						SshKeyFileId: mySecret.ID(),
+//						SshKeyFileId: mySecret.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			}, pulumi.IgnoreChanges([]string{

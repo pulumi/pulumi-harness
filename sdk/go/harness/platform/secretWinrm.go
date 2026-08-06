@@ -57,7 +57,7 @@ import (
 //				Ntlm: &platform.SecretWinrmNtlmArgs{
 //					Domain:   pulumi.String("example.com"),
 //					Username: pulumi.String("admin"),
-//					PasswordRef: accountNtlmPassword.ID().ApplyT(func(id string) (string, error) {
+//					PasswordRef: accountNtlmPassword.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //						return fmt.Sprintf("account.%v", id), nil
 //					}).(pulumi.StringOutput),
 //					UseSsl:        pulumi.Bool(true),
@@ -122,7 +122,7 @@ import (
 //					SkipCertCheck:       pulumi.Bool(false),
 //					UseNoProfile:        pulumi.Bool(true),
 //					TgtPasswordSpec: &platform.SecretWinrmKerberosTgtPasswordSpecArgs{
-//						PasswordRef: accountKerberosPassword1.ID().ApplyT(func(id string) (string, error) {
+//						PasswordRef: accountKerberosPassword1.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //							return fmt.Sprintf("account.%v", id), nil
 //						}).(pulumi.StringOutput),
 //					},
@@ -157,7 +157,7 @@ import (
 //				Ntlm: &platform.SecretWinrmNtlmArgs{
 //					Domain:   pulumi.String("org.example.com"),
 //					Username: pulumi.String("orgadmin"),
-//					PasswordRef: orgNtlmPassword.ID().ApplyT(func(id string) (string, error) {
+//					PasswordRef: orgNtlmPassword.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //						return fmt.Sprintf("org.%v", id), nil
 //					}).(pulumi.StringOutput),
 //					UseSsl:        pulumi.Bool(false),
@@ -225,7 +225,7 @@ import (
 //					SkipCertCheck:       pulumi.Bool(false),
 //					UseNoProfile:        pulumi.Bool(true),
 //					TgtPasswordSpec: &platform.SecretWinrmKerberosTgtPasswordSpecArgs{
-//						PasswordRef: orgKerberosPassword.ID().ApplyT(func(id string) (string, error) {
+//						PasswordRef: orgKerberosPassword.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //							return fmt.Sprintf("org.%v", id), nil
 //						}).(pulumi.StringOutput),
 //					},
@@ -262,7 +262,7 @@ import (
 //				Ntlm: &platform.SecretWinrmNtlmArgs{
 //					Domain:        pulumi.String("project.example.com"),
 //					Username:      pulumi.String("projectadmin"),
-//					PasswordRef:   projectNtlmPassword.ID(),
+//					PasswordRef:   projectNtlmPassword.ID().ToIDOutput().ToStringOutput(),
 //					UseSsl:        pulumi.Bool(true),
 //					SkipCertCheck: pulumi.Bool(false),
 //					UseNoProfile:  pulumi.Bool(false),
@@ -331,7 +331,7 @@ import (
 //					SkipCertCheck:       pulumi.Bool(true),
 //					UseNoProfile:        pulumi.Bool(true),
 //					TgtPasswordSpec: &platform.SecretWinrmKerberosTgtPasswordSpecArgs{
-//						PasswordRef: projectKerberosPassword.ID(),
+//						PasswordRef: projectKerberosPassword.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
