@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			_, err = service.NewKubernetes(ctx, "example", &service.KubernetesArgs{
-//				AppId:       example.ID(),
+//				AppId:       example.ID().ToIDOutput().ToStringOutput(),
 //				Name:        pulumi.String("k8s-svc"),
 //				HelmVersion: pulumi.String("V3"),
 //				Description: pulumi.String("Service for deploying Kubernetes manifests"),

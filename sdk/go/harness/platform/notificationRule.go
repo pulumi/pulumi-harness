@@ -40,21 +40,21 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//			tmpJSON1, err := json.Marshal(map[string]int{
 //				"threshold": 1,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json1 := string(tmpJSON1)
-//			tmpJSON2, err := json.Marshal(map[string]interface{}{
+//			tmpJSON2, err := json.Marshal(map[string]int{
 //				"threshold": 30,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json2 := string(tmpJSON2)
-//			tmpJSON3, err := json.Marshal(map[string]interface{}{
+//			tmpJSON3, err := json.Marshal(map[string]int{
 //				"threshold": 300,
 //			})
 //			if err != nil {
@@ -122,7 +122,7 @@ import (
 //				return err
 //			}
 //			json6 := string(tmpJSON6)
-//			tmpJSON7, err := json.Marshal(map[string]interface{}{
+//			tmpJSON7, err := json.Marshal(map[string][]string{
 //				"changeCategories": []string{
 //					"Deployment",
 //					"Alert",

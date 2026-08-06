@@ -39,7 +39,7 @@ import (
 //						"query":      "query",
 //						"index":      "index",
 //						"groupName":  "Logs_Group",
-//						"queryParams": map[string]interface{}{
+//						"queryParams": map[string]string{
 //							"index":                "index",
 //							"serviceInstanceField": "serviceInstanceIdentifier",
 //							"timeStampIdentifier":  "timeStampIdentifier",
@@ -53,7 +53,7 @@ import (
 //						"query":      "query2",
 //						"index":      "index2",
 //						"groupName":  "Logs_Group",
-//						"queryParams": map[string]interface{}{
+//						"queryParams": map[string]string{
 //							"index":                "index",
 //							"serviceInstanceField": "serviceInstanceIdentifier",
 //							"timeStampIdentifier":  "timeStampIdentifier",
@@ -67,7 +67,7 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//			tmpJSON1, err := json.Marshal(map[string]string{
 //				"connectorRef":       "account.pd",
 //				"pagerDutyServiceId": "P0N21OB",
 //			})
@@ -75,7 +75,7 @@ import (
 //				return err
 //			}
 //			json1 := string(tmpJSON1)
-//			tmpJSON2, err := json.Marshal(map[string]interface{}{
+//			tmpJSON2, err := json.Marshal(map[string]string{
 //				"name":               "FH",
 //				"webhookUrl":         "https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH",
 //				"webhookCurlCommand": "curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH' -d '{ \"eventIdentifier\": \"<string>\" (optional), \"user\": \"user@harness.io\", \"startTime\": timeInMs, \"endTime\": timeInMs, \"eventDetail\": { \"description\": \"<String>\", \"changeEventDetailsLink\": \"urlString\" (optional), \"externalLinkToEntity\": \"urlString\" (optional), \"name\": \"changeEventName\" } }'",
@@ -85,21 +85,21 @@ import (
 //				return err
 //			}
 //			json2 := string(tmpJSON2)
-//			tmpJSON3, err := json.Marshal(map[string]interface{}{
+//			tmpJSON3, err := json.Marshal(map[string]string{
 //				"type": "FeatureFlag",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json3 := string(tmpJSON3)
-//			tmpJSON4, err := json.Marshal(map[string]interface{}{
+//			tmpJSON4, err := json.Marshal(map[string]string{
 //				"type": "Deployment",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json4 := string(tmpJSON4)
-//			tmpJSON5, err := json.Marshal(map[string]interface{}{
+//			tmpJSON5, err := json.Marshal(map[string]string{
 //				"type":               "Alert",
 //				"authorizationToken": "abc",
 //			})
@@ -196,7 +196,7 @@ import (
 //						"identifier": "metric_cpu",
 //						"query":      "metric=cpu",
 //						"groupName":  "g1",
-//						"queryParams": map[string]interface{}{
+//						"queryParams": map[string]string{
 //							"serviceInstanceField": "_sourcehost",
 //						},
 //						"riskProfile": map[string]interface{}{
@@ -211,12 +211,12 @@ import (
 //						"metricThresholds": []map[string]interface{}{
 //							map[string]interface{}{
 //								"type": "IgnoreThreshold",
-//								"spec": map[string]interface{}{
+//								"spec": map[string]string{
 //									"action": "Ignore",
 //								},
 //								"criteria": map[string]interface{}{
 //									"type": "Absolute",
-//									"spec": map[string]interface{}{
+//									"spec": map[string]int{
 //										"greaterThan": 100,
 //									},
 //								},
@@ -227,13 +227,13 @@ import (
 //								"type": "FailImmediately",
 //								"spec": map[string]interface{}{
 //									"action": "FailAfterOccurrence",
-//									"spec": map[string]interface{}{
+//									"spec": map[string]int{
 //										"count": 2,
 //									},
 //								},
 //								"criteria": map[string]interface{}{
 //									"type": "Absolute",
-//									"spec": map[string]interface{}{
+//									"spec": map[string]int{
 //										"greaterThan": 100,
 //									},
 //								},
@@ -247,7 +247,7 @@ import (
 //						"identifier": "identifier2",
 //						"groupName":  "g2",
 //						"query":      "metric=memory",
-//						"queryParams": map[string]interface{}{
+//						"queryParams": map[string]string{
 //							"serviceInstanceField": "_sourcehost",
 //						},
 //						"riskProfile": map[string]interface{}{
@@ -303,7 +303,7 @@ import (
 //						"identifier": "log1",
 //						"query":      "*",
 //						"groupName":  "Logs Group",
-//						"queryParams": map[string]interface{}{
+//						"queryParams": map[string]string{
 //							"serviceInstanceField": "_sourcehost",
 //						},
 //					},
@@ -312,7 +312,7 @@ import (
 //						"identifier": "identifier2",
 //						"groupName":  "g2",
 //						"query":      "error",
-//						"queryParams": map[string]interface{}{
+//						"queryParams": map[string]string{
 //							"serviceInstanceField": "_sourcehost",
 //						},
 //					},
@@ -387,12 +387,12 @@ import (
 //						"metricThresholds": []interface{}{
 //							map[string]interface{}{
 //								"type": "IgnoreThreshold",
-//								"spec": map[string]interface{}{
+//								"spec": map[string]string{
 //									"action": "Ignore",
 //								},
 //								"criteria": map[string]interface{}{
 //									"type": "Absolute",
-//									"spec": map[string]interface{}{
+//									"spec": map[string]int{
 //										"greaterThan": 100,
 //									},
 //								},
@@ -403,13 +403,13 @@ import (
 //								"type": "FailImmediately",
 //								"spec": map[string]interface{}{
 //									"action": "FailAfterOccurrence",
-//									"spec": map[string]interface{}{
+//									"spec": map[string]int{
 //										"count": 2,
 //									},
 //								},
 //								"criteria": map[string]interface{}{
 //									"type": "Absolute",
-//									"spec": map[string]interface{}{
+//									"spec": map[string]int{
 //										"greaterThan": 100,
 //									},
 //								},
@@ -461,7 +461,7 @@ import (
 //						"identifier": "Demo",
 //						"query":      "{job=~\".+\"}",
 //						"groupName":  "Log_Group",
-//						"queryParams": map[string]interface{}{
+//						"queryParams": map[string]string{
 //							"serviceInstanceField": "job",
 //						},
 //					},
@@ -470,7 +470,7 @@ import (
 //						"identifier": "identifier2",
 //						"groupName":  "g2",
 //						"query":      "error",
-//						"queryParams": map[string]interface{}{
+//						"queryParams": map[string]string{
 //							"serviceInstanceField": "_sourcehost",
 //						},
 //						"liveMonitoringEnabled":         "false",
@@ -520,7 +520,7 @@ import (
 //						"identifier": "metric",
 //						"query":      "default",
 //						"groupName":  "g1",
-//						"queryParams": map[string]interface{}{
+//						"queryParams": map[string]string{
 //							"serviceInstanceField":        "host",
 //							"index":                       "/subscriptions/12d2db62-5aa9-471d-84bb-faa489b3e319/resourceGroups/srm-test/providers/Microsoft.ContainerService/managedClusters/srm-test",
 //							"healthSourceMetricName":      "cpuUsagePercentage",
@@ -539,12 +539,12 @@ import (
 //						"metricThresholds": []interface{}{
 //							map[string]interface{}{
 //								"type": "IgnoreThreshold",
-//								"spec": map[string]interface{}{
+//								"spec": map[string]string{
 //									"action": "Ignore",
 //								},
 //								"criteria": map[string]interface{}{
 //									"type": "Absolute",
-//									"spec": map[string]interface{}{
+//									"spec": map[string]int{
 //										"greaterThan": 100,
 //									},
 //								},
@@ -555,13 +555,13 @@ import (
 //								"type": "FailImmediately",
 //								"spec": map[string]interface{}{
 //									"action": "FailAfterOccurrence",
-//									"spec": map[string]interface{}{
+//									"spec": map[string]int{
 //										"count": 2,
 //									},
 //								},
 //								"criteria": map[string]interface{}{
 //									"type": "Absolute",
-//									"spec": map[string]interface{}{
+//									"spec": map[string]int{
 //										"greaterThan": 100,
 //									},
 //								},
@@ -574,7 +574,7 @@ import (
 //						"name":       "name2",
 //						"identifier": "identifier2",
 //						"groupName":  "g2",
-//						"queryParams": map[string]interface{}{
+//						"queryParams": map[string]string{
 //							"serviceInstanceField":        "host",
 //							"index":                       "/subscriptions/12d2db62-5aa9-471d-84bb-faa489b3e319/resourceGroups/srm-test/providers/Microsoft.ContainerService/managedClusters/srm-test",
 //							"healthSourceMetricName":      "cpuUsagePercentage",
@@ -634,7 +634,7 @@ import (
 //						"identifier": "identifier2",
 //						"groupName":  "g2",
 //						"query":      "*",
-//						"queryParams": map[string]interface{}{
+//						"queryParams": map[string]string{
 //							"serviceInstanceField": "Name",
 //							"timeStampIdentifier":  "StartedTime",
 //							"messageIdentifier":    "Image",
@@ -691,7 +691,7 @@ import (
 //							},
 //						},
 //						"analysis": map[string]interface{}{
-//							"liveMonitoring": map[string]interface{}{
+//							"liveMonitoring": map[string]bool{
 //								"enabled": true,
 //							},
 //							"deploymentVerification": map[string]interface{}{
@@ -710,12 +710,12 @@ import (
 //						"metricThresholds": []interface{}{
 //							map[string]interface{}{
 //								"type": "IgnoreThreshold",
-//								"spec": map[string]interface{}{
+//								"spec": map[string]string{
 //									"action": "Ignore",
 //								},
 //								"criteria": map[string]interface{}{
 //									"type": "Absolute",
-//									"spec": map[string]interface{}{
+//									"spec": map[string]int{
 //										"greaterThan": 100,
 //									},
 //								},
@@ -726,13 +726,13 @@ import (
 //								"type": "FailImmediately",
 //								"spec": map[string]interface{}{
 //									"action": "FailAfterOccurrence",
-//									"spec": map[string]interface{}{
+//									"spec": map[string]int{
 //										"count": 2,
 //									},
 //								},
 //								"criteria": map[string]interface{}{
 //									"type": "Absolute",
-//									"spec": map[string]interface{}{
+//									"spec": map[string]int{
 //										"greaterThan": 100,
 //									},
 //								},
@@ -793,7 +793,7 @@ import (
 //							},
 //						},
 //						"analysis": map[string]interface{}{
-//							"liveMonitoring": map[string]interface{}{
+//							"liveMonitoring": map[string]bool{
 //								"enabled": true,
 //							},
 //							"deploymentVerification": map[string]interface{}{
@@ -820,7 +820,7 @@ import (
 //							},
 //						},
 //						"analysis": map[string]interface{}{
-//							"liveMonitoring": map[string]interface{}{
+//							"liveMonitoring": map[string]bool{
 //								"enabled": true,
 //							},
 //							"deploymentVerification": map[string]interface{}{
@@ -836,12 +836,12 @@ import (
 //						"metricThresholds": []interface{}{
 //							map[string]interface{}{
 //								"type": "IgnoreThreshold",
-//								"spec": map[string]interface{}{
+//								"spec": map[string]string{
 //									"action": "Ignore",
 //								},
 //								"criteria": map[string]interface{}{
 //									"type": "Absolute",
-//									"spec": map[string]interface{}{
+//									"spec": map[string]int{
 //										"greaterThan": 100,
 //									},
 //								},
@@ -852,13 +852,13 @@ import (
 //								"type": "FailImmediately",
 //								"spec": map[string]interface{}{
 //									"action": "FailAfterOccurrence",
-//									"spec": map[string]interface{}{
+//									"spec": map[string]int{
 //										"count": 2,
 //									},
 //								},
 //								"criteria": map[string]interface{}{
 //									"type": "Absolute",
-//									"spec": map[string]interface{}{
+//									"spec": map[string]int{
 //										"greaterThan": 100,
 //									},
 //								},
@@ -906,11 +906,11 @@ import (
 //				"feature":         "apm",
 //				"applicationId":   "107019083",
 //				"applicationName": "My Application",
-//				"metricData": map[string]interface{}{
+//				"metricData": map[string]bool{
 //					"Performance": true,
 //				},
-//				"metricPacks": []map[string]interface{}{
-//					map[string]interface{}{
+//				"metricPacks": []map[string]string{
+//					{
 //						"identifier": "Performance",
 //					},
 //				},
@@ -924,14 +924,14 @@ import (
 //								"ACT_WHEN_HIGHER",
 //							},
 //						},
-//						"analysis": map[string]interface{}{
-//							"deploymentVerification": map[string]interface{}{
+//						"analysis": map[string]map[string]bool{
+//							"deploymentVerification": map[string]bool{
 //								"enabled": true,
 //							},
 //						},
 //						"groupName": "group1",
 //						"nrql":      "SELECT count(apm.service.instance.count) FROM Metric WHERE appName LIKE 'My Application' TIMESERIES",
-//						"responseMapping": map[string]interface{}{
+//						"responseMapping": map[string]string{
 //							"metricValueJsonPath": "$.['timeSeries'].[*].['results'].[*].['count']",
 //							"timestampJsonPath":   "$.['timeSeries'].[*].['beginTimeSeconds']",
 //						},
@@ -943,12 +943,12 @@ import (
 //						"metricThresholds": []map[string]interface{}{
 //							map[string]interface{}{
 //								"type": "IgnoreThreshold",
-//								"spec": map[string]interface{}{
+//								"spec": map[string]string{
 //									"action": "Ignore",
 //								},
 //								"criteria": map[string]interface{}{
 //									"type": "Absolute",
-//									"spec": map[string]interface{}{
+//									"spec": map[string]int{
 //										"greaterThan": 100,
 //									},
 //								},
@@ -959,13 +959,13 @@ import (
 //								"type": "FailImmediately",
 //								"spec": map[string]interface{}{
 //									"action": "FailAfterOccurrence",
-//									"spec": map[string]interface{}{
+//									"spec": map[string]int{
 //										"count": 2,
 //									},
 //								},
 //								"criteria": map[string]interface{}{
 //									"type": "Absolute",
-//									"spec": map[string]interface{}{
+//									"spec": map[string]int{
 //										"greaterThan": 100,
 //									},
 //								},

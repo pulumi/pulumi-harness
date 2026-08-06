@@ -38,7 +38,7 @@ import (
 //			}
 //			// Create a version
 //			awsV5, err := platform.NewInfraProviderVersion(ctx, "aws_v5", &platform.InfraProviderVersionArgs{
-//				ProviderId: aws.ID(),
+//				ProviderId: aws.ID().ToIDOutput().ToStringOutput(),
 //				Version:    pulumi.String("5.0.0"),
 //				GpgKeyId:   pulumi.String("your-gpg-key-id"),
 //				Protocols: pulumi.StringArray{
@@ -51,7 +51,7 @@ import (
 //			}
 //			// Upload files for different platforms
 //			_, err = platform.NewInfraProviderVersionFile(ctx, "aws_linux_amd64", &platform.InfraProviderVersionFileArgs{
-//				ProviderId: aws.ID(),
+//				ProviderId: aws.ID().ToIDOutput().ToStringOutput(),
 //				Version:    awsV5.Version,
 //				FilePath:   pulumi.String("./terraform-provider-aws_5.0.0_linux_amd64.zip"),
 //			})
@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewInfraProviderVersionFile(ctx, "aws_darwin_amd64", &platform.InfraProviderVersionFileArgs{
-//				ProviderId: aws.ID(),
+//				ProviderId: aws.ID().ToIDOutput().ToStringOutput(),
 //				Version:    awsV5.Version,
 //				FilePath:   pulumi.String("./terraform-provider-aws_5.0.0_darwin_amd64.zip"),
 //			})
@@ -67,7 +67,7 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewInfraProviderVersionFile(ctx, "aws_windows_amd64", &platform.InfraProviderVersionFileArgs{
-//				ProviderId: aws.ID(),
+//				ProviderId: aws.ID().ToIDOutput().ToStringOutput(),
 //				Version:    awsV5.Version,
 //				FilePath:   pulumi.String("./terraform-provider-aws_5.0.0_windows_amd64.zip"),
 //			})
@@ -76,7 +76,7 @@ import (
 //			}
 //			// Upload SHA256SUMS and signature files
 //			_, err = platform.NewInfraProviderVersionFile(ctx, "aws_shasums", &platform.InfraProviderVersionFileArgs{
-//				ProviderId: aws.ID(),
+//				ProviderId: aws.ID().ToIDOutput().ToStringOutput(),
 //				Version:    awsV5.Version,
 //				FilePath:   pulumi.String("./terraform-provider-aws_5.0.0_SHA256SUMS"),
 //			})
@@ -84,7 +84,7 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewInfraProviderVersionFile(ctx, "aws_shasums_sig", &platform.InfraProviderVersionFileArgs{
-//				ProviderId: aws.ID(),
+//				ProviderId: aws.ID().ToIDOutput().ToStringOutput(),
 //				Version:    awsV5.Version,
 //				FilePath:   pulumi.String("./terraform-provider-aws_5.0.0_SHA256SUMS.sig"),
 //			})
@@ -93,7 +93,7 @@ import (
 //			}
 //			// Optional: Override the uploaded filename if different from local filename
 //			_, err = platform.NewInfraProviderVersionFile(ctx, "custom_name", &platform.InfraProviderVersionFileArgs{
-//				ProviderId: aws.ID(),
+//				ProviderId: aws.ID().ToIDOutput().ToStringOutput(),
 //				Version:    awsV5.Version,
 //				FilePath:   pulumi.String("./local-file.zip"),
 //				Filename:   pulumi.String("terraform-provider-aws_5.0.0_custom.zip"),

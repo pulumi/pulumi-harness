@@ -51,7 +51,7 @@ import (
 //			}
 //			devEnvironment, err := harness.NewEnvironment(ctx, "dev", &harness.EnvironmentArgs{
 //				Name:  pulumi.String("dev"),
-//				AppId: example.ID(),
+//				AppId: example.ID().ToIDOutput().ToStringOutput(),
 //				Type:  pulumi.String("NON_PROD"),
 //			})
 //			if err != nil {
@@ -60,8 +60,8 @@ import (
 //			// Creating a infrastructure of type KUBERNETES
 //			_, err = harness.NewInfrastructureDefinition(ctx, "k8s", &harness.InfrastructureDefinitionArgs{
 //				Name:              pulumi.String("k8s-eks-us-east-1"),
-//				AppId:             example.ID(),
-//				EnvId:             devEnvironment.ID(),
+//				AppId:             example.ID().ToIDOutput().ToStringOutput(),
+//				EnvId:             devEnvironment.ID().ToIDOutput().ToStringOutput(),
 //				CloudProviderType: pulumi.String("KUBERNETES_CLUSTER"),
 //				DeploymentType:    pulumi.String("KUBERNETES"),
 //				Kubernetes: &harness.InfrastructureDefinitionKubernetesArgs{
@@ -101,8 +101,8 @@ import (
 //			// Creating a infrastructure of type CUSTOM
 //			_, err = harness.NewInfrastructureDefinition(ctx, "custom", &harness.InfrastructureDefinitionArgs{
 //				Name:              pulumi.String("custom-infra"),
-//				AppId:             example.ID(),
-//				EnvId:             devEnvironment.ID(),
+//				AppId:             example.ID().ToIDOutput().ToStringOutput(),
+//				EnvId:             devEnvironment.ID().ToIDOutput().ToStringOutput(),
 //				CloudProviderType: pulumi.String("CUSTOM"),
 //				DeploymentType:    pulumi.String("CUSTOM"),
 //				DeploymentTemplateUri: exampleYaml.Name.ApplyT(func(name string) (string, error) {

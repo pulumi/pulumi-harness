@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			_, err = service.NewAmi(ctx, "example", &service.AmiArgs{
-//				AppId:       example.ID(),
+//				AppId:       example.ID().ToIDOutput().ToStringOutput(),
 //				Name:        pulumi.String("ami-example"),
 //				Description: pulumi.String("Service for deploying AMI's"),
 //			})

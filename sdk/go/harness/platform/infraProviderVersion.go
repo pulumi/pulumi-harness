@@ -38,7 +38,7 @@ import (
 //			}
 //			// Then create a version for that provider
 //			_, err = platform.NewInfraProviderVersion(ctx, "aws_v5", &platform.InfraProviderVersionArgs{
-//				ProviderId: aws.ID(),
+//				ProviderId: aws.ID().ToIDOutput().ToStringOutput(),
 //				Version:    pulumi.String("5.0.0"),
 //				GpgKeyId:   pulumi.String("your-gpg-key-id"),
 //				Protocols: pulumi.StringArray{
@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewInfraProviderVersion(ctx, "aws_v4", &platform.InfraProviderVersionArgs{
-//				ProviderId: aws.ID(),
+//				ProviderId: aws.ID().ToIDOutput().ToStringOutput(),
 //				Version:    pulumi.String("4.67.0"),
 //				GpgKeyId:   pulumi.String("your-gpg-key-id"),
 //				Protocols: pulumi.StringArray{

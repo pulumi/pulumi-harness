@@ -39,8 +39,8 @@ import (
 //					pulumi.String("harness-delegate"),
 //				},
 //				RancherUrl: "https://rancher.cluster.example",
-//				BearerToken: []map[string]interface{}{
-//					map[string]interface{}{
+//				BearerToken: []map[string]string{
+//					{
 //						"bearerTokenRef": "account.test_rancher_bearer_token",
 //					},
 //				},
