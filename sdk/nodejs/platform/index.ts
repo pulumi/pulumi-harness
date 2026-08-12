@@ -105,6 +105,11 @@ export type ConnectorRancher = import("./connectorRancher").ConnectorRancher;
 export const ConnectorRancher: typeof import("./connectorRancher").ConnectorRancher = null as any;
 utilities.lazyLoad(exports, ["ConnectorRancher"], () => require("./connectorRancher"));
 
+export { DashboardFolderArgs, DashboardFolderState } from "./dashboardFolder";
+export type DashboardFolder = import("./dashboardFolder").DashboardFolder;
+export const DashboardFolder: typeof import("./dashboardFolder").DashboardFolder = null as any;
+utilities.lazyLoad(exports, ["DashboardFolder"], () => require("./dashboardFolder"));
+
 export { DashboardFoldersArgs, DashboardFoldersState } from "./dashboardFolders";
 export type DashboardFolders = import("./dashboardFolders").DashboardFolders;
 export const DashboardFolders: typeof import("./dashboardFolders").DashboardFolders = null as any;
@@ -344,6 +349,11 @@ export { GetCurrentUserResult } from "./getCurrentUser";
 export const getCurrentUser: typeof import("./getCurrentUser").getCurrentUser = null as any;
 export const getCurrentUserOutput: typeof import("./getCurrentUser").getCurrentUserOutput = null as any;
 utilities.lazyLoad(exports, ["getCurrentUser","getCurrentUserOutput"], () => require("./getCurrentUser"));
+
+export { GetDashboardFolderArgs, GetDashboardFolderResult, GetDashboardFolderOutputArgs } from "./getDashboardFolder";
+export const getDashboardFolder: typeof import("./getDashboardFolder").getDashboardFolder = null as any;
+export const getDashboardFolderOutput: typeof import("./getDashboardFolder").getDashboardFolderOutput = null as any;
+utilities.lazyLoad(exports, ["getDashboardFolder","getDashboardFolderOutput"], () => require("./getDashboardFolder"));
 
 export { GetDashboardFoldersArgs, GetDashboardFoldersResult, GetDashboardFoldersOutputArgs } from "./getDashboardFolders";
 export const getDashboardFolders: typeof import("./getDashboardFolders").getDashboardFolders = null as any;
@@ -1400,6 +1410,8 @@ const _module = {
                 return new ConnectorPdc(name, <any>undefined, { urn })
             case "harness:platform/connectorRancher:ConnectorRancher":
                 return new ConnectorRancher(name, <any>undefined, { urn })
+            case "harness:platform/dashboardFolder:DashboardFolder":
+                return new DashboardFolder(name, <any>undefined, { urn })
             case "harness:platform/dashboardFolders:DashboardFolders":
                 return new DashboardFolders(name, <any>undefined, { urn })
             case "harness:platform/dashboards:Dashboards":
@@ -1647,6 +1659,7 @@ pulumi.runtime.registerResourceModule("harness", "platform/connectorGcpKms", _mo
 pulumi.runtime.registerResourceModule("harness", "platform/connectorJdbc", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorPdc", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorRancher", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/dashboardFolder", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/dashboardFolders", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/dashboards", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/datadogConnector", _module)

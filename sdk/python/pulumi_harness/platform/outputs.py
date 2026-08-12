@@ -1746,6 +1746,7 @@ __all__ = [
     'GetConnectorJdbcCredentialUsernamePasswordResult',
     'GetConnectorPdcHostResult',
     'GetConnectorRancherBearerTokenResult',
+    'GetDashboardFoldersFolderResult',
     'GetDbSchemaChangelogScriptResult',
     'GetDbSchemaSchemaSourceResult',
     'GetDefaultNotificationTemplateSetEventTemplateConfigurationSetResult',
@@ -114858,6 +114859,46 @@ class GetConnectorRancherBearerTokenResult(dict):
         The URL of the Rancher cluster.
         """
         return pulumi.get(self, "rancher_url")
+
+
+@pulumi.output_type
+class GetDashboardFoldersFolderResult(dict):
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 id: _builtins.str,
+                 name: _builtins.str):
+        """
+        :param _builtins.str created_at: Created DateTime of the folder.
+        :param _builtins.str id: Identifier of the folder.
+        :param _builtins.str name: Name of the folder.
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Created DateTime of the folder.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the folder.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the folder.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

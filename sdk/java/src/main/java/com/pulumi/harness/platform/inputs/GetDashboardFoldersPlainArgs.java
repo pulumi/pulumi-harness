@@ -4,7 +4,6 @@
 package com.pulumi.harness.platform.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,44 +15,14 @@ public final class GetDashboardFoldersPlainArgs extends com.pulumi.resources.Inv
     public static final GetDashboardFoldersPlainArgs Empty = new GetDashboardFoldersPlainArgs();
 
     /**
-     * Identifier of the folder.
-     * 
-     */
-    @Import(name="id", required=true)
-    private String id;
-
-    /**
-     * @return Identifier of the folder.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-
-    /**
-     * Unique identifier of the resource.
-     * 
-     */
-    @Import(name="identifier")
-    private @Nullable String identifier;
-
-    /**
-     * @return Unique identifier of the resource.
-     * 
-     */
-    public Optional<String> identifier() {
-        return Optional.ofNullable(this.identifier);
-    }
-
-    /**
-     * Name of the resource.
+     * Name of a specific folder to filter the list by (optional).
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return Name of the resource.
+     * @return Name of a specific folder to filter the list by (optional).
      * 
      */
     public Optional<String> name() {
@@ -63,8 +32,6 @@ public final class GetDashboardFoldersPlainArgs extends com.pulumi.resources.Inv
     private GetDashboardFoldersPlainArgs() {}
 
     private GetDashboardFoldersPlainArgs(GetDashboardFoldersPlainArgs $) {
-        this.id = $.id;
-        this.identifier = $.identifier;
         this.name = $.name;
     }
 
@@ -87,29 +54,7 @@ public final class GetDashboardFoldersPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param id Identifier of the folder.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder id(String id) {
-            $.id = id;
-            return this;
-        }
-
-        /**
-         * @param identifier Unique identifier of the resource.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder identifier(@Nullable String identifier) {
-            $.identifier = identifier;
-            return this;
-        }
-
-        /**
-         * @param name Name of the resource.
+         * @param name Name of a specific folder to filter the list by (optional).
          * 
          * @return builder
          * 
@@ -120,9 +65,6 @@ public final class GetDashboardFoldersPlainArgs extends com.pulumi.resources.Inv
         }
 
         public GetDashboardFoldersPlainArgs build() {
-            if ($.id == null) {
-                throw new MissingRequiredPropertyException("GetDashboardFoldersPlainArgs", "id");
-            }
             return $;
         }
     }

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Data source for retrieving a Harness Dashboard Folder.
+// Data source for retrieving a list of Harness Custom Dashboard Folders.
 //
 // ## Example Usage
 //
@@ -27,8 +27,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := platform.LookupDashboardFolders(ctx, &platform.LookupDashboardFoldersArgs{
-//				Id: "id",
+//			_, err := platform.LookupDashboardFolders(ctx, &platform.LookupDashboardFoldersArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// Or filter by name
+//			_, err = platform.LookupDashboardFolders(ctx, &platform.LookupDashboardFoldersArgs{
+//				Name: pulumi.StringRef("my-folder"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -50,28 +55,17 @@ func LookupDashboardFolders(ctx *pulumi.Context, args *LookupDashboardFoldersArg
 
 // A collection of arguments for invoking getDashboardFolders.
 type LookupDashboardFoldersArgs struct {
-	// Identifier of the folder.
-	Id string `pulumi:"id"`
-	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
-	// Name of the resource.
+	// Name of a specific folder to filter the list by (optional).
 	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getDashboardFolders.
 type LookupDashboardFoldersResult struct {
-	// Created DateTime of the folder.
-	CreatedAt string `pulumi:"createdAt"`
-	// Description of the resource.
-	Description string `pulumi:"description"`
-	// Identifier of the folder.
+	Folders []GetDashboardFoldersFolder `pulumi:"folders"`
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Unique identifier of the resource.
-	Identifier *string `pulumi:"identifier"`
-	// Name of the resource.
+	// Name of a specific folder to filter the list by (optional).
 	Name *string `pulumi:"name"`
-	// Tags to associate with the resource.
-	Tags []string `pulumi:"tags"`
 }
 
 func LookupDashboardFoldersOutput(ctx *pulumi.Context, args LookupDashboardFoldersOutputArgs, opts ...pulumi.InvokeOption) LookupDashboardFoldersResultOutput {
@@ -85,11 +79,7 @@ func LookupDashboardFoldersOutput(ctx *pulumi.Context, args LookupDashboardFolde
 
 // A collection of arguments for invoking getDashboardFolders.
 type LookupDashboardFoldersOutputArgs struct {
-	// Identifier of the folder.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Unique identifier of the resource.
-	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
-	// Name of the resource.
+	// Name of a specific folder to filter the list by (optional).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -112,34 +102,18 @@ func (o LookupDashboardFoldersResultOutput) ToLookupDashboardFoldersResultOutput
 	return o
 }
 
-// Created DateTime of the folder.
-func (o LookupDashboardFoldersResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDashboardFoldersResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+func (o LookupDashboardFoldersResultOutput) Folders() GetDashboardFoldersFolderArrayOutput {
+	return o.ApplyT(func(v LookupDashboardFoldersResult) []GetDashboardFoldersFolder { return v.Folders }).(GetDashboardFoldersFolderArrayOutput)
 }
 
-// Description of the resource.
-func (o LookupDashboardFoldersResultOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDashboardFoldersResult) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// Identifier of the folder.
+// The provider-assigned unique ID for this managed resource.
 func (o LookupDashboardFoldersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDashboardFoldersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the resource.
-func (o LookupDashboardFoldersResultOutput) Identifier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupDashboardFoldersResult) *string { return v.Identifier }).(pulumi.StringPtrOutput)
-}
-
-// Name of the resource.
+// Name of a specific folder to filter the list by (optional).
 func (o LookupDashboardFoldersResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDashboardFoldersResult) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Tags to associate with the resource.
-func (o LookupDashboardFoldersResultOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupDashboardFoldersResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 func init() {

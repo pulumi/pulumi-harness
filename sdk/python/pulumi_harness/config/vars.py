@@ -42,6 +42,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('endpoint') or _utilities.get_env('HARNESS_ENDPOINT')
 
     @_builtins.property
+    def fme_admin_api_endpoint(self) -> Optional[str]:
+        """
+        The URL of the Harness FME admin API endpoint. When unset, it is derived from the Harness API endpoint. This can also be set using the `FME_ADMIN_API_ENDPOINT` environment variable.
+        """
+        return __config__.get('fmeAdminApiEndpoint')
+
+    @_builtins.property
     def platform_api_key(self) -> Optional[str]:
         """
         The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.

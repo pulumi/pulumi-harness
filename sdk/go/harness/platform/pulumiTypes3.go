@@ -35645,6 +35645,121 @@ func (o GetConnectorRancherBearerTokenPtrOutput) RancherUrl() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetDashboardFoldersFolder struct {
+	// Created DateTime of the folder.
+	CreatedAt string `pulumi:"createdAt"`
+	// Identifier of the folder.
+	Id string `pulumi:"id"`
+	// Name of the folder.
+	Name string `pulumi:"name"`
+}
+
+// GetDashboardFoldersFolderInput is an input type that accepts GetDashboardFoldersFolderArgs and GetDashboardFoldersFolderOutput values.
+// You can construct a concrete instance of `GetDashboardFoldersFolderInput` via:
+//
+//	GetDashboardFoldersFolderArgs{...}
+type GetDashboardFoldersFolderInput interface {
+	pulumi.Input
+
+	ToGetDashboardFoldersFolderOutput() GetDashboardFoldersFolderOutput
+	ToGetDashboardFoldersFolderOutputWithContext(context.Context) GetDashboardFoldersFolderOutput
+}
+
+type GetDashboardFoldersFolderArgs struct {
+	// Created DateTime of the folder.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Identifier of the folder.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Name of the folder.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetDashboardFoldersFolderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDashboardFoldersFolder)(nil)).Elem()
+}
+
+func (i GetDashboardFoldersFolderArgs) ToGetDashboardFoldersFolderOutput() GetDashboardFoldersFolderOutput {
+	return i.ToGetDashboardFoldersFolderOutputWithContext(context.Background())
+}
+
+func (i GetDashboardFoldersFolderArgs) ToGetDashboardFoldersFolderOutputWithContext(ctx context.Context) GetDashboardFoldersFolderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDashboardFoldersFolderOutput)
+}
+
+// GetDashboardFoldersFolderArrayInput is an input type that accepts GetDashboardFoldersFolderArray and GetDashboardFoldersFolderArrayOutput values.
+// You can construct a concrete instance of `GetDashboardFoldersFolderArrayInput` via:
+//
+//	GetDashboardFoldersFolderArray{ GetDashboardFoldersFolderArgs{...} }
+type GetDashboardFoldersFolderArrayInput interface {
+	pulumi.Input
+
+	ToGetDashboardFoldersFolderArrayOutput() GetDashboardFoldersFolderArrayOutput
+	ToGetDashboardFoldersFolderArrayOutputWithContext(context.Context) GetDashboardFoldersFolderArrayOutput
+}
+
+type GetDashboardFoldersFolderArray []GetDashboardFoldersFolderInput
+
+func (GetDashboardFoldersFolderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDashboardFoldersFolder)(nil)).Elem()
+}
+
+func (i GetDashboardFoldersFolderArray) ToGetDashboardFoldersFolderArrayOutput() GetDashboardFoldersFolderArrayOutput {
+	return i.ToGetDashboardFoldersFolderArrayOutputWithContext(context.Background())
+}
+
+func (i GetDashboardFoldersFolderArray) ToGetDashboardFoldersFolderArrayOutputWithContext(ctx context.Context) GetDashboardFoldersFolderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDashboardFoldersFolderArrayOutput)
+}
+
+type GetDashboardFoldersFolderOutput struct{ *pulumi.OutputState }
+
+func (GetDashboardFoldersFolderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDashboardFoldersFolder)(nil)).Elem()
+}
+
+func (o GetDashboardFoldersFolderOutput) ToGetDashboardFoldersFolderOutput() GetDashboardFoldersFolderOutput {
+	return o
+}
+
+func (o GetDashboardFoldersFolderOutput) ToGetDashboardFoldersFolderOutputWithContext(ctx context.Context) GetDashboardFoldersFolderOutput {
+	return o
+}
+
+// Created DateTime of the folder.
+func (o GetDashboardFoldersFolderOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDashboardFoldersFolder) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Identifier of the folder.
+func (o GetDashboardFoldersFolderOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDashboardFoldersFolder) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Name of the folder.
+func (o GetDashboardFoldersFolderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDashboardFoldersFolder) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetDashboardFoldersFolderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDashboardFoldersFolderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDashboardFoldersFolder)(nil)).Elem()
+}
+
+func (o GetDashboardFoldersFolderArrayOutput) ToGetDashboardFoldersFolderArrayOutput() GetDashboardFoldersFolderArrayOutput {
+	return o
+}
+
+func (o GetDashboardFoldersFolderArrayOutput) ToGetDashboardFoldersFolderArrayOutputWithContext(ctx context.Context) GetDashboardFoldersFolderArrayOutput {
+	return o
+}
+
+func (o GetDashboardFoldersFolderArrayOutput) Index(i pulumi.IntInput) GetDashboardFoldersFolderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDashboardFoldersFolder {
+		return vs[0].([]GetDashboardFoldersFolder)[vs[1].(int)]
+	}).(GetDashboardFoldersFolderOutput)
+}
+
 type GetDbSchemaChangelogScript struct {
 	// Script to clone changeSets
 	Command string `pulumi:"command"`
@@ -60569,6 +60684,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorPdcHostArrayInput)(nil)).Elem(), GetConnectorPdcHostArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorRancherBearerTokenInput)(nil)).Elem(), GetConnectorRancherBearerTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorRancherBearerTokenPtrInput)(nil)).Elem(), GetConnectorRancherBearerTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDashboardFoldersFolderInput)(nil)).Elem(), GetDashboardFoldersFolderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDashboardFoldersFolderArrayInput)(nil)).Elem(), GetDashboardFoldersFolderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbSchemaChangelogScriptInput)(nil)).Elem(), GetDbSchemaChangelogScriptArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbSchemaSchemaSourceInput)(nil)).Elem(), GetDbSchemaSchemaSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbSchemaSchemaSourceArrayInput)(nil)).Elem(), GetDbSchemaSchemaSourceArray{})
@@ -61408,6 +61525,8 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectorPdcHostArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorRancherBearerTokenOutput{})
 	pulumi.RegisterOutputType(GetConnectorRancherBearerTokenPtrOutput{})
+	pulumi.RegisterOutputType(GetDashboardFoldersFolderOutput{})
+	pulumi.RegisterOutputType(GetDashboardFoldersFolderArrayOutput{})
 	pulumi.RegisterOutputType(GetDbSchemaChangelogScriptOutput{})
 	pulumi.RegisterOutputType(GetDbSchemaSchemaSourceOutput{})
 	pulumi.RegisterOutputType(GetDbSchemaSchemaSourceArrayOutput{})

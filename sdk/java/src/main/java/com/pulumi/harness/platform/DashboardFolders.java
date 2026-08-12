@@ -25,8 +25,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.harness.platform.DashboardFolders;
- * import com.pulumi.harness.platform.DashboardFoldersArgs;
+ * import com.pulumi.harness.platform.DashboardFolder;
+ * import com.pulumi.harness.platform.DashboardFolderArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -40,7 +40,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new DashboardFolders("folder", DashboardFoldersArgs.builder()
+ *         var folder = new DashboardFolder("folder", DashboardFolderArgs.builder()
  *             .name("name")
  *             .build());
  * 

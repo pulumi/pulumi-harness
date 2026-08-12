@@ -2487,6 +2487,9 @@
                     }
                 }
             },
+            "harness_platform_dashboard_folder": {
+                "current": "harness:platform/dashboardFolder:DashboardFolder"
+            },
             "harness_platform_dashboard_folders": {
                 "current": "harness:platform/dashboardFolders:DashboardFolders"
             },
@@ -16040,6 +16043,9 @@
                     }
                 }
             },
+            "harness_time_sleep": {
+                "current": "harness:index/timeSleep:TimeSleep"
+            },
             "harness_user": {
                 "current": "harness:index/user:User",
                 "fields": {
@@ -18415,10 +18421,18 @@
             "harness_platform_current_user": {
                 "current": "harness:platform/getCurrentUser:getCurrentUser"
             },
+            "harness_platform_dashboard_folder": {
+                "current": "harness:platform/getDashboardFolder:getDashboardFolder",
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_dashboard_folders": {
                 "current": "harness:platform/getDashboardFolders:getDashboardFolders",
                 "fields": {
-                    "tags": {
+                    "folders": {
                         "maxItemsOne": false
                     }
                 }

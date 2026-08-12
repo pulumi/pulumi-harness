@@ -99,7 +99,7 @@ class DashboardFolders(pulumi.CustomResource):
         import pulumi
         import pulumi_harness as harness
 
-        folder = harness.platform.DashboardFolders("folder", name="name")
+        folder = harness.platform.DashboardFolder("folder", name="name")
         ```
 
 
@@ -122,7 +122,7 @@ class DashboardFolders(pulumi.CustomResource):
         import pulumi
         import pulumi_harness as harness
 
-        folder = harness.platform.DashboardFolders("folder", name="name")
+        folder = harness.platform.DashboardFolder("folder", name="name")
         ```
 
 

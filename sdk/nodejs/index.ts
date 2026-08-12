@@ -143,6 +143,11 @@ export type SshCredential = import("./sshCredential").SshCredential;
 export const SshCredential: typeof import("./sshCredential").SshCredential = null as any;
 utilities.lazyLoad(exports, ["SshCredential"], () => require("./sshCredential"));
 
+export { TimeSleepArgs, TimeSleepState } from "./timeSleep";
+export type TimeSleep = import("./timeSleep").TimeSleep;
+export const TimeSleep: typeof import("./timeSleep").TimeSleep = null as any;
+utilities.lazyLoad(exports, ["TimeSleep"], () => require("./timeSleep"));
+
 export { UserArgs, UserState } from "./user";
 export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
@@ -229,6 +234,8 @@ const _module = {
                 return new PlatformCcmFilters(name, <any>undefined, { urn })
             case "harness:index/sshCredential:SshCredential":
                 return new SshCredential(name, <any>undefined, { urn })
+            case "harness:index/timeSleep:TimeSleep":
+                return new TimeSleep(name, <any>undefined, { urn })
             case "harness:index/user:User":
                 return new User(name, <any>undefined, { urn })
             case "harness:index/userGroup:UserGroup":
@@ -254,6 +261,7 @@ pulumi.runtime.registerResourceModule("harness", "index/infrastructureDefinition
 pulumi.runtime.registerResourceModule("harness", "index/platformApiKey", _module)
 pulumi.runtime.registerResourceModule("harness", "index/platformCcmFilters", _module)
 pulumi.runtime.registerResourceModule("harness", "index/sshCredential", _module)
+pulumi.runtime.registerResourceModule("harness", "index/timeSleep", _module)
 pulumi.runtime.registerResourceModule("harness", "index/user", _module)
 pulumi.runtime.registerResourceModule("harness", "index/userGroup", _module)
 pulumi.runtime.registerResourceModule("harness", "index/userGroupPermissions", _module)

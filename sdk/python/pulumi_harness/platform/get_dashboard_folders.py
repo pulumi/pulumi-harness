@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'GetDashboardFoldersResult',
@@ -26,73 +27,37 @@ class GetDashboardFoldersResult:
     """
     A collection of values returned by getDashboardFolders.
     """
-    def __init__(__self__, created_at=None, description=None, id=None, identifier=None, name=None, tags=None):
-        if created_at and not isinstance(created_at, str):
-            raise TypeError("Expected argument 'created_at' to be a str")
-        pulumi.set(__self__, "created_at", created_at)
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        pulumi.set(__self__, "description", description)
+    def __init__(__self__, folders=None, id=None, name=None):
+        if folders and not isinstance(folders, list):
+            raise TypeError("Expected argument 'folders' to be a list")
+        pulumi.set(__self__, "folders", folders)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if identifier and not isinstance(identifier, str):
-            raise TypeError("Expected argument 'identifier' to be a str")
-        pulumi.set(__self__, "identifier", identifier)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if tags and not isinstance(tags, list):
-            raise TypeError("Expected argument 'tags' to be a list")
-        pulumi.set(__self__, "tags", tags)
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> _builtins.str:
-        """
-        Created DateTime of the folder.
-        """
-        return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> _builtins.str:
-        """
-        Description of the resource.
-        """
-        return pulumi.get(self, "description")
+    def folders(self) -> Sequence['outputs.GetDashboardFoldersFolderResult']:
+        return pulumi.get(self, "folders")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Identifier of the folder.
+        The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
-    def identifier(self) -> Optional[_builtins.str]:
-        """
-        Unique identifier of the resource.
-        """
-        return pulumi.get(self, "identifier")
-
-    @_builtins.property
-    @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        Name of the resource.
+        Name of a specific folder to filter the list by (optional).
         """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def tags(self) -> Sequence[_builtins.str]:
-        """
-        Tags to associate with the resource.
-        """
-        return pulumi.get(self, "tags")
 
 
 class AwaitableGetDashboardFoldersResult(GetDashboardFoldersResult):
@@ -101,20 +66,15 @@ class AwaitableGetDashboardFoldersResult(GetDashboardFoldersResult):
         if False:
             yield self
         return GetDashboardFoldersResult(
-            created_at=self.created_at,
-            description=self.description,
+            folders=self.folders,
             id=self.id,
-            identifier=self.identifier,
-            name=self.name,
-            tags=self.tags)
+            name=self.name)
 
 
-def get_dashboard_folders(id: Optional[_builtins.str] = None,
-                          identifier: Optional[_builtins.str] = None,
-                          name: Optional[_builtins.str] = None,
+def get_dashboard_folders(name: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDashboardFoldersResult:
     """
-    Data source for retrieving a Harness Dashboard Folder.
+    Data source for retrieving a list of Harness Custom Dashboard Folders.
 
     ## Example Usage
 
@@ -122,34 +82,27 @@ def get_dashboard_folders(id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_harness as harness
 
-    folder = harness.platform.get_dashboard_folders(id="id")
+    all = harness.platform.get_dashboard_folders()
+    # Or filter by name
+    filtered = harness.platform.get_dashboard_folders(name="my-folder")
     ```
 
 
-    :param _builtins.str id: Identifier of the folder.
-    :param _builtins.str identifier: Unique identifier of the resource.
-    :param _builtins.str name: Name of the resource.
+    :param _builtins.str name: Name of a specific folder to filter the list by (optional).
     """
     __args__ = dict()
-    __args__['id'] = id
-    __args__['identifier'] = identifier
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:platform/getDashboardFolders:getDashboardFolders', __args__, opts=opts, typ=GetDashboardFoldersResult).value
 
     return AwaitableGetDashboardFoldersResult(
-        created_at=pulumi.get(__ret__, 'created_at'),
-        description=pulumi.get(__ret__, 'description'),
+        folders=pulumi.get(__ret__, 'folders'),
         id=pulumi.get(__ret__, 'id'),
-        identifier=pulumi.get(__ret__, 'identifier'),
-        name=pulumi.get(__ret__, 'name'),
-        tags=pulumi.get(__ret__, 'tags'))
-def get_dashboard_folders_output(id: pulumi.Input[Optional[_builtins.str]] = None,
-                                 identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                 name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+        name=pulumi.get(__ret__, 'name'))
+def get_dashboard_folders_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDashboardFoldersResult]:
     """
-    Data source for retrieving a Harness Dashboard Folder.
+    Data source for retrieving a list of Harness Custom Dashboard Folders.
 
     ## Example Usage
 
@@ -157,24 +110,19 @@ def get_dashboard_folders_output(id: pulumi.Input[Optional[_builtins.str]] = Non
     import pulumi
     import pulumi_harness as harness
 
-    folder = harness.platform.get_dashboard_folders(id="id")
+    all = harness.platform.get_dashboard_folders()
+    # Or filter by name
+    filtered = harness.platform.get_dashboard_folders(name="my-folder")
     ```
 
 
-    :param _builtins.str id: Identifier of the folder.
-    :param _builtins.str identifier: Unique identifier of the resource.
-    :param _builtins.str name: Name of the resource.
+    :param _builtins.str name: Name of a specific folder to filter the list by (optional).
     """
     __args__ = dict()
-    __args__['id'] = id
-    __args__['identifier'] = identifier
     __args__['name'] = name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:platform/getDashboardFolders:getDashboardFolders', __args__, opts=opts, typ=GetDashboardFoldersResult)
     return __ret__.apply(lambda __response__: GetDashboardFoldersResult(
-        created_at=pulumi.get(__response__, 'created_at'),
-        description=pulumi.get(__response__, 'description'),
+        folders=pulumi.get(__response__, 'folders'),
         id=pulumi.get(__response__, 'id'),
-        identifier=pulumi.get(__response__, 'identifier'),
-        name=pulumi.get(__response__, 'name'),
-        tags=pulumi.get(__response__, 'tags')))
+        name=pulumi.get(__response__, 'name')))

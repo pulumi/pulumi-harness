@@ -62,6 +62,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The URL of the Harness FME admin API endpoint. When unset, it is derived from the Harness API endpoint. This can also be set using the `FME_ADMIN_API_ENDPOINT` environment variable.
+     * 
+     */
+    @Import(name="fmeAdminApiEndpoint")
+    private @Nullable Output<String> fmeAdminApiEndpoint;
+
+    /**
+     * @return The URL of the Harness FME admin API endpoint. When unset, it is derived from the Harness API endpoint. This can also be set using the `FME_ADMIN_API_ENDPOINT` environment variable.
+     * 
+     */
+    public Optional<Output<String>> fmeAdminApiEndpoint() {
+        return Optional.ofNullable(this.fmeAdminApiEndpoint);
+    }
+
+    /**
      * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
      * 
      */
@@ -82,6 +97,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.apiKey = $.apiKey;
         this.endpoint = $.endpoint;
+        this.fmeAdminApiEndpoint = $.fmeAdminApiEndpoint;
         this.platformApiKey = $.platformApiKey;
     }
 
@@ -164,6 +180,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder endpoint(String endpoint) {
             return endpoint(Output.of(endpoint));
+        }
+
+        /**
+         * @param fmeAdminApiEndpoint The URL of the Harness FME admin API endpoint. When unset, it is derived from the Harness API endpoint. This can also be set using the `FME_ADMIN_API_ENDPOINT` environment variable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fmeAdminApiEndpoint(@Nullable Output<String> fmeAdminApiEndpoint) {
+            $.fmeAdminApiEndpoint = fmeAdminApiEndpoint;
+            return this;
+        }
+
+        /**
+         * @param fmeAdminApiEndpoint The URL of the Harness FME admin API endpoint. When unset, it is derived from the Harness API endpoint. This can also be set using the `FME_ADMIN_API_ENDPOINT` environment variable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fmeAdminApiEndpoint(String fmeAdminApiEndpoint) {
+            return fmeAdminApiEndpoint(Output.of(fmeAdminApiEndpoint));
         }
 
         /**

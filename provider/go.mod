@@ -100,9 +100,9 @@ require (
 	github.com/googleapis/gax-go/v2 v2.22.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.29.0 // indirect
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645 // indirect
-	github.com/harness/harness-go-sdk v0.8.17 // indirect
+	github.com/harness/harness-go-sdk v0.8.18 // indirect
 	github.com/harness/harness-openapi-go-client v0.0.25 // indirect
-	github.com/harness/terraform-provider-harness v0.44.5 // indirect
+	github.com/harness/terraform-provider-harness v0.44.7 // indirect
 	github.com/hashicorp/aws-sdk-go-base/v2 v2.0.0-beta.72 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-checkpoint v0.5.0 // indirect
@@ -120,7 +120,7 @@ require (
 	github.com/hashicorp/hcl/v2 v2.24.0 // indirect
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
-	github.com/hashicorp/terraform-exec v0.25.0 // indirect
+	github.com/hashicorp/terraform-exec v0.25.1 // indirect
 	github.com/hashicorp/terraform-json v0.27.2 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.31.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.10.0 // indirect

@@ -133,6 +133,19 @@ import * as utilities from "../utilities";
  *     }],
  *     parentRef: "accountId/orgId/projectId",
  * });
+ * // Example of an Upstream Ruby Registry (RubyGems source needs no url)
+ * const rubygemsUpstream = new harness.platform.HarRegistry("rubygems_upstream", {
+ *     identifier: "upstream_ruby_registry",
+ *     description: "Upstream Ruby Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "RUBY",
+ *     configs: [{
+ *         type: "UPSTREAM",
+ *         source: "RubyGems",
+ *         authType: "Anonymous",
+ *     }],
+ *     parentRef: "accountId/orgId/projectId",
+ * });
  * // Example of a Virtual Terraform Registry
  * const terraformVirtual = new harness.platform.HarRegistry("terraform_virtual", {
  *     identifier: "virtual_terraform_registry",
@@ -141,6 +154,30 @@ import * as utilities from "../utilities";
  *     packageType: "TERRAFORM",
  *     configs: [{
  *         type: "VIRTUAL",
+ *     }],
+ *     parentRef: "accountId/orgId/projectId",
+ * });
+ * // Example of a Virtual CRAN Registry
+ * const cranVirtual = new harness.platform.HarRegistry("cran_virtual", {
+ *     identifier: "virtual_cran_registry",
+ *     description: "Virtual CRAN Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "CRAN",
+ *     configs: [{
+ *         type: "VIRTUAL",
+ *     }],
+ *     parentRef: "accountId/orgId/projectId",
+ * });
+ * // Example of an Upstream CRAN Registry (CRAN source needs no url)
+ * const cranUpstream = new harness.platform.HarRegistry("cran_upstream", {
+ *     identifier: "upstream_cran_registry",
+ *     description: "Upstream CRAN Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "CRAN",
+ *     configs: [{
+ *         type: "UPSTREAM",
+ *         source: "CRAN",
+ *         authType: "Anonymous",
  *     }],
  *     parentRef: "accountId/orgId/projectId",
  * });
@@ -234,7 +271,7 @@ export class HarRegistry extends pulumi.CustomResource {
      */
     declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
      */
     declare public readonly packageType: pulumi.Output<string>;
     /**
@@ -344,7 +381,7 @@ export interface HarRegistryState {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
      */
     packageType?: pulumi.Input<string | undefined>;
     /**
@@ -394,7 +431,7 @@ export interface HarRegistryArgs {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
      */
     packageType: pulumi.Input<string>;
     /**

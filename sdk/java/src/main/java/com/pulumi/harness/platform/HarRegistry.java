@@ -172,6 +172,20 @@ import javax.annotation.Nullable;
  *             .parentRef("accountId/orgId/projectId")
  *             .build());
  * 
+ *         // Example of an Upstream Ruby Registry (RubyGems source needs no url)
+ *         var rubygemsUpstream = new HarRegistry("rubygemsUpstream", HarRegistryArgs.builder()
+ *             .identifier("upstream_ruby_registry")
+ *             .description("Upstream Ruby Registry")
+ *             .spaceRef("accountId/orgId/projectId")
+ *             .packageType("RUBY")
+ *             .configs(HarRegistryConfigArgs.builder()
+ *                 .type("UPSTREAM")
+ *                 .source("RubyGems")
+ *                 .authType("Anonymous")
+ *                 .build())
+ *             .parentRef("accountId/orgId/projectId")
+ *             .build());
+ * 
  *         // Example of a Virtual Terraform Registry
  *         var terraformVirtual = new HarRegistry("terraformVirtual", HarRegistryArgs.builder()
  *             .identifier("virtual_terraform_registry")
@@ -180,6 +194,32 @@ import javax.annotation.Nullable;
  *             .packageType("TERRAFORM")
  *             .configs(HarRegistryConfigArgs.builder()
  *                 .type("VIRTUAL")
+ *                 .build())
+ *             .parentRef("accountId/orgId/projectId")
+ *             .build());
+ * 
+ *         // Example of a Virtual CRAN Registry
+ *         var cranVirtual = new HarRegistry("cranVirtual", HarRegistryArgs.builder()
+ *             .identifier("virtual_cran_registry")
+ *             .description("Virtual CRAN Registry")
+ *             .spaceRef("accountId/orgId/projectId")
+ *             .packageType("CRAN")
+ *             .configs(HarRegistryConfigArgs.builder()
+ *                 .type("VIRTUAL")
+ *                 .build())
+ *             .parentRef("accountId/orgId/projectId")
+ *             .build());
+ * 
+ *         // Example of an Upstream CRAN Registry (CRAN source needs no url)
+ *         var cranUpstream = new HarRegistry("cranUpstream", HarRegistryArgs.builder()
+ *             .identifier("upstream_cran_registry")
+ *             .description("Upstream CRAN Registry")
+ *             .spaceRef("accountId/orgId/projectId")
+ *             .packageType("CRAN")
+ *             .configs(HarRegistryConfigArgs.builder()
+ *                 .type("UPSTREAM")
+ *                 .source("CRAN")
+ *                 .authType("Anonymous")
  *                 .build())
  *             .parentRef("accountId/orgId/projectId")
  *             .build());
@@ -332,14 +372,14 @@ public class HarRegistry extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metadata);
     }
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
      * 
      */
     @Export(name="packageType", refs={String.class}, tree="[0]")
     private Output<String> packageType;
 
     /**
-     * @return Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
+     * @return Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
      * 
      */
     public Output<String> packageType() {

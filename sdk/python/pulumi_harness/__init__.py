@@ -34,6 +34,7 @@ from .platform_api_key import *
 from .platform_ccm_filters import *
 from .provider import *
 from .ssh_credential import *
+from .time_sleep import *
 from .user import *
 from .user_group import *
 from .user_group_permissions import *
@@ -607,6 +608,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "index/timeSleep",
+  "fqn": "pulumi_harness",
+  "classes": {
+   "harness:index/timeSleep:TimeSleep": "TimeSleep"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "index/user",
   "fqn": "pulumi_harness",
   "classes": {
@@ -795,6 +804,14 @@ _utilities.register(
   "fqn": "pulumi_harness.platform",
   "classes": {
    "harness:platform/connectorRancher:ConnectorRancher": "ConnectorRancher"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/dashboardFolder",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/dashboardFolder:DashboardFolder": "DashboardFolder"
   }
  },
  {

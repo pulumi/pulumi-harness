@@ -8140,6 +8140,21 @@ export namespace platform {
         rancherUrl: string;
     }
 
+    export interface GetDashboardFoldersFolder {
+        /**
+         * Created DateTime of the folder.
+         */
+        createdAt: string;
+        /**
+         * Identifier of the folder.
+         */
+        id: string;
+        /**
+         * Name of the folder.
+         */
+        name: string;
+    }
+
     export interface GetDbSchemaChangelogScript {
         /**
          * Script to clone changeSets

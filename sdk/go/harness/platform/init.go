@@ -61,6 +61,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConnectorPdc{}
 	case "harness:platform/connectorRancher:ConnectorRancher":
 		r = &ConnectorRancher{}
+	case "harness:platform/dashboardFolder:DashboardFolder":
+		r = &DashboardFolder{}
 	case "harness:platform/dashboardFolders:DashboardFolders":
 		r = &DashboardFolders{}
 	case "harness:platform/dashboards:Dashboards":
@@ -394,6 +396,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/connectorRancher",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/dashboardFolder",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
