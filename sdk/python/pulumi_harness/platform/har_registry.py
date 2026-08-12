@@ -35,7 +35,7 @@ class HarRegistryArgs:
         The set of arguments for constructing a HarRegistry resource.
 
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry
-        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
+        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
         :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry (required for creation)
         :param pulumi.Input[_builtins.str] space_ref: Space reference for the registry (required for creation)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_patterns: Allowed artifact patterns
@@ -78,7 +78,7 @@ class HarRegistryArgs:
     @pulumi.getter(name="packageType")
     def package_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
+        Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
         """
         return pulumi.get(self, "package_type")
 
@@ -209,7 +209,7 @@ class _HarRegistryState:
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry
         :param pulumi.Input[_builtins.bool] is_public: Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
-        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
+        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
         :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry (required for creation)
         :param pulumi.Input[_builtins.str] space_ref: Space reference for the registry (required for creation)
         :param pulumi.Input[_builtins.str] url: URL of the registry
@@ -339,7 +339,7 @@ class _HarRegistryState:
     @pulumi.getter(name="packageType")
     def package_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
+        Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
         """
         return pulumi.get(self, "package_type")
 
@@ -520,6 +520,18 @@ class HarRegistry(pulumi.CustomResource):
                 "auth_type": "Anonymous",
             }],
             parent_ref="accountId/orgId/projectId")
+        # Example of an Upstream Ruby Registry (RubyGems source needs no url)
+        rubygems_upstream = harness.platform.HarRegistry("rubygems_upstream",
+            identifier="upstream_ruby_registry",
+            description="Upstream Ruby Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="RUBY",
+            configs=[{
+                "type": "UPSTREAM",
+                "source": "RubyGems",
+                "auth_type": "Anonymous",
+            }],
+            parent_ref="accountId/orgId/projectId")
         # Example of a Virtual Terraform Registry
         terraform_virtual = harness.platform.HarRegistry("terraform_virtual",
             identifier="virtual_terraform_registry",
@@ -528,6 +540,28 @@ class HarRegistry(pulumi.CustomResource):
             package_type="TERRAFORM",
             configs=[{
                 "type": "VIRTUAL",
+            }],
+            parent_ref="accountId/orgId/projectId")
+        # Example of a Virtual CRAN Registry
+        cran_virtual = harness.platform.HarRegistry("cran_virtual",
+            identifier="virtual_cran_registry",
+            description="Virtual CRAN Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="CRAN",
+            configs=[{
+                "type": "VIRTUAL",
+            }],
+            parent_ref="accountId/orgId/projectId")
+        # Example of an Upstream CRAN Registry (CRAN source needs no url)
+        cran_upstream = harness.platform.HarRegistry("cran_upstream",
+            identifier="upstream_cran_registry",
+            description="Upstream CRAN Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="CRAN",
+            configs=[{
+                "type": "UPSTREAM",
+                "source": "CRAN",
+                "auth_type": "Anonymous",
             }],
             parent_ref="accountId/orgId/projectId")
         ```
@@ -569,7 +603,7 @@ class HarRegistry(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry
         :param pulumi.Input[_builtins.bool] is_public: Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
-        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
+        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
         :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry (required for creation)
         :param pulumi.Input[_builtins.str] space_ref: Space reference for the registry (required for creation)
         """
@@ -698,6 +732,18 @@ class HarRegistry(pulumi.CustomResource):
                 "auth_type": "Anonymous",
             }],
             parent_ref="accountId/orgId/projectId")
+        # Example of an Upstream Ruby Registry (RubyGems source needs no url)
+        rubygems_upstream = harness.platform.HarRegistry("rubygems_upstream",
+            identifier="upstream_ruby_registry",
+            description="Upstream Ruby Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="RUBY",
+            configs=[{
+                "type": "UPSTREAM",
+                "source": "RubyGems",
+                "auth_type": "Anonymous",
+            }],
+            parent_ref="accountId/orgId/projectId")
         # Example of a Virtual Terraform Registry
         terraform_virtual = harness.platform.HarRegistry("terraform_virtual",
             identifier="virtual_terraform_registry",
@@ -706,6 +752,28 @@ class HarRegistry(pulumi.CustomResource):
             package_type="TERRAFORM",
             configs=[{
                 "type": "VIRTUAL",
+            }],
+            parent_ref="accountId/orgId/projectId")
+        # Example of a Virtual CRAN Registry
+        cran_virtual = harness.platform.HarRegistry("cran_virtual",
+            identifier="virtual_cran_registry",
+            description="Virtual CRAN Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="CRAN",
+            configs=[{
+                "type": "VIRTUAL",
+            }],
+            parent_ref="accountId/orgId/projectId")
+        # Example of an Upstream CRAN Registry (CRAN source needs no url)
+        cran_upstream = harness.platform.HarRegistry("cran_upstream",
+            identifier="upstream_cran_registry",
+            description="Upstream CRAN Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="CRAN",
+            configs=[{
+                "type": "UPSTREAM",
+                "source": "CRAN",
+                "auth_type": "Anonymous",
             }],
             parent_ref="accountId/orgId/projectId")
         ```
@@ -829,7 +897,7 @@ class HarRegistry(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry
         :param pulumi.Input[_builtins.bool] is_public: Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
-        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
+        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
         :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry (required for creation)
         :param pulumi.Input[_builtins.str] space_ref: Space reference for the registry (required for creation)
         :param pulumi.Input[_builtins.str] url: URL of the registry
@@ -920,7 +988,7 @@ class HarRegistry(pulumi.CustomResource):
     @pulumi.getter(name="packageType")
     def package_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
+        Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
         """
         return pulumi.get(self, "package_type")
 

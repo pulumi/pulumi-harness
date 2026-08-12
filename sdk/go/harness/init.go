@@ -45,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PlatformCcmFilters{}
 	case "harness:index/sshCredential:SshCredential":
 		r = &SshCredential{}
+	case "harness:index/timeSleep:TimeSleep":
+		r = &TimeSleep{}
 	case "harness:index/user:User":
 		r = &User{}
 	case "harness:index/userGroup:UserGroup":
@@ -142,6 +144,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"index/sshCredential",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"index/timeSleep",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

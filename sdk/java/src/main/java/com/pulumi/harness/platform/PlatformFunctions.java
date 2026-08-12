@@ -53,6 +53,8 @@ import com.pulumi.harness.platform.inputs.GetConnectorRancherArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorRancherPlainArgs;
 import com.pulumi.harness.platform.inputs.GetCurrentAccountArgs;
 import com.pulumi.harness.platform.inputs.GetCurrentAccountPlainArgs;
+import com.pulumi.harness.platform.inputs.GetDashboardFolderArgs;
+import com.pulumi.harness.platform.inputs.GetDashboardFolderPlainArgs;
 import com.pulumi.harness.platform.inputs.GetDashboardFoldersArgs;
 import com.pulumi.harness.platform.inputs.GetDashboardFoldersPlainArgs;
 import com.pulumi.harness.platform.inputs.GetDashboardsArgs;
@@ -302,6 +304,7 @@ import com.pulumi.harness.platform.outputs.GetConnectorPdcResult;
 import com.pulumi.harness.platform.outputs.GetConnectorRancherResult;
 import com.pulumi.harness.platform.outputs.GetCurrentAccountResult;
 import com.pulumi.harness.platform.outputs.GetCurrentUserResult;
+import com.pulumi.harness.platform.outputs.GetDashboardFolderResult;
 import com.pulumi.harness.platform.outputs.GetDashboardFoldersResult;
 import com.pulumi.harness.platform.outputs.GetDashboardsResult;
 import com.pulumi.harness.platform.outputs.GetDatadogConnectorResult;
@@ -3696,7 +3699,329 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invokeAsync("harness:platform/getCurrentUser:getCurrentUser", TypeShape.of(GetCurrentUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source for retrieving a Harness Dashboard Folder.
+     * Data source for retrieving a Harness Custom Dashboard Folder by id or name.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDashboardFolderArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // By id
+     *         final var byId = PlatformFunctions.getDashboardFolder(GetDashboardFolderArgs.builder()
+     *             .id("1234")
+     *             .build());
+     * 
+     *         // By name (will perform a list + match internally)
+     *         final var byName = PlatformFunctions.getDashboardFolder(GetDashboardFolderArgs.builder()
+     *             .name("my-folder")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDashboardFolderResult> getDashboardFolder() {
+        return getDashboardFolder(GetDashboardFolderArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness Custom Dashboard Folder by id or name.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDashboardFolderArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // By id
+     *         final var byId = PlatformFunctions.getDashboardFolder(GetDashboardFolderArgs.builder()
+     *             .id("1234")
+     *             .build());
+     * 
+     *         // By name (will perform a list + match internally)
+     *         final var byName = PlatformFunctions.getDashboardFolder(GetDashboardFolderArgs.builder()
+     *             .name("my-folder")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDashboardFolderResult> getDashboardFolderPlain() {
+        return getDashboardFolderPlain(GetDashboardFolderPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness Custom Dashboard Folder by id or name.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDashboardFolderArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // By id
+     *         final var byId = PlatformFunctions.getDashboardFolder(GetDashboardFolderArgs.builder()
+     *             .id("1234")
+     *             .build());
+     * 
+     *         // By name (will perform a list + match internally)
+     *         final var byName = PlatformFunctions.getDashboardFolder(GetDashboardFolderArgs.builder()
+     *             .name("my-folder")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDashboardFolderResult> getDashboardFolder(GetDashboardFolderArgs args) {
+        return getDashboardFolder(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness Custom Dashboard Folder by id or name.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDashboardFolderArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // By id
+     *         final var byId = PlatformFunctions.getDashboardFolder(GetDashboardFolderArgs.builder()
+     *             .id("1234")
+     *             .build());
+     * 
+     *         // By name (will perform a list + match internally)
+     *         final var byName = PlatformFunctions.getDashboardFolder(GetDashboardFolderArgs.builder()
+     *             .name("my-folder")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDashboardFolderResult> getDashboardFolderPlain(GetDashboardFolderPlainArgs args) {
+        return getDashboardFolderPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness Custom Dashboard Folder by id or name.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDashboardFolderArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // By id
+     *         final var byId = PlatformFunctions.getDashboardFolder(GetDashboardFolderArgs.builder()
+     *             .id("1234")
+     *             .build());
+     * 
+     *         // By name (will perform a list + match internally)
+     *         final var byName = PlatformFunctions.getDashboardFolder(GetDashboardFolderArgs.builder()
+     *             .name("my-folder")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDashboardFolderResult> getDashboardFolder(GetDashboardFolderArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getDashboardFolder:getDashboardFolder", TypeShape.of(GetDashboardFolderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Custom Dashboard Folder by id or name.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDashboardFolderArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // By id
+     *         final var byId = PlatformFunctions.getDashboardFolder(GetDashboardFolderArgs.builder()
+     *             .id("1234")
+     *             .build());
+     * 
+     *         // By name (will perform a list + match internally)
+     *         final var byName = PlatformFunctions.getDashboardFolder(GetDashboardFolderArgs.builder()
+     *             .name("my-folder")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDashboardFolderResult> getDashboardFolder(GetDashboardFolderArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getDashboardFolder:getDashboardFolder", TypeShape.of(GetDashboardFolderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a Harness Custom Dashboard Folder by id or name.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDashboardFolderArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // By id
+     *         final var byId = PlatformFunctions.getDashboardFolder(GetDashboardFolderArgs.builder()
+     *             .id("1234")
+     *             .build());
+     * 
+     *         // By name (will perform a list + match internally)
+     *         final var byName = PlatformFunctions.getDashboardFolder(GetDashboardFolderArgs.builder()
+     *             .name("my-folder")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDashboardFolderResult> getDashboardFolderPlain(GetDashboardFolderPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getDashboardFolder:getDashboardFolder", TypeShape.of(GetDashboardFolderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving a list of Harness Custom Dashboard Folders.
      * 
      * ## Example Usage
      * 
@@ -3722,8 +4047,100 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var folder = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
-     *             .id("id")
+     *         final var all = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
+     *             .build());
+     * 
+     *         // Or filter by name
+     *         final var filtered = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
+     *             .name("my-folder")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDashboardFoldersResult> getDashboardFolders() {
+        return getDashboardFolders(GetDashboardFoldersArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a list of Harness Custom Dashboard Folders.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDashboardFoldersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
+     *             .build());
+     * 
+     *         // Or filter by name
+     *         final var filtered = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
+     *             .name("my-folder")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDashboardFoldersResult> getDashboardFoldersPlain() {
+        return getDashboardFoldersPlain(GetDashboardFoldersPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a list of Harness Custom Dashboard Folders.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetDashboardFoldersArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
+     *             .build());
+     * 
+     *         // Or filter by name
+     *         final var filtered = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
+     *             .name("my-folder")
      *             .build());
      * 
      *     }
@@ -3736,7 +4153,7 @@ public final class PlatformFunctions {
         return getDashboardFolders(args, InvokeOptions.Empty);
     }
     /**
-     * Data source for retrieving a Harness Dashboard Folder.
+     * Data source for retrieving a list of Harness Custom Dashboard Folders.
      * 
      * ## Example Usage
      * 
@@ -3762,8 +4179,12 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var folder = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
-     *             .id("id")
+     *         final var all = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
+     *             .build());
+     * 
+     *         // Or filter by name
+     *         final var filtered = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
+     *             .name("my-folder")
      *             .build());
      * 
      *     }
@@ -3776,7 +4197,7 @@ public final class PlatformFunctions {
         return getDashboardFoldersPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Data source for retrieving a Harness Dashboard Folder.
+     * Data source for retrieving a list of Harness Custom Dashboard Folders.
      * 
      * ## Example Usage
      * 
@@ -3802,8 +4223,12 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var folder = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
-     *             .id("id")
+     *         final var all = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
+     *             .build());
+     * 
+     *         // Or filter by name
+     *         final var filtered = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
+     *             .name("my-folder")
      *             .build());
      * 
      *     }
@@ -3816,7 +4241,7 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invoke("harness:platform/getDashboardFolders:getDashboardFolders", TypeShape.of(GetDashboardFoldersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source for retrieving a Harness Dashboard Folder.
+     * Data source for retrieving a list of Harness Custom Dashboard Folders.
      * 
      * ## Example Usage
      * 
@@ -3842,8 +4267,12 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var folder = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
-     *             .id("id")
+     *         final var all = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
+     *             .build());
+     * 
+     *         // Or filter by name
+     *         final var filtered = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
+     *             .name("my-folder")
      *             .build());
      * 
      *     }
@@ -3856,7 +4285,7 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invoke("harness:platform/getDashboardFolders:getDashboardFolders", TypeShape.of(GetDashboardFoldersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Data source for retrieving a Harness Dashboard Folder.
+     * Data source for retrieving a list of Harness Custom Dashboard Folders.
      * 
      * ## Example Usage
      * 
@@ -3882,8 +4311,12 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var folder = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
-     *             .id("id")
+     *         final var all = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
+     *             .build());
+     * 
+     *         // Or filter by name
+     *         final var filtered = PlatformFunctions.getDashboardFolders(GetDashboardFoldersArgs.builder()
+     *             .name("my-folder")
      *             .build());
      * 
      *     }

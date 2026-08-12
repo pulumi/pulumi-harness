@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.harness.platform.outputs.GetDashboardFoldersFolder;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,79 +14,35 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDashboardFoldersResult {
+    private List<GetDashboardFoldersFolder> folders;
     /**
-     * @return Created DateTime of the folder.
-     * 
-     */
-    private String createdAt;
-    /**
-     * @return Description of the resource.
-     * 
-     */
-    private String description;
-    /**
-     * @return Identifier of the folder.
+     * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
     /**
-     * @return Unique identifier of the resource.
-     * 
-     */
-    private @Nullable String identifier;
-    /**
-     * @return Name of the resource.
+     * @return Name of a specific folder to filter the list by (optional).
      * 
      */
     private @Nullable String name;
-    /**
-     * @return Tags to associate with the resource.
-     * 
-     */
-    private List<String> tags;
 
     private GetDashboardFoldersResult() {}
-    /**
-     * @return Created DateTime of the folder.
-     * 
-     */
-    public String createdAt() {
-        return this.createdAt;
+    public List<GetDashboardFoldersFolder> folders() {
+        return this.folders;
     }
     /**
-     * @return Description of the resource.
-     * 
-     */
-    public String description() {
-        return this.description;
-    }
-    /**
-     * @return Identifier of the folder.
+     * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Unique identifier of the resource.
-     * 
-     */
-    public Optional<String> identifier() {
-        return Optional.ofNullable(this.identifier);
-    }
-    /**
-     * @return Name of the resource.
+     * @return Name of a specific folder to filter the list by (optional).
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
-    }
-    /**
-     * @return Tags to associate with the resource.
-     * 
-     */
-    public List<String> tags() {
-        return this.tags;
     }
 
     public static Builder builder() {
@@ -97,38 +54,27 @@ public final class GetDashboardFoldersResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String createdAt;
-        private String description;
+        private List<GetDashboardFoldersFolder> folders;
         private String id;
-        private @Nullable String identifier;
         private @Nullable String name;
-        private List<String> tags;
         public Builder() {}
         public Builder(GetDashboardFoldersResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.createdAt = defaults.createdAt;
-    	      this.description = defaults.description;
+    	      this.folders = defaults.folders;
     	      this.id = defaults.id;
-    	      this.identifier = defaults.identifier;
     	      this.name = defaults.name;
-    	      this.tags = defaults.tags;
         }
 
         @CustomType.Setter
-        public Builder createdAt(String createdAt) {
-            if (createdAt == null) {
-              throw new MissingRequiredPropertyException("GetDashboardFoldersResult", "createdAt");
+        public Builder folders(List<GetDashboardFoldersFolder> folders) {
+            if (folders == null) {
+              throw new MissingRequiredPropertyException("GetDashboardFoldersResult", "folders");
             }
-            this.createdAt = createdAt;
+            this.folders = folders;
             return this;
         }
-        @CustomType.Setter
-        public Builder description(String description) {
-            if (description == null) {
-              throw new MissingRequiredPropertyException("GetDashboardFoldersResult", "description");
-            }
-            this.description = description;
-            return this;
+        public Builder folders(GetDashboardFoldersFolder... folders) {
+            return folders(List.of(folders));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -139,36 +85,16 @@ public final class GetDashboardFoldersResult {
             return this;
         }
         @CustomType.Setter
-        public Builder identifier(@Nullable String identifier) {
-
-            this.identifier = identifier;
-            return this;
-        }
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
 
             this.name = name;
             return this;
         }
-        @CustomType.Setter
-        public Builder tags(List<String> tags) {
-            if (tags == null) {
-              throw new MissingRequiredPropertyException("GetDashboardFoldersResult", "tags");
-            }
-            this.tags = tags;
-            return this;
-        }
-        public Builder tags(String... tags) {
-            return tags(List.of(tags));
-        }
         public GetDashboardFoldersResult build() {
             final var _resultValue = new GetDashboardFoldersResult();
-            _resultValue.createdAt = createdAt;
-            _resultValue.description = description;
+            _resultValue.folders = folders;
             _resultValue.id = id;
-            _resultValue.identifier = identifier;
             _resultValue.name = name;
-            _resultValue.tags = tags;
             return _resultValue;
         }
     }

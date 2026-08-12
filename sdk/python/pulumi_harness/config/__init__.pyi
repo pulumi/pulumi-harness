@@ -29,6 +29,11 @@ endpoint: Optional[str]
 The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the `HARNESS_ENDPOINT` environment variable.
 """
 
+fmeAdminApiEndpoint: Optional[str]
+"""
+The URL of the Harness FME admin API endpoint. When unset, it is derived from the Harness API endpoint. This can also be set using the `FME_ADMIN_API_ENDPOINT` environment variable.
+"""
+
 platformApiKey: Optional[str]
 """
 The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.

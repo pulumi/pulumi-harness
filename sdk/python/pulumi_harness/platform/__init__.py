@@ -26,6 +26,7 @@ from .connector_gcp_kms import *
 from .connector_jdbc import *
 from .connector_pdc import *
 from .connector_rancher import *
+from .dashboard_folder import *
 from .dashboard_folders import *
 from .dashboards import *
 from .datadog_connector import *
@@ -74,6 +75,7 @@ from .get_connector_pdc import *
 from .get_connector_rancher import *
 from .get_current_account import *
 from .get_current_user import *
+from .get_dashboard_folder import *
 from .get_dashboard_folders import *
 from .get_dashboards import *
 from .get_datadog_connector import *

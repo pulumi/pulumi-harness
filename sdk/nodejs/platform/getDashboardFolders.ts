@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Data source for retrieving a Harness Dashboard Folder.
+ * Data source for retrieving a list of Harness Custom Dashboard Folders.
  *
  * ## Example Usage
  *
@@ -13,16 +15,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const folder = harness.platform.getDashboardFolders({
- *     id: "id",
+ * const all = harness.platform.getDashboardFolders({});
+ * // Or filter by name
+ * const filtered = harness.platform.getDashboardFolders({
+ *     name: "my-folder",
  * });
  * ```
  */
-export function getDashboardFolders(args: GetDashboardFoldersArgs, opts?: pulumi.InvokeOptions): Promise<GetDashboardFoldersResult> {
+export function getDashboardFolders(args?: GetDashboardFoldersArgs, opts?: pulumi.InvokeOptions): Promise<GetDashboardFoldersResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:platform/getDashboardFolders:getDashboardFolders", {
-        "id": args.id,
-        "identifier": args.identifier,
         "name": args.name,
     }, opts);
 }
@@ -32,15 +35,7 @@ export function getDashboardFolders(args: GetDashboardFoldersArgs, opts?: pulumi
  */
 export interface GetDashboardFoldersArgs {
     /**
-     * Identifier of the folder.
-     */
-    id: string;
-    /**
-     * Unique identifier of the resource.
-     */
-    identifier?: string;
-    /**
-     * Name of the resource.
+     * Name of a specific folder to filter the list by (optional).
      */
     name?: string;
 }
@@ -49,33 +44,18 @@ export interface GetDashboardFoldersArgs {
  * A collection of values returned by getDashboardFolders.
  */
 export interface GetDashboardFoldersResult {
+    readonly folders: outputs.platform.GetDashboardFoldersFolder[];
     /**
-     * Created DateTime of the folder.
-     */
-    readonly createdAt: string;
-    /**
-     * Description of the resource.
-     */
-    readonly description: string;
-    /**
-     * Identifier of the folder.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * Unique identifier of the resource.
-     */
-    readonly identifier?: string;
-    /**
-     * Name of the resource.
+     * Name of a specific folder to filter the list by (optional).
      */
     readonly name?: string;
-    /**
-     * Tags to associate with the resource.
-     */
-    readonly tags: string[];
 }
 /**
- * Data source for retrieving a Harness Dashboard Folder.
+ * Data source for retrieving a list of Harness Custom Dashboard Folders.
  *
  * ## Example Usage
  *
@@ -83,16 +63,17 @@ export interface GetDashboardFoldersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * const folder = harness.platform.getDashboardFolders({
- *     id: "id",
+ * const all = harness.platform.getDashboardFolders({});
+ * // Or filter by name
+ * const filtered = harness.platform.getDashboardFolders({
+ *     name: "my-folder",
  * });
  * ```
  */
-export function getDashboardFoldersOutput(args: GetDashboardFoldersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDashboardFoldersResult> {
+export function getDashboardFoldersOutput(args?: GetDashboardFoldersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDashboardFoldersResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:platform/getDashboardFolders:getDashboardFolders", {
-        "id": args.id,
-        "identifier": args.identifier,
         "name": args.name,
     }, opts);
 }
@@ -102,15 +83,7 @@ export function getDashboardFoldersOutput(args: GetDashboardFoldersOutputArgs, o
  */
 export interface GetDashboardFoldersOutputArgs {
     /**
-     * Identifier of the folder.
-     */
-    id: pulumi.Input<string>;
-    /**
-     * Unique identifier of the resource.
-     */
-    identifier?: pulumi.Input<string | undefined>;
-    /**
-     * Name of the resource.
+     * Name of a specific folder to filter the list by (optional).
      */
     name?: pulumi.Input<string | undefined>;
 }

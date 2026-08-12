@@ -38,6 +38,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly endpoint: pulumi.Output<string | undefined>;
     /**
+     * The URL of the Harness FME admin API endpoint. When unset, it is derived from the Harness API endpoint. This can also be set using the `FME_ADMIN_API_ENDPOINT` environment variable.
+     */
+    declare public readonly fmeAdminApiEndpoint: pulumi.Output<string | undefined>;
+    /**
      * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
      */
     declare public readonly platformApiKey: pulumi.Output<string | undefined>;
@@ -56,6 +60,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["accountId"] = (args?.accountId) ?? utilities.getEnv("HARNESS_ACCOUNT_ID");
             resourceInputs["apiKey"] = (args?.apiKey) ?? utilities.getEnv("HARNESS_API_KEY");
             resourceInputs["endpoint"] = (args?.endpoint) ?? utilities.getEnv("HARNESS_ENDPOINT");
+            resourceInputs["fmeAdminApiEndpoint"] = args?.fmeAdminApiEndpoint;
             resourceInputs["platformApiKey"] = (args?.platformApiKey) ?? utilities.getEnv("HARNESS_PLATFORM_API_KEY");
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -88,6 +93,10 @@ export interface ProviderArgs {
      * The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the `HARNESS_ENDPOINT` environment variable.
      */
     endpoint?: pulumi.Input<string | undefined>;
+    /**
+     * The URL of the Harness FME admin API endpoint. When unset, it is derived from the Harness API endpoint. This can also be set using the `FME_ADMIN_API_ENDPOINT` environment variable.
+     */
+    fmeAdminApiEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
      */

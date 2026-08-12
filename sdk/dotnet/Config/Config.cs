@@ -62,6 +62,16 @@ namespace Pulumi.Harness
             set => _endpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _fmeAdminApiEndpoint = new __Value<string?>(() => __config.Get("fmeAdminApiEndpoint"));
+        /// <summary>
+        /// The URL of the Harness FME admin API endpoint. When unset, it is derived from the Harness API endpoint. This can also be set using the `FME_ADMIN_API_ENDPOINT` environment variable.
+        /// </summary>
+        public static string? FmeAdminApiEndpoint
+        {
+            get => _fmeAdminApiEndpoint.Get();
+            set => _fmeAdminApiEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _platformApiKey = new __Value<string?>(() => __config.Get("platformApiKey") ?? Utilities.GetEnv("HARNESS_PLATFORM_API_KEY"));
         /// <summary>
         /// The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.

@@ -193,6 +193,25 @@ namespace Pulumi.Harness.Platform
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
+    ///     // Example of an Upstream Ruby Registry (RubyGems source needs no url)
+    ///     var rubygemsUpstream = new Harness.Platform.HarRegistry("rubygems_upstream", new()
+    ///     {
+    ///         Identifier = "upstream_ruby_registry",
+    ///         Description = "Upstream Ruby Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "RUBY",
+    ///         Configs = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
+    ///             {
+    ///                 Type = "UPSTREAM",
+    ///                 Source = "RubyGems",
+    ///                 AuthType = "Anonymous",
+    ///             },
+    ///         },
+    ///         ParentRef = "accountId/orgId/projectId",
+    ///     });
+    /// 
     ///     // Example of a Virtual Terraform Registry
     ///     var terraformVirtual = new Harness.Platform.HarRegistry("terraform_virtual", new()
     ///     {
@@ -205,6 +224,42 @@ namespace Pulumi.Harness.Platform
     ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
     ///             {
     ///                 Type = "VIRTUAL",
+    ///             },
+    ///         },
+    ///         ParentRef = "accountId/orgId/projectId",
+    ///     });
+    /// 
+    ///     // Example of a Virtual CRAN Registry
+    ///     var cranVirtual = new Harness.Platform.HarRegistry("cran_virtual", new()
+    ///     {
+    ///         Identifier = "virtual_cran_registry",
+    ///         Description = "Virtual CRAN Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "CRAN",
+    ///         Configs = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
+    ///             {
+    ///                 Type = "VIRTUAL",
+    ///             },
+    ///         },
+    ///         ParentRef = "accountId/orgId/projectId",
+    ///     });
+    /// 
+    ///     // Example of an Upstream CRAN Registry (CRAN source needs no url)
+    ///     var cranUpstream = new Harness.Platform.HarRegistry("cran_upstream", new()
+    ///     {
+    ///         Identifier = "upstream_cran_registry",
+    ///         Description = "Upstream CRAN Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "CRAN",
+    ///         Configs = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
+    ///             {
+    ///                 Type = "UPSTREAM",
+    ///                 Source = "CRAN",
+    ///                 AuthType = "Anonymous",
     ///             },
     ///         },
     ///         ParentRef = "accountId/orgId/projectId",
@@ -292,7 +347,7 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
+        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
         /// </summary>
         [Output("packageType")]
         public Output<string> PackageType { get; private set; } = null!;
@@ -429,7 +484,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
+        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
         /// </summary>
         [Input("packageType", required: true)]
         public Input<string> PackageType { get; set; } = null!;
@@ -527,7 +582,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, TERRAFORM)
+        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
         /// </summary>
         [Input("packageType")]
         public Input<string>? PackageType { get; set; }

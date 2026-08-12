@@ -22,6 +22,7 @@ class ProviderArgs:
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 fme_admin_api_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  platform_api_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
@@ -29,6 +30,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] account_id: The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
         :param pulumi.Input[_builtins.str] api_key: The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
         :param pulumi.Input[_builtins.str] endpoint: The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the `HARNESS_ENDPOINT` environment variable.
+        :param pulumi.Input[_builtins.str] fme_admin_api_endpoint: The URL of the Harness FME admin API endpoint. When unset, it is derived from the Harness API endpoint. This can also be set using the `FME_ADMIN_API_ENDPOINT` environment variable.
         :param pulumi.Input[_builtins.str] platform_api_key: The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
         """
         if account_id is None:
@@ -43,6 +45,8 @@ class ProviderArgs:
             endpoint = _utilities.get_env('HARNESS_ENDPOINT')
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
+        if fme_admin_api_endpoint is not None:
+            pulumi.set(__self__, "fme_admin_api_endpoint", fme_admin_api_endpoint)
         if platform_api_key is None:
             platform_api_key = _utilities.get_env('HARNESS_PLATFORM_API_KEY')
         if platform_api_key is not None:
@@ -85,6 +89,18 @@ class ProviderArgs:
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
+    @pulumi.getter(name="fmeAdminApiEndpoint")
+    def fme_admin_api_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The URL of the Harness FME admin API endpoint. When unset, it is derived from the Harness API endpoint. This can also be set using the `FME_ADMIN_API_ENDPOINT` environment variable.
+        """
+        return pulumi.get(self, "fme_admin_api_endpoint")
+
+    @fme_admin_api_endpoint.setter
+    def fme_admin_api_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "fme_admin_api_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter(name="platformApiKey")
     def platform_api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -106,6 +122,7 @@ class Provider(pulumi.ProviderResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 fme_admin_api_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  platform_api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -120,6 +137,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] account_id: The Harness account id. This can also be set using the `HARNESS_ACCOUNT_ID` environment variable.
         :param pulumi.Input[_builtins.str] api_key: The Harness API key. This can also be set using the `HARNESS_API_KEY` environment variable. For more information to create an API key in FirstGen, see https://docs.harness.io/article/smloyragsm-api-keys#create_an_api_key.
         :param pulumi.Input[_builtins.str] endpoint: The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the `HARNESS_ENDPOINT` environment variable.
+        :param pulumi.Input[_builtins.str] fme_admin_api_endpoint: The URL of the Harness FME admin API endpoint. When unset, it is derived from the Harness API endpoint. This can also be set using the `FME_ADMIN_API_ENDPOINT` environment variable.
         :param pulumi.Input[_builtins.str] platform_api_key: The API key for the Harness next gen platform. This can also be set using the `HARNESS_PLATFORM_API_KEY` environment variable. For more information to create an API key in NextGen, see https://docs.harness.io/article/tdoad7xrh9-add-and-manage-api-keys.
         """
         ...
@@ -153,6 +171,7 @@ class Provider(pulumi.ProviderResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 fme_admin_api_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  platform_api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -172,6 +191,7 @@ class Provider(pulumi.ProviderResource):
             if endpoint is None:
                 endpoint = _utilities.get_env('HARNESS_ENDPOINT')
             __props__.__dict__["endpoint"] = endpoint
+            __props__.__dict__["fme_admin_api_endpoint"] = fme_admin_api_endpoint
             if platform_api_key is None:
                 platform_api_key = _utilities.get_env('HARNESS_PLATFORM_API_KEY')
             __props__.__dict__["platform_api_key"] = platform_api_key
@@ -204,6 +224,14 @@ class Provider(pulumi.ProviderResource):
         The URL of the Harness API endpoint. The default is `https://app.harness.io/gateway`. This can also be set using the `HARNESS_ENDPOINT` environment variable.
         """
         return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="fmeAdminApiEndpoint")
+    def fme_admin_api_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The URL of the Harness FME admin API endpoint. When unset, it is derived from the Harness API endpoint. This can also be set using the `FME_ADMIN_API_ENDPOINT` environment variable.
+        """
+        return pulumi.get(self, "fme_admin_api_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="platformApiKey")
