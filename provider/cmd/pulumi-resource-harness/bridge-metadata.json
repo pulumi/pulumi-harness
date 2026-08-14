@@ -1596,6 +1596,9 @@
                             "fields": {
                                 "delegate_selectors": {
                                     "maxItemsOne": false
+                                },
+                                "oidc_session_tag_keys": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -17551,6 +17554,9 @@
                         "elem": {
                             "fields": {
                                 "delegate_selectors": {
+                                    "maxItemsOne": false
+                                },
+                                "oidc_session_tag_keys": {
                                     "maxItemsOne": false
                                 }
                             }
