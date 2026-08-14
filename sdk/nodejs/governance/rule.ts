@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.governance.Rule("example", {
- *     identifier: "identifier",
  *     name: "name",
  *     cloudProvider: "AWS/AZURE/GCP",
  *     description: "description",
@@ -23,6 +22,8 @@ import * as utilities from "../utilities";
  *     resource: aws.ec2`,
  * });
  * ```
+ *
+ * > **Note:** `ruleId` is computed after the rule is created and can be referenced via outputs or other resources (for example, `harness_governance_rule.example.rule_id`).
  *
  * ## Import
  *

@@ -1867,6 +1867,8 @@ type AwsConnectorOidcAuthentication struct {
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// The IAM Role to assume the credentials from.
 	IamRoleArn string `pulumi:"iamRoleArn"`
+	// List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+	OidcSessionTagKeys []string `pulumi:"oidcSessionTagKeys"`
 	// Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	Region *string `pulumi:"region"`
 }
@@ -1887,6 +1889,8 @@ type AwsConnectorOidcAuthenticationArgs struct {
 	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
 	// The IAM Role to assume the credentials from.
 	IamRoleArn pulumi.StringInput `pulumi:"iamRoleArn"`
+	// List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+	OidcSessionTagKeys pulumi.StringArrayInput `pulumi:"oidcSessionTagKeys"`
 	// Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
@@ -1978,6 +1982,11 @@ func (o AwsConnectorOidcAuthenticationOutput) IamRoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsConnectorOidcAuthentication) string { return v.IamRoleArn }).(pulumi.StringOutput)
 }
 
+// List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+func (o AwsConnectorOidcAuthenticationOutput) OidcSessionTagKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsConnectorOidcAuthentication) []string { return v.OidcSessionTagKeys }).(pulumi.StringArrayOutput)
+}
+
 // Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 func (o AwsConnectorOidcAuthenticationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsConnectorOidcAuthentication) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -2025,6 +2034,16 @@ func (o AwsConnectorOidcAuthenticationPtrOutput) IamRoleArn() pulumi.StringPtrOu
 		}
 		return &v.IamRoleArn
 	}).(pulumi.StringPtrOutput)
+}
+
+// List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+func (o AwsConnectorOidcAuthenticationPtrOutput) OidcSessionTagKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsConnectorOidcAuthentication) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OidcSessionTagKeys
+	}).(pulumi.StringArrayOutput)
 }
 
 // Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.

@@ -6228,6 +6228,10 @@ export namespace platform {
          */
         iamRoleArn: string;
         /**
+         * List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+         */
+        oidcSessionTagKeys?: string[];
+        /**
          * Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         region?: string;
@@ -7447,6 +7451,10 @@ export namespace platform {
          * The IAM Role to assume the credentials from.
          */
         iamRoleArn: string;
+        /**
+         * Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+         */
+        oidcSessionTagKeys: string[];
         /**
          * Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */

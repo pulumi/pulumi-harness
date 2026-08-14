@@ -4130,6 +4130,10 @@ class AwsConnectorOidcAuthenticationArgsDict(TypedDict):
     """
     The delegates to inherit the credentials from.
     """
+    oidc_session_tag_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include `account_id`, `organization_id`, `project_id`, `environment_id`, `environment_type`, `pipeline_id`, `connector_id`, `connector_name`, `delegate_selectors`, `context`, `step_type`, `stage_type`, `triggered_by_email`, `triggered_by_name`, `service_name`, and `service_id`.
+    """
     region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -4140,15 +4144,19 @@ class AwsConnectorOidcAuthenticationArgs:
     def __init__(__self__, *,
                  iam_role_arn: pulumi.Input[_builtins.str],
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 oidc_session_tag_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] iam_role_arn: The IAM Role to assume the credentials from.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: The delegates to inherit the credentials from.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oidc_session_tag_keys: List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include `account_id`, `organization_id`, `project_id`, `environment_id`, `environment_type`, `pipeline_id`, `connector_id`, `connector_name`, `delegate_selectors`, `context`, `step_type`, `stage_type`, `triggered_by_email`, `triggered_by_name`, `service_name`, and `service_id`.
         :param pulumi.Input[_builtins.str] region: Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "iam_role_arn", iam_role_arn)
         if delegate_selectors is not None:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+        if oidc_session_tag_keys is not None:
+            pulumi.set(__self__, "oidc_session_tag_keys", oidc_session_tag_keys)
         if region is not None:
             pulumi.set(__self__, "region", region)
 
@@ -4175,6 +4183,18 @@ class AwsConnectorOidcAuthenticationArgs:
     @delegate_selectors.setter
     def delegate_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "delegate_selectors", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oidcSessionTagKeys")
+    def oidc_session_tag_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include `account_id`, `organization_id`, `project_id`, `environment_id`, `environment_type`, `pipeline_id`, `connector_id`, `connector_name`, `delegate_selectors`, `context`, `step_type`, `stage_type`, `triggered_by_email`, `triggered_by_name`, `service_name`, and `service_id`.
+        """
+        return pulumi.get(self, "oidc_session_tag_keys")
+
+    @oidc_session_tag_keys.setter
+    def oidc_session_tag_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "oidc_session_tag_keys", value)
 
     @_builtins.property
     @pulumi.getter

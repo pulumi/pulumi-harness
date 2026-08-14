@@ -24,6 +24,11 @@ public final class GetAwsConnectorOidcAuthentication {
      */
     private String iamRoleArn;
     /**
+     * @return Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+     * 
+     */
+    private List<String> oidcSessionTagKeys;
+    /**
      * @return Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
@@ -45,6 +50,13 @@ public final class GetAwsConnectorOidcAuthentication {
         return this.iamRoleArn;
     }
     /**
+     * @return Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+     * 
+     */
+    public List<String> oidcSessionTagKeys() {
+        return this.oidcSessionTagKeys;
+    }
+    /**
      * @return Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
@@ -63,12 +75,14 @@ public final class GetAwsConnectorOidcAuthentication {
     public static final class Builder {
         private List<String> delegateSelectors;
         private String iamRoleArn;
+        private List<String> oidcSessionTagKeys;
         private @Nullable String region;
         public Builder() {}
         public Builder(GetAwsConnectorOidcAuthentication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.delegateSelectors = defaults.delegateSelectors;
     	      this.iamRoleArn = defaults.iamRoleArn;
+    	      this.oidcSessionTagKeys = defaults.oidcSessionTagKeys;
     	      this.region = defaults.region;
         }
 
@@ -92,6 +106,17 @@ public final class GetAwsConnectorOidcAuthentication {
             return this;
         }
         @CustomType.Setter
+        public Builder oidcSessionTagKeys(List<String> oidcSessionTagKeys) {
+            if (oidcSessionTagKeys == null) {
+              throw new MissingRequiredPropertyException("GetAwsConnectorOidcAuthentication", "oidcSessionTagKeys");
+            }
+            this.oidcSessionTagKeys = oidcSessionTagKeys;
+            return this;
+        }
+        public Builder oidcSessionTagKeys(String... oidcSessionTagKeys) {
+            return oidcSessionTagKeys(List.of(oidcSessionTagKeys));
+        }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
 
             this.region = region;
@@ -101,6 +126,7 @@ public final class GetAwsConnectorOidcAuthentication {
             final var _resultValue = new GetAwsConnectorOidcAuthentication();
             _resultValue.delegateSelectors = delegateSelectors;
             _resultValue.iamRoleArn = iamRoleArn;
+            _resultValue.oidcSessionTagKeys = oidcSessionTagKeys;
             _resultValue.region = region;
             return _resultValue;
         }
