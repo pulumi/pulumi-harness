@@ -44,7 +44,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new RuleEnforcement("example", RuleEnforcementArgs.builder()
- *             .identifier("identifier")
  *             .name("name")
  *             .cloudProvider("AWS/AZURE/GCP")
  *             .ruleIds("rule_id1")
@@ -62,6 +61,8 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * &gt; **Note:** `enforcementId` is computed after the enforcement is created and can be referenced via outputs or other resources (for example, `harness_governance_rule_enforcement.example.enforcement_id`).
  * 
  * ## Import
  * 

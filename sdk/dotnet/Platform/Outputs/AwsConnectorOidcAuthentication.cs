@@ -22,6 +22,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string IamRoleArn;
         /// <summary>
+        /// List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include `AccountId`, `OrganizationId`, `ProjectId`, `EnvironmentId`, `EnvironmentType`, `PipelineId`, `ConnectorId`, `ConnectorName`, `DelegateSelectors`, `Context`, `StepType`, `StageType`, `TriggeredByEmail`, `TriggeredByName`, `ServiceName`, and `ServiceId`.
+        /// </summary>
+        public readonly ImmutableArray<string> OidcSessionTagKeys;
+        /// <summary>
         /// Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         /// </summary>
         public readonly string? Region;
@@ -32,10 +36,13 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string iamRoleArn,
 
+            ImmutableArray<string> oidcSessionTagKeys,
+
             string? region)
         {
             DelegateSelectors = delegateSelectors;
             IamRoleArn = iamRoleArn;
+            OidcSessionTagKeys = oidcSessionTagKeys;
             Region = region;
         }
     }

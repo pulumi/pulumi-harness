@@ -426,7 +426,6 @@ class RuleEnforcement(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.governance.RuleEnforcement("example",
-            identifier="identifier",
             name="name",
             cloud_provider="AWS/AZURE/GCP",
             rule_ids=["rule_id1"],
@@ -439,6 +438,8 @@ class RuleEnforcement(pulumi.CustomResource):
             is_dry_run=False,
             description="description")
         ```
+
+        > **Note:** `enforcement_id` is computed after the enforcement is created and can be referenced via outputs or other resources (for example, `harness_governance_rule_enforcement.example.enforcement_id`).
 
         ## Import
 
@@ -481,7 +482,6 @@ class RuleEnforcement(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.governance.RuleEnforcement("example",
-            identifier="identifier",
             name="name",
             cloud_provider="AWS/AZURE/GCP",
             rule_ids=["rule_id1"],
@@ -494,6 +494,8 @@ class RuleEnforcement(pulumi.CustomResource):
             is_dry_run=False,
             description="description")
         ```
+
+        > **Note:** `enforcement_id` is computed after the enforcement is created and can be referenced via outputs or other resources (for example, `harness_governance_rule_enforcement.example.enforcement_id`).
 
         ## Import
 

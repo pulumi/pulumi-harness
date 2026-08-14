@@ -29700,6 +29700,8 @@ type GetAwsConnectorOidcAuthentication struct {
 	DelegateSelectors []string `pulumi:"delegateSelectors"`
 	// The IAM Role to assume the credentials from.
 	IamRoleArn string `pulumi:"iamRoleArn"`
+	// Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+	OidcSessionTagKeys []string `pulumi:"oidcSessionTagKeys"`
 	// Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	Region *string `pulumi:"region"`
 }
@@ -29720,6 +29722,8 @@ type GetAwsConnectorOidcAuthenticationArgs struct {
 	DelegateSelectors pulumi.StringArrayInput `pulumi:"delegateSelectors"`
 	// The IAM Role to assume the credentials from.
 	IamRoleArn pulumi.StringInput `pulumi:"iamRoleArn"`
+	// Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+	OidcSessionTagKeys pulumi.StringArrayInput `pulumi:"oidcSessionTagKeys"`
 	// Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
@@ -29783,6 +29787,11 @@ func (o GetAwsConnectorOidcAuthenticationOutput) DelegateSelectors() pulumi.Stri
 // The IAM Role to assume the credentials from.
 func (o GetAwsConnectorOidcAuthenticationOutput) IamRoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsConnectorOidcAuthentication) string { return v.IamRoleArn }).(pulumi.StringOutput)
+}
+
+// Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+func (o GetAwsConnectorOidcAuthenticationOutput) OidcSessionTagKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAwsConnectorOidcAuthentication) []string { return v.OidcSessionTagKeys }).(pulumi.StringArrayOutput)
 }
 
 // Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.

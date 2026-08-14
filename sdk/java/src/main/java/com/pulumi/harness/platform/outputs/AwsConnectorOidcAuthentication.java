@@ -24,6 +24,11 @@ public final class AwsConnectorOidcAuthentication {
      */
     private String iamRoleArn;
     /**
+     * @return List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+     * 
+     */
+    private @Nullable List<String> oidcSessionTagKeys;
+    /**
      * @return Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
@@ -45,6 +50,13 @@ public final class AwsConnectorOidcAuthentication {
         return this.iamRoleArn;
     }
     /**
+     * @return List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+     * 
+     */
+    public List<String> oidcSessionTagKeys() {
+        return this.oidcSessionTagKeys == null ? List.of() : this.oidcSessionTagKeys;
+    }
+    /**
      * @return Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
@@ -63,12 +75,14 @@ public final class AwsConnectorOidcAuthentication {
     public static final class Builder {
         private @Nullable List<String> delegateSelectors;
         private String iamRoleArn;
+        private @Nullable List<String> oidcSessionTagKeys;
         private @Nullable String region;
         public Builder() {}
         public Builder(AwsConnectorOidcAuthentication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.delegateSelectors = defaults.delegateSelectors;
     	      this.iamRoleArn = defaults.iamRoleArn;
+    	      this.oidcSessionTagKeys = defaults.oidcSessionTagKeys;
     	      this.region = defaults.region;
         }
 
@@ -90,6 +104,15 @@ public final class AwsConnectorOidcAuthentication {
             return this;
         }
         @CustomType.Setter
+        public Builder oidcSessionTagKeys(@Nullable List<String> oidcSessionTagKeys) {
+
+            this.oidcSessionTagKeys = oidcSessionTagKeys;
+            return this;
+        }
+        public Builder oidcSessionTagKeys(String... oidcSessionTagKeys) {
+            return oidcSessionTagKeys(List.of(oidcSessionTagKeys));
+        }
+        @CustomType.Setter
         public Builder region(@Nullable String region) {
 
             this.region = region;
@@ -99,6 +122,7 @@ public final class AwsConnectorOidcAuthentication {
             final var _resultValue = new AwsConnectorOidcAuthentication();
             _resultValue.delegateSelectors = delegateSelectors;
             _resultValue.iamRoleArn = iamRoleArn;
+            _resultValue.oidcSessionTagKeys = oidcSessionTagKeys;
             _resultValue.region = region;
             return _resultValue;
         }

@@ -2578,6 +2578,8 @@ class AwsConnectorOidcAuthentication(dict):
             suggest = "iam_role_arn"
         elif key == "delegateSelectors":
             suggest = "delegate_selectors"
+        elif key == "oidcSessionTagKeys":
+            suggest = "oidc_session_tag_keys"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AwsConnectorOidcAuthentication. Access the value via the '{suggest}' property getter instead.")
@@ -2593,15 +2595,19 @@ class AwsConnectorOidcAuthentication(dict):
     def __init__(__self__, *,
                  iam_role_arn: _builtins.str,
                  delegate_selectors: Optional[Sequence[_builtins.str]] = None,
+                 oidc_session_tag_keys: Optional[Sequence[_builtins.str]] = None,
                  region: Optional[_builtins.str] = None):
         """
         :param _builtins.str iam_role_arn: The IAM Role to assume the credentials from.
         :param Sequence[_builtins.str] delegate_selectors: The delegates to inherit the credentials from.
+        :param Sequence[_builtins.str] oidc_session_tag_keys: List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include `account_id`, `organization_id`, `project_id`, `environment_id`, `environment_type`, `pipeline_id`, `connector_id`, `connector_name`, `delegate_selectors`, `context`, `step_type`, `stage_type`, `triggered_by_email`, `triggered_by_name`, `service_name`, and `service_id`.
         :param _builtins.str region: Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "iam_role_arn", iam_role_arn)
         if delegate_selectors is not None:
             pulumi.set(__self__, "delegate_selectors", delegate_selectors)
+        if oidc_session_tag_keys is not None:
+            pulumi.set(__self__, "oidc_session_tag_keys", oidc_session_tag_keys)
         if region is not None:
             pulumi.set(__self__, "region", region)
 
@@ -2620,6 +2626,14 @@ class AwsConnectorOidcAuthentication(dict):
         The delegates to inherit the credentials from.
         """
         return pulumi.get(self, "delegate_selectors")
+
+    @_builtins.property
+    @pulumi.getter(name="oidcSessionTagKeys")
+    def oidc_session_tag_keys(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include `account_id`, `organization_id`, `project_id`, `environment_id`, `environment_type`, `pipeline_id`, `connector_id`, `connector_name`, `delegate_selectors`, `context`, `step_type`, `stage_type`, `triggered_by_email`, `triggered_by_name`, `service_name`, and `service_id`.
+        """
+        return pulumi.get(self, "oidc_session_tag_keys")
 
     @_builtins.property
     @pulumi.getter
@@ -112922,14 +112936,17 @@ class GetAwsConnectorOidcAuthenticationResult(dict):
     def __init__(__self__, *,
                  delegate_selectors: Sequence[_builtins.str],
                  iam_role_arn: _builtins.str,
+                 oidc_session_tag_keys: Sequence[_builtins.str],
                  region: Optional[_builtins.str] = None):
         """
         :param Sequence[_builtins.str] delegate_selectors: The delegates to inherit the credentials from.
         :param _builtins.str iam_role_arn: The IAM Role to assume the credentials from.
+        :param Sequence[_builtins.str] oidc_session_tag_keys: Supported values include `account_id`, `organization_id`, `project_id`, `environment_id`, `environment_type`, `pipeline_id`, `connector_id`, `connector_name`, `delegate_selectors`, `context`, `step_type`, `stage_type`, `triggered_by_email`, `triggered_by_name`, `service_name`, and `service_id`.
         :param _builtins.str region: Test Region to perform Connection test of AWS Connector To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         pulumi.set(__self__, "delegate_selectors", delegate_selectors)
         pulumi.set(__self__, "iam_role_arn", iam_role_arn)
+        pulumi.set(__self__, "oidc_session_tag_keys", oidc_session_tag_keys)
         if region is not None:
             pulumi.set(__self__, "region", region)
 
@@ -112948,6 +112965,14 @@ class GetAwsConnectorOidcAuthenticationResult(dict):
         The IAM Role to assume the credentials from.
         """
         return pulumi.get(self, "iam_role_arn")
+
+    @_builtins.property
+    @pulumi.getter(name="oidcSessionTagKeys")
+    def oidc_session_tag_keys(self) -> Sequence[_builtins.str]:
+        """
+        Supported values include `account_id`, `organization_id`, `project_id`, `environment_id`, `environment_type`, `pipeline_id`, `connector_id`, `connector_name`, `delegate_selectors`, `context`, `step_type`, `stage_type`, `triggered_by_email`, `triggered_by_name`, `service_name`, and `service_id`.
+        """
+        return pulumi.get(self, "oidc_session_tag_keys")
 
     @_builtins.property
     @pulumi.getter

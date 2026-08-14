@@ -197,7 +197,6 @@ class Rule(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.governance.Rule("example",
-            identifier="identifier",
             name="name",
             cloud_provider="AWS/AZURE/GCP",
             description="description",
@@ -205,6 +204,8 @@ class Rule(pulumi.CustomResource):
           - name: aws-list-ec2
             resource: aws.ec2\"\"\")
         ```
+
+        > **Note:** `rule_id` is computed after the rule is created and can be referenced via outputs or other resources (for example, `harness_governance_rule.example.rule_id`).
 
         ## Import
 
@@ -240,7 +241,6 @@ class Rule(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.governance.Rule("example",
-            identifier="identifier",
             name="name",
             cloud_provider="AWS/AZURE/GCP",
             description="description",
@@ -248,6 +248,8 @@ class Rule(pulumi.CustomResource):
           - name: aws-list-ec2
             resource: aws.ec2\"\"\")
         ```
+
+        > **Note:** `rule_id` is computed after the rule is created and can be referenced via outputs or other resources (for example, `harness_governance_rule.example.rule_id`).
 
         ## Import
 

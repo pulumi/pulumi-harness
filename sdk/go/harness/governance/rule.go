@@ -29,7 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := governance.NewRule(ctx, "example", &governance.RuleArgs{
-//				Identifier:    "identifier",
 //				Name:          pulumi.String("name"),
 //				CloudProvider: pulumi.String("AWS/AZURE/GCP"),
 //				Description:   pulumi.String("description"),
@@ -43,6 +42,8 @@ import (
 //	}
 //
 // ```
+//
+// > **Note:** `ruleId` is computed after the rule is created and can be referenced via outputs or other resources (for example, `harness_governance_rule.example.rule_id`).
 //
 // ## Import
 //

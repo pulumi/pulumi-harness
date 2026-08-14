@@ -42,7 +42,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Rule("example", RuleArgs.builder()
- *             .identifier("identifier")
  *             .name("name")
  *             .cloudProvider("AWS/AZURE/GCP")
  *             .description("description")
@@ -56,6 +55,8 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * &gt; **Note:** `ruleId` is computed after the rule is created and can be referenced via outputs or other resources (for example, `harness_governance_rule.example.rule_id`).
  * 
  * ## Import
  * 

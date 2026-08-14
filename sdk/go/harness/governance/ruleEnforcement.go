@@ -29,7 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := governance.NewRuleEnforcement(ctx, "example", &governance.RuleEnforcementArgs{
-//				Identifier:    "identifier",
 //				Name:          pulumi.String("name"),
 //				CloudProvider: pulumi.String("AWS/AZURE/GCP"),
 //				RuleIds: pulumi.StringArray{
@@ -58,6 +57,8 @@ import (
 //	}
 //
 // ```
+//
+// > **Note:** `enforcementId` is computed after the enforcement is created and can be referenced via outputs or other resources (for example, `harness_governance_rule_enforcement.example.enforcement_id`).
 //
 // ## Import
 //

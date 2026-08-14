@@ -24,7 +24,6 @@ namespace Pulumi.Harness.Governance
     /// {
     ///     var example = new Harness.Governance.Rule("example", new()
     ///     {
-    ///         Identifier = "identifier",
     ///         Name = "name",
     ///         CloudProvider = "AWS/AZURE/GCP",
     ///         Description = "description",
@@ -35,6 +34,8 @@ namespace Pulumi.Harness.Governance
     /// 
     /// });
     /// ```
+    /// 
+    /// &gt; **Note:** `RuleId` is computed after the rule is created and can be referenced via outputs or other resources (for example, `harness_governance_rule.example.rule_id`).
     /// 
     /// ## Import
     /// 

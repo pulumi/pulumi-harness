@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.governance.RuleEnforcement("example", {
- *     identifier: "identifier",
  *     name: "name",
  *     cloudProvider: "AWS/AZURE/GCP",
  *     ruleIds: ["rule_id1"],
@@ -28,6 +27,8 @@ import * as utilities from "../utilities";
  *     description: "description",
  * });
  * ```
+ *
+ * > **Note:** `enforcementId` is computed after the enforcement is created and can be referenced via outputs or other resources (for example, `harness_governance_rule_enforcement.example.enforcement_id`).
  *
  * ## Import
  *

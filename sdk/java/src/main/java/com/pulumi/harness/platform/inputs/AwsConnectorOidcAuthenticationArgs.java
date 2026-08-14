@@ -48,6 +48,21 @@ public final class AwsConnectorOidcAuthenticationArgs extends com.pulumi.resourc
     }
 
     /**
+     * List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+     * 
+     */
+    @Import(name="oidcSessionTagKeys")
+    private @Nullable Output<List<String>> oidcSessionTagKeys;
+
+    /**
+     * @return List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+     * 
+     */
+    public Optional<Output<List<String>>> oidcSessionTagKeys() {
+        return Optional.ofNullable(this.oidcSessionTagKeys);
+    }
+
+    /**
      * Test Region to perform Connection test of AWS Connector. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
      */
@@ -67,6 +82,7 @@ public final class AwsConnectorOidcAuthenticationArgs extends com.pulumi.resourc
     private AwsConnectorOidcAuthenticationArgs(AwsConnectorOidcAuthenticationArgs $) {
         this.delegateSelectors = $.delegateSelectors;
         this.iamRoleArn = $.iamRoleArn;
+        this.oidcSessionTagKeys = $.oidcSessionTagKeys;
         this.region = $.region;
     }
 
@@ -138,6 +154,37 @@ public final class AwsConnectorOidcAuthenticationArgs extends com.pulumi.resourc
          */
         public Builder iamRoleArn(String iamRoleArn) {
             return iamRoleArn(Output.of(iamRoleArn));
+        }
+
+        /**
+         * @param oidcSessionTagKeys List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcSessionTagKeys(@Nullable Output<List<String>> oidcSessionTagKeys) {
+            $.oidcSessionTagKeys = oidcSessionTagKeys;
+            return this;
+        }
+
+        /**
+         * @param oidcSessionTagKeys List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcSessionTagKeys(List<String> oidcSessionTagKeys) {
+            return oidcSessionTagKeys(Output.of(oidcSessionTagKeys));
+        }
+
+        /**
+         * @param oidcSessionTagKeys List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcSessionTagKeys(String... oidcSessionTagKeys) {
+            return oidcSessionTagKeys(List.of(oidcSessionTagKeys));
         }
 
         /**
