@@ -551,22 +551,40 @@ class Template(pulumi.CustomResource):
 
         The `pulumi import` command can be used, for example:
 
-        Import account level template
+        Import account level template (stable version)
 
         ```sh
         $ pulumi import harness:platform/template:Template example <template_id>
         ```
 
-        Import org level template
+        Import account level template (specific version)
 
         ```sh
-        $ pulumi import harness:platform/template:Template example <ord_id>/<template_id>
+        $ pulumi import harness:platform/template:Template example <template_id>/versions/<version>
         ```
 
-        Import project level template
+        Import org level template (stable version)
+
+        ```sh
+        $ pulumi import harness:platform/template:Template example <org_id>/<template_id>
+        ```
+
+        Import org level template (specific version)
+
+        ```sh
+        $ pulumi import harness:platform/template:Template example <org_id>/<template_id>/versions/<version>
+        ```
+
+        Import project level template (stable version)
 
         ```sh
         $ pulumi import harness:platform/template:Template example <org_id>/<project_id>/<template_id>
+        ```
+
+        Import project level template (specific version)
+
+        ```sh
+        $ pulumi import harness:platform/template:Template example <org_id>/<project_id>/<template_id>/versions/<version>
         ```
 
 
@@ -601,22 +619,40 @@ class Template(pulumi.CustomResource):
 
         The `pulumi import` command can be used, for example:
 
-        Import account level template
+        Import account level template (stable version)
 
         ```sh
         $ pulumi import harness:platform/template:Template example <template_id>
         ```
 
-        Import org level template
+        Import account level template (specific version)
 
         ```sh
-        $ pulumi import harness:platform/template:Template example <ord_id>/<template_id>
+        $ pulumi import harness:platform/template:Template example <template_id>/versions/<version>
         ```
 
-        Import project level template
+        Import org level template (stable version)
+
+        ```sh
+        $ pulumi import harness:platform/template:Template example <org_id>/<template_id>
+        ```
+
+        Import org level template (specific version)
+
+        ```sh
+        $ pulumi import harness:platform/template:Template example <org_id>/<template_id>/versions/<version>
+        ```
+
+        Import project level template (stable version)
 
         ```sh
         $ pulumi import harness:platform/template:Template example <org_id>/<project_id>/<template_id>
+        ```
+
+        Import project level template (specific version)
+
+        ```sh
+        $ pulumi import harness:platform/template:Template example <org_id>/<project_id>/<template_id>/versions/<version>
         ```
 
 

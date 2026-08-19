@@ -3105,6 +3105,8 @@ __all__ = [
     'HarRegistryConfigArgsDict',
     'HarRegistryConfigAuthArgs',
     'HarRegistryConfigAuthArgsDict',
+    'HarRegistryConfigDebianConfigArgs',
+    'HarRegistryConfigDebianConfigArgsDict',
     'HelmConnectorCredentialsArgs',
     'HelmConnectorCredentialsArgsDict',
     'IacmAnsibleInventoryDynamicGroupArgs',
@@ -3393,6 +3395,8 @@ __all__ = [
     'GetHarRegistryConfigArgsDict',
     'GetHarRegistryConfigAuthArgs',
     'GetHarRegistryConfigAuthArgsDict',
+    'GetHarRegistryConfigDebianConfigArgs',
+    'GetHarRegistryConfigDebianConfigArgsDict',
     'GetInfraModuleTestingMetadataArgs',
     'GetInfraModuleTestingMetadataArgsDict',
     'GetInfraModuleTestingTestingMetadataArgs',
@@ -140090,6 +140094,10 @@ class HarRegistryConfigArgsDict(TypedDict):
     """
     Authentication configuration for UPSTREAM registry type
     """
+    debian_config: NotRequired[pulumi.Input[Optional['HarRegistryConfigDebianConfigArgsDict']]]
+    """
+    Debian-specific configuration, applicable only when package*type is DEBIAN and config.type is VIRTUAL
+    """
     firewall_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
@@ -140117,6 +140125,7 @@ class HarRegistryConfigArgs:
                  type: pulumi.Input[_builtins.str],
                  auth_type: pulumi.Input[Optional[_builtins.str]] = None,
                  auths: pulumi.Input[Optional[Sequence[pulumi.Input['HarRegistryConfigAuthArgs']]]] = None,
+                 debian_config: pulumi.Input[Optional['HarRegistryConfigDebianConfigArgs']] = None,
                  firewall_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  remote_url_suffix: pulumi.Input[Optional[_builtins.str]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
@@ -140126,6 +140135,7 @@ class HarRegistryConfigArgs:
         :param pulumi.Input[_builtins.str] type: Type of registry (VIRTUAL or UPSTREAM)
         :param pulumi.Input[_builtins.str] auth_type: Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
         :param pulumi.Input[Sequence[pulumi.Input['HarRegistryConfigAuthArgs']]] auths: Authentication configuration for UPSTREAM registry type
+        :param pulumi.Input['HarRegistryConfigDebianConfigArgs'] debian_config: Debian-specific configuration, applicable only when package*type is DEBIAN and config.type is VIRTUAL
         :param pulumi.Input[_builtins.str] firewall_mode: Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
         :param pulumi.Input[_builtins.str] remote_url_suffix: Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
         :param pulumi.Input[_builtins.str] source: Upstream source
@@ -140137,6 +140147,8 @@ class HarRegistryConfigArgs:
             pulumi.set(__self__, "auth_type", auth_type)
         if auths is not None:
             pulumi.set(__self__, "auths", auths)
+        if debian_config is not None:
+            pulumi.set(__self__, "debian_config", debian_config)
         if firewall_mode is not None:
             pulumi.set(__self__, "firewall_mode", firewall_mode)
         if remote_url_suffix is not None:
@@ -140183,6 +140195,18 @@ class HarRegistryConfigArgs:
     @auths.setter
     def auths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HarRegistryConfigAuthArgs']]]]):
         pulumi.set(self, "auths", value)
+
+    @_builtins.property
+    @pulumi.getter(name="debianConfig")
+    def debian_config(self) -> pulumi.Input[Optional['HarRegistryConfigDebianConfigArgs']]:
+        """
+        Debian-specific configuration, applicable only when package*type is DEBIAN and config.type is VIRTUAL
+        """
+        return pulumi.get(self, "debian_config")
+
+    @debian_config.setter
+    def debian_config(self, value: pulumi.Input[Optional['HarRegistryConfigDebianConfigArgs']]):
+        pulumi.set(self, "debian_config", value)
 
     @_builtins.property
     @pulumi.getter(name="firewallMode")
@@ -140396,6 +140420,55 @@ class HarRegistryConfigAuthArgs:
     @user_name.setter
     def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
+
+
+class HarRegistryConfigDebianConfigArgsDict(TypedDict):
+    optional_index_compression_formats: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional additional compression formats to generate for index/metadata files
+    """
+    remote_indexed_architectures: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Architectures to index when building metadata from linked remote (upstream) registries. Defaults to amd64, i386, arm64
+    """
+
+@pulumi.input_type
+class HarRegistryConfigDebianConfigArgs:
+    def __init__(__self__, *,
+                 optional_index_compression_formats: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 remote_indexed_architectures: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] optional_index_compression_formats: Optional additional compression formats to generate for index/metadata files
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] remote_indexed_architectures: Architectures to index when building metadata from linked remote (upstream) registries. Defaults to amd64, i386, arm64
+        """
+        if optional_index_compression_formats is not None:
+            pulumi.set(__self__, "optional_index_compression_formats", optional_index_compression_formats)
+        if remote_indexed_architectures is not None:
+            pulumi.set(__self__, "remote_indexed_architectures", remote_indexed_architectures)
+
+    @_builtins.property
+    @pulumi.getter(name="optionalIndexCompressionFormats")
+    def optional_index_compression_formats(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional additional compression formats to generate for index/metadata files
+        """
+        return pulumi.get(self, "optional_index_compression_formats")
+
+    @optional_index_compression_formats.setter
+    def optional_index_compression_formats(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "optional_index_compression_formats", value)
+
+    @_builtins.property
+    @pulumi.getter(name="remoteIndexedArchitectures")
+    def remote_indexed_architectures(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Architectures to index when building metadata from linked remote (upstream) registries. Defaults to amd64, i386, arm64
+        """
+        return pulumi.get(self, "remote_indexed_architectures")
+
+    @remote_indexed_architectures.setter
+    def remote_indexed_architectures(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "remote_indexed_architectures", value)
 
 
 class HelmConnectorCredentialsArgsDict(TypedDict):
@@ -152839,6 +152912,10 @@ class GetHarRegistryConfigArgsDict(TypedDict):
     """
     Authentication configuration for UPSTREAM registry type
     """
+    debian_config: NotRequired['GetHarRegistryConfigDebianConfigArgsDict']
+    """
+    Debian-specific configuration, applicable only when package_type is DEBIAN and config.type is VIRTUAL
+    """
     remote_url_suffix: NotRequired[_builtins.str]
     """
     Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
@@ -152863,6 +152940,7 @@ class GetHarRegistryConfigArgs:
                  type: _builtins.str,
                  auth_type: Optional[_builtins.str] = None,
                  auths: Optional[Sequence['GetHarRegistryConfigAuthArgs']] = None,
+                 debian_config: Optional['GetHarRegistryConfigDebianConfigArgs'] = None,
                  remote_url_suffix: Optional[_builtins.str] = None,
                  source: Optional[_builtins.str] = None,
                  upstream_proxies: Optional[Sequence[_builtins.str]] = None,
@@ -152872,6 +152950,7 @@ class GetHarRegistryConfigArgs:
         :param _builtins.str type: Type of registry (VIRTUAL or UPSTREAM)
         :param _builtins.str auth_type: Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
         :param Sequence['GetHarRegistryConfigAuthArgs'] auths: Authentication configuration for UPSTREAM registry type
+        :param 'GetHarRegistryConfigDebianConfigArgs' debian_config: Debian-specific configuration, applicable only when package_type is DEBIAN and config.type is VIRTUAL
         :param _builtins.str remote_url_suffix: Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
         :param _builtins.str source: Upstream source
         :param Sequence[_builtins.str] upstream_proxies: List of upstream proxies for VIRTUAL registry type
@@ -152883,6 +152962,8 @@ class GetHarRegistryConfigArgs:
             pulumi.set(__self__, "auth_type", auth_type)
         if auths is not None:
             pulumi.set(__self__, "auths", auths)
+        if debian_config is not None:
+            pulumi.set(__self__, "debian_config", debian_config)
         if remote_url_suffix is not None:
             pulumi.set(__self__, "remote_url_suffix", remote_url_suffix)
         if source is not None:
@@ -152939,6 +153020,18 @@ class GetHarRegistryConfigArgs:
     @auths.setter
     def auths(self, value: Optional[Sequence['GetHarRegistryConfigAuthArgs']]):
         pulumi.set(self, "auths", value)
+
+    @_builtins.property
+    @pulumi.getter(name="debianConfig")
+    def debian_config(self) -> Optional['GetHarRegistryConfigDebianConfigArgs']:
+        """
+        Debian-specific configuration, applicable only when package_type is DEBIAN and config.type is VIRTUAL
+        """
+        return pulumi.get(self, "debian_config")
+
+    @debian_config.setter
+    def debian_config(self, value: Optional['GetHarRegistryConfigDebianConfigArgs']):
+        pulumi.set(self, "debian_config", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteUrlSuffix")
@@ -153140,6 +153233,55 @@ class GetHarRegistryConfigAuthArgs:
     @user_name.setter
     def user_name(self, value: Optional[_builtins.str]):
         pulumi.set(self, "user_name", value)
+
+
+class GetHarRegistryConfigDebianConfigArgsDict(TypedDict):
+    optional_index_compression_formats: NotRequired[Sequence[_builtins.str]]
+    """
+    Optional additional compression formats to generate for index/metadata files
+    """
+    remote_indexed_architectures: NotRequired[Sequence[_builtins.str]]
+    """
+    Architectures to index when building metadata from linked remote (upstream) registries. Defaults to amd64, i386, arm64
+    """
+
+@pulumi.input_type
+class GetHarRegistryConfigDebianConfigArgs:
+    def __init__(__self__, *,
+                 optional_index_compression_formats: Optional[Sequence[_builtins.str]] = None,
+                 remote_indexed_architectures: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] optional_index_compression_formats: Optional additional compression formats to generate for index/metadata files
+        :param Sequence[_builtins.str] remote_indexed_architectures: Architectures to index when building metadata from linked remote (upstream) registries. Defaults to amd64, i386, arm64
+        """
+        if optional_index_compression_formats is not None:
+            pulumi.set(__self__, "optional_index_compression_formats", optional_index_compression_formats)
+        if remote_indexed_architectures is not None:
+            pulumi.set(__self__, "remote_indexed_architectures", remote_indexed_architectures)
+
+    @_builtins.property
+    @pulumi.getter(name="optionalIndexCompressionFormats")
+    def optional_index_compression_formats(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Optional additional compression formats to generate for index/metadata files
+        """
+        return pulumi.get(self, "optional_index_compression_formats")
+
+    @optional_index_compression_formats.setter
+    def optional_index_compression_formats(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "optional_index_compression_formats", value)
+
+    @_builtins.property
+    @pulumi.getter(name="remoteIndexedArchitectures")
+    def remote_indexed_architectures(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Architectures to index when building metadata from linked remote (upstream) registries. Defaults to amd64, i386, arm64
+        """
+        return pulumi.get(self, "remote_indexed_architectures")
+
+    @remote_indexed_architectures.setter
+    def remote_indexed_architectures(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "remote_indexed_architectures", value)
 
 
 class GetInfraModuleTestingMetadataArgsDict(TypedDict):

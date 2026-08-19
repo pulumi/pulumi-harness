@@ -131,6 +131,34 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Example of a Virtual Debian Registry with Debian-specific configuration
+//			_, err = platform.NewHarRegistry(ctx, "debian_virtual", &platform.HarRegistryArgs{
+//				Identifier:  pulumi.String("virtual_debian_registry"),
+//				Description: pulumi.String("Virtual Debian Registry"),
+//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
+//				PackageType: pulumi.String("DEBIAN"),
+//				Configs: platform.HarRegistryConfigArray{
+//					&platform.HarRegistryConfigArgs{
+//						Type: pulumi.String("VIRTUAL"),
+//						UpstreamProxies: pulumi.StringArray{
+//							pulumi.String("debian_upstream_registry"),
+//						},
+//						DebianConfig: &platform.HarRegistryConfigDebianConfigArgs{
+//							RemoteIndexedArchitectures: pulumi.StringArray{
+//								pulumi.String("amd64"),
+//								pulumi.String("arm64"),
+//							},
+//							OptionalIndexCompressionFormats: pulumi.StringArray{
+//								pulumi.String(".xz"),
+//							},
+//						},
+//					},
+//				},
+//				ParentRef: pulumi.String("accountId/orgId/projectId"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			// Example of an Upstream Custom Debian Registry (Debian source needs url)
 //			_, err = platform.NewHarRegistry(ctx, "debian_upstream", &platform.HarRegistryArgs{
 //				Identifier:  pulumi.String("upstream_debian_registry"),

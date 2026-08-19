@@ -9573,6 +9573,10 @@ export namespace platform {
          */
         auths?: outputs.platform.GetHarRegistryConfigAuth[];
         /**
+         * Debian-specific configuration, applicable only when packageType is DEBIAN and config.type is VIRTUAL
+         */
+        debianConfig?: outputs.platform.GetHarRegistryConfigDebianConfig;
+        /**
          * Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
          */
         firewallMode: string;
@@ -9620,6 +9624,17 @@ export namespace platform {
          * User name for UserPassword auth type
          */
         userName?: string;
+    }
+
+    export interface GetHarRegistryConfigDebianConfig {
+        /**
+         * Optional additional compression formats to generate for index/metadata files
+         */
+        optionalIndexCompressionFormats?: string[];
+        /**
+         * Architectures to index when building metadata from linked remote (upstream) registries. Defaults to amd64, i386, arm64
+         */
+        remoteIndexedArchitectures?: string[];
     }
 
     export interface GetHelmConnectorCredential {
@@ -39664,6 +39679,10 @@ export namespace platform {
          */
         auths?: outputs.platform.HarRegistryConfigAuth[];
         /**
+         * Debian-specific configuration, applicable only when package*type is DEBIAN and config.type is VIRTUAL
+         */
+        debianConfig?: outputs.platform.HarRegistryConfigDebianConfig;
+        /**
          * Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
          */
         firewallMode: string;
@@ -39711,6 +39730,17 @@ export namespace platform {
          * Username for UserPassword auth type
          */
         userName?: string;
+    }
+
+    export interface HarRegistryConfigDebianConfig {
+        /**
+         * Optional additional compression formats to generate for index/metadata files
+         */
+        optionalIndexCompressionFormats?: string[];
+        /**
+         * Architectures to index when building metadata from linked remote (upstream) registries. Defaults to amd64, i386, arm64
+         */
+        remoteIndexedArchitectures?: string[];
     }
 
     export interface HelmConnectorCredentials {

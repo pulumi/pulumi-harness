@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetHarRegistryConfigAuth;
+import com.pulumi.harness.platform.outputs.GetHarRegistryConfigDebianConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -24,6 +25,11 @@ public final class GetHarRegistryConfig {
      * 
      */
     private @Nullable List<GetHarRegistryConfigAuth> auths;
+    /**
+     * @return Debian-specific configuration, applicable only when packageType is DEBIAN and config.type is VIRTUAL
+     * 
+     */
+    private @Nullable GetHarRegistryConfigDebianConfig debianConfig;
     /**
      * @return Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
      * 
@@ -69,6 +75,13 @@ public final class GetHarRegistryConfig {
      */
     public List<GetHarRegistryConfigAuth> auths() {
         return this.auths == null ? List.of() : this.auths;
+    }
+    /**
+     * @return Debian-specific configuration, applicable only when packageType is DEBIAN and config.type is VIRTUAL
+     * 
+     */
+    public Optional<GetHarRegistryConfigDebianConfig> debianConfig() {
+        return Optional.ofNullable(this.debianConfig);
     }
     /**
      * @return Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
@@ -124,6 +137,7 @@ public final class GetHarRegistryConfig {
     public static final class Builder {
         private @Nullable String authType;
         private @Nullable List<GetHarRegistryConfigAuth> auths;
+        private @Nullable GetHarRegistryConfigDebianConfig debianConfig;
         private String firewallMode;
         private @Nullable String remoteUrlSuffix;
         private @Nullable String source;
@@ -135,6 +149,7 @@ public final class GetHarRegistryConfig {
     	      Objects.requireNonNull(defaults);
     	      this.authType = defaults.authType;
     	      this.auths = defaults.auths;
+    	      this.debianConfig = defaults.debianConfig;
     	      this.firewallMode = defaults.firewallMode;
     	      this.remoteUrlSuffix = defaults.remoteUrlSuffix;
     	      this.source = defaults.source;
@@ -157,6 +172,12 @@ public final class GetHarRegistryConfig {
         }
         public Builder auths(GetHarRegistryConfigAuth... auths) {
             return auths(List.of(auths));
+        }
+        @CustomType.Setter
+        public Builder debianConfig(@Nullable GetHarRegistryConfigDebianConfig debianConfig) {
+
+            this.debianConfig = debianConfig;
+            return this;
         }
         @CustomType.Setter
         public Builder firewallMode(String firewallMode) {
@@ -205,6 +226,7 @@ public final class GetHarRegistryConfig {
             final var _resultValue = new GetHarRegistryConfig();
             _resultValue.authType = authType;
             _resultValue.auths = auths;
+            _resultValue.debianConfig = debianConfig;
             _resultValue.firewallMode = firewallMode;
             _resultValue.remoteUrlSuffix = remoteUrlSuffix;
             _resultValue.source = source;
