@@ -14980,6 +14980,19 @@
                                 "auth": {
                                     "maxItemsOne": false
                                 },
+                                "debian_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "optional_index_compression_formats": {
+                                                "maxItemsOne": false
+                                            },
+                                            "remote_indexed_architectures": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "upstream_proxies": {
                                     "maxItemsOne": false
                                 }
@@ -18995,6 +19008,19 @@
                             "fields": {
                                 "auth": {
                                     "maxItemsOne": false
+                                },
+                                "debian_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "optional_index_compression_formats": {
+                                                "maxItemsOne": false
+                                            },
+                                            "remote_indexed_architectures": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "upstream_proxies": {
                                     "maxItemsOne": false
