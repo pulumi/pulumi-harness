@@ -8798,6 +8798,10 @@ export namespace platform {
          */
         auths?: inputs.platform.GetHarRegistryConfigAuth[];
         /**
+         * Debian-specific configuration, applicable only when packageType is DEBIAN and config.type is VIRTUAL
+         */
+        debianConfig?: inputs.platform.GetHarRegistryConfigDebianConfig;
+        /**
          * Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
          */
         firewallMode?: string;
@@ -8832,6 +8836,10 @@ export namespace platform {
          * Authentication configuration for UPSTREAM registry type
          */
         auths?: pulumi.Input<pulumi.Input<inputs.platform.GetHarRegistryConfigAuthArgs>[] | undefined>;
+        /**
+         * Debian-specific configuration, applicable only when packageType is DEBIAN and config.type is VIRTUAL
+         */
+        debianConfig?: pulumi.Input<inputs.platform.GetHarRegistryConfigDebianConfigArgs | undefined>;
         /**
          * Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
          */
@@ -8904,6 +8912,28 @@ export namespace platform {
          * User name for UserPassword auth type
          */
         userName?: pulumi.Input<string | undefined>;
+    }
+
+    export interface GetHarRegistryConfigDebianConfig {
+        /**
+         * Optional additional compression formats to generate for index/metadata files
+         */
+        optionalIndexCompressionFormats?: string[];
+        /**
+         * Architectures to index when building metadata from linked remote (upstream) registries. Defaults to amd64, i386, arm64
+         */
+        remoteIndexedArchitectures?: string[];
+    }
+
+    export interface GetHarRegistryConfigDebianConfigArgs {
+        /**
+         * Optional additional compression formats to generate for index/metadata files
+         */
+        optionalIndexCompressionFormats?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Architectures to index when building metadata from linked remote (upstream) registries. Defaults to amd64, i386, arm64
+         */
+        remoteIndexedArchitectures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface GetInfraModuleTestingMetadata {
@@ -38024,6 +38054,10 @@ export namespace platform {
          */
         auths?: pulumi.Input<pulumi.Input<inputs.platform.HarRegistryConfigAuth>[] | undefined>;
         /**
+         * Debian-specific configuration, applicable only when package*type is DEBIAN and config.type is VIRTUAL
+         */
+        debianConfig?: pulumi.Input<inputs.platform.HarRegistryConfigDebianConfig | undefined>;
+        /**
          * Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
          */
         firewallMode?: pulumi.Input<string | undefined>;
@@ -38071,6 +38105,17 @@ export namespace platform {
          * Username for UserPassword auth type
          */
         userName?: pulumi.Input<string | undefined>;
+    }
+
+    export interface HarRegistryConfigDebianConfig {
+        /**
+         * Optional additional compression formats to generate for index/metadata files
+         */
+        optionalIndexCompressionFormats?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Architectures to index when building metadata from linked remote (upstream) registries. Defaults to amd64, i386, arm64
+         */
+        remoteIndexedArchitectures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface HelmConnectorCredentials {

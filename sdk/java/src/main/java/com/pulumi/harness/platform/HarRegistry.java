@@ -36,6 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.HarRegistryArgs;
  * import com.pulumi.harness.platform.inputs.HarRegistryConfigArgs;
  * import com.pulumi.harness.platform.inputs.HarRegistryConfigAuthArgs;
+ * import com.pulumi.harness.platform.inputs.HarRegistryConfigDebianConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -123,6 +124,25 @@ import javax.annotation.Nullable;
  *                 .source("HelmChartRepo")
  *                 .url("https://charts.bitnami.com/bitnami")
  *                 .authType("Anonymous")
+ *                 .build())
+ *             .parentRef("accountId/orgId/projectId")
+ *             .build());
+ * 
+ *         // Example of a Virtual Debian Registry with Debian-specific configuration
+ *         var debianVirtual = new HarRegistry("debianVirtual", HarRegistryArgs.builder()
+ *             .identifier("virtual_debian_registry")
+ *             .description("Virtual Debian Registry")
+ *             .spaceRef("accountId/orgId/projectId")
+ *             .packageType("DEBIAN")
+ *             .configs(HarRegistryConfigArgs.builder()
+ *                 .type("VIRTUAL")
+ *                 .upstreamProxies("debian_upstream_registry")
+ *                 .debianConfig(HarRegistryConfigDebianConfigArgs.builder()
+ *                     .remoteIndexedArchitectures(                    
+ *                         "amd64",
+ *                         "arm64")
+ *                     .optionalIndexCompressionFormats(".xz")
+ *                     .build())
  *                 .build())
  *             .parentRef("accountId/orgId/projectId")
  *             .build());

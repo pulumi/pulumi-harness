@@ -31,6 +31,12 @@ namespace Pulumi.Harness.Platform.Inputs
         }
 
         /// <summary>
+        /// Debian-specific configuration, applicable only when package*type is DEBIAN and config.type is VIRTUAL
+        /// </summary>
+        [Input("debianConfig")]
+        public Input<Inputs.HarRegistryConfigDebianConfigGetArgs>? DebianConfig { get; set; }
+
+        /// <summary>
         /// Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
         /// </summary>
         [Input("firewallMode")]

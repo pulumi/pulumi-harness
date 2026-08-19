@@ -22,6 +22,10 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetHarRegistryConfigAuthResult> Auths;
         /// <summary>
+        /// Debian-specific configuration, applicable only when PackageType is DEBIAN and config.type is VIRTUAL
+        /// </summary>
+        public readonly Outputs.GetHarRegistryConfigDebianConfigResult? DebianConfig;
+        /// <summary>
         /// Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
         /// </summary>
         public readonly string FirewallMode;
@@ -52,6 +56,8 @@ namespace Pulumi.Harness.Platform.Outputs
 
             ImmutableArray<Outputs.GetHarRegistryConfigAuthResult> auths,
 
+            Outputs.GetHarRegistryConfigDebianConfigResult? debianConfig,
+
             string firewallMode,
 
             string? remoteUrlSuffix,
@@ -66,6 +72,7 @@ namespace Pulumi.Harness.Platform.Outputs
         {
             AuthType = authType;
             Auths = auths;
+            DebianConfig = debianConfig;
             FirewallMode = firewallMode;
             RemoteUrlSuffix = remoteUrlSuffix;
             Source = source;

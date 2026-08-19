@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.inputs.GetHarRegistryConfigAuth;
+import com.pulumi.harness.platform.inputs.GetHarRegistryConfigDebianConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -45,6 +46,21 @@ public final class GetHarRegistryConfig extends com.pulumi.resources.InvokeArgs 
      */
     public Optional<List<GetHarRegistryConfigAuth>> auths() {
         return Optional.ofNullable(this.auths);
+    }
+
+    /**
+     * Debian-specific configuration, applicable only when packageType is DEBIAN and config.type is VIRTUAL
+     * 
+     */
+    @Import(name="debianConfig")
+    private @Nullable GetHarRegistryConfigDebianConfig debianConfig;
+
+    /**
+     * @return Debian-specific configuration, applicable only when packageType is DEBIAN and config.type is VIRTUAL
+     * 
+     */
+    public Optional<GetHarRegistryConfigDebianConfig> debianConfig() {
+        return Optional.ofNullable(this.debianConfig);
     }
 
     /**
@@ -142,6 +158,7 @@ public final class GetHarRegistryConfig extends com.pulumi.resources.InvokeArgs 
     private GetHarRegistryConfig(GetHarRegistryConfig $) {
         this.authType = $.authType;
         this.auths = $.auths;
+        this.debianConfig = $.debianConfig;
         this.firewallMode = $.firewallMode;
         this.remoteUrlSuffix = $.remoteUrlSuffix;
         this.source = $.source;
@@ -198,6 +215,17 @@ public final class GetHarRegistryConfig extends com.pulumi.resources.InvokeArgs 
          */
         public Builder auths(GetHarRegistryConfigAuth... auths) {
             return auths(List.of(auths));
+        }
+
+        /**
+         * @param debianConfig Debian-specific configuration, applicable only when packageType is DEBIAN and config.type is VIRTUAL
+         * 
+         * @return builder
+         * 
+         */
+        public Builder debianConfig(@Nullable GetHarRegistryConfigDebianConfig debianConfig) {
+            $.debianConfig = debianConfig;
+            return this;
         }
 
         /**

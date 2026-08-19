@@ -7251,6 +7251,8 @@ type HarRegistryConfig struct {
 	AuthType *string `pulumi:"authType"`
 	// Authentication configuration for UPSTREAM registry type
 	Auths []HarRegistryConfigAuth `pulumi:"auths"`
+	// Debian-specific configuration, applicable only when package*type is DEBIAN and config.type is VIRTUAL
+	DebianConfig *HarRegistryConfigDebianConfig `pulumi:"debianConfig"`
 	// Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
 	FirewallMode *string `pulumi:"firewallMode"`
 	// Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
@@ -7281,6 +7283,8 @@ type HarRegistryConfigArgs struct {
 	AuthType pulumi.StringPtrInput `pulumi:"authType"`
 	// Authentication configuration for UPSTREAM registry type
 	Auths HarRegistryConfigAuthArrayInput `pulumi:"auths"`
+	// Debian-specific configuration, applicable only when package*type is DEBIAN and config.type is VIRTUAL
+	DebianConfig HarRegistryConfigDebianConfigPtrInput `pulumi:"debianConfig"`
 	// Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
 	FirewallMode pulumi.StringPtrInput `pulumi:"firewallMode"`
 	// Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
@@ -7354,6 +7358,11 @@ func (o HarRegistryConfigOutput) AuthType() pulumi.StringPtrOutput {
 // Authentication configuration for UPSTREAM registry type
 func (o HarRegistryConfigOutput) Auths() HarRegistryConfigAuthArrayOutput {
 	return o.ApplyT(func(v HarRegistryConfig) []HarRegistryConfigAuth { return v.Auths }).(HarRegistryConfigAuthArrayOutput)
+}
+
+// Debian-specific configuration, applicable only when package*type is DEBIAN and config.type is VIRTUAL
+func (o HarRegistryConfigOutput) DebianConfig() HarRegistryConfigDebianConfigPtrOutput {
+	return o.ApplyT(func(v HarRegistryConfig) *HarRegistryConfigDebianConfig { return v.DebianConfig }).(HarRegistryConfigDebianConfigPtrOutput)
 }
 
 // Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
@@ -7558,6 +7567,162 @@ func (o HarRegistryConfigAuthArrayOutput) Index(i pulumi.IntInput) HarRegistryCo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HarRegistryConfigAuth {
 		return vs[0].([]HarRegistryConfigAuth)[vs[1].(int)]
 	}).(HarRegistryConfigAuthOutput)
+}
+
+type HarRegistryConfigDebianConfig struct {
+	// Optional additional compression formats to generate for index/metadata files
+	OptionalIndexCompressionFormats []string `pulumi:"optionalIndexCompressionFormats"`
+	// Architectures to index when building metadata from linked remote (upstream) registries. Defaults to amd64, i386, arm64
+	RemoteIndexedArchitectures []string `pulumi:"remoteIndexedArchitectures"`
+}
+
+// HarRegistryConfigDebianConfigInput is an input type that accepts HarRegistryConfigDebianConfigArgs and HarRegistryConfigDebianConfigOutput values.
+// You can construct a concrete instance of `HarRegistryConfigDebianConfigInput` via:
+//
+//	HarRegistryConfigDebianConfigArgs{...}
+type HarRegistryConfigDebianConfigInput interface {
+	pulumi.Input
+
+	ToHarRegistryConfigDebianConfigOutput() HarRegistryConfigDebianConfigOutput
+	ToHarRegistryConfigDebianConfigOutputWithContext(context.Context) HarRegistryConfigDebianConfigOutput
+}
+
+type HarRegistryConfigDebianConfigArgs struct {
+	// Optional additional compression formats to generate for index/metadata files
+	OptionalIndexCompressionFormats pulumi.StringArrayInput `pulumi:"optionalIndexCompressionFormats"`
+	// Architectures to index when building metadata from linked remote (upstream) registries. Defaults to amd64, i386, arm64
+	RemoteIndexedArchitectures pulumi.StringArrayInput `pulumi:"remoteIndexedArchitectures"`
+}
+
+func (HarRegistryConfigDebianConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HarRegistryConfigDebianConfig)(nil)).Elem()
+}
+
+func (i HarRegistryConfigDebianConfigArgs) ToHarRegistryConfigDebianConfigOutput() HarRegistryConfigDebianConfigOutput {
+	return i.ToHarRegistryConfigDebianConfigOutputWithContext(context.Background())
+}
+
+func (i HarRegistryConfigDebianConfigArgs) ToHarRegistryConfigDebianConfigOutputWithContext(ctx context.Context) HarRegistryConfigDebianConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HarRegistryConfigDebianConfigOutput)
+}
+
+func (i HarRegistryConfigDebianConfigArgs) ToHarRegistryConfigDebianConfigPtrOutput() HarRegistryConfigDebianConfigPtrOutput {
+	return i.ToHarRegistryConfigDebianConfigPtrOutputWithContext(context.Background())
+}
+
+func (i HarRegistryConfigDebianConfigArgs) ToHarRegistryConfigDebianConfigPtrOutputWithContext(ctx context.Context) HarRegistryConfigDebianConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HarRegistryConfigDebianConfigOutput).ToHarRegistryConfigDebianConfigPtrOutputWithContext(ctx)
+}
+
+// HarRegistryConfigDebianConfigPtrInput is an input type that accepts HarRegistryConfigDebianConfigArgs, HarRegistryConfigDebianConfigPtr and HarRegistryConfigDebianConfigPtrOutput values.
+// You can construct a concrete instance of `HarRegistryConfigDebianConfigPtrInput` via:
+//
+//	        HarRegistryConfigDebianConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type HarRegistryConfigDebianConfigPtrInput interface {
+	pulumi.Input
+
+	ToHarRegistryConfigDebianConfigPtrOutput() HarRegistryConfigDebianConfigPtrOutput
+	ToHarRegistryConfigDebianConfigPtrOutputWithContext(context.Context) HarRegistryConfigDebianConfigPtrOutput
+}
+
+type harRegistryConfigDebianConfigPtrType HarRegistryConfigDebianConfigArgs
+
+func HarRegistryConfigDebianConfigPtr(v *HarRegistryConfigDebianConfigArgs) HarRegistryConfigDebianConfigPtrInput {
+	return (*harRegistryConfigDebianConfigPtrType)(v)
+}
+
+func (*harRegistryConfigDebianConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HarRegistryConfigDebianConfig)(nil)).Elem()
+}
+
+func (i *harRegistryConfigDebianConfigPtrType) ToHarRegistryConfigDebianConfigPtrOutput() HarRegistryConfigDebianConfigPtrOutput {
+	return i.ToHarRegistryConfigDebianConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *harRegistryConfigDebianConfigPtrType) ToHarRegistryConfigDebianConfigPtrOutputWithContext(ctx context.Context) HarRegistryConfigDebianConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HarRegistryConfigDebianConfigPtrOutput)
+}
+
+type HarRegistryConfigDebianConfigOutput struct{ *pulumi.OutputState }
+
+func (HarRegistryConfigDebianConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HarRegistryConfigDebianConfig)(nil)).Elem()
+}
+
+func (o HarRegistryConfigDebianConfigOutput) ToHarRegistryConfigDebianConfigOutput() HarRegistryConfigDebianConfigOutput {
+	return o
+}
+
+func (o HarRegistryConfigDebianConfigOutput) ToHarRegistryConfigDebianConfigOutputWithContext(ctx context.Context) HarRegistryConfigDebianConfigOutput {
+	return o
+}
+
+func (o HarRegistryConfigDebianConfigOutput) ToHarRegistryConfigDebianConfigPtrOutput() HarRegistryConfigDebianConfigPtrOutput {
+	return o.ToHarRegistryConfigDebianConfigPtrOutputWithContext(context.Background())
+}
+
+func (o HarRegistryConfigDebianConfigOutput) ToHarRegistryConfigDebianConfigPtrOutputWithContext(ctx context.Context) HarRegistryConfigDebianConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HarRegistryConfigDebianConfig) *HarRegistryConfigDebianConfig {
+		return &v
+	}).(HarRegistryConfigDebianConfigPtrOutput)
+}
+
+// Optional additional compression formats to generate for index/metadata files
+func (o HarRegistryConfigDebianConfigOutput) OptionalIndexCompressionFormats() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HarRegistryConfigDebianConfig) []string { return v.OptionalIndexCompressionFormats }).(pulumi.StringArrayOutput)
+}
+
+// Architectures to index when building metadata from linked remote (upstream) registries. Defaults to amd64, i386, arm64
+func (o HarRegistryConfigDebianConfigOutput) RemoteIndexedArchitectures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HarRegistryConfigDebianConfig) []string { return v.RemoteIndexedArchitectures }).(pulumi.StringArrayOutput)
+}
+
+type HarRegistryConfigDebianConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (HarRegistryConfigDebianConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HarRegistryConfigDebianConfig)(nil)).Elem()
+}
+
+func (o HarRegistryConfigDebianConfigPtrOutput) ToHarRegistryConfigDebianConfigPtrOutput() HarRegistryConfigDebianConfigPtrOutput {
+	return o
+}
+
+func (o HarRegistryConfigDebianConfigPtrOutput) ToHarRegistryConfigDebianConfigPtrOutputWithContext(ctx context.Context) HarRegistryConfigDebianConfigPtrOutput {
+	return o
+}
+
+func (o HarRegistryConfigDebianConfigPtrOutput) Elem() HarRegistryConfigDebianConfigOutput {
+	return o.ApplyT(func(v *HarRegistryConfigDebianConfig) HarRegistryConfigDebianConfig {
+		if v != nil {
+			return *v
+		}
+		var ret HarRegistryConfigDebianConfig
+		return ret
+	}).(HarRegistryConfigDebianConfigOutput)
+}
+
+// Optional additional compression formats to generate for index/metadata files
+func (o HarRegistryConfigDebianConfigPtrOutput) OptionalIndexCompressionFormats() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HarRegistryConfigDebianConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OptionalIndexCompressionFormats
+	}).(pulumi.StringArrayOutput)
+}
+
+// Architectures to index when building metadata from linked remote (upstream) registries. Defaults to amd64, i386, arm64
+func (o HarRegistryConfigDebianConfigPtrOutput) RemoteIndexedArchitectures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HarRegistryConfigDebianConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RemoteIndexedArchitectures
+	}).(pulumi.StringArrayOutput)
 }
 
 type HelmConnectorCredentials struct {
@@ -45312,6 +45477,8 @@ type GetHarRegistryConfig struct {
 	AuthType *string `pulumi:"authType"`
 	// Authentication configuration for UPSTREAM registry type
 	Auths []GetHarRegistryConfigAuth `pulumi:"auths"`
+	// Debian-specific configuration, applicable only when packageType is DEBIAN and config.type is VIRTUAL
+	DebianConfig *GetHarRegistryConfigDebianConfig `pulumi:"debianConfig"`
 	// Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
 	FirewallMode string `pulumi:"firewallMode"`
 	// Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
@@ -45342,6 +45509,8 @@ type GetHarRegistryConfigArgs struct {
 	AuthType pulumi.StringPtrInput `pulumi:"authType"`
 	// Authentication configuration for UPSTREAM registry type
 	Auths GetHarRegistryConfigAuthArrayInput `pulumi:"auths"`
+	// Debian-specific configuration, applicable only when packageType is DEBIAN and config.type is VIRTUAL
+	DebianConfig GetHarRegistryConfigDebianConfigPtrInput `pulumi:"debianConfig"`
 	// Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
 	FirewallMode pulumi.StringInput `pulumi:"firewallMode"`
 	// Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
@@ -45415,6 +45584,11 @@ func (o GetHarRegistryConfigOutput) AuthType() pulumi.StringPtrOutput {
 // Authentication configuration for UPSTREAM registry type
 func (o GetHarRegistryConfigOutput) Auths() GetHarRegistryConfigAuthArrayOutput {
 	return o.ApplyT(func(v GetHarRegistryConfig) []GetHarRegistryConfigAuth { return v.Auths }).(GetHarRegistryConfigAuthArrayOutput)
+}
+
+// Debian-specific configuration, applicable only when packageType is DEBIAN and config.type is VIRTUAL
+func (o GetHarRegistryConfigOutput) DebianConfig() GetHarRegistryConfigDebianConfigPtrOutput {
+	return o.ApplyT(func(v GetHarRegistryConfig) *GetHarRegistryConfigDebianConfig { return v.DebianConfig }).(GetHarRegistryConfigDebianConfigPtrOutput)
 }
 
 // Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
@@ -45619,6 +45793,162 @@ func (o GetHarRegistryConfigAuthArrayOutput) Index(i pulumi.IntInput) GetHarRegi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHarRegistryConfigAuth {
 		return vs[0].([]GetHarRegistryConfigAuth)[vs[1].(int)]
 	}).(GetHarRegistryConfigAuthOutput)
+}
+
+type GetHarRegistryConfigDebianConfig struct {
+	// Optional additional compression formats to generate for index/metadata files
+	OptionalIndexCompressionFormats []string `pulumi:"optionalIndexCompressionFormats"`
+	// Architectures to index when building metadata from linked remote (upstream) registries. Defaults to amd64, i386, arm64
+	RemoteIndexedArchitectures []string `pulumi:"remoteIndexedArchitectures"`
+}
+
+// GetHarRegistryConfigDebianConfigInput is an input type that accepts GetHarRegistryConfigDebianConfigArgs and GetHarRegistryConfigDebianConfigOutput values.
+// You can construct a concrete instance of `GetHarRegistryConfigDebianConfigInput` via:
+//
+//	GetHarRegistryConfigDebianConfigArgs{...}
+type GetHarRegistryConfigDebianConfigInput interface {
+	pulumi.Input
+
+	ToGetHarRegistryConfigDebianConfigOutput() GetHarRegistryConfigDebianConfigOutput
+	ToGetHarRegistryConfigDebianConfigOutputWithContext(context.Context) GetHarRegistryConfigDebianConfigOutput
+}
+
+type GetHarRegistryConfigDebianConfigArgs struct {
+	// Optional additional compression formats to generate for index/metadata files
+	OptionalIndexCompressionFormats pulumi.StringArrayInput `pulumi:"optionalIndexCompressionFormats"`
+	// Architectures to index when building metadata from linked remote (upstream) registries. Defaults to amd64, i386, arm64
+	RemoteIndexedArchitectures pulumi.StringArrayInput `pulumi:"remoteIndexedArchitectures"`
+}
+
+func (GetHarRegistryConfigDebianConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHarRegistryConfigDebianConfig)(nil)).Elem()
+}
+
+func (i GetHarRegistryConfigDebianConfigArgs) ToGetHarRegistryConfigDebianConfigOutput() GetHarRegistryConfigDebianConfigOutput {
+	return i.ToGetHarRegistryConfigDebianConfigOutputWithContext(context.Background())
+}
+
+func (i GetHarRegistryConfigDebianConfigArgs) ToGetHarRegistryConfigDebianConfigOutputWithContext(ctx context.Context) GetHarRegistryConfigDebianConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHarRegistryConfigDebianConfigOutput)
+}
+
+func (i GetHarRegistryConfigDebianConfigArgs) ToGetHarRegistryConfigDebianConfigPtrOutput() GetHarRegistryConfigDebianConfigPtrOutput {
+	return i.ToGetHarRegistryConfigDebianConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetHarRegistryConfigDebianConfigArgs) ToGetHarRegistryConfigDebianConfigPtrOutputWithContext(ctx context.Context) GetHarRegistryConfigDebianConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHarRegistryConfigDebianConfigOutput).ToGetHarRegistryConfigDebianConfigPtrOutputWithContext(ctx)
+}
+
+// GetHarRegistryConfigDebianConfigPtrInput is an input type that accepts GetHarRegistryConfigDebianConfigArgs, GetHarRegistryConfigDebianConfigPtr and GetHarRegistryConfigDebianConfigPtrOutput values.
+// You can construct a concrete instance of `GetHarRegistryConfigDebianConfigPtrInput` via:
+//
+//	        GetHarRegistryConfigDebianConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetHarRegistryConfigDebianConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetHarRegistryConfigDebianConfigPtrOutput() GetHarRegistryConfigDebianConfigPtrOutput
+	ToGetHarRegistryConfigDebianConfigPtrOutputWithContext(context.Context) GetHarRegistryConfigDebianConfigPtrOutput
+}
+
+type getHarRegistryConfigDebianConfigPtrType GetHarRegistryConfigDebianConfigArgs
+
+func GetHarRegistryConfigDebianConfigPtr(v *GetHarRegistryConfigDebianConfigArgs) GetHarRegistryConfigDebianConfigPtrInput {
+	return (*getHarRegistryConfigDebianConfigPtrType)(v)
+}
+
+func (*getHarRegistryConfigDebianConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetHarRegistryConfigDebianConfig)(nil)).Elem()
+}
+
+func (i *getHarRegistryConfigDebianConfigPtrType) ToGetHarRegistryConfigDebianConfigPtrOutput() GetHarRegistryConfigDebianConfigPtrOutput {
+	return i.ToGetHarRegistryConfigDebianConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getHarRegistryConfigDebianConfigPtrType) ToGetHarRegistryConfigDebianConfigPtrOutputWithContext(ctx context.Context) GetHarRegistryConfigDebianConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHarRegistryConfigDebianConfigPtrOutput)
+}
+
+type GetHarRegistryConfigDebianConfigOutput struct{ *pulumi.OutputState }
+
+func (GetHarRegistryConfigDebianConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHarRegistryConfigDebianConfig)(nil)).Elem()
+}
+
+func (o GetHarRegistryConfigDebianConfigOutput) ToGetHarRegistryConfigDebianConfigOutput() GetHarRegistryConfigDebianConfigOutput {
+	return o
+}
+
+func (o GetHarRegistryConfigDebianConfigOutput) ToGetHarRegistryConfigDebianConfigOutputWithContext(ctx context.Context) GetHarRegistryConfigDebianConfigOutput {
+	return o
+}
+
+func (o GetHarRegistryConfigDebianConfigOutput) ToGetHarRegistryConfigDebianConfigPtrOutput() GetHarRegistryConfigDebianConfigPtrOutput {
+	return o.ToGetHarRegistryConfigDebianConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetHarRegistryConfigDebianConfigOutput) ToGetHarRegistryConfigDebianConfigPtrOutputWithContext(ctx context.Context) GetHarRegistryConfigDebianConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetHarRegistryConfigDebianConfig) *GetHarRegistryConfigDebianConfig {
+		return &v
+	}).(GetHarRegistryConfigDebianConfigPtrOutput)
+}
+
+// Optional additional compression formats to generate for index/metadata files
+func (o GetHarRegistryConfigDebianConfigOutput) OptionalIndexCompressionFormats() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHarRegistryConfigDebianConfig) []string { return v.OptionalIndexCompressionFormats }).(pulumi.StringArrayOutput)
+}
+
+// Architectures to index when building metadata from linked remote (upstream) registries. Defaults to amd64, i386, arm64
+func (o GetHarRegistryConfigDebianConfigOutput) RemoteIndexedArchitectures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHarRegistryConfigDebianConfig) []string { return v.RemoteIndexedArchitectures }).(pulumi.StringArrayOutput)
+}
+
+type GetHarRegistryConfigDebianConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetHarRegistryConfigDebianConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetHarRegistryConfigDebianConfig)(nil)).Elem()
+}
+
+func (o GetHarRegistryConfigDebianConfigPtrOutput) ToGetHarRegistryConfigDebianConfigPtrOutput() GetHarRegistryConfigDebianConfigPtrOutput {
+	return o
+}
+
+func (o GetHarRegistryConfigDebianConfigPtrOutput) ToGetHarRegistryConfigDebianConfigPtrOutputWithContext(ctx context.Context) GetHarRegistryConfigDebianConfigPtrOutput {
+	return o
+}
+
+func (o GetHarRegistryConfigDebianConfigPtrOutput) Elem() GetHarRegistryConfigDebianConfigOutput {
+	return o.ApplyT(func(v *GetHarRegistryConfigDebianConfig) GetHarRegistryConfigDebianConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetHarRegistryConfigDebianConfig
+		return ret
+	}).(GetHarRegistryConfigDebianConfigOutput)
+}
+
+// Optional additional compression formats to generate for index/metadata files
+func (o GetHarRegistryConfigDebianConfigPtrOutput) OptionalIndexCompressionFormats() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetHarRegistryConfigDebianConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OptionalIndexCompressionFormats
+	}).(pulumi.StringArrayOutput)
+}
+
+// Architectures to index when building metadata from linked remote (upstream) registries. Defaults to amd64, i386, arm64
+func (o GetHarRegistryConfigDebianConfigPtrOutput) RemoteIndexedArchitectures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetHarRegistryConfigDebianConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RemoteIndexedArchitectures
+	}).(pulumi.StringArrayOutput)
 }
 
 type GetHelmConnectorCredential struct {
@@ -60323,6 +60653,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HarRegistryConfigArrayInput)(nil)).Elem(), HarRegistryConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HarRegistryConfigAuthInput)(nil)).Elem(), HarRegistryConfigAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HarRegistryConfigAuthArrayInput)(nil)).Elem(), HarRegistryConfigAuthArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HarRegistryConfigDebianConfigInput)(nil)).Elem(), HarRegistryConfigDebianConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HarRegistryConfigDebianConfigPtrInput)(nil)).Elem(), HarRegistryConfigDebianConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HelmConnectorCredentialsInput)(nil)).Elem(), HelmConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HelmConnectorCredentialsPtrInput)(nil)).Elem(), HelmConnectorCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsibleInventoryDynamicGroupInput)(nil)).Elem(), IacmAnsibleInventoryDynamicGroupArgs{})
@@ -60851,6 +61183,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHarRegistryConfigArrayInput)(nil)).Elem(), GetHarRegistryConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHarRegistryConfigAuthInput)(nil)).Elem(), GetHarRegistryConfigAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHarRegistryConfigAuthArrayInput)(nil)).Elem(), GetHarRegistryConfigAuthArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHarRegistryConfigDebianConfigInput)(nil)).Elem(), GetHarRegistryConfigDebianConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHarRegistryConfigDebianConfigPtrInput)(nil)).Elem(), GetHarRegistryConfigDebianConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHelmConnectorCredentialInput)(nil)).Elem(), GetHelmConnectorCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHelmConnectorCredentialArrayInput)(nil)).Elem(), GetHelmConnectorCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsibleInventoryDynamicGroupInput)(nil)).Elem(), GetIacmAnsibleInventoryDynamicGroupArgs{})
@@ -61164,6 +61498,8 @@ func init() {
 	pulumi.RegisterOutputType(HarRegistryConfigArrayOutput{})
 	pulumi.RegisterOutputType(HarRegistryConfigAuthOutput{})
 	pulumi.RegisterOutputType(HarRegistryConfigAuthArrayOutput{})
+	pulumi.RegisterOutputType(HarRegistryConfigDebianConfigOutput{})
+	pulumi.RegisterOutputType(HarRegistryConfigDebianConfigPtrOutput{})
 	pulumi.RegisterOutputType(HelmConnectorCredentialsOutput{})
 	pulumi.RegisterOutputType(HelmConnectorCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(IacmAnsibleInventoryDynamicGroupOutput{})
@@ -61692,6 +62028,8 @@ func init() {
 	pulumi.RegisterOutputType(GetHarRegistryConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetHarRegistryConfigAuthOutput{})
 	pulumi.RegisterOutputType(GetHarRegistryConfigAuthArrayOutput{})
+	pulumi.RegisterOutputType(GetHarRegistryConfigDebianConfigOutput{})
+	pulumi.RegisterOutputType(GetHarRegistryConfigDebianConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetHelmConnectorCredentialOutput{})
 	pulumi.RegisterOutputType(GetHelmConnectorCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetIacmAnsibleInventoryDynamicGroupOutput{})

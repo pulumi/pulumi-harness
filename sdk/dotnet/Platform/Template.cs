@@ -16,22 +16,40 @@ namespace Pulumi.Harness.Platform
     /// 
     /// The `pulumi import` command can be used, for example:
     /// 
-    /// Import account level template
+    /// Import account level template (stable version)
     /// 
     /// ```sh
     /// $ pulumi import harness:platform/template:Template example &lt;template_id&gt;
     /// ```
     /// 
-    /// Import org level template
+    /// Import account level template (specific version)
     /// 
     /// ```sh
-    /// $ pulumi import harness:platform/template:Template example &lt;ord_id&gt;/&lt;template_id&gt;
+    /// $ pulumi import harness:platform/template:Template example &lt;template_id&gt;/versions/&lt;version&gt;
     /// ```
     /// 
-    /// Import project level template
+    /// Import org level template (stable version)
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/template:Template example &lt;org_id&gt;/&lt;template_id&gt;
+    /// ```
+    /// 
+    /// Import org level template (specific version)
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/template:Template example &lt;org_id&gt;/&lt;template_id&gt;/versions/&lt;version&gt;
+    /// ```
+    /// 
+    /// Import project level template (stable version)
     /// 
     /// ```sh
     /// $ pulumi import harness:platform/template:Template example &lt;org_id&gt;/&lt;project_id&gt;/&lt;template_id&gt;
+    /// ```
+    /// 
+    /// Import project level template (specific version)
+    /// 
+    /// ```sh
+    /// $ pulumi import harness:platform/template:Template example &lt;org_id&gt;/&lt;project_id&gt;/&lt;template_id&gt;/versions/&lt;version&gt;
     /// ```
     /// </summary>
     [HarnessResourceType("harness:platform/template:Template")]

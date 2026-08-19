@@ -133,6 +133,39 @@ namespace Pulumi.Harness.Platform
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
+    ///     // Example of a Virtual Debian Registry with Debian-specific configuration
+    ///     var debianVirtual = new Harness.Platform.HarRegistry("debian_virtual", new()
+    ///     {
+    ///         Identifier = "virtual_debian_registry",
+    ///         Description = "Virtual Debian Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "DEBIAN",
+    ///         Configs = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
+    ///             {
+    ///                 Type = "VIRTUAL",
+    ///                 UpstreamProxies = new[]
+    ///                 {
+    ///                     "debian_upstream_registry",
+    ///                 },
+    ///                 DebianConfig = new Harness.Platform.Inputs.HarRegistryConfigDebianConfigArgs
+    ///                 {
+    ///                     RemoteIndexedArchitectures = new[]
+    ///                     {
+    ///                         "amd64",
+    ///                         "arm64",
+    ///                     },
+    ///                     OptionalIndexCompressionFormats = new[]
+    ///                     {
+    ///                         ".xz",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         ParentRef = "accountId/orgId/projectId",
+    ///     });
+    /// 
     ///     // Example of an Upstream Custom Debian Registry (Debian source needs url)
     ///     var debianUpstream = new Harness.Platform.HarRegistry("debian_upstream", new()
     ///     {

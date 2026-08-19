@@ -91,6 +91,25 @@ import * as utilities from "../utilities";
  *     }],
  *     parentRef: "accountId/orgId/projectId",
  * });
+ * // Example of a Virtual Debian Registry with Debian-specific configuration
+ * const debianVirtual = new harness.platform.HarRegistry("debian_virtual", {
+ *     identifier: "virtual_debian_registry",
+ *     description: "Virtual Debian Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "DEBIAN",
+ *     configs: [{
+ *         type: "VIRTUAL",
+ *         upstreamProxies: ["debian_upstream_registry"],
+ *         debianConfig: {
+ *             remoteIndexedArchitectures: [
+ *                 "amd64",
+ *                 "arm64",
+ *             ],
+ *             optionalIndexCompressionFormats: [".xz"],
+ *         },
+ *     }],
+ *     parentRef: "accountId/orgId/projectId",
+ * });
  * // Example of an Upstream Custom Debian Registry (Debian source needs url)
  * const debianUpstream = new harness.platform.HarRegistry("debian_upstream", {
  *     identifier: "upstream_debian_registry",

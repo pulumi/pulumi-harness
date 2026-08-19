@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.inputs.GetHarRegistryConfigAuthArgs;
+import com.pulumi.harness.platform.inputs.GetHarRegistryConfigDebianConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -46,6 +47,21 @@ public final class GetHarRegistryConfigArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<List<GetHarRegistryConfigAuthArgs>>> auths() {
         return Optional.ofNullable(this.auths);
+    }
+
+    /**
+     * Debian-specific configuration, applicable only when packageType is DEBIAN and config.type is VIRTUAL
+     * 
+     */
+    @Import(name="debianConfig")
+    private @Nullable Output<GetHarRegistryConfigDebianConfigArgs> debianConfig;
+
+    /**
+     * @return Debian-specific configuration, applicable only when packageType is DEBIAN and config.type is VIRTUAL
+     * 
+     */
+    public Optional<Output<GetHarRegistryConfigDebianConfigArgs>> debianConfig() {
+        return Optional.ofNullable(this.debianConfig);
     }
 
     /**
@@ -143,6 +159,7 @@ public final class GetHarRegistryConfigArgs extends com.pulumi.resources.Resourc
     private GetHarRegistryConfigArgs(GetHarRegistryConfigArgs $) {
         this.authType = $.authType;
         this.auths = $.auths;
+        this.debianConfig = $.debianConfig;
         this.firewallMode = $.firewallMode;
         this.remoteUrlSuffix = $.remoteUrlSuffix;
         this.source = $.source;
@@ -219,6 +236,27 @@ public final class GetHarRegistryConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder auths(GetHarRegistryConfigAuthArgs... auths) {
             return auths(List.of(auths));
+        }
+
+        /**
+         * @param debianConfig Debian-specific configuration, applicable only when packageType is DEBIAN and config.type is VIRTUAL
+         * 
+         * @return builder
+         * 
+         */
+        public Builder debianConfig(@Nullable Output<GetHarRegistryConfigDebianConfigArgs> debianConfig) {
+            $.debianConfig = debianConfig;
+            return this;
+        }
+
+        /**
+         * @param debianConfig Debian-specific configuration, applicable only when packageType is DEBIAN and config.type is VIRTUAL
+         * 
+         * @return builder
+         * 
+         */
+        public Builder debianConfig(GetHarRegistryConfigDebianConfigArgs debianConfig) {
+            return debianConfig(Output.of(debianConfig));
         }
 
         /**

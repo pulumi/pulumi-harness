@@ -481,6 +481,24 @@ class HarRegistry(pulumi.CustomResource):
                 "auth_type": "Anonymous",
             }],
             parent_ref="accountId/orgId/projectId")
+        # Example of a Virtual Debian Registry with Debian-specific configuration
+        debian_virtual = harness.platform.HarRegistry("debian_virtual",
+            identifier="virtual_debian_registry",
+            description="Virtual Debian Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="DEBIAN",
+            configs=[{
+                "type": "VIRTUAL",
+                "upstream_proxies": ["debian_upstream_registry"],
+                "debian_config": {
+                    "remote_indexed_architectures": [
+                        "amd64",
+                        "arm64",
+                    ],
+                    "optional_index_compression_formats": [".xz"],
+                },
+            }],
+            parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Custom Debian Registry (Debian source needs url)
         debian_upstream = harness.platform.HarRegistry("debian_upstream",
             identifier="upstream_debian_registry",
@@ -691,6 +709,24 @@ class HarRegistry(pulumi.CustomResource):
                 "source": "HelmChartRepo",
                 "url": "https://charts.bitnami.com/bitnami",
                 "auth_type": "Anonymous",
+            }],
+            parent_ref="accountId/orgId/projectId")
+        # Example of a Virtual Debian Registry with Debian-specific configuration
+        debian_virtual = harness.platform.HarRegistry("debian_virtual",
+            identifier="virtual_debian_registry",
+            description="Virtual Debian Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="DEBIAN",
+            configs=[{
+                "type": "VIRTUAL",
+                "upstream_proxies": ["debian_upstream_registry"],
+                "debian_config": {
+                    "remote_indexed_architectures": [
+                        "amd64",
+                        "arm64",
+                    ],
+                    "optional_index_compression_formats": [".xz"],
+                },
             }],
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Custom Debian Registry (Debian source needs url)
