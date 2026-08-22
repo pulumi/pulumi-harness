@@ -244,6 +244,58 @@ import javax.annotation.Nullable;
  *             .parentRef("accountId/orgId/projectId")
  *             .build());
  * 
+ *         // Example of a Virtual Alpine Registry
+ *         var alpineVirtual = new HarRegistry("alpineVirtual", HarRegistryArgs.builder()
+ *             .identifier("virtual_alpine_registry")
+ *             .description("Virtual Alpine Registry")
+ *             .spaceRef("accountId/orgId/projectId")
+ *             .packageType("ALPINE")
+ *             .configs(HarRegistryConfigArgs.builder()
+ *                 .type("VIRTUAL")
+ *                 .build())
+ *             .parentRef("accountId/orgId/projectId")
+ *             .build());
+ * 
+ *         // Example of an Upstream Alpine Registry (Alpine source needs no url)
+ *         var alpineUpstream = new HarRegistry("alpineUpstream", HarRegistryArgs.builder()
+ *             .identifier("upstream_alpine_registry")
+ *             .description("Upstream Alpine Registry")
+ *             .spaceRef("accountId/orgId/projectId")
+ *             .packageType("ALPINE")
+ *             .configs(HarRegistryConfigArgs.builder()
+ *                 .type("UPSTREAM")
+ *                 .source("Alpine")
+ *                 .authType("Anonymous")
+ *                 .build())
+ *             .parentRef("accountId/orgId/projectId")
+ *             .build());
+ * 
+ *         // Example of a Virtual Wolfi Registry
+ *         var wolfiVirtual = new HarRegistry("wolfiVirtual", HarRegistryArgs.builder()
+ *             .identifier("virtual_wolfi_registry")
+ *             .description("Virtual Wolfi Registry")
+ *             .spaceRef("accountId/orgId/projectId")
+ *             .packageType("WOLFI")
+ *             .configs(HarRegistryConfigArgs.builder()
+ *                 .type("VIRTUAL")
+ *                 .build())
+ *             .parentRef("accountId/orgId/projectId")
+ *             .build());
+ * 
+ *         // Example of an Upstream Wolfi Registry (Wolfi source needs no url)
+ *         var wolfiUpstream = new HarRegistry("wolfiUpstream", HarRegistryArgs.builder()
+ *             .identifier("upstream_wolfi_registry")
+ *             .description("Upstream Wolfi Registry")
+ *             .spaceRef("accountId/orgId/projectId")
+ *             .packageType("WOLFI")
+ *             .configs(HarRegistryConfigArgs.builder()
+ *                 .type("UPSTREAM")
+ *                 .source("Wolfi")
+ *                 .authType("Anonymous")
+ *                 .build())
+ *             .parentRef("accountId/orgId/projectId")
+ *             .build());
+ * 
  *     }
  * }
  * }
@@ -392,14 +444,14 @@ public class HarRegistry extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metadata);
     }
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
      * 
      */
     @Export(name="packageType", refs={String.class}, tree="[0]")
     private Output<String> packageType;
 
     /**
-     * @return Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
+     * @return Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
      * 
      */
     public Output<String> packageType() {

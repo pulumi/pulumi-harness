@@ -298,6 +298,78 @@ namespace Pulumi.Harness.Platform
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
+    ///     // Example of a Virtual Alpine Registry
+    ///     var alpineVirtual = new Harness.Platform.HarRegistry("alpine_virtual", new()
+    ///     {
+    ///         Identifier = "virtual_alpine_registry",
+    ///         Description = "Virtual Alpine Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "ALPINE",
+    ///         Configs = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
+    ///             {
+    ///                 Type = "VIRTUAL",
+    ///             },
+    ///         },
+    ///         ParentRef = "accountId/orgId/projectId",
+    ///     });
+    /// 
+    ///     // Example of an Upstream Alpine Registry (Alpine source needs no url)
+    ///     var alpineUpstream = new Harness.Platform.HarRegistry("alpine_upstream", new()
+    ///     {
+    ///         Identifier = "upstream_alpine_registry",
+    ///         Description = "Upstream Alpine Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "ALPINE",
+    ///         Configs = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
+    ///             {
+    ///                 Type = "UPSTREAM",
+    ///                 Source = "Alpine",
+    ///                 AuthType = "Anonymous",
+    ///             },
+    ///         },
+    ///         ParentRef = "accountId/orgId/projectId",
+    ///     });
+    /// 
+    ///     // Example of a Virtual Wolfi Registry
+    ///     var wolfiVirtual = new Harness.Platform.HarRegistry("wolfi_virtual", new()
+    ///     {
+    ///         Identifier = "virtual_wolfi_registry",
+    ///         Description = "Virtual Wolfi Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "WOLFI",
+    ///         Configs = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
+    ///             {
+    ///                 Type = "VIRTUAL",
+    ///             },
+    ///         },
+    ///         ParentRef = "accountId/orgId/projectId",
+    ///     });
+    /// 
+    ///     // Example of an Upstream Wolfi Registry (Wolfi source needs no url)
+    ///     var wolfiUpstream = new Harness.Platform.HarRegistry("wolfi_upstream", new()
+    ///     {
+    ///         Identifier = "upstream_wolfi_registry",
+    ///         Description = "Upstream Wolfi Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "WOLFI",
+    ///         Configs = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
+    ///             {
+    ///                 Type = "UPSTREAM",
+    ///                 Source = "Wolfi",
+    ///                 AuthType = "Anonymous",
+    ///             },
+    ///         },
+    ///         ParentRef = "accountId/orgId/projectId",
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -380,7 +452,7 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
+        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
         /// </summary>
         [Output("packageType")]
         public Output<string> PackageType { get; private set; } = null!;
@@ -517,7 +589,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
+        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
         /// </summary>
         [Input("packageType", required: true)]
         public Input<string> PackageType { get; set; } = null!;
@@ -615,7 +687,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
+        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
         /// </summary>
         [Input("packageType")]
         public Input<string>? PackageType { get; set; }
