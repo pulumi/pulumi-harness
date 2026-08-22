@@ -30,6 +30,14 @@ namespace Pulumi.Harness.Platform.Outputs
         /// </summary>
         public readonly string? FirewallMode;
         /// <summary>
+        /// Time-to-live in seconds for cached FOUND metadata entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+        /// </summary>
+        public readonly int? MetadataCacheTtl;
+        /// <summary>
+        /// Time-to-live in seconds for cached NOT_FOUND entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+        /// </summary>
+        public readonly int? NegativeCacheTtl;
+        /// <summary>
         /// Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `Simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
         /// </summary>
         public readonly string? RemoteUrlSuffix;
@@ -60,6 +68,10 @@ namespace Pulumi.Harness.Platform.Outputs
 
             string? firewallMode,
 
+            int? metadataCacheTtl,
+
+            int? negativeCacheTtl,
+
             string? remoteUrlSuffix,
 
             string? source,
@@ -74,6 +86,8 @@ namespace Pulumi.Harness.Platform.Outputs
             Auths = auths;
             DebianConfig = debianConfig;
             FirewallMode = firewallMode;
+            MetadataCacheTtl = metadataCacheTtl;
+            NegativeCacheTtl = negativeCacheTtl;
             RemoteUrlSuffix = remoteUrlSuffix;
             Source = source;
             Type = type;

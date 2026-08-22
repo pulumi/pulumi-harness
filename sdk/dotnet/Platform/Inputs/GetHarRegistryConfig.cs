@@ -43,6 +43,18 @@ namespace Pulumi.Harness.Platform.Inputs
         public string FirewallMode { get; set; } = null!;
 
         /// <summary>
+        /// Time-to-live in seconds for cached FOUND metadata entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+        /// </summary>
+        [Input("metadataCacheTtl")]
+        public int? MetadataCacheTtl { get; set; }
+
+        /// <summary>
+        /// Time-to-live in seconds for cached NOT_FOUND entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+        /// </summary>
+        [Input("negativeCacheTtl")]
+        public int? NegativeCacheTtl { get; set; }
+
+        /// <summary>
         /// Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `Simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
         /// </summary>
         [Input("remoteUrlSuffix")]

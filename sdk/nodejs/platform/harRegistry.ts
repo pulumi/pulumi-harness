@@ -200,6 +200,54 @@ import * as utilities from "../utilities";
  *     }],
  *     parentRef: "accountId/orgId/projectId",
  * });
+ * // Example of a Virtual Alpine Registry
+ * const alpineVirtual = new harness.platform.HarRegistry("alpine_virtual", {
+ *     identifier: "virtual_alpine_registry",
+ *     description: "Virtual Alpine Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "ALPINE",
+ *     configs: [{
+ *         type: "VIRTUAL",
+ *     }],
+ *     parentRef: "accountId/orgId/projectId",
+ * });
+ * // Example of an Upstream Alpine Registry (Alpine source needs no url)
+ * const alpineUpstream = new harness.platform.HarRegistry("alpine_upstream", {
+ *     identifier: "upstream_alpine_registry",
+ *     description: "Upstream Alpine Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "ALPINE",
+ *     configs: [{
+ *         type: "UPSTREAM",
+ *         source: "Alpine",
+ *         authType: "Anonymous",
+ *     }],
+ *     parentRef: "accountId/orgId/projectId",
+ * });
+ * // Example of a Virtual Wolfi Registry
+ * const wolfiVirtual = new harness.platform.HarRegistry("wolfi_virtual", {
+ *     identifier: "virtual_wolfi_registry",
+ *     description: "Virtual Wolfi Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "WOLFI",
+ *     configs: [{
+ *         type: "VIRTUAL",
+ *     }],
+ *     parentRef: "accountId/orgId/projectId",
+ * });
+ * // Example of an Upstream Wolfi Registry (Wolfi source needs no url)
+ * const wolfiUpstream = new harness.platform.HarRegistry("wolfi_upstream", {
+ *     identifier: "upstream_wolfi_registry",
+ *     description: "Upstream Wolfi Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "WOLFI",
+ *     configs: [{
+ *         type: "UPSTREAM",
+ *         source: "Wolfi",
+ *         authType: "Anonymous",
+ *     }],
+ *     parentRef: "accountId/orgId/projectId",
+ * });
  * ```
  *
  * ## Import
@@ -290,7 +338,7 @@ export class HarRegistry extends pulumi.CustomResource {
      */
     declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
      */
     declare public readonly packageType: pulumi.Output<string>;
     /**
@@ -400,7 +448,7 @@ export interface HarRegistryState {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
      */
     packageType?: pulumi.Input<string | undefined>;
     /**
@@ -450,7 +498,7 @@ export interface HarRegistryArgs {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN)
+     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
      */
     packageType: pulumi.Input<string>;
     /**

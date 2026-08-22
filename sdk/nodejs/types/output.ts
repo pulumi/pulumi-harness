@@ -9581,6 +9581,14 @@ export namespace platform {
          */
         firewallMode: string;
         /**
+         * Time-to-live in seconds for cached FOUND metadata entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+         */
+        metadataCacheTtl?: number;
+        /**
+         * Time-to-live in seconds for cached NOT_FOUND entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+         */
+        negativeCacheTtl?: number;
+        /**
          * Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
          */
         remoteUrlSuffix?: string;
@@ -39686,6 +39694,14 @@ export namespace platform {
          * Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
          */
         firewallMode: string;
+        /**
+         * Time-to-live in seconds for cached FOUND metadata entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+         */
+        metadataCacheTtl?: number;
+        /**
+         * Time-to-live in seconds for cached NOT_FOUND entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+         */
+        negativeCacheTtl?: number;
         /**
          * Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
          */
