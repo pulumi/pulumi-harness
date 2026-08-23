@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.inputs.GetHarRegistryConfigAuth;
 import com.pulumi.harness.platform.inputs.GetHarRegistryConfigDebianConfig;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -76,6 +77,36 @@ public final class GetHarRegistryConfig extends com.pulumi.resources.InvokeArgs 
      */
     public String firewallMode() {
         return this.firewallMode;
+    }
+
+    /**
+     * Time-to-live in seconds for cached FOUND metadata entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+     * 
+     */
+    @Import(name="metadataCacheTtl")
+    private @Nullable Integer metadataCacheTtl;
+
+    /**
+     * @return Time-to-live in seconds for cached FOUND metadata entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+     * 
+     */
+    public Optional<Integer> metadataCacheTtl() {
+        return Optional.ofNullable(this.metadataCacheTtl);
+    }
+
+    /**
+     * Time-to-live in seconds for cached NOT_FOUND entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+     * 
+     */
+    @Import(name="negativeCacheTtl")
+    private @Nullable Integer negativeCacheTtl;
+
+    /**
+     * @return Time-to-live in seconds for cached NOT_FOUND entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+     * 
+     */
+    public Optional<Integer> negativeCacheTtl() {
+        return Optional.ofNullable(this.negativeCacheTtl);
     }
 
     /**
@@ -160,6 +191,8 @@ public final class GetHarRegistryConfig extends com.pulumi.resources.InvokeArgs 
         this.auths = $.auths;
         this.debianConfig = $.debianConfig;
         this.firewallMode = $.firewallMode;
+        this.metadataCacheTtl = $.metadataCacheTtl;
+        this.negativeCacheTtl = $.negativeCacheTtl;
         this.remoteUrlSuffix = $.remoteUrlSuffix;
         this.source = $.source;
         this.type = $.type;
@@ -236,6 +269,28 @@ public final class GetHarRegistryConfig extends com.pulumi.resources.InvokeArgs 
          */
         public Builder firewallMode(String firewallMode) {
             $.firewallMode = firewallMode;
+            return this;
+        }
+
+        /**
+         * @param metadataCacheTtl Time-to-live in seconds for cached FOUND metadata entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadataCacheTtl(@Nullable Integer metadataCacheTtl) {
+            $.metadataCacheTtl = metadataCacheTtl;
+            return this;
+        }
+
+        /**
+         * @param negativeCacheTtl Time-to-live in seconds for cached NOT_FOUND entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder negativeCacheTtl(@Nullable Integer negativeCacheTtl) {
+            $.negativeCacheTtl = negativeCacheTtl;
             return this;
         }
 

@@ -103284,6 +103284,10 @@ class HarRegistryConfig(dict):
             suggest = "debian_config"
         elif key == "firewallMode":
             suggest = "firewall_mode"
+        elif key == "metadataCacheTtl":
+            suggest = "metadata_cache_ttl"
+        elif key == "negativeCacheTtl":
+            suggest = "negative_cache_ttl"
         elif key == "remoteUrlSuffix":
             suggest = "remote_url_suffix"
         elif key == "upstreamProxies":
@@ -103306,6 +103310,8 @@ class HarRegistryConfig(dict):
                  auths: Optional[Sequence['outputs.HarRegistryConfigAuth']] = None,
                  debian_config: Optional['outputs.HarRegistryConfigDebianConfig'] = None,
                  firewall_mode: Optional[_builtins.str] = None,
+                 metadata_cache_ttl: Optional[_builtins.int] = None,
+                 negative_cache_ttl: Optional[_builtins.int] = None,
                  remote_url_suffix: Optional[_builtins.str] = None,
                  source: Optional[_builtins.str] = None,
                  upstream_proxies: Optional[Sequence[_builtins.str]] = None,
@@ -103316,6 +103322,8 @@ class HarRegistryConfig(dict):
         :param Sequence['HarRegistryConfigAuthArgs'] auths: Authentication configuration for UPSTREAM registry type
         :param 'HarRegistryConfigDebianConfigArgs' debian_config: Debian-specific configuration, applicable only when package*type is DEBIAN and config.type is VIRTUAL
         :param _builtins.str firewall_mode: Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
+        :param _builtins.int metadata_cache_ttl: Time-to-live in seconds for cached FOUND metadata entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+        :param _builtins.int negative_cache_ttl: Time-to-live in seconds for cached NOT_FOUND entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
         :param _builtins.str remote_url_suffix: Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
         :param _builtins.str source: Upstream source
         :param Sequence[_builtins.str] upstream_proxies: List of upstream proxies for VIRTUAL registry type
@@ -103330,6 +103338,10 @@ class HarRegistryConfig(dict):
             pulumi.set(__self__, "debian_config", debian_config)
         if firewall_mode is not None:
             pulumi.set(__self__, "firewall_mode", firewall_mode)
+        if metadata_cache_ttl is not None:
+            pulumi.set(__self__, "metadata_cache_ttl", metadata_cache_ttl)
+        if negative_cache_ttl is not None:
+            pulumi.set(__self__, "negative_cache_ttl", negative_cache_ttl)
         if remote_url_suffix is not None:
             pulumi.set(__self__, "remote_url_suffix", remote_url_suffix)
         if source is not None:
@@ -103378,6 +103390,22 @@ class HarRegistryConfig(dict):
         Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
         """
         return pulumi.get(self, "firewall_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="metadataCacheTtl")
+    def metadata_cache_ttl(self) -> Optional[_builtins.int]:
+        """
+        Time-to-live in seconds for cached FOUND metadata entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+        """
+        return pulumi.get(self, "metadata_cache_ttl")
+
+    @_builtins.property
+    @pulumi.getter(name="negativeCacheTtl")
+    def negative_cache_ttl(self) -> Optional[_builtins.int]:
+        """
+        Time-to-live in seconds for cached NOT_FOUND entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+        """
+        return pulumi.get(self, "negative_cache_ttl")
 
     @_builtins.property
     @pulumi.getter(name="remoteUrlSuffix")
@@ -118904,6 +118932,8 @@ class GetHarRegistryConfigResult(dict):
                  auth_type: Optional[_builtins.str] = None,
                  auths: Optional[Sequence['outputs.GetHarRegistryConfigAuthResult']] = None,
                  debian_config: Optional['outputs.GetHarRegistryConfigDebianConfigResult'] = None,
+                 metadata_cache_ttl: Optional[_builtins.int] = None,
+                 negative_cache_ttl: Optional[_builtins.int] = None,
                  remote_url_suffix: Optional[_builtins.str] = None,
                  source: Optional[_builtins.str] = None,
                  upstream_proxies: Optional[Sequence[_builtins.str]] = None,
@@ -118914,6 +118944,8 @@ class GetHarRegistryConfigResult(dict):
         :param _builtins.str auth_type: Type of authentication for UPSTREAM registry type (UserPassword, Anonymous, AccessKeySecretKey)
         :param Sequence['GetHarRegistryConfigAuthArgs'] auths: Authentication configuration for UPSTREAM registry type
         :param 'GetHarRegistryConfigDebianConfigArgs' debian_config: Debian-specific configuration, applicable only when package_type is DEBIAN and config.type is VIRTUAL
+        :param _builtins.int metadata_cache_ttl: Time-to-live in seconds for cached FOUND metadata entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+        :param _builtins.int negative_cache_ttl: Time-to-live in seconds for cached NOT_FOUND entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
         :param _builtins.str remote_url_suffix: Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
         :param _builtins.str source: Upstream source
         :param Sequence[_builtins.str] upstream_proxies: List of upstream proxies for VIRTUAL registry type
@@ -118927,6 +118959,10 @@ class GetHarRegistryConfigResult(dict):
             pulumi.set(__self__, "auths", auths)
         if debian_config is not None:
             pulumi.set(__self__, "debian_config", debian_config)
+        if metadata_cache_ttl is not None:
+            pulumi.set(__self__, "metadata_cache_ttl", metadata_cache_ttl)
+        if negative_cache_ttl is not None:
+            pulumi.set(__self__, "negative_cache_ttl", negative_cache_ttl)
         if remote_url_suffix is not None:
             pulumi.set(__self__, "remote_url_suffix", remote_url_suffix)
         if source is not None:
@@ -118975,6 +119011,22 @@ class GetHarRegistryConfigResult(dict):
         Debian-specific configuration, applicable only when package_type is DEBIAN and config.type is VIRTUAL
         """
         return pulumi.get(self, "debian_config")
+
+    @_builtins.property
+    @pulumi.getter(name="metadataCacheTtl")
+    def metadata_cache_ttl(self) -> Optional[_builtins.int]:
+        """
+        Time-to-live in seconds for cached FOUND metadata entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+        """
+        return pulumi.get(self, "metadata_cache_ttl")
+
+    @_builtins.property
+    @pulumi.getter(name="negativeCacheTtl")
+    def negative_cache_ttl(self) -> Optional[_builtins.int]:
+        """
+        Time-to-live in seconds for cached NOT_FOUND entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+        """
+        return pulumi.get(self, "negative_cache_ttl")
 
     @_builtins.property
     @pulumi.getter(name="remoteUrlSuffix")

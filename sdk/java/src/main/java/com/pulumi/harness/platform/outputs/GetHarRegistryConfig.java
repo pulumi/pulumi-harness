@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.platform.outputs.GetHarRegistryConfigAuth;
 import com.pulumi.harness.platform.outputs.GetHarRegistryConfigDebianConfig;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -35,6 +36,16 @@ public final class GetHarRegistryConfig {
      * 
      */
     private String firewallMode;
+    /**
+     * @return Time-to-live in seconds for cached FOUND metadata entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+     * 
+     */
+    private @Nullable Integer metadataCacheTtl;
+    /**
+     * @return Time-to-live in seconds for cached NOT_FOUND entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+     * 
+     */
+    private @Nullable Integer negativeCacheTtl;
     /**
      * @return Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
      * 
@@ -91,6 +102,20 @@ public final class GetHarRegistryConfig {
         return this.firewallMode;
     }
     /**
+     * @return Time-to-live in seconds for cached FOUND metadata entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+     * 
+     */
+    public Optional<Integer> metadataCacheTtl() {
+        return Optional.ofNullable(this.metadataCacheTtl);
+    }
+    /**
+     * @return Time-to-live in seconds for cached NOT_FOUND entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+     * 
+     */
+    public Optional<Integer> negativeCacheTtl() {
+        return Optional.ofNullable(this.negativeCacheTtl);
+    }
+    /**
      * @return Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
      * 
      */
@@ -139,6 +164,8 @@ public final class GetHarRegistryConfig {
         private @Nullable List<GetHarRegistryConfigAuth> auths;
         private @Nullable GetHarRegistryConfigDebianConfig debianConfig;
         private String firewallMode;
+        private @Nullable Integer metadataCacheTtl;
+        private @Nullable Integer negativeCacheTtl;
         private @Nullable String remoteUrlSuffix;
         private @Nullable String source;
         private String type;
@@ -151,6 +178,8 @@ public final class GetHarRegistryConfig {
     	      this.auths = defaults.auths;
     	      this.debianConfig = defaults.debianConfig;
     	      this.firewallMode = defaults.firewallMode;
+    	      this.metadataCacheTtl = defaults.metadataCacheTtl;
+    	      this.negativeCacheTtl = defaults.negativeCacheTtl;
     	      this.remoteUrlSuffix = defaults.remoteUrlSuffix;
     	      this.source = defaults.source;
     	      this.type = defaults.type;
@@ -185,6 +214,18 @@ public final class GetHarRegistryConfig {
               throw new MissingRequiredPropertyException("GetHarRegistryConfig", "firewallMode");
             }
             this.firewallMode = firewallMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder metadataCacheTtl(@Nullable Integer metadataCacheTtl) {
+
+            this.metadataCacheTtl = metadataCacheTtl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder negativeCacheTtl(@Nullable Integer negativeCacheTtl) {
+
+            this.negativeCacheTtl = negativeCacheTtl;
             return this;
         }
         @CustomType.Setter
@@ -228,6 +269,8 @@ public final class GetHarRegistryConfig {
             _resultValue.auths = auths;
             _resultValue.debianConfig = debianConfig;
             _resultValue.firewallMode = firewallMode;
+            _resultValue.metadataCacheTtl = metadataCacheTtl;
+            _resultValue.negativeCacheTtl = negativeCacheTtl;
             _resultValue.remoteUrlSuffix = remoteUrlSuffix;
             _resultValue.source = source;
             _resultValue.type = type;

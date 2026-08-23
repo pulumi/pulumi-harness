@@ -7255,6 +7255,10 @@ type HarRegistryConfig struct {
 	DebianConfig *HarRegistryConfigDebianConfig `pulumi:"debianConfig"`
 	// Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
 	FirewallMode *string `pulumi:"firewallMode"`
+	// Time-to-live in seconds for cached FOUND metadata entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+	MetadataCacheTtl *int `pulumi:"metadataCacheTtl"`
+	// Time-to-live in seconds for cached NOT_FOUND entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+	NegativeCacheTtl *int `pulumi:"negativeCacheTtl"`
 	// Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
 	RemoteUrlSuffix *string `pulumi:"remoteUrlSuffix"`
 	// Upstream source
@@ -7287,6 +7291,10 @@ type HarRegistryConfigArgs struct {
 	DebianConfig HarRegistryConfigDebianConfigPtrInput `pulumi:"debianConfig"`
 	// Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
 	FirewallMode pulumi.StringPtrInput `pulumi:"firewallMode"`
+	// Time-to-live in seconds for cached FOUND metadata entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+	MetadataCacheTtl pulumi.IntPtrInput `pulumi:"metadataCacheTtl"`
+	// Time-to-live in seconds for cached NOT_FOUND entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+	NegativeCacheTtl pulumi.IntPtrInput `pulumi:"negativeCacheTtl"`
 	// Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
 	RemoteUrlSuffix pulumi.StringPtrInput `pulumi:"remoteUrlSuffix"`
 	// Upstream source
@@ -7368,6 +7376,16 @@ func (o HarRegistryConfigOutput) DebianConfig() HarRegistryConfigDebianConfigPtr
 // Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
 func (o HarRegistryConfigOutput) FirewallMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HarRegistryConfig) *string { return v.FirewallMode }).(pulumi.StringPtrOutput)
+}
+
+// Time-to-live in seconds for cached FOUND metadata entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+func (o HarRegistryConfigOutput) MetadataCacheTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HarRegistryConfig) *int { return v.MetadataCacheTtl }).(pulumi.IntPtrOutput)
+}
+
+// Time-to-live in seconds for cached NOT_FOUND entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+func (o HarRegistryConfigOutput) NegativeCacheTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HarRegistryConfig) *int { return v.NegativeCacheTtl }).(pulumi.IntPtrOutput)
 }
 
 // Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
@@ -45481,6 +45499,10 @@ type GetHarRegistryConfig struct {
 	DebianConfig *GetHarRegistryConfigDebianConfig `pulumi:"debianConfig"`
 	// Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
 	FirewallMode string `pulumi:"firewallMode"`
+	// Time-to-live in seconds for cached FOUND metadata entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+	MetadataCacheTtl *int `pulumi:"metadataCacheTtl"`
+	// Time-to-live in seconds for cached NOT_FOUND entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+	NegativeCacheTtl *int `pulumi:"negativeCacheTtl"`
 	// Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
 	RemoteUrlSuffix *string `pulumi:"remoteUrlSuffix"`
 	// Upstream source
@@ -45513,6 +45535,10 @@ type GetHarRegistryConfigArgs struct {
 	DebianConfig GetHarRegistryConfigDebianConfigPtrInput `pulumi:"debianConfig"`
 	// Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
 	FirewallMode pulumi.StringInput `pulumi:"firewallMode"`
+	// Time-to-live in seconds for cached FOUND metadata entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+	MetadataCacheTtl pulumi.IntPtrInput `pulumi:"metadataCacheTtl"`
+	// Time-to-live in seconds for cached NOT_FOUND entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+	NegativeCacheTtl pulumi.IntPtrInput `pulumi:"negativeCacheTtl"`
 	// Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
 	RemoteUrlSuffix pulumi.StringPtrInput `pulumi:"remoteUrlSuffix"`
 	// Upstream source
@@ -45594,6 +45620,16 @@ func (o GetHarRegistryConfigOutput) DebianConfig() GetHarRegistryConfigDebianCon
 // Dependency firewall mode for UPSTREAM registry type. Valid values: `ALLOW` (default - no policy evaluation), `ENABLED` (firewall active, artifacts scanned against policies), `QUARANTINE` (artifacts that fail policy evaluation are blocked). Not supported for DOCKER or HELM package types.
 func (o GetHarRegistryConfigOutput) FirewallMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHarRegistryConfig) string { return v.FirewallMode }).(pulumi.StringOutput)
+}
+
+// Time-to-live in seconds for cached FOUND metadata entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+func (o GetHarRegistryConfigOutput) MetadataCacheTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetHarRegistryConfig) *int { return v.MetadataCacheTtl }).(pulumi.IntPtrOutput)
+}
+
+// Time-to-live in seconds for cached NOT_FOUND entries in UPSTREAM registry type. Honored only for UPSTREAM registries of package types that support the resource cache (currently Maven). Must be between 0 and 604800 (7 days). Rejected for unsupported package types.
+func (o GetHarRegistryConfigOutput) NegativeCacheTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetHarRegistryConfig) *int { return v.NegativeCacheTtl }).(pulumi.IntPtrOutput)
 }
 
 // Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
