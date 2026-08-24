@@ -1,3 +1,0 @@
-name: harness
-description: A Pulumi resource provider for harness.
-language: nodejs
