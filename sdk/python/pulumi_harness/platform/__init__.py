@@ -125,6 +125,9 @@ from .get_iacm_default_pipeline import *
 from .get_idp_catalog_entity import *
 from .get_idp_environment import *
 from .get_idp_environment_blueprint import *
+from .get_idp_plugin import *
+from .get_idp_scorecard import *
+from .get_idp_scorecard_check import *
 from .get_infra_module import *
 from .get_infra_module_testing import *
 from .get_infra_modules import *
@@ -217,6 +220,9 @@ from .iacm_workspace_template import *
 from .idp_catalog_entity import *
 from .idp_environment import *
 from .idp_environment_blueprint import *
+from .idp_plugin import *
+from .idp_scorecard import *
+from .idp_scorecard_check import *
 from .infra_module import *
 from .infra_module_testing import *
 from .infra_provider import *

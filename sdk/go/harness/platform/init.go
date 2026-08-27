@@ -163,6 +163,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IdpEnvironment{}
 	case "harness:platform/idpEnvironmentBlueprint:IdpEnvironmentBlueprint":
 		r = &IdpEnvironmentBlueprint{}
+	case "harness:platform/idpPlugin:IdpPlugin":
+		r = &IdpPlugin{}
+	case "harness:platform/idpScorecard:IdpScorecard":
+		r = &IdpScorecard{}
+	case "harness:platform/idpScorecardCheck:IdpScorecardCheck":
+		r = &IdpScorecardCheck{}
 	case "harness:platform/infraModule:InfraModule":
 		r = &InfraModule{}
 	case "harness:platform/infraModuleTesting:InfraModuleTesting":
@@ -651,6 +657,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/idpEnvironmentBlueprint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/idpPlugin",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/idpScorecard",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/idpScorecardCheck",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

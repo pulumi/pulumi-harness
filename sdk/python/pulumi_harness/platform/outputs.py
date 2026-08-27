@@ -1575,6 +1575,13 @@ __all__ = [
     'IacmAnsiblePlaybookEnvVar',
     'IacmAnsiblePlaybookVar',
     'IdpCatalogEntityGitDetails',
+    'IdpPluginEnvVariable',
+    'IdpPluginProxy',
+    'IdpScorecardCheck',
+    'IdpScorecardCheckRule',
+    'IdpScorecardCheckRuleInputValue',
+    'IdpScorecardFilter',
+    'IdpScorecardTierAnalytic',
     'InfraModuleTestingTestingMetadata',
     'InfraProviderVersion',
     'InfraVariableSetConnector',
@@ -1841,6 +1848,13 @@ __all__ = [
     'GetIacmAnsiblePlaybookEnvVarResult',
     'GetIacmAnsiblePlaybookVarResult',
     'GetIdpCatalogEntityGitDetailResult',
+    'GetIdpPluginEnvVariableResult',
+    'GetIdpPluginProxyResult',
+    'GetIdpScorecardCheckResult',
+    'GetIdpScorecardCheckRuleResult',
+    'GetIdpScorecardCheckRuleInputValueResult',
+    'GetIdpScorecardFilterResult',
+    'GetIdpScorecardTierAnalyticResult',
     'GetInfraModuleTestingMetadataResult',
     'GetInfraModuleTestingTestingMetadataResult',
     'GetInfraModulesModuleResult',
@@ -104676,6 +104690,547 @@ class IdpCatalogEntityGitDetails(dict):
 
 
 @pulumi.output_type
+class IdpPluginEnvVariable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "envName":
+            suggest = "env_name"
+        elif key == "harnessSecretIdentifier":
+            suggest = "harness_secret_identifier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IdpPluginEnvVariable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IdpPluginEnvVariable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IdpPluginEnvVariable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 env_name: _builtins.str,
+                 harness_secret_identifier: _builtins.str,
+                 type: _builtins.str,
+                 identifier: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str env_name: Name of the environment variable.
+        :param _builtins.str harness_secret_identifier: Harness secret identifier used as the value.
+        :param _builtins.str type: Type of the environment variable source. Valid values: Secret, Config.
+        :param _builtins.str identifier: Server-generated unique identifier for this env variable entry.
+        """
+        pulumi.set(__self__, "env_name", env_name)
+        pulumi.set(__self__, "harness_secret_identifier", harness_secret_identifier)
+        pulumi.set(__self__, "type", type)
+        if identifier is not None:
+            pulumi.set(__self__, "identifier", identifier)
+
+    @_builtins.property
+    @pulumi.getter(name="envName")
+    def env_name(self) -> _builtins.str:
+        """
+        Name of the environment variable.
+        """
+        return pulumi.get(self, "env_name")
+
+    @_builtins.property
+    @pulumi.getter(name="harnessSecretIdentifier")
+    def harness_secret_identifier(self) -> _builtins.str:
+        """
+        Harness secret identifier used as the value.
+        """
+        return pulumi.get(self, "harness_secret_identifier")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the environment variable source. Valid values: Secret, Config.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> Optional[_builtins.str]:
+        """
+        Server-generated unique identifier for this env variable entry.
+        """
+        return pulumi.get(self, "identifier")
+
+
+@pulumi.output_type
+class IdpPluginProxy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "healthCheckPath":
+            suggest = "health_check_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IdpPluginProxy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IdpPluginProxy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IdpPluginProxy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host: _builtins.str,
+                 health_check_path: Optional[_builtins.str] = None,
+                 identifier: Optional[_builtins.str] = None,
+                 proxy: Optional[_builtins.bool] = None,
+                 selectors: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str host: Proxy host.
+        :param _builtins.str health_check_path: Health check path for the proxy endpoint.
+        :param _builtins.str identifier: Server-generated unique identifier for this proxy entry.
+        :param _builtins.bool proxy: Whether proxy is enabled for this host.
+        :param Sequence[_builtins.str] selectors: Delegate selectors.
+        """
+        pulumi.set(__self__, "host", host)
+        if health_check_path is not None:
+            pulumi.set(__self__, "health_check_path", health_check_path)
+        if identifier is not None:
+            pulumi.set(__self__, "identifier", identifier)
+        if proxy is not None:
+            pulumi.set(__self__, "proxy", proxy)
+        if selectors is not None:
+            pulumi.set(__self__, "selectors", selectors)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        """
+        Proxy host.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckPath")
+    def health_check_path(self) -> Optional[_builtins.str]:
+        """
+        Health check path for the proxy endpoint.
+        """
+        return pulumi.get(self, "health_check_path")
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> Optional[_builtins.str]:
+        """
+        Server-generated unique identifier for this proxy entry.
+        """
+        return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter
+    def proxy(self) -> Optional[_builtins.bool]:
+        """
+        Whether proxy is enabled for this host.
+        """
+        return pulumi.get(self, "proxy")
+
+    @_builtins.property
+    @pulumi.getter
+    def selectors(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Delegate selectors.
+        """
+        return pulumi.get(self, "selectors")
+
+
+@pulumi.output_type
+class IdpScorecardCheck(dict):
+    def __init__(__self__, *,
+                 custom: _builtins.bool,
+                 identifier: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 weightage: Optional[_builtins.float] = None):
+        """
+        :param _builtins.bool custom: Whether the referenced check is custom.
+        :param _builtins.str identifier: Identifier of the check.
+        :param _builtins.str description: Description of the check.
+        :param _builtins.str name: Name of the check.
+        :param _builtins.float weightage: Weightage of the check when using CUSTOM.
+        """
+        pulumi.set(__self__, "custom", custom)
+        pulumi.set(__self__, "identifier", identifier)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if weightage is not None:
+            pulumi.set(__self__, "weightage", weightage)
+
+    @_builtins.property
+    @pulumi.getter
+    def custom(self) -> _builtins.bool:
+        """
+        Whether the referenced check is custom.
+        """
+        return pulumi.get(self, "custom")
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> _builtins.str:
+        """
+        Identifier of the check.
+        """
+        return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the check.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the check.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def weightage(self) -> Optional[_builtins.float]:
+        """
+        Weightage of the check when using CUSTOM.
+        """
+        return pulumi.get(self, "weightage")
+
+
+@pulumi.output_type
+class IdpScorecardCheckRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataPointIdentifier":
+            suggest = "data_point_identifier"
+        elif key == "dataSourceIdentifier":
+            suggest = "data_source_identifier"
+        elif key == "inputValues":
+            suggest = "input_values"
+        elif key == "ruleDescription":
+            suggest = "rule_description"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IdpScorecardCheckRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IdpScorecardCheckRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IdpScorecardCheckRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_point_identifier: _builtins.str,
+                 data_source_identifier: _builtins.str,
+                 operator: _builtins.str,
+                 identifier: Optional[_builtins.str] = None,
+                 input_values: Optional[Sequence['outputs.IdpScorecardCheckRuleInputValue']] = None,
+                 rule_description: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str data_point_identifier: Identifier of the data point evaluated by the rule.
+        :param _builtins.str data_source_identifier: Identifier of the data source used by the rule.
+        :param _builtins.str operator: Comparison operator.
+        :param _builtins.str identifier: Identifier of the rule.
+        :param Sequence['IdpScorecardCheckRuleInputValueArgs'] input_values: Input values passed to the data point.
+        :param _builtins.str rule_description: Description of the rule.
+        :param _builtins.str value: Value to compare against.
+        """
+        pulumi.set(__self__, "data_point_identifier", data_point_identifier)
+        pulumi.set(__self__, "data_source_identifier", data_source_identifier)
+        pulumi.set(__self__, "operator", operator)
+        if identifier is not None:
+            pulumi.set(__self__, "identifier", identifier)
+        if input_values is not None:
+            pulumi.set(__self__, "input_values", input_values)
+        if rule_description is not None:
+            pulumi.set(__self__, "rule_description", rule_description)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataPointIdentifier")
+    def data_point_identifier(self) -> _builtins.str:
+        """
+        Identifier of the data point evaluated by the rule.
+        """
+        return pulumi.get(self, "data_point_identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="dataSourceIdentifier")
+    def data_source_identifier(self) -> _builtins.str:
+        """
+        Identifier of the data source used by the rule.
+        """
+        return pulumi.get(self, "data_source_identifier")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Comparison operator.
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> Optional[_builtins.str]:
+        """
+        Identifier of the rule.
+        """
+        return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="inputValues")
+    def input_values(self) -> Optional[Sequence['outputs.IdpScorecardCheckRuleInputValue']]:
+        """
+        Input values passed to the data point.
+        """
+        return pulumi.get(self, "input_values")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleDescription")
+    def rule_description(self) -> Optional[_builtins.str]:
+        """
+        Description of the rule.
+        """
+        return pulumi.get(self, "rule_description")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        Value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class IdpScorecardCheckRuleInputValue(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str key: Input key.
+        :param _builtins.str value: Input value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Input key.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Input value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class IdpScorecardFilter(dict):
+    def __init__(__self__, *,
+                 kind: _builtins.str,
+                 lifecycles: Optional[Sequence[_builtins.str]] = None,
+                 owners: Optional[Sequence[_builtins.str]] = None,
+                 scopes: Optional[Sequence[_builtins.str]] = None,
+                 tags: Optional[Sequence[_builtins.str]] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str kind: Catalog entity kind to evaluate.
+        :param Sequence[_builtins.str] lifecycles: Entity lifecycle stages to include.
+        :param Sequence[_builtins.str] owners: Entity owners to include.
+        :param Sequence[_builtins.str] scopes: Evaluation scopes (for example ACCOUNT, ORGANIZATION, or PROJECT).
+        :param Sequence[_builtins.str] tags: Entity tags to include.
+        :param _builtins.str type: Catalog entity type to evaluate.
+        """
+        pulumi.set(__self__, "kind", kind)
+        if lifecycles is not None:
+            pulumi.set(__self__, "lifecycles", lifecycles)
+        if owners is not None:
+            pulumi.set(__self__, "owners", owners)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def kind(self) -> _builtins.str:
+        """
+        Catalog entity kind to evaluate.
+        """
+        return pulumi.get(self, "kind")
+
+    @_builtins.property
+    @pulumi.getter
+    def lifecycles(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Entity lifecycle stages to include.
+        """
+        return pulumi.get(self, "lifecycles")
+
+    @_builtins.property
+    @pulumi.getter
+    def owners(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Entity owners to include.
+        """
+        return pulumi.get(self, "owners")
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Evaluation scopes (for example ACCOUNT, ORGANIZATION, or PROJECT).
+        """
+        return pulumi.get(self, "scopes")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Entity tags to include.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Catalog entity type to evaluate.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class IdpScorecardTierAnalytic(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "componentCount":
+            suggest = "component_count"
+        elif key == "maxScore":
+            suggest = "max_score"
+        elif key == "minScore":
+            suggest = "min_score"
+        elif key == "tierColour":
+            suggest = "tier_colour"
+        elif key == "tierName":
+            suggest = "tier_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IdpScorecardTierAnalytic. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IdpScorecardTierAnalytic.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IdpScorecardTierAnalytic.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 component_count: Optional[_builtins.int] = None,
+                 max_score: Optional[_builtins.int] = None,
+                 min_score: Optional[_builtins.int] = None,
+                 percentage: Optional[_builtins.float] = None,
+                 tier_colour: Optional[_builtins.str] = None,
+                 tier_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int component_count: Number of components in the tier.
+        :param _builtins.int max_score: Maximum score for the tier.
+        :param _builtins.int min_score: Minimum score for the tier.
+        :param _builtins.float percentage: Percentage of components in the tier.
+        :param _builtins.str tier_colour: Colour of the tier.
+        :param _builtins.str tier_name: Name of the tier.
+        """
+        if component_count is not None:
+            pulumi.set(__self__, "component_count", component_count)
+        if max_score is not None:
+            pulumi.set(__self__, "max_score", max_score)
+        if min_score is not None:
+            pulumi.set(__self__, "min_score", min_score)
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+        if tier_colour is not None:
+            pulumi.set(__self__, "tier_colour", tier_colour)
+        if tier_name is not None:
+            pulumi.set(__self__, "tier_name", tier_name)
+
+    @_builtins.property
+    @pulumi.getter(name="componentCount")
+    def component_count(self) -> Optional[_builtins.int]:
+        """
+        Number of components in the tier.
+        """
+        return pulumi.get(self, "component_count")
+
+    @_builtins.property
+    @pulumi.getter(name="maxScore")
+    def max_score(self) -> Optional[_builtins.int]:
+        """
+        Maximum score for the tier.
+        """
+        return pulumi.get(self, "max_score")
+
+    @_builtins.property
+    @pulumi.getter(name="minScore")
+    def min_score(self) -> Optional[_builtins.int]:
+        """
+        Minimum score for the tier.
+        """
+        return pulumi.get(self, "min_score")
+
+    @_builtins.property
+    @pulumi.getter
+    def percentage(self) -> Optional[_builtins.float]:
+        """
+        Percentage of components in the tier.
+        """
+        return pulumi.get(self, "percentage")
+
+    @_builtins.property
+    @pulumi.getter(name="tierColour")
+    def tier_colour(self) -> Optional[_builtins.str]:
+        """
+        Colour of the tier.
+        """
+        return pulumi.get(self, "tier_colour")
+
+    @_builtins.property
+    @pulumi.getter(name="tierName")
+    def tier_name(self) -> Optional[_builtins.str]:
+        """
+        Name of the tier.
+        """
+        return pulumi.get(self, "tier_name")
+
+
+@pulumi.output_type
 class InfraModuleTestingTestingMetadata(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -119968,6 +120523,440 @@ class GetIdpCatalogEntityGitDetailResult(dict):
         Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
         """
         return pulumi.get(self, "store_type")
+
+
+@pulumi.output_type
+class GetIdpPluginEnvVariableResult(dict):
+    def __init__(__self__, *,
+                 env_name: _builtins.str,
+                 harness_secret_identifier: _builtins.str,
+                 identifier: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str env_name: Name of the environment variable.
+        :param _builtins.str harness_secret_identifier: Harness secret identifier used as the value.
+        :param _builtins.str identifier: Server-generated unique identifier for this env variable entry.
+        :param _builtins.str type: Type of the environment variable source.
+        """
+        pulumi.set(__self__, "env_name", env_name)
+        pulumi.set(__self__, "harness_secret_identifier", harness_secret_identifier)
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="envName")
+    def env_name(self) -> _builtins.str:
+        """
+        Name of the environment variable.
+        """
+        return pulumi.get(self, "env_name")
+
+    @_builtins.property
+    @pulumi.getter(name="harnessSecretIdentifier")
+    def harness_secret_identifier(self) -> _builtins.str:
+        """
+        Harness secret identifier used as the value.
+        """
+        return pulumi.get(self, "harness_secret_identifier")
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> _builtins.str:
+        """
+        Server-generated unique identifier for this env variable entry.
+        """
+        return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the environment variable source.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetIdpPluginProxyResult(dict):
+    def __init__(__self__, *,
+                 health_check_path: _builtins.str,
+                 host: _builtins.str,
+                 identifier: _builtins.str,
+                 proxy: _builtins.bool,
+                 selectors: Sequence[_builtins.str]):
+        """
+        :param _builtins.str health_check_path: Health check path for the proxy endpoint.
+        :param _builtins.str host: Proxy host.
+        :param _builtins.str identifier: Server-generated unique identifier for this proxy entry.
+        :param _builtins.bool proxy: Whether proxy is enabled for this host.
+        :param Sequence[_builtins.str] selectors: Delegate selectors.
+        """
+        pulumi.set(__self__, "health_check_path", health_check_path)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "proxy", proxy)
+        pulumi.set(__self__, "selectors", selectors)
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckPath")
+    def health_check_path(self) -> _builtins.str:
+        """
+        Health check path for the proxy endpoint.
+        """
+        return pulumi.get(self, "health_check_path")
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        """
+        Proxy host.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> _builtins.str:
+        """
+        Server-generated unique identifier for this proxy entry.
+        """
+        return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter
+    def proxy(self) -> _builtins.bool:
+        """
+        Whether proxy is enabled for this host.
+        """
+        return pulumi.get(self, "proxy")
+
+    @_builtins.property
+    @pulumi.getter
+    def selectors(self) -> Sequence[_builtins.str]:
+        """
+        Delegate selectors.
+        """
+        return pulumi.get(self, "selectors")
+
+
+@pulumi.output_type
+class GetIdpScorecardCheckResult(dict):
+    def __init__(__self__, *,
+                 custom: _builtins.bool,
+                 description: _builtins.str,
+                 identifier: _builtins.str,
+                 name: _builtins.str,
+                 weightage: _builtins.float):
+        """
+        :param _builtins.bool custom: Whether the referenced check is custom.
+        :param _builtins.str description: Description of the check.
+        :param _builtins.str identifier: Identifier of the check.
+        :param _builtins.str name: Name of the check.
+        :param _builtins.float weightage: Weightage of the check when using CUSTOM.
+        """
+        pulumi.set(__self__, "custom", custom)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "weightage", weightage)
+
+    @_builtins.property
+    @pulumi.getter
+    def custom(self) -> _builtins.bool:
+        """
+        Whether the referenced check is custom.
+        """
+        return pulumi.get(self, "custom")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the check.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> _builtins.str:
+        """
+        Identifier of the check.
+        """
+        return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the check.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def weightage(self) -> _builtins.float:
+        """
+        Weightage of the check when using CUSTOM.
+        """
+        return pulumi.get(self, "weightage")
+
+
+@pulumi.output_type
+class GetIdpScorecardCheckRuleResult(dict):
+    def __init__(__self__, *,
+                 data_point_identifier: _builtins.str,
+                 data_source_identifier: _builtins.str,
+                 identifier: _builtins.str,
+                 input_values: Sequence['outputs.GetIdpScorecardCheckRuleInputValueResult'],
+                 operator: _builtins.str,
+                 rule_description: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str data_point_identifier: Identifier of the data point evaluated by the rule.
+        :param _builtins.str data_source_identifier: Identifier of the data source used by the rule.
+        :param _builtins.str identifier: Identifier of the rule.
+        :param Sequence['GetIdpScorecardCheckRuleInputValueArgs'] input_values: Input values passed to the data point.
+        :param _builtins.str operator: Comparison operator.
+        :param _builtins.str rule_description: Description of the rule.
+        :param _builtins.str value: Value to compare against.
+        """
+        pulumi.set(__self__, "data_point_identifier", data_point_identifier)
+        pulumi.set(__self__, "data_source_identifier", data_source_identifier)
+        pulumi.set(__self__, "identifier", identifier)
+        pulumi.set(__self__, "input_values", input_values)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "rule_description", rule_description)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataPointIdentifier")
+    def data_point_identifier(self) -> _builtins.str:
+        """
+        Identifier of the data point evaluated by the rule.
+        """
+        return pulumi.get(self, "data_point_identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="dataSourceIdentifier")
+    def data_source_identifier(self) -> _builtins.str:
+        """
+        Identifier of the data source used by the rule.
+        """
+        return pulumi.get(self, "data_source_identifier")
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> _builtins.str:
+        """
+        Identifier of the rule.
+        """
+        return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="inputValues")
+    def input_values(self) -> Sequence['outputs.GetIdpScorecardCheckRuleInputValueResult']:
+        """
+        Input values passed to the data point.
+        """
+        return pulumi.get(self, "input_values")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Comparison operator.
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleDescription")
+    def rule_description(self) -> _builtins.str:
+        """
+        Description of the rule.
+        """
+        return pulumi.get(self, "rule_description")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetIdpScorecardCheckRuleInputValueResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str key: Input key.
+        :param _builtins.str value: Input value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Input key.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Input value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetIdpScorecardFilterResult(dict):
+    def __init__(__self__, *,
+                 kind: _builtins.str,
+                 lifecycles: Sequence[_builtins.str],
+                 owners: Sequence[_builtins.str],
+                 scopes: Sequence[_builtins.str],
+                 tags: Sequence[_builtins.str],
+                 type: _builtins.str):
+        """
+        :param _builtins.str kind: Catalog entity kind to evaluate.
+        :param Sequence[_builtins.str] lifecycles: Entity lifecycle stages to include.
+        :param Sequence[_builtins.str] owners: Entity owners to include.
+        :param Sequence[_builtins.str] scopes: Evaluation scopes (for example ACCOUNT, ORGANIZATION, or PROJECT).
+        :param Sequence[_builtins.str] tags: Entity tags to include.
+        :param _builtins.str type: Catalog entity type to evaluate.
+        """
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "lifecycles", lifecycles)
+        pulumi.set(__self__, "owners", owners)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def kind(self) -> _builtins.str:
+        """
+        Catalog entity kind to evaluate.
+        """
+        return pulumi.get(self, "kind")
+
+    @_builtins.property
+    @pulumi.getter
+    def lifecycles(self) -> Sequence[_builtins.str]:
+        """
+        Entity lifecycle stages to include.
+        """
+        return pulumi.get(self, "lifecycles")
+
+    @_builtins.property
+    @pulumi.getter
+    def owners(self) -> Sequence[_builtins.str]:
+        """
+        Entity owners to include.
+        """
+        return pulumi.get(self, "owners")
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> Sequence[_builtins.str]:
+        """
+        Evaluation scopes (for example ACCOUNT, ORGANIZATION, or PROJECT).
+        """
+        return pulumi.get(self, "scopes")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Sequence[_builtins.str]:
+        """
+        Entity tags to include.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Catalog entity type to evaluate.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetIdpScorecardTierAnalyticResult(dict):
+    def __init__(__self__, *,
+                 component_count: _builtins.int,
+                 max_score: _builtins.int,
+                 min_score: _builtins.int,
+                 percentage: _builtins.float,
+                 tier_colour: _builtins.str,
+                 tier_name: _builtins.str):
+        """
+        :param _builtins.int component_count: Number of components in the tier.
+        :param _builtins.int max_score: Maximum score for the tier.
+        :param _builtins.int min_score: Minimum score for the tier.
+        :param _builtins.float percentage: Percentage of components in the tier.
+        :param _builtins.str tier_colour: Colour of the tier.
+        :param _builtins.str tier_name: Name of the tier.
+        """
+        pulumi.set(__self__, "component_count", component_count)
+        pulumi.set(__self__, "max_score", max_score)
+        pulumi.set(__self__, "min_score", min_score)
+        pulumi.set(__self__, "percentage", percentage)
+        pulumi.set(__self__, "tier_colour", tier_colour)
+        pulumi.set(__self__, "tier_name", tier_name)
+
+    @_builtins.property
+    @pulumi.getter(name="componentCount")
+    def component_count(self) -> _builtins.int:
+        """
+        Number of components in the tier.
+        """
+        return pulumi.get(self, "component_count")
+
+    @_builtins.property
+    @pulumi.getter(name="maxScore")
+    def max_score(self) -> _builtins.int:
+        """
+        Maximum score for the tier.
+        """
+        return pulumi.get(self, "max_score")
+
+    @_builtins.property
+    @pulumi.getter(name="minScore")
+    def min_score(self) -> _builtins.int:
+        """
+        Minimum score for the tier.
+        """
+        return pulumi.get(self, "min_score")
+
+    @_builtins.property
+    @pulumi.getter
+    def percentage(self) -> _builtins.float:
+        """
+        Percentage of components in the tier.
+        """
+        return pulumi.get(self, "percentage")
+
+    @_builtins.property
+    @pulumi.getter(name="tierColour")
+    def tier_colour(self) -> _builtins.str:
+        """
+        Colour of the tier.
+        """
+        return pulumi.get(self, "tier_colour")
+
+    @_builtins.property
+    @pulumi.getter(name="tierName")
+    def tier_name(self) -> _builtins.str:
+        """
+        Name of the tier.
+        """
+        return pulumi.get(self, "tier_name")
 
 
 @pulumi.output_type

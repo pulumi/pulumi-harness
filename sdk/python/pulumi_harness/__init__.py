@@ -1216,6 +1216,30 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/idpPlugin",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/idpPlugin:IdpPlugin": "IdpPlugin"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/idpScorecard",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/idpScorecard:IdpScorecard": "IdpScorecard"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/idpScorecardCheck",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/idpScorecardCheck:IdpScorecardCheck": "IdpScorecardCheck"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/infraModule",
   "fqn": "pulumi_harness.platform",
   "classes": {

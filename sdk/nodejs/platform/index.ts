@@ -600,6 +600,21 @@ export const getIdpEnvironmentBlueprint: typeof import("./getIdpEnvironmentBluep
 export const getIdpEnvironmentBlueprintOutput: typeof import("./getIdpEnvironmentBlueprint").getIdpEnvironmentBlueprintOutput = null as any;
 utilities.lazyLoad(exports, ["getIdpEnvironmentBlueprint","getIdpEnvironmentBlueprintOutput"], () => require("./getIdpEnvironmentBlueprint"));
 
+export { GetIdpPluginArgs, GetIdpPluginResult, GetIdpPluginOutputArgs } from "./getIdpPlugin";
+export const getIdpPlugin: typeof import("./getIdpPlugin").getIdpPlugin = null as any;
+export const getIdpPluginOutput: typeof import("./getIdpPlugin").getIdpPluginOutput = null as any;
+utilities.lazyLoad(exports, ["getIdpPlugin","getIdpPluginOutput"], () => require("./getIdpPlugin"));
+
+export { GetIdpScorecardArgs, GetIdpScorecardResult, GetIdpScorecardOutputArgs } from "./getIdpScorecard";
+export const getIdpScorecard: typeof import("./getIdpScorecard").getIdpScorecard = null as any;
+export const getIdpScorecardOutput: typeof import("./getIdpScorecard").getIdpScorecardOutput = null as any;
+utilities.lazyLoad(exports, ["getIdpScorecard","getIdpScorecardOutput"], () => require("./getIdpScorecard"));
+
+export { GetIdpScorecardCheckArgs, GetIdpScorecardCheckResult, GetIdpScorecardCheckOutputArgs } from "./getIdpScorecardCheck";
+export const getIdpScorecardCheck: typeof import("./getIdpScorecardCheck").getIdpScorecardCheck = null as any;
+export const getIdpScorecardCheckOutput: typeof import("./getIdpScorecardCheck").getIdpScorecardCheckOutput = null as any;
+utilities.lazyLoad(exports, ["getIdpScorecardCheck","getIdpScorecardCheckOutput"], () => require("./getIdpScorecardCheck"));
+
 export { GetInfraModuleArgs, GetInfraModuleResult, GetInfraModuleOutputArgs } from "./getInfraModule";
 export const getInfraModule: typeof import("./getInfraModule").getInfraModule = null as any;
 export const getInfraModuleOutput: typeof import("./getInfraModule").getInfraModuleOutput = null as any;
@@ -1060,6 +1075,21 @@ export type IdpEnvironmentBlueprint = import("./idpEnvironmentBlueprint").IdpEnv
 export const IdpEnvironmentBlueprint: typeof import("./idpEnvironmentBlueprint").IdpEnvironmentBlueprint = null as any;
 utilities.lazyLoad(exports, ["IdpEnvironmentBlueprint"], () => require("./idpEnvironmentBlueprint"));
 
+export { IdpPluginArgs, IdpPluginState } from "./idpPlugin";
+export type IdpPlugin = import("./idpPlugin").IdpPlugin;
+export const IdpPlugin: typeof import("./idpPlugin").IdpPlugin = null as any;
+utilities.lazyLoad(exports, ["IdpPlugin"], () => require("./idpPlugin"));
+
+export { IdpScorecardArgs, IdpScorecardState } from "./idpScorecard";
+export type IdpScorecard = import("./idpScorecard").IdpScorecard;
+export const IdpScorecard: typeof import("./idpScorecard").IdpScorecard = null as any;
+utilities.lazyLoad(exports, ["IdpScorecard"], () => require("./idpScorecard"));
+
+export { IdpScorecardCheckArgs, IdpScorecardCheckState } from "./idpScorecardCheck";
+export type IdpScorecardCheck = import("./idpScorecardCheck").IdpScorecardCheck;
+export const IdpScorecardCheck: typeof import("./idpScorecardCheck").IdpScorecardCheck = null as any;
+utilities.lazyLoad(exports, ["IdpScorecardCheck"], () => require("./idpScorecardCheck"));
+
 export { InfraModuleArgs, InfraModuleState } from "./infraModule";
 export type InfraModule = import("./infraModule").InfraModule;
 export const InfraModule: typeof import("./infraModule").InfraModule = null as any;
@@ -1512,6 +1542,12 @@ const _module = {
                 return new IdpEnvironment(name, <any>undefined, { urn })
             case "harness:platform/idpEnvironmentBlueprint:IdpEnvironmentBlueprint":
                 return new IdpEnvironmentBlueprint(name, <any>undefined, { urn })
+            case "harness:platform/idpPlugin:IdpPlugin":
+                return new IdpPlugin(name, <any>undefined, { urn })
+            case "harness:platform/idpScorecard:IdpScorecard":
+                return new IdpScorecard(name, <any>undefined, { urn })
+            case "harness:platform/idpScorecardCheck:IdpScorecardCheck":
+                return new IdpScorecardCheck(name, <any>undefined, { urn })
             case "harness:platform/infraModule:InfraModule":
                 return new InfraModule(name, <any>undefined, { urn })
             case "harness:platform/infraModuleTesting:InfraModuleTesting":
@@ -1710,6 +1746,9 @@ pulumi.runtime.registerResourceModule("harness", "platform/iacmWorkspaceTemplate
 pulumi.runtime.registerResourceModule("harness", "platform/idpCatalogEntity", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/idpEnvironment", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/idpEnvironmentBlueprint", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/idpPlugin", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/idpScorecard", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/idpScorecardCheck", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infraModule", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infraModuleTesting", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/infraProvider", _module)

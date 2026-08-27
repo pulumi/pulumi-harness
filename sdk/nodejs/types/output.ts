@@ -9936,6 +9936,167 @@ export namespace platform {
         storeType: string;
     }
 
+    export interface GetIdpPluginEnvVariable {
+        /**
+         * Name of the environment variable.
+         */
+        envName: string;
+        /**
+         * Harness secret identifier used as the value.
+         */
+        harnessSecretIdentifier: string;
+        /**
+         * Server-generated unique identifier for this env variable entry.
+         */
+        identifier: string;
+        /**
+         * Type of the environment variable source.
+         */
+        type: string;
+    }
+
+    export interface GetIdpPluginProxy {
+        /**
+         * Health check path for the proxy endpoint.
+         */
+        healthCheckPath: string;
+        /**
+         * Proxy host.
+         */
+        host: string;
+        /**
+         * Server-generated unique identifier for this proxy entry.
+         */
+        identifier: string;
+        /**
+         * Whether proxy is enabled for this host.
+         */
+        proxy: boolean;
+        /**
+         * Delegate selectors.
+         */
+        selectors: string[];
+    }
+
+    export interface GetIdpScorecardCheck {
+        /**
+         * Whether the referenced check is custom.
+         */
+        custom: boolean;
+        /**
+         * Description of the check.
+         */
+        description: string;
+        /**
+         * Identifier of the check.
+         */
+        identifier: string;
+        /**
+         * Name of the check.
+         */
+        name: string;
+        /**
+         * Weightage of the check when using CUSTOM.
+         */
+        weightage: number;
+    }
+
+    export interface GetIdpScorecardCheckRule {
+        /**
+         * Identifier of the data point evaluated by the rule.
+         */
+        dataPointIdentifier: string;
+        /**
+         * Identifier of the data source used by the rule.
+         */
+        dataSourceIdentifier: string;
+        /**
+         * Identifier of the rule.
+         */
+        identifier: string;
+        /**
+         * Input values passed to the data point.
+         */
+        inputValues: outputs.platform.GetIdpScorecardCheckRuleInputValue[];
+        /**
+         * Comparison operator.
+         */
+        operator: string;
+        /**
+         * Description of the rule.
+         */
+        ruleDescription: string;
+        /**
+         * Value to compare against.
+         */
+        value: string;
+    }
+
+    export interface GetIdpScorecardCheckRuleInputValue {
+        /**
+         * Input key.
+         */
+        key: string;
+        /**
+         * Input value.
+         */
+        value: string;
+    }
+
+    export interface GetIdpScorecardFilter {
+        /**
+         * Catalog entity kind to evaluate.
+         */
+        kind: string;
+        /**
+         * Entity lifecycle stages to include.
+         */
+        lifecycles: string[];
+        /**
+         * Entity owners to include.
+         */
+        owners: string[];
+        /**
+         * Evaluation scopes (for example ACCOUNT, ORGANIZATION, or PROJECT).
+         */
+        scopes: string[];
+        /**
+         * Entity tags to include.
+         */
+        tags: string[];
+        /**
+         * Catalog entity type to evaluate.
+         */
+        type: string;
+    }
+
+    export interface GetIdpScorecardTierAnalytic {
+        /**
+         * Number of components in the tier.
+         */
+        componentCount: number;
+        /**
+         * Maximum score for the tier.
+         */
+        maxScore: number;
+        /**
+         * Minimum score for the tier.
+         */
+        minScore: number;
+        /**
+         * Percentage of components in the tier.
+         */
+        percentage: number;
+        /**
+         * Colour of the tier.
+         */
+        tierColour: string;
+        /**
+         * Name of the tier.
+         */
+        tierName: string;
+    }
+
     export interface GetInfraModuleTestingMetadata {
         /**
          * Account is the internal customer account ID
@@ -40048,6 +40209,167 @@ export namespace platform {
          * Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
          */
         storeType: string;
+    }
+
+    export interface IdpPluginEnvVariable {
+        /**
+         * Name of the environment variable.
+         */
+        envName: string;
+        /**
+         * Harness secret identifier used as the value.
+         */
+        harnessSecretIdentifier: string;
+        /**
+         * Server-generated unique identifier for this env variable entry.
+         */
+        identifier: string;
+        /**
+         * Type of the environment variable source. Valid values: Secret, Config.
+         */
+        type: string;
+    }
+
+    export interface IdpPluginProxy {
+        /**
+         * Health check path for the proxy endpoint.
+         */
+        healthCheckPath?: string;
+        /**
+         * Proxy host.
+         */
+        host: string;
+        /**
+         * Server-generated unique identifier for this proxy entry.
+         */
+        identifier: string;
+        /**
+         * Whether proxy is enabled for this host.
+         */
+        proxy?: boolean;
+        /**
+         * Delegate selectors.
+         */
+        selectors?: string[];
+    }
+
+    export interface IdpScorecardCheck {
+        /**
+         * Whether the referenced check is custom.
+         */
+        custom: boolean;
+        /**
+         * Description of the check.
+         */
+        description: string;
+        /**
+         * Identifier of the check.
+         */
+        identifier: string;
+        /**
+         * Name of the check.
+         */
+        name: string;
+        /**
+         * Weightage of the check when using CUSTOM.
+         */
+        weightage: number;
+    }
+
+    export interface IdpScorecardCheckRule {
+        /**
+         * Identifier of the data point evaluated by the rule.
+         */
+        dataPointIdentifier: string;
+        /**
+         * Identifier of the data source used by the rule.
+         */
+        dataSourceIdentifier: string;
+        /**
+         * Identifier of the rule.
+         */
+        identifier: string;
+        /**
+         * Input values passed to the data point.
+         */
+        inputValues?: outputs.platform.IdpScorecardCheckRuleInputValue[];
+        /**
+         * Comparison operator.
+         */
+        operator: string;
+        /**
+         * Description of the rule.
+         */
+        ruleDescription: string;
+        /**
+         * Value to compare against.
+         */
+        value: string;
+    }
+
+    export interface IdpScorecardCheckRuleInputValue {
+        /**
+         * Input key.
+         */
+        key: string;
+        /**
+         * Input value.
+         */
+        value: string;
+    }
+
+    export interface IdpScorecardFilter {
+        /**
+         * Catalog entity kind to evaluate.
+         */
+        kind: string;
+        /**
+         * Entity lifecycle stages to include.
+         */
+        lifecycles: string[];
+        /**
+         * Entity owners to include.
+         */
+        owners: string[];
+        /**
+         * Evaluation scopes (for example ACCOUNT, ORGANIZATION, or PROJECT).
+         */
+        scopes: string[];
+        /**
+         * Entity tags to include.
+         */
+        tags: string[];
+        /**
+         * Catalog entity type to evaluate.
+         */
+        type?: string;
+    }
+
+    export interface IdpScorecardTierAnalytic {
+        /**
+         * Number of components in the tier.
+         */
+        componentCount: number;
+        /**
+         * Maximum score for the tier.
+         */
+        maxScore: number;
+        /**
+         * Minimum score for the tier.
+         */
+        minScore: number;
+        /**
+         * Percentage of components in the tier.
+         */
+        percentage: number;
+        /**
+         * Colour of the tier.
+         */
+        tierColour: string;
+        /**
+         * Name of the tier.
+         */
+        tierName: string;
     }
 
     export interface InfraModuleTestingTestingMetadata {

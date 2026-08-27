@@ -38433,6 +38433,167 @@ export namespace platform {
         storeType?: pulumi.Input<string | undefined>;
     }
 
+    export interface IdpPluginEnvVariable {
+        /**
+         * Name of the environment variable.
+         */
+        envName: pulumi.Input<string>;
+        /**
+         * Harness secret identifier used as the value.
+         */
+        harnessSecretIdentifier: pulumi.Input<string>;
+        /**
+         * Server-generated unique identifier for this env variable entry.
+         */
+        identifier?: pulumi.Input<string | undefined>;
+        /**
+         * Type of the environment variable source. Valid values: Secret, Config.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface IdpPluginProxy {
+        /**
+         * Health check path for the proxy endpoint.
+         */
+        healthCheckPath?: pulumi.Input<string | undefined>;
+        /**
+         * Proxy host.
+         */
+        host: pulumi.Input<string>;
+        /**
+         * Server-generated unique identifier for this proxy entry.
+         */
+        identifier?: pulumi.Input<string | undefined>;
+        /**
+         * Whether proxy is enabled for this host.
+         */
+        proxy?: pulumi.Input<boolean | undefined>;
+        /**
+         * Delegate selectors.
+         */
+        selectors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface IdpScorecardCheck {
+        /**
+         * Whether the referenced check is custom.
+         */
+        custom: pulumi.Input<boolean>;
+        /**
+         * Description of the check.
+         */
+        description?: pulumi.Input<string | undefined>;
+        /**
+         * Identifier of the check.
+         */
+        identifier: pulumi.Input<string>;
+        /**
+         * Name of the check.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * Weightage of the check when using CUSTOM.
+         */
+        weightage?: pulumi.Input<number | undefined>;
+    }
+
+    export interface IdpScorecardCheckRule {
+        /**
+         * Identifier of the data point evaluated by the rule.
+         */
+        dataPointIdentifier: pulumi.Input<string>;
+        /**
+         * Identifier of the data source used by the rule.
+         */
+        dataSourceIdentifier: pulumi.Input<string>;
+        /**
+         * Identifier of the rule.
+         */
+        identifier?: pulumi.Input<string | undefined>;
+        /**
+         * Input values passed to the data point.
+         */
+        inputValues?: pulumi.Input<pulumi.Input<inputs.platform.IdpScorecardCheckRuleInputValue>[] | undefined>;
+        /**
+         * Comparison operator.
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * Description of the rule.
+         */
+        ruleDescription?: pulumi.Input<string | undefined>;
+        /**
+         * Value to compare against.
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IdpScorecardCheckRuleInputValue {
+        /**
+         * Input key.
+         */
+        key: pulumi.Input<string>;
+        /**
+         * Input value.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface IdpScorecardFilter {
+        /**
+         * Catalog entity kind to evaluate.
+         */
+        kind: pulumi.Input<string>;
+        /**
+         * Entity lifecycle stages to include.
+         */
+        lifecycles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Entity owners to include.
+         */
+        owners?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Evaluation scopes (for example ACCOUNT, ORGANIZATION, or PROJECT).
+         */
+        scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Entity tags to include.
+         */
+        tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Catalog entity type to evaluate.
+         */
+        type?: pulumi.Input<string | undefined>;
+    }
+
+    export interface IdpScorecardTierAnalytic {
+        /**
+         * Number of components in the tier.
+         */
+        componentCount?: pulumi.Input<number | undefined>;
+        /**
+         * Maximum score for the tier.
+         */
+        maxScore?: pulumi.Input<number | undefined>;
+        /**
+         * Minimum score for the tier.
+         */
+        minScore?: pulumi.Input<number | undefined>;
+        /**
+         * Percentage of components in the tier.
+         */
+        percentage?: pulumi.Input<number | undefined>;
+        /**
+         * Colour of the tier.
+         */
+        tierColour?: pulumi.Input<string | undefined>;
+        /**
+         * Name of the tier.
+         */
+        tierName?: pulumi.Input<string | undefined>;
+    }
+
     export interface InfraModuleTestingTestingMetadata {
         /**
          * Account is the internal customer account ID
