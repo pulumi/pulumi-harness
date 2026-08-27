@@ -91,12 +91,8 @@ type LookupDashboardsResult struct {
 }
 
 func LookupDashboardsOutput(ctx *pulumi.Context, args LookupDashboardsOutputArgs, opts ...pulumi.InvokeOption) LookupDashboardsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDashboardsResultOutput, error) {
-			args := v.(LookupDashboardsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getDashboards:getDashboards", args, LookupDashboardsResultOutput{}, options).(LookupDashboardsResultOutput), nil
-		}).(LookupDashboardsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getDashboards:getDashboards", args, LookupDashboardsResultOutput{}, options).(LookupDashboardsResultOutput)
 }
 
 // A collection of arguments for invoking getDashboards.

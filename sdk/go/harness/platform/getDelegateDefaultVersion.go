@@ -130,12 +130,8 @@ type GetDelegateDefaultVersionResult struct {
 }
 
 func GetDelegateDefaultVersionOutput(ctx *pulumi.Context, args GetDelegateDefaultVersionOutputArgs, opts ...pulumi.InvokeOption) GetDelegateDefaultVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDelegateDefaultVersionResultOutput, error) {
-			args := v.(GetDelegateDefaultVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getDelegateDefaultVersion:getDelegateDefaultVersion", args, GetDelegateDefaultVersionResultOutput{}, options).(GetDelegateDefaultVersionResultOutput), nil
-		}).(GetDelegateDefaultVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getDelegateDefaultVersion:getDelegateDefaultVersion", args, GetDelegateDefaultVersionResultOutput{}, options).(GetDelegateDefaultVersionResultOutput)
 }
 
 // A collection of arguments for invoking getDelegateDefaultVersion.

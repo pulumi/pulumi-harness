@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Harness.Fme
 {
+    [Obsolete(@"harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace")]
     public static class Workspace
     {
         /// <summary>
@@ -25,14 +26,14 @@ namespace Pulumi.Harness.Fme
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // By Harness organization and project identifiers (matches harness_platform_* conventions).
-        ///     var byProject = Harness.Fme.Workspace.Invoke(new()
+        ///     var byProject = Harness.Fme.GetWorkspace.Invoke(new()
         ///     {
         ///         OrgId = "organization_id",
         ///         ProjectId = "project_id",
         ///     });
         /// 
         ///     // By exact Split workspace name.
-        ///     var byName = Harness.Fme.Workspace.Invoke(new()
+        ///     var byName = Harness.Fme.GetWorkspace.Invoke(new()
         ///     {
         ///         Name = "my-workspace-name",
         ///     });
@@ -57,14 +58,14 @@ namespace Pulumi.Harness.Fme
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // By Harness organization and project identifiers (matches harness_platform_* conventions).
-        ///     var byProject = Harness.Fme.Workspace.Invoke(new()
+        ///     var byProject = Harness.Fme.GetWorkspace.Invoke(new()
         ///     {
         ///         OrgId = "organization_id",
         ///         ProjectId = "project_id",
         ///     });
         /// 
         ///     // By exact Split workspace name.
-        ///     var byName = Harness.Fme.Workspace.Invoke(new()
+        ///     var byName = Harness.Fme.GetWorkspace.Invoke(new()
         ///     {
         ///         Name = "my-workspace-name",
         ///     });
@@ -89,14 +90,14 @@ namespace Pulumi.Harness.Fme
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // By Harness organization and project identifiers (matches harness_platform_* conventions).
-        ///     var byProject = Harness.Fme.Workspace.Invoke(new()
+        ///     var byProject = Harness.Fme.GetWorkspace.Invoke(new()
         ///     {
         ///         OrgId = "organization_id",
         ///         ProjectId = "project_id",
         ///     });
         /// 
         ///     // By exact Split workspace name.
-        ///     var byName = Harness.Fme.Workspace.Invoke(new()
+        ///     var byName = Harness.Fme.GetWorkspace.Invoke(new()
         ///     {
         ///         Name = "my-workspace-name",
         ///     });

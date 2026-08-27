@@ -87,12 +87,8 @@ type LookupGcpProxyResult struct {
 }
 
 func LookupGcpProxyOutput(ctx *pulumi.Context, args LookupGcpProxyOutputArgs, opts ...pulumi.InvokeOption) LookupGcpProxyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGcpProxyResultOutput, error) {
-			args := v.(LookupGcpProxyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:autostopping/getGcpProxy:getGcpProxy", args, LookupGcpProxyResultOutput{}, options).(LookupGcpProxyResultOutput), nil
-		}).(LookupGcpProxyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:autostopping/getGcpProxy:getGcpProxy", args, LookupGcpProxyResultOutput{}, options).(LookupGcpProxyResultOutput)
 }
 
 // A collection of arguments for invoking getGcpProxy.

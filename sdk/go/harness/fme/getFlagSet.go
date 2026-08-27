@@ -78,12 +78,8 @@ type LookupFlagSetResult struct {
 }
 
 func LookupFlagSetOutput(ctx *pulumi.Context, args LookupFlagSetOutputArgs, opts ...pulumi.InvokeOption) LookupFlagSetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFlagSetResultOutput, error) {
-			args := v.(LookupFlagSetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:fme/getFlagSet:getFlagSet", args, LookupFlagSetResultOutput{}, options).(LookupFlagSetResultOutput), nil
-		}).(LookupFlagSetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:fme/getFlagSet:getFlagSet", args, LookupFlagSetResultOutput{}, options).(LookupFlagSetResultOutput)
 }
 
 // A collection of arguments for invoking getFlagSet.

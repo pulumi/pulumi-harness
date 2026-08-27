@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// By Harness organization and project identifiers (matches harness_platform_* conventions).
-//			_, err := fme.Workspace(ctx, &fme.WorkspaceArgs{
+//			_, err := fme.GetWorkspace(ctx, &fme.GetWorkspaceArgs{
 //				OrgId:     pulumi.StringRef("organization_id"),
 //				ProjectId: pulumi.StringRef("project_id"),
 //			}, nil)
@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			// By exact Split workspace name.
-//			_, err = fme.Workspace(ctx, &fme.WorkspaceArgs{
+//			_, err = fme.GetWorkspace(ctx, &fme.GetWorkspaceArgs{
 //				Name: pulumi.StringRef("my-workspace-name"),
 //			}, nil)
 //			if err != nil {
@@ -47,6 +47,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
 func Workspace(ctx *pulumi.Context, args *WorkspaceArgs, opts ...pulumi.InvokeOption) (*WorkspaceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv WorkspaceResult
@@ -86,12 +88,8 @@ type WorkspaceResult struct {
 }
 
 func WorkspaceOutput(ctx *pulumi.Context, args WorkspaceOutputArgs, opts ...pulumi.InvokeOption) WorkspaceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (WorkspaceResultOutput, error) {
-			args := v.(WorkspaceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:fme/workspace:Workspace", args, WorkspaceResultOutput{}, options).(WorkspaceResultOutput), nil
-		}).(WorkspaceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:fme/workspace:Workspace", args, WorkspaceResultOutput{}, options).(WorkspaceResultOutput)
 }
 
 // A collection of arguments for invoking Workspace.

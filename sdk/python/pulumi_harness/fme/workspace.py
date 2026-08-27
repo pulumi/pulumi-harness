@@ -21,6 +21,8 @@ __all__ = [
     'workspace_output',
 ]
 
+warnings.warn("""harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace""", DeprecationWarning)
+
 @pulumi.output_type
 class WorkspaceResult:
     """
@@ -135,10 +137,10 @@ def workspace(name: Optional[_builtins.str] = None,
     import pulumi_harness as harness
 
     # By Harness organization and project identifiers (matches harness_platform_* conventions).
-    by_project = harness.fme.workspace(org_id="organization_id",
+    by_project = harness.fme.get_workspace(org_id="organization_id",
         project_id="project_id")
     # By exact Split workspace name.
-    by_name = harness.fme.workspace(name="my-workspace-name")
+    by_name = harness.fme.get_workspace(name="my-workspace-name")
     ```
 
 
@@ -146,6 +148,7 @@ def workspace(name: Optional[_builtins.str] = None,
     :param _builtins.str org_id: Harness organization identifier. Must be set together with `project_id` when not using `name`. Also populated from the API after read.
     :param _builtins.str project_id: Harness project identifier. Must be set together with `org_id` when not using `name`. Also populated from the API after read.
     """
+    pulumi.log.warn("""workspace is deprecated: harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace""")
     __args__ = dict()
     __args__['name'] = name
     __args__['orgId'] = org_id
@@ -175,10 +178,10 @@ def workspace_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = Non
     import pulumi_harness as harness
 
     # By Harness organization and project identifiers (matches harness_platform_* conventions).
-    by_project = harness.fme.workspace(org_id="organization_id",
+    by_project = harness.fme.get_workspace(org_id="organization_id",
         project_id="project_id")
     # By exact Split workspace name.
-    by_name = harness.fme.workspace(name="my-workspace-name")
+    by_name = harness.fme.get_workspace(name="my-workspace-name")
     ```
 
 
@@ -186,6 +189,7 @@ def workspace_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = Non
     :param _builtins.str org_id: Harness organization identifier. Must be set together with `project_id` when not using `name`. Also populated from the API after read.
     :param _builtins.str project_id: Harness project identifier. Must be set together with `org_id` when not using `name`. Also populated from the API after read.
     """
+    pulumi.log.warn("""workspace is deprecated: harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace""")
     __args__ = dict()
     __args__['name'] = name
     __args__['orgId'] = org_id

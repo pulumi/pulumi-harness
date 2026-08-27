@@ -162,12 +162,8 @@ type LookupInfrastructureV2Result struct {
 }
 
 func LookupInfrastructureV2Output(ctx *pulumi.Context, args LookupInfrastructureV2OutputArgs, opts ...pulumi.InvokeOption) LookupInfrastructureV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInfrastructureV2ResultOutput, error) {
-			args := v.(LookupInfrastructureV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:chaos/getInfrastructureV2:getInfrastructureV2", args, LookupInfrastructureV2ResultOutput{}, options).(LookupInfrastructureV2ResultOutput), nil
-		}).(LookupInfrastructureV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:chaos/getInfrastructureV2:getInfrastructureV2", args, LookupInfrastructureV2ResultOutput{}, options).(LookupInfrastructureV2ResultOutput)
 }
 
 // A collection of arguments for invoking getInfrastructureV2.

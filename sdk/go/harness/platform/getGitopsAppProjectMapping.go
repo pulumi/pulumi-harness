@@ -63,12 +63,8 @@ type LookupGitopsAppProjectMappingResult struct {
 }
 
 func LookupGitopsAppProjectMappingOutput(ctx *pulumi.Context, args LookupGitopsAppProjectMappingOutputArgs, opts ...pulumi.InvokeOption) LookupGitopsAppProjectMappingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGitopsAppProjectMappingResultOutput, error) {
-			args := v.(LookupGitopsAppProjectMappingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getGitopsAppProjectMapping:getGitopsAppProjectMapping", args, LookupGitopsAppProjectMappingResultOutput{}, options).(LookupGitopsAppProjectMappingResultOutput), nil
-		}).(LookupGitopsAppProjectMappingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getGitopsAppProjectMapping:getGitopsAppProjectMapping", args, LookupGitopsAppProjectMappingResultOutput{}, options).(LookupGitopsAppProjectMappingResultOutput)
 }
 
 // A collection of arguments for invoking getGitopsAppProjectMapping.

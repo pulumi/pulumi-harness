@@ -79,12 +79,8 @@ type LookupRepoWebhookResult struct {
 }
 
 func LookupRepoWebhookOutput(ctx *pulumi.Context, args LookupRepoWebhookOutputArgs, opts ...pulumi.InvokeOption) LookupRepoWebhookResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRepoWebhookResultOutput, error) {
-			args := v.(LookupRepoWebhookArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getRepoWebhook:getRepoWebhook", args, LookupRepoWebhookResultOutput{}, options).(LookupRepoWebhookResultOutput), nil
-		}).(LookupRepoWebhookResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getRepoWebhook:getRepoWebhook", args, LookupRepoWebhookResultOutput{}, options).(LookupRepoWebhookResultOutput)
 }
 
 // A collection of arguments for invoking getRepoWebhook.

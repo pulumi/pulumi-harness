@@ -89,12 +89,8 @@ type LookupRolesResult struct {
 }
 
 func LookupRolesOutput(ctx *pulumi.Context, args LookupRolesOutputArgs, opts ...pulumi.InvokeOption) LookupRolesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRolesResultOutput, error) {
-			args := v.(LookupRolesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getRoles:getRoles", args, LookupRolesResultOutput{}, options).(LookupRolesResultOutput), nil
-		}).(LookupRolesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getRoles:getRoles", args, LookupRolesResultOutput{}, options).(LookupRolesResultOutput)
 }
 
 // A collection of arguments for invoking getRoles.

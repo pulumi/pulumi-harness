@@ -49,12 +49,8 @@ type LookupIdpEnvironmentBlueprintResult struct {
 }
 
 func LookupIdpEnvironmentBlueprintOutput(ctx *pulumi.Context, args LookupIdpEnvironmentBlueprintOutputArgs, opts ...pulumi.InvokeOption) LookupIdpEnvironmentBlueprintResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIdpEnvironmentBlueprintResultOutput, error) {
-			args := v.(LookupIdpEnvironmentBlueprintArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getIdpEnvironmentBlueprint:getIdpEnvironmentBlueprint", args, LookupIdpEnvironmentBlueprintResultOutput{}, options).(LookupIdpEnvironmentBlueprintResultOutput), nil
-		}).(LookupIdpEnvironmentBlueprintResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getIdpEnvironmentBlueprint:getIdpEnvironmentBlueprint", args, LookupIdpEnvironmentBlueprintResultOutput{}, options).(LookupIdpEnvironmentBlueprintResultOutput)
 }
 
 // A collection of arguments for invoking getIdpEnvironmentBlueprint.

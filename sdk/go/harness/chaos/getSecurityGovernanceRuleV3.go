@@ -101,12 +101,8 @@ type LookupSecurityGovernanceRuleV3Result struct {
 }
 
 func LookupSecurityGovernanceRuleV3Output(ctx *pulumi.Context, args LookupSecurityGovernanceRuleV3OutputArgs, opts ...pulumi.InvokeOption) LookupSecurityGovernanceRuleV3ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSecurityGovernanceRuleV3ResultOutput, error) {
-			args := v.(LookupSecurityGovernanceRuleV3Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:chaos/getSecurityGovernanceRuleV3:getSecurityGovernanceRuleV3", args, LookupSecurityGovernanceRuleV3ResultOutput{}, options).(LookupSecurityGovernanceRuleV3ResultOutput), nil
-		}).(LookupSecurityGovernanceRuleV3ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:chaos/getSecurityGovernanceRuleV3:getSecurityGovernanceRuleV3", args, LookupSecurityGovernanceRuleV3ResultOutput{}, options).(LookupSecurityGovernanceRuleV3ResultOutput)
 }
 
 // A collection of arguments for invoking getSecurityGovernanceRuleV3.

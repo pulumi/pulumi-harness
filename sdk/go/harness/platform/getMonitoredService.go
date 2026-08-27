@@ -73,12 +73,8 @@ type LookupMonitoredServiceResult struct {
 }
 
 func LookupMonitoredServiceOutput(ctx *pulumi.Context, args LookupMonitoredServiceOutputArgs, opts ...pulumi.InvokeOption) LookupMonitoredServiceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMonitoredServiceResultOutput, error) {
-			args := v.(LookupMonitoredServiceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getMonitoredService:getMonitoredService", args, LookupMonitoredServiceResultOutput{}, options).(LookupMonitoredServiceResultOutput), nil
-		}).(LookupMonitoredServiceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getMonitoredService:getMonitoredService", args, LookupMonitoredServiceResultOutput{}, options).(LookupMonitoredServiceResultOutput)
 }
 
 // A collection of arguments for invoking getMonitoredService.

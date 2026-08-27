@@ -85,12 +85,8 @@ type LookupGcpConnectorResult struct {
 }
 
 func LookupGcpConnectorOutput(ctx *pulumi.Context, args LookupGcpConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupGcpConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGcpConnectorResultOutput, error) {
-			args := v.(LookupGcpConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getGcpConnector:getGcpConnector", args, LookupGcpConnectorResultOutput{}, options).(LookupGcpConnectorResultOutput), nil
-		}).(LookupGcpConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getGcpConnector:getGcpConnector", args, LookupGcpConnectorResultOutput{}, options).(LookupGcpConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getGcpConnector.

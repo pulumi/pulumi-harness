@@ -87,12 +87,8 @@ type LookupIdpScorecardCheckResult struct {
 }
 
 func LookupIdpScorecardCheckOutput(ctx *pulumi.Context, args LookupIdpScorecardCheckOutputArgs, opts ...pulumi.InvokeOption) LookupIdpScorecardCheckResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIdpScorecardCheckResultOutput, error) {
-			args := v.(LookupIdpScorecardCheckArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getIdpScorecardCheck:getIdpScorecardCheck", args, LookupIdpScorecardCheckResultOutput{}, options).(LookupIdpScorecardCheckResultOutput), nil
-		}).(LookupIdpScorecardCheckResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getIdpScorecardCheck:getIdpScorecardCheck", args, LookupIdpScorecardCheckResultOutput{}, options).(LookupIdpScorecardCheckResultOutput)
 }
 
 // A collection of arguments for invoking getIdpScorecardCheck.

@@ -84,12 +84,8 @@ type LookupEnvironmentServiceOverridesResult struct {
 }
 
 func LookupEnvironmentServiceOverridesOutput(ctx *pulumi.Context, args LookupEnvironmentServiceOverridesOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentServiceOverridesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEnvironmentServiceOverridesResultOutput, error) {
-			args := v.(LookupEnvironmentServiceOverridesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getEnvironmentServiceOverrides:getEnvironmentServiceOverrides", args, LookupEnvironmentServiceOverridesResultOutput{}, options).(LookupEnvironmentServiceOverridesResultOutput), nil
-		}).(LookupEnvironmentServiceOverridesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getEnvironmentServiceOverrides:getEnvironmentServiceOverrides", args, LookupEnvironmentServiceOverridesResultOutput{}, options).(LookupEnvironmentServiceOverridesResultOutput)
 }
 
 // A collection of arguments for invoking getEnvironmentServiceOverrides.

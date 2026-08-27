@@ -69,12 +69,8 @@ type LookupDashboardFoldersResult struct {
 }
 
 func LookupDashboardFoldersOutput(ctx *pulumi.Context, args LookupDashboardFoldersOutputArgs, opts ...pulumi.InvokeOption) LookupDashboardFoldersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDashboardFoldersResultOutput, error) {
-			args := v.(LookupDashboardFoldersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getDashboardFolders:getDashboardFolders", args, LookupDashboardFoldersResultOutput{}, options).(LookupDashboardFoldersResultOutput), nil
-		}).(LookupDashboardFoldersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getDashboardFolders:getDashboardFolders", args, LookupDashboardFoldersResultOutput{}, options).(LookupDashboardFoldersResultOutput)
 }
 
 // A collection of arguments for invoking getDashboardFolders.

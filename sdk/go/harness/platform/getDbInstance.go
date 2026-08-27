@@ -100,12 +100,8 @@ type LookupDbInstanceResult struct {
 }
 
 func LookupDbInstanceOutput(ctx *pulumi.Context, args LookupDbInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupDbInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDbInstanceResultOutput, error) {
-			args := v.(LookupDbInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getDbInstance:getDbInstance", args, LookupDbInstanceResultOutput{}, options).(LookupDbInstanceResultOutput), nil
-		}).(LookupDbInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getDbInstance:getDbInstance", args, LookupDbInstanceResultOutput{}, options).(LookupDbInstanceResultOutput)
 }
 
 // A collection of arguments for invoking getDbInstance.

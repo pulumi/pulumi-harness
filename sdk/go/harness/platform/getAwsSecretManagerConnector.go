@@ -101,12 +101,8 @@ type LookupAwsSecretManagerConnectorResult struct {
 }
 
 func LookupAwsSecretManagerConnectorOutput(ctx *pulumi.Context, args LookupAwsSecretManagerConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAwsSecretManagerConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAwsSecretManagerConnectorResultOutput, error) {
-			args := v.(LookupAwsSecretManagerConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getAwsSecretManagerConnector:getAwsSecretManagerConnector", args, LookupAwsSecretManagerConnectorResultOutput{}, options).(LookupAwsSecretManagerConnectorResultOutput), nil
-		}).(LookupAwsSecretManagerConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getAwsSecretManagerConnector:getAwsSecretManagerConnector", args, LookupAwsSecretManagerConnectorResultOutput{}, options).(LookupAwsSecretManagerConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getAwsSecretManagerConnector.

@@ -79,12 +79,8 @@ type LookupEnvironmentGroupResult struct {
 }
 
 func LookupEnvironmentGroupOutput(ctx *pulumi.Context, args LookupEnvironmentGroupOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEnvironmentGroupResultOutput, error) {
-			args := v.(LookupEnvironmentGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getEnvironmentGroup:getEnvironmentGroup", args, LookupEnvironmentGroupResultOutput{}, options).(LookupEnvironmentGroupResultOutput), nil
-		}).(LookupEnvironmentGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getEnvironmentGroup:getEnvironmentGroup", args, LookupEnvironmentGroupResultOutput{}, options).(LookupEnvironmentGroupResultOutput)
 }
 
 // A collection of arguments for invoking getEnvironmentGroup.

@@ -91,12 +91,8 @@ type LookupGcpSecretManagerConnectorResult struct {
 }
 
 func LookupGcpSecretManagerConnectorOutput(ctx *pulumi.Context, args LookupGcpSecretManagerConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupGcpSecretManagerConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGcpSecretManagerConnectorResultOutput, error) {
-			args := v.(LookupGcpSecretManagerConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getGcpSecretManagerConnector:getGcpSecretManagerConnector", args, LookupGcpSecretManagerConnectorResultOutput{}, options).(LookupGcpSecretManagerConnectorResultOutput), nil
-		}).(LookupGcpSecretManagerConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getGcpSecretManagerConnector:getGcpSecretManagerConnector", args, LookupGcpSecretManagerConnectorResultOutput{}, options).(LookupGcpSecretManagerConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getGcpSecretManagerConnector.

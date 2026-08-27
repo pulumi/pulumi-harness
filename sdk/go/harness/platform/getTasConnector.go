@@ -85,12 +85,8 @@ type LookupTasConnectorResult struct {
 }
 
 func LookupTasConnectorOutput(ctx *pulumi.Context, args LookupTasConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupTasConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTasConnectorResultOutput, error) {
-			args := v.(LookupTasConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getTasConnector:getTasConnector", args, LookupTasConnectorResultOutput{}, options).(LookupTasConnectorResultOutput), nil
-		}).(LookupTasConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getTasConnector:getTasConnector", args, LookupTasConnectorResultOutput{}, options).(LookupTasConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getTasConnector.

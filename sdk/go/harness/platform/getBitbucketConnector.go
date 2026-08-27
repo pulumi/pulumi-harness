@@ -91,12 +91,8 @@ type LookupBitbucketConnectorResult struct {
 }
 
 func LookupBitbucketConnectorOutput(ctx *pulumi.Context, args LookupBitbucketConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupBitbucketConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBitbucketConnectorResultOutput, error) {
-			args := v.(LookupBitbucketConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getBitbucketConnector:getBitbucketConnector", args, LookupBitbucketConnectorResultOutput{}, options).(LookupBitbucketConnectorResultOutput), nil
-		}).(LookupBitbucketConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getBitbucketConnector:getBitbucketConnector", args, LookupBitbucketConnectorResultOutput{}, options).(LookupBitbucketConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getBitbucketConnector.

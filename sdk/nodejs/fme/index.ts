@@ -35,6 +35,11 @@ export const getTrafficType: typeof import("./getTrafficType").getTrafficType = 
 export const getTrafficTypeOutput: typeof import("./getTrafficType").getTrafficTypeOutput = null as any;
 utilities.lazyLoad(exports, ["getTrafficType","getTrafficTypeOutput"], () => require("./getTrafficType"));
 
+export { GetWorkspaceArgs, GetWorkspaceResult, GetWorkspaceOutputArgs } from "./getWorkspace";
+export const getWorkspace: typeof import("./getWorkspace").getWorkspace = null as any;
+export const getWorkspaceOutput: typeof import("./getWorkspace").getWorkspaceOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkspace","getWorkspaceOutput"], () => require("./getWorkspace"));
+
 export { WorkspaceArgs, WorkspaceResult, WorkspaceOutputArgs } from "./workspace";
 export const workspace: typeof import("./workspace").workspace = null as any;
 export const workspaceOutput: typeof import("./workspace").workspaceOutput = null as any;

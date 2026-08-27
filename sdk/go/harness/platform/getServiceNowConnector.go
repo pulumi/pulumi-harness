@@ -91,12 +91,8 @@ type LookupServiceNowConnectorResult struct {
 }
 
 func LookupServiceNowConnectorOutput(ctx *pulumi.Context, args LookupServiceNowConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupServiceNowConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServiceNowConnectorResultOutput, error) {
-			args := v.(LookupServiceNowConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getServiceNowConnector:getServiceNowConnector", args, LookupServiceNowConnectorResultOutput{}, options).(LookupServiceNowConnectorResultOutput), nil
-		}).(LookupServiceNowConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getServiceNowConnector:getServiceNowConnector", args, LookupServiceNowConnectorResultOutput{}, options).(LookupServiceNowConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getServiceNowConnector.

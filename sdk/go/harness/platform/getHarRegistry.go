@@ -102,12 +102,8 @@ type LookupHarRegistryResult struct {
 }
 
 func LookupHarRegistryOutput(ctx *pulumi.Context, args LookupHarRegistryOutputArgs, opts ...pulumi.InvokeOption) LookupHarRegistryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHarRegistryResultOutput, error) {
-			args := v.(LookupHarRegistryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getHarRegistry:getHarRegistry", args, LookupHarRegistryResultOutput{}, options).(LookupHarRegistryResultOutput), nil
-		}).(LookupHarRegistryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getHarRegistry:getHarRegistry", args, LookupHarRegistryResultOutput{}, options).(LookupHarRegistryResultOutput)
 }
 
 // A collection of arguments for invoking getHarRegistry.

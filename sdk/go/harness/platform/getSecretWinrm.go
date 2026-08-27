@@ -113,12 +113,8 @@ type LookupSecretWinrmResult struct {
 }
 
 func LookupSecretWinrmOutput(ctx *pulumi.Context, args LookupSecretWinrmOutputArgs, opts ...pulumi.InvokeOption) LookupSecretWinrmResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSecretWinrmResultOutput, error) {
-			args := v.(LookupSecretWinrmArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getSecretWinrm:getSecretWinrm", args, LookupSecretWinrmResultOutput{}, options).(LookupSecretWinrmResultOutput), nil
-		}).(LookupSecretWinrmResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getSecretWinrm:getSecretWinrm", args, LookupSecretWinrmResultOutput{}, options).(LookupSecretWinrmResultOutput)
 }
 
 // A collection of arguments for invoking getSecretWinrm.

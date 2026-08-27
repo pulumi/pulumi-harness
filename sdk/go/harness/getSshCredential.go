@@ -43,12 +43,8 @@ type LookupSshCredentialResult struct {
 }
 
 func LookupSshCredentialOutput(ctx *pulumi.Context, args LookupSshCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupSshCredentialResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSshCredentialResultOutput, error) {
-			args := v.(LookupSshCredentialArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:index/getSshCredential:getSshCredential", args, LookupSshCredentialResultOutput{}, options).(LookupSshCredentialResultOutput), nil
-		}).(LookupSshCredentialResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:index/getSshCredential:getSshCredential", args, LookupSshCredentialResultOutput{}, options).(LookupSshCredentialResultOutput)
 }
 
 // A collection of arguments for invoking getSshCredential.

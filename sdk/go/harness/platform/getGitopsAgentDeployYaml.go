@@ -109,12 +109,8 @@ type GetGitopsAgentDeployYamlResult struct {
 }
 
 func GetGitopsAgentDeployYamlOutput(ctx *pulumi.Context, args GetGitopsAgentDeployYamlOutputArgs, opts ...pulumi.InvokeOption) GetGitopsAgentDeployYamlResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGitopsAgentDeployYamlResultOutput, error) {
-			args := v.(GetGitopsAgentDeployYamlArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml", args, GetGitopsAgentDeployYamlResultOutput{}, options).(GetGitopsAgentDeployYamlResultOutput), nil
-		}).(GetGitopsAgentDeployYamlResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getGitopsAgentDeployYaml:getGitopsAgentDeployYaml", args, GetGitopsAgentDeployYamlResultOutput{}, options).(GetGitopsAgentDeployYamlResultOutput)
 }
 
 // A collection of arguments for invoking getGitopsAgentDeployYaml.

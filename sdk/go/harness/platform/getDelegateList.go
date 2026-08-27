@@ -138,12 +138,8 @@ type GetDelegateListResult struct {
 }
 
 func GetDelegateListOutput(ctx *pulumi.Context, args GetDelegateListOutputArgs, opts ...pulumi.InvokeOption) GetDelegateListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDelegateListResultOutput, error) {
-			args := v.(GetDelegateListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getDelegateList:getDelegateList", args, GetDelegateListResultOutput{}, options).(GetDelegateListResultOutput), nil
-		}).(GetDelegateListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getDelegateList:getDelegateList", args, GetDelegateListResultOutput{}, options).(GetDelegateListResultOutput)
 }
 
 // A collection of arguments for invoking getDelegateList.

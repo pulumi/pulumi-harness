@@ -89,12 +89,8 @@ type GetGitopsGnupgResult struct {
 }
 
 func GetGitopsGnupgOutput(ctx *pulumi.Context, args GetGitopsGnupgOutputArgs, opts ...pulumi.InvokeOption) GetGitopsGnupgResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGitopsGnupgResultOutput, error) {
-			args := v.(GetGitopsGnupgArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getGitopsGnupg:getGitopsGnupg", args, GetGitopsGnupgResultOutput{}, options).(GetGitopsGnupgResultOutput), nil
-		}).(GetGitopsGnupgResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getGitopsGnupg:getGitopsGnupg", args, GetGitopsGnupgResultOutput{}, options).(GetGitopsGnupgResultOutput)
 }
 
 // A collection of arguments for invoking getGitopsGnupg.

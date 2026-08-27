@@ -84,12 +84,8 @@ type LookupTemplateFiltersResult struct {
 }
 
 func LookupTemplateFiltersOutput(ctx *pulumi.Context, args LookupTemplateFiltersOutputArgs, opts ...pulumi.InvokeOption) LookupTemplateFiltersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTemplateFiltersResultOutput, error) {
-			args := v.(LookupTemplateFiltersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getTemplateFilters:getTemplateFilters", args, LookupTemplateFiltersResultOutput{}, options).(LookupTemplateFiltersResultOutput), nil
-		}).(LookupTemplateFiltersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getTemplateFilters:getTemplateFilters", args, LookupTemplateFiltersResultOutput{}, options).(LookupTemplateFiltersResultOutput)
 }
 
 // A collection of arguments for invoking getTemplateFilters.

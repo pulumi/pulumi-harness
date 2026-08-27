@@ -99,12 +99,8 @@ type LookupDbSchemaResult struct {
 }
 
 func LookupDbSchemaOutput(ctx *pulumi.Context, args LookupDbSchemaOutputArgs, opts ...pulumi.InvokeOption) LookupDbSchemaResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDbSchemaResultOutput, error) {
-			args := v.(LookupDbSchemaArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getDbSchema:getDbSchema", args, LookupDbSchemaResultOutput{}, options).(LookupDbSchemaResultOutput), nil
-		}).(LookupDbSchemaResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getDbSchema:getDbSchema", args, LookupDbSchemaResultOutput{}, options).(LookupDbSchemaResultOutput)
 }
 
 // A collection of arguments for invoking getDbSchema.

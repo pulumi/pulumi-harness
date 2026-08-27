@@ -141,12 +141,8 @@ type LookupActionTemplateResult struct {
 }
 
 func LookupActionTemplateOutput(ctx *pulumi.Context, args LookupActionTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupActionTemplateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupActionTemplateResultOutput, error) {
-			args := v.(LookupActionTemplateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:chaos/getActionTemplate:getActionTemplate", args, LookupActionTemplateResultOutput{}, options).(LookupActionTemplateResultOutput), nil
-		}).(LookupActionTemplateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:chaos/getActionTemplate:getActionTemplate", args, LookupActionTemplateResultOutput{}, options).(LookupActionTemplateResultOutput)
 }
 
 // A collection of arguments for invoking getActionTemplate.

@@ -42,12 +42,8 @@ type GetEnvironmentListResult struct {
 }
 
 func GetEnvironmentListOutput(ctx *pulumi.Context, args GetEnvironmentListOutputArgs, opts ...pulumi.InvokeOption) GetEnvironmentListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEnvironmentListResultOutput, error) {
-			args := v.(GetEnvironmentListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getEnvironmentList:getEnvironmentList", args, GetEnvironmentListResultOutput{}, options).(GetEnvironmentListResultOutput), nil
-		}).(GetEnvironmentListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getEnvironmentList:getEnvironmentList", args, GetEnvironmentListResultOutput{}, options).(GetEnvironmentListResultOutput)
 }
 
 // A collection of arguments for invoking getEnvironmentList.

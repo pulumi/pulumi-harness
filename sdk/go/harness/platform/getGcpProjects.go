@@ -90,12 +90,8 @@ type GetGcpProjectsResult struct {
 }
 
 func GetGcpProjectsOutput(ctx *pulumi.Context, args GetGcpProjectsOutputArgs, opts ...pulumi.InvokeOption) GetGcpProjectsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGcpProjectsResultOutput, error) {
-			args := v.(GetGcpProjectsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getGcpProjects:getGcpProjects", args, GetGcpProjectsResultOutput{}, options).(GetGcpProjectsResultOutput), nil
-		}).(GetGcpProjectsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getGcpProjects:getGcpProjects", args, GetGcpProjectsResultOutput{}, options).(GetGcpProjectsResultOutput)
 }
 
 // A collection of arguments for invoking getGcpProjects.

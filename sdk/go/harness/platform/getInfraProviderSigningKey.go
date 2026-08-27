@@ -75,12 +75,8 @@ type LookupInfraProviderSigningKeyResult struct {
 }
 
 func LookupInfraProviderSigningKeyOutput(ctx *pulumi.Context, args LookupInfraProviderSigningKeyOutputArgs, opts ...pulumi.InvokeOption) LookupInfraProviderSigningKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInfraProviderSigningKeyResultOutput, error) {
-			args := v.(LookupInfraProviderSigningKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getInfraProviderSigningKey:getInfraProviderSigningKey", args, LookupInfraProviderSigningKeyResultOutput{}, options).(LookupInfraProviderSigningKeyResultOutput), nil
-		}).(LookupInfraProviderSigningKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getInfraProviderSigningKey:getInfraProviderSigningKey", args, LookupInfraProviderSigningKeyResultOutput{}, options).(LookupInfraProviderSigningKeyResultOutput)
 }
 
 // A collection of arguments for invoking getInfraProviderSigningKey.

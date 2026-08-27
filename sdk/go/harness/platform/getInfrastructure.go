@@ -97,12 +97,8 @@ type LookupInfrastructureResult struct {
 }
 
 func LookupInfrastructureOutput(ctx *pulumi.Context, args LookupInfrastructureOutputArgs, opts ...pulumi.InvokeOption) LookupInfrastructureResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInfrastructureResultOutput, error) {
-			args := v.(LookupInfrastructureArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getInfrastructure:getInfrastructure", args, LookupInfrastructureResultOutput{}, options).(LookupInfrastructureResultOutput), nil
-		}).(LookupInfrastructureResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getInfrastructure:getInfrastructure", args, LookupInfrastructureResultOutput{}, options).(LookupInfrastructureResultOutput)
 }
 
 // A collection of arguments for invoking getInfrastructure.

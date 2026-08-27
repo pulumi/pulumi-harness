@@ -91,12 +91,8 @@ type GetGitopsRepoCredResult struct {
 }
 
 func GetGitopsRepoCredOutput(ctx *pulumi.Context, args GetGitopsRepoCredOutputArgs, opts ...pulumi.InvokeOption) GetGitopsRepoCredResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGitopsRepoCredResultOutput, error) {
-			args := v.(GetGitopsRepoCredArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getGitopsRepoCred:getGitopsRepoCred", args, GetGitopsRepoCredResultOutput{}, options).(GetGitopsRepoCredResultOutput), nil
-		}).(GetGitopsRepoCredResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getGitopsRepoCred:getGitopsRepoCred", args, GetGitopsRepoCredResultOutput{}, options).(GetGitopsRepoCredResultOutput)
 }
 
 // A collection of arguments for invoking getGitopsRepoCred.

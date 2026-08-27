@@ -81,12 +81,8 @@ type LookupAwsProxyResult struct {
 }
 
 func LookupAwsProxyOutput(ctx *pulumi.Context, args LookupAwsProxyOutputArgs, opts ...pulumi.InvokeOption) LookupAwsProxyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAwsProxyResultOutput, error) {
-			args := v.(LookupAwsProxyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:autostopping/getAwsProxy:getAwsProxy", args, LookupAwsProxyResultOutput{}, options).(LookupAwsProxyResultOutput), nil
-		}).(LookupAwsProxyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:autostopping/getAwsProxy:getAwsProxy", args, LookupAwsProxyResultOutput{}, options).(LookupAwsProxyResultOutput)
 }
 
 // A collection of arguments for invoking getAwsProxy.

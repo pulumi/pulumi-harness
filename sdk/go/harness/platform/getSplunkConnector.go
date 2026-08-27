@@ -97,12 +97,8 @@ type LookupSplunkConnectorResult struct {
 }
 
 func LookupSplunkConnectorOutput(ctx *pulumi.Context, args LookupSplunkConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupSplunkConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSplunkConnectorResultOutput, error) {
-			args := v.(LookupSplunkConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getSplunkConnector:getSplunkConnector", args, LookupSplunkConnectorResultOutput{}, options).(LookupSplunkConnectorResultOutput), nil
-		}).(LookupSplunkConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getSplunkConnector:getSplunkConnector", args, LookupSplunkConnectorResultOutput{}, options).(LookupSplunkConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getSplunkConnector.

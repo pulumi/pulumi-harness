@@ -69,12 +69,8 @@ type GetApiKeyResult struct {
 }
 
 func GetApiKeyOutput(ctx *pulumi.Context, args GetApiKeyOutputArgs, opts ...pulumi.InvokeOption) GetApiKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetApiKeyResultOutput, error) {
-			args := v.(GetApiKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getApiKey:getApiKey", args, GetApiKeyResultOutput{}, options).(GetApiKeyResultOutput), nil
-		}).(GetApiKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getApiKey:getApiKey", args, GetApiKeyResultOutput{}, options).(GetApiKeyResultOutput)
 }
 
 // A collection of arguments for invoking getApiKey.

@@ -109,12 +109,8 @@ type LookupRepoResult struct {
 }
 
 func LookupRepoOutput(ctx *pulumi.Context, args LookupRepoOutputArgs, opts ...pulumi.InvokeOption) LookupRepoResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRepoResultOutput, error) {
-			args := v.(LookupRepoArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getRepo:getRepo", args, LookupRepoResultOutput{}, options).(LookupRepoResultOutput), nil
-		}).(LookupRepoResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getRepo:getRepo", args, LookupRepoResultOutput{}, options).(LookupRepoResultOutput)
 }
 
 // A collection of arguments for invoking getRepo.

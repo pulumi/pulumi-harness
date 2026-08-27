@@ -45,12 +45,8 @@ type LookupYamlConfigResult struct {
 }
 
 func LookupYamlConfigOutput(ctx *pulumi.Context, args LookupYamlConfigOutputArgs, opts ...pulumi.InvokeOption) LookupYamlConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupYamlConfigResultOutput, error) {
-			args := v.(LookupYamlConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:index/getYamlConfig:getYamlConfig", args, LookupYamlConfigResultOutput{}, options).(LookupYamlConfigResultOutput), nil
-		}).(LookupYamlConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:index/getYamlConfig:getYamlConfig", args, LookupYamlConfigResultOutput{}, options).(LookupYamlConfigResultOutput)
 }
 
 // A collection of arguments for invoking getYamlConfig.

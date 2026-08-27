@@ -45,12 +45,8 @@ type LookupEncryptedTextResult struct {
 }
 
 func LookupEncryptedTextOutput(ctx *pulumi.Context, args LookupEncryptedTextOutputArgs, opts ...pulumi.InvokeOption) LookupEncryptedTextResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEncryptedTextResultOutput, error) {
-			args := v.(LookupEncryptedTextArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:index/getEncryptedText:getEncryptedText", args, LookupEncryptedTextResultOutput{}, options).(LookupEncryptedTextResultOutput), nil
-		}).(LookupEncryptedTextResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:index/getEncryptedText:getEncryptedText", args, LookupEncryptedTextResultOutput{}, options).(LookupEncryptedTextResultOutput)
 }
 
 // A collection of arguments for invoking getEncryptedText.

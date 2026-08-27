@@ -69,12 +69,8 @@ type GetGitopsAgentOperatorYamlResult struct {
 }
 
 func GetGitopsAgentOperatorYamlOutput(ctx *pulumi.Context, args GetGitopsAgentOperatorYamlOutputArgs, opts ...pulumi.InvokeOption) GetGitopsAgentOperatorYamlResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGitopsAgentOperatorYamlResultOutput, error) {
-			args := v.(GetGitopsAgentOperatorYamlArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getGitopsAgentOperatorYaml:getGitopsAgentOperatorYaml", args, GetGitopsAgentOperatorYamlResultOutput{}, options).(GetGitopsAgentOperatorYamlResultOutput), nil
-		}).(GetGitopsAgentOperatorYamlResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getGitopsAgentOperatorYaml:getGitopsAgentOperatorYaml", args, GetGitopsAgentOperatorYamlResultOutput{}, options).(GetGitopsAgentOperatorYamlResultOutput)
 }
 
 // A collection of arguments for invoking getGitopsAgentOperatorYaml.

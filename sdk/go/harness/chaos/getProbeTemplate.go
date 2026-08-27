@@ -155,12 +155,8 @@ type LookupProbeTemplateResult struct {
 }
 
 func LookupProbeTemplateOutput(ctx *pulumi.Context, args LookupProbeTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupProbeTemplateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupProbeTemplateResultOutput, error) {
-			args := v.(LookupProbeTemplateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:chaos/getProbeTemplate:getProbeTemplate", args, LookupProbeTemplateResultOutput{}, options).(LookupProbeTemplateResultOutput), nil
-		}).(LookupProbeTemplateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:chaos/getProbeTemplate:getProbeTemplate", args, LookupProbeTemplateResultOutput{}, options).(LookupProbeTemplateResultOutput)
 }
 
 // A collection of arguments for invoking getProbeTemplate.

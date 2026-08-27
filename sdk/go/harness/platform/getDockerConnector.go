@@ -87,12 +87,8 @@ type LookupDockerConnectorResult struct {
 }
 
 func LookupDockerConnectorOutput(ctx *pulumi.Context, args LookupDockerConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupDockerConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDockerConnectorResultOutput, error) {
-			args := v.(LookupDockerConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getDockerConnector:getDockerConnector", args, LookupDockerConnectorResultOutput{}, options).(LookupDockerConnectorResultOutput), nil
-		}).(LookupDockerConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getDockerConnector:getDockerConnector", args, LookupDockerConnectorResultOutput{}, options).(LookupDockerConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getDockerConnector.

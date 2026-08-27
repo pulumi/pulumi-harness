@@ -63,12 +63,8 @@ type LookupIdpEnvironmentResult struct {
 }
 
 func LookupIdpEnvironmentOutput(ctx *pulumi.Context, args LookupIdpEnvironmentOutputArgs, opts ...pulumi.InvokeOption) LookupIdpEnvironmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIdpEnvironmentResultOutput, error) {
-			args := v.(LookupIdpEnvironmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getIdpEnvironment:getIdpEnvironment", args, LookupIdpEnvironmentResultOutput{}, options).(LookupIdpEnvironmentResultOutput), nil
-		}).(LookupIdpEnvironmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getIdpEnvironment:getIdpEnvironment", args, LookupIdpEnvironmentResultOutput{}, options).(LookupIdpEnvironmentResultOutput)
 }
 
 // A collection of arguments for invoking getIdpEnvironment.

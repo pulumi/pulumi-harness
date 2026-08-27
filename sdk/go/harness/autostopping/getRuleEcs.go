@@ -63,12 +63,8 @@ type LookupRuleEcsResult struct {
 }
 
 func LookupRuleEcsOutput(ctx *pulumi.Context, args LookupRuleEcsOutputArgs, opts ...pulumi.InvokeOption) LookupRuleEcsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRuleEcsResultOutput, error) {
-			args := v.(LookupRuleEcsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:autostopping/getRuleEcs:getRuleEcs", args, LookupRuleEcsResultOutput{}, options).(LookupRuleEcsResultOutput), nil
-		}).(LookupRuleEcsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:autostopping/getRuleEcs:getRuleEcs", args, LookupRuleEcsResultOutput{}, options).(LookupRuleEcsResultOutput)
 }
 
 // A collection of arguments for invoking getRuleEcs.

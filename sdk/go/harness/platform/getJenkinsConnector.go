@@ -85,12 +85,8 @@ type LookupJenkinsConnectorResult struct {
 }
 
 func LookupJenkinsConnectorOutput(ctx *pulumi.Context, args LookupJenkinsConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupJenkinsConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupJenkinsConnectorResultOutput, error) {
-			args := v.(LookupJenkinsConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getJenkinsConnector:getJenkinsConnector", args, LookupJenkinsConnectorResultOutput{}, options).(LookupJenkinsConnectorResultOutput), nil
-		}).(LookupJenkinsConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getJenkinsConnector:getJenkinsConnector", args, LookupJenkinsConnectorResultOutput{}, options).(LookupJenkinsConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getJenkinsConnector.

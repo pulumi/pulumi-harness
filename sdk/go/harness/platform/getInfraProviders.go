@@ -33,10 +33,8 @@ type GetInfraProvidersResult struct {
 }
 
 func GetInfraProvidersOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetInfraProvidersResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetInfraProvidersResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("harness:platform/getInfraProviders:getInfraProviders", nil, GetInfraProvidersResultOutput{}, options).(GetInfraProvidersResultOutput), nil
-	}).(GetInfraProvidersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getInfraProviders:getInfraProviders", nil, GetInfraProvidersResultOutput{}, options).(GetInfraProvidersResultOutput)
 }
 
 // A collection of values returned by getInfraProviders.

@@ -87,12 +87,8 @@ type LookupOrchestratorConfigResult struct {
 }
 
 func LookupOrchestratorConfigOutput(ctx *pulumi.Context, args LookupOrchestratorConfigOutputArgs, opts ...pulumi.InvokeOption) LookupOrchestratorConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOrchestratorConfigResultOutput, error) {
-			args := v.(LookupOrchestratorConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:cluster/getOrchestratorConfig:getOrchestratorConfig", args, LookupOrchestratorConfigResultOutput{}, options).(LookupOrchestratorConfigResultOutput), nil
-		}).(LookupOrchestratorConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:cluster/getOrchestratorConfig:getOrchestratorConfig", args, LookupOrchestratorConfigResultOutput{}, options).(LookupOrchestratorConfigResultOutput)
 }
 
 // A collection of arguments for invoking getOrchestratorConfig.

@@ -113,12 +113,8 @@ type LookupPolicySetResult struct {
 }
 
 func LookupPolicySetOutput(ctx *pulumi.Context, args LookupPolicySetOutputArgs, opts ...pulumi.InvokeOption) LookupPolicySetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPolicySetResultOutput, error) {
-			args := v.(LookupPolicySetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getPolicySet:getPolicySet", args, LookupPolicySetResultOutput{}, options).(LookupPolicySetResultOutput), nil
-		}).(LookupPolicySetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getPolicySet:getPolicySet", args, LookupPolicySetResultOutput{}, options).(LookupPolicySetResultOutput)
 }
 
 // A collection of arguments for invoking getPolicySet.
