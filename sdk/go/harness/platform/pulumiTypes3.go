@@ -9830,6 +9830,1027 @@ func (o IdpCatalogEntityGitDetailsPtrOutput) StoreType() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+type IdpPluginEnvVariable struct {
+	// Name of the environment variable.
+	EnvName string `pulumi:"envName"`
+	// Harness secret identifier used as the value.
+	HarnessSecretIdentifier string `pulumi:"harnessSecretIdentifier"`
+	// Server-generated unique identifier for this env variable entry.
+	Identifier *string `pulumi:"identifier"`
+	// Type of the environment variable source. Valid values: Secret, Config.
+	Type string `pulumi:"type"`
+}
+
+// IdpPluginEnvVariableInput is an input type that accepts IdpPluginEnvVariableArgs and IdpPluginEnvVariableOutput values.
+// You can construct a concrete instance of `IdpPluginEnvVariableInput` via:
+//
+//	IdpPluginEnvVariableArgs{...}
+type IdpPluginEnvVariableInput interface {
+	pulumi.Input
+
+	ToIdpPluginEnvVariableOutput() IdpPluginEnvVariableOutput
+	ToIdpPluginEnvVariableOutputWithContext(context.Context) IdpPluginEnvVariableOutput
+}
+
+type IdpPluginEnvVariableArgs struct {
+	// Name of the environment variable.
+	EnvName pulumi.StringInput `pulumi:"envName"`
+	// Harness secret identifier used as the value.
+	HarnessSecretIdentifier pulumi.StringInput `pulumi:"harnessSecretIdentifier"`
+	// Server-generated unique identifier for this env variable entry.
+	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	// Type of the environment variable source. Valid values: Secret, Config.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (IdpPluginEnvVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpPluginEnvVariable)(nil)).Elem()
+}
+
+func (i IdpPluginEnvVariableArgs) ToIdpPluginEnvVariableOutput() IdpPluginEnvVariableOutput {
+	return i.ToIdpPluginEnvVariableOutputWithContext(context.Background())
+}
+
+func (i IdpPluginEnvVariableArgs) ToIdpPluginEnvVariableOutputWithContext(ctx context.Context) IdpPluginEnvVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpPluginEnvVariableOutput)
+}
+
+// IdpPluginEnvVariableArrayInput is an input type that accepts IdpPluginEnvVariableArray and IdpPluginEnvVariableArrayOutput values.
+// You can construct a concrete instance of `IdpPluginEnvVariableArrayInput` via:
+//
+//	IdpPluginEnvVariableArray{ IdpPluginEnvVariableArgs{...} }
+type IdpPluginEnvVariableArrayInput interface {
+	pulumi.Input
+
+	ToIdpPluginEnvVariableArrayOutput() IdpPluginEnvVariableArrayOutput
+	ToIdpPluginEnvVariableArrayOutputWithContext(context.Context) IdpPluginEnvVariableArrayOutput
+}
+
+type IdpPluginEnvVariableArray []IdpPluginEnvVariableInput
+
+func (IdpPluginEnvVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpPluginEnvVariable)(nil)).Elem()
+}
+
+func (i IdpPluginEnvVariableArray) ToIdpPluginEnvVariableArrayOutput() IdpPluginEnvVariableArrayOutput {
+	return i.ToIdpPluginEnvVariableArrayOutputWithContext(context.Background())
+}
+
+func (i IdpPluginEnvVariableArray) ToIdpPluginEnvVariableArrayOutputWithContext(ctx context.Context) IdpPluginEnvVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpPluginEnvVariableArrayOutput)
+}
+
+type IdpPluginEnvVariableOutput struct{ *pulumi.OutputState }
+
+func (IdpPluginEnvVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpPluginEnvVariable)(nil)).Elem()
+}
+
+func (o IdpPluginEnvVariableOutput) ToIdpPluginEnvVariableOutput() IdpPluginEnvVariableOutput {
+	return o
+}
+
+func (o IdpPluginEnvVariableOutput) ToIdpPluginEnvVariableOutputWithContext(ctx context.Context) IdpPluginEnvVariableOutput {
+	return o
+}
+
+// Name of the environment variable.
+func (o IdpPluginEnvVariableOutput) EnvName() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpPluginEnvVariable) string { return v.EnvName }).(pulumi.StringOutput)
+}
+
+// Harness secret identifier used as the value.
+func (o IdpPluginEnvVariableOutput) HarnessSecretIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpPluginEnvVariable) string { return v.HarnessSecretIdentifier }).(pulumi.StringOutput)
+}
+
+// Server-generated unique identifier for this env variable entry.
+func (o IdpPluginEnvVariableOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpPluginEnvVariable) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+}
+
+// Type of the environment variable source. Valid values: Secret, Config.
+func (o IdpPluginEnvVariableOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpPluginEnvVariable) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type IdpPluginEnvVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (IdpPluginEnvVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpPluginEnvVariable)(nil)).Elem()
+}
+
+func (o IdpPluginEnvVariableArrayOutput) ToIdpPluginEnvVariableArrayOutput() IdpPluginEnvVariableArrayOutput {
+	return o
+}
+
+func (o IdpPluginEnvVariableArrayOutput) ToIdpPluginEnvVariableArrayOutputWithContext(ctx context.Context) IdpPluginEnvVariableArrayOutput {
+	return o
+}
+
+func (o IdpPluginEnvVariableArrayOutput) Index(i pulumi.IntInput) IdpPluginEnvVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IdpPluginEnvVariable {
+		return vs[0].([]IdpPluginEnvVariable)[vs[1].(int)]
+	}).(IdpPluginEnvVariableOutput)
+}
+
+type IdpPluginProxy struct {
+	// Health check path for the proxy endpoint.
+	HealthCheckPath *string `pulumi:"healthCheckPath"`
+	// Proxy host.
+	Host string `pulumi:"host"`
+	// Server-generated unique identifier for this proxy entry.
+	Identifier *string `pulumi:"identifier"`
+	// Whether proxy is enabled for this host.
+	Proxy *bool `pulumi:"proxy"`
+	// Delegate selectors.
+	Selectors []string `pulumi:"selectors"`
+}
+
+// IdpPluginProxyInput is an input type that accepts IdpPluginProxyArgs and IdpPluginProxyOutput values.
+// You can construct a concrete instance of `IdpPluginProxyInput` via:
+//
+//	IdpPluginProxyArgs{...}
+type IdpPluginProxyInput interface {
+	pulumi.Input
+
+	ToIdpPluginProxyOutput() IdpPluginProxyOutput
+	ToIdpPluginProxyOutputWithContext(context.Context) IdpPluginProxyOutput
+}
+
+type IdpPluginProxyArgs struct {
+	// Health check path for the proxy endpoint.
+	HealthCheckPath pulumi.StringPtrInput `pulumi:"healthCheckPath"`
+	// Proxy host.
+	Host pulumi.StringInput `pulumi:"host"`
+	// Server-generated unique identifier for this proxy entry.
+	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	// Whether proxy is enabled for this host.
+	Proxy pulumi.BoolPtrInput `pulumi:"proxy"`
+	// Delegate selectors.
+	Selectors pulumi.StringArrayInput `pulumi:"selectors"`
+}
+
+func (IdpPluginProxyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpPluginProxy)(nil)).Elem()
+}
+
+func (i IdpPluginProxyArgs) ToIdpPluginProxyOutput() IdpPluginProxyOutput {
+	return i.ToIdpPluginProxyOutputWithContext(context.Background())
+}
+
+func (i IdpPluginProxyArgs) ToIdpPluginProxyOutputWithContext(ctx context.Context) IdpPluginProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpPluginProxyOutput)
+}
+
+// IdpPluginProxyArrayInput is an input type that accepts IdpPluginProxyArray and IdpPluginProxyArrayOutput values.
+// You can construct a concrete instance of `IdpPluginProxyArrayInput` via:
+//
+//	IdpPluginProxyArray{ IdpPluginProxyArgs{...} }
+type IdpPluginProxyArrayInput interface {
+	pulumi.Input
+
+	ToIdpPluginProxyArrayOutput() IdpPluginProxyArrayOutput
+	ToIdpPluginProxyArrayOutputWithContext(context.Context) IdpPluginProxyArrayOutput
+}
+
+type IdpPluginProxyArray []IdpPluginProxyInput
+
+func (IdpPluginProxyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpPluginProxy)(nil)).Elem()
+}
+
+func (i IdpPluginProxyArray) ToIdpPluginProxyArrayOutput() IdpPluginProxyArrayOutput {
+	return i.ToIdpPluginProxyArrayOutputWithContext(context.Background())
+}
+
+func (i IdpPluginProxyArray) ToIdpPluginProxyArrayOutputWithContext(ctx context.Context) IdpPluginProxyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpPluginProxyArrayOutput)
+}
+
+type IdpPluginProxyOutput struct{ *pulumi.OutputState }
+
+func (IdpPluginProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpPluginProxy)(nil)).Elem()
+}
+
+func (o IdpPluginProxyOutput) ToIdpPluginProxyOutput() IdpPluginProxyOutput {
+	return o
+}
+
+func (o IdpPluginProxyOutput) ToIdpPluginProxyOutputWithContext(ctx context.Context) IdpPluginProxyOutput {
+	return o
+}
+
+// Health check path for the proxy endpoint.
+func (o IdpPluginProxyOutput) HealthCheckPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpPluginProxy) *string { return v.HealthCheckPath }).(pulumi.StringPtrOutput)
+}
+
+// Proxy host.
+func (o IdpPluginProxyOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpPluginProxy) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Server-generated unique identifier for this proxy entry.
+func (o IdpPluginProxyOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpPluginProxy) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+}
+
+// Whether proxy is enabled for this host.
+func (o IdpPluginProxyOutput) Proxy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IdpPluginProxy) *bool { return v.Proxy }).(pulumi.BoolPtrOutput)
+}
+
+// Delegate selectors.
+func (o IdpPluginProxyOutput) Selectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IdpPluginProxy) []string { return v.Selectors }).(pulumi.StringArrayOutput)
+}
+
+type IdpPluginProxyArrayOutput struct{ *pulumi.OutputState }
+
+func (IdpPluginProxyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpPluginProxy)(nil)).Elem()
+}
+
+func (o IdpPluginProxyArrayOutput) ToIdpPluginProxyArrayOutput() IdpPluginProxyArrayOutput {
+	return o
+}
+
+func (o IdpPluginProxyArrayOutput) ToIdpPluginProxyArrayOutputWithContext(ctx context.Context) IdpPluginProxyArrayOutput {
+	return o
+}
+
+func (o IdpPluginProxyArrayOutput) Index(i pulumi.IntInput) IdpPluginProxyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IdpPluginProxy {
+		return vs[0].([]IdpPluginProxy)[vs[1].(int)]
+	}).(IdpPluginProxyOutput)
+}
+
+type IdpScorecardCheckType struct {
+	// Whether the referenced check is custom.
+	Custom bool `pulumi:"custom"`
+	// Description of the check.
+	Description *string `pulumi:"description"`
+	// Identifier of the check.
+	Identifier string `pulumi:"identifier"`
+	// Name of the check.
+	Name *string `pulumi:"name"`
+	// Weightage of the check when using CUSTOM.
+	Weightage *float64 `pulumi:"weightage"`
+}
+
+// IdpScorecardCheckTypeInput is an input type that accepts IdpScorecardCheckTypeArgs and IdpScorecardCheckTypeOutput values.
+// You can construct a concrete instance of `IdpScorecardCheckTypeInput` via:
+//
+//	IdpScorecardCheckTypeArgs{...}
+type IdpScorecardCheckTypeInput interface {
+	pulumi.Input
+
+	ToIdpScorecardCheckTypeOutput() IdpScorecardCheckTypeOutput
+	ToIdpScorecardCheckTypeOutputWithContext(context.Context) IdpScorecardCheckTypeOutput
+}
+
+type IdpScorecardCheckTypeArgs struct {
+	// Whether the referenced check is custom.
+	Custom pulumi.BoolInput `pulumi:"custom"`
+	// Description of the check.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Identifier of the check.
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Name of the check.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Weightage of the check when using CUSTOM.
+	Weightage pulumi.Float64PtrInput `pulumi:"weightage"`
+}
+
+func (IdpScorecardCheckTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpScorecardCheckType)(nil)).Elem()
+}
+
+func (i IdpScorecardCheckTypeArgs) ToIdpScorecardCheckTypeOutput() IdpScorecardCheckTypeOutput {
+	return i.ToIdpScorecardCheckTypeOutputWithContext(context.Background())
+}
+
+func (i IdpScorecardCheckTypeArgs) ToIdpScorecardCheckTypeOutputWithContext(ctx context.Context) IdpScorecardCheckTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpScorecardCheckTypeOutput)
+}
+
+// IdpScorecardCheckTypeArrayInput is an input type that accepts IdpScorecardCheckTypeArray and IdpScorecardCheckTypeArrayOutput values.
+// You can construct a concrete instance of `IdpScorecardCheckTypeArrayInput` via:
+//
+//	IdpScorecardCheckTypeArray{ IdpScorecardCheckTypeArgs{...} }
+type IdpScorecardCheckTypeArrayInput interface {
+	pulumi.Input
+
+	ToIdpScorecardCheckTypeArrayOutput() IdpScorecardCheckTypeArrayOutput
+	ToIdpScorecardCheckTypeArrayOutputWithContext(context.Context) IdpScorecardCheckTypeArrayOutput
+}
+
+type IdpScorecardCheckTypeArray []IdpScorecardCheckTypeInput
+
+func (IdpScorecardCheckTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpScorecardCheckType)(nil)).Elem()
+}
+
+func (i IdpScorecardCheckTypeArray) ToIdpScorecardCheckTypeArrayOutput() IdpScorecardCheckTypeArrayOutput {
+	return i.ToIdpScorecardCheckTypeArrayOutputWithContext(context.Background())
+}
+
+func (i IdpScorecardCheckTypeArray) ToIdpScorecardCheckTypeArrayOutputWithContext(ctx context.Context) IdpScorecardCheckTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpScorecardCheckTypeArrayOutput)
+}
+
+type IdpScorecardCheckTypeOutput struct{ *pulumi.OutputState }
+
+func (IdpScorecardCheckTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpScorecardCheckType)(nil)).Elem()
+}
+
+func (o IdpScorecardCheckTypeOutput) ToIdpScorecardCheckTypeOutput() IdpScorecardCheckTypeOutput {
+	return o
+}
+
+func (o IdpScorecardCheckTypeOutput) ToIdpScorecardCheckTypeOutputWithContext(ctx context.Context) IdpScorecardCheckTypeOutput {
+	return o
+}
+
+// Whether the referenced check is custom.
+func (o IdpScorecardCheckTypeOutput) Custom() pulumi.BoolOutput {
+	return o.ApplyT(func(v IdpScorecardCheckType) bool { return v.Custom }).(pulumi.BoolOutput)
+}
+
+// Description of the check.
+func (o IdpScorecardCheckTypeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpScorecardCheckType) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Identifier of the check.
+func (o IdpScorecardCheckTypeOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpScorecardCheckType) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Name of the check.
+func (o IdpScorecardCheckTypeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpScorecardCheckType) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Weightage of the check when using CUSTOM.
+func (o IdpScorecardCheckTypeOutput) Weightage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v IdpScorecardCheckType) *float64 { return v.Weightage }).(pulumi.Float64PtrOutput)
+}
+
+type IdpScorecardCheckTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (IdpScorecardCheckTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpScorecardCheckType)(nil)).Elem()
+}
+
+func (o IdpScorecardCheckTypeArrayOutput) ToIdpScorecardCheckTypeArrayOutput() IdpScorecardCheckTypeArrayOutput {
+	return o
+}
+
+func (o IdpScorecardCheckTypeArrayOutput) ToIdpScorecardCheckTypeArrayOutputWithContext(ctx context.Context) IdpScorecardCheckTypeArrayOutput {
+	return o
+}
+
+func (o IdpScorecardCheckTypeArrayOutput) Index(i pulumi.IntInput) IdpScorecardCheckTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IdpScorecardCheckType {
+		return vs[0].([]IdpScorecardCheckType)[vs[1].(int)]
+	}).(IdpScorecardCheckTypeOutput)
+}
+
+type IdpScorecardCheckRule struct {
+	// Identifier of the data point evaluated by the rule.
+	DataPointIdentifier string `pulumi:"dataPointIdentifier"`
+	// Identifier of the data source used by the rule.
+	DataSourceIdentifier string `pulumi:"dataSourceIdentifier"`
+	// Identifier of the rule.
+	Identifier *string `pulumi:"identifier"`
+	// Input values passed to the data point.
+	InputValues []IdpScorecardCheckRuleInputValue `pulumi:"inputValues"`
+	// Comparison operator.
+	Operator string `pulumi:"operator"`
+	// Description of the rule.
+	RuleDescription *string `pulumi:"ruleDescription"`
+	// Value to compare against.
+	Value *string `pulumi:"value"`
+}
+
+// IdpScorecardCheckRuleInput is an input type that accepts IdpScorecardCheckRuleArgs and IdpScorecardCheckRuleOutput values.
+// You can construct a concrete instance of `IdpScorecardCheckRuleInput` via:
+//
+//	IdpScorecardCheckRuleArgs{...}
+type IdpScorecardCheckRuleInput interface {
+	pulumi.Input
+
+	ToIdpScorecardCheckRuleOutput() IdpScorecardCheckRuleOutput
+	ToIdpScorecardCheckRuleOutputWithContext(context.Context) IdpScorecardCheckRuleOutput
+}
+
+type IdpScorecardCheckRuleArgs struct {
+	// Identifier of the data point evaluated by the rule.
+	DataPointIdentifier pulumi.StringInput `pulumi:"dataPointIdentifier"`
+	// Identifier of the data source used by the rule.
+	DataSourceIdentifier pulumi.StringInput `pulumi:"dataSourceIdentifier"`
+	// Identifier of the rule.
+	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	// Input values passed to the data point.
+	InputValues IdpScorecardCheckRuleInputValueArrayInput `pulumi:"inputValues"`
+	// Comparison operator.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Description of the rule.
+	RuleDescription pulumi.StringPtrInput `pulumi:"ruleDescription"`
+	// Value to compare against.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (IdpScorecardCheckRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpScorecardCheckRule)(nil)).Elem()
+}
+
+func (i IdpScorecardCheckRuleArgs) ToIdpScorecardCheckRuleOutput() IdpScorecardCheckRuleOutput {
+	return i.ToIdpScorecardCheckRuleOutputWithContext(context.Background())
+}
+
+func (i IdpScorecardCheckRuleArgs) ToIdpScorecardCheckRuleOutputWithContext(ctx context.Context) IdpScorecardCheckRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpScorecardCheckRuleOutput)
+}
+
+// IdpScorecardCheckRuleArrayInput is an input type that accepts IdpScorecardCheckRuleArray and IdpScorecardCheckRuleArrayOutput values.
+// You can construct a concrete instance of `IdpScorecardCheckRuleArrayInput` via:
+//
+//	IdpScorecardCheckRuleArray{ IdpScorecardCheckRuleArgs{...} }
+type IdpScorecardCheckRuleArrayInput interface {
+	pulumi.Input
+
+	ToIdpScorecardCheckRuleArrayOutput() IdpScorecardCheckRuleArrayOutput
+	ToIdpScorecardCheckRuleArrayOutputWithContext(context.Context) IdpScorecardCheckRuleArrayOutput
+}
+
+type IdpScorecardCheckRuleArray []IdpScorecardCheckRuleInput
+
+func (IdpScorecardCheckRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpScorecardCheckRule)(nil)).Elem()
+}
+
+func (i IdpScorecardCheckRuleArray) ToIdpScorecardCheckRuleArrayOutput() IdpScorecardCheckRuleArrayOutput {
+	return i.ToIdpScorecardCheckRuleArrayOutputWithContext(context.Background())
+}
+
+func (i IdpScorecardCheckRuleArray) ToIdpScorecardCheckRuleArrayOutputWithContext(ctx context.Context) IdpScorecardCheckRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpScorecardCheckRuleArrayOutput)
+}
+
+type IdpScorecardCheckRuleOutput struct{ *pulumi.OutputState }
+
+func (IdpScorecardCheckRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpScorecardCheckRule)(nil)).Elem()
+}
+
+func (o IdpScorecardCheckRuleOutput) ToIdpScorecardCheckRuleOutput() IdpScorecardCheckRuleOutput {
+	return o
+}
+
+func (o IdpScorecardCheckRuleOutput) ToIdpScorecardCheckRuleOutputWithContext(ctx context.Context) IdpScorecardCheckRuleOutput {
+	return o
+}
+
+// Identifier of the data point evaluated by the rule.
+func (o IdpScorecardCheckRuleOutput) DataPointIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpScorecardCheckRule) string { return v.DataPointIdentifier }).(pulumi.StringOutput)
+}
+
+// Identifier of the data source used by the rule.
+func (o IdpScorecardCheckRuleOutput) DataSourceIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpScorecardCheckRule) string { return v.DataSourceIdentifier }).(pulumi.StringOutput)
+}
+
+// Identifier of the rule.
+func (o IdpScorecardCheckRuleOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpScorecardCheckRule) *string { return v.Identifier }).(pulumi.StringPtrOutput)
+}
+
+// Input values passed to the data point.
+func (o IdpScorecardCheckRuleOutput) InputValues() IdpScorecardCheckRuleInputValueArrayOutput {
+	return o.ApplyT(func(v IdpScorecardCheckRule) []IdpScorecardCheckRuleInputValue { return v.InputValues }).(IdpScorecardCheckRuleInputValueArrayOutput)
+}
+
+// Comparison operator.
+func (o IdpScorecardCheckRuleOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpScorecardCheckRule) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Description of the rule.
+func (o IdpScorecardCheckRuleOutput) RuleDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpScorecardCheckRule) *string { return v.RuleDescription }).(pulumi.StringPtrOutput)
+}
+
+// Value to compare against.
+func (o IdpScorecardCheckRuleOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpScorecardCheckRule) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type IdpScorecardCheckRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (IdpScorecardCheckRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpScorecardCheckRule)(nil)).Elem()
+}
+
+func (o IdpScorecardCheckRuleArrayOutput) ToIdpScorecardCheckRuleArrayOutput() IdpScorecardCheckRuleArrayOutput {
+	return o
+}
+
+func (o IdpScorecardCheckRuleArrayOutput) ToIdpScorecardCheckRuleArrayOutputWithContext(ctx context.Context) IdpScorecardCheckRuleArrayOutput {
+	return o
+}
+
+func (o IdpScorecardCheckRuleArrayOutput) Index(i pulumi.IntInput) IdpScorecardCheckRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IdpScorecardCheckRule {
+		return vs[0].([]IdpScorecardCheckRule)[vs[1].(int)]
+	}).(IdpScorecardCheckRuleOutput)
+}
+
+type IdpScorecardCheckRuleInputValue struct {
+	// Input key.
+	Key string `pulumi:"key"`
+	// Input value.
+	Value string `pulumi:"value"`
+}
+
+// IdpScorecardCheckRuleInputValueInput is an input type that accepts IdpScorecardCheckRuleInputValueArgs and IdpScorecardCheckRuleInputValueOutput values.
+// You can construct a concrete instance of `IdpScorecardCheckRuleInputValueInput` via:
+//
+//	IdpScorecardCheckRuleInputValueArgs{...}
+type IdpScorecardCheckRuleInputValueInput interface {
+	pulumi.Input
+
+	ToIdpScorecardCheckRuleInputValueOutput() IdpScorecardCheckRuleInputValueOutput
+	ToIdpScorecardCheckRuleInputValueOutputWithContext(context.Context) IdpScorecardCheckRuleInputValueOutput
+}
+
+type IdpScorecardCheckRuleInputValueArgs struct {
+	// Input key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Input value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (IdpScorecardCheckRuleInputValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpScorecardCheckRuleInputValue)(nil)).Elem()
+}
+
+func (i IdpScorecardCheckRuleInputValueArgs) ToIdpScorecardCheckRuleInputValueOutput() IdpScorecardCheckRuleInputValueOutput {
+	return i.ToIdpScorecardCheckRuleInputValueOutputWithContext(context.Background())
+}
+
+func (i IdpScorecardCheckRuleInputValueArgs) ToIdpScorecardCheckRuleInputValueOutputWithContext(ctx context.Context) IdpScorecardCheckRuleInputValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpScorecardCheckRuleInputValueOutput)
+}
+
+// IdpScorecardCheckRuleInputValueArrayInput is an input type that accepts IdpScorecardCheckRuleInputValueArray and IdpScorecardCheckRuleInputValueArrayOutput values.
+// You can construct a concrete instance of `IdpScorecardCheckRuleInputValueArrayInput` via:
+//
+//	IdpScorecardCheckRuleInputValueArray{ IdpScorecardCheckRuleInputValueArgs{...} }
+type IdpScorecardCheckRuleInputValueArrayInput interface {
+	pulumi.Input
+
+	ToIdpScorecardCheckRuleInputValueArrayOutput() IdpScorecardCheckRuleInputValueArrayOutput
+	ToIdpScorecardCheckRuleInputValueArrayOutputWithContext(context.Context) IdpScorecardCheckRuleInputValueArrayOutput
+}
+
+type IdpScorecardCheckRuleInputValueArray []IdpScorecardCheckRuleInputValueInput
+
+func (IdpScorecardCheckRuleInputValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpScorecardCheckRuleInputValue)(nil)).Elem()
+}
+
+func (i IdpScorecardCheckRuleInputValueArray) ToIdpScorecardCheckRuleInputValueArrayOutput() IdpScorecardCheckRuleInputValueArrayOutput {
+	return i.ToIdpScorecardCheckRuleInputValueArrayOutputWithContext(context.Background())
+}
+
+func (i IdpScorecardCheckRuleInputValueArray) ToIdpScorecardCheckRuleInputValueArrayOutputWithContext(ctx context.Context) IdpScorecardCheckRuleInputValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpScorecardCheckRuleInputValueArrayOutput)
+}
+
+type IdpScorecardCheckRuleInputValueOutput struct{ *pulumi.OutputState }
+
+func (IdpScorecardCheckRuleInputValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpScorecardCheckRuleInputValue)(nil)).Elem()
+}
+
+func (o IdpScorecardCheckRuleInputValueOutput) ToIdpScorecardCheckRuleInputValueOutput() IdpScorecardCheckRuleInputValueOutput {
+	return o
+}
+
+func (o IdpScorecardCheckRuleInputValueOutput) ToIdpScorecardCheckRuleInputValueOutputWithContext(ctx context.Context) IdpScorecardCheckRuleInputValueOutput {
+	return o
+}
+
+// Input key.
+func (o IdpScorecardCheckRuleInputValueOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpScorecardCheckRuleInputValue) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Input value.
+func (o IdpScorecardCheckRuleInputValueOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpScorecardCheckRuleInputValue) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type IdpScorecardCheckRuleInputValueArrayOutput struct{ *pulumi.OutputState }
+
+func (IdpScorecardCheckRuleInputValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpScorecardCheckRuleInputValue)(nil)).Elem()
+}
+
+func (o IdpScorecardCheckRuleInputValueArrayOutput) ToIdpScorecardCheckRuleInputValueArrayOutput() IdpScorecardCheckRuleInputValueArrayOutput {
+	return o
+}
+
+func (o IdpScorecardCheckRuleInputValueArrayOutput) ToIdpScorecardCheckRuleInputValueArrayOutputWithContext(ctx context.Context) IdpScorecardCheckRuleInputValueArrayOutput {
+	return o
+}
+
+func (o IdpScorecardCheckRuleInputValueArrayOutput) Index(i pulumi.IntInput) IdpScorecardCheckRuleInputValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IdpScorecardCheckRuleInputValue {
+		return vs[0].([]IdpScorecardCheckRuleInputValue)[vs[1].(int)]
+	}).(IdpScorecardCheckRuleInputValueOutput)
+}
+
+type IdpScorecardFilter struct {
+	// Catalog entity kind to evaluate.
+	Kind string `pulumi:"kind"`
+	// Entity lifecycle stages to include.
+	Lifecycles []string `pulumi:"lifecycles"`
+	// Entity owners to include.
+	Owners []string `pulumi:"owners"`
+	// Evaluation scopes (for example ACCOUNT, ORGANIZATION, or PROJECT).
+	Scopes []string `pulumi:"scopes"`
+	// Entity tags to include.
+	Tags []string `pulumi:"tags"`
+	// Catalog entity type to evaluate.
+	Type *string `pulumi:"type"`
+}
+
+// IdpScorecardFilterInput is an input type that accepts IdpScorecardFilterArgs and IdpScorecardFilterOutput values.
+// You can construct a concrete instance of `IdpScorecardFilterInput` via:
+//
+//	IdpScorecardFilterArgs{...}
+type IdpScorecardFilterInput interface {
+	pulumi.Input
+
+	ToIdpScorecardFilterOutput() IdpScorecardFilterOutput
+	ToIdpScorecardFilterOutputWithContext(context.Context) IdpScorecardFilterOutput
+}
+
+type IdpScorecardFilterArgs struct {
+	// Catalog entity kind to evaluate.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// Entity lifecycle stages to include.
+	Lifecycles pulumi.StringArrayInput `pulumi:"lifecycles"`
+	// Entity owners to include.
+	Owners pulumi.StringArrayInput `pulumi:"owners"`
+	// Evaluation scopes (for example ACCOUNT, ORGANIZATION, or PROJECT).
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// Entity tags to include.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Catalog entity type to evaluate.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (IdpScorecardFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpScorecardFilter)(nil)).Elem()
+}
+
+func (i IdpScorecardFilterArgs) ToIdpScorecardFilterOutput() IdpScorecardFilterOutput {
+	return i.ToIdpScorecardFilterOutputWithContext(context.Background())
+}
+
+func (i IdpScorecardFilterArgs) ToIdpScorecardFilterOutputWithContext(ctx context.Context) IdpScorecardFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpScorecardFilterOutput)
+}
+
+func (i IdpScorecardFilterArgs) ToIdpScorecardFilterPtrOutput() IdpScorecardFilterPtrOutput {
+	return i.ToIdpScorecardFilterPtrOutputWithContext(context.Background())
+}
+
+func (i IdpScorecardFilterArgs) ToIdpScorecardFilterPtrOutputWithContext(ctx context.Context) IdpScorecardFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpScorecardFilterOutput).ToIdpScorecardFilterPtrOutputWithContext(ctx)
+}
+
+// IdpScorecardFilterPtrInput is an input type that accepts IdpScorecardFilterArgs, IdpScorecardFilterPtr and IdpScorecardFilterPtrOutput values.
+// You can construct a concrete instance of `IdpScorecardFilterPtrInput` via:
+//
+//	        IdpScorecardFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdpScorecardFilterPtrInput interface {
+	pulumi.Input
+
+	ToIdpScorecardFilterPtrOutput() IdpScorecardFilterPtrOutput
+	ToIdpScorecardFilterPtrOutputWithContext(context.Context) IdpScorecardFilterPtrOutput
+}
+
+type idpScorecardFilterPtrType IdpScorecardFilterArgs
+
+func IdpScorecardFilterPtr(v *IdpScorecardFilterArgs) IdpScorecardFilterPtrInput {
+	return (*idpScorecardFilterPtrType)(v)
+}
+
+func (*idpScorecardFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpScorecardFilter)(nil)).Elem()
+}
+
+func (i *idpScorecardFilterPtrType) ToIdpScorecardFilterPtrOutput() IdpScorecardFilterPtrOutput {
+	return i.ToIdpScorecardFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *idpScorecardFilterPtrType) ToIdpScorecardFilterPtrOutputWithContext(ctx context.Context) IdpScorecardFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpScorecardFilterPtrOutput)
+}
+
+type IdpScorecardFilterOutput struct{ *pulumi.OutputState }
+
+func (IdpScorecardFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpScorecardFilter)(nil)).Elem()
+}
+
+func (o IdpScorecardFilterOutput) ToIdpScorecardFilterOutput() IdpScorecardFilterOutput {
+	return o
+}
+
+func (o IdpScorecardFilterOutput) ToIdpScorecardFilterOutputWithContext(ctx context.Context) IdpScorecardFilterOutput {
+	return o
+}
+
+func (o IdpScorecardFilterOutput) ToIdpScorecardFilterPtrOutput() IdpScorecardFilterPtrOutput {
+	return o.ToIdpScorecardFilterPtrOutputWithContext(context.Background())
+}
+
+func (o IdpScorecardFilterOutput) ToIdpScorecardFilterPtrOutputWithContext(ctx context.Context) IdpScorecardFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdpScorecardFilter) *IdpScorecardFilter {
+		return &v
+	}).(IdpScorecardFilterPtrOutput)
+}
+
+// Catalog entity kind to evaluate.
+func (o IdpScorecardFilterOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v IdpScorecardFilter) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Entity lifecycle stages to include.
+func (o IdpScorecardFilterOutput) Lifecycles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IdpScorecardFilter) []string { return v.Lifecycles }).(pulumi.StringArrayOutput)
+}
+
+// Entity owners to include.
+func (o IdpScorecardFilterOutput) Owners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IdpScorecardFilter) []string { return v.Owners }).(pulumi.StringArrayOutput)
+}
+
+// Evaluation scopes (for example ACCOUNT, ORGANIZATION, or PROJECT).
+func (o IdpScorecardFilterOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IdpScorecardFilter) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// Entity tags to include.
+func (o IdpScorecardFilterOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IdpScorecardFilter) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Catalog entity type to evaluate.
+func (o IdpScorecardFilterOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpScorecardFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type IdpScorecardFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (IdpScorecardFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdpScorecardFilter)(nil)).Elem()
+}
+
+func (o IdpScorecardFilterPtrOutput) ToIdpScorecardFilterPtrOutput() IdpScorecardFilterPtrOutput {
+	return o
+}
+
+func (o IdpScorecardFilterPtrOutput) ToIdpScorecardFilterPtrOutputWithContext(ctx context.Context) IdpScorecardFilterPtrOutput {
+	return o
+}
+
+func (o IdpScorecardFilterPtrOutput) Elem() IdpScorecardFilterOutput {
+	return o.ApplyT(func(v *IdpScorecardFilter) IdpScorecardFilter {
+		if v != nil {
+			return *v
+		}
+		var ret IdpScorecardFilter
+		return ret
+	}).(IdpScorecardFilterOutput)
+}
+
+// Catalog entity kind to evaluate.
+func (o IdpScorecardFilterPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpScorecardFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+// Entity lifecycle stages to include.
+func (o IdpScorecardFilterPtrOutput) Lifecycles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IdpScorecardFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Lifecycles
+	}).(pulumi.StringArrayOutput)
+}
+
+// Entity owners to include.
+func (o IdpScorecardFilterPtrOutput) Owners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IdpScorecardFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Owners
+	}).(pulumi.StringArrayOutput)
+}
+
+// Evaluation scopes (for example ACCOUNT, ORGANIZATION, or PROJECT).
+func (o IdpScorecardFilterPtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IdpScorecardFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Entity tags to include.
+func (o IdpScorecardFilterPtrOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IdpScorecardFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Catalog entity type to evaluate.
+func (o IdpScorecardFilterPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdpScorecardFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdpScorecardTierAnalytic struct {
+	// Number of components in the tier.
+	ComponentCount *int `pulumi:"componentCount"`
+	// Maximum score for the tier.
+	MaxScore *int `pulumi:"maxScore"`
+	// Minimum score for the tier.
+	MinScore *int `pulumi:"minScore"`
+	// Percentage of components in the tier.
+	Percentage *float64 `pulumi:"percentage"`
+	// Colour of the tier.
+	TierColour *string `pulumi:"tierColour"`
+	// Name of the tier.
+	TierName *string `pulumi:"tierName"`
+}
+
+// IdpScorecardTierAnalyticInput is an input type that accepts IdpScorecardTierAnalyticArgs and IdpScorecardTierAnalyticOutput values.
+// You can construct a concrete instance of `IdpScorecardTierAnalyticInput` via:
+//
+//	IdpScorecardTierAnalyticArgs{...}
+type IdpScorecardTierAnalyticInput interface {
+	pulumi.Input
+
+	ToIdpScorecardTierAnalyticOutput() IdpScorecardTierAnalyticOutput
+	ToIdpScorecardTierAnalyticOutputWithContext(context.Context) IdpScorecardTierAnalyticOutput
+}
+
+type IdpScorecardTierAnalyticArgs struct {
+	// Number of components in the tier.
+	ComponentCount pulumi.IntPtrInput `pulumi:"componentCount"`
+	// Maximum score for the tier.
+	MaxScore pulumi.IntPtrInput `pulumi:"maxScore"`
+	// Minimum score for the tier.
+	MinScore pulumi.IntPtrInput `pulumi:"minScore"`
+	// Percentage of components in the tier.
+	Percentage pulumi.Float64PtrInput `pulumi:"percentage"`
+	// Colour of the tier.
+	TierColour pulumi.StringPtrInput `pulumi:"tierColour"`
+	// Name of the tier.
+	TierName pulumi.StringPtrInput `pulumi:"tierName"`
+}
+
+func (IdpScorecardTierAnalyticArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpScorecardTierAnalytic)(nil)).Elem()
+}
+
+func (i IdpScorecardTierAnalyticArgs) ToIdpScorecardTierAnalyticOutput() IdpScorecardTierAnalyticOutput {
+	return i.ToIdpScorecardTierAnalyticOutputWithContext(context.Background())
+}
+
+func (i IdpScorecardTierAnalyticArgs) ToIdpScorecardTierAnalyticOutputWithContext(ctx context.Context) IdpScorecardTierAnalyticOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpScorecardTierAnalyticOutput)
+}
+
+// IdpScorecardTierAnalyticArrayInput is an input type that accepts IdpScorecardTierAnalyticArray and IdpScorecardTierAnalyticArrayOutput values.
+// You can construct a concrete instance of `IdpScorecardTierAnalyticArrayInput` via:
+//
+//	IdpScorecardTierAnalyticArray{ IdpScorecardTierAnalyticArgs{...} }
+type IdpScorecardTierAnalyticArrayInput interface {
+	pulumi.Input
+
+	ToIdpScorecardTierAnalyticArrayOutput() IdpScorecardTierAnalyticArrayOutput
+	ToIdpScorecardTierAnalyticArrayOutputWithContext(context.Context) IdpScorecardTierAnalyticArrayOutput
+}
+
+type IdpScorecardTierAnalyticArray []IdpScorecardTierAnalyticInput
+
+func (IdpScorecardTierAnalyticArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpScorecardTierAnalytic)(nil)).Elem()
+}
+
+func (i IdpScorecardTierAnalyticArray) ToIdpScorecardTierAnalyticArrayOutput() IdpScorecardTierAnalyticArrayOutput {
+	return i.ToIdpScorecardTierAnalyticArrayOutputWithContext(context.Background())
+}
+
+func (i IdpScorecardTierAnalyticArray) ToIdpScorecardTierAnalyticArrayOutputWithContext(ctx context.Context) IdpScorecardTierAnalyticArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdpScorecardTierAnalyticArrayOutput)
+}
+
+type IdpScorecardTierAnalyticOutput struct{ *pulumi.OutputState }
+
+func (IdpScorecardTierAnalyticOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdpScorecardTierAnalytic)(nil)).Elem()
+}
+
+func (o IdpScorecardTierAnalyticOutput) ToIdpScorecardTierAnalyticOutput() IdpScorecardTierAnalyticOutput {
+	return o
+}
+
+func (o IdpScorecardTierAnalyticOutput) ToIdpScorecardTierAnalyticOutputWithContext(ctx context.Context) IdpScorecardTierAnalyticOutput {
+	return o
+}
+
+// Number of components in the tier.
+func (o IdpScorecardTierAnalyticOutput) ComponentCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IdpScorecardTierAnalytic) *int { return v.ComponentCount }).(pulumi.IntPtrOutput)
+}
+
+// Maximum score for the tier.
+func (o IdpScorecardTierAnalyticOutput) MaxScore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IdpScorecardTierAnalytic) *int { return v.MaxScore }).(pulumi.IntPtrOutput)
+}
+
+// Minimum score for the tier.
+func (o IdpScorecardTierAnalyticOutput) MinScore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IdpScorecardTierAnalytic) *int { return v.MinScore }).(pulumi.IntPtrOutput)
+}
+
+// Percentage of components in the tier.
+func (o IdpScorecardTierAnalyticOutput) Percentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v IdpScorecardTierAnalytic) *float64 { return v.Percentage }).(pulumi.Float64PtrOutput)
+}
+
+// Colour of the tier.
+func (o IdpScorecardTierAnalyticOutput) TierColour() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpScorecardTierAnalytic) *string { return v.TierColour }).(pulumi.StringPtrOutput)
+}
+
+// Name of the tier.
+func (o IdpScorecardTierAnalyticOutput) TierName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdpScorecardTierAnalytic) *string { return v.TierName }).(pulumi.StringPtrOutput)
+}
+
+type IdpScorecardTierAnalyticArrayOutput struct{ *pulumi.OutputState }
+
+func (IdpScorecardTierAnalyticArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdpScorecardTierAnalytic)(nil)).Elem()
+}
+
+func (o IdpScorecardTierAnalyticArrayOutput) ToIdpScorecardTierAnalyticArrayOutput() IdpScorecardTierAnalyticArrayOutput {
+	return o
+}
+
+func (o IdpScorecardTierAnalyticArrayOutput) ToIdpScorecardTierAnalyticArrayOutputWithContext(ctx context.Context) IdpScorecardTierAnalyticArrayOutput {
+	return o
+}
+
+func (o IdpScorecardTierAnalyticArrayOutput) Index(i pulumi.IntInput) IdpScorecardTierAnalyticOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IdpScorecardTierAnalytic {
+		return vs[0].([]IdpScorecardTierAnalytic)[vs[1].(int)]
+	}).(IdpScorecardTierAnalyticOutput)
+}
+
 type InfraModuleTestingTestingMetadata struct {
 	// Account is the internal customer account ID
 	Account *string `pulumi:"account"`
@@ -47704,6 +48725,937 @@ func (o GetIdpCatalogEntityGitDetailArrayOutput) Index(i pulumi.IntInput) GetIdp
 	}).(GetIdpCatalogEntityGitDetailOutput)
 }
 
+type GetIdpPluginEnvVariable struct {
+	// Name of the environment variable.
+	EnvName string `pulumi:"envName"`
+	// Harness secret identifier used as the value.
+	HarnessSecretIdentifier string `pulumi:"harnessSecretIdentifier"`
+	// Server-generated unique identifier for this env variable entry.
+	Identifier string `pulumi:"identifier"`
+	// Type of the environment variable source.
+	Type string `pulumi:"type"`
+}
+
+// GetIdpPluginEnvVariableInput is an input type that accepts GetIdpPluginEnvVariableArgs and GetIdpPluginEnvVariableOutput values.
+// You can construct a concrete instance of `GetIdpPluginEnvVariableInput` via:
+//
+//	GetIdpPluginEnvVariableArgs{...}
+type GetIdpPluginEnvVariableInput interface {
+	pulumi.Input
+
+	ToGetIdpPluginEnvVariableOutput() GetIdpPluginEnvVariableOutput
+	ToGetIdpPluginEnvVariableOutputWithContext(context.Context) GetIdpPluginEnvVariableOutput
+}
+
+type GetIdpPluginEnvVariableArgs struct {
+	// Name of the environment variable.
+	EnvName pulumi.StringInput `pulumi:"envName"`
+	// Harness secret identifier used as the value.
+	HarnessSecretIdentifier pulumi.StringInput `pulumi:"harnessSecretIdentifier"`
+	// Server-generated unique identifier for this env variable entry.
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Type of the environment variable source.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetIdpPluginEnvVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpPluginEnvVariable)(nil)).Elem()
+}
+
+func (i GetIdpPluginEnvVariableArgs) ToGetIdpPluginEnvVariableOutput() GetIdpPluginEnvVariableOutput {
+	return i.ToGetIdpPluginEnvVariableOutputWithContext(context.Background())
+}
+
+func (i GetIdpPluginEnvVariableArgs) ToGetIdpPluginEnvVariableOutputWithContext(ctx context.Context) GetIdpPluginEnvVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpPluginEnvVariableOutput)
+}
+
+// GetIdpPluginEnvVariableArrayInput is an input type that accepts GetIdpPluginEnvVariableArray and GetIdpPluginEnvVariableArrayOutput values.
+// You can construct a concrete instance of `GetIdpPluginEnvVariableArrayInput` via:
+//
+//	GetIdpPluginEnvVariableArray{ GetIdpPluginEnvVariableArgs{...} }
+type GetIdpPluginEnvVariableArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpPluginEnvVariableArrayOutput() GetIdpPluginEnvVariableArrayOutput
+	ToGetIdpPluginEnvVariableArrayOutputWithContext(context.Context) GetIdpPluginEnvVariableArrayOutput
+}
+
+type GetIdpPluginEnvVariableArray []GetIdpPluginEnvVariableInput
+
+func (GetIdpPluginEnvVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpPluginEnvVariable)(nil)).Elem()
+}
+
+func (i GetIdpPluginEnvVariableArray) ToGetIdpPluginEnvVariableArrayOutput() GetIdpPluginEnvVariableArrayOutput {
+	return i.ToGetIdpPluginEnvVariableArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpPluginEnvVariableArray) ToGetIdpPluginEnvVariableArrayOutputWithContext(ctx context.Context) GetIdpPluginEnvVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpPluginEnvVariableArrayOutput)
+}
+
+type GetIdpPluginEnvVariableOutput struct{ *pulumi.OutputState }
+
+func (GetIdpPluginEnvVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpPluginEnvVariable)(nil)).Elem()
+}
+
+func (o GetIdpPluginEnvVariableOutput) ToGetIdpPluginEnvVariableOutput() GetIdpPluginEnvVariableOutput {
+	return o
+}
+
+func (o GetIdpPluginEnvVariableOutput) ToGetIdpPluginEnvVariableOutputWithContext(ctx context.Context) GetIdpPluginEnvVariableOutput {
+	return o
+}
+
+// Name of the environment variable.
+func (o GetIdpPluginEnvVariableOutput) EnvName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpPluginEnvVariable) string { return v.EnvName }).(pulumi.StringOutput)
+}
+
+// Harness secret identifier used as the value.
+func (o GetIdpPluginEnvVariableOutput) HarnessSecretIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpPluginEnvVariable) string { return v.HarnessSecretIdentifier }).(pulumi.StringOutput)
+}
+
+// Server-generated unique identifier for this env variable entry.
+func (o GetIdpPluginEnvVariableOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpPluginEnvVariable) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Type of the environment variable source.
+func (o GetIdpPluginEnvVariableOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpPluginEnvVariable) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetIdpPluginEnvVariableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpPluginEnvVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpPluginEnvVariable)(nil)).Elem()
+}
+
+func (o GetIdpPluginEnvVariableArrayOutput) ToGetIdpPluginEnvVariableArrayOutput() GetIdpPluginEnvVariableArrayOutput {
+	return o
+}
+
+func (o GetIdpPluginEnvVariableArrayOutput) ToGetIdpPluginEnvVariableArrayOutputWithContext(ctx context.Context) GetIdpPluginEnvVariableArrayOutput {
+	return o
+}
+
+func (o GetIdpPluginEnvVariableArrayOutput) Index(i pulumi.IntInput) GetIdpPluginEnvVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpPluginEnvVariable {
+		return vs[0].([]GetIdpPluginEnvVariable)[vs[1].(int)]
+	}).(GetIdpPluginEnvVariableOutput)
+}
+
+type GetIdpPluginProxy struct {
+	// Health check path for the proxy endpoint.
+	HealthCheckPath string `pulumi:"healthCheckPath"`
+	// Proxy host.
+	Host string `pulumi:"host"`
+	// Server-generated unique identifier for this proxy entry.
+	Identifier string `pulumi:"identifier"`
+	// Whether proxy is enabled for this host.
+	Proxy bool `pulumi:"proxy"`
+	// Delegate selectors.
+	Selectors []string `pulumi:"selectors"`
+}
+
+// GetIdpPluginProxyInput is an input type that accepts GetIdpPluginProxyArgs and GetIdpPluginProxyOutput values.
+// You can construct a concrete instance of `GetIdpPluginProxyInput` via:
+//
+//	GetIdpPluginProxyArgs{...}
+type GetIdpPluginProxyInput interface {
+	pulumi.Input
+
+	ToGetIdpPluginProxyOutput() GetIdpPluginProxyOutput
+	ToGetIdpPluginProxyOutputWithContext(context.Context) GetIdpPluginProxyOutput
+}
+
+type GetIdpPluginProxyArgs struct {
+	// Health check path for the proxy endpoint.
+	HealthCheckPath pulumi.StringInput `pulumi:"healthCheckPath"`
+	// Proxy host.
+	Host pulumi.StringInput `pulumi:"host"`
+	// Server-generated unique identifier for this proxy entry.
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Whether proxy is enabled for this host.
+	Proxy pulumi.BoolInput `pulumi:"proxy"`
+	// Delegate selectors.
+	Selectors pulumi.StringArrayInput `pulumi:"selectors"`
+}
+
+func (GetIdpPluginProxyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpPluginProxy)(nil)).Elem()
+}
+
+func (i GetIdpPluginProxyArgs) ToGetIdpPluginProxyOutput() GetIdpPluginProxyOutput {
+	return i.ToGetIdpPluginProxyOutputWithContext(context.Background())
+}
+
+func (i GetIdpPluginProxyArgs) ToGetIdpPluginProxyOutputWithContext(ctx context.Context) GetIdpPluginProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpPluginProxyOutput)
+}
+
+// GetIdpPluginProxyArrayInput is an input type that accepts GetIdpPluginProxyArray and GetIdpPluginProxyArrayOutput values.
+// You can construct a concrete instance of `GetIdpPluginProxyArrayInput` via:
+//
+//	GetIdpPluginProxyArray{ GetIdpPluginProxyArgs{...} }
+type GetIdpPluginProxyArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpPluginProxyArrayOutput() GetIdpPluginProxyArrayOutput
+	ToGetIdpPluginProxyArrayOutputWithContext(context.Context) GetIdpPluginProxyArrayOutput
+}
+
+type GetIdpPluginProxyArray []GetIdpPluginProxyInput
+
+func (GetIdpPluginProxyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpPluginProxy)(nil)).Elem()
+}
+
+func (i GetIdpPluginProxyArray) ToGetIdpPluginProxyArrayOutput() GetIdpPluginProxyArrayOutput {
+	return i.ToGetIdpPluginProxyArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpPluginProxyArray) ToGetIdpPluginProxyArrayOutputWithContext(ctx context.Context) GetIdpPluginProxyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpPluginProxyArrayOutput)
+}
+
+type GetIdpPluginProxyOutput struct{ *pulumi.OutputState }
+
+func (GetIdpPluginProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpPluginProxy)(nil)).Elem()
+}
+
+func (o GetIdpPluginProxyOutput) ToGetIdpPluginProxyOutput() GetIdpPluginProxyOutput {
+	return o
+}
+
+func (o GetIdpPluginProxyOutput) ToGetIdpPluginProxyOutputWithContext(ctx context.Context) GetIdpPluginProxyOutput {
+	return o
+}
+
+// Health check path for the proxy endpoint.
+func (o GetIdpPluginProxyOutput) HealthCheckPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpPluginProxy) string { return v.HealthCheckPath }).(pulumi.StringOutput)
+}
+
+// Proxy host.
+func (o GetIdpPluginProxyOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpPluginProxy) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Server-generated unique identifier for this proxy entry.
+func (o GetIdpPluginProxyOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpPluginProxy) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Whether proxy is enabled for this host.
+func (o GetIdpPluginProxyOutput) Proxy() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetIdpPluginProxy) bool { return v.Proxy }).(pulumi.BoolOutput)
+}
+
+// Delegate selectors.
+func (o GetIdpPluginProxyOutput) Selectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIdpPluginProxy) []string { return v.Selectors }).(pulumi.StringArrayOutput)
+}
+
+type GetIdpPluginProxyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpPluginProxyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpPluginProxy)(nil)).Elem()
+}
+
+func (o GetIdpPluginProxyArrayOutput) ToGetIdpPluginProxyArrayOutput() GetIdpPluginProxyArrayOutput {
+	return o
+}
+
+func (o GetIdpPluginProxyArrayOutput) ToGetIdpPluginProxyArrayOutputWithContext(ctx context.Context) GetIdpPluginProxyArrayOutput {
+	return o
+}
+
+func (o GetIdpPluginProxyArrayOutput) Index(i pulumi.IntInput) GetIdpPluginProxyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpPluginProxy {
+		return vs[0].([]GetIdpPluginProxy)[vs[1].(int)]
+	}).(GetIdpPluginProxyOutput)
+}
+
+type GetIdpScorecardCheckType struct {
+	// Whether the referenced check is custom.
+	Custom bool `pulumi:"custom"`
+	// Description of the check.
+	Description string `pulumi:"description"`
+	// Identifier of the check.
+	Identifier string `pulumi:"identifier"`
+	// Name of the check.
+	Name string `pulumi:"name"`
+	// Weightage of the check when using CUSTOM.
+	Weightage float64 `pulumi:"weightage"`
+}
+
+// GetIdpScorecardCheckTypeInput is an input type that accepts GetIdpScorecardCheckTypeArgs and GetIdpScorecardCheckTypeOutput values.
+// You can construct a concrete instance of `GetIdpScorecardCheckTypeInput` via:
+//
+//	GetIdpScorecardCheckTypeArgs{...}
+type GetIdpScorecardCheckTypeInput interface {
+	pulumi.Input
+
+	ToGetIdpScorecardCheckTypeOutput() GetIdpScorecardCheckTypeOutput
+	ToGetIdpScorecardCheckTypeOutputWithContext(context.Context) GetIdpScorecardCheckTypeOutput
+}
+
+type GetIdpScorecardCheckTypeArgs struct {
+	// Whether the referenced check is custom.
+	Custom pulumi.BoolInput `pulumi:"custom"`
+	// Description of the check.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Identifier of the check.
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Name of the check.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Weightage of the check when using CUSTOM.
+	Weightage pulumi.Float64Input `pulumi:"weightage"`
+}
+
+func (GetIdpScorecardCheckTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpScorecardCheckType)(nil)).Elem()
+}
+
+func (i GetIdpScorecardCheckTypeArgs) ToGetIdpScorecardCheckTypeOutput() GetIdpScorecardCheckTypeOutput {
+	return i.ToGetIdpScorecardCheckTypeOutputWithContext(context.Background())
+}
+
+func (i GetIdpScorecardCheckTypeArgs) ToGetIdpScorecardCheckTypeOutputWithContext(ctx context.Context) GetIdpScorecardCheckTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpScorecardCheckTypeOutput)
+}
+
+// GetIdpScorecardCheckTypeArrayInput is an input type that accepts GetIdpScorecardCheckTypeArray and GetIdpScorecardCheckTypeArrayOutput values.
+// You can construct a concrete instance of `GetIdpScorecardCheckTypeArrayInput` via:
+//
+//	GetIdpScorecardCheckTypeArray{ GetIdpScorecardCheckTypeArgs{...} }
+type GetIdpScorecardCheckTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpScorecardCheckTypeArrayOutput() GetIdpScorecardCheckTypeArrayOutput
+	ToGetIdpScorecardCheckTypeArrayOutputWithContext(context.Context) GetIdpScorecardCheckTypeArrayOutput
+}
+
+type GetIdpScorecardCheckTypeArray []GetIdpScorecardCheckTypeInput
+
+func (GetIdpScorecardCheckTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpScorecardCheckType)(nil)).Elem()
+}
+
+func (i GetIdpScorecardCheckTypeArray) ToGetIdpScorecardCheckTypeArrayOutput() GetIdpScorecardCheckTypeArrayOutput {
+	return i.ToGetIdpScorecardCheckTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpScorecardCheckTypeArray) ToGetIdpScorecardCheckTypeArrayOutputWithContext(ctx context.Context) GetIdpScorecardCheckTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpScorecardCheckTypeArrayOutput)
+}
+
+type GetIdpScorecardCheckTypeOutput struct{ *pulumi.OutputState }
+
+func (GetIdpScorecardCheckTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpScorecardCheckType)(nil)).Elem()
+}
+
+func (o GetIdpScorecardCheckTypeOutput) ToGetIdpScorecardCheckTypeOutput() GetIdpScorecardCheckTypeOutput {
+	return o
+}
+
+func (o GetIdpScorecardCheckTypeOutput) ToGetIdpScorecardCheckTypeOutputWithContext(ctx context.Context) GetIdpScorecardCheckTypeOutput {
+	return o
+}
+
+// Whether the referenced check is custom.
+func (o GetIdpScorecardCheckTypeOutput) Custom() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetIdpScorecardCheckType) bool { return v.Custom }).(pulumi.BoolOutput)
+}
+
+// Description of the check.
+func (o GetIdpScorecardCheckTypeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpScorecardCheckType) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Identifier of the check.
+func (o GetIdpScorecardCheckTypeOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpScorecardCheckType) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Name of the check.
+func (o GetIdpScorecardCheckTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpScorecardCheckType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Weightage of the check when using CUSTOM.
+func (o GetIdpScorecardCheckTypeOutput) Weightage() pulumi.Float64Output {
+	return o.ApplyT(func(v GetIdpScorecardCheckType) float64 { return v.Weightage }).(pulumi.Float64Output)
+}
+
+type GetIdpScorecardCheckTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpScorecardCheckTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpScorecardCheckType)(nil)).Elem()
+}
+
+func (o GetIdpScorecardCheckTypeArrayOutput) ToGetIdpScorecardCheckTypeArrayOutput() GetIdpScorecardCheckTypeArrayOutput {
+	return o
+}
+
+func (o GetIdpScorecardCheckTypeArrayOutput) ToGetIdpScorecardCheckTypeArrayOutputWithContext(ctx context.Context) GetIdpScorecardCheckTypeArrayOutput {
+	return o
+}
+
+func (o GetIdpScorecardCheckTypeArrayOutput) Index(i pulumi.IntInput) GetIdpScorecardCheckTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpScorecardCheckType {
+		return vs[0].([]GetIdpScorecardCheckType)[vs[1].(int)]
+	}).(GetIdpScorecardCheckTypeOutput)
+}
+
+type GetIdpScorecardCheckRule struct {
+	// Identifier of the data point evaluated by the rule.
+	DataPointIdentifier string `pulumi:"dataPointIdentifier"`
+	// Identifier of the data source used by the rule.
+	DataSourceIdentifier string `pulumi:"dataSourceIdentifier"`
+	// Identifier of the rule.
+	Identifier string `pulumi:"identifier"`
+	// Input values passed to the data point.
+	InputValues []GetIdpScorecardCheckRuleInputValue `pulumi:"inputValues"`
+	// Comparison operator.
+	Operator string `pulumi:"operator"`
+	// Description of the rule.
+	RuleDescription string `pulumi:"ruleDescription"`
+	// Value to compare against.
+	Value string `pulumi:"value"`
+}
+
+// GetIdpScorecardCheckRuleInput is an input type that accepts GetIdpScorecardCheckRuleArgs and GetIdpScorecardCheckRuleOutput values.
+// You can construct a concrete instance of `GetIdpScorecardCheckRuleInput` via:
+//
+//	GetIdpScorecardCheckRuleArgs{...}
+type GetIdpScorecardCheckRuleInput interface {
+	pulumi.Input
+
+	ToGetIdpScorecardCheckRuleOutput() GetIdpScorecardCheckRuleOutput
+	ToGetIdpScorecardCheckRuleOutputWithContext(context.Context) GetIdpScorecardCheckRuleOutput
+}
+
+type GetIdpScorecardCheckRuleArgs struct {
+	// Identifier of the data point evaluated by the rule.
+	DataPointIdentifier pulumi.StringInput `pulumi:"dataPointIdentifier"`
+	// Identifier of the data source used by the rule.
+	DataSourceIdentifier pulumi.StringInput `pulumi:"dataSourceIdentifier"`
+	// Identifier of the rule.
+	Identifier pulumi.StringInput `pulumi:"identifier"`
+	// Input values passed to the data point.
+	InputValues GetIdpScorecardCheckRuleInputValueArrayInput `pulumi:"inputValues"`
+	// Comparison operator.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Description of the rule.
+	RuleDescription pulumi.StringInput `pulumi:"ruleDescription"`
+	// Value to compare against.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetIdpScorecardCheckRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpScorecardCheckRule)(nil)).Elem()
+}
+
+func (i GetIdpScorecardCheckRuleArgs) ToGetIdpScorecardCheckRuleOutput() GetIdpScorecardCheckRuleOutput {
+	return i.ToGetIdpScorecardCheckRuleOutputWithContext(context.Background())
+}
+
+func (i GetIdpScorecardCheckRuleArgs) ToGetIdpScorecardCheckRuleOutputWithContext(ctx context.Context) GetIdpScorecardCheckRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpScorecardCheckRuleOutput)
+}
+
+// GetIdpScorecardCheckRuleArrayInput is an input type that accepts GetIdpScorecardCheckRuleArray and GetIdpScorecardCheckRuleArrayOutput values.
+// You can construct a concrete instance of `GetIdpScorecardCheckRuleArrayInput` via:
+//
+//	GetIdpScorecardCheckRuleArray{ GetIdpScorecardCheckRuleArgs{...} }
+type GetIdpScorecardCheckRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpScorecardCheckRuleArrayOutput() GetIdpScorecardCheckRuleArrayOutput
+	ToGetIdpScorecardCheckRuleArrayOutputWithContext(context.Context) GetIdpScorecardCheckRuleArrayOutput
+}
+
+type GetIdpScorecardCheckRuleArray []GetIdpScorecardCheckRuleInput
+
+func (GetIdpScorecardCheckRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpScorecardCheckRule)(nil)).Elem()
+}
+
+func (i GetIdpScorecardCheckRuleArray) ToGetIdpScorecardCheckRuleArrayOutput() GetIdpScorecardCheckRuleArrayOutput {
+	return i.ToGetIdpScorecardCheckRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpScorecardCheckRuleArray) ToGetIdpScorecardCheckRuleArrayOutputWithContext(ctx context.Context) GetIdpScorecardCheckRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpScorecardCheckRuleArrayOutput)
+}
+
+type GetIdpScorecardCheckRuleOutput struct{ *pulumi.OutputState }
+
+func (GetIdpScorecardCheckRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpScorecardCheckRule)(nil)).Elem()
+}
+
+func (o GetIdpScorecardCheckRuleOutput) ToGetIdpScorecardCheckRuleOutput() GetIdpScorecardCheckRuleOutput {
+	return o
+}
+
+func (o GetIdpScorecardCheckRuleOutput) ToGetIdpScorecardCheckRuleOutputWithContext(ctx context.Context) GetIdpScorecardCheckRuleOutput {
+	return o
+}
+
+// Identifier of the data point evaluated by the rule.
+func (o GetIdpScorecardCheckRuleOutput) DataPointIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpScorecardCheckRule) string { return v.DataPointIdentifier }).(pulumi.StringOutput)
+}
+
+// Identifier of the data source used by the rule.
+func (o GetIdpScorecardCheckRuleOutput) DataSourceIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpScorecardCheckRule) string { return v.DataSourceIdentifier }).(pulumi.StringOutput)
+}
+
+// Identifier of the rule.
+func (o GetIdpScorecardCheckRuleOutput) Identifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpScorecardCheckRule) string { return v.Identifier }).(pulumi.StringOutput)
+}
+
+// Input values passed to the data point.
+func (o GetIdpScorecardCheckRuleOutput) InputValues() GetIdpScorecardCheckRuleInputValueArrayOutput {
+	return o.ApplyT(func(v GetIdpScorecardCheckRule) []GetIdpScorecardCheckRuleInputValue { return v.InputValues }).(GetIdpScorecardCheckRuleInputValueArrayOutput)
+}
+
+// Comparison operator.
+func (o GetIdpScorecardCheckRuleOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpScorecardCheckRule) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Description of the rule.
+func (o GetIdpScorecardCheckRuleOutput) RuleDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpScorecardCheckRule) string { return v.RuleDescription }).(pulumi.StringOutput)
+}
+
+// Value to compare against.
+func (o GetIdpScorecardCheckRuleOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpScorecardCheckRule) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetIdpScorecardCheckRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpScorecardCheckRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpScorecardCheckRule)(nil)).Elem()
+}
+
+func (o GetIdpScorecardCheckRuleArrayOutput) ToGetIdpScorecardCheckRuleArrayOutput() GetIdpScorecardCheckRuleArrayOutput {
+	return o
+}
+
+func (o GetIdpScorecardCheckRuleArrayOutput) ToGetIdpScorecardCheckRuleArrayOutputWithContext(ctx context.Context) GetIdpScorecardCheckRuleArrayOutput {
+	return o
+}
+
+func (o GetIdpScorecardCheckRuleArrayOutput) Index(i pulumi.IntInput) GetIdpScorecardCheckRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpScorecardCheckRule {
+		return vs[0].([]GetIdpScorecardCheckRule)[vs[1].(int)]
+	}).(GetIdpScorecardCheckRuleOutput)
+}
+
+type GetIdpScorecardCheckRuleInputValue struct {
+	// Input key.
+	Key string `pulumi:"key"`
+	// Input value.
+	Value string `pulumi:"value"`
+}
+
+// GetIdpScorecardCheckRuleInputValueInput is an input type that accepts GetIdpScorecardCheckRuleInputValueArgs and GetIdpScorecardCheckRuleInputValueOutput values.
+// You can construct a concrete instance of `GetIdpScorecardCheckRuleInputValueInput` via:
+//
+//	GetIdpScorecardCheckRuleInputValueArgs{...}
+type GetIdpScorecardCheckRuleInputValueInput interface {
+	pulumi.Input
+
+	ToGetIdpScorecardCheckRuleInputValueOutput() GetIdpScorecardCheckRuleInputValueOutput
+	ToGetIdpScorecardCheckRuleInputValueOutputWithContext(context.Context) GetIdpScorecardCheckRuleInputValueOutput
+}
+
+type GetIdpScorecardCheckRuleInputValueArgs struct {
+	// Input key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Input value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetIdpScorecardCheckRuleInputValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpScorecardCheckRuleInputValue)(nil)).Elem()
+}
+
+func (i GetIdpScorecardCheckRuleInputValueArgs) ToGetIdpScorecardCheckRuleInputValueOutput() GetIdpScorecardCheckRuleInputValueOutput {
+	return i.ToGetIdpScorecardCheckRuleInputValueOutputWithContext(context.Background())
+}
+
+func (i GetIdpScorecardCheckRuleInputValueArgs) ToGetIdpScorecardCheckRuleInputValueOutputWithContext(ctx context.Context) GetIdpScorecardCheckRuleInputValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpScorecardCheckRuleInputValueOutput)
+}
+
+// GetIdpScorecardCheckRuleInputValueArrayInput is an input type that accepts GetIdpScorecardCheckRuleInputValueArray and GetIdpScorecardCheckRuleInputValueArrayOutput values.
+// You can construct a concrete instance of `GetIdpScorecardCheckRuleInputValueArrayInput` via:
+//
+//	GetIdpScorecardCheckRuleInputValueArray{ GetIdpScorecardCheckRuleInputValueArgs{...} }
+type GetIdpScorecardCheckRuleInputValueArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpScorecardCheckRuleInputValueArrayOutput() GetIdpScorecardCheckRuleInputValueArrayOutput
+	ToGetIdpScorecardCheckRuleInputValueArrayOutputWithContext(context.Context) GetIdpScorecardCheckRuleInputValueArrayOutput
+}
+
+type GetIdpScorecardCheckRuleInputValueArray []GetIdpScorecardCheckRuleInputValueInput
+
+func (GetIdpScorecardCheckRuleInputValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpScorecardCheckRuleInputValue)(nil)).Elem()
+}
+
+func (i GetIdpScorecardCheckRuleInputValueArray) ToGetIdpScorecardCheckRuleInputValueArrayOutput() GetIdpScorecardCheckRuleInputValueArrayOutput {
+	return i.ToGetIdpScorecardCheckRuleInputValueArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpScorecardCheckRuleInputValueArray) ToGetIdpScorecardCheckRuleInputValueArrayOutputWithContext(ctx context.Context) GetIdpScorecardCheckRuleInputValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpScorecardCheckRuleInputValueArrayOutput)
+}
+
+type GetIdpScorecardCheckRuleInputValueOutput struct{ *pulumi.OutputState }
+
+func (GetIdpScorecardCheckRuleInputValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpScorecardCheckRuleInputValue)(nil)).Elem()
+}
+
+func (o GetIdpScorecardCheckRuleInputValueOutput) ToGetIdpScorecardCheckRuleInputValueOutput() GetIdpScorecardCheckRuleInputValueOutput {
+	return o
+}
+
+func (o GetIdpScorecardCheckRuleInputValueOutput) ToGetIdpScorecardCheckRuleInputValueOutputWithContext(ctx context.Context) GetIdpScorecardCheckRuleInputValueOutput {
+	return o
+}
+
+// Input key.
+func (o GetIdpScorecardCheckRuleInputValueOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpScorecardCheckRuleInputValue) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Input value.
+func (o GetIdpScorecardCheckRuleInputValueOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpScorecardCheckRuleInputValue) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetIdpScorecardCheckRuleInputValueArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpScorecardCheckRuleInputValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpScorecardCheckRuleInputValue)(nil)).Elem()
+}
+
+func (o GetIdpScorecardCheckRuleInputValueArrayOutput) ToGetIdpScorecardCheckRuleInputValueArrayOutput() GetIdpScorecardCheckRuleInputValueArrayOutput {
+	return o
+}
+
+func (o GetIdpScorecardCheckRuleInputValueArrayOutput) ToGetIdpScorecardCheckRuleInputValueArrayOutputWithContext(ctx context.Context) GetIdpScorecardCheckRuleInputValueArrayOutput {
+	return o
+}
+
+func (o GetIdpScorecardCheckRuleInputValueArrayOutput) Index(i pulumi.IntInput) GetIdpScorecardCheckRuleInputValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpScorecardCheckRuleInputValue {
+		return vs[0].([]GetIdpScorecardCheckRuleInputValue)[vs[1].(int)]
+	}).(GetIdpScorecardCheckRuleInputValueOutput)
+}
+
+type GetIdpScorecardFilter struct {
+	// Catalog entity kind to evaluate.
+	Kind string `pulumi:"kind"`
+	// Entity lifecycle stages to include.
+	Lifecycles []string `pulumi:"lifecycles"`
+	// Entity owners to include.
+	Owners []string `pulumi:"owners"`
+	// Evaluation scopes (for example ACCOUNT, ORGANIZATION, or PROJECT).
+	Scopes []string `pulumi:"scopes"`
+	// Entity tags to include.
+	Tags []string `pulumi:"tags"`
+	// Catalog entity type to evaluate.
+	Type string `pulumi:"type"`
+}
+
+// GetIdpScorecardFilterInput is an input type that accepts GetIdpScorecardFilterArgs and GetIdpScorecardFilterOutput values.
+// You can construct a concrete instance of `GetIdpScorecardFilterInput` via:
+//
+//	GetIdpScorecardFilterArgs{...}
+type GetIdpScorecardFilterInput interface {
+	pulumi.Input
+
+	ToGetIdpScorecardFilterOutput() GetIdpScorecardFilterOutput
+	ToGetIdpScorecardFilterOutputWithContext(context.Context) GetIdpScorecardFilterOutput
+}
+
+type GetIdpScorecardFilterArgs struct {
+	// Catalog entity kind to evaluate.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// Entity lifecycle stages to include.
+	Lifecycles pulumi.StringArrayInput `pulumi:"lifecycles"`
+	// Entity owners to include.
+	Owners pulumi.StringArrayInput `pulumi:"owners"`
+	// Evaluation scopes (for example ACCOUNT, ORGANIZATION, or PROJECT).
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// Entity tags to include.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Catalog entity type to evaluate.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetIdpScorecardFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpScorecardFilter)(nil)).Elem()
+}
+
+func (i GetIdpScorecardFilterArgs) ToGetIdpScorecardFilterOutput() GetIdpScorecardFilterOutput {
+	return i.ToGetIdpScorecardFilterOutputWithContext(context.Background())
+}
+
+func (i GetIdpScorecardFilterArgs) ToGetIdpScorecardFilterOutputWithContext(ctx context.Context) GetIdpScorecardFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpScorecardFilterOutput)
+}
+
+// GetIdpScorecardFilterArrayInput is an input type that accepts GetIdpScorecardFilterArray and GetIdpScorecardFilterArrayOutput values.
+// You can construct a concrete instance of `GetIdpScorecardFilterArrayInput` via:
+//
+//	GetIdpScorecardFilterArray{ GetIdpScorecardFilterArgs{...} }
+type GetIdpScorecardFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpScorecardFilterArrayOutput() GetIdpScorecardFilterArrayOutput
+	ToGetIdpScorecardFilterArrayOutputWithContext(context.Context) GetIdpScorecardFilterArrayOutput
+}
+
+type GetIdpScorecardFilterArray []GetIdpScorecardFilterInput
+
+func (GetIdpScorecardFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpScorecardFilter)(nil)).Elem()
+}
+
+func (i GetIdpScorecardFilterArray) ToGetIdpScorecardFilterArrayOutput() GetIdpScorecardFilterArrayOutput {
+	return i.ToGetIdpScorecardFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpScorecardFilterArray) ToGetIdpScorecardFilterArrayOutputWithContext(ctx context.Context) GetIdpScorecardFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpScorecardFilterArrayOutput)
+}
+
+type GetIdpScorecardFilterOutput struct{ *pulumi.OutputState }
+
+func (GetIdpScorecardFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpScorecardFilter)(nil)).Elem()
+}
+
+func (o GetIdpScorecardFilterOutput) ToGetIdpScorecardFilterOutput() GetIdpScorecardFilterOutput {
+	return o
+}
+
+func (o GetIdpScorecardFilterOutput) ToGetIdpScorecardFilterOutputWithContext(ctx context.Context) GetIdpScorecardFilterOutput {
+	return o
+}
+
+// Catalog entity kind to evaluate.
+func (o GetIdpScorecardFilterOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpScorecardFilter) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Entity lifecycle stages to include.
+func (o GetIdpScorecardFilterOutput) Lifecycles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIdpScorecardFilter) []string { return v.Lifecycles }).(pulumi.StringArrayOutput)
+}
+
+// Entity owners to include.
+func (o GetIdpScorecardFilterOutput) Owners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIdpScorecardFilter) []string { return v.Owners }).(pulumi.StringArrayOutput)
+}
+
+// Evaluation scopes (for example ACCOUNT, ORGANIZATION, or PROJECT).
+func (o GetIdpScorecardFilterOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIdpScorecardFilter) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// Entity tags to include.
+func (o GetIdpScorecardFilterOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIdpScorecardFilter) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Catalog entity type to evaluate.
+func (o GetIdpScorecardFilterOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpScorecardFilter) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetIdpScorecardFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpScorecardFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpScorecardFilter)(nil)).Elem()
+}
+
+func (o GetIdpScorecardFilterArrayOutput) ToGetIdpScorecardFilterArrayOutput() GetIdpScorecardFilterArrayOutput {
+	return o
+}
+
+func (o GetIdpScorecardFilterArrayOutput) ToGetIdpScorecardFilterArrayOutputWithContext(ctx context.Context) GetIdpScorecardFilterArrayOutput {
+	return o
+}
+
+func (o GetIdpScorecardFilterArrayOutput) Index(i pulumi.IntInput) GetIdpScorecardFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpScorecardFilter {
+		return vs[0].([]GetIdpScorecardFilter)[vs[1].(int)]
+	}).(GetIdpScorecardFilterOutput)
+}
+
+type GetIdpScorecardTierAnalytic struct {
+	// Number of components in the tier.
+	ComponentCount int `pulumi:"componentCount"`
+	// Maximum score for the tier.
+	MaxScore int `pulumi:"maxScore"`
+	// Minimum score for the tier.
+	MinScore int `pulumi:"minScore"`
+	// Percentage of components in the tier.
+	Percentage float64 `pulumi:"percentage"`
+	// Colour of the tier.
+	TierColour string `pulumi:"tierColour"`
+	// Name of the tier.
+	TierName string `pulumi:"tierName"`
+}
+
+// GetIdpScorecardTierAnalyticInput is an input type that accepts GetIdpScorecardTierAnalyticArgs and GetIdpScorecardTierAnalyticOutput values.
+// You can construct a concrete instance of `GetIdpScorecardTierAnalyticInput` via:
+//
+//	GetIdpScorecardTierAnalyticArgs{...}
+type GetIdpScorecardTierAnalyticInput interface {
+	pulumi.Input
+
+	ToGetIdpScorecardTierAnalyticOutput() GetIdpScorecardTierAnalyticOutput
+	ToGetIdpScorecardTierAnalyticOutputWithContext(context.Context) GetIdpScorecardTierAnalyticOutput
+}
+
+type GetIdpScorecardTierAnalyticArgs struct {
+	// Number of components in the tier.
+	ComponentCount pulumi.IntInput `pulumi:"componentCount"`
+	// Maximum score for the tier.
+	MaxScore pulumi.IntInput `pulumi:"maxScore"`
+	// Minimum score for the tier.
+	MinScore pulumi.IntInput `pulumi:"minScore"`
+	// Percentage of components in the tier.
+	Percentage pulumi.Float64Input `pulumi:"percentage"`
+	// Colour of the tier.
+	TierColour pulumi.StringInput `pulumi:"tierColour"`
+	// Name of the tier.
+	TierName pulumi.StringInput `pulumi:"tierName"`
+}
+
+func (GetIdpScorecardTierAnalyticArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpScorecardTierAnalytic)(nil)).Elem()
+}
+
+func (i GetIdpScorecardTierAnalyticArgs) ToGetIdpScorecardTierAnalyticOutput() GetIdpScorecardTierAnalyticOutput {
+	return i.ToGetIdpScorecardTierAnalyticOutputWithContext(context.Background())
+}
+
+func (i GetIdpScorecardTierAnalyticArgs) ToGetIdpScorecardTierAnalyticOutputWithContext(ctx context.Context) GetIdpScorecardTierAnalyticOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpScorecardTierAnalyticOutput)
+}
+
+// GetIdpScorecardTierAnalyticArrayInput is an input type that accepts GetIdpScorecardTierAnalyticArray and GetIdpScorecardTierAnalyticArrayOutput values.
+// You can construct a concrete instance of `GetIdpScorecardTierAnalyticArrayInput` via:
+//
+//	GetIdpScorecardTierAnalyticArray{ GetIdpScorecardTierAnalyticArgs{...} }
+type GetIdpScorecardTierAnalyticArrayInput interface {
+	pulumi.Input
+
+	ToGetIdpScorecardTierAnalyticArrayOutput() GetIdpScorecardTierAnalyticArrayOutput
+	ToGetIdpScorecardTierAnalyticArrayOutputWithContext(context.Context) GetIdpScorecardTierAnalyticArrayOutput
+}
+
+type GetIdpScorecardTierAnalyticArray []GetIdpScorecardTierAnalyticInput
+
+func (GetIdpScorecardTierAnalyticArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpScorecardTierAnalytic)(nil)).Elem()
+}
+
+func (i GetIdpScorecardTierAnalyticArray) ToGetIdpScorecardTierAnalyticArrayOutput() GetIdpScorecardTierAnalyticArrayOutput {
+	return i.ToGetIdpScorecardTierAnalyticArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdpScorecardTierAnalyticArray) ToGetIdpScorecardTierAnalyticArrayOutputWithContext(ctx context.Context) GetIdpScorecardTierAnalyticArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdpScorecardTierAnalyticArrayOutput)
+}
+
+type GetIdpScorecardTierAnalyticOutput struct{ *pulumi.OutputState }
+
+func (GetIdpScorecardTierAnalyticOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdpScorecardTierAnalytic)(nil)).Elem()
+}
+
+func (o GetIdpScorecardTierAnalyticOutput) ToGetIdpScorecardTierAnalyticOutput() GetIdpScorecardTierAnalyticOutput {
+	return o
+}
+
+func (o GetIdpScorecardTierAnalyticOutput) ToGetIdpScorecardTierAnalyticOutputWithContext(ctx context.Context) GetIdpScorecardTierAnalyticOutput {
+	return o
+}
+
+// Number of components in the tier.
+func (o GetIdpScorecardTierAnalyticOutput) ComponentCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIdpScorecardTierAnalytic) int { return v.ComponentCount }).(pulumi.IntOutput)
+}
+
+// Maximum score for the tier.
+func (o GetIdpScorecardTierAnalyticOutput) MaxScore() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIdpScorecardTierAnalytic) int { return v.MaxScore }).(pulumi.IntOutput)
+}
+
+// Minimum score for the tier.
+func (o GetIdpScorecardTierAnalyticOutput) MinScore() pulumi.IntOutput {
+	return o.ApplyT(func(v GetIdpScorecardTierAnalytic) int { return v.MinScore }).(pulumi.IntOutput)
+}
+
+// Percentage of components in the tier.
+func (o GetIdpScorecardTierAnalyticOutput) Percentage() pulumi.Float64Output {
+	return o.ApplyT(func(v GetIdpScorecardTierAnalytic) float64 { return v.Percentage }).(pulumi.Float64Output)
+}
+
+// Colour of the tier.
+func (o GetIdpScorecardTierAnalyticOutput) TierColour() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpScorecardTierAnalytic) string { return v.TierColour }).(pulumi.StringOutput)
+}
+
+// Name of the tier.
+func (o GetIdpScorecardTierAnalyticOutput) TierName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIdpScorecardTierAnalytic) string { return v.TierName }).(pulumi.StringOutput)
+}
+
+type GetIdpScorecardTierAnalyticArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdpScorecardTierAnalyticArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdpScorecardTierAnalytic)(nil)).Elem()
+}
+
+func (o GetIdpScorecardTierAnalyticArrayOutput) ToGetIdpScorecardTierAnalyticArrayOutput() GetIdpScorecardTierAnalyticArrayOutput {
+	return o
+}
+
+func (o GetIdpScorecardTierAnalyticArrayOutput) ToGetIdpScorecardTierAnalyticArrayOutputWithContext(ctx context.Context) GetIdpScorecardTierAnalyticArrayOutput {
+	return o
+}
+
+func (o GetIdpScorecardTierAnalyticArrayOutput) Index(i pulumi.IntInput) GetIdpScorecardTierAnalyticOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdpScorecardTierAnalytic {
+		return vs[0].([]GetIdpScorecardTierAnalytic)[vs[1].(int)]
+	}).(GetIdpScorecardTierAnalyticOutput)
+}
+
 type GetInfraModuleTestingMetadata struct {
 	// Account is the internal customer account ID
 	Account string `pulumi:"account"`
@@ -60717,6 +62669,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IacmAnsiblePlaybookVarArrayInput)(nil)).Elem(), IacmAnsiblePlaybookVarArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdpCatalogEntityGitDetailsInput)(nil)).Elem(), IdpCatalogEntityGitDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdpCatalogEntityGitDetailsPtrInput)(nil)).Elem(), IdpCatalogEntityGitDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpPluginEnvVariableInput)(nil)).Elem(), IdpPluginEnvVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpPluginEnvVariableArrayInput)(nil)).Elem(), IdpPluginEnvVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpPluginProxyInput)(nil)).Elem(), IdpPluginProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpPluginProxyArrayInput)(nil)).Elem(), IdpPluginProxyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpScorecardCheckTypeInput)(nil)).Elem(), IdpScorecardCheckTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpScorecardCheckTypeArrayInput)(nil)).Elem(), IdpScorecardCheckTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpScorecardCheckRuleInput)(nil)).Elem(), IdpScorecardCheckRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpScorecardCheckRuleArrayInput)(nil)).Elem(), IdpScorecardCheckRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpScorecardCheckRuleInputValueInput)(nil)).Elem(), IdpScorecardCheckRuleInputValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpScorecardCheckRuleInputValueArrayInput)(nil)).Elem(), IdpScorecardCheckRuleInputValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpScorecardFilterInput)(nil)).Elem(), IdpScorecardFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpScorecardFilterPtrInput)(nil)).Elem(), IdpScorecardFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpScorecardTierAnalyticInput)(nil)).Elem(), IdpScorecardTierAnalyticArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdpScorecardTierAnalyticArrayInput)(nil)).Elem(), IdpScorecardTierAnalyticArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfraModuleTestingTestingMetadataInput)(nil)).Elem(), InfraModuleTestingTestingMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfraModuleTestingTestingMetadataPtrInput)(nil)).Elem(), InfraModuleTestingTestingMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InfraProviderVersionTypeInput)(nil)).Elem(), InfraProviderVersionTypeArgs{})
@@ -61247,6 +63213,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIacmAnsiblePlaybookVarArrayInput)(nil)).Elem(), GetIacmAnsiblePlaybookVarArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpCatalogEntityGitDetailInput)(nil)).Elem(), GetIdpCatalogEntityGitDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpCatalogEntityGitDetailArrayInput)(nil)).Elem(), GetIdpCatalogEntityGitDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpPluginEnvVariableInput)(nil)).Elem(), GetIdpPluginEnvVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpPluginEnvVariableArrayInput)(nil)).Elem(), GetIdpPluginEnvVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpPluginProxyInput)(nil)).Elem(), GetIdpPluginProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpPluginProxyArrayInput)(nil)).Elem(), GetIdpPluginProxyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpScorecardCheckTypeInput)(nil)).Elem(), GetIdpScorecardCheckTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpScorecardCheckTypeArrayInput)(nil)).Elem(), GetIdpScorecardCheckTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpScorecardCheckRuleInput)(nil)).Elem(), GetIdpScorecardCheckRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpScorecardCheckRuleArrayInput)(nil)).Elem(), GetIdpScorecardCheckRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpScorecardCheckRuleInputValueInput)(nil)).Elem(), GetIdpScorecardCheckRuleInputValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpScorecardCheckRuleInputValueArrayInput)(nil)).Elem(), GetIdpScorecardCheckRuleInputValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpScorecardFilterInput)(nil)).Elem(), GetIdpScorecardFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpScorecardFilterArrayInput)(nil)).Elem(), GetIdpScorecardFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpScorecardTierAnalyticInput)(nil)).Elem(), GetIdpScorecardTierAnalyticArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpScorecardTierAnalyticArrayInput)(nil)).Elem(), GetIdpScorecardTierAnalyticArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraModuleTestingMetadataInput)(nil)).Elem(), GetInfraModuleTestingMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraModuleTestingMetadataPtrInput)(nil)).Elem(), GetInfraModuleTestingMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInfraModuleTestingTestingMetadataInput)(nil)).Elem(), GetInfraModuleTestingTestingMetadataArgs{})
@@ -61562,6 +63542,20 @@ func init() {
 	pulumi.RegisterOutputType(IacmAnsiblePlaybookVarArrayOutput{})
 	pulumi.RegisterOutputType(IdpCatalogEntityGitDetailsOutput{})
 	pulumi.RegisterOutputType(IdpCatalogEntityGitDetailsPtrOutput{})
+	pulumi.RegisterOutputType(IdpPluginEnvVariableOutput{})
+	pulumi.RegisterOutputType(IdpPluginEnvVariableArrayOutput{})
+	pulumi.RegisterOutputType(IdpPluginProxyOutput{})
+	pulumi.RegisterOutputType(IdpPluginProxyArrayOutput{})
+	pulumi.RegisterOutputType(IdpScorecardCheckTypeOutput{})
+	pulumi.RegisterOutputType(IdpScorecardCheckTypeArrayOutput{})
+	pulumi.RegisterOutputType(IdpScorecardCheckRuleOutput{})
+	pulumi.RegisterOutputType(IdpScorecardCheckRuleArrayOutput{})
+	pulumi.RegisterOutputType(IdpScorecardCheckRuleInputValueOutput{})
+	pulumi.RegisterOutputType(IdpScorecardCheckRuleInputValueArrayOutput{})
+	pulumi.RegisterOutputType(IdpScorecardFilterOutput{})
+	pulumi.RegisterOutputType(IdpScorecardFilterPtrOutput{})
+	pulumi.RegisterOutputType(IdpScorecardTierAnalyticOutput{})
+	pulumi.RegisterOutputType(IdpScorecardTierAnalyticArrayOutput{})
 	pulumi.RegisterOutputType(InfraModuleTestingTestingMetadataOutput{})
 	pulumi.RegisterOutputType(InfraModuleTestingTestingMetadataPtrOutput{})
 	pulumi.RegisterOutputType(InfraProviderVersionTypeOutput{})
@@ -62092,6 +64086,20 @@ func init() {
 	pulumi.RegisterOutputType(GetIacmAnsiblePlaybookVarArrayOutput{})
 	pulumi.RegisterOutputType(GetIdpCatalogEntityGitDetailOutput{})
 	pulumi.RegisterOutputType(GetIdpCatalogEntityGitDetailArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpPluginEnvVariableOutput{})
+	pulumi.RegisterOutputType(GetIdpPluginEnvVariableArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpPluginProxyOutput{})
+	pulumi.RegisterOutputType(GetIdpPluginProxyArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpScorecardCheckTypeOutput{})
+	pulumi.RegisterOutputType(GetIdpScorecardCheckTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpScorecardCheckRuleOutput{})
+	pulumi.RegisterOutputType(GetIdpScorecardCheckRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpScorecardCheckRuleInputValueOutput{})
+	pulumi.RegisterOutputType(GetIdpScorecardCheckRuleInputValueArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpScorecardFilterOutput{})
+	pulumi.RegisterOutputType(GetIdpScorecardFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetIdpScorecardTierAnalyticOutput{})
+	pulumi.RegisterOutputType(GetIdpScorecardTierAnalyticArrayOutput{})
 	pulumi.RegisterOutputType(GetInfraModuleTestingMetadataOutput{})
 	pulumi.RegisterOutputType(GetInfraModuleTestingMetadataPtrOutput{})
 	pulumi.RegisterOutputType(GetInfraModuleTestingTestingMetadataOutput{})

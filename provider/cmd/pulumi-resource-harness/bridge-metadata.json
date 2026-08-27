@@ -15085,6 +15085,75 @@
             "harness_platform_idp_environment_blueprint": {
                 "current": "harness:platform/idpEnvironmentBlueprint:IdpEnvironmentBlueprint"
             },
+            "harness_platform_idp_plugin": {
+                "current": "harness:platform/idpPlugin:IdpPlugin",
+                "fields": {
+                    "env_variables": {
+                        "maxItemsOne": false
+                    },
+                    "proxy": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "selectors": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "harness_platform_idp_scorecard": {
+                "current": "harness:platform/idpScorecard:IdpScorecard",
+                "fields": {
+                    "checks": {
+                        "maxItemsOne": false
+                    },
+                    "checks_missing": {
+                        "maxItemsOne": false
+                    },
+                    "filter": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "lifecycle": {
+                                    "maxItemsOne": false
+                                },
+                                "owners": {
+                                    "maxItemsOne": false
+                                },
+                                "scopes": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tier_analytics": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_idp_scorecard_check": {
+                "current": "harness:platform/idpScorecardCheck:IdpScorecardCheck",
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "input_values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_infra_module": {
                 "current": "harness:platform/infraModule:InfraModule",
                 "fields": {
@@ -19110,6 +19179,75 @@
             },
             "harness_platform_idp_environment_blueprint": {
                 "current": "harness:platform/getIdpEnvironmentBlueprint:getIdpEnvironmentBlueprint"
+            },
+            "harness_platform_idp_plugin": {
+                "current": "harness:platform/getIdpPlugin:getIdpPlugin",
+                "fields": {
+                    "env_variables": {
+                        "maxItemsOne": false
+                    },
+                    "proxy": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "selectors": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "harness_platform_idp_scorecard": {
+                "current": "harness:platform/getIdpScorecard:getIdpScorecard",
+                "fields": {
+                    "checks": {
+                        "maxItemsOne": false
+                    },
+                    "checks_missing": {
+                        "maxItemsOne": false
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "lifecycle": {
+                                    "maxItemsOne": false
+                                },
+                                "owners": {
+                                    "maxItemsOne": false
+                                },
+                                "scopes": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tier_analytics": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_idp_scorecard_check": {
+                "current": "harness:platform/getIdpScorecardCheck:getIdpScorecardCheck",
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "input_values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "harness_platform_infra_module": {
                 "current": "harness:platform/getInfraModule:getInfraModule",

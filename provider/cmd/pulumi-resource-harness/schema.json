@@ -48614,6 +48614,287 @@
                 }
             }
         },
+        "harness:platform/IdpPluginEnvVariable:IdpPluginEnvVariable": {
+            "properties": {
+                "envName": {
+                    "type": "string",
+                    "description": "Name of the environment variable.\n"
+                },
+                "harnessSecretIdentifier": {
+                    "type": "string",
+                    "description": "Harness secret identifier used as the value.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Server-generated unique identifier for this env variable entry.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the environment variable source. Valid values: Secret, Config.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "envName",
+                "harnessSecretIdentifier",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "envName",
+                        "harnessSecretIdentifier",
+                        "identifier",
+                        "type"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpPluginProxy:IdpPluginProxy": {
+            "properties": {
+                "healthCheckPath": {
+                    "type": "string",
+                    "description": "Health check path for the proxy endpoint.\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "Proxy host.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Server-generated unique identifier for this proxy entry.\n"
+                },
+                "proxy": {
+                    "type": "boolean",
+                    "description": "Whether proxy is enabled for this host.\n"
+                },
+                "selectors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Delegate selectors.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "host"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "host",
+                        "identifier"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpScorecardCheck:IdpScorecardCheck": {
+            "properties": {
+                "custom": {
+                    "type": "boolean",
+                    "description": "Whether the referenced check is custom.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the check.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Identifier of the check.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the check.\n"
+                },
+                "weightage": {
+                    "type": "number",
+                    "description": "Weightage of the check when using CUSTOM.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "custom",
+                "identifier"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "custom",
+                        "description",
+                        "identifier",
+                        "name",
+                        "weightage"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpScorecardCheckRule:IdpScorecardCheckRule": {
+            "properties": {
+                "dataPointIdentifier": {
+                    "type": "string",
+                    "description": "Identifier of the data point evaluated by the rule.\n"
+                },
+                "dataSourceIdentifier": {
+                    "type": "string",
+                    "description": "Identifier of the data source used by the rule.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Identifier of the rule.\n"
+                },
+                "inputValues": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/IdpScorecardCheckRuleInputValue:IdpScorecardCheckRuleInputValue"
+                    },
+                    "description": "Input values passed to the data point.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "Comparison operator.\n"
+                },
+                "ruleDescription": {
+                    "type": "string",
+                    "description": "Description of the rule.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Value to compare against.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "dataPointIdentifier",
+                "dataSourceIdentifier",
+                "operator"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "dataPointIdentifier",
+                        "dataSourceIdentifier",
+                        "identifier",
+                        "operator",
+                        "ruleDescription",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpScorecardCheckRuleInputValue:IdpScorecardCheckRuleInputValue": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "Input key.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Input value.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "value"
+            ]
+        },
+        "harness:platform/IdpScorecardFilter:IdpScorecardFilter": {
+            "properties": {
+                "kind": {
+                    "type": "string",
+                    "description": "Catalog entity kind to evaluate.\n"
+                },
+                "lifecycles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Entity lifecycle stages to include.\n"
+                },
+                "owners": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Entity owners to include.\n"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Evaluation scopes (for example ACCOUNT, ORGANIZATION, or PROJECT).\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Entity tags to include.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Catalog entity type to evaluate.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "kind"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "kind",
+                        "lifecycles",
+                        "owners",
+                        "scopes",
+                        "tags"
+                    ]
+                }
+            }
+        },
+        "harness:platform/IdpScorecardTierAnalytic:IdpScorecardTierAnalytic": {
+            "properties": {
+                "componentCount": {
+                    "type": "integer",
+                    "description": "Number of components in the tier.\n"
+                },
+                "maxScore": {
+                    "type": "integer",
+                    "description": "Maximum score for the tier.\n"
+                },
+                "minScore": {
+                    "type": "integer",
+                    "description": "Minimum score for the tier.\n"
+                },
+                "percentage": {
+                    "type": "number",
+                    "description": "Percentage of components in the tier.\n"
+                },
+                "tierColour": {
+                    "type": "string",
+                    "description": "Colour of the tier.\n"
+                },
+                "tierName": {
+                    "type": "string",
+                    "description": "Name of the tier.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "componentCount",
+                        "maxScore",
+                        "minScore",
+                        "percentage",
+                        "tierColour",
+                        "tierName"
+                    ]
+                }
+            }
+        },
         "harness:platform/InfraModuleTestingTestingMetadata:InfraModuleTestingTestingMetadata": {
             "properties": {
                 "account": {
@@ -56200,6 +56481,283 @@
                 "lastObjectId",
                 "repoName",
                 "storeType"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpPluginEnvVariable:getIdpPluginEnvVariable": {
+            "properties": {
+                "envName": {
+                    "type": "string",
+                    "description": "Name of the environment variable.\n"
+                },
+                "harnessSecretIdentifier": {
+                    "type": "string",
+                    "description": "Harness secret identifier used as the value.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Server-generated unique identifier for this env variable entry.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the environment variable source.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "envName",
+                "harnessSecretIdentifier",
+                "identifier",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpPluginProxy:getIdpPluginProxy": {
+            "properties": {
+                "healthCheckPath": {
+                    "type": "string",
+                    "description": "Health check path for the proxy endpoint.\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "Proxy host.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Server-generated unique identifier for this proxy entry.\n"
+                },
+                "proxy": {
+                    "type": "boolean",
+                    "description": "Whether proxy is enabled for this host.\n"
+                },
+                "selectors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Delegate selectors.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "healthCheckPath",
+                "host",
+                "identifier",
+                "proxy",
+                "selectors"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpScorecardCheck:getIdpScorecardCheck": {
+            "properties": {
+                "custom": {
+                    "type": "boolean",
+                    "description": "Whether the referenced check is custom.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the check.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Identifier of the check.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the check.\n"
+                },
+                "weightage": {
+                    "type": "number",
+                    "description": "Weightage of the check when using CUSTOM.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "custom",
+                "description",
+                "identifier",
+                "name",
+                "weightage"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpScorecardCheckRule:getIdpScorecardCheckRule": {
+            "properties": {
+                "dataPointIdentifier": {
+                    "type": "string",
+                    "description": "Identifier of the data point evaluated by the rule.\n"
+                },
+                "dataSourceIdentifier": {
+                    "type": "string",
+                    "description": "Identifier of the data source used by the rule.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Identifier of the rule.\n"
+                },
+                "inputValues": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/getIdpScorecardCheckRuleInputValue:getIdpScorecardCheckRuleInputValue"
+                    },
+                    "description": "Input values passed to the data point.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "Comparison operator.\n"
+                },
+                "ruleDescription": {
+                    "type": "string",
+                    "description": "Description of the rule.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Value to compare against.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "dataPointIdentifier",
+                "dataSourceIdentifier",
+                "identifier",
+                "inputValues",
+                "operator",
+                "ruleDescription",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpScorecardCheckRuleInputValue:getIdpScorecardCheckRuleInputValue": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "Input key.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Input value.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpScorecardFilter:getIdpScorecardFilter": {
+            "properties": {
+                "kind": {
+                    "type": "string",
+                    "description": "Catalog entity kind to evaluate.\n"
+                },
+                "lifecycles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Entity lifecycle stages to include.\n"
+                },
+                "owners": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Entity owners to include.\n"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Evaluation scopes (for example ACCOUNT, ORGANIZATION, or PROJECT).\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Entity tags to include.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Catalog entity type to evaluate.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "kind",
+                "lifecycles",
+                "owners",
+                "scopes",
+                "tags",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harness:platform/getIdpScorecardTierAnalytic:getIdpScorecardTierAnalytic": {
+            "properties": {
+                "componentCount": {
+                    "type": "integer",
+                    "description": "Number of components in the tier.\n"
+                },
+                "maxScore": {
+                    "type": "integer",
+                    "description": "Maximum score for the tier.\n"
+                },
+                "minScore": {
+                    "type": "integer",
+                    "description": "Minimum score for the tier.\n"
+                },
+                "percentage": {
+                    "type": "number",
+                    "description": "Percentage of components in the tier.\n"
+                },
+                "tierColour": {
+                    "type": "string",
+                    "description": "Colour of the tier.\n"
+                },
+                "tierName": {
+                    "type": "string",
+                    "description": "Name of the tier.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "componentCount",
+                "maxScore",
+                "minScore",
+                "percentage",
+                "tierColour",
+                "tierName"
             ],
             "language": {
                 "nodejs": {
@@ -82244,6 +82802,512 @@
                 "type": "object"
             }
         },
+        "harness:platform/idpPlugin:IdpPlugin": {
+            "description": "Resource for managing IDP plugin configurations.\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nImport an IDP plugin by its identifier\n\n```sh\n$ pulumi import harness:platform/idpPlugin:IdpPlugin example \u003cplugin_identifier\u003e\n```\n\n",
+            "properties": {
+                "configs": {
+                    "type": "string",
+                    "description": "Backstage YAML configuration for the plugin.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the plugin should be enabled. Defaults to true.\n"
+                },
+                "envVariables": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/IdpPluginEnvVariable:IdpPluginEnvVariable"
+                    },
+                    "description": "Secret environment variables injected into the plugin runtime.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the plugin.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Display name of the plugin configuration.\n"
+                },
+                "proxies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/IdpPluginProxy:IdpPluginProxy"
+                    },
+                    "description": "Delegate-based proxy configuration for outbound HTTP calls.\n"
+                }
+            },
+            "required": [
+                "configs",
+                "envVariables",
+                "identifier",
+                "name",
+                "proxies"
+            ],
+            "inputProperties": {
+                "configs": {
+                    "type": "string",
+                    "description": "Backstage YAML configuration for the plugin.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the plugin should be enabled. Defaults to true.\n"
+                },
+                "envVariables": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/IdpPluginEnvVariable:IdpPluginEnvVariable"
+                    },
+                    "description": "Secret environment variables injected into the plugin runtime.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the plugin.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Display name of the plugin configuration.\n"
+                },
+                "proxies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/IdpPluginProxy:IdpPluginProxy"
+                    },
+                    "description": "Delegate-based proxy configuration for outbound HTTP calls.\n"
+                }
+            },
+            "requiredInputs": [
+                "configs",
+                "identifier"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IdpPlugin resources.\n",
+                "properties": {
+                    "configs": {
+                        "type": "string",
+                        "description": "Backstage YAML configuration for the plugin.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether the plugin should be enabled. Defaults to true.\n"
+                    },
+                    "envVariables": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/IdpPluginEnvVariable:IdpPluginEnvVariable"
+                        },
+                        "description": "Secret environment variables injected into the plugin runtime.\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the plugin.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Display name of the plugin configuration.\n"
+                    },
+                    "proxies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/IdpPluginProxy:IdpPluginProxy"
+                        },
+                        "description": "Delegate-based proxy configuration for outbound HTTP calls.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harness:platform/idpScorecard:IdpScorecard": {
+            "description": "Resource for creating IDP scorecards.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst readme = new harness.platform.IdpScorecardCheck(\"readme\", {\n    identifier: \"readme_exists\",\n    name: \"README exists\",\n    description: \"Ensure the repository has a README file\",\n    ruleStrategy: \"ALL_OF\",\n    defaultBehaviour: \"FAIL\",\n    rules: [{\n        dataSourceIdentifier: \"github\",\n        dataPointIdentifier: \"isFileExists\",\n        operator: \"==\",\n        value: \"true\",\n        inputValues: [{\n            key: \"filePath\",\n            value: \"README.md\",\n        }],\n    }],\n});\nconst gold = new harness.platform.IdpScorecard(\"gold\", {\n    identifier: \"gold_standard\",\n    name: \"Gold Standard\",\n    description: \"Baseline production quality scorecard\",\n    published: true,\n    weightageStrategy: \"EQUAL_WEIGHTS\",\n    filter: {\n        kind: \"component\",\n        type: \"service\",\n    },\n    checks: [{\n        identifier: readme.identifier,\n        custom: true,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nreadme = harness.platform.IdpScorecardCheck(\"readme\",\n    identifier=\"readme_exists\",\n    name=\"README exists\",\n    description=\"Ensure the repository has a README file\",\n    rule_strategy=\"ALL_OF\",\n    default_behaviour=\"FAIL\",\n    rules=[{\n        \"data_source_identifier\": \"github\",\n        \"data_point_identifier\": \"isFileExists\",\n        \"operator\": \"==\",\n        \"value\": \"true\",\n        \"input_values\": [{\n            \"key\": \"filePath\",\n            \"value\": \"README.md\",\n        }],\n    }])\ngold = harness.platform.IdpScorecard(\"gold\",\n    identifier=\"gold_standard\",\n    name=\"Gold Standard\",\n    description=\"Baseline production quality scorecard\",\n    published=True,\n    weightage_strategy=\"EQUAL_WEIGHTS\",\n    filter={\n        \"kind\": \"component\",\n        \"type\": \"service\",\n    },\n    checks=[{\n        \"identifier\": readme.identifier,\n        \"custom\": True,\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var readme = new Harness.Platform.IdpScorecardCheck(\"readme\", new()\n    {\n        Identifier = \"readme_exists\",\n        Name = \"README exists\",\n        Description = \"Ensure the repository has a README file\",\n        RuleStrategy = \"ALL_OF\",\n        DefaultBehaviour = \"FAIL\",\n        Rules = new[]\n        {\n            new Harness.Platform.Inputs.IdpScorecardCheckRuleArgs\n            {\n                DataSourceIdentifier = \"github\",\n                DataPointIdentifier = \"isFileExists\",\n                Operator = \"==\",\n                Value = \"true\",\n                InputValues = new[]\n                {\n                    new Harness.Platform.Inputs.IdpScorecardCheckRuleInputValueArgs\n                    {\n                        Key = \"filePath\",\n                        Value = \"README.md\",\n                    },\n                },\n            },\n        },\n    });\n\n    var gold = new Harness.Platform.IdpScorecard(\"gold\", new()\n    {\n        Identifier = \"gold_standard\",\n        Name = \"Gold Standard\",\n        Description = \"Baseline production quality scorecard\",\n        Published = true,\n        WeightageStrategy = \"EQUAL_WEIGHTS\",\n        Filter = new Harness.Platform.Inputs.IdpScorecardFilterArgs\n        {\n            Kind = \"component\",\n            Type = \"service\",\n        },\n        Checks = new[]\n        {\n            new Harness.Platform.Inputs.IdpScorecardCheckArgs\n            {\n                Identifier = readme.Identifier,\n                Custom = true,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treadme, err := platform.NewIdpScorecardCheck(ctx, \"readme\", \u0026platform.IdpScorecardCheckArgs{\n\t\t\tIdentifier:       pulumi.String(\"readme_exists\"),\n\t\t\tName:             pulumi.String(\"README exists\"),\n\t\t\tDescription:      pulumi.String(\"Ensure the repository has a README file\"),\n\t\t\tRuleStrategy:     pulumi.String(\"ALL_OF\"),\n\t\t\tDefaultBehaviour: pulumi.String(\"FAIL\"),\n\t\t\tRules: platform.IdpScorecardCheckRuleArray{\n\t\t\t\t\u0026platform.IdpScorecardCheckRuleArgs{\n\t\t\t\t\tDataSourceIdentifier: pulumi.String(\"github\"),\n\t\t\t\t\tDataPointIdentifier:  pulumi.String(\"isFileExists\"),\n\t\t\t\t\tOperator:             pulumi.String(\"==\"),\n\t\t\t\t\tValue:                pulumi.String(\"true\"),\n\t\t\t\t\tInputValues: platform.IdpScorecardCheckRuleInputValueArray{\n\t\t\t\t\t\t\u0026platform.IdpScorecardCheckRuleInputValueArgs{\n\t\t\t\t\t\t\tKey:   pulumi.String(\"filePath\"),\n\t\t\t\t\t\t\tValue: pulumi.String(\"README.md\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = platform.NewIdpScorecard(ctx, \"gold\", \u0026platform.IdpScorecardArgs{\n\t\t\tIdentifier:        pulumi.String(\"gold_standard\"),\n\t\t\tName:              pulumi.String(\"Gold Standard\"),\n\t\t\tDescription:       pulumi.String(\"Baseline production quality scorecard\"),\n\t\t\tPublished:         pulumi.Bool(true),\n\t\t\tWeightageStrategy: pulumi.String(\"EQUAL_WEIGHTS\"),\n\t\t\tFilter: \u0026platform.IdpScorecardFilterArgs{\n\t\t\t\tKind: pulumi.String(\"component\"),\n\t\t\t\tType: pulumi.String(\"service\"),\n\t\t\t},\n\t\t\tChecks: platform.IdpScorecardCheckTypeArray{\n\t\t\t\t\u0026platform.IdpScorecardCheckTypeArgs{\n\t\t\t\t\tIdentifier: readme.Identifier,\n\t\t\t\t\tCustom:     pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    harness = {\n      source = \"pulumi/harness\"\n    }\n  }\n}\n\nresource \"harness_platform_idpscorecardcheck\" \"readme\" {\n  identifier        = \"readme_exists\"\n  name              = \"README exists\"\n  description       = \"Ensure the repository has a README file\"\n  rule_strategy     = \"ALL_OF\"\n  default_behaviour = \"FAIL\"\n  rules {\n    data_source_identifier = \"github\"\n    data_point_identifier  = \"isFileExists\"\n    operator               = \"==\"\n    value                  = \"true\"\n    input_values {\n      key   = \"filePath\"\n      value = \"README.md\"\n    }\n  }\n}\nresource \"harness_platform_idpscorecard\" \"gold\" {\n  identifier         = \"gold_standard\"\n  name               = \"Gold Standard\"\n  description        = \"Baseline production quality scorecard\"\n  published          = true\n  weightage_strategy = \"EQUAL_WEIGHTS\"\n  filter = {\n    kind = \"component\"\n    type = \"service\"\n  }\n  checks {\n    identifier = harness_platform_idpscorecardcheck.readme.identifier\n    custom     = true\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.IdpScorecardCheck;\nimport com.pulumi.harness.platform.inputs.IdpScorecardCheckRuleArgs;\nimport com.pulumi.harness.platform.inputs.IdpScorecardCheckRuleInputValueArgs;\nimport com.pulumi.harness.platform.IdpScorecard;\nimport com.pulumi.harness.platform.IdpScorecardArgs;\nimport com.pulumi.harness.platform.inputs.IdpScorecardFilterArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var readme = new IdpScorecardCheck(\"readme\", IdpScorecardCheckArgs.builder()\n            .identifier(\"readme_exists\")\n            .name(\"README exists\")\n            .description(\"Ensure the repository has a README file\")\n            .ruleStrategy(\"ALL_OF\")\n            .defaultBehaviour(\"FAIL\")\n            .rules(IdpScorecardCheckRuleArgs.builder()\n                .dataSourceIdentifier(\"github\")\n                .dataPointIdentifier(\"isFileExists\")\n                .operator(\"==\")\n                .value(\"true\")\n                .inputValues(IdpScorecardCheckRuleInputValueArgs.builder()\n                    .key(\"filePath\")\n                    .value(\"README.md\")\n                    .build())\n                .build())\n            .build());\n\n        var gold = new IdpScorecard(\"gold\", IdpScorecardArgs.builder()\n            .identifier(\"gold_standard\")\n            .name(\"Gold Standard\")\n            .description(\"Baseline production quality scorecard\")\n            .published(true)\n            .weightageStrategy(\"EQUAL_WEIGHTS\")\n            .filter(IdpScorecardFilterArgs.builder()\n                .kind(\"component\")\n                .type(\"service\")\n                .build())\n            .checks(com.pulumi.harness.platform.inputs.IdpScorecardCheckArgs.builder()\n                .identifier(readme.identifier())\n                .custom(true)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  readme:\n    type: harness:platform:IdpScorecardCheck\n    properties:\n      identifier: readme_exists\n      name: README exists\n      description: Ensure the repository has a README file\n      ruleStrategy: ALL_OF\n      defaultBehaviour: FAIL\n      rules:\n        - dataSourceIdentifier: github\n          dataPointIdentifier: isFileExists\n          operator: ==\n          value: 'true'\n          inputValues:\n            - key: filePath\n              value: README.md\n  gold:\n    type: harness:platform:IdpScorecard\n    properties:\n      identifier: gold_standard\n      name: Gold Standard\n      description: Baseline production quality scorecard\n      published: true\n      weightageStrategy: EQUAL_WEIGHTS\n      filter:\n        kind: component\n        type: service\n      checks:\n        - identifier: ${readme.identifier}\n          custom: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nImport an IDP scorecard\n\n```sh\n$ pulumi import harness:platform/idpScorecard:IdpScorecard example \u003cscorecard_id\u003e\n```\n\n",
+            "properties": {
+                "checks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/IdpScorecardCheck:IdpScorecardCheck"
+                    },
+                    "description": "Checks included in the scorecard.\n"
+                },
+                "checksMissings": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Identifiers of checks referenced by the scorecard that are missing.\n"
+                },
+                "components": {
+                    "type": "integer",
+                    "description": "Number of components evaluated by the scorecard.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "filter": {
+                    "$ref": "#/types/harness:platform/IdpScorecardFilter:IdpScorecardFilter",
+                    "description": "Filters that select catalog entities evaluated by the scorecard.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "onDemand": {
+                    "type": "boolean",
+                    "description": "Whether the scorecard is evaluated on demand.\n"
+                },
+                "percentage": {
+                    "type": "number",
+                    "description": "Overall scorecard percentage.\n"
+                },
+                "published": {
+                    "type": "boolean",
+                    "description": "Whether the scorecard is published.\n"
+                },
+                "tierAnalytics": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/IdpScorecardTierAnalytic:IdpScorecardTierAnalytic"
+                    },
+                    "description": "Component distribution across scorecard tiers.\n"
+                },
+                "tierGroupIdentifier": {
+                    "type": "string",
+                    "description": "Identifier of the tier group used to classify scores.\n"
+                },
+                "weightageStrategy": {
+                    "type": "string",
+                    "description": "Weightage strategy for checks. Valid values are EQUAL_WEIGHTS and CUSTOM.\n"
+                }
+            },
+            "required": [
+                "checks",
+                "checksMissings",
+                "components",
+                "filter",
+                "identifier",
+                "name",
+                "onDemand",
+                "percentage",
+                "published",
+                "tierAnalytics",
+                "tierGroupIdentifier",
+                "weightageStrategy"
+            ],
+            "inputProperties": {
+                "checks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/IdpScorecardCheck:IdpScorecardCheck"
+                    },
+                    "description": "Checks included in the scorecard.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "filter": {
+                    "$ref": "#/types/harness:platform/IdpScorecardFilter:IdpScorecardFilter",
+                    "description": "Filters that select catalog entities evaluated by the scorecard.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "onDemand": {
+                    "type": "boolean",
+                    "description": "Whether the scorecard is evaluated on demand.\n"
+                },
+                "published": {
+                    "type": "boolean",
+                    "description": "Whether the scorecard is published.\n"
+                },
+                "tierGroupIdentifier": {
+                    "type": "string",
+                    "description": "Identifier of the tier group used to classify scores.\n"
+                },
+                "weightageStrategy": {
+                    "type": "string",
+                    "description": "Weightage strategy for checks. Valid values are EQUAL_WEIGHTS and CUSTOM.\n"
+                }
+            },
+            "requiredInputs": [
+                "checks",
+                "filter",
+                "identifier",
+                "published"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IdpScorecard resources.\n",
+                "properties": {
+                    "checks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/IdpScorecardCheck:IdpScorecardCheck"
+                        },
+                        "description": "Checks included in the scorecard.\n"
+                    },
+                    "checksMissings": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Identifiers of checks referenced by the scorecard that are missing.\n"
+                    },
+                    "components": {
+                        "type": "integer",
+                        "description": "Number of components evaluated by the scorecard.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the resource.\n"
+                    },
+                    "filter": {
+                        "$ref": "#/types/harness:platform/IdpScorecardFilter:IdpScorecardFilter",
+                        "description": "Filters that select catalog entities evaluated by the scorecard.\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the resource.\n"
+                    },
+                    "onDemand": {
+                        "type": "boolean",
+                        "description": "Whether the scorecard is evaluated on demand.\n"
+                    },
+                    "percentage": {
+                        "type": "number",
+                        "description": "Overall scorecard percentage.\n"
+                    },
+                    "published": {
+                        "type": "boolean",
+                        "description": "Whether the scorecard is published.\n"
+                    },
+                    "tierAnalytics": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/IdpScorecardTierAnalytic:IdpScorecardTierAnalytic"
+                        },
+                        "description": "Component distribution across scorecard tiers.\n"
+                    },
+                    "tierGroupIdentifier": {
+                        "type": "string",
+                        "description": "Identifier of the tier group used to classify scores.\n"
+                    },
+                    "weightageStrategy": {
+                        "type": "string",
+                        "description": "Weightage strategy for checks. Valid values are EQUAL_WEIGHTS and CUSTOM.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harness:platform/idpScorecardCheck:IdpScorecardCheck": {
+            "description": "Resource for creating IDP scorecard checks.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst readme = new harness.platform.IdpScorecardCheck(\"readme\", {\n    identifier: \"readme_exists\",\n    name: \"README exists\",\n    description: \"Ensure the repository has a README file\",\n    ruleStrategy: \"ALL_OF\",\n    defaultBehaviour: \"FAIL\",\n    rules: [{\n        dataSourceIdentifier: \"github\",\n        dataPointIdentifier: \"isFileExists\",\n        operator: \"==\",\n        value: \"true\",\n        ruleDescription: \"Repository has a README\",\n        inputValues: [{\n            key: \"filePath\",\n            value: \"README.md\",\n        }],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nreadme = harness.platform.IdpScorecardCheck(\"readme\",\n    identifier=\"readme_exists\",\n    name=\"README exists\",\n    description=\"Ensure the repository has a README file\",\n    rule_strategy=\"ALL_OF\",\n    default_behaviour=\"FAIL\",\n    rules=[{\n        \"data_source_identifier\": \"github\",\n        \"data_point_identifier\": \"isFileExists\",\n        \"operator\": \"==\",\n        \"value\": \"true\",\n        \"rule_description\": \"Repository has a README\",\n        \"input_values\": [{\n            \"key\": \"filePath\",\n            \"value\": \"README.md\",\n        }],\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var readme = new Harness.Platform.IdpScorecardCheck(\"readme\", new()\n    {\n        Identifier = \"readme_exists\",\n        Name = \"README exists\",\n        Description = \"Ensure the repository has a README file\",\n        RuleStrategy = \"ALL_OF\",\n        DefaultBehaviour = \"FAIL\",\n        Rules = new[]\n        {\n            new Harness.Platform.Inputs.IdpScorecardCheckRuleArgs\n            {\n                DataSourceIdentifier = \"github\",\n                DataPointIdentifier = \"isFileExists\",\n                Operator = \"==\",\n                Value = \"true\",\n                RuleDescription = \"Repository has a README\",\n                InputValues = new[]\n                {\n                    new Harness.Platform.Inputs.IdpScorecardCheckRuleInputValueArgs\n                    {\n                        Key = \"filePath\",\n                        Value = \"README.md\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewIdpScorecardCheck(ctx, \"readme\", \u0026platform.IdpScorecardCheckArgs{\n\t\t\tIdentifier:       pulumi.String(\"readme_exists\"),\n\t\t\tName:             pulumi.String(\"README exists\"),\n\t\t\tDescription:      pulumi.String(\"Ensure the repository has a README file\"),\n\t\t\tRuleStrategy:     pulumi.String(\"ALL_OF\"),\n\t\t\tDefaultBehaviour: pulumi.String(\"FAIL\"),\n\t\t\tRules: platform.IdpScorecardCheckRuleArray{\n\t\t\t\t\u0026platform.IdpScorecardCheckRuleArgs{\n\t\t\t\t\tDataSourceIdentifier: pulumi.String(\"github\"),\n\t\t\t\t\tDataPointIdentifier:  pulumi.String(\"isFileExists\"),\n\t\t\t\t\tOperator:             pulumi.String(\"==\"),\n\t\t\t\t\tValue:                pulumi.String(\"true\"),\n\t\t\t\t\tRuleDescription:      pulumi.String(\"Repository has a README\"),\n\t\t\t\t\tInputValues: platform.IdpScorecardCheckRuleInputValueArray{\n\t\t\t\t\t\t\u0026platform.IdpScorecardCheckRuleInputValueArgs{\n\t\t\t\t\t\t\tKey:   pulumi.String(\"filePath\"),\n\t\t\t\t\t\t\tValue: pulumi.String(\"README.md\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    harness = {\n      source = \"pulumi/harness\"\n    }\n  }\n}\n\nresource \"harness_platform_idpscorecardcheck\" \"readme\" {\n  identifier        = \"readme_exists\"\n  name              = \"README exists\"\n  description       = \"Ensure the repository has a README file\"\n  rule_strategy     = \"ALL_OF\"\n  default_behaviour = \"FAIL\"\n  rules {\n    data_source_identifier = \"github\"\n    data_point_identifier  = \"isFileExists\"\n    operator               = \"==\"\n    value                  = \"true\"\n    rule_description       = \"Repository has a README\"\n    input_values {\n      key   = \"filePath\"\n      value = \"README.md\"\n    }\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.IdpScorecardCheck;\nimport com.pulumi.harness.platform.IdpScorecardCheckArgs;\nimport com.pulumi.harness.platform.inputs.IdpScorecardCheckRuleArgs;\nimport com.pulumi.harness.platform.inputs.IdpScorecardCheckRuleInputValueArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var readme = new IdpScorecardCheck(\"readme\", IdpScorecardCheckArgs.builder()\n            .identifier(\"readme_exists\")\n            .name(\"README exists\")\n            .description(\"Ensure the repository has a README file\")\n            .ruleStrategy(\"ALL_OF\")\n            .defaultBehaviour(\"FAIL\")\n            .rules(IdpScorecardCheckRuleArgs.builder()\n                .dataSourceIdentifier(\"github\")\n                .dataPointIdentifier(\"isFileExists\")\n                .operator(\"==\")\n                .value(\"true\")\n                .ruleDescription(\"Repository has a README\")\n                .inputValues(IdpScorecardCheckRuleInputValueArgs.builder()\n                    .key(\"filePath\")\n                    .value(\"README.md\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  readme:\n    type: harness:platform:IdpScorecardCheck\n    properties:\n      identifier: readme_exists\n      name: README exists\n      description: Ensure the repository has a README file\n      ruleStrategy: ALL_OF\n      defaultBehaviour: FAIL\n      rules:\n        - dataSourceIdentifier: github\n          dataPointIdentifier: isFileExists\n          operator: ==\n          value: 'true'\n          ruleDescription: Repository has a README\n          inputValues:\n            - key: filePath\n              value: README.md\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\nImport an IDP scorecard check\n\n```sh\n$ pulumi import harness:platform/idpScorecardCheck:IdpScorecardCheck example \u003ccheck_id\u003e\n```\n\n",
+            "properties": {
+                "custom": {
+                    "type": "boolean",
+                    "description": "Whether this is a custom check. Always true for checks created through Terraform.\n"
+                },
+                "defaultBehaviour": {
+                    "type": "string",
+                    "description": "Default behaviour when the check cannot be evaluated. Valid values are PASS and FAIL.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "expression": {
+                    "type": "string",
+                    "description": "JEXL expression used for advanced check rules. Required when\u003cspan pulumi-lang-nodejs=\" ruleStrategy \" pulumi-lang-dotnet=\" RuleStrategy \" pulumi-lang-go=\" ruleStrategy \" pulumi-lang-python=\" rule_strategy \" pulumi-lang-yaml=\" ruleStrategy \" pulumi-lang-java=\" ruleStrategy \" pulumi-lang-hcl=\" rule_strategy \"\u003e ruleStrategy \u003c/span\u003eis ADVANCED.\n"
+                },
+                "failMessage": {
+                    "type": "string",
+                    "description": "Message shown when the check fails.\n"
+                },
+                "harnessManaged": {
+                    "type": "boolean",
+                    "description": "Whether the check is managed by Harness.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "percentage": {
+                    "type": "number",
+                    "description": "Pass percentage for the check.\n"
+                },
+                "ruleDescription": {
+                    "type": "string",
+                    "description": "Description of the check rule set.\n"
+                },
+                "ruleStrategy": {
+                    "type": "string",
+                    "description": "How multiple rules are combined. Valid values are ALL*OF, ANY*OF, and ADVANCED.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/IdpScorecardCheckRule:IdpScorecardCheckRule"
+                    },
+                    "description": "Basic rules evaluated by the check. Required when rule*strategy is ALL*OF or ANY_OF.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                }
+            },
+            "required": [
+                "custom",
+                "defaultBehaviour",
+                "expression",
+                "failMessage",
+                "harnessManaged",
+                "identifier",
+                "name",
+                "percentage",
+                "ruleDescription",
+                "ruleStrategy"
+            ],
+            "inputProperties": {
+                "defaultBehaviour": {
+                    "type": "string",
+                    "description": "Default behaviour when the check cannot be evaluated. Valid values are PASS and FAIL.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the resource.\n"
+                },
+                "expression": {
+                    "type": "string",
+                    "description": "JEXL expression used for advanced check rules. Required when\u003cspan pulumi-lang-nodejs=\" ruleStrategy \" pulumi-lang-dotnet=\" RuleStrategy \" pulumi-lang-go=\" ruleStrategy \" pulumi-lang-python=\" rule_strategy \" pulumi-lang-yaml=\" ruleStrategy \" pulumi-lang-java=\" ruleStrategy \" pulumi-lang-hcl=\" rule_strategy \"\u003e ruleStrategy \u003c/span\u003eis ADVANCED.\n"
+                },
+                "failMessage": {
+                    "type": "string",
+                    "description": "Message shown when the check fails.\n"
+                },
+                "identifier": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the resource.\n"
+                },
+                "ruleDescription": {
+                    "type": "string",
+                    "description": "Description of the check rule set.\n"
+                },
+                "ruleStrategy": {
+                    "type": "string",
+                    "description": "How multiple rules are combined. Valid values are ALL*OF, ANY*OF, and ADVANCED.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harness:platform/IdpScorecardCheckRule:IdpScorecardCheckRule"
+                    },
+                    "description": "Basic rules evaluated by the check. Required when rule*strategy is ALL*OF or ANY_OF.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags to associate with the resource.\n"
+                }
+            },
+            "requiredInputs": [
+                "defaultBehaviour",
+                "identifier",
+                "ruleStrategy"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IdpScorecardCheck resources.\n",
+                "properties": {
+                    "custom": {
+                        "type": "boolean",
+                        "description": "Whether this is a custom check. Always true for checks created through Terraform.\n"
+                    },
+                    "defaultBehaviour": {
+                        "type": "string",
+                        "description": "Default behaviour when the check cannot be evaluated. Valid values are PASS and FAIL.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the resource.\n"
+                    },
+                    "expression": {
+                        "type": "string",
+                        "description": "JEXL expression used for advanced check rules. Required when\u003cspan pulumi-lang-nodejs=\" ruleStrategy \" pulumi-lang-dotnet=\" RuleStrategy \" pulumi-lang-go=\" ruleStrategy \" pulumi-lang-python=\" rule_strategy \" pulumi-lang-yaml=\" ruleStrategy \" pulumi-lang-java=\" ruleStrategy \" pulumi-lang-hcl=\" rule_strategy \"\u003e ruleStrategy \u003c/span\u003eis ADVANCED.\n"
+                    },
+                    "failMessage": {
+                        "type": "string",
+                        "description": "Message shown when the check fails.\n"
+                    },
+                    "harnessManaged": {
+                        "type": "boolean",
+                        "description": "Whether the check is managed by Harness.\n"
+                    },
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the resource.\n"
+                    },
+                    "percentage": {
+                        "type": "number",
+                        "description": "Pass percentage for the check.\n"
+                    },
+                    "ruleDescription": {
+                        "type": "string",
+                        "description": "Description of the check rule set.\n"
+                    },
+                    "ruleStrategy": {
+                        "type": "string",
+                        "description": "How multiple rules are combined. Valid values are ALL*OF, ANY*OF, and ADVANCED.\n"
+                    },
+                    "rules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harness:platform/IdpScorecardCheckRule:IdpScorecardCheckRule"
+                        },
+                        "description": "Basic rules evaluated by the check. Required when rule*strategy is ALL*OF or ANY_OF.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags to associate with the resource.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "harness:platform/infraModule:InfraModule": {
             "description": "Resource for managing Terraform/Tofu Modules.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst example = new harness.platform.InfraModule(\"example\", {\n    description: \"example\",\n    name: \"name\",\n    system: \"provider\",\n    repository: \"repo\",\n    repositoryBranch: \"main\",\n    repositoryPath: \"tf/aws/basic\",\n    repositoryConnector: test.id,\n    onboardingPipeline: \"my_onboarding_pipeline\",\n    onboardingPipelineOrg: \"default\",\n    onboardingPipelineProject: \"IaCM_Project\",\n    onboardingPipelineSync: true,\n    storageType: \"artifact\",\n    connectorOrg: \"default\",\n    connectorProject: \"my_project\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nexample = harness.platform.InfraModule(\"example\",\n    description=\"example\",\n    name=\"name\",\n    system=\"provider\",\n    repository=\"repo\",\n    repository_branch=\"main\",\n    repository_path=\"tf/aws/basic\",\n    repository_connector=test[\"id\"],\n    onboarding_pipeline=\"my_onboarding_pipeline\",\n    onboarding_pipeline_org=\"default\",\n    onboarding_pipeline_project=\"IaCM_Project\",\n    onboarding_pipeline_sync=True,\n    storage_type=\"artifact\",\n    connector_org=\"default\",\n    connector_project=\"my_project\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Harness.Platform.InfraModule(\"example\", new()\n    {\n        Description = \"example\",\n        Name = \"name\",\n        System = \"provider\",\n        Repository = \"repo\",\n        RepositoryBranch = \"main\",\n        RepositoryPath = \"tf/aws/basic\",\n        RepositoryConnector = test.Id,\n        OnboardingPipeline = \"my_onboarding_pipeline\",\n        OnboardingPipelineOrg = \"default\",\n        OnboardingPipelineProject = \"IaCM_Project\",\n        OnboardingPipelineSync = true,\n        StorageType = \"artifact\",\n        ConnectorOrg = \"default\",\n        ConnectorProject = \"my_project\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.NewInfraModule(ctx, \"example\", \u0026platform.InfraModuleArgs{\n\t\t\tDescription:               pulumi.String(\"example\"),\n\t\t\tName:                      pulumi.String(\"name\"),\n\t\t\tSystem:                    pulumi.String(\"provider\"),\n\t\t\tRepository:                pulumi.String(\"repo\"),\n\t\t\tRepositoryBranch:          pulumi.String(\"main\"),\n\t\t\tRepositoryPath:            pulumi.String(\"tf/aws/basic\"),\n\t\t\tRepositoryConnector:       pulumi.Any(test.Id),\n\t\t\tOnboardingPipeline:        pulumi.String(\"my_onboarding_pipeline\"),\n\t\t\tOnboardingPipelineOrg:     pulumi.String(\"default\"),\n\t\t\tOnboardingPipelineProject: pulumi.String(\"IaCM_Project\"),\n\t\t\tOnboardingPipelineSync:    pulumi.Bool(true),\n\t\t\tStorageType:               pulumi.String(\"artifact\"),\n\t\t\tConnectorOrg:              pulumi.String(\"default\"),\n\t\t\tConnectorProject:          pulumi.String(\"my_project\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    harness = {\n      source = \"pulumi/harness\"\n    }\n  }\n}\n\nresource \"harness_platform_inframodule\" \"example\" {\n  description                 = \"example\"\n  name                        = \"name\"\n  system                      = \"provider\"\n  repository                  = \"repo\"\n  repository_branch           = \"main\"\n  repository_path             = \"tf/aws/basic\"\n  repository_connector        = test.id\n  onboarding_pipeline         = \"my_onboarding_pipeline\"\n  onboarding_pipeline_org     = \"default\"\n  onboarding_pipeline_project = \"IaCM_Project\"\n  onboarding_pipeline_sync    = true\n  storage_type                = \"artifact\"\n  connector_org               = \"default\"\n  connector_project           = \"my_project\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.InfraModule;\nimport com.pulumi.harness.platform.InfraModuleArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new InfraModule(\"example\", InfraModuleArgs.builder()\n            .description(\"example\")\n            .name(\"name\")\n            .system(\"provider\")\n            .repository(\"repo\")\n            .repositoryBranch(\"main\")\n            .repositoryPath(\"tf/aws/basic\")\n            .repositoryConnector(test.id())\n            .onboardingPipeline(\"my_onboarding_pipeline\")\n            .onboardingPipelineOrg(\"default\")\n            .onboardingPipelineProject(\"IaCM_Project\")\n            .onboardingPipelineSync(true)\n            .storageType(\"artifact\")\n            .connectorOrg(\"default\")\n            .connectorProject(\"my_project\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: harness:platform:InfraModule\n    properties:\n      description: example\n      name: name\n      system: provider\n      repository: repo\n      repositoryBranch: main\n      repositoryPath: tf/aws/basic\n      repositoryConnector: ${test.id}\n      onboardingPipeline: my_onboarding_pipeline\n      onboardingPipelineOrg: default\n      onboardingPipelineProject: IaCM_Project\n      onboardingPipelineSync: true\n      storageType: artifact\n      connectorOrg: default\n      connectorProject: my_project\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe `pulumi import` command can be used, for example:\n\n```sh\n$ pulumi import harness:platform/infraModule:InfraModule example \u003cmodule_id\u003e\n```\n\n",
             "properties": {
@@ -105811,6 +106875,314 @@
                     "stable",
                     "version",
                     "yaml",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "harness:platform/getIdpPlugin:getIdpPlugin": {
+            "description": "Data source for retrieving IDP plugin configuration.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getIdpPlugin.\n",
+                "properties": {
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the plugin.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "identifier"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getIdpPlugin.\n",
+                "properties": {
+                    "category": {
+                        "description": "Category of the plugin.\n",
+                        "type": "string"
+                    },
+                    "configs": {
+                        "description": "Backstage YAML configuration for the plugin.\n",
+                        "type": "string"
+                    },
+                    "core": {
+                        "description": "Whether this is a core plugin.\n",
+                        "type": "boolean"
+                    },
+                    "description": {
+                        "description": "Description of the plugin.\n",
+                        "type": "string"
+                    },
+                    "documentation": {
+                        "description": "Documentation URL for the plugin.\n",
+                        "type": "string"
+                    },
+                    "enabled": {
+                        "description": "Whether the plugin is currently enabled.\n",
+                        "type": "boolean"
+                    },
+                    "envVariables": {
+                        "description": "Secret environment variables injected into the plugin runtime.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpPluginEnvVariable:getIdpPluginEnvVariable"
+                        },
+                        "type": "array"
+                    },
+                    "iconUrl": {
+                        "description": "Icon URL of the plugin.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "identifier": {
+                        "description": "Unique identifier of the plugin.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Display name of the plugin.\n",
+                        "type": "string"
+                    },
+                    "pluginType": {
+                        "description": "Type of the plugin.\n",
+                        "type": "string"
+                    },
+                    "proxies": {
+                        "description": "Delegate-based proxy configuration for outbound HTTP calls.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpPluginProxy:getIdpPluginProxy"
+                        },
+                        "type": "array"
+                    },
+                    "source": {
+                        "description": "Source of the plugin.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "category",
+                    "configs",
+                    "core",
+                    "description",
+                    "documentation",
+                    "enabled",
+                    "envVariables",
+                    "iconUrl",
+                    "identifier",
+                    "name",
+                    "pluginType",
+                    "proxies",
+                    "source",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "harness:platform/getIdpScorecard:getIdpScorecard": {
+            "description": "Data source for retrieving an IDP scorecard.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst gold = harness.platform.getIdpScorecard({\n    identifier: \"gold_standard\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\ngold = harness.platform.get_idp_scorecard(identifier=\"gold_standard\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var gold = Harness.Platform.GetIdpScorecard.Invoke(new()\n    {\n        Identifier = \"gold_standard\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.LookupIdpScorecard(ctx, \u0026platform.LookupIdpScorecardArgs{\n\t\t\tIdentifier: \"gold_standard\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    harness = {\n      source = \"pulumi/harness\"\n    }\n  }\n}\n\ndata \"harness_platform_getidpscorecard\" \"gold\" {\n  identifier = \"gold_standard\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetIdpScorecardArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var gold = PlatformFunctions.getIdpScorecard(GetIdpScorecardArgs.builder()\n            .identifier(\"gold_standard\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  gold:\n    fn::invoke:\n      function: harness:platform:getIdpScorecard\n      arguments:\n        identifier: gold_standard\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getIdpScorecard.\n",
+                "properties": {
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the resource.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "identifier"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getIdpScorecard.\n",
+                "properties": {
+                    "checks": {
+                        "description": "Checks included in the scorecard.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpScorecardCheck:getIdpScorecardCheck"
+                        },
+                        "type": "array"
+                    },
+                    "checksMissings": {
+                        "description": "Identifiers of checks referenced by the scorecard that are missing.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "components": {
+                        "description": "Number of components evaluated by the scorecard.\n",
+                        "type": "integer"
+                    },
+                    "description": {
+                        "description": "Description of the resource.\n",
+                        "type": "string"
+                    },
+                    "filters": {
+                        "description": "Filters that select catalog entities evaluated by the scorecard.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpScorecardFilter:getIdpScorecardFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "identifier": {
+                        "description": "Unique identifier of the resource.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of the resource.\n",
+                        "type": "string"
+                    },
+                    "onDemand": {
+                        "description": "Whether the scorecard is evaluated on demand.\n",
+                        "type": "boolean"
+                    },
+                    "percentage": {
+                        "description": "Overall scorecard percentage.\n",
+                        "type": "number"
+                    },
+                    "published": {
+                        "description": "Whether the scorecard is published.\n",
+                        "type": "boolean"
+                    },
+                    "tierAnalytics": {
+                        "description": "Component distribution across scorecard tiers.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpScorecardTierAnalytic:getIdpScorecardTierAnalytic"
+                        },
+                        "type": "array"
+                    },
+                    "tierGroupIdentifier": {
+                        "description": "Identifier of the tier group used to classify scores.\n",
+                        "type": "string"
+                    },
+                    "weightageStrategy": {
+                        "description": "Weightage strategy for checks. Valid values are EQUAL_WEIGHTS and CUSTOM.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "checks",
+                    "checksMissings",
+                    "components",
+                    "description",
+                    "filters",
+                    "identifier",
+                    "name",
+                    "onDemand",
+                    "percentage",
+                    "published",
+                    "tierAnalytics",
+                    "tierGroupIdentifier",
+                    "weightageStrategy",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "harness:platform/getIdpScorecardCheck:getIdpScorecardCheck": {
+            "description": "Data source for retrieving an IDP scorecard check.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\n\nconst readme = harness.platform.getIdpScorecardCheck({\n    identifier: \"readme_exists\",\n});\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\n\nreadme = harness.platform.get_idp_scorecard_check(identifier=\"readme_exists\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var readme = Harness.Platform.GetIdpScorecardCheck.Invoke(new()\n    {\n        Identifier = \"readme_exists\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := platform.LookupIdpScorecardCheck(ctx, \u0026platform.LookupIdpScorecardCheckArgs{\n\t\t\tIdentifier: \"readme_exists\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\npulumi {\n  required_providers {\n    harness = {\n      source = \"pulumi/harness\"\n    }\n  }\n}\n\ndata \"harness_platform_getidpscorecardcheck\" \"readme\" {\n  identifier = \"readme_exists\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.PlatformFunctions;\nimport com.pulumi.harness.platform.inputs.GetIdpScorecardCheckArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var readme = PlatformFunctions.getIdpScorecardCheck(GetIdpScorecardCheckArgs.builder()\n            .identifier(\"readme_exists\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  readme:\n    fn::invoke:\n      function: harness:platform:getIdpScorecardCheck\n      arguments:\n        identifier: readme_exists\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getIdpScorecardCheck.\n",
+                "properties": {
+                    "identifier": {
+                        "type": "string",
+                        "description": "Unique identifier of the resource.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "identifier"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getIdpScorecardCheck.\n",
+                "properties": {
+                    "custom": {
+                        "description": "Whether this is a custom check. Always true for checks created through Terraform.\n",
+                        "type": "boolean"
+                    },
+                    "defaultBehaviour": {
+                        "description": "Default behaviour when the check cannot be evaluated. Valid values are PASS and FAIL.\n",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Description of the resource.\n",
+                        "type": "string"
+                    },
+                    "expression": {
+                        "description": "JEXL expression used for advanced check rules.\n",
+                        "type": "string"
+                    },
+                    "failMessage": {
+                        "description": "Message shown when the check fails.\n",
+                        "type": "string"
+                    },
+                    "harnessManaged": {
+                        "description": "Whether the check is managed by Harness.\n",
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "identifier": {
+                        "description": "Unique identifier of the resource.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of the resource.\n",
+                        "type": "string"
+                    },
+                    "percentage": {
+                        "description": "Pass percentage for the check.\n",
+                        "type": "number"
+                    },
+                    "ruleDescription": {
+                        "description": "Description of the check rule set.\n",
+                        "type": "string"
+                    },
+                    "ruleStrategy": {
+                        "description": "How multiple rules are combined. Valid values are ALL*OF, ANY*OF, and ADVANCED.\n",
+                        "type": "string"
+                    },
+                    "rules": {
+                        "description": "Basic rules evaluated by the check.\n",
+                        "items": {
+                            "$ref": "#/types/harness:platform/getIdpScorecardCheckRule:getIdpScorecardCheckRule"
+                        },
+                        "type": "array"
+                    },
+                    "tags": {
+                        "description": "Tags to associate with the resource.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "custom",
+                    "defaultBehaviour",
+                    "description",
+                    "expression",
+                    "failMessage",
+                    "harnessManaged",
+                    "identifier",
+                    "name",
+                    "percentage",
+                    "ruleDescription",
+                    "ruleStrategy",
+                    "rules",
+                    "tags",
                     "id"
                 ],
                 "type": "object"

@@ -3133,6 +3133,20 @@ __all__ = [
     'IacmAnsiblePlaybookVarArgsDict',
     'IdpCatalogEntityGitDetailsArgs',
     'IdpCatalogEntityGitDetailsArgsDict',
+    'IdpPluginEnvVariableArgs',
+    'IdpPluginEnvVariableArgsDict',
+    'IdpPluginProxyArgs',
+    'IdpPluginProxyArgsDict',
+    'IdpScorecardCheckArgs',
+    'IdpScorecardCheckArgsDict',
+    'IdpScorecardCheckRuleArgs',
+    'IdpScorecardCheckRuleArgsDict',
+    'IdpScorecardCheckRuleInputValueArgs',
+    'IdpScorecardCheckRuleInputValueArgsDict',
+    'IdpScorecardFilterArgs',
+    'IdpScorecardFilterArgsDict',
+    'IdpScorecardTierAnalyticArgs',
+    'IdpScorecardTierAnalyticArgsDict',
     'InfraModuleTestingTestingMetadataArgs',
     'InfraModuleTestingTestingMetadataArgsDict',
     'InfraProviderVersionArgs',
@@ -141858,6 +141872,757 @@ class IdpCatalogEntityGitDetailsArgs:
     @store_type.setter
     def store_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "store_type", value)
+
+
+class IdpPluginEnvVariableArgsDict(TypedDict):
+    env_name: pulumi.Input[_builtins.str]
+    """
+    Name of the environment variable.
+    """
+    harness_secret_identifier: pulumi.Input[_builtins.str]
+    """
+    Harness secret identifier used as the value.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Type of the environment variable source. Valid values: Secret, Config.
+    """
+    identifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Server-generated unique identifier for this env variable entry.
+    """
+
+@pulumi.input_type
+class IdpPluginEnvVariableArgs:
+    def __init__(__self__, *,
+                 env_name: pulumi.Input[_builtins.str],
+                 harness_secret_identifier: pulumi.Input[_builtins.str],
+                 type: pulumi.Input[_builtins.str],
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] env_name: Name of the environment variable.
+        :param pulumi.Input[_builtins.str] harness_secret_identifier: Harness secret identifier used as the value.
+        :param pulumi.Input[_builtins.str] type: Type of the environment variable source. Valid values: Secret, Config.
+        :param pulumi.Input[_builtins.str] identifier: Server-generated unique identifier for this env variable entry.
+        """
+        pulumi.set(__self__, "env_name", env_name)
+        pulumi.set(__self__, "harness_secret_identifier", harness_secret_identifier)
+        pulumi.set(__self__, "type", type)
+        if identifier is not None:
+            pulumi.set(__self__, "identifier", identifier)
+
+    @_builtins.property
+    @pulumi.getter(name="envName")
+    def env_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the environment variable.
+        """
+        return pulumi.get(self, "env_name")
+
+    @env_name.setter
+    def env_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "env_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="harnessSecretIdentifier")
+    def harness_secret_identifier(self) -> pulumi.Input[_builtins.str]:
+        """
+        Harness secret identifier used as the value.
+        """
+        return pulumi.get(self, "harness_secret_identifier")
+
+    @harness_secret_identifier.setter
+    def harness_secret_identifier(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "harness_secret_identifier", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Type of the environment variable source. Valid values: Secret, Config.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Server-generated unique identifier for this env variable entry.
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "identifier", value)
+
+
+class IdpPluginProxyArgsDict(TypedDict):
+    host: pulumi.Input[_builtins.str]
+    """
+    Proxy host.
+    """
+    health_check_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Health check path for the proxy endpoint.
+    """
+    identifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Server-generated unique identifier for this proxy entry.
+    """
+    proxy: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether proxy is enabled for this host.
+    """
+    selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Delegate selectors.
+    """
+
+@pulumi.input_type
+class IdpPluginProxyArgs:
+    def __init__(__self__, *,
+                 host: pulumi.Input[_builtins.str],
+                 health_check_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] host: Proxy host.
+        :param pulumi.Input[_builtins.str] health_check_path: Health check path for the proxy endpoint.
+        :param pulumi.Input[_builtins.str] identifier: Server-generated unique identifier for this proxy entry.
+        :param pulumi.Input[_builtins.bool] proxy: Whether proxy is enabled for this host.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] selectors: Delegate selectors.
+        """
+        pulumi.set(__self__, "host", host)
+        if health_check_path is not None:
+            pulumi.set(__self__, "health_check_path", health_check_path)
+        if identifier is not None:
+            pulumi.set(__self__, "identifier", identifier)
+        if proxy is not None:
+            pulumi.set(__self__, "proxy", proxy)
+        if selectors is not None:
+            pulumi.set(__self__, "selectors", selectors)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[_builtins.str]:
+        """
+        Proxy host.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter(name="healthCheckPath")
+    def health_check_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Health check path for the proxy endpoint.
+        """
+        return pulumi.get(self, "health_check_path")
+
+    @health_check_path.setter
+    def health_check_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "health_check_path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Server-generated unique identifier for this proxy entry.
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "identifier", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def proxy(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether proxy is enabled for this host.
+        """
+        return pulumi.get(self, "proxy")
+
+    @proxy.setter
+    def proxy(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "proxy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Delegate selectors.
+        """
+        return pulumi.get(self, "selectors")
+
+    @selectors.setter
+    def selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "selectors", value)
+
+
+class IdpScorecardCheckArgsDict(TypedDict):
+    custom: pulumi.Input[_builtins.bool]
+    """
+    Whether the referenced check is custom.
+    """
+    identifier: pulumi.Input[_builtins.str]
+    """
+    Identifier of the check.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Description of the check.
+    """
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Name of the check.
+    """
+    weightage: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    Weightage of the check when using CUSTOM.
+    """
+
+@pulumi.input_type
+class IdpScorecardCheckArgs:
+    def __init__(__self__, *,
+                 custom: pulumi.Input[_builtins.bool],
+                 identifier: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 weightage: pulumi.Input[Optional[_builtins.float]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] custom: Whether the referenced check is custom.
+        :param pulumi.Input[_builtins.str] identifier: Identifier of the check.
+        :param pulumi.Input[_builtins.str] description: Description of the check.
+        :param pulumi.Input[_builtins.str] name: Name of the check.
+        :param pulumi.Input[_builtins.float] weightage: Weightage of the check when using CUSTOM.
+        """
+        pulumi.set(__self__, "custom", custom)
+        pulumi.set(__self__, "identifier", identifier)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if weightage is not None:
+            pulumi.set(__self__, "weightage", weightage)
+
+    @_builtins.property
+    @pulumi.getter
+    def custom(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether the referenced check is custom.
+        """
+        return pulumi.get(self, "custom")
+
+    @custom.setter
+    def custom(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "custom", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier of the check.
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "identifier", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Description of the check.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Name of the check.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def weightage(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Weightage of the check when using CUSTOM.
+        """
+        return pulumi.get(self, "weightage")
+
+    @weightage.setter
+    def weightage(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "weightage", value)
+
+
+class IdpScorecardCheckRuleArgsDict(TypedDict):
+    data_point_identifier: pulumi.Input[_builtins.str]
+    """
+    Identifier of the data point evaluated by the rule.
+    """
+    data_source_identifier: pulumi.Input[_builtins.str]
+    """
+    Identifier of the data source used by the rule.
+    """
+    operator: pulumi.Input[_builtins.str]
+    """
+    Comparison operator.
+    """
+    identifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Identifier of the rule.
+    """
+    input_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['IdpScorecardCheckRuleInputValueArgsDict']]]]]
+    """
+    Input values passed to the data point.
+    """
+    rule_description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Description of the rule.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Value to compare against.
+    """
+
+@pulumi.input_type
+class IdpScorecardCheckRuleArgs:
+    def __init__(__self__, *,
+                 data_point_identifier: pulumi.Input[_builtins.str],
+                 data_source_identifier: pulumi.Input[_builtins.str],
+                 operator: pulumi.Input[_builtins.str],
+                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_values: pulumi.Input[Optional[Sequence[pulumi.Input['IdpScorecardCheckRuleInputValueArgs']]]] = None,
+                 rule_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] data_point_identifier: Identifier of the data point evaluated by the rule.
+        :param pulumi.Input[_builtins.str] data_source_identifier: Identifier of the data source used by the rule.
+        :param pulumi.Input[_builtins.str] operator: Comparison operator.
+        :param pulumi.Input[_builtins.str] identifier: Identifier of the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['IdpScorecardCheckRuleInputValueArgs']]] input_values: Input values passed to the data point.
+        :param pulumi.Input[_builtins.str] rule_description: Description of the rule.
+        :param pulumi.Input[_builtins.str] value: Value to compare against.
+        """
+        pulumi.set(__self__, "data_point_identifier", data_point_identifier)
+        pulumi.set(__self__, "data_source_identifier", data_source_identifier)
+        pulumi.set(__self__, "operator", operator)
+        if identifier is not None:
+            pulumi.set(__self__, "identifier", identifier)
+        if input_values is not None:
+            pulumi.set(__self__, "input_values", input_values)
+        if rule_description is not None:
+            pulumi.set(__self__, "rule_description", rule_description)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataPointIdentifier")
+    def data_point_identifier(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier of the data point evaluated by the rule.
+        """
+        return pulumi.get(self, "data_point_identifier")
+
+    @data_point_identifier.setter
+    def data_point_identifier(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "data_point_identifier", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataSourceIdentifier")
+    def data_source_identifier(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier of the data source used by the rule.
+        """
+        return pulumi.get(self, "data_source_identifier")
+
+    @data_source_identifier.setter
+    def data_source_identifier(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "data_source_identifier", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[_builtins.str]:
+        """
+        Comparison operator.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Identifier of the rule.
+        """
+        return pulumi.get(self, "identifier")
+
+    @identifier.setter
+    def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "identifier", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inputValues")
+    def input_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IdpScorecardCheckRuleInputValueArgs']]]]:
+        """
+        Input values passed to the data point.
+        """
+        return pulumi.get(self, "input_values")
+
+    @input_values.setter
+    def input_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IdpScorecardCheckRuleInputValueArgs']]]]):
+        pulumi.set(self, "input_values", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ruleDescription")
+    def rule_description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Description of the rule.
+        """
+        return pulumi.get(self, "rule_description")
+
+    @rule_description.setter
+    def rule_description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "rule_description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class IdpScorecardCheckRuleInputValueArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    Input key.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    Input value.
+    """
+
+@pulumi.input_type
+class IdpScorecardCheckRuleInputValueArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] key: Input key.
+        :param pulumi.Input[_builtins.str] value: Input value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[_builtins.str]:
+        """
+        Input key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        Input value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
+
+
+class IdpScorecardFilterArgsDict(TypedDict):
+    kind: pulumi.Input[_builtins.str]
+    """
+    Catalog entity kind to evaluate.
+    """
+    lifecycles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Entity lifecycle stages to include.
+    """
+    owners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Entity owners to include.
+    """
+    scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Evaluation scopes (for example ACCOUNT, ORGANIZATION, or PROJECT).
+    """
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Entity tags to include.
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Catalog entity type to evaluate.
+    """
+
+@pulumi.input_type
+class IdpScorecardFilterArgs:
+    def __init__(__self__, *,
+                 kind: pulumi.Input[_builtins.str],
+                 lifecycles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] kind: Catalog entity kind to evaluate.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] lifecycles: Entity lifecycle stages to include.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] owners: Entity owners to include.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Evaluation scopes (for example ACCOUNT, ORGANIZATION, or PROJECT).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Entity tags to include.
+        :param pulumi.Input[_builtins.str] type: Catalog entity type to evaluate.
+        """
+        pulumi.set(__self__, "kind", kind)
+        if lifecycles is not None:
+            pulumi.set(__self__, "lifecycles", lifecycles)
+        if owners is not None:
+            pulumi.set(__self__, "owners", owners)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def kind(self) -> pulumi.Input[_builtins.str]:
+        """
+        Catalog entity kind to evaluate.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "kind", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def lifecycles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Entity lifecycle stages to include.
+        """
+        return pulumi.get(self, "lifecycles")
+
+    @lifecycles.setter
+    def lifecycles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "lifecycles", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def owners(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Entity owners to include.
+        """
+        return pulumi.get(self, "owners")
+
+    @owners.setter
+    def owners(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "owners", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Evaluation scopes (for example ACCOUNT, ORGANIZATION, or PROJECT).
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "scopes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Entity tags to include.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Catalog entity type to evaluate.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+class IdpScorecardTierAnalyticArgsDict(TypedDict):
+    component_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of components in the tier.
+    """
+    max_score: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Maximum score for the tier.
+    """
+    min_score: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Minimum score for the tier.
+    """
+    percentage: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    Percentage of components in the tier.
+    """
+    tier_colour: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Colour of the tier.
+    """
+    tier_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Name of the tier.
+    """
+
+@pulumi.input_type
+class IdpScorecardTierAnalyticArgs:
+    def __init__(__self__, *,
+                 component_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_score: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_score: pulumi.Input[Optional[_builtins.int]] = None,
+                 percentage: pulumi.Input[Optional[_builtins.float]] = None,
+                 tier_colour: pulumi.Input[Optional[_builtins.str]] = None,
+                 tier_name: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] component_count: Number of components in the tier.
+        :param pulumi.Input[_builtins.int] max_score: Maximum score for the tier.
+        :param pulumi.Input[_builtins.int] min_score: Minimum score for the tier.
+        :param pulumi.Input[_builtins.float] percentage: Percentage of components in the tier.
+        :param pulumi.Input[_builtins.str] tier_colour: Colour of the tier.
+        :param pulumi.Input[_builtins.str] tier_name: Name of the tier.
+        """
+        if component_count is not None:
+            pulumi.set(__self__, "component_count", component_count)
+        if max_score is not None:
+            pulumi.set(__self__, "max_score", max_score)
+        if min_score is not None:
+            pulumi.set(__self__, "min_score", min_score)
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+        if tier_colour is not None:
+            pulumi.set(__self__, "tier_colour", tier_colour)
+        if tier_name is not None:
+            pulumi.set(__self__, "tier_name", tier_name)
+
+    @_builtins.property
+    @pulumi.getter(name="componentCount")
+    def component_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of components in the tier.
+        """
+        return pulumi.get(self, "component_count")
+
+    @component_count.setter
+    def component_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "component_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxScore")
+    def max_score(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum score for the tier.
+        """
+        return pulumi.get(self, "max_score")
+
+    @max_score.setter
+    def max_score(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_score", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minScore")
+    def min_score(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Minimum score for the tier.
+        """
+        return pulumi.get(self, "min_score")
+
+    @min_score.setter
+    def min_score(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "min_score", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def percentage(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Percentage of components in the tier.
+        """
+        return pulumi.get(self, "percentage")
+
+    @percentage.setter
+    def percentage(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "percentage", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tierColour")
+    def tier_colour(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Colour of the tier.
+        """
+        return pulumi.get(self, "tier_colour")
+
+    @tier_colour.setter
+    def tier_colour(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tier_colour", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tierName")
+    def tier_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Name of the tier.
+        """
+        return pulumi.get(self, "tier_name")
+
+    @tier_name.setter
+    def tier_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tier_name", value)
 
 
 class InfraModuleTestingTestingMetadataArgsDict(TypedDict):

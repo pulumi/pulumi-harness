@@ -153,6 +153,12 @@ import com.pulumi.harness.platform.inputs.GetIdpEnvironmentArgs;
 import com.pulumi.harness.platform.inputs.GetIdpEnvironmentBlueprintArgs;
 import com.pulumi.harness.platform.inputs.GetIdpEnvironmentBlueprintPlainArgs;
 import com.pulumi.harness.platform.inputs.GetIdpEnvironmentPlainArgs;
+import com.pulumi.harness.platform.inputs.GetIdpPluginArgs;
+import com.pulumi.harness.platform.inputs.GetIdpPluginPlainArgs;
+import com.pulumi.harness.platform.inputs.GetIdpScorecardArgs;
+import com.pulumi.harness.platform.inputs.GetIdpScorecardCheckArgs;
+import com.pulumi.harness.platform.inputs.GetIdpScorecardCheckPlainArgs;
+import com.pulumi.harness.platform.inputs.GetIdpScorecardPlainArgs;
 import com.pulumi.harness.platform.inputs.GetInfraModuleArgs;
 import com.pulumi.harness.platform.inputs.GetInfraModulePlainArgs;
 import com.pulumi.harness.platform.inputs.GetInfraModuleTestingArgs;
@@ -354,6 +360,9 @@ import com.pulumi.harness.platform.outputs.GetIacmDefaultPipelineResult;
 import com.pulumi.harness.platform.outputs.GetIdpCatalogEntityResult;
 import com.pulumi.harness.platform.outputs.GetIdpEnvironmentBlueprintResult;
 import com.pulumi.harness.platform.outputs.GetIdpEnvironmentResult;
+import com.pulumi.harness.platform.outputs.GetIdpPluginResult;
+import com.pulumi.harness.platform.outputs.GetIdpScorecardCheckResult;
+import com.pulumi.harness.platform.outputs.GetIdpScorecardResult;
 import com.pulumi.harness.platform.outputs.GetInfraModuleResult;
 import com.pulumi.harness.platform.outputs.GetInfraModuleTestingResult;
 import com.pulumi.harness.platform.outputs.GetInfraModulesResult;
@@ -14149,6 +14158,441 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetIdpEnvironmentBlueprintResult> getIdpEnvironmentBlueprintPlain(GetIdpEnvironmentBlueprintPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getIdpEnvironmentBlueprint:getIdpEnvironmentBlueprint", TypeShape.of(GetIdpEnvironmentBlueprintResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving IDP plugin configuration.
+     * 
+     */
+    public static Output<GetIdpPluginResult> getIdpPlugin(GetIdpPluginArgs args) {
+        return getIdpPlugin(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving IDP plugin configuration.
+     * 
+     */
+    public static CompletableFuture<GetIdpPluginResult> getIdpPluginPlain(GetIdpPluginPlainArgs args) {
+        return getIdpPluginPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving IDP plugin configuration.
+     * 
+     */
+    public static Output<GetIdpPluginResult> getIdpPlugin(GetIdpPluginArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getIdpPlugin:getIdpPlugin", TypeShape.of(GetIdpPluginResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving IDP plugin configuration.
+     * 
+     */
+    public static Output<GetIdpPluginResult> getIdpPlugin(GetIdpPluginArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getIdpPlugin:getIdpPlugin", TypeShape.of(GetIdpPluginResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving IDP plugin configuration.
+     * 
+     */
+    public static CompletableFuture<GetIdpPluginResult> getIdpPluginPlain(GetIdpPluginPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getIdpPlugin:getIdpPlugin", TypeShape.of(GetIdpPluginResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving an IDP scorecard.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIdpScorecardArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var gold = PlatformFunctions.getIdpScorecard(GetIdpScorecardArgs.builder()
+     *             .identifier("gold_standard")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIdpScorecardResult> getIdpScorecard(GetIdpScorecardArgs args) {
+        return getIdpScorecard(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving an IDP scorecard.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIdpScorecardArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var gold = PlatformFunctions.getIdpScorecard(GetIdpScorecardArgs.builder()
+     *             .identifier("gold_standard")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetIdpScorecardResult> getIdpScorecardPlain(GetIdpScorecardPlainArgs args) {
+        return getIdpScorecardPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving an IDP scorecard.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIdpScorecardArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var gold = PlatformFunctions.getIdpScorecard(GetIdpScorecardArgs.builder()
+     *             .identifier("gold_standard")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIdpScorecardResult> getIdpScorecard(GetIdpScorecardArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getIdpScorecard:getIdpScorecard", TypeShape.of(GetIdpScorecardResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving an IDP scorecard.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIdpScorecardArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var gold = PlatformFunctions.getIdpScorecard(GetIdpScorecardArgs.builder()
+     *             .identifier("gold_standard")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIdpScorecardResult> getIdpScorecard(GetIdpScorecardArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getIdpScorecard:getIdpScorecard", TypeShape.of(GetIdpScorecardResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving an IDP scorecard.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIdpScorecardArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var gold = PlatformFunctions.getIdpScorecard(GetIdpScorecardArgs.builder()
+     *             .identifier("gold_standard")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetIdpScorecardResult> getIdpScorecardPlain(GetIdpScorecardPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getIdpScorecard:getIdpScorecard", TypeShape.of(GetIdpScorecardResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving an IDP scorecard check.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIdpScorecardCheckArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var readme = PlatformFunctions.getIdpScorecardCheck(GetIdpScorecardCheckArgs.builder()
+     *             .identifier("readme_exists")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIdpScorecardCheckResult> getIdpScorecardCheck(GetIdpScorecardCheckArgs args) {
+        return getIdpScorecardCheck(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving an IDP scorecard check.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIdpScorecardCheckArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var readme = PlatformFunctions.getIdpScorecardCheck(GetIdpScorecardCheckArgs.builder()
+     *             .identifier("readme_exists")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetIdpScorecardCheckResult> getIdpScorecardCheckPlain(GetIdpScorecardCheckPlainArgs args) {
+        return getIdpScorecardCheckPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving an IDP scorecard check.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIdpScorecardCheckArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var readme = PlatformFunctions.getIdpScorecardCheck(GetIdpScorecardCheckArgs.builder()
+     *             .identifier("readme_exists")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIdpScorecardCheckResult> getIdpScorecardCheck(GetIdpScorecardCheckArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getIdpScorecardCheck:getIdpScorecardCheck", TypeShape.of(GetIdpScorecardCheckResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving an IDP scorecard check.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIdpScorecardCheckArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var readme = PlatformFunctions.getIdpScorecardCheck(GetIdpScorecardCheckArgs.builder()
+     *             .identifier("readme_exists")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIdpScorecardCheckResult> getIdpScorecardCheck(GetIdpScorecardCheckArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getIdpScorecardCheck:getIdpScorecardCheck", TypeShape.of(GetIdpScorecardCheckResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Data source for retrieving an IDP scorecard check.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetIdpScorecardCheckArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var readme = PlatformFunctions.getIdpScorecardCheck(GetIdpScorecardCheckArgs.builder()
+     *             .identifier("readme_exists")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetIdpScorecardCheckResult> getIdpScorecardCheckPlain(GetIdpScorecardCheckPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getIdpScorecardCheck:getIdpScorecardCheck", TypeShape.of(GetIdpScorecardCheckResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Data source for retrieving modules from the module registry.
