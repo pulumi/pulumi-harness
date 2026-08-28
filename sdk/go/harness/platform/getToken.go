@@ -129,12 +129,8 @@ type LookupTokenResult struct {
 }
 
 func LookupTokenOutput(ctx *pulumi.Context, args LookupTokenOutputArgs, opts ...pulumi.InvokeOption) LookupTokenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTokenResultOutput, error) {
-			args := v.(LookupTokenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getToken:getToken", args, LookupTokenResultOutput{}, options).(LookupTokenResultOutput), nil
-		}).(LookupTokenResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getToken:getToken", args, LookupTokenResultOutput{}, options).(LookupTokenResultOutput)
 }
 
 // A collection of arguments for invoking getToken.

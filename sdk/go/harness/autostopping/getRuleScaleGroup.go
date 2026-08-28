@@ -69,12 +69,8 @@ type LookupRuleScaleGroupResult struct {
 }
 
 func LookupRuleScaleGroupOutput(ctx *pulumi.Context, args LookupRuleScaleGroupOutputArgs, opts ...pulumi.InvokeOption) LookupRuleScaleGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRuleScaleGroupResultOutput, error) {
-			args := v.(LookupRuleScaleGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:autostopping/getRuleScaleGroup:getRuleScaleGroup", args, LookupRuleScaleGroupResultOutput{}, options).(LookupRuleScaleGroupResultOutput), nil
-		}).(LookupRuleScaleGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:autostopping/getRuleScaleGroup:getRuleScaleGroup", args, LookupRuleScaleGroupResultOutput{}, options).(LookupRuleScaleGroupResultOutput)
 }
 
 // A collection of arguments for invoking getRuleScaleGroup.

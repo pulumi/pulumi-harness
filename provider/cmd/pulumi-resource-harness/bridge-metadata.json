@@ -17423,7 +17423,14 @@
                 "current": "harness:fme/getTrafficType:getTrafficType"
             },
             "harness_fme_workspace": {
-                "current": "harness:fme/workspace:Workspace"
+                "current": "harness:fme/getWorkspace:getWorkspace",
+                "past": [
+                    {
+                        "name": "harness:fme/workspace:Workspace",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ]
             },
             "harness_git_connector": {
                 "current": "harness:index/getGitConnector:getGitConnector",
@@ -20286,6 +20293,11 @@
                     "k8s_probe": false,
                     "run_properties": false
                 }
+            },
+            "harness_fme_workspace": {
+                "renames": [
+                    "harness:fme/workspace:Workspace"
+                ]
             },
             "harness_platform_db_schema": {
                 "maxItemsOneOverrides": {

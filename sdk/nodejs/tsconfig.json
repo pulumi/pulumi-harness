@@ -102,6 +102,7 @@
         "fme/getFlagSet.ts",
         "fme/getLargeSegment.ts",
         "fme/getTrafficType.ts",
+        "fme/getWorkspace.ts",
         "fme/index.ts",
         "fme/workspace.ts",
         "fmeenvironment/fmeEnvironment.ts",

@@ -63,12 +63,8 @@ type LookupPipelineCentralNotificationRuleResult struct {
 }
 
 func LookupPipelineCentralNotificationRuleOutput(ctx *pulumi.Context, args LookupPipelineCentralNotificationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupPipelineCentralNotificationRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPipelineCentralNotificationRuleResultOutput, error) {
-			args := v.(LookupPipelineCentralNotificationRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getPipelineCentralNotificationRule:getPipelineCentralNotificationRule", args, LookupPipelineCentralNotificationRuleResultOutput{}, options).(LookupPipelineCentralNotificationRuleResultOutput), nil
-		}).(LookupPipelineCentralNotificationRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getPipelineCentralNotificationRule:getPipelineCentralNotificationRule", args, LookupPipelineCentralNotificationRuleResultOutput{}, options).(LookupPipelineCentralNotificationRuleResultOutput)
 }
 
 // A collection of arguments for invoking getPipelineCentralNotificationRule.

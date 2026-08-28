@@ -115,12 +115,8 @@ type LookupEnvironmentClustersMappingResult struct {
 }
 
 func LookupEnvironmentClustersMappingOutput(ctx *pulumi.Context, args LookupEnvironmentClustersMappingOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentClustersMappingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEnvironmentClustersMappingResultOutput, error) {
-			args := v.(LookupEnvironmentClustersMappingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getEnvironmentClustersMapping:getEnvironmentClustersMapping", args, LookupEnvironmentClustersMappingResultOutput{}, options).(LookupEnvironmentClustersMappingResultOutput), nil
-		}).(LookupEnvironmentClustersMappingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getEnvironmentClustersMapping:getEnvironmentClustersMapping", args, LookupEnvironmentClustersMappingResultOutput{}, options).(LookupEnvironmentClustersMappingResultOutput)
 }
 
 // A collection of arguments for invoking getEnvironmentClustersMapping.

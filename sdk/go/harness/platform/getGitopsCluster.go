@@ -76,12 +76,8 @@ type GetGitopsClusterResult struct {
 }
 
 func GetGitopsClusterOutput(ctx *pulumi.Context, args GetGitopsClusterOutputArgs, opts ...pulumi.InvokeOption) GetGitopsClusterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGitopsClusterResultOutput, error) {
-			args := v.(GetGitopsClusterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getGitopsCluster:getGitopsCluster", args, GetGitopsClusterResultOutput{}, options).(GetGitopsClusterResultOutput), nil
-		}).(GetGitopsClusterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getGitopsCluster:getGitopsCluster", args, GetGitopsClusterResultOutput{}, options).(GetGitopsClusterResultOutput)
 }
 
 // A collection of arguments for invoking getGitopsCluster.

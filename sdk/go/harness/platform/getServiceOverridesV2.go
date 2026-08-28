@@ -89,12 +89,8 @@ type LookupServiceOverridesV2Result struct {
 }
 
 func LookupServiceOverridesV2Output(ctx *pulumi.Context, args LookupServiceOverridesV2OutputArgs, opts ...pulumi.InvokeOption) LookupServiceOverridesV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServiceOverridesV2ResultOutput, error) {
-			args := v.(LookupServiceOverridesV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getServiceOverridesV2:getServiceOverridesV2", args, LookupServiceOverridesV2ResultOutput{}, options).(LookupServiceOverridesV2ResultOutput), nil
-		}).(LookupServiceOverridesV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getServiceOverridesV2:getServiceOverridesV2", args, LookupServiceOverridesV2ResultOutput{}, options).(LookupServiceOverridesV2ResultOutput)
 }
 
 // A collection of arguments for invoking getServiceOverridesV2.

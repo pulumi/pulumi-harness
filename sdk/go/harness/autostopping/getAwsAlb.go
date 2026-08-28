@@ -67,12 +67,8 @@ type LookupAwsAlbResult struct {
 }
 
 func LookupAwsAlbOutput(ctx *pulumi.Context, args LookupAwsAlbOutputArgs, opts ...pulumi.InvokeOption) LookupAwsAlbResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAwsAlbResultOutput, error) {
-			args := v.(LookupAwsAlbArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:autostopping/getAwsAlb:getAwsAlb", args, LookupAwsAlbResultOutput{}, options).(LookupAwsAlbResultOutput), nil
-		}).(LookupAwsAlbResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:autostopping/getAwsAlb:getAwsAlb", args, LookupAwsAlbResultOutput{}, options).(LookupAwsAlbResultOutput)
 }
 
 // A collection of arguments for invoking getAwsAlb.

@@ -108,12 +108,8 @@ type LookupImageRegistryResult struct {
 }
 
 func LookupImageRegistryOutput(ctx *pulumi.Context, args LookupImageRegistryOutputArgs, opts ...pulumi.InvokeOption) LookupImageRegistryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupImageRegistryResultOutput, error) {
-			args := v.(LookupImageRegistryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:chaos/getImageRegistry:getImageRegistry", args, LookupImageRegistryResultOutput{}, options).(LookupImageRegistryResultOutput), nil
-		}).(LookupImageRegistryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:chaos/getImageRegistry:getImageRegistry", args, LookupImageRegistryResultOutput{}, options).(LookupImageRegistryResultOutput)
 }
 
 // A collection of arguments for invoking getImageRegistry.

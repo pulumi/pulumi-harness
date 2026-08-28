@@ -85,12 +85,8 @@ type LookupConnectorRancherResult struct {
 }
 
 func LookupConnectorRancherOutput(ctx *pulumi.Context, args LookupConnectorRancherOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorRancherResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConnectorRancherResultOutput, error) {
-			args := v.(LookupConnectorRancherArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getConnectorRancher:getConnectorRancher", args, LookupConnectorRancherResultOutput{}, options).(LookupConnectorRancherResultOutput), nil
-		}).(LookupConnectorRancherResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getConnectorRancher:getConnectorRancher", args, LookupConnectorRancherResultOutput{}, options).(LookupConnectorRancherResultOutput)
 }
 
 // A collection of arguments for invoking getConnectorRancher.

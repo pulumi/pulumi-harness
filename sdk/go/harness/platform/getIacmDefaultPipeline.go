@@ -80,12 +80,8 @@ type LookupIacmDefaultPipelineResult struct {
 }
 
 func LookupIacmDefaultPipelineOutput(ctx *pulumi.Context, args LookupIacmDefaultPipelineOutputArgs, opts ...pulumi.InvokeOption) LookupIacmDefaultPipelineResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIacmDefaultPipelineResultOutput, error) {
-			args := v.(LookupIacmDefaultPipelineArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getIacmDefaultPipeline:getIacmDefaultPipeline", args, LookupIacmDefaultPipelineResultOutput{}, options).(LookupIacmDefaultPipelineResultOutput), nil
-		}).(LookupIacmDefaultPipelineResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getIacmDefaultPipeline:getIacmDefaultPipeline", args, LookupIacmDefaultPipelineResultOutput{}, options).(LookupIacmDefaultPipelineResultOutput)
 }
 
 // A collection of arguments for invoking getIacmDefaultPipeline.

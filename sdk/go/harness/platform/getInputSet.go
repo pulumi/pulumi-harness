@@ -63,12 +63,8 @@ type LookupInputSetResult struct {
 }
 
 func LookupInputSetOutput(ctx *pulumi.Context, args LookupInputSetOutputArgs, opts ...pulumi.InvokeOption) LookupInputSetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInputSetResultOutput, error) {
-			args := v.(LookupInputSetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getInputSet:getInputSet", args, LookupInputSetResultOutput{}, options).(LookupInputSetResultOutput), nil
-		}).(LookupInputSetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getInputSet:getInputSet", args, LookupInputSetResultOutput{}, options).(LookupInputSetResultOutput)
 }
 
 // A collection of arguments for invoking getInputSet.

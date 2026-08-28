@@ -73,12 +73,8 @@ type LookupDefaultNotificationTemplateSetResult struct {
 }
 
 func LookupDefaultNotificationTemplateSetOutput(ctx *pulumi.Context, args LookupDefaultNotificationTemplateSetOutputArgs, opts ...pulumi.InvokeOption) LookupDefaultNotificationTemplateSetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDefaultNotificationTemplateSetResultOutput, error) {
-			args := v.(LookupDefaultNotificationTemplateSetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getDefaultNotificationTemplateSet:getDefaultNotificationTemplateSet", args, LookupDefaultNotificationTemplateSetResultOutput{}, options).(LookupDefaultNotificationTemplateSetResultOutput), nil
-		}).(LookupDefaultNotificationTemplateSetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getDefaultNotificationTemplateSet:getDefaultNotificationTemplateSet", args, LookupDefaultNotificationTemplateSetResultOutput{}, options).(LookupDefaultNotificationTemplateSetResultOutput)
 }
 
 // A collection of arguments for invoking getDefaultNotificationTemplateSet.

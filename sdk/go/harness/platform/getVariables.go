@@ -81,12 +81,8 @@ type LookupVariablesResult struct {
 }
 
 func LookupVariablesOutput(ctx *pulumi.Context, args LookupVariablesOutputArgs, opts ...pulumi.InvokeOption) LookupVariablesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVariablesResultOutput, error) {
-			args := v.(LookupVariablesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getVariables:getVariables", args, LookupVariablesResultOutput{}, options).(LookupVariablesResultOutput), nil
-		}).(LookupVariablesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getVariables:getVariables", args, LookupVariablesResultOutput{}, options).(LookupVariablesResultOutput)
 }
 
 // A collection of arguments for invoking getVariables.

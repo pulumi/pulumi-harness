@@ -67,12 +67,8 @@ type LookupConnectorAzureRepoResult struct {
 }
 
 func LookupConnectorAzureRepoOutput(ctx *pulumi.Context, args LookupConnectorAzureRepoOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorAzureRepoResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConnectorAzureRepoResultOutput, error) {
-			args := v.(LookupConnectorAzureRepoArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getConnectorAzureRepo:getConnectorAzureRepo", args, LookupConnectorAzureRepoResultOutput{}, options).(LookupConnectorAzureRepoResultOutput), nil
-		}).(LookupConnectorAzureRepoResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getConnectorAzureRepo:getConnectorAzureRepo", args, LookupConnectorAzureRepoResultOutput{}, options).(LookupConnectorAzureRepoResultOutput)
 }
 
 // A collection of arguments for invoking getConnectorAzureRepo.

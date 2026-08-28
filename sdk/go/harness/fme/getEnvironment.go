@@ -78,12 +78,8 @@ type GetEnvironmentResult struct {
 }
 
 func GetEnvironmentOutput(ctx *pulumi.Context, args GetEnvironmentOutputArgs, opts ...pulumi.InvokeOption) GetEnvironmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEnvironmentResultOutput, error) {
-			args := v.(GetEnvironmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:fme/getEnvironment:getEnvironment", args, GetEnvironmentResultOutput{}, options).(GetEnvironmentResultOutput), nil
-		}).(GetEnvironmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:fme/getEnvironment:getEnvironment", args, GetEnvironmentResultOutput{}, options).(GetEnvironmentResultOutput)
 }
 
 // A collection of arguments for invoking getEnvironment.

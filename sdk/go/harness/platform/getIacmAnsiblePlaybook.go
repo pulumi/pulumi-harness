@@ -99,12 +99,8 @@ type LookupIacmAnsiblePlaybookResult struct {
 }
 
 func LookupIacmAnsiblePlaybookOutput(ctx *pulumi.Context, args LookupIacmAnsiblePlaybookOutputArgs, opts ...pulumi.InvokeOption) LookupIacmAnsiblePlaybookResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIacmAnsiblePlaybookResultOutput, error) {
-			args := v.(LookupIacmAnsiblePlaybookArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getIacmAnsiblePlaybook:getIacmAnsiblePlaybook", args, LookupIacmAnsiblePlaybookResultOutput{}, options).(LookupIacmAnsiblePlaybookResultOutput), nil
-		}).(LookupIacmAnsiblePlaybookResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getIacmAnsiblePlaybook:getIacmAnsiblePlaybook", args, LookupIacmAnsiblePlaybookResultOutput{}, options).(LookupIacmAnsiblePlaybookResultOutput)
 }
 
 // A collection of arguments for invoking getIacmAnsiblePlaybook.

@@ -223,12 +223,8 @@ type LookupDefaultImagesResult struct {
 }
 
 func LookupDefaultImagesOutput(ctx *pulumi.Context, args LookupDefaultImagesOutputArgs, opts ...pulumi.InvokeOption) LookupDefaultImagesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDefaultImagesResultOutput, error) {
-			args := v.(LookupDefaultImagesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getDefaultImages:getDefaultImages", args, LookupDefaultImagesResultOutput{}, options).(LookupDefaultImagesResultOutput), nil
-		}).(LookupDefaultImagesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getDefaultImages:getDefaultImages", args, LookupDefaultImagesResultOutput{}, options).(LookupDefaultImagesResultOutput)
 }
 
 // A collection of arguments for invoking getDefaultImages.

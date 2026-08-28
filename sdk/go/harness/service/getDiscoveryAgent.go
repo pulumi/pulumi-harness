@@ -129,12 +129,8 @@ type LookupDiscoveryAgentResult struct {
 }
 
 func LookupDiscoveryAgentOutput(ctx *pulumi.Context, args LookupDiscoveryAgentOutputArgs, opts ...pulumi.InvokeOption) LookupDiscoveryAgentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDiscoveryAgentResultOutput, error) {
-			args := v.(LookupDiscoveryAgentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:service/getDiscoveryAgent:getDiscoveryAgent", args, LookupDiscoveryAgentResultOutput{}, options).(LookupDiscoveryAgentResultOutput), nil
-		}).(LookupDiscoveryAgentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:service/getDiscoveryAgent:getDiscoveryAgent", args, LookupDiscoveryAgentResultOutput{}, options).(LookupDiscoveryAgentResultOutput)
 }
 
 // A collection of arguments for invoking getDiscoveryAgent.

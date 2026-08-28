@@ -76,12 +76,8 @@ type GetGitopsAgentResult struct {
 }
 
 func GetGitopsAgentOutput(ctx *pulumi.Context, args GetGitopsAgentOutputArgs, opts ...pulumi.InvokeOption) GetGitopsAgentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGitopsAgentResultOutput, error) {
-			args := v.(GetGitopsAgentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getGitopsAgent:getGitopsAgent", args, GetGitopsAgentResultOutput{}, options).(GetGitopsAgentResultOutput), nil
-		}).(GetGitopsAgentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getGitopsAgent:getGitopsAgent", args, GetGitopsAgentResultOutput{}, options).(GetGitopsAgentResultOutput)
 }
 
 // A collection of arguments for invoking getGitopsAgent.

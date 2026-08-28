@@ -91,12 +91,8 @@ type GetGitopsRepositoryResult struct {
 }
 
 func GetGitopsRepositoryOutput(ctx *pulumi.Context, args GetGitopsRepositoryOutputArgs, opts ...pulumi.InvokeOption) GetGitopsRepositoryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGitopsRepositoryResultOutput, error) {
-			args := v.(GetGitopsRepositoryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getGitopsRepository:getGitopsRepository", args, GetGitopsRepositoryResultOutput{}, options).(GetGitopsRepositoryResultOutput), nil
-		}).(GetGitopsRepositoryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getGitopsRepository:getGitopsRepository", args, GetGitopsRepositoryResultOutput{}, options).(GetGitopsRepositoryResultOutput)
 }
 
 // A collection of arguments for invoking getGitopsRepository.

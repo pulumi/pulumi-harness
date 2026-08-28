@@ -108,12 +108,8 @@ type LookupAzureKeyVaultConnectorResult struct {
 }
 
 func LookupAzureKeyVaultConnectorOutput(ctx *pulumi.Context, args LookupAzureKeyVaultConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAzureKeyVaultConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAzureKeyVaultConnectorResultOutput, error) {
-			args := v.(LookupAzureKeyVaultConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getAzureKeyVaultConnector:getAzureKeyVaultConnector", args, LookupAzureKeyVaultConnectorResultOutput{}, options).(LookupAzureKeyVaultConnectorResultOutput), nil
-		}).(LookupAzureKeyVaultConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getAzureKeyVaultConnector:getAzureKeyVaultConnector", args, LookupAzureKeyVaultConnectorResultOutput{}, options).(LookupAzureKeyVaultConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getAzureKeyVaultConnector.

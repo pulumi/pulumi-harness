@@ -73,12 +73,8 @@ type LookupNotificationRuleResult struct {
 }
 
 func LookupNotificationRuleOutput(ctx *pulumi.Context, args LookupNotificationRuleOutputArgs, opts ...pulumi.InvokeOption) LookupNotificationRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNotificationRuleResultOutput, error) {
-			args := v.(LookupNotificationRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getNotificationRule:getNotificationRule", args, LookupNotificationRuleResultOutput{}, options).(LookupNotificationRuleResultOutput), nil
-		}).(LookupNotificationRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getNotificationRule:getNotificationRule", args, LookupNotificationRuleResultOutput{}, options).(LookupNotificationRuleResultOutput)
 }
 
 // A collection of arguments for invoking getNotificationRule.

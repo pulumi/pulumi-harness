@@ -75,12 +75,8 @@ type LookupInfraProviderResult struct {
 }
 
 func LookupInfraProviderOutput(ctx *pulumi.Context, args LookupInfraProviderOutputArgs, opts ...pulumi.InvokeOption) LookupInfraProviderResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInfraProviderResultOutput, error) {
-			args := v.(LookupInfraProviderArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getInfraProvider:getInfraProvider", args, LookupInfraProviderResultOutput{}, options).(LookupInfraProviderResultOutput), nil
-		}).(LookupInfraProviderResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getInfraProvider:getInfraProvider", args, LookupInfraProviderResultOutput{}, options).(LookupInfraProviderResultOutput)
 }
 
 // A collection of arguments for invoking getInfraProvider.

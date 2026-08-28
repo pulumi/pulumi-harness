@@ -89,12 +89,8 @@ type LookupAppDynamicsConnectorResult struct {
 }
 
 func LookupAppDynamicsConnectorOutput(ctx *pulumi.Context, args LookupAppDynamicsConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAppDynamicsConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAppDynamicsConnectorResultOutput, error) {
-			args := v.(LookupAppDynamicsConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getAppDynamicsConnector:getAppDynamicsConnector", args, LookupAppDynamicsConnectorResultOutput{}, options).(LookupAppDynamicsConnectorResultOutput), nil
-		}).(LookupAppDynamicsConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getAppDynamicsConnector:getAppDynamicsConnector", args, LookupAppDynamicsConnectorResultOutput{}, options).(LookupAppDynamicsConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getAppDynamicsConnector.

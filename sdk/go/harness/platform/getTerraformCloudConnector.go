@@ -85,12 +85,8 @@ type LookupTerraformCloudConnectorResult struct {
 }
 
 func LookupTerraformCloudConnectorOutput(ctx *pulumi.Context, args LookupTerraformCloudConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupTerraformCloudConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTerraformCloudConnectorResultOutput, error) {
-			args := v.(LookupTerraformCloudConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getTerraformCloudConnector:getTerraformCloudConnector", args, LookupTerraformCloudConnectorResultOutput{}, options).(LookupTerraformCloudConnectorResultOutput), nil
-		}).(LookupTerraformCloudConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getTerraformCloudConnector:getTerraformCloudConnector", args, LookupTerraformCloudConnectorResultOutput{}, options).(LookupTerraformCloudConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getTerraformCloudConnector.

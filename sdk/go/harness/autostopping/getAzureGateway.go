@@ -85,12 +85,8 @@ type LookupAzureGatewayResult struct {
 }
 
 func LookupAzureGatewayOutput(ctx *pulumi.Context, args LookupAzureGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupAzureGatewayResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAzureGatewayResultOutput, error) {
-			args := v.(LookupAzureGatewayArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:autostopping/getAzureGateway:getAzureGateway", args, LookupAzureGatewayResultOutput{}, options).(LookupAzureGatewayResultOutput), nil
-		}).(LookupAzureGatewayResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:autostopping/getAzureGateway:getAzureGateway", args, LookupAzureGatewayResultOutput{}, options).(LookupAzureGatewayResultOutput)
 }
 
 // A collection of arguments for invoking getAzureGateway.

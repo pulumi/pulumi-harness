@@ -78,12 +78,8 @@ type LookupChaosInfrastructureResult struct {
 }
 
 func LookupChaosInfrastructureOutput(ctx *pulumi.Context, args LookupChaosInfrastructureOutputArgs, opts ...pulumi.InvokeOption) LookupChaosInfrastructureResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupChaosInfrastructureResultOutput, error) {
-			args := v.(LookupChaosInfrastructureArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:index/getChaosInfrastructure:getChaosInfrastructure", args, LookupChaosInfrastructureResultOutput{}, options).(LookupChaosInfrastructureResultOutput), nil
-		}).(LookupChaosInfrastructureResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:index/getChaosInfrastructure:getChaosInfrastructure", args, LookupChaosInfrastructureResultOutput{}, options).(LookupChaosInfrastructureResultOutput)
 }
 
 // A collection of arguments for invoking getChaosInfrastructure.

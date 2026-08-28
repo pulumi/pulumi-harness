@@ -82,12 +82,8 @@ type GetTriggerResult struct {
 }
 
 func GetTriggerOutput(ctx *pulumi.Context, args GetTriggerOutputArgs, opts ...pulumi.InvokeOption) GetTriggerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTriggerResultOutput, error) {
-			args := v.(GetTriggerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:index/getTrigger:getTrigger", args, GetTriggerResultOutput{}, options).(GetTriggerResultOutput), nil
-		}).(GetTriggerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:index/getTrigger:getTrigger", args, GetTriggerResultOutput{}, options).(GetTriggerResultOutput)
 }
 
 // A collection of arguments for invoking getTrigger.

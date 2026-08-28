@@ -69,12 +69,8 @@ type LookupConnectorGcpKmsResult struct {
 }
 
 func LookupConnectorGcpKmsOutput(ctx *pulumi.Context, args LookupConnectorGcpKmsOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorGcpKmsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConnectorGcpKmsResultOutput, error) {
-			args := v.(LookupConnectorGcpKmsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getConnectorGcpKms:getConnectorGcpKms", args, LookupConnectorGcpKmsResultOutput{}, options).(LookupConnectorGcpKmsResultOutput), nil
-		}).(LookupConnectorGcpKmsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getConnectorGcpKms:getConnectorGcpKms", args, LookupConnectorGcpKmsResultOutput{}, options).(LookupConnectorGcpKmsResultOutput)
 }
 
 // A collection of arguments for invoking getConnectorGcpKms.

@@ -55,12 +55,8 @@ type LookupGitopsFiltersResult struct {
 }
 
 func LookupGitopsFiltersOutput(ctx *pulumi.Context, args LookupGitopsFiltersOutputArgs, opts ...pulumi.InvokeOption) LookupGitopsFiltersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGitopsFiltersResultOutput, error) {
-			args := v.(LookupGitopsFiltersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getGitopsFilters:getGitopsFilters", args, LookupGitopsFiltersResultOutput{}, options).(LookupGitopsFiltersResultOutput), nil
-		}).(LookupGitopsFiltersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getGitopsFilters:getGitopsFilters", args, LookupGitopsFiltersResultOutput{}, options).(LookupGitopsFiltersResultOutput)
 }
 
 // A collection of arguments for invoking getGitopsFilters.

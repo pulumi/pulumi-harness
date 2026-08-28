@@ -91,12 +91,8 @@ type LookupJiraConnectorResult struct {
 }
 
 func LookupJiraConnectorOutput(ctx *pulumi.Context, args LookupJiraConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupJiraConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupJiraConnectorResultOutput, error) {
-			args := v.(LookupJiraConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getJiraConnector:getJiraConnector", args, LookupJiraConnectorResultOutput{}, options).(LookupJiraConnectorResultOutput), nil
-		}).(LookupJiraConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getJiraConnector:getJiraConnector", args, LookupJiraConnectorResultOutput{}, options).(LookupJiraConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getJiraConnector.

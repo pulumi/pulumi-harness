@@ -95,12 +95,8 @@ type LookupFaultTemplateResult struct {
 }
 
 func LookupFaultTemplateOutput(ctx *pulumi.Context, args LookupFaultTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupFaultTemplateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFaultTemplateResultOutput, error) {
-			args := v.(LookupFaultTemplateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:chaos/getFaultTemplate:getFaultTemplate", args, LookupFaultTemplateResultOutput{}, options).(LookupFaultTemplateResultOutput), nil
-		}).(LookupFaultTemplateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:chaos/getFaultTemplate:getFaultTemplate", args, LookupFaultTemplateResultOutput{}, options).(LookupFaultTemplateResultOutput)
 }
 
 // A collection of arguments for invoking getFaultTemplate.

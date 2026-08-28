@@ -83,12 +83,8 @@ type LookupKubernetesCloudCostConnectorResult struct {
 }
 
 func LookupKubernetesCloudCostConnectorOutput(ctx *pulumi.Context, args LookupKubernetesCloudCostConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupKubernetesCloudCostConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKubernetesCloudCostConnectorResultOutput, error) {
-			args := v.(LookupKubernetesCloudCostConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getKubernetesCloudCostConnector:getKubernetesCloudCostConnector", args, LookupKubernetesCloudCostConnectorResultOutput{}, options).(LookupKubernetesCloudCostConnectorResultOutput), nil
-		}).(LookupKubernetesCloudCostConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getKubernetesCloudCostConnector:getKubernetesCloudCostConnector", args, LookupKubernetesCloudCostConnectorResultOutput{}, options).(LookupKubernetesCloudCostConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getKubernetesCloudCostConnector.

@@ -85,12 +85,8 @@ type LookupRoleAssignmentsResult struct {
 }
 
 func LookupRoleAssignmentsOutput(ctx *pulumi.Context, args LookupRoleAssignmentsOutputArgs, opts ...pulumi.InvokeOption) LookupRoleAssignmentsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRoleAssignmentsResultOutput, error) {
-			args := v.(LookupRoleAssignmentsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getRoleAssignments:getRoleAssignments", args, LookupRoleAssignmentsResultOutput{}, options).(LookupRoleAssignmentsResultOutput), nil
-		}).(LookupRoleAssignmentsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getRoleAssignments:getRoleAssignments", args, LookupRoleAssignmentsResultOutput{}, options).(LookupRoleAssignmentsResultOutput)
 }
 
 // A collection of arguments for invoking getRoleAssignments.

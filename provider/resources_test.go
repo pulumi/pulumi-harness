@@ -45,7 +45,7 @@ func TestTokenStrategyInfersUnknownModules(t *testing.T) {
 		t.Fatalf("known-module data source token mismatch: got %#v", got)
 	}
 	if got := prov.DataSources["harness_newprefix_widget"]; got == nil ||
-		got.Tok != "harness:index/newprefixWidget:NewprefixWidget" {
+		got.Tok != "harness:index/getNewprefixWidget:getNewprefixWidget" {
 		t.Fatalf("expected inferred fallback data source token, got %#v", got)
 	}
 }

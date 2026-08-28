@@ -14,17 +14,19 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * // By Harness organization and project identifiers (matches harness_platform_* conventions).
- * const byProject = harness.fme.Workspace({
+ * const byProject = harness.fme.getWorkspace({
  *     orgId: "organization_id",
  *     projectId: "project_id",
  * });
  * // By exact Split workspace name.
- * const byName = harness.fme.Workspace({
+ * const byName = harness.fme.getWorkspace({
  *     name: "my-workspace-name",
  * });
  * ```
  */
+/** @deprecated harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace */
 export function workspace(args?: WorkspaceArgs, opts?: pulumi.InvokeOptions): Promise<WorkspaceResult> {
+    pulumi.log.warn("workspace is deprecated: harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:fme/workspace:Workspace", {
@@ -95,17 +97,19 @@ export interface WorkspaceResult {
  * import * as harness from "@pulumi/harness";
  *
  * // By Harness organization and project identifiers (matches harness_platform_* conventions).
- * const byProject = harness.fme.Workspace({
+ * const byProject = harness.fme.getWorkspace({
  *     orgId: "organization_id",
  *     projectId: "project_id",
  * });
  * // By exact Split workspace name.
- * const byName = harness.fme.Workspace({
+ * const byName = harness.fme.getWorkspace({
  *     name: "my-workspace-name",
  * });
  * ```
  */
+/** @deprecated harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace */
 export function workspaceOutput(args?: WorkspaceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<WorkspaceResult> {
+    pulumi.log.warn("workspace is deprecated: harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:fme/workspace:Workspace", {

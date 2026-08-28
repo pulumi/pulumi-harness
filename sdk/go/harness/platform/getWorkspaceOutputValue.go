@@ -74,12 +74,8 @@ type GetWorkspaceOutputValueResult struct {
 }
 
 func GetWorkspaceOutputValueOutput(ctx *pulumi.Context, args GetWorkspaceOutputValueOutputArgs, opts ...pulumi.InvokeOption) GetWorkspaceOutputValueResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetWorkspaceOutputValueResultOutput, error) {
-			args := v.(GetWorkspaceOutputValueArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getWorkspaceOutputValue:getWorkspaceOutputValue", args, GetWorkspaceOutputValueResultOutput{}, options).(GetWorkspaceOutputValueResultOutput), nil
-		}).(GetWorkspaceOutputValueResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getWorkspaceOutputValue:getWorkspaceOutputValue", args, GetWorkspaceOutputValueResultOutput{}, options).(GetWorkspaceOutputValueResultOutput)
 }
 
 // A collection of arguments for invoking getWorkspaceOutputValue.

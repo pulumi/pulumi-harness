@@ -87,12 +87,8 @@ type LookupSecretFileResult struct {
 }
 
 func LookupSecretFileOutput(ctx *pulumi.Context, args LookupSecretFileOutputArgs, opts ...pulumi.InvokeOption) LookupSecretFileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSecretFileResultOutput, error) {
-			args := v.(LookupSecretFileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getSecretFile:getSecretFile", args, LookupSecretFileResultOutput{}, options).(LookupSecretFileResultOutput), nil
-		}).(LookupSecretFileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getSecretFile:getSecretFile", args, LookupSecretFileResultOutput{}, options).(LookupSecretFileResultOutput)
 }
 
 // A collection of arguments for invoking getSecretFile.

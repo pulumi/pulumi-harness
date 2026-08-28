@@ -69,12 +69,8 @@ type LookupRuleK8sResult struct {
 }
 
 func LookupRuleK8sOutput(ctx *pulumi.Context, args LookupRuleK8sOutputArgs, opts ...pulumi.InvokeOption) LookupRuleK8sResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRuleK8sResultOutput, error) {
-			args := v.(LookupRuleK8sArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:autostopping/getRuleK8s:getRuleK8s", args, LookupRuleK8sResultOutput{}, options).(LookupRuleK8sResultOutput), nil
-		}).(LookupRuleK8sResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:autostopping/getRuleK8s:getRuleK8s", args, LookupRuleK8sResultOutput{}, options).(LookupRuleK8sResultOutput)
 }
 
 // A collection of arguments for invoking getRuleK8s.

@@ -91,12 +91,8 @@ type GetGitopsApplicationsResult struct {
 }
 
 func GetGitopsApplicationsOutput(ctx *pulumi.Context, args GetGitopsApplicationsOutputArgs, opts ...pulumi.InvokeOption) GetGitopsApplicationsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGitopsApplicationsResultOutput, error) {
-			args := v.(GetGitopsApplicationsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getGitopsApplications:getGitopsApplications", args, GetGitopsApplicationsResultOutput{}, options).(GetGitopsApplicationsResultOutput), nil
-		}).(GetGitopsApplicationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getGitopsApplications:getGitopsApplications", args, GetGitopsApplicationsResultOutput{}, options).(GetGitopsApplicationsResultOutput)
 }
 
 // A collection of arguments for invoking getGitopsApplications.

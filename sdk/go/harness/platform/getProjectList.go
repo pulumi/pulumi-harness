@@ -54,12 +54,8 @@ type GetProjectListResult struct {
 }
 
 func GetProjectListOutput(ctx *pulumi.Context, args GetProjectListOutputArgs, opts ...pulumi.InvokeOption) GetProjectListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetProjectListResultOutput, error) {
-			args := v.(GetProjectListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getProjectList:getProjectList", args, GetProjectListResultOutput{}, options).(GetProjectListResultOutput), nil
-		}).(GetProjectListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getProjectList:getProjectList", args, GetProjectListResultOutput{}, options).(GetProjectListResultOutput)
 }
 
 // A collection of arguments for invoking getProjectList.

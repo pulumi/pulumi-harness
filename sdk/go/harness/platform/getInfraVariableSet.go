@@ -147,12 +147,8 @@ type LookupInfraVariableSetResult struct {
 }
 
 func LookupInfraVariableSetOutput(ctx *pulumi.Context, args LookupInfraVariableSetOutputArgs, opts ...pulumi.InvokeOption) LookupInfraVariableSetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInfraVariableSetResultOutput, error) {
-			args := v.(LookupInfraVariableSetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getInfraVariableSet:getInfraVariableSet", args, LookupInfraVariableSetResultOutput{}, options).(LookupInfraVariableSetResultOutput), nil
-		}).(LookupInfraVariableSetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getInfraVariableSet:getInfraVariableSet", args, LookupInfraVariableSetResultOutput{}, options).(LookupInfraVariableSetResultOutput)
 }
 
 // A collection of arguments for invoking getInfraVariableSet.

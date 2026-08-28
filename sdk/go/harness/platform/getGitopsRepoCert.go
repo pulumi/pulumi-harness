@@ -55,12 +55,8 @@ type GetGitopsRepoCertResult struct {
 }
 
 func GetGitopsRepoCertOutput(ctx *pulumi.Context, args GetGitopsRepoCertOutputArgs, opts ...pulumi.InvokeOption) GetGitopsRepoCertResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetGitopsRepoCertResultOutput, error) {
-			args := v.(GetGitopsRepoCertArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getGitopsRepoCert:getGitopsRepoCert", args, GetGitopsRepoCertResultOutput{}, options).(GetGitopsRepoCertResultOutput), nil
-		}).(GetGitopsRepoCertResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getGitopsRepoCert:getGitopsRepoCert", args, GetGitopsRepoCertResultOutput{}, options).(GetGitopsRepoCertResultOutput)
 }
 
 // A collection of arguments for invoking getGitopsRepoCert.

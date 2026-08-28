@@ -108,12 +108,8 @@ type LookupDelegatetokenResult struct {
 }
 
 func LookupDelegatetokenOutput(ctx *pulumi.Context, args LookupDelegatetokenOutputArgs, opts ...pulumi.InvokeOption) LookupDelegatetokenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDelegatetokenResultOutput, error) {
-			args := v.(LookupDelegatetokenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getDelegatetoken:getDelegatetoken", args, LookupDelegatetokenResultOutput{}, options).(LookupDelegatetokenResultOutput), nil
-		}).(LookupDelegatetokenResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getDelegatetoken:getDelegatetoken", args, LookupDelegatetokenResultOutput{}, options).(LookupDelegatetokenResultOutput)
 }
 
 // A collection of arguments for invoking getDelegatetoken.

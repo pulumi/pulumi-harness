@@ -78,12 +78,8 @@ type GetTrafficTypeResult struct {
 }
 
 func GetTrafficTypeOutput(ctx *pulumi.Context, args GetTrafficTypeOutputArgs, opts ...pulumi.InvokeOption) GetTrafficTypeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetTrafficTypeResultOutput, error) {
-			args := v.(GetTrafficTypeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:fme/getTrafficType:getTrafficType", args, GetTrafficTypeResultOutput{}, options).(GetTrafficTypeResultOutput), nil
-		}).(GetTrafficTypeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:fme/getTrafficType:getTrafficType", args, GetTrafficTypeResultOutput{}, options).(GetTrafficTypeResultOutput)
 }
 
 // A collection of arguments for invoking getTrafficType.

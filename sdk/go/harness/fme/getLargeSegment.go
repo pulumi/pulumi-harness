@@ -51,12 +51,8 @@ type GetLargeSegmentResult struct {
 }
 
 func GetLargeSegmentOutput(ctx *pulumi.Context, args GetLargeSegmentOutputArgs, opts ...pulumi.InvokeOption) GetLargeSegmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetLargeSegmentResultOutput, error) {
-			args := v.(GetLargeSegmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:fme/getLargeSegment:getLargeSegment", args, GetLargeSegmentResultOutput{}, options).(GetLargeSegmentResultOutput), nil
-		}).(GetLargeSegmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:fme/getLargeSegment:getLargeSegment", args, GetLargeSegmentResultOutput{}, options).(GetLargeSegmentResultOutput)
 }
 
 // A collection of arguments for invoking getLargeSegment.

@@ -79,12 +79,8 @@ type LookupDiscoverySettingResult struct {
 }
 
 func LookupDiscoverySettingOutput(ctx *pulumi.Context, args LookupDiscoverySettingOutputArgs, opts ...pulumi.InvokeOption) LookupDiscoverySettingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDiscoverySettingResultOutput, error) {
-			args := v.(LookupDiscoverySettingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:service/getDiscoverySetting:getDiscoverySetting", args, LookupDiscoverySettingResultOutput{}, options).(LookupDiscoverySettingResultOutput), nil
-		}).(LookupDiscoverySettingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:service/getDiscoverySetting:getDiscoverySetting", args, LookupDiscoverySettingResultOutput{}, options).(LookupDiscoverySettingResultOutput)
 }
 
 // A collection of arguments for invoking getDiscoverySetting.

@@ -41,12 +41,8 @@ type GetSsoProviderResult struct {
 }
 
 func GetSsoProviderOutput(ctx *pulumi.Context, args GetSsoProviderOutputArgs, opts ...pulumi.InvokeOption) GetSsoProviderResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSsoProviderResultOutput, error) {
-			args := v.(GetSsoProviderArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:index/getSsoProvider:getSsoProvider", args, GetSsoProviderResultOutput{}, options).(GetSsoProviderResultOutput), nil
-		}).(GetSsoProviderResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:index/getSsoProvider:getSsoProvider", args, GetSsoProviderResultOutput{}, options).(GetSsoProviderResultOutput)
 }
 
 // A collection of arguments for invoking getSsoProvider.

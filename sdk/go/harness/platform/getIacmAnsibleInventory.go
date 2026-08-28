@@ -91,12 +91,8 @@ type LookupIacmAnsibleInventoryResult struct {
 }
 
 func LookupIacmAnsibleInventoryOutput(ctx *pulumi.Context, args LookupIacmAnsibleInventoryOutputArgs, opts ...pulumi.InvokeOption) LookupIacmAnsibleInventoryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIacmAnsibleInventoryResultOutput, error) {
-			args := v.(LookupIacmAnsibleInventoryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getIacmAnsibleInventory:getIacmAnsibleInventory", args, LookupIacmAnsibleInventoryResultOutput{}, options).(LookupIacmAnsibleInventoryResultOutput), nil
-		}).(LookupIacmAnsibleInventoryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getIacmAnsibleInventory:getIacmAnsibleInventory", args, LookupIacmAnsibleInventoryResultOutput{}, options).(LookupIacmAnsibleInventoryResultOutput)
 }
 
 // A collection of arguments for invoking getIacmAnsibleInventory.

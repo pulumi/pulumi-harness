@@ -111,12 +111,8 @@ type LookupInfraModuleTestingResult struct {
 }
 
 func LookupInfraModuleTestingOutput(ctx *pulumi.Context, args LookupInfraModuleTestingOutputArgs, opts ...pulumi.InvokeOption) LookupInfraModuleTestingResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInfraModuleTestingResultOutput, error) {
-			args := v.(LookupInfraModuleTestingArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getInfraModuleTesting:getInfraModuleTesting", args, LookupInfraModuleTestingResultOutput{}, options).(LookupInfraModuleTestingResultOutput), nil
-		}).(LookupInfraModuleTestingResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getInfraModuleTesting:getInfraModuleTesting", args, LookupInfraModuleTestingResultOutput{}, options).(LookupInfraModuleTestingResultOutput)
 }
 
 // A collection of arguments for invoking getInfraModuleTesting.

@@ -85,12 +85,8 @@ type LookupSecretSshkeyResult struct {
 }
 
 func LookupSecretSshkeyOutput(ctx *pulumi.Context, args LookupSecretSshkeyOutputArgs, opts ...pulumi.InvokeOption) LookupSecretSshkeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSecretSshkeyResultOutput, error) {
-			args := v.(LookupSecretSshkeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getSecretSshkey:getSecretSshkey", args, LookupSecretSshkeyResultOutput{}, options).(LookupSecretSshkeyResultOutput), nil
-		}).(LookupSecretSshkeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getSecretSshkey:getSecretSshkey", args, LookupSecretSshkeyResultOutput{}, options).(LookupSecretSshkeyResultOutput)
 }
 
 // A collection of arguments for invoking getSecretSshkey.

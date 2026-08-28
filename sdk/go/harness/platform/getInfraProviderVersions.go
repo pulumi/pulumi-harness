@@ -45,12 +45,8 @@ type GetInfraProviderVersionsResult struct {
 }
 
 func GetInfraProviderVersionsOutput(ctx *pulumi.Context, args GetInfraProviderVersionsOutputArgs, opts ...pulumi.InvokeOption) GetInfraProviderVersionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetInfraProviderVersionsResultOutput, error) {
-			args := v.(GetInfraProviderVersionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getInfraProviderVersions:getInfraProviderVersions", args, GetInfraProviderVersionsResultOutput{}, options).(GetInfraProviderVersionsResultOutput), nil
-		}).(GetInfraProviderVersionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getInfraProviderVersions:getInfraProviderVersions", args, GetInfraProviderVersionsResultOutput{}, options).(GetInfraProviderVersionsResultOutput)
 }
 
 // A collection of arguments for invoking getInfraProviderVersions.

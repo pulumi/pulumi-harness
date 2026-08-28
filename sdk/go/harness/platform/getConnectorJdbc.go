@@ -85,12 +85,8 @@ type LookupConnectorJdbcResult struct {
 }
 
 func LookupConnectorJdbcOutput(ctx *pulumi.Context, args LookupConnectorJdbcOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorJdbcResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConnectorJdbcResultOutput, error) {
-			args := v.(LookupConnectorJdbcArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getConnectorJdbc:getConnectorJdbc", args, LookupConnectorJdbcResultOutput{}, options).(LookupConnectorJdbcResultOutput), nil
-		}).(LookupConnectorJdbcResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getConnectorJdbc:getConnectorJdbc", args, LookupConnectorJdbcResultOutput{}, options).(LookupConnectorJdbcResultOutput)
 }
 
 // A collection of arguments for invoking getConnectorJdbc.

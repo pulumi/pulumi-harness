@@ -89,12 +89,8 @@ type LookupOverridesResult struct {
 }
 
 func LookupOverridesOutput(ctx *pulumi.Context, args LookupOverridesOutputArgs, opts ...pulumi.InvokeOption) LookupOverridesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOverridesResultOutput, error) {
-			args := v.(LookupOverridesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getOverrides:getOverrides", args, LookupOverridesResultOutput{}, options).(LookupOverridesResultOutput), nil
-		}).(LookupOverridesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getOverrides:getOverrides", args, LookupOverridesResultOutput{}, options).(LookupOverridesResultOutput)
 }
 
 // A collection of arguments for invoking getOverrides.

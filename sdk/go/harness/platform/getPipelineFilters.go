@@ -55,12 +55,8 @@ type LookupPipelineFiltersResult struct {
 }
 
 func LookupPipelineFiltersOutput(ctx *pulumi.Context, args LookupPipelineFiltersOutputArgs, opts ...pulumi.InvokeOption) LookupPipelineFiltersResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPipelineFiltersResultOutput, error) {
-			args := v.(LookupPipelineFiltersArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getPipelineFilters:getPipelineFilters", args, LookupPipelineFiltersResultOutput{}, options).(LookupPipelineFiltersResultOutput), nil
-		}).(LookupPipelineFiltersResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getPipelineFilters:getPipelineFilters", args, LookupPipelineFiltersResultOutput{}, options).(LookupPipelineFiltersResultOutput)
 }
 
 // A collection of arguments for invoking getPipelineFilters.

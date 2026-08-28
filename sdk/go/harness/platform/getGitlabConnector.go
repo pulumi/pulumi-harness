@@ -93,12 +93,8 @@ type LookupGitlabConnectorResult struct {
 }
 
 func LookupGitlabConnectorOutput(ctx *pulumi.Context, args LookupGitlabConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupGitlabConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGitlabConnectorResultOutput, error) {
-			args := v.(LookupGitlabConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getGitlabConnector:getGitlabConnector", args, LookupGitlabConnectorResultOutput{}, options).(LookupGitlabConnectorResultOutput), nil
-		}).(LookupGitlabConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getGitlabConnector:getGitlabConnector", args, LookupGitlabConnectorResultOutput{}, options).(LookupGitlabConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getGitlabConnector.

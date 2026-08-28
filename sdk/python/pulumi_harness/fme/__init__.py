@@ -12,4 +12,5 @@ from .get_environment import *
 from .get_flag_set import *
 from .get_large_segment import *
 from .get_traffic_type import *
+from .get_workspace import *
 from .workspace import *

@@ -67,12 +67,8 @@ type LookupConnectorCustomhealthsourceResult struct {
 }
 
 func LookupConnectorCustomhealthsourceOutput(ctx *pulumi.Context, args LookupConnectorCustomhealthsourceOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorCustomhealthsourceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupConnectorCustomhealthsourceResultOutput, error) {
-			args := v.(LookupConnectorCustomhealthsourceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getConnectorCustomhealthsource:getConnectorCustomhealthsource", args, LookupConnectorCustomhealthsourceResultOutput{}, options).(LookupConnectorCustomhealthsourceResultOutput), nil
-		}).(LookupConnectorCustomhealthsourceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getConnectorCustomhealthsource:getConnectorCustomhealthsource", args, LookupConnectorCustomhealthsourceResultOutput{}, options).(LookupConnectorCustomhealthsourceResultOutput)
 }
 
 // A collection of arguments for invoking getConnectorCustomhealthsource.

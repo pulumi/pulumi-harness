@@ -141,12 +141,8 @@ type LookupInfraModuleResult struct {
 }
 
 func LookupInfraModuleOutput(ctx *pulumi.Context, args LookupInfraModuleOutputArgs, opts ...pulumi.InvokeOption) LookupInfraModuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInfraModuleResultOutput, error) {
-			args := v.(LookupInfraModuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getInfraModule:getInfraModule", args, LookupInfraModuleResultOutput{}, options).(LookupInfraModuleResultOutput), nil
-		}).(LookupInfraModuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getInfraModule:getInfraModule", args, LookupInfraModuleResultOutput{}, options).(LookupInfraModuleResultOutput)
 }
 
 // A collection of arguments for invoking getInfraModule.

@@ -69,12 +69,8 @@ type LookupManualFreezeResult struct {
 }
 
 func LookupManualFreezeOutput(ctx *pulumi.Context, args LookupManualFreezeOutputArgs, opts ...pulumi.InvokeOption) LookupManualFreezeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupManualFreezeResultOutput, error) {
-			args := v.(LookupManualFreezeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getManualFreeze:getManualFreeze", args, LookupManualFreezeResultOutput{}, options).(LookupManualFreezeResultOutput), nil
-		}).(LookupManualFreezeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getManualFreeze:getManualFreeze", args, LookupManualFreezeResultOutput{}, options).(LookupManualFreezeResultOutput)
 }
 
 // A collection of arguments for invoking getManualFreeze.

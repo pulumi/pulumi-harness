@@ -74,12 +74,8 @@ type LookupInfraProviderVersionResult struct {
 }
 
 func LookupInfraProviderVersionOutput(ctx *pulumi.Context, args LookupInfraProviderVersionOutputArgs, opts ...pulumi.InvokeOption) LookupInfraProviderVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupInfraProviderVersionResultOutput, error) {
-			args := v.(LookupInfraProviderVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getInfraProviderVersion:getInfraProviderVersion", args, LookupInfraProviderVersionResultOutput{}, options).(LookupInfraProviderVersionResultOutput), nil
-		}).(LookupInfraProviderVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getInfraProviderVersion:getInfraProviderVersion", args, LookupInfraProviderVersionResultOutput{}, options).(LookupInfraProviderVersionResultOutput)
 }
 
 // A collection of arguments for invoking getInfraProviderVersion.

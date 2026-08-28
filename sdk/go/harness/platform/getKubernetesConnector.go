@@ -91,12 +91,8 @@ type LookupKubernetesConnectorResult struct {
 }
 
 func LookupKubernetesConnectorOutput(ctx *pulumi.Context, args LookupKubernetesConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupKubernetesConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKubernetesConnectorResultOutput, error) {
-			args := v.(LookupKubernetesConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getKubernetesConnector:getKubernetesConnector", args, LookupKubernetesConnectorResultOutput{}, options).(LookupKubernetesConnectorResultOutput), nil
-		}).(LookupKubernetesConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getKubernetesConnector:getKubernetesConnector", args, LookupKubernetesConnectorResultOutput{}, options).(LookupKubernetesConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getKubernetesConnector.

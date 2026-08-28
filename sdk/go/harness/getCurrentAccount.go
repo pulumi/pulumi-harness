@@ -39,12 +39,8 @@ type GetCurrentAccountResult struct {
 }
 
 func GetCurrentAccountOutput(ctx *pulumi.Context, args GetCurrentAccountOutputArgs, opts ...pulumi.InvokeOption) GetCurrentAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCurrentAccountResultOutput, error) {
-			args := v.(GetCurrentAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:index/getCurrentAccount:getCurrentAccount", args, GetCurrentAccountResultOutput{}, options).(GetCurrentAccountResultOutput), nil
-		}).(GetCurrentAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:index/getCurrentAccount:getCurrentAccount", args, GetCurrentAccountResultOutput{}, options).(GetCurrentAccountResultOutput)
 }
 
 // A collection of arguments for invoking getCurrentAccount.

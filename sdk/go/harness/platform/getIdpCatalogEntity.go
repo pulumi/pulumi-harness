@@ -53,12 +53,8 @@ type LookupIdpCatalogEntityResult struct {
 }
 
 func LookupIdpCatalogEntityOutput(ctx *pulumi.Context, args LookupIdpCatalogEntityOutputArgs, opts ...pulumi.InvokeOption) LookupIdpCatalogEntityResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIdpCatalogEntityResultOutput, error) {
-			args := v.(LookupIdpCatalogEntityArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getIdpCatalogEntity:getIdpCatalogEntity", args, LookupIdpCatalogEntityResultOutput{}, options).(LookupIdpCatalogEntityResultOutput), nil
-		}).(LookupIdpCatalogEntityResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getIdpCatalogEntity:getIdpCatalogEntity", args, LookupIdpCatalogEntityResultOutput{}, options).(LookupIdpCatalogEntityResultOutput)
 }
 
 // A collection of arguments for invoking getIdpCatalogEntity.

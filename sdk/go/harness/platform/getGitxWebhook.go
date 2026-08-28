@@ -57,12 +57,8 @@ type LookupGitxWebhookResult struct {
 }
 
 func LookupGitxWebhookOutput(ctx *pulumi.Context, args LookupGitxWebhookOutputArgs, opts ...pulumi.InvokeOption) LookupGitxWebhookResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGitxWebhookResultOutput, error) {
-			args := v.(LookupGitxWebhookArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getGitxWebhook:getGitxWebhook", args, LookupGitxWebhookResultOutput{}, options).(LookupGitxWebhookResultOutput), nil
-		}).(LookupGitxWebhookResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getGitxWebhook:getGitxWebhook", args, LookupGitxWebhookResultOutput{}, options).(LookupGitxWebhookResultOutput)
 }
 
 // A collection of arguments for invoking getGitxWebhook.

@@ -81,12 +81,8 @@ type LookupSpotConnectorResult struct {
 }
 
 func LookupSpotConnectorOutput(ctx *pulumi.Context, args LookupSpotConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupSpotConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSpotConnectorResultOutput, error) {
-			args := v.(LookupSpotConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getSpotConnector:getSpotConnector", args, LookupSpotConnectorResultOutput{}, options).(LookupSpotConnectorResultOutput), nil
-		}).(LookupSpotConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getSpotConnector:getSpotConnector", args, LookupSpotConnectorResultOutput{}, options).(LookupSpotConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getSpotConnector.

@@ -73,12 +73,8 @@ type LookupCentralNotificationChannelResult struct {
 }
 
 func LookupCentralNotificationChannelOutput(ctx *pulumi.Context, args LookupCentralNotificationChannelOutputArgs, opts ...pulumi.InvokeOption) LookupCentralNotificationChannelResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCentralNotificationChannelResultOutput, error) {
-			args := v.(LookupCentralNotificationChannelArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getCentralNotificationChannel:getCentralNotificationChannel", args, LookupCentralNotificationChannelResultOutput{}, options).(LookupCentralNotificationChannelResultOutput), nil
-		}).(LookupCentralNotificationChannelResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getCentralNotificationChannel:getCentralNotificationChannel", args, LookupCentralNotificationChannelResultOutput{}, options).(LookupCentralNotificationChannelResultOutput)
 }
 
 // A collection of arguments for invoking getCentralNotificationChannel.

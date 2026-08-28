@@ -47,12 +47,8 @@ type GetDelegateIdsResult struct {
 }
 
 func GetDelegateIdsOutput(ctx *pulumi.Context, args GetDelegateIdsOutputArgs, opts ...pulumi.InvokeOption) GetDelegateIdsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDelegateIdsResultOutput, error) {
-			args := v.(GetDelegateIdsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:cloudprovider/getDelegateIds:getDelegateIds", args, GetDelegateIdsResultOutput{}, options).(GetDelegateIdsResultOutput), nil
-		}).(GetDelegateIdsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:cloudprovider/getDelegateIds:getDelegateIds", args, GetDelegateIdsResultOutput{}, options).(GetDelegateIdsResultOutput)
 }
 
 // A collection of arguments for invoking getDelegateIds.

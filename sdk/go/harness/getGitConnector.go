@@ -61,12 +61,8 @@ type LookupGitConnectorResult struct {
 }
 
 func LookupGitConnectorOutput(ctx *pulumi.Context, args LookupGitConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupGitConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGitConnectorResultOutput, error) {
-			args := v.(LookupGitConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:index/getGitConnector:getGitConnector", args, LookupGitConnectorResultOutput{}, options).(LookupGitConnectorResultOutput), nil
-		}).(LookupGitConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:index/getGitConnector:getGitConnector", args, LookupGitConnectorResultOutput{}, options).(LookupGitConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getGitConnector.

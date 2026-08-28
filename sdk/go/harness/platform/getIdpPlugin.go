@@ -61,12 +61,8 @@ type LookupIdpPluginResult struct {
 }
 
 func LookupIdpPluginOutput(ctx *pulumi.Context, args LookupIdpPluginOutputArgs, opts ...pulumi.InvokeOption) LookupIdpPluginResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIdpPluginResultOutput, error) {
-			args := v.(LookupIdpPluginArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getIdpPlugin:getIdpPlugin", args, LookupIdpPluginResultOutput{}, options).(LookupIdpPluginResultOutput), nil
-		}).(LookupIdpPluginResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getIdpPlugin:getIdpPlugin", args, LookupIdpPluginResultOutput{}, options).(LookupIdpPluginResultOutput)
 }
 
 // A collection of arguments for invoking getIdpPlugin.

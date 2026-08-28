@@ -87,12 +87,8 @@ type LookupAzureCloudProviderConnectorResult struct {
 }
 
 func LookupAzureCloudProviderConnectorOutput(ctx *pulumi.Context, args LookupAzureCloudProviderConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAzureCloudProviderConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAzureCloudProviderConnectorResultOutput, error) {
-			args := v.(LookupAzureCloudProviderConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("harness:platform/getAzureCloudProviderConnector:getAzureCloudProviderConnector", args, LookupAzureCloudProviderConnectorResultOutput{}, options).(LookupAzureCloudProviderConnectorResultOutput), nil
-		}).(LookupAzureCloudProviderConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getAzureCloudProviderConnector:getAzureCloudProviderConnector", args, LookupAzureCloudProviderConnectorResultOutput{}, options).(LookupAzureCloudProviderConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getAzureCloudProviderConnector.

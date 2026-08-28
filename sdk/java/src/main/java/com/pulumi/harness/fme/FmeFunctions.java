@@ -17,12 +17,15 @@ import com.pulumi.harness.fme.inputs.GetLargeSegmentArgs;
 import com.pulumi.harness.fme.inputs.GetLargeSegmentPlainArgs;
 import com.pulumi.harness.fme.inputs.GetTrafficTypeArgs;
 import com.pulumi.harness.fme.inputs.GetTrafficTypePlainArgs;
+import com.pulumi.harness.fme.inputs.GetWorkspaceArgs;
+import com.pulumi.harness.fme.inputs.GetWorkspacePlainArgs;
 import com.pulumi.harness.fme.inputs.WorkspaceArgs;
 import com.pulumi.harness.fme.inputs.WorkspacePlainArgs;
 import com.pulumi.harness.fme.outputs.GetEnvironmentResult;
 import com.pulumi.harness.fme.outputs.GetFlagSetResult;
 import com.pulumi.harness.fme.outputs.GetLargeSegmentResult;
 import com.pulumi.harness.fme.outputs.GetTrafficTypeResult;
+import com.pulumi.harness.fme.outputs.GetWorkspaceResult;
 import com.pulumi.harness.fme.outputs.WorkspaceResult;
 import java.util.concurrent.CompletableFuture;
 
@@ -720,7 +723,7 @@ public final class FmeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.fme.FmeFunctions;
-     * import com.pulumi.harness.fme.inputs.WorkspaceArgs;
+     * import com.pulumi.harness.fme.inputs.GetWorkspaceArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -735,13 +738,13 @@ public final class FmeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // By Harness organization and project identifiers (matches harness_platform_* conventions).
-     *         final var byProject = FmeFunctions.Workspace(WorkspaceArgs.builder()
+     *         final var byProject = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
      *             .orgId("organization_id")
      *             .projectId("project_id")
      *             .build());
      * 
      *         // By exact Split workspace name.
-     *         final var byName = FmeFunctions.Workspace(WorkspaceArgs.builder()
+     *         final var byName = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
      *             .name("my-workspace-name")
      *             .build());
      * 
@@ -751,6 +754,339 @@ public final class FmeFunctions {
      * </pre>
      * 
      */
+    public static Output<GetWorkspaceResult> getWorkspace() {
+        return getWorkspace(GetWorkspaceArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Look up a Harness FME (Split) workspace by exact workspace name, or by Harness organization and project identifiers. Specify either `name` or both `orgId` and `projectId` (not both).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.fme.FmeFunctions;
+     * import com.pulumi.harness.fme.inputs.GetWorkspaceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // By Harness organization and project identifiers (matches harness_platform_* conventions).
+     *         final var byProject = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
+     *             .orgId("organization_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *         // By exact Split workspace name.
+     *         final var byName = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
+     *             .name("my-workspace-name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceResult> getWorkspacePlain() {
+        return getWorkspacePlain(GetWorkspacePlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Look up a Harness FME (Split) workspace by exact workspace name, or by Harness organization and project identifiers. Specify either `name` or both `orgId` and `projectId` (not both).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.fme.FmeFunctions;
+     * import com.pulumi.harness.fme.inputs.GetWorkspaceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // By Harness organization and project identifiers (matches harness_platform_* conventions).
+     *         final var byProject = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
+     *             .orgId("organization_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *         // By exact Split workspace name.
+     *         final var byName = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
+     *             .name("my-workspace-name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceResult> getWorkspace(GetWorkspaceArgs args) {
+        return getWorkspace(args, InvokeOptions.Empty);
+    }
+    /**
+     * Look up a Harness FME (Split) workspace by exact workspace name, or by Harness organization and project identifiers. Specify either `name` or both `orgId` and `projectId` (not both).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.fme.FmeFunctions;
+     * import com.pulumi.harness.fme.inputs.GetWorkspaceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // By Harness organization and project identifiers (matches harness_platform_* conventions).
+     *         final var byProject = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
+     *             .orgId("organization_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *         // By exact Split workspace name.
+     *         final var byName = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
+     *             .name("my-workspace-name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceResult> getWorkspacePlain(GetWorkspacePlainArgs args) {
+        return getWorkspacePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Look up a Harness FME (Split) workspace by exact workspace name, or by Harness organization and project identifiers. Specify either `name` or both `orgId` and `projectId` (not both).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.fme.FmeFunctions;
+     * import com.pulumi.harness.fme.inputs.GetWorkspaceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // By Harness organization and project identifiers (matches harness_platform_* conventions).
+     *         final var byProject = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
+     *             .orgId("organization_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *         // By exact Split workspace name.
+     *         final var byName = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
+     *             .name("my-workspace-name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceResult> getWorkspace(GetWorkspaceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:fme/getWorkspace:getWorkspace", TypeShape.of(GetWorkspaceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Look up a Harness FME (Split) workspace by exact workspace name, or by Harness organization and project identifiers. Specify either `name` or both `orgId` and `projectId` (not both).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.fme.FmeFunctions;
+     * import com.pulumi.harness.fme.inputs.GetWorkspaceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // By Harness organization and project identifiers (matches harness_platform_* conventions).
+     *         final var byProject = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
+     *             .orgId("organization_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *         // By exact Split workspace name.
+     *         final var byName = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
+     *             .name("my-workspace-name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetWorkspaceResult> getWorkspace(GetWorkspaceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:fme/getWorkspace:getWorkspace", TypeShape.of(GetWorkspaceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Look up a Harness FME (Split) workspace by exact workspace name, or by Harness organization and project identifiers. Specify either `name` or both `orgId` and `projectId` (not both).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.fme.FmeFunctions;
+     * import com.pulumi.harness.fme.inputs.GetWorkspaceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // By Harness organization and project identifiers (matches harness_platform_* conventions).
+     *         final var byProject = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
+     *             .orgId("organization_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *         // By exact Split workspace name.
+     *         final var byName = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
+     *             .name("my-workspace-name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetWorkspaceResult> getWorkspacePlain(GetWorkspacePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:fme/getWorkspace:getWorkspace", TypeShape.of(GetWorkspaceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Look up a Harness FME (Split) workspace by exact workspace name, or by Harness organization and project identifiers. Specify either `name` or both `orgId` and `projectId` (not both).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.fme.FmeFunctions;
+     * import com.pulumi.harness.fme.inputs.GetWorkspaceArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // By Harness organization and project identifiers (matches harness_platform_* conventions).
+     *         final var byProject = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
+     *             .orgId("organization_id")
+     *             .projectId("project_id")
+     *             .build());
+     * 
+     *         // By exact Split workspace name.
+     *         final var byName = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
+     *             .name("my-workspace-name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * @deprecated
+     * harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
+     * 
+     */
+    @Deprecated /* harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace */
     public static Output<WorkspaceResult> workspace() {
         return workspace(WorkspaceArgs.Empty, InvokeOptions.Empty);
     }
@@ -767,7 +1103,7 @@ public final class FmeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.fme.FmeFunctions;
-     * import com.pulumi.harness.fme.inputs.WorkspaceArgs;
+     * import com.pulumi.harness.fme.inputs.GetWorkspaceArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -782,13 +1118,13 @@ public final class FmeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // By Harness organization and project identifiers (matches harness_platform_* conventions).
-     *         final var byProject = FmeFunctions.Workspace(WorkspaceArgs.builder()
+     *         final var byProject = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
      *             .orgId("organization_id")
      *             .projectId("project_id")
      *             .build());
      * 
      *         // By exact Split workspace name.
-     *         final var byName = FmeFunctions.Workspace(WorkspaceArgs.builder()
+     *         final var byName = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
      *             .name("my-workspace-name")
      *             .build());
      * 
@@ -797,7 +1133,11 @@ public final class FmeFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
+     * 
      */
+    @Deprecated /* harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace */
     public static CompletableFuture<WorkspaceResult> workspacePlain() {
         return workspacePlain(WorkspacePlainArgs.Empty, InvokeOptions.Empty);
     }
@@ -814,7 +1154,7 @@ public final class FmeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.fme.FmeFunctions;
-     * import com.pulumi.harness.fme.inputs.WorkspaceArgs;
+     * import com.pulumi.harness.fme.inputs.GetWorkspaceArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -829,13 +1169,13 @@ public final class FmeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // By Harness organization and project identifiers (matches harness_platform_* conventions).
-     *         final var byProject = FmeFunctions.Workspace(WorkspaceArgs.builder()
+     *         final var byProject = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
      *             .orgId("organization_id")
      *             .projectId("project_id")
      *             .build());
      * 
      *         // By exact Split workspace name.
-     *         final var byName = FmeFunctions.Workspace(WorkspaceArgs.builder()
+     *         final var byName = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
      *             .name("my-workspace-name")
      *             .build());
      * 
@@ -844,7 +1184,11 @@ public final class FmeFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
+     * 
      */
+    @Deprecated /* harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace */
     public static Output<WorkspaceResult> workspace(WorkspaceArgs args) {
         return workspace(args, InvokeOptions.Empty);
     }
@@ -861,7 +1205,7 @@ public final class FmeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.fme.FmeFunctions;
-     * import com.pulumi.harness.fme.inputs.WorkspaceArgs;
+     * import com.pulumi.harness.fme.inputs.GetWorkspaceArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -876,13 +1220,13 @@ public final class FmeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // By Harness organization and project identifiers (matches harness_platform_* conventions).
-     *         final var byProject = FmeFunctions.Workspace(WorkspaceArgs.builder()
+     *         final var byProject = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
      *             .orgId("organization_id")
      *             .projectId("project_id")
      *             .build());
      * 
      *         // By exact Split workspace name.
-     *         final var byName = FmeFunctions.Workspace(WorkspaceArgs.builder()
+     *         final var byName = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
      *             .name("my-workspace-name")
      *             .build());
      * 
@@ -891,7 +1235,11 @@ public final class FmeFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
+     * 
      */
+    @Deprecated /* harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace */
     public static CompletableFuture<WorkspaceResult> workspacePlain(WorkspacePlainArgs args) {
         return workspacePlain(args, InvokeOptions.Empty);
     }
@@ -908,7 +1256,7 @@ public final class FmeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.fme.FmeFunctions;
-     * import com.pulumi.harness.fme.inputs.WorkspaceArgs;
+     * import com.pulumi.harness.fme.inputs.GetWorkspaceArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -923,13 +1271,13 @@ public final class FmeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // By Harness organization and project identifiers (matches harness_platform_* conventions).
-     *         final var byProject = FmeFunctions.Workspace(WorkspaceArgs.builder()
+     *         final var byProject = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
      *             .orgId("organization_id")
      *             .projectId("project_id")
      *             .build());
      * 
      *         // By exact Split workspace name.
-     *         final var byName = FmeFunctions.Workspace(WorkspaceArgs.builder()
+     *         final var byName = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
      *             .name("my-workspace-name")
      *             .build());
      * 
@@ -938,7 +1286,11 @@ public final class FmeFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
+     * 
      */
+    @Deprecated /* harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace */
     public static Output<WorkspaceResult> workspace(WorkspaceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:fme/workspace:Workspace", TypeShape.of(WorkspaceResult.class), args, Utilities.withVersion(options));
     }
@@ -955,7 +1307,7 @@ public final class FmeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.fme.FmeFunctions;
-     * import com.pulumi.harness.fme.inputs.WorkspaceArgs;
+     * import com.pulumi.harness.fme.inputs.GetWorkspaceArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -970,13 +1322,13 @@ public final class FmeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // By Harness organization and project identifiers (matches harness_platform_* conventions).
-     *         final var byProject = FmeFunctions.Workspace(WorkspaceArgs.builder()
+     *         final var byProject = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
      *             .orgId("organization_id")
      *             .projectId("project_id")
      *             .build());
      * 
      *         // By exact Split workspace name.
-     *         final var byName = FmeFunctions.Workspace(WorkspaceArgs.builder()
+     *         final var byName = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
      *             .name("my-workspace-name")
      *             .build());
      * 
@@ -985,7 +1337,11 @@ public final class FmeFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
+     * 
      */
+    @Deprecated /* harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace */
     public static Output<WorkspaceResult> workspace(WorkspaceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:fme/workspace:Workspace", TypeShape.of(WorkspaceResult.class), args, Utilities.withVersion(options));
     }
@@ -1002,7 +1358,7 @@ public final class FmeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.harness.fme.FmeFunctions;
-     * import com.pulumi.harness.fme.inputs.WorkspaceArgs;
+     * import com.pulumi.harness.fme.inputs.GetWorkspaceArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -1017,13 +1373,13 @@ public final class FmeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // By Harness organization and project identifiers (matches harness_platform_* conventions).
-     *         final var byProject = FmeFunctions.Workspace(WorkspaceArgs.builder()
+     *         final var byProject = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
      *             .orgId("organization_id")
      *             .projectId("project_id")
      *             .build());
      * 
      *         // By exact Split workspace name.
-     *         final var byName = FmeFunctions.Workspace(WorkspaceArgs.builder()
+     *         final var byName = FmeFunctions.getWorkspace(GetWorkspaceArgs.builder()
      *             .name("my-workspace-name")
      *             .build());
      * 
@@ -1032,7 +1388,11 @@ public final class FmeFunctions {
      * }
      * </pre>
      * 
+     * @deprecated
+     * harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
+     * 
      */
+    @Deprecated /* harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace */
     public static CompletableFuture<WorkspaceResult> workspacePlain(WorkspacePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:fme/workspace:Workspace", TypeShape.of(WorkspaceResult.class), args, Utilities.withVersion(options));
     }

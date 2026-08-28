@@ -33,10 +33,8 @@ type GetInfraProviderSigningKeysResult struct {
 }
 
 func GetInfraProviderSigningKeysOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetInfraProviderSigningKeysResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetInfraProviderSigningKeysResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("harness:platform/getInfraProviderSigningKeys:getInfraProviderSigningKeys", nil, GetInfraProviderSigningKeysResultOutput{}, options).(GetInfraProviderSigningKeysResultOutput), nil
-	}).(GetInfraProviderSigningKeysResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("harness:platform/getInfraProviderSigningKeys:getInfraProviderSigningKeys", nil, GetInfraProviderSigningKeysResultOutput{}, options).(GetInfraProviderSigningKeysResultOutput)
 }
 
 // A collection of values returned by getInfraProviderSigningKeys.
