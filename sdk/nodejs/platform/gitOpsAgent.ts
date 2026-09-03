@@ -127,7 +127,7 @@ export class GitOpsAgent extends pulumi.CustomResource {
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Default: "AGENT*TYPE*UNSET"
-     * Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+     * Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
      */
     declare public readonly type: pulumi.Output<string>;
 
@@ -234,7 +234,7 @@ export interface GitOpsAgentState {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Default: "AGENT*TYPE*UNSET"
-     * Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+     * Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
      */
     type?: pulumi.Input<string | undefined>;
 }
@@ -283,7 +283,7 @@ export interface GitOpsAgentArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Default: "AGENT*TYPE*UNSET"
-     * Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+     * Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
      */
     type: pulumi.Input<string>;
 }

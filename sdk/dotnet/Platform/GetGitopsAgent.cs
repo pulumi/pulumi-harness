@@ -165,7 +165,7 @@ namespace Pulumi.Harness.Platform
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// Default: "AGENT*TYPE*UNSET"
-        /// Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+        /// Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
         /// </summary>
         public readonly string Type;
         /// <summary>

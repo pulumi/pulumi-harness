@@ -136,7 +136,7 @@ namespace Pulumi.Harness.Platform
 
         /// <summary>
         /// Default: "AGENT*TYPE*UNSET"
-        /// Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+        /// Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -256,7 +256,7 @@ namespace Pulumi.Harness.Platform
 
         /// <summary>
         /// Default: "AGENT*TYPE*UNSET"
-        /// Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+        /// Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -349,7 +349,7 @@ namespace Pulumi.Harness.Platform
 
         /// <summary>
         /// Default: "AGENT*TYPE*UNSET"
-        /// Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+        /// Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

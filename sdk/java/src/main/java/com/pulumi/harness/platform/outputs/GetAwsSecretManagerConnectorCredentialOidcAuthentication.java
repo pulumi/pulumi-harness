@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -15,6 +16,11 @@ public final class GetAwsSecretManagerConnectorCredentialOidcAuthentication {
      * 
      */
     private String iamRoleArn;
+    /**
+     * @return Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+     * 
+     */
+    private List<String> oidcSessionTagKeys;
 
     private GetAwsSecretManagerConnectorCredentialOidcAuthentication() {}
     /**
@@ -23,6 +29,13 @@ public final class GetAwsSecretManagerConnectorCredentialOidcAuthentication {
      */
     public String iamRoleArn() {
         return this.iamRoleArn;
+    }
+    /**
+     * @return Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+     * 
+     */
+    public List<String> oidcSessionTagKeys() {
+        return this.oidcSessionTagKeys;
     }
 
     public static Builder builder() {
@@ -35,10 +48,12 @@ public final class GetAwsSecretManagerConnectorCredentialOidcAuthentication {
     @CustomType.Builder
     public static final class Builder {
         private String iamRoleArn;
+        private List<String> oidcSessionTagKeys;
         public Builder() {}
         public Builder(GetAwsSecretManagerConnectorCredentialOidcAuthentication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.iamRoleArn = defaults.iamRoleArn;
+    	      this.oidcSessionTagKeys = defaults.oidcSessionTagKeys;
         }
 
         @CustomType.Setter
@@ -49,9 +64,21 @@ public final class GetAwsSecretManagerConnectorCredentialOidcAuthentication {
             this.iamRoleArn = iamRoleArn;
             return this;
         }
+        @CustomType.Setter
+        public Builder oidcSessionTagKeys(List<String> oidcSessionTagKeys) {
+            if (oidcSessionTagKeys == null) {
+              throw new MissingRequiredPropertyException("GetAwsSecretManagerConnectorCredentialOidcAuthentication", "oidcSessionTagKeys");
+            }
+            this.oidcSessionTagKeys = oidcSessionTagKeys;
+            return this;
+        }
+        public Builder oidcSessionTagKeys(String... oidcSessionTagKeys) {
+            return oidcSessionTagKeys(List.of(oidcSessionTagKeys));
+        }
         public GetAwsSecretManagerConnectorCredentialOidcAuthentication build() {
             final var _resultValue = new GetAwsSecretManagerConnectorCredentialOidcAuthentication();
             _resultValue.iamRoleArn = iamRoleArn;
+            _resultValue.oidcSessionTagKeys = oidcSessionTagKeys;
             return _resultValue;
         }
     }

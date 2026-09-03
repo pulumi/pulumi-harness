@@ -13,6 +13,12 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class GitOpsAgentMetadataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Indicates if the agent connects to an existing Argo CD installation (BYOA). When true, Harness skips CRD and Argo CD component installation. This field cannot be changed after the agent is created.
+        /// </summary>
+        [Input("existingInstallation")]
+        public Input<bool>? ExistingInstallation { get; set; }
+
+        /// <summary>
         /// Indicates if the agent is deployed in HA mode.
         /// </summary>
         [Input("highAvailability")]

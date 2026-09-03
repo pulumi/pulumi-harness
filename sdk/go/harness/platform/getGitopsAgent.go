@@ -69,7 +69,7 @@ type GetGitopsAgentResult struct {
 	// Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
 	Tags map[string]string `pulumi:"tags"`
 	// Default: "AGENT*TYPE*UNSET"
-	// Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+	// Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
 	Type string `pulumi:"type"`
 	// Specify whether to retrieve the gitops agent's token. (The field agentToken will be populated only if the agent has never connected to Harness before). For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
 	WithCredentials *bool `pulumi:"withCredentials"`
@@ -183,7 +183,7 @@ func (o GetGitopsAgentResultOutput) Tags() pulumi.StringMapOutput {
 }
 
 // Default: "AGENT*TYPE*UNSET"
-// Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+// Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
 func (o GetGitopsAgentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGitopsAgentResult) string { return v.Type }).(pulumi.StringOutput)
 }

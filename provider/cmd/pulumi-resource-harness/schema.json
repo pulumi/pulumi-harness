@@ -9373,6 +9373,13 @@
                 "iamRoleArn": {
                     "type": "string",
                     "description": "The ARN of the IAM role to assume.\n"
+                },
+                "oidcSessionTagKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.\n"
                 }
             },
             "type": "object",
@@ -9447,6 +9454,13 @@
                 "iamRoleArn": {
                     "type": "string",
                     "description": "The IAM role ARN.\n"
+                },
+                "oidcSessionTagKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.\n"
                 }
             },
             "type": "object",
@@ -10982,6 +10996,10 @@
         },
         "harness:platform/GitOpsAgentMetadata:GitOpsAgentMetadata": {
             "properties": {
+                "existingInstallation": {
+                    "type": "boolean",
+                    "description": "Indicates if the agent connects to an existing Argo CD installation (BYOA). When true, Harness skips CRD and Argo CD component installation. This field cannot be changed after the agent is created.\n"
+                },
                 "highAvailability": {
                     "type": "boolean",
                     "description": "Indicates if the agent is deployed in HA mode.\n"
@@ -52241,11 +52259,19 @@
                 "iamRoleArn": {
                     "type": "string",
                     "description": "The IAM role ARN to assume.\n"
+                },
+                "oidcSessionTagKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Supported values include \u003cspan pulumi-lang-nodejs=\"`accountId`\" pulumi-lang-dotnet=\"`AccountId`\" pulumi-lang-go=\"`accountId`\" pulumi-lang-python=\"`account_id`\" pulumi-lang-yaml=\"`accountId`\" pulumi-lang-java=\"`accountId`\" pulumi-lang-hcl=\"`account_id`\"\u003e`accountId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`organizationId`\" pulumi-lang-dotnet=\"`OrganizationId`\" pulumi-lang-go=\"`organizationId`\" pulumi-lang-python=\"`organization_id`\" pulumi-lang-yaml=\"`organizationId`\" pulumi-lang-java=\"`organizationId`\" pulumi-lang-hcl=\"`organization_id`\"\u003e`organizationId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\" pulumi-lang-hcl=\"`project_id`\"\u003e`projectId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`environmentId`\" pulumi-lang-dotnet=\"`EnvironmentId`\" pulumi-lang-go=\"`environmentId`\" pulumi-lang-python=\"`environment_id`\" pulumi-lang-yaml=\"`environmentId`\" pulumi-lang-java=\"`environmentId`\" pulumi-lang-hcl=\"`environment_id`\"\u003e`environmentId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`environmentType`\" pulumi-lang-dotnet=\"`EnvironmentType`\" pulumi-lang-go=\"`environmentType`\" pulumi-lang-python=\"`environment_type`\" pulumi-lang-yaml=\"`environmentType`\" pulumi-lang-java=\"`environmentType`\" pulumi-lang-hcl=\"`environment_type`\"\u003e`environmentType`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pipelineId`\" pulumi-lang-dotnet=\"`PipelineId`\" pulumi-lang-go=\"`pipelineId`\" pulumi-lang-python=\"`pipeline_id`\" pulumi-lang-yaml=\"`pipelineId`\" pulumi-lang-java=\"`pipelineId`\" pulumi-lang-hcl=\"`pipeline_id`\"\u003e`pipelineId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`connectorId`\" pulumi-lang-dotnet=\"`ConnectorId`\" pulumi-lang-go=\"`connectorId`\" pulumi-lang-python=\"`connector_id`\" pulumi-lang-yaml=\"`connectorId`\" pulumi-lang-java=\"`connectorId`\" pulumi-lang-hcl=\"`connector_id`\"\u003e`connectorId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`connectorName`\" pulumi-lang-dotnet=\"`ConnectorName`\" pulumi-lang-go=\"`connectorName`\" pulumi-lang-python=\"`connector_name`\" pulumi-lang-yaml=\"`connectorName`\" pulumi-lang-java=\"`connectorName`\" pulumi-lang-hcl=\"`connector_name`\"\u003e`connectorName`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`delegateSelectors`\" pulumi-lang-dotnet=\"`DelegateSelectors`\" pulumi-lang-go=\"`delegateSelectors`\" pulumi-lang-python=\"`delegate_selectors`\" pulumi-lang-yaml=\"`delegateSelectors`\" pulumi-lang-java=\"`delegateSelectors`\" pulumi-lang-hcl=\"`delegate_selectors`\"\u003e`delegateSelectors`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`context`\" pulumi-lang-dotnet=\"`Context`\" pulumi-lang-go=\"`context`\" pulumi-lang-python=\"`context`\" pulumi-lang-yaml=\"`context`\" pulumi-lang-java=\"`context`\" pulumi-lang-hcl=\"`context`\"\u003e`context`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`stepType`\" pulumi-lang-dotnet=\"`StepType`\" pulumi-lang-go=\"`stepType`\" pulumi-lang-python=\"`step_type`\" pulumi-lang-yaml=\"`stepType`\" pulumi-lang-java=\"`stepType`\" pulumi-lang-hcl=\"`step_type`\"\u003e`stepType`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`stageType`\" pulumi-lang-dotnet=\"`StageType`\" pulumi-lang-go=\"`stageType`\" pulumi-lang-python=\"`stage_type`\" pulumi-lang-yaml=\"`stageType`\" pulumi-lang-java=\"`stageType`\" pulumi-lang-hcl=\"`stage_type`\"\u003e`stageType`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`triggeredByEmail`\" pulumi-lang-dotnet=\"`TriggeredByEmail`\" pulumi-lang-go=\"`triggeredByEmail`\" pulumi-lang-python=\"`triggered_by_email`\" pulumi-lang-yaml=\"`triggeredByEmail`\" pulumi-lang-java=\"`triggeredByEmail`\" pulumi-lang-hcl=\"`triggered_by_email`\"\u003e`triggeredByEmail`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`triggeredByName`\" pulumi-lang-dotnet=\"`TriggeredByName`\" pulumi-lang-go=\"`triggeredByName`\" pulumi-lang-python=\"`triggered_by_name`\" pulumi-lang-yaml=\"`triggeredByName`\" pulumi-lang-java=\"`triggeredByName`\" pulumi-lang-hcl=\"`triggered_by_name`\"\u003e`triggeredByName`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`serviceName`\" pulumi-lang-dotnet=\"`ServiceName`\" pulumi-lang-go=\"`serviceName`\" pulumi-lang-python=\"`service_name`\" pulumi-lang-yaml=\"`serviceName`\" pulumi-lang-java=\"`serviceName`\" pulumi-lang-hcl=\"`service_name`\"\u003e`serviceName`\u003c/span\u003e, and \u003cspan pulumi-lang-nodejs=\"`serviceId`\" pulumi-lang-dotnet=\"`ServiceId`\" pulumi-lang-go=\"`serviceId`\" pulumi-lang-python=\"`service_id`\" pulumi-lang-yaml=\"`serviceId`\" pulumi-lang-java=\"`serviceId`\" pulumi-lang-hcl=\"`service_id`\"\u003e`serviceId`\u003c/span\u003e.\n"
                 }
             },
             "type": "object",
             "required": [
-                "iamRoleArn"
+                "iamRoleArn",
+                "oidcSessionTagKeys"
             ],
             "language": {
                 "nodejs": {
@@ -52348,11 +52374,19 @@
                 "iamRoleArn": {
                     "type": "string",
                     "description": "The IAM role ARN to assume.\n"
+                },
+                "oidcSessionTagKeys": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Supported values include \u003cspan pulumi-lang-nodejs=\"`accountId`\" pulumi-lang-dotnet=\"`AccountId`\" pulumi-lang-go=\"`accountId`\" pulumi-lang-python=\"`account_id`\" pulumi-lang-yaml=\"`accountId`\" pulumi-lang-java=\"`accountId`\" pulumi-lang-hcl=\"`account_id`\"\u003e`accountId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`organizationId`\" pulumi-lang-dotnet=\"`OrganizationId`\" pulumi-lang-go=\"`organizationId`\" pulumi-lang-python=\"`organization_id`\" pulumi-lang-yaml=\"`organizationId`\" pulumi-lang-java=\"`organizationId`\" pulumi-lang-hcl=\"`organization_id`\"\u003e`organizationId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\" pulumi-lang-hcl=\"`project_id`\"\u003e`projectId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`environmentId`\" pulumi-lang-dotnet=\"`EnvironmentId`\" pulumi-lang-go=\"`environmentId`\" pulumi-lang-python=\"`environment_id`\" pulumi-lang-yaml=\"`environmentId`\" pulumi-lang-java=\"`environmentId`\" pulumi-lang-hcl=\"`environment_id`\"\u003e`environmentId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`environmentType`\" pulumi-lang-dotnet=\"`EnvironmentType`\" pulumi-lang-go=\"`environmentType`\" pulumi-lang-python=\"`environment_type`\" pulumi-lang-yaml=\"`environmentType`\" pulumi-lang-java=\"`environmentType`\" pulumi-lang-hcl=\"`environment_type`\"\u003e`environmentType`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pipelineId`\" pulumi-lang-dotnet=\"`PipelineId`\" pulumi-lang-go=\"`pipelineId`\" pulumi-lang-python=\"`pipeline_id`\" pulumi-lang-yaml=\"`pipelineId`\" pulumi-lang-java=\"`pipelineId`\" pulumi-lang-hcl=\"`pipeline_id`\"\u003e`pipelineId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`connectorId`\" pulumi-lang-dotnet=\"`ConnectorId`\" pulumi-lang-go=\"`connectorId`\" pulumi-lang-python=\"`connector_id`\" pulumi-lang-yaml=\"`connectorId`\" pulumi-lang-java=\"`connectorId`\" pulumi-lang-hcl=\"`connector_id`\"\u003e`connectorId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`connectorName`\" pulumi-lang-dotnet=\"`ConnectorName`\" pulumi-lang-go=\"`connectorName`\" pulumi-lang-python=\"`connector_name`\" pulumi-lang-yaml=\"`connectorName`\" pulumi-lang-java=\"`connectorName`\" pulumi-lang-hcl=\"`connector_name`\"\u003e`connectorName`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`delegateSelectors`\" pulumi-lang-dotnet=\"`DelegateSelectors`\" pulumi-lang-go=\"`delegateSelectors`\" pulumi-lang-python=\"`delegate_selectors`\" pulumi-lang-yaml=\"`delegateSelectors`\" pulumi-lang-java=\"`delegateSelectors`\" pulumi-lang-hcl=\"`delegate_selectors`\"\u003e`delegateSelectors`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`context`\" pulumi-lang-dotnet=\"`Context`\" pulumi-lang-go=\"`context`\" pulumi-lang-python=\"`context`\" pulumi-lang-yaml=\"`context`\" pulumi-lang-java=\"`context`\" pulumi-lang-hcl=\"`context`\"\u003e`context`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`stepType`\" pulumi-lang-dotnet=\"`StepType`\" pulumi-lang-go=\"`stepType`\" pulumi-lang-python=\"`step_type`\" pulumi-lang-yaml=\"`stepType`\" pulumi-lang-java=\"`stepType`\" pulumi-lang-hcl=\"`step_type`\"\u003e`stepType`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`stageType`\" pulumi-lang-dotnet=\"`StageType`\" pulumi-lang-go=\"`stageType`\" pulumi-lang-python=\"`stage_type`\" pulumi-lang-yaml=\"`stageType`\" pulumi-lang-java=\"`stageType`\" pulumi-lang-hcl=\"`stage_type`\"\u003e`stageType`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`triggeredByEmail`\" pulumi-lang-dotnet=\"`TriggeredByEmail`\" pulumi-lang-go=\"`triggeredByEmail`\" pulumi-lang-python=\"`triggered_by_email`\" pulumi-lang-yaml=\"`triggeredByEmail`\" pulumi-lang-java=\"`triggeredByEmail`\" pulumi-lang-hcl=\"`triggered_by_email`\"\u003e`triggeredByEmail`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`triggeredByName`\" pulumi-lang-dotnet=\"`TriggeredByName`\" pulumi-lang-go=\"`triggeredByName`\" pulumi-lang-python=\"`triggered_by_name`\" pulumi-lang-yaml=\"`triggeredByName`\" pulumi-lang-java=\"`triggeredByName`\" pulumi-lang-hcl=\"`triggered_by_name`\"\u003e`triggeredByName`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`serviceName`\" pulumi-lang-dotnet=\"`ServiceName`\" pulumi-lang-go=\"`serviceName`\" pulumi-lang-python=\"`service_name`\" pulumi-lang-yaml=\"`serviceName`\" pulumi-lang-java=\"`serviceName`\" pulumi-lang-hcl=\"`service_name`\"\u003e`serviceName`\u003c/span\u003e, and \u003cspan pulumi-lang-nodejs=\"`serviceId`\" pulumi-lang-dotnet=\"`ServiceId`\" pulumi-lang-go=\"`serviceId`\" pulumi-lang-python=\"`service_id`\" pulumi-lang-yaml=\"`serviceId`\" pulumi-lang-java=\"`serviceId`\" pulumi-lang-hcl=\"`service_id`\"\u003e`serviceId`\u003c/span\u003e.\n"
                 }
             },
             "type": "object",
             "required": [
-                "iamRoleArn"
+                "iamRoleArn",
+                "oidcSessionTagKeys"
             ],
             "language": {
                 "nodejs": {
@@ -54555,6 +54589,10 @@
         },
         "harness:platform/getGitopsAgentMetadata:getGitopsAgentMetadata": {
             "properties": {
+                "existingInstallation": {
+                    "type": "boolean",
+                    "description": "Indicates if the agent connects to an existing Argo CD installation (BYOA).\n"
+                },
                 "highAvailability": {
                     "type": "boolean",
                     "description": "Indicates if the agent is deployed in HA mode.\n"
@@ -54570,6 +54608,7 @@
             },
             "type": "object",
             "required": [
+                "existingInstallation",
                 "highAvailability",
                 "namespace"
             ],
@@ -79071,7 +79110,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Default: \"AGENT*TYPE*UNSET\"\nEnum: \"AGENT*TYPE*UNSET\" \"CONNECTED*ARGO*PROVIDER\" \"MANAGED*ARGO*PROVIDER\"\n"
+                    "description": "Default: \"AGENT*TYPE*UNSET\"\nEnum: \"AGENT*TYPE*UNSET\" \"MANAGED*ARGO*PROVIDER\" \"HOSTED*ARGO*PROVIDER\"\n"
                 }
             },
             "required": [
@@ -79128,7 +79167,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Default: \"AGENT*TYPE*UNSET\"\nEnum: \"AGENT*TYPE*UNSET\" \"CONNECTED*ARGO*PROVIDER\" \"MANAGED*ARGO*PROVIDER\"\n"
+                    "description": "Default: \"AGENT*TYPE*UNSET\"\nEnum: \"AGENT*TYPE*UNSET\" \"MANAGED*ARGO*PROVIDER\" \"HOSTED*ARGO*PROVIDER\"\n"
                 }
             },
             "requiredInputs": [
@@ -79191,7 +79230,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "Default: \"AGENT*TYPE*UNSET\"\nEnum: \"AGENT*TYPE*UNSET\" \"CONNECTED*ARGO*PROVIDER\" \"MANAGED*ARGO*PROVIDER\"\n"
+                        "description": "Default: \"AGENT*TYPE*UNSET\"\nEnum: \"AGENT*TYPE*UNSET\" \"MANAGED*ARGO*PROVIDER\" \"HOSTED*ARGO*PROVIDER\"\n"
                     }
                 },
                 "type": "object"
@@ -105051,7 +105090,7 @@
                         "type": "object"
                     },
                     "type": {
-                        "description": "Default: \"AGENT*TYPE*UNSET\"\nEnum: \"AGENT*TYPE*UNSET\" \"CONNECTED*ARGO*PROVIDER\" \"MANAGED*ARGO*PROVIDER\"\n",
+                        "description": "Default: \"AGENT*TYPE*UNSET\"\nEnum: \"AGENT*TYPE*UNSET\" \"MANAGED*ARGO*PROVIDER\" \"HOSTED*ARGO*PROVIDER\"\n",
                         "type": "string"
                     },
                     "withCredentials": {
