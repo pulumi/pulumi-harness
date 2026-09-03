@@ -17,6 +17,21 @@ public final class GitOpsAgentMetadataArgs extends com.pulumi.resources.Resource
     public static final GitOpsAgentMetadataArgs Empty = new GitOpsAgentMetadataArgs();
 
     /**
+     * Indicates if the agent connects to an existing Argo CD installation (BYOA). When true, Harness skips CRD and Argo CD component installation. This field cannot be changed after the agent is created.
+     * 
+     */
+    @Import(name="existingInstallation")
+    private @Nullable Output<Boolean> existingInstallation;
+
+    /**
+     * @return Indicates if the agent connects to an existing Argo CD installation (BYOA). When true, Harness skips CRD and Argo CD component installation. This field cannot be changed after the agent is created.
+     * 
+     */
+    public Optional<Output<Boolean>> existingInstallation() {
+        return Optional.ofNullable(this.existingInstallation);
+    }
+
+    /**
      * Indicates if the agent is deployed in HA mode.
      * 
      */
@@ -64,6 +79,7 @@ public final class GitOpsAgentMetadataArgs extends com.pulumi.resources.Resource
     private GitOpsAgentMetadataArgs() {}
 
     private GitOpsAgentMetadataArgs(GitOpsAgentMetadataArgs $) {
+        this.existingInstallation = $.existingInstallation;
         this.highAvailability = $.highAvailability;
         this.isNamespaced = $.isNamespaced;
         this.namespace = $.namespace;
@@ -85,6 +101,27 @@ public final class GitOpsAgentMetadataArgs extends com.pulumi.resources.Resource
 
         public Builder(GitOpsAgentMetadataArgs defaults) {
             $ = new GitOpsAgentMetadataArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param existingInstallation Indicates if the agent connects to an existing Argo CD installation (BYOA). When true, Harness skips CRD and Argo CD component installation. This field cannot be changed after the agent is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder existingInstallation(@Nullable Output<Boolean> existingInstallation) {
+            $.existingInstallation = existingInstallation;
+            return this;
+        }
+
+        /**
+         * @param existingInstallation Indicates if the agent connects to an existing Argo CD installation (BYOA). When true, Harness skips CRD and Argo CD component installation. This field cannot be changed after the agent is created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder existingInstallation(Boolean existingInstallation) {
+            return existingInstallation(Output.of(existingInstallation));
         }
 
         /**

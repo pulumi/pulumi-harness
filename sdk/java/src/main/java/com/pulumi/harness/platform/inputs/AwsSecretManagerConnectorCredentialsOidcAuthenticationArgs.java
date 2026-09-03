@@ -7,7 +7,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs extends com.pulumi.resources.ResourceArgs {
@@ -29,10 +32,26 @@ public final class AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs ex
         return this.iamRoleArn;
     }
 
+    /**
+     * List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+     * 
+     */
+    @Import(name="oidcSessionTagKeys")
+    private @Nullable Output<List<String>> oidcSessionTagKeys;
+
+    /**
+     * @return List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+     * 
+     */
+    public Optional<Output<List<String>>> oidcSessionTagKeys() {
+        return Optional.ofNullable(this.oidcSessionTagKeys);
+    }
+
     private AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs() {}
 
     private AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs(AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs $) {
         this.iamRoleArn = $.iamRoleArn;
+        this.oidcSessionTagKeys = $.oidcSessionTagKeys;
     }
 
     public static Builder builder() {
@@ -72,6 +91,37 @@ public final class AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs ex
          */
         public Builder iamRoleArn(String iamRoleArn) {
             return iamRoleArn(Output.of(iamRoleArn));
+        }
+
+        /**
+         * @param oidcSessionTagKeys List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcSessionTagKeys(@Nullable Output<List<String>> oidcSessionTagKeys) {
+            $.oidcSessionTagKeys = oidcSessionTagKeys;
+            return this;
+        }
+
+        /**
+         * @param oidcSessionTagKeys List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcSessionTagKeys(List<String> oidcSessionTagKeys) {
+            return oidcSessionTagKeys(Output.of(oidcSessionTagKeys));
+        }
+
+        /**
+         * @param oidcSessionTagKeys List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcSessionTagKeys(String... oidcSessionTagKeys) {
+            return oidcSessionTagKeys(List.of(oidcSessionTagKeys));
         }
 
         public AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs build() {

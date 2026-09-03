@@ -14,6 +14,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetGitopsAgentMetadata {
     /**
+     * @return Indicates if the agent connects to an existing Argo CD installation (BYOA).
+     * 
+     */
+    private Boolean existingInstallation;
+    /**
      * @return Indicates if the agent is deployed in HA mode.
      * 
      */
@@ -30,6 +35,13 @@ public final class GetGitopsAgentMetadata {
     private String namespace;
 
     private GetGitopsAgentMetadata() {}
+    /**
+     * @return Indicates if the agent connects to an existing Argo CD installation (BYOA).
+     * 
+     */
+    public Boolean existingInstallation() {
+        return this.existingInstallation;
+    }
     /**
      * @return Indicates if the agent is deployed in HA mode.
      * 
@@ -61,17 +73,27 @@ public final class GetGitopsAgentMetadata {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean existingInstallation;
         private Boolean highAvailability;
         private @Nullable Boolean isNamespaced;
         private String namespace;
         public Builder() {}
         public Builder(GetGitopsAgentMetadata defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.existingInstallation = defaults.existingInstallation;
     	      this.highAvailability = defaults.highAvailability;
     	      this.isNamespaced = defaults.isNamespaced;
     	      this.namespace = defaults.namespace;
         }
 
+        @CustomType.Setter
+        public Builder existingInstallation(Boolean existingInstallation) {
+            if (existingInstallation == null) {
+              throw new MissingRequiredPropertyException("GetGitopsAgentMetadata", "existingInstallation");
+            }
+            this.existingInstallation = existingInstallation;
+            return this;
+        }
         @CustomType.Setter
         public Builder highAvailability(Boolean highAvailability) {
             if (highAvailability == null) {
@@ -96,6 +118,7 @@ public final class GetGitopsAgentMetadata {
         }
         public GetGitopsAgentMetadata build() {
             final var _resultValue = new GetGitopsAgentMetadata();
+            _resultValue.existingInstallation = existingInstallation;
             _resultValue.highAvailability = highAvailability;
             _resultValue.isNamespaced = isNamespaced;
             _resultValue.namespace = namespace;

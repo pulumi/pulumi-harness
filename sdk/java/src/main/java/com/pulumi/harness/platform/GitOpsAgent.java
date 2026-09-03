@@ -248,7 +248,7 @@ public class GitOpsAgent extends com.pulumi.resources.CustomResource {
     }
     /**
      * Default: &#34;AGENT*TYPE*UNSET&#34;
-     * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;CONNECTED*ARGO*PROVIDER&#34; &#34;MANAGED*ARGO*PROVIDER&#34;
+     * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;MANAGED*ARGO*PROVIDER&#34; &#34;HOSTED*ARGO*PROVIDER&#34;
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -256,7 +256,7 @@ public class GitOpsAgent extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Default: &#34;AGENT*TYPE*UNSET&#34;
-     * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;CONNECTED*ARGO*PROVIDER&#34; &#34;MANAGED*ARGO*PROVIDER&#34;
+     * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;MANAGED*ARGO*PROVIDER&#34; &#34;HOSTED*ARGO*PROVIDER&#34;
      * 
      */
     public Output<String> type() {

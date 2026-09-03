@@ -2586,6 +2586,8 @@ func (o AwsKmsConnectorCredentialsManualPtrOutput) SecretKeyRef() pulumi.StringP
 type AwsKmsConnectorCredentialsOidcAuthentication struct {
 	// The ARN of the IAM role to assume.
 	IamRoleArn string `pulumi:"iamRoleArn"`
+	// List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+	OidcSessionTagKeys []string `pulumi:"oidcSessionTagKeys"`
 }
 
 // AwsKmsConnectorCredentialsOidcAuthenticationInput is an input type that accepts AwsKmsConnectorCredentialsOidcAuthenticationArgs and AwsKmsConnectorCredentialsOidcAuthenticationOutput values.
@@ -2602,6 +2604,8 @@ type AwsKmsConnectorCredentialsOidcAuthenticationInput interface {
 type AwsKmsConnectorCredentialsOidcAuthenticationArgs struct {
 	// The ARN of the IAM role to assume.
 	IamRoleArn pulumi.StringInput `pulumi:"iamRoleArn"`
+	// List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+	OidcSessionTagKeys pulumi.StringArrayInput `pulumi:"oidcSessionTagKeys"`
 }
 
 func (AwsKmsConnectorCredentialsOidcAuthenticationArgs) ElementType() reflect.Type {
@@ -2686,6 +2690,11 @@ func (o AwsKmsConnectorCredentialsOidcAuthenticationOutput) IamRoleArn() pulumi.
 	return o.ApplyT(func(v AwsKmsConnectorCredentialsOidcAuthentication) string { return v.IamRoleArn }).(pulumi.StringOutput)
 }
 
+// List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+func (o AwsKmsConnectorCredentialsOidcAuthenticationOutput) OidcSessionTagKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsKmsConnectorCredentialsOidcAuthentication) []string { return v.OidcSessionTagKeys }).(pulumi.StringArrayOutput)
+}
+
 type AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput struct{ *pulumi.OutputState }
 
 func (AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput) ElementType() reflect.Type {
@@ -2718,6 +2727,16 @@ func (o AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput) IamRoleArn() pulu
 		}
 		return &v.IamRoleArn
 	}).(pulumi.StringPtrOutput)
+}
+
+// List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+func (o AwsKmsConnectorCredentialsOidcAuthenticationPtrOutput) OidcSessionTagKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsKmsConnectorCredentialsOidcAuthentication) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OidcSessionTagKeys
+	}).(pulumi.StringArrayOutput)
 }
 
 type AwsSecretManagerConnectorCredentials struct {
@@ -3273,6 +3292,8 @@ func (o AwsSecretManagerConnectorCredentialsManualPtrOutput) SecretKeyRef() pulu
 type AwsSecretManagerConnectorCredentialsOidcAuthentication struct {
 	// The IAM role ARN.
 	IamRoleArn string `pulumi:"iamRoleArn"`
+	// List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+	OidcSessionTagKeys []string `pulumi:"oidcSessionTagKeys"`
 }
 
 // AwsSecretManagerConnectorCredentialsOidcAuthenticationInput is an input type that accepts AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs and AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput values.
@@ -3289,6 +3310,8 @@ type AwsSecretManagerConnectorCredentialsOidcAuthenticationInput interface {
 type AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs struct {
 	// The IAM role ARN.
 	IamRoleArn pulumi.StringInput `pulumi:"iamRoleArn"`
+	// List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+	OidcSessionTagKeys pulumi.StringArrayInput `pulumi:"oidcSessionTagKeys"`
 }
 
 func (AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs) ElementType() reflect.Type {
@@ -3373,6 +3396,11 @@ func (o AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput) IamRoleArn
 	return o.ApplyT(func(v AwsSecretManagerConnectorCredentialsOidcAuthentication) string { return v.IamRoleArn }).(pulumi.StringOutput)
 }
 
+// List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+func (o AwsSecretManagerConnectorCredentialsOidcAuthenticationOutput) OidcSessionTagKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsSecretManagerConnectorCredentialsOidcAuthentication) []string { return v.OidcSessionTagKeys }).(pulumi.StringArrayOutput)
+}
+
 type AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput struct{ *pulumi.OutputState }
 
 func (AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput) ElementType() reflect.Type {
@@ -3405,6 +3433,16 @@ func (o AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput) IamRole
 		}
 		return &v.IamRoleArn
 	}).(pulumi.StringPtrOutput)
+}
+
+// List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+func (o AwsSecretManagerConnectorCredentialsOidcAuthenticationPtrOutput) OidcSessionTagKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsSecretManagerConnectorCredentialsOidcAuthentication) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OidcSessionTagKeys
+	}).(pulumi.StringArrayOutput)
 }
 
 type AzureCloudCostConnectorBillingExportSpec2 struct {
@@ -14219,6 +14257,8 @@ func (o GitConnectorCredentialsSshPtrOutput) SshKeyRef() pulumi.StringPtrOutput 
 }
 
 type GitOpsAgentMetadata struct {
+	// Indicates if the agent connects to an existing Argo CD installation (BYOA). When true, Harness skips CRD and Argo CD component installation. This field cannot be changed after the agent is created.
+	ExistingInstallation *bool `pulumi:"existingInstallation"`
 	// Indicates if the agent is deployed in HA mode.
 	HighAvailability *bool `pulumi:"highAvailability"`
 	// Indicates if the agent is namespaced.
@@ -14239,6 +14279,8 @@ type GitOpsAgentMetadataInput interface {
 }
 
 type GitOpsAgentMetadataArgs struct {
+	// Indicates if the agent connects to an existing Argo CD installation (BYOA). When true, Harness skips CRD and Argo CD component installation. This field cannot be changed after the agent is created.
+	ExistingInstallation pulumi.BoolPtrInput `pulumi:"existingInstallation"`
 	// Indicates if the agent is deployed in HA mode.
 	HighAvailability pulumi.BoolPtrInput `pulumi:"highAvailability"`
 	// Indicates if the agent is namespaced.
@@ -14296,6 +14338,11 @@ func (o GitOpsAgentMetadataOutput) ToGitOpsAgentMetadataOutput() GitOpsAgentMeta
 
 func (o GitOpsAgentMetadataOutput) ToGitOpsAgentMetadataOutputWithContext(ctx context.Context) GitOpsAgentMetadataOutput {
 	return o
+}
+
+// Indicates if the agent connects to an existing Argo CD installation (BYOA). When true, Harness skips CRD and Argo CD component installation. This field cannot be changed after the agent is created.
+func (o GitOpsAgentMetadataOutput) ExistingInstallation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitOpsAgentMetadata) *bool { return v.ExistingInstallation }).(pulumi.BoolPtrOutput)
 }
 
 // Indicates if the agent is deployed in HA mode.

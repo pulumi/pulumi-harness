@@ -14,6 +14,10 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GitOpsAgentMetadata
     {
         /// <summary>
+        /// Indicates if the agent connects to an existing Argo CD installation (BYOA). When true, Harness skips CRD and Argo CD component installation. This field cannot be changed after the agent is created.
+        /// </summary>
+        public readonly bool? ExistingInstallation;
+        /// <summary>
         /// Indicates if the agent is deployed in HA mode.
         /// </summary>
         public readonly bool? HighAvailability;
@@ -28,12 +32,15 @@ namespace Pulumi.Harness.Platform.Outputs
 
         [OutputConstructor]
         private GitOpsAgentMetadata(
+            bool? existingInstallation,
+
             bool? highAvailability,
 
             bool? isNamespaced,
 
             string? @namespace)
         {
+            ExistingInstallation = existingInstallation;
             HighAvailability = highAvailability;
             IsNamespaced = isNamespaced;
             Namespace = @namespace;

@@ -100,7 +100,7 @@ type GitOpsAgent struct {
 	// Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Default: "AGENT*TYPE*UNSET"
-	// Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+	// Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -165,7 +165,7 @@ type gitOpsAgentState struct {
 	// Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
 	Tags map[string]string `pulumi:"tags"`
 	// Default: "AGENT*TYPE*UNSET"
-	// Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+	// Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
 	Type *string `pulumi:"type"`
 }
 
@@ -195,7 +195,7 @@ type GitOpsAgentState struct {
 	// Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
 	Tags pulumi.StringMapInput
 	// Default: "AGENT*TYPE*UNSET"
-	// Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+	// Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
 	Type pulumi.StringPtrInput
 }
 
@@ -225,7 +225,7 @@ type gitOpsAgentArgs struct {
 	// Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
 	Tags map[string]string `pulumi:"tags"`
 	// Default: "AGENT*TYPE*UNSET"
-	// Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+	// Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
 	Type string `pulumi:"type"`
 }
 
@@ -252,7 +252,7 @@ type GitOpsAgentArgs struct {
 	// Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
 	Tags pulumi.StringMapInput
 	// Default: "AGENT*TYPE*UNSET"
-	// Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+	// Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
 	Type pulumi.StringInput
 }
 
@@ -401,7 +401,7 @@ func (o GitOpsAgentOutput) Tags() pulumi.StringMapOutput {
 }
 
 // Default: "AGENT*TYPE*UNSET"
-// Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+// Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
 func (o GitOpsAgentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsAgent) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

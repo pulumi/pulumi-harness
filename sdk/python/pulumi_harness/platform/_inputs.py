@@ -4435,15 +4435,23 @@ class AwsKmsConnectorCredentialsOidcAuthenticationArgsDict(TypedDict):
     """
     The ARN of the IAM role to assume.
     """
+    oidc_session_tag_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+    """
 
 @pulumi.input_type
 class AwsKmsConnectorCredentialsOidcAuthenticationArgs:
     def __init__(__self__, *,
-                 iam_role_arn: pulumi.Input[_builtins.str]):
+                 iam_role_arn: pulumi.Input[_builtins.str],
+                 oidc_session_tag_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] iam_role_arn: The ARN of the IAM role to assume.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oidc_session_tag_keys: List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
         """
         pulumi.set(__self__, "iam_role_arn", iam_role_arn)
+        if oidc_session_tag_keys is not None:
+            pulumi.set(__self__, "oidc_session_tag_keys", oidc_session_tag_keys)
 
     @_builtins.property
     @pulumi.getter(name="iamRoleArn")
@@ -4456,6 +4464,18 @@ class AwsKmsConnectorCredentialsOidcAuthenticationArgs:
     @iam_role_arn.setter
     def iam_role_arn(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "iam_role_arn", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oidcSessionTagKeys")
+    def oidc_session_tag_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+        """
+        return pulumi.get(self, "oidc_session_tag_keys")
+
+    @oidc_session_tag_keys.setter
+    def oidc_session_tag_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "oidc_session_tag_keys", value)
 
 
 class AwsSecretManagerConnectorCredentialsArgsDict(TypedDict):
@@ -4687,15 +4707,23 @@ class AwsSecretManagerConnectorCredentialsOidcAuthenticationArgsDict(TypedDict):
     """
     The IAM role ARN.
     """
+    oidc_session_tag_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+    """
 
 @pulumi.input_type
 class AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs:
     def __init__(__self__, *,
-                 iam_role_arn: pulumi.Input[_builtins.str]):
+                 iam_role_arn: pulumi.Input[_builtins.str],
+                 oidc_session_tag_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] iam_role_arn: The IAM role ARN.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] oidc_session_tag_keys: List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
         """
         pulumi.set(__self__, "iam_role_arn", iam_role_arn)
+        if oidc_session_tag_keys is not None:
+            pulumi.set(__self__, "oidc_session_tag_keys", oidc_session_tag_keys)
 
     @_builtins.property
     @pulumi.getter(name="iamRoleArn")
@@ -4708,6 +4736,18 @@ class AwsSecretManagerConnectorCredentialsOidcAuthenticationArgs:
     @iam_role_arn.setter
     def iam_role_arn(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "iam_role_arn", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oidcSessionTagKeys")
+    def oidc_session_tag_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+        """
+        return pulumi.get(self, "oidc_session_tag_keys")
+
+    @oidc_session_tag_keys.setter
+    def oidc_session_tag_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "oidc_session_tag_keys", value)
 
 
 class AzureCloudCostConnectorBillingExportSpec2ArgsDict(TypedDict):
@@ -9350,6 +9390,10 @@ class GitConnectorCredentialsSshArgs:
 
 
 class GitOpsAgentMetadataArgsDict(TypedDict):
+    existing_installation: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Indicates if the agent connects to an existing Argo CD installation (BYOA). When true, Harness skips CRD and Argo CD component installation. This field cannot be changed after the agent is created.
+    """
     high_availability: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates if the agent is deployed in HA mode.
@@ -9366,20 +9410,36 @@ class GitOpsAgentMetadataArgsDict(TypedDict):
 @pulumi.input_type
 class GitOpsAgentMetadataArgs:
     def __init__(__self__, *,
+                 existing_installation: pulumi.Input[Optional[_builtins.bool]] = None,
                  high_availability: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_namespaced: pulumi.Input[Optional[_builtins.bool]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.bool] existing_installation: Indicates if the agent connects to an existing Argo CD installation (BYOA). When true, Harness skips CRD and Argo CD component installation. This field cannot be changed after the agent is created.
         :param pulumi.Input[_builtins.bool] high_availability: Indicates if the agent is deployed in HA mode.
         :param pulumi.Input[_builtins.bool] is_namespaced: Indicates if the agent is namespaced.
         :param pulumi.Input[_builtins.str] namespace: The kubernetes namespace where the agent should be installed.
         """
+        if existing_installation is not None:
+            pulumi.set(__self__, "existing_installation", existing_installation)
         if high_availability is not None:
             pulumi.set(__self__, "high_availability", high_availability)
         if is_namespaced is not None:
             pulumi.set(__self__, "is_namespaced", is_namespaced)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
+
+    @_builtins.property
+    @pulumi.getter(name="existingInstallation")
+    def existing_installation(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates if the agent connects to an existing Argo CD installation (BYOA). When true, Harness skips CRD and Argo CD component installation. This field cannot be changed after the agent is created.
+        """
+        return pulumi.get(self, "existing_installation")
+
+    @existing_installation.setter
+    def existing_installation(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "existing_installation", value)
 
     @_builtins.property
     @pulumi.getter(name="highAvailability")

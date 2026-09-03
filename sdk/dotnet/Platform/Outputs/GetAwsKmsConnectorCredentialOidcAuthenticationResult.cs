@@ -17,11 +17,19 @@ namespace Pulumi.Harness.Platform.Outputs
         /// The IAM role ARN to assume.
         /// </summary>
         public readonly string IamRoleArn;
+        /// <summary>
+        /// Supported values include `AccountId`, `OrganizationId`, `ProjectId`, `EnvironmentId`, `EnvironmentType`, `PipelineId`, `ConnectorId`, `ConnectorName`, `DelegateSelectors`, `Context`, `StepType`, `StageType`, `TriggeredByEmail`, `TriggeredByName`, `ServiceName`, and `ServiceId`.
+        /// </summary>
+        public readonly ImmutableArray<string> OidcSessionTagKeys;
 
         [OutputConstructor]
-        private GetAwsKmsConnectorCredentialOidcAuthenticationResult(string iamRoleArn)
+        private GetAwsKmsConnectorCredentialOidcAuthenticationResult(
+            string iamRoleArn,
+
+            ImmutableArray<string> oidcSessionTagKeys)
         {
             IamRoleArn = iamRoleArn;
+            OidcSessionTagKeys = oidcSessionTagKeys;
         }
     }
 }

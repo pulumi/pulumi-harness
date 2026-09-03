@@ -87,7 +87,7 @@ public final class GetGitopsAgentResult {
     private Map<String,String> tags;
     /**
      * @return Default: &#34;AGENT*TYPE*UNSET&#34;
-     * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;CONNECTED*ARGO*PROVIDER&#34; &#34;MANAGED*ARGO*PROVIDER&#34;
+     * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;MANAGED*ARGO*PROVIDER&#34; &#34;HOSTED*ARGO*PROVIDER&#34;
      * 
      */
     private String type;
@@ -195,7 +195,7 @@ public final class GetGitopsAgentResult {
     }
     /**
      * @return Default: &#34;AGENT*TYPE*UNSET&#34;
-     * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;CONNECTED*ARGO*PROVIDER&#34; &#34;MANAGED*ARGO*PROVIDER&#34;
+     * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;MANAGED*ARGO*PROVIDER&#34; &#34;HOSTED*ARGO*PROVIDER&#34;
      * 
      */
     public String type() {

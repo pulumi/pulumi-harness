@@ -18,6 +18,18 @@ namespace Pulumi.Harness.Platform.Inputs
         [Input("iamRoleArn", required: true)]
         public Input<string> IamRoleArn { get; set; } = null!;
 
+        [Input("oidcSessionTagKeys")]
+        private InputList<string>? _oidcSessionTagKeys;
+
+        /// <summary>
+        /// List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+        /// </summary>
+        public InputList<string> OidcSessionTagKeys
+        {
+            get => _oidcSessionTagKeys ?? (_oidcSessionTagKeys = new InputList<string>());
+            set => _oidcSessionTagKeys = value;
+        }
+
         public AwsSecretManagerConnectorCredentialsOidcAuthenticationGetArgs()
         {
         }

@@ -184,7 +184,7 @@ class GetGitopsAgentResult:
     def type(self) -> _builtins.str:
         """
         Default: "AGENT*TYPE*UNSET"
-        Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+        Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
         """
         return pulumi.get(self, "type")
 

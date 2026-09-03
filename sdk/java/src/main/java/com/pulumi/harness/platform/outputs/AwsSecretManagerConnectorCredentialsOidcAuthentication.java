@@ -6,7 +6,9 @@ package com.pulumi.harness.platform.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AwsSecretManagerConnectorCredentialsOidcAuthentication {
@@ -15,6 +17,11 @@ public final class AwsSecretManagerConnectorCredentialsOidcAuthentication {
      * 
      */
     private String iamRoleArn;
+    /**
+     * @return List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+     * 
+     */
+    private @Nullable List<String> oidcSessionTagKeys;
 
     private AwsSecretManagerConnectorCredentialsOidcAuthentication() {}
     /**
@@ -23,6 +30,13 @@ public final class AwsSecretManagerConnectorCredentialsOidcAuthentication {
      */
     public String iamRoleArn() {
         return this.iamRoleArn;
+    }
+    /**
+     * @return List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+     * 
+     */
+    public List<String> oidcSessionTagKeys() {
+        return this.oidcSessionTagKeys == null ? List.of() : this.oidcSessionTagKeys;
     }
 
     public static Builder builder() {
@@ -35,10 +49,12 @@ public final class AwsSecretManagerConnectorCredentialsOidcAuthentication {
     @CustomType.Builder
     public static final class Builder {
         private String iamRoleArn;
+        private @Nullable List<String> oidcSessionTagKeys;
         public Builder() {}
         public Builder(AwsSecretManagerConnectorCredentialsOidcAuthentication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.iamRoleArn = defaults.iamRoleArn;
+    	      this.oidcSessionTagKeys = defaults.oidcSessionTagKeys;
         }
 
         @CustomType.Setter
@@ -49,9 +65,19 @@ public final class AwsSecretManagerConnectorCredentialsOidcAuthentication {
             this.iamRoleArn = iamRoleArn;
             return this;
         }
+        @CustomType.Setter
+        public Builder oidcSessionTagKeys(@Nullable List<String> oidcSessionTagKeys) {
+
+            this.oidcSessionTagKeys = oidcSessionTagKeys;
+            return this;
+        }
+        public Builder oidcSessionTagKeys(String... oidcSessionTagKeys) {
+            return oidcSessionTagKeys(List.of(oidcSessionTagKeys));
+        }
         public AwsSecretManagerConnectorCredentialsOidcAuthentication build() {
             final var _resultValue = new AwsSecretManagerConnectorCredentialsOidcAuthentication();
             _resultValue.iamRoleArn = iamRoleArn;
+            _resultValue.oidcSessionTagKeys = oidcSessionTagKeys;
             return _resultValue;
         }
     }

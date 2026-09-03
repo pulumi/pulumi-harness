@@ -13,6 +13,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GitOpsAgentMetadata {
     /**
+     * @return Indicates if the agent connects to an existing Argo CD installation (BYOA). When true, Harness skips CRD and Argo CD component installation. This field cannot be changed after the agent is created.
+     * 
+     */
+    private @Nullable Boolean existingInstallation;
+    /**
      * @return Indicates if the agent is deployed in HA mode.
      * 
      */
@@ -29,6 +34,13 @@ public final class GitOpsAgentMetadata {
     private @Nullable String namespace;
 
     private GitOpsAgentMetadata() {}
+    /**
+     * @return Indicates if the agent connects to an existing Argo CD installation (BYOA). When true, Harness skips CRD and Argo CD component installation. This field cannot be changed after the agent is created.
+     * 
+     */
+    public Optional<Boolean> existingInstallation() {
+        return Optional.ofNullable(this.existingInstallation);
+    }
     /**
      * @return Indicates if the agent is deployed in HA mode.
      * 
@@ -60,17 +72,25 @@ public final class GitOpsAgentMetadata {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean existingInstallation;
         private @Nullable Boolean highAvailability;
         private @Nullable Boolean isNamespaced;
         private @Nullable String namespace;
         public Builder() {}
         public Builder(GitOpsAgentMetadata defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.existingInstallation = defaults.existingInstallation;
     	      this.highAvailability = defaults.highAvailability;
     	      this.isNamespaced = defaults.isNamespaced;
     	      this.namespace = defaults.namespace;
         }
 
+        @CustomType.Setter
+        public Builder existingInstallation(@Nullable Boolean existingInstallation) {
+
+            this.existingInstallation = existingInstallation;
+            return this;
+        }
         @CustomType.Setter
         public Builder highAvailability(@Nullable Boolean highAvailability) {
 
@@ -91,6 +111,7 @@ public final class GitOpsAgentMetadata {
         }
         public GitOpsAgentMetadata build() {
             final var _resultValue = new GitOpsAgentMetadata();
+            _resultValue.existingInstallation = existingInstallation;
             _resultValue.highAvailability = highAvailability;
             _resultValue.isNamespaced = isNamespaced;
             _resultValue.namespace = namespace;

@@ -31373,6 +31373,8 @@ func (o GetAwsKmsConnectorCredentialManualArrayOutput) Index(i pulumi.IntInput) 
 type GetAwsKmsConnectorCredentialOidcAuthentication struct {
 	// The IAM role ARN to assume.
 	IamRoleArn string `pulumi:"iamRoleArn"`
+	// Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+	OidcSessionTagKeys []string `pulumi:"oidcSessionTagKeys"`
 }
 
 // GetAwsKmsConnectorCredentialOidcAuthenticationInput is an input type that accepts GetAwsKmsConnectorCredentialOidcAuthenticationArgs and GetAwsKmsConnectorCredentialOidcAuthenticationOutput values.
@@ -31389,6 +31391,8 @@ type GetAwsKmsConnectorCredentialOidcAuthenticationInput interface {
 type GetAwsKmsConnectorCredentialOidcAuthenticationArgs struct {
 	// The IAM role ARN to assume.
 	IamRoleArn pulumi.StringInput `pulumi:"iamRoleArn"`
+	// Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+	OidcSessionTagKeys pulumi.StringArrayInput `pulumi:"oidcSessionTagKeys"`
 }
 
 func (GetAwsKmsConnectorCredentialOidcAuthenticationArgs) ElementType() reflect.Type {
@@ -31445,6 +31449,11 @@ func (o GetAwsKmsConnectorCredentialOidcAuthenticationOutput) ToGetAwsKmsConnect
 // The IAM role ARN to assume.
 func (o GetAwsKmsConnectorCredentialOidcAuthenticationOutput) IamRoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsKmsConnectorCredentialOidcAuthentication) string { return v.IamRoleArn }).(pulumi.StringOutput)
+}
+
+// Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+func (o GetAwsKmsConnectorCredentialOidcAuthenticationOutput) OidcSessionTagKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAwsKmsConnectorCredentialOidcAuthentication) []string { return v.OidcSessionTagKeys }).(pulumi.StringArrayOutput)
 }
 
 type GetAwsKmsConnectorCredentialOidcAuthenticationArrayOutput struct{ *pulumi.OutputState }
@@ -31821,6 +31830,8 @@ func (o GetAwsSecretManagerConnectorCredentialManualArrayOutput) Index(i pulumi.
 type GetAwsSecretManagerConnectorCredentialOidcAuthentication struct {
 	// The IAM role ARN to assume.
 	IamRoleArn string `pulumi:"iamRoleArn"`
+	// Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+	OidcSessionTagKeys []string `pulumi:"oidcSessionTagKeys"`
 }
 
 // GetAwsSecretManagerConnectorCredentialOidcAuthenticationInput is an input type that accepts GetAwsSecretManagerConnectorCredentialOidcAuthenticationArgs and GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput values.
@@ -31837,6 +31848,8 @@ type GetAwsSecretManagerConnectorCredentialOidcAuthenticationInput interface {
 type GetAwsSecretManagerConnectorCredentialOidcAuthenticationArgs struct {
 	// The IAM role ARN to assume.
 	IamRoleArn pulumi.StringInput `pulumi:"iamRoleArn"`
+	// Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+	OidcSessionTagKeys pulumi.StringArrayInput `pulumi:"oidcSessionTagKeys"`
 }
 
 func (GetAwsSecretManagerConnectorCredentialOidcAuthenticationArgs) ElementType() reflect.Type {
@@ -31893,6 +31906,11 @@ func (o GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput) ToGetAws
 // The IAM role ARN to assume.
 func (o GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput) IamRoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAwsSecretManagerConnectorCredentialOidcAuthentication) string { return v.IamRoleArn }).(pulumi.StringOutput)
+}
+
+// Supported values include `accountId`, `organizationId`, `projectId`, `environmentId`, `environmentType`, `pipelineId`, `connectorId`, `connectorName`, `delegateSelectors`, `context`, `stepType`, `stageType`, `triggeredByEmail`, `triggeredByName`, `serviceName`, and `serviceId`.
+func (o GetAwsSecretManagerConnectorCredentialOidcAuthenticationOutput) OidcSessionTagKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAwsSecretManagerConnectorCredentialOidcAuthentication) []string { return v.OidcSessionTagKeys }).(pulumi.StringArrayOutput)
 }
 
 type GetAwsSecretManagerConnectorCredentialOidcAuthenticationArrayOutput struct{ *pulumi.OutputState }
@@ -41393,6 +41411,8 @@ func (o GetGitopsAgentDeployYamlProxyArrayOutput) Index(i pulumi.IntInput) GetGi
 }
 
 type GetGitopsAgentMetadata struct {
+	// Indicates if the agent connects to an existing Argo CD installation (BYOA).
+	ExistingInstallation bool `pulumi:"existingInstallation"`
 	// Indicates if the agent is deployed in HA mode.
 	HighAvailability bool `pulumi:"highAvailability"`
 	// Indicates if the agent is namespaced.
@@ -41413,6 +41433,8 @@ type GetGitopsAgentMetadataInput interface {
 }
 
 type GetGitopsAgentMetadataArgs struct {
+	// Indicates if the agent connects to an existing Argo CD installation (BYOA).
+	ExistingInstallation pulumi.BoolInput `pulumi:"existingInstallation"`
 	// Indicates if the agent is deployed in HA mode.
 	HighAvailability pulumi.BoolInput `pulumi:"highAvailability"`
 	// Indicates if the agent is namespaced.
@@ -41470,6 +41492,11 @@ func (o GetGitopsAgentMetadataOutput) ToGetGitopsAgentMetadataOutput() GetGitops
 
 func (o GetGitopsAgentMetadataOutput) ToGetGitopsAgentMetadataOutputWithContext(ctx context.Context) GetGitopsAgentMetadataOutput {
 	return o
+}
+
+// Indicates if the agent connects to an existing Argo CD installation (BYOA).
+func (o GetGitopsAgentMetadataOutput) ExistingInstallation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGitopsAgentMetadata) bool { return v.ExistingInstallation }).(pulumi.BoolOutput)
 }
 
 // Indicates if the agent is deployed in HA mode.

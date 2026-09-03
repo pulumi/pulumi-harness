@@ -164,7 +164,7 @@ public final class GitOpsAgentArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Default: &#34;AGENT*TYPE*UNSET&#34;
-     * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;CONNECTED*ARGO*PROVIDER&#34; &#34;MANAGED*ARGO*PROVIDER&#34;
+     * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;MANAGED*ARGO*PROVIDER&#34; &#34;HOSTED*ARGO*PROVIDER&#34;
      * 
      */
     @Import(name="type", required=true)
@@ -172,7 +172,7 @@ public final class GitOpsAgentArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Default: &#34;AGENT*TYPE*UNSET&#34;
-     * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;CONNECTED*ARGO*PROVIDER&#34; &#34;MANAGED*ARGO*PROVIDER&#34;
+     * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;MANAGED*ARGO*PROVIDER&#34; &#34;HOSTED*ARGO*PROVIDER&#34;
      * 
      */
     public Output<String> type() {
@@ -421,7 +421,7 @@ public final class GitOpsAgentArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type Default: &#34;AGENT*TYPE*UNSET&#34;
-         * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;CONNECTED*ARGO*PROVIDER&#34; &#34;MANAGED*ARGO*PROVIDER&#34;
+         * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;MANAGED*ARGO*PROVIDER&#34; &#34;HOSTED*ARGO*PROVIDER&#34;
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class GitOpsAgentArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type Default: &#34;AGENT*TYPE*UNSET&#34;
-         * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;CONNECTED*ARGO*PROVIDER&#34; &#34;MANAGED*ARGO*PROVIDER&#34;
+         * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;MANAGED*ARGO*PROVIDER&#34; &#34;HOSTED*ARGO*PROVIDER&#34;
          * 
          * @return builder
          * 

@@ -17,11 +17,19 @@ namespace Pulumi.Harness.Platform.Outputs
         /// The ARN of the IAM role to assume.
         /// </summary>
         public readonly string IamRoleArn;
+        /// <summary>
+        /// List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+        /// </summary>
+        public readonly ImmutableArray<string> OidcSessionTagKeys;
 
         [OutputConstructor]
-        private AwsKmsConnectorCredentialsOidcAuthentication(string iamRoleArn)
+        private AwsKmsConnectorCredentialsOidcAuthentication(
+            string iamRoleArn,
+
+            ImmutableArray<string> oidcSessionTagKeys)
         {
             IamRoleArn = iamRoleArn;
+            OidcSessionTagKeys = oidcSessionTagKeys;
         }
     }
 }

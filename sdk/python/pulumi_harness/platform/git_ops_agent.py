@@ -36,7 +36,7 @@ class GitOpsAgentArgs:
 
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps agent.
         :param pulumi.Input[_builtins.str] type: Default: "AGENT*TYPE*UNSET"
-               Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+               Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps agent.
         :param pulumi.Input[_builtins.str] description: Description of the GitOps agent.
         :param pulumi.Input[Sequence[pulumi.Input['GitOpsAgentMetadataArgs']]] metadatas: Metadata of the agent.
@@ -85,7 +85,7 @@ class GitOpsAgentArgs:
     def type(self) -> pulumi.Input[_builtins.str]:
         """
         Default: "AGENT*TYPE*UNSET"
-        Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+        Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
         """
         return pulumi.get(self, "type")
 
@@ -221,7 +221,7 @@ class _GitOpsAgentState:
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps agent.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
         :param pulumi.Input[_builtins.str] type: Default: "AGENT*TYPE*UNSET"
-               Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+               Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
         """
         if account_id is not None:
             warnings.warn("""This field is deprecated and will be removed in a future release.""", DeprecationWarning)
@@ -389,7 +389,7 @@ class _GitOpsAgentState:
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default: "AGENT*TYPE*UNSET"
-        Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+        Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
         """
         return pulumi.get(self, "type")
 
@@ -472,7 +472,7 @@ class GitOpsAgent(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps agent.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
         :param pulumi.Input[_builtins.str] type: Default: "AGENT*TYPE*UNSET"
-               Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+               Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
         """
         ...
     @overload
@@ -616,7 +616,7 @@ class GitOpsAgent(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps agent.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
         :param pulumi.Input[_builtins.str] type: Default: "AGENT*TYPE*UNSET"
-               Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+               Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -730,7 +730,7 @@ class GitOpsAgent(pulumi.CustomResource):
     def type(self) -> pulumi.Output[_builtins.str]:
         """
         Default: "AGENT*TYPE*UNSET"
-        Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+        Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
         """
         return pulumi.get(self, "type")
 

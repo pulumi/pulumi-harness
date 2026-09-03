@@ -7190,6 +7190,10 @@ export namespace platform {
          * The ARN of the IAM role to assume.
          */
         iamRoleArn: pulumi.Input<string>;
+        /**
+         * List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+         */
+        oidcSessionTagKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface AwsSecretManagerConnectorCredentials {
@@ -7246,6 +7250,10 @@ export namespace platform {
          * The IAM role ARN.
          */
         iamRoleArn: pulumi.Input<string>;
+        /**
+         * List of Harness context keys to pass as AWS OIDC session tags when assuming the IAM role. Supported values include account*id, organization*id, project*id, environment*id, environment*type, pipeline*id, connector*id, connector*name, delegate*selectors, context, step*type, stage*type, triggered*by*email, triggered*by*name, service*name, and service_id.
+         */
+        oidcSessionTagKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     }
 
     export interface AzureCloudCostConnectorBillingExportSpec {
@@ -10070,6 +10078,10 @@ export namespace platform {
     }
 
     export interface GitOpsAgentMetadata {
+        /**
+         * Indicates if the agent connects to an existing Argo CD installation (BYOA). When true, Harness skips CRD and Argo CD component installation. This field cannot be changed after the agent is created.
+         */
+        existingInstallation?: pulumi.Input<boolean | undefined>;
         /**
          * Indicates if the agent is deployed in HA mode.
          */

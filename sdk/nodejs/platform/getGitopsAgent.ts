@@ -108,7 +108,7 @@ export interface GetGitopsAgentResult {
     readonly tags: {[key: string]: string};
     /**
      * Default: "AGENT*TYPE*UNSET"
-     * Enum: "AGENT*TYPE*UNSET" "CONNECTED*ARGO*PROVIDER" "MANAGED*ARGO*PROVIDER"
+     * Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
      */
     readonly type: string;
     /**
