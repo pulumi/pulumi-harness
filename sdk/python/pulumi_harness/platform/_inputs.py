@@ -141728,11 +141728,11 @@ class IacmAnsiblePlaybookVarArgs:
 class IdpCatalogEntityGitDetailsArgsDict(TypedDict):
     base_branch: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Name of the default branch (this checks out a new branch titled by branch_name).
+    Existing branch to create branch_name from when that branch does not already exist. Terraform does not read this branch on refresh.
     """
     branch_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Name of the branch.
+    Name of the branch the entity YAML is stored on. Terraform reads and writes this branch.
     """
     commit_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -141781,8 +141781,8 @@ class IdpCatalogEntityGitDetailsArgs:
                  repo_name: pulumi.Input[Optional[_builtins.str]] = None,
                  store_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] base_branch: Name of the default branch (this checks out a new branch titled by branch_name).
-        :param pulumi.Input[_builtins.str] branch_name: Name of the branch.
+        :param pulumi.Input[_builtins.str] base_branch: Existing branch to create branch_name from when that branch does not already exist. Terraform does not read this branch on refresh.
+        :param pulumi.Input[_builtins.str] branch_name: Name of the branch the entity YAML is stored on. Terraform reads and writes this branch.
         :param pulumi.Input[_builtins.str] commit_message: Commit message used for the merge commit.
         :param pulumi.Input[_builtins.str] connector_ref: Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param pulumi.Input[_builtins.str] file_path: File path of the Entity in the repository.
@@ -141817,7 +141817,7 @@ class IdpCatalogEntityGitDetailsArgs:
     @pulumi.getter(name="baseBranch")
     def base_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the default branch (this checks out a new branch titled by branch_name).
+        Existing branch to create branch_name from when that branch does not already exist. Terraform does not read this branch on refresh.
         """
         return pulumi.get(self, "base_branch")
 
@@ -141829,7 +141829,7 @@ class IdpCatalogEntityGitDetailsArgs:
     @pulumi.getter(name="branchName")
     def branch_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the branch.
+        Name of the branch the entity YAML is stored on. Terraform reads and writes this branch.
         """
         return pulumi.get(self, "branch_name")
 

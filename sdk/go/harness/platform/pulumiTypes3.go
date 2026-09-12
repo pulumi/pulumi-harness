@@ -9523,9 +9523,9 @@ func (o IacmAnsiblePlaybookVarArrayOutput) Index(i pulumi.IntInput) IacmAnsibleP
 }
 
 type IdpCatalogEntityGitDetails struct {
-	// Name of the default branch (this checks out a new branch titled by branch_name).
+	// Existing branch to create branchName from when that branch does not already exist. Terraform does not read this branch on refresh.
 	BaseBranch *string `pulumi:"baseBranch"`
-	// Name of the branch.
+	// Name of the branch the entity YAML is stored on. Terraform reads and writes this branch.
 	BranchName *string `pulumi:"branchName"`
 	// Commit message used for the merge commit.
 	CommitMessage *string `pulumi:"commitMessage"`
@@ -9557,9 +9557,9 @@ type IdpCatalogEntityGitDetailsInput interface {
 }
 
 type IdpCatalogEntityGitDetailsArgs struct {
-	// Name of the default branch (this checks out a new branch titled by branch_name).
+	// Existing branch to create branchName from when that branch does not already exist. Terraform does not read this branch on refresh.
 	BaseBranch pulumi.StringPtrInput `pulumi:"baseBranch"`
-	// Name of the branch.
+	// Name of the branch the entity YAML is stored on. Terraform reads and writes this branch.
 	BranchName pulumi.StringPtrInput `pulumi:"branchName"`
 	// Commit message used for the merge commit.
 	CommitMessage pulumi.StringPtrInput `pulumi:"commitMessage"`
@@ -9656,12 +9656,12 @@ func (o IdpCatalogEntityGitDetailsOutput) ToIdpCatalogEntityGitDetailsPtrOutputW
 	}).(IdpCatalogEntityGitDetailsPtrOutput)
 }
 
-// Name of the default branch (this checks out a new branch titled by branch_name).
+// Existing branch to create branchName from when that branch does not already exist. Terraform does not read this branch on refresh.
 func (o IdpCatalogEntityGitDetailsOutput) BaseBranch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdpCatalogEntityGitDetails) *string { return v.BaseBranch }).(pulumi.StringPtrOutput)
 }
 
-// Name of the branch.
+// Name of the branch the entity YAML is stored on. Terraform reads and writes this branch.
 func (o IdpCatalogEntityGitDetailsOutput) BranchName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdpCatalogEntityGitDetails) *string { return v.BranchName }).(pulumi.StringPtrOutput)
 }
@@ -9730,7 +9730,7 @@ func (o IdpCatalogEntityGitDetailsPtrOutput) Elem() IdpCatalogEntityGitDetailsOu
 	}).(IdpCatalogEntityGitDetailsOutput)
 }
 
-// Name of the default branch (this checks out a new branch titled by branch_name).
+// Existing branch to create branchName from when that branch does not already exist. Terraform does not read this branch on refresh.
 func (o IdpCatalogEntityGitDetailsPtrOutput) BaseBranch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IdpCatalogEntityGitDetails) *string {
 		if v == nil {
@@ -9740,7 +9740,7 @@ func (o IdpCatalogEntityGitDetailsPtrOutput) BaseBranch() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the branch.
+// Name of the branch the entity YAML is stored on. Terraform reads and writes this branch.
 func (o IdpCatalogEntityGitDetailsPtrOutput) BranchName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IdpCatalogEntityGitDetails) *string {
 		if v == nil {
@@ -48575,9 +48575,9 @@ func (o GetIacmAnsiblePlaybookVarArrayOutput) Index(i pulumi.IntInput) GetIacmAn
 }
 
 type GetIdpCatalogEntityGitDetail struct {
-	// Name of the default branch (this checks out a new branch titled by branch_name).
+	// Existing branch used to create branchName when that branch did not already exist. Not used on data source read.
 	BaseBranch string `pulumi:"baseBranch"`
-	// Name of the branch.
+	// Name of the branch the entity YAML is stored on.
 	BranchName string `pulumi:"branchName"`
 	// Commit message used for the merge commit.
 	CommitMessage string `pulumi:"commitMessage"`
@@ -48609,9 +48609,9 @@ type GetIdpCatalogEntityGitDetailInput interface {
 }
 
 type GetIdpCatalogEntityGitDetailArgs struct {
-	// Name of the default branch (this checks out a new branch titled by branch_name).
+	// Existing branch used to create branchName when that branch did not already exist. Not used on data source read.
 	BaseBranch pulumi.StringInput `pulumi:"baseBranch"`
-	// Name of the branch.
+	// Name of the branch the entity YAML is stored on.
 	BranchName pulumi.StringInput `pulumi:"branchName"`
 	// Commit message used for the merge commit.
 	CommitMessage pulumi.StringInput `pulumi:"commitMessage"`
@@ -48682,12 +48682,12 @@ func (o GetIdpCatalogEntityGitDetailOutput) ToGetIdpCatalogEntityGitDetailOutput
 	return o
 }
 
-// Name of the default branch (this checks out a new branch titled by branch_name).
+// Existing branch used to create branchName when that branch did not already exist. Not used on data source read.
 func (o GetIdpCatalogEntityGitDetailOutput) BaseBranch() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIdpCatalogEntityGitDetail) string { return v.BaseBranch }).(pulumi.StringOutput)
 }
 
-// Name of the branch.
+// Name of the branch the entity YAML is stored on.
 func (o GetIdpCatalogEntityGitDetailOutput) BranchName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIdpCatalogEntityGitDetail) string { return v.BranchName }).(pulumi.StringOutput)
 }

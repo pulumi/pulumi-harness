@@ -14,11 +14,11 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class IdpCatalogEntityGitDetails
     {
         /// <summary>
-        /// Name of the default branch (this checks out a new branch titled by branch_name).
+        /// Existing branch to create BranchName from when that branch does not already exist. Terraform does not read this branch on refresh.
         /// </summary>
         public readonly string? BaseBranch;
         /// <summary>
-        /// Name of the branch.
+        /// Name of the branch the entity YAML is stored on. Terraform reads and writes this branch.
         /// </summary>
         public readonly string? BranchName;
         /// <summary>

@@ -12,12 +12,12 @@ import java.util.Objects;
 @CustomType
 public final class GetIdpCatalogEntityGitDetail {
     /**
-     * @return Name of the default branch (this checks out a new branch titled by branch_name).
+     * @return Existing branch used to create branchName when that branch did not already exist. Not used on data source read.
      * 
      */
     private String baseBranch;
     /**
-     * @return Name of the branch.
+     * @return Name of the branch the entity YAML is stored on.
      * 
      */
     private String branchName;
@@ -64,14 +64,14 @@ public final class GetIdpCatalogEntityGitDetail {
 
     private GetIdpCatalogEntityGitDetail() {}
     /**
-     * @return Name of the default branch (this checks out a new branch titled by branch_name).
+     * @return Existing branch used to create branchName when that branch did not already exist. Not used on data source read.
      * 
      */
     public String baseBranch() {
         return this.baseBranch;
     }
     /**
-     * @return Name of the branch.
+     * @return Name of the branch the entity YAML is stored on.
      * 
      */
     public String branchName() {

@@ -17,14 +17,14 @@ public final class IdpCatalogEntityGitDetailsArgs extends com.pulumi.resources.R
     public static final IdpCatalogEntityGitDetailsArgs Empty = new IdpCatalogEntityGitDetailsArgs();
 
     /**
-     * Name of the default branch (this checks out a new branch titled by branch_name).
+     * Existing branch to create branchName from when that branch does not already exist. Terraform does not read this branch on refresh.
      * 
      */
     @Import(name="baseBranch")
     private @Nullable Output<String> baseBranch;
 
     /**
-     * @return Name of the default branch (this checks out a new branch titled by branch_name).
+     * @return Existing branch to create branchName from when that branch does not already exist. Terraform does not read this branch on refresh.
      * 
      */
     public Optional<Output<String>> baseBranch() {
@@ -32,14 +32,14 @@ public final class IdpCatalogEntityGitDetailsArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Name of the branch.
+     * Name of the branch the entity YAML is stored on. Terraform reads and writes this branch.
      * 
      */
     @Import(name="branchName")
     private @Nullable Output<String> branchName;
 
     /**
-     * @return Name of the branch.
+     * @return Name of the branch the entity YAML is stored on. Terraform reads and writes this branch.
      * 
      */
     public Optional<Output<String>> branchName() {
@@ -200,7 +200,7 @@ public final class IdpCatalogEntityGitDetailsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param baseBranch Name of the default branch (this checks out a new branch titled by branch_name).
+         * @param baseBranch Existing branch to create branchName from when that branch does not already exist. Terraform does not read this branch on refresh.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class IdpCatalogEntityGitDetailsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param baseBranch Name of the default branch (this checks out a new branch titled by branch_name).
+         * @param baseBranch Existing branch to create branchName from when that branch does not already exist. Terraform does not read this branch on refresh.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class IdpCatalogEntityGitDetailsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param branchName Name of the branch.
+         * @param branchName Name of the branch the entity YAML is stored on. Terraform reads and writes this branch.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class IdpCatalogEntityGitDetailsArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param branchName Name of the branch.
+         * @param branchName Name of the branch the entity YAML is stored on. Terraform reads and writes this branch.
          * 
          * @return builder
          * 

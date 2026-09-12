@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class IdpCatalogEntityGitDetails {
     /**
-     * @return Name of the default branch (this checks out a new branch titled by branch_name).
+     * @return Existing branch to create branchName from when that branch does not already exist. Terraform does not read this branch on refresh.
      * 
      */
     private @Nullable String baseBranch;
     /**
-     * @return Name of the branch.
+     * @return Name of the branch the entity YAML is stored on. Terraform reads and writes this branch.
      * 
      */
     private @Nullable String branchName;
@@ -65,14 +65,14 @@ public final class IdpCatalogEntityGitDetails {
 
     private IdpCatalogEntityGitDetails() {}
     /**
-     * @return Name of the default branch (this checks out a new branch titled by branch_name).
+     * @return Existing branch to create branchName from when that branch does not already exist. Terraform does not read this branch on refresh.
      * 
      */
     public Optional<String> baseBranch() {
         return Optional.ofNullable(this.baseBranch);
     }
     /**
-     * @return Name of the branch.
+     * @return Name of the branch the entity YAML is stored on. Terraform reads and writes this branch.
      * 
      */
     public Optional<String> branchName() {

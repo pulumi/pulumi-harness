@@ -104618,8 +104618,8 @@ class IdpCatalogEntityGitDetails(dict):
                  repo_name: Optional[_builtins.str] = None,
                  store_type: Optional[_builtins.str] = None):
         """
-        :param _builtins.str base_branch: Name of the default branch (this checks out a new branch titled by branch_name).
-        :param _builtins.str branch_name: Name of the branch.
+        :param _builtins.str base_branch: Existing branch to create branch_name from when that branch does not already exist. Terraform does not read this branch on refresh.
+        :param _builtins.str branch_name: Name of the branch the entity YAML is stored on. Terraform reads and writes this branch.
         :param _builtins.str commit_message: Commit message used for the merge commit.
         :param _builtins.str connector_ref: Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param _builtins.str file_path: File path of the Entity in the repository.
@@ -104654,7 +104654,7 @@ class IdpCatalogEntityGitDetails(dict):
     @pulumi.getter(name="baseBranch")
     def base_branch(self) -> Optional[_builtins.str]:
         """
-        Name of the default branch (this checks out a new branch titled by branch_name).
+        Existing branch to create branch_name from when that branch does not already exist. Terraform does not read this branch on refresh.
         """
         return pulumi.get(self, "base_branch")
 
@@ -104662,7 +104662,7 @@ class IdpCatalogEntityGitDetails(dict):
     @pulumi.getter(name="branchName")
     def branch_name(self) -> Optional[_builtins.str]:
         """
-        Name of the branch.
+        Name of the branch the entity YAML is stored on. Terraform reads and writes this branch.
         """
         return pulumi.get(self, "branch_name")
 
@@ -120497,8 +120497,8 @@ class GetIdpCatalogEntityGitDetailResult(dict):
                  repo_name: _builtins.str,
                  store_type: _builtins.str):
         """
-        :param _builtins.str base_branch: Name of the default branch (this checks out a new branch titled by branch_name).
-        :param _builtins.str branch_name: Name of the branch.
+        :param _builtins.str base_branch: Existing branch used to create branch_name when that branch did not already exist. Not used on data source read.
+        :param _builtins.str branch_name: Name of the branch the entity YAML is stored on.
         :param _builtins.str commit_message: Commit message used for the merge commit.
         :param _builtins.str connector_ref: Identifier of the Harness Connector used for importing entity from Git To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
         :param _builtins.str file_path: File path of the Entity in the repository.
@@ -120523,7 +120523,7 @@ class GetIdpCatalogEntityGitDetailResult(dict):
     @pulumi.getter(name="baseBranch")
     def base_branch(self) -> _builtins.str:
         """
-        Name of the default branch (this checks out a new branch titled by branch_name).
+        Existing branch used to create branch_name when that branch did not already exist. Not used on data source read.
         """
         return pulumi.get(self, "base_branch")
 
@@ -120531,7 +120531,7 @@ class GetIdpCatalogEntityGitDetailResult(dict):
     @pulumi.getter(name="branchName")
     def branch_name(self) -> _builtins.str:
         """
-        Name of the branch.
+        Name of the branch the entity YAML is stored on.
         """
         return pulumi.get(self, "branch_name")
 
