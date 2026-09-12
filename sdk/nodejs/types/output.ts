@@ -9915,11 +9915,11 @@ export namespace platform {
 
     export interface GetIdpCatalogEntityGitDetail {
         /**
-         * Name of the default branch (this checks out a new branch titled by branch_name).
+         * Existing branch used to create branchName when that branch did not already exist. Not used on data source read.
          */
         baseBranch: string;
         /**
-         * Name of the branch.
+         * Name of the branch the entity YAML is stored on.
          */
         branchName: string;
         /**
@@ -40194,11 +40194,11 @@ export namespace platform {
 
     export interface IdpCatalogEntityGitDetails {
         /**
-         * Name of the default branch (this checks out a new branch titled by branch_name).
+         * Existing branch to create branchName from when that branch does not already exist. Terraform does not read this branch on refresh.
          */
         baseBranch: string;
         /**
-         * Name of the branch.
+         * Name of the branch the entity YAML is stored on. Terraform reads and writes this branch.
          */
         branchName: string;
         /**

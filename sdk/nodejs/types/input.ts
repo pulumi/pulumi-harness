@@ -38404,11 +38404,11 @@ export namespace platform {
 
     export interface IdpCatalogEntityGitDetails {
         /**
-         * Name of the default branch (this checks out a new branch titled by branch_name).
+         * Existing branch to create branchName from when that branch does not already exist. Terraform does not read this branch on refresh.
          */
         baseBranch?: pulumi.Input<string | undefined>;
         /**
-         * Name of the branch.
+         * Name of the branch the entity YAML is stored on. Terraform reads and writes this branch.
          */
         branchName?: pulumi.Input<string | undefined>;
         /**

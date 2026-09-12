@@ -14,11 +14,11 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GetIdpCatalogEntityGitDetailResult
     {
         /// <summary>
-        /// Name of the default branch (this checks out a new branch titled by branch_name).
+        /// Existing branch used to create BranchName when that branch did not already exist. Not used on data source read.
         /// </summary>
         public readonly string BaseBranch;
         /// <summary>
-        /// Name of the branch.
+        /// Name of the branch the entity YAML is stored on.
         /// </summary>
         public readonly string BranchName;
         /// <summary>

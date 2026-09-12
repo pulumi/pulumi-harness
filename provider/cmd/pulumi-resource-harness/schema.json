@@ -48575,11 +48575,11 @@
             "properties": {
                 "baseBranch": {
                     "type": "string",
-                    "description": "Name of the default branch (this checks out a new branch titled by branch_name).\n"
+                    "description": "Existing branch to create\u003cspan pulumi-lang-nodejs=\" branchName \" pulumi-lang-dotnet=\" BranchName \" pulumi-lang-go=\" branchName \" pulumi-lang-python=\" branch_name \" pulumi-lang-yaml=\" branchName \" pulumi-lang-java=\" branchName \" pulumi-lang-hcl=\" branch_name \"\u003e branchName \u003c/span\u003efrom when that branch does not already exist. Terraform does not read this branch on refresh.\n"
                 },
                 "branchName": {
                     "type": "string",
-                    "description": "Name of the branch.\n"
+                    "description": "Name of the branch the entity YAML is stored on. Terraform reads and writes this branch.\n"
                 },
                 "commitMessage": {
                     "type": "string",
@@ -56469,11 +56469,11 @@
             "properties": {
                 "baseBranch": {
                     "type": "string",
-                    "description": "Name of the default branch (this checks out a new branch titled by branch_name).\n"
+                    "description": "Existing branch used to create\u003cspan pulumi-lang-nodejs=\" branchName \" pulumi-lang-dotnet=\" BranchName \" pulumi-lang-go=\" branchName \" pulumi-lang-python=\" branch_name \" pulumi-lang-yaml=\" branchName \" pulumi-lang-java=\" branchName \" pulumi-lang-hcl=\" branch_name \"\u003e branchName \u003c/span\u003ewhen that branch did not already exist. Not used on data source read.\n"
                 },
                 "branchName": {
                     "type": "string",
-                    "description": "Name of the branch.\n"
+                    "description": "Name of the branch the entity YAML is stored on.\n"
                 },
                 "commitMessage": {
                     "type": "string",
