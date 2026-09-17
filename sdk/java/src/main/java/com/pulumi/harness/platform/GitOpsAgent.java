@@ -247,7 +247,7 @@ public class GitOpsAgent extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * Default: &#34;AGENT*TYPE*UNSET&#34;
+     * Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
      * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;MANAGED*ARGO*PROVIDER&#34; &#34;HOSTED*ARGO*PROVIDER&#34;
      * 
      */
@@ -255,7 +255,7 @@ public class GitOpsAgent extends com.pulumi.resources.CustomResource {
     private Output<String> type;
 
     /**
-     * @return Default: &#34;AGENT*TYPE*UNSET&#34;
+     * @return Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
      * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;MANAGED*ARGO*PROVIDER&#34; &#34;HOSTED*ARGO*PROVIDER&#34;
      * 
      */

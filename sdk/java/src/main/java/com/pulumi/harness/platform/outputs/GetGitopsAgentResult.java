@@ -86,7 +86,7 @@ public final class GetGitopsAgentResult {
      */
     private Map<String,String> tags;
     /**
-     * @return Default: &#34;AGENT*TYPE*UNSET&#34;
+     * @return Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
      * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;MANAGED*ARGO*PROVIDER&#34; &#34;HOSTED*ARGO*PROVIDER&#34;
      * 
      */
@@ -194,7 +194,7 @@ public final class GetGitopsAgentResult {
         return this.tags;
     }
     /**
-     * @return Default: &#34;AGENT*TYPE*UNSET&#34;
+     * @return Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
      * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;MANAGED*ARGO*PROVIDER&#34; &#34;HOSTED*ARGO*PROVIDER&#34;
      * 
      */

@@ -183,7 +183,7 @@ class GetGitopsAgentResult:
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Default: "AGENT*TYPE*UNSET"
+        Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
         Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
         """
         return pulumi.get(self, "type")

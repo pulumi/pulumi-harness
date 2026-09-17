@@ -99,7 +99,7 @@ type GitOpsAgent struct {
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
 	// Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Default: "AGENT*TYPE*UNSET"
+	// Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
 	// Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -164,7 +164,7 @@ type gitOpsAgentState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
 	Tags map[string]string `pulumi:"tags"`
-	// Default: "AGENT*TYPE*UNSET"
+	// Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
 	// Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
 	Type *string `pulumi:"type"`
 }
@@ -194,7 +194,7 @@ type GitOpsAgentState struct {
 	ProjectId pulumi.StringPtrInput
 	// Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
 	Tags pulumi.StringMapInput
-	// Default: "AGENT*TYPE*UNSET"
+	// Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
 	// Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
 	Type pulumi.StringPtrInput
 }
@@ -224,7 +224,7 @@ type gitOpsAgentArgs struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
 	Tags map[string]string `pulumi:"tags"`
-	// Default: "AGENT*TYPE*UNSET"
+	// Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
 	// Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
 	Type string `pulumi:"type"`
 }
@@ -251,7 +251,7 @@ type GitOpsAgentArgs struct {
 	ProjectId pulumi.StringPtrInput
 	// Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
 	Tags pulumi.StringMapInput
-	// Default: "AGENT*TYPE*UNSET"
+	// Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
 	// Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
 	Type pulumi.StringInput
 }
@@ -400,7 +400,7 @@ func (o GitOpsAgentOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GitOpsAgent) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Default: "AGENT*TYPE*UNSET"
+// Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
 // Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
 func (o GitOpsAgentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *GitOpsAgent) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)

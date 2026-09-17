@@ -79110,7 +79110,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Default: \"AGENT*TYPE*UNSET\"\nEnum: \"AGENT*TYPE*UNSET\" \"MANAGED*ARGO*PROVIDER\" \"HOSTED*ARGO*PROVIDER\"\n"
+                    "description": "Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.\nEnum: \"AGENT*TYPE*UNSET\" \"MANAGED*ARGO*PROVIDER\" \"HOSTED*ARGO*PROVIDER\"\n"
                 }
             },
             "required": [
@@ -79167,7 +79167,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Default: \"AGENT*TYPE*UNSET\"\nEnum: \"AGENT*TYPE*UNSET\" \"MANAGED*ARGO*PROVIDER\" \"HOSTED*ARGO*PROVIDER\"\n"
+                    "description": "Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.\nEnum: \"AGENT*TYPE*UNSET\" \"MANAGED*ARGO*PROVIDER\" \"HOSTED*ARGO*PROVIDER\"\n"
                 }
             },
             "requiredInputs": [
@@ -79230,7 +79230,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "Default: \"AGENT*TYPE*UNSET\"\nEnum: \"AGENT*TYPE*UNSET\" \"MANAGED*ARGO*PROVIDER\" \"HOSTED*ARGO*PROVIDER\"\n"
+                        "description": "Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.\nEnum: \"AGENT*TYPE*UNSET\" \"MANAGED*ARGO*PROVIDER\" \"HOSTED*ARGO*PROVIDER\"\n"
                     }
                 },
                 "type": "object"
@@ -105090,7 +105090,7 @@
                         "type": "object"
                     },
                     "type": {
-                        "description": "Default: \"AGENT*TYPE*UNSET\"\nEnum: \"AGENT*TYPE*UNSET\" \"MANAGED*ARGO*PROVIDER\" \"HOSTED*ARGO*PROVIDER\"\n",
+                        "description": "Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.\nEnum: \"AGENT*TYPE*UNSET\" \"MANAGED*ARGO*PROVIDER\" \"HOSTED*ARGO*PROVIDER\"\n",
                         "type": "string"
                     },
                     "withCredentials": {
