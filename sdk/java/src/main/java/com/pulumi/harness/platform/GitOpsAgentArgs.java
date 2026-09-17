@@ -163,7 +163,7 @@ public final class GitOpsAgentArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Default: &#34;AGENT*TYPE*UNSET&#34;
+     * Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
      * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;MANAGED*ARGO*PROVIDER&#34; &#34;HOSTED*ARGO*PROVIDER&#34;
      * 
      */
@@ -171,7 +171,7 @@ public final class GitOpsAgentArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> type;
 
     /**
-     * @return Default: &#34;AGENT*TYPE*UNSET&#34;
+     * @return Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
      * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;MANAGED*ARGO*PROVIDER&#34; &#34;HOSTED*ARGO*PROVIDER&#34;
      * 
      */
@@ -420,7 +420,7 @@ public final class GitOpsAgentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Default: &#34;AGENT*TYPE*UNSET&#34;
+         * @param type Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
          * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;MANAGED*ARGO*PROVIDER&#34; &#34;HOSTED*ARGO*PROVIDER&#34;
          * 
          * @return builder
@@ -432,7 +432,7 @@ public final class GitOpsAgentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Default: &#34;AGENT*TYPE*UNSET&#34;
+         * @param type Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
          * Enum: &#34;AGENT*TYPE*UNSET&#34; &#34;MANAGED*ARGO*PROVIDER&#34; &#34;HOSTED*ARGO*PROVIDER&#34;
          * 
          * @return builder

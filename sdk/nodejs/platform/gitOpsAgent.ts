@@ -126,7 +126,7 @@ export class GitOpsAgent extends pulumi.CustomResource {
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Default: "AGENT*TYPE*UNSET"
+     * Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
      * Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
      */
     declare public readonly type: pulumi.Output<string>;
@@ -233,7 +233,7 @@ export interface GitOpsAgentState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Default: "AGENT*TYPE*UNSET"
+     * Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
      * Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
      */
     type?: pulumi.Input<string | undefined>;
@@ -282,7 +282,7 @@ export interface GitOpsAgentArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Default: "AGENT*TYPE*UNSET"
+     * Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
      * Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
      */
     type: pulumi.Input<string>;

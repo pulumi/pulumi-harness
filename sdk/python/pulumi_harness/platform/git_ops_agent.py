@@ -35,7 +35,7 @@ class GitOpsAgentArgs:
         The set of arguments for constructing a GitOpsAgent resource.
 
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps agent.
-        :param pulumi.Input[_builtins.str] type: Default: "AGENT*TYPE*UNSET"
+        :param pulumi.Input[_builtins.str] type: Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
                Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps agent.
         :param pulumi.Input[_builtins.str] description: Description of the GitOps agent.
@@ -84,7 +84,7 @@ class GitOpsAgentArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        Default: "AGENT*TYPE*UNSET"
+        Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
         Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
         """
         return pulumi.get(self, "type")
@@ -220,7 +220,7 @@ class _GitOpsAgentState:
         :param pulumi.Input[_builtins.str] prefixed_identifier: Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps agent.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
-        :param pulumi.Input[_builtins.str] type: Default: "AGENT*TYPE*UNSET"
+        :param pulumi.Input[_builtins.str] type: Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
                Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
         """
         if account_id is not None:
@@ -388,7 +388,7 @@ class _GitOpsAgentState:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Default: "AGENT*TYPE*UNSET"
+        Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
         Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
         """
         return pulumi.get(self, "type")
@@ -471,7 +471,7 @@ class GitOpsAgent(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the GitOps agent.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps agent.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
-        :param pulumi.Input[_builtins.str] type: Default: "AGENT*TYPE*UNSET"
+        :param pulumi.Input[_builtins.str] type: Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
                Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
         """
         ...
@@ -615,7 +615,7 @@ class GitOpsAgent(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] prefixed_identifier: Prefixed identifier of the GitOps agent. Agent identifier prefixed with scope of the agent
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps agent.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Tags for the GitOps agents. These can be used to search or filter the GitOps agents.
-        :param pulumi.Input[_builtins.str] type: Default: "AGENT*TYPE*UNSET"
+        :param pulumi.Input[_builtins.str] type: Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
                Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -729,7 +729,7 @@ class GitOpsAgent(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Default: "AGENT*TYPE*UNSET"
+        Use `MANAGED_ARGO_PROVIDER` for agents in your cluster (recommended). `HOSTED_ARGO_PROVIDER` is for Harness-hosted agents and is not customer-provisioned.
         Enum: "AGENT*TYPE*UNSET" "MANAGED*ARGO*PROVIDER" "HOSTED*ARGO*PROVIDER"
         """
         return pulumi.get(self, "type")
