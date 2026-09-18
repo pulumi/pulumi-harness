@@ -68,13 +68,13 @@ export interface GetPolicySetArgs {
      */
     orgId?: string;
     /**
-     * List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
+     * List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
      *
-     * @deprecated Use 'policy_references' instead. This field will be removed in a future version.
+     * @deprecated The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version.
      */
     policies?: inputs.platform.GetPolicySetPolicy[];
     /**
-     * Set of policy identifiers / severity for the policyset. Order is not significant.
+     * Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
      */
     policyReferences?: inputs.platform.GetPolicySetPolicyReference[];
     /**
@@ -120,13 +120,13 @@ export interface GetPolicySetResult {
      */
     readonly orgId?: string;
     /**
-     * List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
+     * List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
      *
-     * @deprecated Use 'policy_references' instead. This field will be removed in a future version.
+     * @deprecated The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version.
      */
     readonly policies: outputs.platform.GetPolicySetPolicy[];
     /**
-     * Set of policy identifiers / severity for the policyset. Order is not significant.
+     * Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
      */
     readonly policyReferences: outputs.platform.GetPolicySetPolicyReference[];
     /**
@@ -204,13 +204,13 @@ export interface GetPolicySetOutputArgs {
      */
     orgId?: pulumi.Input<string | undefined>;
     /**
-     * List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
+     * List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
      *
-     * @deprecated Use 'policy_references' instead. This field will be removed in a future version.
+     * @deprecated The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version.
      */
     policies?: pulumi.Input<pulumi.Input<inputs.platform.GetPolicySetPolicyArgs>[] | undefined>;
     /**
-     * Set of policy identifiers / severity for the policyset. Order is not significant.
+     * Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
      */
     policyReferences?: pulumi.Input<pulumi.Input<inputs.platform.GetPolicySetPolicyReferenceArgs>[] | undefined>;
     /**

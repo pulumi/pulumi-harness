@@ -11004,7 +11004,7 @@ export namespace platform {
 
     export interface GetPolicySetPolicy {
         /**
-         * Unique identifier of the policy
+         * Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
          */
         identifier: string;
         /**
@@ -11015,7 +11015,7 @@ export namespace platform {
 
     export interface GetPolicySetPolicyReference {
         /**
-         * Unique identifier of the policy
+         * Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
          */
         identifier: string;
         /**
@@ -41396,7 +41396,7 @@ export namespace platform {
 
     export interface PolicySetPolicy {
         /**
-         * Account Identifier of the account
+         * Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
          */
         identifier: string;
         /**
@@ -41407,7 +41407,7 @@ export namespace platform {
 
     export interface PolicySetPolicyReference {
         /**
-         * Unique identifier of the policy
+         * Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
          */
         identifier: string;
         /**

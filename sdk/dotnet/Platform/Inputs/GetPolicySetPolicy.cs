@@ -13,7 +13,7 @@ namespace Pulumi.Harness.Platform.Inputs
     public sealed class GetPolicySetPolicyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Unique identifier of the policy
+        /// Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
         /// </summary>
         [Input("identifier", required: true)]
         public string Identifier { get; set; } = null!;

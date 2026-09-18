@@ -50379,7 +50379,7 @@
             "properties": {
                 "identifier": {
                     "type": "string",
-                    "description": "Account Identifier of the account\n"
+                    "description": "Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').\n"
                 },
                 "severity": {
                     "type": "string",
@@ -50396,7 +50396,7 @@
             "properties": {
                 "identifier": {
                     "type": "string",
-                    "description": "Unique identifier of the policy\n"
+                    "description": "Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').\n"
                 },
                 "severity": {
                     "type": "string",
@@ -58380,7 +58380,7 @@
             "properties": {
                 "identifier": {
                     "type": "string",
-                    "description": "Unique identifier of the policy\n"
+                    "description": "Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').\n"
                 },
                 "severity": {
                     "type": "string",
@@ -58397,7 +58397,7 @@
             "properties": {
                 "identifier": {
                     "type": "string",
-                    "description": "Unique identifier of the policy\n"
+                    "description": "Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').\n"
                 },
                 "severity": {
                     "type": "string",
@@ -87689,14 +87689,15 @@
                     "items": {
                         "$ref": "#/types/harness:platform/PolicySetPolicy:PolicySetPolicy"
                     },
-                    "description": "List of policy identifiers / severity for the policyset.\n"
+                    "description": "List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.\n",
+                    "deprecationMessage": "The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version."
                 },
                 "policyReferences": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/harness:platform/PolicySetPolicyReference:PolicySetPolicyReference"
                     },
-                    "description": "Set of policy identifiers / severity for the policyset. Order is not significant.\n"
+                    "description": "Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.\n"
                 },
                 "projectId": {
                     "type": "string",
@@ -87753,14 +87754,15 @@
                     "items": {
                         "$ref": "#/types/harness:platform/PolicySetPolicy:PolicySetPolicy"
                     },
-                    "description": "List of policy identifiers / severity for the policyset.\n"
+                    "description": "List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.\n",
+                    "deprecationMessage": "The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version."
                 },
                 "policyReferences": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/harness:platform/PolicySetPolicyReference:PolicySetPolicyReference"
                     },
-                    "description": "Set of policy identifiers / severity for the policyset. Order is not significant.\n"
+                    "description": "Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.\n"
                 },
                 "projectId": {
                     "type": "string",
@@ -87816,14 +87818,15 @@
                         "items": {
                             "$ref": "#/types/harness:platform/PolicySetPolicy:PolicySetPolicy"
                         },
-                        "description": "List of policy identifiers / severity for the policyset.\n"
+                        "description": "List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.\n",
+                        "deprecationMessage": "The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version."
                     },
                     "policyReferences": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/harness:platform/PolicySetPolicyReference:PolicySetPolicyReference"
                         },
-                        "description": "Set of policy identifiers / severity for the policyset. Order is not significant.\n"
+                        "description": "Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.\n"
                     },
                     "projectId": {
                         "type": "string",
@@ -109981,15 +109984,15 @@
                         "items": {
                             "$ref": "#/types/harness:platform/getPolicySetPolicy:getPolicySetPolicy"
                         },
-                        "description": "List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.\n",
-                        "deprecationMessage": "Use 'policy_references' instead. This field will be removed in a future version."
+                        "description": "List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.\n",
+                        "deprecationMessage": "The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version."
                     },
                     "policyReferences": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/harness:platform/getPolicySetPolicyReference:getPolicySetPolicyReference"
                         },
-                        "description": "Set of policy identifiers / severity for the policyset. Order is not significant.\n"
+                        "description": "Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.\n"
                     },
                     "projectId": {
                         "type": "string",
@@ -110039,15 +110042,15 @@
                         "type": "string"
                     },
                     "policies": {
-                        "deprecationMessage": "Use 'policy_references' instead. This field will be removed in a future version.",
-                        "description": "List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.\n",
+                        "deprecationMessage": "The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version.",
+                        "description": "List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.\n",
                         "items": {
                             "$ref": "#/types/harness:platform/getPolicySetPolicy:getPolicySetPolicy"
                         },
                         "type": "array"
                     },
                     "policyReferences": {
-                        "description": "Set of policy identifiers / severity for the policyset. Order is not significant.\n",
+                        "description": "Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.\n",
                         "items": {
                             "$ref": "#/types/harness:platform/getPolicySetPolicyReference:getPolicySetPolicyReference"
                         },

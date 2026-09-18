@@ -157,9 +157,9 @@ namespace Pulumi.Harness.Platform
         private List<Inputs.GetPolicySetPolicyArgs>? _policies;
 
         /// <summary>
-        /// List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
+        /// List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
         /// </summary>
-        [Obsolete(@"Use 'policy_references' instead. This field will be removed in a future version.")]
+        [Obsolete(@"The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version.")]
         public List<Inputs.GetPolicySetPolicyArgs> Policies
         {
             get => _policies ?? (_policies = new List<Inputs.GetPolicySetPolicyArgs>());
@@ -170,7 +170,7 @@ namespace Pulumi.Harness.Platform
         private List<Inputs.GetPolicySetPolicyReferenceArgs>? _policyReferences;
 
         /// <summary>
-        /// Set of policy identifiers / severity for the policyset. Order is not significant.
+        /// Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
         /// </summary>
         public List<Inputs.GetPolicySetPolicyReferenceArgs> PolicyReferences
         {
@@ -232,9 +232,9 @@ namespace Pulumi.Harness.Platform
         private InputList<Inputs.GetPolicySetPolicyInputArgs>? _policies;
 
         /// <summary>
-        /// List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
+        /// List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
         /// </summary>
-        [Obsolete(@"Use 'policy_references' instead. This field will be removed in a future version.")]
+        [Obsolete(@"The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version.")]
         public InputList<Inputs.GetPolicySetPolicyInputArgs> Policies
         {
             get => _policies ?? (_policies = new InputList<Inputs.GetPolicySetPolicyInputArgs>());
@@ -245,7 +245,7 @@ namespace Pulumi.Harness.Platform
         private InputList<Inputs.GetPolicySetPolicyReferenceInputArgs>? _policyReferences;
 
         /// <summary>
-        /// Set of policy identifiers / severity for the policyset. Order is not significant.
+        /// Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
         /// </summary>
         public InputList<Inputs.GetPolicySetPolicyReferenceInputArgs> PolicyReferences
         {
@@ -304,11 +304,11 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string? OrgId;
         /// <summary>
-        /// List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
+        /// List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPolicySetPolicyResult> Policies;
         /// <summary>
-        /// Set of policy identifiers / severity for the policyset. Order is not significant.
+        /// Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPolicySetPolicyReferenceResult> PolicyReferences;
         /// <summary>

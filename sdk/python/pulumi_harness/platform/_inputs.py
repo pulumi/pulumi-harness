@@ -147414,7 +147414,7 @@ class PipelinePipelineImportRequestArgs:
 class PolicySetPolicyArgsDict(TypedDict):
     identifier: pulumi.Input[_builtins.str]
     """
-    Account Identifier of the account
+    Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
     """
     severity: pulumi.Input[_builtins.str]
     """
@@ -147427,7 +147427,7 @@ class PolicySetPolicyArgs:
                  identifier: pulumi.Input[_builtins.str],
                  severity: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] identifier: Account Identifier of the account
+        :param pulumi.Input[_builtins.str] identifier: Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
         :param pulumi.Input[_builtins.str] severity: Policy failure response - 'warning' for continuation, 'error' for exit
         """
         pulumi.set(__self__, "identifier", identifier)
@@ -147437,7 +147437,7 @@ class PolicySetPolicyArgs:
     @pulumi.getter
     def identifier(self) -> pulumi.Input[_builtins.str]:
         """
-        Account Identifier of the account
+        Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
         """
         return pulumi.get(self, "identifier")
 
@@ -147461,7 +147461,7 @@ class PolicySetPolicyArgs:
 class PolicySetPolicyReferenceArgsDict(TypedDict):
     identifier: pulumi.Input[_builtins.str]
     """
-    Unique identifier of the policy
+    Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
     """
     severity: pulumi.Input[_builtins.str]
     """
@@ -147474,7 +147474,7 @@ class PolicySetPolicyReferenceArgs:
                  identifier: pulumi.Input[_builtins.str],
                  severity: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] identifier: Unique identifier of the policy
+        :param pulumi.Input[_builtins.str] identifier: Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
         :param pulumi.Input[_builtins.str] severity: Policy failure response - 'warning' for continuation, 'error' for exit
         """
         pulumi.set(__self__, "identifier", identifier)
@@ -147484,7 +147484,7 @@ class PolicySetPolicyReferenceArgs:
     @pulumi.getter
     def identifier(self) -> pulumi.Input[_builtins.str]:
         """
-        Unique identifier of the policy
+        Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
         """
         return pulumi.get(self, "identifier")
 
@@ -155262,7 +155262,7 @@ class GetPipelineGitDetailsArgs:
 class GetPolicySetPolicyArgsDict(TypedDict):
     identifier: _builtins.str
     """
-    Unique identifier of the policy
+    Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
     """
     severity: _builtins.str
     """
@@ -155275,7 +155275,7 @@ class GetPolicySetPolicyArgs:
                  identifier: _builtins.str,
                  severity: _builtins.str):
         """
-        :param _builtins.str identifier: Unique identifier of the policy
+        :param _builtins.str identifier: Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
         :param _builtins.str severity: Policy failure response - 'warning' for continuation, 'error' for exit
         """
         pulumi.set(__self__, "identifier", identifier)
@@ -155285,7 +155285,7 @@ class GetPolicySetPolicyArgs:
     @pulumi.getter
     def identifier(self) -> _builtins.str:
         """
-        Unique identifier of the policy
+        Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
         """
         return pulumi.get(self, "identifier")
 
@@ -155309,7 +155309,7 @@ class GetPolicySetPolicyArgs:
 class GetPolicySetPolicyReferenceArgsDict(TypedDict):
     identifier: _builtins.str
     """
-    Unique identifier of the policy
+    Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
     """
     severity: _builtins.str
     """
@@ -155322,7 +155322,7 @@ class GetPolicySetPolicyReferenceArgs:
                  identifier: _builtins.str,
                  severity: _builtins.str):
         """
-        :param _builtins.str identifier: Unique identifier of the policy
+        :param _builtins.str identifier: Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
         :param _builtins.str severity: Policy failure response - 'warning' for continuation, 'error' for exit
         """
         pulumi.set(__self__, "identifier", identifier)
@@ -155332,7 +155332,7 @@ class GetPolicySetPolicyReferenceArgs:
     @pulumi.getter
     def identifier(self) -> _builtins.str:
         """
-        Unique identifier of the policy
+        Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
         """
         return pulumi.get(self, "identifier")
 

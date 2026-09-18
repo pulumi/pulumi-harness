@@ -96,37 +96,37 @@ public final class GetPolicySetArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * List of policy identifiers / severity for the policyset. Deprecated: Use &#39;policy_references&#39; instead.
+     * List of policy identifiers / severity for the policyset. Deprecated: use &#39;policy_references&#39; instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
      * 
      * @deprecated
-     * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+     * The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
      * 
      */
-    @Deprecated /* Use 'policy_references' instead. This field will be removed in a future version. */
+    @Deprecated /* The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version. */
     @Import(name="policies")
     private @Nullable Output<List<GetPolicySetPolicyArgs>> policies;
 
     /**
-     * @return List of policy identifiers / severity for the policyset. Deprecated: Use &#39;policy_references&#39; instead.
+     * @return List of policy identifiers / severity for the policyset. Deprecated: use &#39;policy_references&#39; instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
      * 
      * @deprecated
-     * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+     * The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
      * 
      */
-    @Deprecated /* Use 'policy_references' instead. This field will be removed in a future version. */
+    @Deprecated /* The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version. */
     public Optional<Output<List<GetPolicySetPolicyArgs>>> policies() {
         return Optional.ofNullable(this.policies);
     }
 
     /**
-     * Set of policy identifiers / severity for the policyset. Order is not significant.
+     * Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated &#39;policies&#39; field.
      * 
      */
     @Import(name="policyReferences")
     private @Nullable Output<List<GetPolicySetPolicyReferenceArgs>> policyReferences;
 
     /**
-     * @return Set of policy identifiers / severity for the policyset. Order is not significant.
+     * @return Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated &#39;policies&#39; field.
      * 
      */
     public Optional<Output<List<GetPolicySetPolicyReferenceArgs>>> policyReferences() {
@@ -301,50 +301,50 @@ public final class GetPolicySetArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param policies List of policy identifiers / severity for the policyset. Deprecated: Use &#39;policy_references&#39; instead.
+         * @param policies List of policy identifiers / severity for the policyset. Deprecated: use &#39;policy_references&#39; instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
          * 
          * @return builder
          * 
          * @deprecated
-         * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+         * The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
          * 
          */
-        @Deprecated /* Use 'policy_references' instead. This field will be removed in a future version. */
+        @Deprecated /* The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version. */
         public Builder policies(@Nullable Output<List<GetPolicySetPolicyArgs>> policies) {
             $.policies = policies;
             return this;
         }
 
         /**
-         * @param policies List of policy identifiers / severity for the policyset. Deprecated: Use &#39;policy_references&#39; instead.
+         * @param policies List of policy identifiers / severity for the policyset. Deprecated: use &#39;policy_references&#39; instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
          * 
          * @return builder
          * 
          * @deprecated
-         * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+         * The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
          * 
          */
-        @Deprecated /* Use 'policy_references' instead. This field will be removed in a future version. */
+        @Deprecated /* The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version. */
         public Builder policies(List<GetPolicySetPolicyArgs> policies) {
             return policies(Output.of(policies));
         }
 
         /**
-         * @param policies List of policy identifiers / severity for the policyset. Deprecated: Use &#39;policy_references&#39; instead.
+         * @param policies List of policy identifiers / severity for the policyset. Deprecated: use &#39;policy_references&#39; instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
          * 
          * @return builder
          * 
          * @deprecated
-         * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+         * The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
          * 
          */
-        @Deprecated /* Use 'policy_references' instead. This field will be removed in a future version. */
+        @Deprecated /* The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version. */
         public Builder policies(GetPolicySetPolicyArgs... policies) {
             return policies(List.of(policies));
         }
 
         /**
-         * @param policyReferences Set of policy identifiers / severity for the policyset. Order is not significant.
+         * @param policyReferences Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated &#39;policies&#39; field.
          * 
          * @return builder
          * 
@@ -355,7 +355,7 @@ public final class GetPolicySetArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param policyReferences Set of policy identifiers / severity for the policyset. Order is not significant.
+         * @param policyReferences Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated &#39;policies&#39; field.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class GetPolicySetArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param policyReferences Set of policy identifiers / severity for the policyset. Order is not significant.
+         * @param policyReferences Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated &#39;policies&#39; field.
          * 
          * @return builder
          * 

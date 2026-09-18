@@ -52,16 +52,16 @@ public final class GetPolicySetResult {
      */
     private @Nullable String orgId;
     /**
-     * @return List of policy identifiers / severity for the policyset. Deprecated: Use &#39;policy_references&#39; instead.
+     * @return List of policy identifiers / severity for the policyset. Deprecated: use &#39;policy_references&#39; instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
      * 
      * @deprecated
-     * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+     * The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
      * 
      */
-    @Deprecated /* Use 'policy_references' instead. This field will be removed in a future version. */
+    @Deprecated /* The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version. */
     private List<GetPolicySetPolicy> policies;
     /**
-     * @return Set of policy identifiers / severity for the policyset. Order is not significant.
+     * @return Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated &#39;policies&#39; field.
      * 
      */
     private List<GetPolicySetPolicyReference> policyReferences;
@@ -132,18 +132,18 @@ public final class GetPolicySetResult {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return List of policy identifiers / severity for the policyset. Deprecated: Use &#39;policy_references&#39; instead.
+     * @return List of policy identifiers / severity for the policyset. Deprecated: use &#39;policy_references&#39; instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
      * 
      * @deprecated
-     * Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+     * The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
      * 
      */
-    @Deprecated /* Use 'policy_references' instead. This field will be removed in a future version. */
+    @Deprecated /* The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version. */
     public List<GetPolicySetPolicy> policies() {
         return this.policies;
     }
     /**
-     * @return Set of policy identifiers / severity for the policyset. Order is not significant.
+     * @return Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated &#39;policies&#39; field.
      * 
      */
     public List<GetPolicySetPolicyReference> policyReferences() {
