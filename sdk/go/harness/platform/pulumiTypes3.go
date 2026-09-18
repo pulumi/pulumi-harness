@@ -19858,7 +19858,7 @@ func (o PipelinePipelineImportRequestPtrOutput) PipelineName() pulumi.StringPtrO
 }
 
 type PolicySetPolicy struct {
-	// Account Identifier of the account
+	// Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
 	Identifier string `pulumi:"identifier"`
 	// Policy failure response - 'warning' for continuation, 'error' for exit
 	Severity string `pulumi:"severity"`
@@ -19876,7 +19876,7 @@ type PolicySetPolicyInput interface {
 }
 
 type PolicySetPolicyArgs struct {
-	// Account Identifier of the account
+	// Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Policy failure response - 'warning' for continuation, 'error' for exit
 	Severity pulumi.StringInput `pulumi:"severity"`
@@ -19933,7 +19933,7 @@ func (o PolicySetPolicyOutput) ToPolicySetPolicyOutputWithContext(ctx context.Co
 	return o
 }
 
-// Account Identifier of the account
+// Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
 func (o PolicySetPolicyOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicySetPolicy) string { return v.Identifier }).(pulumi.StringOutput)
 }
@@ -19964,7 +19964,7 @@ func (o PolicySetPolicyArrayOutput) Index(i pulumi.IntInput) PolicySetPolicyOutp
 }
 
 type PolicySetPolicyReference struct {
-	// Unique identifier of the policy
+	// Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
 	Identifier string `pulumi:"identifier"`
 	// Policy failure response - 'warning' for continuation, 'error' for exit
 	Severity string `pulumi:"severity"`
@@ -19982,7 +19982,7 @@ type PolicySetPolicyReferenceInput interface {
 }
 
 type PolicySetPolicyReferenceArgs struct {
-	// Unique identifier of the policy
+	// Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Policy failure response - 'warning' for continuation, 'error' for exit
 	Severity pulumi.StringInput `pulumi:"severity"`
@@ -20039,7 +20039,7 @@ func (o PolicySetPolicyReferenceOutput) ToPolicySetPolicyReferenceOutputWithCont
 	return o
 }
 
-// Unique identifier of the policy
+// Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
 func (o PolicySetPolicyReferenceOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicySetPolicyReference) string { return v.Identifier }).(pulumi.StringOutput)
 }
@@ -55937,7 +55937,7 @@ func (o GetPipelineListPipelineArrayOutput) Index(i pulumi.IntInput) GetPipeline
 }
 
 type GetPolicySetPolicy struct {
-	// Unique identifier of the policy
+	// Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
 	Identifier string `pulumi:"identifier"`
 	// Policy failure response - 'warning' for continuation, 'error' for exit
 	Severity string `pulumi:"severity"`
@@ -55955,7 +55955,7 @@ type GetPolicySetPolicyInput interface {
 }
 
 type GetPolicySetPolicyArgs struct {
-	// Unique identifier of the policy
+	// Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Policy failure response - 'warning' for continuation, 'error' for exit
 	Severity pulumi.StringInput `pulumi:"severity"`
@@ -56012,7 +56012,7 @@ func (o GetPolicySetPolicyOutput) ToGetPolicySetPolicyOutputWithContext(ctx cont
 	return o
 }
 
-// Unique identifier of the policy
+// Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
 func (o GetPolicySetPolicyOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicySetPolicy) string { return v.Identifier }).(pulumi.StringOutput)
 }
@@ -56043,7 +56043,7 @@ func (o GetPolicySetPolicyArrayOutput) Index(i pulumi.IntInput) GetPolicySetPoli
 }
 
 type GetPolicySetPolicyReference struct {
-	// Unique identifier of the policy
+	// Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
 	Identifier string `pulumi:"identifier"`
 	// Policy failure response - 'warning' for continuation, 'error' for exit
 	Severity string `pulumi:"severity"`
@@ -56061,7 +56061,7 @@ type GetPolicySetPolicyReferenceInput interface {
 }
 
 type GetPolicySetPolicyReferenceArgs struct {
-	// Unique identifier of the policy
+	// Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
 	Identifier pulumi.StringInput `pulumi:"identifier"`
 	// Policy failure response - 'warning' for continuation, 'error' for exit
 	Severity pulumi.StringInput `pulumi:"severity"`
@@ -56118,7 +56118,7 @@ func (o GetPolicySetPolicyReferenceOutput) ToGetPolicySetPolicyReferenceOutputWi
 	return o
 }
 
-// Unique identifier of the policy
+// Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
 func (o GetPolicySetPolicyReferenceOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicySetPolicyReference) string { return v.Identifier }).(pulumi.StringOutput)
 }

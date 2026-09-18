@@ -124,10 +124,10 @@ class GetPolicySetResult:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""Use 'policy_references' instead. This field will be removed in a future version.""")
+    @_utilities.deprecated("""The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version.""")
     def policies(self) -> Sequence['outputs.GetPolicySetPolicyResult']:
         """
-        List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
+        List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
         """
         return pulumi.get(self, "policies")
 
@@ -135,7 +135,7 @@ class GetPolicySetResult:
     @pulumi.getter(name="policyReferences")
     def policy_references(self) -> Sequence['outputs.GetPolicySetPolicyReferenceResult']:
         """
-        Set of policy identifiers / severity for the policyset. Order is not significant.
+        Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
         """
         return pulumi.get(self, "policy_references")
 
@@ -220,8 +220,8 @@ def get_policy_set(action: Optional[_builtins.str] = None,
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
-    :param Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict']] policies: List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
-    :param Sequence[Union['GetPolicySetPolicyReferenceArgs', 'GetPolicySetPolicyReferenceArgsDict']] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant.
+    :param Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict']] policies: List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
+    :param Sequence[Union['GetPolicySetPolicyReferenceArgs', 'GetPolicySetPolicyReferenceArgsDict']] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
     :param _builtins.str project_id: Unique identifier of the project.
     :param _builtins.str type: Type of the policyset.
     """
@@ -287,8 +287,8 @@ def get_policy_set_output(action: pulumi.Input[Optional[_builtins.str]] = None,
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
-    :param Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict']] policies: List of policy identifiers / severity for the policyset. Deprecated: Use 'policy_references' instead.
-    :param Sequence[Union['GetPolicySetPolicyReferenceArgs', 'GetPolicySetPolicyReferenceArgsDict']] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant.
+    :param Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict']] policies: List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
+    :param Sequence[Union['GetPolicySetPolicyReferenceArgs', 'GetPolicySetPolicyReferenceArgsDict']] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
     :param _builtins.str project_id: Unique identifier of the project.
     :param _builtins.str type: Type of the policyset.
     """

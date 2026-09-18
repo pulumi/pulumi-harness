@@ -42,8 +42,8 @@ class PolicySetArgs:
         :param pulumi.Input[_builtins.bool] enabled: Enabled for the policyset.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[Sequence[pulumi.Input['PolicySetPolicyArgs']]] policies: List of policy identifiers / severity for the policyset.
-        :param pulumi.Input[Sequence[pulumi.Input['PolicySetPolicyReferenceArgs']]] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicySetPolicyArgs']]] policies: List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicySetPolicyReferenceArgs']]] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         """
@@ -58,6 +58,9 @@ class PolicySetArgs:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
+        if policies is not None:
+            warnings.warn("""The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version.""", DeprecationWarning)
+            pulumi.log.warn("""policies is deprecated: The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version.""")
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
         if policy_references is not None:
@@ -153,9 +156,10 @@ class PolicySetArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version.""")
     def policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PolicySetPolicyArgs']]]]:
         """
-        List of policy identifiers / severity for the policyset.
+        List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
         """
         return pulumi.get(self, "policies")
 
@@ -167,7 +171,7 @@ class PolicySetArgs:
     @pulumi.getter(name="policyReferences")
     def policy_references(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PolicySetPolicyReferenceArgs']]]]:
         """
-        Set of policy identifiers / severity for the policyset. Order is not significant.
+        Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
         """
         return pulumi.get(self, "policy_references")
 
@@ -223,8 +227,8 @@ class _PolicySetState:
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[Sequence[pulumi.Input['PolicySetPolicyArgs']]] policies: List of policy identifiers / severity for the policyset.
-        :param pulumi.Input[Sequence[pulumi.Input['PolicySetPolicyReferenceArgs']]] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicySetPolicyArgs']]] policies: List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
+        :param pulumi.Input[Sequence[pulumi.Input['PolicySetPolicyReferenceArgs']]] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] type: Type for the policyset.
@@ -241,6 +245,9 @@ class _PolicySetState:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
+        if policies is not None:
+            warnings.warn("""The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version.""", DeprecationWarning)
+            pulumi.log.warn("""policies is deprecated: The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version.""")
         if policies is not None:
             pulumi.set(__self__, "policies", policies)
         if policy_references is not None:
@@ -326,9 +333,10 @@ class _PolicySetState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version.""")
     def policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PolicySetPolicyArgs']]]]:
         """
-        List of policy identifiers / severity for the policyset.
+        List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
         """
         return pulumi.get(self, "policies")
 
@@ -340,7 +348,7 @@ class _PolicySetState:
     @pulumi.getter(name="policyReferences")
     def policy_references(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PolicySetPolicyReferenceArgs']]]]:
         """
-        Set of policy identifiers / severity for the policyset. Order is not significant.
+        Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
         """
         return pulumi.get(self, "policy_references")
 
@@ -425,8 +433,8 @@ class PolicySet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyArgs', 'PolicySetPolicyArgsDict']]]] policies: List of policy identifiers / severity for the policyset.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyReferenceArgs', 'PolicySetPolicyReferenceArgsDict']]]] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyArgs', 'PolicySetPolicyArgsDict']]]] policies: List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyReferenceArgs', 'PolicySetPolicyReferenceArgsDict']]]] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] type: Type for the policyset.
@@ -537,8 +545,8 @@ class PolicySet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyArgs', 'PolicySetPolicyArgsDict']]]] policies: List of policy identifiers / severity for the policyset.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyReferenceArgs', 'PolicySetPolicyReferenceArgsDict']]]] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyArgs', 'PolicySetPolicyArgsDict']]]] policies: List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PolicySetPolicyReferenceArgs', 'PolicySetPolicyReferenceArgsDict']]]] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] type: Type for the policyset.
@@ -610,9 +618,10 @@ class PolicySet(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version.""")
     def policies(self) -> pulumi.Output[Sequence['outputs.PolicySetPolicy']]:
         """
-        List of policy identifiers / severity for the policyset.
+        List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
         """
         return pulumi.get(self, "policies")
 
@@ -620,7 +629,7 @@ class PolicySet(pulumi.CustomResource):
     @pulumi.getter(name="policyReferences")
     def policy_references(self) -> pulumi.Output[Sequence['outputs.PolicySetPolicyReference']]:
         """
-        Set of policy identifiers / severity for the policyset. Order is not significant.
+        Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
         """
         return pulumi.get(self, "policy_references")
 

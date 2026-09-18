@@ -38,9 +38,11 @@ type PolicySet struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrOutput `pulumi:"orgId"`
-	// List of policy identifiers / severity for the policyset.
+	// List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
+	//
+	// Deprecated: The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version.
 	Policies PolicySetPolicyArrayOutput `pulumi:"policies"`
-	// Set of policy identifiers / severity for the policyset. Order is not significant.
+	// Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
 	PolicyReferences PolicySetPolicyReferenceArrayOutput `pulumi:"policyReferences"`
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
@@ -101,9 +103,11 @@ type policySetState struct {
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// List of policy identifiers / severity for the policyset.
+	// List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
+	//
+	// Deprecated: The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version.
 	Policies []PolicySetPolicy `pulumi:"policies"`
-	// Set of policy identifiers / severity for the policyset. Order is not significant.
+	// Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
 	PolicyReferences []PolicySetPolicyReference `pulumi:"policyReferences"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
@@ -126,9 +130,11 @@ type PolicySetState struct {
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// List of policy identifiers / severity for the policyset.
+	// List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
+	//
+	// Deprecated: The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version.
 	Policies PolicySetPolicyArrayInput
-	// Set of policy identifiers / severity for the policyset. Order is not significant.
+	// Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
 	PolicyReferences PolicySetPolicyReferenceArrayInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
@@ -155,9 +161,11 @@ type policySetArgs struct {
 	Name *string `pulumi:"name"`
 	// Unique identifier of the organization.
 	OrgId *string `pulumi:"orgId"`
-	// List of policy identifiers / severity for the policyset.
+	// List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
+	//
+	// Deprecated: The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version.
 	Policies []PolicySetPolicy `pulumi:"policies"`
-	// Set of policy identifiers / severity for the policyset. Order is not significant.
+	// Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
 	PolicyReferences []PolicySetPolicyReference `pulumi:"policyReferences"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
@@ -181,9 +189,11 @@ type PolicySetArgs struct {
 	Name pulumi.StringPtrInput
 	// Unique identifier of the organization.
 	OrgId pulumi.StringPtrInput
-	// List of policy identifiers / severity for the policyset.
+	// List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
+	//
+	// Deprecated: The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version.
 	Policies PolicySetPolicyArrayInput
-	// Set of policy identifiers / severity for the policyset. Order is not significant.
+	// Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
 	PolicyReferences PolicySetPolicyReferenceArrayInput
 	// Unique identifier of the project.
 	ProjectId pulumi.StringPtrInput
@@ -310,12 +320,14 @@ func (o PolicySetOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicySet) pulumi.StringPtrOutput { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// List of policy identifiers / severity for the policyset.
+// List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
+//
+// Deprecated: The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version.
 func (o PolicySetOutput) Policies() PolicySetPolicyArrayOutput {
 	return o.ApplyT(func(v *PolicySet) PolicySetPolicyArrayOutput { return v.Policies }).(PolicySetPolicyArrayOutput)
 }
 
-// Set of policy identifiers / severity for the policyset. Order is not significant.
+// Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
 func (o PolicySetOutput) PolicyReferences() PolicySetPolicyReferenceArrayOutput {
 	return o.ApplyT(func(v *PolicySet) PolicySetPolicyReferenceArrayOutput { return v.PolicyReferences }).(PolicySetPolicyReferenceArrayOutput)
 }

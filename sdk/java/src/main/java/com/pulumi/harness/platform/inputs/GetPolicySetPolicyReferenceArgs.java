@@ -15,14 +15,14 @@ public final class GetPolicySetPolicyReferenceArgs extends com.pulumi.resources.
     public static final GetPolicySetPolicyReferenceArgs Empty = new GetPolicySetPolicyReferenceArgs();
 
     /**
-     * Unique identifier of the policy
+     * Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. &#39;account.my*policy&#39; or &#39;org.my*policy&#39;).
      * 
      */
     @Import(name="identifier", required=true)
     private Output<String> identifier;
 
     /**
-     * @return Unique identifier of the policy
+     * @return Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. &#39;account.my*policy&#39; or &#39;org.my*policy&#39;).
      * 
      */
     public Output<String> identifier() {
@@ -70,7 +70,7 @@ public final class GetPolicySetPolicyReferenceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param identifier Unique identifier of the policy
+         * @param identifier Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. &#39;account.my*policy&#39; or &#39;org.my*policy&#39;).
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class GetPolicySetPolicyReferenceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param identifier Unique identifier of the policy
+         * @param identifier Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. &#39;account.my*policy&#39; or &#39;org.my*policy&#39;).
          * 
          * @return builder
          * 

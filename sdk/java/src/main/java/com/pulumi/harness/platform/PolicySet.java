@@ -119,28 +119,32 @@ public class PolicySet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.orgId);
     }
     /**
-     * List of policy identifiers / severity for the policyset.
+     * List of policy identifiers / severity for the policyset. Deprecated: use &#39;policy_references&#39; instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
+     * 
+     * @deprecated
+     * The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
      * 
      */
+    @Deprecated /* The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version. */
     @Export(name="policies", refs={List.class,PolicySetPolicy.class}, tree="[0,1]")
     private Output<List<PolicySetPolicy>> policies;
 
     /**
-     * @return List of policy identifiers / severity for the policyset.
+     * @return List of policy identifiers / severity for the policyset. Deprecated: use &#39;policy_references&#39; instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
      * 
      */
     public Output<List<PolicySetPolicy>> policies() {
         return this.policies;
     }
     /**
-     * Set of policy identifiers / severity for the policyset. Order is not significant.
+     * Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated &#39;policies&#39; field.
      * 
      */
     @Export(name="policyReferences", refs={List.class,PolicySetPolicyReference.class}, tree="[0,1]")
     private Output<List<PolicySetPolicyReference>> policyReferences;
 
     /**
-     * @return Set of policy identifiers / severity for the policyset. Order is not significant.
+     * @return Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated &#39;policies&#39; field.
      * 
      */
     public Output<List<PolicySetPolicyReference>> policyReferences() {

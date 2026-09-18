@@ -14,7 +14,7 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class GetPolicySetPolicyResult
     {
         /// <summary>
-        /// Unique identifier of the policy
+        /// Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
         /// </summary>
         public readonly string Identifier;
         /// <summary>

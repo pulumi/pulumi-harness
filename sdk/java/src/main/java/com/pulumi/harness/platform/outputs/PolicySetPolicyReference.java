@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class PolicySetPolicyReference {
     /**
-     * @return Unique identifier of the policy
+     * @return Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. &#39;account.my*policy&#39; or &#39;org.my*policy&#39;).
      * 
      */
     private String identifier;
@@ -23,7 +23,7 @@ public final class PolicySetPolicyReference {
 
     private PolicySetPolicyReference() {}
     /**
-     * @return Unique identifier of the policy
+     * @return Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. &#39;account.my*policy&#39; or &#39;org.my*policy&#39;).
      * 
      */
     public String identifier() {

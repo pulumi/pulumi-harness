@@ -109107,7 +109107,7 @@ class PolicySetPolicy(dict):
                  identifier: _builtins.str,
                  severity: _builtins.str):
         """
-        :param _builtins.str identifier: Account Identifier of the account
+        :param _builtins.str identifier: Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
         :param _builtins.str severity: Policy failure response - 'warning' for continuation, 'error' for exit
         """
         pulumi.set(__self__, "identifier", identifier)
@@ -109117,7 +109117,7 @@ class PolicySetPolicy(dict):
     @pulumi.getter
     def identifier(self) -> _builtins.str:
         """
-        Account Identifier of the account
+        Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
         """
         return pulumi.get(self, "identifier")
 
@@ -109136,7 +109136,7 @@ class PolicySetPolicyReference(dict):
                  identifier: _builtins.str,
                  severity: _builtins.str):
         """
-        :param _builtins.str identifier: Unique identifier of the policy
+        :param _builtins.str identifier: Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
         :param _builtins.str severity: Policy failure response - 'warning' for continuation, 'error' for exit
         """
         pulumi.set(__self__, "identifier", identifier)
@@ -109146,7 +109146,7 @@ class PolicySetPolicyReference(dict):
     @pulumi.getter
     def identifier(self) -> _builtins.str:
         """
-        Unique identifier of the policy
+        Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
         """
         return pulumi.get(self, "identifier")
 
@@ -123480,7 +123480,7 @@ class GetPolicySetPolicyResult(dict):
                  identifier: _builtins.str,
                  severity: _builtins.str):
         """
-        :param _builtins.str identifier: Unique identifier of the policy
+        :param _builtins.str identifier: Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
         :param _builtins.str severity: Policy failure response - 'warning' for continuation, 'error' for exit
         """
         pulumi.set(__self__, "identifier", identifier)
@@ -123490,7 +123490,7 @@ class GetPolicySetPolicyResult(dict):
     @pulumi.getter
     def identifier(self) -> _builtins.str:
         """
-        Unique identifier of the policy
+        Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
         """
         return pulumi.get(self, "identifier")
 
@@ -123509,7 +123509,7 @@ class GetPolicySetPolicyReferenceResult(dict):
                  identifier: _builtins.str,
                  severity: _builtins.str):
         """
-        :param _builtins.str identifier: Unique identifier of the policy
+        :param _builtins.str identifier: Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
         :param _builtins.str severity: Policy failure response - 'warning' for continuation, 'error' for exit
         """
         pulumi.set(__self__, "identifier", identifier)
@@ -123519,7 +123519,7 @@ class GetPolicySetPolicyReferenceResult(dict):
     @pulumi.getter
     def identifier(self) -> _builtins.str:
         """
-        Unique identifier of the policy
+        Identifier of the policy. Policies at a broader scope than the policyset are returned with a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
         """
         return pulumi.get(self, "identifier")
 

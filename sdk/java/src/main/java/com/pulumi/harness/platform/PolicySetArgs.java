@@ -111,29 +111,37 @@ public final class PolicySetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of policy identifiers / severity for the policyset.
+     * List of policy identifiers / severity for the policyset. Deprecated: use &#39;policy_references&#39; instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
+     * 
+     * @deprecated
+     * The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
      * 
      */
+    @Deprecated /* The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version. */
     @Import(name="policies")
     private @Nullable Output<List<PolicySetPolicyArgs>> policies;
 
     /**
-     * @return List of policy identifiers / severity for the policyset.
+     * @return List of policy identifiers / severity for the policyset. Deprecated: use &#39;policy_references&#39; instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
+     * 
+     * @deprecated
+     * The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
      * 
      */
+    @Deprecated /* The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version. */
     public Optional<Output<List<PolicySetPolicyArgs>>> policies() {
         return Optional.ofNullable(this.policies);
     }
 
     /**
-     * Set of policy identifiers / severity for the policyset. Order is not significant.
+     * Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated &#39;policies&#39; field.
      * 
      */
     @Import(name="policyReferences")
     private @Nullable Output<List<PolicySetPolicyReferenceArgs>> policyReferences;
 
     /**
-     * @return Set of policy identifiers / severity for the policyset. Order is not significant.
+     * @return Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated &#39;policies&#39; field.
      * 
      */
     public Optional<Output<List<PolicySetPolicyReferenceArgs>>> policyReferences() {
@@ -346,38 +354,50 @@ public final class PolicySetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policies List of policy identifiers / severity for the policyset.
+         * @param policies List of policy identifiers / severity for the policyset. Deprecated: use &#39;policy_references&#39; instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
          * 
          * @return builder
          * 
+         * @deprecated
+         * The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+         * 
          */
+        @Deprecated /* The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version. */
         public Builder policies(@Nullable Output<List<PolicySetPolicyArgs>> policies) {
             $.policies = policies;
             return this;
         }
 
         /**
-         * @param policies List of policy identifiers / severity for the policyset.
+         * @param policies List of policy identifiers / severity for the policyset. Deprecated: use &#39;policy_references&#39; instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
          * 
          * @return builder
          * 
+         * @deprecated
+         * The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+         * 
          */
+        @Deprecated /* The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version. */
         public Builder policies(List<PolicySetPolicyArgs> policies) {
             return policies(Output.of(policies));
         }
 
         /**
-         * @param policies List of policy identifiers / severity for the policyset.
+         * @param policies List of policy identifiers / severity for the policyset. Deprecated: use &#39;policy_references&#39; instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
          * 
          * @return builder
          * 
+         * @deprecated
+         * The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+         * 
          */
+        @Deprecated /* The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version. */
         public Builder policies(PolicySetPolicyArgs... policies) {
             return policies(List.of(policies));
         }
 
         /**
-         * @param policyReferences Set of policy identifiers / severity for the policyset. Order is not significant.
+         * @param policyReferences Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated &#39;policies&#39; field.
          * 
          * @return builder
          * 
@@ -388,7 +408,7 @@ public final class PolicySetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyReferences Set of policy identifiers / severity for the policyset. Order is not significant.
+         * @param policyReferences Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated &#39;policies&#39; field.
          * 
          * @return builder
          * 
@@ -398,7 +418,7 @@ public final class PolicySetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyReferences Set of policy identifiers / severity for the policyset. Order is not significant.
+         * @param policyReferences Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated &#39;policies&#39; field.
          * 
          * @return builder
          * 

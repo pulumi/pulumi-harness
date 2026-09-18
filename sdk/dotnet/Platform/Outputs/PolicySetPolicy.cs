@@ -14,7 +14,7 @@ namespace Pulumi.Harness.Platform.Outputs
     public sealed class PolicySetPolicy
     {
         /// <summary>
-        /// Account Identifier of the account
+        /// Identifier of the policy. For a policy at a broader scope than the policyset, use a scope-qualified identifier (e.g. 'account.my*policy' or 'org.my*policy').
         /// </summary>
         public readonly string Identifier;
         /// <summary>
