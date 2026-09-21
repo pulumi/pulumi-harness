@@ -16,15 +16,15 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const test = harness.platform.getPolicySet({
+ *     policyReferences: [{
+ *         identifier: "always_run",
+ *         severity: "warning",
+ *     }],
  *     identifier: "harness_platform_policyset.test.identifier",
  *     name: "harness_platform_policyset.test.name",
  *     action: "onrun",
  *     type: "pipeline",
  *     enabled: true,
- *     policyReferences: [{
- *         identifier: "always_run",
- *         severity: "warning",
- *     }],
  * });
  * ```
  */
@@ -152,15 +152,15 @@ export interface GetPolicySetResult {
  * import * as harness from "@pulumi/harness";
  *
  * const test = harness.platform.getPolicySet({
+ *     policyReferences: [{
+ *         identifier: "always_run",
+ *         severity: "warning",
+ *     }],
  *     identifier: "harness_platform_policyset.test.identifier",
  *     name: "harness_platform_policyset.test.name",
  *     action: "onrun",
  *     type: "pipeline",
  *     enabled: true,
- *     policyReferences: [{
- *         identifier: "always_run",
- *         severity: "warning",
- *     }],
  * });
  * ```
  */

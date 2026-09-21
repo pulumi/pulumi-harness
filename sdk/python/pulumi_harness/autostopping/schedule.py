@@ -314,7 +314,7 @@ class Schedule(pulumi.CustomResource):
                  ending_on: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
-                 repeats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict']]]]] = None,
+                 repeats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict', 'outputs.ScheduleRepeat']]]]] = None,
                  rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.float]]]] = None,
                  schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
                  starting_from: pulumi.Input[Optional[_builtins.str]] = None,
@@ -329,7 +329,7 @@ class Schedule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ending_on: Time until which schedule will be active. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
         :param pulumi.Input[_builtins.str] name: Name of the schedule
         :param pulumi.Input[_builtins.int] priority: Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict']]]] repeats: For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict', 'outputs.ScheduleRepeat']]]] repeats: For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.float]]] rules: ID of AutoStopping rules on which the schedule applies
         :param pulumi.Input[_builtins.str] schedule_type: Type of the schedule. Valid values are `uptime` and `downtime`
         :param pulumi.Input[_builtins.str] starting_from: Time from which schedule will be active. Schedule will take immediate effect if starting_from is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
@@ -363,7 +363,7 @@ class Schedule(pulumi.CustomResource):
                  ending_on: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  priority: pulumi.Input[Optional[_builtins.int]] = None,
-                 repeats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict']]]]] = None,
+                 repeats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict', 'outputs.ScheduleRepeat']]]]] = None,
                  rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.float]]]] = None,
                  schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
                  starting_from: pulumi.Input[Optional[_builtins.str]] = None,
@@ -406,7 +406,7 @@ class Schedule(pulumi.CustomResource):
             identifier: pulumi.Input[Optional[_builtins.float]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             priority: pulumi.Input[Optional[_builtins.int]] = None,
-            repeats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict']]]]] = None,
+            repeats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict', 'outputs.ScheduleRepeat']]]]] = None,
             rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.float]]]] = None,
             schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
             starting_from: pulumi.Input[Optional[_builtins.str]] = None,
@@ -422,7 +422,7 @@ class Schedule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] identifier: Unique identifier of the schedule
         :param pulumi.Input[_builtins.str] name: Name of the schedule
         :param pulumi.Input[_builtins.int] priority: Priority when multiple schedules apply to the same AutoStopping rules. 1 is the highest priority; 2 is next, and larger numbers indicate lower priority.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict']]]] repeats: For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict', 'outputs.ScheduleRepeat']]]] repeats: For defining periodic schedule. Periodic nature will be applicable from the time of creation of schedule, unless specific 'time_period' is specified
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.float]]] rules: ID of AutoStopping rules on which the schedule applies
         :param pulumi.Input[_builtins.str] schedule_type: Type of the schedule. Valid values are `uptime` and `downtime`
         :param pulumi.Input[_builtins.str] starting_from: Time from which schedule will be active. Schedule will take immediate effect if starting_from is not specified. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05

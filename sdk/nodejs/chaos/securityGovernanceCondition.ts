@@ -17,13 +17,7 @@ import * as utilities from "../utilities";
  *
  * // Example of a Kubernetes Security Governance Condition
  * const k8sCondition = new harness.chaos.SecurityGovernanceCondition("k8s_condition", {
- *     orgId: orgId,
- *     projectId: projectId,
- *     name: "k8s-security-condition",
- *     description: "Security governance condition for Kubernetes workloads",
- *     infraType: "KubernetesV2",
  *     faultSpec: {
- *         operator: "NOT_EQUAL_TO",
  *         faults: [
  *             {
  *                 faultType: "FAULT",
@@ -34,6 +28,7 @@ import * as utilities from "../utilities";
  *                 name: "pod-dns",
  *             },
  *         ],
+ *         operator: "NOT_EQUAL_TO",
  *     },
  *     k8sSpec: {
  *         infraSpec: {
@@ -41,7 +36,6 @@ import * as utilities from "../utilities";
  *             infraIds: [k8sInfraId],
  *         },
  *         applicationSpec: {
- *             operator: "EQUAL_TO",
  *             workloads: [{
  *                 namespace: "default",
  *                 kind: "deployment",
@@ -49,6 +43,7 @@ import * as utilities from "../utilities";
  *                 services: ["nginx-service"],
  *                 applicationMapId: "nginx-app",
  *             }],
+ *             operator: "EQUAL_TO",
  *         },
  *         chaosServiceAccountSpec: {
  *             operator: "EQUAL_TO",
@@ -58,6 +53,11 @@ import * as utilities from "../utilities";
  *             ],
  *         },
  *     },
+ *     orgId: orgId,
+ *     projectId: projectId,
+ *     name: "k8s-security-condition",
+ *     description: "Security governance condition for Kubernetes workloads",
+ *     infraType: "KubernetesV2",
  *     tags: [
  *         "env:prod",
  *         "team:security",
@@ -66,13 +66,7 @@ import * as utilities from "../utilities";
  * });
  * // Example of a Windows Security Governance Condition
  * const windowsCondition = new harness.chaos.SecurityGovernanceCondition("windows_condition", {
- *     orgId: orgId,
- *     projectId: projectId,
- *     name: "windows-security-condition",
- *     description: "Security governance condition for Windows hosts",
- *     infraType: "Windows",
  *     faultSpec: {
- *         operator: "NOT_EQUAL_TO",
  *         faults: [
  *             {
  *                 faultType: "FAULT",
@@ -83,6 +77,7 @@ import * as utilities from "../utilities";
  *                 name: "cpu-hog",
  *             },
  *         ],
+ *         operator: "NOT_EQUAL_TO",
  *     },
  *     machineSpec: {
  *         infraSpec: {
@@ -90,6 +85,11 @@ import * as utilities from "../utilities";
  *             infraIds: [windowsInfraId],
  *         },
  *     },
+ *     orgId: orgId,
+ *     projectId: projectId,
+ *     name: "windows-security-condition",
+ *     description: "Security governance condition for Windows hosts",
+ *     infraType: "Windows",
  *     tags: [
  *         "env:prod",
  *         "team:security",
@@ -98,13 +98,7 @@ import * as utilities from "../utilities";
  * });
  * // Example of a Linux Security Governance Condition
  * const linuxCondition = new harness.chaos.SecurityGovernanceCondition("linux_condition", {
- *     orgId: orgId,
- *     projectId: projectId,
- *     name: "linux-security-condition",
- *     description: "Security governance condition for Linux hosts",
- *     infraType: "Linux",
  *     faultSpec: {
- *         operator: "NOT_EQUAL_TO",
  *         faults: [
  *             {
  *                 faultType: "FAULT",
@@ -115,6 +109,7 @@ import * as utilities from "../utilities";
  *                 name: "memory-hog",
  *             },
  *         ],
+ *         operator: "NOT_EQUAL_TO",
  *     },
  *     machineSpec: {
  *         infraSpec: {
@@ -122,6 +117,11 @@ import * as utilities from "../utilities";
  *             infraIds: [linuxInfraId],
  *         },
  *     },
+ *     orgId: orgId,
+ *     projectId: projectId,
+ *     name: "linux-security-condition",
+ *     description: "Security governance condition for Linux hosts",
+ *     infraType: "Linux",
  *     tags: [
  *         "env:prod",
  *         "team:security",

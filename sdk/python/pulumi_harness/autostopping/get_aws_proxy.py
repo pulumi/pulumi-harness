@@ -215,7 +215,7 @@ class AwaitableGetAwsProxyResult(GetAwsProxyResult):
 
 def get_aws_proxy(allocate_static_ip: Optional[_builtins.bool] = None,
                   api_key: Optional[_builtins.str] = None,
-                  certificates: Optional[Union['GetAwsProxyCertificatesArgs', 'GetAwsProxyCertificatesArgsDict']] = None,
+                  certificates: Optional[Union['GetAwsProxyCertificatesArgs', 'GetAwsProxyCertificatesArgsDict', 'outputs.GetAwsProxyCertificatesResult']] = None,
                   cloud_connector_id: Optional[_builtins.str] = None,
                   delete_cloud_resources_on_destroy: Optional[_builtins.bool] = None,
                   keypair: Optional[_builtins.str] = None,
@@ -274,7 +274,7 @@ def get_aws_proxy(allocate_static_ip: Optional[_builtins.bool] = None,
         vpc=pulumi.get(__ret__, 'vpc'))
 def get_aws_proxy_output(allocate_static_ip: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                          api_key: pulumi.Input[Optional[_builtins.str]] = None,
-                         certificates: pulumi.Input[Optional[Optional[Union['GetAwsProxyCertificatesArgs', 'GetAwsProxyCertificatesArgsDict']]]] = None,
+                         certificates: pulumi.Input[Optional[Optional[Union['GetAwsProxyCertificatesArgs', 'GetAwsProxyCertificatesArgsDict', 'outputs.GetAwsProxyCertificatesResult']]]] = None,
                          cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
                          delete_cloud_resources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                          keypair: pulumi.Input[Optional[Optional[_builtins.str]]] = None,

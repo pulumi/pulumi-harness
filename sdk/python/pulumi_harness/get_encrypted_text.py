@@ -89,7 +89,7 @@ class AwaitableGetEncryptedTextResult(GetEncryptedTextResult):
 
 def get_encrypted_text(id: Optional[_builtins.str] = None,
                        name: Optional[_builtins.str] = None,
-                       usage_scopes: Optional[Sequence[Union['GetEncryptedTextUsageScopeArgs', 'GetEncryptedTextUsageScopeArgsDict']]] = None,
+                       usage_scopes: Optional[Sequence[Union['GetEncryptedTextUsageScopeArgs', 'GetEncryptedTextUsageScopeArgsDict', 'outputs.GetEncryptedTextUsageScopeResult']]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEncryptedTextResult:
     """
     Data source for retrieving a Harness application
@@ -97,7 +97,7 @@ def get_encrypted_text(id: Optional[_builtins.str] = None,
 
     :param _builtins.str id: Unique identifier of the encrypted secret
     :param _builtins.str name: The name of the encrypted secret
-    :param Sequence[Union['GetEncryptedTextUsageScopeArgs', 'GetEncryptedTextUsageScopeArgsDict']] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
+    :param Sequence[Union['GetEncryptedTextUsageScopeArgs', 'GetEncryptedTextUsageScopeArgsDict', 'outputs.GetEncryptedTextUsageScopeResult']] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -113,7 +113,7 @@ def get_encrypted_text(id: Optional[_builtins.str] = None,
         usage_scopes=pulumi.get(__ret__, 'usage_scopes'))
 def get_encrypted_text_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                              usage_scopes: pulumi.Input[Optional[Optional[Sequence[Union['GetEncryptedTextUsageScopeArgs', 'GetEncryptedTextUsageScopeArgsDict']]]]] = None,
+                              usage_scopes: pulumi.Input[Optional[Optional[Sequence[Union['GetEncryptedTextUsageScopeArgs', 'GetEncryptedTextUsageScopeArgsDict', 'outputs.GetEncryptedTextUsageScopeResult']]]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEncryptedTextResult]:
     """
     Data source for retrieving a Harness application
@@ -121,7 +121,7 @@ def get_encrypted_text_output(id: pulumi.Input[Optional[Optional[_builtins.str]]
 
     :param _builtins.str id: Unique identifier of the encrypted secret
     :param _builtins.str name: The name of the encrypted secret
-    :param Sequence[Union['GetEncryptedTextUsageScopeArgs', 'GetEncryptedTextUsageScopeArgsDict']] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
+    :param Sequence[Union['GetEncryptedTextUsageScopeArgs', 'GetEncryptedTextUsageScopeArgsDict', 'outputs.GetEncryptedTextUsageScopeResult']] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
     """
     __args__ = dict()
     __args__['id'] = id

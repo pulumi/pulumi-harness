@@ -47,11 +47,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecActionArgs;
  * import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecActionValueArgs;
  * import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecVertexStartActionArgs;
+ * import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecStatusCheckTimeoutsArgs;
  * import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecProbeArgs;
  * import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecProbeConditionsV2Args;
  * import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecProbeValueArgs;
  * import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecVertexStartProbeArgs;
- * import com.pulumi.harness.chaos.inputs.ExperimentTemplateSpecStatusCheckTimeoutsArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -84,24 +84,8 @@ import javax.annotation.Nullable;
  *         // ----------------------------------------------------------------------------
  *         // Basic template with single fault
  *         var simpleFault = new ExperimentTemplate("simpleFault", ExperimentTemplateArgs.builder()
- *             .orgId(this_.id())
- *             .projectId(thisHarnessPlatformProject.id())
- *             .hubIdentity(projectLevel.identity())
- *             .identity("simple-pod-delete")
- *             .name("Simple Pod Delete Experiment")
- *             .description("Basic experiment with single pod delete fault")
- *             .tags(            
- *                 "kubernetes",
- *                 "pod-delete",
- *                 "simple")
  *             .spec(ExperimentTemplateSpecArgs.builder()
- *                 .infraType("KubernetesV2")
  *                 .faults(ExperimentTemplateSpecFaultArgs.builder()
- *                     .identity("pod-delete")
- *                     .name("pod-delete-fault")
- *                     .revision("v1")
- *                     .isEnterprise(true)
- *                     .authEnabled(false)
  *                     .values(                    
  *                         ExperimentTemplateSpecFaultValueArgs.builder()
  *                             .name("TARGET_WORKLOAD_KIND")
@@ -115,9 +99,13 @@ import javax.annotation.Nullable;
  *                             .name("TOTAL_CHAOS_DURATION")
  *                             .value("<+input>.default('30s')")
  *                             .build())
+ *                     .identity("pod-delete")
+ *                     .name("pod-delete-fault")
+ *                     .revision("v1")
+ *                     .isEnterprise(true)
+ *                     .authEnabled(false)
  *                     .build())
  *                 .vertices(ExperimentTemplateSpecVertexArgs.builder()
- *                     .name("pod-delete-vertex")
  *                     .start(ExperimentTemplateSpecVertexStartArgs.builder()
  *                         .faults(ExperimentTemplateSpecVertexStartFaultArgs.builder()
  *                             .name("pod-delete-fault")
@@ -125,9 +113,21 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .end(ExperimentTemplateSpecVertexEndArgs.builder()
  *                         .build())
+ *                     .name("pod-delete-vertex")
  *                     .build())
+ *                 .infraType("KubernetesV2")
  *                 .cleanupPolicy("delete")
  *                 .build())
+ *             .orgId(this_.id())
+ *             .projectId(thisHarnessPlatformProject.id())
+ *             .hubIdentity(projectLevel.identity())
+ *             .identity("simple-pod-delete")
+ *             .name("Simple Pod Delete Experiment")
+ *             .description("Basic experiment with single pod delete fault")
+ *             .tags(            
+ *                 "kubernetes",
+ *                 "pod-delete",
+ *                 "simple")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(projectLevel)
  *                 .build());
@@ -137,34 +137,18 @@ import javax.annotation.Nullable;
  *         // ----------------------------------------------------------------------------
  *         // Template combining action and fault
  *         var withAction = new ExperimentTemplate("withAction", ExperimentTemplateArgs.builder()
- *             .orgId(this_.id())
- *             .projectId(thisHarnessPlatformProject.id())
- *             .hubIdentity(projectLevel.identity())
- *             .identity("action-and-fault")
- *             .name("Action and Fault Experiment")
- *             .description("Experiment with action before fault")
- *             .tags(            
- *                 "kubernetes",
- *                 "action",
- *                 "fault")
  *             .spec(ExperimentTemplateSpecArgs.builder()
- *                 .infraType("KubernetesV2")
  *                 .actions(ExperimentTemplateSpecActionArgs.builder()
- *                     .identity("notification-action")
- *                     .name("pre-chaos-notification")
- *                     .isEnterprise(false)
- *                     .continueOnCompletion(false)
  *                     .values(ExperimentTemplateSpecActionValueArgs.builder()
  *                         .name("MESSAGE")
  *                         .value("Starting chaos experiment")
  *                         .build())
+ *                     .identity("notification-action")
+ *                     .name("pre-chaos-notification")
+ *                     .isEnterprise(false)
+ *                     .continueOnCompletion(false)
  *                     .build())
  *                 .faults(ExperimentTemplateSpecFaultArgs.builder()
- *                     .identity("container-kill")
- *                     .name("container-kill-fault")
- *                     .revision("v1")
- *                     .isEnterprise(true)
- *                     .authEnabled(false)
  *                     .values(                    
  *                         ExperimentTemplateSpecFaultValueArgs.builder()
  *                             .name("TARGET_WORKLOAD_KIND")
@@ -178,10 +162,14 @@ import javax.annotation.Nullable;
  *                             .name("TOTAL_CHAOS_DURATION")
  *                             .value("<+input>.default('30s')")
  *                             .build())
+ *                     .identity("container-kill")
+ *                     .name("container-kill-fault")
+ *                     .revision("v1")
+ *                     .isEnterprise(true)
+ *                     .authEnabled(false)
  *                     .build())
  *                 .vertices(                
  *                     ExperimentTemplateSpecVertexArgs.builder()
- *                         .name("action-vertex")
  *                         .start(ExperimentTemplateSpecVertexStartArgs.builder()
  *                             .actions(ExperimentTemplateSpecVertexStartActionArgs.builder()
  *                                 .name("pre-chaos-notification")
@@ -189,9 +177,9 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .end(ExperimentTemplateSpecVertexEndArgs.builder()
  *                             .build())
+ *                         .name("action-vertex")
  *                         .build(),
  *                     ExperimentTemplateSpecVertexArgs.builder()
- *                         .name("fault-vertex")
  *                         .start(ExperimentTemplateSpecVertexStartArgs.builder()
  *                             .faults(ExperimentTemplateSpecVertexStartFaultArgs.builder()
  *                                 .name("container-kill-fault")
@@ -199,9 +187,21 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .end(ExperimentTemplateSpecVertexEndArgs.builder()
  *                             .build())
+ *                         .name("fault-vertex")
  *                         .build())
+ *                 .infraType("KubernetesV2")
  *                 .cleanupPolicy("delete")
  *                 .build())
+ *             .orgId(this_.id())
+ *             .projectId(thisHarnessPlatformProject.id())
+ *             .hubIdentity(projectLevel.identity())
+ *             .identity("action-and-fault")
+ *             .name("Action and Fault Experiment")
+ *             .description("Experiment with action before fault")
+ *             .tags(            
+ *                 "kubernetes",
+ *                 "action",
+ *                 "fault")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(projectLevel)
  *                 .build());
@@ -211,35 +211,23 @@ import javax.annotation.Nullable;
  *         // ----------------------------------------------------------------------------
  *         // Complete template with actions, faults, and probes
  *         var complex = new ExperimentTemplate("complex", ExperimentTemplateArgs.builder()
- *             .orgId(this_.id())
- *             .projectId(thisHarnessPlatformProject.id())
- *             .hubIdentity(projectLevel.identity())
- *             .identity("complex-experiment")
- *             .name("Complex Chaos Experiment")
- *             .description("Complete experiment with actions, faults, and probes")
- *             .tags(            
- *                 "kubernetes",
- *                 "complex",
- *                 "enterprise")
  *             .spec(ExperimentTemplateSpecArgs.builder()
- *                 .infraType("KubernetesV2")
+ *                 .statusCheckTimeouts(ExperimentTemplateSpecStatusCheckTimeoutsArgs.builder()
+ *                     .delay(5)
+ *                     .timeout(300)
+ *                     .build())
  *                 .actions(ExperimentTemplateSpecActionArgs.builder()
- *                     .identity("notification-action")
- *                     .name("start-notification")
- *                     .isEnterprise(false)
- *                     .continueOnCompletion(false)
  *                     .values(ExperimentTemplateSpecActionValueArgs.builder()
  *                         .name("MESSAGE")
  *                         .value("Chaos experiment started")
  *                         .build())
+ *                     .identity("notification-action")
+ *                     .name("start-notification")
+ *                     .isEnterprise(false)
+ *                     .continueOnCompletion(false)
  *                     .build())
  *                 .faults(                
  *                     ExperimentTemplateSpecFaultArgs.builder()
- *                         .identity("pod-delete")
- *                         .name("pod-delete-fault")
- *                         .revision("v1")
- *                         .isEnterprise(true)
- *                         .authEnabled(false)
  *                         .values(                        
  *                             ExperimentTemplateSpecFaultValueArgs.builder()
  *                                 .name("TARGET_WORKLOAD_KIND")
@@ -253,13 +241,13 @@ import javax.annotation.Nullable;
  *                                 .name("TOTAL_CHAOS_DURATION")
  *                                 .value("<+input>.default('30s')")
  *                                 .build())
- *                         .build(),
- *                     ExperimentTemplateSpecFaultArgs.builder()
- *                         .identity("pod-network-latency")
- *                         .name("network-latency-fault")
+ *                         .identity("pod-delete")
+ *                         .name("pod-delete-fault")
  *                         .revision("v1")
  *                         .isEnterprise(true)
  *                         .authEnabled(false)
+ *                         .build(),
+ *                     ExperimentTemplateSpecFaultArgs.builder()
  *                         .values(                        
  *                             ExperimentTemplateSpecFaultValueArgs.builder()
  *                                 .name("TARGET_WORKLOAD_KIND")
@@ -273,16 +261,14 @@ import javax.annotation.Nullable;
  *                                 .name("NETWORK_LATENCY")
  *                                 .value("<+input>.default('2000')")
  *                                 .build())
+ *                         .identity("pod-network-latency")
+ *                         .name("network-latency-fault")
+ *                         .revision("v1")
+ *                         .isEnterprise(true)
+ *                         .authEnabled(false)
  *                         .build())
  *                 .probes(                
  *                     ExperimentTemplateSpecProbeArgs.builder()
- *                         .identity("pod-status-check")
- *                         .name("pod-status-probe")
- *                         .revision("v1")
- *                         .isEnterprise(true)
- *                         .duration("30")
- *                         .weightage(10)
- *                         .enableDataCollection(false)
  *                         .conditionsV2(ExperimentTemplateSpecProbeConditionsV2Args.builder()
  *                             .operator("AND")
  *                             .values("true")
@@ -291,15 +277,15 @@ import javax.annotation.Nullable;
  *                             .name("TARGET_NAMESPACE")
  *                             .value("<+input>")
  *                             .build())
- *                         .build(),
- *                     ExperimentTemplateSpecProbeArgs.builder()
- *                         .identity("http-health-check")
- *                         .name("http-health-probe")
+ *                         .identity("pod-status-check")
+ *                         .name("pod-status-probe")
  *                         .revision("v1")
  *                         .isEnterprise(true)
  *                         .duration("30")
  *                         .weightage(10)
  *                         .enableDataCollection(false)
+ *                         .build(),
+ *                     ExperimentTemplateSpecProbeArgs.builder()
  *                         .conditionsV2(ExperimentTemplateSpecProbeConditionsV2Args.builder()
  *                             .operator("OR")
  *                             .values(                            
@@ -310,10 +296,16 @@ import javax.annotation.Nullable;
  *                             .name("URL")
  *                             .value("<+input>")
  *                             .build())
+ *                         .identity("http-health-check")
+ *                         .name("http-health-probe")
+ *                         .revision("v1")
+ *                         .isEnterprise(true)
+ *                         .duration("30")
+ *                         .weightage(10)
+ *                         .enableDataCollection(false)
  *                         .build())
  *                 .vertices(                
  *                     ExperimentTemplateSpecVertexArgs.builder()
- *                         .name("action-stage")
  *                         .start(ExperimentTemplateSpecVertexStartArgs.builder()
  *                             .actions(ExperimentTemplateSpecVertexStartActionArgs.builder()
  *                                 .name("start-notification")
@@ -321,9 +313,9 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .end(ExperimentTemplateSpecVertexEndArgs.builder()
  *                             .build())
+ *                         .name("action-stage")
  *                         .build(),
  *                     ExperimentTemplateSpecVertexArgs.builder()
- *                         .name("fault-stage")
  *                         .start(ExperimentTemplateSpecVertexStartArgs.builder()
  *                             .faults(                            
  *                                 ExperimentTemplateSpecVertexStartFaultArgs.builder()
@@ -342,20 +334,28 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .end(ExperimentTemplateSpecVertexEndArgs.builder()
  *                             .build())
+ *                         .name("fault-stage")
  *                         .build(),
  *                     ExperimentTemplateSpecVertexArgs.builder()
- *                         .name("cleanup-stage")
  *                         .start(ExperimentTemplateSpecVertexStartArgs.builder()
  *                             .build())
  *                         .end(ExperimentTemplateSpecVertexEndArgs.builder()
  *                             .build())
+ *                         .name("cleanup-stage")
  *                         .build())
+ *                 .infraType("KubernetesV2")
  *                 .cleanupPolicy("delete")
- *                 .statusCheckTimeouts(ExperimentTemplateSpecStatusCheckTimeoutsArgs.builder()
- *                     .delay(5)
- *                     .timeout(300)
- *                     .build())
  *                 .build())
+ *             .orgId(this_.id())
+ *             .projectId(thisHarnessPlatformProject.id())
+ *             .hubIdentity(projectLevel.identity())
+ *             .identity("complex-experiment")
+ *             .name("Complex Chaos Experiment")
+ *             .description("Complete experiment with actions, faults, and probes")
+ *             .tags(            
+ *                 "kubernetes",
+ *                 "complex",
+ *                 "enterprise")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(projectLevel)
  *                 .build());

@@ -24,6 +24,16 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var example = new Harness.Platform.PrometheusConnector("example", new()
     ///     {
+    ///         Headers = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.PrometheusConnectorHeaderArgs
+    ///             {
+    ///                 EncryptedValueRef = "account.secret_identifier",
+    ///                 ValueEncrypted = true,
+    ///                 Key = "key",
+    ///                 Value = "value",
+    ///             },
+    ///         },
     ///         Identifier = "idntifier",
     ///         Name = "name",
     ///         Description = "test",
@@ -38,16 +48,6 @@ namespace Pulumi.Harness.Platform
     ///         },
     ///         UserName = "user_name",
     ///         PasswordRef = "account.secret_identifier",
-    ///         Headers = new[]
-    ///         {
-    ///             new Harness.Platform.Inputs.PrometheusConnectorHeaderArgs
-    ///             {
-    ///                 EncryptedValueRef = "account.secret_identifier",
-    ///                 ValueEncrypted = true,
-    ///                 Key = "key",
-    ///                 Value = "value",
-    ///             },
-    ///         },
     ///     });
     /// 
     /// });

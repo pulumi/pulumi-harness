@@ -203,7 +203,7 @@ class Provider(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['ProviderSpecArgs', 'ProviderSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['ProviderSpecArgs', 'ProviderSpecArgsDict', 'outputs.ProviderSpec']]] = None,
                  __props__=None):
         """
         Resource for creating a Harness Provider.
@@ -214,7 +214,7 @@ class Provider(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the provider entity.
         :param pulumi.Input[_builtins.str] identifier: The identifier of the provider entity.
         :param pulumi.Input[_builtins.str] name: The name of the provider entity.
-        :param pulumi.Input[Union['ProviderSpecArgs', 'ProviderSpecArgsDict']] spec: Contains parameters related to the provider entity.
+        :param pulumi.Input[Union['ProviderSpecArgs', 'ProviderSpecArgsDict', 'outputs.ProviderSpec']] spec: Contains parameters related to the provider entity.
         """
         ...
     @overload
@@ -244,7 +244,7 @@ class Provider(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['ProviderSpecArgs', 'ProviderSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['ProviderSpecArgs', 'ProviderSpecArgsDict', 'outputs.ProviderSpec']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -278,7 +278,7 @@ class Provider(pulumi.CustomResource):
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             last_modified_at: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            spec: pulumi.Input[Optional[Union['ProviderSpecArgs', 'ProviderSpecArgsDict']]] = None,
+            spec: pulumi.Input[Optional[Union['ProviderSpecArgs', 'ProviderSpecArgsDict', 'outputs.ProviderSpec']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Provider':
         """
         Get an existing Provider resource's state with the given name, id, and optional extra
@@ -291,7 +291,7 @@ class Provider(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: The identifier of the provider entity.
         :param pulumi.Input[_builtins.int] last_modified_at: The last modified time of the provider entity.
         :param pulumi.Input[_builtins.str] name: The name of the provider entity.
-        :param pulumi.Input[Union['ProviderSpecArgs', 'ProviderSpecArgsDict']] spec: Contains parameters related to the provider entity.
+        :param pulumi.Input[Union['ProviderSpecArgs', 'ProviderSpecArgsDict', 'outputs.ProviderSpec']] spec: Contains parameters related to the provider entity.
         :param pulumi.Input[_builtins.str] type: The type of the provider entity.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

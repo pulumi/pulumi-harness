@@ -290,7 +290,7 @@ class InfraProvider(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             updated: pulumi.Input[Optional[_builtins.int]] = None,
-            versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraProviderVersionArgs', 'InfraProviderVersionArgsDict']]]]] = None) -> 'InfraProvider':
+            versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraProviderVersionArgs', 'InfraProviderVersionArgsDict', 'outputs.InfraProviderVersion']]]]] = None) -> 'InfraProvider':
         """
         Get an existing InfraProvider resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -303,7 +303,7 @@ class InfraProvider(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the provider.
         :param pulumi.Input[_builtins.str] type: Provider type (e.g., aws, azurerm, google).
         :param pulumi.Input[_builtins.int] updated: Timestamp when the provider was last updated.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraProviderVersionArgs', 'InfraProviderVersionArgsDict']]]] versions: List of provider versions.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraProviderVersionArgs', 'InfraProviderVersionArgsDict', 'outputs.InfraProviderVersion']]]] versions: List of provider versions.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

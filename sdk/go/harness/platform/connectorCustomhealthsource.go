@@ -30,6 +30,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Authentication mechanism as username and password
 //			_, err := platform.NewConnectorCustomhealthsource(ctx, "test", &platform.ConnectorCustomhealthsourceArgs{
+//				Headers: platform.ConnectorCustomhealthsourceHeaderArray{
+//					&platform.ConnectorCustomhealthsourceHeaderArgs{
+//						EncryptedValueRef: pulumi.String("account.doNotDeleteHSM"),
+//						ValueEncrypted:    pulumi.Bool(true),
+//						Key:               pulumi.String("key"),
+//						Value:             pulumi.String("value"),
+//					},
+//				},
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
@@ -42,14 +50,6 @@ import (
 //				},
 //				Method:         pulumi.String("GET"),
 //				ValidationPath: pulumi.String("loki/api/v1/labels"),
-//				Headers: platform.ConnectorCustomhealthsourceHeaderArray{
-//					&platform.ConnectorCustomhealthsourceHeaderArgs{
-//						EncryptedValueRef: pulumi.String("account.doNotDeleteHSM"),
-//						ValueEncrypted:    pulumi.Bool(true),
-//						Key:               pulumi.String("key"),
-//						Value:             pulumi.String("value"),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err

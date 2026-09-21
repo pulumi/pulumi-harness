@@ -16,15 +16,15 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.platform.Filters("test", {
+ *     filterProperties: {
+ *         tags: ["foo:bar"],
+ *         filterType: "Connector",
+ *     },
  *     identifier: "identifier",
  *     name: "name",
  *     orgId: "org_id",
  *     projectId: "project_id",
  *     type: "Connector",
- *     filterProperties: {
- *         tags: ["foo:bar"],
- *         filterType: "Connector",
- *     },
  *     filterVisibility: "EveryOne",
  * });
  * ```

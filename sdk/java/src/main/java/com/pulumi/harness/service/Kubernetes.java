@@ -51,10 +51,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleKubernetes = new Kubernetes("exampleKubernetes", KubernetesArgs.builder()
- *             .appId(example.id())
- *             .name("k8s-svc")
- *             .helmVersion("V3")
- *             .description("Service for deploying Kubernetes manifests")
  *             .variables(            
  *                 KubernetesVariableArgs.builder()
  *                     .name("test")
@@ -66,6 +62,10 @@ import javax.annotation.Nullable;
  *                     .value("test_value2")
  *                     .type("TEXT")
  *                     .build())
+ *             .appId(example.id())
+ *             .name("k8s-svc")
+ *             .helmVersion("V3")
+ *             .description("Service for deploying Kubernetes manifests")
  *             .build());
  * 
  *     }

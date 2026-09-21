@@ -429,7 +429,7 @@ class Infrastructure(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  env_id: pulumi.Input[Optional[_builtins.str]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
-                 git_details: pulumi.Input[Optional[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict']]] = None,
+                 git_details: pulumi.Input[Optional[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict', 'outputs.InfrastructureGitDetails']]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -448,13 +448,6 @@ class Infrastructure(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.platform.Infrastructure("example",
-            identifier="identifier",
-            name="name",
-            org_id="orgIdentifer",
-            project_id="projectIdentifier",
-            env_id="environmentIdentifier",
-            type="KubernetesDirect",
-            deployment_type="Kubernetes",
             git_details={
                 "branch_name": "branchName",
                 "commit_message": "commitMessage",
@@ -463,6 +456,13 @@ class Infrastructure(pulumi.CustomResource):
                 "store_type": "REMOTE",
                 "repo_name": "repoName",
             },
+            identifier="identifier",
+            name="name",
+            org_id="orgIdentifer",
+            project_id="projectIdentifier",
+            env_id="environmentIdentifier",
+            type="KubernetesDirect",
+            deployment_type="Kubernetes",
             yaml=\"\"\"infrastructureDefinition:
          name: name
          identifier: identifier
@@ -511,7 +511,7 @@ class Infrastructure(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] env_id: Environment Identifier.
         :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of infrastructure
-        :param pulumi.Input[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict', 'outputs.InfrastructureGitDetails']] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -536,13 +536,6 @@ class Infrastructure(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.platform.Infrastructure("example",
-            identifier="identifier",
-            name="name",
-            org_id="orgIdentifer",
-            project_id="projectIdentifier",
-            env_id="environmentIdentifier",
-            type="KubernetesDirect",
-            deployment_type="Kubernetes",
             git_details={
                 "branch_name": "branchName",
                 "commit_message": "commitMessage",
@@ -551,6 +544,13 @@ class Infrastructure(pulumi.CustomResource):
                 "store_type": "REMOTE",
                 "repo_name": "repoName",
             },
+            identifier="identifier",
+            name="name",
+            org_id="orgIdentifer",
+            project_id="projectIdentifier",
+            env_id="environmentIdentifier",
+            type="KubernetesDirect",
+            deployment_type="Kubernetes",
             yaml=\"\"\"infrastructureDefinition:
          name: name
          identifier: identifier
@@ -612,7 +612,7 @@ class Infrastructure(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  env_id: pulumi.Input[Optional[_builtins.str]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
-                 git_details: pulumi.Input[Optional[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict']]] = None,
+                 git_details: pulumi.Input[Optional[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict', 'outputs.InfrastructureGitDetails']]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -657,7 +657,7 @@ class Infrastructure(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             env_id: pulumi.Input[Optional[_builtins.str]] = None,
             force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
-            git_details: pulumi.Input[Optional[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict']]] = None,
+            git_details: pulumi.Input[Optional[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict', 'outputs.InfrastructureGitDetails']]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -676,7 +676,7 @@ class Infrastructure(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] env_id: Environment Identifier.
         :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of infrastructure
-        :param pulumi.Input[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input[Union['InfrastructureGitDetailsArgs', 'InfrastructureGitDetailsArgsDict', 'outputs.InfrastructureGitDetails']] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.

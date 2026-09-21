@@ -25,6 +25,16 @@ namespace Pulumi.Harness.Platform
     ///     // Authentication mechanism as username and password
     ///     var test = new Harness.Platform.ConnectorCustomhealthsource("test", new()
     ///     {
+    ///         Headers = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.ConnectorCustomhealthsourceHeaderArgs
+    ///             {
+    ///                 EncryptedValueRef = "account.doNotDeleteHSM",
+    ///                 ValueEncrypted = true,
+    ///                 Key = "key",
+    ///                 Value = "value",
+    ///             },
+    ///         },
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         Description = "test",
@@ -39,16 +49,6 @@ namespace Pulumi.Harness.Platform
     ///         },
     ///         Method = "GET",
     ///         ValidationPath = "loki/api/v1/labels",
-    ///         Headers = new[]
-    ///         {
-    ///             new Harness.Platform.Inputs.ConnectorCustomhealthsourceHeaderArgs
-    ///             {
-    ///                 EncryptedValueRef = "account.doNotDeleteHSM",
-    ///                 ValueEncrypted = true,
-    ///                 Key = "key",
-    ///                 Value = "value",
-    ///             },
-    ///         },
     ///     });
     /// 
     /// });

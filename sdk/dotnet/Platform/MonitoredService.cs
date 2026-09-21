@@ -26,70 +26,8 @@ namespace Pulumi.Harness.Platform
     ///     //Sample template for Elastic Search Log Health Source
     ///     var example = new Harness.Platform.MonitoredService("example", new()
     ///     {
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         Identifier = "identifier",
     ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
     ///         {
-    ///             Name = "name",
-    ///             Type = "Application",
-    ///             Description = "description",
-    ///             ServiceRef = "service_ref",
-    ///             EnvironmentRef = "environment_ref",
-    ///             Tags = new[]
-    ///             {
-    ///                 "foo:bar",
-    ///                 "bar:foo",
-    ///             },
-    ///             HealthSources = new[]
-    ///             {
-    ///                 new Harness.Platform.Inputs.MonitoredServiceRequestHealthSourceArgs
-    ///                 {
-    ///                     Name = "name",
-    ///                     Identifier = "identifier",
-    ///                     Type = "ElasticSearch",
-    ///                     Version = "v2",
-    ///                     Spec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///                     {
-    ///                         ["connectorRef"] = "connectorRef",
-    ///                         ["queryDefinitions"] = new[]
-    ///                         {
-    ///                             new Dictionary&lt;string, object?&gt;
-    ///                             {
-    ///                                 ["name"] = "name",
-    ///                                 ["identifier"] = "infraquery",
-    ///                                 ["query"] = "query",
-    ///                                 ["index"] = "index",
-    ///                                 ["groupName"] = "Logs_Group",
-    ///                                 ["queryParams"] = new Dictionary&lt;string, object?&gt;
-    ///                                 {
-    ///                                     ["index"] = "index",
-    ///                                     ["serviceInstanceField"] = "serviceInstanceIdentifier",
-    ///                                     ["timeStampIdentifier"] = "timeStampIdentifier",
-    ///                                     ["timeStampFormat"] = "timeStampFormat",
-    ///                                     ["messageIdentifier"] = "messageIdentifier",
-    ///                                 },
-    ///                             },
-    ///                             new Dictionary&lt;string, object?&gt;
-    ///                             {
-    ///                                 ["name"] = "name2",
-    ///                                 ["identifier"] = "errorquery",
-    ///                                 ["query"] = "query2",
-    ///                                 ["index"] = "index2",
-    ///                                 ["groupName"] = "Logs_Group",
-    ///                                 ["queryParams"] = new Dictionary&lt;string, object?&gt;
-    ///                                 {
-    ///                                     ["index"] = "index",
-    ///                                     ["serviceInstanceField"] = "serviceInstanceIdentifier",
-    ///                                     ["timeStampIdentifier"] = "timeStampIdentifier",
-    ///                                     ["timeStampFormat"] = "timeStampFormat",
-    ///                                     ["messageIdentifier"] = "messageIdentifier",
-    ///                                 },
-    ///                             },
-    ///                         },
-    ///                     }),
-    ///                 },
-    ///             },
     ///             ChangeSources = new[]
     ///             {
     ///                 new Harness.Platform.Inputs.MonitoredServiceRequestChangeSourceArgs
@@ -158,6 +96,55 @@ namespace Pulumi.Harness.Platform
     ///                     }),
     ///                 },
     ///             },
+    ///             HealthSources = new[]
+    ///             {
+    ///                 new Harness.Platform.Inputs.MonitoredServiceRequestHealthSourceArgs
+    ///                 {
+    ///                     Name = "name",
+    ///                     Identifier = "identifier",
+    ///                     Type = "ElasticSearch",
+    ///                     Version = "v2",
+    ///                     Spec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["connectorRef"] = "connectorRef",
+    ///                         ["queryDefinitions"] = new[]
+    ///                         {
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["name"] = "name",
+    ///                                 ["identifier"] = "infraquery",
+    ///                                 ["query"] = "query",
+    ///                                 ["index"] = "index",
+    ///                                 ["groupName"] = "Logs_Group",
+    ///                                 ["queryParams"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["index"] = "index",
+    ///                                     ["serviceInstanceField"] = "serviceInstanceIdentifier",
+    ///                                     ["timeStampIdentifier"] = "timeStampIdentifier",
+    ///                                     ["timeStampFormat"] = "timeStampFormat",
+    ///                                     ["messageIdentifier"] = "messageIdentifier",
+    ///                                 },
+    ///                             },
+    ///                             new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                                 ["name"] = "name2",
+    ///                                 ["identifier"] = "errorquery",
+    ///                                 ["query"] = "query2",
+    ///                                 ["index"] = "index2",
+    ///                                 ["groupName"] = "Logs_Group",
+    ///                                 ["queryParams"] = new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["index"] = "index",
+    ///                                     ["serviceInstanceField"] = "serviceInstanceIdentifier",
+    ///                                     ["timeStampIdentifier"] = "timeStampIdentifier",
+    ///                                     ["timeStampFormat"] = "timeStampFormat",
+    ///                                     ["messageIdentifier"] = "messageIdentifier",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     }),
+    ///                 },
+    ///             },
     ///             NotificationRuleRefs = new[]
     ///             {
     ///                 new Harness.Platform.Inputs.MonitoredServiceRequestNotificationRuleRefArgs
@@ -171,17 +158,6 @@ namespace Pulumi.Harness.Platform
     ///                     Enabled = false,
     ///                 },
     ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     //Sample template for Sumologic Metrics Health Source
-    ///     var example1 = new Harness.Platform.MonitoredService("example1", new()
-    ///     {
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         Identifier = "identifier",
-    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
-    ///         {
     ///             Name = "name",
     ///             Type = "Application",
     ///             Description = "description",
@@ -192,6 +168,17 @@ namespace Pulumi.Harness.Platform
     ///                 "foo:bar",
     ///                 "bar:foo",
     ///             },
+    ///         },
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
+    ///     });
+    /// 
+    ///     //Sample template for Sumologic Metrics Health Source
+    ///     var example1 = new Harness.Platform.MonitoredService("example1", new()
+    ///     {
+    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
+    ///         {
     ///             HealthSources = new[]
     ///             {
     ///                 new Harness.Platform.Inputs.MonitoredServiceRequestHealthSourceArgs
@@ -296,17 +283,6 @@ namespace Pulumi.Harness.Platform
     ///                     }),
     ///                 },
     ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     //Sample template for Sumologic Log Health Source
-    ///     var example2 = new Harness.Platform.MonitoredService("example2", new()
-    ///     {
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         Identifier = "identifier",
-    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
-    ///         {
     ///             Name = "name",
     ///             Type = "Application",
     ///             Description = "description",
@@ -317,6 +293,17 @@ namespace Pulumi.Harness.Platform
     ///                 "foo:bar",
     ///                 "bar:foo",
     ///             },
+    ///         },
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
+    ///     });
+    /// 
+    ///     //Sample template for Sumologic Log Health Source
+    ///     var example2 = new Harness.Platform.MonitoredService("example2", new()
+    ///     {
+    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
+    ///         {
     ///             HealthSources = new[]
     ///             {
     ///                 new Harness.Platform.Inputs.MonitoredServiceRequestHealthSourceArgs
@@ -356,17 +343,6 @@ namespace Pulumi.Harness.Platform
     ///                     }),
     ///                 },
     ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     //Sample template for Splunk Signal FX Health Source
-    ///     var example3 = new Harness.Platform.MonitoredService("example3", new()
-    ///     {
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         Identifier = "identifier",
-    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
-    ///         {
     ///             Name = "name",
     ///             Type = "Application",
     ///             Description = "description",
@@ -377,6 +353,17 @@ namespace Pulumi.Harness.Platform
     ///                 "foo:bar",
     ///                 "bar:foo",
     ///             },
+    ///         },
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
+    ///     });
+    /// 
+    ///     //Sample template for Splunk Signal FX Health Source
+    ///     var example3 = new Harness.Platform.MonitoredService("example3", new()
+    ///     {
+    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
+    ///         {
     ///             HealthSources = new[]
     ///             {
     ///                 new Harness.Platform.Inputs.MonitoredServiceRequestHealthSourceArgs
@@ -474,17 +461,6 @@ namespace Pulumi.Harness.Platform
     ///                     }),
     ///                 },
     ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     //Sample template for Grafana Loki Log Health Source
-    ///     var example4 = new Harness.Platform.MonitoredService("example4", new()
-    ///     {
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         Identifier = "identifier",
-    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
-    ///         {
     ///             Name = "name",
     ///             Type = "Application",
     ///             Description = "description",
@@ -495,6 +471,17 @@ namespace Pulumi.Harness.Platform
     ///                 "foo:bar",
     ///                 "bar:foo",
     ///             },
+    ///         },
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
+    ///     });
+    /// 
+    ///     //Sample template for Grafana Loki Log Health Source
+    ///     var example4 = new Harness.Platform.MonitoredService("example4", new()
+    ///     {
+    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
+    ///         {
     ///             HealthSources = new[]
     ///             {
     ///                 new Harness.Platform.Inputs.MonitoredServiceRequestHealthSourceArgs
@@ -537,17 +524,6 @@ namespace Pulumi.Harness.Platform
     ///                     }),
     ///                 },
     ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     //Sample template for Azure Metrics Health Source
-    ///     var example5 = new Harness.Platform.MonitoredService("example5", new()
-    ///     {
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         Identifier = "identifier",
-    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
-    ///         {
     ///             Name = "name",
     ///             Type = "Application",
     ///             Description = "description",
@@ -558,6 +534,17 @@ namespace Pulumi.Harness.Platform
     ///                 "foo:bar",
     ///                 "bar:foo",
     ///             },
+    ///         },
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
+    ///     });
+    /// 
+    ///     //Sample template for Azure Metrics Health Source
+    ///     var example5 = new Harness.Platform.MonitoredService("example5", new()
+    ///     {
+    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
+    ///         {
     ///             HealthSources = new[]
     ///             {
     ///                 new Harness.Platform.Inputs.MonitoredServiceRequestHealthSourceArgs
@@ -669,17 +656,6 @@ namespace Pulumi.Harness.Platform
     ///                     }),
     ///                 },
     ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     //Sample template for Azure Log Health Source
-    ///     var example6 = new Harness.Platform.MonitoredService("example6", new()
-    ///     {
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         Identifier = "identifier",
-    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
-    ///         {
     ///             Name = "name",
     ///             Type = "Application",
     ///             Description = "description",
@@ -690,6 +666,17 @@ namespace Pulumi.Harness.Platform
     ///                 "foo:bar",
     ///                 "bar:foo",
     ///             },
+    ///         },
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
+    ///     });
+    /// 
+    ///     //Sample template for Azure Log Health Source
+    ///     var example6 = new Harness.Platform.MonitoredService("example6", new()
+    ///     {
+    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
+    ///         {
     ///             HealthSources = new[]
     ///             {
     ///                 new Harness.Platform.Inputs.MonitoredServiceRequestHealthSourceArgs
@@ -723,17 +710,6 @@ namespace Pulumi.Harness.Platform
     ///                     }),
     ///                 },
     ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     //Sample template for Prometheus Metrics Health Source
-    ///     var example7 = new Harness.Platform.MonitoredService("example7", new()
-    ///     {
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         Identifier = "identifier",
-    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
-    ///         {
     ///             Name = "name",
     ///             Type = "Application",
     ///             Description = "description",
@@ -744,6 +720,17 @@ namespace Pulumi.Harness.Platform
     ///                 "foo:bar",
     ///                 "bar:foo",
     ///             },
+    ///         },
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
+    ///     });
+    /// 
+    ///     //Sample template for Prometheus Metrics Health Source
+    ///     var example7 = new Harness.Platform.MonitoredService("example7", new()
+    ///     {
+    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
+    ///         {
     ///             HealthSources = new[]
     ///             {
     ///                 new Harness.Platform.Inputs.MonitoredServiceRequestHealthSourceArgs
@@ -838,17 +825,6 @@ namespace Pulumi.Harness.Platform
     ///                     }),
     ///                 },
     ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     //Sample template for Datadog Metrics Health Source
-    ///     var example8 = new Harness.Platform.MonitoredService("example8", new()
-    ///     {
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         Identifier = "identifier",
-    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
-    ///         {
     ///             Name = "name",
     ///             Type = "Application",
     ///             Description = "description",
@@ -859,6 +835,17 @@ namespace Pulumi.Harness.Platform
     ///                 "foo:bar",
     ///                 "bar:foo",
     ///             },
+    ///         },
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
+    ///     });
+    /// 
+    ///     //Sample template for Datadog Metrics Health Source
+    ///     var example8 = new Harness.Platform.MonitoredService("example8", new()
+    ///     {
+    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
+    ///         {
     ///             HealthSources = new[]
     ///             {
     ///                 new Harness.Platform.Inputs.MonitoredServiceRequestHealthSourceArgs
@@ -992,17 +979,6 @@ namespace Pulumi.Harness.Platform
     ///                     }),
     ///                 },
     ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     //Sample template for New Relic Metrics Health Source
-    ///     var example9 = new Harness.Platform.MonitoredService("example9", new()
-    ///     {
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         Identifier = "identifier",
-    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
-    ///         {
     ///             Name = "name",
     ///             Type = "Application",
     ///             Description = "description",
@@ -1013,6 +989,17 @@ namespace Pulumi.Harness.Platform
     ///                 "foo:bar",
     ///                 "bar:foo",
     ///             },
+    ///         },
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
+    ///     });
+    /// 
+    ///     //Sample template for New Relic Metrics Health Source
+    ///     var example9 = new Harness.Platform.MonitoredService("example9", new()
+    ///     {
+    ///         Request = new Harness.Platform.Inputs.MonitoredServiceRequestArgs
+    ///         {
     ///             HealthSources = new[]
     ///             {
     ///                 new Harness.Platform.Inputs.MonitoredServiceRequestHealthSourceArgs
@@ -1120,7 +1107,20 @@ namespace Pulumi.Harness.Platform
     ///                     }),
     ///                 },
     ///             },
+    ///             Name = "name",
+    ///             Type = "Application",
+    ///             Description = "description",
+    ///             ServiceRef = "service_ref",
+    ///             EnvironmentRef = "environment_ref",
+    ///             Tags = new[]
+    ///             {
+    ///                 "foo:bar",
+    ///                 "bar:foo",
+    ///             },
     ///         },
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
     ///     });
     /// 
     /// });

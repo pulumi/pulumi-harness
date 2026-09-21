@@ -189,8 +189,8 @@ def get_policy_set(action: Optional[_builtins.str] = None,
                    identifier: Optional[_builtins.str] = None,
                    name: Optional[_builtins.str] = None,
                    org_id: Optional[_builtins.str] = None,
-                   policies: Optional[Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict']]] = None,
-                   policy_references: Optional[Sequence[Union['GetPolicySetPolicyReferenceArgs', 'GetPolicySetPolicyReferenceArgsDict']]] = None,
+                   policies: Optional[Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict', 'outputs.GetPolicySetPolicyResult']]] = None,
+                   policy_references: Optional[Sequence[Union['GetPolicySetPolicyReferenceArgs', 'GetPolicySetPolicyReferenceArgsDict', 'outputs.GetPolicySetPolicyReferenceResult']]] = None,
                    project_id: Optional[_builtins.str] = None,
                    type: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicySetResult:
@@ -203,15 +203,15 @@ def get_policy_set(action: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_harness as harness
 
-    test = harness.platform.get_policy_set(identifier="harness_platform_policyset.test.identifier",
+    test = harness.platform.get_policy_set(policy_references=[{
+            "identifier": "always_run",
+            "severity": "warning",
+        }],
+        identifier="harness_platform_policyset.test.identifier",
         name="harness_platform_policyset.test.name",
         action="onrun",
         type="pipeline",
-        enabled=True,
-        policy_references=[{
-            "identifier": "always_run",
-            "severity": "warning",
-        }])
+        enabled=True)
     ```
 
 
@@ -220,8 +220,8 @@ def get_policy_set(action: Optional[_builtins.str] = None,
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
-    :param Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict']] policies: List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
-    :param Sequence[Union['GetPolicySetPolicyReferenceArgs', 'GetPolicySetPolicyReferenceArgsDict']] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
+    :param Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict', 'outputs.GetPolicySetPolicyResult']] policies: List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
+    :param Sequence[Union['GetPolicySetPolicyReferenceArgs', 'GetPolicySetPolicyReferenceArgsDict', 'outputs.GetPolicySetPolicyReferenceResult']] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
     :param _builtins.str project_id: Unique identifier of the project.
     :param _builtins.str type: Type of the policyset.
     """
@@ -256,8 +256,8 @@ def get_policy_set_output(action: pulumi.Input[Optional[_builtins.str]] = None,
                           identifier: pulumi.Input[Optional[_builtins.str]] = None,
                           name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                          policies: pulumi.Input[Optional[Optional[Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict']]]]] = None,
-                          policy_references: pulumi.Input[Optional[Optional[Sequence[Union['GetPolicySetPolicyReferenceArgs', 'GetPolicySetPolicyReferenceArgsDict']]]]] = None,
+                          policies: pulumi.Input[Optional[Optional[Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict', 'outputs.GetPolicySetPolicyResult']]]]] = None,
+                          policy_references: pulumi.Input[Optional[Optional[Sequence[Union['GetPolicySetPolicyReferenceArgs', 'GetPolicySetPolicyReferenceArgsDict', 'outputs.GetPolicySetPolicyReferenceResult']]]]] = None,
                           project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           type: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicySetResult]:
@@ -270,15 +270,15 @@ def get_policy_set_output(action: pulumi.Input[Optional[_builtins.str]] = None,
     import pulumi
     import pulumi_harness as harness
 
-    test = harness.platform.get_policy_set(identifier="harness_platform_policyset.test.identifier",
+    test = harness.platform.get_policy_set(policy_references=[{
+            "identifier": "always_run",
+            "severity": "warning",
+        }],
+        identifier="harness_platform_policyset.test.identifier",
         name="harness_platform_policyset.test.name",
         action="onrun",
         type="pipeline",
-        enabled=True,
-        policy_references=[{
-            "identifier": "always_run",
-            "severity": "warning",
-        }])
+        enabled=True)
     ```
 
 
@@ -287,8 +287,8 @@ def get_policy_set_output(action: pulumi.Input[Optional[_builtins.str]] = None,
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
-    :param Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict']] policies: List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
-    :param Sequence[Union['GetPolicySetPolicyReferenceArgs', 'GetPolicySetPolicyReferenceArgsDict']] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
+    :param Sequence[Union['GetPolicySetPolicyArgs', 'GetPolicySetPolicyArgsDict', 'outputs.GetPolicySetPolicyResult']] policies: List of policy identifiers / severity for the policyset. Deprecated: use 'policy_references' instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
+    :param Sequence[Union['GetPolicySetPolicyReferenceArgs', 'GetPolicySetPolicyReferenceArgsDict', 'outputs.GetPolicySetPolicyReferenceResult']] policy_references: Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated 'policies' field.
     :param _builtins.str project_id: Unique identifier of the project.
     :param _builtins.str type: Type of the policyset.
     """

@@ -24,10 +24,6 @@ namespace Pulumi.Harness.Autostopping
     /// {
     ///     var test = new Harness.Autostopping.RuleRds("test", new()
     ///     {
-    ///         Name = "name",
-    ///         CloudConnectorId = "cloud_connector_id",
-    ///         IdleTimeMins = 10,
-    ///         DryRun = true,
     ///         Database = new Harness.Autostopping.Inputs.RuleRdsDatabaseArgs
     ///         {
     ///             Id = "database_id",
@@ -37,7 +33,6 @@ namespace Pulumi.Harness.Autostopping
     ///         {
     ///             new Harness.Autostopping.Inputs.RuleRdsTcpArgs
     ///             {
-    ///                 ProxyId = "proxy_id",
     ///                 ForwardRules = new[]
     ///                 {
     ///                     new Harness.Autostopping.Inputs.RuleRdsTcpForwardRuleArgs
@@ -45,8 +40,13 @@ namespace Pulumi.Harness.Autostopping
     ///                         Port = 2233,
     ///                     },
     ///                 },
+    ///                 ProxyId = "proxy_id",
     ///             },
     ///         },
+    ///         Name = "name",
+    ///         CloudConnectorId = "cloud_connector_id",
+    ///         IdleTimeMins = 10,
+    ///         DryRun = true,
     ///     });
     /// 
     /// });

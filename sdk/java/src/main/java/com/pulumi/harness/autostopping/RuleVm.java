@@ -37,14 +37,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.autostopping.RuleVm;
  * import com.pulumi.harness.autostopping.RuleVmArgs;
  * import com.pulumi.harness.autostopping.inputs.RuleVmFilterArgs;
- * import com.pulumi.harness.autostopping.inputs.RuleVmHttpArgs;
- * import com.pulumi.harness.autostopping.inputs.RuleVmHttpRoutingArgs;
- * import com.pulumi.harness.autostopping.inputs.RuleVmHttpHealthArgs;
- * import com.pulumi.harness.autostopping.inputs.RuleVmTcpArgs;
- * import com.pulumi.harness.autostopping.inputs.RuleVmTcpSshArgs;
- * import com.pulumi.harness.autostopping.inputs.RuleVmTcpRdpArgs;
- * import com.pulumi.harness.autostopping.inputs.RuleVmTcpForwardRuleArgs;
  * import com.pulumi.harness.autostopping.inputs.RuleVmDependArgs;
+ * import com.pulumi.harness.autostopping.inputs.RuleVmHttpArgs;
+ * import com.pulumi.harness.autostopping.inputs.RuleVmHttpHealthArgs;
+ * import com.pulumi.harness.autostopping.inputs.RuleVmHttpRoutingArgs;
+ * import com.pulumi.harness.autostopping.inputs.RuleVmTcpArgs;
+ * import com.pulumi.harness.autostopping.inputs.RuleVmTcpForwardRuleArgs;
+ * import com.pulumi.harness.autostopping.inputs.RuleVmTcpRdpArgs;
+ * import com.pulumi.harness.autostopping.inputs.RuleVmTcpSshArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -59,16 +59,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new RuleVm("test", RuleVmArgs.builder()
- *             .name("name")
- *             .cloudConnectorId("cloud_connector_id")
- *             .idleTimeMins(10)
- *             .dryRun(true)
  *             .filter(RuleVmFilterArgs.builder()
  *                 .vmIds("/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine")
  *                 .regions("useast2")
  *                 .build())
+ *             .depends(RuleVmDependArgs.builder()
+ *                 .ruleId(24576)
+ *                 .delayInSec(5)
+ *                 .build())
  *             .https(RuleVmHttpArgs.builder()
- *                 .proxyId("proxy_id")
+ *                 .healths(RuleVmHttpHealthArgs.builder()
+ *                     .protocol("http")
+ *                     .port(80)
+ *                     .path("/")
+ *                     .timeout(30)
+ *                     .statusCodeFrom(200)
+ *                     .statusCodeTo(299)
+ *                     .build())
  *                 .routings(                
  *                     RuleVmHttpRoutingArgs.builder()
  *                         .sourceProtocol("https")
@@ -84,31 +91,24 @@ import javax.annotation.Nullable;
  *                         .targetPort(80)
  *                         .action("forward")
  *                         .build())
- *                 .healths(RuleVmHttpHealthArgs.builder()
- *                     .protocol("http")
- *                     .port(80)
- *                     .path("/")
- *                     .timeout(30)
- *                     .statusCodeFrom(200)
- *                     .statusCodeTo(299)
- *                     .build())
+ *                 .proxyId("proxy_id")
  *                 .build())
  *             .tcps(RuleVmTcpArgs.builder()
- *                 .proxyId("proxy_id")
- *                 .sshes(RuleVmTcpSshArgs.builder()
- *                     .port(22)
+ *                 .forwardRules(RuleVmTcpForwardRuleArgs.builder()
+ *                     .port(2233)
  *                     .build())
  *                 .rdps(RuleVmTcpRdpArgs.builder()
  *                     .port(3389)
  *                     .build())
- *                 .forwardRules(RuleVmTcpForwardRuleArgs.builder()
- *                     .port(2233)
+ *                 .sshes(RuleVmTcpSshArgs.builder()
+ *                     .port(22)
  *                     .build())
+ *                 .proxyId("proxy_id")
  *                 .build())
- *             .depends(RuleVmDependArgs.builder()
- *                 .ruleId(24576)
- *                 .delayInSec(5)
- *                 .build())
+ *             .name("name")
+ *             .cloudConnectorId("cloud_connector_id")
+ *             .idleTimeMins(10)
+ *             .dryRun(true)
  *             .build());
  * 
  *     }

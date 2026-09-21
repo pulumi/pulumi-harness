@@ -26,6 +26,11 @@ namespace Pulumi.Harness.Platform
     ///     // Authentication mechanism as username and password
     ///     var example = new Harness.Platform.ArtifactoryConnector("example", new()
     ///     {
+    ///         Credentials = new Harness.Platform.Inputs.ArtifactoryConnectorCredentialsArgs
+    ///         {
+    ///             Username = "admin",
+    ///             PasswordRef = "account.secret_id",
+    ///         },
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         Description = "test",
@@ -37,11 +42,6 @@ namespace Pulumi.Harness.Platform
     ///         DelegateSelectors = new[]
     ///         {
     ///             "harness-delegate",
-    ///         },
-    ///         Credentials = new Harness.Platform.Inputs.ArtifactoryConnectorCredentialsArgs
-    ///         {
-    ///             Username = "admin",
-    ///             PasswordRef = "account.secret_id",
     ///         },
     ///     });
     /// 
@@ -77,6 +77,11 @@ namespace Pulumi.Harness.Platform
     ///     // Authentication mechanism as username and password
     ///     var example = new Harness.Platform.ArtifactoryConnector("example", new()
     ///     {
+    ///         Credentials = new Harness.Platform.Inputs.ArtifactoryConnectorCredentialsArgs
+    ///         {
+    ///             Username = "admin",
+    ///             PasswordRef = "account.secret_id",
+    ///         },
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         Description = "test",
@@ -89,11 +94,6 @@ namespace Pulumi.Harness.Platform
     ///         DelegateSelectors = new[]
     ///         {
     ///             "harness-delegate",
-    ///         },
-    ///         Credentials = new Harness.Platform.Inputs.ArtifactoryConnectorCredentialsArgs
-    ///         {
-    ///             Username = "admin",
-    ///             PasswordRef = "account.secret_id",
     ///         },
     ///     });
     /// 
@@ -130,6 +130,11 @@ namespace Pulumi.Harness.Platform
     ///     // Authentication mechanism as username and password
     ///     var example = new Harness.Platform.ArtifactoryConnector("example", new()
     ///     {
+    ///         Credentials = new Harness.Platform.Inputs.ArtifactoryConnectorCredentialsArgs
+    ///         {
+    ///             Username = "admin",
+    ///             PasswordRef = "account.secret_id",
+    ///         },
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         Description = "test",
@@ -143,11 +148,6 @@ namespace Pulumi.Harness.Platform
     ///         DelegateSelectors = new[]
     ///         {
     ///             "harness-delegate",
-    ///         },
-    ///         Credentials = new Harness.Platform.Inputs.ArtifactoryConnectorCredentialsArgs
-    ///         {
-    ///             Username = "admin",
-    ///             PasswordRef = "account.secret_id",
     ///         },
     ///     });
     /// 

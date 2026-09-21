@@ -47,11 +47,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new PipelineFilters("test", PipelineFiltersArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .orgId("org_id")
- *             .projectId("project_id")
- *             .type("PipelineSetup")
  *             .filterProperties(PipelineFiltersFilterPropertiesArgs.builder()
  *                 .name("pipeline_name")
  *                 .description("pipeline_description")
@@ -60,51 +55,41 @@ import javax.annotation.Nullable;
  *                     "id2")
  *                 .filterType("PipelineSetup")
  *                 .build())
- *             .filterVisibility("EveryOne")
- *             .build());
- * 
- *         // pipeline execution filter consisiting services (service_identifiers) filter
- *         var execution = new PipelineFilters("execution", PipelineFiltersArgs.builder()
  *             .identifier("identifier")
  *             .name("name")
  *             .orgId("org_id")
  *             .projectId("project_id")
  *             .type("PipelineSetup")
+ *             .filterVisibility("EveryOne")
+ *             .build());
+ * 
+ *         // pipeline execution filter consisiting services (service_identifiers) filter
+ *         var execution = new PipelineFilters("execution", PipelineFiltersArgs.builder()
  *             .filterProperties(PipelineFiltersFilterPropertiesArgs.builder()
- *                 .name("pipeline_name")
- *                 .description("pipeline_description")
- *                 .pipelineIdentifiers(                
- *                     "id1",
- *                     "id2")
- *                 .filterType("PipelineExecution")
  *                 .moduleProperties(PipelineFiltersFilterPropertiesModulePropertiesArgs.builder()
  *                     .cd(PipelineFiltersFilterPropertiesModulePropertiesCdArgs.builder()
  *                         .deploymentTypes("Kubernetes")
  *                         .serviceIdentifiers("nginx")
  *                         .build())
  *                     .build())
+ *                 .name("pipeline_name")
+ *                 .description("pipeline_description")
+ *                 .pipelineIdentifiers(                
+ *                     "id1",
+ *                     "id2")
+ *                 .filterType("PipelineExecution")
  *                 .build())
- *             .filterVisibility("EveryOne")
- *             .build());
- * 
- *         // pipeline filter with tags
- *         var exampleWithTags = new PipelineFilters("exampleWithTags", PipelineFiltersArgs.builder()
  *             .identifier("identifier")
  *             .name("name")
  *             .orgId("org_id")
  *             .projectId("project_id")
  *             .type("PipelineSetup")
+ *             .filterVisibility("EveryOne")
+ *             .build());
+ * 
+ *         // pipeline filter with tags
+ *         var exampleWithTags = new PipelineFilters("exampleWithTags", PipelineFiltersArgs.builder()
  *             .filterProperties(PipelineFiltersFilterPropertiesArgs.builder()
- *                 .filterType("PipelineSetup")
- *                 .pipelineTags(                
- *                     Map.ofEntries(
- *                         Map.entry("key", "tag1"),
- *                         Map.entry("value", "123")
- *                     ),
- *                     Map.ofEntries(
- *                         Map.entry("key", "tag2"),
- *                         Map.entry("value", "456")
- *                     ))
  *                 .moduleProperties(PipelineFiltersFilterPropertiesModulePropertiesArgs.builder()
  *                     .cd(PipelineFiltersFilterPropertiesModulePropertiesCdArgs.builder()
  *                         .deploymentTypes("Kubernetes")
@@ -124,16 +109,34 @@ import javax.annotation.Nullable;
  *                         .repoNames("repo1234")
  *                         .build())
  *                     .build())
+ *                 .filterType("PipelineSetup")
+ *                 .pipelineTags(                
+ *                     Map.ofEntries(
+ *                         Map.entry("key", "tag1"),
+ *                         Map.entry("value", "123")
+ *                     ),
+ *                     Map.ofEntries(
+ *                         Map.entry("key", "tag2"),
+ *                         Map.entry("value", "456")
+ *                     ))
  *                 .build())
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .type("PipelineSetup")
  *             .build());
  * 
  *         var pipelinemoduleproperties = new PipelineFilters("pipelinemoduleproperties", PipelineFiltersArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .orgId(testHarnessPlatformProject.orgId())
- *             .projectId(testHarnessPlatformProject.id())
- *             .type("PipelineExecution")
  *             .filterProperties(PipelineFiltersFilterPropertiesArgs.builder()
+ *                 .moduleProperties(PipelineFiltersFilterPropertiesModulePropertiesArgs.builder()
+ *                     .cd(PipelineFiltersFilterPropertiesModulePropertiesCdArgs.builder()
+ *                         .serviceDefinitionTypes("Kubernetes")
+ *                         .serviceIdentifiers("K8")
+ *                         .environmentIdentifiers("dev")
+ *                         .artifactDisplayNames("artificatname1")
+ *                         .build())
+ *                     .build())
  *                 .filterType("PipelineExecution")
  *                 .pipelineName("test")
  *                 .pipelineTags(                
@@ -145,15 +148,12 @@ import javax.annotation.Nullable;
  *                         Map.entry("key", "k2"),
  *                         Map.entry("value", "v2")
  *                     ))
- *                 .moduleProperties(PipelineFiltersFilterPropertiesModulePropertiesArgs.builder()
- *                     .cd(PipelineFiltersFilterPropertiesModulePropertiesCdArgs.builder()
- *                         .serviceDefinitionTypes("Kubernetes")
- *                         .serviceIdentifiers("K8")
- *                         .environmentIdentifiers("dev")
- *                         .artifactDisplayNames("artificatname1")
- *                         .build())
- *                     .build())
  *                 .build())
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .orgId(testHarnessPlatformProject.orgId())
+ *             .projectId(testHarnessPlatformProject.id())
+ *             .type("PipelineExecution")
  *             .build());
  * 
  *     }

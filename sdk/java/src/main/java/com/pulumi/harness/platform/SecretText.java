@@ -71,6 +71,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var gcpSecretManagerReference = new SecretText("gcpSecretManagerReference", SecretTextArgs.builder()
+ *             .additionalMetadatas(SecretTextAdditionalMetadataArgs.builder()
+ *                 .values(SecretTextAdditionalMetadataValueArgs.builder()
+ *                     .version("1")
+ *                     .build())
+ *                 .build())
  *             .identifier("identifier")
  *             .name("name")
  *             .description("example")
@@ -78,15 +83,16 @@ import javax.annotation.Nullable;
  *             .secretManagerIdentifier("gcpSecretManager")
  *             .valueType("Reference")
  *             .value("secret")
- *             .additionalMetadatas(SecretTextAdditionalMetadataArgs.builder()
- *                 .values(SecretTextAdditionalMetadataValueArgs.builder()
- *                     .version("1")
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *         // GCP Secret Manager with project ID and region (for secrets in a different GCP project)
  *         var gcpSecretManagerWithProject = new SecretText("gcpSecretManagerWithProject", SecretTextArgs.builder()
+ *             .additionalMetadatas(SecretTextAdditionalMetadataArgs.builder()
+ *                 .values(SecretTextAdditionalMetadataValueArgs.builder()
+ *                     .regions("us-east1")
+ *                     .gcpProjectId("my-gcp-project-id")
+ *                     .build())
+ *                 .build())
  *             .identifier("identifier")
  *             .name("name")
  *             .description("example")
@@ -94,15 +100,14 @@ import javax.annotation.Nullable;
  *             .secretManagerIdentifier("gcpSecretManager")
  *             .valueType("Inline")
  *             .value("secret")
- *             .additionalMetadatas(SecretTextAdditionalMetadataArgs.builder()
- *                 .values(SecretTextAdditionalMetadataValueArgs.builder()
- *                     .regions("us-east1")
- *                     .gcpProjectId("my-gcp-project-id")
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *         var awsSecretManager = new SecretText("awsSecretManager", SecretTextArgs.builder()
+ *             .additionalMetadatas(SecretTextAdditionalMetadataArgs.builder()
+ *                 .values(SecretTextAdditionalMetadataValueArgs.builder()
+ *                     .kmsKeyId("kmsKeyId")
+ *                     .build())
+ *                 .build())
  *             .identifier("identifier")
  *             .name("name")
  *             .description("example")
@@ -110,11 +115,6 @@ import javax.annotation.Nullable;
  *             .secretManagerIdentifier("awsSecretManager")
  *             .valueType("Inline")
  *             .value("secret")
- *             .additionalMetadatas(SecretTextAdditionalMetadataArgs.builder()
- *                 .values(SecretTextAdditionalMetadataValueArgs.builder()
- *                     .kmsKeyId("kmsKeyId")
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *     }

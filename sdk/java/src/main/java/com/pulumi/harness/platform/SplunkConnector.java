@@ -52,6 +52,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Example 1: Username/Password Authentication (New Block Format)
  *         var usernamePassword = new SplunkConnector("usernamePassword", SplunkConnectorArgs.builder()
+ *             .usernamePassword(SplunkConnectorUsernamePasswordArgs.builder()
+ *                 .username("splunk_user")
+ *                 .passwordRef("account.splunk_password")
+ *                 .build())
  *             .identifier("splunk_userpass")
  *             .name("Splunk Username/Password")
  *             .description("Splunk connector with username/password authentication")
@@ -59,14 +63,13 @@ import javax.annotation.Nullable;
  *             .url("https://splunk.company.com:8089")
  *             .delegateSelectors("harness-delegate")
  *             .accountId("splunk_account_id")
- *             .usernamePassword(SplunkConnectorUsernamePasswordArgs.builder()
- *                 .username("splunk_user")
- *                 .passwordRef("account.splunk_password")
- *                 .build())
  *             .build());
  * 
  *         // Example 2: Bearer Token Authentication
  *         var bearerToken = new SplunkConnector("bearerToken", SplunkConnectorArgs.builder()
+ *             .bearerToken(SplunkConnectorBearerTokenArgs.builder()
+ *                 .bearerTokenRef("account.splunk_bearer_token")
+ *                 .build())
  *             .identifier("splunk_bearer")
  *             .name("Splunk Bearer Token")
  *             .description("Splunk connector with bearer token authentication")
@@ -74,13 +77,13 @@ import javax.annotation.Nullable;
  *             .url("https://splunk.company.com:8089")
  *             .delegateSelectors("harness-delegate")
  *             .accountId("splunk_account_id")
- *             .bearerToken(SplunkConnectorBearerTokenArgs.builder()
- *                 .bearerTokenRef("account.splunk_bearer_token")
- *                 .build())
  *             .build());
  * 
  *         // Example 3: HEC Token Authentication
  *         var hecToken = new SplunkConnector("hecToken", SplunkConnectorArgs.builder()
+ *             .hecToken(SplunkConnectorHecTokenArgs.builder()
+ *                 .hecTokenRef("account.splunk_hec_token")
+ *                 .build())
  *             .identifier("splunk_hec")
  *             .name("Splunk HEC Token")
  *             .description("Splunk connector with HEC token authentication")
@@ -88,13 +91,12 @@ import javax.annotation.Nullable;
  *             .url("https://splunk.company.com:8088")
  *             .delegateSelectors("harness-delegate")
  *             .accountId("splunk_account_id")
- *             .hecToken(SplunkConnectorHecTokenArgs.builder()
- *                 .hecTokenRef("account.splunk_hec_token")
- *                 .build())
  *             .build());
  * 
  *         // Example 4: No Authentication
  *         var noAuth = new SplunkConnector("noAuth", SplunkConnectorArgs.builder()
+ *             .noAuthentication(SplunkConnectorNoAuthenticationArgs.builder()
+ *                 .build())
  *             .identifier("splunk_no_auth")
  *             .name("Splunk No Auth")
  *             .description("Splunk connector without authentication")
@@ -102,8 +104,6 @@ import javax.annotation.Nullable;
  *             .url("https://splunk-dev.company.com:8089")
  *             .delegateSelectors("harness-delegate")
  *             .accountId("splunk_account_id")
- *             .noAuthentication(SplunkConnectorNoAuthenticationArgs.builder()
- *                 .build())
  *             .build());
  * 
  *         // Example 5: Legacy Format (Deprecated but still supported)

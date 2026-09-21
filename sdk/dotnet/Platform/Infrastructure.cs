@@ -24,13 +24,6 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var example = new Harness.Platform.Infrastructure("example", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         OrgId = "orgIdentifer",
-    ///         ProjectId = "projectIdentifier",
-    ///         EnvId = "environmentIdentifier",
-    ///         Type = "KubernetesDirect",
-    ///         DeploymentType = "Kubernetes",
     ///         GitDetails = new Harness.Platform.Inputs.InfrastructureGitDetailsArgs
     ///         {
     ///             BranchName = "branchName",
@@ -40,6 +33,13 @@ namespace Pulumi.Harness.Platform
     ///             StoreType = "REMOTE",
     ///             RepoName = "repoName",
     ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         OrgId = "orgIdentifer",
+    ///         ProjectId = "projectIdentifier",
+    ///         EnvId = "environmentIdentifier",
+    ///         Type = "KubernetesDirect",
+    ///         DeploymentType = "Kubernetes",
     ///         Yaml = @"infrastructureDefinition:
     ///  name: name
     ///  identifier: identifier

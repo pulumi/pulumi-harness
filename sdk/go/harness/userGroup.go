@@ -28,13 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := harness.NewUserGroup(ctx, "example", &harness.UserGroupArgs{
-//				Name:        pulumi.String("example-group"),
-//				Description: pulumi.String("This group demonstrates account level and resource level permissions."),
 //				Permissions: &harness.UserGroupPermissionsTypeArgs{
-//					AccountPermissions: pulumi.StringArray{
-//						pulumi.String("ADMINISTER_OTHER_ACCOUNT_FUNCTIONS"),
-//						pulumi.String("MANAGE_API_KEYS"),
-//					},
 //					AppPermissions: &harness.UserGroupPermissionsAppPermissionsArgs{
 //						Alls: harness.UserGroupPermissionsAppPermissionsAllArray{
 //							&harness.UserGroupPermissionsAppPermissionsAllArgs{
@@ -169,7 +163,13 @@ import (
 //							},
 //						},
 //					},
+//					AccountPermissions: pulumi.StringArray{
+//						pulumi.String("ADMINISTER_OTHER_ACCOUNT_FUNCTIONS"),
+//						pulumi.String("MANAGE_API_KEYS"),
+//					},
 //				},
+//				Name:        pulumi.String("example-group"),
+//				Description: pulumi.String("This group demonstrates account level and resource level permissions."),
 //			})
 //			if err != nil {
 //				return err

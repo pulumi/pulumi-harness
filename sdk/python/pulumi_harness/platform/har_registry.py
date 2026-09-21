@@ -392,7 +392,7 @@ class HarRegistry(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  blocked_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict']]]]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict', 'outputs.HarRegistryConfig']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  is_public: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -414,10 +414,6 @@ class HarRegistry(pulumi.CustomResource):
 
         # Example of a Virtual Registry
         virtual_registry = harness.platform.HarRegistry("virtual_registry",
-            identifier="virtual_docker_registry",
-            description="Virtual Docker Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="DOCKER",
             configs=[{
                 "type": "VIRTUAL",
                 "upstream_proxies": [
@@ -425,71 +421,69 @@ class HarRegistry(pulumi.CustomResource):
                     "registry2",
                 ],
             }],
+            identifier="virtual_docker_registry",
+            description="Virtual Docker Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="DOCKER",
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Registry with Authentication
         upstream_registry = harness.platform.HarRegistry("upstream_registry",
-            identifier="upstream_helm_registry",
-            description="Upstream Helm Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="HELM",
             configs=[{
-                "type": "UPSTREAM",
-                "source": "Custom",
-                "url": "https://helm.sh",
                 "auths": [{
                     "auth_type": "UserPassword",
                     "user_name": "registry_user",
                     "secret_identifier": "registry_password",
                     "secret_space_path": "accountId/orgId/projectId",
                 }],
+                "type": "UPSTREAM",
+                "source": "Custom",
+                "url": "https://helm.sh",
             }],
+            identifier="upstream_helm_registry",
+            description="Upstream Helm Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="HELM",
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Go Registry (GoProxy source needs no url)
         go_upstream = harness.platform.HarRegistry("go_upstream",
-            identifier="upstream_go_registry",
-            description="Upstream Go Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="GO",
             configs=[{
                 "type": "UPSTREAM",
                 "source": "GoProxy",
                 "auth_type": "Anonymous",
             }],
+            identifier="upstream_go_registry",
+            description="Upstream Go Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="GO",
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Conda Registry (Anaconda source needs no url)
         conda_upstream = harness.platform.HarRegistry("conda_upstream",
-            identifier="upstream_conda_registry",
-            description="Upstream Conda Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="CONDA",
             configs=[{
                 "type": "UPSTREAM",
                 "source": "Anaconda",
                 "auth_type": "Anonymous",
             }],
+            identifier="upstream_conda_registry",
+            description="Upstream Conda Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="CONDA",
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Helm HTTP Registry (HelmChartRepo source requires url)
         helm_http_upstream = harness.platform.HarRegistry("helm_http_upstream",
-            identifier="upstream_helm_http_registry",
-            description="Upstream Helm HTTP Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="HELM_HTTP",
             configs=[{
                 "type": "UPSTREAM",
                 "source": "HelmChartRepo",
                 "url": "https://charts.bitnami.com/bitnami",
                 "auth_type": "Anonymous",
             }],
+            identifier="upstream_helm_http_registry",
+            description="Upstream Helm HTTP Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="HELM_HTTP",
             parent_ref="accountId/orgId/projectId")
         # Example of a Virtual Debian Registry with Debian-specific configuration
         debian_virtual = harness.platform.HarRegistry("debian_virtual",
-            identifier="virtual_debian_registry",
-            description="Virtual Debian Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="DEBIAN",
             configs=[{
-                "type": "VIRTUAL",
-                "upstream_proxies": ["debian_upstream_registry"],
                 "debian_config": {
                     "remote_indexed_architectures": [
                         "amd64",
@@ -497,27 +491,29 @@ class HarRegistry(pulumi.CustomResource):
                     ],
                     "optional_index_compression_formats": [".xz"],
                 },
+                "type": "VIRTUAL",
+                "upstream_proxies": ["debian_upstream_registry"],
             }],
+            identifier="virtual_debian_registry",
+            description="Virtual Debian Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="DEBIAN",
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Custom Debian Registry (Debian source needs url)
         debian_upstream = harness.platform.HarRegistry("debian_upstream",
-            identifier="upstream_debian_registry",
-            description="Upstream Debian Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="DEBIAN",
             configs=[{
                 "type": "UPSTREAM",
                 "source": "Custom",
                 "url": "http://deb.debian.org/debian",
                 "auth_type": "Anonymous",
             }],
+            identifier="upstream_debian_registry",
+            description="Upstream Debian Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="DEBIAN",
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Python Registry with a custom remote URL suffix
         python_upstream = harness.platform.HarRegistry("python_upstream",
-            identifier="upstream_python_registry",
-            description="Upstream Python Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="PYTHON",
             configs=[{
                 "type": "UPSTREAM",
                 "source": "Custom",
@@ -525,106 +521,110 @@ class HarRegistry(pulumi.CustomResource):
                 "remote_url_suffix": "simple",
                 "auth_type": "Anonymous",
             }],
+            identifier="upstream_python_registry",
+            description="Upstream Python Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="PYTHON",
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Conan Registry (ConanCenter source needs no url)
         conan_upstream = harness.platform.HarRegistry("conan_upstream",
-            identifier="upstream_conan_registry",
-            description="Upstream Conan Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="CONAN",
             configs=[{
                 "type": "UPSTREAM",
                 "source": "ConanCenter",
                 "auth_type": "Anonymous",
             }],
+            identifier="upstream_conan_registry",
+            description="Upstream Conan Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="CONAN",
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Ruby Registry (RubyGems source needs no url)
         rubygems_upstream = harness.platform.HarRegistry("rubygems_upstream",
-            identifier="upstream_ruby_registry",
-            description="Upstream Ruby Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="RUBY",
             configs=[{
                 "type": "UPSTREAM",
                 "source": "RubyGems",
                 "auth_type": "Anonymous",
             }],
+            identifier="upstream_ruby_registry",
+            description="Upstream Ruby Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="RUBY",
             parent_ref="accountId/orgId/projectId")
         # Example of a Virtual Terraform Registry
         terraform_virtual = harness.platform.HarRegistry("terraform_virtual",
+            configs=[{
+                "type": "VIRTUAL",
+            }],
             identifier="virtual_terraform_registry",
             description="Virtual Terraform Registry",
             space_ref="accountId/orgId/projectId",
             package_type="TERRAFORM",
-            configs=[{
-                "type": "VIRTUAL",
-            }],
             parent_ref="accountId/orgId/projectId")
         # Example of a Virtual CRAN Registry
         cran_virtual = harness.platform.HarRegistry("cran_virtual",
+            configs=[{
+                "type": "VIRTUAL",
+            }],
             identifier="virtual_cran_registry",
             description="Virtual CRAN Registry",
             space_ref="accountId/orgId/projectId",
             package_type="CRAN",
-            configs=[{
-                "type": "VIRTUAL",
-            }],
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream CRAN Registry (CRAN source needs no url)
         cran_upstream = harness.platform.HarRegistry("cran_upstream",
-            identifier="upstream_cran_registry",
-            description="Upstream CRAN Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="CRAN",
             configs=[{
                 "type": "UPSTREAM",
                 "source": "CRAN",
                 "auth_type": "Anonymous",
             }],
+            identifier="upstream_cran_registry",
+            description="Upstream CRAN Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="CRAN",
             parent_ref="accountId/orgId/projectId")
         # Example of a Virtual Alpine Registry
         alpine_virtual = harness.platform.HarRegistry("alpine_virtual",
+            configs=[{
+                "type": "VIRTUAL",
+            }],
             identifier="virtual_alpine_registry",
             description="Virtual Alpine Registry",
             space_ref="accountId/orgId/projectId",
             package_type="ALPINE",
-            configs=[{
-                "type": "VIRTUAL",
-            }],
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Alpine Registry (Alpine source needs no url)
         alpine_upstream = harness.platform.HarRegistry("alpine_upstream",
-            identifier="upstream_alpine_registry",
-            description="Upstream Alpine Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="ALPINE",
             configs=[{
                 "type": "UPSTREAM",
                 "source": "Alpine",
                 "auth_type": "Anonymous",
             }],
+            identifier="upstream_alpine_registry",
+            description="Upstream Alpine Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="ALPINE",
             parent_ref="accountId/orgId/projectId")
         # Example of a Virtual Wolfi Registry
         wolfi_virtual = harness.platform.HarRegistry("wolfi_virtual",
+            configs=[{
+                "type": "VIRTUAL",
+            }],
             identifier="virtual_wolfi_registry",
             description="Virtual Wolfi Registry",
             space_ref="accountId/orgId/projectId",
             package_type="WOLFI",
-            configs=[{
-                "type": "VIRTUAL",
-            }],
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Wolfi Registry (Wolfi source needs no url)
         wolfi_upstream = harness.platform.HarRegistry("wolfi_upstream",
-            identifier="upstream_wolfi_registry",
-            description="Upstream Wolfi Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="WOLFI",
             configs=[{
                 "type": "UPSTREAM",
                 "source": "Wolfi",
                 "auth_type": "Anonymous",
             }],
+            identifier="upstream_wolfi_registry",
+            description="Upstream Wolfi Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="WOLFI",
             parent_ref="accountId/orgId/projectId")
         ```
 
@@ -660,7 +660,7 @@ class HarRegistry(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_patterns: Allowed artifact patterns
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_patterns: Blocked artifact patterns
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict']]]] configs: Configuration for the registry
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict', 'outputs.HarRegistryConfig']]]] configs: Configuration for the registry
         :param pulumi.Input[_builtins.str] description: Description of the registry
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry
         :param pulumi.Input[_builtins.bool] is_public: Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
@@ -688,10 +688,6 @@ class HarRegistry(pulumi.CustomResource):
 
         # Example of a Virtual Registry
         virtual_registry = harness.platform.HarRegistry("virtual_registry",
-            identifier="virtual_docker_registry",
-            description="Virtual Docker Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="DOCKER",
             configs=[{
                 "type": "VIRTUAL",
                 "upstream_proxies": [
@@ -699,71 +695,69 @@ class HarRegistry(pulumi.CustomResource):
                     "registry2",
                 ],
             }],
+            identifier="virtual_docker_registry",
+            description="Virtual Docker Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="DOCKER",
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Registry with Authentication
         upstream_registry = harness.platform.HarRegistry("upstream_registry",
-            identifier="upstream_helm_registry",
-            description="Upstream Helm Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="HELM",
             configs=[{
-                "type": "UPSTREAM",
-                "source": "Custom",
-                "url": "https://helm.sh",
                 "auths": [{
                     "auth_type": "UserPassword",
                     "user_name": "registry_user",
                     "secret_identifier": "registry_password",
                     "secret_space_path": "accountId/orgId/projectId",
                 }],
+                "type": "UPSTREAM",
+                "source": "Custom",
+                "url": "https://helm.sh",
             }],
+            identifier="upstream_helm_registry",
+            description="Upstream Helm Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="HELM",
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Go Registry (GoProxy source needs no url)
         go_upstream = harness.platform.HarRegistry("go_upstream",
-            identifier="upstream_go_registry",
-            description="Upstream Go Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="GO",
             configs=[{
                 "type": "UPSTREAM",
                 "source": "GoProxy",
                 "auth_type": "Anonymous",
             }],
+            identifier="upstream_go_registry",
+            description="Upstream Go Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="GO",
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Conda Registry (Anaconda source needs no url)
         conda_upstream = harness.platform.HarRegistry("conda_upstream",
-            identifier="upstream_conda_registry",
-            description="Upstream Conda Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="CONDA",
             configs=[{
                 "type": "UPSTREAM",
                 "source": "Anaconda",
                 "auth_type": "Anonymous",
             }],
+            identifier="upstream_conda_registry",
+            description="Upstream Conda Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="CONDA",
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Helm HTTP Registry (HelmChartRepo source requires url)
         helm_http_upstream = harness.platform.HarRegistry("helm_http_upstream",
-            identifier="upstream_helm_http_registry",
-            description="Upstream Helm HTTP Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="HELM_HTTP",
             configs=[{
                 "type": "UPSTREAM",
                 "source": "HelmChartRepo",
                 "url": "https://charts.bitnami.com/bitnami",
                 "auth_type": "Anonymous",
             }],
+            identifier="upstream_helm_http_registry",
+            description="Upstream Helm HTTP Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="HELM_HTTP",
             parent_ref="accountId/orgId/projectId")
         # Example of a Virtual Debian Registry with Debian-specific configuration
         debian_virtual = harness.platform.HarRegistry("debian_virtual",
-            identifier="virtual_debian_registry",
-            description="Virtual Debian Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="DEBIAN",
             configs=[{
-                "type": "VIRTUAL",
-                "upstream_proxies": ["debian_upstream_registry"],
                 "debian_config": {
                     "remote_indexed_architectures": [
                         "amd64",
@@ -771,27 +765,29 @@ class HarRegistry(pulumi.CustomResource):
                     ],
                     "optional_index_compression_formats": [".xz"],
                 },
+                "type": "VIRTUAL",
+                "upstream_proxies": ["debian_upstream_registry"],
             }],
+            identifier="virtual_debian_registry",
+            description="Virtual Debian Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="DEBIAN",
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Custom Debian Registry (Debian source needs url)
         debian_upstream = harness.platform.HarRegistry("debian_upstream",
-            identifier="upstream_debian_registry",
-            description="Upstream Debian Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="DEBIAN",
             configs=[{
                 "type": "UPSTREAM",
                 "source": "Custom",
                 "url": "http://deb.debian.org/debian",
                 "auth_type": "Anonymous",
             }],
+            identifier="upstream_debian_registry",
+            description="Upstream Debian Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="DEBIAN",
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Python Registry with a custom remote URL suffix
         python_upstream = harness.platform.HarRegistry("python_upstream",
-            identifier="upstream_python_registry",
-            description="Upstream Python Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="PYTHON",
             configs=[{
                 "type": "UPSTREAM",
                 "source": "Custom",
@@ -799,106 +795,110 @@ class HarRegistry(pulumi.CustomResource):
                 "remote_url_suffix": "simple",
                 "auth_type": "Anonymous",
             }],
+            identifier="upstream_python_registry",
+            description="Upstream Python Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="PYTHON",
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Conan Registry (ConanCenter source needs no url)
         conan_upstream = harness.platform.HarRegistry("conan_upstream",
-            identifier="upstream_conan_registry",
-            description="Upstream Conan Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="CONAN",
             configs=[{
                 "type": "UPSTREAM",
                 "source": "ConanCenter",
                 "auth_type": "Anonymous",
             }],
+            identifier="upstream_conan_registry",
+            description="Upstream Conan Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="CONAN",
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Ruby Registry (RubyGems source needs no url)
         rubygems_upstream = harness.platform.HarRegistry("rubygems_upstream",
-            identifier="upstream_ruby_registry",
-            description="Upstream Ruby Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="RUBY",
             configs=[{
                 "type": "UPSTREAM",
                 "source": "RubyGems",
                 "auth_type": "Anonymous",
             }],
+            identifier="upstream_ruby_registry",
+            description="Upstream Ruby Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="RUBY",
             parent_ref="accountId/orgId/projectId")
         # Example of a Virtual Terraform Registry
         terraform_virtual = harness.platform.HarRegistry("terraform_virtual",
+            configs=[{
+                "type": "VIRTUAL",
+            }],
             identifier="virtual_terraform_registry",
             description="Virtual Terraform Registry",
             space_ref="accountId/orgId/projectId",
             package_type="TERRAFORM",
-            configs=[{
-                "type": "VIRTUAL",
-            }],
             parent_ref="accountId/orgId/projectId")
         # Example of a Virtual CRAN Registry
         cran_virtual = harness.platform.HarRegistry("cran_virtual",
+            configs=[{
+                "type": "VIRTUAL",
+            }],
             identifier="virtual_cran_registry",
             description="Virtual CRAN Registry",
             space_ref="accountId/orgId/projectId",
             package_type="CRAN",
-            configs=[{
-                "type": "VIRTUAL",
-            }],
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream CRAN Registry (CRAN source needs no url)
         cran_upstream = harness.platform.HarRegistry("cran_upstream",
-            identifier="upstream_cran_registry",
-            description="Upstream CRAN Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="CRAN",
             configs=[{
                 "type": "UPSTREAM",
                 "source": "CRAN",
                 "auth_type": "Anonymous",
             }],
+            identifier="upstream_cran_registry",
+            description="Upstream CRAN Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="CRAN",
             parent_ref="accountId/orgId/projectId")
         # Example of a Virtual Alpine Registry
         alpine_virtual = harness.platform.HarRegistry("alpine_virtual",
+            configs=[{
+                "type": "VIRTUAL",
+            }],
             identifier="virtual_alpine_registry",
             description="Virtual Alpine Registry",
             space_ref="accountId/orgId/projectId",
             package_type="ALPINE",
-            configs=[{
-                "type": "VIRTUAL",
-            }],
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Alpine Registry (Alpine source needs no url)
         alpine_upstream = harness.platform.HarRegistry("alpine_upstream",
-            identifier="upstream_alpine_registry",
-            description="Upstream Alpine Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="ALPINE",
             configs=[{
                 "type": "UPSTREAM",
                 "source": "Alpine",
                 "auth_type": "Anonymous",
             }],
+            identifier="upstream_alpine_registry",
+            description="Upstream Alpine Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="ALPINE",
             parent_ref="accountId/orgId/projectId")
         # Example of a Virtual Wolfi Registry
         wolfi_virtual = harness.platform.HarRegistry("wolfi_virtual",
+            configs=[{
+                "type": "VIRTUAL",
+            }],
             identifier="virtual_wolfi_registry",
             description="Virtual Wolfi Registry",
             space_ref="accountId/orgId/projectId",
             package_type="WOLFI",
-            configs=[{
-                "type": "VIRTUAL",
-            }],
             parent_ref="accountId/orgId/projectId")
         # Example of an Upstream Wolfi Registry (Wolfi source needs no url)
         wolfi_upstream = harness.platform.HarRegistry("wolfi_upstream",
-            identifier="upstream_wolfi_registry",
-            description="Upstream Wolfi Registry",
-            space_ref="accountId/orgId/projectId",
-            package_type="WOLFI",
             configs=[{
                 "type": "UPSTREAM",
                 "source": "Wolfi",
                 "auth_type": "Anonymous",
             }],
+            identifier="upstream_wolfi_registry",
+            description="Upstream Wolfi Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="WOLFI",
             parent_ref="accountId/orgId/projectId")
         ```
 
@@ -947,7 +947,7 @@ class HarRegistry(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  blocked_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict']]]]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict', 'outputs.HarRegistryConfig']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  is_public: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -996,7 +996,7 @@ class HarRegistry(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allowed_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             blocked_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict']]]]] = None,
+            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict', 'outputs.HarRegistryConfig']]]]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1015,7 +1015,7 @@ class HarRegistry(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_patterns: Allowed artifact patterns
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_patterns: Blocked artifact patterns
-        :param pulumi.Input[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict']]]] configs: Configuration for the registry
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict', 'outputs.HarRegistryConfig']]]] configs: Configuration for the registry
         :param pulumi.Input[_builtins.str] created_at: Creation timestamp
         :param pulumi.Input[_builtins.str] description: Description of the registry
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry

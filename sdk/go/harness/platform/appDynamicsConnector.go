@@ -30,6 +30,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Authentication mechanism as api token
 //			_, err := platform.NewAppDynamicsConnector(ctx, "token", &platform.AppDynamicsConnectorArgs{
+//				ApiToken: &platform.AppDynamicsConnectorApiTokenArgs{
+//					ClientId:        pulumi.String("client_id"),
+//					ClientSecretRef: pulumi.String("account.secret_id"),
+//				},
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
@@ -40,10 +44,6 @@ import (
 //				AccountName: pulumi.String("myaccount"),
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
-//				},
-//				ApiToken: &platform.AppDynamicsConnectorApiTokenArgs{
-//					ClientId:        pulumi.String("client_id"),
-//					ClientSecretRef: pulumi.String("account.secret_id"),
 //				},
 //			})
 //			if err != nil {
@@ -51,6 +51,10 @@ import (
 //			}
 //			// Authentication mechanism as username and password
 //			_, err = platform.NewAppDynamicsConnector(ctx, "test", &platform.AppDynamicsConnectorArgs{
+//				UsernamePassword: &platform.AppDynamicsConnectorUsernamePasswordArgs{
+//					Username:    pulumi.String("username"),
+//					PasswordRef: pulumi.String("account.secret_id"),
+//				},
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
@@ -61,10 +65,6 @@ import (
 //				AccountName: pulumi.String("myaccount"),
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
-//				},
-//				UsernamePassword: &platform.AppDynamicsConnectorUsernamePasswordArgs{
-//					Username:    pulumi.String("username"),
-//					PasswordRef: pulumi.String("account.secret_id"),
 //				},
 //			})
 //			if err != nil {

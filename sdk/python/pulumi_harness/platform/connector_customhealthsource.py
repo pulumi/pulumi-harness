@@ -457,12 +457,12 @@ class ConnectorCustomhealthsource(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorCustomhealthsourceHeaderArgs', 'ConnectorCustomhealthsourceHeaderArgsDict']]]]] = None,
+                 headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorCustomhealthsourceHeaderArgs', 'ConnectorCustomhealthsourceHeaderArgsDict', 'outputs.ConnectorCustomhealthsourceHeader']]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  method: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorCustomhealthsourceParamArgs', 'ConnectorCustomhealthsourceParamArgsDict']]]]] = None,
+                 params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorCustomhealthsourceParamArgs', 'ConnectorCustomhealthsourceParamArgsDict', 'outputs.ConnectorCustomhealthsourceParam']]]]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
@@ -480,6 +480,12 @@ class ConnectorCustomhealthsource(pulumi.CustomResource):
 
         # Authentication mechanism as username and password
         test = harness.platform.ConnectorCustomhealthsource("test",
+            headers=[{
+                "encrypted_value_ref": "account.doNotDeleteHSM",
+                "value_encrypted": True,
+                "key": "key",
+                "value": "value",
+            }],
             identifier="identifier",
             name="name",
             description="test",
@@ -487,13 +493,7 @@ class ConnectorCustomhealthsource(pulumi.CustomResource):
             url="https://prometheus.com/",
             delegate_selectors=["harness-delegate"],
             method="GET",
-            validation_path="loki/api/v1/labels",
-            headers=[{
-                "encrypted_value_ref": "account.doNotDeleteHSM",
-                "value_encrypted": True,
-                "key": "key",
-                "value": "value",
-            }])
+            validation_path="loki/api/v1/labels")
         ```
 
         ## Import
@@ -523,12 +523,12 @@ class ConnectorCustomhealthsource(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorCustomhealthsourceHeaderArgs', 'ConnectorCustomhealthsourceHeaderArgsDict']]]] headers: Headers.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorCustomhealthsourceHeaderArgs', 'ConnectorCustomhealthsourceHeaderArgsDict', 'outputs.ConnectorCustomhealthsourceHeader']]]] headers: Headers.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] method: HTTP Verb Method for the API Call
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorCustomhealthsourceParamArgs', 'ConnectorCustomhealthsourceParamArgsDict']]]] params: Parameters
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorCustomhealthsourceParamArgs', 'ConnectorCustomhealthsourceParamArgsDict', 'outputs.ConnectorCustomhealthsourceParam']]]] params: Parameters
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] url: URL of the Custom Healthsource controller.
@@ -552,6 +552,12 @@ class ConnectorCustomhealthsource(pulumi.CustomResource):
 
         # Authentication mechanism as username and password
         test = harness.platform.ConnectorCustomhealthsource("test",
+            headers=[{
+                "encrypted_value_ref": "account.doNotDeleteHSM",
+                "value_encrypted": True,
+                "key": "key",
+                "value": "value",
+            }],
             identifier="identifier",
             name="name",
             description="test",
@@ -559,13 +565,7 @@ class ConnectorCustomhealthsource(pulumi.CustomResource):
             url="https://prometheus.com/",
             delegate_selectors=["harness-delegate"],
             method="GET",
-            validation_path="loki/api/v1/labels",
-            headers=[{
-                "encrypted_value_ref": "account.doNotDeleteHSM",
-                "value_encrypted": True,
-                "key": "key",
-                "value": "value",
-            }])
+            validation_path="loki/api/v1/labels")
         ```
 
         ## Import
@@ -608,12 +608,12 @@ class ConnectorCustomhealthsource(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorCustomhealthsourceHeaderArgs', 'ConnectorCustomhealthsourceHeaderArgsDict']]]]] = None,
+                 headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorCustomhealthsourceHeaderArgs', 'ConnectorCustomhealthsourceHeaderArgsDict', 'outputs.ConnectorCustomhealthsourceHeader']]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  method: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorCustomhealthsourceParamArgs', 'ConnectorCustomhealthsourceParamArgsDict']]]]] = None,
+                 params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorCustomhealthsourceParamArgs', 'ConnectorCustomhealthsourceParamArgsDict', 'outputs.ConnectorCustomhealthsourceParam']]]]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
@@ -659,12 +659,12 @@ class ConnectorCustomhealthsource(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorCustomhealthsourceHeaderArgs', 'ConnectorCustomhealthsourceHeaderArgsDict']]]]] = None,
+            headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorCustomhealthsourceHeaderArgs', 'ConnectorCustomhealthsourceHeaderArgsDict', 'outputs.ConnectorCustomhealthsourceHeader']]]]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             method: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorCustomhealthsourceParamArgs', 'ConnectorCustomhealthsourceParamArgsDict']]]]] = None,
+            params: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorCustomhealthsourceParamArgs', 'ConnectorCustomhealthsourceParamArgsDict', 'outputs.ConnectorCustomhealthsourceParam']]]]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None,
@@ -679,12 +679,12 @@ class ConnectorCustomhealthsource(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorCustomhealthsourceHeaderArgs', 'ConnectorCustomhealthsourceHeaderArgsDict']]]] headers: Headers.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorCustomhealthsourceHeaderArgs', 'ConnectorCustomhealthsourceHeaderArgsDict', 'outputs.ConnectorCustomhealthsourceHeader']]]] headers: Headers.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] method: HTTP Verb Method for the API Call
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorCustomhealthsourceParamArgs', 'ConnectorCustomhealthsourceParamArgsDict']]]] params: Parameters
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorCustomhealthsourceParamArgs', 'ConnectorCustomhealthsourceParamArgsDict', 'outputs.ConnectorCustomhealthsourceParam']]]] params: Parameters
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] url: URL of the Custom Healthsource controller.

@@ -24,11 +24,6 @@ namespace Pulumi.Harness
     /// {
     ///     var test = new Harness.PlatformCcmFilters("test", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         Type = "CCMRecommendation",
     ///         FilterProperties = new Harness.Inputs.PlatformCcmFiltersFilterPropertiesArgs
     ///         {
     ///             Tags = new[]
@@ -37,6 +32,11 @@ namespace Pulumi.Harness
     ///             },
     ///             FilterType = "CCMRecommendation",
     ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Type = "CCMRecommendation",
     ///         FilterVisibility = "EveryOne",
     ///     });
     /// 

@@ -59,13 +59,6 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewGcpSecretManagerConnector(ctx, "gcp_sm_oidc_platform", &platform.GcpSecretManagerConnectorArgs{
-//				Identifier:  pulumi.String("identifier"),
-//				Name:        pulumi.String("name"),
-//				Description: pulumi.String("test"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//				ExecuteOnDelegate: pulumi.Bool(false),
 //				OidcAuthentications: platform.GcpSecretManagerConnectorOidcAuthenticationArray{
 //					&platform.GcpSecretManagerConnectorOidcAuthenticationArgs{
 //						WorkloadPoolId:      pulumi.String("harness-pool-test"),
@@ -74,11 +67,26 @@ import (
 //						ServiceAccountEmail: pulumi.String("harness.sample@iam.gserviceaccount.com"),
 //					},
 //				},
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				ExecuteOnDelegate: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewGcpSecretManagerConnector(ctx, "gcp_sm_oidc_delegate", &platform.GcpSecretManagerConnectorArgs{
+//				OidcAuthentications: platform.GcpSecretManagerConnectorOidcAuthenticationArray{
+//					&platform.GcpSecretManagerConnectorOidcAuthenticationArgs{
+//						WorkloadPoolId:      pulumi.String("harness-pool-test"),
+//						ProviderId:          pulumi.String("harness"),
+//						GcpProjectId:        pulumi.String("1234567"),
+//						ServiceAccountEmail: pulumi.String("harness.sample@iam.gserviceaccount.com"),
+//					},
+//				},
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
@@ -88,14 +96,6 @@ import (
 //				Default: true,
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
-//				},
-//				OidcAuthentications: platform.GcpSecretManagerConnectorOidcAuthenticationArray{
-//					&platform.GcpSecretManagerConnectorOidcAuthenticationArgs{
-//						WorkloadPoolId:      pulumi.String("harness-pool-test"),
-//						ProviderId:          pulumi.String("harness"),
-//						GcpProjectId:        pulumi.String("1234567"),
-//						ServiceAccountEmail: pulumi.String("harness.sample@iam.gserviceaccount.com"),
-//					},
 //				},
 //			})
 //			if err != nil {

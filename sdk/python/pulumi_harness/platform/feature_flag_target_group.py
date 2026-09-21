@@ -333,7 +333,7 @@ class FeatureFlagTargetGroup(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict', 'outputs.FeatureFlagTargetGroupRule']]]]] = None,
                  __props__=None):
         """
         Resource for creating a Harness Feature Flag Target Group.
@@ -371,7 +371,7 @@ class FeatureFlagTargetGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the feature flag target group.
         :param pulumi.Input[_builtins.str] org_id: Organization Identifier
         :param pulumi.Input[_builtins.str] project_id: Project Identifier
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict']]]] rules: The list of rules used to include targets in the target group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict', 'outputs.FeatureFlagTargetGroupRule']]]] rules: The list of rules used to include targets in the target group.
         """
         ...
     @overload
@@ -428,7 +428,7 @@ class FeatureFlagTargetGroup(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict', 'outputs.FeatureFlagTargetGroupRule']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -475,7 +475,7 @@ class FeatureFlagTargetGroup(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict']]]]] = None) -> 'FeatureFlagTargetGroup':
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict', 'outputs.FeatureFlagTargetGroupRule']]]]] = None) -> 'FeatureFlagTargetGroup':
         """
         Get an existing FeatureFlagTargetGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -491,7 +491,7 @@ class FeatureFlagTargetGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the feature flag target group.
         :param pulumi.Input[_builtins.str] org_id: Organization Identifier
         :param pulumi.Input[_builtins.str] project_id: Project Identifier
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict']]]] rules: The list of rules used to include targets in the target group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict', 'outputs.FeatureFlagTargetGroupRule']]]] rules: The list of rules used to include targets in the target group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

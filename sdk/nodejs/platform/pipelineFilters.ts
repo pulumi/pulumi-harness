@@ -16,11 +16,6 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.platform.PipelineFilters("test", {
- *     identifier: "identifier",
- *     name: "name",
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     type: "PipelineSetup",
  *     filterProperties: {
  *         name: "pipeline_name",
  *         description: "pipeline_description",
@@ -30,16 +25,22 @@ import * as utilities from "../utilities";
  *         ],
  *         filterType: "PipelineSetup",
  *     },
- *     filterVisibility: "EveryOne",
- * });
- * // pipeline execution filter consisiting services (service_identifiers) filter
- * const execution = new harness.platform.PipelineFilters("execution", {
  *     identifier: "identifier",
  *     name: "name",
  *     orgId: "org_id",
  *     projectId: "project_id",
  *     type: "PipelineSetup",
+ *     filterVisibility: "EveryOne",
+ * });
+ * // pipeline execution filter consisiting services (service_identifiers) filter
+ * const execution = new harness.platform.PipelineFilters("execution", {
  *     filterProperties: {
+ *         moduleProperties: {
+ *             cd: {
+ *                 deploymentTypes: "Kubernetes",
+ *                 serviceIdentifiers: ["nginx"],
+ *             },
+ *         },
  *         name: "pipeline_name",
  *         description: "pipeline_description",
  *         pipelineIdentifiers: [
@@ -47,34 +48,17 @@ import * as utilities from "../utilities";
  *             "id2",
  *         ],
  *         filterType: "PipelineExecution",
- *         moduleProperties: {
- *             cd: {
- *                 deploymentTypes: "Kubernetes",
- *                 serviceIdentifiers: ["nginx"],
- *             },
- *         },
  *     },
- *     filterVisibility: "EveryOne",
- * });
- * // pipeline filter with tags
- * const exampleWithTags = new harness.platform.PipelineFilters("example_with_tags", {
  *     identifier: "identifier",
  *     name: "name",
  *     orgId: "org_id",
  *     projectId: "project_id",
  *     type: "PipelineSetup",
+ *     filterVisibility: "EveryOne",
+ * });
+ * // pipeline filter with tags
+ * const exampleWithTags = new harness.platform.PipelineFilters("example_with_tags", {
  *     filterProperties: {
- *         filterType: "PipelineSetup",
- *         pipelineTags: [
- *             {
- *                 key: "tag1",
- *                 value: "123",
- *             },
- *             {
- *                 key: "tag2",
- *                 value: "456",
- *             },
- *         ],
  *         moduleProperties: {
  *             cd: {
  *                 deploymentTypes: "Kubernetes",
@@ -97,15 +81,34 @@ import * as utilities from "../utilities";
  *                 repoNames: "repo1234",
  *             },
  *         },
+ *         filterType: "PipelineSetup",
+ *         pipelineTags: [
+ *             {
+ *                 key: "tag1",
+ *                 value: "123",
+ *             },
+ *             {
+ *                 key: "tag2",
+ *                 value: "456",
+ *             },
+ *         ],
  *     },
- * });
- * const pipelinemoduleproperties = new harness.platform.PipelineFilters("pipelinemoduleproperties", {
  *     identifier: "identifier",
  *     name: "name",
- *     orgId: testHarnessPlatformProject.orgId,
- *     projectId: testHarnessPlatformProject.id,
- *     type: "PipelineExecution",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     type: "PipelineSetup",
+ * });
+ * const pipelinemoduleproperties = new harness.platform.PipelineFilters("pipelinemoduleproperties", {
  *     filterProperties: {
+ *         moduleProperties: {
+ *             cd: {
+ *                 serviceDefinitionTypes: "Kubernetes",
+ *                 serviceIdentifiers: ["K8"],
+ *                 environmentIdentifiers: ["dev"],
+ *                 artifactDisplayNames: ["artificatname1"],
+ *             },
+ *         },
  *         filterType: "PipelineExecution",
  *         pipelineName: "test",
  *         pipelineTags: [
@@ -118,15 +121,12 @@ import * as utilities from "../utilities";
  *                 value: "v2",
  *             },
  *         ],
- *         moduleProperties: {
- *             cd: {
- *                 serviceDefinitionTypes: "Kubernetes",
- *                 serviceIdentifiers: ["K8"],
- *                 environmentIdentifiers: ["dev"],
- *                 artifactDisplayNames: ["artificatname1"],
- *             },
- *         },
  *     },
+ *     identifier: "identifier",
+ *     name: "name",
+ *     orgId: testHarnessPlatformProject.orgId,
+ *     projectId: testHarnessPlatformProject.id,
+ *     type: "PipelineExecution",
  * });
  * ```
  *

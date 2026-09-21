@@ -27,10 +27,6 @@ namespace Pulumi.Harness.Platform
         ///     // data source for gitops clusters mapped to a project level env
         ///     var example = Harness.Platform.GetEnvironmentClustersMapping.Invoke(new()
         ///     {
-        ///         Identifier = "mycustomidentifier",
-        ///         OrgId = "orgIdentifer",
-        ///         ProjectId = "projectIdentifier",
-        ///         EnvId = "exampleEnvId",
         ///         Clusters = new[]
         ///         {
         ///             new Harness.Platform.Inputs.GetEnvironmentClustersMappingClusterInputArgs
@@ -41,13 +37,15 @@ namespace Pulumi.Harness.Platform
         ///                 Scope = "ACCOUNT",
         ///             },
         ///         },
+        ///         Identifier = "mycustomidentifier",
+        ///         OrgId = "orgIdentifer",
+        ///         ProjectId = "projectIdentifier",
+        ///         EnvId = "exampleEnvId",
         ///     });
         /// 
         ///     // data source for two gitops clusters mapped to an account level env
         ///     var example2 = Harness.Platform.GetEnvironmentClustersMapping.Invoke(new()
         ///     {
-        ///         Identifier = "mycustomidentifier",
-        ///         EnvId = "env1",
         ///         Clusters = new[]
         ///         {
         ///             new Harness.Platform.Inputs.GetEnvironmentClustersMappingClusterInputArgs
@@ -65,6 +63,8 @@ namespace Pulumi.Harness.Platform
         ///                 Scope = "ACCOUNT",
         ///             },
         ///         },
+        ///         Identifier = "mycustomidentifier",
+        ///         EnvId = "env1",
         ///     });
         /// 
         /// });
@@ -89,10 +89,6 @@ namespace Pulumi.Harness.Platform
         ///     // data source for gitops clusters mapped to a project level env
         ///     var example = Harness.Platform.GetEnvironmentClustersMapping.Invoke(new()
         ///     {
-        ///         Identifier = "mycustomidentifier",
-        ///         OrgId = "orgIdentifer",
-        ///         ProjectId = "projectIdentifier",
-        ///         EnvId = "exampleEnvId",
         ///         Clusters = new[]
         ///         {
         ///             new Harness.Platform.Inputs.GetEnvironmentClustersMappingClusterInputArgs
@@ -103,13 +99,15 @@ namespace Pulumi.Harness.Platform
         ///                 Scope = "ACCOUNT",
         ///             },
         ///         },
+        ///         Identifier = "mycustomidentifier",
+        ///         OrgId = "orgIdentifer",
+        ///         ProjectId = "projectIdentifier",
+        ///         EnvId = "exampleEnvId",
         ///     });
         /// 
         ///     // data source for two gitops clusters mapped to an account level env
         ///     var example2 = Harness.Platform.GetEnvironmentClustersMapping.Invoke(new()
         ///     {
-        ///         Identifier = "mycustomidentifier",
-        ///         EnvId = "env1",
         ///         Clusters = new[]
         ///         {
         ///             new Harness.Platform.Inputs.GetEnvironmentClustersMappingClusterInputArgs
@@ -127,6 +125,8 @@ namespace Pulumi.Harness.Platform
         ///                 Scope = "ACCOUNT",
         ///             },
         ///         },
+        ///         Identifier = "mycustomidentifier",
+        ///         EnvId = "env1",
         ///     });
         /// 
         /// });
@@ -151,10 +151,6 @@ namespace Pulumi.Harness.Platform
         ///     // data source for gitops clusters mapped to a project level env
         ///     var example = Harness.Platform.GetEnvironmentClustersMapping.Invoke(new()
         ///     {
-        ///         Identifier = "mycustomidentifier",
-        ///         OrgId = "orgIdentifer",
-        ///         ProjectId = "projectIdentifier",
-        ///         EnvId = "exampleEnvId",
         ///         Clusters = new[]
         ///         {
         ///             new Harness.Platform.Inputs.GetEnvironmentClustersMappingClusterInputArgs
@@ -165,13 +161,15 @@ namespace Pulumi.Harness.Platform
         ///                 Scope = "ACCOUNT",
         ///             },
         ///         },
+        ///         Identifier = "mycustomidentifier",
+        ///         OrgId = "orgIdentifer",
+        ///         ProjectId = "projectIdentifier",
+        ///         EnvId = "exampleEnvId",
         ///     });
         /// 
         ///     // data source for two gitops clusters mapped to an account level env
         ///     var example2 = Harness.Platform.GetEnvironmentClustersMapping.Invoke(new()
         ///     {
-        ///         Identifier = "mycustomidentifier",
-        ///         EnvId = "env1",
         ///         Clusters = new[]
         ///         {
         ///             new Harness.Platform.Inputs.GetEnvironmentClustersMappingClusterInputArgs
@@ -189,6 +187,8 @@ namespace Pulumi.Harness.Platform
         ///                 Scope = "ACCOUNT",
         ///             },
         ///         },
+        ///         Identifier = "mycustomidentifier",
+        ///         EnvId = "env1",
         ///     });
         /// 
         /// });

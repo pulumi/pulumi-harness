@@ -29,13 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewInfrastructure(ctx, "example", &platform.InfrastructureArgs{
-//				Identifier:     pulumi.String("identifier"),
-//				Name:           pulumi.String("name"),
-//				OrgId:          pulumi.String("orgIdentifer"),
-//				ProjectId:      pulumi.String("projectIdentifier"),
-//				EnvId:          pulumi.String("environmentIdentifier"),
-//				Type:           pulumi.String("KubernetesDirect"),
-//				DeploymentType: pulumi.String("Kubernetes"),
 //				GitDetails: &platform.InfrastructureGitDetailsArgs{
 //					BranchName:    "branchName",
 //					CommitMessage: pulumi.String("commitMessage"),
@@ -44,6 +37,13 @@ import (
 //					StoreType:     pulumi.String("REMOTE"),
 //					RepoName:      pulumi.String("repoName"),
 //				},
+//				Identifier:     pulumi.String("identifier"),
+//				Name:           pulumi.String("name"),
+//				OrgId:          pulumi.String("orgIdentifer"),
+//				ProjectId:      pulumi.String("projectIdentifier"),
+//				EnvId:          pulumi.String("environmentIdentifier"),
+//				Type:           pulumi.String("KubernetesDirect"),
+//				DeploymentType: pulumi.String("Kubernetes"),
 //				Yaml: pulumi.String(`infrastructureDefinition:
 //	 name: name
 //	 identifier: identifier

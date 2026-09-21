@@ -16,11 +16,6 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.platform.GitOpsRepoCred("test", {
- *     identifier: "identifier",
- *     accountId: "account_id",
- *     agentId: "agent_id",
- *     projectId: "project_id",
- *     orgId: "org_id",
  *     creds: [{
  *         type: "git",
  *         url: "git@github.com:yourorg",
@@ -31,6 +26,11 @@ import * as utilities from "../utilities";
  * -----END OPENSSH PRIVATE KEY -----
  * `,
  *     }],
+ *     identifier: "identifier",
+ *     accountId: "account_id",
+ *     agentId: "agent_id",
+ *     projectId: "project_id",
+ *     orgId: "org_id",
  * }, {
  *     ignoreChanges: [
  *         "accountId",

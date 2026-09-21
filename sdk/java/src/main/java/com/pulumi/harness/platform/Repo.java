@@ -47,15 +47,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new Repo("test", RepoArgs.builder()
+ *             .sources(RepoSourceArgs.builder()
+ *                 .repo("octocat/hello-worId")
+ *                 .type("github")
+ *                 .build())
  *             .identifier("test_repo_123")
  *             .orgId("test_org_123")
  *             .projectId("test_project_123")
  *             .defaultBranch("main")
  *             .description("test_description_123")
- *             .sources(RepoSourceArgs.builder()
- *                 .repo("octocat/hello-worId")
- *                 .type("github")
- *                 .build())
  *             .build());
  * 
  *     }

@@ -65,13 +65,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var accountNtlm = new SecretWinrm("accountNtlm", SecretWinrmArgs.builder()
- *             .identifier("account_ntlm_v3")
- *             .name("Account NTLM v3")
- *             .description("Account-level WinRM with NTLM")
- *             .tags(            
- *                 "scope:account",
- *                 "auth:ntlm")
- *             .port(5986)
  *             .ntlm(SecretWinrmNtlmArgs.builder()
  *                 .domain("example.com")
  *                 .username("admin")
@@ -80,10 +73,28 @@ import javax.annotation.Nullable;
  *                 .skipCertCheck(false)
  *                 .useNoProfile(true)
  *                 .build())
+ *             .identifier("account_ntlm_v3")
+ *             .name("Account NTLM v3")
+ *             .description("Account-level WinRM with NTLM")
+ *             .tags(            
+ *                 "scope:account",
+ *                 "auth:ntlm")
+ *             .port(5986)
  *             .build());
  * 
  *         // 2. Account-level Kerberos with KeyTab
  *         var accountKerberosKeytab = new SecretWinrm("accountKerberosKeytab", SecretWinrmArgs.builder()
+ *             .kerberos(SecretWinrmKerberosArgs.builder()
+ *                 .tgtKeyTabFilePathSpec(SecretWinrmKerberosTgtKeyTabFilePathSpecArgs.builder()
+ *                     .keyPath("/etc/krb5.keytab")
+ *                     .build())
+ *                 .principal("service}{@literal @}{@code EXAMPLE.COM")
+ *                 .realm("EXAMPLE.COM")
+ *                 .tgtGenerationMethod("KeyTabFilePath")
+ *                 .useSsl(true)
+ *                 .skipCertCheck(true)
+ *                 .useNoProfile(true)
+ *                 .build())
  *             .identifier("account_kerberos_keytab_v3")
  *             .name("Account Kerberos KeyTab v3")
  *             .description("Account-level WinRM with Kerberos KeyTab")
@@ -91,17 +102,6 @@ import javax.annotation.Nullable;
  *                 "scope:account",
  *                 "auth:kerberos-keytab")
  *             .port(5986)
- *             .kerberos(SecretWinrmKerberosArgs.builder()
- *                 .principal("service}{@literal @}{@code EXAMPLE.COM")
- *                 .realm("EXAMPLE.COM")
- *                 .tgtGenerationMethod("KeyTabFilePath")
- *                 .useSsl(true)
- *                 .skipCertCheck(true)
- *                 .useNoProfile(true)
- *                 .tgtKeyTabFilePathSpec(SecretWinrmKerberosTgtKeyTabFilePathSpecArgs.builder()
- *                     .keyPath("/etc/krb5.keytab")
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *         // 3. Account-level Kerberos with Password
@@ -115,6 +115,17 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var accountKerberosPassword1SecretWinrm = new SecretWinrm("accountKerberosPassword1SecretWinrm", SecretWinrmArgs.builder()
+ *             .kerberos(SecretWinrmKerberosArgs.builder()
+ *                 .tgtPasswordSpec(SecretWinrmKerberosTgtPasswordSpecArgs.builder()
+ *                     .passwordRef(accountKerberosPassword1.id().applyValue(_id -> String.format("account.%s", _id)))
+ *                     .build())
+ *                 .principal("user}{@literal @}{@code EXAMPLE.COM")
+ *                 .realm("EXAMPLE.COM")
+ *                 .tgtGenerationMethod("Password")
+ *                 .useSsl(true)
+ *                 .skipCertCheck(false)
+ *                 .useNoProfile(true)
+ *                 .build())
  *             .identifier("account_kerb_winrm_20251111")
  *             .name("Account Kerberos WinRM 20251111")
  *             .description("Account-level WinRM with Kerberos Password")
@@ -122,17 +133,6 @@ import javax.annotation.Nullable;
  *                 "scope:account",
  *                 "auth:kerberos-password")
  *             .port(5986)
- *             .kerberos(SecretWinrmKerberosArgs.builder()
- *                 .principal("user}{@literal @}{@code EXAMPLE.COM")
- *                 .realm("EXAMPLE.COM")
- *                 .tgtGenerationMethod("Password")
- *                 .useSsl(true)
- *                 .skipCertCheck(false)
- *                 .useNoProfile(true)
- *                 .tgtPasswordSpec(SecretWinrmKerberosTgtPasswordSpecArgs.builder()
- *                     .passwordRef(accountKerberosPassword1.id().applyValue(_id -> String.format("account.%s", _id)))
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *         // ============================================================================
@@ -150,14 +150,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var orgNtlm = new SecretWinrm("orgNtlm", SecretWinrmArgs.builder()
- *             .identifier("org_ntlm_v3")
- *             .name("Org NTLM v3")
- *             .description("Org-level WinRM with NTLM")
- *             .orgId("default")
- *             .tags(            
- *                 "scope:org",
- *                 "auth:ntlm")
- *             .port(5985)
  *             .ntlm(SecretWinrmNtlmArgs.builder()
  *                 .domain("org.example.com")
  *                 .username("orgadmin")
@@ -166,10 +158,29 @@ import javax.annotation.Nullable;
  *                 .skipCertCheck(false)
  *                 .useNoProfile(true)
  *                 .build())
+ *             .identifier("org_ntlm_v3")
+ *             .name("Org NTLM v3")
+ *             .description("Org-level WinRM with NTLM")
+ *             .orgId("default")
+ *             .tags(            
+ *                 "scope:org",
+ *                 "auth:ntlm")
+ *             .port(5985)
  *             .build());
  * 
  *         // 5. Org-level Kerberos with KeyTab
  *         var orgKerberosKeytab = new SecretWinrm("orgKerberosKeytab", SecretWinrmArgs.builder()
+ *             .kerberos(SecretWinrmKerberosArgs.builder()
+ *                 .tgtKeyTabFilePathSpec(SecretWinrmKerberosTgtKeyTabFilePathSpecArgs.builder()
+ *                     .keyPath("/etc/org.keytab")
+ *                     .build())
+ *                 .principal("orgservice}{@literal @}{@code EXAMPLE.COM")
+ *                 .realm("EXAMPLE.COM")
+ *                 .tgtGenerationMethod("KeyTabFilePath")
+ *                 .useSsl(true)
+ *                 .skipCertCheck(true)
+ *                 .useNoProfile(true)
+ *                 .build())
  *             .identifier("org_kerberos_keytab_v3")
  *             .name("Org Kerberos KeyTab v3")
  *             .description("Org-level WinRM with Kerberos KeyTab")
@@ -178,17 +189,6 @@ import javax.annotation.Nullable;
  *                 "scope:org",
  *                 "auth:kerberos-keytab")
  *             .port(5986)
- *             .kerberos(SecretWinrmKerberosArgs.builder()
- *                 .principal("orgservice}{@literal @}{@code EXAMPLE.COM")
- *                 .realm("EXAMPLE.COM")
- *                 .tgtGenerationMethod("KeyTabFilePath")
- *                 .useSsl(true)
- *                 .skipCertCheck(true)
- *                 .useNoProfile(true)
- *                 .tgtKeyTabFilePathSpec(SecretWinrmKerberosTgtKeyTabFilePathSpecArgs.builder()
- *                     .keyPath("/etc/org.keytab")
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *         // 6. Org-level Kerberos with Password
@@ -203,6 +203,17 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var orgKerberosPasswordSecretWinrm = new SecretWinrm("orgKerberosPasswordSecretWinrm", SecretWinrmArgs.builder()
+ *             .kerberos(SecretWinrmKerberosArgs.builder()
+ *                 .tgtPasswordSpec(SecretWinrmKerberosTgtPasswordSpecArgs.builder()
+ *                     .passwordRef(orgKerberosPassword.id().applyValue(_id -> String.format("org.%s", _id)))
+ *                     .build())
+ *                 .principal("orguser}{@literal @}{@code EXAMPLE.COM")
+ *                 .realm("EXAMPLE.COM")
+ *                 .tgtGenerationMethod("Password")
+ *                 .useSsl(true)
+ *                 .skipCertCheck(false)
+ *                 .useNoProfile(true)
+ *                 .build())
  *             .identifier("org_kerb_winrm_v3")
  *             .name("Org Kerberos WinRM v3")
  *             .description("Org-level WinRM with Kerberos Password")
@@ -211,17 +222,6 @@ import javax.annotation.Nullable;
  *                 "scope:org",
  *                 "auth:kerberos-password")
  *             .port(5986)
- *             .kerberos(SecretWinrmKerberosArgs.builder()
- *                 .principal("orguser}{@literal @}{@code EXAMPLE.COM")
- *                 .realm("EXAMPLE.COM")
- *                 .tgtGenerationMethod("Password")
- *                 .useSsl(true)
- *                 .skipCertCheck(false)
- *                 .useNoProfile(true)
- *                 .tgtPasswordSpec(SecretWinrmKerberosTgtPasswordSpecArgs.builder()
- *                     .passwordRef(orgKerberosPassword.id().applyValue(_id -> String.format("org.%s", _id)))
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *         // ============================================================================
@@ -240,6 +240,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var projectNtlm = new SecretWinrm("projectNtlm", SecretWinrmArgs.builder()
+ *             .ntlm(SecretWinrmNtlmArgs.builder()
+ *                 .domain("project.example.com")
+ *                 .username("projectadmin")
+ *                 .passwordRef(projectNtlmPassword.id())
+ *                 .useSsl(true)
+ *                 .skipCertCheck(false)
+ *                 .useNoProfile(false)
+ *                 .build())
  *             .identifier("proj_ntlm_winrm_v3")
  *             .name("Project NTLM WinRM v3")
  *             .description("Project-level WinRM with NTLM")
@@ -249,18 +257,21 @@ import javax.annotation.Nullable;
  *                 "scope:project",
  *                 "auth:ntlm")
  *             .port(5986)
- *             .ntlm(SecretWinrmNtlmArgs.builder()
- *                 .domain("project.example.com")
- *                 .username("projectadmin")
- *                 .passwordRef(projectNtlmPassword.id())
- *                 .useSsl(true)
- *                 .skipCertCheck(false)
- *                 .useNoProfile(false)
- *                 .build())
  *             .build());
  * 
  *         // 8. Project-level Kerberos with KeyTab
  *         var projectKerberosKeytab = new SecretWinrm("projectKerberosKeytab", SecretWinrmArgs.builder()
+ *             .kerberos(SecretWinrmKerberosArgs.builder()
+ *                 .tgtKeyTabFilePathSpec(SecretWinrmKerberosTgtKeyTabFilePathSpecArgs.builder()
+ *                     .keyPath("/etc/project.keytab")
+ *                     .build())
+ *                 .principal("projectservice}{@literal @}{@code EXAMPLE.COM")
+ *                 .realm("EXAMPLE.COM")
+ *                 .tgtGenerationMethod("KeyTabFilePath")
+ *                 .useSsl(false)
+ *                 .skipCertCheck(false)
+ *                 .useNoProfile(false)
+ *                 .build())
  *             .identifier("proj_kerb_keytab_v3")
  *             .name("Project Kerberos KeyTab v3")
  *             .description("Project-level WinRM with Kerberos KeyTab")
@@ -270,17 +281,6 @@ import javax.annotation.Nullable;
  *                 "scope:project",
  *                 "auth:kerberos-keytab")
  *             .port(5986)
- *             .kerberos(SecretWinrmKerberosArgs.builder()
- *                 .principal("projectservice}{@literal @}{@code EXAMPLE.COM")
- *                 .realm("EXAMPLE.COM")
- *                 .tgtGenerationMethod("KeyTabFilePath")
- *                 .useSsl(false)
- *                 .skipCertCheck(false)
- *                 .useNoProfile(false)
- *                 .tgtKeyTabFilePathSpec(SecretWinrmKerberosTgtKeyTabFilePathSpecArgs.builder()
- *                     .keyPath("/etc/project.keytab")
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *         // 9. Project-level Kerberos with Password
@@ -296,6 +296,17 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var projectKerberosPasswordSecretWinrm = new SecretWinrm("projectKerberosPasswordSecretWinrm", SecretWinrmArgs.builder()
+ *             .kerberos(SecretWinrmKerberosArgs.builder()
+ *                 .tgtPasswordSpec(SecretWinrmKerberosTgtPasswordSpecArgs.builder()
+ *                     .passwordRef(projectKerberosPassword.id())
+ *                     .build())
+ *                 .principal("projectuser}{@literal @}{@code EXAMPLE.COM")
+ *                 .realm("EXAMPLE.COM")
+ *                 .tgtGenerationMethod("Password")
+ *                 .useSsl(false)
+ *                 .skipCertCheck(true)
+ *                 .useNoProfile(true)
+ *                 .build())
  *             .identifier("proj_kerb_winrm_v3")
  *             .name("Project Kerberos WinRM v3")
  *             .description("Project-level WinRM with Kerberos Password")
@@ -305,17 +316,6 @@ import javax.annotation.Nullable;
  *                 "scope:project",
  *                 "auth:kerberos-password")
  *             .port(5986)
- *             .kerberos(SecretWinrmKerberosArgs.builder()
- *                 .principal("projectuser}{@literal @}{@code EXAMPLE.COM")
- *                 .realm("EXAMPLE.COM")
- *                 .tgtGenerationMethod("Password")
- *                 .useSsl(false)
- *                 .skipCertCheck(true)
- *                 .useNoProfile(true)
- *                 .tgtPasswordSpec(SecretWinrmKerberosTgtPasswordSpecArgs.builder()
- *                     .passwordRef(projectKerberosPassword.id())
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *     }}{@code

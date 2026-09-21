@@ -31,6 +31,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Authentication mechanism as username and password
 //			_, err := platform.NewArtifactoryConnector(ctx, "example", &platform.ArtifactoryConnectorArgs{
+//				Credentials: &platform.ArtifactoryConnectorCredentialsArgs{
+//					Username:    pulumi.String("admin"),
+//					PasswordRef: pulumi.String("account.secret_id"),
+//				},
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
@@ -40,10 +44,6 @@ import (
 //				Url: pulumi.String("https://artifactory.example.com"),
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
-//				},
-//				Credentials: &platform.ArtifactoryConnectorCredentialsArgs{
-//					Username:    pulumi.String("admin"),
-//					PasswordRef: pulumi.String("account.secret_id"),
 //				},
 //			})
 //			if err != nil {
@@ -86,6 +86,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Authentication mechanism as username and password
 //			_, err := platform.NewArtifactoryConnector(ctx, "example", &platform.ArtifactoryConnectorArgs{
+//				Credentials: &platform.ArtifactoryConnectorCredentialsArgs{
+//					Username:    pulumi.String("admin"),
+//					PasswordRef: pulumi.String("account.secret_id"),
+//				},
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
@@ -96,10 +100,6 @@ import (
 //				Url:   pulumi.String("https://artifactory.example.com"),
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
-//				},
-//				Credentials: &platform.ArtifactoryConnectorCredentialsArgs{
-//					Username:    pulumi.String("admin"),
-//					PasswordRef: pulumi.String("account.secret_id"),
 //				},
 //			})
 //			if err != nil {
@@ -143,6 +143,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Authentication mechanism as username and password
 //			_, err := platform.NewArtifactoryConnector(ctx, "example", &platform.ArtifactoryConnectorArgs{
+//				Credentials: &platform.ArtifactoryConnectorCredentialsArgs{
+//					Username:    pulumi.String("admin"),
+//					PasswordRef: pulumi.String("account.secret_id"),
+//				},
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
@@ -154,10 +158,6 @@ import (
 //				Url:       pulumi.String("https://artifactory.example.com"),
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
-//				},
-//				Credentials: &platform.ArtifactoryConnectorCredentialsArgs{
-//					Username:    pulumi.String("admin"),
-//					PasswordRef: pulumi.String("account.secret_id"),
 //				},
 //			})
 //			if err != nil {

@@ -24,13 +24,10 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var example = new Harness.Platform.GitOpsGnupg("example", new()
     ///     {
-    ///         AccountId = "account_id",
-    ///         AgentId = "agent_id",
     ///         Requests = new[]
     ///         {
     ///             new Harness.Platform.Inputs.GitOpsGnupgRequestArgs
     ///             {
-    ///                 Upsert = true,
     ///                 Publickeys = new[]
     ///                 {
     ///                     new Harness.Platform.Inputs.GitOpsGnupgRequestPublickeyArgs
@@ -38,8 +35,11 @@ namespace Pulumi.Harness.Platform
     ///                         KeyData = "-----BEGIN PGP PUBLIC KEY BLOCK-----XXXXXX-----END PGP PUBLIC KEY BLOCK-----",
     ///                     },
     ///                 },
+    ///                 Upsert = true,
     ///             },
     ///         },
+    ///         AccountId = "account_id",
+    ///         AgentId = "agent_id",
     ///     }, new CustomResourceOptions
     ///     {
     ///         IgnoreChanges =

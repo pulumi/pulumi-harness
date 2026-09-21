@@ -25,6 +25,11 @@ namespace Pulumi.Harness.Platform
     ///     // Example 1: Username/Password Authentication (New Block Format)
     ///     var usernamePassword = new Harness.Platform.SplunkConnector("username_password", new()
     ///     {
+    ///         UsernamePassword = new Harness.Platform.Inputs.SplunkConnectorUsernamePasswordArgs
+    ///         {
+    ///             Username = "splunk_user",
+    ///             PasswordRef = "account.splunk_password",
+    ///         },
     ///         Identifier = "splunk_userpass",
     ///         Name = "Splunk Username/Password",
     ///         Description = "Splunk connector with username/password authentication",
@@ -38,16 +43,15 @@ namespace Pulumi.Harness.Platform
     ///             "harness-delegate",
     ///         },
     ///         AccountId = "splunk_account_id",
-    ///         UsernamePassword = new Harness.Platform.Inputs.SplunkConnectorUsernamePasswordArgs
-    ///         {
-    ///             Username = "splunk_user",
-    ///             PasswordRef = "account.splunk_password",
-    ///         },
     ///     });
     /// 
     ///     // Example 2: Bearer Token Authentication
     ///     var bearerToken = new Harness.Platform.SplunkConnector("bearer_token", new()
     ///     {
+    ///         BearerToken = new Harness.Platform.Inputs.SplunkConnectorBearerTokenArgs
+    ///         {
+    ///             BearerTokenRef = "account.splunk_bearer_token",
+    ///         },
     ///         Identifier = "splunk_bearer",
     ///         Name = "Splunk Bearer Token",
     ///         Description = "Splunk connector with bearer token authentication",
@@ -61,15 +65,15 @@ namespace Pulumi.Harness.Platform
     ///             "harness-delegate",
     ///         },
     ///         AccountId = "splunk_account_id",
-    ///         BearerToken = new Harness.Platform.Inputs.SplunkConnectorBearerTokenArgs
-    ///         {
-    ///             BearerTokenRef = "account.splunk_bearer_token",
-    ///         },
     ///     });
     /// 
     ///     // Example 3: HEC Token Authentication
     ///     var hecToken = new Harness.Platform.SplunkConnector("hec_token", new()
     ///     {
+    ///         HecToken = new Harness.Platform.Inputs.SplunkConnectorHecTokenArgs
+    ///         {
+    ///             HecTokenRef = "account.splunk_hec_token",
+    ///         },
     ///         Identifier = "splunk_hec",
     ///         Name = "Splunk HEC Token",
     ///         Description = "Splunk connector with HEC token authentication",
@@ -83,15 +87,12 @@ namespace Pulumi.Harness.Platform
     ///             "harness-delegate",
     ///         },
     ///         AccountId = "splunk_account_id",
-    ///         HecToken = new Harness.Platform.Inputs.SplunkConnectorHecTokenArgs
-    ///         {
-    ///             HecTokenRef = "account.splunk_hec_token",
-    ///         },
     ///     });
     /// 
     ///     // Example 4: No Authentication
     ///     var noAuth = new Harness.Platform.SplunkConnector("no_auth", new()
     ///     {
+    ///         NoAuthentication = null,
     ///         Identifier = "splunk_no_auth",
     ///         Name = "Splunk No Auth",
     ///         Description = "Splunk connector without authentication",
@@ -105,7 +106,6 @@ namespace Pulumi.Harness.Platform
     ///             "harness-delegate",
     ///         },
     ///         AccountId = "splunk_account_id",
-    ///         NoAuthentication = null,
     ///     });
     /// 
     ///     // Example 5: Legacy Format (Deprecated but still supported)

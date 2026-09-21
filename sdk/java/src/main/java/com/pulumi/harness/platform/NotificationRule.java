@@ -48,11 +48,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Sample resource for SLO
  *         var example = new NotificationRule("example", NotificationRuleArgs.builder()
- *             .orgId("org_id")
- *             .projectId("project_id")
- *             .identifier("identifier")
  *             .request(NotificationRuleRequestArgs.builder()
- *                 .name("name")
  *                 .notificationMethod(NotificationRuleRequestNotificationMethodArgs.builder()
  *                     .type("Slack")
  *                     .spec(serializeJson(
@@ -61,7 +57,6 @@ import javax.annotation.Nullable;
  *                             jsonProperty("user_groups", jsonArray("account.test"))
  *                         )))
  *                     .build())
- *                 .type("ServiceLevelObjective")
  *                 .conditions(                
  *                     NotificationRuleRequestConditionArgs.builder()
  *                         .type("ErrorBudgetBurnRate")
@@ -84,16 +79,17 @@ import javax.annotation.Nullable;
  *                                 jsonProperty("threshold", 300)
  *                             )))
  *                         .build())
+ *                 .name("name")
+ *                 .type("ServiceLevelObjective")
  *                 .build())
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .identifier("identifier")
  *             .build());
  * 
  *         // Sample resource for Monitored Service
  *         var example1 = new NotificationRule("example1", NotificationRuleArgs.builder()
- *             .orgId("org_id")
- *             .projectId("project_id")
- *             .identifier("identifier")
  *             .request(NotificationRuleRequestArgs.builder()
- *                 .name("name")
  *                 .notificationMethod(NotificationRuleRequestNotificationMethodArgs.builder()
  *                     .type("Slack")
  *                     .spec(serializeJson(
@@ -102,7 +98,6 @@ import javax.annotation.Nullable;
  *                             jsonProperty("user_groups", jsonArray("account.test"))
  *                         )))
  *                     .build())
- *                 .type("MonitoredService")
  *                 .conditions(                
  *                     NotificationRuleRequestConditionArgs.builder()
  *                         .type("ChangeImpact")
@@ -142,7 +137,12 @@ import javax.annotation.Nullable;
  * 
  *                             )))
  *                         .build())
+ *                 .name("name")
+ *                 .type("MonitoredService")
  *                 .build())
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .identifier("identifier")
  *             .build());
  * 
  *     }

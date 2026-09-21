@@ -47,6 +47,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Authentication mechanism as username and password
  *         var test = new ConnectorCustomhealthsource("test", ConnectorCustomhealthsourceArgs.builder()
+ *             .headers(ConnectorCustomhealthsourceHeaderArgs.builder()
+ *                 .encryptedValueRef("account.doNotDeleteHSM")
+ *                 .valueEncrypted(true)
+ *                 .key("key")
+ *                 .value("value")
+ *                 .build())
  *             .identifier("identifier")
  *             .name("name")
  *             .description("test")
@@ -55,12 +61,6 @@ import javax.annotation.Nullable;
  *             .delegateSelectors("harness-delegate")
  *             .method("GET")
  *             .validationPath("loki/api/v1/labels")
- *             .headers(ConnectorCustomhealthsourceHeaderArgs.builder()
- *                 .encryptedValueRef("account.doNotDeleteHSM")
- *                 .valueEncrypted(true)
- *                 .key("key")
- *                 .value("value")
- *                 .build())
  *             .build());
  * 
  *     }

@@ -20,6 +20,12 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.chaos.ImageRegistry("example", {
+ *     customImages: [{
+ *         logWatcher: "<log_watcher_image>",
+ *         ddcr: "<ddcr_image>",
+ *         ddcrLib: "<ddcr_lib_image>",
+ *         ddcrFault: "<ddcr_fault_image>",
+ *     }],
  *     orgId: "<org_id>",
  *     projectId: "<project_id>",
  *     registryServer: "<registry_server>",
@@ -29,12 +35,6 @@ import * as utilities from "../utilities";
  *     isDefault: false,
  *     isOverrideAllowed: true,
  *     useCustomImages: true,
- *     customImages: [{
- *         logWatcher: "<log_watcher_image>",
- *         ddcr: "<ddcr_image>",
- *         ddcrLib: "<ddcr_lib_image>",
- *         ddcrFault: "<ddcr_fault_image>",
- *     }],
  * });
  * ```
  *

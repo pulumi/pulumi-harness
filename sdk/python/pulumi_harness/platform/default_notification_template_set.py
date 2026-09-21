@@ -295,7 +295,7 @@ class DefaultNotificationTemplateSet(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 event_template_configuration_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'DefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict']]]]] = None,
+                 event_template_configuration_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'DefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict', 'outputs.DefaultNotificationTemplateSetEventTemplateConfigurationSet']]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  notification_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -309,7 +309,7 @@ class DefaultNotificationTemplateSet(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description for Default Notification Template Set
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'DefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict']]]] event_template_configuration_sets: Set of event-template configurations
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'DefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict', 'outputs.DefaultNotificationTemplateSetEventTemplateConfigurationSet']]]] event_template_configuration_sets: Set of event-template configurations
         :param pulumi.Input[_builtins.str] identifier: Identifier of Default Notification Template Set
         :param pulumi.Input[_builtins.str] name: Name of Default Notification Template Set
         :param pulumi.Input[_builtins.str] notification_channel_type: Type of channel (e.g. SLACK, EMAIL, etc.)
@@ -342,7 +342,7 @@ class DefaultNotificationTemplateSet(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 event_template_configuration_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'DefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict']]]]] = None,
+                 event_template_configuration_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'DefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict', 'outputs.DefaultNotificationTemplateSetEventTemplateConfigurationSet']]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  notification_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -386,7 +386,7 @@ class DefaultNotificationTemplateSet(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             created: pulumi.Input[Optional[_builtins.int]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            event_template_configuration_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'DefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict']]]]] = None,
+            event_template_configuration_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'DefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict', 'outputs.DefaultNotificationTemplateSetEventTemplateConfigurationSet']]]]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             last_modified: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -402,7 +402,7 @@ class DefaultNotificationTemplateSet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] created: Timestamp when the default notification template set was created.
         :param pulumi.Input[_builtins.str] description: Description for Default Notification Template Set
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'DefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict']]]] event_template_configuration_sets: Set of event-template configurations
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'DefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict', 'outputs.DefaultNotificationTemplateSetEventTemplateConfigurationSet']]]] event_template_configuration_sets: Set of event-template configurations
         :param pulumi.Input[_builtins.str] identifier: Identifier of Default Notification Template Set
         :param pulumi.Input[_builtins.int] last_modified: Timestamp when the default notification template set was last modified.
         :param pulumi.Input[_builtins.str] name: Name of Default Notification Template Set

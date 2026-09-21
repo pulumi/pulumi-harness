@@ -38,6 +38,14 @@ namespace Pulumi.Harness.Platform
     /// 
     ///     var gcpKmsManual = new Harness.Platform.ConnectorGcpKms("gcp_kms_manual", new()
     ///     {
+    ///         Manual = new Harness.Platform.Inputs.ConnectorGcpKmsManualArgs
+    ///         {
+    ///             Credentials = test.Id.Apply(id =&gt; $"account.{id}"),
+    ///             DelegateSelectors = new[]
+    ///             {
+    ///                 "harness-delegate",
+    ///             },
+    ///         },
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         Description = "test",
@@ -49,18 +57,20 @@ namespace Pulumi.Harness.Platform
     ///         GcpProjectId = "1234567",
     ///         KeyRing = "key_ring",
     ///         KeyName = "key_name",
-    ///         Manual = new Harness.Platform.Inputs.ConnectorGcpKmsManualArgs
-    ///         {
-    ///             Credentials = test.Id.Apply(id =&gt; $"account.{id}"),
-    ///             DelegateSelectors = new[]
-    ///             {
-    ///                 "harness-delegate",
-    ///             },
-    ///         },
     ///     });
     /// 
     ///     var gcpKmsOidcPlatform = new Harness.Platform.ConnectorGcpKms("gcp_kms_oidc_platform", new()
     ///     {
+    ///         OidcAuthentications = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.ConnectorGcpKmsOidcAuthenticationArgs
+    ///             {
+    ///                 WorkloadPoolId = "harness-pool-test",
+    ///                 ProviderId = "harness",
+    ///                 GcpProjectId = "1234567",
+    ///                 ServiceAccountEmail = "harness.sample@iam.gserviceaccount.com",
+    ///             },
+    ///         },
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         Description = "test",
@@ -73,31 +83,10 @@ namespace Pulumi.Harness.Platform
     ///         KeyRing = "key_ring",
     ///         KeyName = "key_name",
     ///         ExecuteOnDelegate = false,
-    ///         OidcAuthentications = new[]
-    ///         {
-    ///             new Harness.Platform.Inputs.ConnectorGcpKmsOidcAuthenticationArgs
-    ///             {
-    ///                 WorkloadPoolId = "harness-pool-test",
-    ///                 ProviderId = "harness",
-    ///                 GcpProjectId = "1234567",
-    ///                 ServiceAccountEmail = "harness.sample@iam.gserviceaccount.com",
-    ///             },
-    ///         },
     ///     });
     /// 
     ///     var gcpKmsOidcDelegate = new Harness.Platform.ConnectorGcpKms("gcp_kms_oidc_delegate", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Description = "test",
-    ///         Tags = new[]
-    ///         {
-    ///             "foo:bar",
-    ///         },
-    ///         Region = "us-west1",
-    ///         GcpProjectId = "1234567",
-    ///         KeyRing = "key_ring",
-    ///         KeyName = "key_name",
     ///         OidcAuthentications = new[]
     ///         {
     ///             new Harness.Platform.Inputs.ConnectorGcpKmsOidcAuthenticationArgs
@@ -112,10 +101,35 @@ namespace Pulumi.Harness.Platform
     ///                 },
     ///             },
     ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         Region = "us-west1",
+    ///         GcpProjectId = "1234567",
+    ///         KeyRing = "key_ring",
+    ///         KeyName = "key_name",
     ///     });
     /// 
     ///     var gcpKmsOidcDelegateDefault = new Harness.Platform.ConnectorGcpKms("gcp_kms_oidc_delegate_default", new()
     ///     {
+    ///         OidcAuthentications = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.ConnectorGcpKmsOidcAuthenticationArgs
+    ///             {
+    ///                 WorkloadPoolId = "harness-pool-test",
+    ///                 ProviderId = "harness",
+    ///                 GcpProjectId = "1234567",
+    ///                 ServiceAccountEmail = "harness.sample@iam.gserviceaccount.com",
+    ///                 DelegateSelectors = new[]
+    ///                 {
+    ///                     "harness-delegate",
+    ///                 },
+    ///             },
+    ///         },
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         Description = "test",
@@ -128,20 +142,6 @@ namespace Pulumi.Harness.Platform
     ///         KeyRing = "key_ring",
     ///         KeyName = "key_name",
     ///         Default = true,
-    ///         OidcAuthentications = new[]
-    ///         {
-    ///             new Harness.Platform.Inputs.ConnectorGcpKmsOidcAuthenticationArgs
-    ///             {
-    ///                 WorkloadPoolId = "harness-pool-test",
-    ///                 ProviderId = "harness",
-    ///                 GcpProjectId = "1234567",
-    ///                 ServiceAccountEmail = "harness.sample@iam.gserviceaccount.com",
-    ///                 DelegateSelectors = new[]
-    ///                 {
-    ///                     "harness-delegate",
-    ///                 },
-    ///             },
-    ///         },
     ///     });
     /// 
     /// });

@@ -17,6 +17,10 @@ import * as utilities from "../utilities";
  *
  * // Example 1: Username/Password Authentication (New Block Format)
  * const usernamePassword = new harness.platform.SplunkConnector("username_password", {
+ *     usernamePassword: {
+ *         username: "splunk_user",
+ *         passwordRef: "account.splunk_password",
+ *     },
  *     identifier: "splunk_userpass",
  *     name: "Splunk Username/Password",
  *     description: "Splunk connector with username/password authentication",
@@ -24,13 +28,12 @@ import * as utilities from "../utilities";
  *     url: "https://splunk.company.com:8089",
  *     delegateSelectors: ["harness-delegate"],
  *     accountId: "splunk_account_id",
- *     usernamePassword: {
- *         username: "splunk_user",
- *         passwordRef: "account.splunk_password",
- *     },
  * });
  * // Example 2: Bearer Token Authentication
  * const bearerToken = new harness.platform.SplunkConnector("bearer_token", {
+ *     bearerToken: {
+ *         bearerTokenRef: "account.splunk_bearer_token",
+ *     },
  *     identifier: "splunk_bearer",
  *     name: "Splunk Bearer Token",
  *     description: "Splunk connector with bearer token authentication",
@@ -38,12 +41,12 @@ import * as utilities from "../utilities";
  *     url: "https://splunk.company.com:8089",
  *     delegateSelectors: ["harness-delegate"],
  *     accountId: "splunk_account_id",
- *     bearerToken: {
- *         bearerTokenRef: "account.splunk_bearer_token",
- *     },
  * });
  * // Example 3: HEC Token Authentication
  * const hecToken = new harness.platform.SplunkConnector("hec_token", {
+ *     hecToken: {
+ *         hecTokenRef: "account.splunk_hec_token",
+ *     },
  *     identifier: "splunk_hec",
  *     name: "Splunk HEC Token",
  *     description: "Splunk connector with HEC token authentication",
@@ -51,12 +54,10 @@ import * as utilities from "../utilities";
  *     url: "https://splunk.company.com:8088",
  *     delegateSelectors: ["harness-delegate"],
  *     accountId: "splunk_account_id",
- *     hecToken: {
- *         hecTokenRef: "account.splunk_hec_token",
- *     },
  * });
  * // Example 4: No Authentication
  * const noAuth = new harness.platform.SplunkConnector("no_auth", {
+ *     noAuthentication: {},
  *     identifier: "splunk_no_auth",
  *     name: "Splunk No Auth",
  *     description: "Splunk connector without authentication",
@@ -64,7 +65,6 @@ import * as utilities from "../utilities";
  *     url: "https://splunk-dev.company.com:8089",
  *     delegateSelectors: ["harness-delegate"],
  *     accountId: "splunk_account_id",
- *     noAuthentication: {},
  * });
  * // Example 5: Legacy Format (Deprecated but still supported)
  * const legacy = new harness.platform.SplunkConnector("legacy", {

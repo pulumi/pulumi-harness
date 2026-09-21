@@ -26,12 +26,8 @@ namespace Pulumi.Harness.Platform
     ///     // Sample resource for SLO
     ///     var example = new Harness.Platform.NotificationRule("example", new()
     ///     {
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         Identifier = "identifier",
     ///         Request = new Harness.Platform.Inputs.NotificationRuleRequestArgs
     ///         {
-    ///             Name = "name",
     ///             NotificationMethod = new Harness.Platform.Inputs.NotificationRuleRequestNotificationMethodArgs
     ///             {
     ///                 Type = "Slack",
@@ -44,7 +40,6 @@ namespace Pulumi.Harness.Platform
     ///                     },
     ///                 }),
     ///             },
-    ///             Type = "ServiceLevelObjective",
     ///             Conditions = new[]
     ///             {
     ///                 new Harness.Platform.Inputs.NotificationRuleRequestConditionArgs
@@ -72,18 +67,19 @@ namespace Pulumi.Harness.Platform
     ///                     }),
     ///                 },
     ///             },
+    ///             Name = "name",
+    ///             Type = "ServiceLevelObjective",
     ///         },
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
     ///     });
     /// 
     ///     // Sample resource for Monitored Service
     ///     var example1 = new Harness.Platform.NotificationRule("example1", new()
     ///     {
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         Identifier = "identifier",
     ///         Request = new Harness.Platform.Inputs.NotificationRuleRequestArgs
     ///         {
-    ///             Name = "name",
     ///             NotificationMethod = new Harness.Platform.Inputs.NotificationRuleRequestNotificationMethodArgs
     ///             {
     ///                 Type = "Slack",
@@ -96,7 +92,6 @@ namespace Pulumi.Harness.Platform
     ///                     },
     ///                 }),
     ///             },
-    ///             Type = "MonitoredService",
     ///             Conditions = new[]
     ///             {
     ///                 new Harness.Platform.Inputs.NotificationRuleRequestConditionArgs
@@ -143,7 +138,12 @@ namespace Pulumi.Harness.Platform
     ///                     }),
     ///                 },
     ///             },
+    ///             Name = "name",
+    ///             Type = "MonitoredService",
     ///         },
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
     ///     });
     /// 
     /// });

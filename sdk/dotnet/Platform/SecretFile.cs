@@ -44,15 +44,6 @@ namespace Pulumi.Harness.Platform
     ///     // With AWS Secret Manager KMS Key
     ///     var awsSecretManager = new Harness.Platform.SecretFile("aws_secret_manager", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Description = "example",
-    ///         Tags = new[]
-    ///         {
-    ///             "foo:bar",
-    ///         },
-    ///         FilePath = "file_path",
-    ///         SecretManagerIdentifier = "awsSecretManager",
     ///         AdditionalMetadatas = new[]
     ///         {
     ///             new Harness.Platform.Inputs.SecretFileAdditionalMetadataArgs
@@ -66,11 +57,6 @@ namespace Pulumi.Harness.Platform
     ///                 },
     ///             },
     ///         },
-    ///     });
-    /// 
-    ///     // With GCP Secret Manager project ID and region
-    ///     var gcpSecretManager = new Harness.Platform.SecretFile("gcp_secret_manager", new()
-    ///     {
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         Description = "example",
@@ -79,7 +65,12 @@ namespace Pulumi.Harness.Platform
     ///             "foo:bar",
     ///         },
     ///         FilePath = "file_path",
-    ///         SecretManagerIdentifier = "gcpSecretManager",
+    ///         SecretManagerIdentifier = "awsSecretManager",
+    ///     });
+    /// 
+    ///     // With GCP Secret Manager project ID and region
+    ///     var gcpSecretManager = new Harness.Platform.SecretFile("gcp_secret_manager", new()
+    ///     {
     ///         AdditionalMetadatas = new[]
     ///         {
     ///             new Harness.Platform.Inputs.SecretFileAdditionalMetadataArgs
@@ -94,6 +85,15 @@ namespace Pulumi.Harness.Platform
     ///                 },
     ///             },
     ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "example",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         FilePath = "file_path",
+    ///         SecretManagerIdentifier = "gcpSecretManager",
     ///     });
     /// 
     /// });

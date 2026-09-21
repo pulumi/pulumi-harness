@@ -651,13 +651,13 @@ class FileStoreFile(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             content: pulumi.Input[Optional[_builtins.str]] = None,
-            created_bies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FileStoreFileCreatedByArgs', 'FileStoreFileCreatedByArgsDict']]]]] = None,
+            created_bies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FileStoreFileCreatedByArgs', 'FileStoreFileCreatedByArgsDict', 'outputs.FileStoreFileCreatedBy']]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             file_content_path: pulumi.Input[Optional[_builtins.str]] = None,
             file_usage: pulumi.Input[Optional[_builtins.str]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             last_modified_at: pulumi.Input[Optional[_builtins.int]] = None,
-            last_modified_bies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FileStoreFileLastModifiedByArgs', 'FileStoreFileLastModifiedByArgsDict']]]]] = None,
+            last_modified_bies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FileStoreFileLastModifiedByArgs', 'FileStoreFileLastModifiedByArgsDict', 'outputs.FileStoreFileLastModifiedBy']]]]] = None,
             mime_type: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -673,13 +673,13 @@ class FileStoreFile(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] content: File content stored on Harness File Store
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FileStoreFileCreatedByArgs', 'FileStoreFileCreatedByArgsDict']]]] created_bies: Created by
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FileStoreFileCreatedByArgs', 'FileStoreFileCreatedByArgsDict', 'outputs.FileStoreFileCreatedBy']]]] created_bies: Created by
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] file_content_path: File content path to be upladed on Harness File Store
         :param pulumi.Input[_builtins.str] file_usage: File usage. Valid options are MANIFEST_FILE, CONFIG, SCRIPT
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.int] last_modified_at: Last modified at
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FileStoreFileLastModifiedByArgs', 'FileStoreFileLastModifiedByArgsDict']]]] last_modified_bies: Last modified by
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FileStoreFileLastModifiedByArgs', 'FileStoreFileLastModifiedByArgsDict', 'outputs.FileStoreFileLastModifiedBy']]]] last_modified_bies: Last modified by
         :param pulumi.Input[_builtins.str] mime_type: File mime type
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.

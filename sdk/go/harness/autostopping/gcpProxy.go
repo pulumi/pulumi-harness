@@ -29,6 +29,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := autostopping.NewGcpProxy(ctx, "test", &autostopping.GcpProxyArgs{
+//				Certificates: &autostopping.GcpProxyCertificatesArgs{
+//					KeySecretId:  pulumi.String("projects/project_id/secrets/secret_id/versions/1"),
+//					CertSecretId: pulumi.String("projects/project_id/secrets/secret_id/versions/1"),
+//				},
 //				Name:             pulumi.String("name"),
 //				CloudConnectorId: pulumi.String("cloud_connector_id"),
 //				Region:           pulumi.String("region"),
@@ -37,14 +41,10 @@ import (
 //				SecurityGroups: pulumi.StringArray{
 //					pulumi.String("http-server"),
 //				},
-//				MachineType:      pulumi.String("e2-micro"),
-//				SubnetId:         pulumi.String("https://www.googleapis.com/compute/v1/projects/project_id/regions/region/subnetworks/subnet_name"),
-//				ApiKey:           pulumi.String(""),
-//				AllocateStaticIp: pulumi.Bool(false),
-//				Certificates: &autostopping.GcpProxyCertificatesArgs{
-//					KeySecretId:  pulumi.String("projects/project_id/secrets/secret_id/versions/1"),
-//					CertSecretId: pulumi.String("projects/project_id/secrets/secret_id/versions/1"),
-//				},
+//				MachineType:                   pulumi.String("e2-micro"),
+//				SubnetId:                      pulumi.String("https://www.googleapis.com/compute/v1/projects/project_id/regions/region/subnetworks/subnet_name"),
+//				ApiKey:                        pulumi.String(""),
+//				AllocateStaticIp:              pulumi.Bool(false),
 //				DeleteCloudResourcesOnDestroy: pulumi.Bool(false),
 //			})
 //			if err != nil {

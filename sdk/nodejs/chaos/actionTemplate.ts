@@ -45,20 +45,27 @@ import * as utilities from "../utilities";
  * // ----------------------------------------------------------------------------
  * // Most common pattern: container action with runtime inputs and defaults
  * const containerWithRuntimeInputs = new harness.chaos.ActionTemplate("container_with_runtime_inputs", {
- *     orgId: _this.id,
- *     projectId: thisHarnessPlatformProject.id,
- *     hubIdentity: projectLevel.identity,
- *     identity: "container-action-template",
- *     name: "Container Action Template",
- *     description: "Container action with runtime inputs and defaults",
- *     type: "container",
- *     infrastructureType: "<+input>.default('Kubernetes')",
- *     tags: [
- *         "container",
- *         "kubernetes",
- *         "runtime-inputs",
- *     ],
  *     containerAction: {
+ *         resources: {
+ *             limits: {
+ *                 cpu: "500m",
+ *                 memory: "512Mi",
+ *             },
+ *             requests: {
+ *                 cpu: "250m",
+ *                 memory: "256Mi",
+ *             },
+ *         },
+ *         envs: [
+ *             {
+ *                 name: "TEST_VAR",
+ *                 value: "<+input>.default('test_value')",
+ *             },
+ *             {
+ *                 name: "ANOTHER_VAR",
+ *                 value: "<+input>.default('another_value')",
+ *             },
+ *         ],
  *         image: "<+input>.default('busybox:latest')",
  *         commands: ["<+input>.default('sh')"],
  *         args: "echo 'Running container action'; sleep 15",
@@ -75,26 +82,6 @@ import * as utilities from "../utilities";
  *         annotations: {
  *             description: "Chaos container action",
  *             owner: "chaos-team",
- *         },
- *         envs: [
- *             {
- *                 name: "TEST_VAR",
- *                 value: "<+input>.default('test_value')",
- *             },
- *             {
- *                 name: "ANOTHER_VAR",
- *                 value: "<+input>.default('another_value')",
- *             },
- *         ],
- *         resources: {
- *             limits: {
- *                 cpu: "500m",
- *                 memory: "512Mi",
- *             },
- *             requests: {
- *                 cpu: "250m",
- *                 memory: "256Mi",
- *             },
  *         },
  *     },
  *     runProperties: {
@@ -117,6 +104,19 @@ import * as utilities from "../utilities";
  *             description: "Kubernetes namespace (runtime input)",
  *         },
  *     ],
+ *     orgId: _this.id,
+ *     projectId: thisHarnessPlatformProject.id,
+ *     hubIdentity: projectLevel.identity,
+ *     identity: "container-action-template",
+ *     name: "Container Action Template",
+ *     description: "Container action with runtime inputs and defaults",
+ *     type: "container",
+ *     infrastructureType: "<+input>.default('Kubernetes')",
+ *     tags: [
+ *         "container",
+ *         "kubernetes",
+ *         "runtime-inputs",
+ *     ],
  * }, {
  *     dependsOn: [projectLevel],
  * });
@@ -125,6 +125,12 @@ import * as utilities from "../utilities";
  * // ----------------------------------------------------------------------------
  * // Delay action for adding wait time in experiments
  * const delayAction = new harness.chaos.ActionTemplate("delay_action", {
+ *     delayAction: {
+ *         duration: "<+input>.default('30s')",
+ *     },
+ *     runProperties: {
+ *         timeout: "60s",
+ *     },
  *     orgId: _this.id,
  *     projectId: thisHarnessPlatformProject.id,
  *     hubIdentity: projectLevel.identity,
@@ -137,12 +143,6 @@ import * as utilities from "../utilities";
  *         "delay",
  *         "wait",
  *     ],
- *     delayAction: {
- *         duration: "<+input>.default('30s')",
- *     },
- *     runProperties: {
- *         timeout: "60s",
- *     },
  * }, {
  *     dependsOn: [projectLevel],
  * });
@@ -151,19 +151,11 @@ import * as utilities from "../utilities";
  * // ----------------------------------------------------------------------------
  * // Custom script action for flexible operations
  * const scriptAction = new harness.chaos.ActionTemplate("script_action", {
- *     orgId: _this.id,
- *     projectId: thisHarnessPlatformProject.id,
- *     hubIdentity: projectLevel.identity,
- *     identity: "script-action-template",
- *     name: "Script Action Template",
- *     description: "Custom script action for chaos operations",
- *     type: "script",
- *     infrastructureType: "<+input>.default('Kubernetes')",
- *     tags: [
- *         "script",
- *         "custom",
- *     ],
  *     customScriptAction: {
+ *         envs: [{
+ *             name: "TARGET",
+ *             value: "<+input>.default('default-target')",
+ *         }],
  *         script: `#!/bin/bash
  * echo \\"Running custom chaos script\\"
  * echo \\"Target: <+input>\\"
@@ -171,10 +163,6 @@ import * as utilities from "../utilities";
  * echo \\"Script completed\\"
  * `,
  *         shell: "bash",
- *         envs: [{
- *             name: "TARGET",
- *             value: "<+input>.default('default-target')",
- *         }],
  *     },
  *     runProperties: {
  *         timeout: "<+input>.default('120s')",
@@ -187,6 +175,18 @@ import * as utilities from "../utilities";
  *         required: true,
  *         description: "Target resource for the script",
  *     }],
+ *     orgId: _this.id,
+ *     projectId: thisHarnessPlatformProject.id,
+ *     hubIdentity: projectLevel.identity,
+ *     identity: "script-action-template",
+ *     name: "Script Action Template",
+ *     description: "Custom script action for chaos operations",
+ *     type: "script",
+ *     infrastructureType: "<+input>.default('Kubernetes')",
+ *     tags: [
+ *         "script",
+ *         "custom",
+ *     ],
  * }, {
  *     dependsOn: [projectLevel],
  * });

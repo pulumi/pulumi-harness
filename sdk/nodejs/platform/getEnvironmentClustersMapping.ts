@@ -17,21 +17,19 @@ import * as utilities from "../utilities";
  *
  * // data source for gitops clusters mapped to a project level env
  * const example = harness.platform.getEnvironmentClustersMapping({
- *     identifier: "mycustomidentifier",
- *     orgId: "orgIdentifer",
- *     projectId: "projectIdentifier",
- *     envId: "exampleEnvId",
  *     clusters: [{
  *         identifier: "incluster",
  *         name: "in-cluster",
  *         agentIdentifier: "account.gitopsagentdev",
  *         scope: "ACCOUNT",
  *     }],
+ *     identifier: "mycustomidentifier",
+ *     orgId: "orgIdentifer",
+ *     projectId: "projectIdentifier",
+ *     envId: "exampleEnvId",
  * });
  * // data source for two gitops clusters mapped to an account level env
  * const example2 = harness.platform.getEnvironmentClustersMapping({
- *     identifier: "mycustomidentifier",
- *     envId: "env1",
  *     clusters: [
  *         {
  *             identifier: "clusterA",
@@ -46,6 +44,8 @@ import * as utilities from "../utilities";
  *             scope: "ACCOUNT",
  *         },
  *     ],
+ *     identifier: "mycustomidentifier",
+ *     envId: "env1",
  * });
  * ```
  */
@@ -130,21 +130,19 @@ export interface GetEnvironmentClustersMappingResult {
  *
  * // data source for gitops clusters mapped to a project level env
  * const example = harness.platform.getEnvironmentClustersMapping({
- *     identifier: "mycustomidentifier",
- *     orgId: "orgIdentifer",
- *     projectId: "projectIdentifier",
- *     envId: "exampleEnvId",
  *     clusters: [{
  *         identifier: "incluster",
  *         name: "in-cluster",
  *         agentIdentifier: "account.gitopsagentdev",
  *         scope: "ACCOUNT",
  *     }],
+ *     identifier: "mycustomidentifier",
+ *     orgId: "orgIdentifer",
+ *     projectId: "projectIdentifier",
+ *     envId: "exampleEnvId",
  * });
  * // data source for two gitops clusters mapped to an account level env
  * const example2 = harness.platform.getEnvironmentClustersMapping({
- *     identifier: "mycustomidentifier",
- *     envId: "env1",
  *     clusters: [
  *         {
  *             identifier: "clusterA",
@@ -159,6 +157,8 @@ export interface GetEnvironmentClustersMappingResult {
  *             scope: "ACCOUNT",
  *         },
  *     ],
+ *     identifier: "mycustomidentifier",
+ *     envId: "env1",
  * });
  * ```
  */

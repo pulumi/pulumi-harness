@@ -171,7 +171,7 @@ class AwaitableGetOverridesResult(GetOverridesResult):
             yaml=self.yaml)
 
 
-def get_overrides(git_details: Optional[Union['GetOverridesGitDetailsArgs', 'GetOverridesGitDetailsArgsDict']] = None,
+def get_overrides(git_details: Optional[Union['GetOverridesGitDetailsArgs', 'GetOverridesGitDetailsArgsDict', 'outputs.GetOverridesGitDetailsResult']] = None,
                   identifier: Optional[_builtins.str] = None,
                   org_id: Optional[_builtins.str] = None,
                   project_id: Optional[_builtins.str] = None,
@@ -191,7 +191,7 @@ def get_overrides(git_details: Optional[Union['GetOverridesGitDetailsArgs', 'Get
     ```
 
 
-    :param Union['GetOverridesGitDetailsArgs', 'GetOverridesGitDetailsArgsDict'] git_details: Contains parameters related to Git Experience for remote overrides
+    :param Union['GetOverridesGitDetailsArgs', 'GetOverridesGitDetailsArgsDict', 'outputs.GetOverridesGitDetailsResult'] git_details: Contains parameters related to Git Experience for remote overrides
     :param _builtins.str identifier: The identifier of the override entity.
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
@@ -216,7 +216,7 @@ def get_overrides(git_details: Optional[Union['GetOverridesGitDetailsArgs', 'Get
         service_id=pulumi.get(__ret__, 'service_id'),
         type=pulumi.get(__ret__, 'type'),
         yaml=pulumi.get(__ret__, 'yaml'))
-def get_overrides_output(git_details: pulumi.Input[Optional[Optional[Union['GetOverridesGitDetailsArgs', 'GetOverridesGitDetailsArgsDict']]]] = None,
+def get_overrides_output(git_details: pulumi.Input[Optional[Optional[Union['GetOverridesGitDetailsArgs', 'GetOverridesGitDetailsArgsDict', 'outputs.GetOverridesGitDetailsResult']]]] = None,
                          identifier: pulumi.Input[Optional[_builtins.str]] = None,
                          org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -236,7 +236,7 @@ def get_overrides_output(git_details: pulumi.Input[Optional[Optional[Union['GetO
     ```
 
 
-    :param Union['GetOverridesGitDetailsArgs', 'GetOverridesGitDetailsArgsDict'] git_details: Contains parameters related to Git Experience for remote overrides
+    :param Union['GetOverridesGitDetailsArgs', 'GetOverridesGitDetailsArgsDict', 'outputs.GetOverridesGitDetailsResult'] git_details: Contains parameters related to Git Experience for remote overrides
     :param _builtins.str identifier: The identifier of the override entity.
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.

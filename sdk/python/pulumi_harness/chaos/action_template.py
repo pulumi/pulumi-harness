@@ -663,9 +663,9 @@ class ActionTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_action: pulumi.Input[Optional[Union['ActionTemplateContainerActionArgs', 'ActionTemplateContainerActionArgsDict']]] = None,
-                 custom_script_action: pulumi.Input[Optional[Union['ActionTemplateCustomScriptActionArgs', 'ActionTemplateCustomScriptActionArgsDict']]] = None,
-                 delay_action: pulumi.Input[Optional[Union['ActionTemplateDelayActionArgs', 'ActionTemplateDelayActionArgsDict']]] = None,
+                 container_action: pulumi.Input[Optional[Union['ActionTemplateContainerActionArgs', 'ActionTemplateContainerActionArgsDict', 'outputs.ActionTemplateContainerAction']]] = None,
+                 custom_script_action: pulumi.Input[Optional[Union['ActionTemplateCustomScriptActionArgs', 'ActionTemplateCustomScriptActionArgsDict', 'outputs.ActionTemplateCustomScriptAction']]] = None,
+                 delay_action: pulumi.Input[Optional[Union['ActionTemplateDelayActionArgs', 'ActionTemplateDelayActionArgsDict', 'outputs.ActionTemplateDelayAction']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
                  identity: pulumi.Input[Optional[_builtins.str]] = None,
@@ -673,10 +673,10 @@ class ActionTemplate(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 run_properties: pulumi.Input[Optional[Union['ActionTemplateRunPropertiesArgs', 'ActionTemplateRunPropertiesArgsDict']]] = None,
+                 run_properties: pulumi.Input[Optional[Union['ActionTemplateRunPropertiesArgs', 'ActionTemplateRunPropertiesArgsDict', 'outputs.ActionTemplateRunProperties']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionTemplateVariableArgs', 'ActionTemplateVariableArgsDict']]]]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionTemplateVariableArgs', 'ActionTemplateVariableArgsDict', 'outputs.ActionTemplateVariable']]]]] = None,
                  __props__=None):
         """
         Resource for managing Harness Chaos Action Templates. Action templates define reusable actions that can be used in chaos experiments.
@@ -717,20 +717,27 @@ class ActionTemplate(pulumi.CustomResource):
         # ----------------------------------------------------------------------------
         # Most common pattern: container action with runtime inputs and defaults
         container_with_runtime_inputs = harness.chaos.ActionTemplate("container_with_runtime_inputs",
-            org_id=this["id"],
-            project_id=this_harness_platform_project["id"],
-            hub_identity=project_level["identity"],
-            identity="container-action-template",
-            name="Container Action Template",
-            description="Container action with runtime inputs and defaults",
-            type="container",
-            infrastructure_type="<+input>.default('Kubernetes')",
-            tags=[
-                "container",
-                "kubernetes",
-                "runtime-inputs",
-            ],
             container_action={
+                "resources": {
+                    "limits": {
+                        "cpu": "500m",
+                        "memory": "512Mi",
+                    },
+                    "requests": {
+                        "cpu": "250m",
+                        "memory": "256Mi",
+                    },
+                },
+                "envs": [
+                    {
+                        "name": "TEST_VAR",
+                        "value": "<+input>.default('test_value')",
+                    },
+                    {
+                        "name": "ANOTHER_VAR",
+                        "value": "<+input>.default('another_value')",
+                    },
+                ],
                 "image": "<+input>.default('busybox:latest')",
                 "commands": ["<+input>.default('sh')"],
                 "args": "echo 'Running container action'; sleep 15",
@@ -747,26 +754,6 @@ class ActionTemplate(pulumi.CustomResource):
                 "annotations": {
                     "description": "Chaos container action",
                     "owner": "chaos-team",
-                },
-                "envs": [
-                    {
-                        "name": "TEST_VAR",
-                        "value": "<+input>.default('test_value')",
-                    },
-                    {
-                        "name": "ANOTHER_VAR",
-                        "value": "<+input>.default('another_value')",
-                    },
-                ],
-                "resources": {
-                    "limits": {
-                        "cpu": "500m",
-                        "memory": "512Mi",
-                    },
-                    "requests": {
-                        "cpu": "250m",
-                        "memory": "256Mi",
-                    },
                 },
             },
             run_properties={
@@ -789,12 +776,31 @@ class ActionTemplate(pulumi.CustomResource):
                     "description": "Kubernetes namespace (runtime input)",
                 },
             ],
+            org_id=this["id"],
+            project_id=this_harness_platform_project["id"],
+            hub_identity=project_level["identity"],
+            identity="container-action-template",
+            name="Container Action Template",
+            description="Container action with runtime inputs and defaults",
+            type="container",
+            infrastructure_type="<+input>.default('Kubernetes')",
+            tags=[
+                "container",
+                "kubernetes",
+                "runtime-inputs",
+            ],
             opts = pulumi.ResourceOptions(depends_on=[project_level]))
         # ----------------------------------------------------------------------------
         # Example 2: Simple Delay Action (TESTED ✅)
         # ----------------------------------------------------------------------------
         # Delay action for adding wait time in experiments
         delay_action = harness.chaos.ActionTemplate("delay_action",
+            delay_action={
+                "duration": "<+input>.default('30s')",
+            },
+            run_properties={
+                "timeout": "60s",
+            },
             org_id=this["id"],
             project_id=this_harness_platform_project["id"],
             hub_identity=project_level["identity"],
@@ -807,31 +813,17 @@ class ActionTemplate(pulumi.CustomResource):
                 "delay",
                 "wait",
             ],
-            delay_action={
-                "duration": "<+input>.default('30s')",
-            },
-            run_properties={
-                "timeout": "60s",
-            },
             opts = pulumi.ResourceOptions(depends_on=[project_level]))
         # ----------------------------------------------------------------------------
         # Example 3: Script Action (TESTED ✅)
         # ----------------------------------------------------------------------------
         # Custom script action for flexible operations
         script_action = harness.chaos.ActionTemplate("script_action",
-            org_id=this["id"],
-            project_id=this_harness_platform_project["id"],
-            hub_identity=project_level["identity"],
-            identity="script-action-template",
-            name="Script Action Template",
-            description="Custom script action for chaos operations",
-            type="script",
-            infrastructure_type="<+input>.default('Kubernetes')",
-            tags=[
-                "script",
-                "custom",
-            ],
             custom_script_action={
+                "envs": [{
+                    "name": "TARGET",
+                    "value": "<+input>.default('default-target')",
+                }],
                 "script": \"\"\"#!/bin/bash
         echo \\"Running custom chaos script\\"
         echo \\"Target: <+input>\\"
@@ -839,10 +831,6 @@ class ActionTemplate(pulumi.CustomResource):
         echo \\"Script completed\\"
         \"\"\",
                 "shell": "bash",
-                "envs": [{
-                    "name": "TARGET",
-                    "value": "<+input>.default('default-target')",
-                }],
             },
             run_properties={
                 "timeout": "<+input>.default('120s')",
@@ -855,6 +843,18 @@ class ActionTemplate(pulumi.CustomResource):
                 "required": True,
                 "description": "Target resource for the script",
             }],
+            org_id=this["id"],
+            project_id=this_harness_platform_project["id"],
+            hub_identity=project_level["identity"],
+            identity="script-action-template",
+            name="Script Action Template",
+            description="Custom script action for chaos operations",
+            type="script",
+            infrastructure_type="<+input>.default('Kubernetes')",
+            tags=[
+                "script",
+                "custom",
+            ],
             opts = pulumi.ResourceOptions(depends_on=[project_level]))
         ```
 
@@ -886,9 +886,9 @@ class ActionTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ActionTemplateContainerActionArgs', 'ActionTemplateContainerActionArgsDict']] container_action: Container action configuration. Required when type is 'container'.
-        :param pulumi.Input[Union['ActionTemplateCustomScriptActionArgs', 'ActionTemplateCustomScriptActionArgsDict']] custom_script_action: Custom script action configuration. Required when type is 'customScript'.
-        :param pulumi.Input[Union['ActionTemplateDelayActionArgs', 'ActionTemplateDelayActionArgsDict']] delay_action: Delay action configuration. Required when type is 'delay'.
+        :param pulumi.Input[Union['ActionTemplateContainerActionArgs', 'ActionTemplateContainerActionArgsDict', 'outputs.ActionTemplateContainerAction']] container_action: Container action configuration. Required when type is 'container'.
+        :param pulumi.Input[Union['ActionTemplateCustomScriptActionArgs', 'ActionTemplateCustomScriptActionArgsDict', 'outputs.ActionTemplateCustomScriptAction']] custom_script_action: Custom script action configuration. Required when type is 'customScript'.
+        :param pulumi.Input[Union['ActionTemplateDelayActionArgs', 'ActionTemplateDelayActionArgsDict', 'outputs.ActionTemplateDelayAction']] delay_action: Delay action configuration. Required when type is 'delay'.
         :param pulumi.Input[_builtins.str] description: Description of the action template.
         :param pulumi.Input[_builtins.str] hub_identity: Identity of the chaos hub this action template belongs to.
         :param pulumi.Input[_builtins.str] identity: Unique identifier for the action template (immutable).
@@ -896,10 +896,10 @@ class ActionTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the action template.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier.
         :param pulumi.Input[_builtins.str] project_id: Project identifier.
-        :param pulumi.Input[Union['ActionTemplateRunPropertiesArgs', 'ActionTemplateRunPropertiesArgsDict']] run_properties: Run properties for the action template execution.
+        :param pulumi.Input[Union['ActionTemplateRunPropertiesArgs', 'ActionTemplateRunPropertiesArgsDict', 'outputs.ActionTemplateRunProperties']] run_properties: Run properties for the action template execution.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the action template.
         :param pulumi.Input[_builtins.str] type: Type of the action template. Valid values: delay, customScript, container.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionTemplateVariableArgs', 'ActionTemplateVariableArgsDict']]]] variables: Template variables that can be used in the action.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionTemplateVariableArgs', 'ActionTemplateVariableArgsDict', 'outputs.ActionTemplateVariable']]]] variables: Template variables that can be used in the action.
         """
         ...
     @overload
@@ -946,20 +946,27 @@ class ActionTemplate(pulumi.CustomResource):
         # ----------------------------------------------------------------------------
         # Most common pattern: container action with runtime inputs and defaults
         container_with_runtime_inputs = harness.chaos.ActionTemplate("container_with_runtime_inputs",
-            org_id=this["id"],
-            project_id=this_harness_platform_project["id"],
-            hub_identity=project_level["identity"],
-            identity="container-action-template",
-            name="Container Action Template",
-            description="Container action with runtime inputs and defaults",
-            type="container",
-            infrastructure_type="<+input>.default('Kubernetes')",
-            tags=[
-                "container",
-                "kubernetes",
-                "runtime-inputs",
-            ],
             container_action={
+                "resources": {
+                    "limits": {
+                        "cpu": "500m",
+                        "memory": "512Mi",
+                    },
+                    "requests": {
+                        "cpu": "250m",
+                        "memory": "256Mi",
+                    },
+                },
+                "envs": [
+                    {
+                        "name": "TEST_VAR",
+                        "value": "<+input>.default('test_value')",
+                    },
+                    {
+                        "name": "ANOTHER_VAR",
+                        "value": "<+input>.default('another_value')",
+                    },
+                ],
                 "image": "<+input>.default('busybox:latest')",
                 "commands": ["<+input>.default('sh')"],
                 "args": "echo 'Running container action'; sleep 15",
@@ -976,26 +983,6 @@ class ActionTemplate(pulumi.CustomResource):
                 "annotations": {
                     "description": "Chaos container action",
                     "owner": "chaos-team",
-                },
-                "envs": [
-                    {
-                        "name": "TEST_VAR",
-                        "value": "<+input>.default('test_value')",
-                    },
-                    {
-                        "name": "ANOTHER_VAR",
-                        "value": "<+input>.default('another_value')",
-                    },
-                ],
-                "resources": {
-                    "limits": {
-                        "cpu": "500m",
-                        "memory": "512Mi",
-                    },
-                    "requests": {
-                        "cpu": "250m",
-                        "memory": "256Mi",
-                    },
                 },
             },
             run_properties={
@@ -1018,12 +1005,31 @@ class ActionTemplate(pulumi.CustomResource):
                     "description": "Kubernetes namespace (runtime input)",
                 },
             ],
+            org_id=this["id"],
+            project_id=this_harness_platform_project["id"],
+            hub_identity=project_level["identity"],
+            identity="container-action-template",
+            name="Container Action Template",
+            description="Container action with runtime inputs and defaults",
+            type="container",
+            infrastructure_type="<+input>.default('Kubernetes')",
+            tags=[
+                "container",
+                "kubernetes",
+                "runtime-inputs",
+            ],
             opts = pulumi.ResourceOptions(depends_on=[project_level]))
         # ----------------------------------------------------------------------------
         # Example 2: Simple Delay Action (TESTED ✅)
         # ----------------------------------------------------------------------------
         # Delay action for adding wait time in experiments
         delay_action = harness.chaos.ActionTemplate("delay_action",
+            delay_action={
+                "duration": "<+input>.default('30s')",
+            },
+            run_properties={
+                "timeout": "60s",
+            },
             org_id=this["id"],
             project_id=this_harness_platform_project["id"],
             hub_identity=project_level["identity"],
@@ -1036,31 +1042,17 @@ class ActionTemplate(pulumi.CustomResource):
                 "delay",
                 "wait",
             ],
-            delay_action={
-                "duration": "<+input>.default('30s')",
-            },
-            run_properties={
-                "timeout": "60s",
-            },
             opts = pulumi.ResourceOptions(depends_on=[project_level]))
         # ----------------------------------------------------------------------------
         # Example 3: Script Action (TESTED ✅)
         # ----------------------------------------------------------------------------
         # Custom script action for flexible operations
         script_action = harness.chaos.ActionTemplate("script_action",
-            org_id=this["id"],
-            project_id=this_harness_platform_project["id"],
-            hub_identity=project_level["identity"],
-            identity="script-action-template",
-            name="Script Action Template",
-            description="Custom script action for chaos operations",
-            type="script",
-            infrastructure_type="<+input>.default('Kubernetes')",
-            tags=[
-                "script",
-                "custom",
-            ],
             custom_script_action={
+                "envs": [{
+                    "name": "TARGET",
+                    "value": "<+input>.default('default-target')",
+                }],
                 "script": \"\"\"#!/bin/bash
         echo \\"Running custom chaos script\\"
         echo \\"Target: <+input>\\"
@@ -1068,10 +1060,6 @@ class ActionTemplate(pulumi.CustomResource):
         echo \\"Script completed\\"
         \"\"\",
                 "shell": "bash",
-                "envs": [{
-                    "name": "TARGET",
-                    "value": "<+input>.default('default-target')",
-                }],
             },
             run_properties={
                 "timeout": "<+input>.default('120s')",
@@ -1084,6 +1072,18 @@ class ActionTemplate(pulumi.CustomResource):
                 "required": True,
                 "description": "Target resource for the script",
             }],
+            org_id=this["id"],
+            project_id=this_harness_platform_project["id"],
+            hub_identity=project_level["identity"],
+            identity="script-action-template",
+            name="Script Action Template",
+            description="Custom script action for chaos operations",
+            type="script",
+            infrastructure_type="<+input>.default('Kubernetes')",
+            tags=[
+                "script",
+                "custom",
+            ],
             opts = pulumi.ResourceOptions(depends_on=[project_level]))
         ```
 
@@ -1128,9 +1128,9 @@ class ActionTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_action: pulumi.Input[Optional[Union['ActionTemplateContainerActionArgs', 'ActionTemplateContainerActionArgsDict']]] = None,
-                 custom_script_action: pulumi.Input[Optional[Union['ActionTemplateCustomScriptActionArgs', 'ActionTemplateCustomScriptActionArgsDict']]] = None,
-                 delay_action: pulumi.Input[Optional[Union['ActionTemplateDelayActionArgs', 'ActionTemplateDelayActionArgsDict']]] = None,
+                 container_action: pulumi.Input[Optional[Union['ActionTemplateContainerActionArgs', 'ActionTemplateContainerActionArgsDict', 'outputs.ActionTemplateContainerAction']]] = None,
+                 custom_script_action: pulumi.Input[Optional[Union['ActionTemplateCustomScriptActionArgs', 'ActionTemplateCustomScriptActionArgsDict', 'outputs.ActionTemplateCustomScriptAction']]] = None,
+                 delay_action: pulumi.Input[Optional[Union['ActionTemplateDelayActionArgs', 'ActionTemplateDelayActionArgsDict', 'outputs.ActionTemplateDelayAction']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
                  identity: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1138,10 +1138,10 @@ class ActionTemplate(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 run_properties: pulumi.Input[Optional[Union['ActionTemplateRunPropertiesArgs', 'ActionTemplateRunPropertiesArgsDict']]] = None,
+                 run_properties: pulumi.Input[Optional[Union['ActionTemplateRunPropertiesArgs', 'ActionTemplateRunPropertiesArgsDict', 'outputs.ActionTemplateRunProperties']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionTemplateVariableArgs', 'ActionTemplateVariableArgsDict']]]]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionTemplateVariableArgs', 'ActionTemplateVariableArgsDict', 'outputs.ActionTemplateVariable']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1193,11 +1193,11 @@ class ActionTemplate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            container_action: pulumi.Input[Optional[Union['ActionTemplateContainerActionArgs', 'ActionTemplateContainerActionArgsDict']]] = None,
+            container_action: pulumi.Input[Optional[Union['ActionTemplateContainerActionArgs', 'ActionTemplateContainerActionArgsDict', 'outputs.ActionTemplateContainerAction']]] = None,
             created_at: pulumi.Input[Optional[_builtins.int]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_script_action: pulumi.Input[Optional[Union['ActionTemplateCustomScriptActionArgs', 'ActionTemplateCustomScriptActionArgsDict']]] = None,
-            delay_action: pulumi.Input[Optional[Union['ActionTemplateDelayActionArgs', 'ActionTemplateDelayActionArgsDict']]] = None,
+            custom_script_action: pulumi.Input[Optional[Union['ActionTemplateCustomScriptActionArgs', 'ActionTemplateCustomScriptActionArgsDict', 'outputs.ActionTemplateCustomScriptAction']]] = None,
+            delay_action: pulumi.Input[Optional[Union['ActionTemplateDelayActionArgs', 'ActionTemplateDelayActionArgsDict', 'outputs.ActionTemplateDelayAction']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
             id_internal: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1210,13 +1210,13 @@ class ActionTemplate(pulumi.CustomResource):
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             revision: pulumi.Input[Optional[_builtins.int]] = None,
-            run_properties: pulumi.Input[Optional[Union['ActionTemplateRunPropertiesArgs', 'ActionTemplateRunPropertiesArgsDict']]] = None,
+            run_properties: pulumi.Input[Optional[Union['ActionTemplateRunPropertiesArgs', 'ActionTemplateRunPropertiesArgsDict', 'outputs.ActionTemplateRunProperties']]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             template: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.int]] = None,
             updated_by: pulumi.Input[Optional[_builtins.str]] = None,
-            variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionTemplateVariableArgs', 'ActionTemplateVariableArgsDict']]]]] = None) -> 'ActionTemplate':
+            variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionTemplateVariableArgs', 'ActionTemplateVariableArgsDict', 'outputs.ActionTemplateVariable']]]]] = None) -> 'ActionTemplate':
         """
         Get an existing ActionTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1225,11 +1225,11 @@ class ActionTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier.
-        :param pulumi.Input[Union['ActionTemplateContainerActionArgs', 'ActionTemplateContainerActionArgsDict']] container_action: Container action configuration. Required when type is 'container'.
+        :param pulumi.Input[Union['ActionTemplateContainerActionArgs', 'ActionTemplateContainerActionArgsDict', 'outputs.ActionTemplateContainerAction']] container_action: Container action configuration. Required when type is 'container'.
         :param pulumi.Input[_builtins.int] created_at: Creation timestamp (Unix epoch).
         :param pulumi.Input[_builtins.str] created_by: User who created the action template.
-        :param pulumi.Input[Union['ActionTemplateCustomScriptActionArgs', 'ActionTemplateCustomScriptActionArgsDict']] custom_script_action: Custom script action configuration. Required when type is 'customScript'.
-        :param pulumi.Input[Union['ActionTemplateDelayActionArgs', 'ActionTemplateDelayActionArgsDict']] delay_action: Delay action configuration. Required when type is 'delay'.
+        :param pulumi.Input[Union['ActionTemplateCustomScriptActionArgs', 'ActionTemplateCustomScriptActionArgsDict', 'outputs.ActionTemplateCustomScriptAction']] custom_script_action: Custom script action configuration. Required when type is 'customScript'.
+        :param pulumi.Input[Union['ActionTemplateDelayActionArgs', 'ActionTemplateDelayActionArgsDict', 'outputs.ActionTemplateDelayAction']] delay_action: Delay action configuration. Required when type is 'delay'.
         :param pulumi.Input[_builtins.str] description: Description of the action template.
         :param pulumi.Input[_builtins.str] hub_identity: Identity of the chaos hub this action template belongs to.
         :param pulumi.Input[_builtins.str] id_internal: Internal ID of the action template.
@@ -1242,13 +1242,13 @@ class ActionTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: Organization identifier.
         :param pulumi.Input[_builtins.str] project_id: Project identifier.
         :param pulumi.Input[_builtins.int] revision: Revision number of the action template.
-        :param pulumi.Input[Union['ActionTemplateRunPropertiesArgs', 'ActionTemplateRunPropertiesArgsDict']] run_properties: Run properties for the action template execution.
+        :param pulumi.Input[Union['ActionTemplateRunPropertiesArgs', 'ActionTemplateRunPropertiesArgsDict', 'outputs.ActionTemplateRunProperties']] run_properties: Run properties for the action template execution.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the action template.
         :param pulumi.Input[_builtins.str] template: Template content/definition.
         :param pulumi.Input[_builtins.str] type: Type of the action template. Valid values: delay, customScript, container.
         :param pulumi.Input[_builtins.int] updated_at: Last update timestamp (Unix epoch).
         :param pulumi.Input[_builtins.str] updated_by: User who last updated the action template.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionTemplateVariableArgs', 'ActionTemplateVariableArgsDict']]]] variables: Template variables that can be used in the action.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ActionTemplateVariableArgs', 'ActionTemplateVariableArgsDict', 'outputs.ActionTemplateVariable']]]] variables: Template variables that can be used in the action.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

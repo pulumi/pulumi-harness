@@ -311,7 +311,7 @@ class GitOpsCluster(pulumi.CustomResource):
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsClusterRequestArgs', 'GitOpsClusterRequestArgsDict']]]]] = None,
+                 requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsClusterRequestArgs', 'GitOpsClusterRequestArgsDict', 'outputs.GitOpsClusterRequest']]]]] = None,
                  __props__=None):
         """
         Resource for managing a Harness Gitops Cluster.
@@ -348,7 +348,7 @@ class GitOpsCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps cluster.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the cluster.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsClusterRequestArgs', 'GitOpsClusterRequestArgsDict']]]] requests: Cluster create or update request.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsClusterRequestArgs', 'GitOpsClusterRequestArgsDict', 'outputs.GitOpsClusterRequest']]]] requests: Cluster create or update request.
         """
         ...
     @overload
@@ -404,7 +404,7 @@ class GitOpsCluster(pulumi.CustomResource):
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsClusterRequestArgs', 'GitOpsClusterRequestArgsDict']]]]] = None,
+                 requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsClusterRequestArgs', 'GitOpsClusterRequestArgsDict', 'outputs.GitOpsClusterRequest']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -443,7 +443,7 @@ class GitOpsCluster(pulumi.CustomResource):
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
-            requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsClusterRequestArgs', 'GitOpsClusterRequestArgsDict']]]]] = None) -> 'GitOpsCluster':
+            requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsClusterRequestArgs', 'GitOpsClusterRequestArgsDict', 'outputs.GitOpsClusterRequest']]]]] = None) -> 'GitOpsCluster':
         """
         Get an existing GitOpsCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -458,7 +458,7 @@ class GitOpsCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps cluster.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the cluster.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsClusterRequestArgs', 'GitOpsClusterRequestArgsDict']]]] requests: Cluster create or update request.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsClusterRequestArgs', 'GitOpsClusterRequestArgsDict', 'outputs.GitOpsClusterRequest']]]] requests: Cluster create or update request.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

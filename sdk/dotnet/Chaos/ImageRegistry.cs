@@ -28,15 +28,6 @@ namespace Pulumi.Harness.Chaos
     /// {
     ///     var example = new Harness.Chaos.ImageRegistry("example", new()
     ///     {
-    ///         OrgId = "&lt;org_id&gt;",
-    ///         ProjectId = "&lt;project_id&gt;",
-    ///         RegistryServer = "&lt;registry_server&gt;",
-    ///         RegistryAccount = "&lt;registry_account&gt;",
-    ///         IsPrivate = true,
-    ///         SecretName = "&lt;secret_name&gt;",
-    ///         IsDefault = false,
-    ///         IsOverrideAllowed = true,
-    ///         UseCustomImages = true,
     ///         CustomImages = new[]
     ///         {
     ///             new Harness.Chaos.Inputs.ImageRegistryCustomImageArgs
@@ -47,6 +38,15 @@ namespace Pulumi.Harness.Chaos
     ///                 DdcrFault = "&lt;ddcr_fault_image&gt;",
     ///             },
     ///         },
+    ///         OrgId = "&lt;org_id&gt;",
+    ///         ProjectId = "&lt;project_id&gt;",
+    ///         RegistryServer = "&lt;registry_server&gt;",
+    ///         RegistryAccount = "&lt;registry_account&gt;",
+    ///         IsPrivate = true,
+    ///         SecretName = "&lt;secret_name&gt;",
+    ///         IsDefault = false,
+    ///         IsOverrideAllowed = true,
+    ///         UseCustomImages = true,
     ///     });
     /// 
     /// });

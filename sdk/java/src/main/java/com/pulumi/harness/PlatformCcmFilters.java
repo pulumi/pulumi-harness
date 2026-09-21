@@ -44,15 +44,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new PlatformCcmFilters("test", PlatformCcmFiltersArgs.builder()
+ *             .filterProperties(PlatformCcmFiltersFilterPropertiesArgs.builder()
+ *                 .tags("foo:bar")
+ *                 .filterType("CCMRecommendation")
+ *                 .build())
  *             .identifier("identifier")
  *             .name("name")
  *             .orgId("org_id")
  *             .projectId("project_id")
  *             .type("CCMRecommendation")
- *             .filterProperties(PlatformCcmFiltersFilterPropertiesArgs.builder()
- *                 .tags("foo:bar")
- *                 .filterType("CCMRecommendation")
- *                 .build())
  *             .filterVisibility("EveryOne")
  *             .build());
  * 

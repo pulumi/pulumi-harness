@@ -426,7 +426,7 @@ class ServiceOverridesV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  env_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 git_details: pulumi.Input[Optional[Union['ServiceOverridesV2GitDetailsArgs', 'ServiceOverridesV2GitDetailsArgsDict']]] = None,
+                 git_details: pulumi.Input[Optional[Union['ServiceOverridesV2GitDetailsArgs', 'ServiceOverridesV2GitDetailsArgsDict', 'outputs.ServiceOverridesV2GitDetails']]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
                  infra_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -467,7 +467,7 @@ class ServiceOverridesV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The cluster ID to which the overrides are associated.
         :param pulumi.Input[_builtins.str] env_id: The environment ID to which the overrides are associated.
-        :param pulumi.Input[Union['ServiceOverridesV2GitDetailsArgs', 'ServiceOverridesV2GitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input[Union['ServiceOverridesV2GitDetailsArgs', 'ServiceOverridesV2GitDetailsArgsDict', 'outputs.ServiceOverridesV2GitDetails']] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[_builtins.str] identifier: The identifier of the override entity.
         :param pulumi.Input[_builtins.bool] import_from_git: import override from git
         :param pulumi.Input[_builtins.str] infra_id: The infrastructure ID to which the overrides are associated.
@@ -527,7 +527,7 @@ class ServiceOverridesV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  env_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 git_details: pulumi.Input[Optional[Union['ServiceOverridesV2GitDetailsArgs', 'ServiceOverridesV2GitDetailsArgsDict']]] = None,
+                 git_details: pulumi.Input[Optional[Union['ServiceOverridesV2GitDetailsArgs', 'ServiceOverridesV2GitDetailsArgsDict', 'outputs.ServiceOverridesV2GitDetails']]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
                  infra_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -574,7 +574,7 @@ class ServiceOverridesV2(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             env_id: pulumi.Input[Optional[_builtins.str]] = None,
-            git_details: pulumi.Input[Optional[Union['ServiceOverridesV2GitDetailsArgs', 'ServiceOverridesV2GitDetailsArgsDict']]] = None,
+            git_details: pulumi.Input[Optional[Union['ServiceOverridesV2GitDetailsArgs', 'ServiceOverridesV2GitDetailsArgsDict', 'outputs.ServiceOverridesV2GitDetails']]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
             infra_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -593,7 +593,7 @@ class ServiceOverridesV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The cluster ID to which the overrides are associated.
         :param pulumi.Input[_builtins.str] env_id: The environment ID to which the overrides are associated.
-        :param pulumi.Input[Union['ServiceOverridesV2GitDetailsArgs', 'ServiceOverridesV2GitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input[Union['ServiceOverridesV2GitDetailsArgs', 'ServiceOverridesV2GitDetailsArgsDict', 'outputs.ServiceOverridesV2GitDetails']] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[_builtins.str] identifier: The identifier of the override entity.
         :param pulumi.Input[_builtins.bool] import_from_git: import override from git
         :param pulumi.Input[_builtins.str] infra_id: The infrastructure ID to which the overrides are associated.

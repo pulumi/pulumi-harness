@@ -215,7 +215,7 @@ class GitopsApplicationset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 applicationset: pulumi.Input[Optional[Union['GitopsApplicationsetApplicationsetArgs', 'GitopsApplicationsetApplicationsetArgsDict']]] = None,
+                 applicationset: pulumi.Input[Optional[Union['GitopsApplicationsetApplicationsetArgs', 'GitopsApplicationsetApplicationsetArgsDict', 'outputs.GitopsApplicationsetApplicationset']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  upsert: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -231,23 +231,12 @@ class GitopsApplicationset(pulumi.CustomResource):
 
         # Example 1: Cluster Generator
         cluster_generator = harness.platform.GitopsApplicationset("cluster_generator",
-            org_id="default",
-            project_id="projectId",
-            agent_id="account.agentuseast1",
-            upsert=True,
             applicationset={
                 "metadata": {
                     "name": "cluster-appset",
                     "namespace": "argocd",
                 },
                 "spec": {
-                    "go_template": True,
-                    "go_template_options": ["missingkey=error"],
-                    "generators": [{
-                        "clusters": [{
-                            "enabled": True,
-                        }],
-                    }],
                     "template": {
                         "metadata": {
                             "name": "{{.name}}-guestbook",
@@ -256,7 +245,6 @@ class GitopsApplicationset(pulumi.CustomResource):
                             },
                         },
                         "spec": {
-                            "project": "default",
                             "source": {
                                 "repoUrl": "https://github.com/argoproj/argocd-example-apps.git",
                                 "path": "helm-guestbook",
@@ -266,23 +254,46 @@ class GitopsApplicationset(pulumi.CustomResource):
                                 "server": "{{.url}}",
                                 "namespace": "app-ns-{{.name}}",
                             },
+                            "project": "default",
                         },
                     },
+                    "generators": [{
+                        "clusters": [{
+                            "enabled": True,
+                        }],
+                    }],
+                    "go_template": True,
+                    "go_template_options": ["missingkey=error"],
                 },
-            })
-        # Example 2: List Generator
-        list_generator = harness.platform.GitopsApplicationset("list_generator",
+            },
             org_id="default",
             project_id="projectId",
             agent_id="account.agentuseast1",
-            upsert=True,
+            upsert=True)
+        # Example 2: List Generator
+        list_generator = harness.platform.GitopsApplicationset("list_generator",
             applicationset={
                 "metadata": {
                     "name": "list-appset",
                 },
                 "spec": {
-                    "go_template": True,
-                    "go_template_options": ["missingkey=error"],
+                    "template": {
+                        "metadata": {
+                            "name": "{{.cluster}}-guestbook",
+                        },
+                        "spec": {
+                            "source": {
+                                "repoUrl": "https://github.com/argoproj/argocd-example-apps.git",
+                                "path": "helm-guestbook",
+                                "targetRevision": "HEAD",
+                            },
+                            "destination": {
+                                "server": "{{.url}}",
+                                "namespace": "default",
+                            },
+                            "project": "default",
+                        },
+                    },
                     "generators": [{
                         "lists": [{
                             "elements": [
@@ -297,51 +308,26 @@ class GitopsApplicationset(pulumi.CustomResource):
                             ],
                         }],
                     }],
-                    "template": {
-                        "metadata": {
-                            "name": "{{.cluster}}-guestbook",
-                        },
-                        "spec": {
-                            "project": "default",
-                            "source": {
-                                "repoUrl": "https://github.com/argoproj/argocd-example-apps.git",
-                                "path": "helm-guestbook",
-                                "targetRevision": "HEAD",
-                            },
-                            "destination": {
-                                "server": "{{.url}}",
-                                "namespace": "default",
-                            },
-                        },
-                    },
+                    "go_template": True,
+                    "go_template_options": ["missingkey=error"],
                 },
-            })
-        # Example 3: Git Generator with Files
-        git_files = harness.platform.GitopsApplicationset("git_files",
+            },
             org_id="default",
             project_id="projectId",
             agent_id="account.agentuseast1",
-            upsert=True,
+            upsert=True)
+        # Example 3: Git Generator with Files
+        git_files = harness.platform.GitopsApplicationset("git_files",
             applicationset={
                 "metadata": {
                     "name": "git-files-appset",
                 },
                 "spec": {
-                    "generators": [{
-                        "gits": [{
-                            "repo_url": "https://github.com/example/config-repo",
-                            "revision": "main",
-                            "files": [{
-                                "path": "apps/*/config.json",
-                            }],
-                        }],
-                    }],
                     "template": {
                         "metadata": {
                             "name": "{{.path.basename}}-app",
                         },
                         "spec": {
-                            "project": "default",
                             "source": {
                                 "repoUrl": "https://github.com/example/app-repo",
                                 "path": "{{.path.path}}",
@@ -351,37 +337,36 @@ class GitopsApplicationset(pulumi.CustomResource):
                                 "server": "https://kubernetes.default.svc",
                                 "namespace": "{{.path.basename}}",
                             },
+                            "project": "default",
                         },
                     },
+                    "generators": [{
+                        "gits": [{
+                            "files": [{
+                                "path": "apps/*/config.json",
+                            }],
+                            "repo_url": "https://github.com/example/config-repo",
+                            "revision": "main",
+                        }],
+                    }],
                 },
-            })
-        # Example 4: Git Generator with Directories
-        git_directories = harness.platform.GitopsApplicationset("git_directories",
+            },
             org_id="default",
             project_id="projectId",
             agent_id="account.agentuseast1",
-            upsert=True,
+            upsert=True)
+        # Example 4: Git Generator with Directories
+        git_directories = harness.platform.GitopsApplicationset("git_directories",
             applicationset={
                 "metadata": {
                     "name": "git-directories-appset",
                 },
                 "spec": {
-                    "generators": [{
-                        "gits": [{
-                            "repo_url": "https://github.com/argoproj/argo-cd.git",
-                            "revision": "HEAD",
-                            "directories": [{
-                                "path": "applicationset/examples/git-generator-directory/cluster-addons/*",
-                                "exclude": False,
-                            }],
-                        }],
-                    }],
                     "template": {
                         "metadata": {
                             "name": "{{.path.basename}}-addon",
                         },
                         "spec": {
-                            "project": "default",
                             "source": {
                                 "repoUrl": "https://github.com/argoproj/argo-cd.git",
                                 "path": "{{.path.path}}",
@@ -397,10 +382,25 @@ class GitopsApplicationset(pulumi.CustomResource):
                                     "self_heal": True,
                                 },
                             },
+                            "project": "default",
                         },
                     },
+                    "generators": [{
+                        "gits": [{
+                            "directories": [{
+                                "path": "applicationset/examples/git-generator-directory/cluster-addons/*",
+                                "exclude": False,
+                            }],
+                            "repo_url": "https://github.com/argoproj/argo-cd.git",
+                            "revision": "HEAD",
+                        }],
+                    }],
                 },
-            })
+            },
+            org_id="default",
+            project_id="projectId",
+            agent_id="account.agentuseast1",
+            upsert=True)
         ```
 
         ## Import
@@ -429,7 +429,7 @@ class GitopsApplicationset(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps applicationset.
-        :param pulumi.Input[Union['GitopsApplicationsetApplicationsetArgs', 'GitopsApplicationsetApplicationsetArgsDict']] applicationset: Definition of the GitOps applicationset resource.
+        :param pulumi.Input[Union['GitopsApplicationsetApplicationsetArgs', 'GitopsApplicationsetApplicationsetArgsDict', 'outputs.GitopsApplicationsetApplicationset']] applicationset: Definition of the GitOps applicationset resource.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the GitOps applicationset.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps applicationset.
         :param pulumi.Input[_builtins.bool] upsert: Indicates if the GitOps application should be updated if existing and inserted if not.
@@ -451,23 +451,12 @@ class GitopsApplicationset(pulumi.CustomResource):
 
         # Example 1: Cluster Generator
         cluster_generator = harness.platform.GitopsApplicationset("cluster_generator",
-            org_id="default",
-            project_id="projectId",
-            agent_id="account.agentuseast1",
-            upsert=True,
             applicationset={
                 "metadata": {
                     "name": "cluster-appset",
                     "namespace": "argocd",
                 },
                 "spec": {
-                    "go_template": True,
-                    "go_template_options": ["missingkey=error"],
-                    "generators": [{
-                        "clusters": [{
-                            "enabled": True,
-                        }],
-                    }],
                     "template": {
                         "metadata": {
                             "name": "{{.name}}-guestbook",
@@ -476,7 +465,6 @@ class GitopsApplicationset(pulumi.CustomResource):
                             },
                         },
                         "spec": {
-                            "project": "default",
                             "source": {
                                 "repoUrl": "https://github.com/argoproj/argocd-example-apps.git",
                                 "path": "helm-guestbook",
@@ -486,23 +474,46 @@ class GitopsApplicationset(pulumi.CustomResource):
                                 "server": "{{.url}}",
                                 "namespace": "app-ns-{{.name}}",
                             },
+                            "project": "default",
                         },
                     },
+                    "generators": [{
+                        "clusters": [{
+                            "enabled": True,
+                        }],
+                    }],
+                    "go_template": True,
+                    "go_template_options": ["missingkey=error"],
                 },
-            })
-        # Example 2: List Generator
-        list_generator = harness.platform.GitopsApplicationset("list_generator",
+            },
             org_id="default",
             project_id="projectId",
             agent_id="account.agentuseast1",
-            upsert=True,
+            upsert=True)
+        # Example 2: List Generator
+        list_generator = harness.platform.GitopsApplicationset("list_generator",
             applicationset={
                 "metadata": {
                     "name": "list-appset",
                 },
                 "spec": {
-                    "go_template": True,
-                    "go_template_options": ["missingkey=error"],
+                    "template": {
+                        "metadata": {
+                            "name": "{{.cluster}}-guestbook",
+                        },
+                        "spec": {
+                            "source": {
+                                "repoUrl": "https://github.com/argoproj/argocd-example-apps.git",
+                                "path": "helm-guestbook",
+                                "targetRevision": "HEAD",
+                            },
+                            "destination": {
+                                "server": "{{.url}}",
+                                "namespace": "default",
+                            },
+                            "project": "default",
+                        },
+                    },
                     "generators": [{
                         "lists": [{
                             "elements": [
@@ -517,51 +528,26 @@ class GitopsApplicationset(pulumi.CustomResource):
                             ],
                         }],
                     }],
-                    "template": {
-                        "metadata": {
-                            "name": "{{.cluster}}-guestbook",
-                        },
-                        "spec": {
-                            "project": "default",
-                            "source": {
-                                "repoUrl": "https://github.com/argoproj/argocd-example-apps.git",
-                                "path": "helm-guestbook",
-                                "targetRevision": "HEAD",
-                            },
-                            "destination": {
-                                "server": "{{.url}}",
-                                "namespace": "default",
-                            },
-                        },
-                    },
+                    "go_template": True,
+                    "go_template_options": ["missingkey=error"],
                 },
-            })
-        # Example 3: Git Generator with Files
-        git_files = harness.platform.GitopsApplicationset("git_files",
+            },
             org_id="default",
             project_id="projectId",
             agent_id="account.agentuseast1",
-            upsert=True,
+            upsert=True)
+        # Example 3: Git Generator with Files
+        git_files = harness.platform.GitopsApplicationset("git_files",
             applicationset={
                 "metadata": {
                     "name": "git-files-appset",
                 },
                 "spec": {
-                    "generators": [{
-                        "gits": [{
-                            "repo_url": "https://github.com/example/config-repo",
-                            "revision": "main",
-                            "files": [{
-                                "path": "apps/*/config.json",
-                            }],
-                        }],
-                    }],
                     "template": {
                         "metadata": {
                             "name": "{{.path.basename}}-app",
                         },
                         "spec": {
-                            "project": "default",
                             "source": {
                                 "repoUrl": "https://github.com/example/app-repo",
                                 "path": "{{.path.path}}",
@@ -571,37 +557,36 @@ class GitopsApplicationset(pulumi.CustomResource):
                                 "server": "https://kubernetes.default.svc",
                                 "namespace": "{{.path.basename}}",
                             },
+                            "project": "default",
                         },
                     },
+                    "generators": [{
+                        "gits": [{
+                            "files": [{
+                                "path": "apps/*/config.json",
+                            }],
+                            "repo_url": "https://github.com/example/config-repo",
+                            "revision": "main",
+                        }],
+                    }],
                 },
-            })
-        # Example 4: Git Generator with Directories
-        git_directories = harness.platform.GitopsApplicationset("git_directories",
+            },
             org_id="default",
             project_id="projectId",
             agent_id="account.agentuseast1",
-            upsert=True,
+            upsert=True)
+        # Example 4: Git Generator with Directories
+        git_directories = harness.platform.GitopsApplicationset("git_directories",
             applicationset={
                 "metadata": {
                     "name": "git-directories-appset",
                 },
                 "spec": {
-                    "generators": [{
-                        "gits": [{
-                            "repo_url": "https://github.com/argoproj/argo-cd.git",
-                            "revision": "HEAD",
-                            "directories": [{
-                                "path": "applicationset/examples/git-generator-directory/cluster-addons/*",
-                                "exclude": False,
-                            }],
-                        }],
-                    }],
                     "template": {
                         "metadata": {
                             "name": "{{.path.basename}}-addon",
                         },
                         "spec": {
-                            "project": "default",
                             "source": {
                                 "repoUrl": "https://github.com/argoproj/argo-cd.git",
                                 "path": "{{.path.path}}",
@@ -617,10 +602,25 @@ class GitopsApplicationset(pulumi.CustomResource):
                                     "self_heal": True,
                                 },
                             },
+                            "project": "default",
                         },
                     },
+                    "generators": [{
+                        "gits": [{
+                            "directories": [{
+                                "path": "applicationset/examples/git-generator-directory/cluster-addons/*",
+                                "exclude": False,
+                            }],
+                            "repo_url": "https://github.com/argoproj/argo-cd.git",
+                            "revision": "HEAD",
+                        }],
+                    }],
                 },
-            })
+            },
+            org_id="default",
+            project_id="projectId",
+            agent_id="account.agentuseast1",
+            upsert=True)
         ```
 
         ## Import
@@ -662,7 +662,7 @@ class GitopsApplicationset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 applicationset: pulumi.Input[Optional[Union['GitopsApplicationsetApplicationsetArgs', 'GitopsApplicationsetApplicationsetArgsDict']]] = None,
+                 applicationset: pulumi.Input[Optional[Union['GitopsApplicationsetApplicationsetArgs', 'GitopsApplicationsetApplicationsetArgsDict', 'outputs.GitopsApplicationsetApplicationset']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  upsert: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -700,7 +700,7 @@ class GitopsApplicationset(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             agent_id: pulumi.Input[Optional[_builtins.str]] = None,
-            applicationset: pulumi.Input[Optional[Union['GitopsApplicationsetApplicationsetArgs', 'GitopsApplicationsetApplicationsetArgsDict']]] = None,
+            applicationset: pulumi.Input[Optional[Union['GitopsApplicationsetApplicationsetArgs', 'GitopsApplicationsetApplicationsetArgsDict', 'outputs.GitopsApplicationsetApplicationset']]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -713,7 +713,7 @@ class GitopsApplicationset(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps applicationset.
-        :param pulumi.Input[Union['GitopsApplicationsetApplicationsetArgs', 'GitopsApplicationsetApplicationsetArgsDict']] applicationset: Definition of the GitOps applicationset resource.
+        :param pulumi.Input[Union['GitopsApplicationsetApplicationsetArgs', 'GitopsApplicationsetApplicationsetArgsDict', 'outputs.GitopsApplicationsetApplicationset']] applicationset: Definition of the GitOps applicationset resource.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps applicationset. This is a unique identifier for the applicationset generated automatically.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the GitOps applicationset.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps applicationset.

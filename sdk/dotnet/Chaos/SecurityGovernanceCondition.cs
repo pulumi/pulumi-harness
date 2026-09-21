@@ -25,14 +25,8 @@ namespace Pulumi.Harness.Chaos
     ///     // Example of a Kubernetes Security Governance Condition
     ///     var k8sCondition = new Harness.Chaos.SecurityGovernanceCondition("k8s_condition", new()
     ///     {
-    ///         OrgId = orgId,
-    ///         ProjectId = projectId,
-    ///         Name = "k8s-security-condition",
-    ///         Description = "Security governance condition for Kubernetes workloads",
-    ///         InfraType = "KubernetesV2",
     ///         FaultSpec = new Harness.Chaos.Inputs.SecurityGovernanceConditionFaultSpecArgs
     ///         {
-    ///             Operator = "NOT_EQUAL_TO",
     ///             Faults = new[]
     ///             {
     ///                 new Harness.Chaos.Inputs.SecurityGovernanceConditionFaultSpecFaultArgs
@@ -46,6 +40,7 @@ namespace Pulumi.Harness.Chaos
     ///                     Name = "pod-dns",
     ///                 },
     ///             },
+    ///             Operator = "NOT_EQUAL_TO",
     ///         },
     ///         K8sSpec = new Harness.Chaos.Inputs.SecurityGovernanceConditionK8sSpecArgs
     ///         {
@@ -59,7 +54,6 @@ namespace Pulumi.Harness.Chaos
     ///             },
     ///             ApplicationSpec = new Harness.Chaos.Inputs.SecurityGovernanceConditionK8sSpecApplicationSpecArgs
     ///             {
-    ///                 Operator = "EQUAL_TO",
     ///                 Workloads = new[]
     ///                 {
     ///                     new Harness.Chaos.Inputs.SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgs
@@ -74,6 +68,7 @@ namespace Pulumi.Harness.Chaos
     ///                         ApplicationMapId = "nginx-app",
     ///                     },
     ///                 },
+    ///                 Operator = "EQUAL_TO",
     ///             },
     ///             ChaosServiceAccountSpec = new Harness.Chaos.Inputs.SecurityGovernanceConditionK8sSpecChaosServiceAccountSpecArgs
     ///             {
@@ -85,6 +80,11 @@ namespace Pulumi.Harness.Chaos
     ///                 },
     ///             },
     ///         },
+    ///         OrgId = orgId,
+    ///         ProjectId = projectId,
+    ///         Name = "k8s-security-condition",
+    ///         Description = "Security governance condition for Kubernetes workloads",
+    ///         InfraType = "KubernetesV2",
     ///         Tags = new[]
     ///         {
     ///             "env:prod",
@@ -96,14 +96,8 @@ namespace Pulumi.Harness.Chaos
     ///     // Example of a Windows Security Governance Condition
     ///     var windowsCondition = new Harness.Chaos.SecurityGovernanceCondition("windows_condition", new()
     ///     {
-    ///         OrgId = orgId,
-    ///         ProjectId = projectId,
-    ///         Name = "windows-security-condition",
-    ///         Description = "Security governance condition for Windows hosts",
-    ///         InfraType = "Windows",
     ///         FaultSpec = new Harness.Chaos.Inputs.SecurityGovernanceConditionFaultSpecArgs
     ///         {
-    ///             Operator = "NOT_EQUAL_TO",
     ///             Faults = new[]
     ///             {
     ///                 new Harness.Chaos.Inputs.SecurityGovernanceConditionFaultSpecFaultArgs
@@ -117,6 +111,7 @@ namespace Pulumi.Harness.Chaos
     ///                     Name = "cpu-hog",
     ///                 },
     ///             },
+    ///             Operator = "NOT_EQUAL_TO",
     ///         },
     ///         MachineSpec = new Harness.Chaos.Inputs.SecurityGovernanceConditionMachineSpecArgs
     ///         {
@@ -129,6 +124,11 @@ namespace Pulumi.Harness.Chaos
     ///                 },
     ///             },
     ///         },
+    ///         OrgId = orgId,
+    ///         ProjectId = projectId,
+    ///         Name = "windows-security-condition",
+    ///         Description = "Security governance condition for Windows hosts",
+    ///         InfraType = "Windows",
     ///         Tags = new[]
     ///         {
     ///             "env:prod",
@@ -140,14 +140,8 @@ namespace Pulumi.Harness.Chaos
     ///     // Example of a Linux Security Governance Condition
     ///     var linuxCondition = new Harness.Chaos.SecurityGovernanceCondition("linux_condition", new()
     ///     {
-    ///         OrgId = orgId,
-    ///         ProjectId = projectId,
-    ///         Name = "linux-security-condition",
-    ///         Description = "Security governance condition for Linux hosts",
-    ///         InfraType = "Linux",
     ///         FaultSpec = new Harness.Chaos.Inputs.SecurityGovernanceConditionFaultSpecArgs
     ///         {
-    ///             Operator = "NOT_EQUAL_TO",
     ///             Faults = new[]
     ///             {
     ///                 new Harness.Chaos.Inputs.SecurityGovernanceConditionFaultSpecFaultArgs
@@ -161,6 +155,7 @@ namespace Pulumi.Harness.Chaos
     ///                     Name = "memory-hog",
     ///                 },
     ///             },
+    ///             Operator = "NOT_EQUAL_TO",
     ///         },
     ///         MachineSpec = new Harness.Chaos.Inputs.SecurityGovernanceConditionMachineSpecArgs
     ///         {
@@ -173,6 +168,11 @@ namespace Pulumi.Harness.Chaos
     ///                 },
     ///             },
     ///         },
+    ///         OrgId = orgId,
+    ///         ProjectId = projectId,
+    ///         Name = "linux-security-condition",
+    ///         Description = "Security governance condition for Linux hosts",
+    ///         InfraType = "Linux",
     ///         Tags = new[]
     ///         {
     ///             "env:prod",

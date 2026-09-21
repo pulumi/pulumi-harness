@@ -30,6 +30,17 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Credentials http (with username + personal access token - UsernameToken)
 //			_, err := platform.NewBitbucketConnector(ctx, "username_token", &platform.BitbucketConnectorArgs{
+//				Credentials: &platform.BitbucketConnectorCredentialsArgs{
+//					Http: &platform.BitbucketConnectorCredentialsHttpArgs{
+//						Username:    pulumi.String("username"),
+//						PasswordRef: pulumi.String("account.secret_id"),
+//					},
+//				},
+//				ApiAuthentication: &platform.BitbucketConnectorApiAuthenticationArgs{
+//					AuthType: pulumi.String("UsernameToken"),
+//					Username: pulumi.String("username"),
+//					TokenRef: pulumi.String("account.secret_id"),
+//				},
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
@@ -42,17 +53,6 @@ import (
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
 //				},
-//				Credentials: &platform.BitbucketConnectorCredentialsArgs{
-//					Http: &platform.BitbucketConnectorCredentialsHttpArgs{
-//						Username:    pulumi.String("username"),
-//						PasswordRef: pulumi.String("account.secret_id"),
-//					},
-//				},
-//				ApiAuthentication: &platform.BitbucketConnectorApiAuthenticationArgs{
-//					AuthType: pulumi.String("UsernameToken"),
-//					Username: pulumi.String("username"),
-//					TokenRef: pulumi.String("account.secret_id"),
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -60,6 +60,17 @@ import (
 //			// Credentials http with Bitbucket Cloud Workspace API Token (email + API token)
 //			// Use this when migrating off Bitbucket app passwords (EOL 2026-06-09).
 //			_, err = platform.NewBitbucketConnector(ctx, "email_api_token", &platform.BitbucketConnectorArgs{
+//				Credentials: &platform.BitbucketConnectorCredentialsArgs{
+//					Http: &platform.BitbucketConnectorCredentialsHttpArgs{
+//						Username:    pulumi.String("username"),
+//						PasswordRef: pulumi.String("account.secret_id"),
+//					},
+//				},
+//				ApiAuthentication: &platform.BitbucketConnectorApiAuthenticationArgs{
+//					AuthType: pulumi.String("EmailAndApiToken"),
+//					Email:    pulumi.String("user@example.com"),
+//					TokenRef: pulumi.String("account.api_token_secret"),
+//				},
 //				Identifier:  pulumi.String("identifier_email_api_token"),
 //				Name:        pulumi.String("name_email_api_token"),
 //				Description: pulumi.String("Bitbucket Cloud with Workspace API Token"),
@@ -72,6 +83,12 @@ import (
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
 //				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Credentials http with Bitbucket repo/project Access Token
+//			_, err = platform.NewBitbucketConnector(ctx, "access_token", &platform.BitbucketConnectorArgs{
 //				Credentials: &platform.BitbucketConnectorCredentialsArgs{
 //					Http: &platform.BitbucketConnectorCredentialsHttpArgs{
 //						Username:    pulumi.String("username"),
@@ -79,16 +96,9 @@ import (
 //					},
 //				},
 //				ApiAuthentication: &platform.BitbucketConnectorApiAuthenticationArgs{
-//					AuthType: pulumi.String("EmailAndApiToken"),
-//					Email:    pulumi.String("user@example.com"),
-//					TokenRef: pulumi.String("account.api_token_secret"),
+//					AuthType: pulumi.String("AccessToken"),
+//					TokenRef: pulumi.String("account.access_token_secret"),
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Credentials http with Bitbucket repo/project Access Token
-//			_, err = platform.NewBitbucketConnector(ctx, "access_token", &platform.BitbucketConnectorArgs{
 //				Identifier:  pulumi.String("identifier_access_token"),
 //				Name:        pulumi.String("name_access_token"),
 //				Description: pulumi.String("Bitbucket with Access Token"),
@@ -101,22 +111,17 @@ import (
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
 //				},
-//				Credentials: &platform.BitbucketConnectorCredentialsArgs{
-//					Http: &platform.BitbucketConnectorCredentialsHttpArgs{
-//						Username:    pulumi.String("username"),
-//						PasswordRef: pulumi.String("account.secret_id"),
-//					},
-//				},
-//				ApiAuthentication: &platform.BitbucketConnectorApiAuthenticationArgs{
-//					AuthType: pulumi.String("AccessToken"),
-//					TokenRef: pulumi.String("account.access_token_secret"),
-//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Credentials ssh
 //			_, err = platform.NewBitbucketConnector(ctx, "ssh", &platform.BitbucketConnectorArgs{
+//				Credentials: &platform.BitbucketConnectorCredentialsArgs{
+//					Ssh: &platform.BitbucketConnectorCredentialsSshArgs{
+//						SshKeyRef: pulumi.String("account.secret_id"),
+//					},
+//				},
 //				Identifier:  pulumi.String("identifier_ssh"),
 //				Name:        pulumi.String("name_ssh"),
 //				Description: pulumi.String("test"),
@@ -128,11 +133,6 @@ import (
 //				ValidationRepo: pulumi.String("some_repo"),
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
-//				},
-//				Credentials: &platform.BitbucketConnectorCredentialsArgs{
-//					Ssh: &platform.BitbucketConnectorCredentialsSshArgs{
-//						SshKeyRef: pulumi.String("account.secret_id"),
-//					},
 //				},
 //			})
 //			if err != nil {

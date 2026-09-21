@@ -29,10 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := autostopping.NewRuleEcs(ctx, "test", &autostopping.RuleEcsArgs{
-//				Name:             pulumi.String("name"),
-//				CloudConnectorId: pulumi.String("cloud_connector_id"),
-//				IdleTimeMins:     pulumi.Int(10),
-//				DryRun:           pulumi.Bool(true),
 //				Container: &autostopping.RuleEcsContainerArgs{
 //					Cluster:   pulumi.String("cluster"),
 //					Service:   pulumi.String("service"),
@@ -45,6 +41,10 @@ import (
 //						DelayInSec: pulumi.Int(5),
 //					},
 //				},
+//				Name:             pulumi.String("name"),
+//				CloudConnectorId: pulumi.String("cloud_connector_id"),
+//				IdleTimeMins:     pulumi.Int(10),
+//				DryRun:           pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

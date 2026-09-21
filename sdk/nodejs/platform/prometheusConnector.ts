@@ -16,6 +16,12 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.PrometheusConnector("example", {
+ *     headers: [{
+ *         encryptedValueRef: "account.secret_identifier",
+ *         valueEncrypted: true,
+ *         key: "key",
+ *         value: "value",
+ *     }],
  *     identifier: "idntifier",
  *     name: "name",
  *     description: "test",
@@ -24,12 +30,6 @@ import * as utilities from "../utilities";
  *     delegateSelectors: ["harness-delegate"],
  *     userName: "user_name",
  *     passwordRef: "account.secret_identifier",
- *     headers: [{
- *         encryptedValueRef: "account.secret_identifier",
- *         valueEncrypted: true,
- *         key: "key",
- *         value: "value",
- *     }],
  * });
  * ```
  *

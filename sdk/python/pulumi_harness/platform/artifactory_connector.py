@@ -360,7 +360,7 @@ class ArtifactoryConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: pulumi.Input[Optional[Union['ArtifactoryConnectorCredentialsArgs', 'ArtifactoryConnectorCredentialsArgsDict']]] = None,
+                 credentials: pulumi.Input[Optional[Union['ArtifactoryConnectorCredentialsArgs', 'ArtifactoryConnectorCredentialsArgsDict', 'outputs.ArtifactoryConnectorCredentials']]] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -383,16 +383,16 @@ class ArtifactoryConnector(pulumi.CustomResource):
 
         # Authentication mechanism as username and password
         example = harness.platform.ArtifactoryConnector("example",
+            credentials={
+                "username": "admin",
+                "password_ref": "account.secret_id",
+            },
             identifier="identifier",
             name="name",
             description="test",
             tags=["foo:bar"],
             url="https://artifactory.example.com",
-            delegate_selectors=["harness-delegate"],
-            credentials={
-                "username": "admin",
-                "password_ref": "account.secret_id",
-            })
+            delegate_selectors=["harness-delegate"])
         # Authentication mechanism as anonymous
         test = harness.platform.ArtifactoryConnector("test",
             identifier="identifier",
@@ -410,17 +410,17 @@ class ArtifactoryConnector(pulumi.CustomResource):
 
         # Authentication mechanism as username and password
         example = harness.platform.ArtifactoryConnector("example",
+            credentials={
+                "username": "admin",
+                "password_ref": "account.secret_id",
+            },
             identifier="identifier",
             name="name",
             description="test",
             tags=["foo:bar"],
             org_id=test_harness_platform_project["orgId"],
             url="https://artifactory.example.com",
-            delegate_selectors=["harness-delegate"],
-            credentials={
-                "username": "admin",
-                "password_ref": "account.secret_id",
-            })
+            delegate_selectors=["harness-delegate"])
         # Authentication mechanism as anonymous
         test = harness.platform.ArtifactoryConnector("test",
             identifier="identifier",
@@ -439,6 +439,10 @@ class ArtifactoryConnector(pulumi.CustomResource):
 
         # Authentication mechanism as username and password
         example = harness.platform.ArtifactoryConnector("example",
+            credentials={
+                "username": "admin",
+                "password_ref": "account.secret_id",
+            },
             identifier="identifier",
             name="name",
             description="test",
@@ -446,11 +450,7 @@ class ArtifactoryConnector(pulumi.CustomResource):
             org_id=test_harness_platform_project["orgId"],
             project_id=test_harness_platform_project["id"],
             url="https://artifactory.example.com",
-            delegate_selectors=["harness-delegate"],
-            credentials={
-                "username": "admin",
-                "password_ref": "account.secret_id",
-            })
+            delegate_selectors=["harness-delegate"])
         # Authentication mechanism as anonymous
         test = harness.platform.ArtifactoryConnector("test",
             identifier="identifier",
@@ -488,7 +488,7 @@ class ArtifactoryConnector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ArtifactoryConnectorCredentialsArgs', 'ArtifactoryConnectorCredentialsArgsDict']] credentials: Credentials to use for authentication.
+        :param pulumi.Input[Union['ArtifactoryConnectorCredentialsArgs', 'ArtifactoryConnectorCredentialsArgsDict', 'outputs.ArtifactoryConnectorCredentials']] credentials: Credentials to use for authentication.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] execute_on_delegate: Execute on delegate or not.
@@ -517,16 +517,16 @@ class ArtifactoryConnector(pulumi.CustomResource):
 
         # Authentication mechanism as username and password
         example = harness.platform.ArtifactoryConnector("example",
+            credentials={
+                "username": "admin",
+                "password_ref": "account.secret_id",
+            },
             identifier="identifier",
             name="name",
             description="test",
             tags=["foo:bar"],
             url="https://artifactory.example.com",
-            delegate_selectors=["harness-delegate"],
-            credentials={
-                "username": "admin",
-                "password_ref": "account.secret_id",
-            })
+            delegate_selectors=["harness-delegate"])
         # Authentication mechanism as anonymous
         test = harness.platform.ArtifactoryConnector("test",
             identifier="identifier",
@@ -544,17 +544,17 @@ class ArtifactoryConnector(pulumi.CustomResource):
 
         # Authentication mechanism as username and password
         example = harness.platform.ArtifactoryConnector("example",
+            credentials={
+                "username": "admin",
+                "password_ref": "account.secret_id",
+            },
             identifier="identifier",
             name="name",
             description="test",
             tags=["foo:bar"],
             org_id=test_harness_platform_project["orgId"],
             url="https://artifactory.example.com",
-            delegate_selectors=["harness-delegate"],
-            credentials={
-                "username": "admin",
-                "password_ref": "account.secret_id",
-            })
+            delegate_selectors=["harness-delegate"])
         # Authentication mechanism as anonymous
         test = harness.platform.ArtifactoryConnector("test",
             identifier="identifier",
@@ -573,6 +573,10 @@ class ArtifactoryConnector(pulumi.CustomResource):
 
         # Authentication mechanism as username and password
         example = harness.platform.ArtifactoryConnector("example",
+            credentials={
+                "username": "admin",
+                "password_ref": "account.secret_id",
+            },
             identifier="identifier",
             name="name",
             description="test",
@@ -580,11 +584,7 @@ class ArtifactoryConnector(pulumi.CustomResource):
             org_id=test_harness_platform_project["orgId"],
             project_id=test_harness_platform_project["id"],
             url="https://artifactory.example.com",
-            delegate_selectors=["harness-delegate"],
-            credentials={
-                "username": "admin",
-                "password_ref": "account.secret_id",
-            })
+            delegate_selectors=["harness-delegate"])
         # Authentication mechanism as anonymous
         test = harness.platform.ArtifactoryConnector("test",
             identifier="identifier",
@@ -635,7 +635,7 @@ class ArtifactoryConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: pulumi.Input[Optional[Union['ArtifactoryConnectorCredentialsArgs', 'ArtifactoryConnectorCredentialsArgsDict']]] = None,
+                 credentials: pulumi.Input[Optional[Union['ArtifactoryConnectorCredentialsArgs', 'ArtifactoryConnectorCredentialsArgsDict', 'outputs.ArtifactoryConnectorCredentials']]] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -678,7 +678,7 @@ class ArtifactoryConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            credentials: pulumi.Input[Optional[Union['ArtifactoryConnectorCredentialsArgs', 'ArtifactoryConnectorCredentialsArgsDict']]] = None,
+            credentials: pulumi.Input[Optional[Union['ArtifactoryConnectorCredentialsArgs', 'ArtifactoryConnectorCredentialsArgsDict', 'outputs.ArtifactoryConnectorCredentials']]] = None,
             delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -695,7 +695,7 @@ class ArtifactoryConnector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ArtifactoryConnectorCredentialsArgs', 'ArtifactoryConnectorCredentialsArgsDict']] credentials: Credentials to use for authentication.
+        :param pulumi.Input[Union['ArtifactoryConnectorCredentialsArgs', 'ArtifactoryConnectorCredentialsArgsDict', 'outputs.ArtifactoryConnectorCredentials']] credentials: Credentials to use for authentication.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] execute_on_delegate: Execute on delegate or not.

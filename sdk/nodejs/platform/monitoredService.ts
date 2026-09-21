@@ -17,58 +17,7 @@ import * as utilities from "../utilities";
  *
  * //Sample template for Elastic Search Log Health Source
  * const example = new harness.platform.MonitoredService("example", {
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     identifier: "identifier",
  *     request: {
- *         name: "name",
- *         type: "Application",
- *         description: "description",
- *         serviceRef: "service_ref",
- *         environmentRef: "environment_ref",
- *         tags: [
- *             "foo:bar",
- *             "bar:foo",
- *         ],
- *         healthSources: [{
- *             name: "name",
- *             identifier: "identifier",
- *             type: "ElasticSearch",
- *             version: "v2",
- *             spec: JSON.stringify({
- *                 connectorRef: "connectorRef",
- *                 queryDefinitions: [
- *                     {
- *                         name: "name",
- *                         identifier: "infraquery",
- *                         query: "query",
- *                         index: "index",
- *                         groupName: "Logs_Group",
- *                         queryParams: {
- *                             index: "index",
- *                             serviceInstanceField: "serviceInstanceIdentifier",
- *                             timeStampIdentifier: "timeStampIdentifier",
- *                             timeStampFormat: "timeStampFormat",
- *                             messageIdentifier: "messageIdentifier",
- *                         },
- *                     },
- *                     {
- *                         name: "name2",
- *                         identifier: "errorquery",
- *                         query: "query2",
- *                         index: "index2",
- *                         groupName: "Logs_Group",
- *                         queryParams: {
- *                             index: "index",
- *                             serviceInstanceField: "serviceInstanceIdentifier",
- *                             timeStampIdentifier: "timeStampIdentifier",
- *                             timeStampFormat: "timeStampFormat",
- *                             messageIdentifier: "messageIdentifier",
- *                         },
- *                     },
- *                 ],
- *             }),
- *         }],
  *         changeSources: [
  *             {
  *                 name: "BAC",
@@ -126,6 +75,45 @@ import * as utilities from "../utilities";
  *                 }),
  *             },
  *         ],
+ *         healthSources: [{
+ *             name: "name",
+ *             identifier: "identifier",
+ *             type: "ElasticSearch",
+ *             version: "v2",
+ *             spec: JSON.stringify({
+ *                 connectorRef: "connectorRef",
+ *                 queryDefinitions: [
+ *                     {
+ *                         name: "name",
+ *                         identifier: "infraquery",
+ *                         query: "query",
+ *                         index: "index",
+ *                         groupName: "Logs_Group",
+ *                         queryParams: {
+ *                             index: "index",
+ *                             serviceInstanceField: "serviceInstanceIdentifier",
+ *                             timeStampIdentifier: "timeStampIdentifier",
+ *                             timeStampFormat: "timeStampFormat",
+ *                             messageIdentifier: "messageIdentifier",
+ *                         },
+ *                     },
+ *                     {
+ *                         name: "name2",
+ *                         identifier: "errorquery",
+ *                         query: "query2",
+ *                         index: "index2",
+ *                         groupName: "Logs_Group",
+ *                         queryParams: {
+ *                             index: "index",
+ *                             serviceInstanceField: "serviceInstanceIdentifier",
+ *                             timeStampIdentifier: "timeStampIdentifier",
+ *                             timeStampFormat: "timeStampFormat",
+ *                             messageIdentifier: "messageIdentifier",
+ *                         },
+ *                     },
+ *                 ],
+ *             }),
+ *         }],
  *         notificationRuleRefs: [
  *             {
  *                 notificationRuleRef: "notification_rule_ref",
@@ -136,14 +124,6 @@ import * as utilities from "../utilities";
  *                 enabled: false,
  *             },
  *         ],
- *     },
- * });
- * //Sample template for Sumologic Metrics Health Source
- * const example1 = new harness.platform.MonitoredService("example1", {
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     identifier: "identifier",
- *     request: {
  *         name: "name",
  *         type: "Application",
  *         description: "description",
@@ -153,6 +133,14 @@ import * as utilities from "../utilities";
  *             "foo:bar",
  *             "bar:foo",
  *         ],
+ *     },
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     identifier: "identifier",
+ * });
+ * //Sample template for Sumologic Metrics Health Source
+ * const example1 = new harness.platform.MonitoredService("example1", {
+ *     request: {
  *         healthSources: [{
  *             name: "sumologicmetrics",
  *             identifier: "sumo_metric_identifier",
@@ -229,14 +217,6 @@ import * as utilities from "../utilities";
  *                 ],
  *             }),
  *         }],
- *     },
- * });
- * //Sample template for Sumologic Log Health Source
- * const example2 = new harness.platform.MonitoredService("example2", {
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     identifier: "identifier",
- *     request: {
  *         name: "name",
  *         type: "Application",
  *         description: "description",
@@ -246,6 +226,14 @@ import * as utilities from "../utilities";
  *             "foo:bar",
  *             "bar:foo",
  *         ],
+ *     },
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     identifier: "identifier",
+ * });
+ * //Sample template for Sumologic Log Health Source
+ * const example2 = new harness.platform.MonitoredService("example2", {
+ *     request: {
  *         healthSources: [{
  *             name: "sumologic",
  *             identifier: "sumo_metric_identifier",
@@ -275,14 +263,6 @@ import * as utilities from "../utilities";
  *                 ],
  *             }),
  *         }],
- *     },
- * });
- * //Sample template for Splunk Signal FX Health Source
- * const example3 = new harness.platform.MonitoredService("example3", {
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     identifier: "identifier",
- *     request: {
  *         name: "name",
  *         type: "Application",
  *         description: "description",
@@ -292,6 +272,14 @@ import * as utilities from "../utilities";
  *             "foo:bar",
  *             "bar:foo",
  *         ],
+ *     },
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     identifier: "identifier",
+ * });
+ * //Sample template for Splunk Signal FX Health Source
+ * const example3 = new harness.platform.MonitoredService("example3", {
+ *     request: {
  *         healthSources: [{
  *             name: "signalfxmetrics",
  *             identifier: "signalfxmetrics",
@@ -365,14 +353,6 @@ import * as utilities from "../utilities";
  *                 ],
  *             }),
  *         }],
- *     },
- * });
- * //Sample template for Grafana Loki Log Health Source
- * const example4 = new harness.platform.MonitoredService("example4", {
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     identifier: "identifier",
- *     request: {
  *         name: "name",
  *         type: "Application",
  *         description: "description",
@@ -382,6 +362,14 @@ import * as utilities from "../utilities";
  *             "foo:bar",
  *             "bar:foo",
  *         ],
+ *     },
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     identifier: "identifier",
+ * });
+ * //Sample template for Grafana Loki Log Health Source
+ * const example4 = new harness.platform.MonitoredService("example4", {
+ *     request: {
  *         healthSources: [{
  *             name: "Test",
  *             identifier: "Test",
@@ -414,14 +402,6 @@ import * as utilities from "../utilities";
  *                 ],
  *             }),
  *         }],
- *     },
- * });
- * //Sample template for Azure Metrics Health Source
- * const example5 = new harness.platform.MonitoredService("example5", {
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     identifier: "identifier",
- *     request: {
  *         name: "name",
  *         type: "Application",
  *         description: "description",
@@ -431,6 +411,14 @@ import * as utilities from "../utilities";
  *             "foo:bar",
  *             "bar:foo",
  *         ],
+ *     },
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     identifier: "identifier",
+ * });
+ * //Sample template for Azure Metrics Health Source
+ * const example5 = new harness.platform.MonitoredService("example5", {
+ *     request: {
  *         healthSources: [{
  *             name: "azure metrics verify step",
  *             identifier: "azure_metrics_verify_step",
@@ -514,14 +502,6 @@ import * as utilities from "../utilities";
  *                 ],
  *             }),
  *         }],
- *     },
- * });
- * //Sample template for Azure Log Health Source
- * const example6 = new harness.platform.MonitoredService("example6", {
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     identifier: "identifier",
- *     request: {
  *         name: "name",
  *         type: "Application",
  *         description: "description",
@@ -531,6 +511,14 @@ import * as utilities from "../utilities";
  *             "foo:bar",
  *             "bar:foo",
  *         ],
+ *     },
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     identifier: "identifier",
+ * });
+ * //Sample template for Azure Log Health Source
+ * const example6 = new harness.platform.MonitoredService("example6", {
+ *     request: {
  *         healthSources: [{
  *             name: "Demo azure",
  *             identifier: "Demo_azure",
@@ -554,14 +542,6 @@ import * as utilities from "../utilities";
  *                 }],
  *             }),
  *         }],
- *     },
- * });
- * //Sample template for Prometheus Metrics Health Source
- * const example7 = new harness.platform.MonitoredService("example7", {
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     identifier: "identifier",
- *     request: {
  *         name: "name",
  *         type: "Application",
  *         description: "description",
@@ -571,6 +551,14 @@ import * as utilities from "../utilities";
  *             "foo:bar",
  *             "bar:foo",
  *         ],
+ *     },
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     identifier: "identifier",
+ * });
+ * //Sample template for Prometheus Metrics Health Source
+ * const example7 = new harness.platform.MonitoredService("example7", {
+ *     request: {
  *         healthSources: [{
  *             name: "prometheus metrics verify step",
  *             identifier: "prometheus_metrics",
@@ -635,14 +623,6 @@ import * as utilities from "../utilities";
  *                 }],
  *             }),
  *         }],
- *     },
- * });
- * //Sample template for Datadog Metrics Health Source
- * const example8 = new harness.platform.MonitoredService("example8", {
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     identifier: "identifier",
- *     request: {
  *         name: "name",
  *         type: "Application",
  *         description: "description",
@@ -652,6 +632,14 @@ import * as utilities from "../utilities";
  *             "foo:bar",
  *             "bar:foo",
  *         ],
+ *     },
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     identifier: "identifier",
+ * });
+ * //Sample template for Datadog Metrics Health Source
+ * const example8 = new harness.platform.MonitoredService("example8", {
+ *     request: {
  *         healthSources: [{
  *             name: "ddm",
  *             identifier: "ddm",
@@ -749,14 +737,6 @@ import * as utilities from "../utilities";
  *                 }],
  *             }),
  *         }],
- *     },
- * });
- * //Sample template for New Relic Metrics Health Source
- * const example9 = new harness.platform.MonitoredService("example9", {
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     identifier: "identifier",
- *     request: {
  *         name: "name",
  *         type: "Application",
  *         description: "description",
@@ -766,6 +746,14 @@ import * as utilities from "../utilities";
  *             "foo:bar",
  *             "bar:foo",
  *         ],
+ *     },
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     identifier: "identifier",
+ * });
+ * //Sample template for New Relic Metrics Health Source
+ * const example9 = new harness.platform.MonitoredService("example9", {
+ *     request: {
  *         healthSources: [{
  *             name: "name",
  *             identifier: "identifier",
@@ -838,7 +826,19 @@ import * as utilities from "../utilities";
  *                 }],
  *             }),
  *         }],
+ *         name: "name",
+ *         type: "Application",
+ *         description: "description",
+ *         serviceRef: "service_ref",
+ *         environmentRef: "environment_ref",
+ *         tags: [
+ *             "foo:bar",
+ *             "bar:foo",
+ *         ],
  *     },
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     identifier: "identifier",
  * });
  * ```
  *

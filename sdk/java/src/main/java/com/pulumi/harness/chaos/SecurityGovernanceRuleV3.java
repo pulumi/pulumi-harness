@@ -54,6 +54,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Example of a Security Governance Rule (V3)
  *         var example = new SecurityGovernanceRuleV3("example", SecurityGovernanceRuleV3Args.builder()
+ *             .timeWindows(SecurityGovernanceRuleV3TimeWindowArgs.builder()
+ *                 .recurrence(SecurityGovernanceRuleV3TimeWindowRecurrenceArgs.builder()
+ *                     .type("Daily")
+ *                     .until(-1)
+ *                     .build())
+ *                 .timeZone("UTC")
+ *                 .startTime(1711238400000)
+ *                 .duration("24h")
+ *                 .build())
  *             .orgId(orgId)
  *             .projectId(projectId)
  *             .name("k8s-security-rule")
@@ -64,15 +73,6 @@ import javax.annotation.Nullable;
  *             .tags(            
  *                 "env:prod",
  *                 "team:security")
- *             .timeWindows(SecurityGovernanceRuleV3TimeWindowArgs.builder()
- *                 .timeZone("UTC")
- *                 .startTime(1711238400000)
- *                 .duration("24h")
- *                 .recurrence(SecurityGovernanceRuleV3TimeWindowRecurrenceArgs.builder()
- *                     .type("Daily")
- *                     .until(-1)
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *         ctx.export("securityGovernanceRuleV3Id", example.id());

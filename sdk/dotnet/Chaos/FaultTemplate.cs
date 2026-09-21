@@ -55,6 +55,61 @@ namespace Pulumi.Harness.Chaos
     ///     // Most common pattern: Custom Kubernetes fault with container spec
     ///     var kubernetesFault = new Harness.Chaos.FaultTemplate("kubernetes_fault", new()
     ///     {
+    ///         Spec = new Harness.Chaos.Inputs.FaultTemplateSpecArgs
+    ///         {
+    ///             Chaos = new Harness.Chaos.Inputs.FaultTemplateSpecChaosArgs
+    ///             {
+    ///                 Kubernetes = new Harness.Chaos.Inputs.FaultTemplateSpecChaosKubernetesArgs
+    ///                 {
+    ///                     Resources = new Harness.Chaos.Inputs.FaultTemplateSpecChaosKubernetesResourcesArgs
+    ///                     {
+    ///                         Limits = 
+    ///                         {
+    ///                             { "cpu", "150m" },
+    ///                             { "memory", "150Mi" },
+    ///                         },
+    ///                         Requests = 
+    ///                         {
+    ///                             { "cpu", "100m" },
+    ///                             { "memory", "100Mi" },
+    ///                         },
+    ///                     },
+    ///                     Image = "chaosnative/go-runner:ci",
+    ///                     Commands = new[]
+    ///                     {
+    ///                         "/bin/bash",
+    ///                         "-c",
+    ///                     },
+    ///                     Args = new[]
+    ///                     {
+    ///                         "echo 'Running chaos fault'; sleep 30",
+    ///                     },
+    ///                     ImagePullPolicy = "IfNotPresent",
+    ///                 },
+    ///                 Params = new[]
+    ///                 {
+    ///                     new Harness.Chaos.Inputs.FaultTemplateSpecChaosParamArgs
+    ///                     {
+    ///                         Name = "CHAOS_DURATION",
+    ///                         Value = "30s",
+    ///                     },
+    ///                     new Harness.Chaos.Inputs.FaultTemplateSpecChaosParamArgs
+    ///                     {
+    ///                         Name = "CHAOS_INTERVAL",
+    ///                         Value = "5s",
+    ///                     },
+    ///                 },
+    ///                 FaultName = "byoc-injector",
+    ///             },
+    ///         },
+    ///         Links = new[]
+    ///         {
+    ///             new Harness.Chaos.Inputs.FaultTemplateLinkArgs
+    ///             {
+    ///                 Name = "Documentation",
+    ///                 Url = "https://docs.harness.io/chaos",
+    ///             },
+    ///         },
     ///         OrgId = @this.Id,
     ///         ProjectId = thisHarnessPlatformProject.Id,
     ///         HubIdentity = projectLevel.Identity,
@@ -77,61 +132,6 @@ namespace Pulumi.Harness.Chaos
     ///             "fault",
     ///             "custom",
     ///         },
-    ///         Links = new[]
-    ///         {
-    ///             new Harness.Chaos.Inputs.FaultTemplateLinkArgs
-    ///             {
-    ///                 Name = "Documentation",
-    ///                 Url = "https://docs.harness.io/chaos",
-    ///             },
-    ///         },
-    ///         Spec = new Harness.Chaos.Inputs.FaultTemplateSpecArgs
-    ///         {
-    ///             Chaos = new Harness.Chaos.Inputs.FaultTemplateSpecChaosArgs
-    ///             {
-    ///                 FaultName = "byoc-injector",
-    ///                 Params = new[]
-    ///                 {
-    ///                     new Harness.Chaos.Inputs.FaultTemplateSpecChaosParamArgs
-    ///                     {
-    ///                         Name = "CHAOS_DURATION",
-    ///                         Value = "30s",
-    ///                     },
-    ///                     new Harness.Chaos.Inputs.FaultTemplateSpecChaosParamArgs
-    ///                     {
-    ///                         Name = "CHAOS_INTERVAL",
-    ///                         Value = "5s",
-    ///                     },
-    ///                 },
-    ///                 Kubernetes = new Harness.Chaos.Inputs.FaultTemplateSpecChaosKubernetesArgs
-    ///                 {
-    ///                     Image = "chaosnative/go-runner:ci",
-    ///                     Commands = new[]
-    ///                     {
-    ///                         "/bin/bash",
-    ///                         "-c",
-    ///                     },
-    ///                     Args = new[]
-    ///                     {
-    ///                         "echo 'Running chaos fault'; sleep 30",
-    ///                     },
-    ///                     ImagePullPolicy = "IfNotPresent",
-    ///                     Resources = new Harness.Chaos.Inputs.FaultTemplateSpecChaosKubernetesResourcesArgs
-    ///                     {
-    ///                         Limits = 
-    ///                         {
-    ///                             { "cpu", "150m" },
-    ///                             { "memory", "150Mi" },
-    ///                         },
-    ///                         Requests = 
-    ///                         {
-    ///                             { "cpu", "100m" },
-    ///                             { "memory", "100Mi" },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -146,6 +146,85 @@ namespace Pulumi.Harness.Chaos
     ///     // Fault with environment variables for configuration
     ///     var faultWithEnv = new Harness.Chaos.FaultTemplate("fault_with_env", new()
     ///     {
+    ///         Spec = new Harness.Chaos.Inputs.FaultTemplateSpecArgs
+    ///         {
+    ///             Chaos = new Harness.Chaos.Inputs.FaultTemplateSpecChaosArgs
+    ///             {
+    ///                 Kubernetes = new Harness.Chaos.Inputs.FaultTemplateSpecChaosKubernetesArgs
+    ///                 {
+    ///                     Resources = new Harness.Chaos.Inputs.FaultTemplateSpecChaosKubernetesResourcesArgs
+    ///                     {
+    ///                         Limits = 
+    ///                         {
+    ///                             { "cpu", "200m" },
+    ///                             { "memory", "200Mi" },
+    ///                         },
+    ///                     },
+    ///                     Envs = new[]
+    ///                     {
+    ///                         new Harness.Chaos.Inputs.FaultTemplateSpecChaosKubernetesEnvArgs
+    ///                         {
+    ///                             Name = "TARGET_NAMESPACE",
+    ///                             Value = "&lt;+input&gt;.default('default')",
+    ///                         },
+    ///                         new Harness.Chaos.Inputs.FaultTemplateSpecChaosKubernetesEnvArgs
+    ///                         {
+    ///                             Name = "CHAOS_MODE",
+    ///                             Value = "pod",
+    ///                         },
+    ///                     },
+    ///                     Image = "chaosnative/go-runner:ci",
+    ///                     Commands = new[]
+    ///                     {
+    ///                         "/bin/bash",
+    ///                         "-c",
+    ///                     },
+    ///                     Args = new[]
+    ///                     {
+    ///                         "echo 'Fault with env vars'; sleep 15",
+    ///                     },
+    ///                     ImagePullPolicy = "IfNotPresent",
+    ///                 },
+    ///                 Params = new[]
+    ///                 {
+    ///                     new Harness.Chaos.Inputs.FaultTemplateSpecChaosParamArgs
+    ///                     {
+    ///                         Name = "CHAOS_DURATION",
+    ///                         Value = "15s",
+    ///                     },
+    ///                     new Harness.Chaos.Inputs.FaultTemplateSpecChaosParamArgs
+    ///                     {
+    ///                         Name = "CHAOS_INTERVAL",
+    ///                         Value = "3s",
+    ///                     },
+    ///                     new Harness.Chaos.Inputs.FaultTemplateSpecChaosParamArgs
+    ///                     {
+    ///                         Name = "TARGET_NAMESPACE",
+    ///                         Value = "&lt;+input&gt;.default('default')",
+    ///                     },
+    ///                 },
+    ///                 FaultName = "byoc-injector",
+    ///             },
+    ///         },
+    ///         Links = new[]
+    ///         {
+    ///             new Harness.Chaos.Inputs.FaultTemplateLinkArgs
+    ///             {
+    ///                 Name = "Documentation",
+    ///                 Url = "https://docs.harness.io/chaos",
+    ///             },
+    ///         },
+    ///         Variables = new[]
+    ///         {
+    ///             new Harness.Chaos.Inputs.FaultTemplateVariableArgs
+    ///             {
+    ///                 Name = "target_namespace",
+    ///                 Value = "&lt;+input&gt;",
+    ///                 Type = "string",
+    ///                 Required = false,
+    ///                 Description = "Target namespace for chaos injection",
+    ///             },
+    ///         },
     ///         OrgId = @this.Id,
     ///         ProjectId = thisHarnessPlatformProject.Id,
     ///         HubIdentity = projectLevel.Identity,
@@ -168,85 +247,6 @@ namespace Pulumi.Harness.Chaos
     ///             "env",
     ///             "config",
     ///         },
-    ///         Links = new[]
-    ///         {
-    ///             new Harness.Chaos.Inputs.FaultTemplateLinkArgs
-    ///             {
-    ///                 Name = "Documentation",
-    ///                 Url = "https://docs.harness.io/chaos",
-    ///             },
-    ///         },
-    ///         Spec = new Harness.Chaos.Inputs.FaultTemplateSpecArgs
-    ///         {
-    ///             Chaos = new Harness.Chaos.Inputs.FaultTemplateSpecChaosArgs
-    ///             {
-    ///                 FaultName = "byoc-injector",
-    ///                 Params = new[]
-    ///                 {
-    ///                     new Harness.Chaos.Inputs.FaultTemplateSpecChaosParamArgs
-    ///                     {
-    ///                         Name = "CHAOS_DURATION",
-    ///                         Value = "15s",
-    ///                     },
-    ///                     new Harness.Chaos.Inputs.FaultTemplateSpecChaosParamArgs
-    ///                     {
-    ///                         Name = "CHAOS_INTERVAL",
-    ///                         Value = "3s",
-    ///                     },
-    ///                     new Harness.Chaos.Inputs.FaultTemplateSpecChaosParamArgs
-    ///                     {
-    ///                         Name = "TARGET_NAMESPACE",
-    ///                         Value = "&lt;+input&gt;.default('default')",
-    ///                     },
-    ///                 },
-    ///                 Kubernetes = new Harness.Chaos.Inputs.FaultTemplateSpecChaosKubernetesArgs
-    ///                 {
-    ///                     Image = "chaosnative/go-runner:ci",
-    ///                     Commands = new[]
-    ///                     {
-    ///                         "/bin/bash",
-    ///                         "-c",
-    ///                     },
-    ///                     Args = new[]
-    ///                     {
-    ///                         "echo 'Fault with env vars'; sleep 15",
-    ///                     },
-    ///                     ImagePullPolicy = "IfNotPresent",
-    ///                     Envs = new[]
-    ///                     {
-    ///                         new Harness.Chaos.Inputs.FaultTemplateSpecChaosKubernetesEnvArgs
-    ///                         {
-    ///                             Name = "TARGET_NAMESPACE",
-    ///                             Value = "&lt;+input&gt;.default('default')",
-    ///                         },
-    ///                         new Harness.Chaos.Inputs.FaultTemplateSpecChaosKubernetesEnvArgs
-    ///                         {
-    ///                             Name = "CHAOS_MODE",
-    ///                             Value = "pod",
-    ///                         },
-    ///                     },
-    ///                     Resources = new Harness.Chaos.Inputs.FaultTemplateSpecChaosKubernetesResourcesArgs
-    ///                     {
-    ///                         Limits = 
-    ///                         {
-    ///                             { "cpu", "200m" },
-    ///                             { "memory", "200Mi" },
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///         Variables = new[]
-    ///         {
-    ///             new Harness.Chaos.Inputs.FaultTemplateVariableArgs
-    ///             {
-    ///                 Name = "target_namespace",
-    ///                 Value = "&lt;+input&gt;",
-    ///                 Type = "string",
-    ///                 Required = false,
-    ///                 Description = "Target namespace for chaos injection",
-    ///             },
-    ///         },
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -261,61 +261,25 @@ namespace Pulumi.Harness.Chaos
     ///     // Fault with node selector, labels, and annotations
     ///     var advancedFault = new Harness.Chaos.FaultTemplate("advanced_fault", new()
     ///     {
-    ///         OrgId = @this.Id,
-    ///         ProjectId = thisHarnessPlatformProject.Id,
-    ///         HubIdentity = projectLevel.Identity,
-    ///         Identity = "advanced-fault-template",
-    ///         Name = "Advanced Fault Template",
-    ///         Description = "Fault with advanced Kubernetes configuration",
-    ///         Categories = new[]
-    ///         {
-    ///             "Kubernetes",
-    ///         },
-    ///         Infrastructures = new[]
-    ///         {
-    ///             "KubernetesV2",
-    ///         },
-    ///         Type = "Custom",
-    ///         PermissionsRequired = "Basic",
-    ///         Tags = new[]
-    ///         {
-    ///             "kubernetes",
-    ///             "advanced",
-    ///             "production",
-    ///         },
-    ///         Links = new[]
-    ///         {
-    ///             new Harness.Chaos.Inputs.FaultTemplateLinkArgs
-    ///             {
-    ///                 Name = "Documentation",
-    ///                 Url = "https://docs.harness.io/chaos",
-    ///             },
-    ///             new Harness.Chaos.Inputs.FaultTemplateLinkArgs
-    ///             {
-    ///                 Name = "Support",
-    ///                 Url = "https://support.harness.io",
-    ///             },
-    ///         },
     ///         Spec = new Harness.Chaos.Inputs.FaultTemplateSpecArgs
     ///         {
     ///             Chaos = new Harness.Chaos.Inputs.FaultTemplateSpecChaosArgs
     ///             {
-    ///                 FaultName = "byoc-injector",
-    ///                 Params = new[]
-    ///                 {
-    ///                     new Harness.Chaos.Inputs.FaultTemplateSpecChaosParamArgs
-    ///                     {
-    ///                         Name = "CHAOS_DURATION",
-    ///                         Value = "&lt;+input&gt;.default('30s')",
-    ///                     },
-    ///                     new Harness.Chaos.Inputs.FaultTemplateSpecChaosParamArgs
-    ///                     {
-    ///                         Name = "CHAOS_INTERVAL",
-    ///                         Value = "&lt;+input&gt;.default('5s')",
-    ///                     },
-    ///                 },
     ///                 Kubernetes = new Harness.Chaos.Inputs.FaultTemplateSpecChaosKubernetesArgs
     ///                 {
+    ///                     Resources = new Harness.Chaos.Inputs.FaultTemplateSpecChaosKubernetesResourcesArgs
+    ///                     {
+    ///                         Limits = 
+    ///                         {
+    ///                             { "cpu", "250m" },
+    ///                             { "memory", "256Mi" },
+    ///                         },
+    ///                         Requests = 
+    ///                         {
+    ///                             { "cpu", "125m" },
+    ///                             { "memory", "128Mi" },
+    ///                         },
+    ///                     },
     ///                     Image = "chaosnative/go-runner:ci",
     ///                     Commands = new[]
     ///                     {
@@ -343,20 +307,34 @@ namespace Pulumi.Harness.Chaos
     ///                         { "description", "Advanced chaos fault" },
     ///                         { "owner", "chaos-team" },
     ///                     },
-    ///                     Resources = new Harness.Chaos.Inputs.FaultTemplateSpecChaosKubernetesResourcesArgs
+    ///                 },
+    ///                 Params = new[]
+    ///                 {
+    ///                     new Harness.Chaos.Inputs.FaultTemplateSpecChaosParamArgs
     ///                     {
-    ///                         Limits = 
-    ///                         {
-    ///                             { "cpu", "250m" },
-    ///                             { "memory", "256Mi" },
-    ///                         },
-    ///                         Requests = 
-    ///                         {
-    ///                             { "cpu", "125m" },
-    ///                             { "memory", "128Mi" },
-    ///                         },
+    ///                         Name = "CHAOS_DURATION",
+    ///                         Value = "&lt;+input&gt;.default('30s')",
+    ///                     },
+    ///                     new Harness.Chaos.Inputs.FaultTemplateSpecChaosParamArgs
+    ///                     {
+    ///                         Name = "CHAOS_INTERVAL",
+    ///                         Value = "&lt;+input&gt;.default('5s')",
     ///                     },
     ///                 },
+    ///                 FaultName = "byoc-injector",
+    ///             },
+    ///         },
+    ///         Links = new[]
+    ///         {
+    ///             new Harness.Chaos.Inputs.FaultTemplateLinkArgs
+    ///             {
+    ///                 Name = "Documentation",
+    ///                 Url = "https://docs.harness.io/chaos",
+    ///             },
+    ///             new Harness.Chaos.Inputs.FaultTemplateLinkArgs
+    ///             {
+    ///                 Name = "Support",
+    ///                 Url = "https://support.harness.io",
     ///             },
     ///         },
     ///         Variables = new[]
@@ -377,6 +355,28 @@ namespace Pulumi.Harness.Chaos
     ///                 Required = false,
     ///                 Description = "Interval between chaos injections",
     ///             },
+    ///         },
+    ///         OrgId = @this.Id,
+    ///         ProjectId = thisHarnessPlatformProject.Id,
+    ///         HubIdentity = projectLevel.Identity,
+    ///         Identity = "advanced-fault-template",
+    ///         Name = "Advanced Fault Template",
+    ///         Description = "Fault with advanced Kubernetes configuration",
+    ///         Categories = new[]
+    ///         {
+    ///             "Kubernetes",
+    ///         },
+    ///         Infrastructures = new[]
+    ///         {
+    ///             "KubernetesV2",
+    ///         },
+    ///         Type = "Custom",
+    ///         PermissionsRequired = "Basic",
+    ///         Tags = new[]
+    ///         {
+    ///             "kubernetes",
+    ///             "advanced",
+    ///             "production",
     ///         },
     ///     }, new CustomResourceOptions
     ///     {

@@ -57,12 +57,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new UserGroup("example", UserGroupArgs.builder()
- *             .name("example-group")
- *             .description("This group demonstrates account level and resource level permissions.")
  *             .permissions(UserGroupPermissionsArgs.builder()
- *                 .accountPermissions(                
- *                     "ADMINISTER_OTHER_ACCOUNT_FUNCTIONS",
- *                     "MANAGE_API_KEYS")
  *                 .appPermissions(UserGroupPermissionsAppPermissionsArgs.builder()
  *                     .alls(UserGroupPermissionsAppPermissionsAllArgs.builder()
  *                         .actions(                        
@@ -155,7 +150,12 @@ import javax.annotation.Nullable;
  *                                 "WORKFLOW_TEMPLATES")
  *                             .build())
  *                     .build())
+ *                 .accountPermissions(                
+ *                     "ADMINISTER_OTHER_ACCOUNT_FUNCTIONS",
+ *                     "MANAGE_API_KEYS")
  *                 .build())
+ *             .name("example-group")
+ *             .description("This group demonstrates account level and resource level permissions.")
  *             .build());
  * 
  *     }

@@ -265,7 +265,7 @@ class IdpCatalogEntity(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 git_details: pulumi.Input[Optional[Union['IdpCatalogEntityGitDetailsArgs', 'IdpCatalogEntityGitDetailsArgsDict']]] = None,
+                 git_details: pulumi.Input[Optional[Union['IdpCatalogEntityGitDetailsArgs', 'IdpCatalogEntityGitDetailsArgsDict', 'outputs.IdpCatalogEntityGitDetails']]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
@@ -301,7 +301,7 @@ class IdpCatalogEntity(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['IdpCatalogEntityGitDetailsArgs', 'IdpCatalogEntityGitDetailsArgsDict']] git_details: Contains Git Information for importing entities from Git
+        :param pulumi.Input[Union['IdpCatalogEntityGitDetailsArgs', 'IdpCatalogEntityGitDetailsArgsDict', 'outputs.IdpCatalogEntityGitDetails']] git_details: Contains Git Information for importing entities from Git
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.bool] import_from_git: Flag to set if importing from Git
         :param pulumi.Input[_builtins.str] kind: Kind of the catalog entity
@@ -356,7 +356,7 @@ class IdpCatalogEntity(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 git_details: pulumi.Input[Optional[Union['IdpCatalogEntityGitDetailsArgs', 'IdpCatalogEntityGitDetailsArgsDict']]] = None,
+                 git_details: pulumi.Input[Optional[Union['IdpCatalogEntityGitDetailsArgs', 'IdpCatalogEntityGitDetailsArgsDict', 'outputs.IdpCatalogEntityGitDetails']]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
@@ -391,7 +391,7 @@ class IdpCatalogEntity(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            git_details: pulumi.Input[Optional[Union['IdpCatalogEntityGitDetailsArgs', 'IdpCatalogEntityGitDetailsArgsDict']]] = None,
+            git_details: pulumi.Input[Optional[Union['IdpCatalogEntityGitDetailsArgs', 'IdpCatalogEntityGitDetailsArgsDict', 'outputs.IdpCatalogEntityGitDetails']]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
@@ -405,7 +405,7 @@ class IdpCatalogEntity(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['IdpCatalogEntityGitDetailsArgs', 'IdpCatalogEntityGitDetailsArgsDict']] git_details: Contains Git Information for importing entities from Git
+        :param pulumi.Input[Union['IdpCatalogEntityGitDetailsArgs', 'IdpCatalogEntityGitDetailsArgsDict', 'outputs.IdpCatalogEntityGitDetails']] git_details: Contains Git Information for importing entities from Git
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.bool] import_from_git: Flag to set if importing from Git
         :param pulumi.Input[_builtins.str] kind: Kind of the catalog entity

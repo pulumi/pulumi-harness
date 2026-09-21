@@ -44,15 +44,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new Variables("test", VariablesArgs.builder()
+ *             .spec(VariablesSpecArgs.builder()
+ *                 .valueType("FIXED")
+ *                 .fixedValue("fixedValue")
+ *                 .build())
  *             .identifier("identifier")
  *             .name("name")
  *             .orgId("org_id")
  *             .projectId("project_id")
  *             .type("String")
- *             .spec(VariablesSpecArgs.builder()
- *                 .valueType("FIXED")
- *                 .fixedValue("fixedValue")
- *                 .build())
  *             .build());
  * 
  *     }

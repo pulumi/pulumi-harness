@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const specific_rule_alert = new harness.autostopping.Alert("specific-rule-alert", {
- *     name: "demo-alert",
  *     recipients: {
  *         emails: [
  *             "user1@example.com",
@@ -27,6 +26,7 @@ import * as utilities from "../utilities";
  *             "slack-web-hook-2",
  *         ],
  *     },
+ *     name: "demo-alert",
  *     events: [
  *         "autostopping_rule_created",
  *         "autostopping_rule_updated",
@@ -37,7 +37,6 @@ import * as utilities from "../utilities";
  *     ruleIdLists: [1234],
  * });
  * const all_rule_alert = new harness.autostopping.Alert("all-rule-alert", {
- *     name: "demo-alert",
  *     recipients: {
  *         emails: [
  *             "user1@example.com",
@@ -48,6 +47,7 @@ import * as utilities from "../utilities";
  *             "slack-web-hook-2",
  *         ],
  *     },
+ *     name: "demo-alert",
  *     events: [
  *         "autostopping_rule_created",
  *         "autostopping_rule_updated",

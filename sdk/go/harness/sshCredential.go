@@ -50,14 +50,14 @@ import (
 //				return err
 //			}
 //			_, err = harness.NewSshCredential(ctx, "ssh_creds", &harness.SshCredentialArgs{
-//				Name: pulumi.String("ssh-test"),
 //				SshAuthentication: &harness.SshCredentialSshAuthenticationArgs{
-//					Port:     pulumi.Int(22),
-//					Username: pulumi.String("git"),
 //					InlineSsh: &harness.SshCredentialSshAuthenticationInlineSshArgs{
 //						SshKeyFileId: mySecret.ID().ToIDOutput().ToStringOutput(),
 //					},
+//					Port:     pulumi.Int(22),
+//					Username: pulumi.String("git"),
 //				},
+//				Name: pulumi.String("ssh-test"),
 //			}, pulumi.IgnoreChanges([]string{
 //				"sshAuthentication",
 //			}))

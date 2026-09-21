@@ -46,14 +46,6 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewSecretWinrm(ctx, "account_ntlm", &platform.SecretWinrmArgs{
-//				Identifier:  pulumi.String("account_ntlm_v3"),
-//				Name:        pulumi.String("Account NTLM v3"),
-//				Description: pulumi.String("Account-level WinRM with NTLM"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("scope:account"),
-//					pulumi.String("auth:ntlm"),
-//				},
-//				Port: pulumi.Int(5986),
 //				Ntlm: &platform.SecretWinrmNtlmArgs{
 //					Domain:   pulumi.String("example.com"),
 //					Username: pulumi.String("admin"),
@@ -64,12 +56,31 @@ import (
 //					SkipCertCheck: pulumi.Bool(false),
 //					UseNoProfile:  pulumi.Bool(true),
 //				},
+//				Identifier:  pulumi.String("account_ntlm_v3"),
+//				Name:        pulumi.String("Account NTLM v3"),
+//				Description: pulumi.String("Account-level WinRM with NTLM"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("scope:account"),
+//					pulumi.String("auth:ntlm"),
+//				},
+//				Port: pulumi.Int(5986),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// 2. Account-level Kerberos with KeyTab
 //			_, err = platform.NewSecretWinrm(ctx, "account_kerberos_keytab", &platform.SecretWinrmArgs{
+//				Kerberos: &platform.SecretWinrmKerberosArgs{
+//					TgtKeyTabFilePathSpec: &platform.SecretWinrmKerberosTgtKeyTabFilePathSpecArgs{
+//						KeyPath: pulumi.String("/etc/krb5.keytab"),
+//					},
+//					Principal:           pulumi.String("service@EXAMPLE.COM"),
+//					Realm:               pulumi.String("EXAMPLE.COM"),
+//					TgtGenerationMethod: pulumi.String("KeyTabFilePath"),
+//					UseSsl:              pulumi.Bool(true),
+//					SkipCertCheck:       pulumi.Bool(true),
+//					UseNoProfile:        pulumi.Bool(true),
+//				},
 //				Identifier:  pulumi.String("account_kerberos_keytab_v3"),
 //				Name:        pulumi.String("Account Kerberos KeyTab v3"),
 //				Description: pulumi.String("Account-level WinRM with Kerberos KeyTab"),
@@ -78,17 +89,6 @@ import (
 //					pulumi.String("auth:kerberos-keytab"),
 //				},
 //				Port: pulumi.Int(5986),
-//				Kerberos: &platform.SecretWinrmKerberosArgs{
-//					Principal:           pulumi.String("service@EXAMPLE.COM"),
-//					Realm:               pulumi.String("EXAMPLE.COM"),
-//					TgtGenerationMethod: pulumi.String("KeyTabFilePath"),
-//					UseSsl:              pulumi.Bool(true),
-//					SkipCertCheck:       pulumi.Bool(true),
-//					UseNoProfile:        pulumi.Bool(true),
-//					TgtKeyTabFilePathSpec: &platform.SecretWinrmKerberosTgtKeyTabFilePathSpecArgs{
-//						KeyPath: pulumi.String("/etc/krb5.keytab"),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -106,6 +106,19 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewSecretWinrm(ctx, "account_kerberos_password_1", &platform.SecretWinrmArgs{
+//				Kerberos: &platform.SecretWinrmKerberosArgs{
+//					TgtPasswordSpec: &platform.SecretWinrmKerberosTgtPasswordSpecArgs{
+//						PasswordRef: accountKerberosPassword1.ID().ApplyT(func(id pulumi.ID) (string, error) {
+//							return fmt.Sprintf("account.%v", id), nil
+//						}).(pulumi.StringOutput),
+//					},
+//					Principal:           pulumi.String("user@EXAMPLE.COM"),
+//					Realm:               pulumi.String("EXAMPLE.COM"),
+//					TgtGenerationMethod: pulumi.String("Password"),
+//					UseSsl:              pulumi.Bool(true),
+//					SkipCertCheck:       pulumi.Bool(false),
+//					UseNoProfile:        pulumi.Bool(true),
+//				},
 //				Identifier:  pulumi.String("account_kerb_winrm_20251111"),
 //				Name:        pulumi.String("Account Kerberos WinRM 20251111"),
 //				Description: pulumi.String("Account-level WinRM with Kerberos Password"),
@@ -114,19 +127,6 @@ import (
 //					pulumi.String("auth:kerberos-password"),
 //				},
 //				Port: pulumi.Int(5986),
-//				Kerberos: &platform.SecretWinrmKerberosArgs{
-//					Principal:           pulumi.String("user@EXAMPLE.COM"),
-//					Realm:               pulumi.String("EXAMPLE.COM"),
-//					TgtGenerationMethod: pulumi.String("Password"),
-//					UseSsl:              pulumi.Bool(true),
-//					SkipCertCheck:       pulumi.Bool(false),
-//					UseNoProfile:        pulumi.Bool(true),
-//					TgtPasswordSpec: &platform.SecretWinrmKerberosTgtPasswordSpecArgs{
-//						PasswordRef: accountKerberosPassword1.ID().ApplyT(func(id pulumi.ID) (string, error) {
-//							return fmt.Sprintf("account.%v", id), nil
-//						}).(pulumi.StringOutput),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -145,15 +145,6 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewSecretWinrm(ctx, "org_ntlm", &platform.SecretWinrmArgs{
-//				Identifier:  pulumi.String("org_ntlm_v3"),
-//				Name:        pulumi.String("Org NTLM v3"),
-//				Description: pulumi.String("Org-level WinRM with NTLM"),
-//				OrgId:       pulumi.String("default"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("scope:org"),
-//					pulumi.String("auth:ntlm"),
-//				},
-//				Port: pulumi.Int(5985),
 //				Ntlm: &platform.SecretWinrmNtlmArgs{
 //					Domain:   pulumi.String("org.example.com"),
 //					Username: pulumi.String("orgadmin"),
@@ -164,12 +155,32 @@ import (
 //					SkipCertCheck: pulumi.Bool(false),
 //					UseNoProfile:  pulumi.Bool(true),
 //				},
+//				Identifier:  pulumi.String("org_ntlm_v3"),
+//				Name:        pulumi.String("Org NTLM v3"),
+//				Description: pulumi.String("Org-level WinRM with NTLM"),
+//				OrgId:       pulumi.String("default"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("scope:org"),
+//					pulumi.String("auth:ntlm"),
+//				},
+//				Port: pulumi.Int(5985),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// 5. Org-level Kerberos with KeyTab
 //			_, err = platform.NewSecretWinrm(ctx, "org_kerberos_keytab", &platform.SecretWinrmArgs{
+//				Kerberos: &platform.SecretWinrmKerberosArgs{
+//					TgtKeyTabFilePathSpec: &platform.SecretWinrmKerberosTgtKeyTabFilePathSpecArgs{
+//						KeyPath: pulumi.String("/etc/org.keytab"),
+//					},
+//					Principal:           pulumi.String("orgservice@EXAMPLE.COM"),
+//					Realm:               pulumi.String("EXAMPLE.COM"),
+//					TgtGenerationMethod: pulumi.String("KeyTabFilePath"),
+//					UseSsl:              pulumi.Bool(true),
+//					SkipCertCheck:       pulumi.Bool(true),
+//					UseNoProfile:        pulumi.Bool(true),
+//				},
 //				Identifier:  pulumi.String("org_kerberos_keytab_v3"),
 //				Name:        pulumi.String("Org Kerberos KeyTab v3"),
 //				Description: pulumi.String("Org-level WinRM with Kerberos KeyTab"),
@@ -179,17 +190,6 @@ import (
 //					pulumi.String("auth:kerberos-keytab"),
 //				},
 //				Port: pulumi.Int(5986),
-//				Kerberos: &platform.SecretWinrmKerberosArgs{
-//					Principal:           pulumi.String("orgservice@EXAMPLE.COM"),
-//					Realm:               pulumi.String("EXAMPLE.COM"),
-//					TgtGenerationMethod: pulumi.String("KeyTabFilePath"),
-//					UseSsl:              pulumi.Bool(true),
-//					SkipCertCheck:       pulumi.Bool(true),
-//					UseNoProfile:        pulumi.Bool(true),
-//					TgtKeyTabFilePathSpec: &platform.SecretWinrmKerberosTgtKeyTabFilePathSpecArgs{
-//						KeyPath: pulumi.String("/etc/org.keytab"),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -208,6 +208,19 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewSecretWinrm(ctx, "org_kerberos_password", &platform.SecretWinrmArgs{
+//				Kerberos: &platform.SecretWinrmKerberosArgs{
+//					TgtPasswordSpec: &platform.SecretWinrmKerberosTgtPasswordSpecArgs{
+//						PasswordRef: orgKerberosPassword.ID().ApplyT(func(id pulumi.ID) (string, error) {
+//							return fmt.Sprintf("org.%v", id), nil
+//						}).(pulumi.StringOutput),
+//					},
+//					Principal:           pulumi.String("orguser@EXAMPLE.COM"),
+//					Realm:               pulumi.String("EXAMPLE.COM"),
+//					TgtGenerationMethod: pulumi.String("Password"),
+//					UseSsl:              pulumi.Bool(true),
+//					SkipCertCheck:       pulumi.Bool(false),
+//					UseNoProfile:        pulumi.Bool(true),
+//				},
 //				Identifier:  pulumi.String("org_kerb_winrm_v3"),
 //				Name:        pulumi.String("Org Kerberos WinRM v3"),
 //				Description: pulumi.String("Org-level WinRM with Kerberos Password"),
@@ -217,19 +230,6 @@ import (
 //					pulumi.String("auth:kerberos-password"),
 //				},
 //				Port: pulumi.Int(5986),
-//				Kerberos: &platform.SecretWinrmKerberosArgs{
-//					Principal:           pulumi.String("orguser@EXAMPLE.COM"),
-//					Realm:               pulumi.String("EXAMPLE.COM"),
-//					TgtGenerationMethod: pulumi.String("Password"),
-//					UseSsl:              pulumi.Bool(true),
-//					SkipCertCheck:       pulumi.Bool(false),
-//					UseNoProfile:        pulumi.Bool(true),
-//					TgtPasswordSpec: &platform.SecretWinrmKerberosTgtPasswordSpecArgs{
-//						PasswordRef: orgKerberosPassword.ID().ApplyT(func(id pulumi.ID) (string, error) {
-//							return fmt.Sprintf("org.%v", id), nil
-//						}).(pulumi.StringOutput),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -249,6 +249,14 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewSecretWinrm(ctx, "project_ntlm", &platform.SecretWinrmArgs{
+//				Ntlm: &platform.SecretWinrmNtlmArgs{
+//					Domain:        pulumi.String("project.example.com"),
+//					Username:      pulumi.String("projectadmin"),
+//					PasswordRef:   projectNtlmPassword.ID().ToIDOutput().ToStringOutput(),
+//					UseSsl:        pulumi.Bool(true),
+//					SkipCertCheck: pulumi.Bool(false),
+//					UseNoProfile:  pulumi.Bool(false),
+//				},
 //				Identifier:  pulumi.String("proj_ntlm_winrm_v3"),
 //				Name:        pulumi.String("Project NTLM WinRM v3"),
 //				Description: pulumi.String("Project-level WinRM with NTLM"),
@@ -259,20 +267,23 @@ import (
 //					pulumi.String("auth:ntlm"),
 //				},
 //				Port: pulumi.Int(5986),
-//				Ntlm: &platform.SecretWinrmNtlmArgs{
-//					Domain:        pulumi.String("project.example.com"),
-//					Username:      pulumi.String("projectadmin"),
-//					PasswordRef:   projectNtlmPassword.ID().ToIDOutput().ToStringOutput(),
-//					UseSsl:        pulumi.Bool(true),
-//					SkipCertCheck: pulumi.Bool(false),
-//					UseNoProfile:  pulumi.Bool(false),
-//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// 8. Project-level Kerberos with KeyTab
 //			_, err = platform.NewSecretWinrm(ctx, "project_kerberos_keytab", &platform.SecretWinrmArgs{
+//				Kerberos: &platform.SecretWinrmKerberosArgs{
+//					TgtKeyTabFilePathSpec: &platform.SecretWinrmKerberosTgtKeyTabFilePathSpecArgs{
+//						KeyPath: pulumi.String("/etc/project.keytab"),
+//					},
+//					Principal:           pulumi.String("projectservice@EXAMPLE.COM"),
+//					Realm:               pulumi.String("EXAMPLE.COM"),
+//					TgtGenerationMethod: pulumi.String("KeyTabFilePath"),
+//					UseSsl:              pulumi.Bool(false),
+//					SkipCertCheck:       pulumi.Bool(false),
+//					UseNoProfile:        pulumi.Bool(false),
+//				},
 //				Identifier:  pulumi.String("proj_kerb_keytab_v3"),
 //				Name:        pulumi.String("Project Kerberos KeyTab v3"),
 //				Description: pulumi.String("Project-level WinRM with Kerberos KeyTab"),
@@ -283,17 +294,6 @@ import (
 //					pulumi.String("auth:kerberos-keytab"),
 //				},
 //				Port: pulumi.Int(5986),
-//				Kerberos: &platform.SecretWinrmKerberosArgs{
-//					Principal:           pulumi.String("projectservice@EXAMPLE.COM"),
-//					Realm:               pulumi.String("EXAMPLE.COM"),
-//					TgtGenerationMethod: pulumi.String("KeyTabFilePath"),
-//					UseSsl:              pulumi.Bool(false),
-//					SkipCertCheck:       pulumi.Bool(false),
-//					UseNoProfile:        pulumi.Bool(false),
-//					TgtKeyTabFilePathSpec: &platform.SecretWinrmKerberosTgtKeyTabFilePathSpecArgs{
-//						KeyPath: pulumi.String("/etc/project.keytab"),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -313,6 +313,17 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewSecretWinrm(ctx, "project_kerberos_password", &platform.SecretWinrmArgs{
+//				Kerberos: &platform.SecretWinrmKerberosArgs{
+//					TgtPasswordSpec: &platform.SecretWinrmKerberosTgtPasswordSpecArgs{
+//						PasswordRef: projectKerberosPassword.ID().ToIDOutput().ToStringOutput(),
+//					},
+//					Principal:           pulumi.String("projectuser@EXAMPLE.COM"),
+//					Realm:               pulumi.String("EXAMPLE.COM"),
+//					TgtGenerationMethod: pulumi.String("Password"),
+//					UseSsl:              pulumi.Bool(false),
+//					SkipCertCheck:       pulumi.Bool(true),
+//					UseNoProfile:        pulumi.Bool(true),
+//				},
 //				Identifier:  pulumi.String("proj_kerb_winrm_v3"),
 //				Name:        pulumi.String("Project Kerberos WinRM v3"),
 //				Description: pulumi.String("Project-level WinRM with Kerberos Password"),
@@ -323,17 +334,6 @@ import (
 //					pulumi.String("auth:kerberos-password"),
 //				},
 //				Port: pulumi.Int(5986),
-//				Kerberos: &platform.SecretWinrmKerberosArgs{
-//					Principal:           pulumi.String("projectuser@EXAMPLE.COM"),
-//					Realm:               pulumi.String("EXAMPLE.COM"),
-//					TgtGenerationMethod: pulumi.String("Password"),
-//					UseSsl:              pulumi.Bool(false),
-//					SkipCertCheck:       pulumi.Bool(true),
-//					UseNoProfile:        pulumi.Bool(true),
-//					TgtPasswordSpec: &platform.SecretWinrmKerberosTgtPasswordSpecArgs{
-//						PasswordRef: projectKerberosPassword.ID().ToIDOutput().ToStringOutput(),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err

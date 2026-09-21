@@ -25,6 +25,11 @@ namespace Pulumi.Harness.Platform
     ///     // Authentication mechanism as api token
     ///     var token = new Harness.Platform.AppDynamicsConnector("token", new()
     ///     {
+    ///         ApiToken = new Harness.Platform.Inputs.AppDynamicsConnectorApiTokenArgs
+    ///         {
+    ///             ClientId = "client_id",
+    ///             ClientSecretRef = "account.secret_id",
+    ///         },
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         Description = "test",
@@ -37,17 +42,17 @@ namespace Pulumi.Harness.Platform
     ///         DelegateSelectors = new[]
     ///         {
     ///             "harness-delegate",
-    ///         },
-    ///         ApiToken = new Harness.Platform.Inputs.AppDynamicsConnectorApiTokenArgs
-    ///         {
-    ///             ClientId = "client_id",
-    ///             ClientSecretRef = "account.secret_id",
     ///         },
     ///     });
     /// 
     ///     // Authentication mechanism as username and password
     ///     var test = new Harness.Platform.AppDynamicsConnector("test", new()
     ///     {
+    ///         UsernamePassword = new Harness.Platform.Inputs.AppDynamicsConnectorUsernamePasswordArgs
+    ///         {
+    ///             Username = "username",
+    ///             PasswordRef = "account.secret_id",
+    ///         },
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         Description = "test",
@@ -60,11 +65,6 @@ namespace Pulumi.Harness.Platform
     ///         DelegateSelectors = new[]
     ///         {
     ///             "harness-delegate",
-    ///         },
-    ///         UsernamePassword = new Harness.Platform.Inputs.AppDynamicsConnectorUsernamePasswordArgs
-    ///         {
-    ///             Username = "username",
-    ///             PasswordRef = "account.secret_id",
     ///         },
     ///     });
     /// 

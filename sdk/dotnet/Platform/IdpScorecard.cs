@@ -24,19 +24,10 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var readme = new Harness.Platform.IdpScorecardCheck("readme", new()
     ///     {
-    ///         Identifier = "readme_exists",
-    ///         Name = "README exists",
-    ///         Description = "Ensure the repository has a README file",
-    ///         RuleStrategy = "ALL_OF",
-    ///         DefaultBehaviour = "FAIL",
     ///         Rules = new[]
     ///         {
     ///             new Harness.Platform.Inputs.IdpScorecardCheckRuleArgs
     ///             {
-    ///                 DataSourceIdentifier = "github",
-    ///                 DataPointIdentifier = "isFileExists",
-    ///                 Operator = "==",
-    ///                 Value = "true",
     ///                 InputValues = new[]
     ///                 {
     ///                     new Harness.Platform.Inputs.IdpScorecardCheckRuleInputValueArgs
@@ -45,17 +36,21 @@ namespace Pulumi.Harness.Platform
     ///                         Value = "README.md",
     ///                     },
     ///                 },
+    ///                 DataSourceIdentifier = "github",
+    ///                 DataPointIdentifier = "isFileExists",
+    ///                 Operator = "==",
+    ///                 Value = "true",
     ///             },
     ///         },
+    ///         Identifier = "readme_exists",
+    ///         Name = "README exists",
+    ///         Description = "Ensure the repository has a README file",
+    ///         RuleStrategy = "ALL_OF",
+    ///         DefaultBehaviour = "FAIL",
     ///     });
     /// 
     ///     var gold = new Harness.Platform.IdpScorecard("gold", new()
     ///     {
-    ///         Identifier = "gold_standard",
-    ///         Name = "Gold Standard",
-    ///         Description = "Baseline production quality scorecard",
-    ///         Published = true,
-    ///         WeightageStrategy = "EQUAL_WEIGHTS",
     ///         Filter = new Harness.Platform.Inputs.IdpScorecardFilterArgs
     ///         {
     ///             Kind = "component",
@@ -69,6 +64,11 @@ namespace Pulumi.Harness.Platform
     ///                 Custom = true,
     ///             },
     ///         },
+    ///         Identifier = "gold_standard",
+    ///         Name = "Gold Standard",
+    ///         Description = "Baseline production quality scorecard",
+    ///         Published = true,
+    ///         WeightageStrategy = "EQUAL_WEIGHTS",
     ///     });
     /// 
     /// });

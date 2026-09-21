@@ -45,13 +45,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bearerToken = new KubernetesConnector("bearerToken", KubernetesConnectorArgs.builder()
+ *             .bearerToken(Arrays.asList(Map.of("bearerTokenRef", "account.test_rancher_bearer_token")))
  *             .identifier("identifier")
  *             .name("name")
  *             .description("description")
  *             .tags("foo:bar")
  *             .delegateSelectors("harness-delegate")
  *             .rancherUrl("https://rancher.cluster.example")
- *             .bearerToken(Arrays.asList(Map.of("bearerTokenRef", "account.test_rancher_bearer_token")))
  *             .build());
  * 
  *     }

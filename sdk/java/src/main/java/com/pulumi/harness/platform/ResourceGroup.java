@@ -56,26 +56,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new ResourceGroup("example", ResourceGroupArgs.builder()
+ *             .includedScopes(ResourceGroupIncludedScopeArgs.builder()
+ *                 .filter("EXCLUDING_CHILD_SCOPES")
+ *                 .accountId("account_id")
+ *                 .build())
+ *             .resourceFilters(ResourceGroupResourceFilterArgs.builder()
+ *                 .resources(ResourceGroupResourceFilterResourceArgs.builder()
+ *                     .attributeFilters(ResourceGroupResourceFilterResourceAttributeFilterArgs.builder()
+ *                         .attributeName("category")
+ *                         .attributeValues("CLOUD_COST")
+ *                         .build())
+ *                     .resourceType("CONNECTOR")
+ *                     .build())
+ *                 .includeAllResources(false)
+ *                 .build())
  *             .identifier("identifier")
  *             .name("name")
  *             .description("test")
  *             .tags("foo:bar")
  *             .accountId("account_id")
  *             .allowedScopeLevels("account")
- *             .includedScopes(ResourceGroupIncludedScopeArgs.builder()
- *                 .filter("EXCLUDING_CHILD_SCOPES")
- *                 .accountId("account_id")
- *                 .build())
- *             .resourceFilters(ResourceGroupResourceFilterArgs.builder()
- *                 .includeAllResources(false)
- *                 .resources(ResourceGroupResourceFilterResourceArgs.builder()
- *                     .resourceType("CONNECTOR")
- *                     .attributeFilters(ResourceGroupResourceFilterResourceAttributeFilterArgs.builder()
- *                         .attributeName("category")
- *                         .attributeValues("CLOUD_COST")
- *                         .build())
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *     }
@@ -235,23 +235,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var staticExample = new ResourceGroup("staticExample", ResourceGroupArgs.builder()
- *             .identifier("static_rg")
- *             .name("Static Resource Group")
- *             .accountId("account_id")
- *             .allowedScopeLevels("account")
  *             .includedScopes(ResourceGroupIncludedScopeArgs.builder()
  *                 .filter("EXCLUDING_CHILD_SCOPES")
  *                 .accountId("account_id")
  *                 .build())
  *             .resourceFilters(ResourceGroupResourceFilterArgs.builder()
- *                 .includeAllResources(false)
  *                 .resources(ResourceGroupResourceFilterResourceArgs.builder()
  *                     .resourceType("PIPELINE")
  *                     .identifiers(                    
  *                         "pipeline_a",
  *                         "pipeline_b")
  *                     .build())
+ *                 .includeAllResources(false)
  *                 .build())
+ *             .identifier("static_rg")
+ *             .name("Static Resource Group")
+ *             .accountId("account_id")
+ *             .allowedScopeLevels("account")
  *             .build());
  * 
  *     }
@@ -288,11 +288,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var allResourcesAccount = new ResourceGroup("allResourcesAccount", ResourceGroupArgs.builder()
- *             .identifier("all_resources_account")
- *             .name("All Resources - Account Level")
- *             .description("Includes all resources at the account scope")
- *             .accountId("account_id")
- *             .allowedScopeLevels("account")
  *             .includedScopes(ResourceGroupIncludedScopeArgs.builder()
  *                 .filter("EXCLUDING_CHILD_SCOPES")
  *                 .accountId("account_id")
@@ -300,6 +295,11 @@ import javax.annotation.Nullable;
  *             .resourceFilters(ResourceGroupResourceFilterArgs.builder()
  *                 .includeAllResources(true)
  *                 .build())
+ *             .identifier("all_resources_account")
+ *             .name("All Resources - Account Level")
+ *             .description("Includes all resources at the account scope")
+ *             .accountId("account_id")
+ *             .allowedScopeLevels("account")
  *             .build());
  * 
  *     }
@@ -337,20 +337,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var dynamicExample = new ResourceGroup("dynamicExample", ResourceGroupArgs.builder()
- *             .identifier("dynamic_rg")
- *             .name("Dynamic Resource Group")
- *             .accountId("account_id")
- *             .allowedScopeLevels("account")
  *             .includedScopes(ResourceGroupIncludedScopeArgs.builder()
  *                 .filter("INCLUDING_CHILD_SCOPES")
  *                 .accountId("account_id")
  *                 .build())
  *             .resourceFilters(ResourceGroupResourceFilterArgs.builder()
- *                 .includeAllResources(false)
  *                 .resources(ResourceGroupResourceFilterResourceArgs.builder()
  *                     .resourceType("PIPELINE")
  *                     .build())
+ *                 .includeAllResources(false)
  *                 .build())
+ *             .identifier("dynamic_rg")
+ *             .name("Dynamic Resource Group")
+ *             .accountId("account_id")
+ *             .allowedScopeLevels("account")
  *             .build());
  * 
  *     }

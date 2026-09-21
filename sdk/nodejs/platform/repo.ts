@@ -16,15 +16,15 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.platform.Repo("test", {
+ *     sources: [{
+ *         repo: "octocat/hello-worId",
+ *         type: "github",
+ *     }],
  *     identifier: "test_repo_123",
  *     orgId: "test_org_123",
  *     projectId: "test_project_123",
  *     defaultBranch: "main",
  *     description: "test_description_123",
- *     sources: [{
- *         repo: "octocat/hello-worId",
- *         type: "github",
- *     }],
  * });
  * ```
  *

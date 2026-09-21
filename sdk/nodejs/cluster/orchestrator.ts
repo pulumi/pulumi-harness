@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as aws from "@pulumi/aws";
  * import * as harness from "@pulumi/harness";
  *
- * const current = aws.Region({});
+ * const current = aws.region({});
  * const test = new harness.cluster.Orchestrator("test", {
  *     name: "name",
  *     clusterEndpoint: "http://test.test.com",

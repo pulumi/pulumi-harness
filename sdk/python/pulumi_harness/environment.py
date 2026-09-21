@@ -204,7 +204,7 @@ class Environment(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 variable_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentVariableOverrideArgs', 'EnvironmentVariableOverrideArgsDict']]]]] = None,
+                 variable_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentVariableOverrideArgs', 'EnvironmentVariableOverrideArgsDict', 'outputs.EnvironmentVariableOverride']]]]] = None,
                  __props__=None):
         """
         Resource for creating an environment
@@ -217,10 +217,6 @@ class Environment(pulumi.CustomResource):
 
         test = harness.Application("test", name="%[1]s")
         test_kubernetes = harness.service.Kubernetes("test",
-            app_id=test.id,
-            name="%[1]s",
-            helm_version="V2",
-            description="description",
             variables=[
                 {
                     "name": "test",
@@ -232,11 +228,12 @@ class Environment(pulumi.CustomResource):
                     "value": "test_value2",
                     "type": "TEXT",
                 },
-            ])
-        test_environment = harness.Environment("test",
+            ],
             app_id=test.id,
             name="%[1]s",
-            type="%[2]s",
+            helm_version="V2",
+            description="description")
+        test_environment = harness.Environment("test",
             variable_overrides=[
                 {
                     "service_name": test_kubernetes.name,
@@ -250,7 +247,10 @@ class Environment(pulumi.CustomResource):
                     "value": "override2",
                     "type": "TEXT",
                 },
-            ])
+            ],
+            app_id=test.id,
+            name="%[1]s",
+            type="%[2]s")
         ```
 
         ## Import
@@ -270,7 +270,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the environment.
         :param pulumi.Input[_builtins.str] name: The name of the environment.
         :param pulumi.Input[_builtins.str] type: The type of the environment. Valid values are `PROD` and `NON_PROD`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EnvironmentVariableOverrideArgs', 'EnvironmentVariableOverrideArgsDict']]]] variable_overrides: Override for a service variable
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EnvironmentVariableOverrideArgs', 'EnvironmentVariableOverrideArgsDict', 'outputs.EnvironmentVariableOverride']]]] variable_overrides: Override for a service variable
         """
         ...
     @overload
@@ -289,10 +289,6 @@ class Environment(pulumi.CustomResource):
 
         test = harness.Application("test", name="%[1]s")
         test_kubernetes = harness.service.Kubernetes("test",
-            app_id=test.id,
-            name="%[1]s",
-            helm_version="V2",
-            description="description",
             variables=[
                 {
                     "name": "test",
@@ -304,11 +300,12 @@ class Environment(pulumi.CustomResource):
                     "value": "test_value2",
                     "type": "TEXT",
                 },
-            ])
-        test_environment = harness.Environment("test",
+            ],
             app_id=test.id,
             name="%[1]s",
-            type="%[2]s",
+            helm_version="V2",
+            description="description")
+        test_environment = harness.Environment("test",
             variable_overrides=[
                 {
                     "service_name": test_kubernetes.name,
@@ -322,7 +319,10 @@ class Environment(pulumi.CustomResource):
                     "value": "override2",
                     "type": "TEXT",
                 },
-            ])
+            ],
+            app_id=test.id,
+            name="%[1]s",
+            type="%[2]s")
         ```
 
         ## Import
@@ -355,7 +355,7 @@ class Environment(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 variable_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentVariableOverrideArgs', 'EnvironmentVariableOverrideArgsDict']]]]] = None,
+                 variable_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentVariableOverrideArgs', 'EnvironmentVariableOverrideArgsDict', 'outputs.EnvironmentVariableOverride']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -388,7 +388,7 @@ class Environment(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
-            variable_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentVariableOverrideArgs', 'EnvironmentVariableOverrideArgsDict']]]]] = None) -> 'Environment':
+            variable_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentVariableOverrideArgs', 'EnvironmentVariableOverrideArgsDict', 'outputs.EnvironmentVariableOverride']]]]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -400,7 +400,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the environment.
         :param pulumi.Input[_builtins.str] name: The name of the environment.
         :param pulumi.Input[_builtins.str] type: The type of the environment. Valid values are `PROD` and `NON_PROD`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EnvironmentVariableOverrideArgs', 'EnvironmentVariableOverrideArgsDict']]]] variable_overrides: Override for a service variable
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EnvironmentVariableOverrideArgs', 'EnvironmentVariableOverrideArgsDict', 'outputs.EnvironmentVariableOverride']]]] variable_overrides: Override for a service variable
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

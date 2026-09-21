@@ -145,10 +145,10 @@ class AwaitableGetRuleEcsResult(GetRuleEcsResult):
 
 
 def get_rule_ecs(cloud_connector_id: Optional[_builtins.str] = None,
-                 container: Optional[Union['GetRuleEcsContainerArgs', 'GetRuleEcsContainerArgsDict']] = None,
+                 container: Optional[Union['GetRuleEcsContainerArgs', 'GetRuleEcsContainerArgsDict', 'outputs.GetRuleEcsContainerResult']] = None,
                  custom_domains: Optional[Sequence[_builtins.str]] = None,
-                 depends: Optional[Sequence[Union['GetRuleEcsDependArgs', 'GetRuleEcsDependArgsDict']]] = None,
-                 https: Optional[Sequence[Union['GetRuleEcsHttpArgs', 'GetRuleEcsHttpArgsDict']]] = None,
+                 depends: Optional[Sequence[Union['GetRuleEcsDependArgs', 'GetRuleEcsDependArgsDict', 'outputs.GetRuleEcsDependResult']]] = None,
+                 https: Optional[Sequence[Union['GetRuleEcsHttpArgs', 'GetRuleEcsHttpArgsDict', 'outputs.GetRuleEcsHttpResult']]] = None,
                  idle_time_mins: Optional[_builtins.int] = None,
                  name: Optional[_builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRuleEcsResult:
@@ -160,8 +160,8 @@ def get_rule_ecs(cloud_connector_id: Optional[_builtins.str] = None,
 
     :param _builtins.str cloud_connector_id: Id of the cloud connector
     :param Sequence[_builtins.str] custom_domains: Custom URLs used to access the instances
-    :param Sequence[Union['GetRuleEcsDependArgs', 'GetRuleEcsDependArgsDict']] depends: Dependent rules
-    :param Sequence[Union['GetRuleEcsHttpArgs', 'GetRuleEcsHttpArgsDict']] https: Http routing configuration
+    :param Sequence[Union['GetRuleEcsDependArgs', 'GetRuleEcsDependArgsDict', 'outputs.GetRuleEcsDependResult']] depends: Dependent rules
+    :param Sequence[Union['GetRuleEcsHttpArgs', 'GetRuleEcsHttpArgsDict', 'outputs.GetRuleEcsHttpResult']] https: Http routing configuration
     :param _builtins.int idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
     :param _builtins.str name: Name of the rule
     """
@@ -187,10 +187,10 @@ def get_rule_ecs(cloud_connector_id: Optional[_builtins.str] = None,
         idle_time_mins=pulumi.get(__ret__, 'idle_time_mins'),
         name=pulumi.get(__ret__, 'name'))
 def get_rule_ecs_output(cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
-                        container: pulumi.Input[Optional[Optional[Union['GetRuleEcsContainerArgs', 'GetRuleEcsContainerArgsDict']]]] = None,
+                        container: pulumi.Input[Optional[Optional[Union['GetRuleEcsContainerArgs', 'GetRuleEcsContainerArgsDict', 'outputs.GetRuleEcsContainerResult']]]] = None,
                         custom_domains: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
-                        depends: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleEcsDependArgs', 'GetRuleEcsDependArgsDict']]]]] = None,
-                        https: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleEcsHttpArgs', 'GetRuleEcsHttpArgsDict']]]]] = None,
+                        depends: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleEcsDependArgs', 'GetRuleEcsDependArgsDict', 'outputs.GetRuleEcsDependResult']]]]] = None,
+                        https: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleEcsHttpArgs', 'GetRuleEcsHttpArgsDict', 'outputs.GetRuleEcsHttpResult']]]]] = None,
                         idle_time_mins: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                         name: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleEcsResult]:
@@ -202,8 +202,8 @@ def get_rule_ecs_output(cloud_connector_id: pulumi.Input[Optional[_builtins.str]
 
     :param _builtins.str cloud_connector_id: Id of the cloud connector
     :param Sequence[_builtins.str] custom_domains: Custom URLs used to access the instances
-    :param Sequence[Union['GetRuleEcsDependArgs', 'GetRuleEcsDependArgsDict']] depends: Dependent rules
-    :param Sequence[Union['GetRuleEcsHttpArgs', 'GetRuleEcsHttpArgsDict']] https: Http routing configuration
+    :param Sequence[Union['GetRuleEcsDependArgs', 'GetRuleEcsDependArgsDict', 'outputs.GetRuleEcsDependResult']] depends: Dependent rules
+    :param Sequence[Union['GetRuleEcsHttpArgs', 'GetRuleEcsHttpArgsDict', 'outputs.GetRuleEcsHttpResult']] https: Http routing configuration
     :param _builtins.int idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
     :param _builtins.str name: Name of the rule
     """

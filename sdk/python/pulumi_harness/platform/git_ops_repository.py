@@ -510,16 +510,16 @@ class GitOpsRepository(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  creds_only: pulumi.Input[Optional[_builtins.bool]] = None,
-                 ecr_gen: pulumi.Input[Optional[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict']]] = None,
+                 ecr_gen: pulumi.Input[Optional[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict', 'outputs.GitOpsRepositoryEcrGen']]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
-                 gcr_gen: pulumi.Input[Optional[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict']]] = None,
+                 gcr_gen: pulumi.Input[Optional[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict', 'outputs.GitOpsRepositoryGcrGen']]] = None,
                  gen_type: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
-                 repos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepositoryRepoArgs', 'GitOpsRepositoryRepoArgsDict']]]]] = None,
-                 update_masks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepositoryUpdateMaskArgs', 'GitOpsRepositoryUpdateMaskArgsDict']]]]] = None,
+                 repos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepositoryRepoArgs', 'GitOpsRepositoryRepoArgsDict', 'outputs.GitOpsRepositoryRepo']]]]] = None,
+                 update_masks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepositoryUpdateMaskArgs', 'GitOpsRepositoryUpdateMaskArgsDict', 'outputs.GitOpsRepositoryUpdateMask']]]]] = None,
                  upsert: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -553,17 +553,17 @@ class GitOpsRepository(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps repository.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps repository.
         :param pulumi.Input[_builtins.bool] creds_only: Indicates if to operate on credential set instead of repository.
-        :param pulumi.Input[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict']] ecr_gen: ECR access token generator specific configuration.
+        :param pulumi.Input[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict', 'outputs.GitOpsRepositoryEcrGen']] ecr_gen: ECR access token generator specific configuration.
         :param pulumi.Input[_builtins.bool] force_delete: Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
-        :param pulumi.Input[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict']] gcr_gen: GCR access token generator specific configuration.
+        :param pulumi.Input[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict', 'outputs.GitOpsRepositoryGcrGen']] gcr_gen: GCR access token generator specific configuration.
         :param pulumi.Input[_builtins.str] gen_type: Default: "UNSET"
                Enum: "UNSET" "AWS_ECR" "GOOGLE_GCR"
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps repository.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the GitOps repository.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps repository.
         :param pulumi.Input[_builtins.str] refresh_interval: For OCI repos, this is the interval to refresh the token to access the registry.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepositoryRepoArgs', 'GitOpsRepositoryRepoArgsDict']]]] repos: Repo details holding application configurations.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepositoryUpdateMaskArgs', 'GitOpsRepositoryUpdateMaskArgsDict']]]] update_masks: Update mask of the repository.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepositoryRepoArgs', 'GitOpsRepositoryRepoArgsDict', 'outputs.GitOpsRepositoryRepo']]]] repos: Repo details holding application configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepositoryUpdateMaskArgs', 'GitOpsRepositoryUpdateMaskArgsDict', 'outputs.GitOpsRepositoryUpdateMask']]]] update_masks: Update mask of the repository.
         :param pulumi.Input[_builtins.bool] upsert: Indicates if the GitOps repository should be updated if existing and inserted if not.
         """
         ...
@@ -616,16 +616,16 @@ class GitOpsRepository(pulumi.CustomResource):
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  creds_only: pulumi.Input[Optional[_builtins.bool]] = None,
-                 ecr_gen: pulumi.Input[Optional[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict']]] = None,
+                 ecr_gen: pulumi.Input[Optional[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict', 'outputs.GitOpsRepositoryEcrGen']]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
-                 gcr_gen: pulumi.Input[Optional[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict']]] = None,
+                 gcr_gen: pulumi.Input[Optional[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict', 'outputs.GitOpsRepositoryGcrGen']]] = None,
                  gen_type: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
-                 repos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepositoryRepoArgs', 'GitOpsRepositoryRepoArgsDict']]]]] = None,
-                 update_masks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepositoryUpdateMaskArgs', 'GitOpsRepositoryUpdateMaskArgsDict']]]]] = None,
+                 repos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepositoryRepoArgs', 'GitOpsRepositoryRepoArgsDict', 'outputs.GitOpsRepositoryRepo']]]]] = None,
+                 update_masks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepositoryUpdateMaskArgs', 'GitOpsRepositoryUpdateMaskArgsDict', 'outputs.GitOpsRepositoryUpdateMask']]]]] = None,
                  upsert: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -669,16 +669,16 @@ class GitOpsRepository(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             agent_id: pulumi.Input[Optional[_builtins.str]] = None,
             creds_only: pulumi.Input[Optional[_builtins.bool]] = None,
-            ecr_gen: pulumi.Input[Optional[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict']]] = None,
+            ecr_gen: pulumi.Input[Optional[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict', 'outputs.GitOpsRepositoryEcrGen']]] = None,
             force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
-            gcr_gen: pulumi.Input[Optional[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict']]] = None,
+            gcr_gen: pulumi.Input[Optional[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict', 'outputs.GitOpsRepositoryGcrGen']]] = None,
             gen_type: pulumi.Input[Optional[_builtins.str]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
-            repos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepositoryRepoArgs', 'GitOpsRepositoryRepoArgsDict']]]]] = None,
-            update_masks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepositoryUpdateMaskArgs', 'GitOpsRepositoryUpdateMaskArgsDict']]]]] = None,
+            repos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepositoryRepoArgs', 'GitOpsRepositoryRepoArgsDict', 'outputs.GitOpsRepositoryRepo']]]]] = None,
+            update_masks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepositoryUpdateMaskArgs', 'GitOpsRepositoryUpdateMaskArgsDict', 'outputs.GitOpsRepositoryUpdateMask']]]]] = None,
             upsert: pulumi.Input[Optional[_builtins.bool]] = None) -> 'GitOpsRepository':
         """
         Get an existing GitOpsRepository resource's state with the given name, id, and optional extra
@@ -690,17 +690,17 @@ class GitOpsRepository(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps repository.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps repository.
         :param pulumi.Input[_builtins.bool] creds_only: Indicates if to operate on credential set instead of repository.
-        :param pulumi.Input[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict']] ecr_gen: ECR access token generator specific configuration.
+        :param pulumi.Input[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict', 'outputs.GitOpsRepositoryEcrGen']] ecr_gen: ECR access token generator specific configuration.
         :param pulumi.Input[_builtins.bool] force_delete: Indicates if the repository should be deleted forcefully, regardless of existing applications using that repo.
-        :param pulumi.Input[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict']] gcr_gen: GCR access token generator specific configuration.
+        :param pulumi.Input[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict', 'outputs.GitOpsRepositoryGcrGen']] gcr_gen: GCR access token generator specific configuration.
         :param pulumi.Input[_builtins.str] gen_type: Default: "UNSET"
                Enum: "UNSET" "AWS_ECR" "GOOGLE_GCR"
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps repository.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the GitOps repository.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps repository.
         :param pulumi.Input[_builtins.str] refresh_interval: For OCI repos, this is the interval to refresh the token to access the registry.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepositoryRepoArgs', 'GitOpsRepositoryRepoArgsDict']]]] repos: Repo details holding application configurations.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepositoryUpdateMaskArgs', 'GitOpsRepositoryUpdateMaskArgsDict']]]] update_masks: Update mask of the repository.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepositoryRepoArgs', 'GitOpsRepositoryRepoArgsDict', 'outputs.GitOpsRepositoryRepo']]]] repos: Repo details holding application configurations.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepositoryUpdateMaskArgs', 'GitOpsRepositoryUpdateMaskArgsDict', 'outputs.GitOpsRepositoryUpdateMask']]]] update_masks: Update mask of the repository.
         :param pulumi.Input[_builtins.bool] upsert: Indicates if the GitOps repository should be updated if existing and inserted if not.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

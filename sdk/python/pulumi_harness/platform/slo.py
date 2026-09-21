@@ -170,7 +170,7 @@ class Slo(pulumi.CustomResource):
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 request: pulumi.Input[Optional[Union['SloRequestArgs', 'SloRequestArgsDict']]] = None,
+                 request: pulumi.Input[Optional[Union['SloRequestArgs', 'SloRequestArgsDict', 'outputs.SloRequest']]] = None,
                  __props__=None):
         """
         Resource for creating an SLO.
@@ -183,20 +183,7 @@ class Slo(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.platform.Slo("example",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
             request={
-                "name": "name",
-                "description": "description",
-                "tags": [
-                    "foo:bar",
-                    "bar:foo",
-                ],
-                "user_journey_refs": [
-                    "one",
-                    "two",
-                ],
                 "slo_target": {
                     "type": "Calender",
                     "slo_target_percentage": float(10),
@@ -207,6 +194,20 @@ class Slo(pulumi.CustomResource):
                         },
                     }),
                 },
+                "notification_rule_refs": [{
+                    "notification_rule_ref": "notification_rule_ref",
+                    "enabled": True,
+                }],
+                "name": "name",
+                "description": "description",
+                "tags": [
+                    "foo:bar",
+                    "bar:foo",
+                ],
+                "user_journey_refs": [
+                    "one",
+                    "two",
+                ],
                 "type": "Simple",
                 "spec": json.dumps({
                     "monitoredServiceRef": "monitoredServiceRef",
@@ -226,11 +227,10 @@ class Slo(pulumi.CustomResource):
                         },
                     }],
                 }),
-                "notification_rule_refs": [{
-                    "notification_rule_ref": "notification_rule_ref",
-                    "enabled": True,
-                }],
-            })
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
         ```
 
         ## Import
@@ -261,7 +261,7 @@ class Slo(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Identifier of the SLO.
         :param pulumi.Input[_builtins.str] org_id: Identifier of the organization in which the SLO is configured.
         :param pulumi.Input[_builtins.str] project_id: Identifier of the project in which the SLO is configured.
-        :param pulumi.Input[Union['SloRequestArgs', 'SloRequestArgsDict']] request: Request for creating or updating SLO.
+        :param pulumi.Input[Union['SloRequestArgs', 'SloRequestArgsDict', 'outputs.SloRequest']] request: Request for creating or updating SLO.
         """
         ...
     @overload
@@ -280,20 +280,7 @@ class Slo(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.platform.Slo("example",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
             request={
-                "name": "name",
-                "description": "description",
-                "tags": [
-                    "foo:bar",
-                    "bar:foo",
-                ],
-                "user_journey_refs": [
-                    "one",
-                    "two",
-                ],
                 "slo_target": {
                     "type": "Calender",
                     "slo_target_percentage": float(10),
@@ -304,6 +291,20 @@ class Slo(pulumi.CustomResource):
                         },
                     }),
                 },
+                "notification_rule_refs": [{
+                    "notification_rule_ref": "notification_rule_ref",
+                    "enabled": True,
+                }],
+                "name": "name",
+                "description": "description",
+                "tags": [
+                    "foo:bar",
+                    "bar:foo",
+                ],
+                "user_journey_refs": [
+                    "one",
+                    "two",
+                ],
                 "type": "Simple",
                 "spec": json.dumps({
                     "monitoredServiceRef": "monitoredServiceRef",
@@ -323,11 +324,10 @@ class Slo(pulumi.CustomResource):
                         },
                     }],
                 }),
-                "notification_rule_refs": [{
-                    "notification_rule_ref": "notification_rule_ref",
-                    "enabled": True,
-                }],
-            })
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
         ```
 
         ## Import
@@ -371,7 +371,7 @@ class Slo(pulumi.CustomResource):
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 request: pulumi.Input[Optional[Union['SloRequestArgs', 'SloRequestArgsDict']]] = None,
+                 request: pulumi.Input[Optional[Union['SloRequestArgs', 'SloRequestArgsDict', 'outputs.SloRequest']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -404,7 +404,7 @@ class Slo(pulumi.CustomResource):
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
-            request: pulumi.Input[Optional[Union['SloRequestArgs', 'SloRequestArgsDict']]] = None) -> 'Slo':
+            request: pulumi.Input[Optional[Union['SloRequestArgs', 'SloRequestArgsDict', 'outputs.SloRequest']]] = None) -> 'Slo':
         """
         Get an existing Slo resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -415,7 +415,7 @@ class Slo(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Identifier of the SLO.
         :param pulumi.Input[_builtins.str] org_id: Identifier of the organization in which the SLO is configured.
         :param pulumi.Input[_builtins.str] project_id: Identifier of the project in which the SLO is configured.
-        :param pulumi.Input[Union['SloRequestArgs', 'SloRequestArgsDict']] request: Request for creating or updating SLO.
+        :param pulumi.Input[Union['SloRequestArgs', 'SloRequestArgsDict', 'outputs.SloRequest']] request: Request for creating or updating SLO.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

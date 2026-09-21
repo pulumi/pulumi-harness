@@ -16,13 +16,6 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.Infrastructure("example", {
- *     identifier: "identifier",
- *     name: "name",
- *     orgId: "orgIdentifer",
- *     projectId: "projectIdentifier",
- *     envId: "environmentIdentifier",
- *     type: "KubernetesDirect",
- *     deploymentType: "Kubernetes",
  *     gitDetails: {
  *         branchName: "branchName",
  *         commitMessage: "commitMessage",
@@ -31,6 +24,13 @@ import * as utilities from "../utilities";
  *         storeType: "REMOTE",
  *         repoName: "repoName",
  *     },
+ *     identifier: "identifier",
+ *     name: "name",
+ *     orgId: "orgIdentifer",
+ *     projectId: "projectIdentifier",
+ *     envId: "environmentIdentifier",
+ *     type: "KubernetesDirect",
+ *     deploymentType: "Kubernetes",
  *     yaml: `infrastructureDefinition:
  *  name: name
  *  identifier: identifier

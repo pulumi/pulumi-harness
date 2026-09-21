@@ -46,22 +46,20 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // mapping a cluster to a project level env
  *         var example = new EnvironmentClustersMapping("example", EnvironmentClustersMappingArgs.builder()
- *             .identifier("mycustomidentifier")
- *             .orgId("orgIdentifer")
- *             .projectId("projectIdentifier")
- *             .envId("exampleEnvId")
  *             .clusters(EnvironmentClustersMappingClusterArgs.builder()
  *                 .identifier("incluster")
  *                 .name("in-cluster")
  *                 .agentIdentifier("account.gitopsagentdev")
  *                 .scope("ACCOUNT")
  *                 .build())
+ *             .identifier("mycustomidentifier")
+ *             .orgId("orgIdentifer")
+ *             .projectId("projectIdentifier")
+ *             .envId("exampleEnvId")
  *             .build());
  * 
  *         // mapping two clusters to account level env
  *         var example2 = new EnvironmentClustersMapping("example2", EnvironmentClustersMappingArgs.builder()
- *             .identifier("mycustomidentifier")
- *             .envId("env1")
  *             .clusters(            
  *                 EnvironmentClustersMappingClusterArgs.builder()
  *                     .identifier("clusterA")
@@ -75,6 +73,8 @@ import javax.annotation.Nullable;
  *                     .agentIdentifier("account.gitopsagentprod")
  *                     .scope("ACCOUNT")
  *                     .build())
+ *             .identifier("mycustomidentifier")
+ *             .envId("env1")
  *             .build());
  * 
  *     }

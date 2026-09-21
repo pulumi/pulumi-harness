@@ -26,6 +26,15 @@ import * as utilities from "../utilities";
  *             name: "appname123",
  *         }],
  *         specs: [{
+ *             destinations: [{
+ *                 namespace: "namespace-123",
+ *                 server: "https://1.3.4.5",
+ *             }],
+ *             sources: [{
+ *                 targetRevision: "master",
+ *                 repoUrl: "https://github.com/willycoll/argocd-example-apps.git",
+ *                 path: "helm-guestbook",
+ *             }],
  *             syncPolicies: [{
  *                 syncOptions: [
  *                     "PrunePropagationPolicy=undefined",
@@ -38,15 +47,6 @@ import * as utilities from "../utilities";
  *                     "Replace=false",
  *                     "retry=false",
  *                 ],
- *             }],
- *             sources: [{
- *                 targetRevision: "master",
- *                 repoUrl: "https://github.com/willycoll/argocd-example-apps.git",
- *                 path: "helm-guestbook",
- *             }],
- *             destinations: [{
- *                 namespace: "namespace-123",
- *                 server: "https://1.3.4.5",
  *             }],
  *         }],
  *     }],

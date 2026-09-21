@@ -36,6 +36,17 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Example of a Security Governance Rule (V3)
 //			example, err := chaos.NewSecurityGovernanceRuleV3(ctx, "example", &chaos.SecurityGovernanceRuleV3Args{
+//				TimeWindows: chaos.SecurityGovernanceRuleV3TimeWindowArray{
+//					&chaos.SecurityGovernanceRuleV3TimeWindowArgs{
+//						Recurrence: &chaos.SecurityGovernanceRuleV3TimeWindowRecurrenceArgs{
+//							Type:  pulumi.String("Daily"),
+//							Until: pulumi.Int(-1),
+//						},
+//						TimeZone:  pulumi.String("UTC"),
+//						StartTime: pulumi.Int(1711238400000),
+//						Duration:  pulumi.String("24h"),
+//					},
+//				},
 //				OrgId:       pulumi.Any(orgId),
 //				ProjectId:   pulumi.Any(projectId),
 //				Name:        pulumi.String("k8s-security-rule"),
@@ -50,17 +61,6 @@ import (
 //				Tags: pulumi.StringArray{
 //					pulumi.String("env:prod"),
 //					pulumi.String("team:security"),
-//				},
-//				TimeWindows: chaos.SecurityGovernanceRuleV3TimeWindowArray{
-//					&chaos.SecurityGovernanceRuleV3TimeWindowArgs{
-//						TimeZone:  pulumi.String("UTC"),
-//						StartTime: pulumi.Int(1711238400000),
-//						Duration:  pulumi.String("24h"),
-//						Recurrence: &chaos.SecurityGovernanceRuleV3TimeWindowRecurrenceArgs{
-//							Type:  pulumi.String("Daily"),
-//							Until: pulumi.Int(-1),
-//						},
-//					},
 //				},
 //			})
 //			if err != nil {

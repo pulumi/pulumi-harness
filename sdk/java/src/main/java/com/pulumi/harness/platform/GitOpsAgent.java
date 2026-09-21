@@ -46,16 +46,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new GitOpsAgent("example", GitOpsAgentArgs.builder()
+ *             .metadatas(GitOpsAgentMetadataArgs.builder()
+ *                 .namespace("namespace")
+ *                 .highAvailability(true)
+ *                 .build())
  *             .identifier("identifier")
  *             .accountId("account_id")
  *             .projectId("project_id")
  *             .orgId("org_id")
  *             .name("name")
  *             .type("MANAGED_ARGO_PROVIDER")
- *             .metadatas(GitOpsAgentMetadataArgs.builder()
- *                 .namespace("namespace")
- *                 .highAvailability(true)
- *                 .build())
  *             .build());
  * 
  *     }

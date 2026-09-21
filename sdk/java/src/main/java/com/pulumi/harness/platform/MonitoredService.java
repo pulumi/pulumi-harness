@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.MonitoredService;
  * import com.pulumi.harness.platform.MonitoredServiceArgs;
  * import com.pulumi.harness.platform.inputs.MonitoredServiceRequestArgs;
- * import com.pulumi.harness.platform.inputs.MonitoredServiceRequestHealthSourceArgs;
  * import com.pulumi.harness.platform.inputs.MonitoredServiceRequestChangeSourceArgs;
+ * import com.pulumi.harness.platform.inputs.MonitoredServiceRequestHealthSourceArgs;
  * import com.pulumi.harness.platform.inputs.MonitoredServiceRequestNotificationRuleRefArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
@@ -49,58 +49,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         //Sample template for Elastic Search Log Health Source
  *         var example = new MonitoredService("example", MonitoredServiceArgs.builder()
- *             .orgId("org_id")
- *             .projectId("project_id")
- *             .identifier("identifier")
  *             .request(MonitoredServiceRequestArgs.builder()
- *                 .name("name")
- *                 .type("Application")
- *                 .description("description")
- *                 .serviceRef("service_ref")
- *                 .environmentRef("environment_ref")
- *                 .tags(                
- *                     "foo:bar",
- *                     "bar:foo")
- *                 .healthSources(MonitoredServiceRequestHealthSourceArgs.builder()
- *                     .name("name")
- *                     .identifier("identifier")
- *                     .type("ElasticSearch")
- *                     .version("v2")
- *                     .spec(serializeJson(
- *                         jsonObject(
- *                             jsonProperty("connectorRef", "connectorRef"),
- *                             jsonProperty("queryDefinitions", jsonArray(
- *                                 jsonObject(
- *                                     jsonProperty("name", "name"),
- *                                     jsonProperty("identifier", "infraquery"),
- *                                     jsonProperty("query", "query"),
- *                                     jsonProperty("index", "index"),
- *                                     jsonProperty("groupName", "Logs_Group"),
- *                                     jsonProperty("queryParams", jsonObject(
- *                                         jsonProperty("index", "index"),
- *                                         jsonProperty("serviceInstanceField", "serviceInstanceIdentifier"),
- *                                         jsonProperty("timeStampIdentifier", "timeStampIdentifier"),
- *                                         jsonProperty("timeStampFormat", "timeStampFormat"),
- *                                         jsonProperty("messageIdentifier", "messageIdentifier")
- *                                     ))
- *                                 ), 
- *                                 jsonObject(
- *                                     jsonProperty("name", "name2"),
- *                                     jsonProperty("identifier", "errorquery"),
- *                                     jsonProperty("query", "query2"),
- *                                     jsonProperty("index", "index2"),
- *                                     jsonProperty("groupName", "Logs_Group"),
- *                                     jsonProperty("queryParams", jsonObject(
- *                                         jsonProperty("index", "index"),
- *                                         jsonProperty("serviceInstanceField", "serviceInstanceIdentifier"),
- *                                         jsonProperty("timeStampIdentifier", "timeStampIdentifier"),
- *                                         jsonProperty("timeStampFormat", "timeStampFormat"),
- *                                         jsonProperty("messageIdentifier", "messageIdentifier")
- *                                     ))
- *                                 )
- *                             ))
- *                         )))
- *                     .build())
  *                 .changeSources(                
  *                     MonitoredServiceRequestChangeSourceArgs.builder()
  *                         .name("BAC")
@@ -162,6 +111,46 @@ import javax.annotation.Nullable;
  *                                 jsonProperty("authorizationToken", "abc")
  *                             )))
  *                         .build())
+ *                 .healthSources(MonitoredServiceRequestHealthSourceArgs.builder()
+ *                     .name("name")
+ *                     .identifier("identifier")
+ *                     .type("ElasticSearch")
+ *                     .version("v2")
+ *                     .spec(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("connectorRef", "connectorRef"),
+ *                             jsonProperty("queryDefinitions", jsonArray(
+ *                                 jsonObject(
+ *                                     jsonProperty("name", "name"),
+ *                                     jsonProperty("identifier", "infraquery"),
+ *                                     jsonProperty("query", "query"),
+ *                                     jsonProperty("index", "index"),
+ *                                     jsonProperty("groupName", "Logs_Group"),
+ *                                     jsonProperty("queryParams", jsonObject(
+ *                                         jsonProperty("index", "index"),
+ *                                         jsonProperty("serviceInstanceField", "serviceInstanceIdentifier"),
+ *                                         jsonProperty("timeStampIdentifier", "timeStampIdentifier"),
+ *                                         jsonProperty("timeStampFormat", "timeStampFormat"),
+ *                                         jsonProperty("messageIdentifier", "messageIdentifier")
+ *                                     ))
+ *                                 ), 
+ *                                 jsonObject(
+ *                                     jsonProperty("name", "name2"),
+ *                                     jsonProperty("identifier", "errorquery"),
+ *                                     jsonProperty("query", "query2"),
+ *                                     jsonProperty("index", "index2"),
+ *                                     jsonProperty("groupName", "Logs_Group"),
+ *                                     jsonProperty("queryParams", jsonObject(
+ *                                         jsonProperty("index", "index"),
+ *                                         jsonProperty("serviceInstanceField", "serviceInstanceIdentifier"),
+ *                                         jsonProperty("timeStampIdentifier", "timeStampIdentifier"),
+ *                                         jsonProperty("timeStampFormat", "timeStampFormat"),
+ *                                         jsonProperty("messageIdentifier", "messageIdentifier")
+ *                                     ))
+ *                                 )
+ *                             ))
+ *                         )))
+ *                     .build())
  *                 .notificationRuleRefs(                
  *                     MonitoredServiceRequestNotificationRuleRefArgs.builder()
  *                         .notificationRuleRef("notification_rule_ref")
@@ -171,15 +160,6 @@ import javax.annotation.Nullable;
  *                         .notificationRuleRef("notification_rule_ref1")
  *                         .enabled(false)
  *                         .build())
- *                 .build())
- *             .build());
- * 
- *         //Sample template for Sumologic Metrics Health Source
- *         var example1 = new MonitoredService("example1", MonitoredServiceArgs.builder()
- *             .orgId("org_id")
- *             .projectId("project_id")
- *             .identifier("identifier")
- *             .request(MonitoredServiceRequestArgs.builder()
  *                 .name("name")
  *                 .type("Application")
  *                 .description("description")
@@ -188,6 +168,15 @@ import javax.annotation.Nullable;
  *                 .tags(                
  *                     "foo:bar",
  *                     "bar:foo")
+ *                 .build())
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .identifier("identifier")
+ *             .build());
+ * 
+ *         //Sample template for Sumologic Metrics Health Source
+ *         var example1 = new MonitoredService("example1", MonitoredServiceArgs.builder()
+ *             .request(MonitoredServiceRequestArgs.builder()
  *                 .healthSources(MonitoredServiceRequestHealthSourceArgs.builder()
  *                     .name("sumologicmetrics")
  *                     .identifier("sumo_metric_identifier")
@@ -265,15 +254,6 @@ import javax.annotation.Nullable;
  *                             ))
  *                         )))
  *                     .build())
- *                 .build())
- *             .build());
- * 
- *         //Sample template for Sumologic Log Health Source
- *         var example2 = new MonitoredService("example2", MonitoredServiceArgs.builder()
- *             .orgId("org_id")
- *             .projectId("project_id")
- *             .identifier("identifier")
- *             .request(MonitoredServiceRequestArgs.builder()
  *                 .name("name")
  *                 .type("Application")
  *                 .description("description")
@@ -282,6 +262,15 @@ import javax.annotation.Nullable;
  *                 .tags(                
  *                     "foo:bar",
  *                     "bar:foo")
+ *                 .build())
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .identifier("identifier")
+ *             .build());
+ * 
+ *         //Sample template for Sumologic Log Health Source
+ *         var example2 = new MonitoredService("example2", MonitoredServiceArgs.builder()
+ *             .request(MonitoredServiceRequestArgs.builder()
  *                 .healthSources(MonitoredServiceRequestHealthSourceArgs.builder()
  *                     .name("sumologic")
  *                     .identifier("sumo_metric_identifier")
@@ -312,15 +301,6 @@ import javax.annotation.Nullable;
  *                             ))
  *                         )))
  *                     .build())
- *                 .build())
- *             .build());
- * 
- *         //Sample template for Splunk Signal FX Health Source
- *         var example3 = new MonitoredService("example3", MonitoredServiceArgs.builder()
- *             .orgId("org_id")
- *             .projectId("project_id")
- *             .identifier("identifier")
- *             .request(MonitoredServiceRequestArgs.builder()
  *                 .name("name")
  *                 .type("Application")
  *                 .description("description")
@@ -329,6 +309,15 @@ import javax.annotation.Nullable;
  *                 .tags(                
  *                     "foo:bar",
  *                     "bar:foo")
+ *                 .build())
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .identifier("identifier")
+ *             .build());
+ * 
+ *         //Sample template for Splunk Signal FX Health Source
+ *         var example3 = new MonitoredService("example3", MonitoredServiceArgs.builder()
+ *             .request(MonitoredServiceRequestArgs.builder()
  *                 .healthSources(MonitoredServiceRequestHealthSourceArgs.builder()
  *                     .name("signalfxmetrics")
  *                     .identifier("signalfxmetrics")
@@ -403,15 +392,6 @@ import javax.annotation.Nullable;
  *                             ))
  *                         )))
  *                     .build())
- *                 .build())
- *             .build());
- * 
- *         //Sample template for Grafana Loki Log Health Source
- *         var example4 = new MonitoredService("example4", MonitoredServiceArgs.builder()
- *             .orgId("org_id")
- *             .projectId("project_id")
- *             .identifier("identifier")
- *             .request(MonitoredServiceRequestArgs.builder()
  *                 .name("name")
  *                 .type("Application")
  *                 .description("description")
@@ -420,6 +400,15 @@ import javax.annotation.Nullable;
  *                 .tags(                
  *                     "foo:bar",
  *                     "bar:foo")
+ *                 .build())
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .identifier("identifier")
+ *             .build());
+ * 
+ *         //Sample template for Grafana Loki Log Health Source
+ *         var example4 = new MonitoredService("example4", MonitoredServiceArgs.builder()
+ *             .request(MonitoredServiceRequestArgs.builder()
  *                 .healthSources(MonitoredServiceRequestHealthSourceArgs.builder()
  *                     .name("Test")
  *                     .identifier("Test")
@@ -453,15 +442,6 @@ import javax.annotation.Nullable;
  *                             ))
  *                         )))
  *                     .build())
- *                 .build())
- *             .build());
- * 
- *         //Sample template for Azure Metrics Health Source
- *         var example5 = new MonitoredService("example5", MonitoredServiceArgs.builder()
- *             .orgId("org_id")
- *             .projectId("project_id")
- *             .identifier("identifier")
- *             .request(MonitoredServiceRequestArgs.builder()
  *                 .name("name")
  *                 .type("Application")
  *                 .description("description")
@@ -470,6 +450,15 @@ import javax.annotation.Nullable;
  *                 .tags(                
  *                     "foo:bar",
  *                     "bar:foo")
+ *                 .build())
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .identifier("identifier")
+ *             .build());
+ * 
+ *         //Sample template for Azure Metrics Health Source
+ *         var example5 = new MonitoredService("example5", MonitoredServiceArgs.builder()
+ *             .request(MonitoredServiceRequestArgs.builder()
  *                 .healthSources(MonitoredServiceRequestHealthSourceArgs.builder()
  *                     .name("azure metrics verify step")
  *                     .identifier("azure_metrics_verify_step")
@@ -554,15 +543,6 @@ import javax.annotation.Nullable;
  *                             ))
  *                         )))
  *                     .build())
- *                 .build())
- *             .build());
- * 
- *         //Sample template for Azure Log Health Source
- *         var example6 = new MonitoredService("example6", MonitoredServiceArgs.builder()
- *             .orgId("org_id")
- *             .projectId("project_id")
- *             .identifier("identifier")
- *             .request(MonitoredServiceRequestArgs.builder()
  *                 .name("name")
  *                 .type("Application")
  *                 .description("description")
@@ -571,6 +551,15 @@ import javax.annotation.Nullable;
  *                 .tags(                
  *                     "foo:bar",
  *                     "bar:foo")
+ *                 .build())
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .identifier("identifier")
+ *             .build());
+ * 
+ *         //Sample template for Azure Log Health Source
+ *         var example6 = new MonitoredService("example6", MonitoredServiceArgs.builder()
+ *             .request(MonitoredServiceRequestArgs.builder()
  *                 .healthSources(MonitoredServiceRequestHealthSourceArgs.builder()
  *                     .name("Demo azure")
  *                     .identifier("Demo_azure")
@@ -595,15 +584,6 @@ import javax.annotation.Nullable;
  *                             )))
  *                         )))
  *                     .build())
- *                 .build())
- *             .build());
- * 
- *         //Sample template for Prometheus Metrics Health Source
- *         var example7 = new MonitoredService("example7", MonitoredServiceArgs.builder()
- *             .orgId("org_id")
- *             .projectId("project_id")
- *             .identifier("identifier")
- *             .request(MonitoredServiceRequestArgs.builder()
  *                 .name("name")
  *                 .type("Application")
  *                 .description("description")
@@ -612,6 +592,15 @@ import javax.annotation.Nullable;
  *                 .tags(                
  *                     "foo:bar",
  *                     "bar:foo")
+ *                 .build())
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .identifier("identifier")
+ *             .build());
+ * 
+ *         //Sample template for Prometheus Metrics Health Source
+ *         var example7 = new MonitoredService("example7", MonitoredServiceArgs.builder()
+ *             .request(MonitoredServiceRequestArgs.builder()
  *                 .healthSources(MonitoredServiceRequestHealthSourceArgs.builder()
  *                     .name("prometheus metrics verify step")
  *                     .identifier("prometheus_metrics")
@@ -677,15 +666,6 @@ import javax.annotation.Nullable;
  *                             )))
  *                         )))
  *                     .build())
- *                 .build())
- *             .build());
- * 
- *         //Sample template for Datadog Metrics Health Source
- *         var example8 = new MonitoredService("example8", MonitoredServiceArgs.builder()
- *             .orgId("org_id")
- *             .projectId("project_id")
- *             .identifier("identifier")
- *             .request(MonitoredServiceRequestArgs.builder()
  *                 .name("name")
  *                 .type("Application")
  *                 .description("description")
@@ -694,6 +674,15 @@ import javax.annotation.Nullable;
  *                 .tags(                
  *                     "foo:bar",
  *                     "bar:foo")
+ *                 .build())
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .identifier("identifier")
+ *             .build());
+ * 
+ *         //Sample template for Datadog Metrics Health Source
+ *         var example8 = new MonitoredService("example8", MonitoredServiceArgs.builder()
+ *             .request(MonitoredServiceRequestArgs.builder()
  *                 .healthSources(MonitoredServiceRequestHealthSourceArgs.builder()
  *                     .name("ddm")
  *                     .identifier("ddm")
@@ -794,15 +783,6 @@ import javax.annotation.Nullable;
  *                             )))
  *                         )))
  *                     .build())
- *                 .build())
- *             .build());
- * 
- *         //Sample template for New Relic Metrics Health Source
- *         var example9 = new MonitoredService("example9", MonitoredServiceArgs.builder()
- *             .orgId("org_id")
- *             .projectId("project_id")
- *             .identifier("identifier")
- *             .request(MonitoredServiceRequestArgs.builder()
  *                 .name("name")
  *                 .type("Application")
  *                 .description("description")
@@ -811,6 +791,15 @@ import javax.annotation.Nullable;
  *                 .tags(                
  *                     "foo:bar",
  *                     "bar:foo")
+ *                 .build())
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .identifier("identifier")
+ *             .build());
+ * 
+ *         //Sample template for New Relic Metrics Health Source
+ *         var example9 = new MonitoredService("example9", MonitoredServiceArgs.builder()
+ *             .request(MonitoredServiceRequestArgs.builder()
  *                 .healthSources(MonitoredServiceRequestHealthSourceArgs.builder()
  *                     .name("name")
  *                     .identifier("identifier")
@@ -884,7 +873,18 @@ import javax.annotation.Nullable;
  *                             )))
  *                         )))
  *                     .build())
+ *                 .name("name")
+ *                 .type("Application")
+ *                 .description("description")
+ *                 .serviceRef("service_ref")
+ *                 .environmentRef("environment_ref")
+ *                 .tags(                
+ *                     "foo:bar",
+ *                     "bar:foo")
  *                 .build())
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .identifier("identifier")
  *             .build());
  * 
  *     }}{@code

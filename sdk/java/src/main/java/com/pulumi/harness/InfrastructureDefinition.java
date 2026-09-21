@@ -69,10 +69,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Creating a Kubernetes infrastructure definition
  *         var dev = new Kubernetes("dev", KubernetesArgs.builder()
- *             .name("k8s-dev")
  *             .authentication(KubernetesAuthenticationArgs.builder()
  *                 .delegateSelectors("k8s")
  *                 .build())
+ *             .name("k8s-dev")
  *             .build());
  * 
  *         var example = new Application("example", ApplicationArgs.builder()
@@ -87,16 +87,16 @@ import javax.annotation.Nullable;
  * 
  *         // Creating a infrastructure of type KUBERNETES
  *         var k8s = new InfrastructureDefinition("k8s", InfrastructureDefinitionArgs.builder()
- *             .name("k8s-eks-us-east-1")
- *             .appId(example.id())
- *             .envId(devEnvironment.id())
- *             .cloudProviderType("KUBERNETES_CLUSTER")
- *             .deploymentType("KUBERNETES")
  *             .kubernetes(InfrastructureDefinitionKubernetesArgs.builder()
  *                 .cloudProviderName(dev.name())
  *                 .namespace("dev")
  *                 .releaseName("${service.name}")
  *                 .build())
+ *             .name("k8s-eks-us-east-1")
+ *             .appId(example.id())
+ *             .envId(devEnvironment.id())
+ *             .cloudProviderType("KUBERNETES_CLUSTER")
+ *             .deploymentType("KUBERNETES")
  *             .build());
  * 
  *         // Creating a Deployment Template for CUSTOM infrastructure type
@@ -119,14 +119,7 @@ import javax.annotation.Nullable;
  * 
  *         // Creating a infrastructure of type CUSTOM
  *         var custom = new InfrastructureDefinition("custom", InfrastructureDefinitionArgs.builder()
- *             .name("custom-infra")
- *             .appId(example.id())
- *             .envId(devEnvironment.id())
- *             .cloudProviderType("CUSTOM")
- *             .deploymentType("CUSTOM")
- *             .deploymentTemplateUri(exampleYaml.name().applyValue(_name -> String.format("Example Folder/%s", _name)))
  *             .custom(InfrastructureDefinitionCustomArgs.builder()
- *                 .deploymentTypeTemplateVersion("1")
  *                 .variables(                
  *                     InfrastructureDefinitionCustomVariableArgs.builder()
  *                         .name("url")
@@ -136,7 +129,14 @@ import javax.annotation.Nullable;
  *                         .name("file_name")
  *                         .value("instances.json")
  *                         .build())
+ *                 .deploymentTypeTemplateVersion("1")
  *                 .build())
+ *             .name("custom-infra")
+ *             .appId(example.id())
+ *             .envId(devEnvironment.id())
+ *             .cloudProviderType("CUSTOM")
+ *             .deploymentType("CUSTOM")
+ *             .deploymentTemplateUri(exampleYaml.name().applyValue(_name -> String.format("Example Folder/%s", _name)))
  *             .build());
  * 
  *     }

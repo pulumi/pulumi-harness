@@ -390,9 +390,9 @@ class IdpScorecard(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpScorecardCheckArgs', 'IdpScorecardCheckArgsDict']]]]] = None,
+                 checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpScorecardCheckArgs', 'IdpScorecardCheckArgsDict', 'outputs.IdpScorecardCheck']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 filter: pulumi.Input[Optional[Union['IdpScorecardFilterArgs', 'IdpScorecardFilterArgsDict']]] = None,
+                 filter: pulumi.Input[Optional[Union['IdpScorecardFilterArgs', 'IdpScorecardFilterArgsDict', 'outputs.IdpScorecardFilter']]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -410,27 +410,22 @@ class IdpScorecard(pulumi.CustomResource):
         import pulumi_harness as harness
 
         readme = harness.platform.IdpScorecardCheck("readme",
-            identifier="readme_exists",
-            name="README exists",
-            description="Ensure the repository has a README file",
-            rule_strategy="ALL_OF",
-            default_behaviour="FAIL",
             rules=[{
-                "data_source_identifier": "github",
-                "data_point_identifier": "isFileExists",
-                "operator": "==",
-                "value": "true",
                 "input_values": [{
                     "key": "filePath",
                     "value": "README.md",
                 }],
-            }])
+                "data_source_identifier": "github",
+                "data_point_identifier": "isFileExists",
+                "operator": "==",
+                "value": "true",
+            }],
+            identifier="readme_exists",
+            name="README exists",
+            description="Ensure the repository has a README file",
+            rule_strategy="ALL_OF",
+            default_behaviour="FAIL")
         gold = harness.platform.IdpScorecard("gold",
-            identifier="gold_standard",
-            name="Gold Standard",
-            description="Baseline production quality scorecard",
-            published=True,
-            weightage_strategy="EQUAL_WEIGHTS",
             filter={
                 "kind": "component",
                 "type": "service",
@@ -438,7 +433,12 @@ class IdpScorecard(pulumi.CustomResource):
             checks=[{
                 "identifier": readme.identifier,
                 "custom": True,
-            }])
+            }],
+            identifier="gold_standard",
+            name="Gold Standard",
+            description="Baseline production quality scorecard",
+            published=True,
+            weightage_strategy="EQUAL_WEIGHTS")
         ```
 
         ## Import
@@ -454,9 +454,9 @@ class IdpScorecard(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpScorecardCheckArgs', 'IdpScorecardCheckArgsDict']]]] checks: Checks included in the scorecard.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpScorecardCheckArgs', 'IdpScorecardCheckArgsDict', 'outputs.IdpScorecardCheck']]]] checks: Checks included in the scorecard.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Union['IdpScorecardFilterArgs', 'IdpScorecardFilterArgsDict']] filter: Filters that select catalog entities evaluated by the scorecard.
+        :param pulumi.Input[Union['IdpScorecardFilterArgs', 'IdpScorecardFilterArgsDict', 'outputs.IdpScorecardFilter']] filter: Filters that select catalog entities evaluated by the scorecard.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.bool] on_demand: Whether the scorecard is evaluated on demand.
@@ -480,27 +480,22 @@ class IdpScorecard(pulumi.CustomResource):
         import pulumi_harness as harness
 
         readme = harness.platform.IdpScorecardCheck("readme",
-            identifier="readme_exists",
-            name="README exists",
-            description="Ensure the repository has a README file",
-            rule_strategy="ALL_OF",
-            default_behaviour="FAIL",
             rules=[{
-                "data_source_identifier": "github",
-                "data_point_identifier": "isFileExists",
-                "operator": "==",
-                "value": "true",
                 "input_values": [{
                     "key": "filePath",
                     "value": "README.md",
                 }],
-            }])
+                "data_source_identifier": "github",
+                "data_point_identifier": "isFileExists",
+                "operator": "==",
+                "value": "true",
+            }],
+            identifier="readme_exists",
+            name="README exists",
+            description="Ensure the repository has a README file",
+            rule_strategy="ALL_OF",
+            default_behaviour="FAIL")
         gold = harness.platform.IdpScorecard("gold",
-            identifier="gold_standard",
-            name="Gold Standard",
-            description="Baseline production quality scorecard",
-            published=True,
-            weightage_strategy="EQUAL_WEIGHTS",
             filter={
                 "kind": "component",
                 "type": "service",
@@ -508,7 +503,12 @@ class IdpScorecard(pulumi.CustomResource):
             checks=[{
                 "identifier": readme.identifier,
                 "custom": True,
-            }])
+            }],
+            identifier="gold_standard",
+            name="Gold Standard",
+            description="Baseline production quality scorecard",
+            published=True,
+            weightage_strategy="EQUAL_WEIGHTS")
         ```
 
         ## Import
@@ -537,9 +537,9 @@ class IdpScorecard(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpScorecardCheckArgs', 'IdpScorecardCheckArgsDict']]]]] = None,
+                 checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpScorecardCheckArgs', 'IdpScorecardCheckArgsDict', 'outputs.IdpScorecardCheck']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 filter: pulumi.Input[Optional[Union['IdpScorecardFilterArgs', 'IdpScorecardFilterArgsDict']]] = None,
+                 filter: pulumi.Input[Optional[Union['IdpScorecardFilterArgs', 'IdpScorecardFilterArgsDict', 'outputs.IdpScorecardFilter']]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -586,17 +586,17 @@ class IdpScorecard(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpScorecardCheckArgs', 'IdpScorecardCheckArgsDict']]]]] = None,
+            checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpScorecardCheckArgs', 'IdpScorecardCheckArgsDict', 'outputs.IdpScorecardCheck']]]]] = None,
             checks_missings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             components: pulumi.Input[Optional[_builtins.int]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            filter: pulumi.Input[Optional[Union['IdpScorecardFilterArgs', 'IdpScorecardFilterArgsDict']]] = None,
+            filter: pulumi.Input[Optional[Union['IdpScorecardFilterArgs', 'IdpScorecardFilterArgsDict', 'outputs.IdpScorecardFilter']]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
             percentage: pulumi.Input[Optional[_builtins.float]] = None,
             published: pulumi.Input[Optional[_builtins.bool]] = None,
-            tier_analytics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpScorecardTierAnalyticArgs', 'IdpScorecardTierAnalyticArgsDict']]]]] = None,
+            tier_analytics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpScorecardTierAnalyticArgs', 'IdpScorecardTierAnalyticArgsDict', 'outputs.IdpScorecardTierAnalytic']]]]] = None,
             tier_group_identifier: pulumi.Input[Optional[_builtins.str]] = None,
             weightage_strategy: pulumi.Input[Optional[_builtins.str]] = None) -> 'IdpScorecard':
         """
@@ -606,17 +606,17 @@ class IdpScorecard(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpScorecardCheckArgs', 'IdpScorecardCheckArgsDict']]]] checks: Checks included in the scorecard.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpScorecardCheckArgs', 'IdpScorecardCheckArgsDict', 'outputs.IdpScorecardCheck']]]] checks: Checks included in the scorecard.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] checks_missings: Identifiers of checks referenced by the scorecard that are missing.
         :param pulumi.Input[_builtins.int] components: Number of components evaluated by the scorecard.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Union['IdpScorecardFilterArgs', 'IdpScorecardFilterArgsDict']] filter: Filters that select catalog entities evaluated by the scorecard.
+        :param pulumi.Input[Union['IdpScorecardFilterArgs', 'IdpScorecardFilterArgsDict', 'outputs.IdpScorecardFilter']] filter: Filters that select catalog entities evaluated by the scorecard.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.bool] on_demand: Whether the scorecard is evaluated on demand.
         :param pulumi.Input[_builtins.float] percentage: Overall scorecard percentage.
         :param pulumi.Input[_builtins.bool] published: Whether the scorecard is published.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpScorecardTierAnalyticArgs', 'IdpScorecardTierAnalyticArgsDict']]]] tier_analytics: Component distribution across scorecard tiers.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpScorecardTierAnalyticArgs', 'IdpScorecardTierAnalyticArgsDict', 'outputs.IdpScorecardTierAnalytic']]]] tier_analytics: Component distribution across scorecard tiers.
         :param pulumi.Input[_builtins.str] tier_group_identifier: Identifier of the tier group used to classify scores.
         :param pulumi.Input[_builtins.str] weightage_strategy: Weightage strategy for checks. Valid values are EQUAL_WEIGHTS and CUSTOM.
         """

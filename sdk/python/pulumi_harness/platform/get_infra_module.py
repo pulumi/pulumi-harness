@@ -405,7 +405,7 @@ def get_infra_module(account: Optional[_builtins.str] = None,
                      system: Optional[_builtins.str] = None,
                      tags: Optional[_builtins.str] = None,
                      testing_enabled: Optional[_builtins.bool] = None,
-                     testing_metadata: Optional[Union['GetInfraModuleTestingMetadataArgs', 'GetInfraModuleTestingMetadataArgsDict']] = None,
+                     testing_metadata: Optional[Union['GetInfraModuleTestingMetadataArgs', 'GetInfraModuleTestingMetadataArgsDict', 'outputs.GetInfraModuleTestingMetadataResult']] = None,
                      updated: Optional[_builtins.int] = None,
                      versions: Optional[Sequence[_builtins.str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInfraModuleResult:
@@ -437,7 +437,7 @@ def get_infra_module(account: Optional[_builtins.str] = None,
     :param _builtins.str system: Provider of the module
     :param _builtins.str tags: Tags associated with the module
     :param _builtins.bool testing_enabled: Whether testing is enabled for the module
-    :param Union['GetInfraModuleTestingMetadataArgs', 'GetInfraModuleTestingMetadataArgsDict'] testing_metadata: Testing metadata for the module
+    :param Union['GetInfraModuleTestingMetadataArgs', 'GetInfraModuleTestingMetadataArgsDict', 'outputs.GetInfraModuleTestingMetadataResult'] testing_metadata: Testing metadata for the module
     :param _builtins.int updated: Timestamp when the module was last modified
     :param Sequence[_builtins.str] versions: Versions of the module
     """
@@ -526,7 +526,7 @@ def get_infra_module_output(account: pulumi.Input[Optional[_builtins.str]] = Non
                             system: pulumi.Input[Optional[_builtins.str]] = None,
                             tags: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             testing_enabled: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
-                            testing_metadata: pulumi.Input[Optional[Optional[Union['GetInfraModuleTestingMetadataArgs', 'GetInfraModuleTestingMetadataArgsDict']]]] = None,
+                            testing_metadata: pulumi.Input[Optional[Optional[Union['GetInfraModuleTestingMetadataArgs', 'GetInfraModuleTestingMetadataArgsDict', 'outputs.GetInfraModuleTestingMetadataResult']]]] = None,
                             updated: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                             versions: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInfraModuleResult]:
@@ -558,7 +558,7 @@ def get_infra_module_output(account: pulumi.Input[Optional[_builtins.str]] = Non
     :param _builtins.str system: Provider of the module
     :param _builtins.str tags: Tags associated with the module
     :param _builtins.bool testing_enabled: Whether testing is enabled for the module
-    :param Union['GetInfraModuleTestingMetadataArgs', 'GetInfraModuleTestingMetadataArgsDict'] testing_metadata: Testing metadata for the module
+    :param Union['GetInfraModuleTestingMetadataArgs', 'GetInfraModuleTestingMetadataArgsDict', 'outputs.GetInfraModuleTestingMetadataResult'] testing_metadata: Testing metadata for the module
     :param _builtins.int updated: Timestamp when the module was last modified
     :param Sequence[_builtins.str] versions: Versions of the module
     """

@@ -147,7 +147,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             yaml=self.yaml)
 
 
-def get_service(git_details: Optional[Union['GetServiceGitDetailsArgs', 'GetServiceGitDetailsArgsDict']] = None,
+def get_service(git_details: Optional[Union['GetServiceGitDetailsArgs', 'GetServiceGitDetailsArgsDict', 'outputs.GetServiceGitDetailsResult']] = None,
                 identifier: Optional[_builtins.str] = None,
                 name: Optional[_builtins.str] = None,
                 org_id: Optional[_builtins.str] = None,
@@ -168,7 +168,7 @@ def get_service(git_details: Optional[Union['GetServiceGitDetailsArgs', 'GetServ
     ```
 
 
-    :param Union['GetServiceGitDetailsArgs', 'GetServiceGitDetailsArgsDict'] git_details: Contains parameters related to Git Experience for remote entities
+    :param Union['GetServiceGitDetailsArgs', 'GetServiceGitDetailsArgsDict', 'outputs.GetServiceGitDetailsResult'] git_details: Contains parameters related to Git Experience for remote entities
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
@@ -193,7 +193,7 @@ def get_service(git_details: Optional[Union['GetServiceGitDetailsArgs', 'GetServ
         project_id=pulumi.get(__ret__, 'project_id'),
         tags=pulumi.get(__ret__, 'tags'),
         yaml=pulumi.get(__ret__, 'yaml'))
-def get_service_output(git_details: pulumi.Input[Optional[Optional[Union['GetServiceGitDetailsArgs', 'GetServiceGitDetailsArgsDict']]]] = None,
+def get_service_output(git_details: pulumi.Input[Optional[Optional[Union['GetServiceGitDetailsArgs', 'GetServiceGitDetailsArgsDict', 'outputs.GetServiceGitDetailsResult']]]] = None,
                        identifier: pulumi.Input[Optional[_builtins.str]] = None,
                        name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -214,7 +214,7 @@ def get_service_output(git_details: pulumi.Input[Optional[Optional[Union['GetSer
     ```
 
 
-    :param Union['GetServiceGitDetailsArgs', 'GetServiceGitDetailsArgsDict'] git_details: Contains parameters related to Git Experience for remote entities
+    :param Union['GetServiceGitDetailsArgs', 'GetServiceGitDetailsArgsDict', 'outputs.GetServiceGitDetailsResult'] git_details: Contains parameters related to Git Experience for remote entities
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.

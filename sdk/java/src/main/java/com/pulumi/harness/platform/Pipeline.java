@@ -52,10 +52,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Pipeline("example", PipelineArgs.builder()
- *             .identifier("identifier")
- *             .orgId("orgIdentifier")
- *             .projectId("projectIdentifier")
- *             .name("name")
  *             .gitDetails(PipelineGitDetailsArgs.builder()
  *                 .branchName("branchName")
  *                 .commitMessage("commitMessage")
@@ -64,6 +60,10 @@ import javax.annotation.Nullable;
  *                 .storeType("REMOTE")
  *                 .repoName("repoName")
  *                 .build())
+ *             .identifier("identifier")
+ *             .orgId("orgIdentifier")
+ *             .projectId("projectIdentifier")
+ *             .name("name")
  *             .tags(Map.ofEntries(
  *             ))
  *             .yaml("""
@@ -162,11 +162,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var testPipeline = new Pipeline("testPipeline", PipelineArgs.builder()
- *             .identifier("gitx")
- *             .orgId("default")
- *             .projectId("V")
- *             .name("gitx")
- *             .importFromGit(true)
  *             .gitImportInfo(PipelineGitImportInfoArgs.builder()
  *                 .branchName("main")
  *                 .filePath(".harness/gitx.yaml")
@@ -178,6 +173,11 @@ import javax.annotation.Nullable;
  *                 .pipelineName("gitx")
  *                 .pipelineDescription("Pipeline Description")
  *                 .build())
+ *             .identifier("gitx")
+ *             .orgId("default")
+ *             .projectId("V")
+ *             .name("gitx")
+ *             .importFromGit(true)
  *             .build());
  * 
  *     }

@@ -351,9 +351,9 @@ class AwaitableGetActionTemplateResult(GetActionTemplateResult):
             variables=self.variables)
 
 
-def get_action_template(container_action: Optional[Union['GetActionTemplateContainerActionArgs', 'GetActionTemplateContainerActionArgsDict']] = None,
-                        custom_script_action: Optional[Union['GetActionTemplateCustomScriptActionArgs', 'GetActionTemplateCustomScriptActionArgsDict']] = None,
-                        delay_action: Optional[Union['GetActionTemplateDelayActionArgs', 'GetActionTemplateDelayActionArgsDict']] = None,
+def get_action_template(container_action: Optional[Union['GetActionTemplateContainerActionArgs', 'GetActionTemplateContainerActionArgsDict', 'outputs.GetActionTemplateContainerActionResult']] = None,
+                        custom_script_action: Optional[Union['GetActionTemplateCustomScriptActionArgs', 'GetActionTemplateCustomScriptActionArgsDict', 'outputs.GetActionTemplateCustomScriptActionResult']] = None,
+                        delay_action: Optional[Union['GetActionTemplateDelayActionArgs', 'GetActionTemplateDelayActionArgsDict', 'outputs.GetActionTemplateDelayActionResult']] = None,
                         description: Optional[_builtins.str] = None,
                         hub_identity: Optional[_builtins.str] = None,
                         identity: Optional[_builtins.str] = None,
@@ -361,10 +361,10 @@ def get_action_template(container_action: Optional[Union['GetActionTemplateConta
                         name: Optional[_builtins.str] = None,
                         org_id: Optional[_builtins.str] = None,
                         project_id: Optional[_builtins.str] = None,
-                        run_properties: Optional[Union['GetActionTemplateRunPropertiesArgs', 'GetActionTemplateRunPropertiesArgsDict']] = None,
+                        run_properties: Optional[Union['GetActionTemplateRunPropertiesArgs', 'GetActionTemplateRunPropertiesArgsDict', 'outputs.GetActionTemplateRunPropertiesResult']] = None,
                         tags: Optional[Sequence[_builtins.str]] = None,
                         type: Optional[_builtins.str] = None,
-                        variables: Optional[Sequence[Union['GetActionTemplateVariableArgs', 'GetActionTemplateVariableArgsDict']]] = None,
+                        variables: Optional[Sequence[Union['GetActionTemplateVariableArgs', 'GetActionTemplateVariableArgsDict', 'outputs.GetActionTemplateVariableResult']]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetActionTemplateResult:
     """
     Data source for reading Harness Chaos Action Templates.
@@ -383,9 +383,9 @@ def get_action_template(container_action: Optional[Union['GetActionTemplateConta
     ```
 
 
-    :param Union['GetActionTemplateContainerActionArgs', 'GetActionTemplateContainerActionArgsDict'] container_action: Container action configuration. Required when type is 'container'.
-    :param Union['GetActionTemplateCustomScriptActionArgs', 'GetActionTemplateCustomScriptActionArgsDict'] custom_script_action: Custom script action configuration. Required when type is 'customScript'.
-    :param Union['GetActionTemplateDelayActionArgs', 'GetActionTemplateDelayActionArgsDict'] delay_action: Delay action configuration. Required when type is 'delay'.
+    :param Union['GetActionTemplateContainerActionArgs', 'GetActionTemplateContainerActionArgsDict', 'outputs.GetActionTemplateContainerActionResult'] container_action: Container action configuration. Required when type is 'container'.
+    :param Union['GetActionTemplateCustomScriptActionArgs', 'GetActionTemplateCustomScriptActionArgsDict', 'outputs.GetActionTemplateCustomScriptActionResult'] custom_script_action: Custom script action configuration. Required when type is 'customScript'.
+    :param Union['GetActionTemplateDelayActionArgs', 'GetActionTemplateDelayActionArgsDict', 'outputs.GetActionTemplateDelayActionResult'] delay_action: Delay action configuration. Required when type is 'delay'.
     :param _builtins.str description: Description of the action template.
     :param _builtins.str hub_identity: Identity of the chaos hub this action template belongs to.
     :param _builtins.str identity: Unique identifier for the action template (immutable).
@@ -393,10 +393,10 @@ def get_action_template(container_action: Optional[Union['GetActionTemplateConta
     :param _builtins.str name: Name of the action template.
     :param _builtins.str org_id: Organization identifier.
     :param _builtins.str project_id: Project identifier.
-    :param Union['GetActionTemplateRunPropertiesArgs', 'GetActionTemplateRunPropertiesArgsDict'] run_properties: Run properties for the action template execution.
+    :param Union['GetActionTemplateRunPropertiesArgs', 'GetActionTemplateRunPropertiesArgsDict', 'outputs.GetActionTemplateRunPropertiesResult'] run_properties: Run properties for the action template execution.
     :param Sequence[_builtins.str] tags: Tags to associate with the action template.
     :param _builtins.str type: Type of the action template. Valid values: delay, customScript, container.
-    :param Sequence[Union['GetActionTemplateVariableArgs', 'GetActionTemplateVariableArgsDict']] variables: Template variables that can be used in the action.
+    :param Sequence[Union['GetActionTemplateVariableArgs', 'GetActionTemplateVariableArgsDict', 'outputs.GetActionTemplateVariableResult']] variables: Template variables that can be used in the action.
     """
     __args__ = dict()
     __args__['containerAction'] = container_action
@@ -443,9 +443,9 @@ def get_action_template(container_action: Optional[Union['GetActionTemplateConta
         updated_at=pulumi.get(__ret__, 'updated_at'),
         updated_by=pulumi.get(__ret__, 'updated_by'),
         variables=pulumi.get(__ret__, 'variables'))
-def get_action_template_output(container_action: pulumi.Input[Optional[Optional[Union['GetActionTemplateContainerActionArgs', 'GetActionTemplateContainerActionArgsDict']]]] = None,
-                               custom_script_action: pulumi.Input[Optional[Optional[Union['GetActionTemplateCustomScriptActionArgs', 'GetActionTemplateCustomScriptActionArgsDict']]]] = None,
-                               delay_action: pulumi.Input[Optional[Optional[Union['GetActionTemplateDelayActionArgs', 'GetActionTemplateDelayActionArgsDict']]]] = None,
+def get_action_template_output(container_action: pulumi.Input[Optional[Optional[Union['GetActionTemplateContainerActionArgs', 'GetActionTemplateContainerActionArgsDict', 'outputs.GetActionTemplateContainerActionResult']]]] = None,
+                               custom_script_action: pulumi.Input[Optional[Optional[Union['GetActionTemplateCustomScriptActionArgs', 'GetActionTemplateCustomScriptActionArgsDict', 'outputs.GetActionTemplateCustomScriptActionResult']]]] = None,
+                               delay_action: pulumi.Input[Optional[Optional[Union['GetActionTemplateDelayActionArgs', 'GetActionTemplateDelayActionArgsDict', 'outputs.GetActionTemplateDelayActionResult']]]] = None,
                                description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
                                identity: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -453,10 +453,10 @@ def get_action_template_output(container_action: pulumi.Input[Optional[Optional[
                                name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                               run_properties: pulumi.Input[Optional[Optional[Union['GetActionTemplateRunPropertiesArgs', 'GetActionTemplateRunPropertiesArgsDict']]]] = None,
+                               run_properties: pulumi.Input[Optional[Optional[Union['GetActionTemplateRunPropertiesArgs', 'GetActionTemplateRunPropertiesArgsDict', 'outputs.GetActionTemplateRunPropertiesResult']]]] = None,
                                tags: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                               variables: pulumi.Input[Optional[Optional[Sequence[Union['GetActionTemplateVariableArgs', 'GetActionTemplateVariableArgsDict']]]]] = None,
+                               variables: pulumi.Input[Optional[Optional[Sequence[Union['GetActionTemplateVariableArgs', 'GetActionTemplateVariableArgsDict', 'outputs.GetActionTemplateVariableResult']]]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetActionTemplateResult]:
     """
     Data source for reading Harness Chaos Action Templates.
@@ -475,9 +475,9 @@ def get_action_template_output(container_action: pulumi.Input[Optional[Optional[
     ```
 
 
-    :param Union['GetActionTemplateContainerActionArgs', 'GetActionTemplateContainerActionArgsDict'] container_action: Container action configuration. Required when type is 'container'.
-    :param Union['GetActionTemplateCustomScriptActionArgs', 'GetActionTemplateCustomScriptActionArgsDict'] custom_script_action: Custom script action configuration. Required when type is 'customScript'.
-    :param Union['GetActionTemplateDelayActionArgs', 'GetActionTemplateDelayActionArgsDict'] delay_action: Delay action configuration. Required when type is 'delay'.
+    :param Union['GetActionTemplateContainerActionArgs', 'GetActionTemplateContainerActionArgsDict', 'outputs.GetActionTemplateContainerActionResult'] container_action: Container action configuration. Required when type is 'container'.
+    :param Union['GetActionTemplateCustomScriptActionArgs', 'GetActionTemplateCustomScriptActionArgsDict', 'outputs.GetActionTemplateCustomScriptActionResult'] custom_script_action: Custom script action configuration. Required when type is 'customScript'.
+    :param Union['GetActionTemplateDelayActionArgs', 'GetActionTemplateDelayActionArgsDict', 'outputs.GetActionTemplateDelayActionResult'] delay_action: Delay action configuration. Required when type is 'delay'.
     :param _builtins.str description: Description of the action template.
     :param _builtins.str hub_identity: Identity of the chaos hub this action template belongs to.
     :param _builtins.str identity: Unique identifier for the action template (immutable).
@@ -485,10 +485,10 @@ def get_action_template_output(container_action: pulumi.Input[Optional[Optional[
     :param _builtins.str name: Name of the action template.
     :param _builtins.str org_id: Organization identifier.
     :param _builtins.str project_id: Project identifier.
-    :param Union['GetActionTemplateRunPropertiesArgs', 'GetActionTemplateRunPropertiesArgsDict'] run_properties: Run properties for the action template execution.
+    :param Union['GetActionTemplateRunPropertiesArgs', 'GetActionTemplateRunPropertiesArgsDict', 'outputs.GetActionTemplateRunPropertiesResult'] run_properties: Run properties for the action template execution.
     :param Sequence[_builtins.str] tags: Tags to associate with the action template.
     :param _builtins.str type: Type of the action template. Valid values: delay, customScript, container.
-    :param Sequence[Union['GetActionTemplateVariableArgs', 'GetActionTemplateVariableArgsDict']] variables: Template variables that can be used in the action.
+    :param Sequence[Union['GetActionTemplateVariableArgs', 'GetActionTemplateVariableArgsDict', 'outputs.GetActionTemplateVariableResult']] variables: Template variables that can be used in the action.
     """
     __args__ = dict()
     __args__['containerAction'] = container_action

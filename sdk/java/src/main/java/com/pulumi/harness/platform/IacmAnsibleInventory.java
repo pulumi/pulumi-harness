@@ -50,29 +50,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var manual = new IacmAnsibleInventory("manual", IacmAnsibleInventoryArgs.builder()
- *             .identifier("my_inventory")
- *             .name("my-inventory")
- *             .orgId(example.id())
- *             .projectId(exampleHarnessPlatformProject.id())
- *             .type("manual")
- *             .tags("env:prod")
  *             .groups(IacmAnsibleInventoryGroupArgs.builder()
- *                 .identifier("web")
- *                 .name("web")
- *                 .hosts(                
- *                     "web-1.example.com",
- *                     "web-2.example.com")
  *                 .vars(IacmAnsibleInventoryGroupVarArgs.builder()
  *                     .key("ansible_user")
  *                     .value("ubuntu")
  *                     .valueType("string")
  *                     .build())
+ *                 .identifier("web")
+ *                 .name("web")
+ *                 .hosts(                
+ *                     "web-1.example.com",
+ *                     "web-2.example.com")
  *                 .build())
  *             .vars(IacmAnsibleInventoryVarArgs.builder()
  *                 .key("ansible_port")
  *                 .value("22")
  *                 .valueType("string")
  *                 .build())
+ *             .identifier("my_inventory")
+ *             .name("my-inventory")
+ *             .orgId(example.id())
+ *             .projectId(exampleHarnessPlatformProject.id())
+ *             .type("manual")
+ *             .tags("env:prod")
  *             .build());
  * 
  *     }

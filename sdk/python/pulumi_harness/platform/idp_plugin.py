@@ -234,10 +234,10 @@ class IdpPlugin(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  configs: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 env_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpPluginEnvVariableArgs', 'IdpPluginEnvVariableArgsDict']]]]] = None,
+                 env_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpPluginEnvVariableArgs', 'IdpPluginEnvVariableArgsDict', 'outputs.IdpPluginEnvVariable']]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 proxies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpPluginProxyArgs', 'IdpPluginProxyArgsDict']]]]] = None,
+                 proxies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpPluginProxyArgs', 'IdpPluginProxyArgsDict', 'outputs.IdpPluginProxy']]]]] = None,
                  __props__=None):
         """
         Resource for managing IDP plugin configurations.
@@ -257,10 +257,10 @@ class IdpPlugin(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] configs: Backstage YAML configuration for the plugin.
         :param pulumi.Input[_builtins.bool] enabled: Whether the plugin should be enabled. Defaults to true.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpPluginEnvVariableArgs', 'IdpPluginEnvVariableArgsDict']]]] env_variables: Secret environment variables injected into the plugin runtime.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpPluginEnvVariableArgs', 'IdpPluginEnvVariableArgsDict', 'outputs.IdpPluginEnvVariable']]]] env_variables: Secret environment variables injected into the plugin runtime.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the plugin.
         :param pulumi.Input[_builtins.str] name: Display name of the plugin configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpPluginProxyArgs', 'IdpPluginProxyArgsDict']]]] proxies: Delegate-based proxy configuration for outbound HTTP calls.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpPluginProxyArgs', 'IdpPluginProxyArgsDict', 'outputs.IdpPluginProxy']]]] proxies: Delegate-based proxy configuration for outbound HTTP calls.
         """
         ...
     @overload
@@ -299,10 +299,10 @@ class IdpPlugin(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  configs: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 env_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpPluginEnvVariableArgs', 'IdpPluginEnvVariableArgsDict']]]]] = None,
+                 env_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpPluginEnvVariableArgs', 'IdpPluginEnvVariableArgsDict', 'outputs.IdpPluginEnvVariable']]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 proxies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpPluginProxyArgs', 'IdpPluginProxyArgsDict']]]]] = None,
+                 proxies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpPluginProxyArgs', 'IdpPluginProxyArgsDict', 'outputs.IdpPluginProxy']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -334,10 +334,10 @@ class IdpPlugin(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             configs: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            env_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpPluginEnvVariableArgs', 'IdpPluginEnvVariableArgsDict']]]]] = None,
+            env_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpPluginEnvVariableArgs', 'IdpPluginEnvVariableArgsDict', 'outputs.IdpPluginEnvVariable']]]]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            proxies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpPluginProxyArgs', 'IdpPluginProxyArgsDict']]]]] = None) -> 'IdpPlugin':
+            proxies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpPluginProxyArgs', 'IdpPluginProxyArgsDict', 'outputs.IdpPluginProxy']]]]] = None) -> 'IdpPlugin':
         """
         Get an existing IdpPlugin resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -347,10 +347,10 @@ class IdpPlugin(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] configs: Backstage YAML configuration for the plugin.
         :param pulumi.Input[_builtins.bool] enabled: Whether the plugin should be enabled. Defaults to true.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpPluginEnvVariableArgs', 'IdpPluginEnvVariableArgsDict']]]] env_variables: Secret environment variables injected into the plugin runtime.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpPluginEnvVariableArgs', 'IdpPluginEnvVariableArgsDict', 'outputs.IdpPluginEnvVariable']]]] env_variables: Secret environment variables injected into the plugin runtime.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the plugin.
         :param pulumi.Input[_builtins.str] name: Display name of the plugin configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpPluginProxyArgs', 'IdpPluginProxyArgsDict']]]] proxies: Delegate-based proxy configuration for outbound HTTP calls.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpPluginProxyArgs', 'IdpPluginProxyArgsDict', 'outputs.IdpPluginProxy']]]] proxies: Delegate-based proxy configuration for outbound HTTP calls.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

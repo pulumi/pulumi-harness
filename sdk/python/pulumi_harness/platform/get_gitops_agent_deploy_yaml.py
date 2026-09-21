@@ -185,14 +185,14 @@ class AwaitableGetGitopsAgentDeployYamlResult(GetGitopsAgentDeployYamlResult):
 
 
 def get_gitops_agent_deploy_yaml(account_id: Optional[_builtins.str] = None,
-                                 argocd_settings: Optional[Union['GetGitopsAgentDeployYamlArgocdSettingsArgs', 'GetGitopsAgentDeployYamlArgocdSettingsArgsDict']] = None,
+                                 argocd_settings: Optional[Union['GetGitopsAgentDeployYamlArgocdSettingsArgs', 'GetGitopsAgentDeployYamlArgocdSettingsArgsDict', 'outputs.GetGitopsAgentDeployYamlArgocdSettingsResult']] = None,
                                  ca_data: Optional[_builtins.str] = None,
                                  identifier: Optional[_builtins.str] = None,
                                  namespace: Optional[_builtins.str] = None,
                                  org_id: Optional[_builtins.str] = None,
                                  private_key: Optional[_builtins.str] = None,
                                  project_id: Optional[_builtins.str] = None,
-                                 proxies: Optional[Sequence[Union['GetGitopsAgentDeployYamlProxyArgs', 'GetGitopsAgentDeployYamlProxyArgsDict']]] = None,
+                                 proxies: Optional[Sequence[Union['GetGitopsAgentDeployYamlProxyArgs', 'GetGitopsAgentDeployYamlProxyArgsDict', 'outputs.GetGitopsAgentDeployYamlProxyResult']]] = None,
                                  skip_crds: Optional[_builtins.bool] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGitopsAgentDeployYamlResult:
     """
@@ -213,14 +213,14 @@ def get_gitops_agent_deploy_yaml(account_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str account_id: Account identifier of the GitOps agent.
-    :param Union['GetGitopsAgentDeployYamlArgocdSettingsArgs', 'GetGitopsAgentDeployYamlArgocdSettingsArgsDict'] argocd_settings: Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
+    :param Union['GetGitopsAgentDeployYamlArgocdSettingsArgs', 'GetGitopsAgentDeployYamlArgocdSettingsArgsDict', 'outputs.GetGitopsAgentDeployYamlArgocdSettingsResult'] argocd_settings: Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
     :param _builtins.str ca_data: CA data of the GitOps agent, base64 encoded content of ca chain.
     :param _builtins.str identifier: Identifier of the GitOps agent.
     :param _builtins.str namespace: The kubernetes namespace where the agent is installed.
     :param _builtins.str org_id: Organization identifier of the GitOps agent.
     :param _builtins.str private_key: Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
     :param _builtins.str project_id: Project identifier of the GitOps agent.
-    :param Sequence[Union['GetGitopsAgentDeployYamlProxyArgs', 'GetGitopsAgentDeployYamlProxyArgsDict']] proxies: Proxy settings for the GitOps agent.
+    :param Sequence[Union['GetGitopsAgentDeployYamlProxyArgs', 'GetGitopsAgentDeployYamlProxyArgsDict', 'outputs.GetGitopsAgentDeployYamlProxyResult']] proxies: Proxy settings for the GitOps agent.
     :param _builtins.bool skip_crds: Skip CRDs for the GitOps agent.
     """
     __args__ = dict()
@@ -251,14 +251,14 @@ def get_gitops_agent_deploy_yaml(account_id: Optional[_builtins.str] = None,
         skip_crds=pulumi.get(__ret__, 'skip_crds'),
         yaml=pulumi.get(__ret__, 'yaml'))
 def get_gitops_agent_deploy_yaml_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                        argocd_settings: pulumi.Input[Optional[Optional[Union['GetGitopsAgentDeployYamlArgocdSettingsArgs', 'GetGitopsAgentDeployYamlArgocdSettingsArgsDict']]]] = None,
+                                        argocd_settings: pulumi.Input[Optional[Optional[Union['GetGitopsAgentDeployYamlArgocdSettingsArgs', 'GetGitopsAgentDeployYamlArgocdSettingsArgsDict', 'outputs.GetGitopsAgentDeployYamlArgocdSettingsResult']]]] = None,
                                         ca_data: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         identifier: pulumi.Input[Optional[_builtins.str]] = None,
                                         namespace: pulumi.Input[Optional[_builtins.str]] = None,
                                         org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         private_key: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                        proxies: pulumi.Input[Optional[Optional[Sequence[Union['GetGitopsAgentDeployYamlProxyArgs', 'GetGitopsAgentDeployYamlProxyArgsDict']]]]] = None,
+                                        proxies: pulumi.Input[Optional[Optional[Sequence[Union['GetGitopsAgentDeployYamlProxyArgs', 'GetGitopsAgentDeployYamlProxyArgsDict', 'outputs.GetGitopsAgentDeployYamlProxyResult']]]]] = None,
                                         skip_crds: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGitopsAgentDeployYamlResult]:
     """
@@ -279,14 +279,14 @@ def get_gitops_agent_deploy_yaml_output(account_id: pulumi.Input[Optional[Option
 
 
     :param _builtins.str account_id: Account identifier of the GitOps agent.
-    :param Union['GetGitopsAgentDeployYamlArgocdSettingsArgs', 'GetGitopsAgentDeployYamlArgocdSettingsArgsDict'] argocd_settings: Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
+    :param Union['GetGitopsAgentDeployYamlArgocdSettingsArgs', 'GetGitopsAgentDeployYamlArgocdSettingsArgsDict', 'outputs.GetGitopsAgentDeployYamlArgocdSettingsResult'] argocd_settings: Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
     :param _builtins.str ca_data: CA data of the GitOps agent, base64 encoded content of ca chain.
     :param _builtins.str identifier: Identifier of the GitOps agent.
     :param _builtins.str namespace: The kubernetes namespace where the agent is installed.
     :param _builtins.str org_id: Organization identifier of the GitOps agent.
     :param _builtins.str private_key: Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
     :param _builtins.str project_id: Project identifier of the GitOps agent.
-    :param Sequence[Union['GetGitopsAgentDeployYamlProxyArgs', 'GetGitopsAgentDeployYamlProxyArgsDict']] proxies: Proxy settings for the GitOps agent.
+    :param Sequence[Union['GetGitopsAgentDeployYamlProxyArgs', 'GetGitopsAgentDeployYamlProxyArgsDict', 'outputs.GetGitopsAgentDeployYamlProxyResult']] proxies: Proxy settings for the GitOps agent.
     :param _builtins.bool skip_crds: Skip CRDs for the GitOps agent.
     """
     __args__ = dict()

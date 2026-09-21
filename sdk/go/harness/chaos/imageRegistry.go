@@ -33,6 +33,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := chaos.NewImageRegistry(ctx, "example", &chaos.ImageRegistryArgs{
+//				CustomImages: chaos.ImageRegistryCustomImageArray{
+//					&chaos.ImageRegistryCustomImageArgs{
+//						LogWatcher: pulumi.String("<log_watcher_image>"),
+//						Ddcr:       pulumi.String("<ddcr_image>"),
+//						DdcrLib:    pulumi.String("<ddcr_lib_image>"),
+//						DdcrFault:  pulumi.String("<ddcr_fault_image>"),
+//					},
+//				},
 //				OrgId:             pulumi.String("<org_id>"),
 //				ProjectId:         pulumi.String("<project_id>"),
 //				RegistryServer:    pulumi.String("<registry_server>"),
@@ -42,14 +50,6 @@ import (
 //				IsDefault:         pulumi.Bool(false),
 //				IsOverrideAllowed: pulumi.Bool(true),
 //				UseCustomImages:   pulumi.Bool(true),
-//				CustomImages: chaos.ImageRegistryCustomImageArray{
-//					&chaos.ImageRegistryCustomImageArgs{
-//						LogWatcher: pulumi.String("<log_watcher_image>"),
-//						Ddcr:       pulumi.String("<ddcr_image>"),
-//						DdcrLib:    pulumi.String("<ddcr_lib_image>"),
-//						DdcrFault:  pulumi.String("<ddcr_fault_image>"),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err

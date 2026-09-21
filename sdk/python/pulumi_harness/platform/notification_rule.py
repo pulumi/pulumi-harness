@@ -170,7 +170,7 @@ class NotificationRule(pulumi.CustomResource):
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 request: pulumi.Input[Optional[Union['NotificationRuleRequestArgs', 'NotificationRuleRequestArgsDict']]] = None,
+                 request: pulumi.Input[Optional[Union['NotificationRuleRequestArgs', 'NotificationRuleRequestArgsDict', 'outputs.NotificationRuleRequest']]] = None,
                  __props__=None):
         """
         Resource for creating a Notification Rule.
@@ -184,11 +184,7 @@ class NotificationRule(pulumi.CustomResource):
 
         # Sample resource for SLO
         example = harness.platform.NotificationRule("example",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
             request={
-                "name": "name",
                 "notification_method": {
                     "type": "Slack",
                     "spec": json.dumps({
@@ -196,7 +192,6 @@ class NotificationRule(pulumi.CustomResource):
                         "user_groups": ["account.test"],
                     }),
                 },
-                "type": "ServiceLevelObjective",
                 "conditions": [
                     {
                         "type": "ErrorBudgetBurnRate",
@@ -217,14 +212,15 @@ class NotificationRule(pulumi.CustomResource):
                         }),
                     },
                 ],
-            })
-        # Sample resource for Monitored Service
-        example1 = harness.platform.NotificationRule("example1",
+                "name": "name",
+                "type": "ServiceLevelObjective",
+            },
             org_id="org_id",
             project_id="project_id",
-            identifier="identifier",
+            identifier="identifier")
+        # Sample resource for Monitored Service
+        example1 = harness.platform.NotificationRule("example1",
             request={
-                "name": "name",
                 "notification_method": {
                     "type": "Slack",
                     "spec": json.dumps({
@@ -232,7 +228,6 @@ class NotificationRule(pulumi.CustomResource):
                         "user_groups": ["account.test"],
                     }),
                 },
-                "type": "MonitoredService",
                 "conditions": [
                     {
                         "type": "ChangeImpact",
@@ -267,7 +262,12 @@ class NotificationRule(pulumi.CustomResource):
                         "spec": json.dumps({}),
                     },
                 ],
-            })
+                "name": "name",
+                "type": "MonitoredService",
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
         ```
 
         ## Import
@@ -298,7 +298,7 @@ class NotificationRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Identifier of the Notification Rule.
         :param pulumi.Input[_builtins.str] org_id: Identifier of the organization in which the Notification Rule is configured.
         :param pulumi.Input[_builtins.str] project_id: Identifier of the project in which the Notification Rule is configured.
-        :param pulumi.Input[Union['NotificationRuleRequestArgs', 'NotificationRuleRequestArgsDict']] request: Request for creating or updating Notification Rule.
+        :param pulumi.Input[Union['NotificationRuleRequestArgs', 'NotificationRuleRequestArgsDict', 'outputs.NotificationRuleRequest']] request: Request for creating or updating Notification Rule.
         """
         ...
     @overload
@@ -318,11 +318,7 @@ class NotificationRule(pulumi.CustomResource):
 
         # Sample resource for SLO
         example = harness.platform.NotificationRule("example",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
             request={
-                "name": "name",
                 "notification_method": {
                     "type": "Slack",
                     "spec": json.dumps({
@@ -330,7 +326,6 @@ class NotificationRule(pulumi.CustomResource):
                         "user_groups": ["account.test"],
                     }),
                 },
-                "type": "ServiceLevelObjective",
                 "conditions": [
                     {
                         "type": "ErrorBudgetBurnRate",
@@ -351,14 +346,15 @@ class NotificationRule(pulumi.CustomResource):
                         }),
                     },
                 ],
-            })
-        # Sample resource for Monitored Service
-        example1 = harness.platform.NotificationRule("example1",
+                "name": "name",
+                "type": "ServiceLevelObjective",
+            },
             org_id="org_id",
             project_id="project_id",
-            identifier="identifier",
+            identifier="identifier")
+        # Sample resource for Monitored Service
+        example1 = harness.platform.NotificationRule("example1",
             request={
-                "name": "name",
                 "notification_method": {
                     "type": "Slack",
                     "spec": json.dumps({
@@ -366,7 +362,6 @@ class NotificationRule(pulumi.CustomResource):
                         "user_groups": ["account.test"],
                     }),
                 },
-                "type": "MonitoredService",
                 "conditions": [
                     {
                         "type": "ChangeImpact",
@@ -401,7 +396,12 @@ class NotificationRule(pulumi.CustomResource):
                         "spec": json.dumps({}),
                     },
                 ],
-            })
+                "name": "name",
+                "type": "MonitoredService",
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
         ```
 
         ## Import
@@ -445,7 +445,7 @@ class NotificationRule(pulumi.CustomResource):
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 request: pulumi.Input[Optional[Union['NotificationRuleRequestArgs', 'NotificationRuleRequestArgsDict']]] = None,
+                 request: pulumi.Input[Optional[Union['NotificationRuleRequestArgs', 'NotificationRuleRequestArgsDict', 'outputs.NotificationRuleRequest']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -478,7 +478,7 @@ class NotificationRule(pulumi.CustomResource):
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
-            request: pulumi.Input[Optional[Union['NotificationRuleRequestArgs', 'NotificationRuleRequestArgsDict']]] = None) -> 'NotificationRule':
+            request: pulumi.Input[Optional[Union['NotificationRuleRequestArgs', 'NotificationRuleRequestArgsDict', 'outputs.NotificationRuleRequest']]] = None) -> 'NotificationRule':
         """
         Get an existing NotificationRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -489,7 +489,7 @@ class NotificationRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Identifier of the Notification Rule.
         :param pulumi.Input[_builtins.str] org_id: Identifier of the organization in which the Notification Rule is configured.
         :param pulumi.Input[_builtins.str] project_id: Identifier of the project in which the Notification Rule is configured.
-        :param pulumi.Input[Union['NotificationRuleRequestArgs', 'NotificationRuleRequestArgsDict']] request: Request for creating or updating Notification Rule.
+        :param pulumi.Input[Union['NotificationRuleRequestArgs', 'NotificationRuleRequestArgsDict', 'outputs.NotificationRuleRequest']] request: Request for creating or updating Notification Rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

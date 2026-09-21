@@ -29,9 +29,6 @@ namespace Pulumi.Harness
     /// 
     ///     var example = new Harness.EncryptedText("example", new()
     ///     {
-    ///         Name = "example-secret",
-    ///         Value = "someval",
-    ///         SecretManagerId = @default.Apply(@default =&gt; @default.Apply(getSecretManagerResult =&gt; getSecretManagerResult.Id)),
     ///         UsageScopes = new[]
     ///         {
     ///             new Harness.Inputs.EncryptedTextUsageScopeArgs
@@ -43,6 +40,9 @@ namespace Pulumi.Harness
     ///                 EnvironmentFilterType = "NON_PRODUCTION_ENVIRONMENTS",
     ///             },
     ///         },
+    ///         Name = "example-secret",
+    ///         Value = "someval",
+    ///         SecretManagerId = @default.Apply(@default =&gt; @default.Apply(getSecretManagerResult =&gt; getSecretManagerResult.Id)),
     ///     });
     /// 
     /// });

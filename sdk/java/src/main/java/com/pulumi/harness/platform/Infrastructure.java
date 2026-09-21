@@ -46,13 +46,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Infrastructure("example", InfrastructureArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .orgId("orgIdentifer")
- *             .projectId("projectIdentifier")
- *             .envId("environmentIdentifier")
- *             .type("KubernetesDirect")
- *             .deploymentType("Kubernetes")
  *             .gitDetails(InfrastructureGitDetailsArgs.builder()
  *                 .branchName("branchName")
  *                 .commitMessage("commitMessage")
@@ -61,6 +54,13 @@ import javax.annotation.Nullable;
  *                 .storeType("REMOTE")
  *                 .repoName("repoName")
  *                 .build())
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .orgId("orgIdentifer")
+ *             .projectId("projectIdentifier")
+ *             .envId("environmentIdentifier")
+ *             .type("KubernetesDirect")
+ *             .deploymentType("Kubernetes")
  *             .yaml("""
  * infrastructureDefinition:
  *  name: name

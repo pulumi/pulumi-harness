@@ -53,22 +53,34 @@ namespace Pulumi.Harness.Chaos
     ///     // Most common pattern: container action with runtime inputs and defaults
     ///     var containerWithRuntimeInputs = new Harness.Chaos.ActionTemplate("container_with_runtime_inputs", new()
     ///     {
-    ///         OrgId = @this.Id,
-    ///         ProjectId = thisHarnessPlatformProject.Id,
-    ///         HubIdentity = projectLevel.Identity,
-    ///         Identity = "container-action-template",
-    ///         Name = "Container Action Template",
-    ///         Description = "Container action with runtime inputs and defaults",
-    ///         Type = "container",
-    ///         InfrastructureType = "&lt;+input&gt;.default('Kubernetes')",
-    ///         Tags = new[]
-    ///         {
-    ///             "container",
-    ///             "kubernetes",
-    ///             "runtime-inputs",
-    ///         },
     ///         ContainerAction = new Harness.Chaos.Inputs.ActionTemplateContainerActionArgs
     ///         {
+    ///             Resources = new Harness.Chaos.Inputs.ActionTemplateContainerActionResourcesArgs
+    ///             {
+    ///                 Limits = 
+    ///                 {
+    ///                     { "cpu", "500m" },
+    ///                     { "memory", "512Mi" },
+    ///                 },
+    ///                 Requests = 
+    ///                 {
+    ///                     { "cpu", "250m" },
+    ///                     { "memory", "256Mi" },
+    ///                 },
+    ///             },
+    ///             Envs = new[]
+    ///             {
+    ///                 new Harness.Chaos.Inputs.ActionTemplateContainerActionEnvArgs
+    ///                 {
+    ///                     Name = "TEST_VAR",
+    ///                     Value = "&lt;+input&gt;.default('test_value')",
+    ///                 },
+    ///                 new Harness.Chaos.Inputs.ActionTemplateContainerActionEnvArgs
+    ///                 {
+    ///                     Name = "ANOTHER_VAR",
+    ///                     Value = "&lt;+input&gt;.default('another_value')",
+    ///                 },
+    ///             },
     ///             Image = "&lt;+input&gt;.default('busybox:latest')",
     ///             Commands = new[]
     ///             {
@@ -91,32 +103,6 @@ namespace Pulumi.Harness.Chaos
     ///             {
     ///                 { "description", "Chaos container action" },
     ///                 { "owner", "chaos-team" },
-    ///             },
-    ///             Envs = new[]
-    ///             {
-    ///                 new Harness.Chaos.Inputs.ActionTemplateContainerActionEnvArgs
-    ///                 {
-    ///                     Name = "TEST_VAR",
-    ///                     Value = "&lt;+input&gt;.default('test_value')",
-    ///                 },
-    ///                 new Harness.Chaos.Inputs.ActionTemplateContainerActionEnvArgs
-    ///                 {
-    ///                     Name = "ANOTHER_VAR",
-    ///                     Value = "&lt;+input&gt;.default('another_value')",
-    ///                 },
-    ///             },
-    ///             Resources = new Harness.Chaos.Inputs.ActionTemplateContainerActionResourcesArgs
-    ///             {
-    ///                 Limits = 
-    ///                 {
-    ///                     { "cpu", "500m" },
-    ///                     { "memory", "512Mi" },
-    ///                 },
-    ///                 Requests = 
-    ///                 {
-    ///                     { "cpu", "250m" },
-    ///                     { "memory", "256Mi" },
-    ///                 },
     ///             },
     ///         },
     ///         RunProperties = new Harness.Chaos.Inputs.ActionTemplateRunPropertiesArgs
@@ -143,6 +129,20 @@ namespace Pulumi.Harness.Chaos
     ///                 Description = "Kubernetes namespace (runtime input)",
     ///             },
     ///         },
+    ///         OrgId = @this.Id,
+    ///         ProjectId = thisHarnessPlatformProject.Id,
+    ///         HubIdentity = projectLevel.Identity,
+    ///         Identity = "container-action-template",
+    ///         Name = "Container Action Template",
+    ///         Description = "Container action with runtime inputs and defaults",
+    ///         Type = "container",
+    ///         InfrastructureType = "&lt;+input&gt;.default('Kubernetes')",
+    ///         Tags = new[]
+    ///         {
+    ///             "container",
+    ///             "kubernetes",
+    ///             "runtime-inputs",
+    ///         },
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -157,6 +157,14 @@ namespace Pulumi.Harness.Chaos
     ///     // Delay action for adding wait time in experiments
     ///     var delayAction = new Harness.Chaos.ActionTemplate("delay_action", new()
     ///     {
+    ///         DelayAction = new Harness.Chaos.Inputs.ActionTemplateDelayActionArgs
+    ///         {
+    ///             Duration = "&lt;+input&gt;.default('30s')",
+    ///         },
+    ///         RunProperties = new Harness.Chaos.Inputs.ActionTemplateRunPropertiesArgs
+    ///         {
+    ///             Timeout = "60s",
+    ///         },
     ///         OrgId = @this.Id,
     ///         ProjectId = thisHarnessPlatformProject.Id,
     ///         HubIdentity = projectLevel.Identity,
@@ -169,14 +177,6 @@ namespace Pulumi.Harness.Chaos
     ///         {
     ///             "delay",
     ///             "wait",
-    ///         },
-    ///         DelayAction = new Harness.Chaos.Inputs.ActionTemplateDelayActionArgs
-    ///         {
-    ///             Duration = "&lt;+input&gt;.default('30s')",
-    ///         },
-    ///         RunProperties = new Harness.Chaos.Inputs.ActionTemplateRunPropertiesArgs
-    ///         {
-    ///             Timeout = "60s",
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
@@ -192,28 +192,8 @@ namespace Pulumi.Harness.Chaos
     ///     // Custom script action for flexible operations
     ///     var scriptAction = new Harness.Chaos.ActionTemplate("script_action", new()
     ///     {
-    ///         OrgId = @this.Id,
-    ///         ProjectId = thisHarnessPlatformProject.Id,
-    ///         HubIdentity = projectLevel.Identity,
-    ///         Identity = "script-action-template",
-    ///         Name = "Script Action Template",
-    ///         Description = "Custom script action for chaos operations",
-    ///         Type = "script",
-    ///         InfrastructureType = "&lt;+input&gt;.default('Kubernetes')",
-    ///         Tags = new[]
-    ///         {
-    ///             "script",
-    ///             "custom",
-    ///         },
     ///         CustomScriptAction = new Harness.Chaos.Inputs.ActionTemplateCustomScriptActionArgs
     ///         {
-    ///             Script = @"#!/bin/bash
-    /// echo \""Running custom chaos script\""
-    /// echo \""Target: &lt;+input&gt;\""
-    /// sleep 10
-    /// echo \""Script completed\""
-    /// ",
-    ///             Shell = "bash",
     ///             Envs = new[]
     ///             {
     ///                 new Harness.Chaos.Inputs.ActionTemplateCustomScriptActionEnvArgs
@@ -222,6 +202,13 @@ namespace Pulumi.Harness.Chaos
     ///                     Value = "&lt;+input&gt;.default('default-target')",
     ///                 },
     ///             },
+    ///             Script = @"#!/bin/bash
+    /// echo \""Running custom chaos script\""
+    /// echo \""Target: &lt;+input&gt;\""
+    /// sleep 10
+    /// echo \""Script completed\""
+    /// ",
+    ///             Shell = "bash",
     ///         },
     ///         RunProperties = new Harness.Chaos.Inputs.ActionTemplateRunPropertiesArgs
     ///         {
@@ -238,6 +225,19 @@ namespace Pulumi.Harness.Chaos
     ///                 Required = true,
     ///                 Description = "Target resource for the script",
     ///             },
+    ///         },
+    ///         OrgId = @this.Id,
+    ///         ProjectId = thisHarnessPlatformProject.Id,
+    ///         HubIdentity = projectLevel.Identity,
+    ///         Identity = "script-action-template",
+    ///         Name = "Script Action Template",
+    ///         Description = "Custom script action for chaos operations",
+    ///         Type = "script",
+    ///         InfrastructureType = "&lt;+input&gt;.default('Kubernetes')",
+    ///         Tags = new[]
+    ///         {
+    ///             "script",
+    ///             "custom",
     ///         },
     ///     }, new CustomResourceOptions
     ///     {

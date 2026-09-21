@@ -332,11 +332,11 @@ class Aws(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  access_key_id_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 assume_cross_account_role: pulumi.Input[Optional[Union['AwsAssumeCrossAccountRoleArgs', 'AwsAssumeCrossAccountRoleArgsDict']]] = None,
+                 assume_cross_account_role: pulumi.Input[Optional[Union['AwsAssumeCrossAccountRoleArgs', 'AwsAssumeCrossAccountRoleArgsDict', 'outputs.AwsAssumeCrossAccountRole']]] = None,
                  delegate_selector: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_access_key_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AwsUsageScopeArgs', 'AwsUsageScopeArgsDict']]]]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AwsUsageScopeArgs', 'AwsUsageScopeArgsDict', 'outputs.AwsUsageScope']]]]] = None,
                  use_ec2_iam_credentials: pulumi.Input[Optional[_builtins.bool]] = None,
                  use_irsa: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -379,11 +379,11 @@ class Aws(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_key_id: The plain text AWS access key id.
         :param pulumi.Input[_builtins.str] access_key_id_secret_name: The name of the Harness secret containing the AWS access key id
-        :param pulumi.Input[Union['AwsAssumeCrossAccountRoleArgs', 'AwsAssumeCrossAccountRoleArgsDict']] assume_cross_account_role: Configuration for assuming a cross account role.
+        :param pulumi.Input[Union['AwsAssumeCrossAccountRoleArgs', 'AwsAssumeCrossAccountRoleArgsDict', 'outputs.AwsAssumeCrossAccountRole']] assume_cross_account_role: Configuration for assuming a cross account role.
         :param pulumi.Input[_builtins.str] delegate_selector: Select the Delegate to use via one of its Selectors.
         :param pulumi.Input[_builtins.str] name: The name of the cloud provider.
         :param pulumi.Input[_builtins.str] secret_access_key_secret_name: The name of the Harness secret containing the AWS secret access key.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AwsUsageScopeArgs', 'AwsUsageScopeArgsDict']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AwsUsageScopeArgs', 'AwsUsageScopeArgsDict', 'outputs.AwsUsageScope']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
         :param pulumi.Input[_builtins.bool] use_ec2_iam_credentials: Use the EC2 Instance Profile for Service Accounts.
         :param pulumi.Input[_builtins.bool] use_irsa: Use the AWS IAM Role for Service Accounts.
         """
@@ -445,11 +445,11 @@ class Aws(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  access_key_id_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 assume_cross_account_role: pulumi.Input[Optional[Union['AwsAssumeCrossAccountRoleArgs', 'AwsAssumeCrossAccountRoleArgsDict']]] = None,
+                 assume_cross_account_role: pulumi.Input[Optional[Union['AwsAssumeCrossAccountRoleArgs', 'AwsAssumeCrossAccountRoleArgsDict', 'outputs.AwsAssumeCrossAccountRole']]] = None,
                  delegate_selector: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_access_key_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AwsUsageScopeArgs', 'AwsUsageScopeArgsDict']]]]] = None,
+                 usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AwsUsageScopeArgs', 'AwsUsageScopeArgsDict', 'outputs.AwsUsageScope']]]]] = None,
                  use_ec2_iam_credentials: pulumi.Input[Optional[_builtins.bool]] = None,
                  use_irsa: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -482,11 +482,11 @@ class Aws(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
             access_key_id_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
-            assume_cross_account_role: pulumi.Input[Optional[Union['AwsAssumeCrossAccountRoleArgs', 'AwsAssumeCrossAccountRoleArgsDict']]] = None,
+            assume_cross_account_role: pulumi.Input[Optional[Union['AwsAssumeCrossAccountRoleArgs', 'AwsAssumeCrossAccountRoleArgsDict', 'outputs.AwsAssumeCrossAccountRole']]] = None,
             delegate_selector: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             secret_access_key_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
-            usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AwsUsageScopeArgs', 'AwsUsageScopeArgsDict']]]]] = None,
+            usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AwsUsageScopeArgs', 'AwsUsageScopeArgsDict', 'outputs.AwsUsageScope']]]]] = None,
             use_ec2_iam_credentials: pulumi.Input[Optional[_builtins.bool]] = None,
             use_irsa: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Aws':
         """
@@ -498,11 +498,11 @@ class Aws(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_key_id: The plain text AWS access key id.
         :param pulumi.Input[_builtins.str] access_key_id_secret_name: The name of the Harness secret containing the AWS access key id
-        :param pulumi.Input[Union['AwsAssumeCrossAccountRoleArgs', 'AwsAssumeCrossAccountRoleArgsDict']] assume_cross_account_role: Configuration for assuming a cross account role.
+        :param pulumi.Input[Union['AwsAssumeCrossAccountRoleArgs', 'AwsAssumeCrossAccountRoleArgsDict', 'outputs.AwsAssumeCrossAccountRole']] assume_cross_account_role: Configuration for assuming a cross account role.
         :param pulumi.Input[_builtins.str] delegate_selector: Select the Delegate to use via one of its Selectors.
         :param pulumi.Input[_builtins.str] name: The name of the cloud provider.
         :param pulumi.Input[_builtins.str] secret_access_key_secret_name: The name of the Harness secret containing the AWS secret access key.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AwsUsageScopeArgs', 'AwsUsageScopeArgsDict']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AwsUsageScopeArgs', 'AwsUsageScopeArgsDict', 'outputs.AwsUsageScope']]]] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
         :param pulumi.Input[_builtins.bool] use_ec2_iam_credentials: Use the EC2 Instance Profile for Service Accounts.
         :param pulumi.Input[_builtins.bool] use_irsa: Use the AWS IAM Role for Service Accounts.
         """

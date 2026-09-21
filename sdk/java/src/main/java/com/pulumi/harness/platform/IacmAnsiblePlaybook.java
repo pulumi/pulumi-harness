@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.harness.platform.IacmAnsiblePlaybook;
  * import com.pulumi.harness.platform.IacmAnsiblePlaybookArgs;
- * import com.pulumi.harness.platform.inputs.IacmAnsiblePlaybookVarArgs;
  * import com.pulumi.harness.platform.inputs.IacmAnsiblePlaybookEnvVarArgs;
+ * import com.pulumi.harness.platform.inputs.IacmAnsiblePlaybookVarArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -48,6 +48,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new IacmAnsiblePlaybook("example", IacmAnsiblePlaybookArgs.builder()
+ *             .envVars(IacmAnsiblePlaybookEnvVarArgs.builder()
+ *                 .key("ANSIBLE_CONFIG")
+ *                 .value("ansible.cfg")
+ *                 .valueType("string")
+ *                 .build())
+ *             .vars(IacmAnsiblePlaybookVarArgs.builder()
+ *                 .key("environment")
+ *                 .value("production")
+ *                 .valueType("string")
+ *                 .build())
  *             .identifier("my_playbook")
  *             .name("my-playbook")
  *             .orgId(exampleHarnessPlatformOrganization.id())
@@ -58,16 +68,6 @@ import javax.annotation.Nullable;
  *             .repositoryConnector("account.my_github_connector")
  *             .ansibleGalaxy(true)
  *             .tags("env:prod")
- *             .vars(IacmAnsiblePlaybookVarArgs.builder()
- *                 .key("environment")
- *                 .value("production")
- *                 .valueType("string")
- *                 .build())
- *             .envVars(IacmAnsiblePlaybookEnvVarArgs.builder()
- *                 .key("ANSIBLE_CONFIG")
- *                 .value("ansible.cfg")
- *                 .valueType("string")
- *                 .build())
  *             .build());
  * 
  *     }

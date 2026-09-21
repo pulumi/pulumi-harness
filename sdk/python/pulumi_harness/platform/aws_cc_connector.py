@@ -391,7 +391,7 @@ class AwsCCConnector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 cross_account_access: pulumi.Input[Optional[Union['AwsCCConnectorCrossAccountAccessArgs', 'AwsCCConnectorCrossAccountAccessArgsDict']]] = None,
+                 cross_account_access: pulumi.Input[Optional[Union['AwsCCConnectorCrossAccountAccessArgs', 'AwsCCConnectorCrossAccountAccessArgsDict', 'outputs.AwsCCConnectorCrossAccountAccess']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  features_enableds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -412,6 +412,10 @@ class AwsCCConnector(pulumi.CustomResource):
         import pulumi_harness as harness
 
         test = harness.platform.AwsCCConnector("test",
+            cross_account_access={
+                "role_arn": "role_arn",
+                "external_id": "external_id",
+            },
             identifier="identifier",
             name="name",
             description="test",
@@ -423,11 +427,7 @@ class AwsCCConnector(pulumi.CustomResource):
                 "OPTIMIZATION",
                 "VISIBILITY",
                 "BILLING",
-            ],
-            cross_account_access={
-                "role_arn": "role_arn",
-                "external_id": "external_id",
-            })
+            ])
         ```
 
         ## Import
@@ -456,7 +456,7 @@ class AwsCCConnector(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The AWS account id.
-        :param pulumi.Input[Union['AwsCCConnectorCrossAccountAccessArgs', 'AwsCCConnectorCrossAccountAccessArgsDict']] cross_account_access: Harness uses the secure cross-account role to access your AWS account. The role includes a restricted policy to access the cost and usage reports and resources for the sole purpose of cost analysis and cost optimization.
+        :param pulumi.Input[Union['AwsCCConnectorCrossAccountAccessArgs', 'AwsCCConnectorCrossAccountAccessArgsDict', 'outputs.AwsCCConnectorCrossAccountAccess']] cross_account_access: Harness uses the secure cross-account role to access your AWS account. The role includes a restricted policy to access the cost and usage reports and resources for the sole purpose of cost analysis and cost optimization.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] features_enableds: The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -483,6 +483,10 @@ class AwsCCConnector(pulumi.CustomResource):
         import pulumi_harness as harness
 
         test = harness.platform.AwsCCConnector("test",
+            cross_account_access={
+                "role_arn": "role_arn",
+                "external_id": "external_id",
+            },
             identifier="identifier",
             name="name",
             description="test",
@@ -494,11 +498,7 @@ class AwsCCConnector(pulumi.CustomResource):
                 "OPTIMIZATION",
                 "VISIBILITY",
                 "BILLING",
-            ],
-            cross_account_access={
-                "role_arn": "role_arn",
-                "external_id": "external_id",
-            })
+            ])
         ```
 
         ## Import
@@ -540,7 +540,7 @@ class AwsCCConnector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 cross_account_access: pulumi.Input[Optional[Union['AwsCCConnectorCrossAccountAccessArgs', 'AwsCCConnectorCrossAccountAccessArgsDict']]] = None,
+                 cross_account_access: pulumi.Input[Optional[Union['AwsCCConnectorCrossAccountAccessArgs', 'AwsCCConnectorCrossAccountAccessArgsDict', 'outputs.AwsCCConnectorCrossAccountAccess']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  features_enableds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -589,7 +589,7 @@ class AwsCCConnector(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            cross_account_access: pulumi.Input[Optional[Union['AwsCCConnectorCrossAccountAccessArgs', 'AwsCCConnectorCrossAccountAccessArgsDict']]] = None,
+            cross_account_access: pulumi.Input[Optional[Union['AwsCCConnectorCrossAccountAccessArgs', 'AwsCCConnectorCrossAccountAccessArgsDict', 'outputs.AwsCCConnectorCrossAccountAccess']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             features_enableds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -607,7 +607,7 @@ class AwsCCConnector(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: The AWS account id.
-        :param pulumi.Input[Union['AwsCCConnectorCrossAccountAccessArgs', 'AwsCCConnectorCrossAccountAccessArgsDict']] cross_account_access: Harness uses the secure cross-account role to access your AWS account. The role includes a restricted policy to access the cost and usage reports and resources for the sole purpose of cost analysis and cost optimization.
+        :param pulumi.Input[Union['AwsCCConnectorCrossAccountAccessArgs', 'AwsCCConnectorCrossAccountAccessArgsDict', 'outputs.AwsCCConnectorCrossAccountAccess']] cross_account_access: Harness uses the secure cross-account role to access your AWS account. The role includes a restricted policy to access the cost and usage reports and resources for the sole purpose of cost analysis and cost optimization.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] features_enableds: The features enabled for the connector. Valid values are BILLING, OPTIMIZATION, VISIBILITY, GOVERNANCE.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.

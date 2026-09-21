@@ -24,11 +24,6 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var test = new Harness.Platform.TemplateFilters("test", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         Type = "Template",
     ///         FilterProperties = new Harness.Platform.Inputs.TemplateFiltersFilterPropertiesArgs
     ///         {
     ///             Tags = new[]
@@ -37,6 +32,11 @@ namespace Pulumi.Harness.Platform
     ///             },
     ///             FilterType = "Template",
     ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Type = "Template",
     ///         FilterVisibility = "EveryOne",
     ///     });
     /// 

@@ -46,14 +46,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Environment("example", EnvironmentArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .orgId("org_id")
- *             .projectId("project_id")
- *             .tags(            
- *                 "foo:bar",
- *                 "bar:foo")
- *             .type("PreProduction")
  *             .gitDetails(EnvironmentGitDetailsArgs.builder()
  *                 .branchName("branchName")
  *                 .commitMessage("commitMessage")
@@ -62,6 +54,14 @@ import javax.annotation.Nullable;
  *                 .storeType("REMOTE")
  *                 .repoName("repoName")
  *                 .build())
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .tags(            
+ *                 "foo:bar",
+ *                 "bar:foo")
+ *             .type("PreProduction")
  *             .yaml("""
  * environment:
  *    name: name
@@ -111,9 +111,6 @@ import javax.annotation.Nullable;
  * 
  *         //## Importing Environment from Git
  *         var test = new Environment("test", EnvironmentArgs.builder()
- *             .identifier("accEnv")
- *             .name("accEnv")
- *             .type("PreProduction")
  *             .gitDetails(EnvironmentGitDetailsArgs.builder()
  *                 .storeType("REMOTE")
  *                 .connectorRef("account.DoNotDeleteGitX")
@@ -122,6 +119,9 @@ import javax.annotation.Nullable;
  *                 .branch("main")
  *                 .importFromGit(true)
  *                 .build())
+ *             .identifier("accEnv")
+ *             .name("accEnv")
+ *             .type("PreProduction")
  *             .build());
  * 
  *     }

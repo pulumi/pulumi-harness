@@ -361,16 +361,16 @@ class InfraVariableSet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetConnectorArgs', 'InfraVariableSetConnectorArgsDict']]]]] = None,
+                 connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetConnectorArgs', 'InfraVariableSetConnectorArgsDict', 'outputs.InfraVariableSetConnector']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetEnvironmentVariableArgs', 'InfraVariableSetEnvironmentVariableArgsDict']]]]] = None,
+                 environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetEnvironmentVariableArgs', 'InfraVariableSetEnvironmentVariableArgsDict', 'outputs.InfraVariableSetEnvironmentVariable']]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableFileArgs', 'InfraVariableSetTerraformVariableFileArgsDict']]]]] = None,
-                 terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableArgs', 'InfraVariableSetTerraformVariableArgsDict']]]]] = None,
+                 terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableFileArgs', 'InfraVariableSetTerraformVariableFileArgsDict', 'outputs.InfraVariableSetTerraformVariableFile']]]]] = None,
+                 terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableArgs', 'InfraVariableSetTerraformVariableArgsDict', 'outputs.InfraVariableSetTerraformVariable']]]]] = None,
                  __props__=None):
         """
         Resource for managing Variable Sets
@@ -382,11 +382,16 @@ class InfraVariableSet(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.platform.InfraVariableSet("example",
-            identifier="example",
-            name="example",
-            org_id=test["id"],
-            project_id=test_harness_platform_project["id"],
-            description="some description",
+            connectors=[
+                {
+                    "connector_ref": "harness_platform_connector_aws.test.id",
+                    "type": "aws",
+                },
+                {
+                    "connector_ref": "harness_platform_connector_azure.test.id",
+                    "type": "azure",
+                },
+            ],
             environment_variables=[
                 {
                     "key": "key1",
@@ -397,18 +402,6 @@ class InfraVariableSet(pulumi.CustomResource):
                     "key": "key2",
                     "value": "harness_platform_secret_text.test.id",
                     "value_type": "secret",
-                },
-            ],
-            terraform_variables=[
-                {
-                    "key": "key1",
-                    "value": "1111",
-                    "value_type": "string",
-                },
-                {
-                    "key": "key2",
-                    "value": "1111u",
-                    "value_type": "string",
                 },
             ],
             terraform_variable_files=[
@@ -425,16 +418,23 @@ class InfraVariableSet(pulumi.CustomResource):
                     "repository_connector": "harness_platform_connector_github.test.id",
                 },
             ],
-            connectors=[
+            terraform_variables=[
                 {
-                    "connector_ref": "harness_platform_connector_aws.test.id",
-                    "type": "aws",
+                    "key": "key1",
+                    "value": "1111",
+                    "value_type": "string",
                 },
                 {
-                    "connector_ref": "harness_platform_connector_azure.test.id",
-                    "type": "azure",
+                    "key": "key2",
+                    "value": "1111u",
+                    "value_type": "string",
                 },
-            ])
+            ],
+            identifier="example",
+            name="example",
+            org_id=test["id"],
+            project_id=test_harness_platform_project["id"],
+            description="some description")
         ```
 
         ## Import
@@ -462,16 +462,16 @@ class InfraVariableSet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetConnectorArgs', 'InfraVariableSetConnectorArgsDict']]]] connectors: Provider connectors configured on the Variable Set. Only one connector of a type is supported
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetConnectorArgs', 'InfraVariableSetConnectorArgsDict', 'outputs.InfraVariableSetConnector']]]] connectors: Provider connectors configured on the Variable Set. Only one connector of a type is supported
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetEnvironmentVariableArgs', 'InfraVariableSetEnvironmentVariableArgsDict']]]] environment_variables: Environment variables configured on the Variable Set
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetEnvironmentVariableArgs', 'InfraVariableSetEnvironmentVariableArgsDict', 'outputs.InfraVariableSetEnvironmentVariable']]]] environment_variables: Environment variables configured on the Variable Set
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableFileArgs', 'InfraVariableSetTerraformVariableFileArgsDict']]]] terraform_variable_files: Terraform variables files configured on the Variable Set (see below for nested schema)
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableArgs', 'InfraVariableSetTerraformVariableArgsDict']]]] terraform_variables: Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableFileArgs', 'InfraVariableSetTerraformVariableFileArgsDict', 'outputs.InfraVariableSetTerraformVariableFile']]]] terraform_variable_files: Terraform variables files configured on the Variable Set (see below for nested schema)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableArgs', 'InfraVariableSetTerraformVariableArgsDict', 'outputs.InfraVariableSetTerraformVariable']]]] terraform_variables: Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
         """
         ...
     @overload
@@ -489,11 +489,16 @@ class InfraVariableSet(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.platform.InfraVariableSet("example",
-            identifier="example",
-            name="example",
-            org_id=test["id"],
-            project_id=test_harness_platform_project["id"],
-            description="some description",
+            connectors=[
+                {
+                    "connector_ref": "harness_platform_connector_aws.test.id",
+                    "type": "aws",
+                },
+                {
+                    "connector_ref": "harness_platform_connector_azure.test.id",
+                    "type": "azure",
+                },
+            ],
             environment_variables=[
                 {
                     "key": "key1",
@@ -504,18 +509,6 @@ class InfraVariableSet(pulumi.CustomResource):
                     "key": "key2",
                     "value": "harness_platform_secret_text.test.id",
                     "value_type": "secret",
-                },
-            ],
-            terraform_variables=[
-                {
-                    "key": "key1",
-                    "value": "1111",
-                    "value_type": "string",
-                },
-                {
-                    "key": "key2",
-                    "value": "1111u",
-                    "value_type": "string",
                 },
             ],
             terraform_variable_files=[
@@ -532,16 +525,23 @@ class InfraVariableSet(pulumi.CustomResource):
                     "repository_connector": "harness_platform_connector_github.test.id",
                 },
             ],
-            connectors=[
+            terraform_variables=[
                 {
-                    "connector_ref": "harness_platform_connector_aws.test.id",
-                    "type": "aws",
+                    "key": "key1",
+                    "value": "1111",
+                    "value_type": "string",
                 },
                 {
-                    "connector_ref": "harness_platform_connector_azure.test.id",
-                    "type": "azure",
+                    "key": "key2",
+                    "value": "1111u",
+                    "value_type": "string",
                 },
-            ])
+            ],
+            identifier="example",
+            name="example",
+            org_id=test["id"],
+            project_id=test_harness_platform_project["id"],
+            description="some description")
         ```
 
         ## Import
@@ -582,16 +582,16 @@ class InfraVariableSet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetConnectorArgs', 'InfraVariableSetConnectorArgsDict']]]]] = None,
+                 connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetConnectorArgs', 'InfraVariableSetConnectorArgsDict', 'outputs.InfraVariableSetConnector']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetEnvironmentVariableArgs', 'InfraVariableSetEnvironmentVariableArgsDict']]]]] = None,
+                 environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetEnvironmentVariableArgs', 'InfraVariableSetEnvironmentVariableArgsDict', 'outputs.InfraVariableSetEnvironmentVariable']]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableFileArgs', 'InfraVariableSetTerraformVariableFileArgsDict']]]]] = None,
-                 terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableArgs', 'InfraVariableSetTerraformVariableArgsDict']]]]] = None,
+                 terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableFileArgs', 'InfraVariableSetTerraformVariableFileArgsDict', 'outputs.InfraVariableSetTerraformVariableFile']]]]] = None,
+                 terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableArgs', 'InfraVariableSetTerraformVariableArgsDict', 'outputs.InfraVariableSetTerraformVariable']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -623,16 +623,16 @@ class InfraVariableSet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetConnectorArgs', 'InfraVariableSetConnectorArgsDict']]]]] = None,
+            connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetConnectorArgs', 'InfraVariableSetConnectorArgsDict', 'outputs.InfraVariableSetConnector']]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetEnvironmentVariableArgs', 'InfraVariableSetEnvironmentVariableArgsDict']]]]] = None,
+            environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetEnvironmentVariableArgs', 'InfraVariableSetEnvironmentVariableArgsDict', 'outputs.InfraVariableSetEnvironmentVariable']]]]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableFileArgs', 'InfraVariableSetTerraformVariableFileArgsDict']]]]] = None,
-            terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableArgs', 'InfraVariableSetTerraformVariableArgsDict']]]]] = None) -> 'InfraVariableSet':
+            terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableFileArgs', 'InfraVariableSetTerraformVariableFileArgsDict', 'outputs.InfraVariableSetTerraformVariableFile']]]]] = None,
+            terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableArgs', 'InfraVariableSetTerraformVariableArgsDict', 'outputs.InfraVariableSetTerraformVariable']]]]] = None) -> 'InfraVariableSet':
         """
         Get an existing InfraVariableSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -640,16 +640,16 @@ class InfraVariableSet(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetConnectorArgs', 'InfraVariableSetConnectorArgsDict']]]] connectors: Provider connectors configured on the Variable Set. Only one connector of a type is supported
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetConnectorArgs', 'InfraVariableSetConnectorArgsDict', 'outputs.InfraVariableSetConnector']]]] connectors: Provider connectors configured on the Variable Set. Only one connector of a type is supported
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetEnvironmentVariableArgs', 'InfraVariableSetEnvironmentVariableArgsDict']]]] environment_variables: Environment variables configured on the Variable Set
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetEnvironmentVariableArgs', 'InfraVariableSetEnvironmentVariableArgsDict', 'outputs.InfraVariableSetEnvironmentVariable']]]] environment_variables: Environment variables configured on the Variable Set
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableFileArgs', 'InfraVariableSetTerraformVariableFileArgsDict']]]] terraform_variable_files: Terraform variables files configured on the Variable Set (see below for nested schema)
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableArgs', 'InfraVariableSetTerraformVariableArgsDict']]]] terraform_variables: Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableFileArgs', 'InfraVariableSetTerraformVariableFileArgsDict', 'outputs.InfraVariableSetTerraformVariableFile']]]] terraform_variable_files: Terraform variables files configured on the Variable Set (see below for nested schema)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfraVariableSetTerraformVariableArgs', 'InfraVariableSetTerraformVariableArgsDict', 'outputs.InfraVariableSetTerraformVariable']]]] terraform_variables: Terraform variables configured on the Variable Set. Terraform variable keys must be unique within the Variable Set. (see below for nested schema)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

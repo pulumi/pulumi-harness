@@ -39,25 +39,8 @@ import * as utilities from "../utilities";
  * // ----------------------------------------------------------------------------
  * // Basic template with single fault
  * const simpleFault = new harness.chaos.ExperimentTemplate("simple_fault", {
- *     orgId: _this.id,
- *     projectId: thisHarnessPlatformProject.id,
- *     hubIdentity: projectLevel.identity,
- *     identity: "simple-pod-delete",
- *     name: "Simple Pod Delete Experiment",
- *     description: "Basic experiment with single pod delete fault",
- *     tags: [
- *         "kubernetes",
- *         "pod-delete",
- *         "simple",
- *     ],
  *     spec: {
- *         infraType: "KubernetesV2",
  *         faults: [{
- *             identity: "pod-delete",
- *             name: "pod-delete-fault",
- *             revision: "v1",
- *             isEnterprise: true,
- *             authEnabled: false,
  *             values: [
  *                 {
  *                     name: "TARGET_WORKLOAD_KIND",
@@ -72,18 +55,35 @@ import * as utilities from "../utilities";
  *                     value: "<+input>.default('30s')",
  *                 },
  *             ],
+ *             identity: "pod-delete",
+ *             name: "pod-delete-fault",
+ *             revision: "v1",
+ *             isEnterprise: true,
+ *             authEnabled: false,
  *         }],
  *         vertices: [{
- *             name: "pod-delete-vertex",
  *             start: {
  *                 faults: [{
  *                     name: "pod-delete-fault",
  *                 }],
  *             },
  *             end: {},
+ *             name: "pod-delete-vertex",
  *         }],
+ *         infraType: "KubernetesV2",
  *         cleanupPolicy: "delete",
  *     },
+ *     orgId: _this.id,
+ *     projectId: thisHarnessPlatformProject.id,
+ *     hubIdentity: projectLevel.identity,
+ *     identity: "simple-pod-delete",
+ *     name: "Simple Pod Delete Experiment",
+ *     description: "Basic experiment with single pod delete fault",
+ *     tags: [
+ *         "kubernetes",
+ *         "pod-delete",
+ *         "simple",
+ *     ],
  * }, {
  *     dependsOn: [projectLevel],
  * });
@@ -92,35 +92,18 @@ import * as utilities from "../utilities";
  * // ----------------------------------------------------------------------------
  * // Template combining action and fault
  * const withAction = new harness.chaos.ExperimentTemplate("with_action", {
- *     orgId: _this.id,
- *     projectId: thisHarnessPlatformProject.id,
- *     hubIdentity: projectLevel.identity,
- *     identity: "action-and-fault",
- *     name: "Action and Fault Experiment",
- *     description: "Experiment with action before fault",
- *     tags: [
- *         "kubernetes",
- *         "action",
- *         "fault",
- *     ],
  *     spec: {
- *         infraType: "KubernetesV2",
  *         actions: [{
- *             identity: "notification-action",
- *             name: "pre-chaos-notification",
- *             isEnterprise: false,
- *             continueOnCompletion: false,
  *             values: [{
  *                 name: "MESSAGE",
  *                 value: "Starting chaos experiment",
  *             }],
+ *             identity: "notification-action",
+ *             name: "pre-chaos-notification",
+ *             isEnterprise: false,
+ *             continueOnCompletion: false,
  *         }],
  *         faults: [{
- *             identity: "container-kill",
- *             name: "container-kill-fault",
- *             revision: "v1",
- *             isEnterprise: true,
- *             authEnabled: false,
  *             values: [
  *                 {
  *                     name: "TARGET_WORKLOAD_KIND",
@@ -135,29 +118,46 @@ import * as utilities from "../utilities";
  *                     value: "<+input>.default('30s')",
  *                 },
  *             ],
+ *             identity: "container-kill",
+ *             name: "container-kill-fault",
+ *             revision: "v1",
+ *             isEnterprise: true,
+ *             authEnabled: false,
  *         }],
  *         vertices: [
  *             {
- *                 name: "action-vertex",
  *                 start: {
  *                     actions: [{
  *                         name: "pre-chaos-notification",
  *                     }],
  *                 },
  *                 end: {},
+ *                 name: "action-vertex",
  *             },
  *             {
- *                 name: "fault-vertex",
  *                 start: {
  *                     faults: [{
  *                         name: "container-kill-fault",
  *                     }],
  *                 },
  *                 end: {},
+ *                 name: "fault-vertex",
  *             },
  *         ],
+ *         infraType: "KubernetesV2",
  *         cleanupPolicy: "delete",
  *     },
+ *     orgId: _this.id,
+ *     projectId: thisHarnessPlatformProject.id,
+ *     hubIdentity: projectLevel.identity,
+ *     identity: "action-and-fault",
+ *     name: "Action and Fault Experiment",
+ *     description: "Experiment with action before fault",
+ *     tags: [
+ *         "kubernetes",
+ *         "action",
+ *         "fault",
+ *     ],
  * }, {
  *     dependsOn: [projectLevel],
  * });
@@ -166,36 +166,23 @@ import * as utilities from "../utilities";
  * // ----------------------------------------------------------------------------
  * // Complete template with actions, faults, and probes
  * const complex = new harness.chaos.ExperimentTemplate("complex", {
- *     orgId: _this.id,
- *     projectId: thisHarnessPlatformProject.id,
- *     hubIdentity: projectLevel.identity,
- *     identity: "complex-experiment",
- *     name: "Complex Chaos Experiment",
- *     description: "Complete experiment with actions, faults, and probes",
- *     tags: [
- *         "kubernetes",
- *         "complex",
- *         "enterprise",
- *     ],
  *     spec: {
- *         infraType: "KubernetesV2",
+ *         statusCheckTimeouts: {
+ *             delay: 5,
+ *             timeout: 300,
+ *         },
  *         actions: [{
- *             identity: "notification-action",
- *             name: "start-notification",
- *             isEnterprise: false,
- *             continueOnCompletion: false,
  *             values: [{
  *                 name: "MESSAGE",
  *                 value: "Chaos experiment started",
  *             }],
+ *             identity: "notification-action",
+ *             name: "start-notification",
+ *             isEnterprise: false,
+ *             continueOnCompletion: false,
  *         }],
  *         faults: [
  *             {
- *                 identity: "pod-delete",
- *                 name: "pod-delete-fault",
- *                 revision: "v1",
- *                 isEnterprise: true,
- *                 authEnabled: false,
  *                 values: [
  *                     {
  *                         name: "TARGET_WORKLOAD_KIND",
@@ -210,13 +197,13 @@ import * as utilities from "../utilities";
  *                         value: "<+input>.default('30s')",
  *                     },
  *                 ],
- *             },
- *             {
- *                 identity: "pod-network-latency",
- *                 name: "network-latency-fault",
+ *                 identity: "pod-delete",
+ *                 name: "pod-delete-fault",
  *                 revision: "v1",
  *                 isEnterprise: true,
  *                 authEnabled: false,
+ *             },
+ *             {
  *                 values: [
  *                     {
  *                         name: "TARGET_WORKLOAD_KIND",
@@ -231,17 +218,15 @@ import * as utilities from "../utilities";
  *                         value: "<+input>.default('2000')",
  *                     },
  *                 ],
+ *                 identity: "pod-network-latency",
+ *                 name: "network-latency-fault",
+ *                 revision: "v1",
+ *                 isEnterprise: true,
+ *                 authEnabled: false,
  *             },
  *         ],
  *         probes: [
  *             {
- *                 identity: "pod-status-check",
- *                 name: "pod-status-probe",
- *                 revision: Number("v1"),
- *                 isEnterprise: true,
- *                 duration: "30",
- *                 weightage: 10,
- *                 enableDataCollection: false,
  *                 conditionsV2: {
  *                     operator: "AND",
  *                     values: ["true"],
@@ -250,15 +235,15 @@ import * as utilities from "../utilities";
  *                     name: "TARGET_NAMESPACE",
  *                     value: "<+input>",
  *                 }],
- *             },
- *             {
- *                 identity: "http-health-check",
- *                 name: "http-health-probe",
+ *                 identity: "pod-status-check",
+ *                 name: "pod-status-probe",
  *                 revision: Number("v1"),
  *                 isEnterprise: true,
  *                 duration: "30",
  *                 weightage: 10,
  *                 enableDataCollection: false,
+ *             },
+ *             {
  *                 conditionsV2: {
  *                     operator: "OR",
  *                     values: [
@@ -270,20 +255,26 @@ import * as utilities from "../utilities";
  *                     name: "URL",
  *                     value: "<+input>",
  *                 }],
+ *                 identity: "http-health-check",
+ *                 name: "http-health-probe",
+ *                 revision: Number("v1"),
+ *                 isEnterprise: true,
+ *                 duration: "30",
+ *                 weightage: 10,
+ *                 enableDataCollection: false,
  *             },
  *         ],
  *         vertices: [
  *             {
- *                 name: "action-stage",
  *                 start: {
  *                     actions: [{
  *                         name: "start-notification",
  *                     }],
  *                 },
  *                 end: {},
+ *                 name: "action-stage",
  *             },
  *             {
- *                 name: "fault-stage",
  *                 start: {
  *                     faults: [
  *                         {
@@ -303,19 +294,28 @@ import * as utilities from "../utilities";
  *                     ],
  *                 },
  *                 end: {},
+ *                 name: "fault-stage",
  *             },
  *             {
- *                 name: "cleanup-stage",
  *                 start: {},
  *                 end: {},
+ *                 name: "cleanup-stage",
  *             },
  *         ],
+ *         infraType: "KubernetesV2",
  *         cleanupPolicy: "delete",
- *         statusCheckTimeouts: {
- *             delay: 5,
- *             timeout: 300,
- *         },
  *     },
+ *     orgId: _this.id,
+ *     projectId: thisHarnessPlatformProject.id,
+ *     hubIdentity: projectLevel.identity,
+ *     identity: "complex-experiment",
+ *     name: "Complex Chaos Experiment",
+ *     description: "Complete experiment with actions, faults, and probes",
+ *     tags: [
+ *         "kubernetes",
+ *         "complex",
+ *         "enterprise",
+ *     ],
  * }, {
  *     dependsOn: [projectLevel],
  * });

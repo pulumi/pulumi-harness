@@ -90,7 +90,7 @@ class AwaitableGetSecretManagerResult(GetSecretManagerResult):
 def get_secret_manager(default: Optional[_builtins.bool] = None,
                        id: Optional[_builtins.str] = None,
                        name: Optional[_builtins.str] = None,
-                       usage_scopes: Optional[Sequence[Union['GetSecretManagerUsageScopeArgs', 'GetSecretManagerUsageScopeArgsDict']]] = None,
+                       usage_scopes: Optional[Sequence[Union['GetSecretManagerUsageScopeArgs', 'GetSecretManagerUsageScopeArgsDict', 'outputs.GetSecretManagerUsageScopeResult']]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretManagerResult:
     """
     Data source for retrieving a Harness secret manager
@@ -99,7 +99,7 @@ def get_secret_manager(default: Optional[_builtins.bool] = None,
     :param _builtins.bool default: True to lookup the id of the default secret manager
     :param _builtins.str id: Unique identifier of the secret manager
     :param _builtins.str name: The name of the secret manager
-    :param Sequence[Union['GetSecretManagerUsageScopeArgs', 'GetSecretManagerUsageScopeArgsDict']] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
+    :param Sequence[Union['GetSecretManagerUsageScopeArgs', 'GetSecretManagerUsageScopeArgsDict', 'outputs.GetSecretManagerUsageScopeResult']] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
     """
     __args__ = dict()
     __args__['default'] = default
@@ -117,7 +117,7 @@ def get_secret_manager(default: Optional[_builtins.bool] = None,
 def get_secret_manager_output(default: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                               id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                              usage_scopes: pulumi.Input[Optional[Optional[Sequence[Union['GetSecretManagerUsageScopeArgs', 'GetSecretManagerUsageScopeArgsDict']]]]] = None,
+                              usage_scopes: pulumi.Input[Optional[Optional[Sequence[Union['GetSecretManagerUsageScopeArgs', 'GetSecretManagerUsageScopeArgsDict', 'outputs.GetSecretManagerUsageScopeResult']]]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretManagerResult]:
     """
     Data source for retrieving a Harness secret manager
@@ -126,7 +126,7 @@ def get_secret_manager_output(default: pulumi.Input[Optional[Optional[_builtins.
     :param _builtins.bool default: True to lookup the id of the default secret manager
     :param _builtins.str id: Unique identifier of the secret manager
     :param _builtins.str name: The name of the secret manager
-    :param Sequence[Union['GetSecretManagerUsageScopeArgs', 'GetSecretManagerUsageScopeArgsDict']] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
+    :param Sequence[Union['GetSecretManagerUsageScopeArgs', 'GetSecretManagerUsageScopeArgsDict', 'outputs.GetSecretManagerUsageScopeResult']] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
     """
     __args__ = dict()
     __args__['default'] = default

@@ -24,16 +24,16 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var test = new Harness.Platform.Variables("test", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         Type = "String",
     ///         Spec = new Harness.Platform.Inputs.VariablesSpecArgs
     ///         {
     ///             ValueType = "FIXED",
     ///             FixedValue = "fixedValue",
     ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Type = "String",
     ///     });
     /// 
     /// });

@@ -8565,22 +8565,20 @@ public final class PlatformFunctions {
      *     public static void stack(Context ctx) {
      *         // data source for gitops clusters mapped to a project level env
      *         final var example = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
-     *             .identifier("mycustomidentifier")
-     *             .orgId("orgIdentifer")
-     *             .projectId("projectIdentifier")
-     *             .envId("exampleEnvId")
      *             .clusters(GetEnvironmentClustersMappingClusterArgs.builder()
      *                 .identifier("incluster")
      *                 .name("in-cluster")
      *                 .agentIdentifier("account.gitopsagentdev")
      *                 .scope("ACCOUNT")
      *                 .build())
+     *             .identifier("mycustomidentifier")
+     *             .orgId("orgIdentifer")
+     *             .projectId("projectIdentifier")
+     *             .envId("exampleEnvId")
      *             .build());
      * 
      *         // data source for two gitops clusters mapped to an account level env
      *         final var example2 = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
-     *             .identifier("mycustomidentifier")
-     *             .envId("env1")
      *             .clusters(            
      *                 GetEnvironmentClustersMappingClusterArgs.builder()
      *                     .identifier("clusterA")
@@ -8594,6 +8592,8 @@ public final class PlatformFunctions {
      *                     .agentIdentifier("account.gitopsagentprod")
      *                     .scope("ACCOUNT")
      *                     .build())
+     *             .identifier("mycustomidentifier")
+     *             .envId("env1")
      *             .build());
      * 
      *     }
@@ -8635,22 +8635,20 @@ public final class PlatformFunctions {
      *     public static void stack(Context ctx) {
      *         // data source for gitops clusters mapped to a project level env
      *         final var example = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
-     *             .identifier("mycustomidentifier")
-     *             .orgId("orgIdentifer")
-     *             .projectId("projectIdentifier")
-     *             .envId("exampleEnvId")
      *             .clusters(GetEnvironmentClustersMappingClusterArgs.builder()
      *                 .identifier("incluster")
      *                 .name("in-cluster")
      *                 .agentIdentifier("account.gitopsagentdev")
      *                 .scope("ACCOUNT")
      *                 .build())
+     *             .identifier("mycustomidentifier")
+     *             .orgId("orgIdentifer")
+     *             .projectId("projectIdentifier")
+     *             .envId("exampleEnvId")
      *             .build());
      * 
      *         // data source for two gitops clusters mapped to an account level env
      *         final var example2 = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
-     *             .identifier("mycustomidentifier")
-     *             .envId("env1")
      *             .clusters(            
      *                 GetEnvironmentClustersMappingClusterArgs.builder()
      *                     .identifier("clusterA")
@@ -8664,6 +8662,8 @@ public final class PlatformFunctions {
      *                     .agentIdentifier("account.gitopsagentprod")
      *                     .scope("ACCOUNT")
      *                     .build())
+     *             .identifier("mycustomidentifier")
+     *             .envId("env1")
      *             .build());
      * 
      *     }
@@ -8705,22 +8705,20 @@ public final class PlatformFunctions {
      *     public static void stack(Context ctx) {
      *         // data source for gitops clusters mapped to a project level env
      *         final var example = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
-     *             .identifier("mycustomidentifier")
-     *             .orgId("orgIdentifer")
-     *             .projectId("projectIdentifier")
-     *             .envId("exampleEnvId")
      *             .clusters(GetEnvironmentClustersMappingClusterArgs.builder()
      *                 .identifier("incluster")
      *                 .name("in-cluster")
      *                 .agentIdentifier("account.gitopsagentdev")
      *                 .scope("ACCOUNT")
      *                 .build())
+     *             .identifier("mycustomidentifier")
+     *             .orgId("orgIdentifer")
+     *             .projectId("projectIdentifier")
+     *             .envId("exampleEnvId")
      *             .build());
      * 
      *         // data source for two gitops clusters mapped to an account level env
      *         final var example2 = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
-     *             .identifier("mycustomidentifier")
-     *             .envId("env1")
      *             .clusters(            
      *                 GetEnvironmentClustersMappingClusterArgs.builder()
      *                     .identifier("clusterA")
@@ -8734,6 +8732,8 @@ public final class PlatformFunctions {
      *                     .agentIdentifier("account.gitopsagentprod")
      *                     .scope("ACCOUNT")
      *                     .build())
+     *             .identifier("mycustomidentifier")
+     *             .envId("env1")
      *             .build());
      * 
      *     }
@@ -8775,22 +8775,20 @@ public final class PlatformFunctions {
      *     public static void stack(Context ctx) {
      *         // data source for gitops clusters mapped to a project level env
      *         final var example = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
-     *             .identifier("mycustomidentifier")
-     *             .orgId("orgIdentifer")
-     *             .projectId("projectIdentifier")
-     *             .envId("exampleEnvId")
      *             .clusters(GetEnvironmentClustersMappingClusterArgs.builder()
      *                 .identifier("incluster")
      *                 .name("in-cluster")
      *                 .agentIdentifier("account.gitopsagentdev")
      *                 .scope("ACCOUNT")
      *                 .build())
+     *             .identifier("mycustomidentifier")
+     *             .orgId("orgIdentifer")
+     *             .projectId("projectIdentifier")
+     *             .envId("exampleEnvId")
      *             .build());
      * 
      *         // data source for two gitops clusters mapped to an account level env
      *         final var example2 = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
-     *             .identifier("mycustomidentifier")
-     *             .envId("env1")
      *             .clusters(            
      *                 GetEnvironmentClustersMappingClusterArgs.builder()
      *                     .identifier("clusterA")
@@ -8804,6 +8802,8 @@ public final class PlatformFunctions {
      *                     .agentIdentifier("account.gitopsagentprod")
      *                     .scope("ACCOUNT")
      *                     .build())
+     *             .identifier("mycustomidentifier")
+     *             .envId("env1")
      *             .build());
      * 
      *     }
@@ -8845,22 +8845,20 @@ public final class PlatformFunctions {
      *     public static void stack(Context ctx) {
      *         // data source for gitops clusters mapped to a project level env
      *         final var example = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
-     *             .identifier("mycustomidentifier")
-     *             .orgId("orgIdentifer")
-     *             .projectId("projectIdentifier")
-     *             .envId("exampleEnvId")
      *             .clusters(GetEnvironmentClustersMappingClusterArgs.builder()
      *                 .identifier("incluster")
      *                 .name("in-cluster")
      *                 .agentIdentifier("account.gitopsagentdev")
      *                 .scope("ACCOUNT")
      *                 .build())
+     *             .identifier("mycustomidentifier")
+     *             .orgId("orgIdentifer")
+     *             .projectId("projectIdentifier")
+     *             .envId("exampleEnvId")
      *             .build());
      * 
      *         // data source for two gitops clusters mapped to an account level env
      *         final var example2 = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
-     *             .identifier("mycustomidentifier")
-     *             .envId("env1")
      *             .clusters(            
      *                 GetEnvironmentClustersMappingClusterArgs.builder()
      *                     .identifier("clusterA")
@@ -8874,6 +8872,8 @@ public final class PlatformFunctions {
      *                     .agentIdentifier("account.gitopsagentprod")
      *                     .scope("ACCOUNT")
      *                     .build())
+     *             .identifier("mycustomidentifier")
+     *             .envId("env1")
      *             .build());
      * 
      *     }
@@ -19549,15 +19549,15 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = PlatformFunctions.getPolicySet(GetPolicySetArgs.builder()
+     *             .policyReferences(GetPolicySetPolicyReferenceArgs.builder()
+     *                 .identifier("always_run")
+     *                 .severity("warning")
+     *                 .build())
      *             .identifier("harness_platform_policyset.test.identifier")
      *             .name("harness_platform_policyset.test.name")
      *             .action("onrun")
      *             .type("pipeline")
      *             .enabled(true)
-     *             .policyReferences(GetPolicySetPolicyReferenceArgs.builder()
-     *                 .identifier("always_run")
-     *                 .severity("warning")
-     *                 .build())
      *             .build());
      * 
      *     }
@@ -19598,15 +19598,15 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = PlatformFunctions.getPolicySet(GetPolicySetArgs.builder()
+     *             .policyReferences(GetPolicySetPolicyReferenceArgs.builder()
+     *                 .identifier("always_run")
+     *                 .severity("warning")
+     *                 .build())
      *             .identifier("harness_platform_policyset.test.identifier")
      *             .name("harness_platform_policyset.test.name")
      *             .action("onrun")
      *             .type("pipeline")
      *             .enabled(true)
-     *             .policyReferences(GetPolicySetPolicyReferenceArgs.builder()
-     *                 .identifier("always_run")
-     *                 .severity("warning")
-     *                 .build())
      *             .build());
      * 
      *     }
@@ -19647,15 +19647,15 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = PlatformFunctions.getPolicySet(GetPolicySetArgs.builder()
+     *             .policyReferences(GetPolicySetPolicyReferenceArgs.builder()
+     *                 .identifier("always_run")
+     *                 .severity("warning")
+     *                 .build())
      *             .identifier("harness_platform_policyset.test.identifier")
      *             .name("harness_platform_policyset.test.name")
      *             .action("onrun")
      *             .type("pipeline")
      *             .enabled(true)
-     *             .policyReferences(GetPolicySetPolicyReferenceArgs.builder()
-     *                 .identifier("always_run")
-     *                 .severity("warning")
-     *                 .build())
      *             .build());
      * 
      *     }
@@ -19696,15 +19696,15 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = PlatformFunctions.getPolicySet(GetPolicySetArgs.builder()
+     *             .policyReferences(GetPolicySetPolicyReferenceArgs.builder()
+     *                 .identifier("always_run")
+     *                 .severity("warning")
+     *                 .build())
      *             .identifier("harness_platform_policyset.test.identifier")
      *             .name("harness_platform_policyset.test.name")
      *             .action("onrun")
      *             .type("pipeline")
      *             .enabled(true)
-     *             .policyReferences(GetPolicySetPolicyReferenceArgs.builder()
-     *                 .identifier("always_run")
-     *                 .severity("warning")
-     *                 .build())
      *             .build());
      * 
      *     }
@@ -19745,15 +19745,15 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = PlatformFunctions.getPolicySet(GetPolicySetArgs.builder()
+     *             .policyReferences(GetPolicySetPolicyReferenceArgs.builder()
+     *                 .identifier("always_run")
+     *                 .severity("warning")
+     *                 .build())
      *             .identifier("harness_platform_policyset.test.identifier")
      *             .name("harness_platform_policyset.test.name")
      *             .action("onrun")
      *             .type("pipeline")
      *             .enabled(true)
-     *             .policyReferences(GetPolicySetPolicyReferenceArgs.builder()
-     *                 .identifier("always_run")
-     *                 .severity("warning")
-     *                 .build())
      *             .build());
      * 
      *     }

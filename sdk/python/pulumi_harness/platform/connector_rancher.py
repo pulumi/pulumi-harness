@@ -360,7 +360,7 @@ class ConnectorRancher(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bearer_token: pulumi.Input[Optional[Union['ConnectorRancherBearerTokenArgs', 'ConnectorRancherBearerTokenArgsDict']]] = None,
+                 bearer_token: pulumi.Input[Optional[Union['ConnectorRancherBearerTokenArgs', 'ConnectorRancherBearerTokenArgsDict', 'outputs.ConnectorRancherBearerToken']]] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -381,15 +381,15 @@ class ConnectorRancher(pulumi.CustomResource):
         import pulumi_harness as harness
 
         bearer_token = harness.platform.KubernetesConnector("bearer_token",
+            bearer_token=[{
+                "bearerTokenRef": "account.test_rancher_bearer_token",
+            }],
             identifier="identifier",
             name="name",
             description="description",
             tags=["foo:bar"],
             delegate_selectors=["harness-delegate"],
-            rancher_url="https://rancher.cluster.example",
-            bearer_token=[{
-                "bearerTokenRef": "account.test_rancher_bearer_token",
-            }])
+            rancher_url="https://rancher.cluster.example")
         ```
 
         ## Import
@@ -417,7 +417,7 @@ class ConnectorRancher(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectorRancherBearerTokenArgs', 'ConnectorRancherBearerTokenArgsDict']] bearer_token: Bearer token information for the rancher cluster.
+        :param pulumi.Input[Union['ConnectorRancherBearerTokenArgs', 'ConnectorRancherBearerTokenArgsDict', 'outputs.ConnectorRancherBearerToken']] bearer_token: Bearer token information for the rancher cluster.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Selectors to use for the delegate.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of connector
@@ -444,15 +444,15 @@ class ConnectorRancher(pulumi.CustomResource):
         import pulumi_harness as harness
 
         bearer_token = harness.platform.KubernetesConnector("bearer_token",
+            bearer_token=[{
+                "bearerTokenRef": "account.test_rancher_bearer_token",
+            }],
             identifier="identifier",
             name="name",
             description="description",
             tags=["foo:bar"],
             delegate_selectors=["harness-delegate"],
-            rancher_url="https://rancher.cluster.example",
-            bearer_token=[{
-                "bearerTokenRef": "account.test_rancher_bearer_token",
-            }])
+            rancher_url="https://rancher.cluster.example")
         ```
 
         ## Import
@@ -493,7 +493,7 @@ class ConnectorRancher(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bearer_token: pulumi.Input[Optional[Union['ConnectorRancherBearerTokenArgs', 'ConnectorRancherBearerTokenArgsDict']]] = None,
+                 bearer_token: pulumi.Input[Optional[Union['ConnectorRancherBearerTokenArgs', 'ConnectorRancherBearerTokenArgsDict', 'outputs.ConnectorRancherBearerToken']]] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -536,7 +536,7 @@ class ConnectorRancher(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bearer_token: pulumi.Input[Optional[Union['ConnectorRancherBearerTokenArgs', 'ConnectorRancherBearerTokenArgsDict']]] = None,
+            bearer_token: pulumi.Input[Optional[Union['ConnectorRancherBearerTokenArgs', 'ConnectorRancherBearerTokenArgsDict', 'outputs.ConnectorRancherBearerToken']]] = None,
             delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -553,7 +553,7 @@ class ConnectorRancher(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ConnectorRancherBearerTokenArgs', 'ConnectorRancherBearerTokenArgsDict']] bearer_token: Bearer token information for the rancher cluster.
+        :param pulumi.Input[Union['ConnectorRancherBearerTokenArgs', 'ConnectorRancherBearerTokenArgsDict', 'outputs.ConnectorRancherBearerToken']] bearer_token: Bearer token information for the rancher cluster.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Selectors to use for the delegate.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of connector

@@ -359,7 +359,7 @@ class NexusConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: pulumi.Input[Optional[Union['NexusConnectorCredentialsArgs', 'NexusConnectorCredentialsArgsDict']]] = None,
+                 credentials: pulumi.Input[Optional[Union['NexusConnectorCredentialsArgs', 'NexusConnectorCredentialsArgsDict', 'outputs.NexusConnectorCredentials']]] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -398,7 +398,7 @@ class NexusConnector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NexusConnectorCredentialsArgs', 'NexusConnectorCredentialsArgsDict']] credentials: Credentials to use for authentication.
+        :param pulumi.Input[Union['NexusConnectorCredentialsArgs', 'NexusConnectorCredentialsArgsDict', 'outputs.NexusConnectorCredentials']] credentials: Credentials to use for authentication.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -456,7 +456,7 @@ class NexusConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials: pulumi.Input[Optional[Union['NexusConnectorCredentialsArgs', 'NexusConnectorCredentialsArgsDict']]] = None,
+                 credentials: pulumi.Input[Optional[Union['NexusConnectorCredentialsArgs', 'NexusConnectorCredentialsArgsDict', 'outputs.NexusConnectorCredentials']]] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -501,7 +501,7 @@ class NexusConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            credentials: pulumi.Input[Optional[Union['NexusConnectorCredentialsArgs', 'NexusConnectorCredentialsArgsDict']]] = None,
+            credentials: pulumi.Input[Optional[Union['NexusConnectorCredentialsArgs', 'NexusConnectorCredentialsArgsDict', 'outputs.NexusConnectorCredentials']]] = None,
             delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -518,7 +518,7 @@ class NexusConnector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NexusConnectorCredentialsArgs', 'NexusConnectorCredentialsArgsDict']] credentials: Credentials to use for authentication.
+        :param pulumi.Input[Union['NexusConnectorCredentialsArgs', 'NexusConnectorCredentialsArgsDict', 'outputs.NexusConnectorCredentials']] credentials: Credentials to use for authentication.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.

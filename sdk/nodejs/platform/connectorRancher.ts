@@ -16,15 +16,15 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const bearerToken = new harness.platform.KubernetesConnector("bearer_token", {
+ *     bearerToken: [{
+ *         bearerTokenRef: "account.test_rancher_bearer_token",
+ *     }],
  *     identifier: "identifier",
  *     name: "name",
  *     description: "description",
  *     tags: ["foo:bar"],
  *     delegateSelectors: ["harness-delegate"],
  *     rancherUrl: "https://rancher.cluster.example",
- *     bearerToken: [{
- *         bearerTokenRef: "account.test_rancher_bearer_token",
- *     }],
  * });
  * ```
  *

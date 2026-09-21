@@ -36,6 +36,30 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewResourceGroup(ctx, "example", &platform.ResourceGroupArgs{
+//				IncludedScopes: platform.ResourceGroupIncludedScopeArray{
+//					&platform.ResourceGroupIncludedScopeArgs{
+//						Filter:    pulumi.String("EXCLUDING_CHILD_SCOPES"),
+//						AccountId: pulumi.String("account_id"),
+//					},
+//				},
+//				ResourceFilters: platform.ResourceGroupResourceFilterArray{
+//					&platform.ResourceGroupResourceFilterArgs{
+//						Resources: platform.ResourceGroupResourceFilterResourceArray{
+//							&platform.ResourceGroupResourceFilterResourceArgs{
+//								AttributeFilters: platform.ResourceGroupResourceFilterResourceAttributeFilterArray{
+//									&platform.ResourceGroupResourceFilterResourceAttributeFilterArgs{
+//										AttributeName: pulumi.String("category"),
+//										AttributeValues: pulumi.StringArray{
+//											pulumi.String("CLOUD_COST"),
+//										},
+//									},
+//								},
+//								ResourceType: pulumi.String("CONNECTOR"),
+//							},
+//						},
+//						IncludeAllResources: pulumi.Bool(false),
+//					},
+//				},
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
@@ -45,30 +69,6 @@ import (
 //				AccountId: pulumi.String("account_id"),
 //				AllowedScopeLevels: pulumi.StringArray{
 //					pulumi.String("account"),
-//				},
-//				IncludedScopes: platform.ResourceGroupIncludedScopeArray{
-//					&platform.ResourceGroupIncludedScopeArgs{
-//						Filter:    pulumi.String("EXCLUDING_CHILD_SCOPES"),
-//						AccountId: pulumi.String("account_id"),
-//					},
-//				},
-//				ResourceFilters: platform.ResourceGroupResourceFilterArray{
-//					&platform.ResourceGroupResourceFilterArgs{
-//						IncludeAllResources: pulumi.Bool(false),
-//						Resources: platform.ResourceGroupResourceFilterResourceArray{
-//							&platform.ResourceGroupResourceFilterResourceArgs{
-//								ResourceType: pulumi.String("CONNECTOR"),
-//								AttributeFilters: platform.ResourceGroupResourceFilterResourceAttributeFilterArray{
-//									&platform.ResourceGroupResourceFilterResourceAttributeFilterArgs{
-//										AttributeName: pulumi.String("category"),
-//										AttributeValues: pulumi.StringArray{
-//											pulumi.String("CLOUD_COST"),
-//										},
-//									},
-//								},
-//							},
-//						},
-//					},
 //				},
 //			})
 //			if err != nil {
@@ -220,12 +220,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewResourceGroup(ctx, "static_example", &platform.ResourceGroupArgs{
-//				Identifier: pulumi.String("static_rg"),
-//				Name:       pulumi.String("Static Resource Group"),
-//				AccountId:  pulumi.String("account_id"),
-//				AllowedScopeLevels: pulumi.StringArray{
-//					pulumi.String("account"),
-//				},
 //				IncludedScopes: platform.ResourceGroupIncludedScopeArray{
 //					&platform.ResourceGroupIncludedScopeArgs{
 //						Filter:    pulumi.String("EXCLUDING_CHILD_SCOPES"),
@@ -234,7 +228,6 @@ import (
 //				},
 //				ResourceFilters: platform.ResourceGroupResourceFilterArray{
 //					&platform.ResourceGroupResourceFilterArgs{
-//						IncludeAllResources: pulumi.Bool(false),
 //						Resources: platform.ResourceGroupResourceFilterResourceArray{
 //							&platform.ResourceGroupResourceFilterResourceArgs{
 //								ResourceType: pulumi.String("PIPELINE"),
@@ -244,7 +237,14 @@ import (
 //								},
 //							},
 //						},
+//						IncludeAllResources: pulumi.Bool(false),
 //					},
+//				},
+//				Identifier: pulumi.String("static_rg"),
+//				Name:       pulumi.String("Static Resource Group"),
+//				AccountId:  pulumi.String("account_id"),
+//				AllowedScopeLevels: pulumi.StringArray{
+//					pulumi.String("account"),
 //				},
 //			})
 //			if err != nil {
@@ -273,13 +273,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewResourceGroup(ctx, "all_resources_account", &platform.ResourceGroupArgs{
-//				Identifier:  pulumi.String("all_resources_account"),
-//				Name:        pulumi.String("All Resources - Account Level"),
-//				Description: pulumi.String("Includes all resources at the account scope"),
-//				AccountId:   pulumi.String("account_id"),
-//				AllowedScopeLevels: pulumi.StringArray{
-//					pulumi.String("account"),
-//				},
 //				IncludedScopes: platform.ResourceGroupIncludedScopeArray{
 //					&platform.ResourceGroupIncludedScopeArgs{
 //						Filter:    pulumi.String("EXCLUDING_CHILD_SCOPES"),
@@ -290,6 +283,13 @@ import (
 //					&platform.ResourceGroupResourceFilterArgs{
 //						IncludeAllResources: pulumi.Bool(true),
 //					},
+//				},
+//				Identifier:  pulumi.String("all_resources_account"),
+//				Name:        pulumi.String("All Resources - Account Level"),
+//				Description: pulumi.String("Includes all resources at the account scope"),
+//				AccountId:   pulumi.String("account_id"),
+//				AllowedScopeLevels: pulumi.StringArray{
+//					pulumi.String("account"),
 //				},
 //			})
 //			if err != nil {
@@ -318,12 +318,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewResourceGroup(ctx, "dynamic_example", &platform.ResourceGroupArgs{
-//				Identifier: pulumi.String("dynamic_rg"),
-//				Name:       pulumi.String("Dynamic Resource Group"),
-//				AccountId:  pulumi.String("account_id"),
-//				AllowedScopeLevels: pulumi.StringArray{
-//					pulumi.String("account"),
-//				},
 //				IncludedScopes: platform.ResourceGroupIncludedScopeArray{
 //					&platform.ResourceGroupIncludedScopeArgs{
 //						Filter:    pulumi.String("INCLUDING_CHILD_SCOPES"),
@@ -332,13 +326,19 @@ import (
 //				},
 //				ResourceFilters: platform.ResourceGroupResourceFilterArray{
 //					&platform.ResourceGroupResourceFilterArgs{
-//						IncludeAllResources: pulumi.Bool(false),
 //						Resources: platform.ResourceGroupResourceFilterResourceArray{
 //							&platform.ResourceGroupResourceFilterResourceArgs{
 //								ResourceType: pulumi.String("PIPELINE"),
 //							},
 //						},
+//						IncludeAllResources: pulumi.Bool(false),
 //					},
+//				},
+//				Identifier: pulumi.String("dynamic_rg"),
+//				Name:       pulumi.String("Dynamic Resource Group"),
+//				AccountId:  pulumi.String("account_id"),
+//				AllowedScopeLevels: pulumi.StringArray{
+//					pulumi.String("account"),
 //				},
 //			})
 //			if err != nil {

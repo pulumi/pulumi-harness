@@ -551,7 +551,7 @@ class DiscoveryAgent(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiscoveryAgentConfigArgs', 'DiscoveryAgentConfigArgsDict']]]]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiscoveryAgentConfigArgs', 'DiscoveryAgentConfigArgsDict', 'outputs.DiscoveryAgentConfig']]]]] = None,
                  correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
                  environment_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  infra_identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -574,18 +574,18 @@ class DiscoveryAgent(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.service.DiscoveryAgent("example",
+            configs=[{
+                "kubernetes": [{
+                    "namespace": "harness-sd",
+                }],
+                "collector_image": "harness/service-discovery-collector:main-latest",
+                "log_watcher_image": "harness/chaos-log-watcher:main-latest",
+            }],
             name="ExampleAgent",
             org_identifier="your_org_id",
             project_identifier="your_project_id",
             environment_identifier="your_environment_id",
-            infra_identifier="your_infra_id",
-            configs=[{
-                "collector_image": "harness/service-discovery-collector:main-latest",
-                "log_watcher_image": "harness/chaos-log-watcher:main-latest",
-                "kubernetes": [{
-                    "namespace": "harness-sd",
-                }],
-            }])
+            infra_identifier="your_infra_id")
         ```
 
         ### Additional Examples
@@ -596,60 +596,54 @@ class DiscoveryAgent(pulumi.CustomResource):
 
         # Create a new service discovery agent with minimal configuration
         example = harness.service.DiscoveryAgent("example",
+            configs=[{
+                "kubernetes": [{
+                    "namespace": "harness-sd",
+                }],
+            }],
             name="example-agent",
             org_identifier=org_identifier,
             project_identifier=project_identifier,
             environment_identifier=environment_identifier,
-            infra_identifier="example-infra",
+            infra_identifier="example-infra")
+        # Create a new service discovery agent with node agent enabled
+        node_agent = harness.service.DiscoveryAgent("node_agent",
             configs=[{
+                "datas": [{
+                    "enable_node_agent": True,
+                }],
                 "kubernetes": [{
                     "namespace": "harness-sd",
                 }],
-            }])
-        # Create a new service discovery agent with node agent enabled
-        node_agent = harness.service.DiscoveryAgent("node_agent",
+            }],
             name="node-agent-example",
             org_identifier=org_identifier,
             project_identifier=project_identifier,
             environment_identifier=environment_identifier,
-            infra_identifier="node-agent-example",
-            configs=[{
-                "kubernetes": [{
-                    "namespace": "harness-sd",
-                }],
-                "datas": [{
-                    "enable_node_agent": True,
-                }],
-            }])
+            infra_identifier="node-agent-example")
         # Create a new service discovery agent with full configuration
         full_config = harness.service.DiscoveryAgent("full_config",
-            name="full-config-example",
-            org_identifier=org_identifier,
-            project_identifier=project_identifier,
-            environment_identifier=environment_identifier,
-            infra_identifier="full-config-example",
-            permanent_installation=False,
-            correlation_id="full-config-correlation-123",
             configs=[{
-                "collector_image": "harness/service-discovery-collector:main-latest",
-                "log_watcher_image": "harness/chaos-log-watcher:main-latest",
-                "skip_secure_verify": False,
+                "datas": [{
+                    "crons": [{
+                        "expression": "0/10 * * * *",
+                    }],
+                    "enable_node_agent": True,
+                    "node_agent_selector": "node-role.kubernetes.io/worker=",
+                    "enable_batch_resources": True,
+                    "enable_orphaned_pod": True,
+                    "namespace_selector": "environment=dev",
+                    "collection_window_in_min": 15,
+                    "blacklisted_namespaces": [
+                        "kube-system",
+                        "kube-public",
+                    ],
+                    "observed_namespaces": [
+                        "default",
+                        "harness",
+                    ],
+                }],
                 "kubernetes": [{
-                    "namespace": "harness-sd",
-                    "service_account": "harness-sd-sa",
-                    "image_pull_policy": "IfNotPresent",
-                    "run_as_user": 2000,
-                    "run_as_group": 2000,
-                    "labels": {
-                        "app": "service-discovery",
-                        "env": "dev",
-                    },
-                    "annotations": {
-                        "example.com/annotation": "value",
-                    },
-                    "node_selector": {
-                        "kubernetes.io/os": "linux",
-                    },
                     "resources": [{
                         "limits": {
                             "cpu": "500m",
@@ -666,25 +660,21 @@ class DiscoveryAgent(pulumi.CustomResource):
                         "value": "value1",
                         "effect": "NoSchedule",
                     }],
-                }],
-                "datas": [{
-                    "enable_node_agent": True,
-                    "node_agent_selector": "node-role.kubernetes.io/worker=",
-                    "enable_batch_resources": True,
-                    "enable_orphaned_pod": True,
-                    "namespace_selector": "environment=dev",
-                    "collection_window_in_min": 15,
-                    "blacklisted_namespaces": [
-                        "kube-system",
-                        "kube-public",
-                    ],
-                    "observed_namespaces": [
-                        "default",
-                        "harness",
-                    ],
-                    "crons": [{
-                        "expression": "0/10 * * * *",
-                    }],
+                    "namespace": "harness-sd",
+                    "service_account": "harness-sd-sa",
+                    "image_pull_policy": "IfNotPresent",
+                    "run_as_user": 2000,
+                    "run_as_group": 2000,
+                    "labels": {
+                        "app": "service-discovery",
+                        "env": "dev",
+                    },
+                    "annotations": {
+                        "example.com/annotation": "value",
+                    },
+                    "node_selector": {
+                        "kubernetes.io/os": "linux",
+                    },
                 }],
                 "mtls": [{
                     "cert_path": "/etc/certs/tls.crt",
@@ -698,7 +688,17 @@ class DiscoveryAgent(pulumi.CustomResource):
                     "no_proxy": "localhost,127.0.0.1,.svc,.cluster.local",
                     "url": "https://proxy.example.com",
                 }],
-            }])
+                "collector_image": "harness/service-discovery-collector:main-latest",
+                "log_watcher_image": "harness/chaos-log-watcher:main-latest",
+                "skip_secure_verify": False,
+            }],
+            name="full-config-example",
+            org_identifier=org_identifier,
+            project_identifier=project_identifier,
+            environment_identifier=environment_identifier,
+            infra_identifier="full-config-example",
+            permanent_installation=False,
+            correlation_id="full-config-correlation-123")
         ```
 
         ## Import
@@ -714,7 +714,7 @@ class DiscoveryAgent(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DiscoveryAgentConfigArgs', 'DiscoveryAgentConfigArgsDict']]]] configs: Configuration for the agent. This is a required field.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DiscoveryAgentConfigArgs', 'DiscoveryAgentConfigArgsDict', 'outputs.DiscoveryAgentConfig']]]] configs: Configuration for the agent. This is a required field.
         :param pulumi.Input[_builtins.str] correlation_id: Correlation ID for the agent.
         :param pulumi.Input[_builtins.str] environment_identifier: The environment identifier of the agent. This is a required field.
         :param pulumi.Input[_builtins.str] infra_identifier: The infrastructure identifier of the agent. This is a required field.
@@ -743,18 +743,18 @@ class DiscoveryAgent(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.service.DiscoveryAgent("example",
+            configs=[{
+                "kubernetes": [{
+                    "namespace": "harness-sd",
+                }],
+                "collector_image": "harness/service-discovery-collector:main-latest",
+                "log_watcher_image": "harness/chaos-log-watcher:main-latest",
+            }],
             name="ExampleAgent",
             org_identifier="your_org_id",
             project_identifier="your_project_id",
             environment_identifier="your_environment_id",
-            infra_identifier="your_infra_id",
-            configs=[{
-                "collector_image": "harness/service-discovery-collector:main-latest",
-                "log_watcher_image": "harness/chaos-log-watcher:main-latest",
-                "kubernetes": [{
-                    "namespace": "harness-sd",
-                }],
-            }])
+            infra_identifier="your_infra_id")
         ```
 
         ### Additional Examples
@@ -765,60 +765,54 @@ class DiscoveryAgent(pulumi.CustomResource):
 
         # Create a new service discovery agent with minimal configuration
         example = harness.service.DiscoveryAgent("example",
+            configs=[{
+                "kubernetes": [{
+                    "namespace": "harness-sd",
+                }],
+            }],
             name="example-agent",
             org_identifier=org_identifier,
             project_identifier=project_identifier,
             environment_identifier=environment_identifier,
-            infra_identifier="example-infra",
+            infra_identifier="example-infra")
+        # Create a new service discovery agent with node agent enabled
+        node_agent = harness.service.DiscoveryAgent("node_agent",
             configs=[{
+                "datas": [{
+                    "enable_node_agent": True,
+                }],
                 "kubernetes": [{
                     "namespace": "harness-sd",
                 }],
-            }])
-        # Create a new service discovery agent with node agent enabled
-        node_agent = harness.service.DiscoveryAgent("node_agent",
+            }],
             name="node-agent-example",
             org_identifier=org_identifier,
             project_identifier=project_identifier,
             environment_identifier=environment_identifier,
-            infra_identifier="node-agent-example",
-            configs=[{
-                "kubernetes": [{
-                    "namespace": "harness-sd",
-                }],
-                "datas": [{
-                    "enable_node_agent": True,
-                }],
-            }])
+            infra_identifier="node-agent-example")
         # Create a new service discovery agent with full configuration
         full_config = harness.service.DiscoveryAgent("full_config",
-            name="full-config-example",
-            org_identifier=org_identifier,
-            project_identifier=project_identifier,
-            environment_identifier=environment_identifier,
-            infra_identifier="full-config-example",
-            permanent_installation=False,
-            correlation_id="full-config-correlation-123",
             configs=[{
-                "collector_image": "harness/service-discovery-collector:main-latest",
-                "log_watcher_image": "harness/chaos-log-watcher:main-latest",
-                "skip_secure_verify": False,
+                "datas": [{
+                    "crons": [{
+                        "expression": "0/10 * * * *",
+                    }],
+                    "enable_node_agent": True,
+                    "node_agent_selector": "node-role.kubernetes.io/worker=",
+                    "enable_batch_resources": True,
+                    "enable_orphaned_pod": True,
+                    "namespace_selector": "environment=dev",
+                    "collection_window_in_min": 15,
+                    "blacklisted_namespaces": [
+                        "kube-system",
+                        "kube-public",
+                    ],
+                    "observed_namespaces": [
+                        "default",
+                        "harness",
+                    ],
+                }],
                 "kubernetes": [{
-                    "namespace": "harness-sd",
-                    "service_account": "harness-sd-sa",
-                    "image_pull_policy": "IfNotPresent",
-                    "run_as_user": 2000,
-                    "run_as_group": 2000,
-                    "labels": {
-                        "app": "service-discovery",
-                        "env": "dev",
-                    },
-                    "annotations": {
-                        "example.com/annotation": "value",
-                    },
-                    "node_selector": {
-                        "kubernetes.io/os": "linux",
-                    },
                     "resources": [{
                         "limits": {
                             "cpu": "500m",
@@ -835,25 +829,21 @@ class DiscoveryAgent(pulumi.CustomResource):
                         "value": "value1",
                         "effect": "NoSchedule",
                     }],
-                }],
-                "datas": [{
-                    "enable_node_agent": True,
-                    "node_agent_selector": "node-role.kubernetes.io/worker=",
-                    "enable_batch_resources": True,
-                    "enable_orphaned_pod": True,
-                    "namespace_selector": "environment=dev",
-                    "collection_window_in_min": 15,
-                    "blacklisted_namespaces": [
-                        "kube-system",
-                        "kube-public",
-                    ],
-                    "observed_namespaces": [
-                        "default",
-                        "harness",
-                    ],
-                    "crons": [{
-                        "expression": "0/10 * * * *",
-                    }],
+                    "namespace": "harness-sd",
+                    "service_account": "harness-sd-sa",
+                    "image_pull_policy": "IfNotPresent",
+                    "run_as_user": 2000,
+                    "run_as_group": 2000,
+                    "labels": {
+                        "app": "service-discovery",
+                        "env": "dev",
+                    },
+                    "annotations": {
+                        "example.com/annotation": "value",
+                    },
+                    "node_selector": {
+                        "kubernetes.io/os": "linux",
+                    },
                 }],
                 "mtls": [{
                     "cert_path": "/etc/certs/tls.crt",
@@ -867,7 +857,17 @@ class DiscoveryAgent(pulumi.CustomResource):
                     "no_proxy": "localhost,127.0.0.1,.svc,.cluster.local",
                     "url": "https://proxy.example.com",
                 }],
-            }])
+                "collector_image": "harness/service-discovery-collector:main-latest",
+                "log_watcher_image": "harness/chaos-log-watcher:main-latest",
+                "skip_secure_verify": False,
+            }],
+            name="full-config-example",
+            org_identifier=org_identifier,
+            project_identifier=project_identifier,
+            environment_identifier=environment_identifier,
+            infra_identifier="full-config-example",
+            permanent_installation=False,
+            correlation_id="full-config-correlation-123")
         ```
 
         ## Import
@@ -896,7 +896,7 @@ class DiscoveryAgent(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiscoveryAgentConfigArgs', 'DiscoveryAgentConfigArgsDict']]]]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiscoveryAgentConfigArgs', 'DiscoveryAgentConfigArgsDict', 'outputs.DiscoveryAgentConfig']]]]] = None,
                  correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
                  environment_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  infra_identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -953,7 +953,7 @@ class DiscoveryAgent(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiscoveryAgentConfigArgs', 'DiscoveryAgentConfigArgsDict']]]]] = None,
+            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiscoveryAgentConfigArgs', 'DiscoveryAgentConfigArgsDict', 'outputs.DiscoveryAgentConfig']]]]] = None,
             correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
@@ -961,7 +961,7 @@ class DiscoveryAgent(pulumi.CustomResource):
             environment_identifier: pulumi.Input[Optional[_builtins.str]] = None,
             identity: pulumi.Input[Optional[_builtins.str]] = None,
             infra_identifier: pulumi.Input[Optional[_builtins.str]] = None,
-            installation_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiscoveryAgentInstallationDetailArgs', 'DiscoveryAgentInstallationDetailArgsDict']]]]] = None,
+            installation_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiscoveryAgentInstallationDetailArgs', 'DiscoveryAgentInstallationDetailArgsDict', 'outputs.DiscoveryAgentInstallationDetail']]]]] = None,
             installation_type: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network_map_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -982,7 +982,7 @@ class DiscoveryAgent(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DiscoveryAgentConfigArgs', 'DiscoveryAgentConfigArgsDict']]]] configs: Configuration for the agent. This is a required field.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DiscoveryAgentConfigArgs', 'DiscoveryAgentConfigArgsDict', 'outputs.DiscoveryAgentConfig']]]] configs: Configuration for the agent. This is a required field.
         :param pulumi.Input[_builtins.str] correlation_id: Correlation ID for the agent.
         :param pulumi.Input[_builtins.str] created_at: Timestamp when the agent was created.
         :param pulumi.Input[_builtins.str] created_by: User who created the agent.
@@ -990,7 +990,7 @@ class DiscoveryAgent(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] environment_identifier: The environment identifier of the agent. This is a required field.
         :param pulumi.Input[_builtins.str] identity: The unique identity of the agent.
         :param pulumi.Input[_builtins.str] infra_identifier: The infrastructure identifier of the agent. This is a required field.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DiscoveryAgentInstallationDetailArgs', 'DiscoveryAgentInstallationDetailArgsDict']]]] installation_details: Installation details of the agent.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DiscoveryAgentInstallationDetailArgs', 'DiscoveryAgentInstallationDetailArgsDict', 'outputs.DiscoveryAgentInstallationDetail']]]] installation_details: Installation details of the agent.
         :param pulumi.Input[_builtins.str] installation_type: Type of installation for the agent.
         :param pulumi.Input[_builtins.str] name: The name of the agent. This is a required field.
         :param pulumi.Input[_builtins.int] network_map_count: Number of network maps associated with this agent.

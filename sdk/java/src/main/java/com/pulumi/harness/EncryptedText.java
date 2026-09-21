@@ -52,9 +52,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new EncryptedText("example", EncryptedTextArgs.builder()
- *             .name("example-secret")
- *             .value("someval")
- *             .secretManagerId(default_.id())
  *             .usageScopes(            
  *                 EncryptedTextUsageScopeArgs.builder()
  *                     .environmentFilterType("PRODUCTION_ENVIRONMENTS")
@@ -62,6 +59,9 @@ import javax.annotation.Nullable;
  *                 EncryptedTextUsageScopeArgs.builder()
  *                     .environmentFilterType("NON_PRODUCTION_ENVIRONMENTS")
  *                     .build())
+ *             .name("example-secret")
+ *             .value("someval")
+ *             .secretManagerId(default_.id())
  *             .build());
  * 
  *     }

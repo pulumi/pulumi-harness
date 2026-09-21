@@ -394,7 +394,7 @@ class PrometheusConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrometheusConnectorHeaderArgs', 'PrometheusConnectorHeaderArgsDict']]]]] = None,
+                 headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrometheusConnectorHeaderArgs', 'PrometheusConnectorHeaderArgsDict', 'outputs.PrometheusConnectorHeader']]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -414,6 +414,12 @@ class PrometheusConnector(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.platform.PrometheusConnector("example",
+            headers=[{
+                "encrypted_value_ref": "account.secret_identifier",
+                "value_encrypted": True,
+                "key": "key",
+                "value": "value",
+            }],
             identifier="idntifier",
             name="name",
             description="test",
@@ -421,13 +427,7 @@ class PrometheusConnector(pulumi.CustomResource):
             url="https://prometheus.com/",
             delegate_selectors=["harness-delegate"],
             user_name="user_name",
-            password_ref="account.secret_identifier",
-            headers=[{
-                "encrypted_value_ref": "account.secret_identifier",
-                "value_encrypted": True,
-                "key": "key",
-                "value": "value",
-            }])
+            password_ref="account.secret_identifier")
         ```
 
         ## Import
@@ -457,7 +457,7 @@ class PrometheusConnector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PrometheusConnectorHeaderArgs', 'PrometheusConnectorHeaderArgsDict']]]] headers: Headers.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrometheusConnectorHeaderArgs', 'PrometheusConnectorHeaderArgsDict', 'outputs.PrometheusConnectorHeader']]]] headers: Headers.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -483,6 +483,12 @@ class PrometheusConnector(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.platform.PrometheusConnector("example",
+            headers=[{
+                "encrypted_value_ref": "account.secret_identifier",
+                "value_encrypted": True,
+                "key": "key",
+                "value": "value",
+            }],
             identifier="idntifier",
             name="name",
             description="test",
@@ -490,13 +496,7 @@ class PrometheusConnector(pulumi.CustomResource):
             url="https://prometheus.com/",
             delegate_selectors=["harness-delegate"],
             user_name="user_name",
-            password_ref="account.secret_identifier",
-            headers=[{
-                "encrypted_value_ref": "account.secret_identifier",
-                "value_encrypted": True,
-                "key": "key",
-                "value": "value",
-            }])
+            password_ref="account.secret_identifier")
         ```
 
         ## Import
@@ -539,7 +539,7 @@ class PrometheusConnector(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrometheusConnectorHeaderArgs', 'PrometheusConnectorHeaderArgsDict']]]]] = None,
+                 headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrometheusConnectorHeaderArgs', 'PrometheusConnectorHeaderArgsDict', 'outputs.PrometheusConnectorHeader']]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -584,7 +584,7 @@ class PrometheusConnector(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrometheusConnectorHeaderArgs', 'PrometheusConnectorHeaderArgsDict']]]]] = None,
+            headers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrometheusConnectorHeaderArgs', 'PrometheusConnectorHeaderArgsDict', 'outputs.PrometheusConnectorHeader']]]]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -602,7 +602,7 @@ class PrometheusConnector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PrometheusConnectorHeaderArgs', 'PrometheusConnectorHeaderArgsDict']]]] headers: Headers.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PrometheusConnectorHeaderArgs', 'PrometheusConnectorHeaderArgsDict', 'outputs.PrometheusConnectorHeader']]]] headers: Headers.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.

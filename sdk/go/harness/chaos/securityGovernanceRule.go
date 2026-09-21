@@ -30,6 +30,17 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// K8s Rule
 //			_, err := chaos.NewSecurityGovernanceRule(ctx, "example", &chaos.SecurityGovernanceRuleArgs{
+//				TimeWindows: chaos.SecurityGovernanceRuleTimeWindowArray{
+//					&chaos.SecurityGovernanceRuleTimeWindowArgs{
+//						Recurrence: &chaos.SecurityGovernanceRuleTimeWindowRecurrenceArgs{
+//							Type:  pulumi.String("Daily"),
+//							Until: pulumi.Int(-1),
+//						},
+//						TimeZone:  pulumi.String("UTC"),
+//						StartTime: pulumi.Int(1711238400000),
+//						Duration:  pulumi.String("24h"),
+//					},
+//				},
 //				OrgId:       pulumi.String("<org_id>"),
 //				ProjectId:   pulumi.String("<project_id>"),
 //				Name:        pulumi.String("<name>"),
@@ -44,17 +55,6 @@ import (
 //				Tags: pulumi.StringArray{
 //					pulumi.String("<tag1>"),
 //					pulumi.String("<tag2>"),
-//				},
-//				TimeWindows: chaos.SecurityGovernanceRuleTimeWindowArray{
-//					&chaos.SecurityGovernanceRuleTimeWindowArgs{
-//						TimeZone:  pulumi.String("UTC"),
-//						StartTime: pulumi.Int(1711238400000),
-//						Duration:  pulumi.String("24h"),
-//						Recurrence: &chaos.SecurityGovernanceRuleTimeWindowRecurrenceArgs{
-//							Type:  pulumi.String("Daily"),
-//							Until: pulumi.Int(-1),
-//						},
-//					},
 //				},
 //			})
 //			if err != nil {
@@ -62,6 +62,17 @@ import (
 //			}
 //			// Linux Rule
 //			_, err = chaos.NewSecurityGovernanceRule(ctx, "linux_rule", &chaos.SecurityGovernanceRuleArgs{
+//				TimeWindows: chaos.SecurityGovernanceRuleTimeWindowArray{
+//					&chaos.SecurityGovernanceRuleTimeWindowArgs{
+//						Recurrence: &chaos.SecurityGovernanceRuleTimeWindowRecurrenceArgs{
+//							Type:  pulumi.String("Daily"),
+//							Until: pulumi.Int(-1),
+//						},
+//						TimeZone:  pulumi.String("UTC"),
+//						StartTime: pulumi.Int(1711238400000),
+//						Duration:  pulumi.String("24h"),
+//					},
+//				},
 //				OrgId:       pulumi.String("<org_id>"),
 //				ProjectId:   pulumi.String("<project_id>"),
 //				Name:        pulumi.String("<name>"),
@@ -76,17 +87,6 @@ import (
 //				Tags: pulumi.StringArray{
 //					pulumi.String("<tag1>"),
 //					pulumi.String("<tag2>"),
-//				},
-//				TimeWindows: chaos.SecurityGovernanceRuleTimeWindowArray{
-//					&chaos.SecurityGovernanceRuleTimeWindowArgs{
-//						TimeZone:  pulumi.String("UTC"),
-//						StartTime: pulumi.Int(1711238400000),
-//						Duration:  pulumi.String("24h"),
-//						Recurrence: &chaos.SecurityGovernanceRuleTimeWindowRecurrenceArgs{
-//							Type:  pulumi.String("Daily"),
-//							Until: pulumi.Int(-1),
-//						},
-//					},
 //				},
 //			})
 //			if err != nil {
@@ -94,6 +94,17 @@ import (
 //			}
 //			// Windows Rule
 //			_, err = chaos.NewSecurityGovernanceRule(ctx, "windows_rule", &chaos.SecurityGovernanceRuleArgs{
+//				TimeWindows: chaos.SecurityGovernanceRuleTimeWindowArray{
+//					&chaos.SecurityGovernanceRuleTimeWindowArgs{
+//						Recurrence: &chaos.SecurityGovernanceRuleTimeWindowRecurrenceArgs{
+//							Type:  pulumi.String("Daily"),
+//							Until: pulumi.Int(-1),
+//						},
+//						TimeZone:  pulumi.String("UTC"),
+//						StartTime: pulumi.Int(1711238400000),
+//						Duration:  pulumi.String("24h"),
+//					},
+//				},
 //				OrgId:       pulumi.String("<org_id>"),
 //				ProjectId:   pulumi.String("<project_id>"),
 //				Name:        pulumi.String("<name>"),
@@ -108,17 +119,6 @@ import (
 //				Tags: pulumi.StringArray{
 //					pulumi.String("<tag1>"),
 //					pulumi.String("<tag2>"),
-//				},
-//				TimeWindows: chaos.SecurityGovernanceRuleTimeWindowArray{
-//					&chaos.SecurityGovernanceRuleTimeWindowArgs{
-//						TimeZone:  pulumi.String("UTC"),
-//						StartTime: pulumi.Int(1711238400000),
-//						Duration:  pulumi.String("24h"),
-//						Recurrence: &chaos.SecurityGovernanceRuleTimeWindowRecurrenceArgs{
-//							Type:  pulumi.String("Daily"),
-//							Until: pulumi.Int(-1),
-//						},
-//					},
 //				},
 //			})
 //			if err != nil {

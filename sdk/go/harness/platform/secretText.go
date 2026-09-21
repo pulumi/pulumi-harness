@@ -62,15 +62,6 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewSecretText(ctx, "gcp_secret_manager_reference", &platform.SecretTextArgs{
-//				Identifier:  pulumi.String("identifier"),
-//				Name:        pulumi.String("name"),
-//				Description: pulumi.String("example"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//				SecretManagerIdentifier: pulumi.String("gcpSecretManager"),
-//				ValueType:               pulumi.String("Reference"),
-//				Value:                   pulumi.String("secret"),
 //				AdditionalMetadatas: platform.SecretTextAdditionalMetadataArray{
 //					&platform.SecretTextAdditionalMetadataArgs{
 //						Values: platform.SecretTextAdditionalMetadataValueArray{
@@ -80,12 +71,6 @@ import (
 //						},
 //					},
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// GCP Secret Manager with project ID and region (for secrets in a different GCP project)
-//			_, err = platform.NewSecretText(ctx, "gcp_secret_manager_with_project", &platform.SecretTextArgs{
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("example"),
@@ -93,8 +78,14 @@ import (
 //					pulumi.String("foo:bar"),
 //				},
 //				SecretManagerIdentifier: pulumi.String("gcpSecretManager"),
-//				ValueType:               pulumi.String("Inline"),
+//				ValueType:               pulumi.String("Reference"),
 //				Value:                   pulumi.String("secret"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// GCP Secret Manager with project ID and region (for secrets in a different GCP project)
+//			_, err = platform.NewSecretText(ctx, "gcp_secret_manager_with_project", &platform.SecretTextArgs{
 //				AdditionalMetadatas: platform.SecretTextAdditionalMetadataArray{
 //					&platform.SecretTextAdditionalMetadataArgs{
 //						Values: platform.SecretTextAdditionalMetadataValueArray{
@@ -105,20 +96,20 @@ import (
 //						},
 //					},
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = platform.NewSecretText(ctx, "aws_secret_manager", &platform.SecretTextArgs{
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("example"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //				},
-//				SecretManagerIdentifier: pulumi.String("awsSecretManager"),
+//				SecretManagerIdentifier: pulumi.String("gcpSecretManager"),
 //				ValueType:               pulumi.String("Inline"),
 //				Value:                   pulumi.String("secret"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewSecretText(ctx, "aws_secret_manager", &platform.SecretTextArgs{
 //				AdditionalMetadatas: platform.SecretTextAdditionalMetadataArray{
 //					&platform.SecretTextAdditionalMetadataArgs{
 //						Values: platform.SecretTextAdditionalMetadataValueArray{
@@ -128,6 +119,15 @@ import (
 //						},
 //					},
 //				},
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("example"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				SecretManagerIdentifier: pulumi.String("awsSecretManager"),
+//				ValueType:               pulumi.String("Inline"),
+//				Value:                   pulumi.String("secret"),
 //			})
 //			if err != nil {
 //				return err

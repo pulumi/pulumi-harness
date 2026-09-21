@@ -29,7 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := autostopping.NewAlert(ctx, "specific-rule-alert", &autostopping.AlertArgs{
-//				Name: pulumi.String("demo-alert"),
 //				Recipients: &autostopping.AlertRecipientsArgs{
 //					Emails: pulumi.StringArray{
 //						pulumi.String("user1@example.com"),
@@ -40,6 +39,7 @@ import (
 //						pulumi.String("slack-web-hook-2"),
 //					},
 //				},
+//				Name: pulumi.String("demo-alert"),
 //				Events: pulumi.StringArray{
 //					pulumi.String("autostopping_rule_created"),
 //					pulumi.String("autostopping_rule_updated"),
@@ -55,7 +55,6 @@ import (
 //				return err
 //			}
 //			_, err = autostopping.NewAlert(ctx, "all-rule-alert", &autostopping.AlertArgs{
-//				Name: pulumi.String("demo-alert"),
 //				Recipients: &autostopping.AlertRecipientsArgs{
 //					Emails: pulumi.StringArray{
 //						pulumi.String("user1@example.com"),
@@ -66,6 +65,7 @@ import (
 //						pulumi.String("slack-web-hook-2"),
 //					},
 //				},
+//				Name: pulumi.String("demo-alert"),
 //				Events: pulumi.StringArray{
 //					pulumi.String("autostopping_rule_created"),
 //					pulumi.String("autostopping_rule_updated"),

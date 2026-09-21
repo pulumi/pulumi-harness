@@ -29,17 +29,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewTemplateFilters(ctx, "test", &platform.TemplateFiltersArgs{
-//				Identifier: pulumi.String("identifier"),
-//				Name:       pulumi.String("name"),
-//				OrgId:      pulumi.String("org_id"),
-//				ProjectId:  pulumi.String("project_id"),
-//				Type:       pulumi.String("Template"),
 //				FilterProperties: &platform.TemplateFiltersFilterPropertiesArgs{
 //					Tags: pulumi.StringArray{
 //						pulumi.String("foo:bar"),
 //					},
 //					FilterType: pulumi.String("Template"),
 //				},
+//				Identifier:       pulumi.String("identifier"),
+//				Name:             pulumi.String("name"),
+//				OrgId:            pulumi.String("org_id"),
+//				ProjectId:        pulumi.String("project_id"),
+//				Type:             pulumi.String("Template"),
 //				FilterVisibility: pulumi.String("EveryOne"),
 //			})
 //			if err != nil {

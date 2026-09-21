@@ -70,14 +70,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sshCreds = new SshCredential("sshCreds", SshCredentialArgs.builder()
- *             .name("ssh-test")
  *             .sshAuthentication(SshCredentialSshAuthenticationArgs.builder()
- *                 .port(22)
- *                 .username("git")
  *                 .inlineSsh(SshCredentialSshAuthenticationInlineSshArgs.builder()
  *                     .sshKeyFileId(mySecret.id())
  *                     .build())
+ *                 .port(22)
+ *                 .username("git")
  *                 .build())
+ *             .name("ssh-test")
  *             .build(), CustomResourceOptions.builder()
  *                 .ignoreChanges("sshAuthentication")
  *                 .build());

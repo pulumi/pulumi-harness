@@ -17,10 +17,6 @@ import * as utilities from "./utilities";
  *
  * const test = new harness.Application("test", {name: "%[1]s"});
  * const testKubernetes = new harness.service.Kubernetes("test", {
- *     appId: test.id,
- *     name: "%[1]s",
- *     helmVersion: "V2",
- *     description: "description",
  *     variables: [
  *         {
  *             name: "test",
@@ -33,11 +29,12 @@ import * as utilities from "./utilities";
  *             type: "TEXT",
  *         },
  *     ],
- * });
- * const testEnvironment = new harness.Environment("test", {
  *     appId: test.id,
  *     name: "%[1]s",
- *     type: "%[2]s",
+ *     helmVersion: "V2",
+ *     description: "description",
+ * });
+ * const testEnvironment = new harness.Environment("test", {
  *     variableOverrides: [
  *         {
  *             serviceName: testKubernetes.name,
@@ -52,6 +49,9 @@ import * as utilities from "./utilities";
  *             type: "TEXT",
  *         },
  *     ],
+ *     appId: test.id,
+ *     name: "%[1]s",
+ *     type: "%[2]s",
  * });
  * ```
  *

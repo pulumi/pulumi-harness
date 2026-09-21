@@ -17,21 +17,19 @@ import * as utilities from "../utilities";
  *
  * // mapping a cluster to a project level env
  * const example = new harness.platform.EnvironmentClustersMapping("example", {
- *     identifier: "mycustomidentifier",
- *     orgId: "orgIdentifer",
- *     projectId: "projectIdentifier",
- *     envId: "exampleEnvId",
  *     clusters: [{
  *         identifier: "incluster",
  *         name: "in-cluster",
  *         agentIdentifier: "account.gitopsagentdev",
  *         scope: "ACCOUNT",
  *     }],
+ *     identifier: "mycustomidentifier",
+ *     orgId: "orgIdentifer",
+ *     projectId: "projectIdentifier",
+ *     envId: "exampleEnvId",
  * });
  * // mapping two clusters to account level env
  * const example2 = new harness.platform.EnvironmentClustersMapping("example2", {
- *     identifier: "mycustomidentifier",
- *     envId: "env1",
  *     clusters: [
  *         {
  *             identifier: "clusterA",
@@ -46,6 +44,8 @@ import * as utilities from "../utilities";
  *             scope: "ACCOUNT",
  *         },
  *     ],
+ *     identifier: "mycustomidentifier",
+ *     envId: "env1",
  * });
  * ```
  *

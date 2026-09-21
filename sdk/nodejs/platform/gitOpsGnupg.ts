@@ -16,14 +16,14 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.GitOpsGnupg("example", {
- *     accountId: "account_id",
- *     agentId: "agent_id",
  *     requests: [{
- *         upsert: true,
  *         publickeys: [{
  *             keyData: "-----BEGIN PGP PUBLIC KEY BLOCK-----XXXXXX-----END PGP PUBLIC KEY BLOCK-----",
  *         }],
+ *         upsert: true,
  *     }],
+ *     accountId: "account_id",
+ *     agentId: "agent_id",
  * }, {
  *     ignoreChanges: ["requests[0].upsert"],
  * });

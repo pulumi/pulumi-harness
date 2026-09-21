@@ -16,34 +16,10 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.Workspace("example", {
- *     name: "example",
- *     identifier: "example",
- *     orgId: testHarnessPlatformOrganization.id,
- *     projectId: testHarnessPlatformProject.id,
- *     provisionerType: "terraform",
- *     provisionerVersion: "1.5.6",
- *     repository: "https://github.com/org/repo",
- *     repositoryBranch: "main",
- *     repositoryPath: "tf/aws/basic",
- *     costEstimationEnabled: true,
- *     providerConnector: test.id,
- *     repositoryConnector: test.id,
- *     tags: [
- *         "tag1",
- *         "tag2",
- *     ],
- *     terraformVariables: [
- *         {
- *             key: "key1",
- *             value: "val1",
- *             valueType: "string",
- *         },
- *         {
- *             key: "key2",
- *             value: "val2",
- *             valueType: "string",
- *         },
- *     ],
+ *     associatedTemplate: {
+ *         templateId: "my_template",
+ *         version: "v1.0.0",
+ *     },
  *     environmentVariables: [
  *         {
  *             key: "key1",
@@ -76,16 +52,40 @@ import * as utilities from "../utilities";
  *             repositoryConnector: test.id,
  *         },
  *     ],
+ *     terraformVariables: [
+ *         {
+ *             key: "key1",
+ *             value: "val1",
+ *             valueType: "string",
+ *         },
+ *         {
+ *             key: "key2",
+ *             value: "val2",
+ *             valueType: "string",
+ *         },
+ *     ],
+ *     name: "example",
+ *     identifier: "example",
+ *     orgId: testHarnessPlatformOrganization.id,
+ *     projectId: testHarnessPlatformProject.id,
+ *     provisionerType: "terraform",
+ *     provisionerVersion: "1.5.6",
+ *     repository: "https://github.com/org/repo",
+ *     repositoryBranch: "main",
+ *     repositoryPath: "tf/aws/basic",
+ *     costEstimationEnabled: true,
+ *     providerConnector: test.id,
+ *     repositoryConnector: test.id,
+ *     tags: [
+ *         "tag1",
+ *         "tag2",
+ *     ],
  *     variableSets: [testHarnessPlatformInfraVariableSet.id],
  *     defaultPipelines: {
  *         destroy: "destroy_pipeline_id",
  *         drift: "drift_pipeline_id",
  *         plan: "plan_pipeline_id",
  *         apply: "apply_pipeline_id",
- *     },
- *     associatedTemplate: {
- *         templateId: "my_template",
- *         version: "v1.0.0",
  *     },
  * });
  * ```

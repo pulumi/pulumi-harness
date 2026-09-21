@@ -583,21 +583,21 @@ class ProbeTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apm_probe: pulumi.Input[Optional[Union['ProbeTemplateApmProbeArgs', 'ProbeTemplateApmProbeArgsDict']]] = None,
-                 cmd_probe: pulumi.Input[Optional[Union['ProbeTemplateCmdProbeArgs', 'ProbeTemplateCmdProbeArgsDict']]] = None,
+                 apm_probe: pulumi.Input[Optional[Union['ProbeTemplateApmProbeArgs', 'ProbeTemplateApmProbeArgsDict', 'outputs.ProbeTemplateApmProbe']]] = None,
+                 cmd_probe: pulumi.Input[Optional[Union['ProbeTemplateCmdProbeArgs', 'ProbeTemplateCmdProbeArgsDict', 'outputs.ProbeTemplateCmdProbe']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 http_probe: pulumi.Input[Optional[Union['ProbeTemplateHttpProbeArgs', 'ProbeTemplateHttpProbeArgsDict']]] = None,
+                 http_probe: pulumi.Input[Optional[Union['ProbeTemplateHttpProbeArgs', 'ProbeTemplateHttpProbeArgsDict', 'outputs.ProbeTemplateHttpProbe']]] = None,
                  hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
                  identity: pulumi.Input[Optional[_builtins.str]] = None,
                  infrastructure_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 k8s_probe: pulumi.Input[Optional[Union['ProbeTemplateK8sProbeArgs', 'ProbeTemplateK8sProbeArgsDict']]] = None,
+                 k8s_probe: pulumi.Input[Optional[Union['ProbeTemplateK8sProbeArgs', 'ProbeTemplateK8sProbeArgsDict', 'outputs.ProbeTemplateK8sProbe']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 run_properties: pulumi.Input[Optional[Union['ProbeTemplateRunPropertiesArgs', 'ProbeTemplateRunPropertiesArgsDict']]] = None,
+                 run_properties: pulumi.Input[Optional[Union['ProbeTemplateRunPropertiesArgs', 'ProbeTemplateRunPropertiesArgsDict', 'outputs.ProbeTemplateRunProperties']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProbeTemplateVariableArgs', 'ProbeTemplateVariableArgsDict']]]]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProbeTemplateVariableArgs', 'ProbeTemplateVariableArgsDict', 'outputs.ProbeTemplateVariable']]]]] = None,
                  __props__=None):
         """
         Resource for managing Harness Chaos Probe Templates.
@@ -650,21 +650,21 @@ class ProbeTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ProbeTemplateApmProbeArgs', 'ProbeTemplateApmProbeArgsDict']] apm_probe: APM probe configuration. Required when type is 'apmProbe'.
-        :param pulumi.Input[Union['ProbeTemplateCmdProbeArgs', 'ProbeTemplateCmdProbeArgsDict']] cmd_probe: Command probe configuration. Required when type is 'cmdProbe'.
+        :param pulumi.Input[Union['ProbeTemplateApmProbeArgs', 'ProbeTemplateApmProbeArgsDict', 'outputs.ProbeTemplateApmProbe']] apm_probe: APM probe configuration. Required when type is 'apmProbe'.
+        :param pulumi.Input[Union['ProbeTemplateCmdProbeArgs', 'ProbeTemplateCmdProbeArgsDict', 'outputs.ProbeTemplateCmdProbe']] cmd_probe: Command probe configuration. Required when type is 'cmdProbe'.
         :param pulumi.Input[_builtins.str] description: Description of the probe template.
-        :param pulumi.Input[Union['ProbeTemplateHttpProbeArgs', 'ProbeTemplateHttpProbeArgsDict']] http_probe: HTTP probe configuration. Required when type is 'httpProbe'.
+        :param pulumi.Input[Union['ProbeTemplateHttpProbeArgs', 'ProbeTemplateHttpProbeArgsDict', 'outputs.ProbeTemplateHttpProbe']] http_probe: HTTP probe configuration. Required when type is 'httpProbe'.
         :param pulumi.Input[_builtins.str] hub_identity: Identity of the chaos hub this probe template belongs to.
         :param pulumi.Input[_builtins.str] identity: Unique identifier for the probe template (immutable).
         :param pulumi.Input[_builtins.str] infrastructure_type: Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
-        :param pulumi.Input[Union['ProbeTemplateK8sProbeArgs', 'ProbeTemplateK8sProbeArgsDict']] k8s_probe: Kubernetes probe configuration. Required when type is 'k8sProbe'.
+        :param pulumi.Input[Union['ProbeTemplateK8sProbeArgs', 'ProbeTemplateK8sProbeArgsDict', 'outputs.ProbeTemplateK8sProbe']] k8s_probe: Kubernetes probe configuration. Required when type is 'k8sProbe'.
         :param pulumi.Input[_builtins.str] name: Name of the probe template.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier.
         :param pulumi.Input[_builtins.str] project_id: Project identifier.
-        :param pulumi.Input[Union['ProbeTemplateRunPropertiesArgs', 'ProbeTemplateRunPropertiesArgsDict']] run_properties: Run properties for the probe template execution.
+        :param pulumi.Input[Union['ProbeTemplateRunPropertiesArgs', 'ProbeTemplateRunPropertiesArgsDict', 'outputs.ProbeTemplateRunProperties']] run_properties: Run properties for the probe template execution.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the probe template.
         :param pulumi.Input[_builtins.str] type: Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProbeTemplateVariableArgs', 'ProbeTemplateVariableArgsDict']]]] variables: Template variables that can be used in the probe.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProbeTemplateVariableArgs', 'ProbeTemplateVariableArgsDict', 'outputs.ProbeTemplateVariable']]]] variables: Template variables that can be used in the probe.
         """
         ...
     @overload
@@ -736,21 +736,21 @@ class ProbeTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apm_probe: pulumi.Input[Optional[Union['ProbeTemplateApmProbeArgs', 'ProbeTemplateApmProbeArgsDict']]] = None,
-                 cmd_probe: pulumi.Input[Optional[Union['ProbeTemplateCmdProbeArgs', 'ProbeTemplateCmdProbeArgsDict']]] = None,
+                 apm_probe: pulumi.Input[Optional[Union['ProbeTemplateApmProbeArgs', 'ProbeTemplateApmProbeArgsDict', 'outputs.ProbeTemplateApmProbe']]] = None,
+                 cmd_probe: pulumi.Input[Optional[Union['ProbeTemplateCmdProbeArgs', 'ProbeTemplateCmdProbeArgsDict', 'outputs.ProbeTemplateCmdProbe']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 http_probe: pulumi.Input[Optional[Union['ProbeTemplateHttpProbeArgs', 'ProbeTemplateHttpProbeArgsDict']]] = None,
+                 http_probe: pulumi.Input[Optional[Union['ProbeTemplateHttpProbeArgs', 'ProbeTemplateHttpProbeArgsDict', 'outputs.ProbeTemplateHttpProbe']]] = None,
                  hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
                  identity: pulumi.Input[Optional[_builtins.str]] = None,
                  infrastructure_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 k8s_probe: pulumi.Input[Optional[Union['ProbeTemplateK8sProbeArgs', 'ProbeTemplateK8sProbeArgsDict']]] = None,
+                 k8s_probe: pulumi.Input[Optional[Union['ProbeTemplateK8sProbeArgs', 'ProbeTemplateK8sProbeArgsDict', 'outputs.ProbeTemplateK8sProbe']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 run_properties: pulumi.Input[Optional[Union['ProbeTemplateRunPropertiesArgs', 'ProbeTemplateRunPropertiesArgsDict']]] = None,
+                 run_properties: pulumi.Input[Optional[Union['ProbeTemplateRunPropertiesArgs', 'ProbeTemplateRunPropertiesArgsDict', 'outputs.ProbeTemplateRunProperties']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProbeTemplateVariableArgs', 'ProbeTemplateVariableArgsDict']]]]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProbeTemplateVariableArgs', 'ProbeTemplateVariableArgsDict', 'outputs.ProbeTemplateVariable']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -796,24 +796,24 @@ class ProbeTemplate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
-            apm_probe: pulumi.Input[Optional[Union['ProbeTemplateApmProbeArgs', 'ProbeTemplateApmProbeArgsDict']]] = None,
-            cmd_probe: pulumi.Input[Optional[Union['ProbeTemplateCmdProbeArgs', 'ProbeTemplateCmdProbeArgsDict']]] = None,
+            apm_probe: pulumi.Input[Optional[Union['ProbeTemplateApmProbeArgs', 'ProbeTemplateApmProbeArgsDict', 'outputs.ProbeTemplateApmProbe']]] = None,
+            cmd_probe: pulumi.Input[Optional[Union['ProbeTemplateCmdProbeArgs', 'ProbeTemplateCmdProbeArgsDict', 'outputs.ProbeTemplateCmdProbe']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            http_probe: pulumi.Input[Optional[Union['ProbeTemplateHttpProbeArgs', 'ProbeTemplateHttpProbeArgsDict']]] = None,
+            http_probe: pulumi.Input[Optional[Union['ProbeTemplateHttpProbeArgs', 'ProbeTemplateHttpProbeArgsDict', 'outputs.ProbeTemplateHttpProbe']]] = None,
             hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
             hub_ref: pulumi.Input[Optional[_builtins.str]] = None,
             identity: pulumi.Input[Optional[_builtins.str]] = None,
             infrastructure_type: pulumi.Input[Optional[_builtins.str]] = None,
             is_default: pulumi.Input[Optional[_builtins.bool]] = None,
-            k8s_probe: pulumi.Input[Optional[Union['ProbeTemplateK8sProbeArgs', 'ProbeTemplateK8sProbeArgsDict']]] = None,
+            k8s_probe: pulumi.Input[Optional[Union['ProbeTemplateK8sProbeArgs', 'ProbeTemplateK8sProbeArgsDict', 'outputs.ProbeTemplateK8sProbe']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             revision: pulumi.Input[Optional[_builtins.int]] = None,
-            run_properties: pulumi.Input[Optional[Union['ProbeTemplateRunPropertiesArgs', 'ProbeTemplateRunPropertiesArgsDict']]] = None,
+            run_properties: pulumi.Input[Optional[Union['ProbeTemplateRunPropertiesArgs', 'ProbeTemplateRunPropertiesArgsDict', 'outputs.ProbeTemplateRunProperties']]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
-            variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProbeTemplateVariableArgs', 'ProbeTemplateVariableArgsDict']]]]] = None) -> 'ProbeTemplate':
+            variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProbeTemplateVariableArgs', 'ProbeTemplateVariableArgsDict', 'outputs.ProbeTemplateVariable']]]]] = None) -> 'ProbeTemplate':
         """
         Get an existing ProbeTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -822,24 +822,24 @@ class ProbeTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier.
-        :param pulumi.Input[Union['ProbeTemplateApmProbeArgs', 'ProbeTemplateApmProbeArgsDict']] apm_probe: APM probe configuration. Required when type is 'apmProbe'.
-        :param pulumi.Input[Union['ProbeTemplateCmdProbeArgs', 'ProbeTemplateCmdProbeArgsDict']] cmd_probe: Command probe configuration. Required when type is 'cmdProbe'.
+        :param pulumi.Input[Union['ProbeTemplateApmProbeArgs', 'ProbeTemplateApmProbeArgsDict', 'outputs.ProbeTemplateApmProbe']] apm_probe: APM probe configuration. Required when type is 'apmProbe'.
+        :param pulumi.Input[Union['ProbeTemplateCmdProbeArgs', 'ProbeTemplateCmdProbeArgsDict', 'outputs.ProbeTemplateCmdProbe']] cmd_probe: Command probe configuration. Required when type is 'cmdProbe'.
         :param pulumi.Input[_builtins.str] description: Description of the probe template.
-        :param pulumi.Input[Union['ProbeTemplateHttpProbeArgs', 'ProbeTemplateHttpProbeArgsDict']] http_probe: HTTP probe configuration. Required when type is 'httpProbe'.
+        :param pulumi.Input[Union['ProbeTemplateHttpProbeArgs', 'ProbeTemplateHttpProbeArgsDict', 'outputs.ProbeTemplateHttpProbe']] http_probe: HTTP probe configuration. Required when type is 'httpProbe'.
         :param pulumi.Input[_builtins.str] hub_identity: Identity of the chaos hub this probe template belongs to.
         :param pulumi.Input[_builtins.str] hub_ref: Hub reference.
         :param pulumi.Input[_builtins.str] identity: Unique identifier for the probe template (immutable).
         :param pulumi.Input[_builtins.str] infrastructure_type: Infrastructure type for the probe template. Valid values: Kubernetes, KubernetesV2, Windows, Linux, CloudFoundry, Container.
         :param pulumi.Input[_builtins.bool] is_default: Whether this is the default version for predefined probes.
-        :param pulumi.Input[Union['ProbeTemplateK8sProbeArgs', 'ProbeTemplateK8sProbeArgsDict']] k8s_probe: Kubernetes probe configuration. Required when type is 'k8sProbe'.
+        :param pulumi.Input[Union['ProbeTemplateK8sProbeArgs', 'ProbeTemplateK8sProbeArgsDict', 'outputs.ProbeTemplateK8sProbe']] k8s_probe: Kubernetes probe configuration. Required when type is 'k8sProbe'.
         :param pulumi.Input[_builtins.str] name: Name of the probe template.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier.
         :param pulumi.Input[_builtins.str] project_id: Project identifier.
         :param pulumi.Input[_builtins.int] revision: Revision number of the probe template.
-        :param pulumi.Input[Union['ProbeTemplateRunPropertiesArgs', 'ProbeTemplateRunPropertiesArgsDict']] run_properties: Run properties for the probe template execution.
+        :param pulumi.Input[Union['ProbeTemplateRunPropertiesArgs', 'ProbeTemplateRunPropertiesArgsDict', 'outputs.ProbeTemplateRunProperties']] run_properties: Run properties for the probe template execution.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the probe template.
         :param pulumi.Input[_builtins.str] type: Type of the probe template. Valid values: httpProbe, cmdProbe, k8sProbe, promProbe, sloProbe, datadogProbe, dynatraceProbe, containerProbe, apmProbe.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProbeTemplateVariableArgs', 'ProbeTemplateVariableArgsDict']]]] variables: Template variables that can be used in the probe.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProbeTemplateVariableArgs', 'ProbeTemplateVariableArgsDict', 'outputs.ProbeTemplateVariable']]]] variables: Template variables that can be used in the probe.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

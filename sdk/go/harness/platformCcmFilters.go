@@ -29,17 +29,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := harness.NewPlatformCcmFilters(ctx, "test", &harness.PlatformCcmFiltersArgs{
-//				Identifier: pulumi.String("identifier"),
-//				Name:       pulumi.String("name"),
-//				OrgId:      pulumi.String("org_id"),
-//				ProjectId:  pulumi.String("project_id"),
-//				Type:       pulumi.String("CCMRecommendation"),
 //				FilterProperties: &harness.PlatformCcmFiltersFilterPropertiesArgs{
 //					Tags: pulumi.StringArray{
 //						pulumi.String("foo:bar"),
 //					},
 //					FilterType: pulumi.String("CCMRecommendation"),
 //				},
+//				Identifier:       pulumi.String("identifier"),
+//				Name:             pulumi.String("name"),
+//				OrgId:            pulumi.String("org_id"),
+//				ProjectId:        pulumi.String("project_id"),
+//				Type:             pulumi.String("CCMRecommendation"),
 //				FilterVisibility: pulumi.String("EveryOne"),
 //			})
 //			if err != nil {

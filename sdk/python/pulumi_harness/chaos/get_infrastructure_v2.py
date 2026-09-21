@@ -520,16 +520,16 @@ class AwaitableGetInfrastructureV2Result(GetInfrastructureV2Result):
 
 
 def get_infrastructure_v2(environment_id: Optional[_builtins.str] = None,
-                          image_registries: Optional[Sequence[Union['GetInfrastructureV2ImageRegistryArgs', 'GetInfrastructureV2ImageRegistryArgsDict']]] = None,
+                          image_registries: Optional[Sequence[Union['GetInfrastructureV2ImageRegistryArgs', 'GetInfrastructureV2ImageRegistryArgsDict', 'outputs.GetInfrastructureV2ImageRegistryResult']]] = None,
                           infra_id: Optional[_builtins.str] = None,
-                          mtls: Optional[Union['GetInfrastructureV2MtlsArgs', 'GetInfrastructureV2MtlsArgsDict']] = None,
+                          mtls: Optional[Union['GetInfrastructureV2MtlsArgs', 'GetInfrastructureV2MtlsArgsDict', 'outputs.GetInfrastructureV2MtlsResult']] = None,
                           org_id: Optional[_builtins.str] = None,
                           project_id: Optional[_builtins.str] = None,
-                          proxy: Optional[Union['GetInfrastructureV2ProxyArgs', 'GetInfrastructureV2ProxyArgsDict']] = None,
-                          resources: Optional[Union['GetInfrastructureV2ResourcesArgs', 'GetInfrastructureV2ResourcesArgsDict']] = None,
-                          tolerations: Optional[Sequence[Union['GetInfrastructureV2TolerationArgs', 'GetInfrastructureV2TolerationArgsDict']]] = None,
-                          volume_mounts: Optional[Sequence[Union['GetInfrastructureV2VolumeMountArgs', 'GetInfrastructureV2VolumeMountArgsDict']]] = None,
-                          volumes: Optional[Sequence[Union['GetInfrastructureV2VolumeArgs', 'GetInfrastructureV2VolumeArgsDict']]] = None,
+                          proxy: Optional[Union['GetInfrastructureV2ProxyArgs', 'GetInfrastructureV2ProxyArgsDict', 'outputs.GetInfrastructureV2ProxyResult']] = None,
+                          resources: Optional[Union['GetInfrastructureV2ResourcesArgs', 'GetInfrastructureV2ResourcesArgsDict', 'outputs.GetInfrastructureV2ResourcesResult']] = None,
+                          tolerations: Optional[Sequence[Union['GetInfrastructureV2TolerationArgs', 'GetInfrastructureV2TolerationArgsDict', 'outputs.GetInfrastructureV2TolerationResult']]] = None,
+                          volume_mounts: Optional[Sequence[Union['GetInfrastructureV2VolumeMountArgs', 'GetInfrastructureV2VolumeMountArgsDict', 'outputs.GetInfrastructureV2VolumeMountResult']]] = None,
+                          volumes: Optional[Sequence[Union['GetInfrastructureV2VolumeArgs', 'GetInfrastructureV2VolumeArgsDict', 'outputs.GetInfrastructureV2VolumeResult']]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInfrastructureV2Result:
     """
     Data source for retrieving a Harness Chaos Infrastructure V2.
@@ -552,16 +552,16 @@ def get_infrastructure_v2(environment_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str environment_id: The ID of the environment.
-    :param Sequence[Union['GetInfrastructureV2ImageRegistryArgs', 'GetInfrastructureV2ImageRegistryArgsDict']] image_registries: Configuration for the container image registry.
+    :param Sequence[Union['GetInfrastructureV2ImageRegistryArgs', 'GetInfrastructureV2ImageRegistryArgsDict', 'outputs.GetInfrastructureV2ImageRegistryResult']] image_registries: Configuration for the container image registry.
     :param _builtins.str infra_id: The ID of the infrastructure.
-    :param Union['GetInfrastructureV2MtlsArgs', 'GetInfrastructureV2MtlsArgsDict'] mtls: mTLS configuration for the infrastructure.
+    :param Union['GetInfrastructureV2MtlsArgs', 'GetInfrastructureV2MtlsArgsDict', 'outputs.GetInfrastructureV2MtlsResult'] mtls: mTLS configuration for the infrastructure.
     :param _builtins.str org_id: The ID of the organization.
     :param _builtins.str project_id: The ID of the project.
-    :param Union['GetInfrastructureV2ProxyArgs', 'GetInfrastructureV2ProxyArgsDict'] proxy: Proxy configuration for the infrastructure.
-    :param Union['GetInfrastructureV2ResourcesArgs', 'GetInfrastructureV2ResourcesArgsDict'] resources: Compute resource requirements (requests and limits) for the chaos infrastructure pods.
-    :param Sequence[Union['GetInfrastructureV2TolerationArgs', 'GetInfrastructureV2TolerationArgsDict']] tolerations: If specified, the pod's tolerations.
-    :param Sequence[Union['GetInfrastructureV2VolumeMountArgs', 'GetInfrastructureV2VolumeMountArgsDict']] volume_mounts: Volume mounts for the container.
-    :param Sequence[Union['GetInfrastructureV2VolumeArgs', 'GetInfrastructureV2VolumeArgsDict']] volumes: Volumes to be created in the infrastructure.
+    :param Union['GetInfrastructureV2ProxyArgs', 'GetInfrastructureV2ProxyArgsDict', 'outputs.GetInfrastructureV2ProxyResult'] proxy: Proxy configuration for the infrastructure.
+    :param Union['GetInfrastructureV2ResourcesArgs', 'GetInfrastructureV2ResourcesArgsDict', 'outputs.GetInfrastructureV2ResourcesResult'] resources: Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+    :param Sequence[Union['GetInfrastructureV2TolerationArgs', 'GetInfrastructureV2TolerationArgsDict', 'outputs.GetInfrastructureV2TolerationResult']] tolerations: If specified, the pod's tolerations.
+    :param Sequence[Union['GetInfrastructureV2VolumeMountArgs', 'GetInfrastructureV2VolumeMountArgsDict', 'outputs.GetInfrastructureV2VolumeMountResult']] volume_mounts: Volume mounts for the container.
+    :param Sequence[Union['GetInfrastructureV2VolumeArgs', 'GetInfrastructureV2VolumeArgsDict', 'outputs.GetInfrastructureV2VolumeResult']] volumes: Volumes to be created in the infrastructure.
     """
     __args__ = dict()
     __args__['environmentId'] = environment_id
@@ -622,16 +622,16 @@ def get_infrastructure_v2(environment_id: Optional[_builtins.str] = None,
         volume_mounts=pulumi.get(__ret__, 'volume_mounts'),
         volumes=pulumi.get(__ret__, 'volumes'))
 def get_infrastructure_v2_output(environment_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                 image_registries: pulumi.Input[Optional[Optional[Sequence[Union['GetInfrastructureV2ImageRegistryArgs', 'GetInfrastructureV2ImageRegistryArgsDict']]]]] = None,
+                                 image_registries: pulumi.Input[Optional[Optional[Sequence[Union['GetInfrastructureV2ImageRegistryArgs', 'GetInfrastructureV2ImageRegistryArgsDict', 'outputs.GetInfrastructureV2ImageRegistryResult']]]]] = None,
                                  infra_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                 mtls: pulumi.Input[Optional[Optional[Union['GetInfrastructureV2MtlsArgs', 'GetInfrastructureV2MtlsArgsDict']]]] = None,
+                                 mtls: pulumi.Input[Optional[Optional[Union['GetInfrastructureV2MtlsArgs', 'GetInfrastructureV2MtlsArgsDict', 'outputs.GetInfrastructureV2MtlsResult']]]] = None,
                                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                 proxy: pulumi.Input[Optional[Optional[Union['GetInfrastructureV2ProxyArgs', 'GetInfrastructureV2ProxyArgsDict']]]] = None,
-                                 resources: pulumi.Input[Optional[Optional[Union['GetInfrastructureV2ResourcesArgs', 'GetInfrastructureV2ResourcesArgsDict']]]] = None,
-                                 tolerations: pulumi.Input[Optional[Optional[Sequence[Union['GetInfrastructureV2TolerationArgs', 'GetInfrastructureV2TolerationArgsDict']]]]] = None,
-                                 volume_mounts: pulumi.Input[Optional[Optional[Sequence[Union['GetInfrastructureV2VolumeMountArgs', 'GetInfrastructureV2VolumeMountArgsDict']]]]] = None,
-                                 volumes: pulumi.Input[Optional[Optional[Sequence[Union['GetInfrastructureV2VolumeArgs', 'GetInfrastructureV2VolumeArgsDict']]]]] = None,
+                                 proxy: pulumi.Input[Optional[Optional[Union['GetInfrastructureV2ProxyArgs', 'GetInfrastructureV2ProxyArgsDict', 'outputs.GetInfrastructureV2ProxyResult']]]] = None,
+                                 resources: pulumi.Input[Optional[Optional[Union['GetInfrastructureV2ResourcesArgs', 'GetInfrastructureV2ResourcesArgsDict', 'outputs.GetInfrastructureV2ResourcesResult']]]] = None,
+                                 tolerations: pulumi.Input[Optional[Optional[Sequence[Union['GetInfrastructureV2TolerationArgs', 'GetInfrastructureV2TolerationArgsDict', 'outputs.GetInfrastructureV2TolerationResult']]]]] = None,
+                                 volume_mounts: pulumi.Input[Optional[Optional[Sequence[Union['GetInfrastructureV2VolumeMountArgs', 'GetInfrastructureV2VolumeMountArgsDict', 'outputs.GetInfrastructureV2VolumeMountResult']]]]] = None,
+                                 volumes: pulumi.Input[Optional[Optional[Sequence[Union['GetInfrastructureV2VolumeArgs', 'GetInfrastructureV2VolumeArgsDict', 'outputs.GetInfrastructureV2VolumeResult']]]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInfrastructureV2Result]:
     """
     Data source for retrieving a Harness Chaos Infrastructure V2.
@@ -654,16 +654,16 @@ def get_infrastructure_v2_output(environment_id: pulumi.Input[Optional[_builtins
 
 
     :param _builtins.str environment_id: The ID of the environment.
-    :param Sequence[Union['GetInfrastructureV2ImageRegistryArgs', 'GetInfrastructureV2ImageRegistryArgsDict']] image_registries: Configuration for the container image registry.
+    :param Sequence[Union['GetInfrastructureV2ImageRegistryArgs', 'GetInfrastructureV2ImageRegistryArgsDict', 'outputs.GetInfrastructureV2ImageRegistryResult']] image_registries: Configuration for the container image registry.
     :param _builtins.str infra_id: The ID of the infrastructure.
-    :param Union['GetInfrastructureV2MtlsArgs', 'GetInfrastructureV2MtlsArgsDict'] mtls: mTLS configuration for the infrastructure.
+    :param Union['GetInfrastructureV2MtlsArgs', 'GetInfrastructureV2MtlsArgsDict', 'outputs.GetInfrastructureV2MtlsResult'] mtls: mTLS configuration for the infrastructure.
     :param _builtins.str org_id: The ID of the organization.
     :param _builtins.str project_id: The ID of the project.
-    :param Union['GetInfrastructureV2ProxyArgs', 'GetInfrastructureV2ProxyArgsDict'] proxy: Proxy configuration for the infrastructure.
-    :param Union['GetInfrastructureV2ResourcesArgs', 'GetInfrastructureV2ResourcesArgsDict'] resources: Compute resource requirements (requests and limits) for the chaos infrastructure pods.
-    :param Sequence[Union['GetInfrastructureV2TolerationArgs', 'GetInfrastructureV2TolerationArgsDict']] tolerations: If specified, the pod's tolerations.
-    :param Sequence[Union['GetInfrastructureV2VolumeMountArgs', 'GetInfrastructureV2VolumeMountArgsDict']] volume_mounts: Volume mounts for the container.
-    :param Sequence[Union['GetInfrastructureV2VolumeArgs', 'GetInfrastructureV2VolumeArgsDict']] volumes: Volumes to be created in the infrastructure.
+    :param Union['GetInfrastructureV2ProxyArgs', 'GetInfrastructureV2ProxyArgsDict', 'outputs.GetInfrastructureV2ProxyResult'] proxy: Proxy configuration for the infrastructure.
+    :param Union['GetInfrastructureV2ResourcesArgs', 'GetInfrastructureV2ResourcesArgsDict', 'outputs.GetInfrastructureV2ResourcesResult'] resources: Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+    :param Sequence[Union['GetInfrastructureV2TolerationArgs', 'GetInfrastructureV2TolerationArgsDict', 'outputs.GetInfrastructureV2TolerationResult']] tolerations: If specified, the pod's tolerations.
+    :param Sequence[Union['GetInfrastructureV2VolumeMountArgs', 'GetInfrastructureV2VolumeMountArgsDict', 'outputs.GetInfrastructureV2VolumeMountResult']] volume_mounts: Volume mounts for the container.
+    :param Sequence[Union['GetInfrastructureV2VolumeArgs', 'GetInfrastructureV2VolumeArgsDict', 'outputs.GetInfrastructureV2VolumeResult']] volumes: Volumes to be created in the infrastructure.
     """
     __args__ = dict()
     __args__['environmentId'] = environment_id

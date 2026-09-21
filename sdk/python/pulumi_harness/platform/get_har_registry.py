@@ -197,7 +197,7 @@ class AwaitableGetHarRegistryResult(GetHarRegistryResult):
 
 def get_har_registry(allowed_patterns: Optional[Sequence[_builtins.str]] = None,
                      blocked_patterns: Optional[Sequence[_builtins.str]] = None,
-                     configs: Optional[Sequence[Union['GetHarRegistryConfigArgs', 'GetHarRegistryConfigArgsDict']]] = None,
+                     configs: Optional[Sequence[Union['GetHarRegistryConfigArgs', 'GetHarRegistryConfigArgsDict', 'outputs.GetHarRegistryConfigResult']]] = None,
                      description: Optional[_builtins.str] = None,
                      identifier: Optional[_builtins.str] = None,
                      metadata: Optional[Mapping[str, _builtins.str]] = None,
@@ -221,7 +221,7 @@ def get_har_registry(allowed_patterns: Optional[Sequence[_builtins.str]] = None,
 
     :param Sequence[_builtins.str] allowed_patterns: Allowed artifact patterns
     :param Sequence[_builtins.str] blocked_patterns: Blocked artifact patterns
-    :param Sequence[Union['GetHarRegistryConfigArgs', 'GetHarRegistryConfigArgsDict']] configs: Configuration for the registry
+    :param Sequence[Union['GetHarRegistryConfigArgs', 'GetHarRegistryConfigArgsDict', 'outputs.GetHarRegistryConfigResult']] configs: Configuration for the registry
     :param _builtins.str description: Description of the registry
     :param _builtins.str identifier: Unique identifier of the registry
     :param Mapping[str, _builtins.str] metadata: Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
@@ -258,7 +258,7 @@ def get_har_registry(allowed_patterns: Optional[Sequence[_builtins.str]] = None,
         url=pulumi.get(__ret__, 'url'))
 def get_har_registry_output(allowed_patterns: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                             blocked_patterns: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
-                            configs: pulumi.Input[Optional[Optional[Sequence[Union['GetHarRegistryConfigArgs', 'GetHarRegistryConfigArgsDict']]]]] = None,
+                            configs: pulumi.Input[Optional[Optional[Sequence[Union['GetHarRegistryConfigArgs', 'GetHarRegistryConfigArgsDict', 'outputs.GetHarRegistryConfigResult']]]]] = None,
                             description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             identifier: pulumi.Input[Optional[_builtins.str]] = None,
                             metadata: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
@@ -282,7 +282,7 @@ def get_har_registry_output(allowed_patterns: pulumi.Input[Optional[Optional[Seq
 
     :param Sequence[_builtins.str] allowed_patterns: Allowed artifact patterns
     :param Sequence[_builtins.str] blocked_patterns: Blocked artifact patterns
-    :param Sequence[Union['GetHarRegistryConfigArgs', 'GetHarRegistryConfigArgsDict']] configs: Configuration for the registry
+    :param Sequence[Union['GetHarRegistryConfigArgs', 'GetHarRegistryConfigArgsDict', 'outputs.GetHarRegistryConfigResult']] configs: Configuration for the registry
     :param _builtins.str description: Description of the registry
     :param _builtins.str identifier: Unique identifier of the registry
     :param Mapping[str, _builtins.str] metadata: Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.

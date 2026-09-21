@@ -25,7 +25,6 @@ namespace Pulumi.Harness
     ///     // Creating a Kubernetes infrastructure definition
     ///     var dev = new Harness.Cloudprovider.Kubernetes("dev", new()
     ///     {
-    ///         Name = "k8s-dev",
     ///         Authentication = new Harness.Cloudprovider.Inputs.KubernetesAuthenticationArgs
     ///         {
     ///             DelegateSelectors = new[]
@@ -33,6 +32,7 @@ namespace Pulumi.Harness
     ///                 "k8s",
     ///             },
     ///         },
+    ///         Name = "k8s-dev",
     ///     });
     /// 
     ///     var example = new Harness.Application("example", new()
@@ -50,17 +50,17 @@ namespace Pulumi.Harness
     ///     // Creating a infrastructure of type KUBERNETES
     ///     var k8s = new Harness.InfrastructureDefinition("k8s", new()
     ///     {
-    ///         Name = "k8s-eks-us-east-1",
-    ///         AppId = example.Id,
-    ///         EnvId = devEnvironment.Id,
-    ///         CloudProviderType = "KUBERNETES_CLUSTER",
-    ///         DeploymentType = "KUBERNETES",
     ///         Kubernetes = new Harness.Inputs.InfrastructureDefinitionKubernetesArgs
     ///         {
     ///             CloudProviderName = dev.Name,
     ///             Namespace = "dev",
     ///             ReleaseName = "${service.name}",
     ///         },
+    ///         Name = "k8s-eks-us-east-1",
+    ///         AppId = example.Id,
+    ///         EnvId = devEnvironment.Id,
+    ///         CloudProviderType = "KUBERNETES_CLUSTER",
+    ///         DeploymentType = "KUBERNETES",
     ///     });
     /// 
     ///     // Creating a Deployment Template for CUSTOM infrastructure type
@@ -84,15 +84,8 @@ namespace Pulumi.Harness
     ///     // Creating a infrastructure of type CUSTOM
     ///     var custom = new Harness.InfrastructureDefinition("custom", new()
     ///     {
-    ///         Name = "custom-infra",
-    ///         AppId = example.Id,
-    ///         EnvId = devEnvironment.Id,
-    ///         CloudProviderType = "CUSTOM",
-    ///         DeploymentType = "CUSTOM",
-    ///         DeploymentTemplateUri = exampleYaml.Name.Apply(name =&gt; $"Example Folder/{name}"),
     ///         Custom = new Harness.Inputs.InfrastructureDefinitionCustomArgs
     ///         {
-    ///             DeploymentTypeTemplateVersion = "1",
     ///             Variables = new[]
     ///             {
     ///                 new Harness.Inputs.InfrastructureDefinitionCustomVariableArgs
@@ -106,7 +99,14 @@ namespace Pulumi.Harness
     ///                     Value = "instances.json",
     ///                 },
     ///             },
+    ///             DeploymentTypeTemplateVersion = "1",
     ///         },
+    ///         Name = "custom-infra",
+    ///         AppId = example.Id,
+    ///         EnvId = devEnvironment.Id,
+    ///         CloudProviderType = "CUSTOM",
+    ///         DeploymentType = "CUSTOM",
+    ///         DeploymentTemplateUri = exampleYaml.Name.Apply(name =&gt; $"Example Folder/{name}"),
     ///     });
     /// 
     /// });

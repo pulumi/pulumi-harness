@@ -138,7 +138,7 @@ class UserGroupPermissions(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_permissions: pulumi.Input[Optional[Union['UserGroupPermissionsAppPermissionsArgs', 'UserGroupPermissionsAppPermissionsArgsDict']]] = None,
+                 app_permissions: pulumi.Input[Optional[Union['UserGroupPermissionsAppPermissionsArgs', 'UserGroupPermissionsAppPermissionsArgsDict', 'outputs.UserGroupPermissionsAppPermissions']]] = None,
                  user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -148,7 +148,7 @@ class UserGroupPermissions(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_permissions: The account permissions of the user group. Valid options are ADMINISTER*OTHER*ACCOUNT*FUNCTIONS, CREATE*AND*DELETE*APPLICATION, CREATE*CUSTOM*DASHBOARDS, MANAGE*ALERT*NOTIFICATION*RULES, MANAGE*API*KEYS, MANAGE*APPLICATION*STACKS, MANAGE*AUTHENTICATION*SETTINGS, MANAGE*CLOUD*PROVIDERS, MANAGE*CONFIG*AS*CODE, MANAGE*CONNECTORS, MANAGE*CUSTOM*DASHBOARDS, MANAGE*DELEGATE*PROFILES, MANAGE*DELEGATES, MANAGE*DEPLOYMENT*FREEZES, MANAGE*IP*WHITELIST, MANAGE*PIPELINE*GOVERNANCE*STANDARDS, MANAGE*RESTRICTED*ACCESS, MANAGE*SECRET*MANAGERS, MANAGE*SECRETS, MANAGE*SSH*AND*WINRM, MANAGE*TAGS, MANAGE*TEMPLATE*LIBRARY, MANAGE*USER*AND*USER*GROUPS*AND*API*KEYS, MANAGE*USERS*AND*GROUPS, READ*USERS*AND*GROUPS, VIEW*AUDITS, VIEW*USER*AND*USER*GROUPS*AND*API_KEYS
-        :param pulumi.Input[Union['UserGroupPermissionsAppPermissionsArgs', 'UserGroupPermissionsAppPermissionsArgsDict']] app_permissions: Application specific permissions
+        :param pulumi.Input[Union['UserGroupPermissionsAppPermissionsArgs', 'UserGroupPermissionsAppPermissionsArgsDict', 'outputs.UserGroupPermissionsAppPermissions']] app_permissions: Application specific permissions
         :param pulumi.Input[_builtins.str] user_group_id: Unique identifier of the user group.
         """
         ...
@@ -177,7 +177,7 @@ class UserGroupPermissions(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_permissions: pulumi.Input[Optional[Union['UserGroupPermissionsAppPermissionsArgs', 'UserGroupPermissionsAppPermissionsArgsDict']]] = None,
+                 app_permissions: pulumi.Input[Optional[Union['UserGroupPermissionsAppPermissionsArgs', 'UserGroupPermissionsAppPermissionsArgsDict', 'outputs.UserGroupPermissionsAppPermissions']]] = None,
                  user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -204,7 +204,7 @@ class UserGroupPermissions(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            app_permissions: pulumi.Input[Optional[Union['UserGroupPermissionsAppPermissionsArgs', 'UserGroupPermissionsAppPermissionsArgsDict']]] = None,
+            app_permissions: pulumi.Input[Optional[Union['UserGroupPermissionsAppPermissionsArgs', 'UserGroupPermissionsAppPermissionsArgsDict', 'outputs.UserGroupPermissionsAppPermissions']]] = None,
             user_group_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserGroupPermissions':
         """
         Get an existing UserGroupPermissions resource's state with the given name, id, and optional extra
@@ -214,7 +214,7 @@ class UserGroupPermissions(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_permissions: The account permissions of the user group. Valid options are ADMINISTER*OTHER*ACCOUNT*FUNCTIONS, CREATE*AND*DELETE*APPLICATION, CREATE*CUSTOM*DASHBOARDS, MANAGE*ALERT*NOTIFICATION*RULES, MANAGE*API*KEYS, MANAGE*APPLICATION*STACKS, MANAGE*AUTHENTICATION*SETTINGS, MANAGE*CLOUD*PROVIDERS, MANAGE*CONFIG*AS*CODE, MANAGE*CONNECTORS, MANAGE*CUSTOM*DASHBOARDS, MANAGE*DELEGATE*PROFILES, MANAGE*DELEGATES, MANAGE*DEPLOYMENT*FREEZES, MANAGE*IP*WHITELIST, MANAGE*PIPELINE*GOVERNANCE*STANDARDS, MANAGE*RESTRICTED*ACCESS, MANAGE*SECRET*MANAGERS, MANAGE*SECRETS, MANAGE*SSH*AND*WINRM, MANAGE*TAGS, MANAGE*TEMPLATE*LIBRARY, MANAGE*USER*AND*USER*GROUPS*AND*API*KEYS, MANAGE*USERS*AND*GROUPS, READ*USERS*AND*GROUPS, VIEW*AUDITS, VIEW*USER*AND*USER*GROUPS*AND*API_KEYS
-        :param pulumi.Input[Union['UserGroupPermissionsAppPermissionsArgs', 'UserGroupPermissionsAppPermissionsArgsDict']] app_permissions: Application specific permissions
+        :param pulumi.Input[Union['UserGroupPermissionsAppPermissionsArgs', 'UserGroupPermissionsAppPermissionsArgsDict', 'outputs.UserGroupPermissionsAppPermissions']] app_permissions: Application specific permissions
         :param pulumi.Input[_builtins.str] user_group_id: Unique identifier of the user group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

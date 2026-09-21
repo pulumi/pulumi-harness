@@ -45,6 +45,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new GcpCloudCostConnector("test", GcpCloudCostConnectorArgs.builder()
+ *             .billingExportSpec(GcpCloudCostConnectorBillingExportSpecArgs.builder()
+ *                 .dataSetId("data_set_id")
+ *                 .tableId("table_id")
+ *                 .build())
  *             .identifier("identifier")
  *             .name("name")
  *             .description("test")
@@ -56,10 +60,6 @@ import javax.annotation.Nullable;
  *                 "GOVERNANCE")
  *             .gcpProjectId("gcp_project_id")
  *             .serviceAccountEmail("service_account_email")
- *             .billingExportSpec(GcpCloudCostConnectorBillingExportSpecArgs.builder()
- *                 .dataSetId("data_set_id")
- *                 .tableId("table_id")
- *                 .build())
  *             .build());
  * 
  *     }

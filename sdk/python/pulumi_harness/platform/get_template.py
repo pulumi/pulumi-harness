@@ -233,7 +233,7 @@ class AwaitableGetTemplateResult(GetTemplateResult):
 
 def get_template(branch_name: Optional[_builtins.str] = None,
                  child_type: Optional[_builtins.str] = None,
-                 git_details: Optional[Union['GetTemplateGitDetailsArgs', 'GetTemplateGitDetailsArgsDict']] = None,
+                 git_details: Optional[Union['GetTemplateGitDetailsArgs', 'GetTemplateGitDetailsArgsDict', 'outputs.GetTemplateGitDetailsResult']] = None,
                  identifier: Optional[_builtins.str] = None,
                  is_stable: Optional[_builtins.bool] = None,
                  name: Optional[_builtins.str] = None,
@@ -268,7 +268,7 @@ def get_template(branch_name: Optional[_builtins.str] = None,
 
     :param _builtins.str branch_name: Version Label for Template.
     :param _builtins.str child_type: Defines child template type.
-    :param Union['GetTemplateGitDetailsArgs', 'GetTemplateGitDetailsArgsDict'] git_details: Contains parameters related to creating an Entity for Git Experience.
+    :param Union['GetTemplateGitDetailsArgs', 'GetTemplateGitDetailsArgsDict', 'outputs.GetTemplateGitDetailsResult'] git_details: Contains parameters related to creating an Entity for Git Experience.
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.bool is_stable: True if given version for template to be set as stable.
     :param _builtins.str name: Name of the resource.
@@ -310,7 +310,7 @@ def get_template(branch_name: Optional[_builtins.str] = None,
         version=pulumi.get(__ret__, 'version'))
 def get_template_output(branch_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         child_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                        git_details: pulumi.Input[Optional[Optional[Union['GetTemplateGitDetailsArgs', 'GetTemplateGitDetailsArgsDict']]]] = None,
+                        git_details: pulumi.Input[Optional[Optional[Union['GetTemplateGitDetailsArgs', 'GetTemplateGitDetailsArgsDict', 'outputs.GetTemplateGitDetailsResult']]]] = None,
                         identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         is_stable: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                         name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -345,7 +345,7 @@ def get_template_output(branch_name: pulumi.Input[Optional[Optional[_builtins.st
 
     :param _builtins.str branch_name: Version Label for Template.
     :param _builtins.str child_type: Defines child template type.
-    :param Union['GetTemplateGitDetailsArgs', 'GetTemplateGitDetailsArgsDict'] git_details: Contains parameters related to creating an Entity for Git Experience.
+    :param Union['GetTemplateGitDetailsArgs', 'GetTemplateGitDetailsArgsDict', 'outputs.GetTemplateGitDetailsResult'] git_details: Contains parameters related to creating an Entity for Git Experience.
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.bool is_stable: True if given version for template to be set as stable.
     :param _builtins.str name: Name of the resource.

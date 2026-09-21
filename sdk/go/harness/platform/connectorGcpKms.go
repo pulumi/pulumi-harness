@@ -45,6 +45,14 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewConnectorGcpKms(ctx, "gcp_kms_manual", &platform.ConnectorGcpKmsArgs{
+//				Manual: &platform.ConnectorGcpKmsManualArgs{
+//					Credentials: test.ID().ApplyT(func(id pulumi.ID) (string, error) {
+//						return fmt.Sprintf("account.%v", id), nil
+//					}).(pulumi.StringOutput),
+//					DelegateSelectors: pulumi.StringArray{
+//						pulumi.String("harness-delegate"),
+//					},
+//				},
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
@@ -55,19 +63,19 @@ import (
 //				GcpProjectId: pulumi.String("1234567"),
 //				KeyRing:      pulumi.String("key_ring"),
 //				KeyName:      pulumi.String("key_name"),
-//				Manual: &platform.ConnectorGcpKmsManualArgs{
-//					Credentials: test.ID().ApplyT(func(id pulumi.ID) (string, error) {
-//						return fmt.Sprintf("account.%v", id), nil
-//					}).(pulumi.StringOutput),
-//					DelegateSelectors: pulumi.StringArray{
-//						pulumi.String("harness-delegate"),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewConnectorGcpKms(ctx, "gcp_kms_oidc_platform", &platform.ConnectorGcpKmsArgs{
+//				OidcAuthentications: platform.ConnectorGcpKmsOidcAuthenticationArray{
+//					&platform.ConnectorGcpKmsOidcAuthenticationArgs{
+//						WorkloadPoolId:      pulumi.String("harness-pool-test"),
+//						ProviderId:          pulumi.String("harness"),
+//						GcpProjectId:        pulumi.String("1234567"),
+//						ServiceAccountEmail: pulumi.String("harness.sample@iam.gserviceaccount.com"),
+//					},
+//				},
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
@@ -79,29 +87,11 @@ import (
 //				KeyRing:           pulumi.String("key_ring"),
 //				KeyName:           pulumi.String("key_name"),
 //				ExecuteOnDelegate: pulumi.Bool(false),
-//				OidcAuthentications: platform.ConnectorGcpKmsOidcAuthenticationArray{
-//					&platform.ConnectorGcpKmsOidcAuthenticationArgs{
-//						WorkloadPoolId:      pulumi.String("harness-pool-test"),
-//						ProviderId:          pulumi.String("harness"),
-//						GcpProjectId:        pulumi.String("1234567"),
-//						ServiceAccountEmail: pulumi.String("harness.sample@iam.gserviceaccount.com"),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewConnectorGcpKms(ctx, "gcp_kms_oidc_delegate", &platform.ConnectorGcpKmsArgs{
-//				Identifier:  pulumi.String("identifier"),
-//				Name:        pulumi.String("name"),
-//				Description: pulumi.String("test"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//				Region:       pulumi.String("us-west1"),
-//				GcpProjectId: pulumi.String("1234567"),
-//				KeyRing:      pulumi.String("key_ring"),
-//				KeyName:      pulumi.String("key_name"),
 //				OidcAuthentications: platform.ConnectorGcpKmsOidcAuthenticationArray{
 //					&platform.ConnectorGcpKmsOidcAuthenticationArgs{
 //						WorkloadPoolId:      pulumi.String("harness-pool-test"),
@@ -113,11 +103,32 @@ import (
 //						},
 //					},
 //				},
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				Region:       pulumi.String("us-west1"),
+//				GcpProjectId: pulumi.String("1234567"),
+//				KeyRing:      pulumi.String("key_ring"),
+//				KeyName:      pulumi.String("key_name"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewConnectorGcpKms(ctx, "gcp_kms_oidc_delegate_default", &platform.ConnectorGcpKmsArgs{
+//				OidcAuthentications: platform.ConnectorGcpKmsOidcAuthenticationArray{
+//					&platform.ConnectorGcpKmsOidcAuthenticationArgs{
+//						WorkloadPoolId:      pulumi.String("harness-pool-test"),
+//						ProviderId:          pulumi.String("harness"),
+//						GcpProjectId:        pulumi.String("1234567"),
+//						ServiceAccountEmail: pulumi.String("harness.sample@iam.gserviceaccount.com"),
+//						DelegateSelectors: pulumi.StringArray{
+//							pulumi.String("harness-delegate"),
+//						},
+//					},
+//				},
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
@@ -129,17 +140,6 @@ import (
 //				KeyRing:      pulumi.String("key_ring"),
 //				KeyName:      pulumi.String("key_name"),
 //				Default:      pulumi.Bool(true),
-//				OidcAuthentications: platform.ConnectorGcpKmsOidcAuthenticationArray{
-//					&platform.ConnectorGcpKmsOidcAuthenticationArgs{
-//						WorkloadPoolId:      pulumi.String("harness-pool-test"),
-//						ProviderId:          pulumi.String("harness"),
-//						GcpProjectId:        pulumi.String("1234567"),
-//						ServiceAccountEmail: pulumi.String("harness.sample@iam.gserviceaccount.com"),
-//						DelegateSelectors: pulumi.StringArray{
-//							pulumi.String("harness-delegate"),
-//						},
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err

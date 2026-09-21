@@ -29,28 +29,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewIacmAnsibleInventory(ctx, "manual", &platform.IacmAnsibleInventoryArgs{
-//				Identifier: pulumi.String("my_inventory"),
-//				Name:       pulumi.String("my-inventory"),
-//				OrgId:      pulumi.Any(example.Id),
-//				ProjectId:  pulumi.Any(exampleHarnessPlatformProject.Id),
-//				Type:       pulumi.String("manual"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("env:prod"),
-//				},
 //				Groups: platform.IacmAnsibleInventoryGroupArray{
 //					&platform.IacmAnsibleInventoryGroupArgs{
-//						Identifier: pulumi.String("web"),
-//						Name:       pulumi.String("web"),
-//						Hosts: pulumi.StringArray{
-//							pulumi.String("web-1.example.com"),
-//							pulumi.String("web-2.example.com"),
-//						},
 //						Vars: platform.IacmAnsibleInventoryGroupVarArray{
 //							&platform.IacmAnsibleInventoryGroupVarArgs{
 //								Key:       pulumi.String("ansible_user"),
 //								Value:     pulumi.String("ubuntu"),
 //								ValueType: pulumi.String("string"),
 //							},
+//						},
+//						Identifier: pulumi.String("web"),
+//						Name:       pulumi.String("web"),
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("web-1.example.com"),
+//							pulumi.String("web-2.example.com"),
 //						},
 //					},
 //				},
@@ -60,6 +52,14 @@ import (
 //						Value:     pulumi.String("22"),
 //						ValueType: pulumi.String("string"),
 //					},
+//				},
+//				Identifier: pulumi.String("my_inventory"),
+//				Name:       pulumi.String("my-inventory"),
+//				OrgId:      pulumi.Any(example.Id),
+//				ProjectId:  pulumi.Any(exampleHarnessPlatformProject.Id),
+//				Type:       pulumi.String("manual"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("env:prod"),
 //				},
 //			})
 //			if err != nil {

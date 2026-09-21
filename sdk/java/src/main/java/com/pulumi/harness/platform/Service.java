@@ -46,11 +46,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Service("example", ServiceArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .description("test")
- *             .orgId("org_id")
- *             .projectId("project_id")
  *             .gitDetails(ServiceGitDetailsArgs.builder()
  *                 .branchName("branchName")
  *                 .commitMessage("commitMessage")
@@ -59,6 +54,11 @@ import javax.annotation.Nullable;
  *                 .storeType("REMOTE")
  *                 .repoName("repoName")
  *                 .build())
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("test")
+ *             .orgId("org_id")
+ *             .projectId("project_id")
  *             .yaml("""
  * service:
  *   name: name
@@ -103,11 +103,6 @@ import javax.annotation.Nullable;
  * 
  *         //## Importing Service from Git
  *         var test = new Service("test", ServiceArgs.builder()
- *             .identifier("id")
- *             .name("name")
- *             .orgId("org_id")
- *             .projectId("project_id")
- *             .importFromGit(true)
  *             .gitDetails(ServiceGitDetailsArgs.builder()
  *                 .storeType("REMOTE")
  *                 .connectorRef("account.DoNotDeleteGitX")
@@ -115,6 +110,11 @@ import javax.annotation.Nullable;
  *                 .filePath(".harness/accountService.yaml")
  *                 .branch("main")
  *                 .build())
+ *             .identifier("id")
+ *             .name("name")
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .importFromGit(true)
  *             .build());
  * 
  *     }

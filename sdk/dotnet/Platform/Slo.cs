@@ -25,23 +25,8 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var example = new Harness.Platform.Slo("example", new()
     ///     {
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         Identifier = "identifier",
     ///         Request = new Harness.Platform.Inputs.SloRequestArgs
     ///         {
-    ///             Name = "name",
-    ///             Description = "description",
-    ///             Tags = new[]
-    ///             {
-    ///                 "foo:bar",
-    ///                 "bar:foo",
-    ///             },
-    ///             UserJourneyRefs = new[]
-    ///             {
-    ///                 "one",
-    ///                 "two",
-    ///             },
     ///             SloTarget = new Harness.Platform.Inputs.SloRequestSloTargetArgs
     ///             {
     ///                 Type = "Calender",
@@ -54,6 +39,26 @@ namespace Pulumi.Harness.Platform
     ///                         ["dayOfMonth"] = 5,
     ///                     },
     ///                 }),
+    ///             },
+    ///             NotificationRuleRefs = new[]
+    ///             {
+    ///                 new Harness.Platform.Inputs.SloRequestNotificationRuleRefArgs
+    ///                 {
+    ///                     NotificationRuleRef = "notification_rule_ref",
+    ///                     Enabled = true,
+    ///                 },
+    ///             },
+    ///             Name = "name",
+    ///             Description = "description",
+    ///             Tags = new[]
+    ///             {
+    ///                 "foo:bar",
+    ///                 "bar:foo",
+    ///             },
+    ///             UserJourneyRefs = new[]
+    ///             {
+    ///                 "one",
+    ///                 "two",
     ///             },
     ///             Type = "Simple",
     ///             Spec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
@@ -81,15 +86,10 @@ namespace Pulumi.Harness.Platform
     ///                     },
     ///                 },
     ///             }),
-    ///             NotificationRuleRefs = new[]
-    ///             {
-    ///                 new Harness.Platform.Inputs.SloRequestNotificationRuleRefArgs
-    ///                 {
-    ///                     NotificationRuleRef = "notification_rule_ref",
-    ///                     Enabled = true,
-    ///                 },
-    ///             },
     ///         },
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Identifier = "identifier",
     ///     });
     /// 
     /// });

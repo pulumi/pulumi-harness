@@ -24,37 +24,10 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var example = new Harness.Platform.Workspace("example", new()
     ///     {
-    ///         Name = "example",
-    ///         Identifier = "example",
-    ///         OrgId = testHarnessPlatformOrganization.Id,
-    ///         ProjectId = testHarnessPlatformProject.Id,
-    ///         ProvisionerType = "terraform",
-    ///         ProvisionerVersion = "1.5.6",
-    ///         Repository = "https://github.com/org/repo",
-    ///         RepositoryBranch = "main",
-    ///         RepositoryPath = "tf/aws/basic",
-    ///         CostEstimationEnabled = true,
-    ///         ProviderConnector = test.Id,
-    ///         RepositoryConnector = test.Id,
-    ///         Tags = new[]
+    ///         AssociatedTemplate = new Harness.Platform.Inputs.WorkspaceAssociatedTemplateArgs
     ///         {
-    ///             "tag1",
-    ///             "tag2",
-    ///         },
-    ///         TerraformVariables = new[]
-    ///         {
-    ///             new Harness.Platform.Inputs.WorkspaceTerraformVariableArgs
-    ///             {
-    ///                 Key = "key1",
-    ///                 Value = "val1",
-    ///                 ValueType = "string",
-    ///             },
-    ///             new Harness.Platform.Inputs.WorkspaceTerraformVariableArgs
-    ///             {
-    ///                 Key = "key2",
-    ///                 Value = "val2",
-    ///                 ValueType = "string",
-    ///             },
+    ///             TemplateId = "my_template",
+    ///             Version = "v1.0.0",
     ///         },
     ///         EnvironmentVariables = new[]
     ///         {
@@ -95,6 +68,38 @@ namespace Pulumi.Harness.Platform
     ///                 RepositoryConnector = test.Id,
     ///             },
     ///         },
+    ///         TerraformVariables = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.WorkspaceTerraformVariableArgs
+    ///             {
+    ///                 Key = "key1",
+    ///                 Value = "val1",
+    ///                 ValueType = "string",
+    ///             },
+    ///             new Harness.Platform.Inputs.WorkspaceTerraformVariableArgs
+    ///             {
+    ///                 Key = "key2",
+    ///                 Value = "val2",
+    ///                 ValueType = "string",
+    ///             },
+    ///         },
+    ///         Name = "example",
+    ///         Identifier = "example",
+    ///         OrgId = testHarnessPlatformOrganization.Id,
+    ///         ProjectId = testHarnessPlatformProject.Id,
+    ///         ProvisionerType = "terraform",
+    ///         ProvisionerVersion = "1.5.6",
+    ///         Repository = "https://github.com/org/repo",
+    ///         RepositoryBranch = "main",
+    ///         RepositoryPath = "tf/aws/basic",
+    ///         CostEstimationEnabled = true,
+    ///         ProviderConnector = test.Id,
+    ///         RepositoryConnector = test.Id,
+    ///         Tags = new[]
+    ///         {
+    ///             "tag1",
+    ///             "tag2",
+    ///         },
     ///         VariableSets = new[]
     ///         {
     ///             testHarnessPlatformInfraVariableSet.Id,
@@ -105,11 +110,6 @@ namespace Pulumi.Harness.Platform
     ///             { "drift", "drift_pipeline_id" },
     ///             { "plan", "plan_pipeline_id" },
     ///             { "apply", "apply_pipeline_id" },
-    ///         },
-    ///         AssociatedTemplate = new Harness.Platform.Inputs.WorkspaceAssociatedTemplateArgs
-    ///         {
-    ///             TemplateId = "my_template",
-    ///             Version = "v1.0.0",
     ///         },
     ///     });
     /// 

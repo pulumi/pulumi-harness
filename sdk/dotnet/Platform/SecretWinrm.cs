@@ -38,15 +38,6 @@ namespace Pulumi.Harness.Platform
     /// 
     ///     var accountNtlm = new Harness.Platform.SecretWinrm("account_ntlm", new()
     ///     {
-    ///         Identifier = "account_ntlm_v3",
-    ///         Name = "Account NTLM v3",
-    ///         Description = "Account-level WinRM with NTLM",
-    ///         Tags = new[]
-    ///         {
-    ///             "scope:account",
-    ///             "auth:ntlm",
-    ///         },
-    ///         Port = 5986,
     ///         Ntlm = new Harness.Platform.Inputs.SecretWinrmNtlmArgs
     ///         {
     ///             Domain = "example.com",
@@ -56,11 +47,33 @@ namespace Pulumi.Harness.Platform
     ///             SkipCertCheck = false,
     ///             UseNoProfile = true,
     ///         },
+    ///         Identifier = "account_ntlm_v3",
+    ///         Name = "Account NTLM v3",
+    ///         Description = "Account-level WinRM with NTLM",
+    ///         Tags = new[]
+    ///         {
+    ///             "scope:account",
+    ///             "auth:ntlm",
+    ///         },
+    ///         Port = 5986,
     ///     });
     /// 
     ///     // 2. Account-level Kerberos with KeyTab
     ///     var accountKerberosKeytab = new Harness.Platform.SecretWinrm("account_kerberos_keytab", new()
     ///     {
+    ///         Kerberos = new Harness.Platform.Inputs.SecretWinrmKerberosArgs
+    ///         {
+    ///             TgtKeyTabFilePathSpec = new Harness.Platform.Inputs.SecretWinrmKerberosTgtKeyTabFilePathSpecArgs
+    ///             {
+    ///                 KeyPath = "/etc/krb5.keytab",
+    ///             },
+    ///             Principal = "service@EXAMPLE.COM",
+    ///             Realm = "EXAMPLE.COM",
+    ///             TgtGenerationMethod = "KeyTabFilePath",
+    ///             UseSsl = true,
+    ///             SkipCertCheck = true,
+    ///             UseNoProfile = true,
+    ///         },
     ///         Identifier = "account_kerberos_keytab_v3",
     ///         Name = "Account Kerberos KeyTab v3",
     ///         Description = "Account-level WinRM with Kerberos KeyTab",
@@ -70,19 +83,6 @@ namespace Pulumi.Harness.Platform
     ///             "auth:kerberos-keytab",
     ///         },
     ///         Port = 5986,
-    ///         Kerberos = new Harness.Platform.Inputs.SecretWinrmKerberosArgs
-    ///         {
-    ///             Principal = "service@EXAMPLE.COM",
-    ///             Realm = "EXAMPLE.COM",
-    ///             TgtGenerationMethod = "KeyTabFilePath",
-    ///             UseSsl = true,
-    ///             SkipCertCheck = true,
-    ///             UseNoProfile = true,
-    ///             TgtKeyTabFilePathSpec = new Harness.Platform.Inputs.SecretWinrmKerberosTgtKeyTabFilePathSpecArgs
-    ///             {
-    ///                 KeyPath = "/etc/krb5.keytab",
-    ///             },
-    ///         },
     ///     });
     /// 
     ///     // 3. Account-level Kerberos with Password
@@ -98,6 +98,19 @@ namespace Pulumi.Harness.Platform
     /// 
     ///     var accountKerberosPassword1SecretWinrm = new Harness.Platform.SecretWinrm("account_kerberos_password_1", new()
     ///     {
+    ///         Kerberos = new Harness.Platform.Inputs.SecretWinrmKerberosArgs
+    ///         {
+    ///             TgtPasswordSpec = new Harness.Platform.Inputs.SecretWinrmKerberosTgtPasswordSpecArgs
+    ///             {
+    ///                 PasswordRef = accountKerberosPassword1.Id.Apply(id =&gt; $"account.{id}"),
+    ///             },
+    ///             Principal = "user@EXAMPLE.COM",
+    ///             Realm = "EXAMPLE.COM",
+    ///             TgtGenerationMethod = "Password",
+    ///             UseSsl = true,
+    ///             SkipCertCheck = false,
+    ///             UseNoProfile = true,
+    ///         },
     ///         Identifier = "account_kerb_winrm_20251111",
     ///         Name = "Account Kerberos WinRM 20251111",
     ///         Description = "Account-level WinRM with Kerberos Password",
@@ -107,19 +120,6 @@ namespace Pulumi.Harness.Platform
     ///             "auth:kerberos-password",
     ///         },
     ///         Port = 5986,
-    ///         Kerberos = new Harness.Platform.Inputs.SecretWinrmKerberosArgs
-    ///         {
-    ///             Principal = "user@EXAMPLE.COM",
-    ///             Realm = "EXAMPLE.COM",
-    ///             TgtGenerationMethod = "Password",
-    ///             UseSsl = true,
-    ///             SkipCertCheck = false,
-    ///             UseNoProfile = true,
-    ///             TgtPasswordSpec = new Harness.Platform.Inputs.SecretWinrmKerberosTgtPasswordSpecArgs
-    ///             {
-    ///                 PasswordRef = accountKerberosPassword1.Id.Apply(id =&gt; $"account.{id}"),
-    ///             },
-    ///         },
     ///     });
     /// 
     ///     // ============================================================================
@@ -139,6 +139,15 @@ namespace Pulumi.Harness.Platform
     /// 
     ///     var orgNtlm = new Harness.Platform.SecretWinrm("org_ntlm", new()
     ///     {
+    ///         Ntlm = new Harness.Platform.Inputs.SecretWinrmNtlmArgs
+    ///         {
+    ///             Domain = "org.example.com",
+    ///             Username = "orgadmin",
+    ///             PasswordRef = orgNtlmPassword.Id.Apply(id =&gt; $"org.{id}"),
+    ///             UseSsl = false,
+    ///             SkipCertCheck = false,
+    ///             UseNoProfile = true,
+    ///         },
     ///         Identifier = "org_ntlm_v3",
     ///         Name = "Org NTLM v3",
     ///         Description = "Org-level WinRM with NTLM",
@@ -149,20 +158,24 @@ namespace Pulumi.Harness.Platform
     ///             "auth:ntlm",
     ///         },
     ///         Port = 5985,
-    ///         Ntlm = new Harness.Platform.Inputs.SecretWinrmNtlmArgs
-    ///         {
-    ///             Domain = "org.example.com",
-    ///             Username = "orgadmin",
-    ///             PasswordRef = orgNtlmPassword.Id.Apply(id =&gt; $"org.{id}"),
-    ///             UseSsl = false,
-    ///             SkipCertCheck = false,
-    ///             UseNoProfile = true,
-    ///         },
     ///     });
     /// 
     ///     // 5. Org-level Kerberos with KeyTab
     ///     var orgKerberosKeytab = new Harness.Platform.SecretWinrm("org_kerberos_keytab", new()
     ///     {
+    ///         Kerberos = new Harness.Platform.Inputs.SecretWinrmKerberosArgs
+    ///         {
+    ///             TgtKeyTabFilePathSpec = new Harness.Platform.Inputs.SecretWinrmKerberosTgtKeyTabFilePathSpecArgs
+    ///             {
+    ///                 KeyPath = "/etc/org.keytab",
+    ///             },
+    ///             Principal = "orgservice@EXAMPLE.COM",
+    ///             Realm = "EXAMPLE.COM",
+    ///             TgtGenerationMethod = "KeyTabFilePath",
+    ///             UseSsl = true,
+    ///             SkipCertCheck = true,
+    ///             UseNoProfile = true,
+    ///         },
     ///         Identifier = "org_kerberos_keytab_v3",
     ///         Name = "Org Kerberos KeyTab v3",
     ///         Description = "Org-level WinRM with Kerberos KeyTab",
@@ -173,19 +186,6 @@ namespace Pulumi.Harness.Platform
     ///             "auth:kerberos-keytab",
     ///         },
     ///         Port = 5986,
-    ///         Kerberos = new Harness.Platform.Inputs.SecretWinrmKerberosArgs
-    ///         {
-    ///             Principal = "orgservice@EXAMPLE.COM",
-    ///             Realm = "EXAMPLE.COM",
-    ///             TgtGenerationMethod = "KeyTabFilePath",
-    ///             UseSsl = true,
-    ///             SkipCertCheck = true,
-    ///             UseNoProfile = true,
-    ///             TgtKeyTabFilePathSpec = new Harness.Platform.Inputs.SecretWinrmKerberosTgtKeyTabFilePathSpecArgs
-    ///             {
-    ///                 KeyPath = "/etc/org.keytab",
-    ///             },
-    ///         },
     ///     });
     /// 
     ///     // 6. Org-level Kerberos with Password
@@ -202,6 +202,19 @@ namespace Pulumi.Harness.Platform
     /// 
     ///     var orgKerberosPasswordSecretWinrm = new Harness.Platform.SecretWinrm("org_kerberos_password", new()
     ///     {
+    ///         Kerberos = new Harness.Platform.Inputs.SecretWinrmKerberosArgs
+    ///         {
+    ///             TgtPasswordSpec = new Harness.Platform.Inputs.SecretWinrmKerberosTgtPasswordSpecArgs
+    ///             {
+    ///                 PasswordRef = orgKerberosPassword.Id.Apply(id =&gt; $"org.{id}"),
+    ///             },
+    ///             Principal = "orguser@EXAMPLE.COM",
+    ///             Realm = "EXAMPLE.COM",
+    ///             TgtGenerationMethod = "Password",
+    ///             UseSsl = true,
+    ///             SkipCertCheck = false,
+    ///             UseNoProfile = true,
+    ///         },
     ///         Identifier = "org_kerb_winrm_v3",
     ///         Name = "Org Kerberos WinRM v3",
     ///         Description = "Org-level WinRM with Kerberos Password",
@@ -212,19 +225,6 @@ namespace Pulumi.Harness.Platform
     ///             "auth:kerberos-password",
     ///         },
     ///         Port = 5986,
-    ///         Kerberos = new Harness.Platform.Inputs.SecretWinrmKerberosArgs
-    ///         {
-    ///             Principal = "orguser@EXAMPLE.COM",
-    ///             Realm = "EXAMPLE.COM",
-    ///             TgtGenerationMethod = "Password",
-    ///             UseSsl = true,
-    ///             SkipCertCheck = false,
-    ///             UseNoProfile = true,
-    ///             TgtPasswordSpec = new Harness.Platform.Inputs.SecretWinrmKerberosTgtPasswordSpecArgs
-    ///             {
-    ///                 PasswordRef = orgKerberosPassword.Id.Apply(id =&gt; $"org.{id}"),
-    ///             },
-    ///         },
     ///     });
     /// 
     ///     // ============================================================================
@@ -245,6 +245,15 @@ namespace Pulumi.Harness.Platform
     /// 
     ///     var projectNtlm = new Harness.Platform.SecretWinrm("project_ntlm", new()
     ///     {
+    ///         Ntlm = new Harness.Platform.Inputs.SecretWinrmNtlmArgs
+    ///         {
+    ///             Domain = "project.example.com",
+    ///             Username = "projectadmin",
+    ///             PasswordRef = projectNtlmPassword.Id,
+    ///             UseSsl = true,
+    ///             SkipCertCheck = false,
+    ///             UseNoProfile = false,
+    ///         },
     ///         Identifier = "proj_ntlm_winrm_v3",
     ///         Name = "Project NTLM WinRM v3",
     ///         Description = "Project-level WinRM with NTLM",
@@ -256,20 +265,24 @@ namespace Pulumi.Harness.Platform
     ///             "auth:ntlm",
     ///         },
     ///         Port = 5986,
-    ///         Ntlm = new Harness.Platform.Inputs.SecretWinrmNtlmArgs
-    ///         {
-    ///             Domain = "project.example.com",
-    ///             Username = "projectadmin",
-    ///             PasswordRef = projectNtlmPassword.Id,
-    ///             UseSsl = true,
-    ///             SkipCertCheck = false,
-    ///             UseNoProfile = false,
-    ///         },
     ///     });
     /// 
     ///     // 8. Project-level Kerberos with KeyTab
     ///     var projectKerberosKeytab = new Harness.Platform.SecretWinrm("project_kerberos_keytab", new()
     ///     {
+    ///         Kerberos = new Harness.Platform.Inputs.SecretWinrmKerberosArgs
+    ///         {
+    ///             TgtKeyTabFilePathSpec = new Harness.Platform.Inputs.SecretWinrmKerberosTgtKeyTabFilePathSpecArgs
+    ///             {
+    ///                 KeyPath = "/etc/project.keytab",
+    ///             },
+    ///             Principal = "projectservice@EXAMPLE.COM",
+    ///             Realm = "EXAMPLE.COM",
+    ///             TgtGenerationMethod = "KeyTabFilePath",
+    ///             UseSsl = false,
+    ///             SkipCertCheck = false,
+    ///             UseNoProfile = false,
+    ///         },
     ///         Identifier = "proj_kerb_keytab_v3",
     ///         Name = "Project Kerberos KeyTab v3",
     ///         Description = "Project-level WinRM with Kerberos KeyTab",
@@ -281,19 +294,6 @@ namespace Pulumi.Harness.Platform
     ///             "auth:kerberos-keytab",
     ///         },
     ///         Port = 5986,
-    ///         Kerberos = new Harness.Platform.Inputs.SecretWinrmKerberosArgs
-    ///         {
-    ///             Principal = "projectservice@EXAMPLE.COM",
-    ///             Realm = "EXAMPLE.COM",
-    ///             TgtGenerationMethod = "KeyTabFilePath",
-    ///             UseSsl = false,
-    ///             SkipCertCheck = false,
-    ///             UseNoProfile = false,
-    ///             TgtKeyTabFilePathSpec = new Harness.Platform.Inputs.SecretWinrmKerberosTgtKeyTabFilePathSpecArgs
-    ///             {
-    ///                 KeyPath = "/etc/project.keytab",
-    ///             },
-    ///         },
     ///     });
     /// 
     ///     // 9. Project-level Kerberos with Password
@@ -311,6 +311,19 @@ namespace Pulumi.Harness.Platform
     /// 
     ///     var projectKerberosPasswordSecretWinrm = new Harness.Platform.SecretWinrm("project_kerberos_password", new()
     ///     {
+    ///         Kerberos = new Harness.Platform.Inputs.SecretWinrmKerberosArgs
+    ///         {
+    ///             TgtPasswordSpec = new Harness.Platform.Inputs.SecretWinrmKerberosTgtPasswordSpecArgs
+    ///             {
+    ///                 PasswordRef = projectKerberosPassword.Id,
+    ///             },
+    ///             Principal = "projectuser@EXAMPLE.COM",
+    ///             Realm = "EXAMPLE.COM",
+    ///             TgtGenerationMethod = "Password",
+    ///             UseSsl = false,
+    ///             SkipCertCheck = true,
+    ///             UseNoProfile = true,
+    ///         },
     ///         Identifier = "proj_kerb_winrm_v3",
     ///         Name = "Project Kerberos WinRM v3",
     ///         Description = "Project-level WinRM with Kerberos Password",
@@ -322,19 +335,6 @@ namespace Pulumi.Harness.Platform
     ///             "auth:kerberos-password",
     ///         },
     ///         Port = 5986,
-    ///         Kerberos = new Harness.Platform.Inputs.SecretWinrmKerberosArgs
-    ///         {
-    ///             Principal = "projectuser@EXAMPLE.COM",
-    ///             Realm = "EXAMPLE.COM",
-    ///             TgtGenerationMethod = "Password",
-    ///             UseSsl = false,
-    ///             SkipCertCheck = true,
-    ///             UseNoProfile = true,
-    ///             TgtPasswordSpec = new Harness.Platform.Inputs.SecretWinrmKerberosTgtPasswordSpecArgs
-    ///             {
-    ///                 PasswordRef = projectKerberosPassword.Id,
-    ///             },
-    ///         },
     ///     });
     /// 
     /// });

@@ -172,7 +172,7 @@ class Codedeploy(pulumi.CustomResource):
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CodedeployVariableArgs', 'CodedeployVariableArgsDict']]]]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CodedeployVariableArgs', 'CodedeployVariableArgsDict', 'outputs.CodedeployVariable']]]]] = None,
                  __props__=None):
         """
         Resource for creating an AWS CodeDeploy service. This resource uses the config-as-code API's. When updating the `name` or `path` of this resource you should typically also set the `create_before_destroy = true` lifecycle setting.
@@ -206,7 +206,7 @@ class Codedeploy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] app_id: The id of the application the service belongs to
         :param pulumi.Input[_builtins.str] description: Description of th service
         :param pulumi.Input[_builtins.str] name: Name of the service
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CodedeployVariableArgs', 'CodedeployVariableArgsDict']]]] variables: Variables to be used in the service
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CodedeployVariableArgs', 'CodedeployVariableArgsDict', 'outputs.CodedeployVariable']]]] variables: Variables to be used in the service
         """
         ...
     @overload
@@ -259,7 +259,7 @@ class Codedeploy(pulumi.CustomResource):
                  app_id: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CodedeployVariableArgs', 'CodedeployVariableArgsDict']]]]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CodedeployVariableArgs', 'CodedeployVariableArgsDict', 'outputs.CodedeployVariable']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -288,7 +288,7 @@ class Codedeploy(pulumi.CustomResource):
             app_id: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CodedeployVariableArgs', 'CodedeployVariableArgsDict']]]]] = None) -> 'Codedeploy':
+            variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CodedeployVariableArgs', 'CodedeployVariableArgsDict', 'outputs.CodedeployVariable']]]]] = None) -> 'Codedeploy':
         """
         Get an existing Codedeploy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -299,7 +299,7 @@ class Codedeploy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] app_id: The id of the application the service belongs to
         :param pulumi.Input[_builtins.str] description: Description of th service
         :param pulumi.Input[_builtins.str] name: Name of the service
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CodedeployVariableArgs', 'CodedeployVariableArgsDict']]]] variables: Variables to be used in the service
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CodedeployVariableArgs', 'CodedeployVariableArgsDict', 'outputs.CodedeployVariable']]]] variables: Variables to be used in the service
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -216,7 +216,7 @@ class EnvironmentClustersMapping(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentClustersMappingClusterArgs', 'EnvironmentClustersMappingClusterArgsDict']]]]] = None,
+                 clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentClustersMappingClusterArgs', 'EnvironmentClustersMappingClusterArgsDict', 'outputs.EnvironmentClustersMappingCluster']]]]] = None,
                  env_id: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -233,20 +233,18 @@ class EnvironmentClustersMapping(pulumi.CustomResource):
 
         # mapping a cluster to a project level env
         example = harness.platform.EnvironmentClustersMapping("example",
-            identifier="mycustomidentifier",
-            org_id="orgIdentifer",
-            project_id="projectIdentifier",
-            env_id="exampleEnvId",
             clusters=[{
                 "identifier": "incluster",
                 "name": "in-cluster",
                 "agent_identifier": "account.gitopsagentdev",
                 "scope": "ACCOUNT",
-            }])
+            }],
+            identifier="mycustomidentifier",
+            org_id="orgIdentifer",
+            project_id="projectIdentifier",
+            env_id="exampleEnvId")
         # mapping two clusters to account level env
         example2 = harness.platform.EnvironmentClustersMapping("example2",
-            identifier="mycustomidentifier",
-            env_id="env1",
             clusters=[
                 {
                     "identifier": "clusterA",
@@ -260,7 +258,9 @@ class EnvironmentClustersMapping(pulumi.CustomResource):
                     "agent_identifier": "account.gitopsagentprod",
                     "scope": "ACCOUNT",
                 },
-            ])
+            ],
+            identifier="mycustomidentifier",
+            env_id="env1")
         ```
 
         ## Import
@@ -274,7 +274,7 @@ class EnvironmentClustersMapping(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EnvironmentClustersMappingClusterArgs', 'EnvironmentClustersMappingClusterArgsDict']]]] clusters: list of cluster identifiers and names
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EnvironmentClustersMappingClusterArgs', 'EnvironmentClustersMappingClusterArgsDict', 'outputs.EnvironmentClustersMappingCluster']]]] clusters: list of cluster identifiers and names
         :param pulumi.Input[_builtins.str] env_id: environment identifier.
         :param pulumi.Input[_builtins.str] identifier: identifier for the cluster mapping(can be given any value).
         :param pulumi.Input[_builtins.str] org_id: org_id of the environment.
@@ -297,20 +297,18 @@ class EnvironmentClustersMapping(pulumi.CustomResource):
 
         # mapping a cluster to a project level env
         example = harness.platform.EnvironmentClustersMapping("example",
-            identifier="mycustomidentifier",
-            org_id="orgIdentifer",
-            project_id="projectIdentifier",
-            env_id="exampleEnvId",
             clusters=[{
                 "identifier": "incluster",
                 "name": "in-cluster",
                 "agent_identifier": "account.gitopsagentdev",
                 "scope": "ACCOUNT",
-            }])
+            }],
+            identifier="mycustomidentifier",
+            org_id="orgIdentifer",
+            project_id="projectIdentifier",
+            env_id="exampleEnvId")
         # mapping two clusters to account level env
         example2 = harness.platform.EnvironmentClustersMapping("example2",
-            identifier="mycustomidentifier",
-            env_id="env1",
             clusters=[
                 {
                     "identifier": "clusterA",
@@ -324,7 +322,9 @@ class EnvironmentClustersMapping(pulumi.CustomResource):
                     "agent_identifier": "account.gitopsagentprod",
                     "scope": "ACCOUNT",
                 },
-            ])
+            ],
+            identifier="mycustomidentifier",
+            env_id="env1")
         ```
 
         ## Import
@@ -351,7 +351,7 @@ class EnvironmentClustersMapping(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentClustersMappingClusterArgs', 'EnvironmentClustersMappingClusterArgsDict']]]]] = None,
+                 clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentClustersMappingClusterArgs', 'EnvironmentClustersMappingClusterArgsDict', 'outputs.EnvironmentClustersMappingCluster']]]]] = None,
                  env_id: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -385,7 +385,7 @@ class EnvironmentClustersMapping(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentClustersMappingClusterArgs', 'EnvironmentClustersMappingClusterArgsDict']]]]] = None,
+            clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentClustersMappingClusterArgs', 'EnvironmentClustersMappingClusterArgsDict', 'outputs.EnvironmentClustersMappingCluster']]]]] = None,
             env_id: pulumi.Input[Optional[_builtins.str]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -398,7 +398,7 @@ class EnvironmentClustersMapping(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['EnvironmentClustersMappingClusterArgs', 'EnvironmentClustersMappingClusterArgsDict']]]] clusters: list of cluster identifiers and names
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EnvironmentClustersMappingClusterArgs', 'EnvironmentClustersMappingClusterArgsDict', 'outputs.EnvironmentClustersMappingCluster']]]] clusters: list of cluster identifiers and names
         :param pulumi.Input[_builtins.str] env_id: environment identifier.
         :param pulumi.Input[_builtins.str] identifier: identifier for the cluster mapping(can be given any value).
         :param pulumi.Input[_builtins.str] org_id: org_id of the environment.

@@ -58,20 +58,27 @@ import (
 //			// ----------------------------------------------------------------------------
 //			// Most common pattern: container action with runtime inputs and defaults
 //			_, err := chaos.NewActionTemplate(ctx, "container_with_runtime_inputs", &chaos.ActionTemplateArgs{
-//				OrgId:              pulumi.Any(this.Id),
-//				ProjectId:          pulumi.Any(thisHarnessPlatformProject.Id),
-//				HubIdentity:        pulumi.Any(projectLevel.Identity),
-//				Identity:           pulumi.String("container-action-template"),
-//				Name:               pulumi.String("Container Action Template"),
-//				Description:        pulumi.String("Container action with runtime inputs and defaults"),
-//				Type:               pulumi.String("container"),
-//				InfrastructureType: pulumi.String("<+input>.default('Kubernetes')"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("container"),
-//					pulumi.String("kubernetes"),
-//					pulumi.String("runtime-inputs"),
-//				},
 //				ContainerAction: &chaos.ActionTemplateContainerActionArgs{
+//					Resources: &chaos.ActionTemplateContainerActionResourcesArgs{
+//						Limits: pulumi.StringMap{
+//							"cpu":    pulumi.String("500m"),
+//							"memory": pulumi.String("512Mi"),
+//						},
+//						Requests: pulumi.StringMap{
+//							"cpu":    pulumi.String("250m"),
+//							"memory": pulumi.String("256Mi"),
+//						},
+//					},
+//					Envs: chaos.ActionTemplateContainerActionEnvArray{
+//						&chaos.ActionTemplateContainerActionEnvArgs{
+//							Name:  pulumi.String("TEST_VAR"),
+//							Value: pulumi.String("<+input>.default('test_value')"),
+//						},
+//						&chaos.ActionTemplateContainerActionEnvArgs{
+//							Name:  pulumi.String("ANOTHER_VAR"),
+//							Value: pulumi.String("<+input>.default('another_value')"),
+//						},
+//					},
 //					Image: pulumi.String("<+input>.default('busybox:latest')"),
 //					Commands: pulumi.StringArray{
 //						pulumi.String("<+input>.default('sh')"),
@@ -90,26 +97,6 @@ import (
 //					Annotations: pulumi.StringMap{
 //						"description": pulumi.String("Chaos container action"),
 //						"owner":       pulumi.String("chaos-team"),
-//					},
-//					Envs: chaos.ActionTemplateContainerActionEnvArray{
-//						&chaos.ActionTemplateContainerActionEnvArgs{
-//							Name:  pulumi.String("TEST_VAR"),
-//							Value: pulumi.String("<+input>.default('test_value')"),
-//						},
-//						&chaos.ActionTemplateContainerActionEnvArgs{
-//							Name:  pulumi.String("ANOTHER_VAR"),
-//							Value: pulumi.String("<+input>.default('another_value')"),
-//						},
-//					},
-//					Resources: &chaos.ActionTemplateContainerActionResourcesArgs{
-//						Limits: pulumi.StringMap{
-//							"cpu":    pulumi.String("500m"),
-//							"memory": pulumi.String("512Mi"),
-//						},
-//						Requests: pulumi.StringMap{
-//							"cpu":    pulumi.String("250m"),
-//							"memory": pulumi.String("256Mi"),
-//						},
 //					},
 //				},
 //				RunProperties: &chaos.ActionTemplateRunPropertiesArgs{
@@ -132,6 +119,19 @@ import (
 //						Description: pulumi.String("Kubernetes namespace (runtime input)"),
 //					},
 //				},
+//				OrgId:              pulumi.Any(this.Id),
+//				ProjectId:          pulumi.Any(thisHarnessPlatformProject.Id),
+//				HubIdentity:        pulumi.Any(projectLevel.Identity),
+//				Identity:           pulumi.String("container-action-template"),
+//				Name:               pulumi.String("Container Action Template"),
+//				Description:        pulumi.String("Container action with runtime inputs and defaults"),
+//				Type:               pulumi.String("container"),
+//				InfrastructureType: pulumi.String("<+input>.default('Kubernetes')"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("container"),
+//					pulumi.String("kubernetes"),
+//					pulumi.String("runtime-inputs"),
+//				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				projectLevel,
 //			}))
@@ -143,6 +143,12 @@ import (
 //			// ----------------------------------------------------------------------------
 //			// Delay action for adding wait time in experiments
 //			_, err = chaos.NewActionTemplate(ctx, "delay_action", &chaos.ActionTemplateArgs{
+//				DelayAction: &chaos.ActionTemplateDelayActionArgs{
+//					Duration: pulumi.String("<+input>.default('30s')"),
+//				},
+//				RunProperties: &chaos.ActionTemplateRunPropertiesArgs{
+//					Timeout: pulumi.String("60s"),
+//				},
 //				OrgId:              pulumi.Any(this.Id),
 //				ProjectId:          pulumi.Any(thisHarnessPlatformProject.Id),
 //				HubIdentity:        pulumi.Any(projectLevel.Identity),
@@ -155,12 +161,6 @@ import (
 //					pulumi.String("delay"),
 //					pulumi.String("wait"),
 //				},
-//				DelayAction: &chaos.ActionTemplateDelayActionArgs{
-//					Duration: pulumi.String("<+input>.default('30s')"),
-//				},
-//				RunProperties: &chaos.ActionTemplateRunPropertiesArgs{
-//					Timeout: pulumi.String("60s"),
-//				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				projectLevel,
 //			}))
@@ -172,19 +172,13 @@ import (
 //			// ----------------------------------------------------------------------------
 //			// Custom script action for flexible operations
 //			_, err = chaos.NewActionTemplate(ctx, "script_action", &chaos.ActionTemplateArgs{
-//				OrgId:              pulumi.Any(this.Id),
-//				ProjectId:          pulumi.Any(thisHarnessPlatformProject.Id),
-//				HubIdentity:        pulumi.Any(projectLevel.Identity),
-//				Identity:           pulumi.String("script-action-template"),
-//				Name:               pulumi.String("Script Action Template"),
-//				Description:        pulumi.String("Custom script action for chaos operations"),
-//				Type:               pulumi.String("script"),
-//				InfrastructureType: pulumi.String("<+input>.default('Kubernetes')"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("script"),
-//					pulumi.String("custom"),
-//				},
 //				CustomScriptAction: &chaos.ActionTemplateCustomScriptActionArgs{
+//					Envs: chaos.ActionTemplateCustomScriptActionEnvArray{
+//						&chaos.ActionTemplateCustomScriptActionEnvArgs{
+//							Name:  pulumi.String("TARGET"),
+//							Value: pulumi.String("<+input>.default('default-target')"),
+//						},
+//					},
 //					Script: `#!/bin/bash
 //
 // echo \"Running custom chaos script\"
@@ -194,12 +188,6 @@ import (
 // `,
 //
 //					Shell: "bash",
-//					Envs: chaos.ActionTemplateCustomScriptActionEnvArray{
-//						&chaos.ActionTemplateCustomScriptActionEnvArgs{
-//							Name:  pulumi.String("TARGET"),
-//							Value: pulumi.String("<+input>.default('default-target')"),
-//						},
-//					},
 //				},
 //				RunProperties: &chaos.ActionTemplateRunPropertiesArgs{
 //					Timeout:  pulumi.String("<+input>.default('120s')"),
@@ -213,6 +201,18 @@ import (
 //						Required:    pulumi.Bool(true),
 //						Description: pulumi.String("Target resource for the script"),
 //					},
+//				},
+//				OrgId:              pulumi.Any(this.Id),
+//				ProjectId:          pulumi.Any(thisHarnessPlatformProject.Id),
+//				HubIdentity:        pulumi.Any(projectLevel.Identity),
+//				Identity:           pulumi.String("script-action-template"),
+//				Name:               pulumi.String("Script Action Template"),
+//				Description:        pulumi.String("Custom script action for chaos operations"),
+//				Type:               pulumi.String("script"),
+//				InfrastructureType: pulumi.String("<+input>.default('Kubernetes')"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("script"),
+//					pulumi.String("custom"),
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				projectLevel,

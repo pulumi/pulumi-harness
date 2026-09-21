@@ -327,7 +327,7 @@ class SecretFile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecretFileAdditionalMetadataArgs', 'SecretFileAdditionalMetadataArgsDict']]]]] = None,
+                 additional_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecretFileAdditionalMetadataArgs', 'SecretFileAdditionalMetadataArgsDict', 'outputs.SecretFileAdditionalMetadata']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  file_path: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -361,31 +361,31 @@ class SecretFile(pulumi.CustomResource):
             secret_manager_identifier="harnessSecretManager")
         # With AWS Secret Manager KMS Key
         aws_secret_manager = harness.platform.SecretFile("aws_secret_manager",
-            identifier="identifier",
-            name="name",
-            description="example",
-            tags=["foo:bar"],
-            file_path="file_path",
-            secret_manager_identifier="awsSecretManager",
             additional_metadatas=[{
                 "values": [{
                     "kms_key_id": "kmsKeyId",
                 }],
-            }])
-        # With GCP Secret Manager project ID and region
-        gcp_secret_manager = harness.platform.SecretFile("gcp_secret_manager",
+            }],
             identifier="identifier",
             name="name",
             description="example",
             tags=["foo:bar"],
             file_path="file_path",
-            secret_manager_identifier="gcpSecretManager",
+            secret_manager_identifier="awsSecretManager")
+        # With GCP Secret Manager project ID and region
+        gcp_secret_manager = harness.platform.SecretFile("gcp_secret_manager",
             additional_metadatas=[{
                 "values": [{
                     "regions": "us-east1",
                     "gcp_project_id": "my-gcp-project-id",
                 }],
-            }])
+            }],
+            identifier="identifier",
+            name="name",
+            description="example",
+            tags=["foo:bar"],
+            file_path="file_path",
+            secret_manager_identifier="gcpSecretManager")
         ```
 
         ## Import
@@ -413,7 +413,7 @@ class SecretFile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretFileAdditionalMetadataArgs', 'SecretFileAdditionalMetadataArgsDict']]]] additional_metadatas: Additional Metadata for the Secret
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretFileAdditionalMetadataArgs', 'SecretFileAdditionalMetadataArgsDict', 'outputs.SecretFileAdditionalMetadata']]]] additional_metadatas: Additional Metadata for the Secret
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] file_path: Path of the file containing secret value
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -453,31 +453,31 @@ class SecretFile(pulumi.CustomResource):
             secret_manager_identifier="harnessSecretManager")
         # With AWS Secret Manager KMS Key
         aws_secret_manager = harness.platform.SecretFile("aws_secret_manager",
-            identifier="identifier",
-            name="name",
-            description="example",
-            tags=["foo:bar"],
-            file_path="file_path",
-            secret_manager_identifier="awsSecretManager",
             additional_metadatas=[{
                 "values": [{
                     "kms_key_id": "kmsKeyId",
                 }],
-            }])
-        # With GCP Secret Manager project ID and region
-        gcp_secret_manager = harness.platform.SecretFile("gcp_secret_manager",
+            }],
             identifier="identifier",
             name="name",
             description="example",
             tags=["foo:bar"],
             file_path="file_path",
-            secret_manager_identifier="gcpSecretManager",
+            secret_manager_identifier="awsSecretManager")
+        # With GCP Secret Manager project ID and region
+        gcp_secret_manager = harness.platform.SecretFile("gcp_secret_manager",
             additional_metadatas=[{
                 "values": [{
                     "regions": "us-east1",
                     "gcp_project_id": "my-gcp-project-id",
                 }],
-            }])
+            }],
+            identifier="identifier",
+            name="name",
+            description="example",
+            tags=["foo:bar"],
+            file_path="file_path",
+            secret_manager_identifier="gcpSecretManager")
         ```
 
         ## Import
@@ -518,7 +518,7 @@ class SecretFile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecretFileAdditionalMetadataArgs', 'SecretFileAdditionalMetadataArgsDict']]]]] = None,
+                 additional_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecretFileAdditionalMetadataArgs', 'SecretFileAdditionalMetadataArgsDict', 'outputs.SecretFileAdditionalMetadata']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  file_path: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -561,7 +561,7 @@ class SecretFile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            additional_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecretFileAdditionalMetadataArgs', 'SecretFileAdditionalMetadataArgsDict']]]]] = None,
+            additional_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecretFileAdditionalMetadataArgs', 'SecretFileAdditionalMetadataArgsDict', 'outputs.SecretFileAdditionalMetadata']]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             file_path: pulumi.Input[Optional[_builtins.str]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -577,7 +577,7 @@ class SecretFile(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretFileAdditionalMetadataArgs', 'SecretFileAdditionalMetadataArgsDict']]]] additional_metadatas: Additional Metadata for the Secret
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretFileAdditionalMetadataArgs', 'SecretFileAdditionalMetadataArgsDict', 'outputs.SecretFileAdditionalMetadata']]]] additional_metadatas: Additional Metadata for the Secret
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] file_path: Path of the file containing secret value
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.

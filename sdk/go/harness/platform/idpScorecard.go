@@ -29,35 +29,30 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			readme, err := platform.NewIdpScorecardCheck(ctx, "readme", &platform.IdpScorecardCheckArgs{
-//				Identifier:       pulumi.String("readme_exists"),
-//				Name:             pulumi.String("README exists"),
-//				Description:      pulumi.String("Ensure the repository has a README file"),
-//				RuleStrategy:     pulumi.String("ALL_OF"),
-//				DefaultBehaviour: pulumi.String("FAIL"),
 //				Rules: platform.IdpScorecardCheckRuleArray{
 //					&platform.IdpScorecardCheckRuleArgs{
-//						DataSourceIdentifier: pulumi.String("github"),
-//						DataPointIdentifier:  pulumi.String("isFileExists"),
-//						Operator:             pulumi.String("=="),
-//						Value:                pulumi.String("true"),
 //						InputValues: platform.IdpScorecardCheckRuleInputValueArray{
 //							&platform.IdpScorecardCheckRuleInputValueArgs{
 //								Key:   pulumi.String("filePath"),
 //								Value: pulumi.String("README.md"),
 //							},
 //						},
+//						DataSourceIdentifier: pulumi.String("github"),
+//						DataPointIdentifier:  pulumi.String("isFileExists"),
+//						Operator:             pulumi.String("=="),
+//						Value:                pulumi.String("true"),
 //					},
 //				},
+//				Identifier:       pulumi.String("readme_exists"),
+//				Name:             pulumi.String("README exists"),
+//				Description:      pulumi.String("Ensure the repository has a README file"),
+//				RuleStrategy:     pulumi.String("ALL_OF"),
+//				DefaultBehaviour: pulumi.String("FAIL"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewIdpScorecard(ctx, "gold", &platform.IdpScorecardArgs{
-//				Identifier:        pulumi.String("gold_standard"),
-//				Name:              pulumi.String("Gold Standard"),
-//				Description:       pulumi.String("Baseline production quality scorecard"),
-//				Published:         pulumi.Bool(true),
-//				WeightageStrategy: pulumi.String("EQUAL_WEIGHTS"),
 //				Filter: &platform.IdpScorecardFilterArgs{
 //					Kind: pulumi.String("component"),
 //					Type: pulumi.String("service"),
@@ -68,6 +63,11 @@ import (
 //						Custom:     pulumi.Bool(true),
 //					},
 //				},
+//				Identifier:        pulumi.String("gold_standard"),
+//				Name:              pulumi.String("Gold Standard"),
+//				Description:       pulumi.String("Baseline production quality scorecard"),
+//				Published:         pulumi.Bool(true),
+//				WeightageStrategy: pulumi.String("EQUAL_WEIGHTS"),
 //			})
 //			if err != nil {
 //				return err

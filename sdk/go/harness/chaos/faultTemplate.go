@@ -60,6 +60,48 @@ import (
 //			// ----------------------------------------------------------------------------
 //			// Most common pattern: Custom Kubernetes fault with container spec
 //			_, err := chaos.NewFaultTemplate(ctx, "kubernetes_fault", &chaos.FaultTemplateArgs{
+//				Spec: &chaos.FaultTemplateSpecArgs{
+//					Chaos: &chaos.FaultTemplateSpecChaosArgs{
+//						Kubernetes: &chaos.FaultTemplateSpecChaosKubernetesArgs{
+//							Resources: &chaos.FaultTemplateSpecChaosKubernetesResourcesArgs{
+//								Limits: pulumi.StringMap{
+//									"cpu":    pulumi.String("150m"),
+//									"memory": pulumi.String("150Mi"),
+//								},
+//								Requests: pulumi.StringMap{
+//									"cpu":    pulumi.String("100m"),
+//									"memory": pulumi.String("100Mi"),
+//								},
+//							},
+//							Image: pulumi.String("chaosnative/go-runner:ci"),
+//							Commands: pulumi.StringArray{
+//								pulumi.String("/bin/bash"),
+//								pulumi.String("-c"),
+//							},
+//							Args: pulumi.StringArray{
+//								pulumi.String("echo 'Running chaos fault'; sleep 30"),
+//							},
+//							ImagePullPolicy: pulumi.String("IfNotPresent"),
+//						},
+//						Params: chaos.FaultTemplateSpecChaosParamArray{
+//							&chaos.FaultTemplateSpecChaosParamArgs{
+//								Name:  pulumi.String("CHAOS_DURATION"),
+//								Value: pulumi.String("30s"),
+//							},
+//							&chaos.FaultTemplateSpecChaosParamArgs{
+//								Name:  pulumi.String("CHAOS_INTERVAL"),
+//								Value: pulumi.String("5s"),
+//							},
+//						},
+//						FaultName: pulumi.String("byoc-injector"),
+//					},
+//				},
+//				Links: chaos.FaultTemplateLinkArray{
+//					&chaos.FaultTemplateLinkArgs{
+//						Name: pulumi.String("Documentation"),
+//						Url:  pulumi.String("https://docs.harness.io/chaos"),
+//					},
+//				},
 //				OrgId:       pulumi.Any(this.Id),
 //				ProjectId:   pulumi.Any(thisHarnessPlatformProject.Id),
 //				HubIdentity: pulumi.Any(projectLevel.Identity),
@@ -79,48 +121,6 @@ import (
 //					pulumi.String("fault"),
 //					pulumi.String("custom"),
 //				},
-//				Links: chaos.FaultTemplateLinkArray{
-//					&chaos.FaultTemplateLinkArgs{
-//						Name: pulumi.String("Documentation"),
-//						Url:  pulumi.String("https://docs.harness.io/chaos"),
-//					},
-//				},
-//				Spec: &chaos.FaultTemplateSpecArgs{
-//					Chaos: &chaos.FaultTemplateSpecChaosArgs{
-//						FaultName: pulumi.String("byoc-injector"),
-//						Params: chaos.FaultTemplateSpecChaosParamArray{
-//							&chaos.FaultTemplateSpecChaosParamArgs{
-//								Name:  pulumi.String("CHAOS_DURATION"),
-//								Value: pulumi.String("30s"),
-//							},
-//							&chaos.FaultTemplateSpecChaosParamArgs{
-//								Name:  pulumi.String("CHAOS_INTERVAL"),
-//								Value: pulumi.String("5s"),
-//							},
-//						},
-//						Kubernetes: &chaos.FaultTemplateSpecChaosKubernetesArgs{
-//							Image: pulumi.String("chaosnative/go-runner:ci"),
-//							Commands: pulumi.StringArray{
-//								pulumi.String("/bin/bash"),
-//								pulumi.String("-c"),
-//							},
-//							Args: pulumi.StringArray{
-//								pulumi.String("echo 'Running chaos fault'; sleep 30"),
-//							},
-//							ImagePullPolicy: pulumi.String("IfNotPresent"),
-//							Resources: &chaos.FaultTemplateSpecChaosKubernetesResourcesArgs{
-//								Limits: pulumi.StringMap{
-//									"cpu":    pulumi.String("150m"),
-//									"memory": pulumi.String("150Mi"),
-//								},
-//								Requests: pulumi.StringMap{
-//									"cpu":    pulumi.String("100m"),
-//									"memory": pulumi.String("100Mi"),
-//								},
-//							},
-//						},
-//					},
-//				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				projectLevel,
 //			}))
@@ -132,6 +132,67 @@ import (
 //			// ----------------------------------------------------------------------------
 //			// Fault with environment variables for configuration
 //			_, err = chaos.NewFaultTemplate(ctx, "fault_with_env", &chaos.FaultTemplateArgs{
+//				Spec: &chaos.FaultTemplateSpecArgs{
+//					Chaos: &chaos.FaultTemplateSpecChaosArgs{
+//						Kubernetes: &chaos.FaultTemplateSpecChaosKubernetesArgs{
+//							Resources: &chaos.FaultTemplateSpecChaosKubernetesResourcesArgs{
+//								Limits: pulumi.StringMap{
+//									"cpu":    pulumi.String("200m"),
+//									"memory": pulumi.String("200Mi"),
+//								},
+//							},
+//							Envs: chaos.FaultTemplateSpecChaosKubernetesEnvArray{
+//								&chaos.FaultTemplateSpecChaosKubernetesEnvArgs{
+//									Name:  pulumi.String("TARGET_NAMESPACE"),
+//									Value: pulumi.String("<+input>.default('default')"),
+//								},
+//								&chaos.FaultTemplateSpecChaosKubernetesEnvArgs{
+//									Name:  pulumi.String("CHAOS_MODE"),
+//									Value: pulumi.String("pod"),
+//								},
+//							},
+//							Image: pulumi.String("chaosnative/go-runner:ci"),
+//							Commands: pulumi.StringArray{
+//								pulumi.String("/bin/bash"),
+//								pulumi.String("-c"),
+//							},
+//							Args: pulumi.StringArray{
+//								pulumi.String("echo 'Fault with env vars'; sleep 15"),
+//							},
+//							ImagePullPolicy: pulumi.String("IfNotPresent"),
+//						},
+//						Params: chaos.FaultTemplateSpecChaosParamArray{
+//							&chaos.FaultTemplateSpecChaosParamArgs{
+//								Name:  pulumi.String("CHAOS_DURATION"),
+//								Value: pulumi.String("15s"),
+//							},
+//							&chaos.FaultTemplateSpecChaosParamArgs{
+//								Name:  pulumi.String("CHAOS_INTERVAL"),
+//								Value: pulumi.String("3s"),
+//							},
+//							&chaos.FaultTemplateSpecChaosParamArgs{
+//								Name:  pulumi.String("TARGET_NAMESPACE"),
+//								Value: pulumi.String("<+input>.default('default')"),
+//							},
+//						},
+//						FaultName: pulumi.String("byoc-injector"),
+//					},
+//				},
+//				Links: chaos.FaultTemplateLinkArray{
+//					&chaos.FaultTemplateLinkArgs{
+//						Name: pulumi.String("Documentation"),
+//						Url:  pulumi.String("https://docs.harness.io/chaos"),
+//					},
+//				},
+//				Variables: chaos.FaultTemplateVariableArray{
+//					&chaos.FaultTemplateVariableArgs{
+//						Name:        pulumi.String("target_namespace"),
+//						Value:       pulumi.String("<+input>"),
+//						Type:        pulumi.String("string"),
+//						Required:    pulumi.Bool(false),
+//						Description: pulumi.String("Target namespace for chaos injection"),
+//					},
+//				},
 //				OrgId:       pulumi.Any(this.Id),
 //				ProjectId:   pulumi.Any(thisHarnessPlatformProject.Id),
 //				HubIdentity: pulumi.Any(projectLevel.Identity),
@@ -151,67 +212,6 @@ import (
 //					pulumi.String("env"),
 //					pulumi.String("config"),
 //				},
-//				Links: chaos.FaultTemplateLinkArray{
-//					&chaos.FaultTemplateLinkArgs{
-//						Name: pulumi.String("Documentation"),
-//						Url:  pulumi.String("https://docs.harness.io/chaos"),
-//					},
-//				},
-//				Spec: &chaos.FaultTemplateSpecArgs{
-//					Chaos: &chaos.FaultTemplateSpecChaosArgs{
-//						FaultName: pulumi.String("byoc-injector"),
-//						Params: chaos.FaultTemplateSpecChaosParamArray{
-//							&chaos.FaultTemplateSpecChaosParamArgs{
-//								Name:  pulumi.String("CHAOS_DURATION"),
-//								Value: pulumi.String("15s"),
-//							},
-//							&chaos.FaultTemplateSpecChaosParamArgs{
-//								Name:  pulumi.String("CHAOS_INTERVAL"),
-//								Value: pulumi.String("3s"),
-//							},
-//							&chaos.FaultTemplateSpecChaosParamArgs{
-//								Name:  pulumi.String("TARGET_NAMESPACE"),
-//								Value: pulumi.String("<+input>.default('default')"),
-//							},
-//						},
-//						Kubernetes: &chaos.FaultTemplateSpecChaosKubernetesArgs{
-//							Image: pulumi.String("chaosnative/go-runner:ci"),
-//							Commands: pulumi.StringArray{
-//								pulumi.String("/bin/bash"),
-//								pulumi.String("-c"),
-//							},
-//							Args: pulumi.StringArray{
-//								pulumi.String("echo 'Fault with env vars'; sleep 15"),
-//							},
-//							ImagePullPolicy: pulumi.String("IfNotPresent"),
-//							Envs: chaos.FaultTemplateSpecChaosKubernetesEnvArray{
-//								&chaos.FaultTemplateSpecChaosKubernetesEnvArgs{
-//									Name:  pulumi.String("TARGET_NAMESPACE"),
-//									Value: pulumi.String("<+input>.default('default')"),
-//								},
-//								&chaos.FaultTemplateSpecChaosKubernetesEnvArgs{
-//									Name:  pulumi.String("CHAOS_MODE"),
-//									Value: pulumi.String("pod"),
-//								},
-//							},
-//							Resources: &chaos.FaultTemplateSpecChaosKubernetesResourcesArgs{
-//								Limits: pulumi.StringMap{
-//									"cpu":    pulumi.String("200m"),
-//									"memory": pulumi.String("200Mi"),
-//								},
-//							},
-//						},
-//					},
-//				},
-//				Variables: chaos.FaultTemplateVariableArray{
-//					&chaos.FaultTemplateVariableArgs{
-//						Name:        pulumi.String("target_namespace"),
-//						Value:       pulumi.String("<+input>"),
-//						Type:        pulumi.String("string"),
-//						Required:    pulumi.Bool(false),
-//						Description: pulumi.String("Target namespace for chaos injection"),
-//					},
-//				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				projectLevel,
 //			}))
@@ -223,49 +223,19 @@ import (
 //			// ----------------------------------------------------------------------------
 //			// Fault with node selector, labels, and annotations
 //			_, err = chaos.NewFaultTemplate(ctx, "advanced_fault", &chaos.FaultTemplateArgs{
-//				OrgId:       pulumi.Any(this.Id),
-//				ProjectId:   pulumi.Any(thisHarnessPlatformProject.Id),
-//				HubIdentity: pulumi.Any(projectLevel.Identity),
-//				Identity:    pulumi.String("advanced-fault-template"),
-//				Name:        pulumi.String("Advanced Fault Template"),
-//				Description: pulumi.String("Fault with advanced Kubernetes configuration"),
-//				Categories: pulumi.StringArray{
-//					pulumi.String("Kubernetes"),
-//				},
-//				Infrastructures: pulumi.StringArray{
-//					pulumi.String("KubernetesV2"),
-//				},
-//				Type:                pulumi.String("Custom"),
-//				PermissionsRequired: pulumi.String("Basic"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("kubernetes"),
-//					pulumi.String("advanced"),
-//					pulumi.String("production"),
-//				},
-//				Links: chaos.FaultTemplateLinkArray{
-//					&chaos.FaultTemplateLinkArgs{
-//						Name: pulumi.String("Documentation"),
-//						Url:  pulumi.String("https://docs.harness.io/chaos"),
-//					},
-//					&chaos.FaultTemplateLinkArgs{
-//						Name: pulumi.String("Support"),
-//						Url:  pulumi.String("https://support.harness.io"),
-//					},
-//				},
 //				Spec: &chaos.FaultTemplateSpecArgs{
 //					Chaos: &chaos.FaultTemplateSpecChaosArgs{
-//						FaultName: pulumi.String("byoc-injector"),
-//						Params: chaos.FaultTemplateSpecChaosParamArray{
-//							&chaos.FaultTemplateSpecChaosParamArgs{
-//								Name:  pulumi.String("CHAOS_DURATION"),
-//								Value: pulumi.String("<+input>.default('30s')"),
-//							},
-//							&chaos.FaultTemplateSpecChaosParamArgs{
-//								Name:  pulumi.String("CHAOS_INTERVAL"),
-//								Value: pulumi.String("<+input>.default('5s')"),
-//							},
-//						},
 //						Kubernetes: &chaos.FaultTemplateSpecChaosKubernetesArgs{
+//							Resources: &chaos.FaultTemplateSpecChaosKubernetesResourcesArgs{
+//								Limits: pulumi.StringMap{
+//									"cpu":    pulumi.String("250m"),
+//									"memory": pulumi.String("256Mi"),
+//								},
+//								Requests: pulumi.StringMap{
+//									"cpu":    pulumi.String("125m"),
+//									"memory": pulumi.String("128Mi"),
+//								},
+//							},
 //							Image: pulumi.String("chaosnative/go-runner:ci"),
 //							Commands: pulumi.StringArray{
 //								pulumi.String("/bin/bash"),
@@ -288,17 +258,28 @@ import (
 //								"description": pulumi.String("Advanced chaos fault"),
 //								"owner":       pulumi.String("chaos-team"),
 //							},
-//							Resources: &chaos.FaultTemplateSpecChaosKubernetesResourcesArgs{
-//								Limits: pulumi.StringMap{
-//									"cpu":    pulumi.String("250m"),
-//									"memory": pulumi.String("256Mi"),
-//								},
-//								Requests: pulumi.StringMap{
-//									"cpu":    pulumi.String("125m"),
-//									"memory": pulumi.String("128Mi"),
-//								},
+//						},
+//						Params: chaos.FaultTemplateSpecChaosParamArray{
+//							&chaos.FaultTemplateSpecChaosParamArgs{
+//								Name:  pulumi.String("CHAOS_DURATION"),
+//								Value: pulumi.String("<+input>.default('30s')"),
+//							},
+//							&chaos.FaultTemplateSpecChaosParamArgs{
+//								Name:  pulumi.String("CHAOS_INTERVAL"),
+//								Value: pulumi.String("<+input>.default('5s')"),
 //							},
 //						},
+//						FaultName: pulumi.String("byoc-injector"),
+//					},
+//				},
+//				Links: chaos.FaultTemplateLinkArray{
+//					&chaos.FaultTemplateLinkArgs{
+//						Name: pulumi.String("Documentation"),
+//						Url:  pulumi.String("https://docs.harness.io/chaos"),
+//					},
+//					&chaos.FaultTemplateLinkArgs{
+//						Name: pulumi.String("Support"),
+//						Url:  pulumi.String("https://support.harness.io"),
 //					},
 //				},
 //				Variables: chaos.FaultTemplateVariableArray{
@@ -316,6 +297,25 @@ import (
 //						Required:    pulumi.Bool(false),
 //						Description: pulumi.String("Interval between chaos injections"),
 //					},
+//				},
+//				OrgId:       pulumi.Any(this.Id),
+//				ProjectId:   pulumi.Any(thisHarnessPlatformProject.Id),
+//				HubIdentity: pulumi.Any(projectLevel.Identity),
+//				Identity:    pulumi.String("advanced-fault-template"),
+//				Name:        pulumi.String("Advanced Fault Template"),
+//				Description: pulumi.String("Fault with advanced Kubernetes configuration"),
+//				Categories: pulumi.StringArray{
+//					pulumi.String("Kubernetes"),
+//				},
+//				Infrastructures: pulumi.StringArray{
+//					pulumi.String("KubernetesV2"),
+//				},
+//				Type:                pulumi.String("Custom"),
+//				PermissionsRequired: pulumi.String("Basic"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("kubernetes"),
+//					pulumi.String("advanced"),
+//					pulumi.String("production"),
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				projectLevel,

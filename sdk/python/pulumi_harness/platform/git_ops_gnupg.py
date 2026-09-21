@@ -228,7 +228,7 @@ class GitOpsGnupg(pulumi.CustomResource):
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsGnupgRequestArgs', 'GitOpsGnupgRequestArgsDict']]]]] = None,
+                 requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsGnupgRequestArgs', 'GitOpsGnupgRequestArgsDict', 'outputs.GitOpsGnupgRequest']]]]] = None,
                  __props__=None):
         """
         Resource for managing Harness GitOps GPG public key.
@@ -240,14 +240,14 @@ class GitOpsGnupg(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.platform.GitOpsGnupg("example",
-            account_id="account_id",
-            agent_id="agent_id",
             requests=[{
-                "upsert": True,
                 "publickeys": [{
                     "key_data": "-----BEGIN PGP PUBLIC KEY BLOCK-----XXXXXX-----END PGP PUBLIC KEY BLOCK-----",
                 }],
+                "upsert": True,
             }],
+            account_id="account_id",
+            agent_id="agent_id",
             opts = pulumi.ResourceOptions(ignore_changes=["requests[0].upsert"]))
         ```
 
@@ -280,7 +280,7 @@ class GitOpsGnupg(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier for the GnuPG Key.
         :param pulumi.Input[_builtins.str] org_id: Organization Identifier for the GnuPG Key.
         :param pulumi.Input[_builtins.str] project_id: Project Identifier for the GnuPG Key.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsGnupgRequestArgs', 'GitOpsGnupgRequestArgsDict']]]] requests: GnuPGPublicKey is a representation of a GnuPG public key
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsGnupgRequestArgs', 'GitOpsGnupgRequestArgsDict', 'outputs.GitOpsGnupgRequest']]]] requests: GnuPGPublicKey is a representation of a GnuPG public key
         """
         ...
     @overload
@@ -298,14 +298,14 @@ class GitOpsGnupg(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.platform.GitOpsGnupg("example",
-            account_id="account_id",
-            agent_id="agent_id",
             requests=[{
-                "upsert": True,
                 "publickeys": [{
                     "key_data": "-----BEGIN PGP PUBLIC KEY BLOCK-----XXXXXX-----END PGP PUBLIC KEY BLOCK-----",
                 }],
+                "upsert": True,
             }],
+            account_id="account_id",
+            agent_id="agent_id",
             opts = pulumi.ResourceOptions(ignore_changes=["requests[0].upsert"]))
         ```
 
@@ -351,7 +351,7 @@ class GitOpsGnupg(pulumi.CustomResource):
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsGnupgRequestArgs', 'GitOpsGnupgRequestArgsDict']]]]] = None,
+                 requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsGnupgRequestArgs', 'GitOpsGnupgRequestArgsDict', 'outputs.GitOpsGnupgRequest']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -386,7 +386,7 @@ class GitOpsGnupg(pulumi.CustomResource):
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
-            requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsGnupgRequestArgs', 'GitOpsGnupgRequestArgsDict']]]]] = None) -> 'GitOpsGnupg':
+            requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsGnupgRequestArgs', 'GitOpsGnupgRequestArgsDict', 'outputs.GitOpsGnupgRequest']]]]] = None) -> 'GitOpsGnupg':
         """
         Get an existing GitOpsGnupg resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -399,7 +399,7 @@ class GitOpsGnupg(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Identifier for the GnuPG Key.
         :param pulumi.Input[_builtins.str] org_id: Organization Identifier for the GnuPG Key.
         :param pulumi.Input[_builtins.str] project_id: Project Identifier for the GnuPG Key.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsGnupgRequestArgs', 'GitOpsGnupgRequestArgsDict']]]] requests: GnuPGPublicKey is a representation of a GnuPG public key
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsGnupgRequestArgs', 'GitOpsGnupgRequestArgsDict', 'outputs.GitOpsGnupgRequest']]]] requests: GnuPGPublicKey is a representation of a GnuPG public key
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -333,7 +333,7 @@ class SecurityGovernanceRuleV3(pulumi.CustomResource):
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 time_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGovernanceRuleV3TimeWindowArgs', 'SecurityGovernanceRuleV3TimeWindowArgsDict']]]]] = None,
+                 time_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGovernanceRuleV3TimeWindowArgs', 'SecurityGovernanceRuleV3TimeWindowArgsDict', 'outputs.SecurityGovernanceRuleV3TimeWindow']]]]] = None,
                  user_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -353,6 +353,15 @@ class SecurityGovernanceRuleV3(pulumi.CustomResource):
 
         # Example of a Security Governance Rule (V3)
         example = harness.chaos.SecurityGovernanceRuleV3("example",
+            time_windows=[{
+                "recurrence": {
+                    "type": "Daily",
+                    "until": -1,
+                },
+                "time_zone": "UTC",
+                "start_time": int(1711238400000),
+                "duration": "24h",
+            }],
             org_id=org_id,
             project_id=project_id,
             name="k8s-security-rule",
@@ -363,16 +372,7 @@ class SecurityGovernanceRuleV3(pulumi.CustomResource):
             tags=[
                 "env:prod",
                 "team:security",
-            ],
-            time_windows=[{
-                "time_zone": "UTC",
-                "start_time": int(1711238400000),
-                "duration": "24h",
-                "recurrence": {
-                    "type": "Daily",
-                    "until": -1,
-                },
-            }])
+            ])
         pulumi.export("securityGovernanceRuleV3Id", example.id)
         ```
 
@@ -396,7 +396,7 @@ class SecurityGovernanceRuleV3(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: The organization ID of the security governance rule
         :param pulumi.Input[_builtins.str] project_id: The project ID of the security governance rule
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags for the security governance rule
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGovernanceRuleV3TimeWindowArgs', 'SecurityGovernanceRuleV3TimeWindowArgsDict']]]] time_windows: Time windows during which the rule is active
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGovernanceRuleV3TimeWindowArgs', 'SecurityGovernanceRuleV3TimeWindowArgsDict', 'outputs.SecurityGovernanceRuleV3TimeWindow']]]] time_windows: Time windows during which the rule is active
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_group_ids: List of user group IDs associated with this rule
         """
         ...
@@ -422,6 +422,15 @@ class SecurityGovernanceRuleV3(pulumi.CustomResource):
 
         # Example of a Security Governance Rule (V3)
         example = harness.chaos.SecurityGovernanceRuleV3("example",
+            time_windows=[{
+                "recurrence": {
+                    "type": "Daily",
+                    "until": -1,
+                },
+                "time_zone": "UTC",
+                "start_time": int(1711238400000),
+                "duration": "24h",
+            }],
             org_id=org_id,
             project_id=project_id,
             name="k8s-security-rule",
@@ -432,16 +441,7 @@ class SecurityGovernanceRuleV3(pulumi.CustomResource):
             tags=[
                 "env:prod",
                 "team:security",
-            ],
-            time_windows=[{
-                "time_zone": "UTC",
-                "start_time": int(1711238400000),
-                "duration": "24h",
-                "recurrence": {
-                    "type": "Daily",
-                    "until": -1,
-                },
-            }])
+            ])
         pulumi.export("securityGovernanceRuleV3Id", example.id)
         ```
 
@@ -478,7 +478,7 @@ class SecurityGovernanceRuleV3(pulumi.CustomResource):
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 time_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGovernanceRuleV3TimeWindowArgs', 'SecurityGovernanceRuleV3TimeWindowArgsDict']]]]] = None,
+                 time_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGovernanceRuleV3TimeWindowArgs', 'SecurityGovernanceRuleV3TimeWindowArgsDict', 'outputs.SecurityGovernanceRuleV3TimeWindow']]]]] = None,
                  user_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -523,7 +523,7 @@ class SecurityGovernanceRuleV3(pulumi.CustomResource):
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            time_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGovernanceRuleV3TimeWindowArgs', 'SecurityGovernanceRuleV3TimeWindowArgsDict']]]]] = None,
+            time_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGovernanceRuleV3TimeWindowArgs', 'SecurityGovernanceRuleV3TimeWindowArgsDict', 'outputs.SecurityGovernanceRuleV3TimeWindow']]]]] = None,
             user_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'SecurityGovernanceRuleV3':
         """
         Get an existing SecurityGovernanceRuleV3 resource's state with the given name, id, and optional extra
@@ -539,7 +539,7 @@ class SecurityGovernanceRuleV3(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: The organization ID of the security governance rule
         :param pulumi.Input[_builtins.str] project_id: The project ID of the security governance rule
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags for the security governance rule
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGovernanceRuleV3TimeWindowArgs', 'SecurityGovernanceRuleV3TimeWindowArgsDict']]]] time_windows: Time windows during which the rule is active
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityGovernanceRuleV3TimeWindowArgs', 'SecurityGovernanceRuleV3TimeWindowArgsDict', 'outputs.SecurityGovernanceRuleV3TimeWindow']]]] time_windows: Time windows during which the rule is active
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_group_ids: List of user group IDs associated with this rule
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

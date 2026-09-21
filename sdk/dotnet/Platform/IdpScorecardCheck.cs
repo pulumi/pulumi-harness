@@ -24,20 +24,10 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var readme = new Harness.Platform.IdpScorecardCheck("readme", new()
     ///     {
-    ///         Identifier = "readme_exists",
-    ///         Name = "README exists",
-    ///         Description = "Ensure the repository has a README file",
-    ///         RuleStrategy = "ALL_OF",
-    ///         DefaultBehaviour = "FAIL",
     ///         Rules = new[]
     ///         {
     ///             new Harness.Platform.Inputs.IdpScorecardCheckRuleArgs
     ///             {
-    ///                 DataSourceIdentifier = "github",
-    ///                 DataPointIdentifier = "isFileExists",
-    ///                 Operator = "==",
-    ///                 Value = "true",
-    ///                 RuleDescription = "Repository has a README",
     ///                 InputValues = new[]
     ///                 {
     ///                     new Harness.Platform.Inputs.IdpScorecardCheckRuleInputValueArgs
@@ -46,8 +36,18 @@ namespace Pulumi.Harness.Platform
     ///                         Value = "README.md",
     ///                     },
     ///                 },
+    ///                 DataSourceIdentifier = "github",
+    ///                 DataPointIdentifier = "isFileExists",
+    ///                 Operator = "==",
+    ///                 Value = "true",
+    ///                 RuleDescription = "Repository has a README",
     ///             },
     ///         },
+    ///         Identifier = "readme_exists",
+    ///         Name = "README exists",
+    ///         Description = "Ensure the repository has a README file",
+    ///         RuleStrategy = "ALL_OF",
+    ///         DefaultBehaviour = "FAIL",
     ///     });
     /// 
     /// });

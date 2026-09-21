@@ -39,6 +39,11 @@ import * as utilities from "../utilities";
  *     value: "secret",
  * });
  * const gcpSecretManagerReference = new harness.platform.SecretText("gcp_secret_manager_reference", {
+ *     additionalMetadatas: [{
+ *         values: [{
+ *             version: "1",
+ *         }],
+ *     }],
  *     identifier: "identifier",
  *     name: "name",
  *     description: "example",
@@ -46,14 +51,15 @@ import * as utilities from "../utilities";
  *     secretManagerIdentifier: "gcpSecretManager",
  *     valueType: "Reference",
  *     value: "secret",
- *     additionalMetadatas: [{
- *         values: [{
- *             version: "1",
- *         }],
- *     }],
  * });
  * // GCP Secret Manager with project ID and region (for secrets in a different GCP project)
  * const gcpSecretManagerWithProject = new harness.platform.SecretText("gcp_secret_manager_with_project", {
+ *     additionalMetadatas: [{
+ *         values: [{
+ *             regions: "us-east1",
+ *             gcpProjectId: "my-gcp-project-id",
+ *         }],
+ *     }],
  *     identifier: "identifier",
  *     name: "name",
  *     description: "example",
@@ -61,14 +67,13 @@ import * as utilities from "../utilities";
  *     secretManagerIdentifier: "gcpSecretManager",
  *     valueType: "Inline",
  *     value: "secret",
- *     additionalMetadatas: [{
- *         values: [{
- *             regions: "us-east1",
- *             gcpProjectId: "my-gcp-project-id",
- *         }],
- *     }],
  * });
  * const awsSecretManager = new harness.platform.SecretText("aws_secret_manager", {
+ *     additionalMetadatas: [{
+ *         values: [{
+ *             kmsKeyId: "kmsKeyId",
+ *         }],
+ *     }],
  *     identifier: "identifier",
  *     name: "name",
  *     description: "example",
@@ -76,11 +81,6 @@ import * as utilities from "../utilities";
  *     secretManagerIdentifier: "awsSecretManager",
  *     valueType: "Inline",
  *     value: "secret",
- *     additionalMetadatas: [{
- *         values: [{
- *             kmsKeyId: "kmsKeyId",
- *         }],
- *     }],
  * });
  * ```
  *

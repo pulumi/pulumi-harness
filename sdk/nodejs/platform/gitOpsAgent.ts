@@ -16,16 +16,16 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.GitOpsAgent("example", {
+ *     metadatas: [{
+ *         namespace: "namespace",
+ *         highAvailability: true,
+ *     }],
  *     identifier: "identifier",
  *     accountId: "account_id",
  *     projectId: "project_id",
  *     orgId: "org_id",
  *     name: "name",
  *     type: "MANAGED_ARGO_PROVIDER",
- *     metadatas: [{
- *         namespace: "namespace",
- *         highAvailability: true,
- *     }],
  * });
  * ```
  *

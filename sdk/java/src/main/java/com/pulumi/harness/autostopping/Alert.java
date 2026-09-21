@@ -47,7 +47,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var specific_rule_alert = new Alert("specific-rule-alert", AlertArgs.builder()
- *             .name("demo-alert")
  *             .recipients(AlertRecipientsArgs.builder()
  *                 .emails(                
  *                     "user1}{@literal @}{@code example.com",
@@ -56,6 +55,7 @@ import javax.annotation.Nullable;
  *                     "slack-web-hook-1",
  *                     "slack-web-hook-2")
  *                 .build())
+ *             .name("demo-alert")
  *             .events(            
  *                 "autostopping_rule_created",
  *                 "autostopping_rule_updated",
@@ -66,7 +66,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var all_rule_alert = new Alert("all-rule-alert", AlertArgs.builder()
- *             .name("demo-alert")
  *             .recipients(AlertRecipientsArgs.builder()
  *                 .emails(                
  *                     "user1}{@literal @}{@code example.com",
@@ -75,6 +74,7 @@ import javax.annotation.Nullable;
  *                     "slack-web-hook-1",
  *                     "slack-web-hook-2")
  *                 .build())
+ *             .name("demo-alert")
  *             .events(            
  *                 "autostopping_rule_created",
  *                 "autostopping_rule_updated",

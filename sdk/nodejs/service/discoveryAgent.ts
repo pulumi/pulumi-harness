@@ -18,18 +18,18 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.service.DiscoveryAgent("example", {
+ *     configs: [{
+ *         kubernetes: [{
+ *             namespace: "harness-sd",
+ *         }],
+ *         collectorImage: "harness/service-discovery-collector:main-latest",
+ *         logWatcherImage: "harness/chaos-log-watcher:main-latest",
+ *     }],
  *     name: "ExampleAgent",
  *     orgIdentifier: "your_org_id",
  *     projectIdentifier: "your_project_id",
  *     environmentIdentifier: "your_environment_id",
  *     infraIdentifier: "your_infra_id",
- *     configs: [{
- *         collectorImage: "harness/service-discovery-collector:main-latest",
- *         logWatcherImage: "harness/chaos-log-watcher:main-latest",
- *         kubernetes: [{
- *             namespace: "harness-sd",
- *         }],
- *     }],
  * });
  * ```
  *
@@ -41,62 +41,56 @@ import * as utilities from "../utilities";
  *
  * // Create a new service discovery agent with minimal configuration
  * const example = new harness.service.DiscoveryAgent("example", {
+ *     configs: [{
+ *         kubernetes: [{
+ *             namespace: "harness-sd",
+ *         }],
+ *     }],
  *     name: "example-agent",
  *     orgIdentifier: orgIdentifier,
  *     projectIdentifier: projectIdentifier,
  *     environmentIdentifier: environmentIdentifier,
  *     infraIdentifier: "example-infra",
+ * });
+ * // Create a new service discovery agent with node agent enabled
+ * const nodeAgent = new harness.service.DiscoveryAgent("node_agent", {
  *     configs: [{
+ *         datas: [{
+ *             enableNodeAgent: true,
+ *         }],
  *         kubernetes: [{
  *             namespace: "harness-sd",
  *         }],
  *     }],
- * });
- * // Create a new service discovery agent with node agent enabled
- * const nodeAgent = new harness.service.DiscoveryAgent("node_agent", {
  *     name: "node-agent-example",
  *     orgIdentifier: orgIdentifier,
  *     projectIdentifier: projectIdentifier,
  *     environmentIdentifier: environmentIdentifier,
  *     infraIdentifier: "node-agent-example",
- *     configs: [{
- *         kubernetes: [{
- *             namespace: "harness-sd",
- *         }],
- *         datas: [{
- *             enableNodeAgent: true,
- *         }],
- *     }],
  * });
  * // Create a new service discovery agent with full configuration
  * const fullConfig = new harness.service.DiscoveryAgent("full_config", {
- *     name: "full-config-example",
- *     orgIdentifier: orgIdentifier,
- *     projectIdentifier: projectIdentifier,
- *     environmentIdentifier: environmentIdentifier,
- *     infraIdentifier: "full-config-example",
- *     permanentInstallation: false,
- *     correlationId: "full-config-correlation-123",
  *     configs: [{
- *         collectorImage: "harness/service-discovery-collector:main-latest",
- *         logWatcherImage: "harness/chaos-log-watcher:main-latest",
- *         skipSecureVerify: false,
+ *         datas: [{
+ *             crons: [{
+ *                 expression: "0/10 * * * *",
+ *             }],
+ *             enableNodeAgent: true,
+ *             nodeAgentSelector: "node-role.kubernetes.io/worker=",
+ *             enableBatchResources: true,
+ *             enableOrphanedPod: true,
+ *             namespaceSelector: "environment=dev",
+ *             collectionWindowInMin: 15,
+ *             blacklistedNamespaces: [
+ *                 "kube-system",
+ *                 "kube-public",
+ *             ],
+ *             observedNamespaces: [
+ *                 "default",
+ *                 "harness",
+ *             ],
+ *         }],
  *         kubernetes: [{
- *             namespace: "harness-sd",
- *             serviceAccount: "harness-sd-sa",
- *             imagePullPolicy: "IfNotPresent",
- *             runAsUser: 2000,
- *             runAsGroup: 2000,
- *             labels: {
- *                 app: "service-discovery",
- *                 env: "dev",
- *             },
- *             annotations: {
- *                 "example.com/annotation": "value",
- *             },
- *             nodeSelector: {
- *                 "kubernetes.io/os": "linux",
- *             },
  *             resources: [{
  *                 limits: {
  *                     cpu: "500m",
@@ -113,25 +107,21 @@ import * as utilities from "../utilities";
  *                 value: "value1",
  *                 effect: "NoSchedule",
  *             }],
- *         }],
- *         datas: [{
- *             enableNodeAgent: true,
- *             nodeAgentSelector: "node-role.kubernetes.io/worker=",
- *             enableBatchResources: true,
- *             enableOrphanedPod: true,
- *             namespaceSelector: "environment=dev",
- *             collectionWindowInMin: 15,
- *             blacklistedNamespaces: [
- *                 "kube-system",
- *                 "kube-public",
- *             ],
- *             observedNamespaces: [
- *                 "default",
- *                 "harness",
- *             ],
- *             crons: [{
- *                 expression: "0/10 * * * *",
- *             }],
+ *             namespace: "harness-sd",
+ *             serviceAccount: "harness-sd-sa",
+ *             imagePullPolicy: "IfNotPresent",
+ *             runAsUser: 2000,
+ *             runAsGroup: 2000,
+ *             labels: {
+ *                 app: "service-discovery",
+ *                 env: "dev",
+ *             },
+ *             annotations: {
+ *                 "example.com/annotation": "value",
+ *             },
+ *             nodeSelector: {
+ *                 "kubernetes.io/os": "linux",
+ *             },
  *         }],
  *         mtls: [{
  *             certPath: "/etc/certs/tls.crt",
@@ -145,7 +135,17 @@ import * as utilities from "../utilities";
  *             noProxy: "localhost,127.0.0.1,.svc,.cluster.local",
  *             url: "https://proxy.example.com",
  *         }],
+ *         collectorImage: "harness/service-discovery-collector:main-latest",
+ *         logWatcherImage: "harness/chaos-log-watcher:main-latest",
+ *         skipSecureVerify: false,
  *     }],
+ *     name: "full-config-example",
+ *     orgIdentifier: orgIdentifier,
+ *     projectIdentifier: projectIdentifier,
+ *     environmentIdentifier: environmentIdentifier,
+ *     infraIdentifier: "full-config-example",
+ *     permanentInstallation: false,
+ *     correlationId: "full-config-correlation-123",
  * });
  * ```
  *

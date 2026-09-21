@@ -34,9 +34,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.inputs.GitOpsApplicationsApplicationArgs;
  * import com.pulumi.harness.platform.inputs.GitOpsApplicationsApplicationMetadataArgs;
  * import com.pulumi.harness.platform.inputs.GitOpsApplicationsApplicationSpecArgs;
- * import com.pulumi.harness.platform.inputs.GitOpsApplicationsApplicationSpecSyncPolicyArgs;
- * import com.pulumi.harness.platform.inputs.GitOpsApplicationsApplicationSpecSourceArgs;
  * import com.pulumi.harness.platform.inputs.GitOpsApplicationsApplicationSpecDestinationArgs;
+ * import com.pulumi.harness.platform.inputs.GitOpsApplicationsApplicationSpecSourceArgs;
+ * import com.pulumi.harness.platform.inputs.GitOpsApplicationsApplicationSpecSyncPolicyArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -62,6 +62,15 @@ import javax.annotation.Nullable;
  *                     .name("appname123")
  *                     .build())
  *                 .specs(GitOpsApplicationsApplicationSpecArgs.builder()
+ *                     .destinations(GitOpsApplicationsApplicationSpecDestinationArgs.builder()
+ *                         .namespace("namespace-123")
+ *                         .server("https://1.3.4.5")
+ *                         .build())
+ *                     .sources(GitOpsApplicationsApplicationSpecSourceArgs.builder()
+ *                         .targetRevision("master")
+ *                         .repoUrl("https://github.com/willycoll/argocd-example-apps.git")
+ *                         .path("helm-guestbook")
+ *                         .build())
  *                     .syncPolicies(GitOpsApplicationsApplicationSpecSyncPolicyArgs.builder()
  *                         .syncOptions(                        
  *                             "PrunePropagationPolicy=undefined",
@@ -73,15 +82,6 @@ import javax.annotation.Nullable;
  *                             "applyOutofSyncOnly=false",
  *                             "Replace=false",
  *                             "retry=false")
- *                         .build())
- *                     .sources(GitOpsApplicationsApplicationSpecSourceArgs.builder()
- *                         .targetRevision("master")
- *                         .repoUrl("https://github.com/willycoll/argocd-example-apps.git")
- *                         .path("helm-guestbook")
- *                         .build())
- *                     .destinations(GitOpsApplicationsApplicationSpecDestinationArgs.builder()
- *                         .namespace("namespace-123")
- *                         .server("https://1.3.4.5")
  *                         .build())
  *                     .build())
  *                 .build())

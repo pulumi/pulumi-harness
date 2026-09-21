@@ -25,10 +25,6 @@ namespace Pulumi.Harness.Platform
     ///     // Example 1: Cluster Generator
     ///     var clusterGenerator = new Harness.Platform.GitopsApplicationset("cluster_generator", new()
     ///     {
-    ///         OrgId = "default",
-    ///         ProjectId = "projectId",
-    ///         AgentId = "account.agentuseast1",
-    ///         Upsert = true,
     ///         Applicationset = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetArgs
     ///         {
     ///             Metadata = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetMetadataArgs
@@ -38,10 +34,31 @@ namespace Pulumi.Harness.Platform
     ///             },
     ///             Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecArgs
     ///             {
-    ///                 GoTemplate = true,
-    ///                 GoTemplateOptions = new[]
+    ///                 Template = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateArgs
     ///                 {
-    ///                     "missingkey=error",
+    ///                     Metadata = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs
+    ///                     {
+    ///                         Name = "{{.name}}-guestbook",
+    ///                         Labels = 
+    ///                         {
+    ///                             { "env", "dev" },
+    ///                         },
+    ///                     },
+    ///                     Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs
+    ///                     {
+    ///                         Source = 
+    ///                         {
+    ///                             { "repoUrl", "https://github.com/argoproj/argocd-example-apps.git" },
+    ///                             { "path", "helm-guestbook" },
+    ///                             { "targetRevision", "HEAD" },
+    ///                         },
+    ///                         Destination = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs
+    ///                         {
+    ///                             Server = "{{.url}}",
+    ///                             Namespace = "app-ns-{{.name}}",
+    ///                         },
+    ///                         Project = "default",
+    ///                     },
     ///                 },
     ///                 Generators = new[]
     ///                 {
@@ -56,19 +73,38 @@ namespace Pulumi.Harness.Platform
     ///                         },
     ///                     },
     ///                 },
+    ///                 GoTemplate = true,
+    ///                 GoTemplateOptions = new[]
+    ///                 {
+    ///                     "missingkey=error",
+    ///                 },
+    ///             },
+    ///         },
+    ///         OrgId = "default",
+    ///         ProjectId = "projectId",
+    ///         AgentId = "account.agentuseast1",
+    ///         Upsert = true,
+    ///     });
+    /// 
+    ///     // Example 2: List Generator
+    ///     var listGenerator = new Harness.Platform.GitopsApplicationset("list_generator", new()
+    ///     {
+    ///         Applicationset = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetArgs
+    ///         {
+    ///             Metadata = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetMetadataArgs
+    ///             {
+    ///                 Name = "list-appset",
+    ///             },
+    ///             Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecArgs
+    ///             {
     ///                 Template = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateArgs
     ///                 {
     ///                     Metadata = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs
     ///                     {
-    ///                         Name = "{{.name}}-guestbook",
-    ///                         Labels = 
-    ///                         {
-    ///                             { "env", "dev" },
-    ///                         },
+    ///                         Name = "{{.cluster}}-guestbook",
     ///                     },
     ///                     Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs
     ///                     {
-    ///                         Project = "default",
     ///                         Source = 
     ///                         {
     ///                             { "repoUrl", "https://github.com/argoproj/argocd-example-apps.git" },
@@ -78,33 +114,10 @@ namespace Pulumi.Harness.Platform
     ///                         Destination = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs
     ///                         {
     ///                             Server = "{{.url}}",
-    ///                             Namespace = "app-ns-{{.name}}",
+    ///                             Namespace = "default",
     ///                         },
+    ///                         Project = "default",
     ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     // Example 2: List Generator
-    ///     var listGenerator = new Harness.Platform.GitopsApplicationset("list_generator", new()
-    ///     {
-    ///         OrgId = "default",
-    ///         ProjectId = "projectId",
-    ///         AgentId = "account.agentuseast1",
-    ///         Upsert = true,
-    ///         Applicationset = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetArgs
-    ///         {
-    ///             Metadata = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetMetadataArgs
-    ///             {
-    ///                 Name = "list-appset",
-    ///             },
-    ///             Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecArgs
-    ///             {
-    ///                 GoTemplate = true,
-    ///                 GoTemplateOptions = new[]
-    ///                 {
-    ///                     "missingkey=error",
     ///                 },
     ///                 Generators = new[]
     ///                 {
@@ -131,39 +144,22 @@ namespace Pulumi.Harness.Platform
     ///                         },
     ///                     },
     ///                 },
-    ///                 Template = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateArgs
+    ///                 GoTemplate = true,
+    ///                 GoTemplateOptions = new[]
     ///                 {
-    ///                     Metadata = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs
-    ///                     {
-    ///                         Name = "{{.cluster}}-guestbook",
-    ///                     },
-    ///                     Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs
-    ///                     {
-    ///                         Project = "default",
-    ///                         Source = 
-    ///                         {
-    ///                             { "repoUrl", "https://github.com/argoproj/argocd-example-apps.git" },
-    ///                             { "path", "helm-guestbook" },
-    ///                             { "targetRevision", "HEAD" },
-    ///                         },
-    ///                         Destination = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs
-    ///                         {
-    ///                             Server = "{{.url}}",
-    ///                             Namespace = "default",
-    ///                         },
-    ///                     },
+    ///                     "missingkey=error",
     ///                 },
     ///             },
     ///         },
+    ///         OrgId = "default",
+    ///         ProjectId = "projectId",
+    ///         AgentId = "account.agentuseast1",
+    ///         Upsert = true,
     ///     });
     /// 
     ///     // Example 3: Git Generator with Files
     ///     var gitFiles = new Harness.Platform.GitopsApplicationset("git_files", new()
     ///     {
-    ///         OrgId = "default",
-    ///         ProjectId = "projectId",
-    ///         AgentId = "account.agentuseast1",
-    ///         Upsert = true,
     ///         Applicationset = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetArgs
     ///         {
     ///             Metadata = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetMetadataArgs
@@ -172,27 +168,6 @@ namespace Pulumi.Harness.Platform
     ///             },
     ///             Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecArgs
     ///             {
-    ///                 Generators = new[]
-    ///                 {
-    ///                     new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecGeneratorArgs
-    ///                     {
-    ///                         Gits = new[]
-    ///                         {
-    ///                             new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecGeneratorGitArgs
-    ///                             {
-    ///                                 RepoUrl = "https://github.com/example/config-repo",
-    ///                                 Revision = "main",
-    ///                                 Files = new[]
-    ///                                 {
-    ///                                     new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecGeneratorGitFileArgs
-    ///                                     {
-    ///                                         Path = "apps/*/config.json",
-    ///                                     },
-    ///                                 },
-    ///                             },
-    ///                         },
-    ///                     },
-    ///                 },
     ///                 Template = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateArgs
     ///                 {
     ///                     Metadata = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs
@@ -201,7 +176,6 @@ namespace Pulumi.Harness.Platform
     ///                     },
     ///                     Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs
     ///                     {
-    ///                         Project = "default",
     ///                         Source = 
     ///                         {
     ///                             { "repoUrl", "https://github.com/example/app-repo" },
@@ -213,27 +187,9 @@ namespace Pulumi.Harness.Platform
     ///                             Server = "https://kubernetes.default.svc",
     ///                             Namespace = "{{.path.basename}}",
     ///                         },
+    ///                         Project = "default",
     ///                     },
     ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     // Example 4: Git Generator with Directories
-    ///     var gitDirectories = new Harness.Platform.GitopsApplicationset("git_directories", new()
-    ///     {
-    ///         OrgId = "default",
-    ///         ProjectId = "projectId",
-    ///         AgentId = "account.agentuseast1",
-    ///         Upsert = true,
-    ///         Applicationset = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetArgs
-    ///         {
-    ///             Metadata = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetMetadataArgs
-    ///             {
-    ///                 Name = "git-directories-appset",
-    ///             },
-    ///             Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecArgs
-    ///             {
     ///                 Generators = new[]
     ///                 {
     ///                     new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecGeneratorArgs
@@ -242,20 +198,38 @@ namespace Pulumi.Harness.Platform
     ///                         {
     ///                             new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecGeneratorGitArgs
     ///                             {
-    ///                                 RepoUrl = "https://github.com/argoproj/argo-cd.git",
-    ///                                 Revision = "HEAD",
-    ///                                 Directories = new[]
+    ///                                 Files = new[]
     ///                                 {
-    ///                                     new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecGeneratorGitDirectoryArgs
+    ///                                     new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecGeneratorGitFileArgs
     ///                                     {
-    ///                                         Path = "applicationset/examples/git-generator-directory/cluster-addons/*",
-    ///                                         Exclude = false,
+    ///                                         Path = "apps/*/config.json",
     ///                                     },
     ///                                 },
+    ///                                 RepoUrl = "https://github.com/example/config-repo",
+    ///                                 Revision = "main",
     ///                             },
     ///                         },
     ///                     },
     ///                 },
+    ///             },
+    ///         },
+    ///         OrgId = "default",
+    ///         ProjectId = "projectId",
+    ///         AgentId = "account.agentuseast1",
+    ///         Upsert = true,
+    ///     });
+    /// 
+    ///     // Example 4: Git Generator with Directories
+    ///     var gitDirectories = new Harness.Platform.GitopsApplicationset("git_directories", new()
+    ///     {
+    ///         Applicationset = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetArgs
+    ///         {
+    ///             Metadata = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetMetadataArgs
+    ///             {
+    ///                 Name = "git-directories-appset",
+    ///             },
+    ///             Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecArgs
+    ///             {
     ///                 Template = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateArgs
     ///                 {
     ///                     Metadata = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs
@@ -264,7 +238,6 @@ namespace Pulumi.Harness.Platform
     ///                     },
     ///                     Spec = new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs
     ///                     {
-    ///                         Project = "default",
     ///                         Source = 
     ///                         {
     ///                             { "repoUrl", "https://github.com/argoproj/argo-cd.git" },
@@ -284,10 +257,37 @@ namespace Pulumi.Harness.Platform
     ///                                 SelfHeal = true,
     ///                             },
     ///                         },
+    ///                         Project = "default",
+    ///                     },
+    ///                 },
+    ///                 Generators = new[]
+    ///                 {
+    ///                     new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecGeneratorArgs
+    ///                     {
+    ///                         Gits = new[]
+    ///                         {
+    ///                             new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecGeneratorGitArgs
+    ///                             {
+    ///                                 Directories = new[]
+    ///                                 {
+    ///                                     new Harness.Platform.Inputs.GitopsApplicationsetApplicationsetSpecGeneratorGitDirectoryArgs
+    ///                                     {
+    ///                                         Path = "applicationset/examples/git-generator-directory/cluster-addons/*",
+    ///                                         Exclude = false,
+    ///                                     },
+    ///                                 },
+    ///                                 RepoUrl = "https://github.com/argoproj/argo-cd.git",
+    ///                                 Revision = "HEAD",
+    ///                             },
+    ///                         },
     ///                     },
     ///                 },
     ///             },
     ///         },
+    ///         OrgId = "default",
+    ///         ProjectId = "projectId",
+    ///         AgentId = "account.agentuseast1",
+    ///         Upsert = true,
     ///     });
     /// 
     /// });

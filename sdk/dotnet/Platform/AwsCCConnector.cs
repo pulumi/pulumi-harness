@@ -24,6 +24,11 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var test = new Harness.Platform.AwsCCConnector("test", new()
     ///     {
+    ///         CrossAccountAccess = new Harness.Platform.Inputs.AwsCCConnectorCrossAccountAccessArgs
+    ///         {
+    ///             RoleArn = "role_arn",
+    ///             ExternalId = "external_id",
+    ///         },
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         Description = "test",
@@ -39,11 +44,6 @@ namespace Pulumi.Harness.Platform
     ///             "OPTIMIZATION",
     ///             "VISIBILITY",
     ///             "BILLING",
-    ///         },
-    ///         CrossAccountAccess = new Harness.Platform.Inputs.AwsCCConnectorCrossAccountAccessArgs
-    ///         {
-    ///             RoleArn = "role_arn",
-    ///             ExternalId = "external_id",
     ///         },
     ///     });
     /// 

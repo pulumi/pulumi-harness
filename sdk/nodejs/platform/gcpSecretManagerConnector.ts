@@ -32,31 +32,31 @@ import * as utilities from "../utilities";
  *     inheritFromDelegate: true,
  * });
  * const gcpSmOidcPlatform = new harness.platform.GcpSecretManagerConnector("gcp_sm_oidc_platform", {
- *     identifier: "identifier",
- *     name: "name",
- *     description: "test",
- *     tags: ["foo:bar"],
- *     executeOnDelegate: false,
  *     oidcAuthentications: [{
  *         workloadPoolId: "harness-pool-test",
  *         providerId: "harness",
  *         gcpProjectId: "1234567",
  *         serviceAccountEmail: "harness.sample@iam.gserviceaccount.com",
  *     }],
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     executeOnDelegate: false,
  * });
  * const gcpSmOidcDelegate = new harness.platform.GcpSecretManagerConnector("gcp_sm_oidc_delegate", {
+ *     oidcAuthentications: [{
+ *         workloadPoolId: "harness-pool-test",
+ *         providerId: "harness",
+ *         gcpProjectId: "1234567",
+ *         serviceAccountEmail: "harness.sample@iam.gserviceaccount.com",
+ *     }],
  *     identifier: "identifier",
  *     name: "name",
  *     description: "test",
  *     tags: ["foo:bar"],
  *     "default": true,
  *     delegateSelectors: ["harness-delegate"],
- *     oidcAuthentications: [{
- *         workloadPoolId: "harness-pool-test",
- *         providerId: "harness",
- *         gcpProjectId: "1234567",
- *         serviceAccountEmail: "harness.sample@iam.gserviceaccount.com",
- *     }],
  * });
  * ```
  *

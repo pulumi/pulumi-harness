@@ -24,6 +24,13 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var defaultTypeTest = new Harness.Platform.DbSchema("default_type_test", new()
     ///     {
+    ///         SchemaSource = new Harness.Platform.Inputs.DbSchemaSchemaSourceArgs
+    ///         {
+    ///             Connector = "gitConnector",
+    ///             Repo = "TestRepo",
+    ///             Location = "db/example-changelog.yaml",
+    ///             ArchivePath = "path/to/archive.zip",
+    ///         },
     ///         Identifier = "identifier",
     ///         OrgId = "org_id",
     ///         ProjectId = "project_id",
@@ -33,18 +40,18 @@ namespace Pulumi.Harness.Platform
     ///         {
     ///             "foo:bar",
     ///             "bar:foo",
-    ///         },
-    ///         SchemaSource = new Harness.Platform.Inputs.DbSchemaSchemaSourceArgs
-    ///         {
-    ///             Connector = "gitConnector",
-    ///             Repo = "TestRepo",
-    ///             Location = "db/example-changelog.yaml",
-    ///             ArchivePath = "path/to/archive.zip",
     ///         },
     ///     });
     /// 
     ///     var liquibaseRepositoryTest = new Harness.Platform.DbSchema("liquibase_repository_test", new()
     ///     {
+    ///         SchemaSource = new Harness.Platform.Inputs.DbSchemaSchemaSourceArgs
+    ///         {
+    ///             Connector = "gitConnector",
+    ///             Repo = "TestRepo",
+    ///             Location = "db/example-changelog.yaml",
+    ///             ArchivePath = "path/to/archive.zip",
+    ///         },
     ///         Identifier = "identifier",
     ///         OrgId = "org_id",
     ///         ProjectId = "project_id",
@@ -56,18 +63,18 @@ namespace Pulumi.Harness.Platform
     ///         {
     ///             "foo:bar",
     ///             "bar:foo",
-    ///         },
-    ///         SchemaSource = new Harness.Platform.Inputs.DbSchemaSchemaSourceArgs
-    ///         {
-    ///             Connector = "gitConnector",
-    ///             Repo = "TestRepo",
-    ///             Location = "db/example-changelog.yaml",
-    ///             ArchivePath = "path/to/archive.zip",
     ///         },
     ///     });
     /// 
     ///     var liquibaseScriptTest = new Harness.Platform.DbSchema("liquibase_script_test", new()
     ///     {
+    ///         ChangelogScript = new Harness.Platform.Inputs.DbSchemaChangelogScriptArgs
+    ///         {
+    ///             Image = "plugins/image",
+    ///             Command = "echo \\\"hello dbops\\\"",
+    ///             Shell = "sh/bash",
+    ///             Location = "db/example-changelog.yaml",
+    ///         },
     ///         Identifier = "identifier",
     ///         OrgId = "org_id",
     ///         ProjectId = "project_id",
@@ -80,17 +87,18 @@ namespace Pulumi.Harness.Platform
     ///             "foo:bar",
     ///             "bar:foo",
     ///         },
-    ///         ChangelogScript = new Harness.Platform.Inputs.DbSchemaChangelogScriptArgs
-    ///         {
-    ///             Image = "plugins/image",
-    ///             Command = "echo \\\"hello dbops\\\"",
-    ///             Shell = "sh/bash",
-    ///             Location = "db/example-changelog.yaml",
-    ///         },
     ///     });
     /// 
     ///     var flywayRepositoryTest = new Harness.Platform.DbSchema("flyway_repository_test", new()
     ///     {
+    ///         SchemaSource = new Harness.Platform.Inputs.DbSchemaSchemaSourceArgs
+    ///         {
+    ///             Connector = "gitConnector",
+    ///             Repo = "TestRepo",
+    ///             Location = "db/flyway/migrations",
+    ///             Toml = "db/flyway.toml",
+    ///             ArchivePath = "path/to/archive.zip",
+    ///         },
     ///         Identifier = "identifier",
     ///         OrgId = "org_id",
     ///         ProjectId = "project_id",
@@ -103,18 +111,18 @@ namespace Pulumi.Harness.Platform
     ///             "foo:bar",
     ///             "bar:foo",
     ///         },
-    ///         SchemaSource = new Harness.Platform.Inputs.DbSchemaSchemaSourceArgs
-    ///         {
-    ///             Connector = "gitConnector",
-    ///             Repo = "TestRepo",
-    ///             Location = "db/flyway/migrations",
-    ///             Toml = "db/flyway.toml",
-    ///             ArchivePath = "path/to/archive.zip",
-    ///         },
     ///     });
     /// 
     ///     var flywayScriptTest = new Harness.Platform.DbSchema("flyway_script_test", new()
     ///     {
+    ///         ChangelogScript = new Harness.Platform.Inputs.DbSchemaChangelogScriptArgs
+    ///         {
+    ///             Image = "plugins/image",
+    ///             Command = "echo \\\"hello dbops\\\"",
+    ///             Shell = "sh/bash",
+    ///             Location = "db/flyway/migrations",
+    ///             Toml = "db/flyway.toml",
+    ///         },
     ///         Identifier = "identifier",
     ///         OrgId = "org_id",
     ///         ProjectId = "project_id",
@@ -127,18 +135,17 @@ namespace Pulumi.Harness.Platform
     ///             "foo:bar",
     ///             "bar:foo",
     ///         },
-    ///         ChangelogScript = new Harness.Platform.Inputs.DbSchemaChangelogScriptArgs
-    ///         {
-    ///             Image = "plugins/image",
-    ///             Command = "echo \\\"hello dbops\\\"",
-    ///             Shell = "sh/bash",
-    ///             Location = "db/flyway/migrations",
-    ///             Toml = "db/flyway.toml",
-    ///         },
     ///     });
     /// 
     ///     var perconaEnabledTest = new Harness.Platform.DbSchema("percona_enabled_test", new()
     ///     {
+    ///         SchemaSource = new Harness.Platform.Inputs.DbSchemaSchemaSourceArgs
+    ///         {
+    ///             Connector = "gitConnector",
+    ///             Repo = "TestRepo",
+    ///             Location = "db/example-changelog.yaml",
+    ///             ArchivePath = "path/to/archive.zip",
+    ///         },
     ///         Identifier = "identifier",
     ///         OrgId = "org_id",
     ///         ProjectId = "project_id",
@@ -152,17 +159,15 @@ namespace Pulumi.Harness.Platform
     ///             "foo:bar",
     ///             "bar:foo",
     ///         },
-    ///         SchemaSource = new Harness.Platform.Inputs.DbSchemaSchemaSourceArgs
-    ///         {
-    ///             Connector = "gitConnector",
-    ///             Repo = "TestRepo",
-    ///             Location = "db/example-changelog.yaml",
-    ///             ArchivePath = "path/to/archive.zip",
-    ///         },
     ///     });
     /// 
     ///     var harnessCodeRepo = new Harness.Platform.DbSchema("harness_code_repo", new()
     ///     {
+    ///         SchemaSource = new Harness.Platform.Inputs.DbSchemaSchemaSourceArgs
+    ///         {
+    ///             Repo = "my-harness-code-repo",
+    ///             Location = "db/example-changelog.yaml",
+    ///         },
     ///         Identifier = "identifier",
     ///         OrgId = "org_id",
     ///         ProjectId = "project_id",
@@ -173,11 +178,6 @@ namespace Pulumi.Harness.Platform
     ///         {
     ///             "foo:bar",
     ///             "bar:foo",
-    ///         },
-    ///         SchemaSource = new Harness.Platform.Inputs.DbSchemaSchemaSourceArgs
-    ///         {
-    ///             Repo = "my-harness-code-repo",
-    ///             Location = "db/example-changelog.yaml",
     ///         },
     ///     });
     /// 

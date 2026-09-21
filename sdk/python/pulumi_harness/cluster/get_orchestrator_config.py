@@ -135,13 +135,13 @@ class AwaitableGetOrchestratorConfigResult(GetOrchestratorConfigResult):
             replacement_schedule=self.replacement_schedule)
 
 
-def get_orchestrator_config(binpacking: Optional[Union['GetOrchestratorConfigBinpackingArgs', 'GetOrchestratorConfigBinpackingArgsDict']] = None,
-                            commitment_integration: Optional[Union['GetOrchestratorConfigCommitmentIntegrationArgs', 'GetOrchestratorConfigCommitmentIntegrationArgsDict']] = None,
+def get_orchestrator_config(binpacking: Optional[Union['GetOrchestratorConfigBinpackingArgs', 'GetOrchestratorConfigBinpackingArgsDict', 'outputs.GetOrchestratorConfigBinpackingResult']] = None,
+                            commitment_integration: Optional[Union['GetOrchestratorConfigCommitmentIntegrationArgs', 'GetOrchestratorConfigCommitmentIntegrationArgsDict', 'outputs.GetOrchestratorConfigCommitmentIntegrationResult']] = None,
                             disabled: Optional[_builtins.bool] = None,
-                            distribution: Optional[Union['GetOrchestratorConfigDistributionArgs', 'GetOrchestratorConfigDistributionArgsDict']] = None,
-                            node_preferences: Optional[Union['GetOrchestratorConfigNodePreferencesArgs', 'GetOrchestratorConfigNodePreferencesArgsDict']] = None,
+                            distribution: Optional[Union['GetOrchestratorConfigDistributionArgs', 'GetOrchestratorConfigDistributionArgsDict', 'outputs.GetOrchestratorConfigDistributionResult']] = None,
+                            node_preferences: Optional[Union['GetOrchestratorConfigNodePreferencesArgs', 'GetOrchestratorConfigNodePreferencesArgsDict', 'outputs.GetOrchestratorConfigNodePreferencesResult']] = None,
                             orchestrator_id: Optional[_builtins.str] = None,
-                            replacement_schedule: Optional[Union['GetOrchestratorConfigReplacementScheduleArgs', 'GetOrchestratorConfigReplacementScheduleArgsDict']] = None,
+                            replacement_schedule: Optional[Union['GetOrchestratorConfigReplacementScheduleArgs', 'GetOrchestratorConfigReplacementScheduleArgsDict', 'outputs.GetOrchestratorConfigReplacementScheduleResult']] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrchestratorConfigResult:
     """
     Data Source for retrieving Harness CCM ClusterOrchestrator Config.
@@ -156,13 +156,13 @@ def get_orchestrator_config(binpacking: Optional[Union['GetOrchestratorConfigBin
     ```
 
 
-    :param Union['GetOrchestratorConfigBinpackingArgs', 'GetOrchestratorConfigBinpackingArgsDict'] binpacking: Binpacking preferences for Cluster Orchestrator
-    :param Union['GetOrchestratorConfigCommitmentIntegrationArgs', 'GetOrchestratorConfigCommitmentIntegrationArgsDict'] commitment_integration: Commitment integration configuration for Cluster Orchestrator
+    :param Union['GetOrchestratorConfigBinpackingArgs', 'GetOrchestratorConfigBinpackingArgsDict', 'outputs.GetOrchestratorConfigBinpackingResult'] binpacking: Binpacking preferences for Cluster Orchestrator
+    :param Union['GetOrchestratorConfigCommitmentIntegrationArgs', 'GetOrchestratorConfigCommitmentIntegrationArgsDict', 'outputs.GetOrchestratorConfigCommitmentIntegrationResult'] commitment_integration: Commitment integration configuration for Cluster Orchestrator
     :param _builtins.bool disabled: Whether the cluster orchestrator is disabled
-    :param Union['GetOrchestratorConfigDistributionArgs', 'GetOrchestratorConfigDistributionArgsDict'] distribution: Spot and Ondemand Distribution Preferences for workload replicas
-    :param Union['GetOrchestratorConfigNodePreferencesArgs', 'GetOrchestratorConfigNodePreferencesArgsDict'] node_preferences: Node preferences for Cluster Orchestrator
+    :param Union['GetOrchestratorConfigDistributionArgs', 'GetOrchestratorConfigDistributionArgsDict', 'outputs.GetOrchestratorConfigDistributionResult'] distribution: Spot and Ondemand Distribution Preferences for workload replicas
+    :param Union['GetOrchestratorConfigNodePreferencesArgs', 'GetOrchestratorConfigNodePreferencesArgsDict', 'outputs.GetOrchestratorConfigNodePreferencesResult'] node_preferences: Node preferences for Cluster Orchestrator
     :param _builtins.str orchestrator_id: ID of the Cluster Orchestrator Object
-    :param Union['GetOrchestratorConfigReplacementScheduleArgs', 'GetOrchestratorConfigReplacementScheduleArgsDict'] replacement_schedule: Replacement schedule for Cluster Orchestrator
+    :param Union['GetOrchestratorConfigReplacementScheduleArgs', 'GetOrchestratorConfigReplacementScheduleArgsDict', 'outputs.GetOrchestratorConfigReplacementScheduleResult'] replacement_schedule: Replacement schedule for Cluster Orchestrator
     """
     __args__ = dict()
     __args__['binpacking'] = binpacking
@@ -184,13 +184,13 @@ def get_orchestrator_config(binpacking: Optional[Union['GetOrchestratorConfigBin
         node_preferences=pulumi.get(__ret__, 'node_preferences'),
         orchestrator_id=pulumi.get(__ret__, 'orchestrator_id'),
         replacement_schedule=pulumi.get(__ret__, 'replacement_schedule'))
-def get_orchestrator_config_output(binpacking: pulumi.Input[Optional[Optional[Union['GetOrchestratorConfigBinpackingArgs', 'GetOrchestratorConfigBinpackingArgsDict']]]] = None,
-                                   commitment_integration: pulumi.Input[Optional[Optional[Union['GetOrchestratorConfigCommitmentIntegrationArgs', 'GetOrchestratorConfigCommitmentIntegrationArgsDict']]]] = None,
+def get_orchestrator_config_output(binpacking: pulumi.Input[Optional[Optional[Union['GetOrchestratorConfigBinpackingArgs', 'GetOrchestratorConfigBinpackingArgsDict', 'outputs.GetOrchestratorConfigBinpackingResult']]]] = None,
+                                   commitment_integration: pulumi.Input[Optional[Optional[Union['GetOrchestratorConfigCommitmentIntegrationArgs', 'GetOrchestratorConfigCommitmentIntegrationArgsDict', 'outputs.GetOrchestratorConfigCommitmentIntegrationResult']]]] = None,
                                    disabled: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
-                                   distribution: pulumi.Input[Optional[Optional[Union['GetOrchestratorConfigDistributionArgs', 'GetOrchestratorConfigDistributionArgsDict']]]] = None,
-                                   node_preferences: pulumi.Input[Optional[Optional[Union['GetOrchestratorConfigNodePreferencesArgs', 'GetOrchestratorConfigNodePreferencesArgsDict']]]] = None,
+                                   distribution: pulumi.Input[Optional[Optional[Union['GetOrchestratorConfigDistributionArgs', 'GetOrchestratorConfigDistributionArgsDict', 'outputs.GetOrchestratorConfigDistributionResult']]]] = None,
+                                   node_preferences: pulumi.Input[Optional[Optional[Union['GetOrchestratorConfigNodePreferencesArgs', 'GetOrchestratorConfigNodePreferencesArgsDict', 'outputs.GetOrchestratorConfigNodePreferencesResult']]]] = None,
                                    orchestrator_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                   replacement_schedule: pulumi.Input[Optional[Optional[Union['GetOrchestratorConfigReplacementScheduleArgs', 'GetOrchestratorConfigReplacementScheduleArgsDict']]]] = None,
+                                   replacement_schedule: pulumi.Input[Optional[Optional[Union['GetOrchestratorConfigReplacementScheduleArgs', 'GetOrchestratorConfigReplacementScheduleArgsDict', 'outputs.GetOrchestratorConfigReplacementScheduleResult']]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrchestratorConfigResult]:
     """
     Data Source for retrieving Harness CCM ClusterOrchestrator Config.
@@ -205,13 +205,13 @@ def get_orchestrator_config_output(binpacking: pulumi.Input[Optional[Optional[Un
     ```
 
 
-    :param Union['GetOrchestratorConfigBinpackingArgs', 'GetOrchestratorConfigBinpackingArgsDict'] binpacking: Binpacking preferences for Cluster Orchestrator
-    :param Union['GetOrchestratorConfigCommitmentIntegrationArgs', 'GetOrchestratorConfigCommitmentIntegrationArgsDict'] commitment_integration: Commitment integration configuration for Cluster Orchestrator
+    :param Union['GetOrchestratorConfigBinpackingArgs', 'GetOrchestratorConfigBinpackingArgsDict', 'outputs.GetOrchestratorConfigBinpackingResult'] binpacking: Binpacking preferences for Cluster Orchestrator
+    :param Union['GetOrchestratorConfigCommitmentIntegrationArgs', 'GetOrchestratorConfigCommitmentIntegrationArgsDict', 'outputs.GetOrchestratorConfigCommitmentIntegrationResult'] commitment_integration: Commitment integration configuration for Cluster Orchestrator
     :param _builtins.bool disabled: Whether the cluster orchestrator is disabled
-    :param Union['GetOrchestratorConfigDistributionArgs', 'GetOrchestratorConfigDistributionArgsDict'] distribution: Spot and Ondemand Distribution Preferences for workload replicas
-    :param Union['GetOrchestratorConfigNodePreferencesArgs', 'GetOrchestratorConfigNodePreferencesArgsDict'] node_preferences: Node preferences for Cluster Orchestrator
+    :param Union['GetOrchestratorConfigDistributionArgs', 'GetOrchestratorConfigDistributionArgsDict', 'outputs.GetOrchestratorConfigDistributionResult'] distribution: Spot and Ondemand Distribution Preferences for workload replicas
+    :param Union['GetOrchestratorConfigNodePreferencesArgs', 'GetOrchestratorConfigNodePreferencesArgsDict', 'outputs.GetOrchestratorConfigNodePreferencesResult'] node_preferences: Node preferences for Cluster Orchestrator
     :param _builtins.str orchestrator_id: ID of the Cluster Orchestrator Object
-    :param Union['GetOrchestratorConfigReplacementScheduleArgs', 'GetOrchestratorConfigReplacementScheduleArgsDict'] replacement_schedule: Replacement schedule for Cluster Orchestrator
+    :param Union['GetOrchestratorConfigReplacementScheduleArgs', 'GetOrchestratorConfigReplacementScheduleArgsDict', 'outputs.GetOrchestratorConfigReplacementScheduleResult'] replacement_schedule: Replacement schedule for Cluster Orchestrator
     """
     __args__ = dict()
     __args__['binpacking'] = binpacking

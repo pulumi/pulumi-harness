@@ -16,28 +16,23 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const readme = new harness.platform.IdpScorecardCheck("readme", {
+ *     rules: [{
+ *         inputValues: [{
+ *             key: "filePath",
+ *             value: "README.md",
+ *         }],
+ *         dataSourceIdentifier: "github",
+ *         dataPointIdentifier: "isFileExists",
+ *         operator: "==",
+ *         value: "true",
+ *     }],
  *     identifier: "readme_exists",
  *     name: "README exists",
  *     description: "Ensure the repository has a README file",
  *     ruleStrategy: "ALL_OF",
  *     defaultBehaviour: "FAIL",
- *     rules: [{
- *         dataSourceIdentifier: "github",
- *         dataPointIdentifier: "isFileExists",
- *         operator: "==",
- *         value: "true",
- *         inputValues: [{
- *             key: "filePath",
- *             value: "README.md",
- *         }],
- *     }],
  * });
  * const gold = new harness.platform.IdpScorecard("gold", {
- *     identifier: "gold_standard",
- *     name: "Gold Standard",
- *     description: "Baseline production quality scorecard",
- *     published: true,
- *     weightageStrategy: "EQUAL_WEIGHTS",
  *     filter: {
  *         kind: "component",
  *         type: "service",
@@ -46,6 +41,11 @@ import * as utilities from "../utilities";
  *         identifier: readme.identifier,
  *         custom: true,
  *     }],
+ *     identifier: "gold_standard",
+ *     name: "Gold Standard",
+ *     description: "Baseline production quality scorecard",
+ *     published: true,
+ *     weightageStrategy: "EQUAL_WEIGHTS",
  * });
  * ```
  *

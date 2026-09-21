@@ -37,10 +37,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.harness.platform.Workspace;
  * import com.pulumi.harness.platform.WorkspaceArgs;
- * import com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableArgs;
+ * import com.pulumi.harness.platform.inputs.WorkspaceAssociatedTemplateArgs;
  * import com.pulumi.harness.platform.inputs.WorkspaceEnvironmentVariableArgs;
  * import com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableFileArgs;
- * import com.pulumi.harness.platform.inputs.WorkspaceAssociatedTemplateArgs;
+ * import com.pulumi.harness.platform.inputs.WorkspaceTerraformVariableArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -55,32 +55,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Workspace("example", WorkspaceArgs.builder()
- *             .name("example")
- *             .identifier("example")
- *             .orgId(testHarnessPlatformOrganization.id())
- *             .projectId(testHarnessPlatformProject.id())
- *             .provisionerType("terraform")
- *             .provisionerVersion("1.5.6")
- *             .repository("https://github.com/org/repo")
- *             .repositoryBranch("main")
- *             .repositoryPath("tf/aws/basic")
- *             .costEstimationEnabled(true)
- *             .providerConnector(test.id())
- *             .repositoryConnector(test.id())
- *             .tags(            
- *                 "tag1",
- *                 "tag2")
- *             .terraformVariables(            
- *                 WorkspaceTerraformVariableArgs.builder()
- *                     .key("key1")
- *                     .value("val1")
- *                     .valueType("string")
- *                     .build(),
- *                 WorkspaceTerraformVariableArgs.builder()
- *                     .key("key2")
- *                     .value("val2")
- *                     .valueType("string")
- *                     .build())
+ *             .associatedTemplate(WorkspaceAssociatedTemplateArgs.builder()
+ *                 .templateId("my_template")
+ *                 .version("v1.0.0")
+ *                 .build())
  *             .environmentVariables(            
  *                 WorkspaceEnvironmentVariableArgs.builder()
  *                     .key("key1")
@@ -111,6 +89,32 @@ import javax.annotation.Nullable;
  *                     .repositoryPath("tf/aws/basic")
  *                     .repositoryConnector(test.id())
  *                     .build())
+ *             .terraformVariables(            
+ *                 WorkspaceTerraformVariableArgs.builder()
+ *                     .key("key1")
+ *                     .value("val1")
+ *                     .valueType("string")
+ *                     .build(),
+ *                 WorkspaceTerraformVariableArgs.builder()
+ *                     .key("key2")
+ *                     .value("val2")
+ *                     .valueType("string")
+ *                     .build())
+ *             .name("example")
+ *             .identifier("example")
+ *             .orgId(testHarnessPlatformOrganization.id())
+ *             .projectId(testHarnessPlatformProject.id())
+ *             .provisionerType("terraform")
+ *             .provisionerVersion("1.5.6")
+ *             .repository("https://github.com/org/repo")
+ *             .repositoryBranch("main")
+ *             .repositoryPath("tf/aws/basic")
+ *             .costEstimationEnabled(true)
+ *             .providerConnector(test.id())
+ *             .repositoryConnector(test.id())
+ *             .tags(            
+ *                 "tag1",
+ *                 "tag2")
  *             .variableSets(testHarnessPlatformInfraVariableSet.id())
  *             .defaultPipelines(Map.ofEntries(
  *                 Map.entry("destroy", "destroy_pipeline_id"),
@@ -118,10 +122,6 @@ import javax.annotation.Nullable;
  *                 Map.entry("plan", "plan_pipeline_id"),
  *                 Map.entry("apply", "apply_pipeline_id")
  *             ))
- *             .associatedTemplate(WorkspaceAssociatedTemplateArgs.builder()
- *                 .templateId("my_template")
- *                 .version("v1.0.0")
- *                 .build())
  *             .build());
  * 
  *     }

@@ -1175,7 +1175,7 @@ class Experiment(pulumi.CustomResource):
             revision: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             target_network_map_id: pulumi.Input[Optional[_builtins.str]] = None,
-            template_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExperimentTemplateDetailArgs', 'ExperimentTemplateDetailArgsDict']]]]] = None,
+            template_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExperimentTemplateDetailArgs', 'ExperimentTemplateDetailArgsDict', 'outputs.ExperimentTemplateDetail']]]]] = None,
             template_identity: pulumi.Input[Optional[_builtins.str]] = None,
             total_experiment_runs: pulumi.Input[Optional[_builtins.int]] = None,
             updated_at: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1213,7 +1213,7 @@ class Experiment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] revision: Template revision to use (default: v1)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to categorize the experiment. Note: Only user-configured tags are tracked in state. The API may add system-generated tags which are automatically filtered to prevent drift.
         :param pulumi.Input[_builtins.str] target_network_map_id: Target network map ID
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ExperimentTemplateDetailArgs', 'ExperimentTemplateDetailArgsDict']]]] template_details: Details about the experiment template used
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExperimentTemplateDetailArgs', 'ExperimentTemplateDetailArgsDict', 'outputs.ExperimentTemplateDetail']]]] template_details: Details about the experiment template used
         :param pulumi.Input[_builtins.str] template_identity: Identity of the experiment template to launch from
         :param pulumi.Input[_builtins.int] total_experiment_runs: Total number of experiment runs
         :param pulumi.Input[_builtins.int] updated_at: Last update timestamp (Unix)

@@ -24,12 +24,6 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var example = new Harness.Platform.GitOpsAgent("example", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         AccountId = "account_id",
-    ///         ProjectId = "project_id",
-    ///         OrgId = "org_id",
-    ///         Name = "name",
-    ///         Type = "MANAGED_ARGO_PROVIDER",
     ///         Metadatas = new[]
     ///         {
     ///             new Harness.Platform.Inputs.GitOpsAgentMetadataArgs
@@ -38,6 +32,12 @@ namespace Pulumi.Harness.Platform
     ///                 HighAvailability = true,
     ///             },
     ///         },
+    ///         Identifier = "identifier",
+    ///         AccountId = "account_id",
+    ///         ProjectId = "project_id",
+    ///         OrgId = "org_id",
+    ///         Name = "name",
+    ///         Type = "MANAGED_ARGO_PROVIDER",
     ///     });
     /// 
     /// });

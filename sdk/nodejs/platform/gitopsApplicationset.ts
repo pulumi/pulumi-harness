@@ -17,23 +17,12 @@ import * as utilities from "../utilities";
  *
  * // Example 1: Cluster Generator
  * const clusterGenerator = new harness.platform.GitopsApplicationset("cluster_generator", {
- *     orgId: "default",
- *     projectId: "projectId",
- *     agentId: "account.agentuseast1",
- *     upsert: true,
  *     applicationset: {
  *         metadata: {
  *             name: "cluster-appset",
  *             namespace: "argocd",
  *         },
  *         spec: {
- *             goTemplate: true,
- *             goTemplateOptions: ["missingkey=error"],
- *             generators: [{
- *                 clusters: [{
- *                     enabled: true,
- *                 }],
- *             }],
  *             template: {
  *                 metadata: {
  *                     name: "{{.name}}-guestbook",
@@ -42,7 +31,6 @@ import * as utilities from "../utilities";
  *                     },
  *                 },
  *                 spec: {
- *                     project: "default",
  *                     source: {
  *                         repoUrl: "https://github.com/argoproj/argocd-example-apps.git",
  *                         path: "helm-guestbook",
@@ -52,24 +40,47 @@ import * as utilities from "../utilities";
  *                         server: "{{.url}}",
  *                         namespace: "app-ns-{{.name}}",
  *                     },
+ *                     project: "default",
  *                 },
  *             },
+ *             generators: [{
+ *                 clusters: [{
+ *                     enabled: true,
+ *                 }],
+ *             }],
+ *             goTemplate: true,
+ *             goTemplateOptions: ["missingkey=error"],
  *         },
  *     },
- * });
- * // Example 2: List Generator
- * const listGenerator = new harness.platform.GitopsApplicationset("list_generator", {
  *     orgId: "default",
  *     projectId: "projectId",
  *     agentId: "account.agentuseast1",
  *     upsert: true,
+ * });
+ * // Example 2: List Generator
+ * const listGenerator = new harness.platform.GitopsApplicationset("list_generator", {
  *     applicationset: {
  *         metadata: {
  *             name: "list-appset",
  *         },
  *         spec: {
- *             goTemplate: true,
- *             goTemplateOptions: ["missingkey=error"],
+ *             template: {
+ *                 metadata: {
+ *                     name: "{{.cluster}}-guestbook",
+ *                 },
+ *                 spec: {
+ *                     source: {
+ *                         repoUrl: "https://github.com/argoproj/argocd-example-apps.git",
+ *                         path: "helm-guestbook",
+ *                         targetRevision: "HEAD",
+ *                     },
+ *                     destination: {
+ *                         server: "{{.url}}",
+ *                         namespace: "default",
+ *                     },
+ *                     project: "default",
+ *                 },
+ *             },
  *             generators: [{
  *                 lists: [{
  *                     elements: [
@@ -84,52 +95,27 @@ import * as utilities from "../utilities";
  *                     ],
  *                 }],
  *             }],
- *             template: {
- *                 metadata: {
- *                     name: "{{.cluster}}-guestbook",
- *                 },
- *                 spec: {
- *                     project: "default",
- *                     source: {
- *                         repoUrl: "https://github.com/argoproj/argocd-example-apps.git",
- *                         path: "helm-guestbook",
- *                         targetRevision: "HEAD",
- *                     },
- *                     destination: {
- *                         server: "{{.url}}",
- *                         namespace: "default",
- *                     },
- *                 },
- *             },
+ *             goTemplate: true,
+ *             goTemplateOptions: ["missingkey=error"],
  *         },
  *     },
- * });
- * // Example 3: Git Generator with Files
- * const gitFiles = new harness.platform.GitopsApplicationset("git_files", {
  *     orgId: "default",
  *     projectId: "projectId",
  *     agentId: "account.agentuseast1",
  *     upsert: true,
+ * });
+ * // Example 3: Git Generator with Files
+ * const gitFiles = new harness.platform.GitopsApplicationset("git_files", {
  *     applicationset: {
  *         metadata: {
  *             name: "git-files-appset",
  *         },
  *         spec: {
- *             generators: [{
- *                 gits: [{
- *                     repoUrl: "https://github.com/example/config-repo",
- *                     revision: "main",
- *                     files: [{
- *                         path: "apps/*&#47;config.json",
- *                     }],
- *                 }],
- *             }],
  *             template: {
  *                 metadata: {
  *                     name: "{{.path.basename}}-app",
  *                 },
  *                 spec: {
- *                     project: "default",
  *                     source: {
  *                         repoUrl: "https://github.com/example/app-repo",
  *                         path: "{{.path.path}}",
@@ -139,38 +125,37 @@ import * as utilities from "../utilities";
  *                         server: "https://kubernetes.default.svc",
  *                         namespace: "{{.path.basename}}",
  *                     },
+ *                     project: "default",
  *                 },
  *             },
+ *             generators: [{
+ *                 gits: [{
+ *                     files: [{
+ *                         path: "apps/*&#47;config.json",
+ *                     }],
+ *                     repoUrl: "https://github.com/example/config-repo",
+ *                     revision: "main",
+ *                 }],
+ *             }],
  *         },
  *     },
- * });
- * // Example 4: Git Generator with Directories
- * const gitDirectories = new harness.platform.GitopsApplicationset("git_directories", {
  *     orgId: "default",
  *     projectId: "projectId",
  *     agentId: "account.agentuseast1",
  *     upsert: true,
+ * });
+ * // Example 4: Git Generator with Directories
+ * const gitDirectories = new harness.platform.GitopsApplicationset("git_directories", {
  *     applicationset: {
  *         metadata: {
  *             name: "git-directories-appset",
  *         },
  *         spec: {
- *             generators: [{
- *                 gits: [{
- *                     repoUrl: "https://github.com/argoproj/argo-cd.git",
- *                     revision: "HEAD",
- *                     directories: [{
- *                         path: "applicationset/examples/git-generator-directory/cluster-addons/*",
- *                         exclude: false,
- *                     }],
- *                 }],
- *             }],
  *             template: {
  *                 metadata: {
  *                     name: "{{.path.basename}}-addon",
  *                 },
  *                 spec: {
- *                     project: "default",
  *                     source: {
  *                         repoUrl: "https://github.com/argoproj/argo-cd.git",
  *                         path: "{{.path.path}}",
@@ -186,10 +171,25 @@ import * as utilities from "../utilities";
  *                             selfHeal: true,
  *                         },
  *                     },
+ *                     project: "default",
  *                 },
  *             },
+ *             generators: [{
+ *                 gits: [{
+ *                     directories: [{
+ *                         path: "applicationset/examples/git-generator-directory/cluster-addons/*",
+ *                         exclude: false,
+ *                     }],
+ *                     repoUrl: "https://github.com/argoproj/argo-cd.git",
+ *                     revision: "HEAD",
+ *                 }],
+ *             }],
  *         },
  *     },
+ *     orgId: "default",
+ *     projectId: "projectId",
+ *     agentId: "account.agentuseast1",
+ *     upsert: true,
  * });
  * ```
  *

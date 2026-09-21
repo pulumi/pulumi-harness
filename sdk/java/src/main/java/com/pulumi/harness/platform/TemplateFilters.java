@@ -44,15 +44,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new TemplateFilters("test", TemplateFiltersArgs.builder()
+ *             .filterProperties(TemplateFiltersFilterPropertiesArgs.builder()
+ *                 .tags("foo:bar")
+ *                 .filterType("Template")
+ *                 .build())
  *             .identifier("identifier")
  *             .name("name")
  *             .orgId("org_id")
  *             .projectId("project_id")
  *             .type("Template")
- *             .filterProperties(TemplateFiltersFilterPropertiesArgs.builder()
- *                 .tags("foo:bar")
- *                 .filterType("Template")
- *                 .build())
  *             .filterVisibility("EveryOne")
  *             .build());
  * 

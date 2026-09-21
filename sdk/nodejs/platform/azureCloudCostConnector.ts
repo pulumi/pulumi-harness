@@ -16,18 +16,6 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.AzureCloudCostConnector("example", {
- *     identifier: "identifier",
- *     name: "name",
- *     description: "example",
- *     tags: ["foo:bar"],
- *     featuresEnableds: [
- *         "BILLING",
- *         "VISIBILITY",
- *         "OPTIMIZATION",
- *         "GOVERNANCE",
- *     ],
- *     tenantId: "tenant_id",
- *     subscriptionId: "subscription_id",
  *     billingExportSpec: {
  *         storageAccountName: "storage_account_name",
  *         containerName: "container_name",
@@ -44,6 +32,18 @@ import * as utilities from "../utilities";
  *         subscriptionId: "subscription_id",
  *         billingType: "billing_type",
  *     },
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "example",
+ *     tags: ["foo:bar"],
+ *     featuresEnableds: [
+ *         "BILLING",
+ *         "VISIBILITY",
+ *         "OPTIMIZATION",
+ *         "GOVERNANCE",
+ *     ],
+ *     tenantId: "tenant_id",
+ *     subscriptionId: "subscription_id",
  * });
  * ```
  *

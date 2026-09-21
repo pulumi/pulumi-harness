@@ -139,7 +139,7 @@ def get_alert(applicable_to_all_rules: Optional[_builtins.bool] = None,
               enabled: Optional[_builtins.bool] = None,
               events: Optional[Sequence[_builtins.str]] = None,
               name: Optional[_builtins.str] = None,
-              recipients: Optional[Union['GetAlertRecipientsArgs', 'GetAlertRecipientsArgsDict']] = None,
+              recipients: Optional[Union['GetAlertRecipientsArgs', 'GetAlertRecipientsArgsDict', 'outputs.GetAlertRecipientsResult']] = None,
               rule_id_lists: Optional[Sequence[_builtins.int]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAlertResult:
     """
@@ -152,7 +152,7 @@ def get_alert(applicable_to_all_rules: Optional[_builtins.bool] = None,
     :param _builtins.bool enabled: Whether the alert is enabled.
     :param Sequence[_builtins.str] events: List of event types that trigger the alert.
     :param _builtins.str name: Name of the alert.
-    :param Union['GetAlertRecipientsArgs', 'GetAlertRecipientsArgsDict'] recipients: Notification recipients (email and/or slack).
+    :param Union['GetAlertRecipientsArgs', 'GetAlertRecipientsArgsDict', 'outputs.GetAlertRecipientsResult'] recipients: Notification recipients (email and/or slack).
     :param Sequence[_builtins.int] rule_id_lists: List of AutoStopping rule IDs to apply the alert to. Required when `applicable_to_all_rules` is false. Mutually exclusive with `applicable_to_all_rules` = true.
     """
     __args__ = dict()
@@ -178,7 +178,7 @@ def get_alert_output(applicable_to_all_rules: pulumi.Input[Optional[Optional[_bu
                      enabled: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                      events: pulumi.Input[Optional[Sequence[_builtins.str]]] = None,
                      name: pulumi.Input[Optional[_builtins.str]] = None,
-                     recipients: pulumi.Input[Optional[Union['GetAlertRecipientsArgs', 'GetAlertRecipientsArgsDict']]] = None,
+                     recipients: pulumi.Input[Optional[Union['GetAlertRecipientsArgs', 'GetAlertRecipientsArgsDict', 'outputs.GetAlertRecipientsResult']]] = None,
                      rule_id_lists: pulumi.Input[Optional[Optional[Sequence[_builtins.int]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlertResult]:
     """
@@ -191,7 +191,7 @@ def get_alert_output(applicable_to_all_rules: pulumi.Input[Optional[Optional[_bu
     :param _builtins.bool enabled: Whether the alert is enabled.
     :param Sequence[_builtins.str] events: List of event types that trigger the alert.
     :param _builtins.str name: Name of the alert.
-    :param Union['GetAlertRecipientsArgs', 'GetAlertRecipientsArgsDict'] recipients: Notification recipients (email and/or slack).
+    :param Union['GetAlertRecipientsArgs', 'GetAlertRecipientsArgsDict', 'outputs.GetAlertRecipientsResult'] recipients: Notification recipients (email and/or slack).
     :param Sequence[_builtins.int] rule_id_lists: List of AutoStopping rule IDs to apply the alert to. Required when `applicable_to_all_rules` is false. Mutually exclusive with `applicable_to_all_rules` = true.
     """
     __args__ = dict()

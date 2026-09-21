@@ -50,10 +50,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new RuleEcs("test", RuleEcsArgs.builder()
- *             .name("name")
- *             .cloudConnectorId("cloud_connector_id")
- *             .idleTimeMins(10)
- *             .dryRun(true)
  *             .container(RuleEcsContainerArgs.builder()
  *                 .cluster("cluster")
  *                 .service("service")
@@ -64,6 +60,10 @@ import javax.annotation.Nullable;
  *                 .ruleId(24576)
  *                 .delayInSec(5)
  *                 .build())
+ *             .name("name")
+ *             .cloudConnectorId("cloud_connector_id")
+ *             .idleTimeMins(10)
+ *             .dryRun(true)
  *             .build());
  * 
  *     }

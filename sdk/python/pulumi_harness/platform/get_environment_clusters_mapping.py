@@ -123,7 +123,7 @@ class AwaitableGetEnvironmentClustersMappingResult(GetEnvironmentClustersMapping
             scope=self.scope)
 
 
-def get_environment_clusters_mapping(clusters: Optional[Sequence[Union['GetEnvironmentClustersMappingClusterArgs', 'GetEnvironmentClustersMappingClusterArgsDict']]] = None,
+def get_environment_clusters_mapping(clusters: Optional[Sequence[Union['GetEnvironmentClustersMappingClusterArgs', 'GetEnvironmentClustersMappingClusterArgsDict', 'outputs.GetEnvironmentClustersMappingClusterResult']]] = None,
                                      env_id: Optional[_builtins.str] = None,
                                      identifier: Optional[_builtins.str] = None,
                                      org_id: Optional[_builtins.str] = None,
@@ -139,20 +139,18 @@ def get_environment_clusters_mapping(clusters: Optional[Sequence[Union['GetEnvir
     import pulumi_harness as harness
 
     # data source for gitops clusters mapped to a project level env
-    example = harness.platform.get_environment_clusters_mapping(identifier="mycustomidentifier",
-        org_id="orgIdentifer",
-        project_id="projectIdentifier",
-        env_id="exampleEnvId",
-        clusters=[{
+    example = harness.platform.get_environment_clusters_mapping(clusters=[{
             "identifier": "incluster",
             "name": "in-cluster",
             "agent_identifier": "account.gitopsagentdev",
             "scope": "ACCOUNT",
-        }])
+        }],
+        identifier="mycustomidentifier",
+        org_id="orgIdentifer",
+        project_id="projectIdentifier",
+        env_id="exampleEnvId")
     # data source for two gitops clusters mapped to an account level env
-    example2 = harness.platform.get_environment_clusters_mapping(identifier="mycustomidentifier",
-        env_id="env1",
-        clusters=[
+    example2 = harness.platform.get_environment_clusters_mapping(clusters=[
             {
                 "identifier": "clusterA",
                 "name": "cluster-A",
@@ -165,11 +163,13 @@ def get_environment_clusters_mapping(clusters: Optional[Sequence[Union['GetEnvir
                 "agent_identifier": "account.gitopsagentprod",
                 "scope": "ACCOUNT",
             },
-        ])
+        ],
+        identifier="mycustomidentifier",
+        env_id="env1")
     ```
 
 
-    :param Sequence[Union['GetEnvironmentClustersMappingClusterArgs', 'GetEnvironmentClustersMappingClusterArgsDict']] clusters: list of cluster identifiers and names
+    :param Sequence[Union['GetEnvironmentClustersMappingClusterArgs', 'GetEnvironmentClustersMappingClusterArgsDict', 'outputs.GetEnvironmentClustersMappingClusterResult']] clusters: list of cluster identifiers and names
     :param _builtins.str env_id: environment identifier.
     :param _builtins.str identifier: identifier for the cluster mapping(can be given any value).
     :param _builtins.str org_id: org_id of the environment.
@@ -192,7 +192,7 @@ def get_environment_clusters_mapping(clusters: Optional[Sequence[Union['GetEnvir
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         scope=pulumi.get(__ret__, 'scope'))
-def get_environment_clusters_mapping_output(clusters: pulumi.Input[Optional[Optional[Sequence[Union['GetEnvironmentClustersMappingClusterArgs', 'GetEnvironmentClustersMappingClusterArgsDict']]]]] = None,
+def get_environment_clusters_mapping_output(clusters: pulumi.Input[Optional[Optional[Sequence[Union['GetEnvironmentClustersMappingClusterArgs', 'GetEnvironmentClustersMappingClusterArgsDict', 'outputs.GetEnvironmentClustersMappingClusterResult']]]]] = None,
                                             env_id: pulumi.Input[Optional[_builtins.str]] = None,
                                             identifier: pulumi.Input[Optional[_builtins.str]] = None,
                                             org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -208,20 +208,18 @@ def get_environment_clusters_mapping_output(clusters: pulumi.Input[Optional[Opti
     import pulumi_harness as harness
 
     # data source for gitops clusters mapped to a project level env
-    example = harness.platform.get_environment_clusters_mapping(identifier="mycustomidentifier",
-        org_id="orgIdentifer",
-        project_id="projectIdentifier",
-        env_id="exampleEnvId",
-        clusters=[{
+    example = harness.platform.get_environment_clusters_mapping(clusters=[{
             "identifier": "incluster",
             "name": "in-cluster",
             "agent_identifier": "account.gitopsagentdev",
             "scope": "ACCOUNT",
-        }])
+        }],
+        identifier="mycustomidentifier",
+        org_id="orgIdentifer",
+        project_id="projectIdentifier",
+        env_id="exampleEnvId")
     # data source for two gitops clusters mapped to an account level env
-    example2 = harness.platform.get_environment_clusters_mapping(identifier="mycustomidentifier",
-        env_id="env1",
-        clusters=[
+    example2 = harness.platform.get_environment_clusters_mapping(clusters=[
             {
                 "identifier": "clusterA",
                 "name": "cluster-A",
@@ -234,11 +232,13 @@ def get_environment_clusters_mapping_output(clusters: pulumi.Input[Optional[Opti
                 "agent_identifier": "account.gitopsagentprod",
                 "scope": "ACCOUNT",
             },
-        ])
+        ],
+        identifier="mycustomidentifier",
+        env_id="env1")
     ```
 
 
-    :param Sequence[Union['GetEnvironmentClustersMappingClusterArgs', 'GetEnvironmentClustersMappingClusterArgsDict']] clusters: list of cluster identifiers and names
+    :param Sequence[Union['GetEnvironmentClustersMappingClusterArgs', 'GetEnvironmentClustersMappingClusterArgsDict', 'outputs.GetEnvironmentClustersMappingClusterResult']] clusters: list of cluster identifiers and names
     :param _builtins.str env_id: environment identifier.
     :param _builtins.str identifier: identifier for the cluster mapping(can be given any value).
     :param _builtins.str org_id: org_id of the environment.

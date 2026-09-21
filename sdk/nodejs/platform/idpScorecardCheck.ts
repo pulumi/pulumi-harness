@@ -16,22 +16,22 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const readme = new harness.platform.IdpScorecardCheck("readme", {
- *     identifier: "readme_exists",
- *     name: "README exists",
- *     description: "Ensure the repository has a README file",
- *     ruleStrategy: "ALL_OF",
- *     defaultBehaviour: "FAIL",
  *     rules: [{
+ *         inputValues: [{
+ *             key: "filePath",
+ *             value: "README.md",
+ *         }],
  *         dataSourceIdentifier: "github",
  *         dataPointIdentifier: "isFileExists",
  *         operator: "==",
  *         value: "true",
  *         ruleDescription: "Repository has a README",
- *         inputValues: [{
- *             key: "filePath",
- *             value: "README.md",
- *         }],
  *     }],
+ *     identifier: "readme_exists",
+ *     name: "README exists",
+ *     description: "Ensure the repository has a README file",
+ *     ruleStrategy: "ALL_OF",
+ *     defaultBehaviour: "FAIL",
  * });
  * ```
  *

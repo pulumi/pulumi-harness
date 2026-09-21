@@ -423,7 +423,7 @@ class ImageRegistry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageRegistryCustomImageArgs', 'ImageRegistryCustomImageArgsDict']]]]] = None,
+                 custom_images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageRegistryCustomImageArgs', 'ImageRegistryCustomImageArgsDict', 'outputs.ImageRegistryCustomImage']]]]] = None,
                  infra_id: pulumi.Input[Optional[_builtins.str]] = None,
                  is_default: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -449,6 +449,12 @@ class ImageRegistry(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.chaos.ImageRegistry("example",
+            custom_images=[{
+                "log_watcher": "<log_watcher_image>",
+                "ddcr": "<ddcr_image>",
+                "ddcr_lib": "<ddcr_lib_image>",
+                "ddcr_fault": "<ddcr_fault_image>",
+            }],
             org_id="<org_id>",
             project_id="<project_id>",
             registry_server="<registry_server>",
@@ -457,13 +463,7 @@ class ImageRegistry(pulumi.CustomResource):
             secret_name="<secret_name>",
             is_default=False,
             is_override_allowed=True,
-            use_custom_images=True,
-            custom_images=[{
-                "log_watcher": "<log_watcher_image>",
-                "ddcr": "<ddcr_image>",
-                "ddcr_lib": "<ddcr_lib_image>",
-                "ddcr_fault": "<ddcr_fault_image>",
-            }])
+            use_custom_images=True)
         ```
 
         ## Import
@@ -485,7 +485,7 @@ class ImageRegistry(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageRegistryCustomImageArgs', 'ImageRegistryCustomImageArgsDict']]]] custom_images: Custom images configuration
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageRegistryCustomImageArgs', 'ImageRegistryCustomImageArgsDict', 'outputs.ImageRegistryCustomImage']]]] custom_images: Custom images configuration
         :param pulumi.Input[_builtins.str] infra_id: The infrastructure ID to set up the image registry
         :param pulumi.Input[_builtins.bool] is_default: Whether this is the default registry
         :param pulumi.Input[_builtins.bool] is_override_allowed: Whether override is allowed for this registry
@@ -517,6 +517,12 @@ class ImageRegistry(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.chaos.ImageRegistry("example",
+            custom_images=[{
+                "log_watcher": "<log_watcher_image>",
+                "ddcr": "<ddcr_image>",
+                "ddcr_lib": "<ddcr_lib_image>",
+                "ddcr_fault": "<ddcr_fault_image>",
+            }],
             org_id="<org_id>",
             project_id="<project_id>",
             registry_server="<registry_server>",
@@ -525,13 +531,7 @@ class ImageRegistry(pulumi.CustomResource):
             secret_name="<secret_name>",
             is_default=False,
             is_override_allowed=True,
-            use_custom_images=True,
-            custom_images=[{
-                "log_watcher": "<log_watcher_image>",
-                "ddcr": "<ddcr_image>",
-                "ddcr_lib": "<ddcr_lib_image>",
-                "ddcr_fault": "<ddcr_fault_image>",
-            }])
+            use_custom_images=True)
         ```
 
         ## Import
@@ -566,7 +566,7 @@ class ImageRegistry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageRegistryCustomImageArgs', 'ImageRegistryCustomImageArgsDict']]]]] = None,
+                 custom_images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageRegistryCustomImageArgs', 'ImageRegistryCustomImageArgsDict', 'outputs.ImageRegistryCustomImage']]]]] = None,
                  infra_id: pulumi.Input[Optional[_builtins.str]] = None,
                  is_default: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -616,7 +616,7 @@ class ImageRegistry(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageRegistryCustomImageArgs', 'ImageRegistryCustomImageArgsDict']]]]] = None,
+            custom_images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageRegistryCustomImageArgs', 'ImageRegistryCustomImageArgsDict', 'outputs.ImageRegistryCustomImage']]]]] = None,
             infra_id: pulumi.Input[Optional[_builtins.str]] = None,
             is_default: pulumi.Input[Optional[_builtins.bool]] = None,
             is_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -636,7 +636,7 @@ class ImageRegistry(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created_at: Creation timestamp
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageRegistryCustomImageArgs', 'ImageRegistryCustomImageArgsDict']]]] custom_images: Custom images configuration
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageRegistryCustomImageArgs', 'ImageRegistryCustomImageArgsDict', 'outputs.ImageRegistryCustomImage']]]] custom_images: Custom images configuration
         :param pulumi.Input[_builtins.str] infra_id: The infrastructure ID to set up the image registry
         :param pulumi.Input[_builtins.bool] is_default: Whether this is the default registry
         :param pulumi.Input[_builtins.bool] is_override_allowed: Whether override is allowed for this registry

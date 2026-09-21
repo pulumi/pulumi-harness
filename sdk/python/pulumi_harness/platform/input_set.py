@@ -423,11 +423,11 @@ class InputSet(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 git_details: pulumi.Input[Optional[Union['InputSetGitDetailsArgs', 'InputSetGitDetailsArgsDict']]] = None,
-                 git_import_info: pulumi.Input[Optional[Union['InputSetGitImportInfoArgs', 'InputSetGitImportInfoArgsDict']]] = None,
+                 git_details: pulumi.Input[Optional[Union['InputSetGitDetailsArgs', 'InputSetGitDetailsArgsDict', 'outputs.InputSetGitDetails']]] = None,
+                 git_import_info: pulumi.Input[Optional[Union['InputSetGitImportInfoArgs', 'InputSetGitImportInfoArgsDict', 'outputs.InputSetGitImportInfo']]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
-                 input_set_import_request: pulumi.Input[Optional[Union['InputSetInputSetImportRequestArgs', 'InputSetInputSetImportRequestArgsDict']]] = None,
+                 input_set_import_request: pulumi.Input[Optional[Union['InputSetInputSetImportRequestArgs', 'InputSetInputSetImportRequestArgsDict', 'outputs.InputSetInputSetImportRequest']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -452,11 +452,11 @@ class InputSet(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Union['InputSetGitDetailsArgs', 'InputSetGitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
-        :param pulumi.Input[Union['InputSetGitImportInfoArgs', 'InputSetGitImportInfoArgsDict']] git_import_info: Contains Git Information for importing entities from Git
+        :param pulumi.Input[Union['InputSetGitDetailsArgs', 'InputSetGitDetailsArgsDict', 'outputs.InputSetGitDetails']] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input[Union['InputSetGitImportInfoArgs', 'InputSetGitImportInfoArgsDict', 'outputs.InputSetGitImportInfo']] git_import_info: Contains Git Information for importing entities from Git
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.bool] import_from_git: Flag to set if importing from Git
-        :param pulumi.Input[Union['InputSetInputSetImportRequestArgs', 'InputSetInputSetImportRequestArgsDict']] input_set_import_request: Contains parameters for importing a input set
+        :param pulumi.Input[Union['InputSetInputSetImportRequestArgs', 'InputSetInputSetImportRequestArgsDict', 'outputs.InputSetInputSetImportRequest']] input_set_import_request: Contains parameters for importing a input set
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] pipeline_id: Identifier of the pipeline
@@ -500,11 +500,11 @@ class InputSet(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 git_details: pulumi.Input[Optional[Union['InputSetGitDetailsArgs', 'InputSetGitDetailsArgsDict']]] = None,
-                 git_import_info: pulumi.Input[Optional[Union['InputSetGitImportInfoArgs', 'InputSetGitImportInfoArgsDict']]] = None,
+                 git_details: pulumi.Input[Optional[Union['InputSetGitDetailsArgs', 'InputSetGitDetailsArgsDict', 'outputs.InputSetGitDetails']]] = None,
+                 git_import_info: pulumi.Input[Optional[Union['InputSetGitImportInfoArgs', 'InputSetGitImportInfoArgsDict', 'outputs.InputSetGitImportInfo']]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
-                 input_set_import_request: pulumi.Input[Optional[Union['InputSetInputSetImportRequestArgs', 'InputSetInputSetImportRequestArgsDict']]] = None,
+                 input_set_import_request: pulumi.Input[Optional[Union['InputSetInputSetImportRequestArgs', 'InputSetInputSetImportRequestArgsDict', 'outputs.InputSetInputSetImportRequest']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -551,11 +551,11 @@ class InputSet(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            git_details: pulumi.Input[Optional[Union['InputSetGitDetailsArgs', 'InputSetGitDetailsArgsDict']]] = None,
-            git_import_info: pulumi.Input[Optional[Union['InputSetGitImportInfoArgs', 'InputSetGitImportInfoArgsDict']]] = None,
+            git_details: pulumi.Input[Optional[Union['InputSetGitDetailsArgs', 'InputSetGitDetailsArgsDict', 'outputs.InputSetGitDetails']]] = None,
+            git_import_info: pulumi.Input[Optional[Union['InputSetGitImportInfoArgs', 'InputSetGitImportInfoArgsDict', 'outputs.InputSetGitImportInfo']]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
-            input_set_import_request: pulumi.Input[Optional[Union['InputSetInputSetImportRequestArgs', 'InputSetInputSetImportRequestArgsDict']]] = None,
+            input_set_import_request: pulumi.Input[Optional[Union['InputSetInputSetImportRequestArgs', 'InputSetInputSetImportRequestArgsDict', 'outputs.InputSetInputSetImportRequest']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -570,11 +570,11 @@ class InputSet(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Union['InputSetGitDetailsArgs', 'InputSetGitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
-        :param pulumi.Input[Union['InputSetGitImportInfoArgs', 'InputSetGitImportInfoArgsDict']] git_import_info: Contains Git Information for importing entities from Git
+        :param pulumi.Input[Union['InputSetGitDetailsArgs', 'InputSetGitDetailsArgsDict', 'outputs.InputSetGitDetails']] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input[Union['InputSetGitImportInfoArgs', 'InputSetGitImportInfoArgsDict', 'outputs.InputSetGitImportInfo']] git_import_info: Contains Git Information for importing entities from Git
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.bool] import_from_git: Flag to set if importing from Git
-        :param pulumi.Input[Union['InputSetInputSetImportRequestArgs', 'InputSetInputSetImportRequestArgsDict']] input_set_import_request: Contains parameters for importing a input set
+        :param pulumi.Input[Union['InputSetInputSetImportRequestArgs', 'InputSetInputSetImportRequestArgsDict', 'outputs.InputSetInputSetImportRequest']] input_set_import_request: Contains parameters for importing a input set
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] pipeline_id: Identifier of the pipeline

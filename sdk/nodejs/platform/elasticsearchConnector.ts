@@ -17,29 +17,29 @@ import * as utilities from "../utilities";
  *
  * // Authentication mechanism as api token
  * const token = new harness.platform.ElasticsearchConnector("token", {
- *     identifier: "identifier",
- *     name: "name",
- *     description: "test",
- *     tags: ["foo:bar"],
- *     url: "http://elk6.dev.harness.io:9200/",
- *     delegateSelectors: ["harness-delegate"],
  *     apiToken: {
  *         clientId: "client_id",
  *         clientSecretRef: "account.secret_id",
  *     },
- * });
- * // Authentication mechanism as username and password
- * const test = new harness.platform.ElasticsearchConnector("test", {
  *     identifier: "identifier",
  *     name: "name",
  *     description: "test",
  *     tags: ["foo:bar"],
  *     url: "http://elk6.dev.harness.io:9200/",
  *     delegateSelectors: ["harness-delegate"],
+ * });
+ * // Authentication mechanism as username and password
+ * const test = new harness.platform.ElasticsearchConnector("test", {
  *     usernamePassword: {
  *         username: "username",
  *         passwordRef: "account.secret_id",
  *     },
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     url: "http://elk6.dev.harness.io:9200/",
+ *     delegateSelectors: ["harness-delegate"],
  * });
  * // Authentication mechanism without authentication
  * const noAuthentication = new harness.platform.ElasticsearchConnector("no_authentication", {

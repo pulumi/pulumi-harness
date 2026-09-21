@@ -24,6 +24,24 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var example = new Harness.Platform.IacmAnsiblePlaybook("example", new()
     ///     {
+    ///         EnvVars = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.IacmAnsiblePlaybookEnvVarArgs
+    ///             {
+    ///                 Key = "ANSIBLE_CONFIG",
+    ///                 Value = "ansible.cfg",
+    ///                 ValueType = "string",
+    ///             },
+    ///         },
+    ///         Vars = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.IacmAnsiblePlaybookVarArgs
+    ///             {
+    ///                 Key = "environment",
+    ///                 Value = "production",
+    ///                 ValueType = "string",
+    ///             },
+    ///         },
     ///         Identifier = "my_playbook",
     ///         Name = "my-playbook",
     ///         OrgId = exampleHarnessPlatformOrganization.Id,
@@ -36,24 +54,6 @@ namespace Pulumi.Harness.Platform
     ///         Tags = new[]
     ///         {
     ///             "env:prod",
-    ///         },
-    ///         Vars = new[]
-    ///         {
-    ///             new Harness.Platform.Inputs.IacmAnsiblePlaybookVarArgs
-    ///             {
-    ///                 Key = "environment",
-    ///                 Value = "production",
-    ///                 ValueType = "string",
-    ///             },
-    ///         },
-    ///         EnvVars = new[]
-    ///         {
-    ///             new Harness.Platform.Inputs.IacmAnsiblePlaybookEnvVarArgs
-    ///             {
-    ///                 Key = "ANSIBLE_CONFIG",
-    ///                 Value = "ansible.cfg",
-    ///                 ValueType = "string",
-    ///             },
     ///         },
     ///     });
     /// 

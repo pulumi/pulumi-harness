@@ -24,22 +24,6 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var example = new Harness.Platform.AzureCloudCostConnector("example", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Description = "example",
-    ///         Tags = new[]
-    ///         {
-    ///             "foo:bar",
-    ///         },
-    ///         FeaturesEnableds = new[]
-    ///         {
-    ///             "BILLING",
-    ///             "VISIBILITY",
-    ///             "OPTIMIZATION",
-    ///             "GOVERNANCE",
-    ///         },
-    ///         TenantId = "tenant_id",
-    ///         SubscriptionId = "subscription_id",
     ///         BillingExportSpec = new Harness.Platform.Inputs.AzureCloudCostConnectorBillingExportSpecArgs
     ///         {
     ///             StorageAccountName = "storage_account_name",
@@ -58,6 +42,22 @@ namespace Pulumi.Harness.Platform
     ///             SubscriptionId = "subscription_id",
     ///             BillingType = "billing_type",
     ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "example",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         FeaturesEnableds = new[]
+    ///         {
+    ///             "BILLING",
+    ///             "VISIBILITY",
+    ///             "OPTIMIZATION",
+    ///             "GOVERNANCE",
+    ///         },
+    ///         TenantId = "tenant_id",
+    ///         SubscriptionId = "subscription_id",
     ///     });
     /// 
     /// });

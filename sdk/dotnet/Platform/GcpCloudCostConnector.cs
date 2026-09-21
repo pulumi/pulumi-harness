@@ -24,6 +24,11 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var test = new Harness.Platform.GcpCloudCostConnector("test", new()
     ///     {
+    ///         BillingExportSpec = new Harness.Platform.Inputs.GcpCloudCostConnectorBillingExportSpecArgs
+    ///         {
+    ///             DataSetId = "data_set_id",
+    ///             TableId = "table_id",
+    ///         },
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         Description = "test",
@@ -40,11 +45,6 @@ namespace Pulumi.Harness.Platform
     ///         },
     ///         GcpProjectId = "gcp_project_id",
     ///         ServiceAccountEmail = "service_account_email",
-    ///         BillingExportSpec = new Harness.Platform.Inputs.GcpCloudCostConnectorBillingExportSpecArgs
-    ///         {
-    ///             DataSetId = "data_set_id",
-    ///             TableId = "table_id",
-    ///         },
     ///     });
     /// 
     /// });

@@ -29,10 +29,6 @@ namespace Pulumi.Harness.Service
     /// 
     ///     var exampleKubernetes = new Harness.Service.Kubernetes("example", new()
     ///     {
-    ///         AppId = example.Id,
-    ///         Name = "k8s-svc",
-    ///         HelmVersion = "V3",
-    ///         Description = "Service for deploying Kubernetes manifests",
     ///         Variables = new[]
     ///         {
     ///             new Harness.Service.Inputs.KubernetesVariableArgs
@@ -48,6 +44,10 @@ namespace Pulumi.Harness.Service
     ///                 Type = "TEXT",
     ///             },
     ///         },
+    ///         AppId = example.Id,
+    ///         Name = "k8s-svc",
+    ///         HelmVersion = "V3",
+    ///         Description = "Service for deploying Kubernetes manifests",
     ///     });
     /// 
     /// });

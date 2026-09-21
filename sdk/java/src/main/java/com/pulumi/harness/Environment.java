@@ -54,10 +54,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var testKubernetes = new Kubernetes("testKubernetes", KubernetesArgs.builder()
- *             .appId(test.id())
- *             .name("%[1]s")
- *             .helmVersion("V2")
- *             .description("description")
  *             .variables(            
  *                 KubernetesVariableArgs.builder()
  *                     .name("test")
@@ -69,12 +65,13 @@ import javax.annotation.Nullable;
  *                     .value("test_value2")
  *                     .type("TEXT")
  *                     .build())
+ *             .appId(test.id())
+ *             .name("%[1]s")
+ *             .helmVersion("V2")
+ *             .description("description")
  *             .build());
  * 
  *         var testEnvironment = new Environment("testEnvironment", EnvironmentArgs.builder()
- *             .appId(test.id())
- *             .name("%[1]s")
- *             .type("%[2]s")
  *             .variableOverrides(            
  *                 EnvironmentVariableOverrideArgs.builder()
  *                     .serviceName(testKubernetes.name())
@@ -88,6 +85,9 @@ import javax.annotation.Nullable;
  *                     .value("override2")
  *                     .type("TEXT")
  *                     .build())
+ *             .appId(test.id())
+ *             .name("%[1]s")
+ *             .type("%[2]s")
  *             .build());
  * 
  *     }

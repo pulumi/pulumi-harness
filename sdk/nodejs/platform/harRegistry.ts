@@ -19,10 +19,6 @@ import * as utilities from "../utilities";
  *
  * // Example of a Virtual Registry
  * const virtualRegistry = new harness.platform.HarRegistry("virtual_registry", {
- *     identifier: "virtual_docker_registry",
- *     description: "Virtual Docker Registry",
- *     spaceRef: "accountId/orgId/projectId",
- *     packageType: "DOCKER",
  *     configs: [{
  *         type: "VIRTUAL",
  *         upstreamProxies: [
@@ -30,76 +26,74 @@ import * as utilities from "../utilities";
  *             "registry2",
  *         ],
  *     }],
+ *     identifier: "virtual_docker_registry",
+ *     description: "Virtual Docker Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "DOCKER",
  *     parentRef: "accountId/orgId/projectId",
  * });
  * // Example of an Upstream Registry with Authentication
  * const upstreamRegistry = new harness.platform.HarRegistry("upstream_registry", {
- *     identifier: "upstream_helm_registry",
- *     description: "Upstream Helm Registry",
- *     spaceRef: "accountId/orgId/projectId",
- *     packageType: "HELM",
  *     configs: [{
- *         type: "UPSTREAM",
- *         source: "Custom",
- *         url: "https://helm.sh",
  *         auths: [{
  *             authType: "UserPassword",
  *             userName: "registry_user",
  *             secretIdentifier: "registry_password",
  *             secretSpacePath: "accountId/orgId/projectId",
  *         }],
+ *         type: "UPSTREAM",
+ *         source: "Custom",
+ *         url: "https://helm.sh",
  *     }],
+ *     identifier: "upstream_helm_registry",
+ *     description: "Upstream Helm Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "HELM",
  *     parentRef: "accountId/orgId/projectId",
  * });
  * // Example of an Upstream Go Registry (GoProxy source needs no url)
  * const goUpstream = new harness.platform.HarRegistry("go_upstream", {
- *     identifier: "upstream_go_registry",
- *     description: "Upstream Go Registry",
- *     spaceRef: "accountId/orgId/projectId",
- *     packageType: "GO",
  *     configs: [{
  *         type: "UPSTREAM",
  *         source: "GoProxy",
  *         authType: "Anonymous",
  *     }],
+ *     identifier: "upstream_go_registry",
+ *     description: "Upstream Go Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "GO",
  *     parentRef: "accountId/orgId/projectId",
  * });
  * // Example of an Upstream Conda Registry (Anaconda source needs no url)
  * const condaUpstream = new harness.platform.HarRegistry("conda_upstream", {
- *     identifier: "upstream_conda_registry",
- *     description: "Upstream Conda Registry",
- *     spaceRef: "accountId/orgId/projectId",
- *     packageType: "CONDA",
  *     configs: [{
  *         type: "UPSTREAM",
  *         source: "Anaconda",
  *         authType: "Anonymous",
  *     }],
+ *     identifier: "upstream_conda_registry",
+ *     description: "Upstream Conda Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "CONDA",
  *     parentRef: "accountId/orgId/projectId",
  * });
  * // Example of an Upstream Helm HTTP Registry (HelmChartRepo source requires url)
  * const helmHttpUpstream = new harness.platform.HarRegistry("helm_http_upstream", {
- *     identifier: "upstream_helm_http_registry",
- *     description: "Upstream Helm HTTP Registry",
- *     spaceRef: "accountId/orgId/projectId",
- *     packageType: "HELM_HTTP",
  *     configs: [{
  *         type: "UPSTREAM",
  *         source: "HelmChartRepo",
  *         url: "https://charts.bitnami.com/bitnami",
  *         authType: "Anonymous",
  *     }],
+ *     identifier: "upstream_helm_http_registry",
+ *     description: "Upstream Helm HTTP Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "HELM_HTTP",
  *     parentRef: "accountId/orgId/projectId",
  * });
  * // Example of a Virtual Debian Registry with Debian-specific configuration
  * const debianVirtual = new harness.platform.HarRegistry("debian_virtual", {
- *     identifier: "virtual_debian_registry",
- *     description: "Virtual Debian Registry",
- *     spaceRef: "accountId/orgId/projectId",
- *     packageType: "DEBIAN",
  *     configs: [{
- *         type: "VIRTUAL",
- *         upstreamProxies: ["debian_upstream_registry"],
  *         debianConfig: {
  *             remoteIndexedArchitectures: [
  *                 "amd64",
@@ -107,29 +101,31 @@ import * as utilities from "../utilities";
  *             ],
  *             optionalIndexCompressionFormats: [".xz"],
  *         },
+ *         type: "VIRTUAL",
+ *         upstreamProxies: ["debian_upstream_registry"],
  *     }],
+ *     identifier: "virtual_debian_registry",
+ *     description: "Virtual Debian Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "DEBIAN",
  *     parentRef: "accountId/orgId/projectId",
  * });
  * // Example of an Upstream Custom Debian Registry (Debian source needs url)
  * const debianUpstream = new harness.platform.HarRegistry("debian_upstream", {
- *     identifier: "upstream_debian_registry",
- *     description: "Upstream Debian Registry",
- *     spaceRef: "accountId/orgId/projectId",
- *     packageType: "DEBIAN",
  *     configs: [{
  *         type: "UPSTREAM",
  *         source: "Custom",
  *         url: "http://deb.debian.org/debian",
  *         authType: "Anonymous",
  *     }],
+ *     identifier: "upstream_debian_registry",
+ *     description: "Upstream Debian Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "DEBIAN",
  *     parentRef: "accountId/orgId/projectId",
  * });
  * // Example of an Upstream Python Registry with a custom remote URL suffix
  * const pythonUpstream = new harness.platform.HarRegistry("python_upstream", {
- *     identifier: "upstream_python_registry",
- *     description: "Upstream Python Registry",
- *     spaceRef: "accountId/orgId/projectId",
- *     packageType: "PYTHON",
  *     configs: [{
  *         type: "UPSTREAM",
  *         source: "Custom",
@@ -137,115 +133,119 @@ import * as utilities from "../utilities";
  *         remoteUrlSuffix: "simple",
  *         authType: "Anonymous",
  *     }],
+ *     identifier: "upstream_python_registry",
+ *     description: "Upstream Python Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "PYTHON",
  *     parentRef: "accountId/orgId/projectId",
  * });
  * // Example of an Upstream Conan Registry (ConanCenter source needs no url)
  * const conanUpstream = new harness.platform.HarRegistry("conan_upstream", {
- *     identifier: "upstream_conan_registry",
- *     description: "Upstream Conan Registry",
- *     spaceRef: "accountId/orgId/projectId",
- *     packageType: "CONAN",
  *     configs: [{
  *         type: "UPSTREAM",
  *         source: "ConanCenter",
  *         authType: "Anonymous",
  *     }],
+ *     identifier: "upstream_conan_registry",
+ *     description: "Upstream Conan Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "CONAN",
  *     parentRef: "accountId/orgId/projectId",
  * });
  * // Example of an Upstream Ruby Registry (RubyGems source needs no url)
  * const rubygemsUpstream = new harness.platform.HarRegistry("rubygems_upstream", {
- *     identifier: "upstream_ruby_registry",
- *     description: "Upstream Ruby Registry",
- *     spaceRef: "accountId/orgId/projectId",
- *     packageType: "RUBY",
  *     configs: [{
  *         type: "UPSTREAM",
  *         source: "RubyGems",
  *         authType: "Anonymous",
  *     }],
+ *     identifier: "upstream_ruby_registry",
+ *     description: "Upstream Ruby Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "RUBY",
  *     parentRef: "accountId/orgId/projectId",
  * });
  * // Example of a Virtual Terraform Registry
  * const terraformVirtual = new harness.platform.HarRegistry("terraform_virtual", {
+ *     configs: [{
+ *         type: "VIRTUAL",
+ *     }],
  *     identifier: "virtual_terraform_registry",
  *     description: "Virtual Terraform Registry",
  *     spaceRef: "accountId/orgId/projectId",
  *     packageType: "TERRAFORM",
- *     configs: [{
- *         type: "VIRTUAL",
- *     }],
  *     parentRef: "accountId/orgId/projectId",
  * });
  * // Example of a Virtual CRAN Registry
  * const cranVirtual = new harness.platform.HarRegistry("cran_virtual", {
+ *     configs: [{
+ *         type: "VIRTUAL",
+ *     }],
  *     identifier: "virtual_cran_registry",
  *     description: "Virtual CRAN Registry",
  *     spaceRef: "accountId/orgId/projectId",
  *     packageType: "CRAN",
- *     configs: [{
- *         type: "VIRTUAL",
- *     }],
  *     parentRef: "accountId/orgId/projectId",
  * });
  * // Example of an Upstream CRAN Registry (CRAN source needs no url)
  * const cranUpstream = new harness.platform.HarRegistry("cran_upstream", {
- *     identifier: "upstream_cran_registry",
- *     description: "Upstream CRAN Registry",
- *     spaceRef: "accountId/orgId/projectId",
- *     packageType: "CRAN",
  *     configs: [{
  *         type: "UPSTREAM",
  *         source: "CRAN",
  *         authType: "Anonymous",
  *     }],
+ *     identifier: "upstream_cran_registry",
+ *     description: "Upstream CRAN Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "CRAN",
  *     parentRef: "accountId/orgId/projectId",
  * });
  * // Example of a Virtual Alpine Registry
  * const alpineVirtual = new harness.platform.HarRegistry("alpine_virtual", {
+ *     configs: [{
+ *         type: "VIRTUAL",
+ *     }],
  *     identifier: "virtual_alpine_registry",
  *     description: "Virtual Alpine Registry",
  *     spaceRef: "accountId/orgId/projectId",
  *     packageType: "ALPINE",
- *     configs: [{
- *         type: "VIRTUAL",
- *     }],
  *     parentRef: "accountId/orgId/projectId",
  * });
  * // Example of an Upstream Alpine Registry (Alpine source needs no url)
  * const alpineUpstream = new harness.platform.HarRegistry("alpine_upstream", {
- *     identifier: "upstream_alpine_registry",
- *     description: "Upstream Alpine Registry",
- *     spaceRef: "accountId/orgId/projectId",
- *     packageType: "ALPINE",
  *     configs: [{
  *         type: "UPSTREAM",
  *         source: "Alpine",
  *         authType: "Anonymous",
  *     }],
+ *     identifier: "upstream_alpine_registry",
+ *     description: "Upstream Alpine Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "ALPINE",
  *     parentRef: "accountId/orgId/projectId",
  * });
  * // Example of a Virtual Wolfi Registry
  * const wolfiVirtual = new harness.platform.HarRegistry("wolfi_virtual", {
+ *     configs: [{
+ *         type: "VIRTUAL",
+ *     }],
  *     identifier: "virtual_wolfi_registry",
  *     description: "Virtual Wolfi Registry",
  *     spaceRef: "accountId/orgId/projectId",
  *     packageType: "WOLFI",
- *     configs: [{
- *         type: "VIRTUAL",
- *     }],
  *     parentRef: "accountId/orgId/projectId",
  * });
  * // Example of an Upstream Wolfi Registry (Wolfi source needs no url)
  * const wolfiUpstream = new harness.platform.HarRegistry("wolfi_upstream", {
- *     identifier: "upstream_wolfi_registry",
- *     description: "Upstream Wolfi Registry",
- *     spaceRef: "accountId/orgId/projectId",
- *     packageType: "WOLFI",
  *     configs: [{
  *         type: "UPSTREAM",
  *         source: "Wolfi",
  *         authType: "Anonymous",
  *     }],
+ *     identifier: "upstream_wolfi_registry",
+ *     description: "Upstream Wolfi Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "WOLFI",
  *     parentRef: "accountId/orgId/projectId",
  * });
  * ```

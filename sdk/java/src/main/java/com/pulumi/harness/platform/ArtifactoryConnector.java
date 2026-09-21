@@ -48,16 +48,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Authentication mechanism as username and password
  *         var example = new ArtifactoryConnector("example", ArtifactoryConnectorArgs.builder()
+ *             .credentials(ArtifactoryConnectorCredentialsArgs.builder()
+ *                 .username("admin")
+ *                 .passwordRef("account.secret_id")
+ *                 .build())
  *             .identifier("identifier")
  *             .name("name")
  *             .description("test")
  *             .tags("foo:bar")
  *             .url("https://artifactory.example.com")
  *             .delegateSelectors("harness-delegate")
- *             .credentials(ArtifactoryConnectorCredentialsArgs.builder()
- *                 .username("admin")
- *                 .passwordRef("account.secret_id")
- *                 .build())
  *             .build());
  * 
  *         // Authentication mechanism as anonymous
@@ -101,6 +101,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Authentication mechanism as username and password
  *         var example = new ArtifactoryConnector("example", ArtifactoryConnectorArgs.builder()
+ *             .credentials(ArtifactoryConnectorCredentialsArgs.builder()
+ *                 .username("admin")
+ *                 .passwordRef("account.secret_id")
+ *                 .build())
  *             .identifier("identifier")
  *             .name("name")
  *             .description("test")
@@ -108,10 +112,6 @@ import javax.annotation.Nullable;
  *             .orgId(testHarnessPlatformProject.orgId())
  *             .url("https://artifactory.example.com")
  *             .delegateSelectors("harness-delegate")
- *             .credentials(ArtifactoryConnectorCredentialsArgs.builder()
- *                 .username("admin")
- *                 .passwordRef("account.secret_id")
- *                 .build())
  *             .build());
  * 
  *         // Authentication mechanism as anonymous
@@ -156,6 +156,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Authentication mechanism as username and password
  *         var example = new ArtifactoryConnector("example", ArtifactoryConnectorArgs.builder()
+ *             .credentials(ArtifactoryConnectorCredentialsArgs.builder()
+ *                 .username("admin")
+ *                 .passwordRef("account.secret_id")
+ *                 .build())
  *             .identifier("identifier")
  *             .name("name")
  *             .description("test")
@@ -164,10 +168,6 @@ import javax.annotation.Nullable;
  *             .projectId(testHarnessPlatformProject.id())
  *             .url("https://artifactory.example.com")
  *             .delegateSelectors("harness-delegate")
- *             .credentials(ArtifactoryConnectorCredentialsArgs.builder()
- *                 .username("admin")
- *                 .passwordRef("account.secret_id")
- *                 .build())
  *             .build());
  * 
  *         // Authentication mechanism as anonymous

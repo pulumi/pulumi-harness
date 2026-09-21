@@ -521,7 +521,7 @@ class IacmAnsiblePlaybook(pulumi.CustomResource):
                  ansible_galaxy: pulumi.Input[Optional[_builtins.bool]] = None,
                  ansible_galaxy_requirements_file: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 env_vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookEnvVarArgs', 'IacmAnsiblePlaybookEnvVarArgsDict']]]]] = None,
+                 env_vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookEnvVarArgs', 'IacmAnsiblePlaybookEnvVarArgsDict', 'outputs.IacmAnsiblePlaybookEnvVar']]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -532,7 +532,7 @@ class IacmAnsiblePlaybook(pulumi.CustomResource):
                  repository_connector: pulumi.Input[Optional[_builtins.str]] = None,
                  repository_path: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookVarArgs', 'IacmAnsiblePlaybookVarArgsDict']]]]] = None,
+                 vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookVarArgs', 'IacmAnsiblePlaybookVarArgsDict', 'outputs.IacmAnsiblePlaybookVar']]]]] = None,
                  __props__=None):
         """
         Resource for managing Harness IaCM Ansible Playbooks.
@@ -544,6 +544,16 @@ class IacmAnsiblePlaybook(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.platform.IacmAnsiblePlaybook("example",
+            env_vars=[{
+                "key": "ANSIBLE_CONFIG",
+                "value": "ansible.cfg",
+                "value_type": "string",
+            }],
+            vars=[{
+                "key": "environment",
+                "value": "production",
+                "value_type": "string",
+            }],
             identifier="my_playbook",
             name="my-playbook",
             org_id=example_harness_platform_organization["id"],
@@ -553,17 +563,7 @@ class IacmAnsiblePlaybook(pulumi.CustomResource):
             repository_path="ansible/site.yml",
             repository_connector="account.my_github_connector",
             ansible_galaxy=True,
-            tags=["env:prod"],
-            vars=[{
-                "key": "environment",
-                "value": "production",
-                "value_type": "string",
-            }],
-            env_vars=[{
-                "key": "ANSIBLE_CONFIG",
-                "value": "ansible.cfg",
-                "value_type": "string",
-            }])
+            tags=["env:prod"])
         ```
 
 
@@ -572,7 +572,7 @@ class IacmAnsiblePlaybook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] ansible_galaxy: Install Ansible Galaxy dependencies.
         :param pulumi.Input[_builtins.str] ansible_galaxy_requirements_file: Path to the Ansible Galaxy requirements file.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookEnvVarArgs', 'IacmAnsiblePlaybookEnvVarArgsDict']]]] env_vars: Environment variables configured on the playbook.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookEnvVarArgs', 'IacmAnsiblePlaybookEnvVarArgsDict', 'outputs.IacmAnsiblePlaybookEnvVar']]]] env_vars: Environment variables configured on the playbook.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -583,7 +583,7 @@ class IacmAnsiblePlaybook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] repository_connector: Repository connector reference for the playbook.
         :param pulumi.Input[_builtins.str] repository_path: Path within the repository where the playbook resides.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookVarArgs', 'IacmAnsiblePlaybookVarArgsDict']]]] vars: Variables configured on the playbook.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookVarArgs', 'IacmAnsiblePlaybookVarArgsDict', 'outputs.IacmAnsiblePlaybookVar']]]] vars: Variables configured on the playbook.
         """
         ...
     @overload
@@ -601,6 +601,16 @@ class IacmAnsiblePlaybook(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.platform.IacmAnsiblePlaybook("example",
+            env_vars=[{
+                "key": "ANSIBLE_CONFIG",
+                "value": "ansible.cfg",
+                "value_type": "string",
+            }],
+            vars=[{
+                "key": "environment",
+                "value": "production",
+                "value_type": "string",
+            }],
             identifier="my_playbook",
             name="my-playbook",
             org_id=example_harness_platform_organization["id"],
@@ -610,17 +620,7 @@ class IacmAnsiblePlaybook(pulumi.CustomResource):
             repository_path="ansible/site.yml",
             repository_connector="account.my_github_connector",
             ansible_galaxy=True,
-            tags=["env:prod"],
-            vars=[{
-                "key": "environment",
-                "value": "production",
-                "value_type": "string",
-            }],
-            env_vars=[{
-                "key": "ANSIBLE_CONFIG",
-                "value": "ansible.cfg",
-                "value_type": "string",
-            }])
+            tags=["env:prod"])
         ```
 
 
@@ -642,7 +642,7 @@ class IacmAnsiblePlaybook(pulumi.CustomResource):
                  ansible_galaxy: pulumi.Input[Optional[_builtins.bool]] = None,
                  ansible_galaxy_requirements_file: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 env_vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookEnvVarArgs', 'IacmAnsiblePlaybookEnvVarArgsDict']]]]] = None,
+                 env_vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookEnvVarArgs', 'IacmAnsiblePlaybookEnvVarArgsDict', 'outputs.IacmAnsiblePlaybookEnvVar']]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -653,7 +653,7 @@ class IacmAnsiblePlaybook(pulumi.CustomResource):
                  repository_connector: pulumi.Input[Optional[_builtins.str]] = None,
                  repository_path: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookVarArgs', 'IacmAnsiblePlaybookVarArgsDict']]]]] = None,
+                 vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookVarArgs', 'IacmAnsiblePlaybookVarArgsDict', 'outputs.IacmAnsiblePlaybookVar']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -699,7 +699,7 @@ class IacmAnsiblePlaybook(pulumi.CustomResource):
             ansible_galaxy: pulumi.Input[Optional[_builtins.bool]] = None,
             ansible_galaxy_requirements_file: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            env_vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookEnvVarArgs', 'IacmAnsiblePlaybookEnvVarArgsDict']]]]] = None,
+            env_vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookEnvVarArgs', 'IacmAnsiblePlaybookEnvVarArgsDict', 'outputs.IacmAnsiblePlaybookEnvVar']]]]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -710,7 +710,7 @@ class IacmAnsiblePlaybook(pulumi.CustomResource):
             repository_connector: pulumi.Input[Optional[_builtins.str]] = None,
             repository_path: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookVarArgs', 'IacmAnsiblePlaybookVarArgsDict']]]]] = None) -> 'IacmAnsiblePlaybook':
+            vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookVarArgs', 'IacmAnsiblePlaybookVarArgsDict', 'outputs.IacmAnsiblePlaybookVar']]]]] = None) -> 'IacmAnsiblePlaybook':
         """
         Get an existing IacmAnsiblePlaybook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -721,7 +721,7 @@ class IacmAnsiblePlaybook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] ansible_galaxy: Install Ansible Galaxy dependencies.
         :param pulumi.Input[_builtins.str] ansible_galaxy_requirements_file: Path to the Ansible Galaxy requirements file.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookEnvVarArgs', 'IacmAnsiblePlaybookEnvVarArgsDict']]]] env_vars: Environment variables configured on the playbook.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookEnvVarArgs', 'IacmAnsiblePlaybookEnvVarArgsDict', 'outputs.IacmAnsiblePlaybookEnvVar']]]] env_vars: Environment variables configured on the playbook.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -732,7 +732,7 @@ class IacmAnsiblePlaybook(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] repository_connector: Repository connector reference for the playbook.
         :param pulumi.Input[_builtins.str] repository_path: Path within the repository where the playbook resides.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookVarArgs', 'IacmAnsiblePlaybookVarArgsDict']]]] vars: Variables configured on the playbook.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookVarArgs', 'IacmAnsiblePlaybookVarArgsDict', 'outputs.IacmAnsiblePlaybookVar']]]] vars: Variables configured on the playbook.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

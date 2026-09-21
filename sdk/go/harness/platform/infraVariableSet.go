@@ -29,11 +29,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewInfraVariableSet(ctx, "example", &platform.InfraVariableSetArgs{
-//				Identifier:  pulumi.String("example"),
-//				Name:        pulumi.String("example"),
-//				OrgId:       pulumi.Any(test.Id),
-//				ProjectId:   pulumi.Any(testHarnessPlatformProject.Id),
-//				Description: pulumi.String("some description"),
+//				Connectors: platform.InfraVariableSetConnectorArray{
+//					&platform.InfraVariableSetConnectorArgs{
+//						ConnectorRef: pulumi.String("harness_platform_connector_aws.test.id"),
+//						Type:         pulumi.String("aws"),
+//					},
+//					&platform.InfraVariableSetConnectorArgs{
+//						ConnectorRef: pulumi.String("harness_platform_connector_azure.test.id"),
+//						Type:         pulumi.String("azure"),
+//					},
+//				},
 //				EnvironmentVariables: platform.InfraVariableSetEnvironmentVariableArray{
 //					&platform.InfraVariableSetEnvironmentVariableArgs{
 //						Key:       pulumi.String("key1"),
@@ -44,18 +49,6 @@ import (
 //						Key:       pulumi.String("key2"),
 //						Value:     pulumi.String("harness_platform_secret_text.test.id"),
 //						ValueType: pulumi.String("secret"),
-//					},
-//				},
-//				TerraformVariables: platform.InfraVariableSetTerraformVariableArray{
-//					&platform.InfraVariableSetTerraformVariableArgs{
-//						Key:       pulumi.String("key1"),
-//						Value:     pulumi.String("1111"),
-//						ValueType: pulumi.String("string"),
-//					},
-//					&platform.InfraVariableSetTerraformVariableArgs{
-//						Key:       pulumi.String("key2"),
-//						Value:     pulumi.String("1111u"),
-//						ValueType: pulumi.String("string"),
 //					},
 //				},
 //				TerraformVariableFiles: platform.InfraVariableSetTerraformVariableFileArray{
@@ -72,16 +65,23 @@ import (
 //						RepositoryConnector: pulumi.String("harness_platform_connector_github.test.id"),
 //					},
 //				},
-//				Connectors: platform.InfraVariableSetConnectorArray{
-//					&platform.InfraVariableSetConnectorArgs{
-//						ConnectorRef: pulumi.String("harness_platform_connector_aws.test.id"),
-//						Type:         pulumi.String("aws"),
+//				TerraformVariables: platform.InfraVariableSetTerraformVariableArray{
+//					&platform.InfraVariableSetTerraformVariableArgs{
+//						Key:       pulumi.String("key1"),
+//						Value:     pulumi.String("1111"),
+//						ValueType: pulumi.String("string"),
 //					},
-//					&platform.InfraVariableSetConnectorArgs{
-//						ConnectorRef: pulumi.String("harness_platform_connector_azure.test.id"),
-//						Type:         pulumi.String("azure"),
+//					&platform.InfraVariableSetTerraformVariableArgs{
+//						Key:       pulumi.String("key2"),
+//						Value:     pulumi.String("1111u"),
+//						ValueType: pulumi.String("string"),
 //					},
 //				},
+//				Identifier:  pulumi.String("example"),
+//				Name:        pulumi.String("example"),
+//				OrgId:       pulumi.Any(test.Id),
+//				ProjectId:   pulumi.Any(testHarnessPlatformProject.Id),
+//				Description: pulumi.String("some description"),
 //			})
 //			if err != nil {
 //				return err

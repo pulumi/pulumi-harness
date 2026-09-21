@@ -47,18 +47,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Slo("example", SloArgs.builder()
- *             .orgId("org_id")
- *             .projectId("project_id")
- *             .identifier("identifier")
  *             .request(SloRequestArgs.builder()
- *                 .name("name")
- *                 .description("description")
- *                 .tags(                
- *                     "foo:bar",
- *                     "bar:foo")
- *                 .userJourneyRefs(                
- *                     "one",
- *                     "two")
  *                 .sloTarget(SloRequestSloTargetArgs.builder()
  *                     .type("Calender")
  *                     .sloTargetPercentage(10.0)
@@ -70,6 +59,18 @@ import javax.annotation.Nullable;
  *                             ))
  *                         )))
  *                     .build())
+ *                 .notificationRuleRefs(SloRequestNotificationRuleRefArgs.builder()
+ *                     .notificationRuleRef("notification_rule_ref")
+ *                     .enabled(true)
+ *                     .build())
+ *                 .name("name")
+ *                 .description("description")
+ *                 .tags(                
+ *                     "foo:bar",
+ *                     "bar:foo")
+ *                 .userJourneyRefs(                
+ *                     "one",
+ *                     "two")
  *                 .type("Simple")
  *                 .spec(serializeJson(
  *                     jsonObject(
@@ -90,11 +91,10 @@ import javax.annotation.Nullable;
  *                             ))
  *                         )))
  *                     )))
- *                 .notificationRuleRefs(SloRequestNotificationRuleRefArgs.builder()
- *                     .notificationRuleRef("notification_rule_ref")
- *                     .enabled(true)
- *                     .build())
  *                 .build())
+ *             .orgId("org_id")
+ *             .projectId("project_id")
+ *             .identifier("identifier")
  *             .build());
  * 
  *     }

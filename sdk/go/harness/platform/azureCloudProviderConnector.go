@@ -29,24 +29,24 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewAzureCloudProviderConnector(ctx, "manual_config_secret", &platform.AzureCloudProviderConnectorArgs{
+//				Credentials: &platform.AzureCloudProviderConnectorCredentialsArgs{
+//					AzureManualDetails: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsArgs{
+//						Auth: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgs{
+//							AzureClientSecretKey: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyArgs{
+//								SecretRef: pulumi.Sprintf("account.%v", test.Id),
+//							},
+//							Type: pulumi.String("Secret"),
+//						},
+//						ApplicationId: pulumi.String("application_id"),
+//						TenantId:      pulumi.String("tenant_id"),
+//					},
+//					Type: pulumi.String("ManualConfig"),
+//				},
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("example"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
-//				},
-//				Credentials: &platform.AzureCloudProviderConnectorCredentialsArgs{
-//					Type: pulumi.String("ManualConfig"),
-//					AzureManualDetails: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsArgs{
-//						ApplicationId: pulumi.String("application_id"),
-//						TenantId:      pulumi.String("tenant_id"),
-//						Auth: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgs{
-//							Type: pulumi.String("Secret"),
-//							AzureClientSecretKey: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyArgs{
-//								SecretRef: pulumi.Sprintf("account.%v", test.Id),
-//							},
-//						},
-//					},
 //				},
 //				AzureEnvironmentType: pulumi.String("AZURE"),
 //				DelegateSelectors: pulumi.StringArray{
@@ -57,24 +57,24 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewAzureCloudProviderConnector(ctx, "manual_config_certificate", &platform.AzureCloudProviderConnectorArgs{
+//				Credentials: &platform.AzureCloudProviderConnectorCredentialsArgs{
+//					AzureManualDetails: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsArgs{
+//						Auth: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgs{
+//							AzureClientKeyCert: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertArgs{
+//								CertificateRef: pulumi.Sprintf("account.%v", test.Id),
+//							},
+//							Type: pulumi.String("Certificate"),
+//						},
+//						ApplicationId: pulumi.String("application_id"),
+//						TenantId:      pulumi.String("tenant_id"),
+//					},
+//					Type: pulumi.String("ManualConfig"),
+//				},
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("example"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
-//				},
-//				Credentials: &platform.AzureCloudProviderConnectorCredentialsArgs{
-//					Type: pulumi.String("ManualConfig"),
-//					AzureManualDetails: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsArgs{
-//						ApplicationId: pulumi.String("application_id"),
-//						TenantId:      pulumi.String("tenant_id"),
-//						Auth: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgs{
-//							Type: pulumi.String("Certificate"),
-//							AzureClientKeyCert: &platform.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertArgs{
-//								CertificateRef: pulumi.Sprintf("account.%v", test.Id),
-//							},
-//						},
-//					},
 //				},
 //				AzureEnvironmentType: pulumi.String("AZURE"),
 //				DelegateSelectors: pulumi.StringArray{
@@ -85,14 +85,7 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewAzureCloudProviderConnector(ctx, "inherit_from_delegate_user_assigned_managed_identity", &platform.AzureCloudProviderConnectorArgs{
-//				Identifier:  pulumi.String("identifier"),
-//				Name:        pulumi.String("name"),
-//				Description: pulumi.String("example"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
 //				Credentials: &platform.AzureCloudProviderConnectorCredentialsArgs{
-//					Type: pulumi.String("InheritFromDelegate"),
 //					AzureInheritFromDelegateDetails: &platform.AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsArgs{
 //						Auth: &platform.AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthArgs{
 //							AzureMsiAuthUa: &platform.AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthAzureMsiAuthUaArgs{
@@ -101,6 +94,13 @@ import (
 //							Type: pulumi.String("UserAssignedManagedIdentity"),
 //						},
 //					},
+//					Type: pulumi.String("InheritFromDelegate"),
+//				},
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("example"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
 //				},
 //				AzureEnvironmentType: pulumi.String("AZURE"),
 //				DelegateSelectors: pulumi.StringArray{
@@ -111,19 +111,19 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewAzureCloudProviderConnector(ctx, "inherit_from_delegate_system_assigned_managed_identity", &platform.AzureCloudProviderConnectorArgs{
-//				Identifier:  pulumi.String("identifier"),
-//				Name:        pulumi.String("name"),
-//				Description: pulumi.String("example"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
 //				Credentials: &platform.AzureCloudProviderConnectorCredentialsArgs{
-//					Type: pulumi.String("InheritFromDelegate"),
 //					AzureInheritFromDelegateDetails: &platform.AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsArgs{
 //						Auth: &platform.AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthArgs{
 //							Type: pulumi.String("SystemAssignedManagedIdentity"),
 //						},
 //					},
+//					Type: pulumi.String("InheritFromDelegate"),
+//				},
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("example"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
 //				},
 //				AzureEnvironmentType: pulumi.String("AZURE"),
 //				DelegateSelectors: pulumi.StringArray{
@@ -134,19 +134,19 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewAzureCloudProviderConnector(ctx, "oidc_authentication", &platform.AzureCloudProviderConnectorArgs{
-//				Identifier:  pulumi.String("identifier"),
-//				Name:        pulumi.String("name"),
-//				Description: pulumi.String("example"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
 //				Credentials: &platform.AzureCloudProviderConnectorCredentialsArgs{
-//					Type: pulumi.String("OidcAuthentication"),
 //					AzureOidcSpec: &platform.AzureCloudProviderConnectorCredentialsAzureOidcSpecArgs{
 //						ApplicationId: pulumi.String("application_id"),
 //						TenantId:      pulumi.String("tenant_id"),
 //						Audience:      pulumi.String("audience"),
 //					},
+//					Type: pulumi.String("OidcAuthentication"),
+//				},
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("example"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
 //				},
 //				AzureEnvironmentType: pulumi.String("AZURE"),
 //				DelegateSelectors: pulumi.StringArray{

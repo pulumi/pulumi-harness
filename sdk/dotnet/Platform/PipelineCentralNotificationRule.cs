@@ -24,6 +24,30 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var projExample = new Harness.Platform.PipelineCentralNotificationRule("projExample", new()
     ///     {
+    ///         NotificationConditions = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.PipelineCentralNotificationRuleNotificationConditionArgs
+    ///             {
+    ///                 NotificationEventConfigs = new[]
+    ///                 {
+    ///                     new Harness.Platform.Inputs.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs
+    ///                     {
+    ///                         NotificationEventDatas = new[]
+    ///                         {
+    ///                             new Harness.Platform.Inputs.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs
+    ///                             {
+    ///                                 Type = "PIPELINE",
+    ///                                 ScopeIdentifiers = new() { },
+    ///                             },
+    ///                         },
+    ///                         NotificationEntity = "PIPELINE",
+    ///                         NotificationEvent = "PIPELINE_START",
+    ///                         EntityIdentifiers = new() { },
+    ///                     },
+    ///                 },
+    ///                 ConditionName = "pipelineRuleProjectConditionName",
+    ///             },
+    ///         },
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         Status = "ENABLED",
@@ -33,53 +57,18 @@ namespace Pulumi.Harness.Platform
     ///         },
     ///         Org = "default",
     ///         Project = "proj0",
-    ///         NotificationConditions = new[]
-    ///         {
-    ///             new Harness.Platform.Inputs.PipelineCentralNotificationRuleNotificationConditionArgs
-    ///             {
-    ///                 ConditionName = "pipelineRuleProjectConditionName",
-    ///                 NotificationEventConfigs = new[]
-    ///                 {
-    ///                     new Harness.Platform.Inputs.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs
-    ///                     {
-    ///                         NotificationEntity = "PIPELINE",
-    ///                         NotificationEvent = "PIPELINE_START",
-    ///                         NotificationEventDatas = new[]
-    ///                         {
-    ///                             new Harness.Platform.Inputs.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs
-    ///                             {
-    ///                                 Type = "PIPELINE",
-    ///                                 ScopeIdentifiers = new() { },
-    ///                             },
-    ///                         },
-    ///                         EntityIdentifiers = new() { },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
     ///     });
     /// 
     ///     var orgExample = new Harness.Platform.PipelineCentralNotificationRule("orgExample", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Status = "ENABLED",
-    ///         NotificationChannelRefs = new[]
-    ///         {
-    ///             "channel",
-    ///         },
-    ///         Org = "default",
     ///         NotificationConditions = new[]
     ///         {
     ///             new Harness.Platform.Inputs.PipelineCentralNotificationRuleNotificationConditionArgs
     ///             {
-    ///                 ConditionName = "pipelineRuleOrgConditionName",
     ///                 NotificationEventConfigs = new[]
     ///                 {
     ///                     new Harness.Platform.Inputs.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs
     ///                     {
-    ///                         NotificationEntity = "PIPELINE",
-    ///                         NotificationEvent = "PIPELINE_START",
     ///                         NotificationEventDatas = new[]
     ///                         {
     ///                             new Harness.Platform.Inputs.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs
@@ -92,33 +81,34 @@ namespace Pulumi.Harness.Platform
     ///                                 },
     ///                             },
     ///                         },
+    ///                         NotificationEntity = "PIPELINE",
+    ///                         NotificationEvent = "PIPELINE_START",
     ///                         EntityIdentifiers = new() { },
     ///                     },
     ///                 },
+    ///                 ConditionName = "pipelineRuleOrgConditionName",
     ///             },
     ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Status = "ENABLED",
+    ///         NotificationChannelRefs = new[]
+    ///         {
+    ///             "channel",
+    ///         },
+    ///         Org = "default",
     ///     });
     /// 
     ///     var accountExample = new Harness.Platform.PipelineCentralNotificationRule("accountExample", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Status = "DISABLED",
-    ///         NotificationChannelRefs = new[]
-    ///         {
-    ///             "org.channel",
-    ///         },
     ///         NotificationConditions = new[]
     ///         {
     ///             new Harness.Platform.Inputs.PipelineCentralNotificationRuleNotificationConditionArgs
     ///             {
-    ///                 ConditionName = "pipelineRuleConditionName",
     ///                 NotificationEventConfigs = new[]
     ///                 {
     ///                     new Harness.Platform.Inputs.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs
     ///                     {
-    ///                         NotificationEntity = "PIPELINE",
-    ///                         NotificationEvent = "PIPELINE_START",
     ///                         NotificationEventDatas = new[]
     ///                         {
     ///                             new Harness.Platform.Inputs.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs
@@ -130,10 +120,20 @@ namespace Pulumi.Harness.Platform
     ///                                 },
     ///                             },
     ///                         },
+    ///                         NotificationEntity = "PIPELINE",
+    ///                         NotificationEvent = "PIPELINE_START",
     ///                         EntityIdentifiers = new() { },
     ///                     },
     ///                 },
+    ///                 ConditionName = "pipelineRuleConditionName",
     ///             },
+    ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Status = "DISABLED",
+    ///         NotificationChannelRefs = new[]
+    ///         {
+    ///             "org.channel",
     ///         },
     ///     });
     /// 

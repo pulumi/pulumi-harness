@@ -35,9 +35,6 @@ import (
 //				return err
 //			}
 //			_, err = harness.NewEncryptedText(ctx, "example", &harness.EncryptedTextArgs{
-//				Name:            pulumi.String("example-secret"),
-//				Value:           pulumi.String("someval"),
-//				SecretManagerId: pulumi.String(_default.Id),
 //				UsageScopes: harness.EncryptedTextUsageScopeArray{
 //					&harness.EncryptedTextUsageScopeArgs{
 //						EnvironmentFilterType: pulumi.String("PRODUCTION_ENVIRONMENTS"),
@@ -46,6 +43,9 @@ import (
 //						EnvironmentFilterType: pulumi.String("NON_PRODUCTION_ENVIRONMENTS"),
 //					},
 //				},
+//				Name:            pulumi.String("example-secret"),
+//				Value:           pulumi.String("someval"),
+//				SecretManagerId: pulumi.String(_default.Id),
 //			})
 //			if err != nil {
 //				return err

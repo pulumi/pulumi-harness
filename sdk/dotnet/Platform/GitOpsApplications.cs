@@ -45,6 +45,23 @@ namespace Pulumi.Harness.Platform
     ///                 {
     ///                     new Harness.Platform.Inputs.GitOpsApplicationsApplicationSpecArgs
     ///                     {
+    ///                         Destinations = new[]
+    ///                         {
+    ///                             new Harness.Platform.Inputs.GitOpsApplicationsApplicationSpecDestinationArgs
+    ///                             {
+    ///                                 Namespace = "namespace-123",
+    ///                                 Server = "https://1.3.4.5",
+    ///                             },
+    ///                         },
+    ///                         Sources = new[]
+    ///                         {
+    ///                             new Harness.Platform.Inputs.GitOpsApplicationsApplicationSpecSourceArgs
+    ///                             {
+    ///                                 TargetRevision = "master",
+    ///                                 RepoUrl = "https://github.com/willycoll/argocd-example-apps.git",
+    ///                                 Path = "helm-guestbook",
+    ///                             },
+    ///                         },
     ///                         SyncPolicies = new[]
     ///                         {
     ///                             new Harness.Platform.Inputs.GitOpsApplicationsApplicationSpecSyncPolicyArgs
@@ -61,23 +78,6 @@ namespace Pulumi.Harness.Platform
     ///                                     "Replace=false",
     ///                                     "retry=false",
     ///                                 },
-    ///                             },
-    ///                         },
-    ///                         Sources = new[]
-    ///                         {
-    ///                             new Harness.Platform.Inputs.GitOpsApplicationsApplicationSpecSourceArgs
-    ///                             {
-    ///                                 TargetRevision = "master",
-    ///                                 RepoUrl = "https://github.com/willycoll/argocd-example-apps.git",
-    ///                                 Path = "helm-guestbook",
-    ///                             },
-    ///                         },
-    ///                         Destinations = new[]
-    ///                         {
-    ///                             new Harness.Platform.Inputs.GitOpsApplicationsApplicationSpecDestinationArgs
-    ///                             {
-    ///                                 Namespace = "namespace-123",
-    ///                                 Server = "https://1.3.4.5",
     ///                             },
     ///                         },
     ///                     },

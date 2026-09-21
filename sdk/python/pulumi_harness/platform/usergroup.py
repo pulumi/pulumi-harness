@@ -560,7 +560,7 @@ class Usergroup(pulumi.CustomResource):
                  linked_sso_id: pulumi.Input[Optional[_builtins.str]] = None,
                  linked_sso_type: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict']]]]] = None,
+                 notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict', 'outputs.UsergroupNotificationConfig']]]]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sso_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -608,13 +608,6 @@ class Usergroup(pulumi.CustomResource):
         import pulumi_harness as harness
 
         sso_type_saml = harness.platform.Usergroup("sso_type_saml",
-            identifier="identifier",
-            name="name",
-            org_id="org_id",
-            project_id="project_id",
-            linked_sso_id="linked_sso_id",
-            externally_managed=False,
-            users=["user_id"],
             notification_configs=[
                 {
                     "type": "SLACK",
@@ -634,19 +627,19 @@ class Usergroup(pulumi.CustomResource):
                     "pager_duty_key": "pagerDutyKey",
                 },
             ],
+            identifier="identifier",
+            name="name",
+            org_id="org_id",
+            project_id="project_id",
+            linked_sso_id="linked_sso_id",
+            externally_managed=False,
+            users=["user_id"],
             linked_sso_display_name="linked_sso_display_name",
             sso_group_id="sso_group_name",
             sso_group_name="sso_group_name",
             linked_sso_type="SAML",
             sso_linked=True)
         sso_type_ldap = harness.platform.Usergroup("sso_type_ldap",
-            identifier="identifier",
-            name="name",
-            org_id="org_id",
-            project_id="project_id",
-            linked_sso_id="linked_sso_id",
-            externally_managed=False,
-            users=["user_id"],
             notification_configs=[
                 {
                     "type": "SLACK",
@@ -666,6 +659,13 @@ class Usergroup(pulumi.CustomResource):
                     "pager_duty_key": "pagerDutyKey",
                 },
             ],
+            identifier="identifier",
+            name="name",
+            org_id="org_id",
+            project_id="project_id",
+            linked_sso_id="linked_sso_id",
+            externally_managed=False,
+            users=["user_id"],
             linked_sso_display_name="linked_sso_display_name",
             sso_group_id="sso_group_id",
             sso_group_name="sso_group_name",
@@ -673,13 +673,6 @@ class Usergroup(pulumi.CustomResource):
             sso_linked=True)
         # Create user group by adding user emails
         example = harness.platform.Usergroup("example",
-            identifier="identifier",
-            name="name",
-            org_id="org_id",
-            project_id="project_id",
-            linked_sso_id="linked_sso_id",
-            externally_managed=False,
-            user_emails=["user@email.com"],
             notification_configs=[
                 {
                     "type": "SLACK",
@@ -699,6 +692,13 @@ class Usergroup(pulumi.CustomResource):
                     "pager_duty_key": "pagerDutyKey",
                 },
             ],
+            identifier="identifier",
+            name="name",
+            org_id="org_id",
+            project_id="project_id",
+            linked_sso_id="linked_sso_id",
+            externally_managed=False,
+            user_emails=["user@email.com"],
             linked_sso_display_name="linked_sso_display_name",
             sso_group_id="sso_group_name",
             sso_group_name="sso_group_name",
@@ -738,7 +738,7 @@ class Usergroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] linked_sso_id: The SSO account ID that the user group is linked to.
         :param pulumi.Input[_builtins.str] linked_sso_type: Type of linked SSO.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict']]]] notification_configs: List of notification settings.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict', 'outputs.UsergroupNotificationConfig']]]] notification_configs: List of notification settings.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[_builtins.str] sso_group_id: Identifier of the userGroup in SSO.
@@ -792,13 +792,6 @@ class Usergroup(pulumi.CustomResource):
         import pulumi_harness as harness
 
         sso_type_saml = harness.platform.Usergroup("sso_type_saml",
-            identifier="identifier",
-            name="name",
-            org_id="org_id",
-            project_id="project_id",
-            linked_sso_id="linked_sso_id",
-            externally_managed=False,
-            users=["user_id"],
             notification_configs=[
                 {
                     "type": "SLACK",
@@ -818,19 +811,19 @@ class Usergroup(pulumi.CustomResource):
                     "pager_duty_key": "pagerDutyKey",
                 },
             ],
+            identifier="identifier",
+            name="name",
+            org_id="org_id",
+            project_id="project_id",
+            linked_sso_id="linked_sso_id",
+            externally_managed=False,
+            users=["user_id"],
             linked_sso_display_name="linked_sso_display_name",
             sso_group_id="sso_group_name",
             sso_group_name="sso_group_name",
             linked_sso_type="SAML",
             sso_linked=True)
         sso_type_ldap = harness.platform.Usergroup("sso_type_ldap",
-            identifier="identifier",
-            name="name",
-            org_id="org_id",
-            project_id="project_id",
-            linked_sso_id="linked_sso_id",
-            externally_managed=False,
-            users=["user_id"],
             notification_configs=[
                 {
                     "type": "SLACK",
@@ -850,6 +843,13 @@ class Usergroup(pulumi.CustomResource):
                     "pager_duty_key": "pagerDutyKey",
                 },
             ],
+            identifier="identifier",
+            name="name",
+            org_id="org_id",
+            project_id="project_id",
+            linked_sso_id="linked_sso_id",
+            externally_managed=False,
+            users=["user_id"],
             linked_sso_display_name="linked_sso_display_name",
             sso_group_id="sso_group_id",
             sso_group_name="sso_group_name",
@@ -857,13 +857,6 @@ class Usergroup(pulumi.CustomResource):
             sso_linked=True)
         # Create user group by adding user emails
         example = harness.platform.Usergroup("example",
-            identifier="identifier",
-            name="name",
-            org_id="org_id",
-            project_id="project_id",
-            linked_sso_id="linked_sso_id",
-            externally_managed=False,
-            user_emails=["user@email.com"],
             notification_configs=[
                 {
                     "type": "SLACK",
@@ -883,6 +876,13 @@ class Usergroup(pulumi.CustomResource):
                     "pager_duty_key": "pagerDutyKey",
                 },
             ],
+            identifier="identifier",
+            name="name",
+            org_id="org_id",
+            project_id="project_id",
+            linked_sso_id="linked_sso_id",
+            externally_managed=False,
+            user_emails=["user@email.com"],
             linked_sso_display_name="linked_sso_display_name",
             sso_group_id="sso_group_name",
             sso_group_name="sso_group_name",
@@ -935,7 +935,7 @@ class Usergroup(pulumi.CustomResource):
                  linked_sso_id: pulumi.Input[Optional[_builtins.str]] = None,
                  linked_sso_type: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict']]]]] = None,
+                 notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict', 'outputs.UsergroupNotificationConfig']]]]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sso_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -988,7 +988,7 @@ class Usergroup(pulumi.CustomResource):
             linked_sso_id: pulumi.Input[Optional[_builtins.str]] = None,
             linked_sso_type: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict']]]]] = None,
+            notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict', 'outputs.UsergroupNotificationConfig']]]]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             sso_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1011,7 +1011,7 @@ class Usergroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] linked_sso_id: The SSO account ID that the user group is linked to.
         :param pulumi.Input[_builtins.str] linked_sso_type: Type of linked SSO.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict']]]] notification_configs: List of notification settings.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict', 'outputs.UsergroupNotificationConfig']]]] notification_configs: List of notification settings.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[_builtins.str] sso_group_id: Identifier of the userGroup in SSO.

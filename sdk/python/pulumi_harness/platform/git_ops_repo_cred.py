@@ -274,7 +274,7 @@ class GitOpsRepoCred(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 creds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepoCredCredArgs', 'GitOpsRepoCredCredArgsDict']]]]] = None,
+                 creds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepoCredCredArgs', 'GitOpsRepoCredCredArgsDict', 'outputs.GitOpsRepoCredCred']]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -290,11 +290,6 @@ class GitOpsRepoCred(pulumi.CustomResource):
         import pulumi_harness as harness
 
         test = harness.platform.GitOpsRepoCred("test",
-            identifier="identifier",
-            account_id="account_id",
-            agent_id="agent_id",
-            project_id="project_id",
-            org_id="org_id",
             creds=[{
                 "type": "git",
                 "url": "git@github.com:yourorg",
@@ -305,6 +300,11 @@ class GitOpsRepoCred(pulumi.CustomResource):
         -----END OPENSSH PRIVATE KEY -----
         \"\"\",
             }],
+            identifier="identifier",
+            account_id="account_id",
+            agent_id="agent_id",
+            project_id="project_id",
+            org_id="org_id",
             opts = pulumi.ResourceOptions(ignore_changes=[
                     "accountId",
                     "creds[0].sshPrivateKey",
@@ -338,7 +338,7 @@ class GitOpsRepoCred(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the Repository Credentials.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the Repository Credentials.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepoCredCredArgs', 'GitOpsRepoCredCredArgsDict']]]] creds: credential details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepoCredCredArgs', 'GitOpsRepoCredCredArgsDict', 'outputs.GitOpsRepoCredCred']]]] creds: credential details.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the Repository Credentials.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the Repository Credentials.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the Repository Credentials.
@@ -360,11 +360,6 @@ class GitOpsRepoCred(pulumi.CustomResource):
         import pulumi_harness as harness
 
         test = harness.platform.GitOpsRepoCred("test",
-            identifier="identifier",
-            account_id="account_id",
-            agent_id="agent_id",
-            project_id="project_id",
-            org_id="org_id",
             creds=[{
                 "type": "git",
                 "url": "git@github.com:yourorg",
@@ -375,6 +370,11 @@ class GitOpsRepoCred(pulumi.CustomResource):
         -----END OPENSSH PRIVATE KEY -----
         \"\"\",
             }],
+            identifier="identifier",
+            account_id="account_id",
+            agent_id="agent_id",
+            project_id="project_id",
+            org_id="org_id",
             opts = pulumi.ResourceOptions(ignore_changes=[
                     "accountId",
                     "creds[0].sshPrivateKey",
@@ -421,7 +421,7 @@ class GitOpsRepoCred(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 creds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepoCredCredArgs', 'GitOpsRepoCredCredArgsDict']]]]] = None,
+                 creds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepoCredCredArgs', 'GitOpsRepoCredCredArgsDict', 'outputs.GitOpsRepoCredCred']]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -458,7 +458,7 @@ class GitOpsRepoCred(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             agent_id: pulumi.Input[Optional[_builtins.str]] = None,
-            creds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepoCredCredArgs', 'GitOpsRepoCredCredArgsDict']]]]] = None,
+            creds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepoCredCredArgs', 'GitOpsRepoCredCredArgsDict', 'outputs.GitOpsRepoCredCred']]]]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -472,7 +472,7 @@ class GitOpsRepoCred(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the Repository Credentials.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the Repository Credentials.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepoCredCredArgs', 'GitOpsRepoCredCredArgsDict']]]] creds: credential details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepoCredCredArgs', 'GitOpsRepoCredCredArgsDict', 'outputs.GitOpsRepoCredCred']]]] creds: credential details.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the Repository Credentials.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the Repository Credentials.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the Repository Credentials.

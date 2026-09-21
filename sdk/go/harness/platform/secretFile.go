@@ -49,14 +49,6 @@ import (
 //			}
 //			// With AWS Secret Manager KMS Key
 //			_, err = platform.NewSecretFile(ctx, "aws_secret_manager", &platform.SecretFileArgs{
-//				Identifier:  pulumi.String("identifier"),
-//				Name:        pulumi.String("name"),
-//				Description: pulumi.String("example"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//				FilePath:                pulumi.String("file_path"),
-//				SecretManagerIdentifier: pulumi.String("awsSecretManager"),
 //				AdditionalMetadatas: platform.SecretFileAdditionalMetadataArray{
 //					&platform.SecretFileAdditionalMetadataArgs{
 //						Values: platform.SecretFileAdditionalMetadataValueArray{
@@ -66,12 +58,6 @@ import (
 //						},
 //					},
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// With GCP Secret Manager project ID and region
-//			_, err = platform.NewSecretFile(ctx, "gcp_secret_manager", &platform.SecretFileArgs{
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("example"),
@@ -79,7 +65,13 @@ import (
 //					pulumi.String("foo:bar"),
 //				},
 //				FilePath:                pulumi.String("file_path"),
-//				SecretManagerIdentifier: pulumi.String("gcpSecretManager"),
+//				SecretManagerIdentifier: pulumi.String("awsSecretManager"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// With GCP Secret Manager project ID and region
+//			_, err = platform.NewSecretFile(ctx, "gcp_secret_manager", &platform.SecretFileArgs{
 //				AdditionalMetadatas: platform.SecretFileAdditionalMetadataArray{
 //					&platform.SecretFileAdditionalMetadataArgs{
 //						Values: platform.SecretFileAdditionalMetadataValueArray{
@@ -90,6 +82,14 @@ import (
 //						},
 //					},
 //				},
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("example"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				FilePath:                pulumi.String("file_path"),
+//				SecretManagerIdentifier: pulumi.String("gcpSecretManager"),
 //			})
 //			if err != nil {
 //				return err

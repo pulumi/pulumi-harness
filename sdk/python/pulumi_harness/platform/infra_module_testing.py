@@ -668,7 +668,7 @@ class InfraModuleTesting(pulumi.CustomResource):
                  provisioner_version: pulumi.Input[Optional[_builtins.str]] = None,
                  release_pipeline: pulumi.Input[Optional[_builtins.str]] = None,
                  testing_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 testing_metadata: pulumi.Input[Optional[Union['InfraModuleTestingTestingMetadataArgs', 'InfraModuleTestingTestingMetadataArgsDict']]] = None,
+                 testing_metadata: pulumi.Input[Optional[Union['InfraModuleTestingTestingMetadataArgs', 'InfraModuleTestingTestingMetadataArgsDict', 'outputs.InfraModuleTestingTestingMetadata']]] = None,
                  updated: pulumi.Input[Optional[_builtins.int]] = None,
                  versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -714,7 +714,7 @@ class InfraModuleTesting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version for testing purposes
         :param pulumi.Input[_builtins.str] release_pipeline: Pipeline ID to create webhooks for releases
         :param pulumi.Input[_builtins.bool] testing_enabled: Whether testing is enabled for the module
-        :param pulumi.Input[Union['InfraModuleTestingTestingMetadataArgs', 'InfraModuleTestingTestingMetadataArgsDict']] testing_metadata: Testing metadata for the module
+        :param pulumi.Input[Union['InfraModuleTestingTestingMetadataArgs', 'InfraModuleTestingTestingMetadataArgsDict', 'outputs.InfraModuleTestingTestingMetadata']] testing_metadata: Testing metadata for the module
         :param pulumi.Input[_builtins.int] updated: Timestamp when the module was last modified
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] versions: Versions of the module
         """
@@ -779,7 +779,7 @@ class InfraModuleTesting(pulumi.CustomResource):
                  provisioner_version: pulumi.Input[Optional[_builtins.str]] = None,
                  release_pipeline: pulumi.Input[Optional[_builtins.str]] = None,
                  testing_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 testing_metadata: pulumi.Input[Optional[Union['InfraModuleTestingTestingMetadataArgs', 'InfraModuleTestingTestingMetadataArgsDict']]] = None,
+                 testing_metadata: pulumi.Input[Optional[Union['InfraModuleTestingTestingMetadataArgs', 'InfraModuleTestingTestingMetadataArgsDict', 'outputs.InfraModuleTestingTestingMetadata']]] = None,
                  updated: pulumi.Input[Optional[_builtins.int]] = None,
                  versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -866,7 +866,7 @@ class InfraModuleTesting(pulumi.CustomResource):
             system: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[_builtins.str]] = None,
             testing_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            testing_metadata: pulumi.Input[Optional[Union['InfraModuleTestingTestingMetadataArgs', 'InfraModuleTestingTestingMetadataArgsDict']]] = None,
+            testing_metadata: pulumi.Input[Optional[Union['InfraModuleTestingTestingMetadataArgs', 'InfraModuleTestingTestingMetadataArgsDict', 'outputs.InfraModuleTestingTestingMetadata']]] = None,
             updated: pulumi.Input[Optional[_builtins.int]] = None,
             versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'InfraModuleTesting':
         """
@@ -900,7 +900,7 @@ class InfraModuleTesting(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] system: Provider of the module
         :param pulumi.Input[_builtins.str] tags: Tags associated with the module
         :param pulumi.Input[_builtins.bool] testing_enabled: Whether testing is enabled for the module
-        :param pulumi.Input[Union['InfraModuleTestingTestingMetadataArgs', 'InfraModuleTestingTestingMetadataArgsDict']] testing_metadata: Testing metadata for the module
+        :param pulumi.Input[Union['InfraModuleTestingTestingMetadataArgs', 'InfraModuleTestingTestingMetadataArgsDict', 'outputs.InfraModuleTestingTestingMetadata']] testing_metadata: Testing metadata for the module
         :param pulumi.Input[_builtins.int] updated: Timestamp when the module was last modified
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] versions: Versions of the module
         """

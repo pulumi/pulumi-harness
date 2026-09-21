@@ -278,11 +278,11 @@ class PipelineCentralNotificationRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_notification_template_ref: pulumi.Input[Optional[Union['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs', 'PipelineCentralNotificationRuleCustomNotificationTemplateRefArgsDict']]] = None,
+                 custom_notification_template_ref: pulumi.Input[Optional[Union['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs', 'PipelineCentralNotificationRuleCustomNotificationTemplateRefArgsDict', 'outputs.PipelineCentralNotificationRuleCustomNotificationTemplateRef']]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  notification_channel_refs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notification_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineCentralNotificationRuleNotificationConditionArgs', 'PipelineCentralNotificationRuleNotificationConditionArgsDict']]]]] = None,
+                 notification_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineCentralNotificationRuleNotificationConditionArgs', 'PipelineCentralNotificationRuleNotificationConditionArgsDict', 'outputs.PipelineCentralNotificationRuleNotificationCondition']]]]] = None,
                  org: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -297,35 +297,27 @@ class PipelineCentralNotificationRule(pulumi.CustomResource):
         import pulumi_harness as harness
 
         proj_example = harness.platform.PipelineCentralNotificationRule("projExample",
+            notification_conditions=[{
+                "notification_event_configs": [{
+                    "notification_event_datas": [{
+                        "type": "PIPELINE",
+                        "scope_identifiers": [],
+                    }],
+                    "notification_entity": "PIPELINE",
+                    "notification_event": "PIPELINE_START",
+                    "entity_identifiers": [],
+                }],
+                "condition_name": "pipelineRuleProjectConditionName",
+            }],
             identifier="identifier",
             name="name",
             status="ENABLED",
             notification_channel_refs=["account.channel"],
             org="default",
-            project="proj0",
-            notification_conditions=[{
-                "condition_name": "pipelineRuleProjectConditionName",
-                "notification_event_configs": [{
-                    "notification_entity": "PIPELINE",
-                    "notification_event": "PIPELINE_START",
-                    "notification_event_datas": [{
-                        "type": "PIPELINE",
-                        "scope_identifiers": [],
-                    }],
-                    "entity_identifiers": [],
-                }],
-            }])
+            project="proj0")
         org_example = harness.platform.PipelineCentralNotificationRule("orgExample",
-            identifier="identifier",
-            name="name",
-            status="ENABLED",
-            notification_channel_refs=["channel"],
-            org="default",
             notification_conditions=[{
-                "condition_name": "pipelineRuleOrgConditionName",
                 "notification_event_configs": [{
-                    "notification_entity": "PIPELINE",
-                    "notification_event": "PIPELINE_START",
                     "notification_event_datas": [{
                         "type": "PIPELINE",
                         "scope_identifiers": [
@@ -333,26 +325,34 @@ class PipelineCentralNotificationRule(pulumi.CustomResource):
                             "random",
                         ],
                     }],
-                    "entity_identifiers": [],
-                }],
-            }])
-        account_example = harness.platform.PipelineCentralNotificationRule("accountExample",
-            identifier="identifier",
-            name="name",
-            status="DISABLED",
-            notification_channel_refs=["org.channel"],
-            notification_conditions=[{
-                "condition_name": "pipelineRuleConditionName",
-                "notification_event_configs": [{
                     "notification_entity": "PIPELINE",
                     "notification_event": "PIPELINE_START",
+                    "entity_identifiers": [],
+                }],
+                "condition_name": "pipelineRuleOrgConditionName",
+            }],
+            identifier="identifier",
+            name="name",
+            status="ENABLED",
+            notification_channel_refs=["channel"],
+            org="default")
+        account_example = harness.platform.PipelineCentralNotificationRule("accountExample",
+            notification_conditions=[{
+                "notification_event_configs": [{
                     "notification_event_datas": [{
                         "type": "PIPELINE",
                         "scope_identifiers": ["org"],
                     }],
+                    "notification_entity": "PIPELINE",
+                    "notification_event": "PIPELINE_START",
                     "entity_identifiers": [],
                 }],
-            }])
+                "condition_name": "pipelineRuleConditionName",
+            }],
+            identifier="identifier",
+            name="name",
+            status="DISABLED",
+            notification_channel_refs=["org.channel"])
         ```
 
         ## Import
@@ -397,35 +397,27 @@ class PipelineCentralNotificationRule(pulumi.CustomResource):
         import pulumi_harness as harness
 
         proj_example = harness.platform.PipelineCentralNotificationRule("projExample",
+            notification_conditions=[{
+                "notification_event_configs": [{
+                    "notification_event_datas": [{
+                        "type": "PIPELINE",
+                        "scope_identifiers": [],
+                    }],
+                    "notification_entity": "PIPELINE",
+                    "notification_event": "PIPELINE_START",
+                    "entity_identifiers": [],
+                }],
+                "condition_name": "pipelineRuleProjectConditionName",
+            }],
             identifier="identifier",
             name="name",
             status="ENABLED",
             notification_channel_refs=["account.channel"],
             org="default",
-            project="proj0",
-            notification_conditions=[{
-                "condition_name": "pipelineRuleProjectConditionName",
-                "notification_event_configs": [{
-                    "notification_entity": "PIPELINE",
-                    "notification_event": "PIPELINE_START",
-                    "notification_event_datas": [{
-                        "type": "PIPELINE",
-                        "scope_identifiers": [],
-                    }],
-                    "entity_identifiers": [],
-                }],
-            }])
+            project="proj0")
         org_example = harness.platform.PipelineCentralNotificationRule("orgExample",
-            identifier="identifier",
-            name="name",
-            status="ENABLED",
-            notification_channel_refs=["channel"],
-            org="default",
             notification_conditions=[{
-                "condition_name": "pipelineRuleOrgConditionName",
                 "notification_event_configs": [{
-                    "notification_entity": "PIPELINE",
-                    "notification_event": "PIPELINE_START",
                     "notification_event_datas": [{
                         "type": "PIPELINE",
                         "scope_identifiers": [
@@ -433,26 +425,34 @@ class PipelineCentralNotificationRule(pulumi.CustomResource):
                             "random",
                         ],
                     }],
-                    "entity_identifiers": [],
-                }],
-            }])
-        account_example = harness.platform.PipelineCentralNotificationRule("accountExample",
-            identifier="identifier",
-            name="name",
-            status="DISABLED",
-            notification_channel_refs=["org.channel"],
-            notification_conditions=[{
-                "condition_name": "pipelineRuleConditionName",
-                "notification_event_configs": [{
                     "notification_entity": "PIPELINE",
                     "notification_event": "PIPELINE_START",
+                    "entity_identifiers": [],
+                }],
+                "condition_name": "pipelineRuleOrgConditionName",
+            }],
+            identifier="identifier",
+            name="name",
+            status="ENABLED",
+            notification_channel_refs=["channel"],
+            org="default")
+        account_example = harness.platform.PipelineCentralNotificationRule("accountExample",
+            notification_conditions=[{
+                "notification_event_configs": [{
                     "notification_event_datas": [{
                         "type": "PIPELINE",
                         "scope_identifiers": ["org"],
                     }],
+                    "notification_entity": "PIPELINE",
+                    "notification_event": "PIPELINE_START",
                     "entity_identifiers": [],
                 }],
-            }])
+                "condition_name": "pipelineRuleConditionName",
+            }],
+            identifier="identifier",
+            name="name",
+            status="DISABLED",
+            notification_channel_refs=["org.channel"])
         ```
 
         ## Import
@@ -493,11 +493,11 @@ class PipelineCentralNotificationRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_notification_template_ref: pulumi.Input[Optional[Union['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs', 'PipelineCentralNotificationRuleCustomNotificationTemplateRefArgsDict']]] = None,
+                 custom_notification_template_ref: pulumi.Input[Optional[Union['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs', 'PipelineCentralNotificationRuleCustomNotificationTemplateRefArgsDict', 'outputs.PipelineCentralNotificationRuleCustomNotificationTemplateRef']]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  notification_channel_refs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 notification_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineCentralNotificationRuleNotificationConditionArgs', 'PipelineCentralNotificationRuleNotificationConditionArgsDict']]]]] = None,
+                 notification_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineCentralNotificationRuleNotificationConditionArgs', 'PipelineCentralNotificationRuleNotificationConditionArgsDict', 'outputs.PipelineCentralNotificationRuleNotificationCondition']]]]] = None,
                  org: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -539,12 +539,12 @@ class PipelineCentralNotificationRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account: pulumi.Input[Optional[_builtins.str]] = None,
             created: pulumi.Input[Optional[_builtins.int]] = None,
-            custom_notification_template_ref: pulumi.Input[Optional[Union['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs', 'PipelineCentralNotificationRuleCustomNotificationTemplateRefArgsDict']]] = None,
+            custom_notification_template_ref: pulumi.Input[Optional[Union['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs', 'PipelineCentralNotificationRuleCustomNotificationTemplateRefArgsDict', 'outputs.PipelineCentralNotificationRuleCustomNotificationTemplateRef']]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             last_modified: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             notification_channel_refs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            notification_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineCentralNotificationRuleNotificationConditionArgs', 'PipelineCentralNotificationRuleNotificationConditionArgsDict']]]]] = None,
+            notification_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineCentralNotificationRuleNotificationConditionArgs', 'PipelineCentralNotificationRuleNotificationConditionArgsDict', 'outputs.PipelineCentralNotificationRuleNotificationCondition']]]]] = None,
             org: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None) -> 'PipelineCentralNotificationRule':

@@ -16,36 +16,28 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const projExample = new harness.platform.PipelineCentralNotificationRule("projExample", {
+ *     notificationConditions: [{
+ *         notificationEventConfigs: [{
+ *             notificationEventDatas: [{
+ *                 type: "PIPELINE",
+ *                 scopeIdentifiers: [],
+ *             }],
+ *             notificationEntity: "PIPELINE",
+ *             notificationEvent: "PIPELINE_START",
+ *             entityIdentifiers: [],
+ *         }],
+ *         conditionName: "pipelineRuleProjectConditionName",
+ *     }],
  *     identifier: "identifier",
  *     name: "name",
  *     status: "ENABLED",
  *     notificationChannelRefs: ["account.channel"],
  *     org: "default",
  *     project: "proj0",
- *     notificationConditions: [{
- *         conditionName: "pipelineRuleProjectConditionName",
- *         notificationEventConfigs: [{
- *             notificationEntity: "PIPELINE",
- *             notificationEvent: "PIPELINE_START",
- *             notificationEventDatas: [{
- *                 type: "PIPELINE",
- *                 scopeIdentifiers: [],
- *             }],
- *             entityIdentifiers: [],
- *         }],
- *     }],
  * });
  * const orgExample = new harness.platform.PipelineCentralNotificationRule("orgExample", {
- *     identifier: "identifier",
- *     name: "name",
- *     status: "ENABLED",
- *     notificationChannelRefs: ["channel"],
- *     org: "default",
  *     notificationConditions: [{
- *         conditionName: "pipelineRuleOrgConditionName",
  *         notificationEventConfigs: [{
- *             notificationEntity: "PIPELINE",
- *             notificationEvent: "PIPELINE_START",
  *             notificationEventDatas: [{
  *                 type: "PIPELINE",
  *                 scopeIdentifiers: [
@@ -53,27 +45,35 @@ import * as utilities from "../utilities";
  *                     "random",
  *                 ],
  *             }],
- *             entityIdentifiers: [],
- *         }],
- *     }],
- * });
- * const accountExample = new harness.platform.PipelineCentralNotificationRule("accountExample", {
- *     identifier: "identifier",
- *     name: "name",
- *     status: "DISABLED",
- *     notificationChannelRefs: ["org.channel"],
- *     notificationConditions: [{
- *         conditionName: "pipelineRuleConditionName",
- *         notificationEventConfigs: [{
  *             notificationEntity: "PIPELINE",
  *             notificationEvent: "PIPELINE_START",
+ *             entityIdentifiers: [],
+ *         }],
+ *         conditionName: "pipelineRuleOrgConditionName",
+ *     }],
+ *     identifier: "identifier",
+ *     name: "name",
+ *     status: "ENABLED",
+ *     notificationChannelRefs: ["channel"],
+ *     org: "default",
+ * });
+ * const accountExample = new harness.platform.PipelineCentralNotificationRule("accountExample", {
+ *     notificationConditions: [{
+ *         notificationEventConfigs: [{
  *             notificationEventDatas: [{
  *                 type: "PIPELINE",
  *                 scopeIdentifiers: ["org"],
  *             }],
+ *             notificationEntity: "PIPELINE",
+ *             notificationEvent: "PIPELINE_START",
  *             entityIdentifiers: [],
  *         }],
+ *         conditionName: "pipelineRuleConditionName",
  *     }],
+ *     identifier: "identifier",
+ *     name: "name",
+ *     status: "DISABLED",
+ *     notificationChannelRefs: ["org.channel"],
  * });
  * ```
  *

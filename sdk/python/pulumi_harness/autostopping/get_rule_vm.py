@@ -182,12 +182,12 @@ class AwaitableGetRuleVmResult(GetRuleVmResult):
 
 def get_rule_vm(cloud_connector_id: Optional[_builtins.str] = None,
                 custom_domains: Optional[Sequence[_builtins.str]] = None,
-                depends: Optional[Sequence[Union['GetRuleVmDependArgs', 'GetRuleVmDependArgsDict']]] = None,
-                filter: Optional[Union['GetRuleVmFilterArgs', 'GetRuleVmFilterArgsDict']] = None,
-                https: Optional[Sequence[Union['GetRuleVmHttpArgs', 'GetRuleVmHttpArgsDict']]] = None,
+                depends: Optional[Sequence[Union['GetRuleVmDependArgs', 'GetRuleVmDependArgsDict', 'outputs.GetRuleVmDependResult']]] = None,
+                filter: Optional[Union['GetRuleVmFilterArgs', 'GetRuleVmFilterArgsDict', 'outputs.GetRuleVmFilterResult']] = None,
+                https: Optional[Sequence[Union['GetRuleVmHttpArgs', 'GetRuleVmHttpArgsDict', 'outputs.GetRuleVmHttpResult']]] = None,
                 idle_time_mins: Optional[_builtins.int] = None,
                 name: Optional[_builtins.str] = None,
-                tcps: Optional[Sequence[Union['GetRuleVmTcpArgs', 'GetRuleVmTcpArgsDict']]] = None,
+                tcps: Optional[Sequence[Union['GetRuleVmTcpArgs', 'GetRuleVmTcpArgsDict', 'outputs.GetRuleVmTcpResult']]] = None,
                 use_spot: Optional[_builtins.bool] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRuleVmResult:
     """
@@ -198,11 +198,11 @@ def get_rule_vm(cloud_connector_id: Optional[_builtins.str] = None,
 
     :param _builtins.str cloud_connector_id: Id of the cloud connector
     :param Sequence[_builtins.str] custom_domains: Custom URLs used to access the instances
-    :param Sequence[Union['GetRuleVmDependArgs', 'GetRuleVmDependArgsDict']] depends: Dependent rules
-    :param Sequence[Union['GetRuleVmHttpArgs', 'GetRuleVmHttpArgsDict']] https: Http routing configuration
+    :param Sequence[Union['GetRuleVmDependArgs', 'GetRuleVmDependArgsDict', 'outputs.GetRuleVmDependResult']] depends: Dependent rules
+    :param Sequence[Union['GetRuleVmHttpArgs', 'GetRuleVmHttpArgsDict', 'outputs.GetRuleVmHttpResult']] https: Http routing configuration
     :param _builtins.int idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
     :param _builtins.str name: Name of the rule
-    :param Sequence[Union['GetRuleVmTcpArgs', 'GetRuleVmTcpArgsDict']] tcps: TCP routing configuration
+    :param Sequence[Union['GetRuleVmTcpArgs', 'GetRuleVmTcpArgsDict', 'outputs.GetRuleVmTcpResult']] tcps: TCP routing configuration
     :param _builtins.bool use_spot: Boolean that indicates whether the selected instances should be converted to spot vm
     """
     __args__ = dict()
@@ -233,12 +233,12 @@ def get_rule_vm(cloud_connector_id: Optional[_builtins.str] = None,
         use_spot=pulumi.get(__ret__, 'use_spot'))
 def get_rule_vm_output(cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
                        custom_domains: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
-                       depends: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleVmDependArgs', 'GetRuleVmDependArgsDict']]]]] = None,
-                       filter: pulumi.Input[Optional[Union['GetRuleVmFilterArgs', 'GetRuleVmFilterArgsDict']]] = None,
-                       https: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleVmHttpArgs', 'GetRuleVmHttpArgsDict']]]]] = None,
+                       depends: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleVmDependArgs', 'GetRuleVmDependArgsDict', 'outputs.GetRuleVmDependResult']]]]] = None,
+                       filter: pulumi.Input[Optional[Union['GetRuleVmFilterArgs', 'GetRuleVmFilterArgsDict', 'outputs.GetRuleVmFilterResult']]] = None,
+                       https: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleVmHttpArgs', 'GetRuleVmHttpArgsDict', 'outputs.GetRuleVmHttpResult']]]]] = None,
                        idle_time_mins: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                        name: pulumi.Input[Optional[_builtins.str]] = None,
-                       tcps: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleVmTcpArgs', 'GetRuleVmTcpArgsDict']]]]] = None,
+                       tcps: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleVmTcpArgs', 'GetRuleVmTcpArgsDict', 'outputs.GetRuleVmTcpResult']]]]] = None,
                        use_spot: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleVmResult]:
     """
@@ -249,11 +249,11 @@ def get_rule_vm_output(cloud_connector_id: pulumi.Input[Optional[_builtins.str]]
 
     :param _builtins.str cloud_connector_id: Id of the cloud connector
     :param Sequence[_builtins.str] custom_domains: Custom URLs used to access the instances
-    :param Sequence[Union['GetRuleVmDependArgs', 'GetRuleVmDependArgsDict']] depends: Dependent rules
-    :param Sequence[Union['GetRuleVmHttpArgs', 'GetRuleVmHttpArgsDict']] https: Http routing configuration
+    :param Sequence[Union['GetRuleVmDependArgs', 'GetRuleVmDependArgsDict', 'outputs.GetRuleVmDependResult']] depends: Dependent rules
+    :param Sequence[Union['GetRuleVmHttpArgs', 'GetRuleVmHttpArgsDict', 'outputs.GetRuleVmHttpResult']] https: Http routing configuration
     :param _builtins.int idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
     :param _builtins.str name: Name of the rule
-    :param Sequence[Union['GetRuleVmTcpArgs', 'GetRuleVmTcpArgsDict']] tcps: TCP routing configuration
+    :param Sequence[Union['GetRuleVmTcpArgs', 'GetRuleVmTcpArgsDict', 'outputs.GetRuleVmTcpResult']] tcps: TCP routing configuration
     :param _builtins.bool use_spot: Boolean that indicates whether the selected instances should be converted to spot vm
     """
     __args__ = dict()

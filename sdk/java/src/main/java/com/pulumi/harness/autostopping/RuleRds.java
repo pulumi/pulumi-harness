@@ -51,20 +51,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new RuleRds("test", RuleRdsArgs.builder()
- *             .name("name")
- *             .cloudConnectorId("cloud_connector_id")
- *             .idleTimeMins(10)
- *             .dryRun(true)
  *             .database(RuleRdsDatabaseArgs.builder()
  *                 .id("database_id")
  *                 .region("region")
  *                 .build())
  *             .tcps(RuleRdsTcpArgs.builder()
- *                 .proxyId("proxy_id")
  *                 .forwardRules(RuleRdsTcpForwardRuleArgs.builder()
  *                     .port(2233)
  *                     .build())
+ *                 .proxyId("proxy_id")
  *                 .build())
+ *             .name("name")
+ *             .cloudConnectorId("cloud_connector_id")
+ *             .idleTimeMins(10)
+ *             .dryRun(true)
  *             .build());
  * 
  *     }

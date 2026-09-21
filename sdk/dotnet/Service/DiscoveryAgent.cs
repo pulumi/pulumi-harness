@@ -26,17 +26,10 @@ namespace Pulumi.Harness.Service
     /// {
     ///     var example = new Harness.Service.DiscoveryAgent("example", new()
     ///     {
-    ///         Name = "ExampleAgent",
-    ///         OrgIdentifier = "your_org_id",
-    ///         ProjectIdentifier = "your_project_id",
-    ///         EnvironmentIdentifier = "your_environment_id",
-    ///         InfraIdentifier = "your_infra_id",
     ///         Configs = new[]
     ///         {
     ///             new Harness.Service.Inputs.DiscoveryAgentConfigArgs
     ///             {
-    ///                 CollectorImage = "harness/service-discovery-collector:main-latest",
-    ///                 LogWatcherImage = "harness/chaos-log-watcher:main-latest",
     ///                 Kubernetes = new[]
     ///                 {
     ///                     new Harness.Service.Inputs.DiscoveryAgentConfigKuberneteArgs
@@ -44,8 +37,15 @@ namespace Pulumi.Harness.Service
     ///                         Namespace = "harness-sd",
     ///                     },
     ///                 },
+    ///                 CollectorImage = "harness/service-discovery-collector:main-latest",
+    ///                 LogWatcherImage = "harness/chaos-log-watcher:main-latest",
     ///             },
     ///         },
+    ///         Name = "ExampleAgent",
+    ///         OrgIdentifier = "your_org_id",
+    ///         ProjectIdentifier = "your_project_id",
+    ///         EnvironmentIdentifier = "your_environment_id",
+    ///         InfraIdentifier = "your_infra_id",
     ///     });
     /// 
     /// });
@@ -64,11 +64,6 @@ namespace Pulumi.Harness.Service
     ///     // Create a new service discovery agent with minimal configuration
     ///     var example = new Harness.Service.DiscoveryAgent("example", new()
     ///     {
-    ///         Name = "example-agent",
-    ///         OrgIdentifier = orgIdentifier,
-    ///         ProjectIdentifier = projectIdentifier,
-    ///         EnvironmentIdentifier = environmentIdentifier,
-    ///         InfraIdentifier = "example-infra",
     ///         Configs = new[]
     ///         {
     ///             new Harness.Service.Inputs.DiscoveryAgentConfigArgs
@@ -82,27 +77,20 @@ namespace Pulumi.Harness.Service
     ///                 },
     ///             },
     ///         },
+    ///         Name = "example-agent",
+    ///         OrgIdentifier = orgIdentifier,
+    ///         ProjectIdentifier = projectIdentifier,
+    ///         EnvironmentIdentifier = environmentIdentifier,
+    ///         InfraIdentifier = "example-infra",
     ///     });
     /// 
     ///     // Create a new service discovery agent with node agent enabled
     ///     var nodeAgent = new Harness.Service.DiscoveryAgent("node_agent", new()
     ///     {
-    ///         Name = "node-agent-example",
-    ///         OrgIdentifier = orgIdentifier,
-    ///         ProjectIdentifier = projectIdentifier,
-    ///         EnvironmentIdentifier = environmentIdentifier,
-    ///         InfraIdentifier = "node-agent-example",
     ///         Configs = new[]
     ///         {
     ///             new Harness.Service.Inputs.DiscoveryAgentConfigArgs
     ///             {
-    ///                 Kubernetes = new[]
-    ///                 {
-    ///                     new Harness.Service.Inputs.DiscoveryAgentConfigKuberneteArgs
-    ///                     {
-    ///                         Namespace = "harness-sd",
-    ///                     },
-    ///                 },
     ///                 Datas = new[]
     ///                 {
     ///                     new Harness.Service.Inputs.DiscoveryAgentConfigDataArgs
@@ -110,49 +98,62 @@ namespace Pulumi.Harness.Service
     ///                         EnableNodeAgent = true,
     ///                     },
     ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     // Create a new service discovery agent with full configuration
-    ///     var fullConfig = new Harness.Service.DiscoveryAgent("full_config", new()
-    ///     {
-    ///         Name = "full-config-example",
-    ///         OrgIdentifier = orgIdentifier,
-    ///         ProjectIdentifier = projectIdentifier,
-    ///         EnvironmentIdentifier = environmentIdentifier,
-    ///         InfraIdentifier = "full-config-example",
-    ///         PermanentInstallation = false,
-    ///         CorrelationId = "full-config-correlation-123",
-    ///         Configs = new[]
-    ///         {
-    ///             new Harness.Service.Inputs.DiscoveryAgentConfigArgs
-    ///             {
-    ///                 CollectorImage = "harness/service-discovery-collector:main-latest",
-    ///                 LogWatcherImage = "harness/chaos-log-watcher:main-latest",
-    ///                 SkipSecureVerify = false,
     ///                 Kubernetes = new[]
     ///                 {
     ///                     new Harness.Service.Inputs.DiscoveryAgentConfigKuberneteArgs
     ///                     {
     ///                         Namespace = "harness-sd",
-    ///                         ServiceAccount = "harness-sd-sa",
-    ///                         ImagePullPolicy = "IfNotPresent",
-    ///                         RunAsUser = 2000,
-    ///                         RunAsGroup = 2000,
-    ///                         Labels = 
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Name = "node-agent-example",
+    ///         OrgIdentifier = orgIdentifier,
+    ///         ProjectIdentifier = projectIdentifier,
+    ///         EnvironmentIdentifier = environmentIdentifier,
+    ///         InfraIdentifier = "node-agent-example",
+    ///     });
+    /// 
+    ///     // Create a new service discovery agent with full configuration
+    ///     var fullConfig = new Harness.Service.DiscoveryAgent("full_config", new()
+    ///     {
+    ///         Configs = new[]
+    ///         {
+    ///             new Harness.Service.Inputs.DiscoveryAgentConfigArgs
+    ///             {
+    ///                 Datas = new[]
+    ///                 {
+    ///                     new Harness.Service.Inputs.DiscoveryAgentConfigDataArgs
+    ///                     {
+    ///                         Crons = new[]
     ///                         {
-    ///                             { "app", "service-discovery" },
-    ///                             { "env", "dev" },
+    ///                             new Harness.Service.Inputs.DiscoveryAgentConfigDataCronArgs
+    ///                             {
+    ///                                 Expression = "0/10 * * * *",
+    ///                             },
     ///                         },
-    ///                         Annotations = 
+    ///                         EnableNodeAgent = true,
+    ///                         NodeAgentSelector = "node-role.kubernetes.io/worker=",
+    ///                         EnableBatchResources = true,
+    ///                         EnableOrphanedPod = true,
+    ///                         NamespaceSelector = "environment=dev",
+    ///                         CollectionWindowInMin = 15,
+    ///                         BlacklistedNamespaces = new[]
     ///                         {
-    ///                             { "example.com/annotation", "value" },
+    ///                             "kube-system",
+    ///                             "kube-public",
     ///                         },
-    ///                         NodeSelector = 
+    ///                         ObservedNamespaces = new[]
     ///                         {
-    ///                             { "kubernetes.io/os", "linux" },
+    ///                             "default",
+    ///                             "harness",
     ///                         },
+    ///                     },
+    ///                 },
+    ///                 Kubernetes = new[]
+    ///                 {
+    ///                     new Harness.Service.Inputs.DiscoveryAgentConfigKuberneteArgs
+    ///                     {
     ///                         Resources = new[]
     ///                         {
     ///                             new Harness.Service.Inputs.DiscoveryAgentConfigKuberneteResourceArgs
@@ -179,34 +180,23 @@ namespace Pulumi.Harness.Service
     ///                                 Effect = "NoSchedule",
     ///                             },
     ///                         },
-    ///                     },
-    ///                 },
-    ///                 Datas = new[]
-    ///                 {
-    ///                     new Harness.Service.Inputs.DiscoveryAgentConfigDataArgs
-    ///                     {
-    ///                         EnableNodeAgent = true,
-    ///                         NodeAgentSelector = "node-role.kubernetes.io/worker=",
-    ///                         EnableBatchResources = true,
-    ///                         EnableOrphanedPod = true,
-    ///                         NamespaceSelector = "environment=dev",
-    ///                         CollectionWindowInMin = 15,
-    ///                         BlacklistedNamespaces = new[]
+    ///                         Namespace = "harness-sd",
+    ///                         ServiceAccount = "harness-sd-sa",
+    ///                         ImagePullPolicy = "IfNotPresent",
+    ///                         RunAsUser = 2000,
+    ///                         RunAsGroup = 2000,
+    ///                         Labels = 
     ///                         {
-    ///                             "kube-system",
-    ///                             "kube-public",
+    ///                             { "app", "service-discovery" },
+    ///                             { "env", "dev" },
     ///                         },
-    ///                         ObservedNamespaces = new[]
+    ///                         Annotations = 
     ///                         {
-    ///                             "default",
-    ///                             "harness",
+    ///                             { "example.com/annotation", "value" },
     ///                         },
-    ///                         Crons = new[]
+    ///                         NodeSelector = 
     ///                         {
-    ///                             new Harness.Service.Inputs.DiscoveryAgentConfigDataCronArgs
-    ///                             {
-    ///                                 Expression = "0/10 * * * *",
-    ///                             },
+    ///                             { "kubernetes.io/os", "linux" },
     ///                         },
     ///                     },
     ///                 },
@@ -230,8 +220,18 @@ namespace Pulumi.Harness.Service
     ///                         Url = "https://proxy.example.com",
     ///                     },
     ///                 },
+    ///                 CollectorImage = "harness/service-discovery-collector:main-latest",
+    ///                 LogWatcherImage = "harness/chaos-log-watcher:main-latest",
+    ///                 SkipSecureVerify = false,
     ///             },
     ///         },
+    ///         Name = "full-config-example",
+    ///         OrgIdentifier = orgIdentifier,
+    ///         ProjectIdentifier = projectIdentifier,
+    ///         EnvironmentIdentifier = environmentIdentifier,
+    ///         InfraIdentifier = "full-config-example",
+    ///         PermanentInstallation = false,
+    ///         CorrelationId = "full-config-correlation-123",
     ///     });
     /// 
     /// });

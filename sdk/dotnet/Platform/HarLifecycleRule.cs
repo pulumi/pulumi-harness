@@ -25,17 +25,12 @@ namespace Pulumi.Harness.Platform
     ///     // Account-scoped DELETE rule — keep last 10 versions, runs nightly
     ///     var nightlyCleanup = new Harness.Platform.HarLifecycleRule("nightly_cleanup", new()
     ///     {
-    ///         AccountId = "your-account-id",
-    ///         Name = "nightly-cleanup",
-    ///         Action = "DELETE",
-    ///         Description = "Keep last 10 versions of all artifacts",
     ///         ApplyTo = new Harness.Platform.Inputs.HarLifecycleRuleApplyToArgs
     ///         {
     ///             Mode = "ALL_IN_SCOPE",
     ///         },
     ///         Criteria = new Harness.Platform.Inputs.HarLifecycleRuleCriteriaArgs
     ///         {
-    ///             Match = "ALL",
     ///             Rules = new[]
     ///             {
     ///                 new Harness.Platform.Inputs.HarLifecycleRuleCriteriaRuleArgs
@@ -44,29 +39,28 @@ namespace Pulumi.Harness.Platform
     ///                     Value = 10,
     ///                 },
     ///             },
+    ///             Match = "ALL",
     ///         },
     ///         Schedule = new Harness.Platform.Inputs.HarLifecycleRuleScheduleArgs
     ///         {
     ///             Expression = "0 2 * * *",
     ///             Timezone = "UTC",
     ///         },
+    ///         AccountId = "your-account-id",
+    ///         Name = "nightly-cleanup",
+    ///         Action = "DELETE",
+    ///         Description = "Keep last 10 versions of all artifacts",
     ///     });
     /// 
     ///     // Project-scoped DELETE rule — delete artifacts older than 30 days
     ///     var ageBasedCleanup = new Harness.Platform.HarLifecycleRule("age_based_cleanup", new()
     ///     {
-    ///         AccountId = "your-account-id",
-    ///         OrgId = "your-org-id",
-    ///         ProjectId = "your-project-id",
-    ///         Name = "age-based-cleanup",
-    ///         Action = "DELETE",
     ///         ApplyTo = new Harness.Platform.Inputs.HarLifecycleRuleApplyToArgs
     ///         {
     ///             Mode = "ALL_IN_SCOPE",
     ///         },
     ///         Criteria = new Harness.Platform.Inputs.HarLifecycleRuleCriteriaArgs
     ///         {
-    ///             Match = "ALL",
     ///             Rules = new[]
     ///             {
     ///                 new Harness.Platform.Inputs.HarLifecycleRuleCriteriaRuleArgs
@@ -76,17 +70,18 @@ namespace Pulumi.Harness.Platform
     ///                     Unit = "DAYS",
     ///                 },
     ///             },
+    ///             Match = "ALL",
     ///         },
+    ///         AccountId = "your-account-id",
+    ///         OrgId = "your-org-id",
+    ///         ProjectId = "your-project-id",
+    ///         Name = "age-based-cleanup",
+    ///         Action = "DELETE",
     ///     });
     /// 
     ///     // Org-scoped PROTECT rule — protect images in specific registries matching a tag pattern
     ///     var protectProd = new Harness.Platform.HarLifecycleRule("protect_prod", new()
     ///     {
-    ///         AccountId = "your-account-id",
-    ///         OrgId = "your-org-id",
-    ///         Name = "protect-prod-images",
-    ///         Action = "PROTECT",
-    ///         PackageType = "DOCKER",
     ///         ApplyTo = new Harness.Platform.Inputs.HarLifecycleRuleApplyToArgs
     ///         {
     ///             Mode = "EXPLICIT",
@@ -105,21 +100,22 @@ namespace Pulumi.Harness.Platform
     ///                 "release-*",
     ///             },
     ///         },
+    ///         AccountId = "your-account-id",
+    ///         OrgId = "your-org-id",
+    ///         Name = "protect-prod-images",
+    ///         Action = "PROTECT",
+    ///         PackageType = "DOCKER",
     ///     });
     /// 
     ///     // Account-scoped DELETE rule with multiple criteria (ANY match)
     ///     var multiCriteriaCleanup = new Harness.Platform.HarLifecycleRule("multi_criteria_cleanup", new()
     ///     {
-    ///         AccountId = "your-account-id",
-    ///         Name = "multi-criteria-cleanup",
-    ///         Action = "DELETE",
     ///         ApplyTo = new Harness.Platform.Inputs.HarLifecycleRuleApplyToArgs
     ///         {
     ///             Mode = "ALL_IN_SCOPE",
     ///         },
     ///         Criteria = new Harness.Platform.Inputs.HarLifecycleRuleCriteriaArgs
     ///         {
-    ///             Match = "ANY",
     ///             Rules = new[]
     ///             {
     ///                 new Harness.Platform.Inputs.HarLifecycleRuleCriteriaRuleArgs
@@ -134,7 +130,11 @@ namespace Pulumi.Harness.Platform
     ///                     Unit = "DAYS",
     ///                 },
     ///             },
+    ///             Match = "ANY",
     ///         },
+    ///         AccountId = "your-account-id",
+    ///         Name = "multi-criteria-cleanup",
+    ///         Action = "DELETE",
     ///     });
     /// 
     /// });

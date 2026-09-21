@@ -1134,28 +1134,28 @@ class InfrastructureV2(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  discovery_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  environment_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 envs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2EnvArgs', 'InfrastructureV2EnvArgsDict']]]]] = None,
-                 image_registries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2ImageRegistryArgs', 'InfrastructureV2ImageRegistryArgsDict']]]]] = None,
+                 envs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2EnvArgs', 'InfrastructureV2EnvArgsDict', 'outputs.InfrastructureV2Env']]]]] = None,
+                 image_registries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2ImageRegistryArgs', 'InfrastructureV2ImageRegistryArgsDict', 'outputs.InfrastructureV2ImageRegistry']]]]] = None,
                  infra_id: pulumi.Input[Optional[_builtins.str]] = None,
                  infra_scope: pulumi.Input[Optional[_builtins.str]] = None,
                  infra_type: pulumi.Input[Optional[_builtins.str]] = None,
                  insecure_skip_verify: pulumi.Input[Optional[_builtins.bool]] = None,
                  label: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mtls: pulumi.Input[Optional[Union['InfrastructureV2MtlsArgs', 'InfrastructureV2MtlsArgsDict']]] = None,
+                 mtls: pulumi.Input[Optional[Union['InfrastructureV2MtlsArgs', 'InfrastructureV2MtlsArgsDict', 'outputs.InfrastructureV2Mtls']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  node_selector: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 proxy: pulumi.Input[Optional[Union['InfrastructureV2ProxyArgs', 'InfrastructureV2ProxyArgsDict']]] = None,
-                 resources: pulumi.Input[Optional[Union['InfrastructureV2ResourcesArgs', 'InfrastructureV2ResourcesArgsDict']]] = None,
+                 proxy: pulumi.Input[Optional[Union['InfrastructureV2ProxyArgs', 'InfrastructureV2ProxyArgsDict', 'outputs.InfrastructureV2Proxy']]] = None,
+                 resources: pulumi.Input[Optional[Union['InfrastructureV2ResourcesArgs', 'InfrastructureV2ResourcesArgsDict', 'outputs.InfrastructureV2Resources']]] = None,
                  run_as_group: pulumi.Input[Optional[_builtins.int]] = None,
                  run_as_user: pulumi.Input[Optional[_builtins.int]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tolerations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2TolerationArgs', 'InfrastructureV2TolerationArgsDict']]]]] = None,
-                 volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2VolumeMountArgs', 'InfrastructureV2VolumeMountArgsDict']]]]] = None,
-                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2VolumeArgs', 'InfrastructureV2VolumeArgsDict']]]]] = None,
+                 tolerations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2TolerationArgs', 'InfrastructureV2TolerationArgsDict', 'outputs.InfrastructureV2Toleration']]]]] = None,
+                 volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2VolumeMountArgs', 'InfrastructureV2VolumeMountArgsDict', 'outputs.InfrastructureV2VolumeMount']]]]] = None,
+                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2VolumeArgs', 'InfrastructureV2VolumeArgsDict', 'outputs.InfrastructureV2Volume']]]]] = None,
                  __props__=None):
         """
         Resource for managing Harness Chaos Infrastructure V2 (the chaos execution infrastructure installed into a Kubernetes cluster).
@@ -1192,28 +1192,28 @@ class InfrastructureV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the infrastructure.
         :param pulumi.Input[_builtins.str] discovery_agent_id: ID of the discovery agent to use.
         :param pulumi.Input[_builtins.str] environment_id: The ID of the environment.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2EnvArgs', 'InfrastructureV2EnvArgsDict']]]] envs: List of environment variables to set in the container.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2ImageRegistryArgs', 'InfrastructureV2ImageRegistryArgsDict']]]] image_registries: Configuration for the container image registry.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2EnvArgs', 'InfrastructureV2EnvArgsDict', 'outputs.InfrastructureV2Env']]]] envs: List of environment variables to set in the container.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2ImageRegistryArgs', 'InfrastructureV2ImageRegistryArgsDict', 'outputs.InfrastructureV2ImageRegistry']]]] image_registries: Configuration for the container image registry.
         :param pulumi.Input[_builtins.str] infra_id: ID of the infrastructure.
         :param pulumi.Input[_builtins.str] infra_scope: Scope of the infrastructure. Valid values: NAMESPACE, CLUSTER
         :param pulumi.Input[_builtins.str] infra_type: Type of the infrastructure. Valid values: KUBERNETES, KUBERNETESV2
         :param pulumi.Input[_builtins.bool] insecure_skip_verify: Skip TLS verification for the infrastructure.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] label: Labels to apply to the infrastructure pods.
-        :param pulumi.Input[Union['InfrastructureV2MtlsArgs', 'InfrastructureV2MtlsArgsDict']] mtls: mTLS configuration for the infrastructure.
+        :param pulumi.Input[Union['InfrastructureV2MtlsArgs', 'InfrastructureV2MtlsArgsDict', 'outputs.InfrastructureV2Mtls']] mtls: mTLS configuration for the infrastructure.
         :param pulumi.Input[_builtins.str] name: Name of the infrastructure.
         :param pulumi.Input[_builtins.str] namespace: Kubernetes namespace where the infrastructure will be installed. Maps to the infrastructure namespace.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] node_selector: Node selector for the infrastructure pods.
         :param pulumi.Input[_builtins.str] org_id: The ID of the organization.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project.
-        :param pulumi.Input[Union['InfrastructureV2ProxyArgs', 'InfrastructureV2ProxyArgsDict']] proxy: Proxy configuration for the infrastructure.
-        :param pulumi.Input[Union['InfrastructureV2ResourcesArgs', 'InfrastructureV2ResourcesArgsDict']] resources: Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+        :param pulumi.Input[Union['InfrastructureV2ProxyArgs', 'InfrastructureV2ProxyArgsDict', 'outputs.InfrastructureV2Proxy']] proxy: Proxy configuration for the infrastructure.
+        :param pulumi.Input[Union['InfrastructureV2ResourcesArgs', 'InfrastructureV2ResourcesArgsDict', 'outputs.InfrastructureV2Resources']] resources: Compute resource requirements (requests and limits) for the chaos infrastructure pods.
         :param pulumi.Input[_builtins.int] run_as_group: Group ID to run the infrastructure as.
         :param pulumi.Input[_builtins.int] run_as_user: User ID to run the infrastructure as.
         :param pulumi.Input[_builtins.str] service_account: Service account used by the infrastructure.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags for the infrastructure.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2TolerationArgs', 'InfrastructureV2TolerationArgsDict']]]] tolerations: If specified, the pod's tolerations.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2VolumeMountArgs', 'InfrastructureV2VolumeMountArgsDict']]]] volume_mounts: Volume mounts for the container.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2VolumeArgs', 'InfrastructureV2VolumeArgsDict']]]] volumes: Volumes to be created in the infrastructure.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2TolerationArgs', 'InfrastructureV2TolerationArgsDict', 'outputs.InfrastructureV2Toleration']]]] tolerations: If specified, the pod's tolerations.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2VolumeMountArgs', 'InfrastructureV2VolumeMountArgsDict', 'outputs.InfrastructureV2VolumeMount']]]] volume_mounts: Volume mounts for the container.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2VolumeArgs', 'InfrastructureV2VolumeArgsDict', 'outputs.InfrastructureV2Volume']]]] volumes: Volumes to be created in the infrastructure.
         """
         ...
     @overload
@@ -1269,28 +1269,28 @@ class InfrastructureV2(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  discovery_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  environment_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 envs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2EnvArgs', 'InfrastructureV2EnvArgsDict']]]]] = None,
-                 image_registries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2ImageRegistryArgs', 'InfrastructureV2ImageRegistryArgsDict']]]]] = None,
+                 envs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2EnvArgs', 'InfrastructureV2EnvArgsDict', 'outputs.InfrastructureV2Env']]]]] = None,
+                 image_registries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2ImageRegistryArgs', 'InfrastructureV2ImageRegistryArgsDict', 'outputs.InfrastructureV2ImageRegistry']]]]] = None,
                  infra_id: pulumi.Input[Optional[_builtins.str]] = None,
                  infra_scope: pulumi.Input[Optional[_builtins.str]] = None,
                  infra_type: pulumi.Input[Optional[_builtins.str]] = None,
                  insecure_skip_verify: pulumi.Input[Optional[_builtins.bool]] = None,
                  label: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 mtls: pulumi.Input[Optional[Union['InfrastructureV2MtlsArgs', 'InfrastructureV2MtlsArgsDict']]] = None,
+                 mtls: pulumi.Input[Optional[Union['InfrastructureV2MtlsArgs', 'InfrastructureV2MtlsArgsDict', 'outputs.InfrastructureV2Mtls']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  namespace: pulumi.Input[Optional[_builtins.str]] = None,
                  node_selector: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 proxy: pulumi.Input[Optional[Union['InfrastructureV2ProxyArgs', 'InfrastructureV2ProxyArgsDict']]] = None,
-                 resources: pulumi.Input[Optional[Union['InfrastructureV2ResourcesArgs', 'InfrastructureV2ResourcesArgsDict']]] = None,
+                 proxy: pulumi.Input[Optional[Union['InfrastructureV2ProxyArgs', 'InfrastructureV2ProxyArgsDict', 'outputs.InfrastructureV2Proxy']]] = None,
+                 resources: pulumi.Input[Optional[Union['InfrastructureV2ResourcesArgs', 'InfrastructureV2ResourcesArgsDict', 'outputs.InfrastructureV2Resources']]] = None,
                  run_as_group: pulumi.Input[Optional[_builtins.int]] = None,
                  run_as_user: pulumi.Input[Optional[_builtins.int]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tolerations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2TolerationArgs', 'InfrastructureV2TolerationArgsDict']]]]] = None,
-                 volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2VolumeMountArgs', 'InfrastructureV2VolumeMountArgsDict']]]]] = None,
-                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2VolumeArgs', 'InfrastructureV2VolumeArgsDict']]]]] = None,
+                 tolerations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2TolerationArgs', 'InfrastructureV2TolerationArgsDict', 'outputs.InfrastructureV2Toleration']]]]] = None,
+                 volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2VolumeMountArgs', 'InfrastructureV2VolumeMountArgsDict', 'outputs.InfrastructureV2VolumeMount']]]]] = None,
+                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2VolumeArgs', 'InfrastructureV2VolumeArgsDict', 'outputs.InfrastructureV2Volume']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1365,10 +1365,10 @@ class InfrastructureV2(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             discovery_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
             environment_id: pulumi.Input[Optional[_builtins.str]] = None,
-            envs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2EnvArgs', 'InfrastructureV2EnvArgsDict']]]]] = None,
-            identifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2IdentifierArgs', 'InfrastructureV2IdentifierArgsDict']]]]] = None,
+            envs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2EnvArgs', 'InfrastructureV2EnvArgsDict', 'outputs.InfrastructureV2Env']]]]] = None,
+            identifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2IdentifierArgs', 'InfrastructureV2IdentifierArgsDict', 'outputs.InfrastructureV2Identifier']]]]] = None,
             identity: pulumi.Input[Optional[_builtins.str]] = None,
-            image_registries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2ImageRegistryArgs', 'InfrastructureV2ImageRegistryArgsDict']]]]] = None,
+            image_registries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2ImageRegistryArgs', 'InfrastructureV2ImageRegistryArgsDict', 'outputs.InfrastructureV2ImageRegistry']]]]] = None,
             infra_id: pulumi.Input[Optional[_builtins.str]] = None,
             infra_namespace: pulumi.Input[Optional[_builtins.str]] = None,
             infra_scope: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1377,23 +1377,23 @@ class InfrastructureV2(pulumi.CustomResource):
             install_command: pulumi.Input[Optional[_builtins.str]] = None,
             k8s_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
             label: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            mtls: pulumi.Input[Optional[Union['InfrastructureV2MtlsArgs', 'InfrastructureV2MtlsArgsDict']]] = None,
+            mtls: pulumi.Input[Optional[Union['InfrastructureV2MtlsArgs', 'InfrastructureV2MtlsArgsDict', 'outputs.InfrastructureV2Mtls']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             namespace: pulumi.Input[Optional[_builtins.str]] = None,
             node_selector: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
-            proxy: pulumi.Input[Optional[Union['InfrastructureV2ProxyArgs', 'InfrastructureV2ProxyArgsDict']]] = None,
-            resources: pulumi.Input[Optional[Union['InfrastructureV2ResourcesArgs', 'InfrastructureV2ResourcesArgsDict']]] = None,
+            proxy: pulumi.Input[Optional[Union['InfrastructureV2ProxyArgs', 'InfrastructureV2ProxyArgsDict', 'outputs.InfrastructureV2Proxy']]] = None,
+            resources: pulumi.Input[Optional[Union['InfrastructureV2ResourcesArgs', 'InfrastructureV2ResourcesArgsDict', 'outputs.InfrastructureV2Resources']]] = None,
             run_as_group: pulumi.Input[Optional[_builtins.int]] = None,
             run_as_user: pulumi.Input[Optional[_builtins.int]] = None,
             service_account: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tolerations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2TolerationArgs', 'InfrastructureV2TolerationArgsDict']]]]] = None,
+            tolerations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2TolerationArgs', 'InfrastructureV2TolerationArgsDict', 'outputs.InfrastructureV2Toleration']]]]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
-            volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2VolumeMountArgs', 'InfrastructureV2VolumeMountArgsDict']]]]] = None,
-            volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2VolumeArgs', 'InfrastructureV2VolumeArgsDict']]]]] = None) -> 'InfrastructureV2':
+            volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2VolumeMountArgs', 'InfrastructureV2VolumeMountArgsDict', 'outputs.InfrastructureV2VolumeMount']]]]] = None,
+            volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InfrastructureV2VolumeArgs', 'InfrastructureV2VolumeArgsDict', 'outputs.InfrastructureV2Volume']]]]] = None) -> 'InfrastructureV2':
         """
         Get an existing InfrastructureV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1410,10 +1410,10 @@ class InfrastructureV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Description of the infrastructure.
         :param pulumi.Input[_builtins.str] discovery_agent_id: ID of the discovery agent to use.
         :param pulumi.Input[_builtins.str] environment_id: The ID of the environment.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2EnvArgs', 'InfrastructureV2EnvArgsDict']]]] envs: List of environment variables to set in the container.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2IdentifierArgs', 'InfrastructureV2IdentifierArgsDict']]]] identifiers: Identifier for the infrastructure.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2EnvArgs', 'InfrastructureV2EnvArgsDict', 'outputs.InfrastructureV2Env']]]] envs: List of environment variables to set in the container.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2IdentifierArgs', 'InfrastructureV2IdentifierArgsDict', 'outputs.InfrastructureV2Identifier']]]] identifiers: Identifier for the infrastructure.
         :param pulumi.Input[_builtins.str] identity: Identity for the infrastructure.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2ImageRegistryArgs', 'InfrastructureV2ImageRegistryArgsDict']]]] image_registries: Configuration for the container image registry.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2ImageRegistryArgs', 'InfrastructureV2ImageRegistryArgsDict', 'outputs.InfrastructureV2ImageRegistry']]]] image_registries: Configuration for the container image registry.
         :param pulumi.Input[_builtins.str] infra_id: ID of the infrastructure.
         :param pulumi.Input[_builtins.str] infra_namespace: Namespace where the infrastructure is installed.
         :param pulumi.Input[_builtins.str] infra_scope: Scope of the infrastructure. Valid values: NAMESPACE, CLUSTER
@@ -1422,23 +1422,23 @@ class InfrastructureV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] install_command: Installation command for the infrastructure.
         :param pulumi.Input[_builtins.str] k8s_connector_id: Kubernetes connector identifier.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] label: Labels to apply to the infrastructure pods.
-        :param pulumi.Input[Union['InfrastructureV2MtlsArgs', 'InfrastructureV2MtlsArgsDict']] mtls: mTLS configuration for the infrastructure.
+        :param pulumi.Input[Union['InfrastructureV2MtlsArgs', 'InfrastructureV2MtlsArgsDict', 'outputs.InfrastructureV2Mtls']] mtls: mTLS configuration for the infrastructure.
         :param pulumi.Input[_builtins.str] name: Name of the infrastructure.
         :param pulumi.Input[_builtins.str] namespace: Kubernetes namespace where the infrastructure will be installed. Maps to the infrastructure namespace.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] node_selector: Node selector for the infrastructure pods.
         :param pulumi.Input[_builtins.str] org_id: The ID of the organization.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project.
-        :param pulumi.Input[Union['InfrastructureV2ProxyArgs', 'InfrastructureV2ProxyArgsDict']] proxy: Proxy configuration for the infrastructure.
-        :param pulumi.Input[Union['InfrastructureV2ResourcesArgs', 'InfrastructureV2ResourcesArgsDict']] resources: Compute resource requirements (requests and limits) for the chaos infrastructure pods.
+        :param pulumi.Input[Union['InfrastructureV2ProxyArgs', 'InfrastructureV2ProxyArgsDict', 'outputs.InfrastructureV2Proxy']] proxy: Proxy configuration for the infrastructure.
+        :param pulumi.Input[Union['InfrastructureV2ResourcesArgs', 'InfrastructureV2ResourcesArgsDict', 'outputs.InfrastructureV2Resources']] resources: Compute resource requirements (requests and limits) for the chaos infrastructure pods.
         :param pulumi.Input[_builtins.int] run_as_group: Group ID to run the infrastructure as.
         :param pulumi.Input[_builtins.int] run_as_user: User ID to run the infrastructure as.
         :param pulumi.Input[_builtins.str] service_account: Service account used by the infrastructure.
         :param pulumi.Input[_builtins.str] status: Status of the infrastructure.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags for the infrastructure.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2TolerationArgs', 'InfrastructureV2TolerationArgsDict']]]] tolerations: If specified, the pod's tolerations.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2TolerationArgs', 'InfrastructureV2TolerationArgsDict', 'outputs.InfrastructureV2Toleration']]]] tolerations: If specified, the pod's tolerations.
         :param pulumi.Input[_builtins.str] updated_at: Last update timestamp.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2VolumeMountArgs', 'InfrastructureV2VolumeMountArgsDict']]]] volume_mounts: Volume mounts for the container.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2VolumeArgs', 'InfrastructureV2VolumeArgsDict']]]] volumes: Volumes to be created in the infrastructure.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2VolumeMountArgs', 'InfrastructureV2VolumeMountArgsDict', 'outputs.InfrastructureV2VolumeMount']]]] volume_mounts: Volume mounts for the container.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InfrastructureV2VolumeArgs', 'InfrastructureV2VolumeArgsDict', 'outputs.InfrastructureV2Volume']]]] volumes: Volumes to be created in the infrastructure.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

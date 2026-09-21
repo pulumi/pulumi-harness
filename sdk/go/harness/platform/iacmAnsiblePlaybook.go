@@ -29,6 +29,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewIacmAnsiblePlaybook(ctx, "example", &platform.IacmAnsiblePlaybookArgs{
+//				EnvVars: platform.IacmAnsiblePlaybookEnvVarArray{
+//					&platform.IacmAnsiblePlaybookEnvVarArgs{
+//						Key:       pulumi.String("ANSIBLE_CONFIG"),
+//						Value:     pulumi.String("ansible.cfg"),
+//						ValueType: pulumi.String("string"),
+//					},
+//				},
+//				Vars: platform.IacmAnsiblePlaybookVarArray{
+//					&platform.IacmAnsiblePlaybookVarArgs{
+//						Key:       pulumi.String("environment"),
+//						Value:     pulumi.String("production"),
+//						ValueType: pulumi.String("string"),
+//					},
+//				},
 //				Identifier:          pulumi.String("my_playbook"),
 //				Name:                pulumi.String("my-playbook"),
 //				OrgId:               pulumi.Any(exampleHarnessPlatformOrganization.Id),
@@ -40,20 +54,6 @@ import (
 //				AnsibleGalaxy:       pulumi.Bool(true),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("env:prod"),
-//				},
-//				Vars: platform.IacmAnsiblePlaybookVarArray{
-//					&platform.IacmAnsiblePlaybookVarArgs{
-//						Key:       pulumi.String("environment"),
-//						Value:     pulumi.String("production"),
-//						ValueType: pulumi.String("string"),
-//					},
-//				},
-//				EnvVars: platform.IacmAnsiblePlaybookEnvVarArray{
-//					&platform.IacmAnsiblePlaybookEnvVarArgs{
-//						Key:       pulumi.String("ANSIBLE_CONFIG"),
-//						Value:     pulumi.String("ansible.cfg"),
-//						ValueType: pulumi.String("string"),
-//					},
 //				},
 //			})
 //			if err != nil {

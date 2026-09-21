@@ -54,10 +54,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var clientKeyCert = new KubernetesConnector("clientKeyCert", KubernetesConnectorArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .description("description")
- *             .tags("foo:bar")
  *             .clientKeyCert(KubernetesConnectorClientKeyCertArgs.builder()
  *                 .masterUrl("https://kubernetes.example.com")
  *                 .caCertRef("account.TEST_k8ss_client_stuff")
@@ -66,39 +62,39 @@ import javax.annotation.Nullable;
  *                 .clientKeyPassphraseRef("account.TEST_k8s_client_test")
  *                 .clientKeyAlgorithm("RSA")
  *                 .build())
- *             .delegateSelectors("harness-delegate")
- *             .build());
- * 
- *         var usernamePassword = new KubernetesConnector("usernamePassword", KubernetesConnectorArgs.builder()
  *             .identifier("identifier")
  *             .name("name")
  *             .description("description")
  *             .tags("foo:bar")
+ *             .delegateSelectors("harness-delegate")
+ *             .build());
+ * 
+ *         var usernamePassword = new KubernetesConnector("usernamePassword", KubernetesConnectorArgs.builder()
  *             .usernamePassword(KubernetesConnectorUsernamePasswordArgs.builder()
  *                 .masterUrl("https://kubernetes.example.com")
  *                 .username("admin")
  *                 .passwordRef("account.TEST_k8s_client_test")
  *                 .build())
- *             .delegateSelectors("harness-delegate")
- *             .build());
- * 
- *         var serviceAccount = new KubernetesConnector("serviceAccount", KubernetesConnectorArgs.builder()
  *             .identifier("identifier")
  *             .name("name")
  *             .description("description")
  *             .tags("foo:bar")
+ *             .delegateSelectors("harness-delegate")
+ *             .build());
+ * 
+ *         var serviceAccount = new KubernetesConnector("serviceAccount", KubernetesConnectorArgs.builder()
  *             .serviceAccount(KubernetesConnectorServiceAccountArgs.builder()
  *                 .masterUrl("https://kubernetes.example.com")
  *                 .serviceAccountTokenRef("account.TEST_k8s_client_test")
  *                 .build())
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("description")
+ *             .tags("foo:bar")
  *             .delegateSelectors("harness-delegate")
  *             .build());
  * 
  *         var openIDConnect = new KubernetesConnector("openIDConnect", KubernetesConnectorArgs.builder()
- *             .identifier("%[1]s")
- *             .name("%[2]s")
- *             .description("description")
- *             .tags("foo:bar")
  *             .openidConnect(KubernetesConnectorOpenidConnectArgs.builder()
  *                 .masterUrl("https://kubernetes.example.com")
  *                 .issuerUrl("https://oidc.example.com")
@@ -110,17 +106,21 @@ import javax.annotation.Nullable;
  *                     "scope1",
  *                     "scope2")
  *                 .build())
+ *             .identifier("%[1]s")
+ *             .name("%[2]s")
+ *             .description("description")
+ *             .tags("foo:bar")
  *             .delegateSelectors("harness-delegate")
  *             .build());
  * 
  *         var inheritFromDelegate = new KubernetesConnector("inheritFromDelegate", KubernetesConnectorArgs.builder()
+ *             .inheritFromDelegate(KubernetesConnectorInheritFromDelegateArgs.builder()
+ *                 .delegateSelectors("harness-delegate")
+ *                 .build())
  *             .identifier("identifier")
  *             .name("name")
  *             .description("description")
  *             .tags("foo:bar")
- *             .inheritFromDelegate(KubernetesConnectorInheritFromDelegateArgs.builder()
- *                 .delegateSelectors("harness-delegate")
- *                 .build())
  *             .build());
  * 
  *     }

@@ -16,10 +16,6 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const clientKeyCert = new harness.platform.KubernetesConnector("clientKeyCert", {
- *     identifier: "identifier",
- *     name: "name",
- *     description: "description",
- *     tags: ["foo:bar"],
  *     clientKeyCert: {
  *         masterUrl: "https://kubernetes.example.com",
  *         caCertRef: "account.TEST_k8ss_client_stuff",
@@ -28,36 +24,36 @@ import * as utilities from "../utilities";
  *         clientKeyPassphraseRef: "account.TEST_k8s_client_test",
  *         clientKeyAlgorithm: "RSA",
  *     },
- *     delegateSelectors: ["harness-delegate"],
- * });
- * const usernamePassword = new harness.platform.KubernetesConnector("usernamePassword", {
  *     identifier: "identifier",
  *     name: "name",
  *     description: "description",
  *     tags: ["foo:bar"],
+ *     delegateSelectors: ["harness-delegate"],
+ * });
+ * const usernamePassword = new harness.platform.KubernetesConnector("usernamePassword", {
  *     usernamePassword: {
  *         masterUrl: "https://kubernetes.example.com",
  *         username: "admin",
  *         passwordRef: "account.TEST_k8s_client_test",
  *     },
- *     delegateSelectors: ["harness-delegate"],
- * });
- * const serviceAccount = new harness.platform.KubernetesConnector("serviceAccount", {
  *     identifier: "identifier",
  *     name: "name",
  *     description: "description",
  *     tags: ["foo:bar"],
+ *     delegateSelectors: ["harness-delegate"],
+ * });
+ * const serviceAccount = new harness.platform.KubernetesConnector("serviceAccount", {
  *     serviceAccount: {
  *         masterUrl: "https://kubernetes.example.com",
  *         serviceAccountTokenRef: "account.TEST_k8s_client_test",
  *     },
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "description",
+ *     tags: ["foo:bar"],
  *     delegateSelectors: ["harness-delegate"],
  * });
  * const openIDConnect = new harness.platform.KubernetesConnector("openIDConnect", {
- *     identifier: "%[1]s",
- *     name: "%[2]s",
- *     description: "description",
- *     tags: ["foo:bar"],
  *     openidConnect: {
  *         masterUrl: "https://kubernetes.example.com",
  *         issuerUrl: "https://oidc.example.com",
@@ -70,16 +66,20 @@ import * as utilities from "../utilities";
  *             "scope2",
  *         ],
  *     },
+ *     identifier: "%[1]s",
+ *     name: "%[2]s",
+ *     description: "description",
+ *     tags: ["foo:bar"],
  *     delegateSelectors: ["harness-delegate"],
  * });
  * const inheritFromDelegate = new harness.platform.KubernetesConnector("inheritFromDelegate", {
+ *     inheritFromDelegate: {
+ *         delegateSelectors: ["harness-delegate"],
+ *     },
  *     identifier: "identifier",
  *     name: "name",
  *     description: "description",
  *     tags: ["foo:bar"],
- *     inheritFromDelegate: {
- *         delegateSelectors: ["harness-delegate"],
- *     },
  * });
  * ```
  *

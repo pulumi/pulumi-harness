@@ -29,20 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewAzureCloudCostConnector(ctx, "example", &platform.AzureCloudCostConnectorArgs{
-//				Identifier:  pulumi.String("identifier"),
-//				Name:        pulumi.String("name"),
-//				Description: pulumi.String("example"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//				},
-//				FeaturesEnableds: pulumi.StringArray{
-//					pulumi.String("BILLING"),
-//					pulumi.String("VISIBILITY"),
-//					pulumi.String("OPTIMIZATION"),
-//					pulumi.String("GOVERNANCE"),
-//				},
-//				TenantId:       pulumi.String("tenant_id"),
-//				SubscriptionId: pulumi.String("subscription_id"),
 //				BillingExportSpec: &platform.AzureCloudCostConnectorBillingExportSpecArgs{
 //					StorageAccountName: pulumi.String("storage_account_name"),
 //					ContainerName:      pulumi.String("container_name"),
@@ -59,6 +45,20 @@ import (
 //					SubscriptionId:     pulumi.String("subscription_id"),
 //					BillingType:        pulumi.String("billing_type"),
 //				},
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("example"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//				},
+//				FeaturesEnableds: pulumi.StringArray{
+//					pulumi.String("BILLING"),
+//					pulumi.String("VISIBILITY"),
+//					pulumi.String("OPTIMIZATION"),
+//					pulumi.String("GOVERNANCE"),
+//				},
+//				TenantId:       pulumi.String("tenant_id"),
+//				SubscriptionId: pulumi.String("subscription_id"),
 //			})
 //			if err != nil {
 //				return err

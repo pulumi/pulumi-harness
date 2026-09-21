@@ -16,10 +16,6 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.autostopping.RuleEcs("test", {
- *     name: "name",
- *     cloudConnectorId: "cloud_connector_id",
- *     idleTimeMins: 10,
- *     dryRun: true,
  *     container: {
  *         cluster: "cluster",
  *         service: "service",
@@ -30,6 +26,10 @@ import * as utilities from "../utilities";
  *         ruleId: 24576,
  *         delayInSec: 5,
  *     }],
+ *     name: "name",
+ *     cloudConnectorId: "cloud_connector_id",
+ *     idleTimeMins: 10,
+ *     dryRun: true,
  * });
  * ```
  */

@@ -165,7 +165,7 @@ def get_gitops_agent_operator_yaml(ca_data: Optional[_builtins.str] = None,
                                    org_id: Optional[_builtins.str] = None,
                                    private_key: Optional[_builtins.str] = None,
                                    project_id: Optional[_builtins.str] = None,
-                                   proxies: Optional[Sequence[Union['GetGitopsAgentOperatorYamlProxyArgs', 'GetGitopsAgentOperatorYamlProxyArgsDict']]] = None,
+                                   proxies: Optional[Sequence[Union['GetGitopsAgentOperatorYamlProxyArgs', 'GetGitopsAgentOperatorYamlProxyArgsDict', 'outputs.GetGitopsAgentOperatorYamlProxyResult']]] = None,
                                    skip_crds: Optional[_builtins.bool] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGitopsAgentOperatorYamlResult:
     """
@@ -180,7 +180,7 @@ def get_gitops_agent_operator_yaml(ca_data: Optional[_builtins.str] = None,
     :param _builtins.str org_id: Organization identifier of the GitOps agent.
     :param _builtins.str private_key: Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
     :param _builtins.str project_id: Project identifier of the GitOps agent.
-    :param Sequence[Union['GetGitopsAgentOperatorYamlProxyArgs', 'GetGitopsAgentOperatorYamlProxyArgsDict']] proxies: Proxy settings for the GitOps agent.
+    :param Sequence[Union['GetGitopsAgentOperatorYamlProxyArgs', 'GetGitopsAgentOperatorYamlProxyArgsDict', 'outputs.GetGitopsAgentOperatorYamlProxyResult']] proxies: Proxy settings for the GitOps agent.
     :param _builtins.bool skip_crds: Skip CRDs for the GitOps agent.
     """
     __args__ = dict()
@@ -212,7 +212,7 @@ def get_gitops_agent_operator_yaml_output(ca_data: pulumi.Input[Optional[Optiona
                                           org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                           private_key: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                           project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                          proxies: pulumi.Input[Optional[Optional[Sequence[Union['GetGitopsAgentOperatorYamlProxyArgs', 'GetGitopsAgentOperatorYamlProxyArgsDict']]]]] = None,
+                                          proxies: pulumi.Input[Optional[Optional[Sequence[Union['GetGitopsAgentOperatorYamlProxyArgs', 'GetGitopsAgentOperatorYamlProxyArgsDict', 'outputs.GetGitopsAgentOperatorYamlProxyResult']]]]] = None,
                                           skip_crds: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGitopsAgentOperatorYamlResult]:
     """
@@ -227,7 +227,7 @@ def get_gitops_agent_operator_yaml_output(ca_data: pulumi.Input[Optional[Optiona
     :param _builtins.str org_id: Organization identifier of the GitOps agent.
     :param _builtins.str private_key: Private key for the GitOps agent. If provided authentication token will not be regenerated. Must be base64 encoded.
     :param _builtins.str project_id: Project identifier of the GitOps agent.
-    :param Sequence[Union['GetGitopsAgentOperatorYamlProxyArgs', 'GetGitopsAgentOperatorYamlProxyArgsDict']] proxies: Proxy settings for the GitOps agent.
+    :param Sequence[Union['GetGitopsAgentOperatorYamlProxyArgs', 'GetGitopsAgentOperatorYamlProxyArgsDict', 'outputs.GetGitopsAgentOperatorYamlProxyResult']] proxies: Proxy settings for the GitOps agent.
     :param _builtins.bool skip_crds: Skip CRDs for the GitOps agent.
     """
     __args__ = dict()
