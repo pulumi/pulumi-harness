@@ -24,13 +24,6 @@ namespace Pulumi.Harness.Autostopping
     /// {
     ///     var test = new Harness.Autostopping.RuleScaleGroup("test", new()
     ///     {
-    ///         Name = "test",
-    ///         CloudConnectorId = "test-connector",
-    ///         IdleTimeMins = 5,
-    ///         CustomDomains = new[]
-    ///         {
-    ///             "app.example.com",
-    ///         },
     ///         ScaleGroup = new Harness.Autostopping.Inputs.RuleScaleGroupScaleGroupArgs
     ///         {
     ///             Id = "asg-arn",
@@ -45,18 +38,6 @@ namespace Pulumi.Harness.Autostopping
     ///         {
     ///             new Harness.Autostopping.Inputs.RuleScaleGroupHttpArgs
     ///             {
-    ///                 ProxyId = "lb-id",
-    ///                 Routings = new[]
-    ///                 {
-    ///                     new Harness.Autostopping.Inputs.RuleScaleGroupHttpRoutingArgs
-    ///                     {
-    ///                         SourceProtocol = "http",
-    ///                         SourcePort = 80,
-    ///                         Action = "forward",
-    ///                         TargetProtocol = "http",
-    ///                         TargetPort = 80,
-    ///                     },
-    ///                 },
     ///                 Healths = new[]
     ///                 {
     ///                     new Harness.Autostopping.Inputs.RuleScaleGroupHttpHealthArgs
@@ -69,7 +50,26 @@ namespace Pulumi.Harness.Autostopping
     ///                         StatusCodeTo = 299,
     ///                     },
     ///                 },
+    ///                 Routings = new[]
+    ///                 {
+    ///                     new Harness.Autostopping.Inputs.RuleScaleGroupHttpRoutingArgs
+    ///                     {
+    ///                         SourceProtocol = "http",
+    ///                         SourcePort = 80,
+    ///                         Action = "forward",
+    ///                         TargetProtocol = "http",
+    ///                         TargetPort = 80,
+    ///                     },
+    ///                 },
+    ///                 ProxyId = "lb-id",
     ///             },
+    ///         },
+    ///         Name = "test",
+    ///         CloudConnectorId = "test-connector",
+    ///         IdleTimeMins = 5,
+    ///         CustomDomains = new[]
+    ///         {
+    ///             "app.example.com",
     ///         },
     ///     });
     /// 

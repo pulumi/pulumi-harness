@@ -25,20 +25,6 @@ namespace Pulumi.Harness.Platform
     ///     // Credentials http (with username + personal access token - UsernameToken)
     ///     var usernameToken = new Harness.Platform.BitbucketConnector("username_token", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Description = "test",
-    ///         Tags = new[]
-    ///         {
-    ///             "foo:bar",
-    ///         },
-    ///         Url = "https://bitbucket.com/account",
-    ///         ConnectionType = "Account",
-    ///         ValidationRepo = "some_repo",
-    ///         DelegateSelectors = new[]
-    ///         {
-    ///             "harness-delegate",
-    ///         },
     ///         Credentials = new Harness.Platform.Inputs.BitbucketConnectorCredentialsArgs
     ///         {
     ///             Http = new Harness.Platform.Inputs.BitbucketConnectorCredentialsHttpArgs
@@ -53,26 +39,26 @@ namespace Pulumi.Harness.Platform
     ///             Username = "username",
     ///             TokenRef = "account.secret_id",
     ///         },
-    ///     });
-    /// 
-    ///     // Credentials http with Bitbucket Cloud Workspace API Token (email + API token)
-    ///     // Use this when migrating off Bitbucket app passwords (EOL 2026-06-09).
-    ///     var emailApiToken = new Harness.Platform.BitbucketConnector("email_api_token", new()
-    ///     {
-    ///         Identifier = "identifier_email_api_token",
-    ///         Name = "name_email_api_token",
-    ///         Description = "Bitbucket Cloud with Workspace API Token",
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
     ///         Tags = new[]
     ///         {
     ///             "foo:bar",
     ///         },
-    ///         Url = "https://bitbucket.org/my-workspace",
+    ///         Url = "https://bitbucket.com/account",
     ///         ConnectionType = "Account",
     ///         ValidationRepo = "some_repo",
     ///         DelegateSelectors = new[]
     ///         {
     ///             "harness-delegate",
     ///         },
+    ///     });
+    /// 
+    ///     // Credentials http with Bitbucket Cloud Workspace API Token (email + API token)
+    ///     // Use this when migrating off Bitbucket app passwords (EOL 2026-06-09).
+    ///     var emailApiToken = new Harness.Platform.BitbucketConnector("email_api_token", new()
+    ///     {
     ///         Credentials = new Harness.Platform.Inputs.BitbucketConnectorCredentialsArgs
     ///         {
     ///             Http = new Harness.Platform.Inputs.BitbucketConnectorCredentialsHttpArgs
@@ -87,11 +73,38 @@ namespace Pulumi.Harness.Platform
     ///             Email = "user@example.com",
     ///             TokenRef = "account.api_token_secret",
     ///         },
+    ///         Identifier = "identifier_email_api_token",
+    ///         Name = "name_email_api_token",
+    ///         Description = "Bitbucket Cloud with Workspace API Token",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         Url = "https://bitbucket.org/my-workspace",
+    ///         ConnectionType = "Account",
+    ///         ValidationRepo = "some_repo",
+    ///         DelegateSelectors = new[]
+    ///         {
+    ///             "harness-delegate",
+    ///         },
     ///     });
     /// 
     ///     // Credentials http with Bitbucket repo/project Access Token
     ///     var accessToken = new Harness.Platform.BitbucketConnector("access_token", new()
     ///     {
+    ///         Credentials = new Harness.Platform.Inputs.BitbucketConnectorCredentialsArgs
+    ///         {
+    ///             Http = new Harness.Platform.Inputs.BitbucketConnectorCredentialsHttpArgs
+    ///             {
+    ///                 Username = "username",
+    ///                 PasswordRef = "account.secret_id",
+    ///             },
+    ///         },
+    ///         ApiAuthentication = new Harness.Platform.Inputs.BitbucketConnectorApiAuthenticationArgs
+    ///         {
+    ///             AuthType = "AccessToken",
+    ///             TokenRef = "account.access_token_secret",
+    ///         },
     ///         Identifier = "identifier_access_token",
     ///         Name = "name_access_token",
     ///         Description = "Bitbucket with Access Token",
@@ -106,24 +119,18 @@ namespace Pulumi.Harness.Platform
     ///         {
     ///             "harness-delegate",
     ///         },
-    ///         Credentials = new Harness.Platform.Inputs.BitbucketConnectorCredentialsArgs
-    ///         {
-    ///             Http = new Harness.Platform.Inputs.BitbucketConnectorCredentialsHttpArgs
-    ///             {
-    ///                 Username = "username",
-    ///                 PasswordRef = "account.secret_id",
-    ///             },
-    ///         },
-    ///         ApiAuthentication = new Harness.Platform.Inputs.BitbucketConnectorApiAuthenticationArgs
-    ///         {
-    ///             AuthType = "AccessToken",
-    ///             TokenRef = "account.access_token_secret",
-    ///         },
     ///     });
     /// 
     ///     // Credentials ssh
     ///     var ssh = new Harness.Platform.BitbucketConnector("ssh", new()
     ///     {
+    ///         Credentials = new Harness.Platform.Inputs.BitbucketConnectorCredentialsArgs
+    ///         {
+    ///             Ssh = new Harness.Platform.Inputs.BitbucketConnectorCredentialsSshArgs
+    ///             {
+    ///                 SshKeyRef = "account.secret_id",
+    ///             },
+    ///         },
     ///         Identifier = "identifier_ssh",
     ///         Name = "name_ssh",
     ///         Description = "test",
@@ -137,13 +144,6 @@ namespace Pulumi.Harness.Platform
     ///         DelegateSelectors = new[]
     ///         {
     ///             "harness-delegate",
-    ///         },
-    ///         Credentials = new Harness.Platform.Inputs.BitbucketConnectorCredentialsArgs
-    ///         {
-    ///             Ssh = new Harness.Platform.Inputs.BitbucketConnectorCredentialsSshArgs
-    ///             {
-    ///                 SshKeyRef = "account.secret_id",
-    ///             },
     ///         },
     ///     });
     /// 

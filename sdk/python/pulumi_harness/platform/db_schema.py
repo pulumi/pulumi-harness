@@ -423,14 +423,14 @@ class DbSchema(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 changelog_script: pulumi.Input[Optional[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']]] = None,
+                 changelog_script: pulumi.Input[Optional[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict', 'outputs.DbSchemaChangelogScript']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  migration_type: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 schema_source: pulumi.Input[Optional[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']]] = None,
+                 schema_source: pulumi.Input[Optional[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict', 'outputs.DbSchemaSchemaSource']]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -446,6 +446,12 @@ class DbSchema(pulumi.CustomResource):
         import pulumi_harness as harness
 
         default_type_test = harness.platform.DbSchema("default_type_test",
+            schema_source={
+                "connector": "gitConnector",
+                "repo": "TestRepo",
+                "location": "db/example-changelog.yaml",
+                "archive_path": "path/to/archive.zip",
+            },
             identifier="identifier",
             org_id="org_id",
             project_id="project_id",
@@ -454,14 +460,14 @@ class DbSchema(pulumi.CustomResource):
             tags=[
                 "foo:bar",
                 "bar:foo",
-            ],
-            schema_source={
-                "connector": "gitConnector",
-                "repo": "TestRepo",
-                "location": "db/example-changelog.yaml",
-                "archive_path": "path/to/archive.zip",
-            })
+            ])
         liquibase_repository_test = harness.platform.DbSchema("liquibase_repository_test",
+            schema_source={
+                "connector": "gitConnector",
+                "repo": "TestRepo",
+                "location": "db/example-changelog.yaml",
+                "archive_path": "path/to/archive.zip",
+            },
             identifier="identifier",
             org_id="org_id",
             project_id="project_id",
@@ -472,14 +478,14 @@ class DbSchema(pulumi.CustomResource):
             tags=[
                 "foo:bar",
                 "bar:foo",
-            ],
-            schema_source={
-                "connector": "gitConnector",
-                "repo": "TestRepo",
-                "location": "db/example-changelog.yaml",
-                "archive_path": "path/to/archive.zip",
-            })
+            ])
         liquibase_script_test = harness.platform.DbSchema("liquibase_script_test",
+            changelog_script={
+                "image": "plugins/image",
+                "command": "echo \\\\\\"hello dbops\\\\\\"",
+                "shell": "sh/bash",
+                "location": "db/example-changelog.yaml",
+            },
             identifier="identifier",
             org_id="org_id",
             project_id="project_id",
@@ -490,14 +496,15 @@ class DbSchema(pulumi.CustomResource):
             tags=[
                 "foo:bar",
                 "bar:foo",
-            ],
-            changelog_script={
-                "image": "plugins/image",
-                "command": "echo \\\\\\"hello dbops\\\\\\"",
-                "shell": "sh/bash",
-                "location": "db/example-changelog.yaml",
-            })
+            ])
         flyway_repository_test = harness.platform.DbSchema("flyway_repository_test",
+            schema_source={
+                "connector": "gitConnector",
+                "repo": "TestRepo",
+                "location": "db/flyway/migrations",
+                "toml": "db/flyway.toml",
+                "archive_path": "path/to/archive.zip",
+            },
             identifier="identifier",
             org_id="org_id",
             project_id="project_id",
@@ -508,15 +515,15 @@ class DbSchema(pulumi.CustomResource):
             tags=[
                 "foo:bar",
                 "bar:foo",
-            ],
-            schema_source={
-                "connector": "gitConnector",
-                "repo": "TestRepo",
+            ])
+        flyway_script_test = harness.platform.DbSchema("flyway_script_test",
+            changelog_script={
+                "image": "plugins/image",
+                "command": "echo \\\\\\"hello dbops\\\\\\"",
+                "shell": "sh/bash",
                 "location": "db/flyway/migrations",
                 "toml": "db/flyway.toml",
-                "archive_path": "path/to/archive.zip",
-            })
-        flyway_script_test = harness.platform.DbSchema("flyway_script_test",
+            },
             identifier="identifier",
             org_id="org_id",
             project_id="project_id",
@@ -527,15 +534,14 @@ class DbSchema(pulumi.CustomResource):
             tags=[
                 "foo:bar",
                 "bar:foo",
-            ],
-            changelog_script={
-                "image": "plugins/image",
-                "command": "echo \\\\\\"hello dbops\\\\\\"",
-                "shell": "sh/bash",
-                "location": "db/flyway/migrations",
-                "toml": "db/flyway.toml",
-            })
+            ])
         percona_enabled_test = harness.platform.DbSchema("percona_enabled_test",
+            schema_source={
+                "connector": "gitConnector",
+                "repo": "TestRepo",
+                "location": "db/example-changelog.yaml",
+                "archive_path": "path/to/archive.zip",
+            },
             identifier="identifier",
             org_id="org_id",
             project_id="project_id",
@@ -547,14 +553,12 @@ class DbSchema(pulumi.CustomResource):
             tags=[
                 "foo:bar",
                 "bar:foo",
-            ],
-            schema_source={
-                "connector": "gitConnector",
-                "repo": "TestRepo",
-                "location": "db/example-changelog.yaml",
-                "archive_path": "path/to/archive.zip",
-            })
+            ])
         harness_code_repo = harness.platform.DbSchema("harness_code_repo",
+            schema_source={
+                "repo": "my-harness-code-repo",
+                "location": "db/example-changelog.yaml",
+            },
             identifier="identifier",
             org_id="org_id",
             project_id="project_id",
@@ -564,11 +568,7 @@ class DbSchema(pulumi.CustomResource):
             tags=[
                 "foo:bar",
                 "bar:foo",
-            ],
-            schema_source={
-                "repo": "my-harness-code-repo",
-                "location": "db/example-changelog.yaml",
-            })
+            ])
         ```
 
         ## Import
@@ -584,14 +584,14 @@ class DbSchema(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']] changelog_script: Configuration to clone changeSets using script
+        :param pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict', 'outputs.DbSchemaChangelogScript']] changelog_script: Configuration to clone changeSets using script
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] migration_type: DB Migration tool type. Valid values are: Liquibase, Flyway
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']] schema_source: Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
+        :param pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict', 'outputs.DbSchemaSchemaSource']] schema_source: Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
         :param pulumi.Input[_builtins.str] service: The service associated with schema
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] type: Type of the database schema. Valid values are: SCRIPT, REPOSITORY
@@ -613,6 +613,12 @@ class DbSchema(pulumi.CustomResource):
         import pulumi_harness as harness
 
         default_type_test = harness.platform.DbSchema("default_type_test",
+            schema_source={
+                "connector": "gitConnector",
+                "repo": "TestRepo",
+                "location": "db/example-changelog.yaml",
+                "archive_path": "path/to/archive.zip",
+            },
             identifier="identifier",
             org_id="org_id",
             project_id="project_id",
@@ -621,14 +627,14 @@ class DbSchema(pulumi.CustomResource):
             tags=[
                 "foo:bar",
                 "bar:foo",
-            ],
-            schema_source={
-                "connector": "gitConnector",
-                "repo": "TestRepo",
-                "location": "db/example-changelog.yaml",
-                "archive_path": "path/to/archive.zip",
-            })
+            ])
         liquibase_repository_test = harness.platform.DbSchema("liquibase_repository_test",
+            schema_source={
+                "connector": "gitConnector",
+                "repo": "TestRepo",
+                "location": "db/example-changelog.yaml",
+                "archive_path": "path/to/archive.zip",
+            },
             identifier="identifier",
             org_id="org_id",
             project_id="project_id",
@@ -639,14 +645,14 @@ class DbSchema(pulumi.CustomResource):
             tags=[
                 "foo:bar",
                 "bar:foo",
-            ],
-            schema_source={
-                "connector": "gitConnector",
-                "repo": "TestRepo",
-                "location": "db/example-changelog.yaml",
-                "archive_path": "path/to/archive.zip",
-            })
+            ])
         liquibase_script_test = harness.platform.DbSchema("liquibase_script_test",
+            changelog_script={
+                "image": "plugins/image",
+                "command": "echo \\\\\\"hello dbops\\\\\\"",
+                "shell": "sh/bash",
+                "location": "db/example-changelog.yaml",
+            },
             identifier="identifier",
             org_id="org_id",
             project_id="project_id",
@@ -657,14 +663,15 @@ class DbSchema(pulumi.CustomResource):
             tags=[
                 "foo:bar",
                 "bar:foo",
-            ],
-            changelog_script={
-                "image": "plugins/image",
-                "command": "echo \\\\\\"hello dbops\\\\\\"",
-                "shell": "sh/bash",
-                "location": "db/example-changelog.yaml",
-            })
+            ])
         flyway_repository_test = harness.platform.DbSchema("flyway_repository_test",
+            schema_source={
+                "connector": "gitConnector",
+                "repo": "TestRepo",
+                "location": "db/flyway/migrations",
+                "toml": "db/flyway.toml",
+                "archive_path": "path/to/archive.zip",
+            },
             identifier="identifier",
             org_id="org_id",
             project_id="project_id",
@@ -675,15 +682,15 @@ class DbSchema(pulumi.CustomResource):
             tags=[
                 "foo:bar",
                 "bar:foo",
-            ],
-            schema_source={
-                "connector": "gitConnector",
-                "repo": "TestRepo",
+            ])
+        flyway_script_test = harness.platform.DbSchema("flyway_script_test",
+            changelog_script={
+                "image": "plugins/image",
+                "command": "echo \\\\\\"hello dbops\\\\\\"",
+                "shell": "sh/bash",
                 "location": "db/flyway/migrations",
                 "toml": "db/flyway.toml",
-                "archive_path": "path/to/archive.zip",
-            })
-        flyway_script_test = harness.platform.DbSchema("flyway_script_test",
+            },
             identifier="identifier",
             org_id="org_id",
             project_id="project_id",
@@ -694,15 +701,14 @@ class DbSchema(pulumi.CustomResource):
             tags=[
                 "foo:bar",
                 "bar:foo",
-            ],
-            changelog_script={
-                "image": "plugins/image",
-                "command": "echo \\\\\\"hello dbops\\\\\\"",
-                "shell": "sh/bash",
-                "location": "db/flyway/migrations",
-                "toml": "db/flyway.toml",
-            })
+            ])
         percona_enabled_test = harness.platform.DbSchema("percona_enabled_test",
+            schema_source={
+                "connector": "gitConnector",
+                "repo": "TestRepo",
+                "location": "db/example-changelog.yaml",
+                "archive_path": "path/to/archive.zip",
+            },
             identifier="identifier",
             org_id="org_id",
             project_id="project_id",
@@ -714,14 +720,12 @@ class DbSchema(pulumi.CustomResource):
             tags=[
                 "foo:bar",
                 "bar:foo",
-            ],
-            schema_source={
-                "connector": "gitConnector",
-                "repo": "TestRepo",
-                "location": "db/example-changelog.yaml",
-                "archive_path": "path/to/archive.zip",
-            })
+            ])
         harness_code_repo = harness.platform.DbSchema("harness_code_repo",
+            schema_source={
+                "repo": "my-harness-code-repo",
+                "location": "db/example-changelog.yaml",
+            },
             identifier="identifier",
             org_id="org_id",
             project_id="project_id",
@@ -731,11 +735,7 @@ class DbSchema(pulumi.CustomResource):
             tags=[
                 "foo:bar",
                 "bar:foo",
-            ],
-            schema_source={
-                "repo": "my-harness-code-repo",
-                "location": "db/example-changelog.yaml",
-            })
+            ])
         ```
 
         ## Import
@@ -764,14 +764,14 @@ class DbSchema(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 changelog_script: pulumi.Input[Optional[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']]] = None,
+                 changelog_script: pulumi.Input[Optional[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict', 'outputs.DbSchemaChangelogScript']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  migration_type: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 schema_source: pulumi.Input[Optional[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']]] = None,
+                 schema_source: pulumi.Input[Optional[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict', 'outputs.DbSchemaSchemaSource']]] = None,
                  service: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -813,14 +813,14 @@ class DbSchema(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            changelog_script: pulumi.Input[Optional[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']]] = None,
+            changelog_script: pulumi.Input[Optional[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict', 'outputs.DbSchemaChangelogScript']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             migration_type: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
-            schema_source: pulumi.Input[Optional[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']]] = None,
+            schema_source: pulumi.Input[Optional[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict', 'outputs.DbSchemaSchemaSource']]] = None,
             service: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -832,14 +832,14 @@ class DbSchema(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict']] changelog_script: Configuration to clone changeSets using script
+        :param pulumi.Input[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict', 'outputs.DbSchemaChangelogScript']] changelog_script: Configuration to clone changeSets using script
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] migration_type: DB Migration tool type. Valid values are: Liquibase, Flyway
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict']] schema_source: Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
+        :param pulumi.Input[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict', 'outputs.DbSchemaSchemaSource']] schema_source: Provides a connector and path at which to find the database schema representation. For Harness Code Repository, omit the connector and provide repo directly.
         :param pulumi.Input[_builtins.str] service: The service associated with schema
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] type: Type of the database schema. Valid values are: SCRIPT, REPOSITORY

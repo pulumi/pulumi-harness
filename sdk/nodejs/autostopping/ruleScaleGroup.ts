@@ -16,10 +16,6 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.autostopping.RuleScaleGroup("test", {
- *     name: "test",
- *     cloudConnectorId: "test-connector",
- *     idleTimeMins: 5,
- *     customDomains: ["app.example.com"],
  *     scaleGroup: {
  *         id: "asg-arn",
  *         name: "asg-name",
@@ -30,14 +26,6 @@ import * as utilities from "../utilities";
  *         onDemand: 1,
  *     },
  *     https: [{
- *         proxyId: "lb-id",
- *         routings: [{
- *             sourceProtocol: "http",
- *             sourcePort: 80,
- *             action: "forward",
- *             targetProtocol: "http",
- *             targetPort: 80,
- *         }],
  *         healths: [{
  *             protocol: "http",
  *             port: 80,
@@ -46,7 +34,19 @@ import * as utilities from "../utilities";
  *             statusCodeFrom: 200,
  *             statusCodeTo: 299,
  *         }],
+ *         routings: [{
+ *             sourceProtocol: "http",
+ *             sourcePort: 80,
+ *             action: "forward",
+ *             targetProtocol: "http",
+ *             targetPort: 80,
+ *         }],
+ *         proxyId: "lb-id",
  *     }],
+ *     name: "test",
+ *     cloudConnectorId: "test-connector",
+ *     idleTimeMins: 5,
+ *     customDomains: ["app.example.com"],
  * });
  * ```
  */

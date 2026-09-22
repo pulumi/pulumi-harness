@@ -43,6 +43,19 @@ import (
 //						},
 //						Specs: platform.GitOpsApplicationsApplicationSpecArray{
 //							&platform.GitOpsApplicationsApplicationSpecArgs{
+//								Destinations: platform.GitOpsApplicationsApplicationSpecDestinationArray{
+//									&platform.GitOpsApplicationsApplicationSpecDestinationArgs{
+//										Namespace: pulumi.String("namespace-123"),
+//										Server:    pulumi.String("https://1.3.4.5"),
+//									},
+//								},
+//								Sources: platform.GitOpsApplicationsApplicationSpecSourceArray{
+//									&platform.GitOpsApplicationsApplicationSpecSourceArgs{
+//										TargetRevision: pulumi.String("master"),
+//										RepoUrl:        pulumi.String("https://github.com/willycoll/argocd-example-apps.git"),
+//										Path:           pulumi.String("helm-guestbook"),
+//									},
+//								},
 //								SyncPolicies: platform.GitOpsApplicationsApplicationSpecSyncPolicyArray{
 //									&platform.GitOpsApplicationsApplicationSpecSyncPolicyArgs{
 //										SyncOptions: pulumi.StringArray{
@@ -56,19 +69,6 @@ import (
 //											pulumi.String("Replace=false"),
 //											pulumi.String("retry=false"),
 //										},
-//									},
-//								},
-//								Sources: platform.GitOpsApplicationsApplicationSpecSourceArray{
-//									&platform.GitOpsApplicationsApplicationSpecSourceArgs{
-//										TargetRevision: pulumi.String("master"),
-//										RepoUrl:        pulumi.String("https://github.com/willycoll/argocd-example-apps.git"),
-//										Path:           pulumi.String("helm-guestbook"),
-//									},
-//								},
-//								Destinations: platform.GitOpsApplicationsApplicationSpecDestinationArray{
-//									&platform.GitOpsApplicationsApplicationSpecDestinationArgs{
-//										Namespace: pulumi.String("namespace-123"),
-//										Server:    pulumi.String("https://1.3.4.5"),
 //									},
 //								},
 //							},

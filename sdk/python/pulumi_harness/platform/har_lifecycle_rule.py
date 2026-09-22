@@ -497,16 +497,16 @@ class HarLifecycleRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
-                 apply_to: pulumi.Input[Optional[Union['HarLifecycleRuleApplyToArgs', 'HarLifecycleRuleApplyToArgsDict']]] = None,
-                 criteria: pulumi.Input[Optional[Union['HarLifecycleRuleCriteriaArgs', 'HarLifecycleRuleCriteriaArgsDict']]] = None,
+                 apply_to: pulumi.Input[Optional[Union['HarLifecycleRuleApplyToArgs', 'HarLifecycleRuleApplyToArgsDict', 'outputs.HarLifecycleRuleApplyTo']]] = None,
+                 criteria: pulumi.Input[Optional[Union['HarLifecycleRuleCriteriaArgs', 'HarLifecycleRuleCriteriaArgsDict', 'outputs.HarLifecycleRuleCriteria']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 filter_config: pulumi.Input[Optional[Union['HarLifecycleRuleFilterConfigArgs', 'HarLifecycleRuleFilterConfigArgsDict']]] = None,
+                 filter_config: pulumi.Input[Optional[Union['HarLifecycleRuleFilterConfigArgs', 'HarLifecycleRuleFilterConfigArgsDict', 'outputs.HarLifecycleRuleFilterConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  package_type: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedule: pulumi.Input[Optional[Union['HarLifecycleRuleScheduleArgs', 'HarLifecycleRuleScheduleArgsDict']]] = None,
+                 schedule: pulumi.Input[Optional[Union['HarLifecycleRuleScheduleArgs', 'HarLifecycleRuleScheduleArgsDict', 'outputs.HarLifecycleRuleSchedule']]] = None,
                  __props__=None):
         """
         Resource for creating and managing Harness Artifact Registry Lifecycle Rules.
@@ -519,49 +519,44 @@ class HarLifecycleRule(pulumi.CustomResource):
 
         # Account-scoped DELETE rule — keep last 10 versions, runs nightly
         nightly_cleanup = harness.platform.HarLifecycleRule("nightly_cleanup",
-            account_id="your-account-id",
-            name="nightly-cleanup",
-            action="DELETE",
-            description="Keep last 10 versions of all artifacts",
             apply_to={
                 "mode": "ALL_IN_SCOPE",
             },
             criteria={
-                "match": "ALL",
                 "rules": [{
                     "type": "KEEP_LAST_N",
                     "value": 10,
                 }],
+                "match": "ALL",
             },
             schedule={
                 "expression": "0 2 * * *",
                 "timezone": "UTC",
-            })
+            },
+            account_id="your-account-id",
+            name="nightly-cleanup",
+            action="DELETE",
+            description="Keep last 10 versions of all artifacts")
         # Project-scoped DELETE rule — delete artifacts older than 30 days
         age_based_cleanup = harness.platform.HarLifecycleRule("age_based_cleanup",
-            account_id="your-account-id",
-            org_id="your-org-id",
-            project_id="your-project-id",
-            name="age-based-cleanup",
-            action="DELETE",
             apply_to={
                 "mode": "ALL_IN_SCOPE",
             },
             criteria={
-                "match": "ALL",
                 "rules": [{
                     "type": "AGE_BASED",
                     "value": 30,
                     "unit": "DAYS",
                 }],
-            })
-        # Org-scoped PROTECT rule — protect images in specific registries matching a tag pattern
-        protect_prod = harness.platform.HarLifecycleRule("protect_prod",
+                "match": "ALL",
+            },
             account_id="your-account-id",
             org_id="your-org-id",
-            name="protect-prod-images",
-            action="PROTECT",
-            package_type="DOCKER",
+            project_id="your-project-id",
+            name="age-based-cleanup",
+            action="DELETE")
+        # Org-scoped PROTECT rule — protect images in specific registries matching a tag pattern
+        protect_prod = harness.platform.HarLifecycleRule("protect_prod",
             apply_to={
                 "mode": "EXPLICIT",
                 "registries": [
@@ -575,17 +570,18 @@ class HarLifecycleRule(pulumi.CustomResource):
                     "v*",
                     "release-*",
                 ],
-            })
+            },
+            account_id="your-account-id",
+            org_id="your-org-id",
+            name="protect-prod-images",
+            action="PROTECT",
+            package_type="DOCKER")
         # Account-scoped DELETE rule with multiple criteria (ANY match)
         multi_criteria_cleanup = harness.platform.HarLifecycleRule("multi_criteria_cleanup",
-            account_id="your-account-id",
-            name="multi-criteria-cleanup",
-            action="DELETE",
             apply_to={
                 "mode": "ALL_IN_SCOPE",
             },
             criteria={
-                "match": "ANY",
                 "rules": [
                     {
                         "type": "KEEP_LAST_N",
@@ -597,7 +593,11 @@ class HarLifecycleRule(pulumi.CustomResource):
                         "unit": "DAYS",
                     },
                 ],
-            })
+                "match": "ANY",
+            },
+            account_id="your-account-id",
+            name="multi-criteria-cleanup",
+            action="DELETE")
         ```
 
         ## Import
@@ -627,15 +627,15 @@ class HarLifecycleRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier for the lifecycle rule.
         :param pulumi.Input[_builtins.str] action: Action to perform: DELETE or PROTECT.
-        :param pulumi.Input[Union['HarLifecycleRuleApplyToArgs', 'HarLifecycleRuleApplyToArgsDict']] apply_to: Defines which registries this rule applies to.
-        :param pulumi.Input[Union['HarLifecycleRuleCriteriaArgs', 'HarLifecycleRuleCriteriaArgsDict']] criteria: Cleanup criteria for the lifecycle rule.
+        :param pulumi.Input[Union['HarLifecycleRuleApplyToArgs', 'HarLifecycleRuleApplyToArgsDict', 'outputs.HarLifecycleRuleApplyTo']] apply_to: Defines which registries this rule applies to.
+        :param pulumi.Input[Union['HarLifecycleRuleCriteriaArgs', 'HarLifecycleRuleCriteriaArgsDict', 'outputs.HarLifecycleRuleCriteria']] criteria: Cleanup criteria for the lifecycle rule.
         :param pulumi.Input[_builtins.bool] enabled: Whether the rule is enabled.
-        :param pulumi.Input[Union['HarLifecycleRuleFilterConfigArgs', 'HarLifecycleRuleFilterConfigArgsDict']] filter_config: Package-type-specific filter configuration.
+        :param pulumi.Input[Union['HarLifecycleRuleFilterConfigArgs', 'HarLifecycleRuleFilterConfigArgsDict', 'outputs.HarLifecycleRuleFilterConfig']] filter_config: Package-type-specific filter configuration.
         :param pulumi.Input[_builtins.str] name: Name of the lifecycle rule.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier. Required for org-scoped rules.
         :param pulumi.Input[_builtins.str] package_type: Package type the rule applies to (e.g. DOCKER, MAVEN, HELM).
         :param pulumi.Input[_builtins.str] project_id: Project identifier. Required for project-scoped rules.
-        :param pulumi.Input[Union['HarLifecycleRuleScheduleArgs', 'HarLifecycleRuleScheduleArgsDict']] schedule: Cron schedule for automatic execution of the rule.
+        :param pulumi.Input[Union['HarLifecycleRuleScheduleArgs', 'HarLifecycleRuleScheduleArgsDict', 'outputs.HarLifecycleRuleSchedule']] schedule: Cron schedule for automatic execution of the rule.
         """
         ...
     @overload
@@ -654,49 +654,44 @@ class HarLifecycleRule(pulumi.CustomResource):
 
         # Account-scoped DELETE rule — keep last 10 versions, runs nightly
         nightly_cleanup = harness.platform.HarLifecycleRule("nightly_cleanup",
-            account_id="your-account-id",
-            name="nightly-cleanup",
-            action="DELETE",
-            description="Keep last 10 versions of all artifacts",
             apply_to={
                 "mode": "ALL_IN_SCOPE",
             },
             criteria={
-                "match": "ALL",
                 "rules": [{
                     "type": "KEEP_LAST_N",
                     "value": 10,
                 }],
+                "match": "ALL",
             },
             schedule={
                 "expression": "0 2 * * *",
                 "timezone": "UTC",
-            })
+            },
+            account_id="your-account-id",
+            name="nightly-cleanup",
+            action="DELETE",
+            description="Keep last 10 versions of all artifacts")
         # Project-scoped DELETE rule — delete artifacts older than 30 days
         age_based_cleanup = harness.platform.HarLifecycleRule("age_based_cleanup",
-            account_id="your-account-id",
-            org_id="your-org-id",
-            project_id="your-project-id",
-            name="age-based-cleanup",
-            action="DELETE",
             apply_to={
                 "mode": "ALL_IN_SCOPE",
             },
             criteria={
-                "match": "ALL",
                 "rules": [{
                     "type": "AGE_BASED",
                     "value": 30,
                     "unit": "DAYS",
                 }],
-            })
-        # Org-scoped PROTECT rule — protect images in specific registries matching a tag pattern
-        protect_prod = harness.platform.HarLifecycleRule("protect_prod",
+                "match": "ALL",
+            },
             account_id="your-account-id",
             org_id="your-org-id",
-            name="protect-prod-images",
-            action="PROTECT",
-            package_type="DOCKER",
+            project_id="your-project-id",
+            name="age-based-cleanup",
+            action="DELETE")
+        # Org-scoped PROTECT rule — protect images in specific registries matching a tag pattern
+        protect_prod = harness.platform.HarLifecycleRule("protect_prod",
             apply_to={
                 "mode": "EXPLICIT",
                 "registries": [
@@ -710,17 +705,18 @@ class HarLifecycleRule(pulumi.CustomResource):
                     "v*",
                     "release-*",
                 ],
-            })
+            },
+            account_id="your-account-id",
+            org_id="your-org-id",
+            name="protect-prod-images",
+            action="PROTECT",
+            package_type="DOCKER")
         # Account-scoped DELETE rule with multiple criteria (ANY match)
         multi_criteria_cleanup = harness.platform.HarLifecycleRule("multi_criteria_cleanup",
-            account_id="your-account-id",
-            name="multi-criteria-cleanup",
-            action="DELETE",
             apply_to={
                 "mode": "ALL_IN_SCOPE",
             },
             criteria={
-                "match": "ANY",
                 "rules": [
                     {
                         "type": "KEEP_LAST_N",
@@ -732,7 +728,11 @@ class HarLifecycleRule(pulumi.CustomResource):
                         "unit": "DAYS",
                     },
                 ],
-            })
+                "match": "ANY",
+            },
+            account_id="your-account-id",
+            name="multi-criteria-cleanup",
+            action="DELETE")
         ```
 
         ## Import
@@ -775,16 +775,16 @@ class HarLifecycleRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
-                 apply_to: pulumi.Input[Optional[Union['HarLifecycleRuleApplyToArgs', 'HarLifecycleRuleApplyToArgsDict']]] = None,
-                 criteria: pulumi.Input[Optional[Union['HarLifecycleRuleCriteriaArgs', 'HarLifecycleRuleCriteriaArgsDict']]] = None,
+                 apply_to: pulumi.Input[Optional[Union['HarLifecycleRuleApplyToArgs', 'HarLifecycleRuleApplyToArgsDict', 'outputs.HarLifecycleRuleApplyTo']]] = None,
+                 criteria: pulumi.Input[Optional[Union['HarLifecycleRuleCriteriaArgs', 'HarLifecycleRuleCriteriaArgsDict', 'outputs.HarLifecycleRuleCriteria']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 filter_config: pulumi.Input[Optional[Union['HarLifecycleRuleFilterConfigArgs', 'HarLifecycleRuleFilterConfigArgsDict']]] = None,
+                 filter_config: pulumi.Input[Optional[Union['HarLifecycleRuleFilterConfigArgs', 'HarLifecycleRuleFilterConfigArgsDict', 'outputs.HarLifecycleRuleFilterConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  package_type: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 schedule: pulumi.Input[Optional[Union['HarLifecycleRuleScheduleArgs', 'HarLifecycleRuleScheduleArgsDict']]] = None,
+                 schedule: pulumi.Input[Optional[Union['HarLifecycleRuleScheduleArgs', 'HarLifecycleRuleScheduleArgsDict', 'outputs.HarLifecycleRuleSchedule']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -829,12 +829,12 @@ class HarLifecycleRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             action: pulumi.Input[Optional[_builtins.str]] = None,
-            apply_to: pulumi.Input[Optional[Union['HarLifecycleRuleApplyToArgs', 'HarLifecycleRuleApplyToArgsDict']]] = None,
+            apply_to: pulumi.Input[Optional[Union['HarLifecycleRuleApplyToArgs', 'HarLifecycleRuleApplyToArgsDict', 'outputs.HarLifecycleRuleApplyTo']]] = None,
             created_at: pulumi.Input[Optional[_builtins.int]] = None,
-            criteria: pulumi.Input[Optional[Union['HarLifecycleRuleCriteriaArgs', 'HarLifecycleRuleCriteriaArgsDict']]] = None,
+            criteria: pulumi.Input[Optional[Union['HarLifecycleRuleCriteriaArgs', 'HarLifecycleRuleCriteriaArgsDict', 'outputs.HarLifecycleRuleCriteria']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            filter_config: pulumi.Input[Optional[Union['HarLifecycleRuleFilterConfigArgs', 'HarLifecycleRuleFilterConfigArgsDict']]] = None,
+            filter_config: pulumi.Input[Optional[Union['HarLifecycleRuleFilterConfigArgs', 'HarLifecycleRuleFilterConfigArgsDict', 'outputs.HarLifecycleRuleFilterConfig']]] = None,
             last_run_at: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             next_run_at: pulumi.Input[Optional[_builtins.int]] = None,
@@ -842,7 +842,7 @@ class HarLifecycleRule(pulumi.CustomResource):
             package_type: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             rule_id: pulumi.Input[Optional[_builtins.str]] = None,
-            schedule: pulumi.Input[Optional[Union['HarLifecycleRuleScheduleArgs', 'HarLifecycleRuleScheduleArgsDict']]] = None,
+            schedule: pulumi.Input[Optional[Union['HarLifecycleRuleScheduleArgs', 'HarLifecycleRuleScheduleArgsDict', 'outputs.HarLifecycleRuleSchedule']]] = None,
             updated_at: pulumi.Input[Optional[_builtins.int]] = None) -> 'HarLifecycleRule':
         """
         Get an existing HarLifecycleRule resource's state with the given name, id, and optional extra
@@ -853,11 +853,11 @@ class HarLifecycleRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier for the lifecycle rule.
         :param pulumi.Input[_builtins.str] action: Action to perform: DELETE or PROTECT.
-        :param pulumi.Input[Union['HarLifecycleRuleApplyToArgs', 'HarLifecycleRuleApplyToArgsDict']] apply_to: Defines which registries this rule applies to.
+        :param pulumi.Input[Union['HarLifecycleRuleApplyToArgs', 'HarLifecycleRuleApplyToArgsDict', 'outputs.HarLifecycleRuleApplyTo']] apply_to: Defines which registries this rule applies to.
         :param pulumi.Input[_builtins.int] created_at: Timestamp when the rule was created (milliseconds since epoch).
-        :param pulumi.Input[Union['HarLifecycleRuleCriteriaArgs', 'HarLifecycleRuleCriteriaArgsDict']] criteria: Cleanup criteria for the lifecycle rule.
+        :param pulumi.Input[Union['HarLifecycleRuleCriteriaArgs', 'HarLifecycleRuleCriteriaArgsDict', 'outputs.HarLifecycleRuleCriteria']] criteria: Cleanup criteria for the lifecycle rule.
         :param pulumi.Input[_builtins.bool] enabled: Whether the rule is enabled.
-        :param pulumi.Input[Union['HarLifecycleRuleFilterConfigArgs', 'HarLifecycleRuleFilterConfigArgsDict']] filter_config: Package-type-specific filter configuration.
+        :param pulumi.Input[Union['HarLifecycleRuleFilterConfigArgs', 'HarLifecycleRuleFilterConfigArgsDict', 'outputs.HarLifecycleRuleFilterConfig']] filter_config: Package-type-specific filter configuration.
         :param pulumi.Input[_builtins.int] last_run_at: Timestamp of the last execution (milliseconds since epoch).
         :param pulumi.Input[_builtins.str] name: Name of the lifecycle rule.
         :param pulumi.Input[_builtins.int] next_run_at: Timestamp of the next scheduled execution (milliseconds since epoch).
@@ -865,7 +865,7 @@ class HarLifecycleRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] package_type: Package type the rule applies to (e.g. DOCKER, MAVEN, HELM).
         :param pulumi.Input[_builtins.str] project_id: Project identifier. Required for project-scoped rules.
         :param pulumi.Input[_builtins.str] rule_id: Unique ID of the lifecycle rule (returned by the API).
-        :param pulumi.Input[Union['HarLifecycleRuleScheduleArgs', 'HarLifecycleRuleScheduleArgsDict']] schedule: Cron schedule for automatic execution of the rule.
+        :param pulumi.Input[Union['HarLifecycleRuleScheduleArgs', 'HarLifecycleRuleScheduleArgsDict', 'outputs.HarLifecycleRuleSchedule']] schedule: Cron schedule for automatic execution of the rule.
         :param pulumi.Input[_builtins.int] updated_at: Timestamp when the rule was last updated (milliseconds since epoch).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

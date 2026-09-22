@@ -315,9 +315,9 @@ class AwaitableGetWorkspaceResult(GetWorkspaceResult):
             variable_sets=self.variable_sets)
 
 
-def get_workspace(connectors: Optional[Sequence[Union['GetWorkspaceConnectorArgs', 'GetWorkspaceConnectorArgsDict']]] = None,
+def get_workspace(connectors: Optional[Sequence[Union['GetWorkspaceConnectorArgs', 'GetWorkspaceConnectorArgsDict', 'outputs.GetWorkspaceConnectorResult']]] = None,
                   description: Optional[_builtins.str] = None,
-                  environment_variables: Optional[Sequence[Union['GetWorkspaceEnvironmentVariableArgs', 'GetWorkspaceEnvironmentVariableArgsDict']]] = None,
+                  environment_variables: Optional[Sequence[Union['GetWorkspaceEnvironmentVariableArgs', 'GetWorkspaceEnvironmentVariableArgsDict', 'outputs.GetWorkspaceEnvironmentVariableResult']]] = None,
                   identifier: Optional[_builtins.str] = None,
                   org_id: Optional[_builtins.str] = None,
                   project_id: Optional[_builtins.str] = None,
@@ -325,8 +325,8 @@ def get_workspace(connectors: Optional[Sequence[Union['GetWorkspaceConnectorArgs
                   repository_commit: Optional[_builtins.str] = None,
                   repository_sha: Optional[_builtins.str] = None,
                   tags: Optional[Sequence[_builtins.str]] = None,
-                  terraform_variable_files: Optional[Sequence[Union['GetWorkspaceTerraformVariableFileArgs', 'GetWorkspaceTerraformVariableFileArgsDict']]] = None,
-                  terraform_variables: Optional[Sequence[Union['GetWorkspaceTerraformVariableArgs', 'GetWorkspaceTerraformVariableArgsDict']]] = None,
+                  terraform_variable_files: Optional[Sequence[Union['GetWorkspaceTerraformVariableFileArgs', 'GetWorkspaceTerraformVariableFileArgsDict', 'outputs.GetWorkspaceTerraformVariableFileResult']]] = None,
+                  terraform_variables: Optional[Sequence[Union['GetWorkspaceTerraformVariableArgs', 'GetWorkspaceTerraformVariableArgsDict', 'outputs.GetWorkspaceTerraformVariableResult']]] = None,
                   variable_sets: Optional[Sequence[_builtins.str]] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceResult:
     """
@@ -344,9 +344,9 @@ def get_workspace(connectors: Optional[Sequence[Union['GetWorkspaceConnectorArgs
     ```
 
 
-    :param Sequence[Union['GetWorkspaceConnectorArgs', 'GetWorkspaceConnectorArgsDict']] connectors: Provider connectors configured on the Workspace. Only one connector of a type is supported
+    :param Sequence[Union['GetWorkspaceConnectorArgs', 'GetWorkspaceConnectorArgsDict', 'outputs.GetWorkspaceConnectorResult']] connectors: Provider connectors configured on the Workspace. Only one connector of a type is supported
     :param _builtins.str description: Description of the Workspace
-    :param Sequence[Union['GetWorkspaceEnvironmentVariableArgs', 'GetWorkspaceEnvironmentVariableArgsDict']] environment_variables: Environment variables configured on the workspace
+    :param Sequence[Union['GetWorkspaceEnvironmentVariableArgs', 'GetWorkspaceEnvironmentVariableArgsDict', 'outputs.GetWorkspaceEnvironmentVariableResult']] environment_variables: Environment variables configured on the workspace
     :param _builtins.str identifier: Identifier of the Workspace
     :param _builtins.str org_id: Organization Identifier
     :param _builtins.str project_id: Project Identifier
@@ -354,8 +354,8 @@ def get_workspace(connectors: Optional[Sequence[Union['GetWorkspaceConnectorArgs
     :param _builtins.str repository_commit: Repository Tag in which the code should be accessed
     :param _builtins.str repository_sha: Repository Commit SHA in which the code should be accessed
     :param Sequence[_builtins.str] tags: Tags to associate with the resource.
-    :param Sequence[Union['GetWorkspaceTerraformVariableFileArgs', 'GetWorkspaceTerraformVariableFileArgsDict']] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
-    :param Sequence[Union['GetWorkspaceTerraformVariableArgs', 'GetWorkspaceTerraformVariableArgsDict']] terraform_variables: Terraform variables configured on the workspace (see below for nested schema)
+    :param Sequence[Union['GetWorkspaceTerraformVariableFileArgs', 'GetWorkspaceTerraformVariableFileArgsDict', 'outputs.GetWorkspaceTerraformVariableFileResult']] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
+    :param Sequence[Union['GetWorkspaceTerraformVariableArgs', 'GetWorkspaceTerraformVariableArgsDict', 'outputs.GetWorkspaceTerraformVariableResult']] terraform_variables: Terraform variables configured on the workspace (see below for nested schema)
     :param Sequence[_builtins.str] variable_sets: Variable sets to use.
     """
     __args__ = dict()
@@ -399,9 +399,9 @@ def get_workspace(connectors: Optional[Sequence[Union['GetWorkspaceConnectorArgs
         terraform_variable_files=pulumi.get(__ret__, 'terraform_variable_files'),
         terraform_variables=pulumi.get(__ret__, 'terraform_variables'),
         variable_sets=pulumi.get(__ret__, 'variable_sets'))
-def get_workspace_output(connectors: pulumi.Input[Optional[Optional[Sequence[Union['GetWorkspaceConnectorArgs', 'GetWorkspaceConnectorArgsDict']]]]] = None,
+def get_workspace_output(connectors: pulumi.Input[Optional[Optional[Sequence[Union['GetWorkspaceConnectorArgs', 'GetWorkspaceConnectorArgsDict', 'outputs.GetWorkspaceConnectorResult']]]]] = None,
                          description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                         environment_variables: pulumi.Input[Optional[Optional[Sequence[Union['GetWorkspaceEnvironmentVariableArgs', 'GetWorkspaceEnvironmentVariableArgsDict']]]]] = None,
+                         environment_variables: pulumi.Input[Optional[Optional[Sequence[Union['GetWorkspaceEnvironmentVariableArgs', 'GetWorkspaceEnvironmentVariableArgsDict', 'outputs.GetWorkspaceEnvironmentVariableResult']]]]] = None,
                          identifier: pulumi.Input[Optional[_builtins.str]] = None,
                          org_id: pulumi.Input[Optional[_builtins.str]] = None,
                          project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -409,8 +409,8 @@ def get_workspace_output(connectors: pulumi.Input[Optional[Optional[Sequence[Uni
                          repository_commit: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          repository_sha: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          tags: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
-                         terraform_variable_files: pulumi.Input[Optional[Optional[Sequence[Union['GetWorkspaceTerraformVariableFileArgs', 'GetWorkspaceTerraformVariableFileArgsDict']]]]] = None,
-                         terraform_variables: pulumi.Input[Optional[Optional[Sequence[Union['GetWorkspaceTerraformVariableArgs', 'GetWorkspaceTerraformVariableArgsDict']]]]] = None,
+                         terraform_variable_files: pulumi.Input[Optional[Optional[Sequence[Union['GetWorkspaceTerraformVariableFileArgs', 'GetWorkspaceTerraformVariableFileArgsDict', 'outputs.GetWorkspaceTerraformVariableFileResult']]]]] = None,
+                         terraform_variables: pulumi.Input[Optional[Optional[Sequence[Union['GetWorkspaceTerraformVariableArgs', 'GetWorkspaceTerraformVariableArgsDict', 'outputs.GetWorkspaceTerraformVariableResult']]]]] = None,
                          variable_sets: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceResult]:
     """
@@ -428,9 +428,9 @@ def get_workspace_output(connectors: pulumi.Input[Optional[Optional[Sequence[Uni
     ```
 
 
-    :param Sequence[Union['GetWorkspaceConnectorArgs', 'GetWorkspaceConnectorArgsDict']] connectors: Provider connectors configured on the Workspace. Only one connector of a type is supported
+    :param Sequence[Union['GetWorkspaceConnectorArgs', 'GetWorkspaceConnectorArgsDict', 'outputs.GetWorkspaceConnectorResult']] connectors: Provider connectors configured on the Workspace. Only one connector of a type is supported
     :param _builtins.str description: Description of the Workspace
-    :param Sequence[Union['GetWorkspaceEnvironmentVariableArgs', 'GetWorkspaceEnvironmentVariableArgsDict']] environment_variables: Environment variables configured on the workspace
+    :param Sequence[Union['GetWorkspaceEnvironmentVariableArgs', 'GetWorkspaceEnvironmentVariableArgsDict', 'outputs.GetWorkspaceEnvironmentVariableResult']] environment_variables: Environment variables configured on the workspace
     :param _builtins.str identifier: Identifier of the Workspace
     :param _builtins.str org_id: Organization Identifier
     :param _builtins.str project_id: Project Identifier
@@ -438,8 +438,8 @@ def get_workspace_output(connectors: pulumi.Input[Optional[Optional[Sequence[Uni
     :param _builtins.str repository_commit: Repository Tag in which the code should be accessed
     :param _builtins.str repository_sha: Repository Commit SHA in which the code should be accessed
     :param Sequence[_builtins.str] tags: Tags to associate with the resource.
-    :param Sequence[Union['GetWorkspaceTerraformVariableFileArgs', 'GetWorkspaceTerraformVariableFileArgsDict']] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
-    :param Sequence[Union['GetWorkspaceTerraformVariableArgs', 'GetWorkspaceTerraformVariableArgsDict']] terraform_variables: Terraform variables configured on the workspace (see below for nested schema)
+    :param Sequence[Union['GetWorkspaceTerraformVariableFileArgs', 'GetWorkspaceTerraformVariableFileArgsDict', 'outputs.GetWorkspaceTerraformVariableFileResult']] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
+    :param Sequence[Union['GetWorkspaceTerraformVariableArgs', 'GetWorkspaceTerraformVariableArgsDict', 'outputs.GetWorkspaceTerraformVariableResult']] terraform_variables: Terraform variables configured on the workspace (see below for nested schema)
     :param Sequence[_builtins.str] variable_sets: Variable sets to use.
     """
     __args__ = dict()

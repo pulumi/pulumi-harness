@@ -17,6 +17,12 @@ import * as utilities from "../utilities";
  *
  * // Authentication mechanism as username and password
  * const test = new harness.platform.ConnectorCustomhealthsource("test", {
+ *     headers: [{
+ *         encryptedValueRef: "account.doNotDeleteHSM",
+ *         valueEncrypted: true,
+ *         key: "key",
+ *         value: "value",
+ *     }],
  *     identifier: "identifier",
  *     name: "name",
  *     description: "test",
@@ -25,12 +31,6 @@ import * as utilities from "../utilities";
  *     delegateSelectors: ["harness-delegate"],
  *     method: "GET",
  *     validationPath: "loki/api/v1/labels",
- *     headers: [{
- *         encryptedValueRef: "account.doNotDeleteHSM",
- *         valueEncrypted: true,
- *         key: "key",
- *         value: "value",
- *     }],
  * });
  * ```
  *

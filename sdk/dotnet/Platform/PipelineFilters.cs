@@ -24,11 +24,6 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var test = new Harness.Platform.PipelineFilters("test", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         Type = "PipelineSetup",
     ///         FilterProperties = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesArgs
     ///         {
     ///             Name = "pipeline_name",
@@ -40,27 +35,19 @@ namespace Pulumi.Harness.Platform
     ///             },
     ///             FilterType = "PipelineSetup",
     ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Type = "PipelineSetup",
     ///         FilterVisibility = "EveryOne",
     ///     });
     /// 
     ///     // pipeline execution filter consisiting services (service_identifiers) filter
     ///     var execution = new Harness.Platform.PipelineFilters("execution", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         Type = "PipelineSetup",
     ///         FilterProperties = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesArgs
     ///         {
-    ///             Name = "pipeline_name",
-    ///             Description = "pipeline_description",
-    ///             PipelineIdentifiers = new[]
-    ///             {
-    ///                 "id1",
-    ///                 "id2",
-    ///             },
-    ///             FilterType = "PipelineExecution",
     ///             ModuleProperties = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesModulePropertiesArgs
     ///             {
     ///                 Cd = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesModulePropertiesCdArgs
@@ -72,34 +59,28 @@ namespace Pulumi.Harness.Platform
     ///                     },
     ///                 },
     ///             },
+    ///             Name = "pipeline_name",
+    ///             Description = "pipeline_description",
+    ///             PipelineIdentifiers = new[]
+    ///             {
+    ///                 "id1",
+    ///                 "id2",
+    ///             },
+    ///             FilterType = "PipelineExecution",
     ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Type = "PipelineSetup",
     ///         FilterVisibility = "EveryOne",
     ///     });
     /// 
     ///     // pipeline filter with tags
     ///     var exampleWithTags = new Harness.Platform.PipelineFilters("example_with_tags", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         Type = "PipelineSetup",
     ///         FilterProperties = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesArgs
     ///         {
-    ///             FilterType = "PipelineSetup",
-    ///             PipelineTags = new[]
-    ///             {
-    ///                 
-    ///                 {
-    ///                     { "key", "tag1" },
-    ///                     { "value", "123" },
-    ///                 },
-    ///                 
-    ///                 {
-    ///                     { "key", "tag2" },
-    ///                     { "value", "456" },
-    ///                 },
-    ///             },
     ///             ModuleProperties = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesModulePropertiesArgs
     ///             {
     ///                 Cd = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesModulePropertiesCdArgs
@@ -128,33 +109,32 @@ namespace Pulumi.Harness.Platform
     ///                     RepoNames = "repo1234",
     ///                 },
     ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var pipelinemoduleproperties = new Harness.Platform.PipelineFilters("pipelinemoduleproperties", new()
-    ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         OrgId = testHarnessPlatformProject.OrgId,
-    ///         ProjectId = testHarnessPlatformProject.Id,
-    ///         Type = "PipelineExecution",
-    ///         FilterProperties = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesArgs
-    ///         {
-    ///             FilterType = "PipelineExecution",
-    ///             PipelineName = "test",
+    ///             FilterType = "PipelineSetup",
     ///             PipelineTags = new[]
     ///             {
     ///                 
     ///                 {
-    ///                     { "key", "k1" },
-    ///                     { "value", "v1" },
+    ///                     { "key", "tag1" },
+    ///                     { "value", "123" },
     ///                 },
     ///                 
     ///                 {
-    ///                     { "key", "k2" },
-    ///                     { "value", "v2" },
+    ///                     { "key", "tag2" },
+    ///                     { "value", "456" },
     ///                 },
     ///             },
+    ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         Type = "PipelineSetup",
+    ///     });
+    /// 
+    ///     var pipelinemoduleproperties = new Harness.Platform.PipelineFilters("pipelinemoduleproperties", new()
+    ///     {
+    ///         FilterProperties = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesArgs
+    ///         {
     ///             ModuleProperties = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesModulePropertiesArgs
     ///             {
     ///                 Cd = new Harness.Platform.Inputs.PipelineFiltersFilterPropertiesModulePropertiesCdArgs
@@ -174,7 +154,27 @@ namespace Pulumi.Harness.Platform
     ///                     },
     ///                 },
     ///             },
+    ///             FilterType = "PipelineExecution",
+    ///             PipelineName = "test",
+    ///             PipelineTags = new[]
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "key", "k1" },
+    ///                     { "value", "v1" },
+    ///                 },
+    ///                 
+    ///                 {
+    ///                     { "key", "k2" },
+    ///                     { "value", "v2" },
+    ///                 },
+    ///             },
     ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         OrgId = testHarnessPlatformProject.OrgId,
+    ///         ProjectId = testHarnessPlatformProject.Id,
+    ///         Type = "PipelineExecution",
     ///     });
     /// 
     /// });

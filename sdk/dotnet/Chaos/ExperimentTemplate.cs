@@ -47,30 +47,12 @@ namespace Pulumi.Harness.Chaos
     ///     // Basic template with single fault
     ///     var simpleFault = new Harness.Chaos.ExperimentTemplate("simple_fault", new()
     ///     {
-    ///         OrgId = @this.Id,
-    ///         ProjectId = thisHarnessPlatformProject.Id,
-    ///         HubIdentity = projectLevel.Identity,
-    ///         Identity = "simple-pod-delete",
-    ///         Name = "Simple Pod Delete Experiment",
-    ///         Description = "Basic experiment with single pod delete fault",
-    ///         Tags = new[]
-    ///         {
-    ///             "kubernetes",
-    ///             "pod-delete",
-    ///             "simple",
-    ///         },
     ///         Spec = new Harness.Chaos.Inputs.ExperimentTemplateSpecArgs
     ///         {
-    ///             InfraType = "KubernetesV2",
     ///             Faults = new[]
     ///             {
     ///                 new Harness.Chaos.Inputs.ExperimentTemplateSpecFaultArgs
     ///                 {
-    ///                     Identity = "pod-delete",
-    ///                     Name = "pod-delete-fault",
-    ///                     Revision = "v1",
-    ///                     IsEnterprise = true,
-    ///                     AuthEnabled = false,
     ///                     Values = new[]
     ///                     {
     ///                         new Harness.Chaos.Inputs.ExperimentTemplateSpecFaultValueArgs
@@ -89,13 +71,17 @@ namespace Pulumi.Harness.Chaos
     ///                             Value = "&lt;+input&gt;.default('30s')",
     ///                         },
     ///                     },
+    ///                     Identity = "pod-delete",
+    ///                     Name = "pod-delete-fault",
+    ///                     Revision = "v1",
+    ///                     IsEnterprise = true,
+    ///                     AuthEnabled = false,
     ///                 },
     ///             },
     ///             Vertices = new[]
     ///             {
     ///                 new Harness.Chaos.Inputs.ExperimentTemplateSpecVertexArgs
     ///                 {
-    ///                     Name = "pod-delete-vertex",
     ///                     Start = new Harness.Chaos.Inputs.ExperimentTemplateSpecVertexStartArgs
     ///                     {
     ///                         Faults = new[]
@@ -107,9 +93,23 @@ namespace Pulumi.Harness.Chaos
     ///                         },
     ///                     },
     ///                     End = null,
+    ///                     Name = "pod-delete-vertex",
     ///                 },
     ///             },
+    ///             InfraType = "KubernetesV2",
     ///             CleanupPolicy = "delete",
+    ///         },
+    ///         OrgId = @this.Id,
+    ///         ProjectId = thisHarnessPlatformProject.Id,
+    ///         HubIdentity = projectLevel.Identity,
+    ///         Identity = "simple-pod-delete",
+    ///         Name = "Simple Pod Delete Experiment",
+    ///         Description = "Basic experiment with single pod delete fault",
+    ///         Tags = new[]
+    ///         {
+    ///             "kubernetes",
+    ///             "pod-delete",
+    ///             "simple",
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
@@ -125,29 +125,12 @@ namespace Pulumi.Harness.Chaos
     ///     // Template combining action and fault
     ///     var withAction = new Harness.Chaos.ExperimentTemplate("with_action", new()
     ///     {
-    ///         OrgId = @this.Id,
-    ///         ProjectId = thisHarnessPlatformProject.Id,
-    ///         HubIdentity = projectLevel.Identity,
-    ///         Identity = "action-and-fault",
-    ///         Name = "Action and Fault Experiment",
-    ///         Description = "Experiment with action before fault",
-    ///         Tags = new[]
-    ///         {
-    ///             "kubernetes",
-    ///             "action",
-    ///             "fault",
-    ///         },
     ///         Spec = new Harness.Chaos.Inputs.ExperimentTemplateSpecArgs
     ///         {
-    ///             InfraType = "KubernetesV2",
     ///             Actions = new[]
     ///             {
     ///                 new Harness.Chaos.Inputs.ExperimentTemplateSpecActionArgs
     ///                 {
-    ///                     Identity = "notification-action",
-    ///                     Name = "pre-chaos-notification",
-    ///                     IsEnterprise = false,
-    ///                     ContinueOnCompletion = false,
     ///                     Values = new[]
     ///                     {
     ///                         new Harness.Chaos.Inputs.ExperimentTemplateSpecActionValueArgs
@@ -156,17 +139,16 @@ namespace Pulumi.Harness.Chaos
     ///                             Value = "Starting chaos experiment",
     ///                         },
     ///                     },
+    ///                     Identity = "notification-action",
+    ///                     Name = "pre-chaos-notification",
+    ///                     IsEnterprise = false,
+    ///                     ContinueOnCompletion = false,
     ///                 },
     ///             },
     ///             Faults = new[]
     ///             {
     ///                 new Harness.Chaos.Inputs.ExperimentTemplateSpecFaultArgs
     ///                 {
-    ///                     Identity = "container-kill",
-    ///                     Name = "container-kill-fault",
-    ///                     Revision = "v1",
-    ///                     IsEnterprise = true,
-    ///                     AuthEnabled = false,
     ///                     Values = new[]
     ///                     {
     ///                         new Harness.Chaos.Inputs.ExperimentTemplateSpecFaultValueArgs
@@ -185,13 +167,17 @@ namespace Pulumi.Harness.Chaos
     ///                             Value = "&lt;+input&gt;.default('30s')",
     ///                         },
     ///                     },
+    ///                     Identity = "container-kill",
+    ///                     Name = "container-kill-fault",
+    ///                     Revision = "v1",
+    ///                     IsEnterprise = true,
+    ///                     AuthEnabled = false,
     ///                 },
     ///             },
     ///             Vertices = new[]
     ///             {
     ///                 new Harness.Chaos.Inputs.ExperimentTemplateSpecVertexArgs
     ///                 {
-    ///                     Name = "action-vertex",
     ///                     Start = new Harness.Chaos.Inputs.ExperimentTemplateSpecVertexStartArgs
     ///                     {
     ///                         Actions = new[]
@@ -203,10 +189,10 @@ namespace Pulumi.Harness.Chaos
     ///                         },
     ///                     },
     ///                     End = null,
+    ///                     Name = "action-vertex",
     ///                 },
     ///                 new Harness.Chaos.Inputs.ExperimentTemplateSpecVertexArgs
     ///                 {
-    ///                     Name = "fault-vertex",
     ///                     Start = new Harness.Chaos.Inputs.ExperimentTemplateSpecVertexStartArgs
     ///                     {
     ///                         Faults = new[]
@@ -218,9 +204,23 @@ namespace Pulumi.Harness.Chaos
     ///                         },
     ///                     },
     ///                     End = null,
+    ///                     Name = "fault-vertex",
     ///                 },
     ///             },
+    ///             InfraType = "KubernetesV2",
     ///             CleanupPolicy = "delete",
+    ///         },
+    ///         OrgId = @this.Id,
+    ///         ProjectId = thisHarnessPlatformProject.Id,
+    ///         HubIdentity = projectLevel.Identity,
+    ///         Identity = "action-and-fault",
+    ///         Name = "Action and Fault Experiment",
+    ///         Description = "Experiment with action before fault",
+    ///         Tags = new[]
+    ///         {
+    ///             "kubernetes",
+    ///             "action",
+    ///             "fault",
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
@@ -236,29 +236,17 @@ namespace Pulumi.Harness.Chaos
     ///     // Complete template with actions, faults, and probes
     ///     var complex = new Harness.Chaos.ExperimentTemplate("complex", new()
     ///     {
-    ///         OrgId = @this.Id,
-    ///         ProjectId = thisHarnessPlatformProject.Id,
-    ///         HubIdentity = projectLevel.Identity,
-    ///         Identity = "complex-experiment",
-    ///         Name = "Complex Chaos Experiment",
-    ///         Description = "Complete experiment with actions, faults, and probes",
-    ///         Tags = new[]
-    ///         {
-    ///             "kubernetes",
-    ///             "complex",
-    ///             "enterprise",
-    ///         },
     ///         Spec = new Harness.Chaos.Inputs.ExperimentTemplateSpecArgs
     ///         {
-    ///             InfraType = "KubernetesV2",
+    ///             StatusCheckTimeouts = new Harness.Chaos.Inputs.ExperimentTemplateSpecStatusCheckTimeoutsArgs
+    ///             {
+    ///                 Delay = 5,
+    ///                 Timeout = 300,
+    ///             },
     ///             Actions = new[]
     ///             {
     ///                 new Harness.Chaos.Inputs.ExperimentTemplateSpecActionArgs
     ///                 {
-    ///                     Identity = "notification-action",
-    ///                     Name = "start-notification",
-    ///                     IsEnterprise = false,
-    ///                     ContinueOnCompletion = false,
     ///                     Values = new[]
     ///                     {
     ///                         new Harness.Chaos.Inputs.ExperimentTemplateSpecActionValueArgs
@@ -267,17 +255,16 @@ namespace Pulumi.Harness.Chaos
     ///                             Value = "Chaos experiment started",
     ///                         },
     ///                     },
+    ///                     Identity = "notification-action",
+    ///                     Name = "start-notification",
+    ///                     IsEnterprise = false,
+    ///                     ContinueOnCompletion = false,
     ///                 },
     ///             },
     ///             Faults = new[]
     ///             {
     ///                 new Harness.Chaos.Inputs.ExperimentTemplateSpecFaultArgs
     ///                 {
-    ///                     Identity = "pod-delete",
-    ///                     Name = "pod-delete-fault",
-    ///                     Revision = "v1",
-    ///                     IsEnterprise = true,
-    ///                     AuthEnabled = false,
     ///                     Values = new[]
     ///                     {
     ///                         new Harness.Chaos.Inputs.ExperimentTemplateSpecFaultValueArgs
@@ -296,14 +283,14 @@ namespace Pulumi.Harness.Chaos
     ///                             Value = "&lt;+input&gt;.default('30s')",
     ///                         },
     ///                     },
-    ///                 },
-    ///                 new Harness.Chaos.Inputs.ExperimentTemplateSpecFaultArgs
-    ///                 {
-    ///                     Identity = "pod-network-latency",
-    ///                     Name = "network-latency-fault",
+    ///                     Identity = "pod-delete",
+    ///                     Name = "pod-delete-fault",
     ///                     Revision = "v1",
     ///                     IsEnterprise = true,
     ///                     AuthEnabled = false,
+    ///                 },
+    ///                 new Harness.Chaos.Inputs.ExperimentTemplateSpecFaultArgs
+    ///                 {
     ///                     Values = new[]
     ///                     {
     ///                         new Harness.Chaos.Inputs.ExperimentTemplateSpecFaultValueArgs
@@ -322,19 +309,17 @@ namespace Pulumi.Harness.Chaos
     ///                             Value = "&lt;+input&gt;.default('2000')",
     ///                         },
     ///                     },
+    ///                     Identity = "pod-network-latency",
+    ///                     Name = "network-latency-fault",
+    ///                     Revision = "v1",
+    ///                     IsEnterprise = true,
+    ///                     AuthEnabled = false,
     ///                 },
     ///             },
     ///             Probes = new[]
     ///             {
     ///                 new Harness.Chaos.Inputs.ExperimentTemplateSpecProbeArgs
     ///                 {
-    ///                     Identity = "pod-status-check",
-    ///                     Name = "pod-status-probe",
-    ///                     Revision = "v1",
-    ///                     IsEnterprise = true,
-    ///                     Duration = "30",
-    ///                     Weightage = 10,
-    ///                     EnableDataCollection = false,
     ///                     ConditionsV2 = new Harness.Chaos.Inputs.ExperimentTemplateSpecProbeConditionsV2Args
     ///                     {
     ///                         Operator = "AND",
@@ -351,16 +336,16 @@ namespace Pulumi.Harness.Chaos
     ///                             Value = "&lt;+input&gt;",
     ///                         },
     ///                     },
-    ///                 },
-    ///                 new Harness.Chaos.Inputs.ExperimentTemplateSpecProbeArgs
-    ///                 {
-    ///                     Identity = "http-health-check",
-    ///                     Name = "http-health-probe",
+    ///                     Identity = "pod-status-check",
+    ///                     Name = "pod-status-probe",
     ///                     Revision = "v1",
     ///                     IsEnterprise = true,
     ///                     Duration = "30",
     ///                     Weightage = 10,
     ///                     EnableDataCollection = false,
+    ///                 },
+    ///                 new Harness.Chaos.Inputs.ExperimentTemplateSpecProbeArgs
+    ///                 {
     ///                     ConditionsV2 = new Harness.Chaos.Inputs.ExperimentTemplateSpecProbeConditionsV2Args
     ///                     {
     ///                         Operator = "OR",
@@ -378,13 +363,19 @@ namespace Pulumi.Harness.Chaos
     ///                             Value = "&lt;+input&gt;",
     ///                         },
     ///                     },
+    ///                     Identity = "http-health-check",
+    ///                     Name = "http-health-probe",
+    ///                     Revision = "v1",
+    ///                     IsEnterprise = true,
+    ///                     Duration = "30",
+    ///                     Weightage = 10,
+    ///                     EnableDataCollection = false,
     ///                 },
     ///             },
     ///             Vertices = new[]
     ///             {
     ///                 new Harness.Chaos.Inputs.ExperimentTemplateSpecVertexArgs
     ///                 {
-    ///                     Name = "action-stage",
     ///                     Start = new Harness.Chaos.Inputs.ExperimentTemplateSpecVertexStartArgs
     ///                     {
     ///                         Actions = new[]
@@ -396,10 +387,10 @@ namespace Pulumi.Harness.Chaos
     ///                         },
     ///                     },
     ///                     End = null,
+    ///                     Name = "action-stage",
     ///                 },
     ///                 new Harness.Chaos.Inputs.ExperimentTemplateSpecVertexArgs
     ///                 {
-    ///                     Name = "fault-stage",
     ///                     Start = new Harness.Chaos.Inputs.ExperimentTemplateSpecVertexStartArgs
     ///                     {
     ///                         Faults = new[]
@@ -426,20 +417,29 @@ namespace Pulumi.Harness.Chaos
     ///                         },
     ///                     },
     ///                     End = null,
+    ///                     Name = "fault-stage",
     ///                 },
     ///                 new Harness.Chaos.Inputs.ExperimentTemplateSpecVertexArgs
     ///                 {
-    ///                     Name = "cleanup-stage",
     ///                     Start = null,
     ///                     End = null,
+    ///                     Name = "cleanup-stage",
     ///                 },
     ///             },
+    ///             InfraType = "KubernetesV2",
     ///             CleanupPolicy = "delete",
-    ///             StatusCheckTimeouts = new Harness.Chaos.Inputs.ExperimentTemplateSpecStatusCheckTimeoutsArgs
-    ///             {
-    ///                 Delay = 5,
-    ///                 Timeout = 300,
-    ///             },
+    ///         },
+    ///         OrgId = @this.Id,
+    ///         ProjectId = thisHarnessPlatformProject.Id,
+    ///         HubIdentity = projectLevel.Identity,
+    ///         Identity = "complex-experiment",
+    ///         Name = "Complex Chaos Experiment",
+    ///         Description = "Complete experiment with actions, faults, and probes",
+    ///         Tags = new[]
+    ///         {
+    ///             "kubernetes",
+    ///             "complex",
+    ///             "enterprise",
     ///         },
     ///     }, new CustomResourceOptions
     ///     {

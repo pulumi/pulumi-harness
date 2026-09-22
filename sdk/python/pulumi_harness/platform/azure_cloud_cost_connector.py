@@ -390,8 +390,8 @@ class AzureCloudCostConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 billing_export_spec: pulumi.Input[Optional[Union['AzureCloudCostConnectorBillingExportSpecArgs', 'AzureCloudCostConnectorBillingExportSpecArgsDict']]] = None,
-                 billing_export_spec2: pulumi.Input[Optional[Union['AzureCloudCostConnectorBillingExportSpec2Args', 'AzureCloudCostConnectorBillingExportSpec2ArgsDict']]] = None,
+                 billing_export_spec: pulumi.Input[Optional[Union['AzureCloudCostConnectorBillingExportSpecArgs', 'AzureCloudCostConnectorBillingExportSpecArgsDict', 'outputs.AzureCloudCostConnectorBillingExportSpec']]] = None,
+                 billing_export_spec2: pulumi.Input[Optional[Union['AzureCloudCostConnectorBillingExportSpec2Args', 'AzureCloudCostConnectorBillingExportSpec2ArgsDict', 'outputs.AzureCloudCostConnectorBillingExportSpec2']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  features_enableds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -412,18 +412,6 @@ class AzureCloudCostConnector(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.platform.AzureCloudCostConnector("example",
-            identifier="identifier",
-            name="name",
-            description="example",
-            tags=["foo:bar"],
-            features_enableds=[
-                "BILLING",
-                "VISIBILITY",
-                "OPTIMIZATION",
-                "GOVERNANCE",
-            ],
-            tenant_id="tenant_id",
-            subscription_id="subscription_id",
             billing_export_spec={
                 "storage_account_name": "storage_account_name",
                 "container_name": "container_name",
@@ -439,7 +427,19 @@ class AzureCloudCostConnector(pulumi.CustomResource):
                 "report_name": "report_name",
                 "subscription_id": "subscription_id",
                 "billing_type": "billing_type",
-            })
+            },
+            identifier="identifier",
+            name="name",
+            description="example",
+            tags=["foo:bar"],
+            features_enableds=[
+                "BILLING",
+                "VISIBILITY",
+                "OPTIMIZATION",
+                "GOVERNANCE",
+            ],
+            tenant_id="tenant_id",
+            subscription_id="subscription_id")
         ```
 
         ## Import
@@ -467,8 +467,8 @@ class AzureCloudCostConnector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AzureCloudCostConnectorBillingExportSpecArgs', 'AzureCloudCostConnectorBillingExportSpecArgsDict']] billing_export_spec: Returns billing details for the Azure account.
-        :param pulumi.Input[Union['AzureCloudCostConnectorBillingExportSpec2Args', 'AzureCloudCostConnectorBillingExportSpec2ArgsDict']] billing_export_spec2: Returns billing details for the Azure account.
+        :param pulumi.Input[Union['AzureCloudCostConnectorBillingExportSpecArgs', 'AzureCloudCostConnectorBillingExportSpecArgsDict', 'outputs.AzureCloudCostConnectorBillingExportSpec']] billing_export_spec: Returns billing details for the Azure account.
+        :param pulumi.Input[Union['AzureCloudCostConnectorBillingExportSpec2Args', 'AzureCloudCostConnectorBillingExportSpec2ArgsDict', 'outputs.AzureCloudCostConnectorBillingExportSpec2']] billing_export_spec2: Returns billing details for the Azure account.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] features_enableds: Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -495,18 +495,6 @@ class AzureCloudCostConnector(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.platform.AzureCloudCostConnector("example",
-            identifier="identifier",
-            name="name",
-            description="example",
-            tags=["foo:bar"],
-            features_enableds=[
-                "BILLING",
-                "VISIBILITY",
-                "OPTIMIZATION",
-                "GOVERNANCE",
-            ],
-            tenant_id="tenant_id",
-            subscription_id="subscription_id",
             billing_export_spec={
                 "storage_account_name": "storage_account_name",
                 "container_name": "container_name",
@@ -522,7 +510,19 @@ class AzureCloudCostConnector(pulumi.CustomResource):
                 "report_name": "report_name",
                 "subscription_id": "subscription_id",
                 "billing_type": "billing_type",
-            })
+            },
+            identifier="identifier",
+            name="name",
+            description="example",
+            tags=["foo:bar"],
+            features_enableds=[
+                "BILLING",
+                "VISIBILITY",
+                "OPTIMIZATION",
+                "GOVERNANCE",
+            ],
+            tenant_id="tenant_id",
+            subscription_id="subscription_id")
         ```
 
         ## Import
@@ -563,8 +563,8 @@ class AzureCloudCostConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 billing_export_spec: pulumi.Input[Optional[Union['AzureCloudCostConnectorBillingExportSpecArgs', 'AzureCloudCostConnectorBillingExportSpecArgsDict']]] = None,
-                 billing_export_spec2: pulumi.Input[Optional[Union['AzureCloudCostConnectorBillingExportSpec2Args', 'AzureCloudCostConnectorBillingExportSpec2ArgsDict']]] = None,
+                 billing_export_spec: pulumi.Input[Optional[Union['AzureCloudCostConnectorBillingExportSpecArgs', 'AzureCloudCostConnectorBillingExportSpecArgsDict', 'outputs.AzureCloudCostConnectorBillingExportSpec']]] = None,
+                 billing_export_spec2: pulumi.Input[Optional[Union['AzureCloudCostConnectorBillingExportSpec2Args', 'AzureCloudCostConnectorBillingExportSpec2ArgsDict', 'outputs.AzureCloudCostConnectorBillingExportSpec2']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  features_enableds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -612,8 +612,8 @@ class AzureCloudCostConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            billing_export_spec: pulumi.Input[Optional[Union['AzureCloudCostConnectorBillingExportSpecArgs', 'AzureCloudCostConnectorBillingExportSpecArgsDict']]] = None,
-            billing_export_spec2: pulumi.Input[Optional[Union['AzureCloudCostConnectorBillingExportSpec2Args', 'AzureCloudCostConnectorBillingExportSpec2ArgsDict']]] = None,
+            billing_export_spec: pulumi.Input[Optional[Union['AzureCloudCostConnectorBillingExportSpecArgs', 'AzureCloudCostConnectorBillingExportSpecArgsDict', 'outputs.AzureCloudCostConnectorBillingExportSpec']]] = None,
+            billing_export_spec2: pulumi.Input[Optional[Union['AzureCloudCostConnectorBillingExportSpec2Args', 'AzureCloudCostConnectorBillingExportSpec2ArgsDict', 'outputs.AzureCloudCostConnectorBillingExportSpec2']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             features_enableds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -630,8 +630,8 @@ class AzureCloudCostConnector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AzureCloudCostConnectorBillingExportSpecArgs', 'AzureCloudCostConnectorBillingExportSpecArgsDict']] billing_export_spec: Returns billing details for the Azure account.
-        :param pulumi.Input[Union['AzureCloudCostConnectorBillingExportSpec2Args', 'AzureCloudCostConnectorBillingExportSpec2ArgsDict']] billing_export_spec2: Returns billing details for the Azure account.
+        :param pulumi.Input[Union['AzureCloudCostConnectorBillingExportSpecArgs', 'AzureCloudCostConnectorBillingExportSpecArgsDict', 'outputs.AzureCloudCostConnectorBillingExportSpec']] billing_export_spec: Returns billing details for the Azure account.
+        :param pulumi.Input[Union['AzureCloudCostConnectorBillingExportSpec2Args', 'AzureCloudCostConnectorBillingExportSpec2ArgsDict', 'outputs.AzureCloudCostConnectorBillingExportSpec2']] billing_export_spec2: Returns billing details for the Azure account.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] features_enableds: Indicates which feature to enable among Billing, Optimization, Visibility and Governance.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.

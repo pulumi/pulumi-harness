@@ -133,11 +133,11 @@ class AwaitableGetRuleRdsResult(GetRuleRdsResult):
 
 
 def get_rule_rds(cloud_connector_id: Optional[_builtins.str] = None,
-                 database: Optional[Union['GetRuleRdsDatabaseArgs', 'GetRuleRdsDatabaseArgsDict']] = None,
-                 depends: Optional[Sequence[Union['GetRuleRdsDependArgs', 'GetRuleRdsDependArgsDict']]] = None,
+                 database: Optional[Union['GetRuleRdsDatabaseArgs', 'GetRuleRdsDatabaseArgsDict', 'outputs.GetRuleRdsDatabaseResult']] = None,
+                 depends: Optional[Sequence[Union['GetRuleRdsDependArgs', 'GetRuleRdsDependArgsDict', 'outputs.GetRuleRdsDependResult']]] = None,
                  idle_time_mins: Optional[_builtins.int] = None,
                  name: Optional[_builtins.str] = None,
-                 tcps: Optional[Sequence[Union['GetRuleRdsTcpArgs', 'GetRuleRdsTcpArgsDict']]] = None,
+                 tcps: Optional[Sequence[Union['GetRuleRdsTcpArgs', 'GetRuleRdsTcpArgsDict', 'outputs.GetRuleRdsTcpResult']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRuleRdsResult:
     """
     Data source for retrieving a Harness AutoStopping rule for RDS databases.
@@ -146,10 +146,10 @@ def get_rule_rds(cloud_connector_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str cloud_connector_id: Id of the cloud connector
-    :param Sequence[Union['GetRuleRdsDependArgs', 'GetRuleRdsDependArgsDict']] depends: Dependent rules
+    :param Sequence[Union['GetRuleRdsDependArgs', 'GetRuleRdsDependArgsDict', 'outputs.GetRuleRdsDependResult']] depends: Dependent rules
     :param _builtins.int idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
     :param _builtins.str name: Name of the rule
-    :param Sequence[Union['GetRuleRdsTcpArgs', 'GetRuleRdsTcpArgsDict']] tcps: TCP routing configuration
+    :param Sequence[Union['GetRuleRdsTcpArgs', 'GetRuleRdsTcpArgsDict', 'outputs.GetRuleRdsTcpResult']] tcps: TCP routing configuration
     """
     __args__ = dict()
     __args__['cloudConnectorId'] = cloud_connector_id
@@ -171,11 +171,11 @@ def get_rule_rds(cloud_connector_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         tcps=pulumi.get(__ret__, 'tcps'))
 def get_rule_rds_output(cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
-                        database: pulumi.Input[Optional[Union['GetRuleRdsDatabaseArgs', 'GetRuleRdsDatabaseArgsDict']]] = None,
-                        depends: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleRdsDependArgs', 'GetRuleRdsDependArgsDict']]]]] = None,
+                        database: pulumi.Input[Optional[Union['GetRuleRdsDatabaseArgs', 'GetRuleRdsDatabaseArgsDict', 'outputs.GetRuleRdsDatabaseResult']]] = None,
+                        depends: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleRdsDependArgs', 'GetRuleRdsDependArgsDict', 'outputs.GetRuleRdsDependResult']]]]] = None,
                         idle_time_mins: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                         name: pulumi.Input[Optional[_builtins.str]] = None,
-                        tcps: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleRdsTcpArgs', 'GetRuleRdsTcpArgsDict']]]]] = None,
+                        tcps: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleRdsTcpArgs', 'GetRuleRdsTcpArgsDict', 'outputs.GetRuleRdsTcpResult']]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleRdsResult]:
     """
     Data source for retrieving a Harness AutoStopping rule for RDS databases.
@@ -184,10 +184,10 @@ def get_rule_rds_output(cloud_connector_id: pulumi.Input[Optional[_builtins.str]
 
 
     :param _builtins.str cloud_connector_id: Id of the cloud connector
-    :param Sequence[Union['GetRuleRdsDependArgs', 'GetRuleRdsDependArgsDict']] depends: Dependent rules
+    :param Sequence[Union['GetRuleRdsDependArgs', 'GetRuleRdsDependArgsDict', 'outputs.GetRuleRdsDependResult']] depends: Dependent rules
     :param _builtins.int idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
     :param _builtins.str name: Name of the rule
-    :param Sequence[Union['GetRuleRdsTcpArgs', 'GetRuleRdsTcpArgsDict']] tcps: TCP routing configuration
+    :param Sequence[Union['GetRuleRdsTcpArgs', 'GetRuleRdsTcpArgsDict', 'outputs.GetRuleRdsTcpResult']] tcps: TCP routing configuration
     """
     __args__ = dict()
     __args__['cloudConnectorId'] = cloud_connector_id

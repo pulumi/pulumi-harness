@@ -25,8 +25,6 @@ namespace Pulumi.Harness.Service
     ///     // Update image registry settings for service discovery
     ///     var example = new Harness.Service.DiscoverySetting("example", new()
     ///     {
-    ///         OrgIdentifier = "sechaosworkshop",
-    ///         ProjectIdentifier = "se1",
     ///         ImageRegistry = new Harness.Service.Inputs.DiscoverySettingImageRegistryArgs
     ///         {
     ///             Account = "&lt;account_name&gt;",
@@ -36,6 +34,8 @@ namespace Pulumi.Harness.Service
     ///                 "&lt;secret_name&gt;",
     ///             },
     ///         },
+    ///         OrgIdentifier = "sechaosworkshop",
+    ///         ProjectIdentifier = "se1",
     ///     });
     /// 
     /// });

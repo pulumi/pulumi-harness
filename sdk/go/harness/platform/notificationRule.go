@@ -63,16 +63,11 @@ import (
 //			json3 := string(tmpJSON3)
 //			// Sample resource for SLO
 //			_, err = platform.NewNotificationRule(ctx, "example", &platform.NotificationRuleArgs{
-//				OrgId:      pulumi.String("org_id"),
-//				ProjectId:  pulumi.String("project_id"),
-//				Identifier: pulumi.String("identifier"),
 //				Request: &platform.NotificationRuleRequestArgs{
-//					Name: pulumi.String("name"),
 //					NotificationMethod: &platform.NotificationRuleRequestNotificationMethodArgs{
 //						Type: pulumi.String("Slack"),
 //						Spec: pulumi.String(json0),
 //					},
-//					Type: pulumi.String("ServiceLevelObjective"),
 //					Conditions: platform.NotificationRuleRequestConditionArray{
 //						&platform.NotificationRuleRequestConditionArgs{
 //							Type: pulumi.String("ErrorBudgetBurnRate"),
@@ -87,7 +82,12 @@ import (
 //							Spec: pulumi.String(json3),
 //						},
 //					},
+//					Name: pulumi.String("name"),
+//					Type: pulumi.String("ServiceLevelObjective"),
 //				},
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Identifier: pulumi.String("identifier"),
 //			})
 //			if err != nil {
 //				return err
@@ -140,16 +140,11 @@ import (
 //			json8 := string(tmpJSON8)
 //			// Sample resource for Monitored Service
 //			_, err = platform.NewNotificationRule(ctx, "example1", &platform.NotificationRuleArgs{
-//				OrgId:      pulumi.String("org_id"),
-//				ProjectId:  pulumi.String("project_id"),
-//				Identifier: pulumi.String("identifier"),
 //				Request: &platform.NotificationRuleRequestArgs{
-//					Name: pulumi.String("name"),
 //					NotificationMethod: &platform.NotificationRuleRequestNotificationMethodArgs{
 //						Type: pulumi.String("Slack"),
 //						Spec: pulumi.String(json4),
 //					},
-//					Type: pulumi.String("MonitoredService"),
 //					Conditions: platform.NotificationRuleRequestConditionArray{
 //						&platform.NotificationRuleRequestConditionArgs{
 //							Type: pulumi.String("ChangeImpact"),
@@ -168,7 +163,12 @@ import (
 //							Spec: pulumi.String(json8),
 //						},
 //					},
+//					Name: pulumi.String("name"),
+//					Type: pulumi.String("MonitoredService"),
 //				},
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Identifier: pulumi.String("identifier"),
 //			})
 //			if err != nil {
 //				return err

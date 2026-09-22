@@ -17,51 +17,46 @@ import * as utilities from "../utilities";
  *
  * // Account-scoped DELETE rule — keep last 10 versions, runs nightly
  * const nightlyCleanup = new harness.platform.HarLifecycleRule("nightly_cleanup", {
- *     accountId: "your-account-id",
- *     name: "nightly-cleanup",
- *     action: "DELETE",
- *     description: "Keep last 10 versions of all artifacts",
  *     applyTo: {
  *         mode: "ALL_IN_SCOPE",
  *     },
  *     criteria: {
- *         match: "ALL",
  *         rules: [{
  *             type: "KEEP_LAST_N",
  *             value: 10,
  *         }],
+ *         match: "ALL",
  *     },
  *     schedule: {
  *         expression: "0 2 * * *",
  *         timezone: "UTC",
  *     },
+ *     accountId: "your-account-id",
+ *     name: "nightly-cleanup",
+ *     action: "DELETE",
+ *     description: "Keep last 10 versions of all artifacts",
  * });
  * // Project-scoped DELETE rule — delete artifacts older than 30 days
  * const ageBasedCleanup = new harness.platform.HarLifecycleRule("age_based_cleanup", {
- *     accountId: "your-account-id",
- *     orgId: "your-org-id",
- *     projectId: "your-project-id",
- *     name: "age-based-cleanup",
- *     action: "DELETE",
  *     applyTo: {
  *         mode: "ALL_IN_SCOPE",
  *     },
  *     criteria: {
- *         match: "ALL",
  *         rules: [{
  *             type: "AGE_BASED",
  *             value: 30,
  *             unit: "DAYS",
  *         }],
+ *         match: "ALL",
  *     },
+ *     accountId: "your-account-id",
+ *     orgId: "your-org-id",
+ *     projectId: "your-project-id",
+ *     name: "age-based-cleanup",
+ *     action: "DELETE",
  * });
  * // Org-scoped PROTECT rule — protect images in specific registries matching a tag pattern
  * const protectProd = new harness.platform.HarLifecycleRule("protect_prod", {
- *     accountId: "your-account-id",
- *     orgId: "your-org-id",
- *     name: "protect-prod-images",
- *     action: "PROTECT",
- *     packageType: "DOCKER",
  *     applyTo: {
  *         mode: "EXPLICIT",
  *         registries: [
@@ -76,17 +71,18 @@ import * as utilities from "../utilities";
  *             "release-*",
  *         ],
  *     },
+ *     accountId: "your-account-id",
+ *     orgId: "your-org-id",
+ *     name: "protect-prod-images",
+ *     action: "PROTECT",
+ *     packageType: "DOCKER",
  * });
  * // Account-scoped DELETE rule with multiple criteria (ANY match)
  * const multiCriteriaCleanup = new harness.platform.HarLifecycleRule("multi_criteria_cleanup", {
- *     accountId: "your-account-id",
- *     name: "multi-criteria-cleanup",
- *     action: "DELETE",
  *     applyTo: {
  *         mode: "ALL_IN_SCOPE",
  *     },
  *     criteria: {
- *         match: "ANY",
  *         rules: [
  *             {
  *                 type: "KEEP_LAST_N",
@@ -98,7 +94,11 @@ import * as utilities from "../utilities";
  *                 unit: "DAYS",
  *             },
  *         ],
+ *         match: "ANY",
  *     },
+ *     accountId: "your-account-id",
+ *     name: "multi-criteria-cleanup",
+ *     action: "DELETE",
  * });
  * ```
  *

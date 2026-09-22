@@ -334,11 +334,11 @@ class RoleAssignments(pulumi.CustomResource):
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  managed: pulumi.Input[Optional[_builtins.bool]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 principals: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoleAssignmentsPrincipalArgs', 'RoleAssignmentsPrincipalArgsDict']]]]] = None,
+                 principals: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoleAssignmentsPrincipalArgs', 'RoleAssignmentsPrincipalArgsDict', 'outputs.RoleAssignmentsPrincipal']]]]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  role_identifier: pulumi.Input[Optional[_builtins.str]] = None,
-                 role_reference: pulumi.Input[Optional[Union['RoleAssignmentsRoleReferenceArgs', 'RoleAssignmentsRoleReferenceArgsDict']]] = None,
+                 role_reference: pulumi.Input[Optional[Union['RoleAssignmentsRoleReferenceArgs', 'RoleAssignmentsRoleReferenceArgsDict', 'outputs.RoleAssignmentsRoleReference']]] = None,
                  __props__=None):
         """
         Resource for creating role assignments in Harness.
@@ -372,11 +372,11 @@ class RoleAssignments(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Identifier for role assignment.
         :param pulumi.Input[_builtins.bool] managed: Managed or not.
         :param pulumi.Input[_builtins.str] org_id: Org identifier.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RoleAssignmentsPrincipalArgs', 'RoleAssignmentsPrincipalArgsDict']]]] principals: Principal.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RoleAssignmentsPrincipalArgs', 'RoleAssignmentsPrincipalArgsDict', 'outputs.RoleAssignmentsPrincipal']]]] principals: Principal.
         :param pulumi.Input[_builtins.str] project_id: Project Identifier
         :param pulumi.Input[_builtins.str] resource_group_identifier: Resource group identifier.
         :param pulumi.Input[_builtins.str] role_identifier: Role identifier.
-        :param pulumi.Input[Union['RoleAssignmentsRoleReferenceArgs', 'RoleAssignmentsRoleReferenceArgsDict']] role_reference: Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+        :param pulumi.Input[Union['RoleAssignmentsRoleReferenceArgs', 'RoleAssignmentsRoleReferenceArgsDict', 'outputs.RoleAssignmentsRoleReference']] role_reference: Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
         """
         ...
     @overload
@@ -429,11 +429,11 @@ class RoleAssignments(pulumi.CustomResource):
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  managed: pulumi.Input[Optional[_builtins.bool]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 principals: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoleAssignmentsPrincipalArgs', 'RoleAssignmentsPrincipalArgsDict']]]]] = None,
+                 principals: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoleAssignmentsPrincipalArgs', 'RoleAssignmentsPrincipalArgsDict', 'outputs.RoleAssignmentsPrincipal']]]]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_group_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  role_identifier: pulumi.Input[Optional[_builtins.str]] = None,
-                 role_reference: pulumi.Input[Optional[Union['RoleAssignmentsRoleReferenceArgs', 'RoleAssignmentsRoleReferenceArgsDict']]] = None,
+                 role_reference: pulumi.Input[Optional[Union['RoleAssignmentsRoleReferenceArgs', 'RoleAssignmentsRoleReferenceArgsDict', 'outputs.RoleAssignmentsRoleReference']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -466,11 +466,11 @@ class RoleAssignments(pulumi.CustomResource):
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             managed: pulumi.Input[Optional[_builtins.bool]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            principals: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoleAssignmentsPrincipalArgs', 'RoleAssignmentsPrincipalArgsDict']]]]] = None,
+            principals: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoleAssignmentsPrincipalArgs', 'RoleAssignmentsPrincipalArgsDict', 'outputs.RoleAssignmentsPrincipal']]]]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             resource_group_identifier: pulumi.Input[Optional[_builtins.str]] = None,
             role_identifier: pulumi.Input[Optional[_builtins.str]] = None,
-            role_reference: pulumi.Input[Optional[Union['RoleAssignmentsRoleReferenceArgs', 'RoleAssignmentsRoleReferenceArgsDict']]] = None) -> 'RoleAssignments':
+            role_reference: pulumi.Input[Optional[Union['RoleAssignmentsRoleReferenceArgs', 'RoleAssignmentsRoleReferenceArgsDict', 'outputs.RoleAssignmentsRoleReference']]] = None) -> 'RoleAssignments':
         """
         Get an existing RoleAssignments resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -482,11 +482,11 @@ class RoleAssignments(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Identifier for role assignment.
         :param pulumi.Input[_builtins.bool] managed: Managed or not.
         :param pulumi.Input[_builtins.str] org_id: Org identifier.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RoleAssignmentsPrincipalArgs', 'RoleAssignmentsPrincipalArgsDict']]]] principals: Principal.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RoleAssignmentsPrincipalArgs', 'RoleAssignmentsPrincipalArgsDict', 'outputs.RoleAssignmentsPrincipal']]]] principals: Principal.
         :param pulumi.Input[_builtins.str] project_id: Project Identifier
         :param pulumi.Input[_builtins.str] resource_group_identifier: Resource group identifier.
         :param pulumi.Input[_builtins.str] role_identifier: Role identifier.
-        :param pulumi.Input[Union['RoleAssignmentsRoleReferenceArgs', 'RoleAssignmentsRoleReferenceArgsDict']] role_reference: Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
+        :param pulumi.Input[Union['RoleAssignmentsRoleReferenceArgs', 'RoleAssignmentsRoleReferenceArgsDict', 'outputs.RoleAssignmentsRoleReference']] role_reference: Role reference. Used to reference roles from a higher scope (e.g., an org-level role in a project-level assignment). When both role*identifier and role*reference are set, they must point to the same role.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

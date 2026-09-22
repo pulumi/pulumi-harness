@@ -45,6 +45,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new PrometheusConnector("example", PrometheusConnectorArgs.builder()
+ *             .headers(PrometheusConnectorHeaderArgs.builder()
+ *                 .encryptedValueRef("account.secret_identifier")
+ *                 .valueEncrypted(true)
+ *                 .key("key")
+ *                 .value("value")
+ *                 .build())
  *             .identifier("idntifier")
  *             .name("name")
  *             .description("test")
@@ -53,12 +59,6 @@ import javax.annotation.Nullable;
  *             .delegateSelectors("harness-delegate")
  *             .userName("user_name")
  *             .passwordRef("account.secret_identifier")
- *             .headers(PrometheusConnectorHeaderArgs.builder()
- *                 .encryptedValueRef("account.secret_identifier")
- *                 .valueEncrypted(true)
- *                 .key("key")
- *                 .value("value")
- *                 .build())
  *             .build());
  * 
  *     }

@@ -31,22 +31,22 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := service.NewDiscoveryAgent(ctx, "example", &service.DiscoveryAgentArgs{
-//				Name:                  pulumi.String("ExampleAgent"),
-//				OrgIdentifier:         pulumi.String("your_org_id"),
-//				ProjectIdentifier:     pulumi.String("your_project_id"),
-//				EnvironmentIdentifier: pulumi.String("your_environment_id"),
-//				InfraIdentifier:       pulumi.String("your_infra_id"),
 //				Configs: service.DiscoveryAgentConfigArray{
 //					&service.DiscoveryAgentConfigArgs{
-//						CollectorImage:  pulumi.String("harness/service-discovery-collector:main-latest"),
-//						LogWatcherImage: pulumi.String("harness/chaos-log-watcher:main-latest"),
 //						Kubernetes: service.DiscoveryAgentConfigKuberneteArray{
 //							&service.DiscoveryAgentConfigKuberneteArgs{
 //								Namespace: pulumi.String("harness-sd"),
 //							},
 //						},
+//						CollectorImage:  pulumi.String("harness/service-discovery-collector:main-latest"),
+//						LogWatcherImage: pulumi.String("harness/chaos-log-watcher:main-latest"),
 //					},
 //				},
+//				Name:                  pulumi.String("ExampleAgent"),
+//				OrgIdentifier:         pulumi.String("your_org_id"),
+//				ProjectIdentifier:     pulumi.String("your_project_id"),
+//				EnvironmentIdentifier: pulumi.String("your_environment_id"),
+//				InfraIdentifier:       pulumi.String("your_infra_id"),
 //			})
 //			if err != nil {
 //				return err
@@ -73,11 +73,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new service discovery agent with minimal configuration
 //			_, err := service.NewDiscoveryAgent(ctx, "example", &service.DiscoveryAgentArgs{
-//				Name:                  pulumi.String("example-agent"),
-//				OrgIdentifier:         pulumi.Any(orgIdentifier),
-//				ProjectIdentifier:     pulumi.Any(projectIdentifier),
-//				EnvironmentIdentifier: pulumi.Any(environmentIdentifier),
-//				InfraIdentifier:       pulumi.String("example-infra"),
 //				Configs: service.DiscoveryAgentConfigArray{
 //					&service.DiscoveryAgentConfigArgs{
 //						Kubernetes: service.DiscoveryAgentConfigKuberneteArray{
@@ -87,66 +82,69 @@ import (
 //						},
 //					},
 //				},
+//				Name:                  pulumi.String("example-agent"),
+//				OrgIdentifier:         pulumi.Any(orgIdentifier),
+//				ProjectIdentifier:     pulumi.Any(projectIdentifier),
+//				EnvironmentIdentifier: pulumi.Any(environmentIdentifier),
+//				InfraIdentifier:       pulumi.String("example-infra"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Create a new service discovery agent with node agent enabled
 //			_, err = service.NewDiscoveryAgent(ctx, "node_agent", &service.DiscoveryAgentArgs{
-//				Name:                  pulumi.String("node-agent-example"),
-//				OrgIdentifier:         pulumi.Any(orgIdentifier),
-//				ProjectIdentifier:     pulumi.Any(projectIdentifier),
-//				EnvironmentIdentifier: pulumi.Any(environmentIdentifier),
-//				InfraIdentifier:       pulumi.String("node-agent-example"),
 //				Configs: service.DiscoveryAgentConfigArray{
 //					&service.DiscoveryAgentConfigArgs{
-//						Kubernetes: service.DiscoveryAgentConfigKuberneteArray{
-//							&service.DiscoveryAgentConfigKuberneteArgs{
-//								Namespace: pulumi.String("harness-sd"),
-//							},
-//						},
 //						Datas: service.DiscoveryAgentConfigDataArray{
 //							&service.DiscoveryAgentConfigDataArgs{
 //								EnableNodeAgent: pulumi.Bool(true),
 //							},
 //						},
+//						Kubernetes: service.DiscoveryAgentConfigKuberneteArray{
+//							&service.DiscoveryAgentConfigKuberneteArgs{
+//								Namespace: pulumi.String("harness-sd"),
+//							},
+//						},
 //					},
 //				},
+//				Name:                  pulumi.String("node-agent-example"),
+//				OrgIdentifier:         pulumi.Any(orgIdentifier),
+//				ProjectIdentifier:     pulumi.Any(projectIdentifier),
+//				EnvironmentIdentifier: pulumi.Any(environmentIdentifier),
+//				InfraIdentifier:       pulumi.String("node-agent-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Create a new service discovery agent with full configuration
 //			_, err = service.NewDiscoveryAgent(ctx, "full_config", &service.DiscoveryAgentArgs{
-//				Name:                  pulumi.String("full-config-example"),
-//				OrgIdentifier:         pulumi.Any(orgIdentifier),
-//				ProjectIdentifier:     pulumi.Any(projectIdentifier),
-//				EnvironmentIdentifier: pulumi.Any(environmentIdentifier),
-//				InfraIdentifier:       pulumi.String("full-config-example"),
-//				PermanentInstallation: pulumi.Bool(false),
-//				CorrelationId:         pulumi.String("full-config-correlation-123"),
 //				Configs: service.DiscoveryAgentConfigArray{
 //					&service.DiscoveryAgentConfigArgs{
-//						CollectorImage:   pulumi.String("harness/service-discovery-collector:main-latest"),
-//						LogWatcherImage:  pulumi.String("harness/chaos-log-watcher:main-latest"),
-//						SkipSecureVerify: pulumi.Bool(false),
+//						Datas: service.DiscoveryAgentConfigDataArray{
+//							&service.DiscoveryAgentConfigDataArgs{
+//								Crons: service.DiscoveryAgentConfigDataCronArray{
+//									&service.DiscoveryAgentConfigDataCronArgs{
+//										Expression: pulumi.String("0/10 * * * *"),
+//									},
+//								},
+//								EnableNodeAgent:       pulumi.Bool(true),
+//								NodeAgentSelector:     pulumi.String("node-role.kubernetes.io/worker="),
+//								EnableBatchResources:  pulumi.Bool(true),
+//								EnableOrphanedPod:     pulumi.Bool(true),
+//								NamespaceSelector:     pulumi.String("environment=dev"),
+//								CollectionWindowInMin: pulumi.Int(15),
+//								BlacklistedNamespaces: pulumi.StringArray{
+//									pulumi.String("kube-system"),
+//									pulumi.String("kube-public"),
+//								},
+//								ObservedNamespaces: pulumi.StringArray{
+//									pulumi.String("default"),
+//									pulumi.String("harness"),
+//								},
+//							},
+//						},
 //						Kubernetes: service.DiscoveryAgentConfigKuberneteArray{
 //							&service.DiscoveryAgentConfigKuberneteArgs{
-//								Namespace:       pulumi.String("harness-sd"),
-//								ServiceAccount:  pulumi.String("harness-sd-sa"),
-//								ImagePullPolicy: pulumi.String("IfNotPresent"),
-//								RunAsUser:       pulumi.Int(2000),
-//								RunAsGroup:      pulumi.Int(2000),
-//								Labels: pulumi.StringMap{
-//									"app": pulumi.String("service-discovery"),
-//									"env": pulumi.String("dev"),
-//								},
-//								Annotations: pulumi.StringMap{
-//									"example.com/annotation": pulumi.String("value"),
-//								},
-//								NodeSelector: pulumi.StringMap{
-//									"kubernetes.io/os": pulumi.String("linux"),
-//								},
 //								Resources: service.DiscoveryAgentConfigKuberneteResourceArray{
 //									&service.DiscoveryAgentConfigKuberneteResourceArgs{
 //										Limits: service.DiscoveryAgentConfigKuberneteResourceLimitArray{
@@ -167,28 +165,20 @@ import (
 //										Effect:   pulumi.String("NoSchedule"),
 //									},
 //								},
-//							},
-//						},
-//						Datas: service.DiscoveryAgentConfigDataArray{
-//							&service.DiscoveryAgentConfigDataArgs{
-//								EnableNodeAgent:       pulumi.Bool(true),
-//								NodeAgentSelector:     pulumi.String("node-role.kubernetes.io/worker="),
-//								EnableBatchResources:  pulumi.Bool(true),
-//								EnableOrphanedPod:     pulumi.Bool(true),
-//								NamespaceSelector:     pulumi.String("environment=dev"),
-//								CollectionWindowInMin: pulumi.Int(15),
-//								BlacklistedNamespaces: pulumi.StringArray{
-//									pulumi.String("kube-system"),
-//									pulumi.String("kube-public"),
+//								Namespace:       pulumi.String("harness-sd"),
+//								ServiceAccount:  pulumi.String("harness-sd-sa"),
+//								ImagePullPolicy: pulumi.String("IfNotPresent"),
+//								RunAsUser:       pulumi.Int(2000),
+//								RunAsGroup:      pulumi.Int(2000),
+//								Labels: pulumi.StringMap{
+//									"app": pulumi.String("service-discovery"),
+//									"env": pulumi.String("dev"),
 //								},
-//								ObservedNamespaces: pulumi.StringArray{
-//									pulumi.String("default"),
-//									pulumi.String("harness"),
+//								Annotations: pulumi.StringMap{
+//									"example.com/annotation": pulumi.String("value"),
 //								},
-//								Crons: service.DiscoveryAgentConfigDataCronArray{
-//									&service.DiscoveryAgentConfigDataCronArgs{
-//										Expression: pulumi.String("0/10 * * * *"),
-//									},
+//								NodeSelector: pulumi.StringMap{
+//									"kubernetes.io/os": pulumi.String("linux"),
 //								},
 //							},
 //						},
@@ -208,8 +198,18 @@ import (
 //								Url:        pulumi.String("https://proxy.example.com"),
 //							},
 //						},
+//						CollectorImage:   pulumi.String("harness/service-discovery-collector:main-latest"),
+//						LogWatcherImage:  pulumi.String("harness/chaos-log-watcher:main-latest"),
+//						SkipSecureVerify: pulumi.Bool(false),
 //					},
 //				},
+//				Name:                  pulumi.String("full-config-example"),
+//				OrgIdentifier:         pulumi.Any(orgIdentifier),
+//				ProjectIdentifier:     pulumi.Any(projectIdentifier),
+//				EnvironmentIdentifier: pulumi.Any(environmentIdentifier),
+//				InfraIdentifier:       pulumi.String("full-config-example"),
+//				PermanentInstallation: pulumi.Bool(false),
+//				CorrelationId:         pulumi.String("full-config-correlation-123"),
 //			})
 //			if err != nil {
 //				return err

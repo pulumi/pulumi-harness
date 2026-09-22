@@ -16,16 +16,23 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.autostopping.RuleVm("test", {
- *     name: "name",
- *     cloudConnectorId: "cloud_connector_id",
- *     idleTimeMins: 10,
- *     dryRun: true,
  *     filter: {
  *         vmIds: ["/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine"],
  *         regions: ["useast2"],
  *     },
+ *     depends: [{
+ *         ruleId: 24576,
+ *         delayInSec: 5,
+ *     }],
  *     https: [{
- *         proxyId: "proxy_id",
+ *         healths: [{
+ *             protocol: "http",
+ *             port: 80,
+ *             path: "/",
+ *             timeout: 30,
+ *             statusCodeFrom: 200,
+ *             statusCodeTo: 299,
+ *         }],
  *         routings: [
  *             {
  *                 sourceProtocol: "https",
@@ -42,31 +49,24 @@ import * as utilities from "../utilities";
  *                 action: "forward",
  *             },
  *         ],
- *         healths: [{
- *             protocol: "http",
- *             port: 80,
- *             path: "/",
- *             timeout: 30,
- *             statusCodeFrom: 200,
- *             statusCodeTo: 299,
- *         }],
+ *         proxyId: "proxy_id",
  *     }],
  *     tcps: [{
- *         proxyId: "proxy_id",
- *         sshes: [{
- *             port: 22,
+ *         forwardRules: [{
+ *             port: 2233,
  *         }],
  *         rdps: [{
  *             port: 3389,
  *         }],
- *         forwardRules: [{
- *             port: 2233,
+ *         sshes: [{
+ *             port: 22,
  *         }],
+ *         proxyId: "proxy_id",
  *     }],
- *     depends: [{
- *         ruleId: 24576,
- *         delayInSec: 5,
- *     }],
+ *     name: "name",
+ *     cloudConnectorId: "cloud_connector_id",
+ *     idleTimeMins: 10,
+ *     dryRun: true,
  * });
  * ```
  */

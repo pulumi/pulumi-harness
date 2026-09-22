@@ -184,7 +184,7 @@ class AwaitableGetInfrastructureResult(GetInfrastructureResult):
 
 
 def get_infrastructure(env_id: Optional[_builtins.str] = None,
-                       git_details: Optional[Union['GetInfrastructureGitDetailsArgs', 'GetInfrastructureGitDetailsArgsDict']] = None,
+                       git_details: Optional[Union['GetInfrastructureGitDetailsArgs', 'GetInfrastructureGitDetailsArgsDict', 'outputs.GetInfrastructureGitDetailsResult']] = None,
                        identifier: Optional[_builtins.str] = None,
                        name: Optional[_builtins.str] = None,
                        org_id: Optional[_builtins.str] = None,
@@ -208,7 +208,7 @@ def get_infrastructure(env_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str env_id: environment identifier.
-    :param Union['GetInfrastructureGitDetailsArgs', 'GetInfrastructureGitDetailsArgsDict'] git_details: Contains parameters related to Git Experience for remote entities
+    :param Union['GetInfrastructureGitDetailsArgs', 'GetInfrastructureGitDetailsArgsDict', 'outputs.GetInfrastructureGitDetailsResult'] git_details: Contains parameters related to Git Experience for remote entities
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
@@ -238,7 +238,7 @@ def get_infrastructure(env_id: Optional[_builtins.str] = None,
         type=pulumi.get(__ret__, 'type'),
         yaml=pulumi.get(__ret__, 'yaml'))
 def get_infrastructure_output(env_id: pulumi.Input[Optional[_builtins.str]] = None,
-                              git_details: pulumi.Input[Optional[Optional[Union['GetInfrastructureGitDetailsArgs', 'GetInfrastructureGitDetailsArgsDict']]]] = None,
+                              git_details: pulumi.Input[Optional[Optional[Union['GetInfrastructureGitDetailsArgs', 'GetInfrastructureGitDetailsArgsDict', 'outputs.GetInfrastructureGitDetailsResult']]]] = None,
                               identifier: pulumi.Input[Optional[_builtins.str]] = None,
                               name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -262,7 +262,7 @@ def get_infrastructure_output(env_id: pulumi.Input[Optional[_builtins.str]] = No
 
 
     :param _builtins.str env_id: environment identifier.
-    :param Union['GetInfrastructureGitDetailsArgs', 'GetInfrastructureGitDetailsArgsDict'] git_details: Contains parameters related to Git Experience for remote entities
+    :param Union['GetInfrastructureGitDetailsArgs', 'GetInfrastructureGitDetailsArgsDict', 'outputs.GetInfrastructureGitDetailsResult'] git_details: Contains parameters related to Git Experience for remote entities
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.

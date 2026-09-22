@@ -36,10 +36,6 @@ import (
 //				return err
 //			}
 //			testKubernetes, err := service.NewKubernetes(ctx, "test", &service.KubernetesArgs{
-//				AppId:       test.ID().ToIDOutput().ToStringOutput(),
-//				Name:        pulumi.String("%[1]s"),
-//				HelmVersion: pulumi.String("V2"),
-//				Description: pulumi.String("description"),
 //				Variables: service.KubernetesVariableArray{
 //					&service.KubernetesVariableArgs{
 //						Name:  pulumi.String("test"),
@@ -52,14 +48,15 @@ import (
 //						Type:  pulumi.String("TEXT"),
 //					},
 //				},
+//				AppId:       test.ID().ToIDOutput().ToStringOutput(),
+//				Name:        pulumi.String("%[1]s"),
+//				HelmVersion: pulumi.String("V2"),
+//				Description: pulumi.String("description"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = harness.NewEnvironment(ctx, "test", &harness.EnvironmentArgs{
-//				AppId: test.ID().ToIDOutput().ToStringOutput(),
-//				Name:  pulumi.String("%[1]s"),
-//				Type:  pulumi.String("%[2]s"),
 //				VariableOverrides: harness.EnvironmentVariableOverrideArray{
 //					&harness.EnvironmentVariableOverrideArgs{
 //						ServiceName: testKubernetes.Name,
@@ -74,6 +71,9 @@ import (
 //						Type:        pulumi.String("TEXT"),
 //					},
 //				},
+//				AppId: test.ID().ToIDOutput().ToStringOutput(),
+//				Name:  pulumi.String("%[1]s"),
+//				Type:  pulumi.String("%[2]s"),
 //			})
 //			if err != nil {
 //				return err

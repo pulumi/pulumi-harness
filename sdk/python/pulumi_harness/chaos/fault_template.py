@@ -784,17 +784,17 @@ class FaultTemplate(pulumi.CustomResource):
                  infrastructures: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  keywords: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
-                 links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FaultTemplateLinkArgs', 'FaultTemplateLinkArgsDict']]]]] = None,
+                 links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FaultTemplateLinkArgs', 'FaultTemplateLinkArgsDict', 'outputs.FaultTemplateLink']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  permissions_required: pulumi.Input[Optional[_builtins.str]] = None,
                  platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  revision: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['FaultTemplateSpecArgs', 'FaultTemplateSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['FaultTemplateSpecArgs', 'FaultTemplateSpecArgsDict', 'outputs.FaultTemplateSpec']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FaultTemplateVariableArgs', 'FaultTemplateVariableArgsDict']]]]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FaultTemplateVariableArgs', 'FaultTemplateVariableArgsDict', 'outputs.FaultTemplateVariable']]]]] = None,
                  __props__=None):
         """
         Resource for managing Harness Chaos Fault Templates.
@@ -837,6 +837,44 @@ class FaultTemplate(pulumi.CustomResource):
         # ----------------------------------------------------------------------------
         # Most common pattern: Custom Kubernetes fault with container spec
         kubernetes_fault = harness.chaos.FaultTemplate("kubernetes_fault",
+            spec={
+                "chaos": {
+                    "kubernetes": {
+                        "resources": {
+                            "limits": {
+                                "cpu": "150m",
+                                "memory": "150Mi",
+                            },
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "100Mi",
+                            },
+                        },
+                        "image": "chaosnative/go-runner:ci",
+                        "commands": [
+                            "/bin/bash",
+                            "-c",
+                        ],
+                        "args": ["echo 'Running chaos fault'; sleep 30"],
+                        "image_pull_policy": "IfNotPresent",
+                    },
+                    "params": [
+                        {
+                            "name": "CHAOS_DURATION",
+                            "value": "30s",
+                        },
+                        {
+                            "name": "CHAOS_INTERVAL",
+                            "value": "5s",
+                        },
+                    ],
+                    "fault_name": "byoc-injector",
+                },
+            },
+            links=[{
+                "name": "Documentation",
+                "url": "https://docs.harness.io/chaos",
+            }],
             org_id=this["id"],
             project_id=this_harness_platform_project["id"],
             hub_identity=project_level["identity"],
@@ -852,50 +890,67 @@ class FaultTemplate(pulumi.CustomResource):
                 "fault",
                 "custom",
             ],
-            links=[{
-                "name": "Documentation",
-                "url": "https://docs.harness.io/chaos",
-            }],
-            spec={
-                "chaos": {
-                    "fault_name": "byoc-injector",
-                    "params": [
-                        {
-                            "name": "CHAOS_DURATION",
-                            "value": "30s",
-                        },
-                        {
-                            "name": "CHAOS_INTERVAL",
-                            "value": "5s",
-                        },
-                    ],
-                    "kubernetes": {
-                        "image": "chaosnative/go-runner:ci",
-                        "commands": [
-                            "/bin/bash",
-                            "-c",
-                        ],
-                        "args": ["echo 'Running chaos fault'; sleep 30"],
-                        "image_pull_policy": "IfNotPresent",
-                        "resources": {
-                            "limits": {
-                                "cpu": "150m",
-                                "memory": "150Mi",
-                            },
-                            "requests": {
-                                "cpu": "100m",
-                                "memory": "100Mi",
-                            },
-                        },
-                    },
-                },
-            },
             opts = pulumi.ResourceOptions(depends_on=[project_level]))
         # ----------------------------------------------------------------------------
         # Example 2: Fault with Environment Variables (TESTED ✅)
         # ----------------------------------------------------------------------------
         # Fault with environment variables for configuration
         fault_with_env = harness.chaos.FaultTemplate("fault_with_env",
+            spec={
+                "chaos": {
+                    "kubernetes": {
+                        "resources": {
+                            "limits": {
+                                "cpu": "200m",
+                                "memory": "200Mi",
+                            },
+                        },
+                        "envs": [
+                            {
+                                "name": "TARGET_NAMESPACE",
+                                "value": "<+input>.default('default')",
+                            },
+                            {
+                                "name": "CHAOS_MODE",
+                                "value": "pod",
+                            },
+                        ],
+                        "image": "chaosnative/go-runner:ci",
+                        "commands": [
+                            "/bin/bash",
+                            "-c",
+                        ],
+                        "args": ["echo 'Fault with env vars'; sleep 15"],
+                        "image_pull_policy": "IfNotPresent",
+                    },
+                    "params": [
+                        {
+                            "name": "CHAOS_DURATION",
+                            "value": "15s",
+                        },
+                        {
+                            "name": "CHAOS_INTERVAL",
+                            "value": "3s",
+                        },
+                        {
+                            "name": "TARGET_NAMESPACE",
+                            "value": "<+input>.default('default')",
+                        },
+                    ],
+                    "fault_name": "byoc-injector",
+                },
+            },
+            links=[{
+                "name": "Documentation",
+                "url": "https://docs.harness.io/chaos",
+            }],
+            variables=[{
+                "name": "target_namespace",
+                "value": "<+input>",
+                "type": "string",
+                "required": False,
+                "description": "Target namespace for chaos injection",
+            }],
             org_id=this["id"],
             project_id=this_harness_platform_project["id"],
             hub_identity=project_level["identity"],
@@ -911,106 +966,25 @@ class FaultTemplate(pulumi.CustomResource):
                 "env",
                 "config",
             ],
-            links=[{
-                "name": "Documentation",
-                "url": "https://docs.harness.io/chaos",
-            }],
-            spec={
-                "chaos": {
-                    "fault_name": "byoc-injector",
-                    "params": [
-                        {
-                            "name": "CHAOS_DURATION",
-                            "value": "15s",
-                        },
-                        {
-                            "name": "CHAOS_INTERVAL",
-                            "value": "3s",
-                        },
-                        {
-                            "name": "TARGET_NAMESPACE",
-                            "value": "<+input>.default('default')",
-                        },
-                    ],
-                    "kubernetes": {
-                        "image": "chaosnative/go-runner:ci",
-                        "commands": [
-                            "/bin/bash",
-                            "-c",
-                        ],
-                        "args": ["echo 'Fault with env vars'; sleep 15"],
-                        "image_pull_policy": "IfNotPresent",
-                        "envs": [
-                            {
-                                "name": "TARGET_NAMESPACE",
-                                "value": "<+input>.default('default')",
-                            },
-                            {
-                                "name": "CHAOS_MODE",
-                                "value": "pod",
-                            },
-                        ],
-                        "resources": {
-                            "limits": {
-                                "cpu": "200m",
-                                "memory": "200Mi",
-                            },
-                        },
-                    },
-                },
-            },
-            variables=[{
-                "name": "target_namespace",
-                "value": "<+input>",
-                "type": "string",
-                "required": False,
-                "description": "Target namespace for chaos injection",
-            }],
             opts = pulumi.ResourceOptions(depends_on=[project_level]))
         # ----------------------------------------------------------------------------
         # Example 3: Fault with Advanced Configuration (TESTED ✅)
         # ----------------------------------------------------------------------------
         # Fault with node selector, labels, and annotations
         advanced_fault = harness.chaos.FaultTemplate("advanced_fault",
-            org_id=this["id"],
-            project_id=this_harness_platform_project["id"],
-            hub_identity=project_level["identity"],
-            identity="advanced-fault-template",
-            name="Advanced Fault Template",
-            description="Fault with advanced Kubernetes configuration",
-            categories=["Kubernetes"],
-            infrastructures=["KubernetesV2"],
-            type="Custom",
-            permissions_required="Basic",
-            tags=[
-                "kubernetes",
-                "advanced",
-                "production",
-            ],
-            links=[
-                {
-                    "name": "Documentation",
-                    "url": "https://docs.harness.io/chaos",
-                },
-                {
-                    "name": "Support",
-                    "url": "https://support.harness.io",
-                },
-            ],
             spec={
                 "chaos": {
-                    "fault_name": "byoc-injector",
-                    "params": [
-                        {
-                            "name": "CHAOS_DURATION",
-                            "value": "<+input>.default('30s')",
-                        },
-                        {
-                            "name": "CHAOS_INTERVAL",
-                            "value": "<+input>.default('5s')",
-                        },
-                    ],
                     "kubernetes": {
+                        "resources": {
+                            "limits": {
+                                "cpu": "250m",
+                                "memory": "256Mi",
+                            },
+                            "requests": {
+                                "cpu": "125m",
+                                "memory": "128Mi",
+                            },
+                        },
                         "image": "chaosnative/go-runner:ci",
                         "commands": [
                             "/bin/bash",
@@ -1031,19 +1005,30 @@ class FaultTemplate(pulumi.CustomResource):
                             "description": "Advanced chaos fault",
                             "owner": "chaos-team",
                         },
-                        "resources": {
-                            "limits": {
-                                "cpu": "250m",
-                                "memory": "256Mi",
-                            },
-                            "requests": {
-                                "cpu": "125m",
-                                "memory": "128Mi",
-                            },
-                        },
                     },
+                    "params": [
+                        {
+                            "name": "CHAOS_DURATION",
+                            "value": "<+input>.default('30s')",
+                        },
+                        {
+                            "name": "CHAOS_INTERVAL",
+                            "value": "<+input>.default('5s')",
+                        },
+                    ],
+                    "fault_name": "byoc-injector",
                 },
             },
+            links=[
+                {
+                    "name": "Documentation",
+                    "url": "https://docs.harness.io/chaos",
+                },
+                {
+                    "name": "Support",
+                    "url": "https://support.harness.io",
+                },
+            ],
             variables=[
                 {
                     "name": "chaos_duration",
@@ -1059,6 +1044,21 @@ class FaultTemplate(pulumi.CustomResource):
                     "required": False,
                     "description": "Interval between chaos injections",
                 },
+            ],
+            org_id=this["id"],
+            project_id=this_harness_platform_project["id"],
+            hub_identity=project_level["identity"],
+            identity="advanced-fault-template",
+            name="Advanced Fault Template",
+            description="Fault with advanced Kubernetes configuration",
+            categories=["Kubernetes"],
+            infrastructures=["KubernetesV2"],
+            type="Custom",
+            permissions_required="Basic",
+            tags=[
+                "kubernetes",
+                "advanced",
+                "production",
             ],
             opts = pulumi.ResourceOptions(depends_on=[project_level]))
         ```
@@ -1099,17 +1099,17 @@ class FaultTemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] infrastructures: List of supported infrastructures
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keywords: Search keywords
         :param pulumi.Input[_builtins.str] kind: Resource kind
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FaultTemplateLinkArgs', 'FaultTemplateLinkArgsDict']]]] links: Related links
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FaultTemplateLinkArgs', 'FaultTemplateLinkArgsDict', 'outputs.FaultTemplateLink']]]] links: Related links
         :param pulumi.Input[_builtins.str] name: Name of the fault template
         :param pulumi.Input[_builtins.str] org_id: Organization identifier
         :param pulumi.Input[_builtins.str] permissions_required: Required permissions for the fault
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] platforms: Supported platforms
         :param pulumi.Input[_builtins.str] project_id: Project identifier
         :param pulumi.Input[_builtins.str] revision: Template revision (defaults to v1 if not specified)
-        :param pulumi.Input[Union['FaultTemplateSpecArgs', 'FaultTemplateSpecArgsDict']] spec: Fault specification
+        :param pulumi.Input[Union['FaultTemplateSpecArgs', 'FaultTemplateSpecArgsDict', 'outputs.FaultTemplateSpec']] spec: Fault specification
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags for the fault template
         :param pulumi.Input[_builtins.str] type: Fault type
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FaultTemplateVariableArgs', 'FaultTemplateVariableArgsDict']]]] variables: Template variables
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FaultTemplateVariableArgs', 'FaultTemplateVariableArgsDict', 'outputs.FaultTemplateVariable']]]] variables: Template variables
         """
         ...
     @overload
@@ -1158,6 +1158,44 @@ class FaultTemplate(pulumi.CustomResource):
         # ----------------------------------------------------------------------------
         # Most common pattern: Custom Kubernetes fault with container spec
         kubernetes_fault = harness.chaos.FaultTemplate("kubernetes_fault",
+            spec={
+                "chaos": {
+                    "kubernetes": {
+                        "resources": {
+                            "limits": {
+                                "cpu": "150m",
+                                "memory": "150Mi",
+                            },
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "100Mi",
+                            },
+                        },
+                        "image": "chaosnative/go-runner:ci",
+                        "commands": [
+                            "/bin/bash",
+                            "-c",
+                        ],
+                        "args": ["echo 'Running chaos fault'; sleep 30"],
+                        "image_pull_policy": "IfNotPresent",
+                    },
+                    "params": [
+                        {
+                            "name": "CHAOS_DURATION",
+                            "value": "30s",
+                        },
+                        {
+                            "name": "CHAOS_INTERVAL",
+                            "value": "5s",
+                        },
+                    ],
+                    "fault_name": "byoc-injector",
+                },
+            },
+            links=[{
+                "name": "Documentation",
+                "url": "https://docs.harness.io/chaos",
+            }],
             org_id=this["id"],
             project_id=this_harness_platform_project["id"],
             hub_identity=project_level["identity"],
@@ -1173,50 +1211,67 @@ class FaultTemplate(pulumi.CustomResource):
                 "fault",
                 "custom",
             ],
-            links=[{
-                "name": "Documentation",
-                "url": "https://docs.harness.io/chaos",
-            }],
-            spec={
-                "chaos": {
-                    "fault_name": "byoc-injector",
-                    "params": [
-                        {
-                            "name": "CHAOS_DURATION",
-                            "value": "30s",
-                        },
-                        {
-                            "name": "CHAOS_INTERVAL",
-                            "value": "5s",
-                        },
-                    ],
-                    "kubernetes": {
-                        "image": "chaosnative/go-runner:ci",
-                        "commands": [
-                            "/bin/bash",
-                            "-c",
-                        ],
-                        "args": ["echo 'Running chaos fault'; sleep 30"],
-                        "image_pull_policy": "IfNotPresent",
-                        "resources": {
-                            "limits": {
-                                "cpu": "150m",
-                                "memory": "150Mi",
-                            },
-                            "requests": {
-                                "cpu": "100m",
-                                "memory": "100Mi",
-                            },
-                        },
-                    },
-                },
-            },
             opts = pulumi.ResourceOptions(depends_on=[project_level]))
         # ----------------------------------------------------------------------------
         # Example 2: Fault with Environment Variables (TESTED ✅)
         # ----------------------------------------------------------------------------
         # Fault with environment variables for configuration
         fault_with_env = harness.chaos.FaultTemplate("fault_with_env",
+            spec={
+                "chaos": {
+                    "kubernetes": {
+                        "resources": {
+                            "limits": {
+                                "cpu": "200m",
+                                "memory": "200Mi",
+                            },
+                        },
+                        "envs": [
+                            {
+                                "name": "TARGET_NAMESPACE",
+                                "value": "<+input>.default('default')",
+                            },
+                            {
+                                "name": "CHAOS_MODE",
+                                "value": "pod",
+                            },
+                        ],
+                        "image": "chaosnative/go-runner:ci",
+                        "commands": [
+                            "/bin/bash",
+                            "-c",
+                        ],
+                        "args": ["echo 'Fault with env vars'; sleep 15"],
+                        "image_pull_policy": "IfNotPresent",
+                    },
+                    "params": [
+                        {
+                            "name": "CHAOS_DURATION",
+                            "value": "15s",
+                        },
+                        {
+                            "name": "CHAOS_INTERVAL",
+                            "value": "3s",
+                        },
+                        {
+                            "name": "TARGET_NAMESPACE",
+                            "value": "<+input>.default('default')",
+                        },
+                    ],
+                    "fault_name": "byoc-injector",
+                },
+            },
+            links=[{
+                "name": "Documentation",
+                "url": "https://docs.harness.io/chaos",
+            }],
+            variables=[{
+                "name": "target_namespace",
+                "value": "<+input>",
+                "type": "string",
+                "required": False,
+                "description": "Target namespace for chaos injection",
+            }],
             org_id=this["id"],
             project_id=this_harness_platform_project["id"],
             hub_identity=project_level["identity"],
@@ -1232,106 +1287,25 @@ class FaultTemplate(pulumi.CustomResource):
                 "env",
                 "config",
             ],
-            links=[{
-                "name": "Documentation",
-                "url": "https://docs.harness.io/chaos",
-            }],
-            spec={
-                "chaos": {
-                    "fault_name": "byoc-injector",
-                    "params": [
-                        {
-                            "name": "CHAOS_DURATION",
-                            "value": "15s",
-                        },
-                        {
-                            "name": "CHAOS_INTERVAL",
-                            "value": "3s",
-                        },
-                        {
-                            "name": "TARGET_NAMESPACE",
-                            "value": "<+input>.default('default')",
-                        },
-                    ],
-                    "kubernetes": {
-                        "image": "chaosnative/go-runner:ci",
-                        "commands": [
-                            "/bin/bash",
-                            "-c",
-                        ],
-                        "args": ["echo 'Fault with env vars'; sleep 15"],
-                        "image_pull_policy": "IfNotPresent",
-                        "envs": [
-                            {
-                                "name": "TARGET_NAMESPACE",
-                                "value": "<+input>.default('default')",
-                            },
-                            {
-                                "name": "CHAOS_MODE",
-                                "value": "pod",
-                            },
-                        ],
-                        "resources": {
-                            "limits": {
-                                "cpu": "200m",
-                                "memory": "200Mi",
-                            },
-                        },
-                    },
-                },
-            },
-            variables=[{
-                "name": "target_namespace",
-                "value": "<+input>",
-                "type": "string",
-                "required": False,
-                "description": "Target namespace for chaos injection",
-            }],
             opts = pulumi.ResourceOptions(depends_on=[project_level]))
         # ----------------------------------------------------------------------------
         # Example 3: Fault with Advanced Configuration (TESTED ✅)
         # ----------------------------------------------------------------------------
         # Fault with node selector, labels, and annotations
         advanced_fault = harness.chaos.FaultTemplate("advanced_fault",
-            org_id=this["id"],
-            project_id=this_harness_platform_project["id"],
-            hub_identity=project_level["identity"],
-            identity="advanced-fault-template",
-            name="Advanced Fault Template",
-            description="Fault with advanced Kubernetes configuration",
-            categories=["Kubernetes"],
-            infrastructures=["KubernetesV2"],
-            type="Custom",
-            permissions_required="Basic",
-            tags=[
-                "kubernetes",
-                "advanced",
-                "production",
-            ],
-            links=[
-                {
-                    "name": "Documentation",
-                    "url": "https://docs.harness.io/chaos",
-                },
-                {
-                    "name": "Support",
-                    "url": "https://support.harness.io",
-                },
-            ],
             spec={
                 "chaos": {
-                    "fault_name": "byoc-injector",
-                    "params": [
-                        {
-                            "name": "CHAOS_DURATION",
-                            "value": "<+input>.default('30s')",
-                        },
-                        {
-                            "name": "CHAOS_INTERVAL",
-                            "value": "<+input>.default('5s')",
-                        },
-                    ],
                     "kubernetes": {
+                        "resources": {
+                            "limits": {
+                                "cpu": "250m",
+                                "memory": "256Mi",
+                            },
+                            "requests": {
+                                "cpu": "125m",
+                                "memory": "128Mi",
+                            },
+                        },
                         "image": "chaosnative/go-runner:ci",
                         "commands": [
                             "/bin/bash",
@@ -1352,19 +1326,30 @@ class FaultTemplate(pulumi.CustomResource):
                             "description": "Advanced chaos fault",
                             "owner": "chaos-team",
                         },
-                        "resources": {
-                            "limits": {
-                                "cpu": "250m",
-                                "memory": "256Mi",
-                            },
-                            "requests": {
-                                "cpu": "125m",
-                                "memory": "128Mi",
-                            },
-                        },
                     },
+                    "params": [
+                        {
+                            "name": "CHAOS_DURATION",
+                            "value": "<+input>.default('30s')",
+                        },
+                        {
+                            "name": "CHAOS_INTERVAL",
+                            "value": "<+input>.default('5s')",
+                        },
+                    ],
+                    "fault_name": "byoc-injector",
                 },
             },
+            links=[
+                {
+                    "name": "Documentation",
+                    "url": "https://docs.harness.io/chaos",
+                },
+                {
+                    "name": "Support",
+                    "url": "https://support.harness.io",
+                },
+            ],
             variables=[
                 {
                     "name": "chaos_duration",
@@ -1380,6 +1365,21 @@ class FaultTemplate(pulumi.CustomResource):
                     "required": False,
                     "description": "Interval between chaos injections",
                 },
+            ],
+            org_id=this["id"],
+            project_id=this_harness_platform_project["id"],
+            hub_identity=project_level["identity"],
+            identity="advanced-fault-template",
+            name="Advanced Fault Template",
+            description="Fault with advanced Kubernetes configuration",
+            categories=["Kubernetes"],
+            infrastructures=["KubernetesV2"],
+            type="Custom",
+            permissions_required="Basic",
+            tags=[
+                "kubernetes",
+                "advanced",
+                "production",
             ],
             opts = pulumi.ResourceOptions(depends_on=[project_level]))
         ```
@@ -1433,17 +1433,17 @@ class FaultTemplate(pulumi.CustomResource):
                  infrastructures: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  keywords: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
-                 links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FaultTemplateLinkArgs', 'FaultTemplateLinkArgsDict']]]]] = None,
+                 links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FaultTemplateLinkArgs', 'FaultTemplateLinkArgsDict', 'outputs.FaultTemplateLink']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  permissions_required: pulumi.Input[Optional[_builtins.str]] = None,
                  platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  revision: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['FaultTemplateSpecArgs', 'FaultTemplateSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['FaultTemplateSpecArgs', 'FaultTemplateSpecArgsDict', 'outputs.FaultTemplateSpec']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FaultTemplateVariableArgs', 'FaultTemplateVariableArgsDict']]]]] = None,
+                 variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FaultTemplateVariableArgs', 'FaultTemplateVariableArgsDict', 'outputs.FaultTemplateVariable']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1508,19 +1508,19 @@ class FaultTemplate(pulumi.CustomResource):
             is_removed: pulumi.Input[Optional[_builtins.bool]] = None,
             keywords: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
-            links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FaultTemplateLinkArgs', 'FaultTemplateLinkArgsDict']]]]] = None,
+            links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FaultTemplateLinkArgs', 'FaultTemplateLinkArgsDict', 'outputs.FaultTemplateLink']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             permissions_required: pulumi.Input[Optional[_builtins.str]] = None,
             platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             revision: pulumi.Input[Optional[_builtins.str]] = None,
-            spec: pulumi.Input[Optional[Union['FaultTemplateSpecArgs', 'FaultTemplateSpecArgsDict']]] = None,
+            spec: pulumi.Input[Optional[Union['FaultTemplateSpecArgs', 'FaultTemplateSpecArgsDict', 'outputs.FaultTemplateSpec']]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.int]] = None,
             updated_by: pulumi.Input[Optional[_builtins.str]] = None,
-            variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FaultTemplateVariableArgs', 'FaultTemplateVariableArgsDict']]]]] = None) -> 'FaultTemplate':
+            variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FaultTemplateVariableArgs', 'FaultTemplateVariableArgsDict', 'outputs.FaultTemplateVariable']]]]] = None) -> 'FaultTemplate':
         """
         Get an existing FaultTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1542,19 +1542,19 @@ class FaultTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_removed: Soft delete flag
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keywords: Search keywords
         :param pulumi.Input[_builtins.str] kind: Resource kind
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FaultTemplateLinkArgs', 'FaultTemplateLinkArgsDict']]]] links: Related links
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FaultTemplateLinkArgs', 'FaultTemplateLinkArgsDict', 'outputs.FaultTemplateLink']]]] links: Related links
         :param pulumi.Input[_builtins.str] name: Name of the fault template
         :param pulumi.Input[_builtins.str] org_id: Organization identifier
         :param pulumi.Input[_builtins.str] permissions_required: Required permissions for the fault
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] platforms: Supported platforms
         :param pulumi.Input[_builtins.str] project_id: Project identifier
         :param pulumi.Input[_builtins.str] revision: Template revision (defaults to v1 if not specified)
-        :param pulumi.Input[Union['FaultTemplateSpecArgs', 'FaultTemplateSpecArgsDict']] spec: Fault specification
+        :param pulumi.Input[Union['FaultTemplateSpecArgs', 'FaultTemplateSpecArgsDict', 'outputs.FaultTemplateSpec']] spec: Fault specification
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags for the fault template
         :param pulumi.Input[_builtins.str] type: Fault type
         :param pulumi.Input[_builtins.int] updated_at: Update timestamp
         :param pulumi.Input[_builtins.str] updated_by: Updater user ID
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FaultTemplateVariableArgs', 'FaultTemplateVariableArgsDict']]]] variables: Template variables
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FaultTemplateVariableArgs', 'FaultTemplateVariableArgsDict', 'outputs.FaultTemplateVariable']]]] variables: Template variables
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

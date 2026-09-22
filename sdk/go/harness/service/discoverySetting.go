@@ -29,8 +29,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Update image registry settings for service discovery
 //			_, err := service.NewDiscoverySetting(ctx, "example", &service.DiscoverySettingArgs{
-//				OrgIdentifier:     pulumi.String("sechaosworkshop"),
-//				ProjectIdentifier: pulumi.String("se1"),
 //				ImageRegistry: &service.DiscoverySettingImageRegistryArgs{
 //					Account: pulumi.String("<account_name>"),
 //					Server:  pulumi.String("<registry_server>"),
@@ -38,6 +36,8 @@ import (
 //						pulumi.String("<secret_name>"),
 //					},
 //				},
+//				OrgIdentifier:     pulumi.String("sechaosworkshop"),
+//				ProjectIdentifier: pulumi.String("se1"),
 //			})
 //			if err != nil {
 //				return err

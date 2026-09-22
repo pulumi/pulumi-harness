@@ -48,21 +48,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Authentication mechanism as api token
  *         var token = new AppDynamicsConnector("token", AppDynamicsConnectorArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .description("test")
- *             .tags("foo:bar")
- *             .url("https://appdynamics.com/")
- *             .accountName("myaccount")
- *             .delegateSelectors("harness-delegate")
  *             .apiToken(AppDynamicsConnectorApiTokenArgs.builder()
  *                 .clientId("client_id")
  *                 .clientSecretRef("account.secret_id")
  *                 .build())
- *             .build());
- * 
- *         // Authentication mechanism as username and password
- *         var test = new AppDynamicsConnector("test", AppDynamicsConnectorArgs.builder()
  *             .identifier("identifier")
  *             .name("name")
  *             .description("test")
@@ -70,10 +59,21 @@ import javax.annotation.Nullable;
  *             .url("https://appdynamics.com/")
  *             .accountName("myaccount")
  *             .delegateSelectors("harness-delegate")
+ *             .build());
+ * 
+ *         // Authentication mechanism as username and password
+ *         var test = new AppDynamicsConnector("test", AppDynamicsConnectorArgs.builder()
  *             .usernamePassword(AppDynamicsConnectorUsernamePasswordArgs.builder()
  *                 .username("username")
  *                 .passwordRef("account.secret_id")
  *                 .build())
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("test")
+ *             .tags("foo:bar")
+ *             .url("https://appdynamics.com/")
+ *             .accountName("myaccount")
+ *             .delegateSelectors("harness-delegate")
  *             .build());
  * 
  *     }

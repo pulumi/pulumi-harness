@@ -25,6 +25,20 @@ namespace Pulumi.Harness.Chaos
     ///     // K8s Rule
     ///     var example = new Harness.Chaos.SecurityGovernanceRule("example", new()
     ///     {
+    ///         TimeWindows = new[]
+    ///         {
+    ///             new Harness.Chaos.Inputs.SecurityGovernanceRuleTimeWindowArgs
+    ///             {
+    ///                 Recurrence = new Harness.Chaos.Inputs.SecurityGovernanceRuleTimeWindowRecurrenceArgs
+    ///                 {
+    ///                     Type = "Daily",
+    ///                     Until = -1,
+    ///                 },
+    ///                 TimeZone = "UTC",
+    ///                 StartTime = 1711238400000,
+    ///                 Duration = "24h",
+    ///             },
+    ///         },
     ///         OrgId = "&lt;org_id&gt;",
     ///         ProjectId = "&lt;project_id&gt;",
     ///         Name = "&lt;name&gt;",
@@ -42,26 +56,26 @@ namespace Pulumi.Harness.Chaos
     ///         {
     ///             "&lt;tag1&gt;",
     ///             "&lt;tag2&gt;",
-    ///         },
-    ///         TimeWindows = new[]
-    ///         {
-    ///             new Harness.Chaos.Inputs.SecurityGovernanceRuleTimeWindowArgs
-    ///             {
-    ///                 TimeZone = "UTC",
-    ///                 StartTime = 1711238400000,
-    ///                 Duration = "24h",
-    ///                 Recurrence = new Harness.Chaos.Inputs.SecurityGovernanceRuleTimeWindowRecurrenceArgs
-    ///                 {
-    ///                     Type = "Daily",
-    ///                     Until = -1,
-    ///                 },
-    ///             },
     ///         },
     ///     });
     /// 
     ///     // Linux Rule
     ///     var linuxRule = new Harness.Chaos.SecurityGovernanceRule("linux_rule", new()
     ///     {
+    ///         TimeWindows = new[]
+    ///         {
+    ///             new Harness.Chaos.Inputs.SecurityGovernanceRuleTimeWindowArgs
+    ///             {
+    ///                 Recurrence = new Harness.Chaos.Inputs.SecurityGovernanceRuleTimeWindowRecurrenceArgs
+    ///                 {
+    ///                     Type = "Daily",
+    ///                     Until = -1,
+    ///                 },
+    ///                 TimeZone = "UTC",
+    ///                 StartTime = 1711238400000,
+    ///                 Duration = "24h",
+    ///             },
+    ///         },
     ///         OrgId = "&lt;org_id&gt;",
     ///         ProjectId = "&lt;project_id&gt;",
     ///         Name = "&lt;name&gt;",
@@ -79,26 +93,26 @@ namespace Pulumi.Harness.Chaos
     ///         {
     ///             "&lt;tag1&gt;",
     ///             "&lt;tag2&gt;",
-    ///         },
-    ///         TimeWindows = new[]
-    ///         {
-    ///             new Harness.Chaos.Inputs.SecurityGovernanceRuleTimeWindowArgs
-    ///             {
-    ///                 TimeZone = "UTC",
-    ///                 StartTime = 1711238400000,
-    ///                 Duration = "24h",
-    ///                 Recurrence = new Harness.Chaos.Inputs.SecurityGovernanceRuleTimeWindowRecurrenceArgs
-    ///                 {
-    ///                     Type = "Daily",
-    ///                     Until = -1,
-    ///                 },
-    ///             },
     ///         },
     ///     });
     /// 
     ///     // Windows Rule
     ///     var windowsRule = new Harness.Chaos.SecurityGovernanceRule("windows_rule", new()
     ///     {
+    ///         TimeWindows = new[]
+    ///         {
+    ///             new Harness.Chaos.Inputs.SecurityGovernanceRuleTimeWindowArgs
+    ///             {
+    ///                 Recurrence = new Harness.Chaos.Inputs.SecurityGovernanceRuleTimeWindowRecurrenceArgs
+    ///                 {
+    ///                     Type = "Daily",
+    ///                     Until = -1,
+    ///                 },
+    ///                 TimeZone = "UTC",
+    ///                 StartTime = 1711238400000,
+    ///                 Duration = "24h",
+    ///             },
+    ///         },
     ///         OrgId = "&lt;org_id&gt;",
     ///         ProjectId = "&lt;project_id&gt;",
     ///         Name = "&lt;name&gt;",
@@ -116,20 +130,6 @@ namespace Pulumi.Harness.Chaos
     ///         {
     ///             "&lt;tag1&gt;",
     ///             "&lt;tag2&gt;",
-    ///         },
-    ///         TimeWindows = new[]
-    ///         {
-    ///             new Harness.Chaos.Inputs.SecurityGovernanceRuleTimeWindowArgs
-    ///             {
-    ///                 TimeZone = "UTC",
-    ///                 StartTime = 1711238400000,
-    ///                 Duration = "24h",
-    ///                 Recurrence = new Harness.Chaos.Inputs.SecurityGovernanceRuleTimeWindowRecurrenceArgs
-    ///                 {
-    ///                     Type = "Daily",
-    ///                     Until = -1,
-    ///                 },
-    ///             },
     ///         },
     ///     });
     /// 

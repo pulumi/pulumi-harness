@@ -24,11 +24,19 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var example = new Harness.Platform.InfraVariableSet("example", new()
     ///     {
-    ///         Identifier = "example",
-    ///         Name = "example",
-    ///         OrgId = test.Id,
-    ///         ProjectId = testHarnessPlatformProject.Id,
-    ///         Description = "some description",
+    ///         Connectors = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.InfraVariableSetConnectorArgs
+    ///             {
+    ///                 ConnectorRef = "harness_platform_connector_aws.test.id",
+    ///                 Type = "aws",
+    ///             },
+    ///             new Harness.Platform.Inputs.InfraVariableSetConnectorArgs
+    ///             {
+    ///                 ConnectorRef = "harness_platform_connector_azure.test.id",
+    ///                 Type = "azure",
+    ///             },
+    ///         },
     ///         EnvironmentVariables = new[]
     ///         {
     ///             new Harness.Platform.Inputs.InfraVariableSetEnvironmentVariableArgs
@@ -42,21 +50,6 @@ namespace Pulumi.Harness.Platform
     ///                 Key = "key2",
     ///                 Value = "harness_platform_secret_text.test.id",
     ///                 ValueType = "secret",
-    ///             },
-    ///         },
-    ///         TerraformVariables = new[]
-    ///         {
-    ///             new Harness.Platform.Inputs.InfraVariableSetTerraformVariableArgs
-    ///             {
-    ///                 Key = "key1",
-    ///                 Value = "1111",
-    ///                 ValueType = "string",
-    ///             },
-    ///             new Harness.Platform.Inputs.InfraVariableSetTerraformVariableArgs
-    ///             {
-    ///                 Key = "key2",
-    ///                 Value = "1111u",
-    ///                 ValueType = "string",
     ///             },
     ///         },
     ///         TerraformVariableFiles = new[]
@@ -76,19 +69,26 @@ namespace Pulumi.Harness.Platform
     ///                 RepositoryConnector = "harness_platform_connector_github.test.id",
     ///             },
     ///         },
-    ///         Connectors = new[]
+    ///         TerraformVariables = new[]
     ///         {
-    ///             new Harness.Platform.Inputs.InfraVariableSetConnectorArgs
+    ///             new Harness.Platform.Inputs.InfraVariableSetTerraformVariableArgs
     ///             {
-    ///                 ConnectorRef = "harness_platform_connector_aws.test.id",
-    ///                 Type = "aws",
+    ///                 Key = "key1",
+    ///                 Value = "1111",
+    ///                 ValueType = "string",
     ///             },
-    ///             new Harness.Platform.Inputs.InfraVariableSetConnectorArgs
+    ///             new Harness.Platform.Inputs.InfraVariableSetTerraformVariableArgs
     ///             {
-    ///                 ConnectorRef = "harness_platform_connector_azure.test.id",
-    ///                 Type = "azure",
+    ///                 Key = "key2",
+    ///                 Value = "1111u",
+    ///                 ValueType = "string",
     ///             },
     ///         },
+    ///         Identifier = "example",
+    ///         Name = "example",
+    ///         OrgId = test.Id,
+    ///         ProjectId = testHarnessPlatformProject.Id,
+    ///         Description = "some description",
     ///     });
     /// 
     /// });

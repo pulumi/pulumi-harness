@@ -16,6 +16,16 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.IacmAnsiblePlaybook("example", {
+ *     envVars: [{
+ *         key: "ANSIBLE_CONFIG",
+ *         value: "ansible.cfg",
+ *         valueType: "string",
+ *     }],
+ *     vars: [{
+ *         key: "environment",
+ *         value: "production",
+ *         valueType: "string",
+ *     }],
  *     identifier: "my_playbook",
  *     name: "my-playbook",
  *     orgId: exampleHarnessPlatformOrganization.id,
@@ -26,16 +36,6 @@ import * as utilities from "../utilities";
  *     repositoryConnector: "account.my_github_connector",
  *     ansibleGalaxy: true,
  *     tags: ["env:prod"],
- *     vars: [{
- *         key: "environment",
- *         value: "production",
- *         valueType: "string",
- *     }],
- *     envVars: [{
- *         key: "ANSIBLE_CONFIG",
- *         value: "ansible.cfg",
- *         valueType: "string",
- *     }],
  * });
  * ```
  */

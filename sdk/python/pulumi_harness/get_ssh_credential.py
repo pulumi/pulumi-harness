@@ -77,7 +77,7 @@ class AwaitableGetSshCredentialResult(GetSshCredentialResult):
 
 def get_ssh_credential(id: Optional[_builtins.str] = None,
                        name: Optional[_builtins.str] = None,
-                       usage_scopes: Optional[Sequence[Union['GetSshCredentialUsageScopeArgs', 'GetSshCredentialUsageScopeArgsDict']]] = None,
+                       usage_scopes: Optional[Sequence[Union['GetSshCredentialUsageScopeArgs', 'GetSshCredentialUsageScopeArgsDict', 'outputs.GetSshCredentialUsageScopeResult']]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSshCredentialResult:
     """
     Data source for retrieving an SSH credential.
@@ -85,7 +85,7 @@ def get_ssh_credential(id: Optional[_builtins.str] = None,
 
     :param _builtins.str id: Unique identifier of the secret manager
     :param _builtins.str name: The name of the secret manager
-    :param Sequence[Union['GetSshCredentialUsageScopeArgs', 'GetSshCredentialUsageScopeArgsDict']] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
+    :param Sequence[Union['GetSshCredentialUsageScopeArgs', 'GetSshCredentialUsageScopeArgsDict', 'outputs.GetSshCredentialUsageScopeResult']] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -100,7 +100,7 @@ def get_ssh_credential(id: Optional[_builtins.str] = None,
         usage_scopes=pulumi.get(__ret__, 'usage_scopes'))
 def get_ssh_credential_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                              usage_scopes: pulumi.Input[Optional[Optional[Sequence[Union['GetSshCredentialUsageScopeArgs', 'GetSshCredentialUsageScopeArgsDict']]]]] = None,
+                              usage_scopes: pulumi.Input[Optional[Optional[Sequence[Union['GetSshCredentialUsageScopeArgs', 'GetSshCredentialUsageScopeArgsDict', 'outputs.GetSshCredentialUsageScopeResult']]]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSshCredentialResult]:
     """
     Data source for retrieving an SSH credential.
@@ -108,7 +108,7 @@ def get_ssh_credential_output(id: pulumi.Input[Optional[Optional[_builtins.str]]
 
     :param _builtins.str id: Unique identifier of the secret manager
     :param _builtins.str name: The name of the secret manager
-    :param Sequence[Union['GetSshCredentialUsageScopeArgs', 'GetSshCredentialUsageScopeArgsDict']] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
+    :param Sequence[Union['GetSshCredentialUsageScopeArgs', 'GetSshCredentialUsageScopeArgsDict', 'outputs.GetSshCredentialUsageScopeResult']] usage_scopes: This block is used for scoping the resource to a specific set of applications or environments.
     """
     __args__ = dict()
     __args__['id'] = id

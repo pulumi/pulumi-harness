@@ -457,19 +457,19 @@ class KubernetesConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_key_cert: pulumi.Input[Optional[Union['KubernetesConnectorClientKeyCertArgs', 'KubernetesConnectorClientKeyCertArgsDict']]] = None,
+                 client_key_cert: pulumi.Input[Optional[Union['KubernetesConnectorClientKeyCertArgs', 'KubernetesConnectorClientKeyCertArgsDict', 'outputs.KubernetesConnectorClientKeyCert']]] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
-                 inherit_from_delegate: pulumi.Input[Optional[Union['KubernetesConnectorInheritFromDelegateArgs', 'KubernetesConnectorInheritFromDelegateArgsDict']]] = None,
+                 inherit_from_delegate: pulumi.Input[Optional[Union['KubernetesConnectorInheritFromDelegateArgs', 'KubernetesConnectorInheritFromDelegateArgsDict', 'outputs.KubernetesConnectorInheritFromDelegate']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 openid_connect: pulumi.Input[Optional[Union['KubernetesConnectorOpenidConnectArgs', 'KubernetesConnectorOpenidConnectArgsDict']]] = None,
+                 openid_connect: pulumi.Input[Optional[Union['KubernetesConnectorOpenidConnectArgs', 'KubernetesConnectorOpenidConnectArgsDict', 'outputs.KubernetesConnectorOpenidConnect']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 service_account: pulumi.Input[Optional[Union['KubernetesConnectorServiceAccountArgs', 'KubernetesConnectorServiceAccountArgsDict']]] = None,
+                 service_account: pulumi.Input[Optional[Union['KubernetesConnectorServiceAccountArgs', 'KubernetesConnectorServiceAccountArgsDict', 'outputs.KubernetesConnectorServiceAccount']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 username_password: pulumi.Input[Optional[Union['KubernetesConnectorUsernamePasswordArgs', 'KubernetesConnectorUsernamePasswordArgsDict']]] = None,
+                 username_password: pulumi.Input[Optional[Union['KubernetesConnectorUsernamePasswordArgs', 'KubernetesConnectorUsernamePasswordArgsDict', 'outputs.KubernetesConnectorUsernamePassword']]] = None,
                  __props__=None):
         """
         Resource for creating a K8s connector.
@@ -481,10 +481,6 @@ class KubernetesConnector(pulumi.CustomResource):
         import pulumi_harness as harness
 
         client_key_cert = harness.platform.KubernetesConnector("clientKeyCert",
-            identifier="identifier",
-            name="name",
-            description="description",
-            tags=["foo:bar"],
             client_key_cert={
                 "master_url": "https://kubernetes.example.com",
                 "ca_cert_ref": "account.TEST_k8ss_client_stuff",
@@ -493,33 +489,33 @@ class KubernetesConnector(pulumi.CustomResource):
                 "client_key_passphrase_ref": "account.TEST_k8s_client_test",
                 "client_key_algorithm": "RSA",
             },
-            delegate_selectors=["harness-delegate"])
-        username_password = harness.platform.KubernetesConnector("usernamePassword",
             identifier="identifier",
             name="name",
             description="description",
             tags=["foo:bar"],
+            delegate_selectors=["harness-delegate"])
+        username_password = harness.platform.KubernetesConnector("usernamePassword",
             username_password={
                 "master_url": "https://kubernetes.example.com",
                 "username": "admin",
                 "password_ref": "account.TEST_k8s_client_test",
             },
-            delegate_selectors=["harness-delegate"])
-        service_account = harness.platform.KubernetesConnector("serviceAccount",
             identifier="identifier",
             name="name",
             description="description",
             tags=["foo:bar"],
+            delegate_selectors=["harness-delegate"])
+        service_account = harness.platform.KubernetesConnector("serviceAccount",
             service_account={
                 "master_url": "https://kubernetes.example.com",
                 "service_account_token_ref": "account.TEST_k8s_client_test",
             },
-            delegate_selectors=["harness-delegate"])
-        open_id_connect = harness.platform.KubernetesConnector("openIDConnect",
-            identifier="%[1]s",
-            name="%[2]s",
+            identifier="identifier",
+            name="name",
             description="description",
             tags=["foo:bar"],
+            delegate_selectors=["harness-delegate"])
+        open_id_connect = harness.platform.KubernetesConnector("openIDConnect",
             openid_connect={
                 "master_url": "https://kubernetes.example.com",
                 "issuer_url": "https://oidc.example.com",
@@ -532,15 +528,19 @@ class KubernetesConnector(pulumi.CustomResource):
                     "scope2",
                 ],
             },
+            identifier="%[1]s",
+            name="%[2]s",
+            description="description",
+            tags=["foo:bar"],
             delegate_selectors=["harness-delegate"])
         inherit_from_delegate = harness.platform.KubernetesConnector("inheritFromDelegate",
+            inherit_from_delegate={
+                "delegate_selectors": ["harness-delegate"],
+            },
             identifier="identifier",
             name="name",
             description="description",
-            tags=["foo:bar"],
-            inherit_from_delegate={
-                "delegate_selectors": ["harness-delegate"],
-            })
+            tags=["foo:bar"])
         ```
 
         ## Import
@@ -568,19 +568,19 @@ class KubernetesConnector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['KubernetesConnectorClientKeyCertArgs', 'KubernetesConnectorClientKeyCertArgsDict']] client_key_cert: Client key and certificate config for the connector.
+        :param pulumi.Input[Union['KubernetesConnectorClientKeyCertArgs', 'KubernetesConnectorClientKeyCertArgsDict', 'outputs.KubernetesConnectorClientKeyCert']] client_key_cert: Client key and certificate config for the connector.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Selectors to use for the delegate.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of connector
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[Union['KubernetesConnectorInheritFromDelegateArgs', 'KubernetesConnectorInheritFromDelegateArgsDict']] inherit_from_delegate: Credentials are inherited from the delegate.
+        :param pulumi.Input[Union['KubernetesConnectorInheritFromDelegateArgs', 'KubernetesConnectorInheritFromDelegateArgsDict', 'outputs.KubernetesConnectorInheritFromDelegate']] inherit_from_delegate: Credentials are inherited from the delegate.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
-        :param pulumi.Input[Union['KubernetesConnectorOpenidConnectArgs', 'KubernetesConnectorOpenidConnectArgsDict']] openid_connect: OpenID configuration for the connector.
+        :param pulumi.Input[Union['KubernetesConnectorOpenidConnectArgs', 'KubernetesConnectorOpenidConnectArgsDict', 'outputs.KubernetesConnectorOpenidConnect']] openid_connect: OpenID configuration for the connector.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[Union['KubernetesConnectorServiceAccountArgs', 'KubernetesConnectorServiceAccountArgsDict']] service_account: Service account for the connector.
+        :param pulumi.Input[Union['KubernetesConnectorServiceAccountArgs', 'KubernetesConnectorServiceAccountArgsDict', 'outputs.KubernetesConnectorServiceAccount']] service_account: Service account for the connector.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[Union['KubernetesConnectorUsernamePasswordArgs', 'KubernetesConnectorUsernamePasswordArgsDict']] username_password: Username and password for the connector.
+        :param pulumi.Input[Union['KubernetesConnectorUsernamePasswordArgs', 'KubernetesConnectorUsernamePasswordArgsDict', 'outputs.KubernetesConnectorUsernamePassword']] username_password: Username and password for the connector.
         """
         ...
     @overload
@@ -598,10 +598,6 @@ class KubernetesConnector(pulumi.CustomResource):
         import pulumi_harness as harness
 
         client_key_cert = harness.platform.KubernetesConnector("clientKeyCert",
-            identifier="identifier",
-            name="name",
-            description="description",
-            tags=["foo:bar"],
             client_key_cert={
                 "master_url": "https://kubernetes.example.com",
                 "ca_cert_ref": "account.TEST_k8ss_client_stuff",
@@ -610,33 +606,33 @@ class KubernetesConnector(pulumi.CustomResource):
                 "client_key_passphrase_ref": "account.TEST_k8s_client_test",
                 "client_key_algorithm": "RSA",
             },
-            delegate_selectors=["harness-delegate"])
-        username_password = harness.platform.KubernetesConnector("usernamePassword",
             identifier="identifier",
             name="name",
             description="description",
             tags=["foo:bar"],
+            delegate_selectors=["harness-delegate"])
+        username_password = harness.platform.KubernetesConnector("usernamePassword",
             username_password={
                 "master_url": "https://kubernetes.example.com",
                 "username": "admin",
                 "password_ref": "account.TEST_k8s_client_test",
             },
-            delegate_selectors=["harness-delegate"])
-        service_account = harness.platform.KubernetesConnector("serviceAccount",
             identifier="identifier",
             name="name",
             description="description",
             tags=["foo:bar"],
+            delegate_selectors=["harness-delegate"])
+        service_account = harness.platform.KubernetesConnector("serviceAccount",
             service_account={
                 "master_url": "https://kubernetes.example.com",
                 "service_account_token_ref": "account.TEST_k8s_client_test",
             },
-            delegate_selectors=["harness-delegate"])
-        open_id_connect = harness.platform.KubernetesConnector("openIDConnect",
-            identifier="%[1]s",
-            name="%[2]s",
+            identifier="identifier",
+            name="name",
             description="description",
             tags=["foo:bar"],
+            delegate_selectors=["harness-delegate"])
+        open_id_connect = harness.platform.KubernetesConnector("openIDConnect",
             openid_connect={
                 "master_url": "https://kubernetes.example.com",
                 "issuer_url": "https://oidc.example.com",
@@ -649,15 +645,19 @@ class KubernetesConnector(pulumi.CustomResource):
                     "scope2",
                 ],
             },
+            identifier="%[1]s",
+            name="%[2]s",
+            description="description",
+            tags=["foo:bar"],
             delegate_selectors=["harness-delegate"])
         inherit_from_delegate = harness.platform.KubernetesConnector("inheritFromDelegate",
+            inherit_from_delegate={
+                "delegate_selectors": ["harness-delegate"],
+            },
             identifier="identifier",
             name="name",
             description="description",
-            tags=["foo:bar"],
-            inherit_from_delegate={
-                "delegate_selectors": ["harness-delegate"],
-            })
+            tags=["foo:bar"])
         ```
 
         ## Import
@@ -698,19 +698,19 @@ class KubernetesConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_key_cert: pulumi.Input[Optional[Union['KubernetesConnectorClientKeyCertArgs', 'KubernetesConnectorClientKeyCertArgsDict']]] = None,
+                 client_key_cert: pulumi.Input[Optional[Union['KubernetesConnectorClientKeyCertArgs', 'KubernetesConnectorClientKeyCertArgsDict', 'outputs.KubernetesConnectorClientKeyCert']]] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
-                 inherit_from_delegate: pulumi.Input[Optional[Union['KubernetesConnectorInheritFromDelegateArgs', 'KubernetesConnectorInheritFromDelegateArgsDict']]] = None,
+                 inherit_from_delegate: pulumi.Input[Optional[Union['KubernetesConnectorInheritFromDelegateArgs', 'KubernetesConnectorInheritFromDelegateArgsDict', 'outputs.KubernetesConnectorInheritFromDelegate']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 openid_connect: pulumi.Input[Optional[Union['KubernetesConnectorOpenidConnectArgs', 'KubernetesConnectorOpenidConnectArgsDict']]] = None,
+                 openid_connect: pulumi.Input[Optional[Union['KubernetesConnectorOpenidConnectArgs', 'KubernetesConnectorOpenidConnectArgsDict', 'outputs.KubernetesConnectorOpenidConnect']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 service_account: pulumi.Input[Optional[Union['KubernetesConnectorServiceAccountArgs', 'KubernetesConnectorServiceAccountArgsDict']]] = None,
+                 service_account: pulumi.Input[Optional[Union['KubernetesConnectorServiceAccountArgs', 'KubernetesConnectorServiceAccountArgsDict', 'outputs.KubernetesConnectorServiceAccount']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 username_password: pulumi.Input[Optional[Union['KubernetesConnectorUsernamePasswordArgs', 'KubernetesConnectorUsernamePasswordArgsDict']]] = None,
+                 username_password: pulumi.Input[Optional[Union['KubernetesConnectorUsernamePasswordArgs', 'KubernetesConnectorUsernamePasswordArgsDict', 'outputs.KubernetesConnectorUsernamePassword']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -745,19 +745,19 @@ class KubernetesConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            client_key_cert: pulumi.Input[Optional[Union['KubernetesConnectorClientKeyCertArgs', 'KubernetesConnectorClientKeyCertArgsDict']]] = None,
+            client_key_cert: pulumi.Input[Optional[Union['KubernetesConnectorClientKeyCertArgs', 'KubernetesConnectorClientKeyCertArgsDict', 'outputs.KubernetesConnectorClientKeyCert']]] = None,
             delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
-            inherit_from_delegate: pulumi.Input[Optional[Union['KubernetesConnectorInheritFromDelegateArgs', 'KubernetesConnectorInheritFromDelegateArgsDict']]] = None,
+            inherit_from_delegate: pulumi.Input[Optional[Union['KubernetesConnectorInheritFromDelegateArgs', 'KubernetesConnectorInheritFromDelegateArgsDict', 'outputs.KubernetesConnectorInheritFromDelegate']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            openid_connect: pulumi.Input[Optional[Union['KubernetesConnectorOpenidConnectArgs', 'KubernetesConnectorOpenidConnectArgsDict']]] = None,
+            openid_connect: pulumi.Input[Optional[Union['KubernetesConnectorOpenidConnectArgs', 'KubernetesConnectorOpenidConnectArgsDict', 'outputs.KubernetesConnectorOpenidConnect']]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
-            service_account: pulumi.Input[Optional[Union['KubernetesConnectorServiceAccountArgs', 'KubernetesConnectorServiceAccountArgsDict']]] = None,
+            service_account: pulumi.Input[Optional[Union['KubernetesConnectorServiceAccountArgs', 'KubernetesConnectorServiceAccountArgsDict', 'outputs.KubernetesConnectorServiceAccount']]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            username_password: pulumi.Input[Optional[Union['KubernetesConnectorUsernamePasswordArgs', 'KubernetesConnectorUsernamePasswordArgsDict']]] = None) -> 'KubernetesConnector':
+            username_password: pulumi.Input[Optional[Union['KubernetesConnectorUsernamePasswordArgs', 'KubernetesConnectorUsernamePasswordArgsDict', 'outputs.KubernetesConnectorUsernamePassword']]] = None) -> 'KubernetesConnector':
         """
         Get an existing KubernetesConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -765,19 +765,19 @@ class KubernetesConnector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['KubernetesConnectorClientKeyCertArgs', 'KubernetesConnectorClientKeyCertArgsDict']] client_key_cert: Client key and certificate config for the connector.
+        :param pulumi.Input[Union['KubernetesConnectorClientKeyCertArgs', 'KubernetesConnectorClientKeyCertArgsDict', 'outputs.KubernetesConnectorClientKeyCert']] client_key_cert: Client key and certificate config for the connector.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Selectors to use for the delegate.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of connector
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[Union['KubernetesConnectorInheritFromDelegateArgs', 'KubernetesConnectorInheritFromDelegateArgsDict']] inherit_from_delegate: Credentials are inherited from the delegate.
+        :param pulumi.Input[Union['KubernetesConnectorInheritFromDelegateArgs', 'KubernetesConnectorInheritFromDelegateArgsDict', 'outputs.KubernetesConnectorInheritFromDelegate']] inherit_from_delegate: Credentials are inherited from the delegate.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
-        :param pulumi.Input[Union['KubernetesConnectorOpenidConnectArgs', 'KubernetesConnectorOpenidConnectArgsDict']] openid_connect: OpenID configuration for the connector.
+        :param pulumi.Input[Union['KubernetesConnectorOpenidConnectArgs', 'KubernetesConnectorOpenidConnectArgsDict', 'outputs.KubernetesConnectorOpenidConnect']] openid_connect: OpenID configuration for the connector.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[Union['KubernetesConnectorServiceAccountArgs', 'KubernetesConnectorServiceAccountArgsDict']] service_account: Service account for the connector.
+        :param pulumi.Input[Union['KubernetesConnectorServiceAccountArgs', 'KubernetesConnectorServiceAccountArgsDict', 'outputs.KubernetesConnectorServiceAccount']] service_account: Service account for the connector.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[Union['KubernetesConnectorUsernamePasswordArgs', 'KubernetesConnectorUsernamePasswordArgsDict']] username_password: Username and password for the connector.
+        :param pulumi.Input[Union['KubernetesConnectorUsernamePasswordArgs', 'KubernetesConnectorUsernamePasswordArgsDict', 'outputs.KubernetesConnectorUsernamePassword']] username_password: Username and password for the connector.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

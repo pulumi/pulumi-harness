@@ -392,7 +392,7 @@ class AppDynamicsConnector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 api_token: pulumi.Input[Optional[Union['AppDynamicsConnectorApiTokenArgs', 'AppDynamicsConnectorApiTokenArgsDict']]] = None,
+                 api_token: pulumi.Input[Optional[Union['AppDynamicsConnectorApiTokenArgs', 'AppDynamicsConnectorApiTokenArgsDict', 'outputs.AppDynamicsConnectorApiToken']]] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -401,7 +401,7 @@ class AppDynamicsConnector(pulumi.CustomResource):
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
-                 username_password: pulumi.Input[Optional[Union['AppDynamicsConnectorUsernamePasswordArgs', 'AppDynamicsConnectorUsernamePasswordArgsDict']]] = None,
+                 username_password: pulumi.Input[Optional[Union['AppDynamicsConnectorUsernamePasswordArgs', 'AppDynamicsConnectorUsernamePasswordArgsDict', 'outputs.AppDynamicsConnectorUsernamePassword']]] = None,
                  __props__=None):
         """
         Resource for creating an App Dynamics connector.
@@ -414,30 +414,30 @@ class AppDynamicsConnector(pulumi.CustomResource):
 
         # Authentication mechanism as api token
         token = harness.platform.AppDynamicsConnector("token",
-            identifier="identifier",
-            name="name",
-            description="test",
-            tags=["foo:bar"],
-            url="https://appdynamics.com/",
-            account_name="myaccount",
-            delegate_selectors=["harness-delegate"],
             api_token={
                 "client_id": "client_id",
                 "client_secret_ref": "account.secret_id",
-            })
-        # Authentication mechanism as username and password
-        test = harness.platform.AppDynamicsConnector("test",
+            },
             identifier="identifier",
             name="name",
             description="test",
             tags=["foo:bar"],
             url="https://appdynamics.com/",
             account_name="myaccount",
-            delegate_selectors=["harness-delegate"],
+            delegate_selectors=["harness-delegate"])
+        # Authentication mechanism as username and password
+        test = harness.platform.AppDynamicsConnector("test",
             username_password={
                 "username": "username",
                 "password_ref": "account.secret_id",
-            })
+            },
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            url="https://appdynamics.com/",
+            account_name="myaccount",
+            delegate_selectors=["harness-delegate"])
         ```
 
         ## Import
@@ -466,7 +466,7 @@ class AppDynamicsConnector(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_name: The App Dynamics account name.
-        :param pulumi.Input[Union['AppDynamicsConnectorApiTokenArgs', 'AppDynamicsConnectorApiTokenArgsDict']] api_token: Authenticate to App Dynamics using api token.
+        :param pulumi.Input[Union['AppDynamicsConnectorApiTokenArgs', 'AppDynamicsConnectorApiTokenArgsDict', 'outputs.AppDynamicsConnectorApiToken']] api_token: Authenticate to App Dynamics using api token.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -475,7 +475,7 @@ class AppDynamicsConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] url: URL of the App Dynamics controller.
-        :param pulumi.Input[Union['AppDynamicsConnectorUsernamePasswordArgs', 'AppDynamicsConnectorUsernamePasswordArgsDict']] username_password: Authenticate to App Dynamics using username and password.
+        :param pulumi.Input[Union['AppDynamicsConnectorUsernamePasswordArgs', 'AppDynamicsConnectorUsernamePasswordArgsDict', 'outputs.AppDynamicsConnectorUsernamePassword']] username_password: Authenticate to App Dynamics using username and password.
         """
         ...
     @overload
@@ -494,30 +494,30 @@ class AppDynamicsConnector(pulumi.CustomResource):
 
         # Authentication mechanism as api token
         token = harness.platform.AppDynamicsConnector("token",
-            identifier="identifier",
-            name="name",
-            description="test",
-            tags=["foo:bar"],
-            url="https://appdynamics.com/",
-            account_name="myaccount",
-            delegate_selectors=["harness-delegate"],
             api_token={
                 "client_id": "client_id",
                 "client_secret_ref": "account.secret_id",
-            })
-        # Authentication mechanism as username and password
-        test = harness.platform.AppDynamicsConnector("test",
+            },
             identifier="identifier",
             name="name",
             description="test",
             tags=["foo:bar"],
             url="https://appdynamics.com/",
             account_name="myaccount",
-            delegate_selectors=["harness-delegate"],
+            delegate_selectors=["harness-delegate"])
+        # Authentication mechanism as username and password
+        test = harness.platform.AppDynamicsConnector("test",
             username_password={
                 "username": "username",
                 "password_ref": "account.secret_id",
-            })
+            },
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            url="https://appdynamics.com/",
+            account_name="myaccount",
+            delegate_selectors=["harness-delegate"])
         ```
 
         ## Import
@@ -559,7 +559,7 @@ class AppDynamicsConnector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 api_token: pulumi.Input[Optional[Union['AppDynamicsConnectorApiTokenArgs', 'AppDynamicsConnectorApiTokenArgsDict']]] = None,
+                 api_token: pulumi.Input[Optional[Union['AppDynamicsConnectorApiTokenArgs', 'AppDynamicsConnectorApiTokenArgsDict', 'outputs.AppDynamicsConnectorApiToken']]] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -568,7 +568,7 @@ class AppDynamicsConnector(pulumi.CustomResource):
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
-                 username_password: pulumi.Input[Optional[Union['AppDynamicsConnectorUsernamePasswordArgs', 'AppDynamicsConnectorUsernamePasswordArgsDict']]] = None,
+                 username_password: pulumi.Input[Optional[Union['AppDynamicsConnectorUsernamePasswordArgs', 'AppDynamicsConnectorUsernamePasswordArgsDict', 'outputs.AppDynamicsConnectorUsernamePassword']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -606,7 +606,7 @@ class AppDynamicsConnector(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_name: pulumi.Input[Optional[_builtins.str]] = None,
-            api_token: pulumi.Input[Optional[Union['AppDynamicsConnectorApiTokenArgs', 'AppDynamicsConnectorApiTokenArgsDict']]] = None,
+            api_token: pulumi.Input[Optional[Union['AppDynamicsConnectorApiTokenArgs', 'AppDynamicsConnectorApiTokenArgsDict', 'outputs.AppDynamicsConnectorApiToken']]] = None,
             delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -615,7 +615,7 @@ class AppDynamicsConnector(pulumi.CustomResource):
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None,
-            username_password: pulumi.Input[Optional[Union['AppDynamicsConnectorUsernamePasswordArgs', 'AppDynamicsConnectorUsernamePasswordArgsDict']]] = None) -> 'AppDynamicsConnector':
+            username_password: pulumi.Input[Optional[Union['AppDynamicsConnectorUsernamePasswordArgs', 'AppDynamicsConnectorUsernamePasswordArgsDict', 'outputs.AppDynamicsConnectorUsernamePassword']]] = None) -> 'AppDynamicsConnector':
         """
         Get an existing AppDynamicsConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -624,7 +624,7 @@ class AppDynamicsConnector(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_name: The App Dynamics account name.
-        :param pulumi.Input[Union['AppDynamicsConnectorApiTokenArgs', 'AppDynamicsConnectorApiTokenArgsDict']] api_token: Authenticate to App Dynamics using api token.
+        :param pulumi.Input[Union['AppDynamicsConnectorApiTokenArgs', 'AppDynamicsConnectorApiTokenArgsDict', 'outputs.AppDynamicsConnectorApiToken']] api_token: Authenticate to App Dynamics using api token.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -633,7 +633,7 @@ class AppDynamicsConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] url: URL of the App Dynamics controller.
-        :param pulumi.Input[Union['AppDynamicsConnectorUsernamePasswordArgs', 'AppDynamicsConnectorUsernamePasswordArgsDict']] username_password: Authenticate to App Dynamics using username and password.
+        :param pulumi.Input[Union['AppDynamicsConnectorUsernamePasswordArgs', 'AppDynamicsConnectorUsernamePasswordArgsDict', 'outputs.AppDynamicsConnectorUsernamePassword']] username_password: Authenticate to App Dynamics using username and password.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

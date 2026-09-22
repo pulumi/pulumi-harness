@@ -203,7 +203,7 @@ class DiscoverySetting(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 image_registry: pulumi.Input[Optional[Union['DiscoverySettingImageRegistryArgs', 'DiscoverySettingImageRegistryArgsDict']]] = None,
+                 image_registry: pulumi.Input[Optional[Union['DiscoverySettingImageRegistryArgs', 'DiscoverySettingImageRegistryArgsDict', 'outputs.DiscoverySettingImageRegistry']]] = None,
                  org_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  project_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -218,20 +218,20 @@ class DiscoverySetting(pulumi.CustomResource):
 
         # Update image registry settings for service discovery
         example = harness.service.DiscoverySetting("example",
-            org_identifier="sechaosworkshop",
-            project_identifier="se1",
             image_registry={
                 "account": "<account_name>",
                 "server": "<registry_server>",
                 "secrets": ["<secret_name>"],
-            })
+            },
+            org_identifier="sechaosworkshop",
+            project_identifier="se1")
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] correlation_id: Correlation ID for the request.
-        :param pulumi.Input[Union['DiscoverySettingImageRegistryArgs', 'DiscoverySettingImageRegistryArgsDict']] image_registry: Image registry configuration.
+        :param pulumi.Input[Union['DiscoverySettingImageRegistryArgs', 'DiscoverySettingImageRegistryArgsDict', 'outputs.DiscoverySettingImageRegistry']] image_registry: Image registry configuration.
         :param pulumi.Input[_builtins.str] org_identifier: The organization identifier.
         :param pulumi.Input[_builtins.str] project_identifier: The project identifier.
         """
@@ -252,13 +252,13 @@ class DiscoverySetting(pulumi.CustomResource):
 
         # Update image registry settings for service discovery
         example = harness.service.DiscoverySetting("example",
-            org_identifier="sechaosworkshop",
-            project_identifier="se1",
             image_registry={
                 "account": "<account_name>",
                 "server": "<registry_server>",
                 "secrets": ["<secret_name>"],
-            })
+            },
+            org_identifier="sechaosworkshop",
+            project_identifier="se1")
         ```
 
 
@@ -278,7 +278,7 @@ class DiscoverySetting(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 image_registry: pulumi.Input[Optional[Union['DiscoverySettingImageRegistryArgs', 'DiscoverySettingImageRegistryArgsDict']]] = None,
+                 image_registry: pulumi.Input[Optional[Union['DiscoverySettingImageRegistryArgs', 'DiscoverySettingImageRegistryArgsDict', 'outputs.DiscoverySettingImageRegistry']]] = None,
                  org_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  project_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -308,7 +308,7 @@ class DiscoverySetting(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
-            image_registry: pulumi.Input[Optional[Union['DiscoverySettingImageRegistryArgs', 'DiscoverySettingImageRegistryArgsDict']]] = None,
+            image_registry: pulumi.Input[Optional[Union['DiscoverySettingImageRegistryArgs', 'DiscoverySettingImageRegistryArgsDict', 'outputs.DiscoverySettingImageRegistry']]] = None,
             org_identifier: pulumi.Input[Optional[_builtins.str]] = None,
             project_identifier: pulumi.Input[Optional[_builtins.str]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'DiscoverySetting':
@@ -321,7 +321,7 @@ class DiscoverySetting(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] correlation_id: Correlation ID for the request.
         :param pulumi.Input[_builtins.str] created_at: Timestamp when the setting was created.
-        :param pulumi.Input[Union['DiscoverySettingImageRegistryArgs', 'DiscoverySettingImageRegistryArgsDict']] image_registry: Image registry configuration.
+        :param pulumi.Input[Union['DiscoverySettingImageRegistryArgs', 'DiscoverySettingImageRegistryArgsDict', 'outputs.DiscoverySettingImageRegistry']] image_registry: Image registry configuration.
         :param pulumi.Input[_builtins.str] org_identifier: The organization identifier.
         :param pulumi.Input[_builtins.str] project_identifier: The project identifier.
         :param pulumi.Input[_builtins.str] updated_at: Timestamp when the setting was last updated.

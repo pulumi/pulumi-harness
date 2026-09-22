@@ -298,7 +298,7 @@ class ConnectorPdc(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 hosts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorPdcHostArgs', 'ConnectorPdcHostArgsDict']]]]] = None,
+                 hosts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorPdcHostArgs', 'ConnectorPdcHostArgsDict', 'outputs.ConnectorPdcHost']]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -335,7 +335,7 @@ class ConnectorPdc(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorPdcHostArgs', 'ConnectorPdcHostArgsDict']]]] hosts: Host of the Physical data centers.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorPdcHostArgs', 'ConnectorPdcHostArgsDict', 'outputs.ConnectorPdcHost']]]] hosts: Host of the Physical data centers.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -391,7 +391,7 @@ class ConnectorPdc(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 hosts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorPdcHostArgs', 'ConnectorPdcHostArgsDict']]]]] = None,
+                 hosts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorPdcHostArgs', 'ConnectorPdcHostArgsDict', 'outputs.ConnectorPdcHost']]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -430,7 +430,7 @@ class ConnectorPdc(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            hosts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorPdcHostArgs', 'ConnectorPdcHostArgsDict']]]]] = None,
+            hosts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorPdcHostArgs', 'ConnectorPdcHostArgsDict', 'outputs.ConnectorPdcHost']]]]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -445,7 +445,7 @@ class ConnectorPdc(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorPdcHostArgs', 'ConnectorPdcHostArgsDict']]]] hosts: Host of the Physical data centers.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorPdcHostArgs', 'ConnectorPdcHostArgsDict', 'outputs.ConnectorPdcHost']]]] hosts: Host of the Physical data centers.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.

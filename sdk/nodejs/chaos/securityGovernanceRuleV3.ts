@@ -23,6 +23,15 @@ import * as utilities from "../utilities";
  *
  * // Example of a Security Governance Rule (V3)
  * const example = new harness.chaos.SecurityGovernanceRuleV3("example", {
+ *     timeWindows: [{
+ *         recurrence: {
+ *             type: "Daily",
+ *             until: -1,
+ *         },
+ *         timeZone: "UTC",
+ *         startTime: 1711238400000,
+ *         duration: "24h",
+ *     }],
  *     orgId: orgId,
  *     projectId: projectId,
  *     name: "k8s-security-rule",
@@ -34,15 +43,6 @@ import * as utilities from "../utilities";
  *         "env:prod",
  *         "team:security",
  *     ],
- *     timeWindows: [{
- *         timeZone: "UTC",
- *         startTime: 1711238400000,
- *         duration: "24h",
- *         recurrence: {
- *             type: "Daily",
- *             until: -1,
- *         },
- *     }],
  * });
  * export const securityGovernanceRuleV3Id = example.id;
  * ```

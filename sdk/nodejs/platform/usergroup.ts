@@ -44,13 +44,6 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const ssoTypeSaml = new harness.platform.Usergroup("sso_type_saml", {
- *     identifier: "identifier",
- *     name: "name",
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     linkedSsoId: "linked_sso_id",
- *     externallyManaged: false,
- *     users: ["user_id"],
  *     notificationConfigs: [
  *         {
  *             type: "SLACK",
@@ -70,6 +63,13 @@ import * as utilities from "../utilities";
  *             pagerDutyKey: "pagerDutyKey",
  *         },
  *     ],
+ *     identifier: "identifier",
+ *     name: "name",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     linkedSsoId: "linked_sso_id",
+ *     externallyManaged: false,
+ *     users: ["user_id"],
  *     linkedSsoDisplayName: "linked_sso_display_name",
  *     ssoGroupId: "sso_group_name",
  *     ssoGroupName: "sso_group_name",
@@ -77,13 +77,6 @@ import * as utilities from "../utilities";
  *     ssoLinked: true,
  * });
  * const ssoTypeLdap = new harness.platform.Usergroup("sso_type_ldap", {
- *     identifier: "identifier",
- *     name: "name",
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     linkedSsoId: "linked_sso_id",
- *     externallyManaged: false,
- *     users: ["user_id"],
  *     notificationConfigs: [
  *         {
  *             type: "SLACK",
@@ -103,6 +96,13 @@ import * as utilities from "../utilities";
  *             pagerDutyKey: "pagerDutyKey",
  *         },
  *     ],
+ *     identifier: "identifier",
+ *     name: "name",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     linkedSsoId: "linked_sso_id",
+ *     externallyManaged: false,
+ *     users: ["user_id"],
  *     linkedSsoDisplayName: "linked_sso_display_name",
  *     ssoGroupId: "sso_group_id",
  *     ssoGroupName: "sso_group_name",
@@ -111,13 +111,6 @@ import * as utilities from "../utilities";
  * });
  * // Create user group by adding user emails
  * const example = new harness.platform.Usergroup("example", {
- *     identifier: "identifier",
- *     name: "name",
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     linkedSsoId: "linked_sso_id",
- *     externallyManaged: false,
- *     userEmails: ["user@email.com"],
  *     notificationConfigs: [
  *         {
  *             type: "SLACK",
@@ -137,6 +130,13 @@ import * as utilities from "../utilities";
  *             pagerDutyKey: "pagerDutyKey",
  *         },
  *     ],
+ *     identifier: "identifier",
+ *     name: "name",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     linkedSsoId: "linked_sso_id",
+ *     externallyManaged: false,
+ *     userEmails: ["user@email.com"],
  *     linkedSsoDisplayName: "linked_sso_display_name",
  *     ssoGroupId: "sso_group_name",
  *     ssoGroupName: "sso_group_name",

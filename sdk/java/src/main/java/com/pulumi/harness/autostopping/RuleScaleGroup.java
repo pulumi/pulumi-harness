@@ -36,8 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.autostopping.RuleScaleGroupArgs;
  * import com.pulumi.harness.autostopping.inputs.RuleScaleGroupScaleGroupArgs;
  * import com.pulumi.harness.autostopping.inputs.RuleScaleGroupHttpArgs;
- * import com.pulumi.harness.autostopping.inputs.RuleScaleGroupHttpRoutingArgs;
  * import com.pulumi.harness.autostopping.inputs.RuleScaleGroupHttpHealthArgs;
+ * import com.pulumi.harness.autostopping.inputs.RuleScaleGroupHttpRoutingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -52,10 +52,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new RuleScaleGroup("test", RuleScaleGroupArgs.builder()
- *             .name("test")
- *             .cloudConnectorId("test-connector")
- *             .idleTimeMins(5)
- *             .customDomains("app.example.com")
  *             .scaleGroup(RuleScaleGroupScaleGroupArgs.builder()
  *                 .id("asg-arn")
  *                 .name("asg-name")
@@ -66,14 +62,6 @@ import javax.annotation.Nullable;
  *                 .onDemand(1)
  *                 .build())
  *             .https(RuleScaleGroupHttpArgs.builder()
- *                 .proxyId("lb-id")
- *                 .routings(RuleScaleGroupHttpRoutingArgs.builder()
- *                     .sourceProtocol("http")
- *                     .sourcePort(80)
- *                     .action("forward")
- *                     .targetProtocol("http")
- *                     .targetPort(80)
- *                     .build())
  *                 .healths(RuleScaleGroupHttpHealthArgs.builder()
  *                     .protocol("http")
  *                     .port(80)
@@ -82,7 +70,19 @@ import javax.annotation.Nullable;
  *                     .statusCodeFrom(200)
  *                     .statusCodeTo(299)
  *                     .build())
+ *                 .routings(RuleScaleGroupHttpRoutingArgs.builder()
+ *                     .sourceProtocol("http")
+ *                     .sourcePort(80)
+ *                     .action("forward")
+ *                     .targetProtocol("http")
+ *                     .targetPort(80)
+ *                     .build())
+ *                 .proxyId("lb-id")
  *                 .build())
+ *             .name("test")
+ *             .cloudConnectorId("test-connector")
+ *             .idleTimeMins(5)
+ *             .customDomains("app.example.com")
  *             .build());
  * 
  *     }

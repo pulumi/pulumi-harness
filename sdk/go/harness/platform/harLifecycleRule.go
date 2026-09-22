@@ -30,42 +30,36 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Account-scoped DELETE rule — keep last 10 versions, runs nightly
 //			_, err := platform.NewHarLifecycleRule(ctx, "nightly_cleanup", &platform.HarLifecycleRuleArgs{
-//				AccountId:   pulumi.String("your-account-id"),
-//				Name:        pulumi.String("nightly-cleanup"),
-//				Action:      pulumi.String("DELETE"),
-//				Description: pulumi.String("Keep last 10 versions of all artifacts"),
 //				ApplyTo: &platform.HarLifecycleRuleApplyToArgs{
 //					Mode: pulumi.String("ALL_IN_SCOPE"),
 //				},
 //				Criteria: &platform.HarLifecycleRuleCriteriaArgs{
-//					Match: pulumi.String("ALL"),
 //					Rules: platform.HarLifecycleRuleCriteriaRuleArray{
 //						&platform.HarLifecycleRuleCriteriaRuleArgs{
 //							Type:  pulumi.String("KEEP_LAST_N"),
 //							Value: pulumi.Int(10),
 //						},
 //					},
+//					Match: pulumi.String("ALL"),
 //				},
 //				Schedule: &platform.HarLifecycleRuleScheduleArgs{
 //					Expression: pulumi.String("0 2 * * *"),
 //					Timezone:   pulumi.String("UTC"),
 //				},
+//				AccountId:   pulumi.String("your-account-id"),
+//				Name:        pulumi.String("nightly-cleanup"),
+//				Action:      pulumi.String("DELETE"),
+//				Description: pulumi.String("Keep last 10 versions of all artifacts"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Project-scoped DELETE rule — delete artifacts older than 30 days
 //			_, err = platform.NewHarLifecycleRule(ctx, "age_based_cleanup", &platform.HarLifecycleRuleArgs{
-//				AccountId: pulumi.String("your-account-id"),
-//				OrgId:     pulumi.String("your-org-id"),
-//				ProjectId: pulumi.String("your-project-id"),
-//				Name:      pulumi.String("age-based-cleanup"),
-//				Action:    pulumi.String("DELETE"),
 //				ApplyTo: &platform.HarLifecycleRuleApplyToArgs{
 //					Mode: pulumi.String("ALL_IN_SCOPE"),
 //				},
 //				Criteria: &platform.HarLifecycleRuleCriteriaArgs{
-//					Match: pulumi.String("ALL"),
 //					Rules: platform.HarLifecycleRuleCriteriaRuleArray{
 //						&platform.HarLifecycleRuleCriteriaRuleArgs{
 //							Type:  pulumi.String("AGE_BASED"),
@@ -73,18 +67,19 @@ import (
 //							Unit:  pulumi.String("DAYS"),
 //						},
 //					},
+//					Match: pulumi.String("ALL"),
 //				},
+//				AccountId: pulumi.String("your-account-id"),
+//				OrgId:     pulumi.String("your-org-id"),
+//				ProjectId: pulumi.String("your-project-id"),
+//				Name:      pulumi.String("age-based-cleanup"),
+//				Action:    pulumi.String("DELETE"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Org-scoped PROTECT rule — protect images in specific registries matching a tag pattern
 //			_, err = platform.NewHarLifecycleRule(ctx, "protect_prod", &platform.HarLifecycleRuleArgs{
-//				AccountId:   pulumi.String("your-account-id"),
-//				OrgId:       pulumi.String("your-org-id"),
-//				Name:        pulumi.String("protect-prod-images"),
-//				Action:      pulumi.String("PROTECT"),
-//				PackageType: pulumi.String("DOCKER"),
 //				ApplyTo: &platform.HarLifecycleRuleApplyToArgs{
 //					Mode: pulumi.String("EXPLICIT"),
 //					Registries: pulumi.StringArray{
@@ -99,20 +94,21 @@ import (
 //						pulumi.String("release-*"),
 //					},
 //				},
+//				AccountId:   pulumi.String("your-account-id"),
+//				OrgId:       pulumi.String("your-org-id"),
+//				Name:        pulumi.String("protect-prod-images"),
+//				Action:      pulumi.String("PROTECT"),
+//				PackageType: pulumi.String("DOCKER"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Account-scoped DELETE rule with multiple criteria (ANY match)
 //			_, err = platform.NewHarLifecycleRule(ctx, "multi_criteria_cleanup", &platform.HarLifecycleRuleArgs{
-//				AccountId: pulumi.String("your-account-id"),
-//				Name:      pulumi.String("multi-criteria-cleanup"),
-//				Action:    pulumi.String("DELETE"),
 //				ApplyTo: &platform.HarLifecycleRuleApplyToArgs{
 //					Mode: pulumi.String("ALL_IN_SCOPE"),
 //				},
 //				Criteria: &platform.HarLifecycleRuleCriteriaArgs{
-//					Match: pulumi.String("ANY"),
 //					Rules: platform.HarLifecycleRuleCriteriaRuleArray{
 //						&platform.HarLifecycleRuleCriteriaRuleArgs{
 //							Type:  pulumi.String("KEEP_LAST_N"),
@@ -124,7 +120,11 @@ import (
 //							Unit:  pulumi.String("DAYS"),
 //						},
 //					},
+//					Match: pulumi.String("ANY"),
 //				},
+//				AccountId: pulumi.String("your-account-id"),
+//				Name:      pulumi.String("multi-criteria-cleanup"),
+//				Action:    pulumi.String("DELETE"),
 //			})
 //			if err != nil {
 //				return err

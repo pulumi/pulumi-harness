@@ -29,33 +29,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewWorkspace(ctx, "example", &platform.WorkspaceArgs{
-//				Name:                  pulumi.String("example"),
-//				Identifier:            pulumi.String("example"),
-//				OrgId:                 pulumi.Any(testHarnessPlatformOrganization.Id),
-//				ProjectId:             pulumi.Any(testHarnessPlatformProject.Id),
-//				ProvisionerType:       pulumi.String("terraform"),
-//				ProvisionerVersion:    pulumi.String("1.5.6"),
-//				Repository:            pulumi.String("https://github.com/org/repo"),
-//				RepositoryBranch:      pulumi.String("main"),
-//				RepositoryPath:        pulumi.String("tf/aws/basic"),
-//				CostEstimationEnabled: pulumi.Bool(true),
-//				ProviderConnector:     pulumi.Any(test.Id),
-//				RepositoryConnector:   pulumi.Any(test.Id),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("tag1"),
-//					pulumi.String("tag2"),
-//				},
-//				TerraformVariables: platform.WorkspaceTerraformVariableArray{
-//					&platform.WorkspaceTerraformVariableArgs{
-//						Key:       pulumi.String("key1"),
-//						Value:     pulumi.String("val1"),
-//						ValueType: pulumi.String("string"),
-//					},
-//					&platform.WorkspaceTerraformVariableArgs{
-//						Key:       pulumi.String("key2"),
-//						Value:     pulumi.String("val2"),
-//						ValueType: pulumi.String("string"),
-//					},
+//				AssociatedTemplate: &platform.WorkspaceAssociatedTemplateArgs{
+//					TemplateId: pulumi.String("my_template"),
+//					Version:    pulumi.String("v1.0.0"),
 //				},
 //				EnvironmentVariables: platform.WorkspaceEnvironmentVariableArray{
 //					&platform.WorkspaceEnvironmentVariableArgs{
@@ -89,6 +65,34 @@ import (
 //						RepositoryConnector: pulumi.Any(test.Id),
 //					},
 //				},
+//				TerraformVariables: platform.WorkspaceTerraformVariableArray{
+//					&platform.WorkspaceTerraformVariableArgs{
+//						Key:       pulumi.String("key1"),
+//						Value:     pulumi.String("val1"),
+//						ValueType: pulumi.String("string"),
+//					},
+//					&platform.WorkspaceTerraformVariableArgs{
+//						Key:       pulumi.String("key2"),
+//						Value:     pulumi.String("val2"),
+//						ValueType: pulumi.String("string"),
+//					},
+//				},
+//				Name:                  pulumi.String("example"),
+//				Identifier:            pulumi.String("example"),
+//				OrgId:                 pulumi.Any(testHarnessPlatformOrganization.Id),
+//				ProjectId:             pulumi.Any(testHarnessPlatformProject.Id),
+//				ProvisionerType:       pulumi.String("terraform"),
+//				ProvisionerVersion:    pulumi.String("1.5.6"),
+//				Repository:            pulumi.String("https://github.com/org/repo"),
+//				RepositoryBranch:      pulumi.String("main"),
+//				RepositoryPath:        pulumi.String("tf/aws/basic"),
+//				CostEstimationEnabled: pulumi.Bool(true),
+//				ProviderConnector:     pulumi.Any(test.Id),
+//				RepositoryConnector:   pulumi.Any(test.Id),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("tag1"),
+//					pulumi.String("tag2"),
+//				},
 //				VariableSets: pulumi.StringArray{
 //					testHarnessPlatformInfraVariableSet.Id,
 //				},
@@ -97,10 +101,6 @@ import (
 //					"drift":   pulumi.String("drift_pipeline_id"),
 //					"plan":    pulumi.String("plan_pipeline_id"),
 //					"apply":   pulumi.String("apply_pipeline_id"),
-//				},
-//				AssociatedTemplate: &platform.WorkspaceAssociatedTemplateArgs{
-//					TemplateId: pulumi.String("my_template"),
-//					Version:    pulumi.String("v1.0.0"),
 //				},
 //			})
 //			if err != nil {

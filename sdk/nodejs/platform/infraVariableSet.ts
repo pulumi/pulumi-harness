@@ -16,11 +16,16 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.InfraVariableSet("example", {
- *     identifier: "example",
- *     name: "example",
- *     orgId: test.id,
- *     projectId: testHarnessPlatformProject.id,
- *     description: "some description",
+ *     connectors: [
+ *         {
+ *             connectorRef: "harness_platform_connector_aws.test.id",
+ *             type: "aws",
+ *         },
+ *         {
+ *             connectorRef: "harness_platform_connector_azure.test.id",
+ *             type: "azure",
+ *         },
+ *     ],
  *     environmentVariables: [
  *         {
  *             key: "key1",
@@ -31,18 +36,6 @@ import * as utilities from "../utilities";
  *             key: "key2",
  *             value: "harness_platform_secret_text.test.id",
  *             valueType: "secret",
- *         },
- *     ],
- *     terraformVariables: [
- *         {
- *             key: "key1",
- *             value: "1111",
- *             valueType: "string",
- *         },
- *         {
- *             key: "key2",
- *             value: "1111u",
- *             valueType: "string",
  *         },
  *     ],
  *     terraformVariableFiles: [
@@ -59,16 +52,23 @@ import * as utilities from "../utilities";
  *             repositoryConnector: "harness_platform_connector_github.test.id",
  *         },
  *     ],
- *     connectors: [
+ *     terraformVariables: [
  *         {
- *             connectorRef: "harness_platform_connector_aws.test.id",
- *             type: "aws",
+ *             key: "key1",
+ *             value: "1111",
+ *             valueType: "string",
  *         },
  *         {
- *             connectorRef: "harness_platform_connector_azure.test.id",
- *             type: "azure",
+ *             key: "key2",
+ *             value: "1111u",
+ *             valueType: "string",
  *         },
  *     ],
+ *     identifier: "example",
+ *     name: "example",
+ *     orgId: test.id,
+ *     projectId: testHarnessPlatformProject.id,
+ *     description: "some description",
  * });
  * ```
  *

@@ -49,30 +49,30 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Authentication mechanism as api token
  *         var token = new ElasticsearchConnector("token", ElasticsearchConnectorArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .description("test")
- *             .tags("foo:bar")
- *             .url("http://elk6.dev.harness.io:9200/")
- *             .delegateSelectors("harness-delegate")
  *             .apiToken(ElasticsearchConnectorApiTokenArgs.builder()
  *                 .clientId("client_id")
  *                 .clientSecretRef("account.secret_id")
  *                 .build())
- *             .build());
- * 
- *         // Authentication mechanism as username and password
- *         var test = new ElasticsearchConnector("test", ElasticsearchConnectorArgs.builder()
  *             .identifier("identifier")
  *             .name("name")
  *             .description("test")
  *             .tags("foo:bar")
  *             .url("http://elk6.dev.harness.io:9200/")
  *             .delegateSelectors("harness-delegate")
+ *             .build());
+ * 
+ *         // Authentication mechanism as username and password
+ *         var test = new ElasticsearchConnector("test", ElasticsearchConnectorArgs.builder()
  *             .usernamePassword(ElasticsearchConnectorUsernamePasswordArgs.builder()
  *                 .username("username")
  *                 .passwordRef("account.secret_id")
  *                 .build())
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("test")
+ *             .tags("foo:bar")
+ *             .url("http://elk6.dev.harness.io:9200/")
+ *             .delegateSelectors("harness-delegate")
  *             .build());
  * 
  *         // Authentication mechanism without authentication

@@ -29,6 +29,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewPrometheusConnector(ctx, "example", &platform.PrometheusConnectorArgs{
+//				Headers: platform.PrometheusConnectorHeaderArray{
+//					&platform.PrometheusConnectorHeaderArgs{
+//						EncryptedValueRef: pulumi.String("account.secret_identifier"),
+//						ValueEncrypted:    pulumi.Bool(true),
+//						Key:               pulumi.String("key"),
+//						Value:             pulumi.String("value"),
+//					},
+//				},
 //				Identifier:  pulumi.String("idntifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
@@ -41,14 +49,6 @@ import (
 //				},
 //				UserName:    pulumi.String("user_name"),
 //				PasswordRef: pulumi.String("account.secret_identifier"),
-//				Headers: platform.PrometheusConnectorHeaderArray{
-//					&platform.PrometheusConnectorHeaderArgs{
-//						EncryptedValueRef: pulumi.String("account.secret_identifier"),
-//						ValueEncrypted:    pulumi.Bool(true),
-//						Key:               pulumi.String("key"),
-//						Value:             pulumi.String("value"),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err

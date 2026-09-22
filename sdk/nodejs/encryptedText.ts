@@ -19,9 +19,6 @@ import * as utilities from "./utilities";
  *     "default": true,
  * });
  * const example = new harness.EncryptedText("example", {
- *     name: "example-secret",
- *     value: "someval",
- *     secretManagerId: _default.then(_default => _default.id),
  *     usageScopes: [
  *         {
  *             environmentFilterType: "PRODUCTION_ENVIRONMENTS",
@@ -30,6 +27,9 @@ import * as utilities from "./utilities";
  *             environmentFilterType: "NON_PRODUCTION_ENVIRONMENTS",
  *         },
  *     ],
+ *     name: "example-secret",
+ *     value: "someval",
+ *     secretManagerId: _default.then(_default => _default.id),
  * });
  * ```
  *

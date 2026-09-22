@@ -29,6 +29,24 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewPipelineCentralNotificationRule(ctx, "projExample", &platform.PipelineCentralNotificationRuleArgs{
+//				NotificationConditions: platform.PipelineCentralNotificationRuleNotificationConditionArray{
+//					&platform.PipelineCentralNotificationRuleNotificationConditionArgs{
+//						NotificationEventConfigs: platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArray{
+//							&platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs{
+//								NotificationEventDatas: platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArray{
+//									&platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs{
+//										Type:             pulumi.String("PIPELINE"),
+//										ScopeIdentifiers: pulumi.StringArray{},
+//									},
+//								},
+//								NotificationEntity: pulumi.String("PIPELINE"),
+//								NotificationEvent:  pulumi.String("PIPELINE_START"),
+//								EntityIdentifiers:  pulumi.StringArray{},
+//							},
+//						},
+//						ConditionName: pulumi.String("pipelineRuleProjectConditionName"),
+//					},
+//				},
 //				Identifier: pulumi.String("identifier"),
 //				Name:       pulumi.String("name"),
 //				Status:     pulumi.String("ENABLED"),
@@ -37,43 +55,15 @@ import (
 //				},
 //				Org:     pulumi.String("default"),
 //				Project: pulumi.String("proj0"),
-//				NotificationConditions: platform.PipelineCentralNotificationRuleNotificationConditionArray{
-//					&platform.PipelineCentralNotificationRuleNotificationConditionArgs{
-//						ConditionName: pulumi.String("pipelineRuleProjectConditionName"),
-//						NotificationEventConfigs: platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArray{
-//							&platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs{
-//								NotificationEntity: pulumi.String("PIPELINE"),
-//								NotificationEvent:  pulumi.String("PIPELINE_START"),
-//								NotificationEventDatas: platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArray{
-//									&platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs{
-//										Type:             pulumi.String("PIPELINE"),
-//										ScopeIdentifiers: pulumi.StringArray{},
-//									},
-//								},
-//								EntityIdentifiers: pulumi.StringArray{},
-//							},
-//						},
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewPipelineCentralNotificationRule(ctx, "orgExample", &platform.PipelineCentralNotificationRuleArgs{
-//				Identifier: pulumi.String("identifier"),
-//				Name:       pulumi.String("name"),
-//				Status:     pulumi.String("ENABLED"),
-//				NotificationChannelRefs: pulumi.StringArray{
-//					pulumi.String("channel"),
-//				},
-//				Org: pulumi.String("default"),
 //				NotificationConditions: platform.PipelineCentralNotificationRuleNotificationConditionArray{
 //					&platform.PipelineCentralNotificationRuleNotificationConditionArgs{
-//						ConditionName: pulumi.String("pipelineRuleOrgConditionName"),
 //						NotificationEventConfigs: platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArray{
 //							&platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs{
-//								NotificationEntity: pulumi.String("PIPELINE"),
-//								NotificationEvent:  pulumi.String("PIPELINE_START"),
 //								NotificationEventDatas: platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArray{
 //									&platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs{
 //										Type: pulumi.String("PIPELINE"),
@@ -83,29 +73,30 @@ import (
 //										},
 //									},
 //								},
-//								EntityIdentifiers: pulumi.StringArray{},
+//								NotificationEntity: pulumi.String("PIPELINE"),
+//								NotificationEvent:  pulumi.String("PIPELINE_START"),
+//								EntityIdentifiers:  pulumi.StringArray{},
 //							},
 //						},
+//						ConditionName: pulumi.String("pipelineRuleOrgConditionName"),
 //					},
 //				},
+//				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
+//				Status:     pulumi.String("ENABLED"),
+//				NotificationChannelRefs: pulumi.StringArray{
+//					pulumi.String("channel"),
+//				},
+//				Org: pulumi.String("default"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewPipelineCentralNotificationRule(ctx, "accountExample", &platform.PipelineCentralNotificationRuleArgs{
-//				Identifier: pulumi.String("identifier"),
-//				Name:       pulumi.String("name"),
-//				Status:     pulumi.String("DISABLED"),
-//				NotificationChannelRefs: pulumi.StringArray{
-//					pulumi.String("org.channel"),
-//				},
 //				NotificationConditions: platform.PipelineCentralNotificationRuleNotificationConditionArray{
 //					&platform.PipelineCentralNotificationRuleNotificationConditionArgs{
-//						ConditionName: pulumi.String("pipelineRuleConditionName"),
 //						NotificationEventConfigs: platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArray{
 //							&platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigArgs{
-//								NotificationEntity: pulumi.String("PIPELINE"),
-//								NotificationEvent:  pulumi.String("PIPELINE_START"),
 //								NotificationEventDatas: platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArray{
 //									&platform.PipelineCentralNotificationRuleNotificationConditionNotificationEventConfigNotificationEventDataArgs{
 //										Type: pulumi.String("PIPELINE"),
@@ -114,10 +105,19 @@ import (
 //										},
 //									},
 //								},
-//								EntityIdentifiers: pulumi.StringArray{},
+//								NotificationEntity: pulumi.String("PIPELINE"),
+//								NotificationEvent:  pulumi.String("PIPELINE_START"),
+//								EntityIdentifiers:  pulumi.StringArray{},
 //							},
 //						},
+//						ConditionName: pulumi.String("pipelineRuleConditionName"),
 //					},
+//				},
+//				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
+//				Status:     pulumi.String("DISABLED"),
+//				NotificationChannelRefs: pulumi.StringArray{
+//					pulumi.String("org.channel"),
 //				},
 //			})
 //			if err != nil {

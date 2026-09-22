@@ -29,6 +29,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewEnvironment(ctx, "example", &platform.EnvironmentArgs{
+//				GitDetails: &platform.EnvironmentGitDetailsArgs{
+//					BranchName:    "branchName",
+//					CommitMessage: pulumi.String("commitMessage"),
+//					FilePath:      pulumi.String("filePath"),
+//					ConnectorRef:  pulumi.String("connectorRef"),
+//					StoreType:     pulumi.String("REMOTE"),
+//					RepoName:      pulumi.String("repoName"),
+//				},
 //				Identifier: pulumi.String("identifier"),
 //				Name:       pulumi.String("name"),
 //				OrgId:      pulumi.String("org_id"),
@@ -38,14 +46,6 @@ import (
 //					pulumi.String("bar:foo"),
 //				},
 //				Type: pulumi.String("PreProduction"),
-//				GitDetails: &platform.EnvironmentGitDetailsArgs{
-//					BranchName:    "branchName",
-//					CommitMessage: pulumi.String("commitMessage"),
-//					FilePath:      pulumi.String("filePath"),
-//					ConnectorRef:  pulumi.String("connectorRef"),
-//					StoreType:     pulumi.String("REMOTE"),
-//					RepoName:      pulumi.String("repoName"),
-//				},
 //				Yaml: pulumi.String(`environment:
 //	   name: name
 //	   identifier: identifier
@@ -98,9 +98,6 @@ import (
 //			}
 //			// ## Importing Environment from Git
 //			_, err = platform.NewEnvironment(ctx, "test", &platform.EnvironmentArgs{
-//				Identifier: pulumi.String("accEnv"),
-//				Name:       pulumi.String("accEnv"),
-//				Type:       pulumi.String("PreProduction"),
 //				GitDetails: &platform.EnvironmentGitDetailsArgs{
 //					StoreType:     pulumi.String("REMOTE"),
 //					ConnectorRef:  pulumi.String("account.DoNotDeleteGitX"),
@@ -109,6 +106,9 @@ import (
 //					Branch:        pulumi.String("main"),
 //					ImportFromGit: pulumi.Bool(true),
 //				},
+//				Identifier: pulumi.String("accEnv"),
+//				Name:       pulumi.String("accEnv"),
+//				Type:       pulumi.String("PreProduction"),
 //			})
 //			if err != nil {
 //				return err

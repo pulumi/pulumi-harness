@@ -56,13 +56,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Example of a Kubernetes Security Governance Condition
  *         var k8sCondition = new SecurityGovernanceCondition("k8sCondition", SecurityGovernanceConditionArgs.builder()
- *             .orgId(orgId)
- *             .projectId(projectId)
- *             .name("k8s-security-condition")
- *             .description("Security governance condition for Kubernetes workloads")
- *             .infraType("KubernetesV2")
  *             .faultSpec(SecurityGovernanceConditionFaultSpecArgs.builder()
- *                 .operator("NOT_EQUAL_TO")
  *                 .faults(                
  *                     SecurityGovernanceConditionFaultSpecFaultArgs.builder()
  *                         .faultType("FAULT")
@@ -72,6 +66,7 @@ import javax.annotation.Nullable;
  *                         .faultType("FAULT")
  *                         .name("pod-dns")
  *                         .build())
+ *                 .operator("NOT_EQUAL_TO")
  *                 .build())
  *             .k8sSpec(SecurityGovernanceConditionK8sSpecArgs.builder()
  *                 .infraSpec(SecurityGovernanceConditionK8sSpecInfraSpecArgs.builder()
@@ -79,7 +74,6 @@ import javax.annotation.Nullable;
  *                     .infraIds(k8sInfraId)
  *                     .build())
  *                 .applicationSpec(SecurityGovernanceConditionK8sSpecApplicationSpecArgs.builder()
- *                     .operator("EQUAL_TO")
  *                     .workloads(SecurityGovernanceConditionK8sSpecApplicationSpecWorkloadArgs.builder()
  *                         .namespace("default")
  *                         .kind("deployment")
@@ -87,6 +81,7 @@ import javax.annotation.Nullable;
  *                         .services("nginx-service")
  *                         .applicationMapId("nginx-app")
  *                         .build())
+ *                     .operator("EQUAL_TO")
  *                     .build())
  *                 .chaosServiceAccountSpec(SecurityGovernanceConditionK8sSpecChaosServiceAccountSpecArgs.builder()
  *                     .operator("EQUAL_TO")
@@ -95,6 +90,11 @@ import javax.annotation.Nullable;
  *                         "chaos-service-account")
  *                     .build())
  *                 .build())
+ *             .orgId(orgId)
+ *             .projectId(projectId)
+ *             .name("k8s-security-condition")
+ *             .description("Security governance condition for Kubernetes workloads")
+ *             .infraType("KubernetesV2")
  *             .tags(            
  *                 "env:prod",
  *                 "team:security",
@@ -103,13 +103,7 @@ import javax.annotation.Nullable;
  * 
  *         // Example of a Windows Security Governance Condition
  *         var windowsCondition = new SecurityGovernanceCondition("windowsCondition", SecurityGovernanceConditionArgs.builder()
- *             .orgId(orgId)
- *             .projectId(projectId)
- *             .name("windows-security-condition")
- *             .description("Security governance condition for Windows hosts")
- *             .infraType("Windows")
  *             .faultSpec(SecurityGovernanceConditionFaultSpecArgs.builder()
- *                 .operator("NOT_EQUAL_TO")
  *                 .faults(                
  *                     SecurityGovernanceConditionFaultSpecFaultArgs.builder()
  *                         .faultType("FAULT")
@@ -119,6 +113,7 @@ import javax.annotation.Nullable;
  *                         .faultType("FAULT")
  *                         .name("cpu-hog")
  *                         .build())
+ *                 .operator("NOT_EQUAL_TO")
  *                 .build())
  *             .machineSpec(SecurityGovernanceConditionMachineSpecArgs.builder()
  *                 .infraSpec(SecurityGovernanceConditionMachineSpecInfraSpecArgs.builder()
@@ -126,6 +121,11 @@ import javax.annotation.Nullable;
  *                     .infraIds(windowsInfraId)
  *                     .build())
  *                 .build())
+ *             .orgId(orgId)
+ *             .projectId(projectId)
+ *             .name("windows-security-condition")
+ *             .description("Security governance condition for Windows hosts")
+ *             .infraType("Windows")
  *             .tags(            
  *                 "env:prod",
  *                 "team:security",
@@ -134,13 +134,7 @@ import javax.annotation.Nullable;
  * 
  *         // Example of a Linux Security Governance Condition
  *         var linuxCondition = new SecurityGovernanceCondition("linuxCondition", SecurityGovernanceConditionArgs.builder()
- *             .orgId(orgId)
- *             .projectId(projectId)
- *             .name("linux-security-condition")
- *             .description("Security governance condition for Linux hosts")
- *             .infraType("Linux")
  *             .faultSpec(SecurityGovernanceConditionFaultSpecArgs.builder()
- *                 .operator("NOT_EQUAL_TO")
  *                 .faults(                
  *                     SecurityGovernanceConditionFaultSpecFaultArgs.builder()
  *                         .faultType("FAULT")
@@ -150,6 +144,7 @@ import javax.annotation.Nullable;
  *                         .faultType("FAULT")
  *                         .name("memory-hog")
  *                         .build())
+ *                 .operator("NOT_EQUAL_TO")
  *                 .build())
  *             .machineSpec(SecurityGovernanceConditionMachineSpecArgs.builder()
  *                 .infraSpec(SecurityGovernanceConditionMachineSpecInfraSpecArgs.builder()
@@ -157,6 +152,11 @@ import javax.annotation.Nullable;
  *                     .infraIds(linuxInfraId)
  *                     .build())
  *                 .build())
+ *             .orgId(orgId)
+ *             .projectId(projectId)
+ *             .name("linux-security-condition")
+ *             .description("Security governance condition for Linux hosts")
+ *             .infraType("Linux")
  *             .tags(            
  *                 "env:prod",
  *                 "team:security",

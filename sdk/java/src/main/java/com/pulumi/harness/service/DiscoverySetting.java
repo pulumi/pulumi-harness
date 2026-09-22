@@ -45,13 +45,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Update image registry settings for service discovery
  *         var example = new DiscoverySetting("example", DiscoverySettingArgs.builder()
- *             .orgIdentifier("sechaosworkshop")
- *             .projectIdentifier("se1")
  *             .imageRegistry(DiscoverySettingImageRegistryArgs.builder()
  *                 .account("<account_name>")
  *                 .server("<registry_server>")
  *                 .secrets("<secret_name>")
  *                 .build())
+ *             .orgIdentifier("sechaosworkshop")
+ *             .projectIdentifier("se1")
  *             .build());
  * 
  *     }

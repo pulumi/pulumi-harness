@@ -65,10 +65,18 @@ import (
 //			}
 //			json1 := string(tmpJSON1)
 //			_, err = platform.NewSlo(ctx, "example", &platform.SloArgs{
-//				OrgId:      pulumi.String("org_id"),
-//				ProjectId:  pulumi.String("project_id"),
-//				Identifier: pulumi.String("identifier"),
 //				Request: &platform.SloRequestArgs{
+//					SloTarget: &platform.SloRequestSloTargetArgs{
+//						Type:                pulumi.String("Calender"),
+//						SloTargetPercentage: pulumi.Float64(10),
+//						Spec:                pulumi.String(json0),
+//					},
+//					NotificationRuleRefs: platform.SloRequestNotificationRuleRefArray{
+//						&platform.SloRequestNotificationRuleRefArgs{
+//							NotificationRuleRef: pulumi.String("notification_rule_ref"),
+//							Enabled:             pulumi.Bool(true),
+//						},
+//					},
 //					Name:        pulumi.String("name"),
 //					Description: pulumi.String("description"),
 //					Tags: pulumi.StringArray{
@@ -79,20 +87,12 @@ import (
 //						pulumi.String("one"),
 //						pulumi.String("two"),
 //					},
-//					SloTarget: &platform.SloRequestSloTargetArgs{
-//						Type:                pulumi.String("Calender"),
-//						SloTargetPercentage: pulumi.Float64(10),
-//						Spec:                pulumi.String(json0),
-//					},
 //					Type: pulumi.String("Simple"),
 //					Spec: pulumi.String(json1),
-//					NotificationRuleRefs: platform.SloRequestNotificationRuleRefArray{
-//						&platform.SloRequestNotificationRuleRefArgs{
-//							NotificationRuleRef: pulumi.String("notification_rule_ref"),
-//							Enabled:             pulumi.Bool(true),
-//						},
-//					},
 //				},
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Identifier: pulumi.String("identifier"),
 //			})
 //			if err != nil {
 //				return err

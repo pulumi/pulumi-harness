@@ -30,10 +30,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// mapping a cluster to a project level env
 //			_, err := platform.NewEnvironmentClustersMapping(ctx, "example", &platform.EnvironmentClustersMappingArgs{
-//				Identifier: pulumi.String("mycustomidentifier"),
-//				OrgId:      pulumi.String("orgIdentifer"),
-//				ProjectId:  pulumi.String("projectIdentifier"),
-//				EnvId:      pulumi.String("exampleEnvId"),
 //				Clusters: platform.EnvironmentClustersMappingClusterArray{
 //					&platform.EnvironmentClustersMappingClusterArgs{
 //						Identifier:      pulumi.String("incluster"),
@@ -42,14 +38,16 @@ import (
 //						Scope:           pulumi.String("ACCOUNT"),
 //					},
 //				},
+//				Identifier: pulumi.String("mycustomidentifier"),
+//				OrgId:      pulumi.String("orgIdentifer"),
+//				ProjectId:  pulumi.String("projectIdentifier"),
+//				EnvId:      pulumi.String("exampleEnvId"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// mapping two clusters to account level env
 //			_, err = platform.NewEnvironmentClustersMapping(ctx, "example2", &platform.EnvironmentClustersMappingArgs{
-//				Identifier: pulumi.String("mycustomidentifier"),
-//				EnvId:      pulumi.String("env1"),
 //				Clusters: platform.EnvironmentClustersMappingClusterArray{
 //					&platform.EnvironmentClustersMappingClusterArgs{
 //						Identifier:      pulumi.String("clusterA"),
@@ -64,6 +62,8 @@ import (
 //						Scope:           pulumi.String("ACCOUNT"),
 //					},
 //				},
+//				Identifier: pulumi.String("mycustomidentifier"),
+//				EnvId:      pulumi.String("env1"),
 //			})
 //			if err != nil {
 //				return err

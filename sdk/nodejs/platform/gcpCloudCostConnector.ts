@@ -16,6 +16,10 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.platform.GcpCloudCostConnector("test", {
+ *     billingExportSpec: {
+ *         dataSetId: "data_set_id",
+ *         tableId: "table_id",
+ *     },
  *     identifier: "identifier",
  *     name: "name",
  *     description: "test",
@@ -28,10 +32,6 @@ import * as utilities from "../utilities";
  *     ],
  *     gcpProjectId: "gcp_project_id",
  *     serviceAccountEmail: "service_account_email",
- *     billingExportSpec: {
- *         dataSetId: "data_set_id",
- *         tableId: "table_id",
- *     },
  * });
  * ```
  *

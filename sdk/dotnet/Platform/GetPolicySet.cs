@@ -26,11 +26,6 @@ namespace Pulumi.Harness.Platform
         /// {
         ///     var test = Harness.Platform.GetPolicySet.Invoke(new()
         ///     {
-        ///         Identifier = "harness_platform_policyset.test.identifier",
-        ///         Name = "harness_platform_policyset.test.name",
-        ///         Action = "onrun",
-        ///         Type = "pipeline",
-        ///         Enabled = true,
         ///         PolicyReferences = new[]
         ///         {
         ///             new Harness.Platform.Inputs.GetPolicySetPolicyReferenceInputArgs
@@ -39,6 +34,11 @@ namespace Pulumi.Harness.Platform
         ///                 Severity = "warning",
         ///             },
         ///         },
+        ///         Identifier = "harness_platform_policyset.test.identifier",
+        ///         Name = "harness_platform_policyset.test.name",
+        ///         Action = "onrun",
+        ///         Type = "pipeline",
+        ///         Enabled = true,
         ///     });
         /// 
         /// });
@@ -62,11 +62,6 @@ namespace Pulumi.Harness.Platform
         /// {
         ///     var test = Harness.Platform.GetPolicySet.Invoke(new()
         ///     {
-        ///         Identifier = "harness_platform_policyset.test.identifier",
-        ///         Name = "harness_platform_policyset.test.name",
-        ///         Action = "onrun",
-        ///         Type = "pipeline",
-        ///         Enabled = true,
         ///         PolicyReferences = new[]
         ///         {
         ///             new Harness.Platform.Inputs.GetPolicySetPolicyReferenceInputArgs
@@ -75,6 +70,11 @@ namespace Pulumi.Harness.Platform
         ///                 Severity = "warning",
         ///             },
         ///         },
+        ///         Identifier = "harness_platform_policyset.test.identifier",
+        ///         Name = "harness_platform_policyset.test.name",
+        ///         Action = "onrun",
+        ///         Type = "pipeline",
+        ///         Enabled = true,
         ///     });
         /// 
         /// });
@@ -98,11 +98,6 @@ namespace Pulumi.Harness.Platform
         /// {
         ///     var test = Harness.Platform.GetPolicySet.Invoke(new()
         ///     {
-        ///         Identifier = "harness_platform_policyset.test.identifier",
-        ///         Name = "harness_platform_policyset.test.name",
-        ///         Action = "onrun",
-        ///         Type = "pipeline",
-        ///         Enabled = true,
         ///         PolicyReferences = new[]
         ///         {
         ///             new Harness.Platform.Inputs.GetPolicySetPolicyReferenceInputArgs
@@ -111,6 +106,11 @@ namespace Pulumi.Harness.Platform
         ///                 Severity = "warning",
         ///             },
         ///         },
+        ///         Identifier = "harness_platform_policyset.test.identifier",
+        ///         Name = "harness_platform_policyset.test.name",
+        ///         Action = "onrun",
+        ///         Type = "pipeline",
+        ///         Enabled = true,
         ///     });
         /// 
         /// });

@@ -23,26 +23,26 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.ResourceGroup("example", {
+ *     includedScopes: [{
+ *         filter: "EXCLUDING_CHILD_SCOPES",
+ *         accountId: "account_id",
+ *     }],
+ *     resourceFilters: [{
+ *         resources: [{
+ *             attributeFilters: [{
+ *                 attributeName: "category",
+ *                 attributeValues: ["CLOUD_COST"],
+ *             }],
+ *             resourceType: "CONNECTOR",
+ *         }],
+ *         includeAllResources: false,
+ *     }],
  *     identifier: "identifier",
  *     name: "name",
  *     description: "test",
  *     tags: ["foo:bar"],
  *     accountId: "account_id",
  *     allowedScopeLevels: ["account"],
- *     includedScopes: [{
- *         filter: "EXCLUDING_CHILD_SCOPES",
- *         accountId: "account_id",
- *     }],
- *     resourceFilters: [{
- *         includeAllResources: false,
- *         resources: [{
- *             resourceType: "CONNECTOR",
- *             attributeFilters: [{
- *                 attributeName: "category",
- *                 attributeValues: ["CLOUD_COST"],
- *             }],
- *         }],
- *     }],
  * });
  * ```
  *
@@ -177,16 +177,11 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const staticExample = new harness.platform.ResourceGroup("static_example", {
- *     identifier: "static_rg",
- *     name: "Static Resource Group",
- *     accountId: "account_id",
- *     allowedScopeLevels: ["account"],
  *     includedScopes: [{
  *         filter: "EXCLUDING_CHILD_SCOPES",
  *         accountId: "account_id",
  *     }],
  *     resourceFilters: [{
- *         includeAllResources: false,
  *         resources: [{
  *             resourceType: "PIPELINE",
  *             identifiers: [
@@ -194,7 +189,12 @@ import * as utilities from "../utilities";
  *                 "pipeline_b",
  *             ],
  *         }],
+ *         includeAllResources: false,
  *     }],
+ *     identifier: "static_rg",
+ *     name: "Static Resource Group",
+ *     accountId: "account_id",
+ *     allowedScopeLevels: ["account"],
  * });
  * ```
  *
@@ -207,11 +207,6 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const allResourcesAccount = new harness.platform.ResourceGroup("all_resources_account", {
- *     identifier: "all_resources_account",
- *     name: "All Resources - Account Level",
- *     description: "Includes all resources at the account scope",
- *     accountId: "account_id",
- *     allowedScopeLevels: ["account"],
  *     includedScopes: [{
  *         filter: "EXCLUDING_CHILD_SCOPES",
  *         accountId: "account_id",
@@ -219,6 +214,11 @@ import * as utilities from "../utilities";
  *     resourceFilters: [{
  *         includeAllResources: true,
  *     }],
+ *     identifier: "all_resources_account",
+ *     name: "All Resources - Account Level",
+ *     description: "Includes all resources at the account scope",
+ *     accountId: "account_id",
+ *     allowedScopeLevels: ["account"],
  * });
  * ```
  *
@@ -231,20 +231,20 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const dynamicExample = new harness.platform.ResourceGroup("dynamic_example", {
- *     identifier: "dynamic_rg",
- *     name: "Dynamic Resource Group",
- *     accountId: "account_id",
- *     allowedScopeLevels: ["account"],
  *     includedScopes: [{
  *         filter: "INCLUDING_CHILD_SCOPES",
  *         accountId: "account_id",
  *     }],
  *     resourceFilters: [{
- *         includeAllResources: false,
  *         resources: [{
  *             resourceType: "PIPELINE",
  *         }],
+ *         includeAllResources: false,
  *     }],
+ *     identifier: "dynamic_rg",
+ *     name: "Dynamic Resource Group",
+ *     accountId: "account_id",
+ *     allowedScopeLevels: ["account"],
  * });
  * ```
  *

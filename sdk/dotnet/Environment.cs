@@ -29,10 +29,6 @@ namespace Pulumi.Harness
     /// 
     ///     var testKubernetes = new Harness.Service.Kubernetes("test", new()
     ///     {
-    ///         AppId = test.Id,
-    ///         Name = "%[1]s",
-    ///         HelmVersion = "V2",
-    ///         Description = "description",
     ///         Variables = new[]
     ///         {
     ///             new Harness.Service.Inputs.KubernetesVariableArgs
@@ -48,13 +44,14 @@ namespace Pulumi.Harness
     ///                 Type = "TEXT",
     ///             },
     ///         },
+    ///         AppId = test.Id,
+    ///         Name = "%[1]s",
+    ///         HelmVersion = "V2",
+    ///         Description = "description",
     ///     });
     /// 
     ///     var testEnvironment = new Harness.Environment("test", new()
     ///     {
-    ///         AppId = test.Id,
-    ///         Name = "%[1]s",
-    ///         Type = "%[2]s",
     ///         VariableOverrides = new[]
     ///         {
     ///             new Harness.Inputs.EnvironmentVariableOverrideArgs
@@ -72,6 +69,9 @@ namespace Pulumi.Harness
     ///                 Type = "TEXT",
     ///             },
     ///         },
+    ///         AppId = test.Id,
+    ///         Name = "%[1]s",
+    ///         Type = "%[2]s",
     ///     });
     /// 
     /// });

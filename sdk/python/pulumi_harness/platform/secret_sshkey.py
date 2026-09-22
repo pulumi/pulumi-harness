@@ -331,12 +331,12 @@ class SecretSshkey(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
-                 kerberos: pulumi.Input[Optional[Union['SecretSshkeyKerberosArgs', 'SecretSshkeyKerberosArgsDict']]] = None,
+                 kerberos: pulumi.Input[Optional[Union['SecretSshkeyKerberosArgs', 'SecretSshkeyKerberosArgsDict', 'outputs.SecretSshkeyKerberos']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 ssh: pulumi.Input[Optional[Union['SecretSshkeySshArgs', 'SecretSshkeySshArgsDict']]] = None,
+                 ssh: pulumi.Input[Optional[Union['SecretSshkeySshArgs', 'SecretSshkeySshArgsDict', 'outputs.SecretSshkeySsh']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -369,12 +369,12 @@ class SecretSshkey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[Union['SecretSshkeyKerberosArgs', 'SecretSshkeyKerberosArgsDict']] kerberos: Kerberos authentication scheme
+        :param pulumi.Input[Union['SecretSshkeyKerberosArgs', 'SecretSshkeyKerberosArgsDict', 'outputs.SecretSshkeyKerberos']] kerberos: Kerberos authentication scheme
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.int] port: SSH port
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[Union['SecretSshkeySshArgs', 'SecretSshkeySshArgsDict']] ssh: Kerberos authentication scheme
+        :param pulumi.Input[Union['SecretSshkeySshArgs', 'SecretSshkeySshArgsDict', 'outputs.SecretSshkeySsh']] ssh: Kerberos authentication scheme
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         """
         ...
@@ -426,12 +426,12 @@ class SecretSshkey(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
-                 kerberos: pulumi.Input[Optional[Union['SecretSshkeyKerberosArgs', 'SecretSshkeyKerberosArgsDict']]] = None,
+                 kerberos: pulumi.Input[Optional[Union['SecretSshkeyKerberosArgs', 'SecretSshkeyKerberosArgsDict', 'outputs.SecretSshkeyKerberos']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 ssh: pulumi.Input[Optional[Union['SecretSshkeySshArgs', 'SecretSshkeySshArgsDict']]] = None,
+                 ssh: pulumi.Input[Optional[Union['SecretSshkeySshArgs', 'SecretSshkeySshArgsDict', 'outputs.SecretSshkeySsh']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -465,12 +465,12 @@ class SecretSshkey(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
-            kerberos: pulumi.Input[Optional[Union['SecretSshkeyKerberosArgs', 'SecretSshkeyKerberosArgsDict']]] = None,
+            kerberos: pulumi.Input[Optional[Union['SecretSshkeyKerberosArgs', 'SecretSshkeyKerberosArgsDict', 'outputs.SecretSshkeyKerberos']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             port: pulumi.Input[Optional[_builtins.int]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
-            ssh: pulumi.Input[Optional[Union['SecretSshkeySshArgs', 'SecretSshkeySshArgsDict']]] = None,
+            ssh: pulumi.Input[Optional[Union['SecretSshkeySshArgs', 'SecretSshkeySshArgsDict', 'outputs.SecretSshkeySsh']]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'SecretSshkey':
         """
         Get an existing SecretSshkey resource's state with the given name, id, and optional extra
@@ -481,12 +481,12 @@ class SecretSshkey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[Union['SecretSshkeyKerberosArgs', 'SecretSshkeyKerberosArgsDict']] kerberos: Kerberos authentication scheme
+        :param pulumi.Input[Union['SecretSshkeyKerberosArgs', 'SecretSshkeyKerberosArgsDict', 'outputs.SecretSshkeyKerberos']] kerberos: Kerberos authentication scheme
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.int] port: SSH port
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
-        :param pulumi.Input[Union['SecretSshkeySshArgs', 'SecretSshkeySshArgsDict']] ssh: Kerberos authentication scheme
+        :param pulumi.Input[Union['SecretSshkeySshArgs', 'SecretSshkeySshArgsDict', 'outputs.SecretSshkeySsh']] ssh: Kerberos authentication scheme
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

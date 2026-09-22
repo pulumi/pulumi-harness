@@ -30,6 +30,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Authentication mechanism as api token
 //			_, err := platform.NewElasticsearchConnector(ctx, "token", &platform.ElasticsearchConnectorArgs{
+//				ApiToken: &platform.ElasticsearchConnectorApiTokenArgs{
+//					ClientId:        pulumi.String("client_id"),
+//					ClientSecretRef: pulumi.String("account.secret_id"),
+//				},
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
@@ -39,10 +43,6 @@ import (
 //				Url: pulumi.String("http://elk6.dev.harness.io:9200/"),
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
-//				},
-//				ApiToken: &platform.ElasticsearchConnectorApiTokenArgs{
-//					ClientId:        pulumi.String("client_id"),
-//					ClientSecretRef: pulumi.String("account.secret_id"),
 //				},
 //			})
 //			if err != nil {
@@ -50,6 +50,10 @@ import (
 //			}
 //			// Authentication mechanism as username and password
 //			_, err = platform.NewElasticsearchConnector(ctx, "test", &platform.ElasticsearchConnectorArgs{
+//				UsernamePassword: &platform.ElasticsearchConnectorUsernamePasswordArgs{
+//					Username:    pulumi.String("username"),
+//					PasswordRef: pulumi.String("account.secret_id"),
+//				},
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
@@ -59,10 +63,6 @@ import (
 //				Url: pulumi.String("http://elk6.dev.harness.io:9200/"),
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
-//				},
-//				UsernamePassword: &platform.ElasticsearchConnectorUsernamePasswordArgs{
-//					Username:    pulumi.String("username"),
-//					PasswordRef: pulumi.String("account.secret_id"),
 //				},
 //			})
 //			if err != nil {

@@ -31,6 +31,20 @@ namespace Pulumi.Harness.Chaos
     ///     // Example of a Security Governance Rule (V3)
     ///     var example = new Harness.Chaos.SecurityGovernanceRuleV3("example", new()
     ///     {
+    ///         TimeWindows = new[]
+    ///         {
+    ///             new Harness.Chaos.Inputs.SecurityGovernanceRuleV3TimeWindowArgs
+    ///             {
+    ///                 Recurrence = new Harness.Chaos.Inputs.SecurityGovernanceRuleV3TimeWindowRecurrenceArgs
+    ///                 {
+    ///                     Type = "Daily",
+    ///                     Until = -1,
+    ///                 },
+    ///                 TimeZone = "UTC",
+    ///                 StartTime = 1711238400000,
+    ///                 Duration = "24h",
+    ///             },
+    ///         },
     ///         OrgId = orgId,
     ///         ProjectId = projectId,
     ///         Name = "k8s-security-rule",
@@ -48,20 +62,6 @@ namespace Pulumi.Harness.Chaos
     ///         {
     ///             "env:prod",
     ///             "team:security",
-    ///         },
-    ///         TimeWindows = new[]
-    ///         {
-    ///             new Harness.Chaos.Inputs.SecurityGovernanceRuleV3TimeWindowArgs
-    ///             {
-    ///                 TimeZone = "UTC",
-    ///                 StartTime = 1711238400000,
-    ///                 Duration = "24h",
-    ///                 Recurrence = new Harness.Chaos.Inputs.SecurityGovernanceRuleV3TimeWindowRecurrenceArgs
-    ///                 {
-    ///                     Type = "Daily",
-    ///                     Until = -1,
-    ///                 },
-    ///             },
     ///         },
     ///     });
     /// 

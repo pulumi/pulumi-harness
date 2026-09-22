@@ -24,13 +24,6 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var clientKeyCert = new Harness.Platform.KubernetesConnector("clientKeyCert", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Description = "description",
-    ///         Tags = new[]
-    ///         {
-    ///             "foo:bar",
-    ///         },
     ///         ClientKeyCert = new Harness.Platform.Inputs.KubernetesConnectorClientKeyCertArgs
     ///         {
     ///             MasterUrl = "https://kubernetes.example.com",
@@ -40,6 +33,13 @@ namespace Pulumi.Harness.Platform
     ///             ClientKeyPassphraseRef = "account.TEST_k8s_client_test",
     ///             ClientKeyAlgorithm = "RSA",
     ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "description",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
     ///         DelegateSelectors = new[]
     ///         {
     ///             "harness-delegate",
@@ -48,18 +48,18 @@ namespace Pulumi.Harness.Platform
     /// 
     ///     var usernamePassword = new Harness.Platform.KubernetesConnector("usernamePassword", new()
     ///     {
+    ///         UsernamePassword = new Harness.Platform.Inputs.KubernetesConnectorUsernamePasswordArgs
+    ///         {
+    ///             MasterUrl = "https://kubernetes.example.com",
+    ///             Username = "admin",
+    ///             PasswordRef = "account.TEST_k8s_client_test",
+    ///         },
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         Description = "description",
     ///         Tags = new[]
     ///         {
     ///             "foo:bar",
-    ///         },
-    ///         UsernamePassword = new Harness.Platform.Inputs.KubernetesConnectorUsernamePasswordArgs
-    ///         {
-    ///             MasterUrl = "https://kubernetes.example.com",
-    ///             Username = "admin",
-    ///             PasswordRef = "account.TEST_k8s_client_test",
     ///         },
     ///         DelegateSelectors = new[]
     ///         {
@@ -69,17 +69,17 @@ namespace Pulumi.Harness.Platform
     /// 
     ///     var serviceAccount = new Harness.Platform.KubernetesConnector("serviceAccount", new()
     ///     {
+    ///         ServiceAccount = new Harness.Platform.Inputs.KubernetesConnectorServiceAccountArgs
+    ///         {
+    ///             MasterUrl = "https://kubernetes.example.com",
+    ///             ServiceAccountTokenRef = "account.TEST_k8s_client_test",
+    ///         },
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         Description = "description",
     ///         Tags = new[]
     ///         {
     ///             "foo:bar",
-    ///         },
-    ///         ServiceAccount = new Harness.Platform.Inputs.KubernetesConnectorServiceAccountArgs
-    ///         {
-    ///             MasterUrl = "https://kubernetes.example.com",
-    ///             ServiceAccountTokenRef = "account.TEST_k8s_client_test",
     ///         },
     ///         DelegateSelectors = new[]
     ///         {
@@ -89,13 +89,6 @@ namespace Pulumi.Harness.Platform
     /// 
     ///     var openIDConnect = new Harness.Platform.KubernetesConnector("openIDConnect", new()
     ///     {
-    ///         Identifier = "%[1]s",
-    ///         Name = "%[2]s",
-    ///         Description = "description",
-    ///         Tags = new[]
-    ///         {
-    ///             "foo:bar",
-    ///         },
     ///         OpenidConnect = new Harness.Platform.Inputs.KubernetesConnectorOpenidConnectArgs
     ///         {
     ///             MasterUrl = "https://kubernetes.example.com",
@@ -110,6 +103,13 @@ namespace Pulumi.Harness.Platform
     ///                 "scope2",
     ///             },
     ///         },
+    ///         Identifier = "%[1]s",
+    ///         Name = "%[2]s",
+    ///         Description = "description",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
     ///         DelegateSelectors = new[]
     ///         {
     ///             "harness-delegate",
@@ -118,19 +118,19 @@ namespace Pulumi.Harness.Platform
     /// 
     ///     var inheritFromDelegate = new Harness.Platform.KubernetesConnector("inheritFromDelegate", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Description = "description",
-    ///         Tags = new[]
-    ///         {
-    ///             "foo:bar",
-    ///         },
     ///         InheritFromDelegate = new Harness.Platform.Inputs.KubernetesConnectorInheritFromDelegateArgs
     ///         {
     ///             DelegateSelectors = new[]
     ///             {
     ///                 "harness-delegate",
     ///             },
+    ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "description",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
     ///         },
     ///     });
     /// 

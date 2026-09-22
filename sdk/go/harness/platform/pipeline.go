@@ -29,10 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewPipeline(ctx, "example", &platform.PipelineArgs{
-//				Identifier: pulumi.String("identifier"),
-//				OrgId:      pulumi.String("orgIdentifier"),
-//				ProjectId:  pulumi.String("projectIdentifier"),
-//				Name:       pulumi.String("name"),
 //				GitDetails: &platform.PipelineGitDetailsArgs{
 //					BranchName:    pulumi.String("branchName"),
 //					CommitMessage: pulumi.String("commitMessage"),
@@ -41,7 +37,11 @@ import (
 //					StoreType:     pulumi.String("REMOTE"),
 //					RepoName:      pulumi.String("repoName"),
 //				},
-//				Tags: pulumi.StringArray{},
+//				Identifier: pulumi.String("identifier"),
+//				OrgId:      pulumi.String("orgIdentifier"),
+//				ProjectId:  pulumi.String("projectIdentifier"),
+//				Name:       pulumi.String("name"),
+//				Tags:       pulumi.StringArray{},
 //				Yaml: pulumi.String(`pipeline:
 //	    name: name
 //	    identifier: identifier
@@ -143,11 +143,6 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewPipeline(ctx, "test", &platform.PipelineArgs{
-//				Identifier:    pulumi.String("gitx"),
-//				OrgId:         pulumi.String("default"),
-//				ProjectId:     pulumi.String("V"),
-//				Name:          pulumi.String("gitx"),
-//				ImportFromGit: pulumi.Bool(true),
 //				GitImportInfo: &platform.PipelineGitImportInfoArgs{
 //					BranchName:    pulumi.String("main"),
 //					FilePath:      pulumi.String(".harness/gitx.yaml"),
@@ -159,6 +154,11 @@ import (
 //					PipelineName:        pulumi.String("gitx"),
 //					PipelineDescription: pulumi.String("Pipeline Description"),
 //				},
+//				Identifier:    pulumi.String("gitx"),
+//				OrgId:         pulumi.String("default"),
+//				ProjectId:     pulumi.String("V"),
+//				Name:          pulumi.String("gitx"),
+//				ImportFromGit: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

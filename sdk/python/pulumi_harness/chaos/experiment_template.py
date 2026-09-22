@@ -365,7 +365,7 @@ class ExperimentTemplate(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['ExperimentTemplateSpecArgs', 'ExperimentTemplateSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['ExperimentTemplateSpecArgs', 'ExperimentTemplateSpecArgsDict', 'outputs.ExperimentTemplateSpec']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -401,25 +401,8 @@ class ExperimentTemplate(pulumi.CustomResource):
         # ----------------------------------------------------------------------------
         # Basic template with single fault
         simple_fault = harness.chaos.ExperimentTemplate("simple_fault",
-            org_id=this["id"],
-            project_id=this_harness_platform_project["id"],
-            hub_identity=project_level["identity"],
-            identity="simple-pod-delete",
-            name="Simple Pod Delete Experiment",
-            description="Basic experiment with single pod delete fault",
-            tags=[
-                "kubernetes",
-                "pod-delete",
-                "simple",
-            ],
             spec={
-                "infra_type": "KubernetesV2",
                 "faults": [{
-                    "identity": "pod-delete",
-                    "name": "pod-delete-fault",
-                    "revision": "v1",
-                    "is_enterprise": True,
-                    "auth_enabled": False,
                     "values": [
                         {
                             "name": "TARGET_WORKLOAD_KIND",
@@ -434,53 +417,53 @@ class ExperimentTemplate(pulumi.CustomResource):
                             "value": "<+input>.default('30s')",
                         },
                     ],
+                    "identity": "pod-delete",
+                    "name": "pod-delete-fault",
+                    "revision": "v1",
+                    "is_enterprise": True,
+                    "auth_enabled": False,
                 }],
                 "vertices": [{
-                    "name": "pod-delete-vertex",
                     "start": {
                         "faults": [{
                             "name": "pod-delete-fault",
                         }],
                     },
                     "end": {},
+                    "name": "pod-delete-vertex",
                 }],
+                "infra_type": "KubernetesV2",
                 "cleanup_policy": "delete",
             },
+            org_id=this["id"],
+            project_id=this_harness_platform_project["id"],
+            hub_identity=project_level["identity"],
+            identity="simple-pod-delete",
+            name="Simple Pod Delete Experiment",
+            description="Basic experiment with single pod delete fault",
+            tags=[
+                "kubernetes",
+                "pod-delete",
+                "simple",
+            ],
             opts = pulumi.ResourceOptions(depends_on=[project_level]))
         # ----------------------------------------------------------------------------
         # Example 2: Template with Action and Fault (TESTED ✅)
         # ----------------------------------------------------------------------------
         # Template combining action and fault
         with_action = harness.chaos.ExperimentTemplate("with_action",
-            org_id=this["id"],
-            project_id=this_harness_platform_project["id"],
-            hub_identity=project_level["identity"],
-            identity="action-and-fault",
-            name="Action and Fault Experiment",
-            description="Experiment with action before fault",
-            tags=[
-                "kubernetes",
-                "action",
-                "fault",
-            ],
             spec={
-                "infra_type": "KubernetesV2",
                 "actions": [{
-                    "identity": "notification-action",
-                    "name": "pre-chaos-notification",
-                    "is_enterprise": False,
-                    "continue_on_completion": False,
                     "values": [{
                         "name": "MESSAGE",
                         "value": "Starting chaos experiment",
                     }],
+                    "identity": "notification-action",
+                    "name": "pre-chaos-notification",
+                    "is_enterprise": False,
+                    "continue_on_completion": False,
                 }],
                 "faults": [{
-                    "identity": "container-kill",
-                    "name": "container-kill-fault",
-                    "revision": "v1",
-                    "is_enterprise": True,
-                    "auth_enabled": False,
                     "values": [
                         {
                             "name": "TARGET_WORKLOAD_KIND",
@@ -495,65 +478,69 @@ class ExperimentTemplate(pulumi.CustomResource):
                             "value": "<+input>.default('30s')",
                         },
                     ],
+                    "identity": "container-kill",
+                    "name": "container-kill-fault",
+                    "revision": "v1",
+                    "is_enterprise": True,
+                    "auth_enabled": False,
                 }],
                 "vertices": [
                     {
-                        "name": "action-vertex",
                         "start": {
                             "actions": [{
                                 "name": "pre-chaos-notification",
                             }],
                         },
                         "end": {},
+                        "name": "action-vertex",
                     },
                     {
-                        "name": "fault-vertex",
                         "start": {
                             "faults": [{
                                 "name": "container-kill-fault",
                             }],
                         },
                         "end": {},
+                        "name": "fault-vertex",
                     },
                 ],
+                "infra_type": "KubernetesV2",
                 "cleanup_policy": "delete",
             },
+            org_id=this["id"],
+            project_id=this_harness_platform_project["id"],
+            hub_identity=project_level["identity"],
+            identity="action-and-fault",
+            name="Action and Fault Experiment",
+            description="Experiment with action before fault",
+            tags=[
+                "kubernetes",
+                "action",
+                "fault",
+            ],
             opts = pulumi.ResourceOptions(depends_on=[project_level]))
         # ----------------------------------------------------------------------------
         # Example 3: Complex Template with Probes (TESTED ✅)
         # ----------------------------------------------------------------------------
         # Complete template with actions, faults, and probes
         complex = harness.chaos.ExperimentTemplate("complex",
-            org_id=this["id"],
-            project_id=this_harness_platform_project["id"],
-            hub_identity=project_level["identity"],
-            identity="complex-experiment",
-            name="Complex Chaos Experiment",
-            description="Complete experiment with actions, faults, and probes",
-            tags=[
-                "kubernetes",
-                "complex",
-                "enterprise",
-            ],
             spec={
-                "infra_type": "KubernetesV2",
+                "status_check_timeouts": {
+                    "delay": 5,
+                    "timeout": 300,
+                },
                 "actions": [{
-                    "identity": "notification-action",
-                    "name": "start-notification",
-                    "is_enterprise": False,
-                    "continue_on_completion": False,
                     "values": [{
                         "name": "MESSAGE",
                         "value": "Chaos experiment started",
                     }],
+                    "identity": "notification-action",
+                    "name": "start-notification",
+                    "is_enterprise": False,
+                    "continue_on_completion": False,
                 }],
                 "faults": [
                     {
-                        "identity": "pod-delete",
-                        "name": "pod-delete-fault",
-                        "revision": "v1",
-                        "is_enterprise": True,
-                        "auth_enabled": False,
                         "values": [
                             {
                                 "name": "TARGET_WORKLOAD_KIND",
@@ -568,13 +555,13 @@ class ExperimentTemplate(pulumi.CustomResource):
                                 "value": "<+input>.default('30s')",
                             },
                         ],
-                    },
-                    {
-                        "identity": "pod-network-latency",
-                        "name": "network-latency-fault",
+                        "identity": "pod-delete",
+                        "name": "pod-delete-fault",
                         "revision": "v1",
                         "is_enterprise": True,
                         "auth_enabled": False,
+                    },
+                    {
                         "values": [
                             {
                                 "name": "TARGET_WORKLOAD_KIND",
@@ -589,17 +576,15 @@ class ExperimentTemplate(pulumi.CustomResource):
                                 "value": "<+input>.default('2000')",
                             },
                         ],
+                        "identity": "pod-network-latency",
+                        "name": "network-latency-fault",
+                        "revision": "v1",
+                        "is_enterprise": True,
+                        "auth_enabled": False,
                     },
                 ],
                 "probes": [
                     {
-                        "identity": "pod-status-check",
-                        "name": "pod-status-probe",
-                        "revision": int("v1"),
-                        "is_enterprise": True,
-                        "duration": "30",
-                        "weightage": 10,
-                        "enable_data_collection": False,
                         "conditions_v2": {
                             "operator": "AND",
                             "values": ["true"],
@@ -608,15 +593,15 @@ class ExperimentTemplate(pulumi.CustomResource):
                             "name": "TARGET_NAMESPACE",
                             "value": "<+input>",
                         }],
-                    },
-                    {
-                        "identity": "http-health-check",
-                        "name": "http-health-probe",
+                        "identity": "pod-status-check",
+                        "name": "pod-status-probe",
                         "revision": int("v1"),
                         "is_enterprise": True,
                         "duration": "30",
                         "weightage": 10,
                         "enable_data_collection": False,
+                    },
+                    {
                         "conditions_v2": {
                             "operator": "OR",
                             "values": [
@@ -628,20 +613,26 @@ class ExperimentTemplate(pulumi.CustomResource):
                             "name": "URL",
                             "value": "<+input>",
                         }],
+                        "identity": "http-health-check",
+                        "name": "http-health-probe",
+                        "revision": int("v1"),
+                        "is_enterprise": True,
+                        "duration": "30",
+                        "weightage": 10,
+                        "enable_data_collection": False,
                     },
                 ],
                 "vertices": [
                     {
-                        "name": "action-stage",
                         "start": {
                             "actions": [{
                                 "name": "start-notification",
                             }],
                         },
                         "end": {},
+                        "name": "action-stage",
                     },
                     {
-                        "name": "fault-stage",
                         "start": {
                             "faults": [
                                 {
@@ -661,19 +652,28 @@ class ExperimentTemplate(pulumi.CustomResource):
                             ],
                         },
                         "end": {},
+                        "name": "fault-stage",
                     },
                     {
-                        "name": "cleanup-stage",
                         "start": {},
                         "end": {},
+                        "name": "cleanup-stage",
                     },
                 ],
+                "infra_type": "KubernetesV2",
                 "cleanup_policy": "delete",
-                "status_check_timeouts": {
-                    "delay": 5,
-                    "timeout": 300,
-                },
             },
+            org_id=this["id"],
+            project_id=this_harness_platform_project["id"],
+            hub_identity=project_level["identity"],
+            identity="complex-experiment",
+            name="Complex Chaos Experiment",
+            description="Complete experiment with actions, faults, and probes",
+            tags=[
+                "kubernetes",
+                "complex",
+                "enterprise",
+            ],
             opts = pulumi.ResourceOptions(depends_on=[project_level]))
         ```
 
@@ -723,7 +723,7 @@ class ExperimentTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the experiment template
         :param pulumi.Input[_builtins.str] org_id: Organization identifier
         :param pulumi.Input[_builtins.str] project_id: Project identifier
-        :param pulumi.Input[Union['ExperimentTemplateSpecArgs', 'ExperimentTemplateSpecArgsDict']] spec: Specification of the experiment template
+        :param pulumi.Input[Union['ExperimentTemplateSpecArgs', 'ExperimentTemplateSpecArgsDict', 'outputs.ExperimentTemplateSpec']] spec: Specification of the experiment template
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with the experiment template
         """
         ...
@@ -765,25 +765,8 @@ class ExperimentTemplate(pulumi.CustomResource):
         # ----------------------------------------------------------------------------
         # Basic template with single fault
         simple_fault = harness.chaos.ExperimentTemplate("simple_fault",
-            org_id=this["id"],
-            project_id=this_harness_platform_project["id"],
-            hub_identity=project_level["identity"],
-            identity="simple-pod-delete",
-            name="Simple Pod Delete Experiment",
-            description="Basic experiment with single pod delete fault",
-            tags=[
-                "kubernetes",
-                "pod-delete",
-                "simple",
-            ],
             spec={
-                "infra_type": "KubernetesV2",
                 "faults": [{
-                    "identity": "pod-delete",
-                    "name": "pod-delete-fault",
-                    "revision": "v1",
-                    "is_enterprise": True,
-                    "auth_enabled": False,
                     "values": [
                         {
                             "name": "TARGET_WORKLOAD_KIND",
@@ -798,53 +781,53 @@ class ExperimentTemplate(pulumi.CustomResource):
                             "value": "<+input>.default('30s')",
                         },
                     ],
+                    "identity": "pod-delete",
+                    "name": "pod-delete-fault",
+                    "revision": "v1",
+                    "is_enterprise": True,
+                    "auth_enabled": False,
                 }],
                 "vertices": [{
-                    "name": "pod-delete-vertex",
                     "start": {
                         "faults": [{
                             "name": "pod-delete-fault",
                         }],
                     },
                     "end": {},
+                    "name": "pod-delete-vertex",
                 }],
+                "infra_type": "KubernetesV2",
                 "cleanup_policy": "delete",
             },
+            org_id=this["id"],
+            project_id=this_harness_platform_project["id"],
+            hub_identity=project_level["identity"],
+            identity="simple-pod-delete",
+            name="Simple Pod Delete Experiment",
+            description="Basic experiment with single pod delete fault",
+            tags=[
+                "kubernetes",
+                "pod-delete",
+                "simple",
+            ],
             opts = pulumi.ResourceOptions(depends_on=[project_level]))
         # ----------------------------------------------------------------------------
         # Example 2: Template with Action and Fault (TESTED ✅)
         # ----------------------------------------------------------------------------
         # Template combining action and fault
         with_action = harness.chaos.ExperimentTemplate("with_action",
-            org_id=this["id"],
-            project_id=this_harness_platform_project["id"],
-            hub_identity=project_level["identity"],
-            identity="action-and-fault",
-            name="Action and Fault Experiment",
-            description="Experiment with action before fault",
-            tags=[
-                "kubernetes",
-                "action",
-                "fault",
-            ],
             spec={
-                "infra_type": "KubernetesV2",
                 "actions": [{
-                    "identity": "notification-action",
-                    "name": "pre-chaos-notification",
-                    "is_enterprise": False,
-                    "continue_on_completion": False,
                     "values": [{
                         "name": "MESSAGE",
                         "value": "Starting chaos experiment",
                     }],
+                    "identity": "notification-action",
+                    "name": "pre-chaos-notification",
+                    "is_enterprise": False,
+                    "continue_on_completion": False,
                 }],
                 "faults": [{
-                    "identity": "container-kill",
-                    "name": "container-kill-fault",
-                    "revision": "v1",
-                    "is_enterprise": True,
-                    "auth_enabled": False,
                     "values": [
                         {
                             "name": "TARGET_WORKLOAD_KIND",
@@ -859,65 +842,69 @@ class ExperimentTemplate(pulumi.CustomResource):
                             "value": "<+input>.default('30s')",
                         },
                     ],
+                    "identity": "container-kill",
+                    "name": "container-kill-fault",
+                    "revision": "v1",
+                    "is_enterprise": True,
+                    "auth_enabled": False,
                 }],
                 "vertices": [
                     {
-                        "name": "action-vertex",
                         "start": {
                             "actions": [{
                                 "name": "pre-chaos-notification",
                             }],
                         },
                         "end": {},
+                        "name": "action-vertex",
                     },
                     {
-                        "name": "fault-vertex",
                         "start": {
                             "faults": [{
                                 "name": "container-kill-fault",
                             }],
                         },
                         "end": {},
+                        "name": "fault-vertex",
                     },
                 ],
+                "infra_type": "KubernetesV2",
                 "cleanup_policy": "delete",
             },
+            org_id=this["id"],
+            project_id=this_harness_platform_project["id"],
+            hub_identity=project_level["identity"],
+            identity="action-and-fault",
+            name="Action and Fault Experiment",
+            description="Experiment with action before fault",
+            tags=[
+                "kubernetes",
+                "action",
+                "fault",
+            ],
             opts = pulumi.ResourceOptions(depends_on=[project_level]))
         # ----------------------------------------------------------------------------
         # Example 3: Complex Template with Probes (TESTED ✅)
         # ----------------------------------------------------------------------------
         # Complete template with actions, faults, and probes
         complex = harness.chaos.ExperimentTemplate("complex",
-            org_id=this["id"],
-            project_id=this_harness_platform_project["id"],
-            hub_identity=project_level["identity"],
-            identity="complex-experiment",
-            name="Complex Chaos Experiment",
-            description="Complete experiment with actions, faults, and probes",
-            tags=[
-                "kubernetes",
-                "complex",
-                "enterprise",
-            ],
             spec={
-                "infra_type": "KubernetesV2",
+                "status_check_timeouts": {
+                    "delay": 5,
+                    "timeout": 300,
+                },
                 "actions": [{
-                    "identity": "notification-action",
-                    "name": "start-notification",
-                    "is_enterprise": False,
-                    "continue_on_completion": False,
                     "values": [{
                         "name": "MESSAGE",
                         "value": "Chaos experiment started",
                     }],
+                    "identity": "notification-action",
+                    "name": "start-notification",
+                    "is_enterprise": False,
+                    "continue_on_completion": False,
                 }],
                 "faults": [
                     {
-                        "identity": "pod-delete",
-                        "name": "pod-delete-fault",
-                        "revision": "v1",
-                        "is_enterprise": True,
-                        "auth_enabled": False,
                         "values": [
                             {
                                 "name": "TARGET_WORKLOAD_KIND",
@@ -932,13 +919,13 @@ class ExperimentTemplate(pulumi.CustomResource):
                                 "value": "<+input>.default('30s')",
                             },
                         ],
-                    },
-                    {
-                        "identity": "pod-network-latency",
-                        "name": "network-latency-fault",
+                        "identity": "pod-delete",
+                        "name": "pod-delete-fault",
                         "revision": "v1",
                         "is_enterprise": True,
                         "auth_enabled": False,
+                    },
+                    {
                         "values": [
                             {
                                 "name": "TARGET_WORKLOAD_KIND",
@@ -953,17 +940,15 @@ class ExperimentTemplate(pulumi.CustomResource):
                                 "value": "<+input>.default('2000')",
                             },
                         ],
+                        "identity": "pod-network-latency",
+                        "name": "network-latency-fault",
+                        "revision": "v1",
+                        "is_enterprise": True,
+                        "auth_enabled": False,
                     },
                 ],
                 "probes": [
                     {
-                        "identity": "pod-status-check",
-                        "name": "pod-status-probe",
-                        "revision": int("v1"),
-                        "is_enterprise": True,
-                        "duration": "30",
-                        "weightage": 10,
-                        "enable_data_collection": False,
                         "conditions_v2": {
                             "operator": "AND",
                             "values": ["true"],
@@ -972,15 +957,15 @@ class ExperimentTemplate(pulumi.CustomResource):
                             "name": "TARGET_NAMESPACE",
                             "value": "<+input>",
                         }],
-                    },
-                    {
-                        "identity": "http-health-check",
-                        "name": "http-health-probe",
+                        "identity": "pod-status-check",
+                        "name": "pod-status-probe",
                         "revision": int("v1"),
                         "is_enterprise": True,
                         "duration": "30",
                         "weightage": 10,
                         "enable_data_collection": False,
+                    },
+                    {
                         "conditions_v2": {
                             "operator": "OR",
                             "values": [
@@ -992,20 +977,26 @@ class ExperimentTemplate(pulumi.CustomResource):
                             "name": "URL",
                             "value": "<+input>",
                         }],
+                        "identity": "http-health-check",
+                        "name": "http-health-probe",
+                        "revision": int("v1"),
+                        "is_enterprise": True,
+                        "duration": "30",
+                        "weightage": 10,
+                        "enable_data_collection": False,
                     },
                 ],
                 "vertices": [
                     {
-                        "name": "action-stage",
                         "start": {
                             "actions": [{
                                 "name": "start-notification",
                             }],
                         },
                         "end": {},
+                        "name": "action-stage",
                     },
                     {
-                        "name": "fault-stage",
                         "start": {
                             "faults": [
                                 {
@@ -1025,19 +1016,28 @@ class ExperimentTemplate(pulumi.CustomResource):
                             ],
                         },
                         "end": {},
+                        "name": "fault-stage",
                     },
                     {
-                        "name": "cleanup-stage",
                         "start": {},
                         "end": {},
+                        "name": "cleanup-stage",
                     },
                 ],
+                "infra_type": "KubernetesV2",
                 "cleanup_policy": "delete",
-                "status_check_timeouts": {
-                    "delay": 5,
-                    "timeout": 300,
-                },
             },
+            org_id=this["id"],
+            project_id=this_harness_platform_project["id"],
+            hub_identity=project_level["identity"],
+            identity="complex-experiment",
+            name="Complex Chaos Experiment",
+            description="Complete experiment with actions, faults, and probes",
+            tags=[
+                "kubernetes",
+                "complex",
+                "enterprise",
+            ],
             opts = pulumi.ResourceOptions(depends_on=[project_level]))
         ```
 
@@ -1100,7 +1100,7 @@ class ExperimentTemplate(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional[Union['ExperimentTemplateSpecArgs', 'ExperimentTemplateSpecArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['ExperimentTemplateSpecArgs', 'ExperimentTemplateSpecArgsDict', 'outputs.ExperimentTemplateSpec']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1149,7 +1149,7 @@ class ExperimentTemplate(pulumi.CustomResource):
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             revision: pulumi.Input[Optional[_builtins.str]] = None,
-            spec: pulumi.Input[Optional[Union['ExperimentTemplateSpecArgs', 'ExperimentTemplateSpecArgsDict']]] = None,
+            spec: pulumi.Input[Optional[Union['ExperimentTemplateSpecArgs', 'ExperimentTemplateSpecArgsDict', 'outputs.ExperimentTemplateSpec']]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ExperimentTemplate':
         """
         Get an existing ExperimentTemplate resource's state with the given name, id, and optional extra
@@ -1168,7 +1168,7 @@ class ExperimentTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: Organization identifier
         :param pulumi.Input[_builtins.str] project_id: Project identifier
         :param pulumi.Input[_builtins.str] revision: Revision of the experiment template
-        :param pulumi.Input[Union['ExperimentTemplateSpecArgs', 'ExperimentTemplateSpecArgsDict']] spec: Specification of the experiment template
+        :param pulumi.Input[Union['ExperimentTemplateSpecArgs', 'ExperimentTemplateSpecArgsDict', 'outputs.ExperimentTemplateSpec']] spec: Specification of the experiment template
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags associated with the experiment template
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

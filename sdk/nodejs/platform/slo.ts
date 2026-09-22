@@ -16,20 +16,7 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.Slo("example", {
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     identifier: "identifier",
  *     request: {
- *         name: "name",
- *         description: "description",
- *         tags: [
- *             "foo:bar",
- *             "bar:foo",
- *         ],
- *         userJourneyRefs: [
- *             "one",
- *             "two",
- *         ],
  *         sloTarget: {
  *             type: "Calender",
  *             sloTargetPercentage: 10,
@@ -40,6 +27,20 @@ import * as utilities from "../utilities";
  *                 },
  *             }),
  *         },
+ *         notificationRuleRefs: [{
+ *             notificationRuleRef: "notification_rule_ref",
+ *             enabled: true,
+ *         }],
+ *         name: "name",
+ *         description: "description",
+ *         tags: [
+ *             "foo:bar",
+ *             "bar:foo",
+ *         ],
+ *         userJourneyRefs: [
+ *             "one",
+ *             "two",
+ *         ],
  *         type: "Simple",
  *         spec: JSON.stringify({
  *             monitoredServiceRef: "monitoredServiceRef",
@@ -59,11 +60,10 @@ import * as utilities from "../utilities";
  *                 },
  *             }],
  *         }),
- *         notificationRuleRefs: [{
- *             notificationRuleRef: "notification_rule_ref",
- *             enabled: true,
- *         }],
  *     },
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     identifier: "identifier",
  * });
  * ```
  *

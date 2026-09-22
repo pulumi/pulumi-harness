@@ -29,24 +29,24 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := autostopping.NewRuleRds(ctx, "test", &autostopping.RuleRdsArgs{
-//				Name:             pulumi.String("name"),
-//				CloudConnectorId: pulumi.String("cloud_connector_id"),
-//				IdleTimeMins:     pulumi.Int(10),
-//				DryRun:           pulumi.Bool(true),
 //				Database: &autostopping.RuleRdsDatabaseArgs{
 //					Id:     pulumi.String("database_id"),
 //					Region: pulumi.String("region"),
 //				},
 //				Tcps: autostopping.RuleRdsTcpArray{
 //					&autostopping.RuleRdsTcpArgs{
-//						ProxyId: pulumi.String("proxy_id"),
 //						ForwardRules: autostopping.RuleRdsTcpForwardRuleArray{
 //							&autostopping.RuleRdsTcpForwardRuleArgs{
 //								Port: pulumi.Int(2233),
 //							},
 //						},
+//						ProxyId: pulumi.String("proxy_id"),
 //					},
 //				},
+//				Name:             pulumi.String("name"),
+//				CloudConnectorId: pulumi.String("cloud_connector_id"),
+//				IdleTimeMins:     pulumi.Int(10),
+//				DryRun:           pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

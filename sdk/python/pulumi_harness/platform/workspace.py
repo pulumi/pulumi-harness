@@ -902,18 +902,18 @@ class Workspace(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 associated_template: pulumi.Input[Optional[Union['WorkspaceAssociatedTemplateArgs', 'WorkspaceAssociatedTemplateArgsDict']]] = None,
-                 connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict']]]]] = None,
+                 associated_template: pulumi.Input[Optional[Union['WorkspaceAssociatedTemplateArgs', 'WorkspaceAssociatedTemplateArgsDict', 'outputs.WorkspaceAssociatedTemplate']]] = None,
+                 connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict', 'outputs.WorkspaceConnector']]]]] = None,
                  cost_estimation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  default_pipelines: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]]] = None,
+                 environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict', 'outputs.WorkspaceEnvironmentVariable']]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_connector: pulumi.Input[Optional[_builtins.str]] = None,
-                 provisioner_config: pulumi.Input[Optional[Union['WorkspaceProvisionerConfigArgs', 'WorkspaceProvisionerConfigArgsDict']]] = None,
+                 provisioner_config: pulumi.Input[Optional[Union['WorkspaceProvisionerConfigArgs', 'WorkspaceProvisionerConfigArgsDict', 'outputs.WorkspaceProvisionerConfig']]] = None,
                  provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioner_version: pulumi.Input[Optional[_builtins.str]] = None,
                  repository: pulumi.Input[Optional[_builtins.str]] = None,
@@ -924,8 +924,8 @@ class Workspace(pulumi.CustomResource):
                  repository_sha: pulumi.Input[Optional[_builtins.str]] = None,
                  run_all: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]]] = None,
-                 terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None,
+                 terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict', 'outputs.WorkspaceTerraformVariableFile']]]]] = None,
+                 terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict', 'outputs.WorkspaceTerraformVariable']]]]] = None,
                  terragrunt_provider: pulumi.Input[Optional[_builtins.bool]] = None,
                  terragrunt_version: pulumi.Input[Optional[_builtins.str]] = None,
                  variable_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -940,34 +940,10 @@ class Workspace(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.platform.Workspace("example",
-            name="example",
-            identifier="example",
-            org_id=test_harness_platform_organization["id"],
-            project_id=test_harness_platform_project["id"],
-            provisioner_type="terraform",
-            provisioner_version="1.5.6",
-            repository="https://github.com/org/repo",
-            repository_branch="main",
-            repository_path="tf/aws/basic",
-            cost_estimation_enabled=True,
-            provider_connector=test["id"],
-            repository_connector=test["id"],
-            tags=[
-                "tag1",
-                "tag2",
-            ],
-            terraform_variables=[
-                {
-                    "key": "key1",
-                    "value": "val1",
-                    "value_type": "string",
-                },
-                {
-                    "key": "key2",
-                    "value": "val2",
-                    "value_type": "string",
-                },
-            ],
+            associated_template={
+                "template_id": "my_template",
+                "version": "v1.0.0",
+            },
             environment_variables=[
                 {
                     "key": "key1",
@@ -1000,16 +976,40 @@ class Workspace(pulumi.CustomResource):
                     "repository_connector": test["id"],
                 },
             ],
+            terraform_variables=[
+                {
+                    "key": "key1",
+                    "value": "val1",
+                    "value_type": "string",
+                },
+                {
+                    "key": "key2",
+                    "value": "val2",
+                    "value_type": "string",
+                },
+            ],
+            name="example",
+            identifier="example",
+            org_id=test_harness_platform_organization["id"],
+            project_id=test_harness_platform_project["id"],
+            provisioner_type="terraform",
+            provisioner_version="1.5.6",
+            repository="https://github.com/org/repo",
+            repository_branch="main",
+            repository_path="tf/aws/basic",
+            cost_estimation_enabled=True,
+            provider_connector=test["id"],
+            repository_connector=test["id"],
+            tags=[
+                "tag1",
+                "tag2",
+            ],
             variable_sets=[test_harness_platform_infra_variable_set["id"]],
             default_pipelines={
                 "destroy": "destroy_pipeline_id",
                 "drift": "drift_pipeline_id",
                 "plan": "plan_pipeline_id",
                 "apply": "apply_pipeline_id",
-            },
-            associated_template={
-                "template_id": "my_template",
-                "version": "v1.0.0",
             })
         ```
 
@@ -1024,18 +1024,18 @@ class Workspace(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['WorkspaceAssociatedTemplateArgs', 'WorkspaceAssociatedTemplateArgsDict']] associated_template: Template associated with the workspace.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict']]]] connectors: Provider connectors configured on the Workspace. Only one connector of a type is supported
+        :param pulumi.Input[Union['WorkspaceAssociatedTemplateArgs', 'WorkspaceAssociatedTemplateArgsDict', 'outputs.WorkspaceAssociatedTemplate']] associated_template: Template associated with the workspace.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict', 'outputs.WorkspaceConnector']]]] connectors: Provider connectors configured on the Workspace. Only one connector of a type is supported
         :param pulumi.Input[_builtins.bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] default_pipelines: Default pipelines associated with this workspace
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]] environment_variables: Environment variables configured on the workspace
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict', 'outputs.WorkspaceEnvironmentVariable']]]] environment_variables: Environment variables configured on the workspace
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider
-        :param pulumi.Input[Union['WorkspaceProvisionerConfigArgs', 'WorkspaceProvisionerConfigArgsDict']] provisioner_config: Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
+        :param pulumi.Input[Union['WorkspaceProvisionerConfigArgs', 'WorkspaceProvisionerConfigArgsDict', 'outputs.WorkspaceProvisionerConfig']] provisioner_config: Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
         :param pulumi.Input[_builtins.str] provisioner_type: Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
         :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
@@ -1046,8 +1046,8 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         :param pulumi.Input[_builtins.bool] run_all: Boolean flag for run-all terragrunt modules
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]] terraform_variables: Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict', 'outputs.WorkspaceTerraformVariableFile']]]] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict', 'outputs.WorkspaceTerraformVariable']]]] terraform_variables: Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
         :param pulumi.Input[_builtins.bool] terragrunt_provider: Set to true to enable Terragrunt mode
         :param pulumi.Input[_builtins.str] terragrunt_version: Terragrunt version to use (e.g., 0.45.0)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] variable_sets: Variable sets to use.
@@ -1068,34 +1068,10 @@ class Workspace(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.platform.Workspace("example",
-            name="example",
-            identifier="example",
-            org_id=test_harness_platform_organization["id"],
-            project_id=test_harness_platform_project["id"],
-            provisioner_type="terraform",
-            provisioner_version="1.5.6",
-            repository="https://github.com/org/repo",
-            repository_branch="main",
-            repository_path="tf/aws/basic",
-            cost_estimation_enabled=True,
-            provider_connector=test["id"],
-            repository_connector=test["id"],
-            tags=[
-                "tag1",
-                "tag2",
-            ],
-            terraform_variables=[
-                {
-                    "key": "key1",
-                    "value": "val1",
-                    "value_type": "string",
-                },
-                {
-                    "key": "key2",
-                    "value": "val2",
-                    "value_type": "string",
-                },
-            ],
+            associated_template={
+                "template_id": "my_template",
+                "version": "v1.0.0",
+            },
             environment_variables=[
                 {
                     "key": "key1",
@@ -1128,16 +1104,40 @@ class Workspace(pulumi.CustomResource):
                     "repository_connector": test["id"],
                 },
             ],
+            terraform_variables=[
+                {
+                    "key": "key1",
+                    "value": "val1",
+                    "value_type": "string",
+                },
+                {
+                    "key": "key2",
+                    "value": "val2",
+                    "value_type": "string",
+                },
+            ],
+            name="example",
+            identifier="example",
+            org_id=test_harness_platform_organization["id"],
+            project_id=test_harness_platform_project["id"],
+            provisioner_type="terraform",
+            provisioner_version="1.5.6",
+            repository="https://github.com/org/repo",
+            repository_branch="main",
+            repository_path="tf/aws/basic",
+            cost_estimation_enabled=True,
+            provider_connector=test["id"],
+            repository_connector=test["id"],
+            tags=[
+                "tag1",
+                "tag2",
+            ],
             variable_sets=[test_harness_platform_infra_variable_set["id"]],
             default_pipelines={
                 "destroy": "destroy_pipeline_id",
                 "drift": "drift_pipeline_id",
                 "plan": "plan_pipeline_id",
                 "apply": "apply_pipeline_id",
-            },
-            associated_template={
-                "template_id": "my_template",
-                "version": "v1.0.0",
             })
         ```
 
@@ -1165,18 +1165,18 @@ class Workspace(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 associated_template: pulumi.Input[Optional[Union['WorkspaceAssociatedTemplateArgs', 'WorkspaceAssociatedTemplateArgsDict']]] = None,
-                 connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict']]]]] = None,
+                 associated_template: pulumi.Input[Optional[Union['WorkspaceAssociatedTemplateArgs', 'WorkspaceAssociatedTemplateArgsDict', 'outputs.WorkspaceAssociatedTemplate']]] = None,
+                 connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict', 'outputs.WorkspaceConnector']]]]] = None,
                  cost_estimation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  default_pipelines: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]]] = None,
+                 environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict', 'outputs.WorkspaceEnvironmentVariable']]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_connector: pulumi.Input[Optional[_builtins.str]] = None,
-                 provisioner_config: pulumi.Input[Optional[Union['WorkspaceProvisionerConfigArgs', 'WorkspaceProvisionerConfigArgsDict']]] = None,
+                 provisioner_config: pulumi.Input[Optional[Union['WorkspaceProvisionerConfigArgs', 'WorkspaceProvisionerConfigArgsDict', 'outputs.WorkspaceProvisionerConfig']]] = None,
                  provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
                  provisioner_version: pulumi.Input[Optional[_builtins.str]] = None,
                  repository: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1187,8 +1187,8 @@ class Workspace(pulumi.CustomResource):
                  repository_sha: pulumi.Input[Optional[_builtins.str]] = None,
                  run_all: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]]] = None,
-                 terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None,
+                 terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict', 'outputs.WorkspaceTerraformVariableFile']]]]] = None,
+                 terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict', 'outputs.WorkspaceTerraformVariable']]]]] = None,
                  terragrunt_provider: pulumi.Input[Optional[_builtins.bool]] = None,
                  terragrunt_version: pulumi.Input[Optional[_builtins.str]] = None,
                  variable_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1246,18 +1246,18 @@ class Workspace(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            associated_template: pulumi.Input[Optional[Union['WorkspaceAssociatedTemplateArgs', 'WorkspaceAssociatedTemplateArgsDict']]] = None,
-            connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict']]]]] = None,
+            associated_template: pulumi.Input[Optional[Union['WorkspaceAssociatedTemplateArgs', 'WorkspaceAssociatedTemplateArgsDict', 'outputs.WorkspaceAssociatedTemplate']]] = None,
+            connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict', 'outputs.WorkspaceConnector']]]]] = None,
             cost_estimation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             default_pipelines: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]]] = None,
+            environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict', 'outputs.WorkspaceEnvironmentVariable']]]]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             provider_connector: pulumi.Input[Optional[_builtins.str]] = None,
-            provisioner_config: pulumi.Input[Optional[Union['WorkspaceProvisionerConfigArgs', 'WorkspaceProvisionerConfigArgsDict']]] = None,
+            provisioner_config: pulumi.Input[Optional[Union['WorkspaceProvisionerConfigArgs', 'WorkspaceProvisionerConfigArgsDict', 'outputs.WorkspaceProvisionerConfig']]] = None,
             provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
             provisioner_version: pulumi.Input[Optional[_builtins.str]] = None,
             repository: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1268,8 +1268,8 @@ class Workspace(pulumi.CustomResource):
             repository_sha: pulumi.Input[Optional[_builtins.str]] = None,
             run_all: pulumi.Input[Optional[_builtins.bool]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]]] = None,
-            terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]]] = None,
+            terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict', 'outputs.WorkspaceTerraformVariableFile']]]]] = None,
+            terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict', 'outputs.WorkspaceTerraformVariable']]]]] = None,
             terragrunt_provider: pulumi.Input[Optional[_builtins.bool]] = None,
             terragrunt_version: pulumi.Input[Optional[_builtins.str]] = None,
             variable_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Workspace':
@@ -1280,18 +1280,18 @@ class Workspace(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['WorkspaceAssociatedTemplateArgs', 'WorkspaceAssociatedTemplateArgsDict']] associated_template: Template associated with the workspace.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict']]]] connectors: Provider connectors configured on the Workspace. Only one connector of a type is supported
+        :param pulumi.Input[Union['WorkspaceAssociatedTemplateArgs', 'WorkspaceAssociatedTemplateArgsDict', 'outputs.WorkspaceAssociatedTemplate']] associated_template: Template associated with the workspace.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict', 'outputs.WorkspaceConnector']]]] connectors: Provider connectors configured on the Workspace. Only one connector of a type is supported
         :param pulumi.Input[_builtins.bool] cost_estimation_enabled: Cost estimation enabled determines if cost estimation operations are performed. Optional: when omitted the value is inherited from the associated template. An explicit value (including false) is always sent to the API. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] default_pipelines: Default pipelines associated with this workspace
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict']]]] environment_variables: Environment variables configured on the workspace
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict', 'outputs.WorkspaceEnvironmentVariable']]]] environment_variables: Environment variables configured on the workspace
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[_builtins.str] provider_connector: Provider connector is the reference to the connector for the infrastructure provider
-        :param pulumi.Input[Union['WorkspaceProvisionerConfigArgs', 'WorkspaceProvisionerConfigArgsDict']] provisioner_config: Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
+        :param pulumi.Input[Union['WorkspaceProvisionerConfigArgs', 'WorkspaceProvisionerConfigArgsDict', 'outputs.WorkspaceProvisionerConfig']] provisioner_config: Provisioner configuration for awscdk provisioner type. Required when provisioner*type is awscdk.
         :param pulumi.Input[_builtins.str] provisioner_type: Provisioner type defines the provisioning tool to use (terraform, opentofu, or awscdk)
         :param pulumi.Input[_builtins.str] provisioner_version: Provisioner version defines the provisioner version to use. The latest version of Opentofu should always be supported, Terraform is only supported up to version 1.5.7. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         :param pulumi.Input[_builtins.str] repository: Repository is the name of the repository to fetch the code from. Optional: when omitted the value is inherited from the associated template. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
@@ -1302,8 +1302,8 @@ class Workspace(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] repository_sha: Repository commit is commit SHA to fetch the code from. This cannot be set if repository branch or commit is set. All three of repository*branch, repository*commit and repository_sha may be omitted only when an associated template supplies the value; otherwise exactly one must be set. Note: because this field is computed, removing it from config after it was set does not clear it (the previous value is retained) - taint or replace the workspace to switch back to a template-inherited value.
         :param pulumi.Input[_builtins.bool] run_all: Boolean flag for run-all terragrunt modules
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict']]]] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
-        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict']]]] terraform_variables: Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict', 'outputs.WorkspaceTerraformVariableFile']]]] terraform_variable_files: Terraform variables files configured on the workspace (see below for nested schema)
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict', 'outputs.WorkspaceTerraformVariable']]]] terraform_variables: Terraform variables configured on the workspace. Terraform variable keys must be unique within the workspace. (see below for nested schema)
         :param pulumi.Input[_builtins.bool] terragrunt_provider: Set to true to enable Terragrunt mode
         :param pulumi.Input[_builtins.str] terragrunt_version: Terragrunt version to use (e.g., 0.45.0)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] variable_sets: Variable sets to use.

@@ -50,8 +50,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.chaos.ActionTemplate;
  * import com.pulumi.harness.chaos.ActionTemplateArgs;
  * import com.pulumi.harness.chaos.inputs.ActionTemplateContainerActionArgs;
- * import com.pulumi.harness.chaos.inputs.ActionTemplateContainerActionEnvArgs;
  * import com.pulumi.harness.chaos.inputs.ActionTemplateContainerActionResourcesArgs;
+ * import com.pulumi.harness.chaos.inputs.ActionTemplateContainerActionEnvArgs;
  * import com.pulumi.harness.chaos.inputs.ActionTemplateRunPropertiesArgs;
  * import com.pulumi.harness.chaos.inputs.ActionTemplateVariableArgs;
  * import com.pulumi.harness.chaos.inputs.ActionTemplateDelayActionArgs;
@@ -88,19 +88,26 @@ import javax.annotation.Nullable;
  *         // ----------------------------------------------------------------------------
  *         // Most common pattern: container action with runtime inputs and defaults
  *         var containerWithRuntimeInputs = new ActionTemplate("containerWithRuntimeInputs", ActionTemplateArgs.builder()
- *             .orgId(this_.id())
- *             .projectId(thisHarnessPlatformProject.id())
- *             .hubIdentity(projectLevel.identity())
- *             .identity("container-action-template")
- *             .name("Container Action Template")
- *             .description("Container action with runtime inputs and defaults")
- *             .type("container")
- *             .infrastructureType("<+input>.default('Kubernetes')")
- *             .tags(            
- *                 "container",
- *                 "kubernetes",
- *                 "runtime-inputs")
  *             .containerAction(ActionTemplateContainerActionArgs.builder()
+ *                 .resources(ActionTemplateContainerActionResourcesArgs.builder()
+ *                     .limits(Map.ofEntries(
+ *                         Map.entry("cpu", "500m"),
+ *                         Map.entry("memory", "512Mi")
+ *                     ))
+ *                     .requests(Map.ofEntries(
+ *                         Map.entry("cpu", "250m"),
+ *                         Map.entry("memory", "256Mi")
+ *                     ))
+ *                     .build())
+ *                 .envs(                
+ *                     ActionTemplateContainerActionEnvArgs.builder()
+ *                         .name("TEST_VAR")
+ *                         .value("<+input>.default('test_value')")
+ *                         .build(),
+ *                     ActionTemplateContainerActionEnvArgs.builder()
+ *                         .name("ANOTHER_VAR")
+ *                         .value("<+input>.default('another_value')")
+ *                         .build())
  *                 .image("<+input>.default('busybox:latest')")
  *                 .commands("<+input>.default('sh')")
  *                 .args("echo 'Running container action'; sleep 15")
@@ -118,25 +125,6 @@ import javax.annotation.Nullable;
  *                     Map.entry("description", "Chaos container action"),
  *                     Map.entry("owner", "chaos-team")
  *                 ))
- *                 .envs(                
- *                     ActionTemplateContainerActionEnvArgs.builder()
- *                         .name("TEST_VAR")
- *                         .value("<+input>.default('test_value')")
- *                         .build(),
- *                     ActionTemplateContainerActionEnvArgs.builder()
- *                         .name("ANOTHER_VAR")
- *                         .value("<+input>.default('another_value')")
- *                         .build())
- *                 .resources(ActionTemplateContainerActionResourcesArgs.builder()
- *                     .limits(Map.ofEntries(
- *                         Map.entry("cpu", "500m"),
- *                         Map.entry("memory", "512Mi")
- *                     ))
- *                     .requests(Map.ofEntries(
- *                         Map.entry("cpu", "250m"),
- *                         Map.entry("memory", "256Mi")
- *                     ))
- *                     .build())
  *                 .build())
  *             .runProperties(ActionTemplateRunPropertiesArgs.builder()
  *                 .timeout("<+input>.default('60s')")
@@ -157,6 +145,18 @@ import javax.annotation.Nullable;
  *                     .required(false)
  *                     .description("Kubernetes namespace (runtime input)")
  *                     .build())
+ *             .orgId(this_.id())
+ *             .projectId(thisHarnessPlatformProject.id())
+ *             .hubIdentity(projectLevel.identity())
+ *             .identity("container-action-template")
+ *             .name("Container Action Template")
+ *             .description("Container action with runtime inputs and defaults")
+ *             .type("container")
+ *             .infrastructureType("<+input>.default('Kubernetes')")
+ *             .tags(            
+ *                 "container",
+ *                 "kubernetes",
+ *                 "runtime-inputs")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(projectLevel)
  *                 .build());
@@ -166,6 +166,12 @@ import javax.annotation.Nullable;
  *         // ----------------------------------------------------------------------------
  *         // Delay action for adding wait time in experiments
  *         var delayAction = new ActionTemplate("delayAction", ActionTemplateArgs.builder()
+ *             .delayAction(ActionTemplateDelayActionArgs.builder()
+ *                 .duration("<+input>.default('30s')")
+ *                 .build())
+ *             .runProperties(ActionTemplateRunPropertiesArgs.builder()
+ *                 .timeout("60s")
+ *                 .build())
  *             .orgId(this_.id())
  *             .projectId(thisHarnessPlatformProject.id())
  *             .hubIdentity(projectLevel.identity())
@@ -177,12 +183,6 @@ import javax.annotation.Nullable;
  *             .tags(            
  *                 "delay",
  *                 "wait")
- *             .delayAction(ActionTemplateDelayActionArgs.builder()
- *                 .duration("<+input>.default('30s')")
- *                 .build())
- *             .runProperties(ActionTemplateRunPropertiesArgs.builder()
- *                 .timeout("60s")
- *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(projectLevel)
  *                 .build());
@@ -192,18 +192,11 @@ import javax.annotation.Nullable;
  *         // ----------------------------------------------------------------------------
  *         // Custom script action for flexible operations
  *         var scriptAction = new ActionTemplate("scriptAction", ActionTemplateArgs.builder()
- *             .orgId(this_.id())
- *             .projectId(thisHarnessPlatformProject.id())
- *             .hubIdentity(projectLevel.identity())
- *             .identity("script-action-template")
- *             .name("Script Action Template")
- *             .description("Custom script action for chaos operations")
- *             .type("script")
- *             .infrastructureType("<+input>.default('Kubernetes')")
- *             .tags(            
- *                 "script",
- *                 "custom")
  *             .customScriptAction(ActionTemplateCustomScriptActionArgs.builder()
+ *                 .envs(ActionTemplateCustomScriptActionEnvArgs.builder()
+ *                     .name("TARGET")
+ *                     .value("<+input>.default('default-target')")
+ *                     .build())
  *                 .script("""
  * #!/bin/bash
  * echo \"Running custom chaos script\"
@@ -212,10 +205,6 @@ import javax.annotation.Nullable;
  * echo \"Script completed\"
  *                 """)
  *                 .shell("bash")
- *                 .envs(ActionTemplateCustomScriptActionEnvArgs.builder()
- *                     .name("TARGET")
- *                     .value("<+input>.default('default-target')")
- *                     .build())
  *                 .build())
  *             .runProperties(ActionTemplateRunPropertiesArgs.builder()
  *                 .timeout("<+input>.default('120s')")
@@ -228,6 +217,17 @@ import javax.annotation.Nullable;
  *                 .required(true)
  *                 .description("Target resource for the script")
  *                 .build())
+ *             .orgId(this_.id())
+ *             .projectId(thisHarnessPlatformProject.id())
+ *             .hubIdentity(projectLevel.identity())
+ *             .identity("script-action-template")
+ *             .name("Script Action Template")
+ *             .description("Custom script action for chaos operations")
+ *             .type("script")
+ *             .infrastructureType("<+input>.default('Kubernetes')")
+ *             .tags(            
+ *                 "script",
+ *                 "custom")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(projectLevel)
  *                 .build());

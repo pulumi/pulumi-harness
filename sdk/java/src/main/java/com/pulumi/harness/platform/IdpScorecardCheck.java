@@ -48,22 +48,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var readme = new IdpScorecardCheck("readme", IdpScorecardCheckArgs.builder()
- *             .identifier("readme_exists")
- *             .name("README exists")
- *             .description("Ensure the repository has a README file")
- *             .ruleStrategy("ALL_OF")
- *             .defaultBehaviour("FAIL")
  *             .rules(IdpScorecardCheckRuleArgs.builder()
+ *                 .inputValues(IdpScorecardCheckRuleInputValueArgs.builder()
+ *                     .key("filePath")
+ *                     .value("README.md")
+ *                     .build())
  *                 .dataSourceIdentifier("github")
  *                 .dataPointIdentifier("isFileExists")
  *                 .operator("==")
  *                 .value("true")
  *                 .ruleDescription("Repository has a README")
- *                 .inputValues(IdpScorecardCheckRuleInputValueArgs.builder()
- *                     .key("filePath")
- *                     .value("README.md")
- *                     .build())
  *                 .build())
+ *             .identifier("readme_exists")
+ *             .name("README exists")
+ *             .description("Ensure the repository has a README file")
+ *             .ruleStrategy("ALL_OF")
+ *             .defaultBehaviour("FAIL")
  *             .build());
  * 
  *     }

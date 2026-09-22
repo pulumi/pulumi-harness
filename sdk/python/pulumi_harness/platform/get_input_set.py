@@ -159,7 +159,7 @@ class AwaitableGetInputSetResult(GetInputSetResult):
             yaml=self.yaml)
 
 
-def get_input_set(git_details: Optional[Union['GetInputSetGitDetailsArgs', 'GetInputSetGitDetailsArgsDict']] = None,
+def get_input_set(git_details: Optional[Union['GetInputSetGitDetailsArgs', 'GetInputSetGitDetailsArgsDict', 'outputs.GetInputSetGitDetailsResult']] = None,
                   identifier: Optional[_builtins.str] = None,
                   name: Optional[_builtins.str] = None,
                   org_id: Optional[_builtins.str] = None,
@@ -170,7 +170,7 @@ def get_input_set(git_details: Optional[Union['GetInputSetGitDetailsArgs', 'GetI
     Data source for retrieving a Harness input set.
 
 
-    :param Union['GetInputSetGitDetailsArgs', 'GetInputSetGitDetailsArgsDict'] git_details: Contains parameters related to creating an Entity for Git Experience.
+    :param Union['GetInputSetGitDetailsArgs', 'GetInputSetGitDetailsArgsDict', 'outputs.GetInputSetGitDetailsResult'] git_details: Contains parameters related to creating an Entity for Git Experience.
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
@@ -198,7 +198,7 @@ def get_input_set(git_details: Optional[Union['GetInputSetGitDetailsArgs', 'GetI
         project_id=pulumi.get(__ret__, 'project_id'),
         tags=pulumi.get(__ret__, 'tags'),
         yaml=pulumi.get(__ret__, 'yaml'))
-def get_input_set_output(git_details: pulumi.Input[Optional[Optional[Union['GetInputSetGitDetailsArgs', 'GetInputSetGitDetailsArgsDict']]]] = None,
+def get_input_set_output(git_details: pulumi.Input[Optional[Optional[Union['GetInputSetGitDetailsArgs', 'GetInputSetGitDetailsArgsDict', 'outputs.GetInputSetGitDetailsResult']]]] = None,
                          identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -209,7 +209,7 @@ def get_input_set_output(git_details: pulumi.Input[Optional[Optional[Union['GetI
     Data source for retrieving a Harness input set.
 
 
-    :param Union['GetInputSetGitDetailsArgs', 'GetInputSetGitDetailsArgsDict'] git_details: Contains parameters related to creating an Entity for Git Experience.
+    :param Union['GetInputSetGitDetailsArgs', 'GetInputSetGitDetailsArgsDict', 'outputs.GetInputSetGitDetailsResult'] git_details: Contains parameters related to creating an Entity for Git Experience.
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.

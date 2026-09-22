@@ -29,18 +29,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewGitOpsGnupg(ctx, "example", &platform.GitOpsGnupgArgs{
-//				AccountId: pulumi.String("account_id"),
-//				AgentId:   pulumi.String("agent_id"),
 //				Requests: platform.GitOpsGnupgRequestArray{
 //					&platform.GitOpsGnupgRequestArgs{
-//						Upsert: pulumi.Bool(true),
 //						Publickeys: platform.GitOpsGnupgRequestPublickeyArray{
 //							&platform.GitOpsGnupgRequestPublickeyArgs{
 //								KeyData: pulumi.String("-----BEGIN PGP PUBLIC KEY BLOCK-----XXXXXX-----END PGP PUBLIC KEY BLOCK-----"),
 //							},
 //						},
+//						Upsert: pulumi.Bool(true),
 //					},
 //				},
+//				AccountId: pulumi.String("account_id"),
+//				AgentId:   pulumi.String("agent_id"),
 //			}, pulumi.IgnoreChanges([]string{
 //				"requests[0].upsert",
 //			}))

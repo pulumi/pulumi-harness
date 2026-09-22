@@ -32,10 +32,6 @@ namespace Pulumi.Harness.Platform
     ///                 {
     ///                     new Harness.Platform.Inputs.GitOpsRepoCertRequestCertificateArgs
     ///                     {
-    ///                         Metadatas = new[]
-    ///                         {
-    ///                             null,
-    ///                         },
     ///                         Items = new[]
     ///                         {
     ///                             new Harness.Platform.Inputs.GitOpsRepoCertRequestCertificateItemArgs
@@ -45,6 +41,10 @@ namespace Pulumi.Harness.Platform
     ///                                 CertSubType = "ecdsa-sha2-nistp256",
     ///                                 CertData = "QUFBQUUyVmpaSE5oTFhOb1lUSXRibWx6ZEhBeU5UWUFBQUFJYm1semRIQXlOVFlBQUFCQkJFbUtTRU5qUUVlek9teGtaTXk3b3BLZ3dGQjlua3Q1WVJyWU1qTnVHNU44N3VSZ2c2Q0xyYm81d0FkVC95NnYwbUtWMFUydzBXWjJZQi8rK1Rwb2NrZz0=",
     ///                             },
+    ///                         },
+    ///                         Metadatas = new[]
+    ///                         {
+    ///                             null,
     ///                         },
     ///                     },
     ///                 },

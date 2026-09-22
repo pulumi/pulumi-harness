@@ -207,12 +207,12 @@ class AwaitableGetRepoRuleBranchResult(GetRepoRuleBranchResult):
             updated_by=self.updated_by)
 
 
-def get_repo_rule_branch(bypasses: Optional[Sequence[Union['GetRepoRuleBranchBypassArgs', 'GetRepoRuleBranchBypassArgsDict']]] = None,
+def get_repo_rule_branch(bypasses: Optional[Sequence[Union['GetRepoRuleBranchBypassArgs', 'GetRepoRuleBranchBypassArgsDict', 'outputs.GetRepoRuleBranchBypassResult']]] = None,
                          description: Optional[_builtins.str] = None,
                          identifier: Optional[_builtins.str] = None,
                          org_id: Optional[_builtins.str] = None,
-                         patterns: Optional[Sequence[Union['GetRepoRuleBranchPatternArgs', 'GetRepoRuleBranchPatternArgsDict']]] = None,
-                         policies: Optional[Sequence[Union['GetRepoRuleBranchPolicyArgs', 'GetRepoRuleBranchPolicyArgsDict']]] = None,
+                         patterns: Optional[Sequence[Union['GetRepoRuleBranchPatternArgs', 'GetRepoRuleBranchPatternArgsDict', 'outputs.GetRepoRuleBranchPatternResult']]] = None,
+                         policies: Optional[Sequence[Union['GetRepoRuleBranchPolicyArgs', 'GetRepoRuleBranchPolicyArgsDict', 'outputs.GetRepoRuleBranchPolicyResult']]] = None,
                          project_id: Optional[_builtins.str] = None,
                          repo_identifier: Optional[_builtins.str] = None,
                          state: Optional[_builtins.str] = None,
@@ -221,12 +221,12 @@ def get_repo_rule_branch(bypasses: Optional[Sequence[Union['GetRepoRuleBranchByp
     Data source for retrieving a Harness repo branch rule.
 
 
-    :param Sequence[Union['GetRepoRuleBranchBypassArgs', 'GetRepoRuleBranchBypassArgsDict']] bypasses: List of users who can bypass this rule.
+    :param Sequence[Union['GetRepoRuleBranchBypassArgs', 'GetRepoRuleBranchBypassArgsDict', 'outputs.GetRepoRuleBranchBypassResult']] bypasses: List of users who can bypass this rule.
     :param _builtins.str description: Description of the rule.
     :param _builtins.str identifier: Identifier of the rule.
     :param _builtins.str org_id: Unique identifier of the organization.
-    :param Sequence[Union['GetRepoRuleBranchPatternArgs', 'GetRepoRuleBranchPatternArgsDict']] patterns: Pattern of branch to which rule will apply.
-    :param Sequence[Union['GetRepoRuleBranchPolicyArgs', 'GetRepoRuleBranchPolicyArgsDict']] policies: Policies to be applied for this rule.
+    :param Sequence[Union['GetRepoRuleBranchPatternArgs', 'GetRepoRuleBranchPatternArgsDict', 'outputs.GetRepoRuleBranchPatternResult']] patterns: Pattern of branch to which rule will apply.
+    :param Sequence[Union['GetRepoRuleBranchPolicyArgs', 'GetRepoRuleBranchPolicyArgsDict', 'outputs.GetRepoRuleBranchPolicyResult']] policies: Policies to be applied for this rule.
     :param _builtins.str project_id: Unique identifier of the project.
     :param _builtins.str repo_identifier: Repo identifier of the repository.
     :param _builtins.str state: State of the rule (active, disable, monitor).
@@ -259,12 +259,12 @@ def get_repo_rule_branch(bypasses: Optional[Sequence[Union['GetRepoRuleBranchByp
         state=pulumi.get(__ret__, 'state'),
         updated=pulumi.get(__ret__, 'updated'),
         updated_by=pulumi.get(__ret__, 'updated_by'))
-def get_repo_rule_branch_output(bypasses: pulumi.Input[Optional[Sequence[Union['GetRepoRuleBranchBypassArgs', 'GetRepoRuleBranchBypassArgsDict']]]] = None,
+def get_repo_rule_branch_output(bypasses: pulumi.Input[Optional[Sequence[Union['GetRepoRuleBranchBypassArgs', 'GetRepoRuleBranchBypassArgsDict', 'outputs.GetRepoRuleBranchBypassResult']]]] = None,
                                 description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
                                 org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                patterns: pulumi.Input[Optional[Optional[Sequence[Union['GetRepoRuleBranchPatternArgs', 'GetRepoRuleBranchPatternArgsDict']]]]] = None,
-                                policies: pulumi.Input[Optional[Sequence[Union['GetRepoRuleBranchPolicyArgs', 'GetRepoRuleBranchPolicyArgsDict']]]] = None,
+                                patterns: pulumi.Input[Optional[Optional[Sequence[Union['GetRepoRuleBranchPatternArgs', 'GetRepoRuleBranchPatternArgsDict', 'outputs.GetRepoRuleBranchPatternResult']]]]] = None,
+                                policies: pulumi.Input[Optional[Sequence[Union['GetRepoRuleBranchPolicyArgs', 'GetRepoRuleBranchPolicyArgsDict', 'outputs.GetRepoRuleBranchPolicyResult']]]] = None,
                                 project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 repo_identifier: pulumi.Input[Optional[_builtins.str]] = None,
                                 state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -273,12 +273,12 @@ def get_repo_rule_branch_output(bypasses: pulumi.Input[Optional[Sequence[Union['
     Data source for retrieving a Harness repo branch rule.
 
 
-    :param Sequence[Union['GetRepoRuleBranchBypassArgs', 'GetRepoRuleBranchBypassArgsDict']] bypasses: List of users who can bypass this rule.
+    :param Sequence[Union['GetRepoRuleBranchBypassArgs', 'GetRepoRuleBranchBypassArgsDict', 'outputs.GetRepoRuleBranchBypassResult']] bypasses: List of users who can bypass this rule.
     :param _builtins.str description: Description of the rule.
     :param _builtins.str identifier: Identifier of the rule.
     :param _builtins.str org_id: Unique identifier of the organization.
-    :param Sequence[Union['GetRepoRuleBranchPatternArgs', 'GetRepoRuleBranchPatternArgsDict']] patterns: Pattern of branch to which rule will apply.
-    :param Sequence[Union['GetRepoRuleBranchPolicyArgs', 'GetRepoRuleBranchPolicyArgsDict']] policies: Policies to be applied for this rule.
+    :param Sequence[Union['GetRepoRuleBranchPatternArgs', 'GetRepoRuleBranchPatternArgsDict', 'outputs.GetRepoRuleBranchPatternResult']] patterns: Pattern of branch to which rule will apply.
+    :param Sequence[Union['GetRepoRuleBranchPolicyArgs', 'GetRepoRuleBranchPolicyArgsDict', 'outputs.GetRepoRuleBranchPolicyResult']] policies: Policies to be applied for this rule.
     :param _builtins.str project_id: Unique identifier of the project.
     :param _builtins.str repo_identifier: Repo identifier of the repository.
     :param _builtins.str state: State of the rule (active, disable, monitor).

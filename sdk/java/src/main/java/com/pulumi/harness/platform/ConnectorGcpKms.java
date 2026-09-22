@@ -60,6 +60,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var gcpKmsManual = new ConnectorGcpKms("gcpKmsManual", ConnectorGcpKmsArgs.builder()
+ *             .manual(ConnectorGcpKmsManualArgs.builder()
+ *                 .credentials(test.id().applyValue(_id -> String.format("account.%s", _id)))
+ *                 .delegateSelectors("harness-delegate")
+ *                 .build())
  *             .identifier("identifier")
  *             .name("name")
  *             .description("test")
@@ -68,13 +72,15 @@ import javax.annotation.Nullable;
  *             .gcpProjectId("1234567")
  *             .keyRing("key_ring")
  *             .keyName("key_name")
- *             .manual(ConnectorGcpKmsManualArgs.builder()
- *                 .credentials(test.id().applyValue(_id -> String.format("account.%s", _id)))
- *                 .delegateSelectors("harness-delegate")
- *                 .build())
  *             .build());
  * 
  *         var gcpKmsOidcPlatform = new ConnectorGcpKms("gcpKmsOidcPlatform", ConnectorGcpKmsArgs.builder()
+ *             .oidcAuthentications(ConnectorGcpKmsOidcAuthenticationArgs.builder()
+ *                 .workloadPoolId("harness-pool-test")
+ *                 .providerId("harness")
+ *                 .gcpProjectId("1234567")
+ *                 .serviceAccountEmail("harness.sample}{@literal @}{@code iam.gserviceaccount.com")
+ *                 .build())
  *             .identifier("identifier")
  *             .name("name")
  *             .description("test")
@@ -84,15 +90,16 @@ import javax.annotation.Nullable;
  *             .keyRing("key_ring")
  *             .keyName("key_name")
  *             .executeOnDelegate(false)
+ *             .build());
+ * 
+ *         var gcpKmsOidcDelegate = new ConnectorGcpKms("gcpKmsOidcDelegate", ConnectorGcpKmsArgs.builder()
  *             .oidcAuthentications(ConnectorGcpKmsOidcAuthenticationArgs.builder()
  *                 .workloadPoolId("harness-pool-test")
  *                 .providerId("harness")
  *                 .gcpProjectId("1234567")
  *                 .serviceAccountEmail("harness.sample}{@literal @}{@code iam.gserviceaccount.com")
+ *                 .delegateSelectors("harness-delegate")
  *                 .build())
- *             .build());
- * 
- *         var gcpKmsOidcDelegate = new ConnectorGcpKms("gcpKmsOidcDelegate", ConnectorGcpKmsArgs.builder()
  *             .identifier("identifier")
  *             .name("name")
  *             .description("test")
@@ -101,6 +108,9 @@ import javax.annotation.Nullable;
  *             .gcpProjectId("1234567")
  *             .keyRing("key_ring")
  *             .keyName("key_name")
+ *             .build());
+ * 
+ *         var gcpKmsOidcDelegateDefault = new ConnectorGcpKms("gcpKmsOidcDelegateDefault", ConnectorGcpKmsArgs.builder()
  *             .oidcAuthentications(ConnectorGcpKmsOidcAuthenticationArgs.builder()
  *                 .workloadPoolId("harness-pool-test")
  *                 .providerId("harness")
@@ -108,9 +118,6 @@ import javax.annotation.Nullable;
  *                 .serviceAccountEmail("harness.sample}{@literal @}{@code iam.gserviceaccount.com")
  *                 .delegateSelectors("harness-delegate")
  *                 .build())
- *             .build());
- * 
- *         var gcpKmsOidcDelegateDefault = new ConnectorGcpKms("gcpKmsOidcDelegateDefault", ConnectorGcpKmsArgs.builder()
  *             .identifier("identifier")
  *             .name("name")
  *             .description("test")
@@ -120,13 +127,6 @@ import javax.annotation.Nullable;
  *             .keyRing("key_ring")
  *             .keyName("key_name")
  *             .default_(true)
- *             .oidcAuthentications(ConnectorGcpKmsOidcAuthenticationArgs.builder()
- *                 .workloadPoolId("harness-pool-test")
- *                 .providerId("harness")
- *                 .gcpProjectId("1234567")
- *                 .serviceAccountEmail("harness.sample}{@literal @}{@code iam.gserviceaccount.com")
- *                 .delegateSelectors("harness-delegate")
- *                 .build())
  *             .build());
  * 
  *     }}{@code

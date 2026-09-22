@@ -17,11 +17,7 @@ import * as utilities from "../utilities";
  *
  * // Sample resource for SLO
  * const example = new harness.platform.NotificationRule("example", {
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     identifier: "identifier",
  *     request: {
- *         name: "name",
  *         notificationMethod: {
  *             type: "Slack",
  *             spec: JSON.stringify({
@@ -29,7 +25,6 @@ import * as utilities from "../utilities";
  *                 user_groups: ["account.test"],
  *             }),
  *         },
- *         type: "ServiceLevelObjective",
  *         conditions: [
  *             {
  *                 type: "ErrorBudgetBurnRate",
@@ -50,15 +45,16 @@ import * as utilities from "../utilities";
  *                 }),
  *             },
  *         ],
+ *         name: "name",
+ *         type: "ServiceLevelObjective",
  *     },
- * });
- * // Sample resource for Monitored Service
- * const example1 = new harness.platform.NotificationRule("example1", {
  *     orgId: "org_id",
  *     projectId: "project_id",
  *     identifier: "identifier",
+ * });
+ * // Sample resource for Monitored Service
+ * const example1 = new harness.platform.NotificationRule("example1", {
  *     request: {
- *         name: "name",
  *         notificationMethod: {
  *             type: "Slack",
  *             spec: JSON.stringify({
@@ -66,7 +62,6 @@ import * as utilities from "../utilities";
  *                 user_groups: ["account.test"],
  *             }),
  *         },
- *         type: "MonitoredService",
  *         conditions: [
  *             {
  *                 type: "ChangeImpact",
@@ -101,7 +96,12 @@ import * as utilities from "../utilities";
  *                 spec: JSON.stringify({}),
  *             },
  *         ],
+ *         name: "name",
+ *         type: "MonitoredService",
  *     },
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     identifier: "identifier",
  * });
  * ```
  *

@@ -492,9 +492,9 @@ class ConnectorGcpKms(pulumi.CustomResource):
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  key_ring: pulumi.Input[Optional[_builtins.str]] = None,
-                 manual: pulumi.Input[Optional[Union['ConnectorGcpKmsManualArgs', 'ConnectorGcpKmsManualArgsDict']]] = None,
+                 manual: pulumi.Input[Optional[Union['ConnectorGcpKmsManualArgs', 'ConnectorGcpKmsManualArgsDict', 'outputs.ConnectorGcpKmsManual']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorGcpKmsOidcAuthenticationArgs', 'ConnectorGcpKmsOidcAuthenticationArgsDict']]]]] = None,
+                 oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorGcpKmsOidcAuthenticationArgs', 'ConnectorGcpKmsOidcAuthenticationArgsDict', 'outputs.ConnectorGcpKmsOidcAuthentication']]]]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -518,19 +518,25 @@ class ConnectorGcpKms(pulumi.CustomResource):
             value_type="Reference",
             value="secret")
         gcp_kms_manual = harness.platform.ConnectorGcpKms("gcp_kms_manual",
-            identifier="identifier",
-            name="name",
-            description="test",
-            tags=["foo:bar"],
-            region="us-west1",
-            gcp_project_id="1234567",
-            key_ring="key_ring",
-            key_name="key_name",
             manual={
                 "credentials": test.id.apply(lambda id: f"account.{id}"),
                 "delegate_selectors": ["harness-delegate"],
-            })
+            },
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            region="us-west1",
+            gcp_project_id="1234567",
+            key_ring="key_ring",
+            key_name="key_name")
         gcp_kms_oidc_platform = harness.platform.ConnectorGcpKms("gcp_kms_oidc_platform",
+            oidc_authentications=[{
+                "workload_pool_id": "harness-pool-test",
+                "provider_id": "harness",
+                "gcp_project_id": "1234567",
+                "service_account_email": "harness.sample@iam.gserviceaccount.com",
+            }],
             identifier="identifier",
             name="name",
             description="test",
@@ -539,14 +545,15 @@ class ConnectorGcpKms(pulumi.CustomResource):
             gcp_project_id="1234567",
             key_ring="key_ring",
             key_name="key_name",
-            execute_on_delegate=False,
-            oidc_authentications=[{
-                "workload_pool_id": "harness-pool-test",
-                "provider_id": "harness",
-                "gcp_project_id": "1234567",
-                "service_account_email": "harness.sample@iam.gserviceaccount.com",
-            }])
+            execute_on_delegate=False)
         gcp_kms_oidc_delegate = harness.platform.ConnectorGcpKms("gcp_kms_oidc_delegate",
+            oidc_authentications=[{
+                "workload_pool_id": "harness-pool-test",
+                "provider_id": "harness",
+                "gcp_project_id": "1234567",
+                "service_account_email": "harness.sample@iam.gserviceaccount.com",
+                "delegate_selectors": ["harness-delegate"],
+            }],
             identifier="identifier",
             name="name",
             description="test",
@@ -554,15 +561,15 @@ class ConnectorGcpKms(pulumi.CustomResource):
             region="us-west1",
             gcp_project_id="1234567",
             key_ring="key_ring",
-            key_name="key_name",
-            oidc_authentications=[{
-                "workload_pool_id": "harness-pool-test",
-                "provider_id": "harness",
-                "gcp_project_id": "1234567",
-                "service_account_email": "harness.sample@iam.gserviceaccount.com",
-                "delegate_selectors": ["harness-delegate"],
-            }])
+            key_name="key_name")
         gcp_kms_oidc_delegate_default = harness.platform.ConnectorGcpKms("gcp_kms_oidc_delegate_default",
+            oidc_authentications=[{
+                "workload_pool_id": "harness-pool-test",
+                "provider_id": "harness",
+                "gcp_project_id": "1234567",
+                "service_account_email": "harness.sample@iam.gserviceaccount.com",
+                "delegate_selectors": ["harness-delegate"],
+            }],
             identifier="identifier",
             name="name",
             description="test",
@@ -571,14 +578,7 @@ class ConnectorGcpKms(pulumi.CustomResource):
             gcp_project_id="1234567",
             key_ring="key_ring",
             key_name="key_name",
-            default=True,
-            oidc_authentications=[{
-                "workload_pool_id": "harness-pool-test",
-                "provider_id": "harness",
-                "gcp_project_id": "1234567",
-                "service_account_email": "harness.sample@iam.gserviceaccount.com",
-                "delegate_selectors": ["harness-delegate"],
-            }])
+            default=True)
         ```
 
         ## Import
@@ -613,9 +613,9 @@ class ConnectorGcpKms(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] key_name: The key name of the GCP KMS.
         :param pulumi.Input[_builtins.str] key_ring: The key ring of the GCP KMS.
-        :param pulumi.Input[Union['ConnectorGcpKmsManualArgs', 'ConnectorGcpKmsManualArgsDict']] manual: Manual credential configuration.
+        :param pulumi.Input[Union['ConnectorGcpKmsManualArgs', 'ConnectorGcpKmsManualArgsDict', 'outputs.ConnectorGcpKmsManual']] manual: Manual credential configuration.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorGcpKmsOidcAuthenticationArgs', 'ConnectorGcpKmsOidcAuthenticationArgsDict']]]] oidc_authentications: Authentication using harness oidc.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorGcpKmsOidcAuthenticationArgs', 'ConnectorGcpKmsOidcAuthenticationArgsDict', 'outputs.ConnectorGcpKmsOidcAuthentication']]]] oidc_authentications: Authentication using harness oidc.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[_builtins.str] region: The region of the GCP KMS.
@@ -645,19 +645,25 @@ class ConnectorGcpKms(pulumi.CustomResource):
             value_type="Reference",
             value="secret")
         gcp_kms_manual = harness.platform.ConnectorGcpKms("gcp_kms_manual",
-            identifier="identifier",
-            name="name",
-            description="test",
-            tags=["foo:bar"],
-            region="us-west1",
-            gcp_project_id="1234567",
-            key_ring="key_ring",
-            key_name="key_name",
             manual={
                 "credentials": test.id.apply(lambda id: f"account.{id}"),
                 "delegate_selectors": ["harness-delegate"],
-            })
+            },
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            region="us-west1",
+            gcp_project_id="1234567",
+            key_ring="key_ring",
+            key_name="key_name")
         gcp_kms_oidc_platform = harness.platform.ConnectorGcpKms("gcp_kms_oidc_platform",
+            oidc_authentications=[{
+                "workload_pool_id": "harness-pool-test",
+                "provider_id": "harness",
+                "gcp_project_id": "1234567",
+                "service_account_email": "harness.sample@iam.gserviceaccount.com",
+            }],
             identifier="identifier",
             name="name",
             description="test",
@@ -666,14 +672,15 @@ class ConnectorGcpKms(pulumi.CustomResource):
             gcp_project_id="1234567",
             key_ring="key_ring",
             key_name="key_name",
-            execute_on_delegate=False,
-            oidc_authentications=[{
-                "workload_pool_id": "harness-pool-test",
-                "provider_id": "harness",
-                "gcp_project_id": "1234567",
-                "service_account_email": "harness.sample@iam.gserviceaccount.com",
-            }])
+            execute_on_delegate=False)
         gcp_kms_oidc_delegate = harness.platform.ConnectorGcpKms("gcp_kms_oidc_delegate",
+            oidc_authentications=[{
+                "workload_pool_id": "harness-pool-test",
+                "provider_id": "harness",
+                "gcp_project_id": "1234567",
+                "service_account_email": "harness.sample@iam.gserviceaccount.com",
+                "delegate_selectors": ["harness-delegate"],
+            }],
             identifier="identifier",
             name="name",
             description="test",
@@ -681,15 +688,15 @@ class ConnectorGcpKms(pulumi.CustomResource):
             region="us-west1",
             gcp_project_id="1234567",
             key_ring="key_ring",
-            key_name="key_name",
-            oidc_authentications=[{
-                "workload_pool_id": "harness-pool-test",
-                "provider_id": "harness",
-                "gcp_project_id": "1234567",
-                "service_account_email": "harness.sample@iam.gserviceaccount.com",
-                "delegate_selectors": ["harness-delegate"],
-            }])
+            key_name="key_name")
         gcp_kms_oidc_delegate_default = harness.platform.ConnectorGcpKms("gcp_kms_oidc_delegate_default",
+            oidc_authentications=[{
+                "workload_pool_id": "harness-pool-test",
+                "provider_id": "harness",
+                "gcp_project_id": "1234567",
+                "service_account_email": "harness.sample@iam.gserviceaccount.com",
+                "delegate_selectors": ["harness-delegate"],
+            }],
             identifier="identifier",
             name="name",
             description="test",
@@ -698,14 +705,7 @@ class ConnectorGcpKms(pulumi.CustomResource):
             gcp_project_id="1234567",
             key_ring="key_ring",
             key_name="key_name",
-            default=True,
-            oidc_authentications=[{
-                "workload_pool_id": "harness-pool-test",
-                "provider_id": "harness",
-                "gcp_project_id": "1234567",
-                "service_account_email": "harness.sample@iam.gserviceaccount.com",
-                "delegate_selectors": ["harness-delegate"],
-            }])
+            default=True)
         ```
 
         ## Import
@@ -753,9 +753,9 @@ class ConnectorGcpKms(pulumi.CustomResource):
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  key_ring: pulumi.Input[Optional[_builtins.str]] = None,
-                 manual: pulumi.Input[Optional[Union['ConnectorGcpKmsManualArgs', 'ConnectorGcpKmsManualArgsDict']]] = None,
+                 manual: pulumi.Input[Optional[Union['ConnectorGcpKmsManualArgs', 'ConnectorGcpKmsManualArgsDict', 'outputs.ConnectorGcpKmsManual']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorGcpKmsOidcAuthenticationArgs', 'ConnectorGcpKmsOidcAuthenticationArgsDict']]]]] = None,
+                 oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorGcpKmsOidcAuthenticationArgs', 'ConnectorGcpKmsOidcAuthenticationArgsDict', 'outputs.ConnectorGcpKmsOidcAuthentication']]]]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -810,9 +810,9 @@ class ConnectorGcpKms(pulumi.CustomResource):
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             key_name: pulumi.Input[Optional[_builtins.str]] = None,
             key_ring: pulumi.Input[Optional[_builtins.str]] = None,
-            manual: pulumi.Input[Optional[Union['ConnectorGcpKmsManualArgs', 'ConnectorGcpKmsManualArgsDict']]] = None,
+            manual: pulumi.Input[Optional[Union['ConnectorGcpKmsManualArgs', 'ConnectorGcpKmsManualArgsDict', 'outputs.ConnectorGcpKmsManual']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorGcpKmsOidcAuthenticationArgs', 'ConnectorGcpKmsOidcAuthenticationArgsDict']]]]] = None,
+            oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectorGcpKmsOidcAuthenticationArgs', 'ConnectorGcpKmsOidcAuthenticationArgsDict', 'outputs.ConnectorGcpKmsOidcAuthentication']]]]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -831,9 +831,9 @@ class ConnectorGcpKms(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] key_name: The key name of the GCP KMS.
         :param pulumi.Input[_builtins.str] key_ring: The key ring of the GCP KMS.
-        :param pulumi.Input[Union['ConnectorGcpKmsManualArgs', 'ConnectorGcpKmsManualArgsDict']] manual: Manual credential configuration.
+        :param pulumi.Input[Union['ConnectorGcpKmsManualArgs', 'ConnectorGcpKmsManualArgsDict', 'outputs.ConnectorGcpKmsManual']] manual: Manual credential configuration.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorGcpKmsOidcAuthenticationArgs', 'ConnectorGcpKmsOidcAuthenticationArgsDict']]]] oidc_authentications: Authentication using harness oidc.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectorGcpKmsOidcAuthenticationArgs', 'ConnectorGcpKmsOidcAuthenticationArgsDict', 'outputs.ConnectorGcpKmsOidcAuthentication']]]] oidc_authentications: Authentication using harness oidc.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[_builtins.str] region: The region of the GCP KMS.

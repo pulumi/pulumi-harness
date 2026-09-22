@@ -126,7 +126,7 @@ class AwaitableGetEnvironmentResult(GetEnvironmentResult):
 def get_environment(app_id: Optional[_builtins.str] = None,
                     environment_id: Optional[_builtins.str] = None,
                     name: Optional[_builtins.str] = None,
-                    variable_overrides: Optional[Sequence[Union['GetEnvironmentVariableOverrideArgs', 'GetEnvironmentVariableOverrideArgsDict']]] = None,
+                    variable_overrides: Optional[Sequence[Union['GetEnvironmentVariableOverrideArgs', 'GetEnvironmentVariableOverrideArgsDict', 'outputs.GetEnvironmentVariableOverrideResult']]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEnvironmentResult:
     """
     Data source for retrieving a Harness service
@@ -135,7 +135,7 @@ def get_environment(app_id: Optional[_builtins.str] = None,
     :param _builtins.str app_id: The id of the application.
     :param _builtins.str environment_id: The id of the environment.
     :param _builtins.str name: The name of the environment.
-    :param Sequence[Union['GetEnvironmentVariableOverrideArgs', 'GetEnvironmentVariableOverrideArgsDict']] variable_overrides: Override for a service variable
+    :param Sequence[Union['GetEnvironmentVariableOverrideArgs', 'GetEnvironmentVariableOverrideArgsDict', 'outputs.GetEnvironmentVariableOverrideResult']] variable_overrides: Override for a service variable
     """
     __args__ = dict()
     __args__['appId'] = app_id
@@ -156,7 +156,7 @@ def get_environment(app_id: Optional[_builtins.str] = None,
 def get_environment_output(app_id: pulumi.Input[Optional[_builtins.str]] = None,
                            environment_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                           variable_overrides: pulumi.Input[Optional[Optional[Sequence[Union['GetEnvironmentVariableOverrideArgs', 'GetEnvironmentVariableOverrideArgsDict']]]]] = None,
+                           variable_overrides: pulumi.Input[Optional[Optional[Sequence[Union['GetEnvironmentVariableOverrideArgs', 'GetEnvironmentVariableOverrideArgsDict', 'outputs.GetEnvironmentVariableOverrideResult']]]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnvironmentResult]:
     """
     Data source for retrieving a Harness service
@@ -165,7 +165,7 @@ def get_environment_output(app_id: pulumi.Input[Optional[_builtins.str]] = None,
     :param _builtins.str app_id: The id of the application.
     :param _builtins.str environment_id: The id of the environment.
     :param _builtins.str name: The name of the environment.
-    :param Sequence[Union['GetEnvironmentVariableOverrideArgs', 'GetEnvironmentVariableOverrideArgsDict']] variable_overrides: Override for a service variable
+    :param Sequence[Union['GetEnvironmentVariableOverrideArgs', 'GetEnvironmentVariableOverrideArgsDict', 'outputs.GetEnvironmentVariableOverrideResult']] variable_overrides: Override for a service variable
     """
     __args__ = dict()
     __args__['appId'] = app_id

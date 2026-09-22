@@ -29,11 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewGitOpsRepoCred(ctx, "test", &platform.GitOpsRepoCredArgs{
-//				Identifier: pulumi.String("identifier"),
-//				AccountId:  pulumi.String("account_id"),
-//				AgentId:    pulumi.String("agent_id"),
-//				ProjectId:  pulumi.String("project_id"),
-//				OrgId:      pulumi.String("org_id"),
 //				Creds: platform.GitOpsRepoCredCredArray{
 //					&platform.GitOpsRepoCredCredArgs{
 //						Type: pulumi.String("git"),
@@ -48,6 +43,11 @@ import (
 //
 //					},
 //				},
+//				Identifier: pulumi.String("identifier"),
+//				AccountId:  pulumi.String("account_id"),
+//				AgentId:    pulumi.String("agent_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				OrgId:      pulumi.String("org_id"),
 //			}, pulumi.IgnoreChanges([]string{
 //				"accountId",
 //				"creds[0].sshPrivateKey",

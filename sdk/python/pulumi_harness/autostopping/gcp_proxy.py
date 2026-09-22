@@ -460,7 +460,7 @@ class GcpProxy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocate_static_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  api_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 certificates: pulumi.Input[Optional[Union['GcpProxyCertificatesArgs', 'GcpProxyCertificatesArgsDict']]] = None,
+                 certificates: pulumi.Input[Optional[Union['GcpProxyCertificatesArgs', 'GcpProxyCertificatesArgsDict', 'outputs.GcpProxyCertificates']]] = None,
                  cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_cloud_resources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  machine_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -481,6 +481,10 @@ class GcpProxy(pulumi.CustomResource):
         import pulumi_harness as harness
 
         test = harness.autostopping.GcpProxy("test",
+            certificates={
+                "key_secret_id": "projects/project_id/secrets/secret_id/versions/1",
+                "cert_secret_id": "projects/project_id/secrets/secret_id/versions/1",
+            },
             name="name",
             cloud_connector_id="cloud_connector_id",
             region="region",
@@ -491,10 +495,6 @@ class GcpProxy(pulumi.CustomResource):
             subnet_id="https://www.googleapis.com/compute/v1/projects/project_id/regions/region/subnetworks/subnet_name",
             api_key="",
             allocate_static_ip=False,
-            certificates={
-                "key_secret_id": "projects/project_id/secrets/secret_id/versions/1",
-                "cert_secret_id": "projects/project_id/secrets/secret_id/versions/1",
-            },
             delete_cloud_resources_on_destroy=False)
         ```
 
@@ -529,6 +529,10 @@ class GcpProxy(pulumi.CustomResource):
         import pulumi_harness as harness
 
         test = harness.autostopping.GcpProxy("test",
+            certificates={
+                "key_secret_id": "projects/project_id/secrets/secret_id/versions/1",
+                "cert_secret_id": "projects/project_id/secrets/secret_id/versions/1",
+            },
             name="name",
             cloud_connector_id="cloud_connector_id",
             region="region",
@@ -539,10 +543,6 @@ class GcpProxy(pulumi.CustomResource):
             subnet_id="https://www.googleapis.com/compute/v1/projects/project_id/regions/region/subnetworks/subnet_name",
             api_key="",
             allocate_static_ip=False,
-            certificates={
-                "key_secret_id": "projects/project_id/secrets/secret_id/versions/1",
-                "cert_secret_id": "projects/project_id/secrets/secret_id/versions/1",
-            },
             delete_cloud_resources_on_destroy=False)
         ```
 
@@ -564,7 +564,7 @@ class GcpProxy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allocate_static_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  api_key: pulumi.Input[Optional[_builtins.str]] = None,
-                 certificates: pulumi.Input[Optional[Union['GcpProxyCertificatesArgs', 'GcpProxyCertificatesArgsDict']]] = None,
+                 certificates: pulumi.Input[Optional[Union['GcpProxyCertificatesArgs', 'GcpProxyCertificatesArgsDict', 'outputs.GcpProxyCertificates']]] = None,
                  cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_cloud_resources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  machine_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -628,7 +628,7 @@ class GcpProxy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allocate_static_ip: pulumi.Input[Optional[_builtins.bool]] = None,
             api_key: pulumi.Input[Optional[_builtins.str]] = None,
-            certificates: pulumi.Input[Optional[Union['GcpProxyCertificatesArgs', 'GcpProxyCertificatesArgsDict']]] = None,
+            certificates: pulumi.Input[Optional[Union['GcpProxyCertificatesArgs', 'GcpProxyCertificatesArgsDict', 'outputs.GcpProxyCertificates']]] = None,
             cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
             delete_cloud_resources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,

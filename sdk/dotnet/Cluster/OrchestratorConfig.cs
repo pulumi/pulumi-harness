@@ -24,8 +24,6 @@ namespace Pulumi.Harness.Cluster
     /// {
     ///     var example = new Harness.Cluster.OrchestratorConfig("example", new()
     ///     {
-    ///         OrchestratorId = "orch-cvifpfl9rbg8neldj97g",
-    ///         Disabled = false,
     ///         Distribution = new Harness.Cluster.Inputs.OrchestratorConfigDistributionArgs
     ///         {
     ///             BaseOndemandCapacity = 2,
@@ -45,8 +43,6 @@ namespace Pulumi.Harness.Cluster
     ///             },
     ///             Disruption = new Harness.Cluster.Inputs.OrchestratorConfigBinpackingDisruptionArgs
     ///             {
-    ///                 Criteria = "WhenEmpty",
-    ///                 Delay = "10m",
     ///                 Budgets = new[]
     ///                 {
     ///                     new Harness.Cluster.Inputs.OrchestratorConfigBinpackingDisruptionBudgetArgs
@@ -61,19 +57,21 @@ namespace Pulumi.Harness.Cluster
     ///                     },
     ///                     new Harness.Cluster.Inputs.OrchestratorConfigBinpackingDisruptionBudgetArgs
     ///                     {
+    ///                         Schedule = new Harness.Cluster.Inputs.OrchestratorConfigBinpackingDisruptionBudgetScheduleArgs
+    ///                         {
+    ///                             Frequency = "@monthly",
+    ///                             Duration = "10m",
+    ///                         },
     ///                         Reasons = new[]
     ///                         {
     ///                             "Drifted",
     ///                             "Empty",
     ///                         },
     ///                         Nodes = "1",
-    ///                         Schedule = new Harness.Cluster.Inputs.OrchestratorConfigBinpackingDisruptionBudgetScheduleArgs
-    ///                         {
-    ///                             Frequency = "@monthly",
-    ///                             Duration = "10m",
-    ///                         },
     ///                     },
     ///                 },
+    ///                 Criteria = "WhenEmpty",
+    ///                 Delay = "10m",
     ///             },
     ///         },
     ///         NodePreferences = new Harness.Cluster.Inputs.OrchestratorConfigNodePreferencesArgs
@@ -88,7 +86,6 @@ namespace Pulumi.Harness.Cluster
     ///         },
     ///         ReplacementSchedule = new Harness.Cluster.Inputs.OrchestratorConfigReplacementScheduleArgs
     ///         {
-    ///             WindowType = "Custom",
     ///             AppliesTo = new Harness.Cluster.Inputs.OrchestratorConfigReplacementScheduleAppliesToArgs
     ///             {
     ///                 Consolidation = true,
@@ -108,7 +105,10 @@ namespace Pulumi.Harness.Cluster
     ///                 StartTime = "10:30",
     ///                 EndTime = "11:30",
     ///             },
+    ///             WindowType = "Custom",
     ///         },
+    ///         OrchestratorId = "orch-cvifpfl9rbg8neldj97g",
+    ///         Disabled = false,
     ///     });
     /// 
     /// });

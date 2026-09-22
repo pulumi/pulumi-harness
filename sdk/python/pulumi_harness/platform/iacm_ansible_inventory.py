@@ -391,16 +391,16 @@ class IacmAnsibleInventory(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 dynamic_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsibleInventoryDynamicGroupArgs', 'IacmAnsibleInventoryDynamicGroupArgsDict']]]]] = None,
-                 groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsibleInventoryGroupArgs', 'IacmAnsibleInventoryGroupArgsDict']]]]] = None,
+                 dynamic_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsibleInventoryDynamicGroupArgs', 'IacmAnsibleInventoryDynamicGroupArgsDict', 'outputs.IacmAnsibleInventoryDynamicGroup']]]]] = None,
+                 groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsibleInventoryGroupArgs', 'IacmAnsibleInventoryGroupArgsDict', 'outputs.IacmAnsibleInventoryGroup']]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 plugin_options: pulumi.Input[Optional[Union['IacmAnsibleInventoryPluginOptionsArgs', 'IacmAnsibleInventoryPluginOptionsArgsDict']]] = None,
+                 plugin_options: pulumi.Input[Optional[Union['IacmAnsibleInventoryPluginOptionsArgs', 'IacmAnsibleInventoryPluginOptionsArgsDict', 'outputs.IacmAnsibleInventoryPluginOptions']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsibleInventoryVarArgs', 'IacmAnsibleInventoryVarArgsDict']]]]] = None,
+                 vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsibleInventoryVarArgs', 'IacmAnsibleInventoryVarArgsDict', 'outputs.IacmAnsibleInventoryVar']]]]] = None,
                  __props__=None):
         """
         Resource for managing Harness IaCM Ansible Inventories.
@@ -412,46 +412,46 @@ class IacmAnsibleInventory(pulumi.CustomResource):
         import pulumi_harness as harness
 
         manual = harness.platform.IacmAnsibleInventory("manual",
-            identifier="my_inventory",
-            name="my-inventory",
-            org_id=example["id"],
-            project_id=example_harness_platform_project["id"],
-            type="manual",
-            tags=["env:prod"],
             groups=[{
+                "vars": [{
+                    "key": "ansible_user",
+                    "value": "ubuntu",
+                    "value_type": "string",
+                }],
                 "identifier": "web",
                 "name": "web",
                 "hosts": [
                     "web-1.example.com",
                     "web-2.example.com",
                 ],
-                "vars": [{
-                    "key": "ansible_user",
-                    "value": "ubuntu",
-                    "value_type": "string",
-                }],
             }],
             vars=[{
                 "key": "ansible_port",
                 "value": "22",
                 "value_type": "string",
-            }])
+            }],
+            identifier="my_inventory",
+            name="my-inventory",
+            org_id=example["id"],
+            project_id=example_harness_platform_project["id"],
+            type="manual",
+            tags=["env:prod"])
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IacmAnsibleInventoryDynamicGroupArgs', 'IacmAnsibleInventoryDynamicGroupArgsDict']]]] dynamic_groups: Dynamic groups used when type is dynamic.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IacmAnsibleInventoryGroupArgs', 'IacmAnsibleInventoryGroupArgsDict']]]] groups: Manual groups used when type is manual.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IacmAnsibleInventoryDynamicGroupArgs', 'IacmAnsibleInventoryDynamicGroupArgsDict', 'outputs.IacmAnsibleInventoryDynamicGroup']]]] dynamic_groups: Dynamic groups used when type is dynamic.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IacmAnsibleInventoryGroupArgs', 'IacmAnsibleInventoryGroupArgsDict', 'outputs.IacmAnsibleInventoryGroup']]]] groups: Manual groups used when type is manual.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[Union['IacmAnsibleInventoryPluginOptionsArgs', 'IacmAnsibleInventoryPluginOptionsArgsDict']] plugin_options: Plugin options used when type is plugin.
+        :param pulumi.Input[Union['IacmAnsibleInventoryPluginOptionsArgs', 'IacmAnsibleInventoryPluginOptionsArgsDict', 'outputs.IacmAnsibleInventoryPluginOptions']] plugin_options: Plugin options used when type is plugin.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] type: Type of inventory. One of: manual, dynamic, plugin.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IacmAnsibleInventoryVarArgs', 'IacmAnsibleInventoryVarArgsDict']]]] vars: Variables configured on the inventory.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IacmAnsibleInventoryVarArgs', 'IacmAnsibleInventoryVarArgsDict', 'outputs.IacmAnsibleInventoryVar']]]] vars: Variables configured on the inventory.
         """
         ...
     @overload
@@ -469,30 +469,30 @@ class IacmAnsibleInventory(pulumi.CustomResource):
         import pulumi_harness as harness
 
         manual = harness.platform.IacmAnsibleInventory("manual",
-            identifier="my_inventory",
-            name="my-inventory",
-            org_id=example["id"],
-            project_id=example_harness_platform_project["id"],
-            type="manual",
-            tags=["env:prod"],
             groups=[{
+                "vars": [{
+                    "key": "ansible_user",
+                    "value": "ubuntu",
+                    "value_type": "string",
+                }],
                 "identifier": "web",
                 "name": "web",
                 "hosts": [
                     "web-1.example.com",
                     "web-2.example.com",
                 ],
-                "vars": [{
-                    "key": "ansible_user",
-                    "value": "ubuntu",
-                    "value_type": "string",
-                }],
             }],
             vars=[{
                 "key": "ansible_port",
                 "value": "22",
                 "value_type": "string",
-            }])
+            }],
+            identifier="my_inventory",
+            name="my-inventory",
+            org_id=example["id"],
+            project_id=example_harness_platform_project["id"],
+            type="manual",
+            tags=["env:prod"])
         ```
 
 
@@ -512,16 +512,16 @@ class IacmAnsibleInventory(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 dynamic_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsibleInventoryDynamicGroupArgs', 'IacmAnsibleInventoryDynamicGroupArgsDict']]]]] = None,
-                 groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsibleInventoryGroupArgs', 'IacmAnsibleInventoryGroupArgsDict']]]]] = None,
+                 dynamic_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsibleInventoryDynamicGroupArgs', 'IacmAnsibleInventoryDynamicGroupArgsDict', 'outputs.IacmAnsibleInventoryDynamicGroup']]]]] = None,
+                 groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsibleInventoryGroupArgs', 'IacmAnsibleInventoryGroupArgsDict', 'outputs.IacmAnsibleInventoryGroup']]]]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 plugin_options: pulumi.Input[Optional[Union['IacmAnsibleInventoryPluginOptionsArgs', 'IacmAnsibleInventoryPluginOptionsArgsDict']]] = None,
+                 plugin_options: pulumi.Input[Optional[Union['IacmAnsibleInventoryPluginOptionsArgs', 'IacmAnsibleInventoryPluginOptionsArgsDict', 'outputs.IacmAnsibleInventoryPluginOptions']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsibleInventoryVarArgs', 'IacmAnsibleInventoryVarArgsDict']]]]] = None,
+                 vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsibleInventoryVarArgs', 'IacmAnsibleInventoryVarArgsDict', 'outputs.IacmAnsibleInventoryVar']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -561,16 +561,16 @@ class IacmAnsibleInventory(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            dynamic_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsibleInventoryDynamicGroupArgs', 'IacmAnsibleInventoryDynamicGroupArgsDict']]]]] = None,
-            groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsibleInventoryGroupArgs', 'IacmAnsibleInventoryGroupArgsDict']]]]] = None,
+            dynamic_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsibleInventoryDynamicGroupArgs', 'IacmAnsibleInventoryDynamicGroupArgsDict', 'outputs.IacmAnsibleInventoryDynamicGroup']]]]] = None,
+            groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsibleInventoryGroupArgs', 'IacmAnsibleInventoryGroupArgsDict', 'outputs.IacmAnsibleInventoryGroup']]]]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            plugin_options: pulumi.Input[Optional[Union['IacmAnsibleInventoryPluginOptionsArgs', 'IacmAnsibleInventoryPluginOptionsArgsDict']]] = None,
+            plugin_options: pulumi.Input[Optional[Union['IacmAnsibleInventoryPluginOptionsArgs', 'IacmAnsibleInventoryPluginOptionsArgsDict', 'outputs.IacmAnsibleInventoryPluginOptions']]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
-            vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsibleInventoryVarArgs', 'IacmAnsibleInventoryVarArgsDict']]]]] = None) -> 'IacmAnsibleInventory':
+            vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsibleInventoryVarArgs', 'IacmAnsibleInventoryVarArgsDict', 'outputs.IacmAnsibleInventoryVar']]]]] = None) -> 'IacmAnsibleInventory':
         """
         Get an existing IacmAnsibleInventory resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -579,16 +579,16 @@ class IacmAnsibleInventory(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IacmAnsibleInventoryDynamicGroupArgs', 'IacmAnsibleInventoryDynamicGroupArgsDict']]]] dynamic_groups: Dynamic groups used when type is dynamic.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IacmAnsibleInventoryGroupArgs', 'IacmAnsibleInventoryGroupArgsDict']]]] groups: Manual groups used when type is manual.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IacmAnsibleInventoryDynamicGroupArgs', 'IacmAnsibleInventoryDynamicGroupArgsDict', 'outputs.IacmAnsibleInventoryDynamicGroup']]]] dynamic_groups: Dynamic groups used when type is dynamic.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IacmAnsibleInventoryGroupArgs', 'IacmAnsibleInventoryGroupArgsDict', 'outputs.IacmAnsibleInventoryGroup']]]] groups: Manual groups used when type is manual.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[Union['IacmAnsibleInventoryPluginOptionsArgs', 'IacmAnsibleInventoryPluginOptionsArgsDict']] plugin_options: Plugin options used when type is plugin.
+        :param pulumi.Input[Union['IacmAnsibleInventoryPluginOptionsArgs', 'IacmAnsibleInventoryPluginOptionsArgsDict', 'outputs.IacmAnsibleInventoryPluginOptions']] plugin_options: Plugin options used when type is plugin.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         :param pulumi.Input[_builtins.str] type: Type of inventory. One of: manual, dynamic, plugin.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IacmAnsibleInventoryVarArgs', 'IacmAnsibleInventoryVarArgsDict']]]] vars: Variables configured on the inventory.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IacmAnsibleInventoryVarArgs', 'IacmAnsibleInventoryVarArgsDict', 'outputs.IacmAnsibleInventoryVar']]]] vars: Variables configured on the inventory.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

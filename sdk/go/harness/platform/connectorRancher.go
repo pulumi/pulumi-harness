@@ -29,6 +29,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewKubernetesConnector(ctx, "bearer_token", &platform.KubernetesConnectorArgs{
+//				BearerToken: []map[string]string{
+//					{
+//						"bearerTokenRef": "account.test_rancher_bearer_token",
+//					},
+//				},
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("description"),
@@ -39,11 +44,6 @@ import (
 //					pulumi.String("harness-delegate"),
 //				},
 //				RancherUrl: "https://rancher.cluster.example",
-//				BearerToken: []map[string]string{
-//					{
-//						"bearerTokenRef": "account.test_rancher_bearer_token",
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err

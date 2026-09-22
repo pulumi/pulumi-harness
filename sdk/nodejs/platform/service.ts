@@ -16,11 +16,6 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.Service("example", {
- *     identifier: "identifier",
- *     name: "name",
- *     description: "test",
- *     orgId: "org_id",
- *     projectId: "project_id",
  *     gitDetails: {
  *         branchName: "branchName",
  *         commitMessage: "commitMessage",
@@ -29,6 +24,11 @@ import * as utilities from "../utilities";
  *         storeType: "REMOTE",
  *         repoName: "repoName",
  *     },
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
  *     yaml: `service:
  *   name: name
  *   identifier: identifier
@@ -71,11 +71,6 @@ import * as utilities from "../utilities";
  * });
  * //## Importing Service from Git
  * const test = new harness.platform.Service("test", {
- *     identifier: "id",
- *     name: "name",
- *     orgId: "org_id",
- *     projectId: "project_id",
- *     importFromGit: true,
  *     gitDetails: {
  *         storeType: "REMOTE",
  *         connectorRef: "account.DoNotDeleteGitX",
@@ -83,6 +78,11 @@ import * as utilities from "../utilities";
  *         filePath: ".harness/accountService.yaml",
  *         branch: "main",
  *     },
+ *     identifier: "id",
+ *     name: "name",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     importFromGit: true,
  * });
  * ```
  *

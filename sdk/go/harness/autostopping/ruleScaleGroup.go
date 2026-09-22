@@ -29,12 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := autostopping.NewRuleScaleGroup(ctx, "test", &autostopping.RuleScaleGroupArgs{
-//				Name:             pulumi.String("test"),
-//				CloudConnectorId: pulumi.String("test-connector"),
-//				IdleTimeMins:     pulumi.Int(5),
-//				CustomDomains: pulumi.StringArray{
-//					pulumi.String("app.example.com"),
-//				},
 //				ScaleGroup: &autostopping.RuleScaleGroupScaleGroupArgs{
 //					Id:       pulumi.String("asg-arn"),
 //					Name:     pulumi.String("asg-name"),
@@ -46,16 +40,6 @@ import (
 //				},
 //				Https: autostopping.RuleScaleGroupHttpArray{
 //					&autostopping.RuleScaleGroupHttpArgs{
-//						ProxyId: pulumi.String("lb-id"),
-//						Routings: autostopping.RuleScaleGroupHttpRoutingArray{
-//							&autostopping.RuleScaleGroupHttpRoutingArgs{
-//								SourceProtocol: pulumi.String("http"),
-//								SourcePort:     pulumi.Int(80),
-//								Action:         pulumi.String("forward"),
-//								TargetProtocol: pulumi.String("http"),
-//								TargetPort:     pulumi.Int(80),
-//							},
-//						},
 //						Healths: autostopping.RuleScaleGroupHttpHealthArray{
 //							&autostopping.RuleScaleGroupHttpHealthArgs{
 //								Protocol:       pulumi.String("http"),
@@ -66,7 +50,23 @@ import (
 //								StatusCodeTo:   pulumi.Int(299),
 //							},
 //						},
+//						Routings: autostopping.RuleScaleGroupHttpRoutingArray{
+//							&autostopping.RuleScaleGroupHttpRoutingArgs{
+//								SourceProtocol: pulumi.String("http"),
+//								SourcePort:     pulumi.Int(80),
+//								Action:         pulumi.String("forward"),
+//								TargetProtocol: pulumi.String("http"),
+//								TargetPort:     pulumi.Int(80),
+//							},
+//						},
+//						ProxyId: pulumi.String("lb-id"),
 //					},
+//				},
+//				Name:             pulumi.String("test"),
+//				CloudConnectorId: pulumi.String("test-connector"),
+//				IdleTimeMins:     pulumi.Int(5),
+//				CustomDomains: pulumi.StringArray{
+//					pulumi.String("app.example.com"),
 //				},
 //			})
 //			if err != nil {

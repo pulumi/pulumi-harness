@@ -62,33 +62,33 @@ import javax.annotation.Nullable;
  * 
  *         // With AWS Secret Manager KMS Key
  *         var awsSecretManager = new SecretFile("awsSecretManager", SecretFileArgs.builder()
+ *             .additionalMetadatas(SecretFileAdditionalMetadataArgs.builder()
+ *                 .values(SecretFileAdditionalMetadataValueArgs.builder()
+ *                     .kmsKeyId("kmsKeyId")
+ *                     .build())
+ *                 .build())
  *             .identifier("identifier")
  *             .name("name")
  *             .description("example")
  *             .tags("foo:bar")
  *             .filePath("file_path")
  *             .secretManagerIdentifier("awsSecretManager")
- *             .additionalMetadatas(SecretFileAdditionalMetadataArgs.builder()
- *                 .values(SecretFileAdditionalMetadataValueArgs.builder()
- *                     .kmsKeyId("kmsKeyId")
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *         // With GCP Secret Manager project ID and region
  *         var gcpSecretManager = new SecretFile("gcpSecretManager", SecretFileArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .description("example")
- *             .tags("foo:bar")
- *             .filePath("file_path")
- *             .secretManagerIdentifier("gcpSecretManager")
  *             .additionalMetadatas(SecretFileAdditionalMetadataArgs.builder()
  *                 .values(SecretFileAdditionalMetadataValueArgs.builder()
  *                     .regions("us-east1")
  *                     .gcpProjectId("my-gcp-project-id")
  *                     .build())
  *                 .build())
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("example")
+ *             .tags("foo:bar")
+ *             .filePath("file_path")
+ *             .secretManagerIdentifier("gcpSecretManager")
  *             .build());
  * 
  *     }

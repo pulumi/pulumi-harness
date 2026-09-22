@@ -24,6 +24,13 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var bearerToken = new Harness.Platform.KubernetesConnector("bearer_token", new()
     ///     {
+    ///         BearerToken = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "bearerTokenRef", "account.test_rancher_bearer_token" },
+    ///             },
+    ///         },
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         Description = "description",
@@ -36,13 +43,6 @@ namespace Pulumi.Harness.Platform
     ///             "harness-delegate",
     ///         },
     ///         RancherUrl = "https://rancher.cluster.example",
-    ///         BearerToken = new[]
-    ///         {
-    ///             
-    ///             {
-    ///                 { "bearerTokenRef", "account.test_rancher_bearer_token" },
-    ///             },
-    ///         },
     ///     });
     /// 
     /// });

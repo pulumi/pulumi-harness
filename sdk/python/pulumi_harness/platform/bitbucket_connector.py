@@ -422,9 +422,9 @@ class BitbucketConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_authentication: pulumi.Input[Optional[Union['BitbucketConnectorApiAuthenticationArgs', 'BitbucketConnectorApiAuthenticationArgsDict']]] = None,
+                 api_authentication: pulumi.Input[Optional[Union['BitbucketConnectorApiAuthenticationArgs', 'BitbucketConnectorApiAuthenticationArgsDict', 'outputs.BitbucketConnectorApiAuthentication']]] = None,
                  connection_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 credentials: pulumi.Input[Optional[Union['BitbucketConnectorCredentialsArgs', 'BitbucketConnectorCredentialsArgsDict']]] = None,
+                 credentials: pulumi.Input[Optional[Union['BitbucketConnectorCredentialsArgs', 'BitbucketConnectorCredentialsArgsDict', 'outputs.BitbucketConnectorCredentials']]] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -446,14 +446,6 @@ class BitbucketConnector(pulumi.CustomResource):
 
         # Credentials http (with username + personal access token - UsernameToken)
         username_token = harness.platform.BitbucketConnector("username_token",
-            identifier="identifier",
-            name="name",
-            description="test",
-            tags=["foo:bar"],
-            url="https://bitbucket.com/account",
-            connection_type="Account",
-            validation_repo="some_repo",
-            delegate_selectors=["harness-delegate"],
             credentials={
                 "http": {
                     "username": "username",
@@ -464,18 +456,18 @@ class BitbucketConnector(pulumi.CustomResource):
                 "auth_type": "UsernameToken",
                 "username": "username",
                 "token_ref": "account.secret_id",
-            })
+            },
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            url="https://bitbucket.com/account",
+            connection_type="Account",
+            validation_repo="some_repo",
+            delegate_selectors=["harness-delegate"])
         # Credentials http with Bitbucket Cloud Workspace API Token (email + API token)
         # Use this when migrating off Bitbucket app passwords (EOL 2026-06-09).
         email_api_token = harness.platform.BitbucketConnector("email_api_token",
-            identifier="identifier_email_api_token",
-            name="name_email_api_token",
-            description="Bitbucket Cloud with Workspace API Token",
-            tags=["foo:bar"],
-            url="https://bitbucket.org/my-workspace",
-            connection_type="Account",
-            validation_repo="some_repo",
-            delegate_selectors=["harness-delegate"],
             credentials={
                 "http": {
                     "username": "username",
@@ -486,17 +478,17 @@ class BitbucketConnector(pulumi.CustomResource):
                 "auth_type": "EmailAndApiToken",
                 "email": "user@example.com",
                 "token_ref": "account.api_token_secret",
-            })
-        # Credentials http with Bitbucket repo/project Access Token
-        access_token = harness.platform.BitbucketConnector("access_token",
-            identifier="identifier_access_token",
-            name="name_access_token",
-            description="Bitbucket with Access Token",
+            },
+            identifier="identifier_email_api_token",
+            name="name_email_api_token",
+            description="Bitbucket Cloud with Workspace API Token",
             tags=["foo:bar"],
             url="https://bitbucket.org/my-workspace",
             connection_type="Account",
             validation_repo="some_repo",
-            delegate_selectors=["harness-delegate"],
+            delegate_selectors=["harness-delegate"])
+        # Credentials http with Bitbucket repo/project Access Token
+        access_token = harness.platform.BitbucketConnector("access_token",
             credentials={
                 "http": {
                     "username": "username",
@@ -506,9 +498,22 @@ class BitbucketConnector(pulumi.CustomResource):
             api_authentication={
                 "auth_type": "AccessToken",
                 "token_ref": "account.access_token_secret",
-            })
+            },
+            identifier="identifier_access_token",
+            name="name_access_token",
+            description="Bitbucket with Access Token",
+            tags=["foo:bar"],
+            url="https://bitbucket.org/my-workspace",
+            connection_type="Account",
+            validation_repo="some_repo",
+            delegate_selectors=["harness-delegate"])
         # Credentials ssh
         ssh = harness.platform.BitbucketConnector("ssh",
+            credentials={
+                "ssh": {
+                    "ssh_key_ref": "account.secret_id",
+                },
+            },
             identifier="identifier_ssh",
             name="name_ssh",
             description="test",
@@ -516,12 +521,7 @@ class BitbucketConnector(pulumi.CustomResource):
             url="https://bitbucket.com/account",
             connection_type="Account",
             validation_repo="some_repo",
-            delegate_selectors=["harness-delegate"],
-            credentials={
-                "ssh": {
-                    "ssh_key_ref": "account.secret_id",
-                },
-            })
+            delegate_selectors=["harness-delegate"])
         ```
 
         ## Import
@@ -549,9 +549,9 @@ class BitbucketConnector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['BitbucketConnectorApiAuthenticationArgs', 'BitbucketConnectorApiAuthenticationArgsDict']] api_authentication: Configuration for using the BitBucket api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
+        :param pulumi.Input[Union['BitbucketConnectorApiAuthenticationArgs', 'BitbucketConnectorApiAuthenticationArgsDict', 'outputs.BitbucketConnectorApiAuthentication']] api_authentication: Configuration for using the BitBucket api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         :param pulumi.Input[_builtins.str] connection_type: Whether the connection we're making is to a BitBucket repository or a BitBucket account. Valid values are Account, Repo.
-        :param pulumi.Input[Union['BitbucketConnectorCredentialsArgs', 'BitbucketConnectorCredentialsArgsDict']] credentials: Credentials to use for the connection.
+        :param pulumi.Input[Union['BitbucketConnectorCredentialsArgs', 'BitbucketConnectorCredentialsArgsDict', 'outputs.BitbucketConnectorCredentials']] credentials: Credentials to use for the connection.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
@@ -579,14 +579,6 @@ class BitbucketConnector(pulumi.CustomResource):
 
         # Credentials http (with username + personal access token - UsernameToken)
         username_token = harness.platform.BitbucketConnector("username_token",
-            identifier="identifier",
-            name="name",
-            description="test",
-            tags=["foo:bar"],
-            url="https://bitbucket.com/account",
-            connection_type="Account",
-            validation_repo="some_repo",
-            delegate_selectors=["harness-delegate"],
             credentials={
                 "http": {
                     "username": "username",
@@ -597,18 +589,18 @@ class BitbucketConnector(pulumi.CustomResource):
                 "auth_type": "UsernameToken",
                 "username": "username",
                 "token_ref": "account.secret_id",
-            })
+            },
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            url="https://bitbucket.com/account",
+            connection_type="Account",
+            validation_repo="some_repo",
+            delegate_selectors=["harness-delegate"])
         # Credentials http with Bitbucket Cloud Workspace API Token (email + API token)
         # Use this when migrating off Bitbucket app passwords (EOL 2026-06-09).
         email_api_token = harness.platform.BitbucketConnector("email_api_token",
-            identifier="identifier_email_api_token",
-            name="name_email_api_token",
-            description="Bitbucket Cloud with Workspace API Token",
-            tags=["foo:bar"],
-            url="https://bitbucket.org/my-workspace",
-            connection_type="Account",
-            validation_repo="some_repo",
-            delegate_selectors=["harness-delegate"],
             credentials={
                 "http": {
                     "username": "username",
@@ -619,17 +611,17 @@ class BitbucketConnector(pulumi.CustomResource):
                 "auth_type": "EmailAndApiToken",
                 "email": "user@example.com",
                 "token_ref": "account.api_token_secret",
-            })
-        # Credentials http with Bitbucket repo/project Access Token
-        access_token = harness.platform.BitbucketConnector("access_token",
-            identifier="identifier_access_token",
-            name="name_access_token",
-            description="Bitbucket with Access Token",
+            },
+            identifier="identifier_email_api_token",
+            name="name_email_api_token",
+            description="Bitbucket Cloud with Workspace API Token",
             tags=["foo:bar"],
             url="https://bitbucket.org/my-workspace",
             connection_type="Account",
             validation_repo="some_repo",
-            delegate_selectors=["harness-delegate"],
+            delegate_selectors=["harness-delegate"])
+        # Credentials http with Bitbucket repo/project Access Token
+        access_token = harness.platform.BitbucketConnector("access_token",
             credentials={
                 "http": {
                     "username": "username",
@@ -639,9 +631,22 @@ class BitbucketConnector(pulumi.CustomResource):
             api_authentication={
                 "auth_type": "AccessToken",
                 "token_ref": "account.access_token_secret",
-            })
+            },
+            identifier="identifier_access_token",
+            name="name_access_token",
+            description="Bitbucket with Access Token",
+            tags=["foo:bar"],
+            url="https://bitbucket.org/my-workspace",
+            connection_type="Account",
+            validation_repo="some_repo",
+            delegate_selectors=["harness-delegate"])
         # Credentials ssh
         ssh = harness.platform.BitbucketConnector("ssh",
+            credentials={
+                "ssh": {
+                    "ssh_key_ref": "account.secret_id",
+                },
+            },
             identifier="identifier_ssh",
             name="name_ssh",
             description="test",
@@ -649,12 +654,7 @@ class BitbucketConnector(pulumi.CustomResource):
             url="https://bitbucket.com/account",
             connection_type="Account",
             validation_repo="some_repo",
-            delegate_selectors=["harness-delegate"],
-            credentials={
-                "ssh": {
-                    "ssh_key_ref": "account.secret_id",
-                },
-            })
+            delegate_selectors=["harness-delegate"])
         ```
 
         ## Import
@@ -695,9 +695,9 @@ class BitbucketConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_authentication: pulumi.Input[Optional[Union['BitbucketConnectorApiAuthenticationArgs', 'BitbucketConnectorApiAuthenticationArgsDict']]] = None,
+                 api_authentication: pulumi.Input[Optional[Union['BitbucketConnectorApiAuthenticationArgs', 'BitbucketConnectorApiAuthenticationArgsDict', 'outputs.BitbucketConnectorApiAuthentication']]] = None,
                  connection_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 credentials: pulumi.Input[Optional[Union['BitbucketConnectorCredentialsArgs', 'BitbucketConnectorCredentialsArgsDict']]] = None,
+                 credentials: pulumi.Input[Optional[Union['BitbucketConnectorCredentialsArgs', 'BitbucketConnectorCredentialsArgsDict', 'outputs.BitbucketConnectorCredentials']]] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -746,9 +746,9 @@ class BitbucketConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api_authentication: pulumi.Input[Optional[Union['BitbucketConnectorApiAuthenticationArgs', 'BitbucketConnectorApiAuthenticationArgsDict']]] = None,
+            api_authentication: pulumi.Input[Optional[Union['BitbucketConnectorApiAuthenticationArgs', 'BitbucketConnectorApiAuthenticationArgsDict', 'outputs.BitbucketConnectorApiAuthentication']]] = None,
             connection_type: pulumi.Input[Optional[_builtins.str]] = None,
-            credentials: pulumi.Input[Optional[Union['BitbucketConnectorCredentialsArgs', 'BitbucketConnectorCredentialsArgsDict']]] = None,
+            credentials: pulumi.Input[Optional[Union['BitbucketConnectorCredentialsArgs', 'BitbucketConnectorCredentialsArgsDict', 'outputs.BitbucketConnectorCredentials']]] = None,
             delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -765,9 +765,9 @@ class BitbucketConnector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['BitbucketConnectorApiAuthenticationArgs', 'BitbucketConnectorApiAuthenticationArgsDict']] api_authentication: Configuration for using the BitBucket api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
+        :param pulumi.Input[Union['BitbucketConnectorApiAuthenticationArgs', 'BitbucketConnectorApiAuthenticationArgsDict', 'outputs.BitbucketConnectorApiAuthentication']] api_authentication: Configuration for using the BitBucket api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
         :param pulumi.Input[_builtins.str] connection_type: Whether the connection we're making is to a BitBucket repository or a BitBucket account. Valid values are Account, Repo.
-        :param pulumi.Input[Union['BitbucketConnectorCredentialsArgs', 'BitbucketConnectorCredentialsArgsDict']] credentials: Credentials to use for the connection.
+        :param pulumi.Input[Union['BitbucketConnectorCredentialsArgs', 'BitbucketConnectorCredentialsArgsDict', 'outputs.BitbucketConnectorCredentials']] credentials: Credentials to use for the connection.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.

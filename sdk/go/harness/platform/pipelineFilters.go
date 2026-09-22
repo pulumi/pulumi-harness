@@ -29,11 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewPipelineFilters(ctx, "test", &platform.PipelineFiltersArgs{
-//				Identifier: pulumi.String("identifier"),
-//				Name:       pulumi.String("name"),
-//				OrgId:      pulumi.String("org_id"),
-//				ProjectId:  pulumi.String("project_id"),
-//				Type:       pulumi.String("PipelineSetup"),
 //				FilterProperties: &platform.PipelineFiltersFilterPropertiesArgs{
 //					Name:        pulumi.String("pipeline_name"),
 //					Description: pulumi.String("pipeline_description"),
@@ -43,6 +38,11 @@ import (
 //					},
 //					FilterType: pulumi.String("PipelineSetup"),
 //				},
+//				Identifier:       pulumi.String("identifier"),
+//				Name:             pulumi.String("name"),
+//				OrgId:            pulumi.String("org_id"),
+//				ProjectId:        pulumi.String("project_id"),
+//				Type:             pulumi.String("PipelineSetup"),
 //				FilterVisibility: pulumi.String("EveryOne"),
 //			})
 //			if err != nil {
@@ -50,19 +50,7 @@ import (
 //			}
 //			// pipeline execution filter consisiting services (service_identifiers) filter
 //			_, err = platform.NewPipelineFilters(ctx, "execution", &platform.PipelineFiltersArgs{
-//				Identifier: pulumi.String("identifier"),
-//				Name:       pulumi.String("name"),
-//				OrgId:      pulumi.String("org_id"),
-//				ProjectId:  pulumi.String("project_id"),
-//				Type:       pulumi.String("PipelineSetup"),
 //				FilterProperties: &platform.PipelineFiltersFilterPropertiesArgs{
-//					Name:        pulumi.String("pipeline_name"),
-//					Description: pulumi.String("pipeline_description"),
-//					PipelineIdentifiers: pulumi.StringArray{
-//						pulumi.String("id1"),
-//						pulumi.String("id2"),
-//					},
-//					FilterType: pulumi.String("PipelineExecution"),
 //					ModuleProperties: &platform.PipelineFiltersFilterPropertiesModulePropertiesArgs{
 //						Cd: &platform.PipelineFiltersFilterPropertiesModulePropertiesCdArgs{
 //							DeploymentTypes: pulumi.String("Kubernetes"),
@@ -71,7 +59,19 @@ import (
 //							},
 //						},
 //					},
+//					Name:        pulumi.String("pipeline_name"),
+//					Description: pulumi.String("pipeline_description"),
+//					PipelineIdentifiers: pulumi.StringArray{
+//						pulumi.String("id1"),
+//						pulumi.String("id2"),
+//					},
+//					FilterType: pulumi.String("PipelineExecution"),
 //				},
+//				Identifier:       pulumi.String("identifier"),
+//				Name:             pulumi.String("name"),
+//				OrgId:            pulumi.String("org_id"),
+//				ProjectId:        pulumi.String("project_id"),
+//				Type:             pulumi.String("PipelineSetup"),
 //				FilterVisibility: pulumi.String("EveryOne"),
 //			})
 //			if err != nil {
@@ -79,23 +79,7 @@ import (
 //			}
 //			// pipeline filter with tags
 //			_, err = platform.NewPipelineFilters(ctx, "example_with_tags", &platform.PipelineFiltersArgs{
-//				Identifier: pulumi.String("identifier"),
-//				Name:       pulumi.String("name"),
-//				OrgId:      pulumi.String("org_id"),
-//				ProjectId:  pulumi.String("project_id"),
-//				Type:       pulumi.String("PipelineSetup"),
 //				FilterProperties: &platform.PipelineFiltersFilterPropertiesArgs{
-//					FilterType: pulumi.String("PipelineSetup"),
-//					PipelineTags: pulumi.StringMapArray{
-//						pulumi.StringMap{
-//							"key":   pulumi.String("tag1"),
-//							"value": pulumi.String("123"),
-//						},
-//						pulumi.StringMap{
-//							"key":   pulumi.String("tag2"),
-//							"value": pulumi.String("456"),
-//						},
-//					},
 //					ModuleProperties: &platform.PipelineFiltersFilterPropertiesModulePropertiesArgs{
 //						Cd: &platform.PipelineFiltersFilterPropertiesModulePropertiesCdArgs{
 //							DeploymentTypes: pulumi.String("Kubernetes"),
@@ -118,30 +102,29 @@ import (
 //							RepoNames: pulumi.String("repo1234"),
 //						},
 //					},
+//					FilterType: pulumi.String("PipelineSetup"),
+//					PipelineTags: pulumi.StringMapArray{
+//						pulumi.StringMap{
+//							"key":   pulumi.String("tag1"),
+//							"value": pulumi.String("123"),
+//						},
+//						pulumi.StringMap{
+//							"key":   pulumi.String("tag2"),
+//							"value": pulumi.String("456"),
+//						},
+//					},
 //				},
+//				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
+//				OrgId:      pulumi.String("org_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				Type:       pulumi.String("PipelineSetup"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewPipelineFilters(ctx, "pipelinemoduleproperties", &platform.PipelineFiltersArgs{
-//				Identifier: pulumi.String("identifier"),
-//				Name:       pulumi.String("name"),
-//				OrgId:      pulumi.Any(testHarnessPlatformProject.OrgId),
-//				ProjectId:  pulumi.Any(testHarnessPlatformProject.Id),
-//				Type:       pulumi.String("PipelineExecution"),
 //				FilterProperties: &platform.PipelineFiltersFilterPropertiesArgs{
-//					FilterType:   pulumi.String("PipelineExecution"),
-//					PipelineName: pulumi.String("test"),
-//					PipelineTags: pulumi.StringMapArray{
-//						pulumi.StringMap{
-//							"key":   pulumi.String("k1"),
-//							"value": pulumi.String("v1"),
-//						},
-//						pulumi.StringMap{
-//							"key":   pulumi.String("k2"),
-//							"value": pulumi.String("v2"),
-//						},
-//					},
 //					ModuleProperties: &platform.PipelineFiltersFilterPropertiesModulePropertiesArgs{
 //						Cd: &platform.PipelineFiltersFilterPropertiesModulePropertiesCdArgs{
 //							ServiceDefinitionTypes: pulumi.String("Kubernetes"),
@@ -156,7 +139,24 @@ import (
 //							},
 //						},
 //					},
+//					FilterType:   pulumi.String("PipelineExecution"),
+//					PipelineName: pulumi.String("test"),
+//					PipelineTags: pulumi.StringMapArray{
+//						pulumi.StringMap{
+//							"key":   pulumi.String("k1"),
+//							"value": pulumi.String("v1"),
+//						},
+//						pulumi.StringMap{
+//							"key":   pulumi.String("k2"),
+//							"value": pulumi.String("v2"),
+//						},
+//					},
 //				},
+//				Identifier: pulumi.String("identifier"),
+//				Name:       pulumi.String("name"),
+//				OrgId:      pulumi.Any(testHarnessPlatformProject.OrgId),
+//				ProjectId:  pulumi.Any(testHarnessPlatformProject.Id),
+//				Type:       pulumi.String("PipelineExecution"),
 //			})
 //			if err != nil {
 //				return err

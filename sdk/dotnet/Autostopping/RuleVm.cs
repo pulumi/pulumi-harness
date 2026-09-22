@@ -24,10 +24,6 @@ namespace Pulumi.Harness.Autostopping
     /// {
     ///     var test = new Harness.Autostopping.RuleVm("test", new()
     ///     {
-    ///         Name = "name",
-    ///         CloudConnectorId = "cloud_connector_id",
-    ///         IdleTimeMins = 10,
-    ///         DryRun = true,
     ///         Filter = new Harness.Autostopping.Inputs.RuleVmFilterArgs
     ///         {
     ///             VmIds = new[]
@@ -39,11 +35,30 @@ namespace Pulumi.Harness.Autostopping
     ///                 "useast2",
     ///             },
     ///         },
+    ///         Depends = new[]
+    ///         {
+    ///             new Harness.Autostopping.Inputs.RuleVmDependArgs
+    ///             {
+    ///                 RuleId = 24576,
+    ///                 DelayInSec = 5,
+    ///             },
+    ///         },
     ///         Https = new[]
     ///         {
     ///             new Harness.Autostopping.Inputs.RuleVmHttpArgs
     ///             {
-    ///                 ProxyId = "proxy_id",
+    ///                 Healths = new[]
+    ///                 {
+    ///                     new Harness.Autostopping.Inputs.RuleVmHttpHealthArgs
+    ///                     {
+    ///                         Protocol = "http",
+    ///                         Port = 80,
+    ///                         Path = "/",
+    ///                         Timeout = 30,
+    ///                         StatusCodeFrom = 200,
+    ///                         StatusCodeTo = 299,
+    ///                     },
+    ///                 },
     ///                 Routings = new[]
     ///                 {
     ///                     new Harness.Autostopping.Inputs.RuleVmHttpRoutingArgs
@@ -63,30 +78,18 @@ namespace Pulumi.Harness.Autostopping
     ///                         Action = "forward",
     ///                     },
     ///                 },
-    ///                 Healths = new[]
-    ///                 {
-    ///                     new Harness.Autostopping.Inputs.RuleVmHttpHealthArgs
-    ///                     {
-    ///                         Protocol = "http",
-    ///                         Port = 80,
-    ///                         Path = "/",
-    ///                         Timeout = 30,
-    ///                         StatusCodeFrom = 200,
-    ///                         StatusCodeTo = 299,
-    ///                     },
-    ///                 },
+    ///                 ProxyId = "proxy_id",
     ///             },
     ///         },
     ///         Tcps = new[]
     ///         {
     ///             new Harness.Autostopping.Inputs.RuleVmTcpArgs
     ///             {
-    ///                 ProxyId = "proxy_id",
-    ///                 Sshes = new[]
+    ///                 ForwardRules = new[]
     ///                 {
-    ///                     new Harness.Autostopping.Inputs.RuleVmTcpSshArgs
+    ///                     new Harness.Autostopping.Inputs.RuleVmTcpForwardRuleArgs
     ///                     {
-    ///                         Port = 22,
+    ///                         Port = 2233,
     ///                     },
     ///                 },
     ///                 Rdps = new[]
@@ -96,23 +99,20 @@ namespace Pulumi.Harness.Autostopping
     ///                         Port = 3389,
     ///                     },
     ///                 },
-    ///                 ForwardRules = new[]
+    ///                 Sshes = new[]
     ///                 {
-    ///                     new Harness.Autostopping.Inputs.RuleVmTcpForwardRuleArgs
+    ///                     new Harness.Autostopping.Inputs.RuleVmTcpSshArgs
     ///                     {
-    ///                         Port = 2233,
+    ///                         Port = 22,
     ///                     },
     ///                 },
+    ///                 ProxyId = "proxy_id",
     ///             },
     ///         },
-    ///         Depends = new[]
-    ///         {
-    ///             new Harness.Autostopping.Inputs.RuleVmDependArgs
-    ///             {
-    ///                 RuleId = 24576,
-    ///                 DelayInSec = 5,
-    ///             },
-    ///         },
+    ///         Name = "name",
+    ///         CloudConnectorId = "cloud_connector_id",
+    ///         IdleTimeMins = 10,
+    ///         DryRun = true,
     ///     });
     /// 
     /// });

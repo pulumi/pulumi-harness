@@ -24,26 +24,10 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var manual = new Harness.Platform.IacmAnsibleInventory("manual", new()
     ///     {
-    ///         Identifier = "my_inventory",
-    ///         Name = "my-inventory",
-    ///         OrgId = example.Id,
-    ///         ProjectId = exampleHarnessPlatformProject.Id,
-    ///         Type = "manual",
-    ///         Tags = new[]
-    ///         {
-    ///             "env:prod",
-    ///         },
     ///         Groups = new[]
     ///         {
     ///             new Harness.Platform.Inputs.IacmAnsibleInventoryGroupArgs
     ///             {
-    ///                 Identifier = "web",
-    ///                 Name = "web",
-    ///                 Hosts = new[]
-    ///                 {
-    ///                     "web-1.example.com",
-    ///                     "web-2.example.com",
-    ///                 },
     ///                 Vars = new[]
     ///                 {
     ///                     new Harness.Platform.Inputs.IacmAnsibleInventoryGroupVarArgs
@@ -52,6 +36,13 @@ namespace Pulumi.Harness.Platform
     ///                         Value = "ubuntu",
     ///                         ValueType = "string",
     ///                     },
+    ///                 },
+    ///                 Identifier = "web",
+    ///                 Name = "web",
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "web-1.example.com",
+    ///                     "web-2.example.com",
     ///                 },
     ///             },
     ///         },
@@ -63,6 +54,15 @@ namespace Pulumi.Harness.Platform
     ///                 Value = "22",
     ///                 ValueType = "string",
     ///             },
+    ///         },
+    ///         Identifier = "my_inventory",
+    ///         Name = "my-inventory",
+    ///         OrgId = example.Id,
+    ///         ProjectId = exampleHarnessPlatformProject.Id,
+    ///         Type = "manual",
+    ///         Tags = new[]
+    ///         {
+    ///             "env:prod",
     ///         },
     ///     });
     /// 

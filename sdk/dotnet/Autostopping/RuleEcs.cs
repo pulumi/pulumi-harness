@@ -24,10 +24,6 @@ namespace Pulumi.Harness.Autostopping
     /// {
     ///     var test = new Harness.Autostopping.RuleEcs("test", new()
     ///     {
-    ///         Name = "name",
-    ///         CloudConnectorId = "cloud_connector_id",
-    ///         IdleTimeMins = 10,
-    ///         DryRun = true,
     ///         Container = new Harness.Autostopping.Inputs.RuleEcsContainerArgs
     ///         {
     ///             Cluster = "cluster",
@@ -43,6 +39,10 @@ namespace Pulumi.Harness.Autostopping
     ///                 DelayInSec = 5,
     ///             },
     ///         },
+    ///         Name = "name",
+    ///         CloudConnectorId = "cloud_connector_id",
+    ///         IdleTimeMins = 10,
+    ///         DryRun = true,
     ///     });
     /// 
     /// });

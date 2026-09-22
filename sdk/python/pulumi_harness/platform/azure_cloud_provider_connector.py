@@ -393,7 +393,7 @@ class AzureCloudProviderConnector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  azure_environment_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 credentials: pulumi.Input[Optional[Union['AzureCloudProviderConnectorCredentialsArgs', 'AzureCloudProviderConnectorCredentialsArgsDict']]] = None,
+                 credentials: pulumi.Input[Optional[Union['AzureCloudProviderConnectorCredentialsArgs', 'AzureCloudProviderConnectorCredentialsArgsDict', 'outputs.AzureCloudProviderConnectorCredentials']]] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -414,52 +414,47 @@ class AzureCloudProviderConnector(pulumi.CustomResource):
         import pulumi_harness as harness
 
         manual_config_secret = harness.platform.AzureCloudProviderConnector("manual_config_secret",
-            identifier="identifier",
-            name="name",
-            description="example",
-            tags=["foo:bar"],
             credentials={
-                "type": "ManualConfig",
                 "azure_manual_details": {
-                    "application_id": "application_id",
-                    "tenant_id": "tenant_id",
                     "auth": {
-                        "type": "Secret",
                         "azure_client_secret_key": {
                             "secret_ref": f"account.{test['id']}",
                         },
+                        "type": "Secret",
                     },
+                    "application_id": "application_id",
+                    "tenant_id": "tenant_id",
                 },
+                "type": "ManualConfig",
             },
+            identifier="identifier",
+            name="name",
+            description="example",
+            tags=["foo:bar"],
             azure_environment_type="AZURE",
             delegate_selectors=["harness-delegate"])
         manual_config_certificate = harness.platform.AzureCloudProviderConnector("manual_config_certificate",
-            identifier="identifier",
-            name="name",
-            description="example",
-            tags=["foo:bar"],
             credentials={
-                "type": "ManualConfig",
                 "azure_manual_details": {
-                    "application_id": "application_id",
-                    "tenant_id": "tenant_id",
                     "auth": {
-                        "type": "Certificate",
                         "azure_client_key_cert": {
                             "certificate_ref": f"account.{test['id']}",
                         },
+                        "type": "Certificate",
                     },
+                    "application_id": "application_id",
+                    "tenant_id": "tenant_id",
                 },
+                "type": "ManualConfig",
             },
-            azure_environment_type="AZURE",
-            delegate_selectors=["harness-delegate"])
-        inherit_from_delegate_user_assigned_managed_identity = harness.platform.AzureCloudProviderConnector("inherit_from_delegate_user_assigned_managed_identity",
             identifier="identifier",
             name="name",
             description="example",
             tags=["foo:bar"],
+            azure_environment_type="AZURE",
+            delegate_selectors=["harness-delegate"])
+        inherit_from_delegate_user_assigned_managed_identity = harness.platform.AzureCloudProviderConnector("inherit_from_delegate_user_assigned_managed_identity",
             credentials={
-                "type": "InheritFromDelegate",
                 "azure_inherit_from_delegate_details": {
                     "auth": {
                         "azure_msi_auth_ua": {
@@ -468,37 +463,42 @@ class AzureCloudProviderConnector(pulumi.CustomResource):
                         "type": "UserAssignedManagedIdentity",
                     },
                 },
+                "type": "InheritFromDelegate",
             },
-            azure_environment_type="AZURE",
-            delegate_selectors=["harness-delegate"])
-        inherit_from_delegate_system_assigned_managed_identity = harness.platform.AzureCloudProviderConnector("inherit_from_delegate_system_assigned_managed_identity",
             identifier="identifier",
             name="name",
             description="example",
             tags=["foo:bar"],
+            azure_environment_type="AZURE",
+            delegate_selectors=["harness-delegate"])
+        inherit_from_delegate_system_assigned_managed_identity = harness.platform.AzureCloudProviderConnector("inherit_from_delegate_system_assigned_managed_identity",
             credentials={
-                "type": "InheritFromDelegate",
                 "azure_inherit_from_delegate_details": {
                     "auth": {
                         "type": "SystemAssignedManagedIdentity",
                     },
                 },
+                "type": "InheritFromDelegate",
             },
-            azure_environment_type="AZURE",
-            delegate_selectors=["harness-delegate"])
-        oidc_authentication = harness.platform.AzureCloudProviderConnector("oidc_authentication",
             identifier="identifier",
             name="name",
             description="example",
             tags=["foo:bar"],
+            azure_environment_type="AZURE",
+            delegate_selectors=["harness-delegate"])
+        oidc_authentication = harness.platform.AzureCloudProviderConnector("oidc_authentication",
             credentials={
-                "type": "OidcAuthentication",
                 "azure_oidc_spec": {
                     "application_id": "application_id",
                     "tenant_id": "tenant_id",
                     "audience": "audience",
                 },
+                "type": "OidcAuthentication",
             },
+            identifier="identifier",
+            name="name",
+            description="example",
+            tags=["foo:bar"],
             azure_environment_type="AZURE",
             delegate_selectors=["harness-delegate"])
         ```
@@ -529,7 +529,7 @@ class AzureCloudProviderConnector(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] azure_environment_type: Specifies the Azure Environment type, which is AZURE by default. Can either be AZURE or AZURE*US*GOVERNMENT
-        :param pulumi.Input[Union['AzureCloudProviderConnectorCredentialsArgs', 'AzureCloudProviderConnectorCredentialsArgsDict']] credentials: Contains Azure connector credentials.
+        :param pulumi.Input[Union['AzureCloudProviderConnectorCredentialsArgs', 'AzureCloudProviderConnectorCredentialsArgsDict', 'outputs.AzureCloudProviderConnectorCredentials']] credentials: Contains Azure connector credentials.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] execute_on_delegate: Execute on delegate or not.
@@ -556,52 +556,47 @@ class AzureCloudProviderConnector(pulumi.CustomResource):
         import pulumi_harness as harness
 
         manual_config_secret = harness.platform.AzureCloudProviderConnector("manual_config_secret",
-            identifier="identifier",
-            name="name",
-            description="example",
-            tags=["foo:bar"],
             credentials={
-                "type": "ManualConfig",
                 "azure_manual_details": {
-                    "application_id": "application_id",
-                    "tenant_id": "tenant_id",
                     "auth": {
-                        "type": "Secret",
                         "azure_client_secret_key": {
                             "secret_ref": f"account.{test['id']}",
                         },
+                        "type": "Secret",
                     },
+                    "application_id": "application_id",
+                    "tenant_id": "tenant_id",
                 },
+                "type": "ManualConfig",
             },
+            identifier="identifier",
+            name="name",
+            description="example",
+            tags=["foo:bar"],
             azure_environment_type="AZURE",
             delegate_selectors=["harness-delegate"])
         manual_config_certificate = harness.platform.AzureCloudProviderConnector("manual_config_certificate",
-            identifier="identifier",
-            name="name",
-            description="example",
-            tags=["foo:bar"],
             credentials={
-                "type": "ManualConfig",
                 "azure_manual_details": {
-                    "application_id": "application_id",
-                    "tenant_id": "tenant_id",
                     "auth": {
-                        "type": "Certificate",
                         "azure_client_key_cert": {
                             "certificate_ref": f"account.{test['id']}",
                         },
+                        "type": "Certificate",
                     },
+                    "application_id": "application_id",
+                    "tenant_id": "tenant_id",
                 },
+                "type": "ManualConfig",
             },
-            azure_environment_type="AZURE",
-            delegate_selectors=["harness-delegate"])
-        inherit_from_delegate_user_assigned_managed_identity = harness.platform.AzureCloudProviderConnector("inherit_from_delegate_user_assigned_managed_identity",
             identifier="identifier",
             name="name",
             description="example",
             tags=["foo:bar"],
+            azure_environment_type="AZURE",
+            delegate_selectors=["harness-delegate"])
+        inherit_from_delegate_user_assigned_managed_identity = harness.platform.AzureCloudProviderConnector("inherit_from_delegate_user_assigned_managed_identity",
             credentials={
-                "type": "InheritFromDelegate",
                 "azure_inherit_from_delegate_details": {
                     "auth": {
                         "azure_msi_auth_ua": {
@@ -610,37 +605,42 @@ class AzureCloudProviderConnector(pulumi.CustomResource):
                         "type": "UserAssignedManagedIdentity",
                     },
                 },
+                "type": "InheritFromDelegate",
             },
-            azure_environment_type="AZURE",
-            delegate_selectors=["harness-delegate"])
-        inherit_from_delegate_system_assigned_managed_identity = harness.platform.AzureCloudProviderConnector("inherit_from_delegate_system_assigned_managed_identity",
             identifier="identifier",
             name="name",
             description="example",
             tags=["foo:bar"],
+            azure_environment_type="AZURE",
+            delegate_selectors=["harness-delegate"])
+        inherit_from_delegate_system_assigned_managed_identity = harness.platform.AzureCloudProviderConnector("inherit_from_delegate_system_assigned_managed_identity",
             credentials={
-                "type": "InheritFromDelegate",
                 "azure_inherit_from_delegate_details": {
                     "auth": {
                         "type": "SystemAssignedManagedIdentity",
                     },
                 },
+                "type": "InheritFromDelegate",
             },
-            azure_environment_type="AZURE",
-            delegate_selectors=["harness-delegate"])
-        oidc_authentication = harness.platform.AzureCloudProviderConnector("oidc_authentication",
             identifier="identifier",
             name="name",
             description="example",
             tags=["foo:bar"],
+            azure_environment_type="AZURE",
+            delegate_selectors=["harness-delegate"])
+        oidc_authentication = harness.platform.AzureCloudProviderConnector("oidc_authentication",
             credentials={
-                "type": "OidcAuthentication",
                 "azure_oidc_spec": {
                     "application_id": "application_id",
                     "tenant_id": "tenant_id",
                     "audience": "audience",
                 },
+                "type": "OidcAuthentication",
             },
+            identifier="identifier",
+            name="name",
+            description="example",
+            tags=["foo:bar"],
             azure_environment_type="AZURE",
             delegate_selectors=["harness-delegate"])
         ```
@@ -684,7 +684,7 @@ class AzureCloudProviderConnector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  azure_environment_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 credentials: pulumi.Input[Optional[Union['AzureCloudProviderConnectorCredentialsArgs', 'AzureCloudProviderConnectorCredentialsArgsDict']]] = None,
+                 credentials: pulumi.Input[Optional[Union['AzureCloudProviderConnectorCredentialsArgs', 'AzureCloudProviderConnectorCredentialsArgsDict', 'outputs.AzureCloudProviderConnectorCredentials']]] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -729,7 +729,7 @@ class AzureCloudProviderConnector(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             azure_environment_type: pulumi.Input[Optional[_builtins.str]] = None,
-            credentials: pulumi.Input[Optional[Union['AzureCloudProviderConnectorCredentialsArgs', 'AzureCloudProviderConnectorCredentialsArgsDict']]] = None,
+            credentials: pulumi.Input[Optional[Union['AzureCloudProviderConnectorCredentialsArgs', 'AzureCloudProviderConnectorCredentialsArgsDict', 'outputs.AzureCloudProviderConnectorCredentials']]] = None,
             delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -747,7 +747,7 @@ class AzureCloudProviderConnector(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] azure_environment_type: Specifies the Azure Environment type, which is AZURE by default. Can either be AZURE or AZURE*US*GOVERNMENT
-        :param pulumi.Input[Union['AzureCloudProviderConnectorCredentialsArgs', 'AzureCloudProviderConnectorCredentialsArgsDict']] credentials: Contains Azure connector credentials.
+        :param pulumi.Input[Union['AzureCloudProviderConnectorCredentialsArgs', 'AzureCloudProviderConnectorCredentialsArgsDict', 'outputs.AzureCloudProviderConnectorCredentials']] credentials: Contains Azure connector credentials.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] execute_on_delegate: Execute on delegate or not.

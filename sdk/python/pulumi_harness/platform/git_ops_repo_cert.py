@@ -212,7 +212,7 @@ class GitOpsRepoCert(pulumi.CustomResource):
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepoCertRequestArgs', 'GitOpsRepoCertRequestArgsDict']]]]] = None,
+                 requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepoCertRequestArgs', 'GitOpsRepoCertRequestArgsDict', 'outputs.GitOpsRepoCertRequest']]]]] = None,
                  __props__=None):
         """
         Resource for managing a Harness Gitops Repository Certificate. You can only create 1 instance per agent which has all the certificates of this resource.
@@ -226,13 +226,13 @@ class GitOpsRepoCert(pulumi.CustomResource):
         example = harness.platform.GitOpsRepoCert("example",
             requests=[{
                 "certificates": [{
-                    "metadatas": [{}],
                     "items": [{
                         "server_name": "github.com",
                         "cert_type": "ssh",
                         "cert_sub_type": "ecdsa-sha2-nistp256",
                         "cert_data": "QUFBQUUyVmpaSE5oTFhOb1lUSXRibWx6ZEhBeU5UWUFBQUFJYm1semRIQXlOVFlBQUFCQkJFbUtTRU5qUUVlek9teGtaTXk3b3BLZ3dGQjlua3Q1WVJyWU1qTnVHNU44N3VSZ2c2Q0xyYm81d0FkVC95NnYwbUtWMFUydzBXWjJZQi8rK1Rwb2NrZz0=",
                     }],
+                    "metadatas": [{}],
                 }],
                 "upsert": True,
             }],
@@ -269,7 +269,7 @@ class GitOpsRepoCert(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps repository certificate.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the GitOps repository certificate.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps repository certificate.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepoCertRequestArgs', 'GitOpsRepoCertRequestArgsDict']]]] requests: Repository Certificate create/update request.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepoCertRequestArgs', 'GitOpsRepoCertRequestArgsDict', 'outputs.GitOpsRepoCertRequest']]]] requests: Repository Certificate create/update request.
         """
         ...
     @overload
@@ -289,13 +289,13 @@ class GitOpsRepoCert(pulumi.CustomResource):
         example = harness.platform.GitOpsRepoCert("example",
             requests=[{
                 "certificates": [{
-                    "metadatas": [{}],
                     "items": [{
                         "server_name": "github.com",
                         "cert_type": "ssh",
                         "cert_sub_type": "ecdsa-sha2-nistp256",
                         "cert_data": "QUFBQUUyVmpaSE5oTFhOb1lUSXRibWx6ZEhBeU5UWUFBQUFJYm1semRIQXlOVFlBQUFCQkJFbUtTRU5qUUVlek9teGtaTXk3b3BLZ3dGQjlua3Q1WVJyWU1qTnVHNU44N3VSZ2c2Q0xyYm81d0FkVC95NnYwbUtWMFUydzBXWjJZQi8rK1Rwb2NrZz0=",
                     }],
+                    "metadatas": [{}],
                 }],
                 "upsert": True,
             }],
@@ -345,7 +345,7 @@ class GitOpsRepoCert(pulumi.CustomResource):
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepoCertRequestArgs', 'GitOpsRepoCertRequestArgsDict']]]]] = None,
+                 requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepoCertRequestArgs', 'GitOpsRepoCertRequestArgsDict', 'outputs.GitOpsRepoCertRequest']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -378,7 +378,7 @@ class GitOpsRepoCert(pulumi.CustomResource):
             agent_id: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
-            requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepoCertRequestArgs', 'GitOpsRepoCertRequestArgsDict']]]]] = None) -> 'GitOpsRepoCert':
+            requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepoCertRequestArgs', 'GitOpsRepoCertRequestArgsDict', 'outputs.GitOpsRepoCertRequest']]]]] = None) -> 'GitOpsRepoCert':
         """
         Get an existing GitOpsRepoCert resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -390,7 +390,7 @@ class GitOpsRepoCert(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps repository certificate.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the GitOps repository certificate.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps repository certificate.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepoCertRequestArgs', 'GitOpsRepoCertRequestArgsDict']]]] requests: Repository Certificate create/update request.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsRepoCertRequestArgs', 'GitOpsRepoCertRequestArgsDict', 'outputs.GitOpsRepoCertRequest']]]] requests: Repository Certificate create/update request.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

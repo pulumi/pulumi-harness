@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.platform.GitOpsRepoCertArgs;
  * import com.pulumi.harness.platform.inputs.GitOpsRepoCertRequestArgs;
  * import com.pulumi.harness.platform.inputs.GitOpsRepoCertRequestCertificateArgs;
- * import com.pulumi.harness.platform.inputs.GitOpsRepoCertRequestCertificateMetadataArgs;
  * import com.pulumi.harness.platform.inputs.GitOpsRepoCertRequestCertificateItemArgs;
+ * import com.pulumi.harness.platform.inputs.GitOpsRepoCertRequestCertificateMetadataArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -50,13 +50,13 @@ import javax.annotation.Nullable;
  *         var example = new GitOpsRepoCert("example", GitOpsRepoCertArgs.builder()
  *             .requests(GitOpsRepoCertRequestArgs.builder()
  *                 .certificates(GitOpsRepoCertRequestCertificateArgs.builder()
- *                     .metadatas(GitOpsRepoCertRequestCertificateMetadataArgs.builder()
- *                         .build())
  *                     .items(GitOpsRepoCertRequestCertificateItemArgs.builder()
  *                         .serverName("github.com")
  *                         .certType("ssh")
  *                         .certSubType("ecdsa-sha2-nistp256")
  *                         .certData("QUFBQUUyVmpaSE5oTFhOb1lUSXRibWx6ZEhBeU5UWUFBQUFJYm1semRIQXlOVFlBQUFCQkJFbUtTRU5qUUVlek9teGtaTXk3b3BLZ3dGQjlua3Q1WVJyWU1qTnVHNU44N3VSZ2c2Q0xyYm81d0FkVC95NnYwbUtWMFUydzBXWjJZQi8rK1Rwb2NrZz0=")
+ *                         .build())
+ *                     .metadatas(GitOpsRepoCertRequestCertificateMetadataArgs.builder()
  *                         .build())
  *                     .build())
  *                 .upsert(true)

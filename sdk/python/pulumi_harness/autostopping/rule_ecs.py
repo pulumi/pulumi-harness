@@ -306,11 +306,11 @@ class RuleEcs(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 container: pulumi.Input[Optional[Union['RuleEcsContainerArgs', 'RuleEcsContainerArgsDict']]] = None,
+                 container: pulumi.Input[Optional[Union['RuleEcsContainerArgs', 'RuleEcsContainerArgsDict', 'outputs.RuleEcsContainer']]] = None,
                  custom_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleEcsDependArgs', 'RuleEcsDependArgsDict']]]]] = None,
+                 depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleEcsDependArgs', 'RuleEcsDependArgsDict', 'outputs.RuleEcsDepend']]]]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
-                 https: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleEcsHttpArgs', 'RuleEcsHttpArgsDict']]]]] = None,
+                 https: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleEcsHttpArgs', 'RuleEcsHttpArgsDict', 'outputs.RuleEcsHttp']]]]] = None,
                  idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -324,10 +324,6 @@ class RuleEcs(pulumi.CustomResource):
         import pulumi_harness as harness
 
         test = harness.autostopping.RuleEcs("test",
-            name="name",
-            cloud_connector_id="cloud_connector_id",
-            idle_time_mins=10,
-            dry_run=True,
             container={
                 "cluster": "cluster",
                 "service": "service",
@@ -337,7 +333,11 @@ class RuleEcs(pulumi.CustomResource):
             depends=[{
                 "rule_id": 24576,
                 "delay_in_sec": 5,
-            }])
+            }],
+            name="name",
+            cloud_connector_id="cloud_connector_id",
+            idle_time_mins=10,
+            dry_run=True)
         ```
 
 
@@ -345,9 +345,9 @@ class RuleEcs(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_domains: Custom URLs used to access the instances
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsDependArgs', 'RuleEcsDependArgsDict']]]] depends: Dependent rules
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsDependArgs', 'RuleEcsDependArgsDict', 'outputs.RuleEcsDepend']]]] depends: Dependent rules
         :param pulumi.Input[_builtins.bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsHttpArgs', 'RuleEcsHttpArgsDict']]]] https: Http routing configuration
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsHttpArgs', 'RuleEcsHttpArgsDict', 'outputs.RuleEcsHttp']]]] https: Http routing configuration
         :param pulumi.Input[_builtins.int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         :param pulumi.Input[_builtins.str] name: Name of the rule
         """
@@ -367,10 +367,6 @@ class RuleEcs(pulumi.CustomResource):
         import pulumi_harness as harness
 
         test = harness.autostopping.RuleEcs("test",
-            name="name",
-            cloud_connector_id="cloud_connector_id",
-            idle_time_mins=10,
-            dry_run=True,
             container={
                 "cluster": "cluster",
                 "service": "service",
@@ -380,7 +376,11 @@ class RuleEcs(pulumi.CustomResource):
             depends=[{
                 "rule_id": 24576,
                 "delay_in_sec": 5,
-            }])
+            }],
+            name="name",
+            cloud_connector_id="cloud_connector_id",
+            idle_time_mins=10,
+            dry_run=True)
         ```
 
 
@@ -400,11 +400,11 @@ class RuleEcs(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 container: pulumi.Input[Optional[Union['RuleEcsContainerArgs', 'RuleEcsContainerArgsDict']]] = None,
+                 container: pulumi.Input[Optional[Union['RuleEcsContainerArgs', 'RuleEcsContainerArgsDict', 'outputs.RuleEcsContainer']]] = None,
                  custom_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleEcsDependArgs', 'RuleEcsDependArgsDict']]]]] = None,
+                 depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleEcsDependArgs', 'RuleEcsDependArgsDict', 'outputs.RuleEcsDepend']]]]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
-                 https: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleEcsHttpArgs', 'RuleEcsHttpArgsDict']]]]] = None,
+                 https: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleEcsHttpArgs', 'RuleEcsHttpArgsDict', 'outputs.RuleEcsHttp']]]]] = None,
                  idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -438,11 +438,11 @@ class RuleEcs(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
-            container: pulumi.Input[Optional[Union['RuleEcsContainerArgs', 'RuleEcsContainerArgsDict']]] = None,
+            container: pulumi.Input[Optional[Union['RuleEcsContainerArgs', 'RuleEcsContainerArgsDict', 'outputs.RuleEcsContainer']]] = None,
             custom_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleEcsDependArgs', 'RuleEcsDependArgsDict']]]]] = None,
+            depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleEcsDependArgs', 'RuleEcsDependArgsDict', 'outputs.RuleEcsDepend']]]]] = None,
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
-            https: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleEcsHttpArgs', 'RuleEcsHttpArgsDict']]]]] = None,
+            https: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleEcsHttpArgs', 'RuleEcsHttpArgsDict', 'outputs.RuleEcsHttp']]]]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None) -> 'RuleEcs':
@@ -455,9 +455,9 @@ class RuleEcs(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_domains: Custom URLs used to access the instances
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsDependArgs', 'RuleEcsDependArgsDict']]]] depends: Dependent rules
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsDependArgs', 'RuleEcsDependArgsDict', 'outputs.RuleEcsDepend']]]] depends: Dependent rules
         :param pulumi.Input[_builtins.bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsHttpArgs', 'RuleEcsHttpArgsDict']]]] https: Http routing configuration
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleEcsHttpArgs', 'RuleEcsHttpArgsDict', 'outputs.RuleEcsHttp']]]] https: Http routing configuration
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         :param pulumi.Input[_builtins.str] name: Name of the rule

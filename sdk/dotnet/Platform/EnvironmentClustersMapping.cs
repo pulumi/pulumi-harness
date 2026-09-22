@@ -25,10 +25,6 @@ namespace Pulumi.Harness.Platform
     ///     // mapping a cluster to a project level env
     ///     var example = new Harness.Platform.EnvironmentClustersMapping("example", new()
     ///     {
-    ///         Identifier = "mycustomidentifier",
-    ///         OrgId = "orgIdentifer",
-    ///         ProjectId = "projectIdentifier",
-    ///         EnvId = "exampleEnvId",
     ///         Clusters = new[]
     ///         {
     ///             new Harness.Platform.Inputs.EnvironmentClustersMappingClusterArgs
@@ -39,13 +35,15 @@ namespace Pulumi.Harness.Platform
     ///                 Scope = "ACCOUNT",
     ///             },
     ///         },
+    ///         Identifier = "mycustomidentifier",
+    ///         OrgId = "orgIdentifer",
+    ///         ProjectId = "projectIdentifier",
+    ///         EnvId = "exampleEnvId",
     ///     });
     /// 
     ///     // mapping two clusters to account level env
     ///     var example2 = new Harness.Platform.EnvironmentClustersMapping("example2", new()
     ///     {
-    ///         Identifier = "mycustomidentifier",
-    ///         EnvId = "env1",
     ///         Clusters = new[]
     ///         {
     ///             new Harness.Platform.Inputs.EnvironmentClustersMappingClusterArgs
@@ -63,6 +61,8 @@ namespace Pulumi.Harness.Platform
     ///                 Scope = "ACCOUNT",
     ///             },
     ///         },
+    ///         Identifier = "mycustomidentifier",
+    ///         EnvId = "env1",
     ///     });
     /// 
     /// });

@@ -29,15 +29,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewVariables(ctx, "test", &platform.VariablesArgs{
+//				Spec: &platform.VariablesSpecArgs{
+//					ValueType:  pulumi.String("FIXED"),
+//					FixedValue: pulumi.String("fixedValue"),
+//				},
 //				Identifier: pulumi.String("identifier"),
 //				Name:       pulumi.String("name"),
 //				OrgId:      pulumi.String("org_id"),
 //				ProjectId:  pulumi.String("project_id"),
 //				Type:       pulumi.String("String"),
-//				Spec: &platform.VariablesSpecArgs{
-//					ValueType:  pulumi.String("FIXED"),
-//					FixedValue: pulumi.String("fixedValue"),
-//				},
 //			})
 //			if err != nil {
 //				return err

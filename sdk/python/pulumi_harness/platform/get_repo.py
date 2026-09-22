@@ -239,7 +239,7 @@ def get_repo(default_branch: Optional[_builtins.str] = None,
              org_id: Optional[_builtins.str] = None,
              project_id: Optional[_builtins.str] = None,
              readme: Optional[_builtins.bool] = None,
-             sources: Optional[Sequence[Union['GetRepoSourceArgs', 'GetRepoSourceArgsDict']]] = None,
+             sources: Optional[Sequence[Union['GetRepoSourceArgs', 'GetRepoSourceArgsDict', 'outputs.GetRepoSourceResult']]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRepoResult:
     """
     Data source for retrieving a Harness repo.
@@ -264,7 +264,7 @@ def get_repo(default_branch: Optional[_builtins.str] = None,
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
     :param _builtins.bool readme: Repository should be created with readme file.
-    :param Sequence[Union['GetRepoSourceArgs', 'GetRepoSourceArgsDict']] sources: Configuration for importing an existing repository from SCM provider.
+    :param Sequence[Union['GetRepoSourceArgs', 'GetRepoSourceArgsDict', 'outputs.GetRepoSourceResult']] sources: Configuration for importing an existing repository from SCM provider.
     """
     __args__ = dict()
     __args__['defaultBranch'] = default_branch
@@ -304,7 +304,7 @@ def get_repo_output(default_branch: pulumi.Input[Optional[Optional[_builtins.str
                     org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     readme: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
-                    sources: pulumi.Input[Optional[Optional[Sequence[Union['GetRepoSourceArgs', 'GetRepoSourceArgsDict']]]]] = None,
+                    sources: pulumi.Input[Optional[Optional[Sequence[Union['GetRepoSourceArgs', 'GetRepoSourceArgsDict', 'outputs.GetRepoSourceResult']]]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepoResult]:
     """
     Data source for retrieving a Harness repo.
@@ -329,7 +329,7 @@ def get_repo_output(default_branch: pulumi.Input[Optional[Optional[_builtins.str
     :param _builtins.str org_id: Unique identifier of the organization.
     :param _builtins.str project_id: Unique identifier of the project.
     :param _builtins.bool readme: Repository should be created with readme file.
-    :param Sequence[Union['GetRepoSourceArgs', 'GetRepoSourceArgsDict']] sources: Configuration for importing an existing repository from SCM provider.
+    :param Sequence[Union['GetRepoSourceArgs', 'GetRepoSourceArgsDict', 'outputs.GetRepoSourceResult']] sources: Configuration for importing an existing repository from SCM provider.
     """
     __args__ = dict()
     __args__['defaultBranch'] = default_branch

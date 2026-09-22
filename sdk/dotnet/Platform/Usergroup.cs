@@ -52,16 +52,6 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var ssoTypeSaml = new Harness.Platform.Usergroup("sso_type_saml", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         LinkedSsoId = "linked_sso_id",
-    ///         ExternallyManaged = false,
-    ///         Users = new[]
-    ///         {
-    ///             "user_id",
-    ///         },
     ///         NotificationConfigs = new[]
     ///         {
     ///             new Harness.Platform.Inputs.UsergroupNotificationConfigArgs
@@ -85,6 +75,16 @@ namespace Pulumi.Harness.Platform
     ///                 Type = "PAGERDUTY",
     ///                 PagerDutyKey = "pagerDutyKey",
     ///             },
+    ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         LinkedSsoId = "linked_sso_id",
+    ///         ExternallyManaged = false,
+    ///         Users = new[]
+    ///         {
+    ///             "user_id",
     ///         },
     ///         LinkedSsoDisplayName = "linked_sso_display_name",
     ///         SsoGroupId = "sso_group_name",
@@ -95,16 +95,6 @@ namespace Pulumi.Harness.Platform
     /// 
     ///     var ssoTypeLdap = new Harness.Platform.Usergroup("sso_type_ldap", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         LinkedSsoId = "linked_sso_id",
-    ///         ExternallyManaged = false,
-    ///         Users = new[]
-    ///         {
-    ///             "user_id",
-    ///         },
     ///         NotificationConfigs = new[]
     ///         {
     ///             new Harness.Platform.Inputs.UsergroupNotificationConfigArgs
@@ -128,6 +118,16 @@ namespace Pulumi.Harness.Platform
     ///                 Type = "PAGERDUTY",
     ///                 PagerDutyKey = "pagerDutyKey",
     ///             },
+    ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         LinkedSsoId = "linked_sso_id",
+    ///         ExternallyManaged = false,
+    ///         Users = new[]
+    ///         {
+    ///             "user_id",
     ///         },
     ///         LinkedSsoDisplayName = "linked_sso_display_name",
     ///         SsoGroupId = "sso_group_id",
@@ -139,16 +139,6 @@ namespace Pulumi.Harness.Platform
     ///     // Create user group by adding user emails
     ///     var example = new Harness.Platform.Usergroup("example", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         LinkedSsoId = "linked_sso_id",
-    ///         ExternallyManaged = false,
-    ///         UserEmails = new[]
-    ///         {
-    ///             "user@email.com",
-    ///         },
     ///         NotificationConfigs = new[]
     ///         {
     ///             new Harness.Platform.Inputs.UsergroupNotificationConfigArgs
@@ -172,6 +162,16 @@ namespace Pulumi.Harness.Platform
     ///                 Type = "PAGERDUTY",
     ///                 PagerDutyKey = "pagerDutyKey",
     ///             },
+    ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         LinkedSsoId = "linked_sso_id",
+    ///         ExternallyManaged = false,
+    ///         UserEmails = new[]
+    ///         {
+    ///             "user@email.com",
     ///         },
     ///         LinkedSsoDisplayName = "linked_sso_display_name",
     ///         SsoGroupId = "sso_group_name",

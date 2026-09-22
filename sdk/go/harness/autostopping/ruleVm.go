@@ -29,10 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := autostopping.NewRuleVm(ctx, "test", &autostopping.RuleVmArgs{
-//				Name:             pulumi.String("name"),
-//				CloudConnectorId: pulumi.String("cloud_connector_id"),
-//				IdleTimeMins:     pulumi.Int(10),
-//				DryRun:           pulumi.Bool(true),
 //				Filter: &autostopping.RuleVmFilterArgs{
 //					VmIds: pulumi.StringArray{
 //						pulumi.String("/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Compute/virtualMachines/virtual_machine"),
@@ -41,9 +37,24 @@ import (
 //						pulumi.String("useast2"),
 //					},
 //				},
+//				Depends: autostopping.RuleVmDependArray{
+//					&autostopping.RuleVmDependArgs{
+//						RuleId:     pulumi.Int(24576),
+//						DelayInSec: pulumi.Int(5),
+//					},
+//				},
 //				Https: autostopping.RuleVmHttpArray{
 //					&autostopping.RuleVmHttpArgs{
-//						ProxyId: pulumi.String("proxy_id"),
+//						Healths: autostopping.RuleVmHttpHealthArray{
+//							&autostopping.RuleVmHttpHealthArgs{
+//								Protocol:       pulumi.String("http"),
+//								Port:           pulumi.Int(80),
+//								Path:           pulumi.String("/"),
+//								Timeout:        pulumi.Int(30),
+//								StatusCodeFrom: pulumi.Int(200),
+//								StatusCodeTo:   pulumi.Int(299),
+//							},
+//						},
 //						Routings: autostopping.RuleVmHttpRoutingArray{
 //							&autostopping.RuleVmHttpRoutingArgs{
 //								SourceProtocol: pulumi.String("https"),
@@ -60,24 +71,14 @@ import (
 //								Action:         pulumi.String("forward"),
 //							},
 //						},
-//						Healths: autostopping.RuleVmHttpHealthArray{
-//							&autostopping.RuleVmHttpHealthArgs{
-//								Protocol:       pulumi.String("http"),
-//								Port:           pulumi.Int(80),
-//								Path:           pulumi.String("/"),
-//								Timeout:        pulumi.Int(30),
-//								StatusCodeFrom: pulumi.Int(200),
-//								StatusCodeTo:   pulumi.Int(299),
-//							},
-//						},
+//						ProxyId: pulumi.String("proxy_id"),
 //					},
 //				},
 //				Tcps: autostopping.RuleVmTcpArray{
 //					&autostopping.RuleVmTcpArgs{
-//						ProxyId: pulumi.String("proxy_id"),
-//						Sshes: autostopping.RuleVmTcpSshArray{
-//							&autostopping.RuleVmTcpSshArgs{
-//								Port: pulumi.Int(22),
+//						ForwardRules: autostopping.RuleVmTcpForwardRuleArray{
+//							&autostopping.RuleVmTcpForwardRuleArgs{
+//								Port: pulumi.Int(2233),
 //							},
 //						},
 //						Rdps: autostopping.RuleVmTcpRdpArray{
@@ -85,19 +86,18 @@ import (
 //								Port: pulumi.Int(3389),
 //							},
 //						},
-//						ForwardRules: autostopping.RuleVmTcpForwardRuleArray{
-//							&autostopping.RuleVmTcpForwardRuleArgs{
-//								Port: pulumi.Int(2233),
+//						Sshes: autostopping.RuleVmTcpSshArray{
+//							&autostopping.RuleVmTcpSshArgs{
+//								Port: pulumi.Int(22),
 //							},
 //						},
+//						ProxyId: pulumi.String("proxy_id"),
 //					},
 //				},
-//				Depends: autostopping.RuleVmDependArray{
-//					&autostopping.RuleVmDependArgs{
-//						RuleId:     pulumi.Int(24576),
-//						DelayInSec: pulumi.Int(5),
-//					},
-//				},
+//				Name:             pulumi.String("name"),
+//				CloudConnectorId: pulumi.String("cloud_connector_id"),
+//				IdleTimeMins:     pulumi.Int(10),
+//				DryRun:           pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

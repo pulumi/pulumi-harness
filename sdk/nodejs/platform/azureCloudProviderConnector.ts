@@ -16,54 +16,49 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const manualConfigSecret = new harness.platform.AzureCloudProviderConnector("manual_config_secret", {
+ *     credentials: {
+ *         azureManualDetails: {
+ *             auth: {
+ *                 azureClientSecretKey: {
+ *                     secretRef: `account.${test.id}`,
+ *                 },
+ *                 type: "Secret",
+ *             },
+ *             applicationId: "application_id",
+ *             tenantId: "tenant_id",
+ *         },
+ *         type: "ManualConfig",
+ *     },
  *     identifier: "identifier",
  *     name: "name",
  *     description: "example",
  *     tags: ["foo:bar"],
- *     credentials: {
- *         type: "ManualConfig",
- *         azureManualDetails: {
- *             applicationId: "application_id",
- *             tenantId: "tenant_id",
- *             auth: {
- *                 type: "Secret",
- *                 azureClientSecretKey: {
- *                     secretRef: `account.${test.id}`,
- *                 },
- *             },
- *         },
- *     },
  *     azureEnvironmentType: "AZURE",
  *     delegateSelectors: ["harness-delegate"],
  * });
  * const manualConfigCertificate = new harness.platform.AzureCloudProviderConnector("manual_config_certificate", {
+ *     credentials: {
+ *         azureManualDetails: {
+ *             auth: {
+ *                 azureClientKeyCert: {
+ *                     certificateRef: `account.${test.id}`,
+ *                 },
+ *                 type: "Certificate",
+ *             },
+ *             applicationId: "application_id",
+ *             tenantId: "tenant_id",
+ *         },
+ *         type: "ManualConfig",
+ *     },
  *     identifier: "identifier",
  *     name: "name",
  *     description: "example",
  *     tags: ["foo:bar"],
- *     credentials: {
- *         type: "ManualConfig",
- *         azureManualDetails: {
- *             applicationId: "application_id",
- *             tenantId: "tenant_id",
- *             auth: {
- *                 type: "Certificate",
- *                 azureClientKeyCert: {
- *                     certificateRef: `account.${test.id}`,
- *                 },
- *             },
- *         },
- *     },
  *     azureEnvironmentType: "AZURE",
  *     delegateSelectors: ["harness-delegate"],
  * });
  * const inheritFromDelegateUserAssignedManagedIdentity = new harness.platform.AzureCloudProviderConnector("inherit_from_delegate_user_assigned_managed_identity", {
- *     identifier: "identifier",
- *     name: "name",
- *     description: "example",
- *     tags: ["foo:bar"],
  *     credentials: {
- *         type: "InheritFromDelegate",
  *         azureInheritFromDelegateDetails: {
  *             auth: {
  *                 azureMsiAuthUa: {
@@ -72,39 +67,44 @@ import * as utilities from "../utilities";
  *                 type: "UserAssignedManagedIdentity",
  *             },
  *         },
+ *         type: "InheritFromDelegate",
  *     },
- *     azureEnvironmentType: "AZURE",
- *     delegateSelectors: ["harness-delegate"],
- * });
- * const inheritFromDelegateSystemAssignedManagedIdentity = new harness.platform.AzureCloudProviderConnector("inherit_from_delegate_system_assigned_managed_identity", {
  *     identifier: "identifier",
  *     name: "name",
  *     description: "example",
  *     tags: ["foo:bar"],
+ *     azureEnvironmentType: "AZURE",
+ *     delegateSelectors: ["harness-delegate"],
+ * });
+ * const inheritFromDelegateSystemAssignedManagedIdentity = new harness.platform.AzureCloudProviderConnector("inherit_from_delegate_system_assigned_managed_identity", {
  *     credentials: {
- *         type: "InheritFromDelegate",
  *         azureInheritFromDelegateDetails: {
  *             auth: {
  *                 type: "SystemAssignedManagedIdentity",
  *             },
  *         },
+ *         type: "InheritFromDelegate",
  *     },
- *     azureEnvironmentType: "AZURE",
- *     delegateSelectors: ["harness-delegate"],
- * });
- * const oidcAuthentication = new harness.platform.AzureCloudProviderConnector("oidc_authentication", {
  *     identifier: "identifier",
  *     name: "name",
  *     description: "example",
  *     tags: ["foo:bar"],
+ *     azureEnvironmentType: "AZURE",
+ *     delegateSelectors: ["harness-delegate"],
+ * });
+ * const oidcAuthentication = new harness.platform.AzureCloudProviderConnector("oidc_authentication", {
  *     credentials: {
- *         type: "OidcAuthentication",
  *         azureOidcSpec: {
  *             applicationId: "application_id",
  *             tenantId: "tenant_id",
  *             audience: "audience",
  *         },
+ *         type: "OidcAuthentication",
  *     },
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "example",
+ *     tags: ["foo:bar"],
  *     azureEnvironmentType: "AZURE",
  *     delegateSelectors: ["harness-delegate"],
  * });

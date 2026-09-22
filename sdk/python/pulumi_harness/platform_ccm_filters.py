@@ -263,7 +263,7 @@ class PlatformCcmFilters(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 filter_properties: pulumi.Input[Optional[Union['PlatformCcmFiltersFilterPropertiesArgs', 'PlatformCcmFiltersFilterPropertiesArgsDict']]] = None,
+                 filter_properties: pulumi.Input[Optional[Union['PlatformCcmFiltersFilterPropertiesArgs', 'PlatformCcmFiltersFilterPropertiesArgsDict', 'outputs.PlatformCcmFiltersFilterProperties']]] = None,
                  filter_visibility: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -281,15 +281,15 @@ class PlatformCcmFilters(pulumi.CustomResource):
         import pulumi_harness as harness
 
         test = harness.PlatformCcmFilters("test",
+            filter_properties={
+                "tags": ["foo:bar"],
+                "filter_type": "CCMRecommendation",
+            },
             identifier="identifier",
             name="name",
             org_id="org_id",
             project_id="project_id",
             type="CCMRecommendation",
-            filter_properties={
-                "tags": ["foo:bar"],
-                "filter_type": "CCMRecommendation",
-            },
             filter_visibility="EveryOne")
         ```
 
@@ -318,7 +318,7 @@ class PlatformCcmFilters(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PlatformCcmFiltersFilterPropertiesArgs', 'PlatformCcmFiltersFilterPropertiesArgsDict']] filter_properties: Properties of the filters entity defined in Harness.
+        :param pulumi.Input[Union['PlatformCcmFiltersFilterPropertiesArgs', 'PlatformCcmFiltersFilterPropertiesArgsDict', 'outputs.PlatformCcmFiltersFilterProperties']] filter_properties: Properties of the filters entity defined in Harness.
         :param pulumi.Input[_builtins.str] filter_visibility: This indicates visibility of filters, by default it is Everyone.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the ccm filters.
@@ -342,15 +342,15 @@ class PlatformCcmFilters(pulumi.CustomResource):
         import pulumi_harness as harness
 
         test = harness.PlatformCcmFilters("test",
+            filter_properties={
+                "tags": ["foo:bar"],
+                "filter_type": "CCMRecommendation",
+            },
             identifier="identifier",
             name="name",
             org_id="org_id",
             project_id="project_id",
             type="CCMRecommendation",
-            filter_properties={
-                "tags": ["foo:bar"],
-                "filter_type": "CCMRecommendation",
-            },
             filter_visibility="EveryOne")
         ```
 
@@ -392,7 +392,7 @@ class PlatformCcmFilters(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 filter_properties: pulumi.Input[Optional[Union['PlatformCcmFiltersFilterPropertiesArgs', 'PlatformCcmFiltersFilterPropertiesArgsDict']]] = None,
+                 filter_properties: pulumi.Input[Optional[Union['PlatformCcmFiltersFilterPropertiesArgs', 'PlatformCcmFiltersFilterPropertiesArgsDict', 'outputs.PlatformCcmFiltersFilterProperties']]] = None,
                  filter_visibility: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -431,7 +431,7 @@ class PlatformCcmFilters(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            filter_properties: pulumi.Input[Optional[Union['PlatformCcmFiltersFilterPropertiesArgs', 'PlatformCcmFiltersFilterPropertiesArgsDict']]] = None,
+            filter_properties: pulumi.Input[Optional[Union['PlatformCcmFiltersFilterPropertiesArgs', 'PlatformCcmFiltersFilterPropertiesArgsDict', 'outputs.PlatformCcmFiltersFilterProperties']]] = None,
             filter_visibility: pulumi.Input[Optional[_builtins.str]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -445,7 +445,7 @@ class PlatformCcmFilters(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PlatformCcmFiltersFilterPropertiesArgs', 'PlatformCcmFiltersFilterPropertiesArgsDict']] filter_properties: Properties of the filters entity defined in Harness.
+        :param pulumi.Input[Union['PlatformCcmFiltersFilterPropertiesArgs', 'PlatformCcmFiltersFilterPropertiesArgsDict', 'outputs.PlatformCcmFiltersFilterProperties']] filter_properties: Properties of the filters entity defined in Harness.
         :param pulumi.Input[_builtins.str] filter_visibility: This indicates visibility of filters, by default it is Everyone.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the ccm filters.

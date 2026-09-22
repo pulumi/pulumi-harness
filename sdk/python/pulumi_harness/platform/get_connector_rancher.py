@@ -147,7 +147,7 @@ class AwaitableGetConnectorRancherResult(GetConnectorRancherResult):
             tags=self.tags)
 
 
-def get_connector_rancher(bearer_token: Optional[Union['GetConnectorRancherBearerTokenArgs', 'GetConnectorRancherBearerTokenArgsDict']] = None,
+def get_connector_rancher(bearer_token: Optional[Union['GetConnectorRancherBearerTokenArgs', 'GetConnectorRancherBearerTokenArgsDict', 'outputs.GetConnectorRancherBearerTokenResult']] = None,
                           identifier: Optional[_builtins.str] = None,
                           name: Optional[_builtins.str] = None,
                           org_id: Optional[_builtins.str] = None,
@@ -166,7 +166,7 @@ def get_connector_rancher(bearer_token: Optional[Union['GetConnectorRancherBeare
     ```
 
 
-    :param Union['GetConnectorRancherBearerTokenArgs', 'GetConnectorRancherBearerTokenArgsDict'] bearer_token: URL and bearer token for the rancher cluster.
+    :param Union['GetConnectorRancherBearerTokenArgs', 'GetConnectorRancherBearerTokenArgsDict', 'outputs.GetConnectorRancherBearerTokenResult'] bearer_token: URL and bearer token for the rancher cluster.
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
@@ -191,7 +191,7 @@ def get_connector_rancher(bearer_token: Optional[Union['GetConnectorRancherBeare
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_connector_rancher_output(bearer_token: pulumi.Input[Optional[Optional[Union['GetConnectorRancherBearerTokenArgs', 'GetConnectorRancherBearerTokenArgsDict']]]] = None,
+def get_connector_rancher_output(bearer_token: pulumi.Input[Optional[Optional[Union['GetConnectorRancherBearerTokenArgs', 'GetConnectorRancherBearerTokenArgsDict', 'outputs.GetConnectorRancherBearerTokenResult']]]] = None,
                                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                                  name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -210,7 +210,7 @@ def get_connector_rancher_output(bearer_token: pulumi.Input[Optional[Optional[Un
     ```
 
 
-    :param Union['GetConnectorRancherBearerTokenArgs', 'GetConnectorRancherBearerTokenArgsDict'] bearer_token: URL and bearer token for the rancher cluster.
+    :param Union['GetConnectorRancherBearerTokenArgs', 'GetConnectorRancherBearerTokenArgsDict', 'outputs.GetConnectorRancherBearerTokenResult'] bearer_token: URL and bearer token for the rancher cluster.
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.

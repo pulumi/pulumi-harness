@@ -24,11 +24,6 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var test = new Harness.Platform.GitOpsRepoCred("test", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         AccountId = "account_id",
-    ///         AgentId = "agent_id",
-    ///         ProjectId = "project_id",
-    ///         OrgId = "org_id",
     ///         Creds = new[]
     ///         {
     ///             new Harness.Platform.Inputs.GitOpsRepoCredCredArgs
@@ -43,6 +38,11 @@ namespace Pulumi.Harness.Platform
     /// ",
     ///             },
     ///         },
+    ///         Identifier = "identifier",
+    ///         AccountId = "account_id",
+    ///         AgentId = "agent_id",
+    ///         ProjectId = "project_id",
+    ///         OrgId = "org_id",
     ///     }, new CustomResourceOptions
     ///     {
     ///         IgnoreChanges =

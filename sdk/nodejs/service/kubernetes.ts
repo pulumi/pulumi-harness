@@ -17,10 +17,6 @@ import * as utilities from "../utilities";
  *
  * const example = new harness.Application("example", {name: "example"});
  * const exampleKubernetes = new harness.service.Kubernetes("example", {
- *     appId: example.id,
- *     name: "k8s-svc",
- *     helmVersion: "V3",
- *     description: "Service for deploying Kubernetes manifests",
  *     variables: [
  *         {
  *             name: "test",
@@ -33,6 +29,10 @@ import * as utilities from "../utilities";
  *             type: "TEXT",
  *         },
  *     ],
+ *     appId: example.id,
+ *     name: "k8s-svc",
+ *     helmVersion: "V3",
+ *     description: "Service for deploying Kubernetes manifests",
  * });
  * ```
  *

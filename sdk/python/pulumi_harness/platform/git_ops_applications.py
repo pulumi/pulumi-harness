@@ -663,7 +663,7 @@ class GitOpsApplications(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 applications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict']]]]] = None,
+                 applications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict', 'outputs.GitOpsApplicationsApplication']]]]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -701,6 +701,15 @@ class GitOpsApplications(pulumi.CustomResource):
                     "name": "appname123",
                 }],
                 "specs": [{
+                    "destinations": [{
+                        "namespace": "namespace-123",
+                        "server": "https://1.3.4.5",
+                    }],
+                    "sources": [{
+                        "target_revision": "master",
+                        "repo_url": "https://github.com/willycoll/argocd-example-apps.git",
+                        "path": "helm-guestbook",
+                    }],
                     "sync_policies": [{
                         "sync_options": [
                             "PrunePropagationPolicy=undefined",
@@ -713,15 +722,6 @@ class GitOpsApplications(pulumi.CustomResource):
                             "Replace=false",
                             "retry=false",
                         ],
-                    }],
-                    "sources": [{
-                        "target_revision": "master",
-                        "repo_url": "https://github.com/willycoll/argocd-example-apps.git",
-                        "path": "helm-guestbook",
-                    }],
-                    "destinations": [{
-                        "namespace": "namespace-123",
-                        "server": "https://1.3.4.5",
                     }],
                 }],
             }],
@@ -749,7 +749,7 @@ class GitOpsApplications(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps application.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps application.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict']]]] applications: Definition of the GitOps application resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict', 'outputs.GitOpsApplicationsApplication']]]] applications: Definition of the GitOps application resource.
         :param pulumi.Input[_builtins.str] cluster_id: Cluster identifier of the GitOps application.
         :param pulumi.Input[_builtins.bool] force_delete: Indicates if the GitOps application should be force deleted from harness.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps application.
@@ -793,6 +793,15 @@ class GitOpsApplications(pulumi.CustomResource):
                     "name": "appname123",
                 }],
                 "specs": [{
+                    "destinations": [{
+                        "namespace": "namespace-123",
+                        "server": "https://1.3.4.5",
+                    }],
+                    "sources": [{
+                        "target_revision": "master",
+                        "repo_url": "https://github.com/willycoll/argocd-example-apps.git",
+                        "path": "helm-guestbook",
+                    }],
                     "sync_policies": [{
                         "sync_options": [
                             "PrunePropagationPolicy=undefined",
@@ -805,15 +814,6 @@ class GitOpsApplications(pulumi.CustomResource):
                             "Replace=false",
                             "retry=false",
                         ],
-                    }],
-                    "sources": [{
-                        "target_revision": "master",
-                        "repo_url": "https://github.com/willycoll/argocd-example-apps.git",
-                        "path": "helm-guestbook",
-                    }],
-                    "destinations": [{
-                        "namespace": "namespace-123",
-                        "server": "https://1.3.4.5",
                     }],
                 }],
             }],
@@ -854,7 +854,7 @@ class GitOpsApplications(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 applications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict']]]]] = None,
+                 applications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict', 'outputs.GitOpsApplicationsApplication']]]]] = None,
                  cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -921,7 +921,7 @@ class GitOpsApplications(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: pulumi.Input[Optional[_builtins.str]] = None,
             agent_id: pulumi.Input[Optional[_builtins.str]] = None,
-            applications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict']]]]] = None,
+            applications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict', 'outputs.GitOpsApplicationsApplication']]]]] = None,
             cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
@@ -947,7 +947,7 @@ class GitOpsApplications(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps application.
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the GitOps application.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict']]]] applications: Definition of the GitOps application resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict', 'outputs.GitOpsApplicationsApplication']]]] applications: Definition of the GitOps application resource.
         :param pulumi.Input[_builtins.str] cluster_id: Cluster identifier of the GitOps application.
         :param pulumi.Input[_builtins.bool] force_delete: Indicates if the GitOps application should be force deleted from harness.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps application.

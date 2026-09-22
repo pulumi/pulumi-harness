@@ -32,10 +32,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Example of a Virtual Registry
 //			_, err := platform.NewHarRegistry(ctx, "virtual_registry", &platform.HarRegistryArgs{
-//				Identifier:  pulumi.String("virtual_docker_registry"),
-//				Description: pulumi.String("Virtual Docker Registry"),
-//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
-//				PackageType: pulumi.String("DOCKER"),
 //				Configs: platform.HarRegistryConfigArray{
 //					&platform.HarRegistryConfigArgs{
 //						Type: pulumi.String("VIRTUAL"),
@@ -45,22 +41,19 @@ import (
 //						},
 //					},
 //				},
-//				ParentRef: pulumi.String("accountId/orgId/projectId"),
+//				Identifier:  pulumi.String("virtual_docker_registry"),
+//				Description: pulumi.String("Virtual Docker Registry"),
+//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
+//				PackageType: pulumi.String("DOCKER"),
+//				ParentRef:   pulumi.String("accountId/orgId/projectId"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example of an Upstream Registry with Authentication
 //			_, err = platform.NewHarRegistry(ctx, "upstream_registry", &platform.HarRegistryArgs{
-//				Identifier:  pulumi.String("upstream_helm_registry"),
-//				Description: pulumi.String("Upstream Helm Registry"),
-//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
-//				PackageType: pulumi.String("HELM"),
 //				Configs: platform.HarRegistryConfigArray{
 //					&platform.HarRegistryConfigArgs{
-//						Type:   pulumi.String("UPSTREAM"),
-//						Source: pulumi.String("Custom"),
-//						Url:    pulumi.String("https://helm.sh"),
 //						Auths: platform.HarRegistryConfigAuthArray{
 //							&platform.HarRegistryConfigAuthArgs{
 //								AuthType:         pulumi.String("UserPassword"),
@@ -69,19 +62,22 @@ import (
 //								SecretSpacePath:  pulumi.String("accountId/orgId/projectId"),
 //							},
 //						},
+//						Type:   pulumi.String("UPSTREAM"),
+//						Source: pulumi.String("Custom"),
+//						Url:    pulumi.String("https://helm.sh"),
 //					},
 //				},
-//				ParentRef: pulumi.String("accountId/orgId/projectId"),
+//				Identifier:  pulumi.String("upstream_helm_registry"),
+//				Description: pulumi.String("Upstream Helm Registry"),
+//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
+//				PackageType: pulumi.String("HELM"),
+//				ParentRef:   pulumi.String("accountId/orgId/projectId"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example of an Upstream Go Registry (GoProxy source needs no url)
 //			_, err = platform.NewHarRegistry(ctx, "go_upstream", &platform.HarRegistryArgs{
-//				Identifier:  pulumi.String("upstream_go_registry"),
-//				Description: pulumi.String("Upstream Go Registry"),
-//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
-//				PackageType: pulumi.String("GO"),
 //				Configs: platform.HarRegistryConfigArray{
 //					&platform.HarRegistryConfigArgs{
 //						Type:     pulumi.String("UPSTREAM"),
@@ -89,17 +85,17 @@ import (
 //						AuthType: pulumi.String("Anonymous"),
 //					},
 //				},
-//				ParentRef: pulumi.String("accountId/orgId/projectId"),
+//				Identifier:  pulumi.String("upstream_go_registry"),
+//				Description: pulumi.String("Upstream Go Registry"),
+//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
+//				PackageType: pulumi.String("GO"),
+//				ParentRef:   pulumi.String("accountId/orgId/projectId"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example of an Upstream Conda Registry (Anaconda source needs no url)
 //			_, err = platform.NewHarRegistry(ctx, "conda_upstream", &platform.HarRegistryArgs{
-//				Identifier:  pulumi.String("upstream_conda_registry"),
-//				Description: pulumi.String("Upstream Conda Registry"),
-//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
-//				PackageType: pulumi.String("CONDA"),
 //				Configs: platform.HarRegistryConfigArray{
 //					&platform.HarRegistryConfigArgs{
 //						Type:     pulumi.String("UPSTREAM"),
@@ -107,17 +103,17 @@ import (
 //						AuthType: pulumi.String("Anonymous"),
 //					},
 //				},
-//				ParentRef: pulumi.String("accountId/orgId/projectId"),
+//				Identifier:  pulumi.String("upstream_conda_registry"),
+//				Description: pulumi.String("Upstream Conda Registry"),
+//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
+//				PackageType: pulumi.String("CONDA"),
+//				ParentRef:   pulumi.String("accountId/orgId/projectId"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example of an Upstream Helm HTTP Registry (HelmChartRepo source requires url)
 //			_, err = platform.NewHarRegistry(ctx, "helm_http_upstream", &platform.HarRegistryArgs{
-//				Identifier:  pulumi.String("upstream_helm_http_registry"),
-//				Description: pulumi.String("Upstream Helm HTTP Registry"),
-//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
-//				PackageType: pulumi.String("HELM_HTTP"),
 //				Configs: platform.HarRegistryConfigArray{
 //					&platform.HarRegistryConfigArgs{
 //						Type:     pulumi.String("UPSTREAM"),
@@ -126,23 +122,19 @@ import (
 //						AuthType: pulumi.String("Anonymous"),
 //					},
 //				},
-//				ParentRef: pulumi.String("accountId/orgId/projectId"),
+//				Identifier:  pulumi.String("upstream_helm_http_registry"),
+//				Description: pulumi.String("Upstream Helm HTTP Registry"),
+//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
+//				PackageType: pulumi.String("HELM_HTTP"),
+//				ParentRef:   pulumi.String("accountId/orgId/projectId"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example of a Virtual Debian Registry with Debian-specific configuration
 //			_, err = platform.NewHarRegistry(ctx, "debian_virtual", &platform.HarRegistryArgs{
-//				Identifier:  pulumi.String("virtual_debian_registry"),
-//				Description: pulumi.String("Virtual Debian Registry"),
-//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
-//				PackageType: pulumi.String("DEBIAN"),
 //				Configs: platform.HarRegistryConfigArray{
 //					&platform.HarRegistryConfigArgs{
-//						Type: pulumi.String("VIRTUAL"),
-//						UpstreamProxies: pulumi.StringArray{
-//							pulumi.String("debian_upstream_registry"),
-//						},
 //						DebianConfig: &platform.HarRegistryConfigDebianConfigArgs{
 //							RemoteIndexedArchitectures: pulumi.StringArray{
 //								pulumi.String("amd64"),
@@ -152,19 +144,23 @@ import (
 //								pulumi.String(".xz"),
 //							},
 //						},
+//						Type: pulumi.String("VIRTUAL"),
+//						UpstreamProxies: pulumi.StringArray{
+//							pulumi.String("debian_upstream_registry"),
+//						},
 //					},
 //				},
-//				ParentRef: pulumi.String("accountId/orgId/projectId"),
+//				Identifier:  pulumi.String("virtual_debian_registry"),
+//				Description: pulumi.String("Virtual Debian Registry"),
+//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
+//				PackageType: pulumi.String("DEBIAN"),
+//				ParentRef:   pulumi.String("accountId/orgId/projectId"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example of an Upstream Custom Debian Registry (Debian source needs url)
 //			_, err = platform.NewHarRegistry(ctx, "debian_upstream", &platform.HarRegistryArgs{
-//				Identifier:  pulumi.String("upstream_debian_registry"),
-//				Description: pulumi.String("Upstream Debian Registry"),
-//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
-//				PackageType: pulumi.String("DEBIAN"),
 //				Configs: platform.HarRegistryConfigArray{
 //					&platform.HarRegistryConfigArgs{
 //						Type:     pulumi.String("UPSTREAM"),
@@ -173,17 +169,17 @@ import (
 //						AuthType: pulumi.String("Anonymous"),
 //					},
 //				},
-//				ParentRef: pulumi.String("accountId/orgId/projectId"),
+//				Identifier:  pulumi.String("upstream_debian_registry"),
+//				Description: pulumi.String("Upstream Debian Registry"),
+//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
+//				PackageType: pulumi.String("DEBIAN"),
+//				ParentRef:   pulumi.String("accountId/orgId/projectId"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example of an Upstream Python Registry with a custom remote URL suffix
 //			_, err = platform.NewHarRegistry(ctx, "python_upstream", &platform.HarRegistryArgs{
-//				Identifier:  pulumi.String("upstream_python_registry"),
-//				Description: pulumi.String("Upstream Python Registry"),
-//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
-//				PackageType: pulumi.String("PYTHON"),
 //				Configs: platform.HarRegistryConfigArray{
 //					&platform.HarRegistryConfigArgs{
 //						Type:            pulumi.String("UPSTREAM"),
@@ -193,17 +189,17 @@ import (
 //						AuthType:        pulumi.String("Anonymous"),
 //					},
 //				},
-//				ParentRef: pulumi.String("accountId/orgId/projectId"),
+//				Identifier:  pulumi.String("upstream_python_registry"),
+//				Description: pulumi.String("Upstream Python Registry"),
+//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
+//				PackageType: pulumi.String("PYTHON"),
+//				ParentRef:   pulumi.String("accountId/orgId/projectId"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example of an Upstream Conan Registry (ConanCenter source needs no url)
 //			_, err = platform.NewHarRegistry(ctx, "conan_upstream", &platform.HarRegistryArgs{
-//				Identifier:  pulumi.String("upstream_conan_registry"),
-//				Description: pulumi.String("Upstream Conan Registry"),
-//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
-//				PackageType: pulumi.String("CONAN"),
 //				Configs: platform.HarRegistryConfigArray{
 //					&platform.HarRegistryConfigArgs{
 //						Type:     pulumi.String("UPSTREAM"),
@@ -211,17 +207,17 @@ import (
 //						AuthType: pulumi.String("Anonymous"),
 //					},
 //				},
-//				ParentRef: pulumi.String("accountId/orgId/projectId"),
+//				Identifier:  pulumi.String("upstream_conan_registry"),
+//				Description: pulumi.String("Upstream Conan Registry"),
+//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
+//				PackageType: pulumi.String("CONAN"),
+//				ParentRef:   pulumi.String("accountId/orgId/projectId"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example of an Upstream Ruby Registry (RubyGems source needs no url)
 //			_, err = platform.NewHarRegistry(ctx, "rubygems_upstream", &platform.HarRegistryArgs{
-//				Identifier:  pulumi.String("upstream_ruby_registry"),
-//				Description: pulumi.String("Upstream Ruby Registry"),
-//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
-//				PackageType: pulumi.String("RUBY"),
 //				Configs: platform.HarRegistryConfigArray{
 //					&platform.HarRegistryConfigArgs{
 //						Type:     pulumi.String("UPSTREAM"),
@@ -229,49 +225,49 @@ import (
 //						AuthType: pulumi.String("Anonymous"),
 //					},
 //				},
-//				ParentRef: pulumi.String("accountId/orgId/projectId"),
+//				Identifier:  pulumi.String("upstream_ruby_registry"),
+//				Description: pulumi.String("Upstream Ruby Registry"),
+//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
+//				PackageType: pulumi.String("RUBY"),
+//				ParentRef:   pulumi.String("accountId/orgId/projectId"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example of a Virtual Terraform Registry
 //			_, err = platform.NewHarRegistry(ctx, "terraform_virtual", &platform.HarRegistryArgs{
-//				Identifier:  pulumi.String("virtual_terraform_registry"),
-//				Description: pulumi.String("Virtual Terraform Registry"),
-//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
-//				PackageType: pulumi.String("TERRAFORM"),
 //				Configs: platform.HarRegistryConfigArray{
 //					&platform.HarRegistryConfigArgs{
 //						Type: pulumi.String("VIRTUAL"),
 //					},
 //				},
-//				ParentRef: pulumi.String("accountId/orgId/projectId"),
+//				Identifier:  pulumi.String("virtual_terraform_registry"),
+//				Description: pulumi.String("Virtual Terraform Registry"),
+//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
+//				PackageType: pulumi.String("TERRAFORM"),
+//				ParentRef:   pulumi.String("accountId/orgId/projectId"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example of a Virtual CRAN Registry
 //			_, err = platform.NewHarRegistry(ctx, "cran_virtual", &platform.HarRegistryArgs{
-//				Identifier:  pulumi.String("virtual_cran_registry"),
-//				Description: pulumi.String("Virtual CRAN Registry"),
-//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
-//				PackageType: pulumi.String("CRAN"),
 //				Configs: platform.HarRegistryConfigArray{
 //					&platform.HarRegistryConfigArgs{
 //						Type: pulumi.String("VIRTUAL"),
 //					},
 //				},
-//				ParentRef: pulumi.String("accountId/orgId/projectId"),
+//				Identifier:  pulumi.String("virtual_cran_registry"),
+//				Description: pulumi.String("Virtual CRAN Registry"),
+//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
+//				PackageType: pulumi.String("CRAN"),
+//				ParentRef:   pulumi.String("accountId/orgId/projectId"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example of an Upstream CRAN Registry (CRAN source needs no url)
 //			_, err = platform.NewHarRegistry(ctx, "cran_upstream", &platform.HarRegistryArgs{
-//				Identifier:  pulumi.String("upstream_cran_registry"),
-//				Description: pulumi.String("Upstream CRAN Registry"),
-//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
-//				PackageType: pulumi.String("CRAN"),
 //				Configs: platform.HarRegistryConfigArray{
 //					&platform.HarRegistryConfigArgs{
 //						Type:     pulumi.String("UPSTREAM"),
@@ -279,33 +275,33 @@ import (
 //						AuthType: pulumi.String("Anonymous"),
 //					},
 //				},
-//				ParentRef: pulumi.String("accountId/orgId/projectId"),
+//				Identifier:  pulumi.String("upstream_cran_registry"),
+//				Description: pulumi.String("Upstream CRAN Registry"),
+//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
+//				PackageType: pulumi.String("CRAN"),
+//				ParentRef:   pulumi.String("accountId/orgId/projectId"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example of a Virtual Alpine Registry
 //			_, err = platform.NewHarRegistry(ctx, "alpine_virtual", &platform.HarRegistryArgs{
-//				Identifier:  pulumi.String("virtual_alpine_registry"),
-//				Description: pulumi.String("Virtual Alpine Registry"),
-//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
-//				PackageType: pulumi.String("ALPINE"),
 //				Configs: platform.HarRegistryConfigArray{
 //					&platform.HarRegistryConfigArgs{
 //						Type: pulumi.String("VIRTUAL"),
 //					},
 //				},
-//				ParentRef: pulumi.String("accountId/orgId/projectId"),
+//				Identifier:  pulumi.String("virtual_alpine_registry"),
+//				Description: pulumi.String("Virtual Alpine Registry"),
+//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
+//				PackageType: pulumi.String("ALPINE"),
+//				ParentRef:   pulumi.String("accountId/orgId/projectId"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example of an Upstream Alpine Registry (Alpine source needs no url)
 //			_, err = platform.NewHarRegistry(ctx, "alpine_upstream", &platform.HarRegistryArgs{
-//				Identifier:  pulumi.String("upstream_alpine_registry"),
-//				Description: pulumi.String("Upstream Alpine Registry"),
-//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
-//				PackageType: pulumi.String("ALPINE"),
 //				Configs: platform.HarRegistryConfigArray{
 //					&platform.HarRegistryConfigArgs{
 //						Type:     pulumi.String("UPSTREAM"),
@@ -313,33 +309,33 @@ import (
 //						AuthType: pulumi.String("Anonymous"),
 //					},
 //				},
-//				ParentRef: pulumi.String("accountId/orgId/projectId"),
+//				Identifier:  pulumi.String("upstream_alpine_registry"),
+//				Description: pulumi.String("Upstream Alpine Registry"),
+//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
+//				PackageType: pulumi.String("ALPINE"),
+//				ParentRef:   pulumi.String("accountId/orgId/projectId"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example of a Virtual Wolfi Registry
 //			_, err = platform.NewHarRegistry(ctx, "wolfi_virtual", &platform.HarRegistryArgs{
-//				Identifier:  pulumi.String("virtual_wolfi_registry"),
-//				Description: pulumi.String("Virtual Wolfi Registry"),
-//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
-//				PackageType: pulumi.String("WOLFI"),
 //				Configs: platform.HarRegistryConfigArray{
 //					&platform.HarRegistryConfigArgs{
 //						Type: pulumi.String("VIRTUAL"),
 //					},
 //				},
-//				ParentRef: pulumi.String("accountId/orgId/projectId"),
+//				Identifier:  pulumi.String("virtual_wolfi_registry"),
+//				Description: pulumi.String("Virtual Wolfi Registry"),
+//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
+//				PackageType: pulumi.String("WOLFI"),
+//				ParentRef:   pulumi.String("accountId/orgId/projectId"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example of an Upstream Wolfi Registry (Wolfi source needs no url)
 //			_, err = platform.NewHarRegistry(ctx, "wolfi_upstream", &platform.HarRegistryArgs{
-//				Identifier:  pulumi.String("upstream_wolfi_registry"),
-//				Description: pulumi.String("Upstream Wolfi Registry"),
-//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
-//				PackageType: pulumi.String("WOLFI"),
 //				Configs: platform.HarRegistryConfigArray{
 //					&platform.HarRegistryConfigArgs{
 //						Type:     pulumi.String("UPSTREAM"),
@@ -347,7 +343,11 @@ import (
 //						AuthType: pulumi.String("Anonymous"),
 //					},
 //				},
-//				ParentRef: pulumi.String("accountId/orgId/projectId"),
+//				Identifier:  pulumi.String("upstream_wolfi_registry"),
+//				Description: pulumi.String("Upstream Wolfi Registry"),
+//				SpaceRef:    pulumi.String("accountId/orgId/projectId"),
+//				PackageType: pulumi.String("WOLFI"),
+//				ParentRef:   pulumi.String("accountId/orgId/projectId"),
 //			})
 //			if err != nil {
 //				return err

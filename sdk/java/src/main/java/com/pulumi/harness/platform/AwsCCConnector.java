@@ -45,6 +45,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new AwsCCConnector("test", AwsCCConnectorArgs.builder()
+ *             .crossAccountAccess(AwsCCConnectorCrossAccountAccessArgs.builder()
+ *                 .roleArn("role_arn")
+ *                 .externalId("external_id")
+ *                 .build())
  *             .identifier("identifier")
  *             .name("name")
  *             .description("test")
@@ -56,10 +60,6 @@ import javax.annotation.Nullable;
  *                 "OPTIMIZATION",
  *                 "VISIBILITY",
  *                 "BILLING")
- *             .crossAccountAccess(AwsCCConnectorCrossAccountAccessArgs.builder()
- *                 .roleArn("role_arn")
- *                 .externalId("external_id")
- *                 .build())
  *             .build());
  * 
  *     }

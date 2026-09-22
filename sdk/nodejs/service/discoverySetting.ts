@@ -17,13 +17,13 @@ import * as utilities from "../utilities";
  *
  * // Update image registry settings for service discovery
  * const example = new harness.service.DiscoverySetting("example", {
- *     orgIdentifier: "sechaosworkshop",
- *     projectIdentifier: "se1",
  *     imageRegistry: {
  *         account: "<account_name>",
  *         server: "<registry_server>",
  *         secrets: ["<secret_name>"],
  *     },
+ *     orgIdentifier: "sechaosworkshop",
+ *     projectIdentifier: "se1",
  * });
  * ```
  */

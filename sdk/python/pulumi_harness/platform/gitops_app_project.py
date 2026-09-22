@@ -276,7 +276,7 @@ class GitopsAppProject(pulumi.CustomResource):
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 projects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict']]]]] = None,
+                 projects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict', 'outputs.GitopsAppProjectProject']]]]] = None,
                  query_name: pulumi.Input[Optional[_builtins.str]] = None,
                  upsert: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -312,7 +312,7 @@ class GitopsAppProject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the agent where argo project will exist (include scope prefix)
         :param pulumi.Input[_builtins.str] org_id: Org identifier of the GitOps Agent where argo project is to be created.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the Gitops Agent where argo project is to be created.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict']]]] projects: GitOps project configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict', 'outputs.GitopsAppProjectProject']]]] projects: GitOps project configuration.
         :param pulumi.Input[_builtins.str] query_name: Identifier for the GitOps Argo project.
         :param pulumi.Input[_builtins.bool] upsert: Indicates if the argo project should be updated if existing and inserted if not.
         """
@@ -367,7 +367,7 @@ class GitopsAppProject(pulumi.CustomResource):
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 projects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict']]]]] = None,
+                 projects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict', 'outputs.GitopsAppProjectProject']]]]] = None,
                  query_name: pulumi.Input[Optional[_builtins.str]] = None,
                  upsert: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -404,7 +404,7 @@ class GitopsAppProject(pulumi.CustomResource):
             agent_id: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
-            projects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict']]]]] = None,
+            projects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict', 'outputs.GitopsAppProjectProject']]]]] = None,
             query_name: pulumi.Input[Optional[_builtins.str]] = None,
             upsert: pulumi.Input[Optional[_builtins.bool]] = None) -> 'GitopsAppProject':
         """
@@ -418,7 +418,7 @@ class GitopsAppProject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier of the agent where argo project will exist (include scope prefix)
         :param pulumi.Input[_builtins.str] org_id: Org identifier of the GitOps Agent where argo project is to be created.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the Gitops Agent where argo project is to be created.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict']]]] projects: GitOps project configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict', 'outputs.GitopsAppProjectProject']]]] projects: GitOps project configuration.
         :param pulumi.Input[_builtins.str] query_name: Identifier for the GitOps Argo project.
         :param pulumi.Input[_builtins.bool] upsert: Indicates if the argo project should be updated if existing and inserted if not.
         """

@@ -48,6 +48,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // K8s Rule
  *         var example = new SecurityGovernanceRule("example", SecurityGovernanceRuleArgs.builder()
+ *             .timeWindows(SecurityGovernanceRuleTimeWindowArgs.builder()
+ *                 .recurrence(SecurityGovernanceRuleTimeWindowRecurrenceArgs.builder()
+ *                     .type("Daily")
+ *                     .until(-1)
+ *                     .build())
+ *                 .timeZone("UTC")
+ *                 .startTime(1711238400000)
+ *                 .duration("24h")
+ *                 .build())
  *             .orgId("<org_id>")
  *             .projectId("<project_id>")
  *             .name("<name>")
@@ -58,19 +67,19 @@ import javax.annotation.Nullable;
  *             .tags(            
  *                 "<tag1>",
  *                 "<tag2>")
- *             .timeWindows(SecurityGovernanceRuleTimeWindowArgs.builder()
- *                 .timeZone("UTC")
- *                 .startTime(1711238400000)
- *                 .duration("24h")
- *                 .recurrence(SecurityGovernanceRuleTimeWindowRecurrenceArgs.builder()
- *                     .type("Daily")
- *                     .until(-1)
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *         // Linux Rule
  *         var linuxRule = new SecurityGovernanceRule("linuxRule", SecurityGovernanceRuleArgs.builder()
+ *             .timeWindows(SecurityGovernanceRuleTimeWindowArgs.builder()
+ *                 .recurrence(SecurityGovernanceRuleTimeWindowRecurrenceArgs.builder()
+ *                     .type("Daily")
+ *                     .until(-1)
+ *                     .build())
+ *                 .timeZone("UTC")
+ *                 .startTime(1711238400000)
+ *                 .duration("24h")
+ *                 .build())
  *             .orgId("<org_id>")
  *             .projectId("<project_id>")
  *             .name("<name>")
@@ -81,19 +90,19 @@ import javax.annotation.Nullable;
  *             .tags(            
  *                 "<tag1>",
  *                 "<tag2>")
- *             .timeWindows(SecurityGovernanceRuleTimeWindowArgs.builder()
- *                 .timeZone("UTC")
- *                 .startTime(1711238400000)
- *                 .duration("24h")
- *                 .recurrence(SecurityGovernanceRuleTimeWindowRecurrenceArgs.builder()
- *                     .type("Daily")
- *                     .until(-1)
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *         // Windows Rule
  *         var windowsRule = new SecurityGovernanceRule("windowsRule", SecurityGovernanceRuleArgs.builder()
+ *             .timeWindows(SecurityGovernanceRuleTimeWindowArgs.builder()
+ *                 .recurrence(SecurityGovernanceRuleTimeWindowRecurrenceArgs.builder()
+ *                     .type("Daily")
+ *                     .until(-1)
+ *                     .build())
+ *                 .timeZone("UTC")
+ *                 .startTime(1711238400000)
+ *                 .duration("24h")
+ *                 .build())
  *             .orgId("<org_id>")
  *             .projectId("<project_id>")
  *             .name("<name>")
@@ -104,15 +113,6 @@ import javax.annotation.Nullable;
  *             .tags(            
  *                 "<tag1>",
  *                 "<tag2>")
- *             .timeWindows(SecurityGovernanceRuleTimeWindowArgs.builder()
- *                 .timeZone("UTC")
- *                 .startTime(1711238400000)
- *                 .duration("24h")
- *                 .recurrence(SecurityGovernanceRuleTimeWindowRecurrenceArgs.builder()
- *                     .type("Daily")
- *                     .until(-1)
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *     }

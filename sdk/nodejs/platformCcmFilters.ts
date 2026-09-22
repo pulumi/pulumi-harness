@@ -16,15 +16,15 @@ import * as utilities from "./utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.PlatformCcmFilters("test", {
+ *     filterProperties: {
+ *         tags: ["foo:bar"],
+ *         filterType: "CCMRecommendation",
+ *     },
  *     identifier: "identifier",
  *     name: "name",
  *     orgId: "org_id",
  *     projectId: "project_id",
  *     type: "CCMRecommendation",
- *     filterProperties: {
- *         tags: ["foo:bar"],
- *         filterType: "CCMRecommendation",
- *     },
  *     filterVisibility: "EveryOne",
  * });
  * ```

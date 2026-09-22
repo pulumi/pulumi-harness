@@ -17,20 +17,10 @@ import * as utilities from "../utilities";
  *
  * // Authentication mechanism as api token
  * const token = new harness.platform.AppDynamicsConnector("token", {
- *     identifier: "identifier",
- *     name: "name",
- *     description: "test",
- *     tags: ["foo:bar"],
- *     url: "https://appdynamics.com/",
- *     accountName: "myaccount",
- *     delegateSelectors: ["harness-delegate"],
  *     apiToken: {
  *         clientId: "client_id",
  *         clientSecretRef: "account.secret_id",
  *     },
- * });
- * // Authentication mechanism as username and password
- * const test = new harness.platform.AppDynamicsConnector("test", {
  *     identifier: "identifier",
  *     name: "name",
  *     description: "test",
@@ -38,10 +28,20 @@ import * as utilities from "../utilities";
  *     url: "https://appdynamics.com/",
  *     accountName: "myaccount",
  *     delegateSelectors: ["harness-delegate"],
+ * });
+ * // Authentication mechanism as username and password
+ * const test = new harness.platform.AppDynamicsConnector("test", {
  *     usernamePassword: {
  *         username: "username",
  *         passwordRef: "account.secret_id",
  *     },
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     url: "https://appdynamics.com/",
+ *     accountName: "myaccount",
+ *     delegateSelectors: ["harness-delegate"],
  * });
  * ```
  *

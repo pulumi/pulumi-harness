@@ -29,6 +29,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewAwsCCConnector(ctx, "test", &platform.AwsCCConnectorArgs{
+//				CrossAccountAccess: &platform.AwsCCConnectorCrossAccountAccessArgs{
+//					RoleArn:    pulumi.String("role_arn"),
+//					ExternalId: pulumi.String("external_id"),
+//				},
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
@@ -42,10 +46,6 @@ import (
 //					pulumi.String("OPTIMIZATION"),
 //					pulumi.String("VISIBILITY"),
 //					pulumi.String("BILLING"),
-//				},
-//				CrossAccountAccess: &platform.AwsCCConnectorCrossAccountAccessArgs{
-//					RoleArn:    pulumi.String("role_arn"),
-//					ExternalId: pulumi.String("external_id"),
 //				},
 //			})
 //			if err != nil {

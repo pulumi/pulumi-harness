@@ -126,7 +126,7 @@ class AwaitableGetGitopsRepoCredResult(GetGitopsRepoCredResult):
 
 def get_gitops_repo_cred(account_id: Optional[_builtins.str] = None,
                          agent_id: Optional[_builtins.str] = None,
-                         creds: Optional[Sequence[Union['GetGitopsRepoCredCredArgs', 'GetGitopsRepoCredCredArgsDict']]] = None,
+                         creds: Optional[Sequence[Union['GetGitopsRepoCredCredArgs', 'GetGitopsRepoCredCredArgsDict', 'outputs.GetGitopsRepoCredCredResult']]] = None,
                          identifier: Optional[_builtins.str] = None,
                          org_id: Optional[_builtins.str] = None,
                          project_id: Optional[_builtins.str] = None,
@@ -150,7 +150,7 @@ def get_gitops_repo_cred(account_id: Optional[_builtins.str] = None,
 
     :param _builtins.str account_id: Account identifier of the Repository Credentials.
     :param _builtins.str agent_id: Agent identifier of the Repository Credentials.
-    :param Sequence[Union['GetGitopsRepoCredCredArgs', 'GetGitopsRepoCredCredArgsDict']] creds: credential details.
+    :param Sequence[Union['GetGitopsRepoCredCredArgs', 'GetGitopsRepoCredCredArgsDict', 'outputs.GetGitopsRepoCredCredResult']] creds: credential details.
     :param _builtins.str identifier: Identifier of the Repository Credentials.
     :param _builtins.str org_id: Organization identifier of the Repository Credentials.
     :param _builtins.str project_id: Project identifier of the Repository Credentials.
@@ -175,7 +175,7 @@ def get_gitops_repo_cred(account_id: Optional[_builtins.str] = None,
         project_id=pulumi.get(__ret__, 'project_id'))
 def get_gitops_repo_cred_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 agent_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                creds: pulumi.Input[Optional[Optional[Sequence[Union['GetGitopsRepoCredCredArgs', 'GetGitopsRepoCredCredArgsDict']]]]] = None,
+                                creds: pulumi.Input[Optional[Optional[Sequence[Union['GetGitopsRepoCredCredArgs', 'GetGitopsRepoCredCredArgsDict', 'outputs.GetGitopsRepoCredCredResult']]]]] = None,
                                 identifier: pulumi.Input[Optional[_builtins.str]] = None,
                                 org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -199,7 +199,7 @@ def get_gitops_repo_cred_output(account_id: pulumi.Input[Optional[Optional[_buil
 
     :param _builtins.str account_id: Account identifier of the Repository Credentials.
     :param _builtins.str agent_id: Agent identifier of the Repository Credentials.
-    :param Sequence[Union['GetGitopsRepoCredCredArgs', 'GetGitopsRepoCredCredArgsDict']] creds: credential details.
+    :param Sequence[Union['GetGitopsRepoCredCredArgs', 'GetGitopsRepoCredCredArgsDict', 'outputs.GetGitopsRepoCredCredResult']] creds: credential details.
     :param _builtins.str identifier: Identifier of the Repository Credentials.
     :param _builtins.str org_id: Organization identifier of the Repository Credentials.
     :param _builtins.str project_id: Project identifier of the Repository Credentials.

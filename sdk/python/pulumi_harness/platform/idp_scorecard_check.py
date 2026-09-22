@@ -415,7 +415,7 @@ class IdpScorecardCheck(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_description: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_strategy: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpScorecardCheckRuleArgs', 'IdpScorecardCheckRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpScorecardCheckRuleArgs', 'IdpScorecardCheckRuleArgsDict', 'outputs.IdpScorecardCheckRule']]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -428,22 +428,22 @@ class IdpScorecardCheck(pulumi.CustomResource):
         import pulumi_harness as harness
 
         readme = harness.platform.IdpScorecardCheck("readme",
-            identifier="readme_exists",
-            name="README exists",
-            description="Ensure the repository has a README file",
-            rule_strategy="ALL_OF",
-            default_behaviour="FAIL",
             rules=[{
+                "input_values": [{
+                    "key": "filePath",
+                    "value": "README.md",
+                }],
                 "data_source_identifier": "github",
                 "data_point_identifier": "isFileExists",
                 "operator": "==",
                 "value": "true",
                 "rule_description": "Repository has a README",
-                "input_values": [{
-                    "key": "filePath",
-                    "value": "README.md",
-                }],
-            }])
+            }],
+            identifier="readme_exists",
+            name="README exists",
+            description="Ensure the repository has a README file",
+            rule_strategy="ALL_OF",
+            default_behaviour="FAIL")
         ```
 
         ## Import
@@ -467,7 +467,7 @@ class IdpScorecardCheck(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] rule_description: Description of the check rule set.
         :param pulumi.Input[_builtins.str] rule_strategy: How multiple rules are combined. Valid values are ALL*OF, ANY*OF, and ADVANCED.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpScorecardCheckRuleArgs', 'IdpScorecardCheckRuleArgsDict']]]] rules: Basic rules evaluated by the check. Required when rule*strategy is ALL*OF or ANY_OF.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpScorecardCheckRuleArgs', 'IdpScorecardCheckRuleArgsDict', 'outputs.IdpScorecardCheckRule']]]] rules: Basic rules evaluated by the check. Required when rule*strategy is ALL*OF or ANY_OF.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         """
         ...
@@ -486,22 +486,22 @@ class IdpScorecardCheck(pulumi.CustomResource):
         import pulumi_harness as harness
 
         readme = harness.platform.IdpScorecardCheck("readme",
-            identifier="readme_exists",
-            name="README exists",
-            description="Ensure the repository has a README file",
-            rule_strategy="ALL_OF",
-            default_behaviour="FAIL",
             rules=[{
+                "input_values": [{
+                    "key": "filePath",
+                    "value": "README.md",
+                }],
                 "data_source_identifier": "github",
                 "data_point_identifier": "isFileExists",
                 "operator": "==",
                 "value": "true",
                 "rule_description": "Repository has a README",
-                "input_values": [{
-                    "key": "filePath",
-                    "value": "README.md",
-                }],
-            }])
+            }],
+            identifier="readme_exists",
+            name="README exists",
+            description="Ensure the repository has a README file",
+            rule_strategy="ALL_OF",
+            default_behaviour="FAIL")
         ```
 
         ## Import
@@ -538,7 +538,7 @@ class IdpScorecardCheck(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_description: pulumi.Input[Optional[_builtins.str]] = None,
                  rule_strategy: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpScorecardCheckRuleArgs', 'IdpScorecardCheckRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpScorecardCheckRuleArgs', 'IdpScorecardCheckRuleArgsDict', 'outputs.IdpScorecardCheckRule']]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -589,7 +589,7 @@ class IdpScorecardCheck(pulumi.CustomResource):
             percentage: pulumi.Input[Optional[_builtins.float]] = None,
             rule_description: pulumi.Input[Optional[_builtins.str]] = None,
             rule_strategy: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpScorecardCheckRuleArgs', 'IdpScorecardCheckRuleArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpScorecardCheckRuleArgs', 'IdpScorecardCheckRuleArgsDict', 'outputs.IdpScorecardCheckRule']]]]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'IdpScorecardCheck':
         """
         Get an existing IdpScorecardCheck resource's state with the given name, id, and optional extra
@@ -609,7 +609,7 @@ class IdpScorecardCheck(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] percentage: Pass percentage for the check.
         :param pulumi.Input[_builtins.str] rule_description: Description of the check rule set.
         :param pulumi.Input[_builtins.str] rule_strategy: How multiple rules are combined. Valid values are ALL*OF, ANY*OF, and ADVANCED.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpScorecardCheckRuleArgs', 'IdpScorecardCheckRuleArgsDict']]]] rules: Basic rules evaluated by the check. Required when rule*strategy is ALL*OF or ANY_OF.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IdpScorecardCheckRuleArgs', 'IdpScorecardCheckRuleArgsDict', 'outputs.IdpScorecardCheckRule']]]] rules: Basic rules evaluated by the check. Required when rule*strategy is ALL*OF or ANY_OF.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -24,6 +24,11 @@ namespace Pulumi.Harness.Autostopping
     /// {
     ///     var test = new Harness.Autostopping.GcpProxy("test", new()
     ///     {
+    ///         Certificates = new Harness.Autostopping.Inputs.GcpProxyCertificatesArgs
+    ///         {
+    ///             KeySecretId = "projects/project_id/secrets/secret_id/versions/1",
+    ///             CertSecretId = "projects/project_id/secrets/secret_id/versions/1",
+    ///         },
     ///         Name = "name",
     ///         CloudConnectorId = "cloud_connector_id",
     ///         Region = "region",
@@ -37,11 +42,6 @@ namespace Pulumi.Harness.Autostopping
     ///         SubnetId = "https://www.googleapis.com/compute/v1/projects/project_id/regions/region/subnetworks/subnet_name",
     ///         ApiKey = "",
     ///         AllocateStaticIp = false,
-    ///         Certificates = new Harness.Autostopping.Inputs.GcpProxyCertificatesArgs
-    ///         {
-    ///             KeySecretId = "projects/project_id/secrets/secret_id/versions/1",
-    ///             CertSecretId = "projects/project_id/secrets/secret_id/versions/1",
-    ///         },
     ///         DeleteCloudResourcesOnDestroy = false,
     ///     });
     /// 

@@ -28,14 +28,6 @@ import * as utilities from "../utilities";
  *     value: "account_ntlm_pass",
  * });
  * const accountNtlm = new harness.platform.SecretWinrm("account_ntlm", {
- *     identifier: "account_ntlm_v3",
- *     name: "Account NTLM v3",
- *     description: "Account-level WinRM with NTLM",
- *     tags: [
- *         "scope:account",
- *         "auth:ntlm",
- *     ],
- *     port: 5986,
  *     ntlm: {
  *         domain: "example.com",
  *         username: "admin",
@@ -44,9 +36,28 @@ import * as utilities from "../utilities";
  *         skipCertCheck: false,
  *         useNoProfile: true,
  *     },
+ *     identifier: "account_ntlm_v3",
+ *     name: "Account NTLM v3",
+ *     description: "Account-level WinRM with NTLM",
+ *     tags: [
+ *         "scope:account",
+ *         "auth:ntlm",
+ *     ],
+ *     port: 5986,
  * });
  * // 2. Account-level Kerberos with KeyTab
  * const accountKerberosKeytab = new harness.platform.SecretWinrm("account_kerberos_keytab", {
+ *     kerberos: {
+ *         tgtKeyTabFilePathSpec: {
+ *             keyPath: "/etc/krb5.keytab",
+ *         },
+ *         principal: "service@EXAMPLE.COM",
+ *         realm: "EXAMPLE.COM",
+ *         tgtGenerationMethod: "KeyTabFilePath",
+ *         useSsl: true,
+ *         skipCertCheck: true,
+ *         useNoProfile: true,
+ *     },
  *     identifier: "account_kerberos_keytab_v3",
  *     name: "Account Kerberos KeyTab v3",
  *     description: "Account-level WinRM with Kerberos KeyTab",
@@ -55,17 +66,6 @@ import * as utilities from "../utilities";
  *         "auth:kerberos-keytab",
  *     ],
  *     port: 5986,
- *     kerberos: {
- *         principal: "service@EXAMPLE.COM",
- *         realm: "EXAMPLE.COM",
- *         tgtGenerationMethod: "KeyTabFilePath",
- *         useSsl: true,
- *         skipCertCheck: true,
- *         useNoProfile: true,
- *         tgtKeyTabFilePathSpec: {
- *             keyPath: "/etc/krb5.keytab",
- *         },
- *     },
  * });
  * // 3. Account-level Kerberos with Password
  * const accountKerberosPassword1 = new harness.platform.SecretText("account_kerberos_password_1", {
@@ -77,6 +77,17 @@ import * as utilities from "../utilities";
  *     value: "account_kerberos_pass",
  * });
  * const accountKerberosPassword1SecretWinrm = new harness.platform.SecretWinrm("account_kerberos_password_1", {
+ *     kerberos: {
+ *         tgtPasswordSpec: {
+ *             passwordRef: pulumi.interpolate`account.${accountKerberosPassword1.id}`,
+ *         },
+ *         principal: "user@EXAMPLE.COM",
+ *         realm: "EXAMPLE.COM",
+ *         tgtGenerationMethod: "Password",
+ *         useSsl: true,
+ *         skipCertCheck: false,
+ *         useNoProfile: true,
+ *     },
  *     identifier: "account_kerb_winrm_20251111",
  *     name: "Account Kerberos WinRM 20251111",
  *     description: "Account-level WinRM with Kerberos Password",
@@ -85,17 +96,6 @@ import * as utilities from "../utilities";
  *         "auth:kerberos-password",
  *     ],
  *     port: 5986,
- *     kerberos: {
- *         principal: "user@EXAMPLE.COM",
- *         realm: "EXAMPLE.COM",
- *         tgtGenerationMethod: "Password",
- *         useSsl: true,
- *         skipCertCheck: false,
- *         useNoProfile: true,
- *         tgtPasswordSpec: {
- *             passwordRef: pulumi.interpolate`account.${accountKerberosPassword1.id}`,
- *         },
- *     },
  * });
  * // ============================================================================
  * // ORGANIZATION LEVEL TESTS (3 scenarios)
@@ -111,6 +111,14 @@ import * as utilities from "../utilities";
  *     value: "org_ntlm_pass",
  * });
  * const orgNtlm = new harness.platform.SecretWinrm("org_ntlm", {
+ *     ntlm: {
+ *         domain: "org.example.com",
+ *         username: "orgadmin",
+ *         passwordRef: pulumi.interpolate`org.${orgNtlmPassword.id}`,
+ *         useSsl: false,
+ *         skipCertCheck: false,
+ *         useNoProfile: true,
+ *     },
  *     identifier: "org_ntlm_v3",
  *     name: "Org NTLM v3",
  *     description: "Org-level WinRM with NTLM",
@@ -120,17 +128,20 @@ import * as utilities from "../utilities";
  *         "auth:ntlm",
  *     ],
  *     port: 5985,
- *     ntlm: {
- *         domain: "org.example.com",
- *         username: "orgadmin",
- *         passwordRef: pulumi.interpolate`org.${orgNtlmPassword.id}`,
- *         useSsl: false,
- *         skipCertCheck: false,
- *         useNoProfile: true,
- *     },
  * });
  * // 5. Org-level Kerberos with KeyTab
  * const orgKerberosKeytab = new harness.platform.SecretWinrm("org_kerberos_keytab", {
+ *     kerberos: {
+ *         tgtKeyTabFilePathSpec: {
+ *             keyPath: "/etc/org.keytab",
+ *         },
+ *         principal: "orgservice@EXAMPLE.COM",
+ *         realm: "EXAMPLE.COM",
+ *         tgtGenerationMethod: "KeyTabFilePath",
+ *         useSsl: true,
+ *         skipCertCheck: true,
+ *         useNoProfile: true,
+ *     },
  *     identifier: "org_kerberos_keytab_v3",
  *     name: "Org Kerberos KeyTab v3",
  *     description: "Org-level WinRM with Kerberos KeyTab",
@@ -140,17 +151,6 @@ import * as utilities from "../utilities";
  *         "auth:kerberos-keytab",
  *     ],
  *     port: 5986,
- *     kerberos: {
- *         principal: "orgservice@EXAMPLE.COM",
- *         realm: "EXAMPLE.COM",
- *         tgtGenerationMethod: "KeyTabFilePath",
- *         useSsl: true,
- *         skipCertCheck: true,
- *         useNoProfile: true,
- *         tgtKeyTabFilePathSpec: {
- *             keyPath: "/etc/org.keytab",
- *         },
- *     },
  * });
  * // 6. Org-level Kerberos with Password
  * const orgKerberosPassword = new harness.platform.SecretText("org_kerberos_password", {
@@ -163,6 +163,17 @@ import * as utilities from "../utilities";
  *     value: "org_kerberos_pass",
  * });
  * const orgKerberosPasswordSecretWinrm = new harness.platform.SecretWinrm("org_kerberos_password", {
+ *     kerberos: {
+ *         tgtPasswordSpec: {
+ *             passwordRef: pulumi.interpolate`org.${orgKerberosPassword.id}`,
+ *         },
+ *         principal: "orguser@EXAMPLE.COM",
+ *         realm: "EXAMPLE.COM",
+ *         tgtGenerationMethod: "Password",
+ *         useSsl: true,
+ *         skipCertCheck: false,
+ *         useNoProfile: true,
+ *     },
  *     identifier: "org_kerb_winrm_v3",
  *     name: "Org Kerberos WinRM v3",
  *     description: "Org-level WinRM with Kerberos Password",
@@ -172,17 +183,6 @@ import * as utilities from "../utilities";
  *         "auth:kerberos-password",
  *     ],
  *     port: 5986,
- *     kerberos: {
- *         principal: "orguser@EXAMPLE.COM",
- *         realm: "EXAMPLE.COM",
- *         tgtGenerationMethod: "Password",
- *         useSsl: true,
- *         skipCertCheck: false,
- *         useNoProfile: true,
- *         tgtPasswordSpec: {
- *             passwordRef: pulumi.interpolate`org.${orgKerberosPassword.id}`,
- *         },
- *     },
  * });
  * // ============================================================================
  * // PROJECT LEVEL TESTS (3 scenarios)
@@ -199,6 +199,14 @@ import * as utilities from "../utilities";
  *     value: "project_ntlm_pass",
  * });
  * const projectNtlm = new harness.platform.SecretWinrm("project_ntlm", {
+ *     ntlm: {
+ *         domain: "project.example.com",
+ *         username: "projectadmin",
+ *         passwordRef: projectNtlmPassword.id,
+ *         useSsl: true,
+ *         skipCertCheck: false,
+ *         useNoProfile: false,
+ *     },
  *     identifier: "proj_ntlm_winrm_v3",
  *     name: "Project NTLM WinRM v3",
  *     description: "Project-level WinRM with NTLM",
@@ -209,17 +217,20 @@ import * as utilities from "../utilities";
  *         "auth:ntlm",
  *     ],
  *     port: 5986,
- *     ntlm: {
- *         domain: "project.example.com",
- *         username: "projectadmin",
- *         passwordRef: projectNtlmPassword.id,
- *         useSsl: true,
- *         skipCertCheck: false,
- *         useNoProfile: false,
- *     },
  * });
  * // 8. Project-level Kerberos with KeyTab
  * const projectKerberosKeytab = new harness.platform.SecretWinrm("project_kerberos_keytab", {
+ *     kerberos: {
+ *         tgtKeyTabFilePathSpec: {
+ *             keyPath: "/etc/project.keytab",
+ *         },
+ *         principal: "projectservice@EXAMPLE.COM",
+ *         realm: "EXAMPLE.COM",
+ *         tgtGenerationMethod: "KeyTabFilePath",
+ *         useSsl: false,
+ *         skipCertCheck: false,
+ *         useNoProfile: false,
+ *     },
  *     identifier: "proj_kerb_keytab_v3",
  *     name: "Project Kerberos KeyTab v3",
  *     description: "Project-level WinRM with Kerberos KeyTab",
@@ -230,17 +241,6 @@ import * as utilities from "../utilities";
  *         "auth:kerberos-keytab",
  *     ],
  *     port: 5986,
- *     kerberos: {
- *         principal: "projectservice@EXAMPLE.COM",
- *         realm: "EXAMPLE.COM",
- *         tgtGenerationMethod: "KeyTabFilePath",
- *         useSsl: false,
- *         skipCertCheck: false,
- *         useNoProfile: false,
- *         tgtKeyTabFilePathSpec: {
- *             keyPath: "/etc/project.keytab",
- *         },
- *     },
  * });
  * // 9. Project-level Kerberos with Password
  * const projectKerberosPassword = new harness.platform.SecretText("project_kerberos_password", {
@@ -254,6 +254,17 @@ import * as utilities from "../utilities";
  *     value: "project_kerberos_pass",
  * });
  * const projectKerberosPasswordSecretWinrm = new harness.platform.SecretWinrm("project_kerberos_password", {
+ *     kerberos: {
+ *         tgtPasswordSpec: {
+ *             passwordRef: projectKerberosPassword.id,
+ *         },
+ *         principal: "projectuser@EXAMPLE.COM",
+ *         realm: "EXAMPLE.COM",
+ *         tgtGenerationMethod: "Password",
+ *         useSsl: false,
+ *         skipCertCheck: true,
+ *         useNoProfile: true,
+ *     },
  *     identifier: "proj_kerb_winrm_v3",
  *     name: "Project Kerberos WinRM v3",
  *     description: "Project-level WinRM with Kerberos Password",
@@ -264,17 +275,6 @@ import * as utilities from "../utilities";
  *         "auth:kerberos-password",
  *     ],
  *     port: 5986,
- *     kerberos: {
- *         principal: "projectuser@EXAMPLE.COM",
- *         realm: "EXAMPLE.COM",
- *         tgtGenerationMethod: "Password",
- *         useSsl: false,
- *         skipCertCheck: true,
- *         useNoProfile: true,
- *         tgtPasswordSpec: {
- *             passwordRef: projectKerberosPassword.id,
- *         },
- *     },
  * });
  * ```
  *

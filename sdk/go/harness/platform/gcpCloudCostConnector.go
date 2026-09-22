@@ -29,6 +29,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewGcpCloudCostConnector(ctx, "test", &platform.GcpCloudCostConnectorArgs{
+//				BillingExportSpec: &platform.GcpCloudCostConnectorBillingExportSpecArgs{
+//					DataSetId: pulumi.String("data_set_id"),
+//					TableId:   pulumi.String("table_id"),
+//				},
 //				Identifier:  pulumi.String("identifier"),
 //				Name:        pulumi.String("name"),
 //				Description: pulumi.String("test"),
@@ -43,10 +47,6 @@ import (
 //				},
 //				GcpProjectId:        pulumi.String("gcp_project_id"),
 //				ServiceAccountEmail: pulumi.String("service_account_email"),
-//				BillingExportSpec: &platform.GcpCloudCostConnectorBillingExportSpecArgs{
-//					DataSetId: pulumi.String("data_set_id"),
-//					TableId:   pulumi.String("table_id"),
-//				},
 //			})
 //			if err != nil {
 //				return err

@@ -33,10 +33,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.harness.platform.InfraVariableSet;
  * import com.pulumi.harness.platform.InfraVariableSetArgs;
- * import com.pulumi.harness.platform.inputs.InfraVariableSetEnvironmentVariableArgs;
- * import com.pulumi.harness.platform.inputs.InfraVariableSetTerraformVariableArgs;
- * import com.pulumi.harness.platform.inputs.InfraVariableSetTerraformVariableFileArgs;
  * import com.pulumi.harness.platform.inputs.InfraVariableSetConnectorArgs;
+ * import com.pulumi.harness.platform.inputs.InfraVariableSetEnvironmentVariableArgs;
+ * import com.pulumi.harness.platform.inputs.InfraVariableSetTerraformVariableFileArgs;
+ * import com.pulumi.harness.platform.inputs.InfraVariableSetTerraformVariableArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -51,11 +51,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new InfraVariableSet("example", InfraVariableSetArgs.builder()
- *             .identifier("example")
- *             .name("example")
- *             .orgId(test.id())
- *             .projectId(testHarnessPlatformProject.id())
- *             .description("some description")
+ *             .connectors(            
+ *                 InfraVariableSetConnectorArgs.builder()
+ *                     .connectorRef("harness_platform_connector_aws.test.id")
+ *                     .type("aws")
+ *                     .build(),
+ *                 InfraVariableSetConnectorArgs.builder()
+ *                     .connectorRef("harness_platform_connector_azure.test.id")
+ *                     .type("azure")
+ *                     .build())
  *             .environmentVariables(            
  *                 InfraVariableSetEnvironmentVariableArgs.builder()
  *                     .key("key1")
@@ -66,17 +70,6 @@ import javax.annotation.Nullable;
  *                     .key("key2")
  *                     .value("harness_platform_secret_text.test.id")
  *                     .valueType("secret")
- *                     .build())
- *             .terraformVariables(            
- *                 InfraVariableSetTerraformVariableArgs.builder()
- *                     .key("key1")
- *                     .value("1111")
- *                     .valueType("string")
- *                     .build(),
- *                 InfraVariableSetTerraformVariableArgs.builder()
- *                     .key("key2")
- *                     .value("1111u")
- *                     .valueType("string")
  *                     .build())
  *             .terraformVariableFiles(            
  *                 InfraVariableSetTerraformVariableFileArgs.builder()
@@ -91,15 +84,22 @@ import javax.annotation.Nullable;
  *                     .repositoryPath("tf/aws/basic")
  *                     .repositoryConnector("harness_platform_connector_github.test.id")
  *                     .build())
- *             .connectors(            
- *                 InfraVariableSetConnectorArgs.builder()
- *                     .connectorRef("harness_platform_connector_aws.test.id")
- *                     .type("aws")
+ *             .terraformVariables(            
+ *                 InfraVariableSetTerraformVariableArgs.builder()
+ *                     .key("key1")
+ *                     .value("1111")
+ *                     .valueType("string")
  *                     .build(),
- *                 InfraVariableSetConnectorArgs.builder()
- *                     .connectorRef("harness_platform_connector_azure.test.id")
- *                     .type("azure")
+ *                 InfraVariableSetTerraformVariableArgs.builder()
+ *                     .key("key2")
+ *                     .value("1111u")
+ *                     .valueType("string")
  *                     .build())
+ *             .identifier("example")
+ *             .name("example")
+ *             .orgId(test.id())
+ *             .projectId(testHarnessPlatformProject.id())
+ *             .description("some description")
  *             .build());
  * 
  *     }

@@ -56,14 +56,6 @@ namespace Pulumi.Harness.Platform
     /// 
     ///     var gcpSmOidcPlatform = new Harness.Platform.GcpSecretManagerConnector("gcp_sm_oidc_platform", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Description = "test",
-    ///         Tags = new[]
-    ///         {
-    ///             "foo:bar",
-    ///         },
-    ///         ExecuteOnDelegate = false,
     ///         OidcAuthentications = new[]
     ///         {
     ///             new Harness.Platform.Inputs.GcpSecretManagerConnectorOidcAuthenticationArgs
@@ -74,10 +66,28 @@ namespace Pulumi.Harness.Platform
     ///                 ServiceAccountEmail = "harness.sample@iam.gserviceaccount.com",
     ///             },
     ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         ExecuteOnDelegate = false,
     ///     });
     /// 
     ///     var gcpSmOidcDelegate = new Harness.Platform.GcpSecretManagerConnector("gcp_sm_oidc_delegate", new()
     ///     {
+    ///         OidcAuthentications = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.GcpSecretManagerConnectorOidcAuthenticationArgs
+    ///             {
+    ///                 WorkloadPoolId = "harness-pool-test",
+    ///                 ProviderId = "harness",
+    ///                 GcpProjectId = "1234567",
+    ///                 ServiceAccountEmail = "harness.sample@iam.gserviceaccount.com",
+    ///             },
+    ///         },
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         Description = "test",
@@ -89,16 +99,6 @@ namespace Pulumi.Harness.Platform
     ///         DelegateSelectors = new[]
     ///         {
     ///             "harness-delegate",
-    ///         },
-    ///         OidcAuthentications = new[]
-    ///         {
-    ///             new Harness.Platform.Inputs.GcpSecretManagerConnectorOidcAuthenticationArgs
-    ///             {
-    ///                 WorkloadPoolId = "harness-pool-test",
-    ///                 ProviderId = "harness",
-    ///                 GcpProjectId = "1234567",
-    ///                 ServiceAccountEmail = "harness.sample@iam.gserviceaccount.com",
-    ///             },
     ///         },
     ///     });
     /// 

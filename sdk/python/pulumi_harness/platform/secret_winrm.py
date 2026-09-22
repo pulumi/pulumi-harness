@@ -331,9 +331,9 @@ class SecretWinrm(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
-                 kerberos: pulumi.Input[Optional[Union['SecretWinrmKerberosArgs', 'SecretWinrmKerberosArgsDict']]] = None,
+                 kerberos: pulumi.Input[Optional[Union['SecretWinrmKerberosArgs', 'SecretWinrmKerberosArgsDict', 'outputs.SecretWinrmKerberos']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 ntlm: pulumi.Input[Optional[Union['SecretWinrmNtlmArgs', 'SecretWinrmNtlmArgsDict']]] = None,
+                 ntlm: pulumi.Input[Optional[Union['SecretWinrmNtlmArgs', 'SecretWinrmNtlmArgsDict', 'outputs.SecretWinrmNtlm']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -360,14 +360,6 @@ class SecretWinrm(pulumi.CustomResource):
             value_type="Inline",
             value="account_ntlm_pass")
         account_ntlm = harness.platform.SecretWinrm("account_ntlm",
-            identifier="account_ntlm_v3",
-            name="Account NTLM v3",
-            description="Account-level WinRM with NTLM",
-            tags=[
-                "scope:account",
-                "auth:ntlm",
-            ],
-            port=5986,
             ntlm={
                 "domain": "example.com",
                 "username": "admin",
@@ -375,9 +367,28 @@ class SecretWinrm(pulumi.CustomResource):
                 "use_ssl": True,
                 "skip_cert_check": False,
                 "use_no_profile": True,
-            })
+            },
+            identifier="account_ntlm_v3",
+            name="Account NTLM v3",
+            description="Account-level WinRM with NTLM",
+            tags=[
+                "scope:account",
+                "auth:ntlm",
+            ],
+            port=5986)
         # 2. Account-level Kerberos with KeyTab
         account_kerberos_keytab = harness.platform.SecretWinrm("account_kerberos_keytab",
+            kerberos={
+                "tgt_key_tab_file_path_spec": {
+                    "key_path": "/etc/krb5.keytab",
+                },
+                "principal": "service@EXAMPLE.COM",
+                "realm": "EXAMPLE.COM",
+                "tgt_generation_method": "KeyTabFilePath",
+                "use_ssl": True,
+                "skip_cert_check": True,
+                "use_no_profile": True,
+            },
             identifier="account_kerberos_keytab_v3",
             name="Account Kerberos KeyTab v3",
             description="Account-level WinRM with Kerberos KeyTab",
@@ -385,18 +396,7 @@ class SecretWinrm(pulumi.CustomResource):
                 "scope:account",
                 "auth:kerberos-keytab",
             ],
-            port=5986,
-            kerberos={
-                "principal": "service@EXAMPLE.COM",
-                "realm": "EXAMPLE.COM",
-                "tgt_generation_method": "KeyTabFilePath",
-                "use_ssl": True,
-                "skip_cert_check": True,
-                "use_no_profile": True,
-                "tgt_key_tab_file_path_spec": {
-                    "key_path": "/etc/krb5.keytab",
-                },
-            })
+            port=5986)
         # 3. Account-level Kerberos with Password
         account_kerberos_password1 = harness.platform.SecretText("account_kerberos_password_1",
             identifier="account_kerb_pass_20251111",
@@ -406,6 +406,17 @@ class SecretWinrm(pulumi.CustomResource):
             value_type="Inline",
             value="account_kerberos_pass")
         account_kerberos_password1_secret_winrm = harness.platform.SecretWinrm("account_kerberos_password_1",
+            kerberos={
+                "tgt_password_spec": {
+                    "password_ref": account_kerberos_password1.id.apply(lambda id: f"account.{id}"),
+                },
+                "principal": "user@EXAMPLE.COM",
+                "realm": "EXAMPLE.COM",
+                "tgt_generation_method": "Password",
+                "use_ssl": True,
+                "skip_cert_check": False,
+                "use_no_profile": True,
+            },
             identifier="account_kerb_winrm_20251111",
             name="Account Kerberos WinRM 20251111",
             description="Account-level WinRM with Kerberos Password",
@@ -413,18 +424,7 @@ class SecretWinrm(pulumi.CustomResource):
                 "scope:account",
                 "auth:kerberos-password",
             ],
-            port=5986,
-            kerberos={
-                "principal": "user@EXAMPLE.COM",
-                "realm": "EXAMPLE.COM",
-                "tgt_generation_method": "Password",
-                "use_ssl": True,
-                "skip_cert_check": False,
-                "use_no_profile": True,
-                "tgt_password_spec": {
-                    "password_ref": account_kerberos_password1.id.apply(lambda id: f"account.{id}"),
-                },
-            })
+            port=5986)
         # ============================================================================
         # ORGANIZATION LEVEL TESTS (3 scenarios)
         # ============================================================================
@@ -438,6 +438,14 @@ class SecretWinrm(pulumi.CustomResource):
             value_type="Inline",
             value="org_ntlm_pass")
         org_ntlm = harness.platform.SecretWinrm("org_ntlm",
+            ntlm={
+                "domain": "org.example.com",
+                "username": "orgadmin",
+                "password_ref": org_ntlm_password.id.apply(lambda id: f"org.{id}"),
+                "use_ssl": False,
+                "skip_cert_check": False,
+                "use_no_profile": True,
+            },
             identifier="org_ntlm_v3",
             name="Org NTLM v3",
             description="Org-level WinRM with NTLM",
@@ -446,17 +454,20 @@ class SecretWinrm(pulumi.CustomResource):
                 "scope:org",
                 "auth:ntlm",
             ],
-            port=5985,
-            ntlm={
-                "domain": "org.example.com",
-                "username": "orgadmin",
-                "password_ref": org_ntlm_password.id.apply(lambda id: f"org.{id}"),
-                "use_ssl": False,
-                "skip_cert_check": False,
-                "use_no_profile": True,
-            })
+            port=5985)
         # 5. Org-level Kerberos with KeyTab
         org_kerberos_keytab = harness.platform.SecretWinrm("org_kerberos_keytab",
+            kerberos={
+                "tgt_key_tab_file_path_spec": {
+                    "key_path": "/etc/org.keytab",
+                },
+                "principal": "orgservice@EXAMPLE.COM",
+                "realm": "EXAMPLE.COM",
+                "tgt_generation_method": "KeyTabFilePath",
+                "use_ssl": True,
+                "skip_cert_check": True,
+                "use_no_profile": True,
+            },
             identifier="org_kerberos_keytab_v3",
             name="Org Kerberos KeyTab v3",
             description="Org-level WinRM with Kerberos KeyTab",
@@ -465,18 +476,7 @@ class SecretWinrm(pulumi.CustomResource):
                 "scope:org",
                 "auth:kerberos-keytab",
             ],
-            port=5986,
-            kerberos={
-                "principal": "orgservice@EXAMPLE.COM",
-                "realm": "EXAMPLE.COM",
-                "tgt_generation_method": "KeyTabFilePath",
-                "use_ssl": True,
-                "skip_cert_check": True,
-                "use_no_profile": True,
-                "tgt_key_tab_file_path_spec": {
-                    "key_path": "/etc/org.keytab",
-                },
-            })
+            port=5986)
         # 6. Org-level Kerberos with Password
         org_kerberos_password = harness.platform.SecretText("org_kerberos_password",
             identifier="org_kerb_pass_v3",
@@ -487,6 +487,17 @@ class SecretWinrm(pulumi.CustomResource):
             value_type="Inline",
             value="org_kerberos_pass")
         org_kerberos_password_secret_winrm = harness.platform.SecretWinrm("org_kerberos_password",
+            kerberos={
+                "tgt_password_spec": {
+                    "password_ref": org_kerberos_password.id.apply(lambda id: f"org.{id}"),
+                },
+                "principal": "orguser@EXAMPLE.COM",
+                "realm": "EXAMPLE.COM",
+                "tgt_generation_method": "Password",
+                "use_ssl": True,
+                "skip_cert_check": False,
+                "use_no_profile": True,
+            },
             identifier="org_kerb_winrm_v3",
             name="Org Kerberos WinRM v3",
             description="Org-level WinRM with Kerberos Password",
@@ -495,18 +506,7 @@ class SecretWinrm(pulumi.CustomResource):
                 "scope:org",
                 "auth:kerberos-password",
             ],
-            port=5986,
-            kerberos={
-                "principal": "orguser@EXAMPLE.COM",
-                "realm": "EXAMPLE.COM",
-                "tgt_generation_method": "Password",
-                "use_ssl": True,
-                "skip_cert_check": False,
-                "use_no_profile": True,
-                "tgt_password_spec": {
-                    "password_ref": org_kerberos_password.id.apply(lambda id: f"org.{id}"),
-                },
-            })
+            port=5986)
         # ============================================================================
         # PROJECT LEVEL TESTS (3 scenarios)
         # ============================================================================
@@ -521,6 +521,14 @@ class SecretWinrm(pulumi.CustomResource):
             value_type="Inline",
             value="project_ntlm_pass")
         project_ntlm = harness.platform.SecretWinrm("project_ntlm",
+            ntlm={
+                "domain": "project.example.com",
+                "username": "projectadmin",
+                "password_ref": project_ntlm_password.id,
+                "use_ssl": True,
+                "skip_cert_check": False,
+                "use_no_profile": False,
+            },
             identifier="proj_ntlm_winrm_v3",
             name="Project NTLM WinRM v3",
             description="Project-level WinRM with NTLM",
@@ -530,17 +538,20 @@ class SecretWinrm(pulumi.CustomResource):
                 "scope:project",
                 "auth:ntlm",
             ],
-            port=5986,
-            ntlm={
-                "domain": "project.example.com",
-                "username": "projectadmin",
-                "password_ref": project_ntlm_password.id,
-                "use_ssl": True,
-                "skip_cert_check": False,
-                "use_no_profile": False,
-            })
+            port=5986)
         # 8. Project-level Kerberos with KeyTab
         project_kerberos_keytab = harness.platform.SecretWinrm("project_kerberos_keytab",
+            kerberos={
+                "tgt_key_tab_file_path_spec": {
+                    "key_path": "/etc/project.keytab",
+                },
+                "principal": "projectservice@EXAMPLE.COM",
+                "realm": "EXAMPLE.COM",
+                "tgt_generation_method": "KeyTabFilePath",
+                "use_ssl": False,
+                "skip_cert_check": False,
+                "use_no_profile": False,
+            },
             identifier="proj_kerb_keytab_v3",
             name="Project Kerberos KeyTab v3",
             description="Project-level WinRM with Kerberos KeyTab",
@@ -550,18 +561,7 @@ class SecretWinrm(pulumi.CustomResource):
                 "scope:project",
                 "auth:kerberos-keytab",
             ],
-            port=5986,
-            kerberos={
-                "principal": "projectservice@EXAMPLE.COM",
-                "realm": "EXAMPLE.COM",
-                "tgt_generation_method": "KeyTabFilePath",
-                "use_ssl": False,
-                "skip_cert_check": False,
-                "use_no_profile": False,
-                "tgt_key_tab_file_path_spec": {
-                    "key_path": "/etc/project.keytab",
-                },
-            })
+            port=5986)
         # 9. Project-level Kerberos with Password
         project_kerberos_password = harness.platform.SecretText("project_kerberos_password",
             identifier="proj_kerb_pass_v3",
@@ -573,6 +573,17 @@ class SecretWinrm(pulumi.CustomResource):
             value_type="Inline",
             value="project_kerberos_pass")
         project_kerberos_password_secret_winrm = harness.platform.SecretWinrm("project_kerberos_password",
+            kerberos={
+                "tgt_password_spec": {
+                    "password_ref": project_kerberos_password.id,
+                },
+                "principal": "projectuser@EXAMPLE.COM",
+                "realm": "EXAMPLE.COM",
+                "tgt_generation_method": "Password",
+                "use_ssl": False,
+                "skip_cert_check": True,
+                "use_no_profile": True,
+            },
             identifier="proj_kerb_winrm_v3",
             name="Project Kerberos WinRM v3",
             description="Project-level WinRM with Kerberos Password",
@@ -582,18 +593,7 @@ class SecretWinrm(pulumi.CustomResource):
                 "scope:project",
                 "auth:kerberos-password",
             ],
-            port=5986,
-            kerberos={
-                "principal": "projectuser@EXAMPLE.COM",
-                "realm": "EXAMPLE.COM",
-                "tgt_generation_method": "Password",
-                "use_ssl": False,
-                "skip_cert_check": True,
-                "use_no_profile": True,
-                "tgt_password_spec": {
-                    "password_ref": project_kerberos_password.id,
-                },
-            })
+            port=5986)
         ```
 
         ## Import
@@ -623,9 +623,9 @@ class SecretWinrm(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[Union['SecretWinrmKerberosArgs', 'SecretWinrmKerberosArgsDict']] kerberos: Kerberos authentication scheme
+        :param pulumi.Input[Union['SecretWinrmKerberosArgs', 'SecretWinrmKerberosArgsDict', 'outputs.SecretWinrmKerberos']] kerberos: Kerberos authentication scheme
         :param pulumi.Input[_builtins.str] name: Name of the resource.
-        :param pulumi.Input[Union['SecretWinrmNtlmArgs', 'SecretWinrmNtlmArgsDict']] ntlm: NTLM authentication scheme
+        :param pulumi.Input[Union['SecretWinrmNtlmArgs', 'SecretWinrmNtlmArgsDict', 'outputs.SecretWinrmNtlm']] ntlm: NTLM authentication scheme
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.int] port: WinRM port. Default is 5986 for HTTPS, 5985 for HTTP.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
@@ -658,14 +658,6 @@ class SecretWinrm(pulumi.CustomResource):
             value_type="Inline",
             value="account_ntlm_pass")
         account_ntlm = harness.platform.SecretWinrm("account_ntlm",
-            identifier="account_ntlm_v3",
-            name="Account NTLM v3",
-            description="Account-level WinRM with NTLM",
-            tags=[
-                "scope:account",
-                "auth:ntlm",
-            ],
-            port=5986,
             ntlm={
                 "domain": "example.com",
                 "username": "admin",
@@ -673,9 +665,28 @@ class SecretWinrm(pulumi.CustomResource):
                 "use_ssl": True,
                 "skip_cert_check": False,
                 "use_no_profile": True,
-            })
+            },
+            identifier="account_ntlm_v3",
+            name="Account NTLM v3",
+            description="Account-level WinRM with NTLM",
+            tags=[
+                "scope:account",
+                "auth:ntlm",
+            ],
+            port=5986)
         # 2. Account-level Kerberos with KeyTab
         account_kerberos_keytab = harness.platform.SecretWinrm("account_kerberos_keytab",
+            kerberos={
+                "tgt_key_tab_file_path_spec": {
+                    "key_path": "/etc/krb5.keytab",
+                },
+                "principal": "service@EXAMPLE.COM",
+                "realm": "EXAMPLE.COM",
+                "tgt_generation_method": "KeyTabFilePath",
+                "use_ssl": True,
+                "skip_cert_check": True,
+                "use_no_profile": True,
+            },
             identifier="account_kerberos_keytab_v3",
             name="Account Kerberos KeyTab v3",
             description="Account-level WinRM with Kerberos KeyTab",
@@ -683,18 +694,7 @@ class SecretWinrm(pulumi.CustomResource):
                 "scope:account",
                 "auth:kerberos-keytab",
             ],
-            port=5986,
-            kerberos={
-                "principal": "service@EXAMPLE.COM",
-                "realm": "EXAMPLE.COM",
-                "tgt_generation_method": "KeyTabFilePath",
-                "use_ssl": True,
-                "skip_cert_check": True,
-                "use_no_profile": True,
-                "tgt_key_tab_file_path_spec": {
-                    "key_path": "/etc/krb5.keytab",
-                },
-            })
+            port=5986)
         # 3. Account-level Kerberos with Password
         account_kerberos_password1 = harness.platform.SecretText("account_kerberos_password_1",
             identifier="account_kerb_pass_20251111",
@@ -704,6 +704,17 @@ class SecretWinrm(pulumi.CustomResource):
             value_type="Inline",
             value="account_kerberos_pass")
         account_kerberos_password1_secret_winrm = harness.platform.SecretWinrm("account_kerberos_password_1",
+            kerberos={
+                "tgt_password_spec": {
+                    "password_ref": account_kerberos_password1.id.apply(lambda id: f"account.{id}"),
+                },
+                "principal": "user@EXAMPLE.COM",
+                "realm": "EXAMPLE.COM",
+                "tgt_generation_method": "Password",
+                "use_ssl": True,
+                "skip_cert_check": False,
+                "use_no_profile": True,
+            },
             identifier="account_kerb_winrm_20251111",
             name="Account Kerberos WinRM 20251111",
             description="Account-level WinRM with Kerberos Password",
@@ -711,18 +722,7 @@ class SecretWinrm(pulumi.CustomResource):
                 "scope:account",
                 "auth:kerberos-password",
             ],
-            port=5986,
-            kerberos={
-                "principal": "user@EXAMPLE.COM",
-                "realm": "EXAMPLE.COM",
-                "tgt_generation_method": "Password",
-                "use_ssl": True,
-                "skip_cert_check": False,
-                "use_no_profile": True,
-                "tgt_password_spec": {
-                    "password_ref": account_kerberos_password1.id.apply(lambda id: f"account.{id}"),
-                },
-            })
+            port=5986)
         # ============================================================================
         # ORGANIZATION LEVEL TESTS (3 scenarios)
         # ============================================================================
@@ -736,6 +736,14 @@ class SecretWinrm(pulumi.CustomResource):
             value_type="Inline",
             value="org_ntlm_pass")
         org_ntlm = harness.platform.SecretWinrm("org_ntlm",
+            ntlm={
+                "domain": "org.example.com",
+                "username": "orgadmin",
+                "password_ref": org_ntlm_password.id.apply(lambda id: f"org.{id}"),
+                "use_ssl": False,
+                "skip_cert_check": False,
+                "use_no_profile": True,
+            },
             identifier="org_ntlm_v3",
             name="Org NTLM v3",
             description="Org-level WinRM with NTLM",
@@ -744,17 +752,20 @@ class SecretWinrm(pulumi.CustomResource):
                 "scope:org",
                 "auth:ntlm",
             ],
-            port=5985,
-            ntlm={
-                "domain": "org.example.com",
-                "username": "orgadmin",
-                "password_ref": org_ntlm_password.id.apply(lambda id: f"org.{id}"),
-                "use_ssl": False,
-                "skip_cert_check": False,
-                "use_no_profile": True,
-            })
+            port=5985)
         # 5. Org-level Kerberos with KeyTab
         org_kerberos_keytab = harness.platform.SecretWinrm("org_kerberos_keytab",
+            kerberos={
+                "tgt_key_tab_file_path_spec": {
+                    "key_path": "/etc/org.keytab",
+                },
+                "principal": "orgservice@EXAMPLE.COM",
+                "realm": "EXAMPLE.COM",
+                "tgt_generation_method": "KeyTabFilePath",
+                "use_ssl": True,
+                "skip_cert_check": True,
+                "use_no_profile": True,
+            },
             identifier="org_kerberos_keytab_v3",
             name="Org Kerberos KeyTab v3",
             description="Org-level WinRM with Kerberos KeyTab",
@@ -763,18 +774,7 @@ class SecretWinrm(pulumi.CustomResource):
                 "scope:org",
                 "auth:kerberos-keytab",
             ],
-            port=5986,
-            kerberos={
-                "principal": "orgservice@EXAMPLE.COM",
-                "realm": "EXAMPLE.COM",
-                "tgt_generation_method": "KeyTabFilePath",
-                "use_ssl": True,
-                "skip_cert_check": True,
-                "use_no_profile": True,
-                "tgt_key_tab_file_path_spec": {
-                    "key_path": "/etc/org.keytab",
-                },
-            })
+            port=5986)
         # 6. Org-level Kerberos with Password
         org_kerberos_password = harness.platform.SecretText("org_kerberos_password",
             identifier="org_kerb_pass_v3",
@@ -785,6 +785,17 @@ class SecretWinrm(pulumi.CustomResource):
             value_type="Inline",
             value="org_kerberos_pass")
         org_kerberos_password_secret_winrm = harness.platform.SecretWinrm("org_kerberos_password",
+            kerberos={
+                "tgt_password_spec": {
+                    "password_ref": org_kerberos_password.id.apply(lambda id: f"org.{id}"),
+                },
+                "principal": "orguser@EXAMPLE.COM",
+                "realm": "EXAMPLE.COM",
+                "tgt_generation_method": "Password",
+                "use_ssl": True,
+                "skip_cert_check": False,
+                "use_no_profile": True,
+            },
             identifier="org_kerb_winrm_v3",
             name="Org Kerberos WinRM v3",
             description="Org-level WinRM with Kerberos Password",
@@ -793,18 +804,7 @@ class SecretWinrm(pulumi.CustomResource):
                 "scope:org",
                 "auth:kerberos-password",
             ],
-            port=5986,
-            kerberos={
-                "principal": "orguser@EXAMPLE.COM",
-                "realm": "EXAMPLE.COM",
-                "tgt_generation_method": "Password",
-                "use_ssl": True,
-                "skip_cert_check": False,
-                "use_no_profile": True,
-                "tgt_password_spec": {
-                    "password_ref": org_kerberos_password.id.apply(lambda id: f"org.{id}"),
-                },
-            })
+            port=5986)
         # ============================================================================
         # PROJECT LEVEL TESTS (3 scenarios)
         # ============================================================================
@@ -819,6 +819,14 @@ class SecretWinrm(pulumi.CustomResource):
             value_type="Inline",
             value="project_ntlm_pass")
         project_ntlm = harness.platform.SecretWinrm("project_ntlm",
+            ntlm={
+                "domain": "project.example.com",
+                "username": "projectadmin",
+                "password_ref": project_ntlm_password.id,
+                "use_ssl": True,
+                "skip_cert_check": False,
+                "use_no_profile": False,
+            },
             identifier="proj_ntlm_winrm_v3",
             name="Project NTLM WinRM v3",
             description="Project-level WinRM with NTLM",
@@ -828,17 +836,20 @@ class SecretWinrm(pulumi.CustomResource):
                 "scope:project",
                 "auth:ntlm",
             ],
-            port=5986,
-            ntlm={
-                "domain": "project.example.com",
-                "username": "projectadmin",
-                "password_ref": project_ntlm_password.id,
-                "use_ssl": True,
-                "skip_cert_check": False,
-                "use_no_profile": False,
-            })
+            port=5986)
         # 8. Project-level Kerberos with KeyTab
         project_kerberos_keytab = harness.platform.SecretWinrm("project_kerberos_keytab",
+            kerberos={
+                "tgt_key_tab_file_path_spec": {
+                    "key_path": "/etc/project.keytab",
+                },
+                "principal": "projectservice@EXAMPLE.COM",
+                "realm": "EXAMPLE.COM",
+                "tgt_generation_method": "KeyTabFilePath",
+                "use_ssl": False,
+                "skip_cert_check": False,
+                "use_no_profile": False,
+            },
             identifier="proj_kerb_keytab_v3",
             name="Project Kerberos KeyTab v3",
             description="Project-level WinRM with Kerberos KeyTab",
@@ -848,18 +859,7 @@ class SecretWinrm(pulumi.CustomResource):
                 "scope:project",
                 "auth:kerberos-keytab",
             ],
-            port=5986,
-            kerberos={
-                "principal": "projectservice@EXAMPLE.COM",
-                "realm": "EXAMPLE.COM",
-                "tgt_generation_method": "KeyTabFilePath",
-                "use_ssl": False,
-                "skip_cert_check": False,
-                "use_no_profile": False,
-                "tgt_key_tab_file_path_spec": {
-                    "key_path": "/etc/project.keytab",
-                },
-            })
+            port=5986)
         # 9. Project-level Kerberos with Password
         project_kerberos_password = harness.platform.SecretText("project_kerberos_password",
             identifier="proj_kerb_pass_v3",
@@ -871,6 +871,17 @@ class SecretWinrm(pulumi.CustomResource):
             value_type="Inline",
             value="project_kerberos_pass")
         project_kerberos_password_secret_winrm = harness.platform.SecretWinrm("project_kerberos_password",
+            kerberos={
+                "tgt_password_spec": {
+                    "password_ref": project_kerberos_password.id,
+                },
+                "principal": "projectuser@EXAMPLE.COM",
+                "realm": "EXAMPLE.COM",
+                "tgt_generation_method": "Password",
+                "use_ssl": False,
+                "skip_cert_check": True,
+                "use_no_profile": True,
+            },
             identifier="proj_kerb_winrm_v3",
             name="Project Kerberos WinRM v3",
             description="Project-level WinRM with Kerberos Password",
@@ -880,18 +891,7 @@ class SecretWinrm(pulumi.CustomResource):
                 "scope:project",
                 "auth:kerberos-password",
             ],
-            port=5986,
-            kerberos={
-                "principal": "projectuser@EXAMPLE.COM",
-                "realm": "EXAMPLE.COM",
-                "tgt_generation_method": "Password",
-                "use_ssl": False,
-                "skip_cert_check": True,
-                "use_no_profile": True,
-                "tgt_password_spec": {
-                    "password_ref": project_kerberos_password.id,
-                },
-            })
+            port=5986)
         ```
 
         ## Import
@@ -934,9 +934,9 @@ class SecretWinrm(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
-                 kerberos: pulumi.Input[Optional[Union['SecretWinrmKerberosArgs', 'SecretWinrmKerberosArgsDict']]] = None,
+                 kerberos: pulumi.Input[Optional[Union['SecretWinrmKerberosArgs', 'SecretWinrmKerberosArgsDict', 'outputs.SecretWinrmKerberos']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 ntlm: pulumi.Input[Optional[Union['SecretWinrmNtlmArgs', 'SecretWinrmNtlmArgsDict']]] = None,
+                 ntlm: pulumi.Input[Optional[Union['SecretWinrmNtlmArgs', 'SecretWinrmNtlmArgsDict', 'outputs.SecretWinrmNtlm']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -973,9 +973,9 @@ class SecretWinrm(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
-            kerberos: pulumi.Input[Optional[Union['SecretWinrmKerberosArgs', 'SecretWinrmKerberosArgsDict']]] = None,
+            kerberos: pulumi.Input[Optional[Union['SecretWinrmKerberosArgs', 'SecretWinrmKerberosArgsDict', 'outputs.SecretWinrmKerberos']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            ntlm: pulumi.Input[Optional[Union['SecretWinrmNtlmArgs', 'SecretWinrmNtlmArgsDict']]] = None,
+            ntlm: pulumi.Input[Optional[Union['SecretWinrmNtlmArgs', 'SecretWinrmNtlmArgsDict', 'outputs.SecretWinrmNtlm']]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             port: pulumi.Input[Optional[_builtins.int]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -989,9 +989,9 @@ class SecretWinrm(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
-        :param pulumi.Input[Union['SecretWinrmKerberosArgs', 'SecretWinrmKerberosArgsDict']] kerberos: Kerberos authentication scheme
+        :param pulumi.Input[Union['SecretWinrmKerberosArgs', 'SecretWinrmKerberosArgsDict', 'outputs.SecretWinrmKerberos']] kerberos: Kerberos authentication scheme
         :param pulumi.Input[_builtins.str] name: Name of the resource.
-        :param pulumi.Input[Union['SecretWinrmNtlmArgs', 'SecretWinrmNtlmArgsDict']] ntlm: NTLM authentication scheme
+        :param pulumi.Input[Union['SecretWinrmNtlmArgs', 'SecretWinrmNtlmArgsDict', 'outputs.SecretWinrmNtlm']] ntlm: NTLM authentication scheme
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.int] port: WinRM port. Default is 5986 for HTTPS, 5985 for HTTP.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.

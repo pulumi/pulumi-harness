@@ -29,26 +29,26 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewIdpScorecardCheck(ctx, "readme", &platform.IdpScorecardCheckArgs{
-//				Identifier:       pulumi.String("readme_exists"),
-//				Name:             pulumi.String("README exists"),
-//				Description:      pulumi.String("Ensure the repository has a README file"),
-//				RuleStrategy:     pulumi.String("ALL_OF"),
-//				DefaultBehaviour: pulumi.String("FAIL"),
 //				Rules: platform.IdpScorecardCheckRuleArray{
 //					&platform.IdpScorecardCheckRuleArgs{
-//						DataSourceIdentifier: pulumi.String("github"),
-//						DataPointIdentifier:  pulumi.String("isFileExists"),
-//						Operator:             pulumi.String("=="),
-//						Value:                pulumi.String("true"),
-//						RuleDescription:      pulumi.String("Repository has a README"),
 //						InputValues: platform.IdpScorecardCheckRuleInputValueArray{
 //							&platform.IdpScorecardCheckRuleInputValueArgs{
 //								Key:   pulumi.String("filePath"),
 //								Value: pulumi.String("README.md"),
 //							},
 //						},
+//						DataSourceIdentifier: pulumi.String("github"),
+//						DataPointIdentifier:  pulumi.String("isFileExists"),
+//						Operator:             pulumi.String("=="),
+//						Value:                pulumi.String("true"),
+//						RuleDescription:      pulumi.String("Repository has a README"),
 //					},
 //				},
+//				Identifier:       pulumi.String("readme_exists"),
+//				Name:             pulumi.String("README exists"),
+//				Description:      pulumi.String("Ensure the repository has a README file"),
+//				RuleStrategy:     pulumi.String("ALL_OF"),
+//				DefaultBehaviour: pulumi.String("FAIL"),
 //			})
 //			if err != nil {
 //				return err

@@ -31,18 +31,6 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var example = new Harness.Platform.ResourceGroup("example", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Description = "test",
-    ///         Tags = new[]
-    ///         {
-    ///             "foo:bar",
-    ///         },
-    ///         AccountId = "account_id",
-    ///         AllowedScopeLevels = new[]
-    ///         {
-    ///             "account",
-    ///         },
     ///         IncludedScopes = new[]
     ///         {
     ///             new Harness.Platform.Inputs.ResourceGroupIncludedScopeArgs
@@ -55,12 +43,10 @@ namespace Pulumi.Harness.Platform
     ///         {
     ///             new Harness.Platform.Inputs.ResourceGroupResourceFilterArgs
     ///             {
-    ///                 IncludeAllResources = false,
     ///                 Resources = new[]
     ///                 {
     ///                     new Harness.Platform.Inputs.ResourceGroupResourceFilterResourceArgs
     ///                     {
-    ///                         ResourceType = "CONNECTOR",
     ///                         AttributeFilters = new[]
     ///                         {
     ///                             new Harness.Platform.Inputs.ResourceGroupResourceFilterResourceAttributeFilterArgs
@@ -72,9 +58,23 @@ namespace Pulumi.Harness.Platform
     ///                                 },
     ///                             },
     ///                         },
+    ///                         ResourceType = "CONNECTOR",
     ///                     },
     ///                 },
+    ///                 IncludeAllResources = false,
     ///             },
+    ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         AccountId = "account_id",
+    ///         AllowedScopeLevels = new[]
+    ///         {
+    ///             "account",
     ///         },
     ///     });
     /// 
@@ -217,13 +217,6 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var staticExample = new Harness.Platform.ResourceGroup("static_example", new()
     ///     {
-    ///         Identifier = "static_rg",
-    ///         Name = "Static Resource Group",
-    ///         AccountId = "account_id",
-    ///         AllowedScopeLevels = new[]
-    ///         {
-    ///             "account",
-    ///         },
     ///         IncludedScopes = new[]
     ///         {
     ///             new Harness.Platform.Inputs.ResourceGroupIncludedScopeArgs
@@ -236,7 +229,6 @@ namespace Pulumi.Harness.Platform
     ///         {
     ///             new Harness.Platform.Inputs.ResourceGroupResourceFilterArgs
     ///             {
-    ///                 IncludeAllResources = false,
     ///                 Resources = new[]
     ///                 {
     ///                     new Harness.Platform.Inputs.ResourceGroupResourceFilterResourceArgs
@@ -249,7 +241,15 @@ namespace Pulumi.Harness.Platform
     ///                         },
     ///                     },
     ///                 },
+    ///                 IncludeAllResources = false,
     ///             },
+    ///         },
+    ///         Identifier = "static_rg",
+    ///         Name = "Static Resource Group",
+    ///         AccountId = "account_id",
+    ///         AllowedScopeLevels = new[]
+    ///         {
+    ///             "account",
     ///         },
     ///     });
     /// 
@@ -270,14 +270,6 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var allResourcesAccount = new Harness.Platform.ResourceGroup("all_resources_account", new()
     ///     {
-    ///         Identifier = "all_resources_account",
-    ///         Name = "All Resources - Account Level",
-    ///         Description = "Includes all resources at the account scope",
-    ///         AccountId = "account_id",
-    ///         AllowedScopeLevels = new[]
-    ///         {
-    ///             "account",
-    ///         },
     ///         IncludedScopes = new[]
     ///         {
     ///             new Harness.Platform.Inputs.ResourceGroupIncludedScopeArgs
@@ -292,6 +284,14 @@ namespace Pulumi.Harness.Platform
     ///             {
     ///                 IncludeAllResources = true,
     ///             },
+    ///         },
+    ///         Identifier = "all_resources_account",
+    ///         Name = "All Resources - Account Level",
+    ///         Description = "Includes all resources at the account scope",
+    ///         AccountId = "account_id",
+    ///         AllowedScopeLevels = new[]
+    ///         {
+    ///             "account",
     ///         },
     ///     });
     /// 
@@ -312,13 +312,6 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var dynamicExample = new Harness.Platform.ResourceGroup("dynamic_example", new()
     ///     {
-    ///         Identifier = "dynamic_rg",
-    ///         Name = "Dynamic Resource Group",
-    ///         AccountId = "account_id",
-    ///         AllowedScopeLevels = new[]
-    ///         {
-    ///             "account",
-    ///         },
     ///         IncludedScopes = new[]
     ///         {
     ///             new Harness.Platform.Inputs.ResourceGroupIncludedScopeArgs
@@ -331,7 +324,6 @@ namespace Pulumi.Harness.Platform
     ///         {
     ///             new Harness.Platform.Inputs.ResourceGroupResourceFilterArgs
     ///             {
-    ///                 IncludeAllResources = false,
     ///                 Resources = new[]
     ///                 {
     ///                     new Harness.Platform.Inputs.ResourceGroupResourceFilterResourceArgs
@@ -339,7 +331,15 @@ namespace Pulumi.Harness.Platform
     ///                         ResourceType = "PIPELINE",
     ///                     },
     ///                 },
+    ///                 IncludeAllResources = false,
     ///             },
+    ///         },
+    ///         Identifier = "dynamic_rg",
+    ///         Name = "Dynamic Resource Group",
+    ///         AccountId = "account_id",
+    ///         AllowedScopeLevels = new[]
+    ///         {
+    ///             "account",
     ///         },
     ///     });
     /// 

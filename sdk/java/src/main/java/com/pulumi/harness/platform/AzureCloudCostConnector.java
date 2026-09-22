@@ -47,17 +47,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new AzureCloudCostConnector("example", AzureCloudCostConnectorArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .description("example")
- *             .tags("foo:bar")
- *             .featuresEnableds(            
- *                 "BILLING",
- *                 "VISIBILITY",
- *                 "OPTIMIZATION",
- *                 "GOVERNANCE")
- *             .tenantId("tenant_id")
- *             .subscriptionId("subscription_id")
  *             .billingExportSpec(AzureCloudCostConnectorBillingExportSpecArgs.builder()
  *                 .storageAccountName("storage_account_name")
  *                 .containerName("container_name")
@@ -74,6 +63,17 @@ import javax.annotation.Nullable;
  *                 .subscriptionId("subscription_id")
  *                 .billingType("billing_type")
  *                 .build())
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("example")
+ *             .tags("foo:bar")
+ *             .featuresEnableds(            
+ *                 "BILLING",
+ *                 "VISIBILITY",
+ *                 "OPTIMIZATION",
+ *                 "GOVERNANCE")
+ *             .tenantId("tenant_id")
+ *             .subscriptionId("subscription_id")
  *             .build());
  * 
  *     }

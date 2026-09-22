@@ -30,19 +30,31 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Example 1: Cluster Generator
 //			_, err := platform.NewGitopsApplicationset(ctx, "cluster_generator", &platform.GitopsApplicationsetArgs{
-//				OrgId:     pulumi.String("default"),
-//				ProjectId: pulumi.String("projectId"),
-//				AgentId:   pulumi.String("account.agentuseast1"),
-//				Upsert:    pulumi.Bool(true),
 //				Applicationset: &platform.GitopsApplicationsetApplicationsetArgs{
 //					Metadata: &platform.GitopsApplicationsetApplicationsetMetadataArgs{
 //						Name:      pulumi.String("cluster-appset"),
 //						Namespace: pulumi.String("argocd"),
 //					},
 //					Spec: &platform.GitopsApplicationsetApplicationsetSpecArgs{
-//						GoTemplate: pulumi.Bool(true),
-//						GoTemplateOptions: pulumi.StringArray{
-//							pulumi.String("missingkey=error"),
+//						Template: &platform.GitopsApplicationsetApplicationsetSpecTemplateArgs{
+//							Metadata: &platform.GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs{
+//								Name: pulumi.String("{{.name}}-guestbook"),
+//								Labels: pulumi.StringMap{
+//									"env": pulumi.String("dev"),
+//								},
+//							},
+//							Spec: &platform.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs{
+//								Source: platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArray{
+//									RepoUrl:        "https://github.com/argoproj/argocd-example-apps.git",
+//									Path:           "helm-guestbook",
+//									TargetRevision: "HEAD",
+//								},
+//								Destination: &platform.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs{
+//									Server:    pulumi.String("{{.url}}"),
+//									Namespace: pulumi.String("app-ns-{{.name}}"),
+//								},
+//								Project: pulumi.String("default"),
+//							},
 //						},
 //						Generators: platform.GitopsApplicationsetApplicationsetSpecGeneratorArray{
 //							&platform.GitopsApplicationsetApplicationsetSpecGeneratorArgs{
@@ -53,15 +65,32 @@ import (
 //								},
 //							},
 //						},
+//						GoTemplate: pulumi.Bool(true),
+//						GoTemplateOptions: pulumi.StringArray{
+//							pulumi.String("missingkey=error"),
+//						},
+//					},
+//				},
+//				OrgId:     pulumi.String("default"),
+//				ProjectId: pulumi.String("projectId"),
+//				AgentId:   pulumi.String("account.agentuseast1"),
+//				Upsert:    pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example 2: List Generator
+//			_, err = platform.NewGitopsApplicationset(ctx, "list_generator", &platform.GitopsApplicationsetArgs{
+//				Applicationset: &platform.GitopsApplicationsetApplicationsetArgs{
+//					Metadata: &platform.GitopsApplicationsetApplicationsetMetadataArgs{
+//						Name: pulumi.String("list-appset"),
+//					},
+//					Spec: &platform.GitopsApplicationsetApplicationsetSpecArgs{
 //						Template: &platform.GitopsApplicationsetApplicationsetSpecTemplateArgs{
 //							Metadata: &platform.GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs{
-//								Name: pulumi.String("{{.name}}-guestbook"),
-//								Labels: pulumi.StringMap{
-//									"env": pulumi.String("dev"),
-//								},
+//								Name: pulumi.String("{{.cluster}}-guestbook"),
 //							},
 //							Spec: &platform.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs{
-//								Project: pulumi.String("default"),
 //								Source: platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArray{
 //									RepoUrl:        "https://github.com/argoproj/argocd-example-apps.git",
 //									Path:           "helm-guestbook",
@@ -69,30 +98,10 @@ import (
 //								},
 //								Destination: &platform.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs{
 //									Server:    pulumi.String("{{.url}}"),
-//									Namespace: pulumi.String("app-ns-{{.name}}"),
+//									Namespace: pulumi.String("default"),
 //								},
+//								Project: pulumi.String("default"),
 //							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Example 2: List Generator
-//			_, err = platform.NewGitopsApplicationset(ctx, "list_generator", &platform.GitopsApplicationsetArgs{
-//				OrgId:     pulumi.String("default"),
-//				ProjectId: pulumi.String("projectId"),
-//				AgentId:   pulumi.String("account.agentuseast1"),
-//				Upsert:    pulumi.Bool(true),
-//				Applicationset: &platform.GitopsApplicationsetApplicationsetArgs{
-//					Metadata: &platform.GitopsApplicationsetApplicationsetMetadataArgs{
-//						Name: pulumi.String("list-appset"),
-//					},
-//					Spec: &platform.GitopsApplicationsetApplicationsetSpecArgs{
-//						GoTemplate: pulumi.Bool(true),
-//						GoTemplateOptions: pulumi.StringArray{
-//							pulumi.String("missingkey=error"),
 //						},
 //						Generators: platform.GitopsApplicationsetApplicationsetSpecGeneratorArray{
 //							&platform.GitopsApplicationsetApplicationsetSpecGeneratorArgs{
@@ -112,61 +121,32 @@ import (
 //								},
 //							},
 //						},
-//						Template: &platform.GitopsApplicationsetApplicationsetSpecTemplateArgs{
-//							Metadata: &platform.GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs{
-//								Name: pulumi.String("{{.cluster}}-guestbook"),
-//							},
-//							Spec: &platform.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs{
-//								Project: pulumi.String("default"),
-//								Source: platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArray{
-//									RepoUrl:        "https://github.com/argoproj/argocd-example-apps.git",
-//									Path:           "helm-guestbook",
-//									TargetRevision: "HEAD",
-//								},
-//								Destination: &platform.GitopsApplicationsetApplicationsetSpecTemplateSpecDestinationArgs{
-//									Server:    pulumi.String("{{.url}}"),
-//									Namespace: pulumi.String("default"),
-//								},
-//							},
+//						GoTemplate: pulumi.Bool(true),
+//						GoTemplateOptions: pulumi.StringArray{
+//							pulumi.String("missingkey=error"),
 //						},
 //					},
 //				},
+//				OrgId:     pulumi.String("default"),
+//				ProjectId: pulumi.String("projectId"),
+//				AgentId:   pulumi.String("account.agentuseast1"),
+//				Upsert:    pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example 3: Git Generator with Files
 //			_, err = platform.NewGitopsApplicationset(ctx, "git_files", &platform.GitopsApplicationsetArgs{
-//				OrgId:     pulumi.String("default"),
-//				ProjectId: pulumi.String("projectId"),
-//				AgentId:   pulumi.String("account.agentuseast1"),
-//				Upsert:    pulumi.Bool(true),
 //				Applicationset: &platform.GitopsApplicationsetApplicationsetArgs{
 //					Metadata: &platform.GitopsApplicationsetApplicationsetMetadataArgs{
 //						Name: pulumi.String("git-files-appset"),
 //					},
 //					Spec: &platform.GitopsApplicationsetApplicationsetSpecArgs{
-//						Generators: platform.GitopsApplicationsetApplicationsetSpecGeneratorArray{
-//							&platform.GitopsApplicationsetApplicationsetSpecGeneratorArgs{
-//								Gits: platform.GitopsApplicationsetApplicationsetSpecGeneratorGitArray{
-//									&platform.GitopsApplicationsetApplicationsetSpecGeneratorGitArgs{
-//										RepoUrl:  pulumi.String("https://github.com/example/config-repo"),
-//										Revision: pulumi.String("main"),
-//										Files: platform.GitopsApplicationsetApplicationsetSpecGeneratorGitFileArray{
-//											&platform.GitopsApplicationsetApplicationsetSpecGeneratorGitFileArgs{
-//												Path: pulumi.String("apps/*/config.json"),
-//											},
-//										},
-//									},
-//								},
-//							},
-//						},
 //						Template: &platform.GitopsApplicationsetApplicationsetSpecTemplateArgs{
 //							Metadata: &platform.GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs{
 //								Name: pulumi.String("{{.path.basename}}-app"),
 //							},
 //							Spec: &platform.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs{
-//								Project: pulumi.String("default"),
 //								Source: platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArray{
 //									RepoUrl:        "https://github.com/example/app-repo",
 //									Path:           "{{.path.path}}",
@@ -176,47 +156,46 @@ import (
 //									Server:    pulumi.String("https://kubernetes.default.svc"),
 //									Namespace: pulumi.String("{{.path.basename}}"),
 //								},
+//								Project: pulumi.String("default"),
+//							},
+//						},
+//						Generators: platform.GitopsApplicationsetApplicationsetSpecGeneratorArray{
+//							&platform.GitopsApplicationsetApplicationsetSpecGeneratorArgs{
+//								Gits: platform.GitopsApplicationsetApplicationsetSpecGeneratorGitArray{
+//									&platform.GitopsApplicationsetApplicationsetSpecGeneratorGitArgs{
+//										Files: platform.GitopsApplicationsetApplicationsetSpecGeneratorGitFileArray{
+//											&platform.GitopsApplicationsetApplicationsetSpecGeneratorGitFileArgs{
+//												Path: pulumi.String("apps/*/config.json"),
+//											},
+//										},
+//										RepoUrl:  pulumi.String("https://github.com/example/config-repo"),
+//										Revision: pulumi.String("main"),
+//									},
+//								},
 //							},
 //						},
 //					},
 //				},
+//				OrgId:     pulumi.String("default"),
+//				ProjectId: pulumi.String("projectId"),
+//				AgentId:   pulumi.String("account.agentuseast1"),
+//				Upsert:    pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example 4: Git Generator with Directories
 //			_, err = platform.NewGitopsApplicationset(ctx, "git_directories", &platform.GitopsApplicationsetArgs{
-//				OrgId:     pulumi.String("default"),
-//				ProjectId: pulumi.String("projectId"),
-//				AgentId:   pulumi.String("account.agentuseast1"),
-//				Upsert:    pulumi.Bool(true),
 //				Applicationset: &platform.GitopsApplicationsetApplicationsetArgs{
 //					Metadata: &platform.GitopsApplicationsetApplicationsetMetadataArgs{
 //						Name: pulumi.String("git-directories-appset"),
 //					},
 //					Spec: &platform.GitopsApplicationsetApplicationsetSpecArgs{
-//						Generators: platform.GitopsApplicationsetApplicationsetSpecGeneratorArray{
-//							&platform.GitopsApplicationsetApplicationsetSpecGeneratorArgs{
-//								Gits: platform.GitopsApplicationsetApplicationsetSpecGeneratorGitArray{
-//									&platform.GitopsApplicationsetApplicationsetSpecGeneratorGitArgs{
-//										RepoUrl:  pulumi.String("https://github.com/argoproj/argo-cd.git"),
-//										Revision: pulumi.String("HEAD"),
-//										Directories: platform.GitopsApplicationsetApplicationsetSpecGeneratorGitDirectoryArray{
-//											&platform.GitopsApplicationsetApplicationsetSpecGeneratorGitDirectoryArgs{
-//												Path:    pulumi.String("applicationset/examples/git-generator-directory/cluster-addons/*"),
-//												Exclude: pulumi.Bool(false),
-//											},
-//										},
-//									},
-//								},
-//							},
-//						},
 //						Template: &platform.GitopsApplicationsetApplicationsetSpecTemplateArgs{
 //							Metadata: &platform.GitopsApplicationsetApplicationsetSpecTemplateMetadataArgs{
 //								Name: pulumi.String("{{.path.basename}}-addon"),
 //							},
 //							Spec: &platform.GitopsApplicationsetApplicationsetSpecTemplateSpecArgs{
-//								Project: pulumi.String("default"),
 //								Source: platform.GitopsApplicationsetApplicationsetSpecTemplateSpecSourceArray{
 //									RepoUrl:        "https://github.com/argoproj/argo-cd.git",
 //									Path:           "{{.path.path}}",
@@ -232,10 +211,31 @@ import (
 //										SelfHeal: pulumi.Bool(true),
 //									},
 //								},
+//								Project: pulumi.String("default"),
+//							},
+//						},
+//						Generators: platform.GitopsApplicationsetApplicationsetSpecGeneratorArray{
+//							&platform.GitopsApplicationsetApplicationsetSpecGeneratorArgs{
+//								Gits: platform.GitopsApplicationsetApplicationsetSpecGeneratorGitArray{
+//									&platform.GitopsApplicationsetApplicationsetSpecGeneratorGitArgs{
+//										Directories: platform.GitopsApplicationsetApplicationsetSpecGeneratorGitDirectoryArray{
+//											&platform.GitopsApplicationsetApplicationsetSpecGeneratorGitDirectoryArgs{
+//												Path:    pulumi.String("applicationset/examples/git-generator-directory/cluster-addons/*"),
+//												Exclude: pulumi.Bool(false),
+//											},
+//										},
+//										RepoUrl:  pulumi.String("https://github.com/argoproj/argo-cd.git"),
+//										Revision: pulumi.String("HEAD"),
+//									},
+//								},
 //							},
 //						},
 //					},
 //				},
+//				OrgId:     pulumi.String("default"),
+//				ProjectId: pulumi.String("projectId"),
+//				AgentId:   pulumi.String("account.agentuseast1"),
+//				Upsert:    pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

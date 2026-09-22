@@ -171,7 +171,7 @@ class AwaitableGetPipelineResult(GetPipelineResult):
             yaml=self.yaml)
 
 
-def get_pipeline(git_details: Optional[Union['GetPipelineGitDetailsArgs', 'GetPipelineGitDetailsArgsDict']] = None,
+def get_pipeline(git_details: Optional[Union['GetPipelineGitDetailsArgs', 'GetPipelineGitDetailsArgsDict', 'outputs.GetPipelineGitDetailsResult']] = None,
                  identifier: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None,
                  org_id: Optional[_builtins.str] = None,
@@ -192,7 +192,7 @@ def get_pipeline(git_details: Optional[Union['GetPipelineGitDetailsArgs', 'GetPi
     ```
 
 
-    :param Union['GetPipelineGitDetailsArgs', 'GetPipelineGitDetailsArgsDict'] git_details: Contains parameters related to creating an Entity for Git Experience.
+    :param Union['GetPipelineGitDetailsArgs', 'GetPipelineGitDetailsArgsDict', 'outputs.GetPipelineGitDetailsResult'] git_details: Contains parameters related to creating an Entity for Git Experience.
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
@@ -219,7 +219,7 @@ def get_pipeline(git_details: Optional[Union['GetPipelineGitDetailsArgs', 'GetPi
         template_applied=pulumi.get(__ret__, 'template_applied'),
         template_applied_pipeline_yaml=pulumi.get(__ret__, 'template_applied_pipeline_yaml'),
         yaml=pulumi.get(__ret__, 'yaml'))
-def get_pipeline_output(git_details: pulumi.Input[Optional[Optional[Union['GetPipelineGitDetailsArgs', 'GetPipelineGitDetailsArgsDict']]]] = None,
+def get_pipeline_output(git_details: pulumi.Input[Optional[Optional[Union['GetPipelineGitDetailsArgs', 'GetPipelineGitDetailsArgsDict', 'outputs.GetPipelineGitDetailsResult']]]] = None,
                         identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -240,7 +240,7 @@ def get_pipeline_output(git_details: pulumi.Input[Optional[Optional[Union['GetPi
     ```
 
 
-    :param Union['GetPipelineGitDetailsArgs', 'GetPipelineGitDetailsArgsDict'] git_details: Contains parameters related to creating an Entity for Git Experience.
+    :param Union['GetPipelineGitDetailsArgs', 'GetPipelineGitDetailsArgsDict', 'outputs.GetPipelineGitDetailsResult'] git_details: Contains parameters related to creating an Entity for Git Experience.
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.

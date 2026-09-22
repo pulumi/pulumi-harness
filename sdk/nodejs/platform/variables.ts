@@ -16,15 +16,15 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.platform.Variables("test", {
+ *     spec: {
+ *         valueType: "FIXED",
+ *         fixedValue: "fixedValue",
+ *     },
  *     identifier: "identifier",
  *     name: "name",
  *     orgId: "org_id",
  *     projectId: "project_id",
  *     type: "String",
- *     spec: {
- *         valueType: "FIXED",
- *         fixedValue: "fixedValue",
- *     },
  * });
  * ```
  *

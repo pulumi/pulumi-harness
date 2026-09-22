@@ -267,11 +267,11 @@ class UserGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 ldap_settings: pulumi.Input[Optional[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict']]] = None,
+                 ldap_settings: pulumi.Input[Optional[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict', 'outputs.UserGroupLdapSettings']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 notification_settings: pulumi.Input[Optional[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict']]] = None,
-                 permissions: pulumi.Input[Optional[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict']]] = None,
-                 saml_settings: pulumi.Input[Optional[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict']]] = None,
+                 notification_settings: pulumi.Input[Optional[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict', 'outputs.UserGroupNotificationSettings']]] = None,
+                 permissions: pulumi.Input[Optional[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict', 'outputs.UserGroupPermissions']]] = None,
+                 saml_settings: pulumi.Input[Optional[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict', 'outputs.UserGroupSamlSettings']]] = None,
                  __props__=None):
         """
         Resource for creating a Harness user group
@@ -283,13 +283,7 @@ class UserGroup(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.UserGroup("example",
-            name="example-group",
-            description="This group demonstrates account level and resource level permissions.",
             permissions={
-                "account_permissions": [
-                    "ADMINISTER_OTHER_ACCOUNT_FUNCTIONS",
-                    "MANAGE_API_KEYS",
-                ],
                 "app_permissions": {
                     "alls": [{
                         "actions": [
@@ -400,7 +394,13 @@ class UserGroup(pulumi.CustomResource):
                         },
                     ],
                 },
-            })
+                "account_permissions": [
+                    "ADMINISTER_OTHER_ACCOUNT_FUNCTIONS",
+                    "MANAGE_API_KEYS",
+                ],
+            },
+            name="example-group",
+            description="This group demonstrates account level and resource level permissions.")
         ```
 
         ## Import
@@ -417,11 +417,11 @@ class UserGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the user group.
-        :param pulumi.Input[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict']] ldap_settings: The LDAP settings for the user group.
+        :param pulumi.Input[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict', 'outputs.UserGroupLdapSettings']] ldap_settings: The LDAP settings for the user group.
         :param pulumi.Input[_builtins.str] name: The name of the user group.
-        :param pulumi.Input[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict']] notification_settings: The notification settings of the user group.
-        :param pulumi.Input[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict']] permissions: The permissions of the user group.
-        :param pulumi.Input[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict']] saml_settings: The SAML settings for the user group.
+        :param pulumi.Input[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict', 'outputs.UserGroupNotificationSettings']] notification_settings: The notification settings of the user group.
+        :param pulumi.Input[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict', 'outputs.UserGroupPermissions']] permissions: The permissions of the user group.
+        :param pulumi.Input[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict', 'outputs.UserGroupSamlSettings']] saml_settings: The SAML settings for the user group.
         """
         ...
     @overload
@@ -439,13 +439,7 @@ class UserGroup(pulumi.CustomResource):
         import pulumi_harness as harness
 
         example = harness.UserGroup("example",
-            name="example-group",
-            description="This group demonstrates account level and resource level permissions.",
             permissions={
-                "account_permissions": [
-                    "ADMINISTER_OTHER_ACCOUNT_FUNCTIONS",
-                    "MANAGE_API_KEYS",
-                ],
                 "app_permissions": {
                     "alls": [{
                         "actions": [
@@ -556,7 +550,13 @@ class UserGroup(pulumi.CustomResource):
                         },
                     ],
                 },
-            })
+                "account_permissions": [
+                    "ADMINISTER_OTHER_ACCOUNT_FUNCTIONS",
+                    "MANAGE_API_KEYS",
+                ],
+            },
+            name="example-group",
+            description="This group demonstrates account level and resource level permissions.")
         ```
 
         ## Import
@@ -586,11 +586,11 @@ class UserGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 ldap_settings: pulumi.Input[Optional[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict']]] = None,
+                 ldap_settings: pulumi.Input[Optional[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict', 'outputs.UserGroupLdapSettings']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 notification_settings: pulumi.Input[Optional[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict']]] = None,
-                 permissions: pulumi.Input[Optional[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict']]] = None,
-                 saml_settings: pulumi.Input[Optional[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict']]] = None,
+                 notification_settings: pulumi.Input[Optional[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict', 'outputs.UserGroupNotificationSettings']]] = None,
+                 permissions: pulumi.Input[Optional[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict', 'outputs.UserGroupPermissions']]] = None,
+                 saml_settings: pulumi.Input[Optional[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict', 'outputs.UserGroupSamlSettings']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -621,11 +621,11 @@ class UserGroup(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             imported_by_scim: pulumi.Input[Optional[_builtins.bool]] = None,
             is_sso_linked: pulumi.Input[Optional[_builtins.bool]] = None,
-            ldap_settings: pulumi.Input[Optional[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict']]] = None,
+            ldap_settings: pulumi.Input[Optional[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict', 'outputs.UserGroupLdapSettings']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            notification_settings: pulumi.Input[Optional[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict']]] = None,
-            permissions: pulumi.Input[Optional[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict']]] = None,
-            saml_settings: pulumi.Input[Optional[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict']]] = None) -> 'UserGroup':
+            notification_settings: pulumi.Input[Optional[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict', 'outputs.UserGroupNotificationSettings']]] = None,
+            permissions: pulumi.Input[Optional[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict', 'outputs.UserGroupPermissions']]] = None,
+            saml_settings: pulumi.Input[Optional[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict', 'outputs.UserGroupSamlSettings']]] = None) -> 'UserGroup':
         """
         Get an existing UserGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -636,11 +636,11 @@ class UserGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the user group.
         :param pulumi.Input[_builtins.bool] imported_by_scim: Indicates whether the user group was imported by SCIM.
         :param pulumi.Input[_builtins.bool] is_sso_linked: Indicates whether the user group is linked to an SSO provider.
-        :param pulumi.Input[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict']] ldap_settings: The LDAP settings for the user group.
+        :param pulumi.Input[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict', 'outputs.UserGroupLdapSettings']] ldap_settings: The LDAP settings for the user group.
         :param pulumi.Input[_builtins.str] name: The name of the user group.
-        :param pulumi.Input[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict']] notification_settings: The notification settings of the user group.
-        :param pulumi.Input[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict']] permissions: The permissions of the user group.
-        :param pulumi.Input[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict']] saml_settings: The SAML settings for the user group.
+        :param pulumi.Input[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict', 'outputs.UserGroupNotificationSettings']] notification_settings: The notification settings of the user group.
+        :param pulumi.Input[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict', 'outputs.UserGroupPermissions']] permissions: The permissions of the user group.
+        :param pulumi.Input[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict', 'outputs.UserGroupSamlSettings']] saml_settings: The SAML settings for the user group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

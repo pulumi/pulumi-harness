@@ -29,8 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cluster.NewOrchestratorConfig(ctx, "example", &cluster.OrchestratorConfigArgs{
-//				OrchestratorId: pulumi.String("orch-cvifpfl9rbg8neldj97g"),
-//				Disabled:       pulumi.Bool(false),
 //				Distribution: &cluster.OrchestratorConfigDistributionArgs{
 //					BaseOndemandCapacity:      pulumi.Int(2),
 //					OndemandReplicaPercentage: pulumi.Float64(50),
@@ -45,8 +43,6 @@ import (
 //						},
 //					},
 //					Disruption: &cluster.OrchestratorConfigBinpackingDisruptionArgs{
-//						Criteria: pulumi.String("WhenEmpty"),
-//						Delay:    pulumi.String("10m"),
 //						Budgets: cluster.OrchestratorConfigBinpackingDisruptionBudgetArray{
 //							&cluster.OrchestratorConfigBinpackingDisruptionBudgetArgs{
 //								Reasons: pulumi.StringArray{
@@ -57,17 +53,19 @@ import (
 //								Nodes: pulumi.String("20"),
 //							},
 //							&cluster.OrchestratorConfigBinpackingDisruptionBudgetArgs{
+//								Schedule: &cluster.OrchestratorConfigBinpackingDisruptionBudgetScheduleArgs{
+//									Frequency: pulumi.String("@monthly"),
+//									Duration:  pulumi.String("10m"),
+//								},
 //								Reasons: pulumi.StringArray{
 //									pulumi.String("Drifted"),
 //									pulumi.String("Empty"),
 //								},
 //								Nodes: pulumi.String("1"),
-//								Schedule: &cluster.OrchestratorConfigBinpackingDisruptionBudgetScheduleArgs{
-//									Frequency: pulumi.String("@monthly"),
-//									Duration:  pulumi.String("10m"),
-//								},
 //							},
 //						},
+//						Criteria: pulumi.String("WhenEmpty"),
+//						Delay:    pulumi.String("10m"),
 //					},
 //				},
 //				NodePreferences: &cluster.OrchestratorConfigNodePreferencesArgs{
@@ -79,7 +77,6 @@ import (
 //					MasterAccountId: pulumi.String("dummyAccountId"),
 //				},
 //				ReplacementSchedule: &cluster.OrchestratorConfigReplacementScheduleArgs{
-//					WindowType: pulumi.String("Custom"),
 //					AppliesTo: &cluster.OrchestratorConfigReplacementScheduleAppliesToArgs{
 //						Consolidation:      pulumi.Bool(true),
 //						HarnessPodEviction: pulumi.Bool(true),
@@ -96,7 +93,10 @@ import (
 //						StartTime: pulumi.String("10:30"),
 //						EndTime:   pulumi.String("11:30"),
 //					},
+//					WindowType: pulumi.String("Custom"),
 //				},
+//				OrchestratorId: pulumi.String("orch-cvifpfl9rbg8neldj97g"),
+//				Disabled:       pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err

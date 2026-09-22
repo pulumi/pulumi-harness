@@ -16,6 +16,14 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.Environment("example", {
+ *     gitDetails: {
+ *         branchName: "branchName",
+ *         commitMessage: "commitMessage",
+ *         filePath: "filePath",
+ *         connectorRef: "connectorRef",
+ *         storeType: "REMOTE",
+ *         repoName: "repoName",
+ *     },
  *     identifier: "identifier",
  *     name: "name",
  *     orgId: "org_id",
@@ -25,14 +33,6 @@ import * as utilities from "../utilities";
  *         "bar:foo",
  *     ],
  *     type: "PreProduction",
- *     gitDetails: {
- *         branchName: "branchName",
- *         commitMessage: "commitMessage",
- *         filePath: "filePath",
- *         connectorRef: "connectorRef",
- *         storeType: "REMOTE",
- *         repoName: "repoName",
- *     },
  *     yaml: `environment:
  *    name: name
  *    identifier: identifier
@@ -80,9 +80,6 @@ import * as utilities from "../utilities";
  * });
  * //## Importing Environment from Git
  * const test = new harness.platform.Environment("test", {
- *     identifier: "accEnv",
- *     name: "accEnv",
- *     type: "PreProduction",
  *     gitDetails: {
  *         storeType: "REMOTE",
  *         connectorRef: "account.DoNotDeleteGitX",
@@ -91,6 +88,9 @@ import * as utilities from "../utilities";
  *         branch: "main",
  *         importFromGit: true,
  *     },
+ *     identifier: "accEnv",
+ *     name: "accEnv",
+ *     type: "PreProduction",
  * });
  * ```
  *

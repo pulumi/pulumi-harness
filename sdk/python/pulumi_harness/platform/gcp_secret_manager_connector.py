@@ -433,7 +433,7 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
                  inherit_from_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_default: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpSecretManagerConnectorOidcAuthenticationArgs', 'GcpSecretManagerConnectorOidcAuthenticationArgsDict']]]]] = None,
+                 oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpSecretManagerConnectorOidcAuthenticationArgs', 'GcpSecretManagerConnectorOidcAuthenticationArgsDict', 'outputs.GcpSecretManagerConnectorOidcAuthentication']]]]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -462,30 +462,30 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
             delegate_selectors=["harness-delegate"],
             inherit_from_delegate=True)
         gcp_sm_oidc_platform = harness.platform.GcpSecretManagerConnector("gcp_sm_oidc_platform",
-            identifier="identifier",
-            name="name",
-            description="test",
-            tags=["foo:bar"],
-            execute_on_delegate=False,
             oidc_authentications=[{
                 "workload_pool_id": "harness-pool-test",
                 "provider_id": "harness",
                 "gcp_project_id": "1234567",
                 "service_account_email": "harness.sample@iam.gserviceaccount.com",
-            }])
+            }],
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            execute_on_delegate=False)
         gcp_sm_oidc_delegate = harness.platform.GcpSecretManagerConnector("gcp_sm_oidc_delegate",
+            oidc_authentications=[{
+                "workload_pool_id": "harness-pool-test",
+                "provider_id": "harness",
+                "gcp_project_id": "1234567",
+                "service_account_email": "harness.sample@iam.gserviceaccount.com",
+            }],
             identifier="identifier",
             name="name",
             description="test",
             tags=["foo:bar"],
             default=True,
-            delegate_selectors=["harness-delegate"],
-            oidc_authentications=[{
-                "workload_pool_id": "harness-pool-test",
-                "provider_id": "harness",
-                "gcp_project_id": "1234567",
-                "service_account_email": "harness.sample@iam.gserviceaccount.com",
-            }])
+            delegate_selectors=["harness-delegate"])
         ```
 
         ## Import
@@ -521,7 +521,7 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] inherit_from_delegate: Inherit configuration from delegate.
         :param pulumi.Input[_builtins.bool] is_default: Set this flag to set this secret manager as default secret manager.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GcpSecretManagerConnectorOidcAuthenticationArgs', 'GcpSecretManagerConnectorOidcAuthenticationArgsDict']]]] oidc_authentications: Authentication using harness oidc.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GcpSecretManagerConnectorOidcAuthenticationArgs', 'GcpSecretManagerConnectorOidcAuthenticationArgsDict', 'outputs.GcpSecretManagerConnectorOidcAuthentication']]]] oidc_authentications: Authentication using harness oidc.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
@@ -556,30 +556,30 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
             delegate_selectors=["harness-delegate"],
             inherit_from_delegate=True)
         gcp_sm_oidc_platform = harness.platform.GcpSecretManagerConnector("gcp_sm_oidc_platform",
-            identifier="identifier",
-            name="name",
-            description="test",
-            tags=["foo:bar"],
-            execute_on_delegate=False,
             oidc_authentications=[{
                 "workload_pool_id": "harness-pool-test",
                 "provider_id": "harness",
                 "gcp_project_id": "1234567",
                 "service_account_email": "harness.sample@iam.gserviceaccount.com",
-            }])
+            }],
+            identifier="identifier",
+            name="name",
+            description="test",
+            tags=["foo:bar"],
+            execute_on_delegate=False)
         gcp_sm_oidc_delegate = harness.platform.GcpSecretManagerConnector("gcp_sm_oidc_delegate",
+            oidc_authentications=[{
+                "workload_pool_id": "harness-pool-test",
+                "provider_id": "harness",
+                "gcp_project_id": "1234567",
+                "service_account_email": "harness.sample@iam.gserviceaccount.com",
+            }],
             identifier="identifier",
             name="name",
             description="test",
             tags=["foo:bar"],
             default=True,
-            delegate_selectors=["harness-delegate"],
-            oidc_authentications=[{
-                "workload_pool_id": "harness-pool-test",
-                "provider_id": "harness",
-                "gcp_project_id": "1234567",
-                "service_account_email": "harness.sample@iam.gserviceaccount.com",
-            }])
+            delegate_selectors=["harness-delegate"])
         ```
 
         ## Import
@@ -628,7 +628,7 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
                  inherit_from_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_default: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpSecretManagerConnectorOidcAuthenticationArgs', 'GcpSecretManagerConnectorOidcAuthenticationArgsDict']]]]] = None,
+                 oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpSecretManagerConnectorOidcAuthenticationArgs', 'GcpSecretManagerConnectorOidcAuthenticationArgsDict', 'outputs.GcpSecretManagerConnectorOidcAuthentication']]]]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -673,7 +673,7 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
             inherit_from_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
             is_default: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpSecretManagerConnectorOidcAuthenticationArgs', 'GcpSecretManagerConnectorOidcAuthenticationArgsDict']]]]] = None,
+            oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpSecretManagerConnectorOidcAuthenticationArgs', 'GcpSecretManagerConnectorOidcAuthenticationArgsDict', 'outputs.GcpSecretManagerConnectorOidcAuthentication']]]]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'GcpSecretManagerConnector':
@@ -692,7 +692,7 @@ class GcpSecretManagerConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] inherit_from_delegate: Inherit configuration from delegate.
         :param pulumi.Input[_builtins.bool] is_default: Set this flag to set this secret manager as default secret manager.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GcpSecretManagerConnectorOidcAuthenticationArgs', 'GcpSecretManagerConnectorOidcAuthenticationArgsDict']]]] oidc_authentications: Authentication using harness oidc.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GcpSecretManagerConnectorOidcAuthenticationArgs', 'GcpSecretManagerConnectorOidcAuthenticationArgsDict', 'outputs.GcpSecretManagerConnectorOidcAuthentication']]]] oidc_authentications: Authentication using harness oidc.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.

@@ -24,7 +24,6 @@ namespace Pulumi.Harness.Autostopping
     /// {
     ///     var specific_rule_alert = new Harness.Autostopping.Alert("specific-rule-alert", new()
     ///     {
-    ///         Name = "demo-alert",
     ///         Recipients = new Harness.Autostopping.Inputs.AlertRecipientsArgs
     ///         {
     ///             Emails = new[]
@@ -38,6 +37,7 @@ namespace Pulumi.Harness.Autostopping
     ///                 "slack-web-hook-2",
     ///             },
     ///         },
+    ///         Name = "demo-alert",
     ///         Events = new[]
     ///         {
     ///             "autostopping_rule_created",
@@ -54,7 +54,6 @@ namespace Pulumi.Harness.Autostopping
     /// 
     ///     var all_rule_alert = new Harness.Autostopping.Alert("all-rule-alert", new()
     ///     {
-    ///         Name = "demo-alert",
     ///         Recipients = new Harness.Autostopping.Inputs.AlertRecipientsArgs
     ///         {
     ///             Emails = new[]
@@ -68,6 +67,7 @@ namespace Pulumi.Harness.Autostopping
     ///                 "slack-web-hook-2",
     ///             },
     ///         },
+    ///         Name = "demo-alert",
     ///         Events = new[]
     ///         {
     ///             "autostopping_rule_created",

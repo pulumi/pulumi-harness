@@ -184,7 +184,7 @@ class AwaitableGetDefaultNotificationTemplateSetResult(GetDefaultNotificationTem
 
 
 def get_default_notification_template_set(description: Optional[_builtins.str] = None,
-                                          event_template_configuration_sets: Optional[Sequence[Union['GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict']]] = None,
+                                          event_template_configuration_sets: Optional[Sequence[Union['GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict', 'outputs.GetDefaultNotificationTemplateSetEventTemplateConfigurationSetResult']]] = None,
                                           identifier: Optional[_builtins.str] = None,
                                           name: Optional[_builtins.str] = None,
                                           notification_channel_type: Optional[_builtins.str] = None,
@@ -198,7 +198,7 @@ def get_default_notification_template_set(description: Optional[_builtins.str] =
 
 
     :param _builtins.str description: Description for Default Notification Template Set
-    :param Sequence[Union['GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict']] event_template_configuration_sets: Set of event-template configurations
+    :param Sequence[Union['GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict', 'outputs.GetDefaultNotificationTemplateSetEventTemplateConfigurationSetResult']] event_template_configuration_sets: Set of event-template configurations
     :param _builtins.str identifier: Identifier of Default Notification Template Set
     :param _builtins.str name: Name of Default Notification Template Set
     :param _builtins.str notification_channel_type: Type of channel (e.g. SLACK, EMAIL, etc.)
@@ -234,7 +234,7 @@ def get_default_notification_template_set(description: Optional[_builtins.str] =
         project=pulumi.get(__ret__, 'project'),
         tags=pulumi.get(__ret__, 'tags'))
 def get_default_notification_template_set_output(description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                                 event_template_configuration_sets: pulumi.Input[Optional[Sequence[Union['GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict']]]] = None,
+                                                 event_template_configuration_sets: pulumi.Input[Optional[Sequence[Union['GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict', 'outputs.GetDefaultNotificationTemplateSetEventTemplateConfigurationSetResult']]]] = None,
                                                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                                                  name: pulumi.Input[Optional[_builtins.str]] = None,
                                                  notification_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -248,7 +248,7 @@ def get_default_notification_template_set_output(description: pulumi.Input[Optio
 
 
     :param _builtins.str description: Description for Default Notification Template Set
-    :param Sequence[Union['GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict']] event_template_configuration_sets: Set of event-template configurations
+    :param Sequence[Union['GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'GetDefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict', 'outputs.GetDefaultNotificationTemplateSetEventTemplateConfigurationSetResult']] event_template_configuration_sets: Set of event-template configurations
     :param _builtins.str identifier: Identifier of Default Notification Template Set
     :param _builtins.str name: Name of Default Notification Template Set
     :param _builtins.str notification_channel_type: Type of channel (e.g. SLACK, EMAIL, etc.)

@@ -168,11 +168,11 @@ class AwaitableGetCentralNotificationRuleResult(GetCentralNotificationRuleResult
             status=self.status)
 
 
-def get_central_notification_rule(custom_notification_template_ref: Optional[Union['GetCentralNotificationRuleCustomNotificationTemplateRefArgs', 'GetCentralNotificationRuleCustomNotificationTemplateRefArgsDict']] = None,
+def get_central_notification_rule(custom_notification_template_ref: Optional[Union['GetCentralNotificationRuleCustomNotificationTemplateRefArgs', 'GetCentralNotificationRuleCustomNotificationTemplateRefArgsDict', 'outputs.GetCentralNotificationRuleCustomNotificationTemplateRefResult']] = None,
                                   identifier: Optional[_builtins.str] = None,
                                   name: Optional[_builtins.str] = None,
                                   notification_channel_refs: Optional[Sequence[_builtins.str]] = None,
-                                  notification_conditions: Optional[Sequence[Union['GetCentralNotificationRuleNotificationConditionArgs', 'GetCentralNotificationRuleNotificationConditionArgsDict']]] = None,
+                                  notification_conditions: Optional[Sequence[Union['GetCentralNotificationRuleNotificationConditionArgs', 'GetCentralNotificationRuleNotificationConditionArgsDict', 'outputs.GetCentralNotificationRuleNotificationConditionResult']]] = None,
                                   org: Optional[_builtins.str] = None,
                                   project: Optional[_builtins.str] = None,
                                   status: Optional[_builtins.str] = None,
@@ -212,11 +212,11 @@ def get_central_notification_rule(custom_notification_template_ref: Optional[Uni
         org=pulumi.get(__ret__, 'org'),
         project=pulumi.get(__ret__, 'project'),
         status=pulumi.get(__ret__, 'status'))
-def get_central_notification_rule_output(custom_notification_template_ref: pulumi.Input[Optional[Optional[Union['GetCentralNotificationRuleCustomNotificationTemplateRefArgs', 'GetCentralNotificationRuleCustomNotificationTemplateRefArgsDict']]]] = None,
+def get_central_notification_rule_output(custom_notification_template_ref: pulumi.Input[Optional[Optional[Union['GetCentralNotificationRuleCustomNotificationTemplateRefArgs', 'GetCentralNotificationRuleCustomNotificationTemplateRefArgsDict', 'outputs.GetCentralNotificationRuleCustomNotificationTemplateRefResult']]]] = None,
                                          identifier: pulumi.Input[Optional[_builtins.str]] = None,
                                          name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          notification_channel_refs: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
-                                         notification_conditions: pulumi.Input[Optional[Optional[Sequence[Union['GetCentralNotificationRuleNotificationConditionArgs', 'GetCentralNotificationRuleNotificationConditionArgsDict']]]]] = None,
+                                         notification_conditions: pulumi.Input[Optional[Optional[Sequence[Union['GetCentralNotificationRuleNotificationConditionArgs', 'GetCentralNotificationRuleNotificationConditionArgsDict', 'outputs.GetCentralNotificationRuleNotificationConditionResult']]]]] = None,
                                          org: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,

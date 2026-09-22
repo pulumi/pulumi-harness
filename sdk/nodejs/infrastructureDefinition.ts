@@ -17,10 +17,10 @@ import * as utilities from "./utilities";
  *
  * // Creating a Kubernetes infrastructure definition
  * const dev = new harness.cloudprovider.Kubernetes("dev", {
- *     name: "k8s-dev",
  *     authentication: {
  *         delegateSelectors: ["k8s"],
  *     },
+ *     name: "k8s-dev",
  * });
  * const example = new harness.Application("example", {name: "example"});
  * const devEnvironment = new harness.Environment("dev", {
@@ -30,16 +30,16 @@ import * as utilities from "./utilities";
  * });
  * // Creating a infrastructure of type KUBERNETES
  * const k8s = new harness.InfrastructureDefinition("k8s", {
- *     name: "k8s-eks-us-east-1",
- *     appId: example.id,
- *     envId: devEnvironment.id,
- *     cloudProviderType: "KUBERNETES_CLUSTER",
- *     deploymentType: "KUBERNETES",
  *     kubernetes: {
  *         cloudProviderName: dev.name,
  *         namespace: "dev",
  *         releaseName: "${service.name}",
  *     },
+ *     name: "k8s-eks-us-east-1",
+ *     appId: example.id,
+ *     envId: devEnvironment.id,
+ *     cloudProviderType: "KUBERNETES_CLUSTER",
+ *     deploymentType: "KUBERNETES",
  * });
  * // Creating a Deployment Template for CUSTOM infrastructure type
  * const exampleYaml = new harness.YamlConfig("example_yaml", {
@@ -59,14 +59,7 @@ import * as utilities from "./utilities";
  * });
  * // Creating a infrastructure of type CUSTOM
  * const custom = new harness.InfrastructureDefinition("custom", {
- *     name: "custom-infra",
- *     appId: example.id,
- *     envId: devEnvironment.id,
- *     cloudProviderType: "CUSTOM",
- *     deploymentType: "CUSTOM",
- *     deploymentTemplateUri: pulumi.interpolate`Example Folder/${exampleYaml.name}`,
  *     custom: {
- *         deploymentTypeTemplateVersion: "1",
  *         variables: [
  *             {
  *                 name: "url",
@@ -77,7 +70,14 @@ import * as utilities from "./utilities";
  *                 value: "instances.json",
  *             },
  *         ],
+ *         deploymentTypeTemplateVersion: "1",
  *     },
+ *     name: "custom-infra",
+ *     appId: example.id,
+ *     envId: devEnvironment.id,
+ *     cloudProviderType: "CUSTOM",
+ *     deploymentType: "CUSTOM",
+ *     deploymentTemplateUri: pulumi.interpolate`Example Folder/${exampleYaml.name}`,
  * });
  * ```
  *

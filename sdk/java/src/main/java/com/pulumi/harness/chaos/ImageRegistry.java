@@ -50,6 +50,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new ImageRegistry("example", ImageRegistryArgs.builder()
+ *             .customImages(ImageRegistryCustomImageArgs.builder()
+ *                 .logWatcher("<log_watcher_image>")
+ *                 .ddcr("<ddcr_image>")
+ *                 .ddcrLib("<ddcr_lib_image>")
+ *                 .ddcrFault("<ddcr_fault_image>")
+ *                 .build())
  *             .orgId("<org_id>")
  *             .projectId("<project_id>")
  *             .registryServer("<registry_server>")
@@ -59,12 +65,6 @@ import javax.annotation.Nullable;
  *             .isDefault(false)
  *             .isOverrideAllowed(true)
  *             .useCustomImages(true)
- *             .customImages(ImageRegistryCustomImageArgs.builder()
- *                 .logWatcher("<log_watcher_image>")
- *                 .ddcr("<ddcr_image>")
- *                 .ddcrLib("<ddcr_lib_image>")
- *                 .ddcrFault("<ddcr_fault_image>")
- *                 .build())
  *             .build());
  * 
  *     }

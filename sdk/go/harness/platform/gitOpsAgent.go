@@ -29,18 +29,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewGitOpsAgent(ctx, "example", &platform.GitOpsAgentArgs{
-//				Identifier: pulumi.String("identifier"),
-//				AccountId:  pulumi.String("account_id"),
-//				ProjectId:  pulumi.String("project_id"),
-//				OrgId:      pulumi.String("org_id"),
-//				Name:       pulumi.String("name"),
-//				Type:       pulumi.String("MANAGED_ARGO_PROVIDER"),
 //				Metadatas: platform.GitOpsAgentMetadataArray{
 //					&platform.GitOpsAgentMetadataArgs{
 //						Namespace:        pulumi.String("namespace"),
 //						HighAvailability: pulumi.Bool(true),
 //					},
 //				},
+//				Identifier: pulumi.String("identifier"),
+//				AccountId:  pulumi.String("account_id"),
+//				ProjectId:  pulumi.String("project_id"),
+//				OrgId:      pulumi.String("org_id"),
+//				Name:       pulumi.String("name"),
+//				Type:       pulumi.String("MANAGED_ARGO_PROVIDER"),
 //			})
 //			if err != nil {
 //				return err

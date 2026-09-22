@@ -16,8 +16,6 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.cluster.OrchestratorConfig("example", {
- *     orchestratorId: "orch-cvifpfl9rbg8neldj97g",
- *     disabled: false,
  *     distribution: {
  *         baseOndemandCapacity: 2,
  *         ondemandReplicaPercentage: 50,
@@ -32,8 +30,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *         disruption: {
- *             criteria: "WhenEmpty",
- *             delay: "10m",
  *             budgets: [
  *                 {
  *                     reasons: [
@@ -44,17 +40,19 @@ import * as utilities from "../utilities";
  *                     nodes: "20",
  *                 },
  *                 {
+ *                     schedule: {
+ *                         frequency: "@monthly",
+ *                         duration: "10m",
+ *                     },
  *                     reasons: [
  *                         "Drifted",
  *                         "Empty",
  *                     ],
  *                     nodes: "1",
- *                     schedule: {
- *                         frequency: "@monthly",
- *                         duration: "10m",
- *                     },
  *                 },
  *             ],
+ *             criteria: "WhenEmpty",
+ *             delay: "10m",
  *         },
  *     },
  *     nodePreferences: {
@@ -66,7 +64,6 @@ import * as utilities from "../utilities";
  *         masterAccountId: "dummyAccountId",
  *     },
  *     replacementSchedule: {
- *         windowType: "Custom",
  *         appliesTo: {
  *             consolidation: true,
  *             harnessPodEviction: true,
@@ -83,7 +80,10 @@ import * as utilities from "../utilities";
  *             startTime: "10:30",
  *             endTime: "11:30",
  *         },
+ *         windowType: "Custom",
  *     },
+ *     orchestratorId: "orch-cvifpfl9rbg8neldj97g",
+ *     disabled: false,
  * });
  * ```
  */

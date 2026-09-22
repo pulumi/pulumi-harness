@@ -16,6 +16,12 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const defaultTypeTest = new harness.platform.DbSchema("default_type_test", {
+ *     schemaSource: {
+ *         connector: "gitConnector",
+ *         repo: "TestRepo",
+ *         location: "db/example-changelog.yaml",
+ *         archivePath: "path/to/archive.zip",
+ *     },
  *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
@@ -25,14 +31,14 @@ import * as utilities from "../utilities";
  *         "foo:bar",
  *         "bar:foo",
  *     ],
- *     schemaSource: {
- *         connector: "gitConnector",
- *         repo: "TestRepo",
- *         location: "db/example-changelog.yaml",
- *         archivePath: "path/to/archive.zip",
- *     },
  * });
  * const liquibaseRepositoryTest = new harness.platform.DbSchema("liquibase_repository_test", {
+ *     schemaSource: {
+ *         connector: "gitConnector",
+ *         repo: "TestRepo",
+ *         location: "db/example-changelog.yaml",
+ *         archivePath: "path/to/archive.zip",
+ *     },
  *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
@@ -44,14 +50,14 @@ import * as utilities from "../utilities";
  *         "foo:bar",
  *         "bar:foo",
  *     ],
- *     schemaSource: {
- *         connector: "gitConnector",
- *         repo: "TestRepo",
- *         location: "db/example-changelog.yaml",
- *         archivePath: "path/to/archive.zip",
- *     },
  * });
  * const liquibaseScriptTest = new harness.platform.DbSchema("liquibase_script_test", {
+ *     changelogScript: {
+ *         image: "plugins/image",
+ *         command: "echo \\\"hello dbops\\\"",
+ *         shell: "sh/bash",
+ *         location: "db/example-changelog.yaml",
+ *     },
  *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
@@ -63,14 +69,15 @@ import * as utilities from "../utilities";
  *         "foo:bar",
  *         "bar:foo",
  *     ],
- *     changelogScript: {
- *         image: "plugins/image",
- *         command: "echo \\\"hello dbops\\\"",
- *         shell: "sh/bash",
- *         location: "db/example-changelog.yaml",
- *     },
  * });
  * const flywayRepositoryTest = new harness.platform.DbSchema("flyway_repository_test", {
+ *     schemaSource: {
+ *         connector: "gitConnector",
+ *         repo: "TestRepo",
+ *         location: "db/flyway/migrations",
+ *         toml: "db/flyway.toml",
+ *         archivePath: "path/to/archive.zip",
+ *     },
  *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
@@ -82,15 +89,15 @@ import * as utilities from "../utilities";
  *         "foo:bar",
  *         "bar:foo",
  *     ],
- *     schemaSource: {
- *         connector: "gitConnector",
- *         repo: "TestRepo",
- *         location: "db/flyway/migrations",
- *         toml: "db/flyway.toml",
- *         archivePath: "path/to/archive.zip",
- *     },
  * });
  * const flywayScriptTest = new harness.platform.DbSchema("flyway_script_test", {
+ *     changelogScript: {
+ *         image: "plugins/image",
+ *         command: "echo \\\"hello dbops\\\"",
+ *         shell: "sh/bash",
+ *         location: "db/flyway/migrations",
+ *         toml: "db/flyway.toml",
+ *     },
  *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
@@ -102,15 +109,14 @@ import * as utilities from "../utilities";
  *         "foo:bar",
  *         "bar:foo",
  *     ],
- *     changelogScript: {
- *         image: "plugins/image",
- *         command: "echo \\\"hello dbops\\\"",
- *         shell: "sh/bash",
- *         location: "db/flyway/migrations",
- *         toml: "db/flyway.toml",
- *     },
  * });
  * const perconaEnabledTest = new harness.platform.DbSchema("percona_enabled_test", {
+ *     schemaSource: {
+ *         connector: "gitConnector",
+ *         repo: "TestRepo",
+ *         location: "db/example-changelog.yaml",
+ *         archivePath: "path/to/archive.zip",
+ *     },
  *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
@@ -123,14 +129,12 @@ import * as utilities from "../utilities";
  *         "foo:bar",
  *         "bar:foo",
  *     ],
- *     schemaSource: {
- *         connector: "gitConnector",
- *         repo: "TestRepo",
- *         location: "db/example-changelog.yaml",
- *         archivePath: "path/to/archive.zip",
- *     },
  * });
  * const harnessCodeRepo = new harness.platform.DbSchema("harness_code_repo", {
+ *     schemaSource: {
+ *         repo: "my-harness-code-repo",
+ *         location: "db/example-changelog.yaml",
+ *     },
  *     identifier: "identifier",
  *     orgId: "org_id",
  *     projectId: "project_id",
@@ -141,10 +145,6 @@ import * as utilities from "../utilities";
  *         "foo:bar",
  *         "bar:foo",
  *     ],
- *     schemaSource: {
- *         repo: "my-harness-code-repo",
- *         location: "db/example-changelog.yaml",
- *     },
  * });
  * ```
  *

@@ -31,32 +31,32 @@ import * as utilities from "../utilities";
  * });
  * // With AWS Secret Manager KMS Key
  * const awsSecretManager = new harness.platform.SecretFile("aws_secret_manager", {
+ *     additionalMetadatas: [{
+ *         values: [{
+ *             kmsKeyId: "kmsKeyId",
+ *         }],
+ *     }],
  *     identifier: "identifier",
  *     name: "name",
  *     description: "example",
  *     tags: ["foo:bar"],
  *     filePath: "file_path",
  *     secretManagerIdentifier: "awsSecretManager",
- *     additionalMetadatas: [{
- *         values: [{
- *             kmsKeyId: "kmsKeyId",
- *         }],
- *     }],
  * });
  * // With GCP Secret Manager project ID and region
  * const gcpSecretManager = new harness.platform.SecretFile("gcp_secret_manager", {
- *     identifier: "identifier",
- *     name: "name",
- *     description: "example",
- *     tags: ["foo:bar"],
- *     filePath: "file_path",
- *     secretManagerIdentifier: "gcpSecretManager",
  *     additionalMetadatas: [{
  *         values: [{
  *             regions: "us-east1",
  *             gcpProjectId: "my-gcp-project-id",
  *         }],
  *     }],
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "example",
+ *     tags: ["foo:bar"],
+ *     filePath: "file_path",
+ *     secretManagerIdentifier: "gcpSecretManager",
  * });
  * ```
  *

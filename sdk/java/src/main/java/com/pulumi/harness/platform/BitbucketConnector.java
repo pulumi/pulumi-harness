@@ -50,14 +50,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         // Credentials http (with username + personal access token - UsernameToken)
  *         var usernameToken = new BitbucketConnector("usernameToken", BitbucketConnectorArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .description("test")
- *             .tags("foo:bar")
- *             .url("https://bitbucket.com/account")
- *             .connectionType("Account")
- *             .validationRepo("some_repo")
- *             .delegateSelectors("harness-delegate")
  *             .credentials(BitbucketConnectorCredentialsArgs.builder()
  *                 .http(BitbucketConnectorCredentialsHttpArgs.builder()
  *                     .username("username")
@@ -69,19 +61,19 @@ import javax.annotation.Nullable;
  *                 .username("username")
  *                 .tokenRef("account.secret_id")
  *                 .build())
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("test")
+ *             .tags("foo:bar")
+ *             .url("https://bitbucket.com/account")
+ *             .connectionType("Account")
+ *             .validationRepo("some_repo")
+ *             .delegateSelectors("harness-delegate")
  *             .build());
  * 
  *         // Credentials http with Bitbucket Cloud Workspace API Token (email + API token)
  *         // Use this when migrating off Bitbucket app passwords (EOL 2026-06-09).
  *         var emailApiToken = new BitbucketConnector("emailApiToken", BitbucketConnectorArgs.builder()
- *             .identifier("identifier_email_api_token")
- *             .name("name_email_api_token")
- *             .description("Bitbucket Cloud with Workspace API Token")
- *             .tags("foo:bar")
- *             .url("https://bitbucket.org/my-workspace")
- *             .connectionType("Account")
- *             .validationRepo("some_repo")
- *             .delegateSelectors("harness-delegate")
  *             .credentials(BitbucketConnectorCredentialsArgs.builder()
  *                 .http(BitbucketConnectorCredentialsHttpArgs.builder()
  *                     .username("username")
@@ -93,18 +85,18 @@ import javax.annotation.Nullable;
  *                 .email("user}{@literal @}{@code example.com")
  *                 .tokenRef("account.api_token_secret")
  *                 .build())
- *             .build());
- * 
- *         // Credentials http with Bitbucket repo/project Access Token
- *         var accessToken = new BitbucketConnector("accessToken", BitbucketConnectorArgs.builder()
- *             .identifier("identifier_access_token")
- *             .name("name_access_token")
- *             .description("Bitbucket with Access Token")
+ *             .identifier("identifier_email_api_token")
+ *             .name("name_email_api_token")
+ *             .description("Bitbucket Cloud with Workspace API Token")
  *             .tags("foo:bar")
  *             .url("https://bitbucket.org/my-workspace")
  *             .connectionType("Account")
  *             .validationRepo("some_repo")
  *             .delegateSelectors("harness-delegate")
+ *             .build());
+ * 
+ *         // Credentials http with Bitbucket repo/project Access Token
+ *         var accessToken = new BitbucketConnector("accessToken", BitbucketConnectorArgs.builder()
  *             .credentials(BitbucketConnectorCredentialsArgs.builder()
  *                 .http(BitbucketConnectorCredentialsHttpArgs.builder()
  *                     .username("username")
@@ -115,10 +107,23 @@ import javax.annotation.Nullable;
  *                 .authType("AccessToken")
  *                 .tokenRef("account.access_token_secret")
  *                 .build())
+ *             .identifier("identifier_access_token")
+ *             .name("name_access_token")
+ *             .description("Bitbucket with Access Token")
+ *             .tags("foo:bar")
+ *             .url("https://bitbucket.org/my-workspace")
+ *             .connectionType("Account")
+ *             .validationRepo("some_repo")
+ *             .delegateSelectors("harness-delegate")
  *             .build());
  * 
  *         // Credentials ssh
  *         var ssh = new BitbucketConnector("ssh", BitbucketConnectorArgs.builder()
+ *             .credentials(BitbucketConnectorCredentialsArgs.builder()
+ *                 .ssh(BitbucketConnectorCredentialsSshArgs.builder()
+ *                     .sshKeyRef("account.secret_id")
+ *                     .build())
+ *                 .build())
  *             .identifier("identifier_ssh")
  *             .name("name_ssh")
  *             .description("test")
@@ -127,11 +132,6 @@ import javax.annotation.Nullable;
  *             .connectionType("Account")
  *             .validationRepo("some_repo")
  *             .delegateSelectors("harness-delegate")
- *             .credentials(BitbucketConnectorCredentialsArgs.builder()
- *                 .ssh(BitbucketConnectorCredentialsSshArgs.builder()
- *                     .sshKeyRef("account.secret_id")
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *     }}{@code

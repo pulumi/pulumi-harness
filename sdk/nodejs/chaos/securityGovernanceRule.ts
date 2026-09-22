@@ -17,6 +17,15 @@ import * as utilities from "../utilities";
  *
  * // K8s Rule
  * const example = new harness.chaos.SecurityGovernanceRule("example", {
+ *     timeWindows: [{
+ *         recurrence: {
+ *             type: "Daily",
+ *             until: -1,
+ *         },
+ *         timeZone: "UTC",
+ *         startTime: 1711238400000,
+ *         duration: "24h",
+ *     }],
  *     orgId: "<org_id>",
  *     projectId: "<project_id>",
  *     name: "<name>",
@@ -28,18 +37,18 @@ import * as utilities from "../utilities";
  *         "<tag1>",
  *         "<tag2>",
  *     ],
- *     timeWindows: [{
- *         timeZone: "UTC",
- *         startTime: 1711238400000,
- *         duration: "24h",
- *         recurrence: {
- *             type: "Daily",
- *             until: -1,
- *         },
- *     }],
  * });
  * // Linux Rule
  * const linuxRule = new harness.chaos.SecurityGovernanceRule("linux_rule", {
+ *     timeWindows: [{
+ *         recurrence: {
+ *             type: "Daily",
+ *             until: -1,
+ *         },
+ *         timeZone: "UTC",
+ *         startTime: 1711238400000,
+ *         duration: "24h",
+ *     }],
  *     orgId: "<org_id>",
  *     projectId: "<project_id>",
  *     name: "<name>",
@@ -51,18 +60,18 @@ import * as utilities from "../utilities";
  *         "<tag1>",
  *         "<tag2>",
  *     ],
- *     timeWindows: [{
- *         timeZone: "UTC",
- *         startTime: 1711238400000,
- *         duration: "24h",
- *         recurrence: {
- *             type: "Daily",
- *             until: -1,
- *         },
- *     }],
  * });
  * // Windows Rule
  * const windowsRule = new harness.chaos.SecurityGovernanceRule("windows_rule", {
+ *     timeWindows: [{
+ *         recurrence: {
+ *             type: "Daily",
+ *             until: -1,
+ *         },
+ *         timeZone: "UTC",
+ *         startTime: 1711238400000,
+ *         duration: "24h",
+ *     }],
  *     orgId: "<org_id>",
  *     projectId: "<project_id>",
  *     name: "<name>",
@@ -74,15 +83,6 @@ import * as utilities from "../utilities";
  *         "<tag1>",
  *         "<tag2>",
  *     ],
- *     timeWindows: [{
- *         timeZone: "UTC",
- *         startTime: 1711238400000,
- *         duration: "24h",
- *         recurrence: {
- *             type: "Daily",
- *             until: -1,
- *         },
- *     }],
  * });
  * ```
  *

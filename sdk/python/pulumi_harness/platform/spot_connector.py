@@ -268,7 +268,7 @@ class SpotConnector(pulumi.CustomResource):
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 permanent_token: pulumi.Input[Optional[Union['SpotConnectorPermanentTokenArgs', 'SpotConnectorPermanentTokenArgsDict']]] = None,
+                 permanent_token: pulumi.Input[Optional[Union['SpotConnectorPermanentTokenArgs', 'SpotConnectorPermanentTokenArgsDict', 'outputs.SpotConnectorPermanentToken']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -292,7 +292,7 @@ class SpotConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[Union['SpotConnectorPermanentTokenArgs', 'SpotConnectorPermanentTokenArgsDict']] permanent_token: Authenticate to Spot using account id and permanent token.
+        :param pulumi.Input[Union['SpotConnectorPermanentTokenArgs', 'SpotConnectorPermanentTokenArgsDict', 'outputs.SpotConnectorPermanentToken']] permanent_token: Authenticate to Spot using account id and permanent token.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         """
@@ -335,7 +335,7 @@ class SpotConnector(pulumi.CustomResource):
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 permanent_token: pulumi.Input[Optional[Union['SpotConnectorPermanentTokenArgs', 'SpotConnectorPermanentTokenArgsDict']]] = None,
+                 permanent_token: pulumi.Input[Optional[Union['SpotConnectorPermanentTokenArgs', 'SpotConnectorPermanentTokenArgsDict', 'outputs.SpotConnectorPermanentToken']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -372,7 +372,7 @@ class SpotConnector(pulumi.CustomResource):
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
-            permanent_token: pulumi.Input[Optional[Union['SpotConnectorPermanentTokenArgs', 'SpotConnectorPermanentTokenArgsDict']]] = None,
+            permanent_token: pulumi.Input[Optional[Union['SpotConnectorPermanentTokenArgs', 'SpotConnectorPermanentTokenArgsDict', 'outputs.SpotConnectorPermanentToken']]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'SpotConnector':
         """
@@ -386,7 +386,7 @@ class SpotConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
-        :param pulumi.Input[Union['SpotConnectorPermanentTokenArgs', 'SpotConnectorPermanentTokenArgsDict']] permanent_token: Authenticate to Spot using account id and permanent token.
+        :param pulumi.Input[Union['SpotConnectorPermanentTokenArgs', 'SpotConnectorPermanentTokenArgsDict', 'outputs.SpotConnectorPermanentToken']] permanent_token: Authenticate to Spot using account id and permanent token.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         """

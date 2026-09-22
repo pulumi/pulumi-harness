@@ -25,6 +25,10 @@ import * as utilities from "../utilities";
  *     value: "secret",
  * });
  * const gcpKmsManual = new harness.platform.ConnectorGcpKms("gcp_kms_manual", {
+ *     manual: {
+ *         credentials: pulumi.interpolate`account.${test.id}`,
+ *         delegateSelectors: ["harness-delegate"],
+ *     },
  *     identifier: "identifier",
  *     name: "name",
  *     description: "test",
@@ -33,12 +37,14 @@ import * as utilities from "../utilities";
  *     gcpProjectId: "1234567",
  *     keyRing: "key_ring",
  *     keyName: "key_name",
- *     manual: {
- *         credentials: pulumi.interpolate`account.${test.id}`,
- *         delegateSelectors: ["harness-delegate"],
- *     },
  * });
  * const gcpKmsOidcPlatform = new harness.platform.ConnectorGcpKms("gcp_kms_oidc_platform", {
+ *     oidcAuthentications: [{
+ *         workloadPoolId: "harness-pool-test",
+ *         providerId: "harness",
+ *         gcpProjectId: "1234567",
+ *         serviceAccountEmail: "harness.sample@iam.gserviceaccount.com",
+ *     }],
  *     identifier: "identifier",
  *     name: "name",
  *     description: "test",
@@ -48,14 +54,15 @@ import * as utilities from "../utilities";
  *     keyRing: "key_ring",
  *     keyName: "key_name",
  *     executeOnDelegate: false,
+ * });
+ * const gcpKmsOidcDelegate = new harness.platform.ConnectorGcpKms("gcp_kms_oidc_delegate", {
  *     oidcAuthentications: [{
  *         workloadPoolId: "harness-pool-test",
  *         providerId: "harness",
  *         gcpProjectId: "1234567",
  *         serviceAccountEmail: "harness.sample@iam.gserviceaccount.com",
+ *         delegateSelectors: ["harness-delegate"],
  *     }],
- * });
- * const gcpKmsOidcDelegate = new harness.platform.ConnectorGcpKms("gcp_kms_oidc_delegate", {
  *     identifier: "identifier",
  *     name: "name",
  *     description: "test",
@@ -64,6 +71,8 @@ import * as utilities from "../utilities";
  *     gcpProjectId: "1234567",
  *     keyRing: "key_ring",
  *     keyName: "key_name",
+ * });
+ * const gcpKmsOidcDelegateDefault = new harness.platform.ConnectorGcpKms("gcp_kms_oidc_delegate_default", {
  *     oidcAuthentications: [{
  *         workloadPoolId: "harness-pool-test",
  *         providerId: "harness",
@@ -71,8 +80,6 @@ import * as utilities from "../utilities";
  *         serviceAccountEmail: "harness.sample@iam.gserviceaccount.com",
  *         delegateSelectors: ["harness-delegate"],
  *     }],
- * });
- * const gcpKmsOidcDelegateDefault = new harness.platform.ConnectorGcpKms("gcp_kms_oidc_delegate_default", {
  *     identifier: "identifier",
  *     name: "name",
  *     description: "test",
@@ -82,13 +89,6 @@ import * as utilities from "../utilities";
  *     keyRing: "key_ring",
  *     keyName: "key_name",
  *     "default": true,
- *     oidcAuthentications: [{
- *         workloadPoolId: "harness-pool-test",
- *         providerId: "harness",
- *         gcpProjectId: "1234567",
- *         serviceAccountEmail: "harness.sample@iam.gserviceaccount.com",
- *         delegateSelectors: ["harness-delegate"],
- *     }],
  * });
  * ```
  *

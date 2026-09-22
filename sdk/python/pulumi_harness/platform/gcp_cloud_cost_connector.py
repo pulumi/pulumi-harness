@@ -358,7 +358,7 @@ class GcpCloudCostConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 billing_export_spec: pulumi.Input[Optional[Union['GcpCloudCostConnectorBillingExportSpecArgs', 'GcpCloudCostConnectorBillingExportSpecArgsDict']]] = None,
+                 billing_export_spec: pulumi.Input[Optional[Union['GcpCloudCostConnectorBillingExportSpecArgs', 'GcpCloudCostConnectorBillingExportSpecArgsDict', 'outputs.GcpCloudCostConnectorBillingExportSpec']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  features_enableds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  gcp_project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -379,6 +379,10 @@ class GcpCloudCostConnector(pulumi.CustomResource):
         import pulumi_harness as harness
 
         test = harness.platform.GcpCloudCostConnector("test",
+            billing_export_spec={
+                "data_set_id": "data_set_id",
+                "table_id": "table_id",
+            },
             identifier="identifier",
             name="name",
             description="test",
@@ -390,11 +394,7 @@ class GcpCloudCostConnector(pulumi.CustomResource):
                 "GOVERNANCE",
             ],
             gcp_project_id="gcp_project_id",
-            service_account_email="service_account_email",
-            billing_export_spec={
-                "data_set_id": "data_set_id",
-                "table_id": "table_id",
-            })
+            service_account_email="service_account_email")
         ```
 
         ## Import
@@ -422,7 +422,7 @@ class GcpCloudCostConnector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['GcpCloudCostConnectorBillingExportSpecArgs', 'GcpCloudCostConnectorBillingExportSpecArgsDict']] billing_export_spec: Returns billing details.
+        :param pulumi.Input[Union['GcpCloudCostConnectorBillingExportSpecArgs', 'GcpCloudCostConnectorBillingExportSpecArgsDict', 'outputs.GcpCloudCostConnectorBillingExportSpec']] billing_export_spec: Returns billing details.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] features_enableds: Indicates which features to enable among Billing, Optimization, Visibility and Governance.
         :param pulumi.Input[_builtins.str] gcp_project_id: GCP Project Id.
@@ -449,6 +449,10 @@ class GcpCloudCostConnector(pulumi.CustomResource):
         import pulumi_harness as harness
 
         test = harness.platform.GcpCloudCostConnector("test",
+            billing_export_spec={
+                "data_set_id": "data_set_id",
+                "table_id": "table_id",
+            },
             identifier="identifier",
             name="name",
             description="test",
@@ -460,11 +464,7 @@ class GcpCloudCostConnector(pulumi.CustomResource):
                 "GOVERNANCE",
             ],
             gcp_project_id="gcp_project_id",
-            service_account_email="service_account_email",
-            billing_export_spec={
-                "data_set_id": "data_set_id",
-                "table_id": "table_id",
-            })
+            service_account_email="service_account_email")
         ```
 
         ## Import
@@ -505,7 +505,7 @@ class GcpCloudCostConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 billing_export_spec: pulumi.Input[Optional[Union['GcpCloudCostConnectorBillingExportSpecArgs', 'GcpCloudCostConnectorBillingExportSpecArgsDict']]] = None,
+                 billing_export_spec: pulumi.Input[Optional[Union['GcpCloudCostConnectorBillingExportSpecArgs', 'GcpCloudCostConnectorBillingExportSpecArgsDict', 'outputs.GcpCloudCostConnectorBillingExportSpec']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  features_enableds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  gcp_project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -552,7 +552,7 @@ class GcpCloudCostConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            billing_export_spec: pulumi.Input[Optional[Union['GcpCloudCostConnectorBillingExportSpecArgs', 'GcpCloudCostConnectorBillingExportSpecArgsDict']]] = None,
+            billing_export_spec: pulumi.Input[Optional[Union['GcpCloudCostConnectorBillingExportSpecArgs', 'GcpCloudCostConnectorBillingExportSpecArgsDict', 'outputs.GcpCloudCostConnectorBillingExportSpec']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             features_enableds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             gcp_project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -569,7 +569,7 @@ class GcpCloudCostConnector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['GcpCloudCostConnectorBillingExportSpecArgs', 'GcpCloudCostConnectorBillingExportSpecArgsDict']] billing_export_spec: Returns billing details.
+        :param pulumi.Input[Union['GcpCloudCostConnectorBillingExportSpecArgs', 'GcpCloudCostConnectorBillingExportSpecArgsDict', 'outputs.GcpCloudCostConnectorBillingExportSpec']] billing_export_spec: Returns billing details.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] features_enableds: Indicates which features to enable among Billing, Optimization, Visibility and Governance.
         :param pulumi.Input[_builtins.str] gcp_project_id: GCP Project Id.

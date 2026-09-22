@@ -28,17 +28,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.LookupPolicySet(ctx, &platform.LookupPolicySetArgs{
-//				Identifier: "harness_platform_policyset.test.identifier",
-//				Name:       pulumi.StringRef("harness_platform_policyset.test.name"),
-//				Action:     "onrun",
-//				Type:       "pipeline",
-//				Enabled:    pulumi.BoolRef(true),
 //				PolicyReferences: []platform.GetPolicySetPolicyReference{
 //					{
 //						Identifier: "always_run",
 //						Severity:   "warning",
 //					},
 //				},
+//				Identifier: "harness_platform_policyset.test.identifier",
+//				Name:       pulumi.StringRef("harness_platform_policyset.test.name"),
+//				Action:     "onrun",
+//				Type:       "pipeline",
+//				Enabled:    pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err

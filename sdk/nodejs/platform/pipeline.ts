@@ -16,10 +16,6 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.platform.Pipeline("example", {
- *     identifier: "identifier",
- *     orgId: "orgIdentifier",
- *     projectId: "projectIdentifier",
- *     name: "name",
  *     gitDetails: {
  *         branchName: "branchName",
  *         commitMessage: "commitMessage",
@@ -28,6 +24,10 @@ import * as utilities from "../utilities";
  *         storeType: "REMOTE",
  *         repoName: "repoName",
  *     },
+ *     identifier: "identifier",
+ *     orgId: "orgIdentifier",
+ *     projectId: "projectIdentifier",
+ *     name: "name",
  *     tags: {},
  *     yaml: `pipeline:
  *     name: name
@@ -122,11 +122,6 @@ import * as utilities from "../utilities";
  *     name: "name",
  * });
  * const testPipeline = new harness.platform.Pipeline("test", {
- *     identifier: "gitx",
- *     orgId: "default",
- *     projectId: "V",
- *     name: "gitx",
- *     importFromGit: true,
  *     gitImportInfo: {
  *         branchName: "main",
  *         filePath: ".harness/gitx.yaml",
@@ -138,6 +133,11 @@ import * as utilities from "../utilities";
  *         pipelineName: "gitx",
  *         pipelineDescription: "Pipeline Description",
  *     },
+ *     identifier: "gitx",
+ *     orgId: "default",
+ *     projectId: "V",
+ *     name: "gitx",
+ *     importFromGit: true,
  * });
  * ```
  *

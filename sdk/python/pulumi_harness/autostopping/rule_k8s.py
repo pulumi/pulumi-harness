@@ -311,7 +311,7 @@ class RuleK8s(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleK8sDependArgs', 'RuleK8sDependArgsDict']]]]] = None,
+                 depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleK8sDependArgs', 'RuleK8sDependArgsDict', 'outputs.RuleK8sDepend']]]]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
                  k8s_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -326,7 +326,7 @@ class RuleK8s(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleK8sDependArgs', 'RuleK8sDependArgsDict']]]] depends: Dependent rules
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleK8sDependArgs', 'RuleK8sDependArgsDict', 'outputs.RuleK8sDepend']]]] depends: Dependent rules
         :param pulumi.Input[_builtins.bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         :param pulumi.Input[_builtins.int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         :param pulumi.Input[_builtins.str] k8s_connector_id: Id of the K8s connector
@@ -360,7 +360,7 @@ class RuleK8s(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleK8sDependArgs', 'RuleK8sDependArgsDict']]]]] = None,
+                 depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleK8sDependArgs', 'RuleK8sDependArgsDict', 'outputs.RuleK8sDepend']]]]] = None,
                  dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
                  k8s_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -404,7 +404,7 @@ class RuleK8s(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
-            depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleK8sDependArgs', 'RuleK8sDependArgsDict']]]]] = None,
+            depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleK8sDependArgs', 'RuleK8sDependArgsDict', 'outputs.RuleK8sDepend']]]]] = None,
             dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
@@ -420,7 +420,7 @@ class RuleK8s(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleK8sDependArgs', 'RuleK8sDependArgsDict']]]] depends: Dependent rules
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RuleK8sDependArgs', 'RuleK8sDependArgsDict', 'outputs.RuleK8sDepend']]]] depends: Dependent rules
         :param pulumi.Input[_builtins.bool] dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.int] idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.

@@ -64,32 +64,32 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var gcpSmOidcPlatform = new GcpSecretManagerConnector("gcpSmOidcPlatform", GcpSecretManagerConnectorArgs.builder()
- *             .identifier("identifier")
- *             .name("name")
- *             .description("test")
- *             .tags("foo:bar")
- *             .executeOnDelegate(false)
  *             .oidcAuthentications(GcpSecretManagerConnectorOidcAuthenticationArgs.builder()
  *                 .workloadPoolId("harness-pool-test")
  *                 .providerId("harness")
  *                 .gcpProjectId("1234567")
  *                 .serviceAccountEmail("harness.sample}{@literal @}{@code iam.gserviceaccount.com")
  *                 .build())
+ *             .identifier("identifier")
+ *             .name("name")
+ *             .description("test")
+ *             .tags("foo:bar")
+ *             .executeOnDelegate(false)
  *             .build());
  * 
  *         var gcpSmOidcDelegate = new GcpSecretManagerConnector("gcpSmOidcDelegate", GcpSecretManagerConnectorArgs.builder()
+ *             .oidcAuthentications(GcpSecretManagerConnectorOidcAuthenticationArgs.builder()
+ *                 .workloadPoolId("harness-pool-test")
+ *                 .providerId("harness")
+ *                 .gcpProjectId("1234567")
+ *                 .serviceAccountEmail("harness.sample}{@literal @}{@code iam.gserviceaccount.com")
+ *                 .build())
  *             .identifier("identifier")
  *             .name("name")
  *             .description("test")
  *             .tags("foo:bar")
  *             .default_(true)
  *             .delegateSelectors("harness-delegate")
- *             .oidcAuthentications(GcpSecretManagerConnectorOidcAuthenticationArgs.builder()
- *                 .workloadPoolId("harness-pool-test")
- *                 .providerId("harness")
- *                 .gcpProjectId("1234567")
- *                 .serviceAccountEmail("harness.sample}{@literal @}{@code iam.gserviceaccount.com")
- *                 .build())
  *             .build());
  * 
  *     }}{@code

@@ -171,7 +171,7 @@ class AwaitableGetSecretTextResult(GetSecretTextResult):
             value_type=self.value_type)
 
 
-def get_secret_text(additional_metadatas: Optional[Sequence[Union['GetSecretTextAdditionalMetadataArgs', 'GetSecretTextAdditionalMetadataArgsDict']]] = None,
+def get_secret_text(additional_metadatas: Optional[Sequence[Union['GetSecretTextAdditionalMetadataArgs', 'GetSecretTextAdditionalMetadataArgsDict', 'outputs.GetSecretTextAdditionalMetadataResult']]] = None,
                     identifier: Optional[_builtins.str] = None,
                     name: Optional[_builtins.str] = None,
                     org_id: Optional[_builtins.str] = None,
@@ -190,7 +190,7 @@ def get_secret_text(additional_metadatas: Optional[Sequence[Union['GetSecretText
     ```
 
 
-    :param Sequence[Union['GetSecretTextAdditionalMetadataArgs', 'GetSecretTextAdditionalMetadataArgsDict']] additional_metadatas: Additional Metadata for the Secret
+    :param Sequence[Union['GetSecretTextAdditionalMetadataArgs', 'GetSecretTextAdditionalMetadataArgsDict', 'outputs.GetSecretTextAdditionalMetadataResult']] additional_metadatas: Additional Metadata for the Secret
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.
@@ -217,7 +217,7 @@ def get_secret_text(additional_metadatas: Optional[Sequence[Union['GetSecretText
         tags=pulumi.get(__ret__, 'tags'),
         value=pulumi.get(__ret__, 'value'),
         value_type=pulumi.get(__ret__, 'value_type'))
-def get_secret_text_output(additional_metadatas: pulumi.Input[Optional[Optional[Sequence[Union['GetSecretTextAdditionalMetadataArgs', 'GetSecretTextAdditionalMetadataArgsDict']]]]] = None,
+def get_secret_text_output(additional_metadatas: pulumi.Input[Optional[Optional[Sequence[Union['GetSecretTextAdditionalMetadataArgs', 'GetSecretTextAdditionalMetadataArgsDict', 'outputs.GetSecretTextAdditionalMetadataResult']]]]] = None,
                            identifier: pulumi.Input[Optional[_builtins.str]] = None,
                            name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            org_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -236,7 +236,7 @@ def get_secret_text_output(additional_metadatas: pulumi.Input[Optional[Optional[
     ```
 
 
-    :param Sequence[Union['GetSecretTextAdditionalMetadataArgs', 'GetSecretTextAdditionalMetadataArgsDict']] additional_metadatas: Additional Metadata for the Secret
+    :param Sequence[Union['GetSecretTextAdditionalMetadataArgs', 'GetSecretTextAdditionalMetadataArgsDict', 'outputs.GetSecretTextAdditionalMetadataResult']] additional_metadatas: Additional Metadata for the Secret
     :param _builtins.str identifier: Unique identifier of the resource.
     :param _builtins.str name: Name of the resource.
     :param _builtins.str org_id: Unique identifier of the organization.

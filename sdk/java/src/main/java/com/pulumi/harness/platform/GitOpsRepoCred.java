@@ -47,11 +47,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var test = new GitOpsRepoCred("test", GitOpsRepoCredArgs.builder()
- *             .identifier("identifier")
- *             .accountId("account_id")
- *             .agentId("agent_id")
- *             .projectId("project_id")
- *             .orgId("org_id")
  *             .creds(GitOpsRepoCredCredArgs.builder()
  *                 .type("git")
  *                 .url("git}{@literal @}{@code github.com:yourorg")
@@ -63,6 +58,11 @@ import javax.annotation.Nullable;
  * -----END OPENSSH PRIVATE KEY -----
  *                 """)
  *                 .build())
+ *             .identifier("identifier")
+ *             .accountId("account_id")
+ *             .agentId("agent_id")
+ *             .projectId("project_id")
+ *             .orgId("org_id")
  *             .build(), CustomResourceOptions.builder()
  *                 .ignoreChanges("accountId", "creds[0].sshPrivateKey")
  *                 .build());

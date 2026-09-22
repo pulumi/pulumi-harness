@@ -49,12 +49,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.harness.chaos.FaultTemplate;
  * import com.pulumi.harness.chaos.FaultTemplateArgs;
- * import com.pulumi.harness.chaos.inputs.FaultTemplateLinkArgs;
  * import com.pulumi.harness.chaos.inputs.FaultTemplateSpecArgs;
  * import com.pulumi.harness.chaos.inputs.FaultTemplateSpecChaosArgs;
- * import com.pulumi.harness.chaos.inputs.FaultTemplateSpecChaosParamArgs;
  * import com.pulumi.harness.chaos.inputs.FaultTemplateSpecChaosKubernetesArgs;
  * import com.pulumi.harness.chaos.inputs.FaultTemplateSpecChaosKubernetesResourcesArgs;
+ * import com.pulumi.harness.chaos.inputs.FaultTemplateSpecChaosParamArgs;
+ * import com.pulumi.harness.chaos.inputs.FaultTemplateLinkArgs;
  * import com.pulumi.harness.chaos.inputs.FaultTemplateSpecChaosKubernetesEnvArgs;
  * import com.pulumi.harness.chaos.inputs.FaultTemplateVariableArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -88,6 +88,42 @@ import javax.annotation.Nullable;
  *         // ----------------------------------------------------------------------------
  *         // Most common pattern: Custom Kubernetes fault with container spec
  *         var kubernetesFault = new FaultTemplate("kubernetesFault", FaultTemplateArgs.builder()
+ *             .spec(FaultTemplateSpecArgs.builder()
+ *                 .chaos(FaultTemplateSpecChaosArgs.builder()
+ *                     .kubernetes(FaultTemplateSpecChaosKubernetesArgs.builder()
+ *                         .resources(FaultTemplateSpecChaosKubernetesResourcesArgs.builder()
+ *                             .limits(Map.ofEntries(
+ *                                 Map.entry("cpu", "150m"),
+ *                                 Map.entry("memory", "150Mi")
+ *                             ))
+ *                             .requests(Map.ofEntries(
+ *                                 Map.entry("cpu", "100m"),
+ *                                 Map.entry("memory", "100Mi")
+ *                             ))
+ *                             .build())
+ *                         .image("chaosnative/go-runner:ci")
+ *                         .commands(                        
+ *                             "/bin/bash",
+ *                             "-c")
+ *                         .args("echo 'Running chaos fault'; sleep 30")
+ *                         .imagePullPolicy("IfNotPresent")
+ *                         .build())
+ *                     .params(                    
+ *                         FaultTemplateSpecChaosParamArgs.builder()
+ *                             .name("CHAOS_DURATION")
+ *                             .value("30s")
+ *                             .build(),
+ *                         FaultTemplateSpecChaosParamArgs.builder()
+ *                             .name("CHAOS_INTERVAL")
+ *                             .value("5s")
+ *                             .build())
+ *                     .faultName("byoc-injector")
+ *                     .build())
+ *                 .build())
+ *             .links(FaultTemplateLinkArgs.builder()
+ *                 .name("Documentation")
+ *                 .url("https://docs.harness.io/chaos")
+ *                 .build())
  *             .orgId(this_.id())
  *             .projectId(thisHarnessPlatformProject.id())
  *             .hubIdentity(projectLevel.identity())
@@ -102,42 +138,6 @@ import javax.annotation.Nullable;
  *                 "kubernetes",
  *                 "fault",
  *                 "custom")
- *             .links(FaultTemplateLinkArgs.builder()
- *                 .name("Documentation")
- *                 .url("https://docs.harness.io/chaos")
- *                 .build())
- *             .spec(FaultTemplateSpecArgs.builder()
- *                 .chaos(FaultTemplateSpecChaosArgs.builder()
- *                     .faultName("byoc-injector")
- *                     .params(                    
- *                         FaultTemplateSpecChaosParamArgs.builder()
- *                             .name("CHAOS_DURATION")
- *                             .value("30s")
- *                             .build(),
- *                         FaultTemplateSpecChaosParamArgs.builder()
- *                             .name("CHAOS_INTERVAL")
- *                             .value("5s")
- *                             .build())
- *                     .kubernetes(FaultTemplateSpecChaosKubernetesArgs.builder()
- *                         .image("chaosnative/go-runner:ci")
- *                         .commands(                        
- *                             "/bin/bash",
- *                             "-c")
- *                         .args("echo 'Running chaos fault'; sleep 30")
- *                         .imagePullPolicy("IfNotPresent")
- *                         .resources(FaultTemplateSpecChaosKubernetesResourcesArgs.builder()
- *                             .limits(Map.ofEntries(
- *                                 Map.entry("cpu", "150m"),
- *                                 Map.entry("memory", "150Mi")
- *                             ))
- *                             .requests(Map.ofEntries(
- *                                 Map.entry("cpu", "100m"),
- *                                 Map.entry("memory", "100Mi")
- *                             ))
- *                             .build())
- *                         .build())
- *                     .build())
- *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(projectLevel)
  *                 .build());
@@ -147,6 +147,58 @@ import javax.annotation.Nullable;
  *         // ----------------------------------------------------------------------------
  *         // Fault with environment variables for configuration
  *         var faultWithEnv = new FaultTemplate("faultWithEnv", FaultTemplateArgs.builder()
+ *             .spec(FaultTemplateSpecArgs.builder()
+ *                 .chaos(FaultTemplateSpecChaosArgs.builder()
+ *                     .kubernetes(FaultTemplateSpecChaosKubernetesArgs.builder()
+ *                         .resources(FaultTemplateSpecChaosKubernetesResourcesArgs.builder()
+ *                             .limits(Map.ofEntries(
+ *                                 Map.entry("cpu", "200m"),
+ *                                 Map.entry("memory", "200Mi")
+ *                             ))
+ *                             .build())
+ *                         .envs(                        
+ *                             FaultTemplateSpecChaosKubernetesEnvArgs.builder()
+ *                                 .name("TARGET_NAMESPACE")
+ *                                 .value("<+input>.default('default')")
+ *                                 .build(),
+ *                             FaultTemplateSpecChaosKubernetesEnvArgs.builder()
+ *                                 .name("CHAOS_MODE")
+ *                                 .value("pod")
+ *                                 .build())
+ *                         .image("chaosnative/go-runner:ci")
+ *                         .commands(                        
+ *                             "/bin/bash",
+ *                             "-c")
+ *                         .args("echo 'Fault with env vars'; sleep 15")
+ *                         .imagePullPolicy("IfNotPresent")
+ *                         .build())
+ *                     .params(                    
+ *                         FaultTemplateSpecChaosParamArgs.builder()
+ *                             .name("CHAOS_DURATION")
+ *                             .value("15s")
+ *                             .build(),
+ *                         FaultTemplateSpecChaosParamArgs.builder()
+ *                             .name("CHAOS_INTERVAL")
+ *                             .value("3s")
+ *                             .build(),
+ *                         FaultTemplateSpecChaosParamArgs.builder()
+ *                             .name("TARGET_NAMESPACE")
+ *                             .value("<+input>.default('default')")
+ *                             .build())
+ *                     .faultName("byoc-injector")
+ *                     .build())
+ *                 .build())
+ *             .links(FaultTemplateLinkArgs.builder()
+ *                 .name("Documentation")
+ *                 .url("https://docs.harness.io/chaos")
+ *                 .build())
+ *             .variables(FaultTemplateVariableArgs.builder()
+ *                 .name("target_namespace")
+ *                 .value("<+input>")
+ *                 .type("string")
+ *                 .required(false)
+ *                 .description("Target namespace for chaos injection")
+ *                 .build())
  *             .orgId(this_.id())
  *             .projectId(thisHarnessPlatformProject.id())
  *             .hubIdentity(projectLevel.identity())
@@ -161,58 +213,6 @@ import javax.annotation.Nullable;
  *                 "kubernetes",
  *                 "env",
  *                 "config")
- *             .links(FaultTemplateLinkArgs.builder()
- *                 .name("Documentation")
- *                 .url("https://docs.harness.io/chaos")
- *                 .build())
- *             .spec(FaultTemplateSpecArgs.builder()
- *                 .chaos(FaultTemplateSpecChaosArgs.builder()
- *                     .faultName("byoc-injector")
- *                     .params(                    
- *                         FaultTemplateSpecChaosParamArgs.builder()
- *                             .name("CHAOS_DURATION")
- *                             .value("15s")
- *                             .build(),
- *                         FaultTemplateSpecChaosParamArgs.builder()
- *                             .name("CHAOS_INTERVAL")
- *                             .value("3s")
- *                             .build(),
- *                         FaultTemplateSpecChaosParamArgs.builder()
- *                             .name("TARGET_NAMESPACE")
- *                             .value("<+input>.default('default')")
- *                             .build())
- *                     .kubernetes(FaultTemplateSpecChaosKubernetesArgs.builder()
- *                         .image("chaosnative/go-runner:ci")
- *                         .commands(                        
- *                             "/bin/bash",
- *                             "-c")
- *                         .args("echo 'Fault with env vars'; sleep 15")
- *                         .imagePullPolicy("IfNotPresent")
- *                         .envs(                        
- *                             FaultTemplateSpecChaosKubernetesEnvArgs.builder()
- *                                 .name("TARGET_NAMESPACE")
- *                                 .value("<+input>.default('default')")
- *                                 .build(),
- *                             FaultTemplateSpecChaosKubernetesEnvArgs.builder()
- *                                 .name("CHAOS_MODE")
- *                                 .value("pod")
- *                                 .build())
- *                         .resources(FaultTemplateSpecChaosKubernetesResourcesArgs.builder()
- *                             .limits(Map.ofEntries(
- *                                 Map.entry("cpu", "200m"),
- *                                 Map.entry("memory", "200Mi")
- *                             ))
- *                             .build())
- *                         .build())
- *                     .build())
- *                 .build())
- *             .variables(FaultTemplateVariableArgs.builder()
- *                 .name("target_namespace")
- *                 .value("<+input>")
- *                 .type("string")
- *                 .required(false)
- *                 .description("Target namespace for chaos injection")
- *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(projectLevel)
  *                 .build());
@@ -222,42 +222,19 @@ import javax.annotation.Nullable;
  *         // ----------------------------------------------------------------------------
  *         // Fault with node selector, labels, and annotations
  *         var advancedFault = new FaultTemplate("advancedFault", FaultTemplateArgs.builder()
- *             .orgId(this_.id())
- *             .projectId(thisHarnessPlatformProject.id())
- *             .hubIdentity(projectLevel.identity())
- *             .identity("advanced-fault-template")
- *             .name("Advanced Fault Template")
- *             .description("Fault with advanced Kubernetes configuration")
- *             .categories("Kubernetes")
- *             .infrastructures("KubernetesV2")
- *             .type("Custom")
- *             .permissionsRequired("Basic")
- *             .tags(            
- *                 "kubernetes",
- *                 "advanced",
- *                 "production")
- *             .links(            
- *                 FaultTemplateLinkArgs.builder()
- *                     .name("Documentation")
- *                     .url("https://docs.harness.io/chaos")
- *                     .build(),
- *                 FaultTemplateLinkArgs.builder()
- *                     .name("Support")
- *                     .url("https://support.harness.io")
- *                     .build())
  *             .spec(FaultTemplateSpecArgs.builder()
  *                 .chaos(FaultTemplateSpecChaosArgs.builder()
- *                     .faultName("byoc-injector")
- *                     .params(                    
- *                         FaultTemplateSpecChaosParamArgs.builder()
- *                             .name("CHAOS_DURATION")
- *                             .value("<+input>.default('30s')")
- *                             .build(),
- *                         FaultTemplateSpecChaosParamArgs.builder()
- *                             .name("CHAOS_INTERVAL")
- *                             .value("<+input>.default('5s')")
- *                             .build())
  *                     .kubernetes(FaultTemplateSpecChaosKubernetesArgs.builder()
+ *                         .resources(FaultTemplateSpecChaosKubernetesResourcesArgs.builder()
+ *                             .limits(Map.ofEntries(
+ *                                 Map.entry("cpu", "250m"),
+ *                                 Map.entry("memory", "256Mi")
+ *                             ))
+ *                             .requests(Map.ofEntries(
+ *                                 Map.entry("cpu", "125m"),
+ *                                 Map.entry("memory", "128Mi")
+ *                             ))
+ *                             .build())
  *                         .image("chaosnative/go-runner:ci")
  *                         .commands(                        
  *                             "/bin/bash",
@@ -277,19 +254,28 @@ import javax.annotation.Nullable;
  *                             Map.entry("description", "Advanced chaos fault"),
  *                             Map.entry("owner", "chaos-team")
  *                         ))
- *                         .resources(FaultTemplateSpecChaosKubernetesResourcesArgs.builder()
- *                             .limits(Map.ofEntries(
- *                                 Map.entry("cpu", "250m"),
- *                                 Map.entry("memory", "256Mi")
- *                             ))
- *                             .requests(Map.ofEntries(
- *                                 Map.entry("cpu", "125m"),
- *                                 Map.entry("memory", "128Mi")
- *                             ))
- *                             .build())
  *                         .build())
+ *                     .params(                    
+ *                         FaultTemplateSpecChaosParamArgs.builder()
+ *                             .name("CHAOS_DURATION")
+ *                             .value("<+input>.default('30s')")
+ *                             .build(),
+ *                         FaultTemplateSpecChaosParamArgs.builder()
+ *                             .name("CHAOS_INTERVAL")
+ *                             .value("<+input>.default('5s')")
+ *                             .build())
+ *                     .faultName("byoc-injector")
  *                     .build())
  *                 .build())
+ *             .links(            
+ *                 FaultTemplateLinkArgs.builder()
+ *                     .name("Documentation")
+ *                     .url("https://docs.harness.io/chaos")
+ *                     .build(),
+ *                 FaultTemplateLinkArgs.builder()
+ *                     .name("Support")
+ *                     .url("https://support.harness.io")
+ *                     .build())
  *             .variables(            
  *                 FaultTemplateVariableArgs.builder()
  *                     .name("chaos_duration")
@@ -305,6 +291,20 @@ import javax.annotation.Nullable;
  *                     .required(false)
  *                     .description("Interval between chaos injections")
  *                     .build())
+ *             .orgId(this_.id())
+ *             .projectId(thisHarnessPlatformProject.id())
+ *             .hubIdentity(projectLevel.identity())
+ *             .identity("advanced-fault-template")
+ *             .name("Advanced Fault Template")
+ *             .description("Fault with advanced Kubernetes configuration")
+ *             .categories("Kubernetes")
+ *             .infrastructures("KubernetesV2")
+ *             .type("Custom")
+ *             .permissionsRequired("Basic")
+ *             .tags(            
+ *                 "kubernetes",
+ *                 "advanced",
+ *                 "production")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(projectLevel)
  *                 .build());

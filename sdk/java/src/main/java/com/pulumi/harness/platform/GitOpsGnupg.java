@@ -47,14 +47,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new GitOpsGnupg("example", GitOpsGnupgArgs.builder()
- *             .accountId("account_id")
- *             .agentId("agent_id")
  *             .requests(GitOpsGnupgRequestArgs.builder()
- *                 .upsert(true)
  *                 .publickeys(GitOpsGnupgRequestPublickeyArgs.builder()
  *                     .keyData("-----BEGIN PGP PUBLIC KEY BLOCK-----XXXXXX-----END PGP PUBLIC KEY BLOCK-----")
  *                     .build())
+ *                 .upsert(true)
  *                 .build())
+ *             .accountId("account_id")
+ *             .agentId("agent_id")
  *             .build(), CustomResourceOptions.builder()
  *                 .ignoreChanges("requests[0].upsert")
  *                 .build());

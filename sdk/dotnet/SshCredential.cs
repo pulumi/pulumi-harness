@@ -43,16 +43,16 @@ namespace Pulumi.Harness
     /// 
     ///     var sshCreds = new Harness.SshCredential("ssh_creds", new()
     ///     {
-    ///         Name = "ssh-test",
     ///         SshAuthentication = new Harness.Inputs.SshCredentialSshAuthenticationArgs
     ///         {
-    ///             Port = 22,
-    ///             Username = "git",
     ///             InlineSsh = new Harness.Inputs.SshCredentialSshAuthenticationInlineSshArgs
     ///             {
     ///                 SshKeyFileId = mySecret.Id,
     ///             },
+    ///             Port = 22,
+    ///             Username = "git",
     ///         },
+    ///         Name = "ssh-test",
     ///     }, new CustomResourceOptions
     ///     {
     ///         IgnoreChanges =

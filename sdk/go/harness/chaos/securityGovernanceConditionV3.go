@@ -41,13 +41,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Example of a Kubernetes Security Governance Condition (V3)
 //			k8sCondition, err := chaos.NewSecurityGovernanceConditionV3(ctx, "k8s_condition", &chaos.SecurityGovernanceConditionV3Args{
-//				OrgId:       pulumi.Any(orgId),
-//				ProjectId:   pulumi.Any(projectId),
-//				Name:        pulumi.String("k8s-security-condition"),
-//				Description: pulumi.String("Security governance condition for Kubernetes workloads"),
-//				InfraType:   pulumi.String("KubernetesV2"),
 //				FaultSpec: &chaos.SecurityGovernanceConditionV3FaultSpecArgs{
-//					Operator: pulumi.String("NOT_EQUAL_TO"),
 //					Faults: chaos.SecurityGovernanceConditionV3FaultSpecFaultArray{
 //						&chaos.SecurityGovernanceConditionV3FaultSpecFaultArgs{
 //							FaultType: pulumi.String("FAULT"),
@@ -58,6 +52,7 @@ import (
 //							Name:      pulumi.String("pod-dns"),
 //						},
 //					},
+//					Operator: pulumi.String("NOT_EQUAL_TO"),
 //				},
 //				K8sSpec: &chaos.SecurityGovernanceConditionV3K8sSpecArgs{
 //					InfraSpec: &chaos.SecurityGovernanceConditionV3K8sSpecInfraSpecArgs{
@@ -67,7 +62,6 @@ import (
 //						},
 //					},
 //					ApplicationSpec: &chaos.SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs{
-//						Operator: pulumi.String("EQUAL_TO"),
 //						Workloads: chaos.SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArray{
 //							&chaos.SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs{
 //								Namespace: pulumi.String("default"),
@@ -79,6 +73,7 @@ import (
 //								ApplicationMapId: pulumi.String("nginx-app"),
 //							},
 //						},
+//						Operator: pulumi.String("EQUAL_TO"),
 //					},
 //					ChaosServiceAccountSpec: &chaos.SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs{
 //						Operator: pulumi.String("EQUAL_TO"),
@@ -88,6 +83,11 @@ import (
 //						},
 //					},
 //				},
+//				OrgId:       pulumi.Any(orgId),
+//				ProjectId:   pulumi.Any(projectId),
+//				Name:        pulumi.String("k8s-security-condition"),
+//				Description: pulumi.String("Security governance condition for Kubernetes workloads"),
+//				InfraType:   pulumi.String("KubernetesV2"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("env:prod"),
 //					pulumi.String("team:security"),
@@ -99,13 +99,7 @@ import (
 //			}
 //			// Example of a Linux Security Governance Condition (V3)
 //			linuxCondition, err := chaos.NewSecurityGovernanceConditionV3(ctx, "linux_condition", &chaos.SecurityGovernanceConditionV3Args{
-//				OrgId:       pulumi.Any(orgId),
-//				ProjectId:   pulumi.Any(projectId),
-//				Name:        pulumi.String("linux-security-condition"),
-//				Description: pulumi.String("Security governance condition for Linux hosts"),
-//				InfraType:   pulumi.String("Linux"),
 //				FaultSpec: &chaos.SecurityGovernanceConditionV3FaultSpecArgs{
-//					Operator: pulumi.String("NOT_EQUAL_TO"),
 //					Faults: chaos.SecurityGovernanceConditionV3FaultSpecFaultArray{
 //						&chaos.SecurityGovernanceConditionV3FaultSpecFaultArgs{
 //							FaultType: pulumi.String("FAULT"),
@@ -116,6 +110,7 @@ import (
 //							Name:      pulumi.String("memory-hog"),
 //						},
 //					},
+//					Operator: pulumi.String("NOT_EQUAL_TO"),
 //				},
 //				MachineSpec: &chaos.SecurityGovernanceConditionV3MachineSpecArgs{
 //					InfraSpec: &chaos.SecurityGovernanceConditionV3MachineSpecInfraSpecArgs{
@@ -125,6 +120,11 @@ import (
 //						},
 //					},
 //				},
+//				OrgId:       pulumi.Any(orgId),
+//				ProjectId:   pulumi.Any(projectId),
+//				Name:        pulumi.String("linux-security-condition"),
+//				Description: pulumi.String("Security governance condition for Linux hosts"),
+//				InfraType:   pulumi.String("Linux"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("env:prod"),
 //					pulumi.String("team:security"),

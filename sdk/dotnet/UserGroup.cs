@@ -24,15 +24,8 @@ namespace Pulumi.Harness
     /// {
     ///     var example = new Harness.UserGroup("example", new()
     ///     {
-    ///         Name = "example-group",
-    ///         Description = "This group demonstrates account level and resource level permissions.",
     ///         Permissions = new Harness.Inputs.UserGroupPermissionsArgs
     ///         {
-    ///             AccountPermissions = new[]
-    ///             {
-    ///                 "ADMINISTER_OTHER_ACCOUNT_FUNCTIONS",
-    ///                 "MANAGE_API_KEYS",
-    ///             },
     ///             AppPermissions = new Harness.Inputs.UserGroupPermissionsAppPermissionsArgs
     ///             {
     ///                 Alls = new[]
@@ -212,7 +205,14 @@ namespace Pulumi.Harness
     ///                     },
     ///                 },
     ///             },
+    ///             AccountPermissions = new[]
+    ///             {
+    ///                 "ADMINISTER_OTHER_ACCOUNT_FUNCTIONS",
+    ///                 "MANAGE_API_KEYS",
+    ///             },
     ///         },
+    ///         Name = "example-group",
+    ///         Description = "This group demonstrates account level and resource level permissions.",
     ///     });
     /// 
     /// });

@@ -52,26 +52,9 @@ import (
 //			// ----------------------------------------------------------------------------
 //			// Basic template with single fault
 //			_, err := chaos.NewExperimentTemplate(ctx, "simple_fault", &chaos.ExperimentTemplateArgs{
-//				OrgId:       pulumi.Any(this.Id),
-//				ProjectId:   pulumi.Any(thisHarnessPlatformProject.Id),
-//				HubIdentity: pulumi.Any(projectLevel.Identity),
-//				Identity:    pulumi.String("simple-pod-delete"),
-//				Name:        pulumi.String("Simple Pod Delete Experiment"),
-//				Description: pulumi.String("Basic experiment with single pod delete fault"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("kubernetes"),
-//					pulumi.String("pod-delete"),
-//					pulumi.String("simple"),
-//				},
 //				Spec: &chaos.ExperimentTemplateSpecArgs{
-//					InfraType: pulumi.String("KubernetesV2"),
 //					Faults: chaos.ExperimentTemplateSpecFaultArray{
 //						&chaos.ExperimentTemplateSpecFaultArgs{
-//							Identity:     pulumi.String("pod-delete"),
-//							Name:         pulumi.String("pod-delete-fault"),
-//							Revision:     pulumi.String("v1"),
-//							IsEnterprise: pulumi.Bool(true),
-//							AuthEnabled:  pulumi.Bool(false),
 //							Values: chaos.ExperimentTemplateSpecFaultValueArray{
 //								&chaos.ExperimentTemplateSpecFaultValueArgs{
 //									Name:  pulumi.String("TARGET_WORKLOAD_KIND"),
@@ -86,11 +69,15 @@ import (
 //									Value: pulumi.String("<+input>.default('30s')"),
 //								},
 //							},
+//							Identity:     pulumi.String("pod-delete"),
+//							Name:         pulumi.String("pod-delete-fault"),
+//							Revision:     pulumi.String("v1"),
+//							IsEnterprise: pulumi.Bool(true),
+//							AuthEnabled:  pulumi.Bool(false),
 //						},
 //					},
 //					Vertices: chaos.ExperimentTemplateSpecVertexArray{
 //						&chaos.ExperimentTemplateSpecVertexArgs{
-//							Name: pulumi.String("pod-delete-vertex"),
 //							Start: &chaos.ExperimentTemplateSpecVertexStartArgs{
 //								Faults: chaos.ExperimentTemplateSpecVertexStartFaultArray{
 //									&chaos.ExperimentTemplateSpecVertexStartFaultArgs{
@@ -98,10 +85,23 @@ import (
 //									},
 //								},
 //							},
-//							End: &chaos.ExperimentTemplateSpecVertexEndArgs{},
+//							End:  &chaos.ExperimentTemplateSpecVertexEndArgs{},
+//							Name: pulumi.String("pod-delete-vertex"),
 //						},
 //					},
+//					InfraType:     pulumi.String("KubernetesV2"),
 //					CleanupPolicy: pulumi.String("delete"),
+//				},
+//				OrgId:       pulumi.Any(this.Id),
+//				ProjectId:   pulumi.Any(thisHarnessPlatformProject.Id),
+//				HubIdentity: pulumi.Any(projectLevel.Identity),
+//				Identity:    pulumi.String("simple-pod-delete"),
+//				Name:        pulumi.String("Simple Pod Delete Experiment"),
+//				Description: pulumi.String("Basic experiment with single pod delete fault"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("kubernetes"),
+//					pulumi.String("pod-delete"),
+//					pulumi.String("simple"),
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				projectLevel,
@@ -114,40 +114,23 @@ import (
 //			// ----------------------------------------------------------------------------
 //			// Template combining action and fault
 //			_, err = chaos.NewExperimentTemplate(ctx, "with_action", &chaos.ExperimentTemplateArgs{
-//				OrgId:       pulumi.Any(this.Id),
-//				ProjectId:   pulumi.Any(thisHarnessPlatformProject.Id),
-//				HubIdentity: pulumi.Any(projectLevel.Identity),
-//				Identity:    pulumi.String("action-and-fault"),
-//				Name:        pulumi.String("Action and Fault Experiment"),
-//				Description: pulumi.String("Experiment with action before fault"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("kubernetes"),
-//					pulumi.String("action"),
-//					pulumi.String("fault"),
-//				},
 //				Spec: &chaos.ExperimentTemplateSpecArgs{
-//					InfraType: pulumi.String("KubernetesV2"),
 //					Actions: chaos.ExperimentTemplateSpecActionArray{
 //						&chaos.ExperimentTemplateSpecActionArgs{
-//							Identity:             pulumi.String("notification-action"),
-//							Name:                 pulumi.String("pre-chaos-notification"),
-//							IsEnterprise:         pulumi.Bool(false),
-//							ContinueOnCompletion: pulumi.Bool(false),
 //							Values: chaos.ExperimentTemplateSpecActionValueArray{
 //								&chaos.ExperimentTemplateSpecActionValueArgs{
 //									Name:  pulumi.String("MESSAGE"),
 //									Value: pulumi.String("Starting chaos experiment"),
 //								},
 //							},
+//							Identity:             pulumi.String("notification-action"),
+//							Name:                 pulumi.String("pre-chaos-notification"),
+//							IsEnterprise:         pulumi.Bool(false),
+//							ContinueOnCompletion: pulumi.Bool(false),
 //						},
 //					},
 //					Faults: chaos.ExperimentTemplateSpecFaultArray{
 //						&chaos.ExperimentTemplateSpecFaultArgs{
-//							Identity:     pulumi.String("container-kill"),
-//							Name:         pulumi.String("container-kill-fault"),
-//							Revision:     pulumi.String("v1"),
-//							IsEnterprise: pulumi.Bool(true),
-//							AuthEnabled:  pulumi.Bool(false),
 //							Values: chaos.ExperimentTemplateSpecFaultValueArray{
 //								&chaos.ExperimentTemplateSpecFaultValueArgs{
 //									Name:  pulumi.String("TARGET_WORKLOAD_KIND"),
@@ -162,11 +145,15 @@ import (
 //									Value: pulumi.String("<+input>.default('30s')"),
 //								},
 //							},
+//							Identity:     pulumi.String("container-kill"),
+//							Name:         pulumi.String("container-kill-fault"),
+//							Revision:     pulumi.String("v1"),
+//							IsEnterprise: pulumi.Bool(true),
+//							AuthEnabled:  pulumi.Bool(false),
 //						},
 //					},
 //					Vertices: chaos.ExperimentTemplateSpecVertexArray{
 //						&chaos.ExperimentTemplateSpecVertexArgs{
-//							Name: pulumi.String("action-vertex"),
 //							Start: &chaos.ExperimentTemplateSpecVertexStartArgs{
 //								Actions: chaos.ExperimentTemplateSpecVertexStartActionArray{
 //									&chaos.ExperimentTemplateSpecVertexStartActionArgs{
@@ -174,10 +161,10 @@ import (
 //									},
 //								},
 //							},
-//							End: &chaos.ExperimentTemplateSpecVertexEndArgs{},
+//							End:  &chaos.ExperimentTemplateSpecVertexEndArgs{},
+//							Name: pulumi.String("action-vertex"),
 //						},
 //						&chaos.ExperimentTemplateSpecVertexArgs{
-//							Name: pulumi.String("fault-vertex"),
 //							Start: &chaos.ExperimentTemplateSpecVertexStartArgs{
 //								Faults: chaos.ExperimentTemplateSpecVertexStartFaultArray{
 //									&chaos.ExperimentTemplateSpecVertexStartFaultArgs{
@@ -185,10 +172,23 @@ import (
 //									},
 //								},
 //							},
-//							End: &chaos.ExperimentTemplateSpecVertexEndArgs{},
+//							End:  &chaos.ExperimentTemplateSpecVertexEndArgs{},
+//							Name: pulumi.String("fault-vertex"),
 //						},
 //					},
+//					InfraType:     pulumi.String("KubernetesV2"),
 //					CleanupPolicy: pulumi.String("delete"),
+//				},
+//				OrgId:       pulumi.Any(this.Id),
+//				ProjectId:   pulumi.Any(thisHarnessPlatformProject.Id),
+//				HubIdentity: pulumi.Any(projectLevel.Identity),
+//				Identity:    pulumi.String("action-and-fault"),
+//				Name:        pulumi.String("Action and Fault Experiment"),
+//				Description: pulumi.String("Experiment with action before fault"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("kubernetes"),
+//					pulumi.String("action"),
+//					pulumi.String("fault"),
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				projectLevel,
@@ -201,40 +201,27 @@ import (
 //			// ----------------------------------------------------------------------------
 //			// Complete template with actions, faults, and probes
 //			_, err = chaos.NewExperimentTemplate(ctx, "complex", &chaos.ExperimentTemplateArgs{
-//				OrgId:       pulumi.Any(this.Id),
-//				ProjectId:   pulumi.Any(thisHarnessPlatformProject.Id),
-//				HubIdentity: pulumi.Any(projectLevel.Identity),
-//				Identity:    pulumi.String("complex-experiment"),
-//				Name:        pulumi.String("Complex Chaos Experiment"),
-//				Description: pulumi.String("Complete experiment with actions, faults, and probes"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("kubernetes"),
-//					pulumi.String("complex"),
-//					pulumi.String("enterprise"),
-//				},
 //				Spec: &chaos.ExperimentTemplateSpecArgs{
-//					InfraType: pulumi.String("KubernetesV2"),
+//					StatusCheckTimeouts: &chaos.ExperimentTemplateSpecStatusCheckTimeoutsArgs{
+//						Delay:   pulumi.Int(5),
+//						Timeout: pulumi.Int(300),
+//					},
 //					Actions: chaos.ExperimentTemplateSpecActionArray{
 //						&chaos.ExperimentTemplateSpecActionArgs{
-//							Identity:             pulumi.String("notification-action"),
-//							Name:                 pulumi.String("start-notification"),
-//							IsEnterprise:         pulumi.Bool(false),
-//							ContinueOnCompletion: pulumi.Bool(false),
 //							Values: chaos.ExperimentTemplateSpecActionValueArray{
 //								&chaos.ExperimentTemplateSpecActionValueArgs{
 //									Name:  pulumi.String("MESSAGE"),
 //									Value: pulumi.String("Chaos experiment started"),
 //								},
 //							},
+//							Identity:             pulumi.String("notification-action"),
+//							Name:                 pulumi.String("start-notification"),
+//							IsEnterprise:         pulumi.Bool(false),
+//							ContinueOnCompletion: pulumi.Bool(false),
 //						},
 //					},
 //					Faults: chaos.ExperimentTemplateSpecFaultArray{
 //						&chaos.ExperimentTemplateSpecFaultArgs{
-//							Identity:     pulumi.String("pod-delete"),
-//							Name:         pulumi.String("pod-delete-fault"),
-//							Revision:     pulumi.String("v1"),
-//							IsEnterprise: pulumi.Bool(true),
-//							AuthEnabled:  pulumi.Bool(false),
 //							Values: chaos.ExperimentTemplateSpecFaultValueArray{
 //								&chaos.ExperimentTemplateSpecFaultValueArgs{
 //									Name:  pulumi.String("TARGET_WORKLOAD_KIND"),
@@ -249,13 +236,13 @@ import (
 //									Value: pulumi.String("<+input>.default('30s')"),
 //								},
 //							},
-//						},
-//						&chaos.ExperimentTemplateSpecFaultArgs{
-//							Identity:     pulumi.String("pod-network-latency"),
-//							Name:         pulumi.String("network-latency-fault"),
+//							Identity:     pulumi.String("pod-delete"),
+//							Name:         pulumi.String("pod-delete-fault"),
 //							Revision:     pulumi.String("v1"),
 //							IsEnterprise: pulumi.Bool(true),
 //							AuthEnabled:  pulumi.Bool(false),
+//						},
+//						&chaos.ExperimentTemplateSpecFaultArgs{
 //							Values: chaos.ExperimentTemplateSpecFaultValueArray{
 //								&chaos.ExperimentTemplateSpecFaultValueArgs{
 //									Name:  pulumi.String("TARGET_WORKLOAD_KIND"),
@@ -270,17 +257,15 @@ import (
 //									Value: pulumi.String("<+input>.default('2000')"),
 //								},
 //							},
+//							Identity:     pulumi.String("pod-network-latency"),
+//							Name:         pulumi.String("network-latency-fault"),
+//							Revision:     pulumi.String("v1"),
+//							IsEnterprise: pulumi.Bool(true),
+//							AuthEnabled:  pulumi.Bool(false),
 //						},
 //					},
 //					Probes: chaos.ExperimentTemplateSpecProbeArray{
 //						&chaos.ExperimentTemplateSpecProbeArgs{
-//							Identity:             pulumi.String("pod-status-check"),
-//							Name:                 pulumi.String("pod-status-probe"),
-//							Revision:             pulumi.Int("v1"),
-//							IsEnterprise:         pulumi.Bool(true),
-//							Duration:             pulumi.String("30"),
-//							Weightage:            pulumi.Int(10),
-//							EnableDataCollection: pulumi.Bool(false),
 //							ConditionsV2: &chaos.ExperimentTemplateSpecProbeConditionsV2Args{
 //								Operator: pulumi.String("AND"),
 //								Values: pulumi.StringArray{
@@ -293,15 +278,15 @@ import (
 //									Value: pulumi.String("<+input>"),
 //								},
 //							},
-//						},
-//						&chaos.ExperimentTemplateSpecProbeArgs{
-//							Identity:             pulumi.String("http-health-check"),
-//							Name:                 pulumi.String("http-health-probe"),
+//							Identity:             pulumi.String("pod-status-check"),
+//							Name:                 pulumi.String("pod-status-probe"),
 //							Revision:             pulumi.Int("v1"),
 //							IsEnterprise:         pulumi.Bool(true),
 //							Duration:             pulumi.String("30"),
 //							Weightage:            pulumi.Int(10),
 //							EnableDataCollection: pulumi.Bool(false),
+//						},
+//						&chaos.ExperimentTemplateSpecProbeArgs{
 //							ConditionsV2: &chaos.ExperimentTemplateSpecProbeConditionsV2Args{
 //								Operator: pulumi.String("OR"),
 //								Values: pulumi.StringArray{
@@ -315,11 +300,17 @@ import (
 //									Value: pulumi.String("<+input>"),
 //								},
 //							},
+//							Identity:             pulumi.String("http-health-check"),
+//							Name:                 pulumi.String("http-health-probe"),
+//							Revision:             pulumi.Int("v1"),
+//							IsEnterprise:         pulumi.Bool(true),
+//							Duration:             pulumi.String("30"),
+//							Weightage:            pulumi.Int(10),
+//							EnableDataCollection: pulumi.Bool(false),
 //						},
 //					},
 //					Vertices: chaos.ExperimentTemplateSpecVertexArray{
 //						&chaos.ExperimentTemplateSpecVertexArgs{
-//							Name: pulumi.String("action-stage"),
 //							Start: &chaos.ExperimentTemplateSpecVertexStartArgs{
 //								Actions: chaos.ExperimentTemplateSpecVertexStartActionArray{
 //									&chaos.ExperimentTemplateSpecVertexStartActionArgs{
@@ -327,10 +318,10 @@ import (
 //									},
 //								},
 //							},
-//							End: &chaos.ExperimentTemplateSpecVertexEndArgs{},
+//							End:  &chaos.ExperimentTemplateSpecVertexEndArgs{},
+//							Name: pulumi.String("action-stage"),
 //						},
 //						&chaos.ExperimentTemplateSpecVertexArgs{
-//							Name: pulumi.String("fault-stage"),
 //							Start: &chaos.ExperimentTemplateSpecVertexStartArgs{
 //								Faults: chaos.ExperimentTemplateSpecVertexStartFaultArray{
 //									&chaos.ExperimentTemplateSpecVertexStartFaultArgs{
@@ -349,19 +340,28 @@ import (
 //									},
 //								},
 //							},
-//							End: &chaos.ExperimentTemplateSpecVertexEndArgs{},
+//							End:  &chaos.ExperimentTemplateSpecVertexEndArgs{},
+//							Name: pulumi.String("fault-stage"),
 //						},
 //						&chaos.ExperimentTemplateSpecVertexArgs{
-//							Name:  pulumi.String("cleanup-stage"),
 //							Start: &chaos.ExperimentTemplateSpecVertexStartArgs{},
 //							End:   &chaos.ExperimentTemplateSpecVertexEndArgs{},
+//							Name:  pulumi.String("cleanup-stage"),
 //						},
 //					},
+//					InfraType:     pulumi.String("KubernetesV2"),
 //					CleanupPolicy: pulumi.String("delete"),
-//					StatusCheckTimeouts: &chaos.ExperimentTemplateSpecStatusCheckTimeoutsArgs{
-//						Delay:   pulumi.Int(5),
-//						Timeout: pulumi.Int(300),
-//					},
+//				},
+//				OrgId:       pulumi.Any(this.Id),
+//				ProjectId:   pulumi.Any(thisHarnessPlatformProject.Id),
+//				HubIdentity: pulumi.Any(projectLevel.Identity),
+//				Identity:    pulumi.String("complex-experiment"),
+//				Name:        pulumi.String("Complex Chaos Experiment"),
+//				Description: pulumi.String("Complete experiment with actions, faults, and probes"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("kubernetes"),
+//					pulumi.String("complex"),
+//					pulumi.String("enterprise"),
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				projectLevel,

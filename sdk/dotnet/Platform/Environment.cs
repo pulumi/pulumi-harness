@@ -24,6 +24,15 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var example = new Harness.Platform.Environment("example", new()
     ///     {
+    ///         GitDetails = new Harness.Platform.Inputs.EnvironmentGitDetailsArgs
+    ///         {
+    ///             BranchName = "branchName",
+    ///             CommitMessage = "commitMessage",
+    ///             FilePath = "filePath",
+    ///             ConnectorRef = "connectorRef",
+    ///             StoreType = "REMOTE",
+    ///             RepoName = "repoName",
+    ///         },
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         OrgId = "org_id",
@@ -34,15 +43,6 @@ namespace Pulumi.Harness.Platform
     ///             "bar:foo",
     ///         },
     ///         Type = "PreProduction",
-    ///         GitDetails = new Harness.Platform.Inputs.EnvironmentGitDetailsArgs
-    ///         {
-    ///             BranchName = "branchName",
-    ///             CommitMessage = "commitMessage",
-    ///             FilePath = "filePath",
-    ///             ConnectorRef = "connectorRef",
-    ///             StoreType = "REMOTE",
-    ///             RepoName = "repoName",
-    ///         },
     ///         Yaml = @"environment:
     ///    name: name
     ///    identifier: identifier
@@ -92,9 +92,6 @@ namespace Pulumi.Harness.Platform
     ///     //## Importing Environment from Git
     ///     var test = new Harness.Platform.Environment("test", new()
     ///     {
-    ///         Identifier = "accEnv",
-    ///         Name = "accEnv",
-    ///         Type = "PreProduction",
     ///         GitDetails = new Harness.Platform.Inputs.EnvironmentGitDetailsArgs
     ///         {
     ///             StoreType = "REMOTE",
@@ -104,6 +101,9 @@ namespace Pulumi.Harness.Platform
     ///             Branch = "main",
     ///             ImportFromGit = true,
     ///         },
+    ///         Identifier = "accEnv",
+    ///         Name = "accEnv",
+    ///         Type = "PreProduction",
     ///     });
     /// 
     /// });

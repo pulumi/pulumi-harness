@@ -29,14 +29,14 @@ import * as utilities from "./utilities";
  *     secretManagerId: secretManager.then(secretManager => secretManager.id),
  * });
  * const sshCreds = new harness.SshCredential("ssh_creds", {
- *     name: "ssh-test",
  *     sshAuthentication: {
- *         port: 22,
- *         username: "git",
  *         inlineSsh: {
  *             sshKeyFileId: mySecret.id,
  *         },
+ *         port: 22,
+ *         username: "git",
  *     },
+ *     name: "ssh-test",
  * }, {
  *     ignoreChanges: ["sshAuthentication"],
  * });

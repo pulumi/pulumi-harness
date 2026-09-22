@@ -60,8 +60,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var example = new OrchestratorConfig("example", OrchestratorConfigArgs.builder()
- *             .orchestratorId("orch-cvifpfl9rbg8neldj97g")
- *             .disabled(false)
  *             .distribution(OrchestratorConfigDistributionArgs.builder()
  *                 .baseOndemandCapacity(2)
  *                 .ondemandReplicaPercentage(50.0)
@@ -76,8 +74,6 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .disruption(OrchestratorConfigBinpackingDisruptionArgs.builder()
- *                     .criteria("WhenEmpty")
- *                     .delay("10m")
  *                     .budgets(                    
  *                         OrchestratorConfigBinpackingDisruptionBudgetArgs.builder()
  *                             .reasons(                            
@@ -87,15 +83,17 @@ import javax.annotation.Nullable;
  *                             .nodes("20")
  *                             .build(),
  *                         OrchestratorConfigBinpackingDisruptionBudgetArgs.builder()
- *                             .reasons(                            
- *                                 "Drifted",
- *                                 "Empty")
- *                             .nodes("1")
  *                             .schedule(OrchestratorConfigBinpackingDisruptionBudgetScheduleArgs.builder()
  *                                 .frequency("}{@literal @}{@code monthly")
  *                                 .duration("10m")
  *                                 .build())
+ *                             .reasons(                            
+ *                                 "Drifted",
+ *                                 "Empty")
+ *                             .nodes("1")
  *                             .build())
+ *                     .criteria("WhenEmpty")
+ *                     .delay("10m")
  *                     .build())
  *                 .build())
  *             .nodePreferences(OrchestratorConfigNodePreferencesArgs.builder()
@@ -107,7 +105,6 @@ import javax.annotation.Nullable;
  *                 .masterAccountId("dummyAccountId")
  *                 .build())
  *             .replacementSchedule(OrchestratorConfigReplacementScheduleArgs.builder()
- *                 .windowType("Custom")
  *                 .appliesTo(OrchestratorConfigReplacementScheduleAppliesToArgs.builder()
  *                     .consolidation(true)
  *                     .harnessPodEviction(true)
@@ -123,7 +120,10 @@ import javax.annotation.Nullable;
  *                     .startTime("10:30")
  *                     .endTime("11:30")
  *                     .build())
+ *                 .windowType("Custom")
  *                 .build())
+ *             .orchestratorId("orch-cvifpfl9rbg8neldj97g")
+ *             .disabled(false)
  *             .build());
  * 
  *     }}{@code

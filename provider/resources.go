@@ -42,6 +42,10 @@ var modules = []string{
 	"chaos",
 }
 
+const (
+	pulumiDisplayName = "Pulumi"
+)
+
 func tokenStrategy(prov *info.Provider) (tks.Strategy, error) {
 	return fallbackstrat.KnownModulesWithInferredFallback(
 		prov,
@@ -67,17 +71,17 @@ func Provider() info.Provider {
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
 		P:                 p,
-		Name:              "harness",
+		Name:              mainPkg,
 		DisplayName:       "Harness",
-		Publisher:         "Pulumi",
+		Publisher:         pulumiDisplayName,
 		LogoURL:           "https://raw.githubusercontent.com/pulumi/pulumi-harness/main/assets/logo.png",
 		PluginDownloadURL: "github://api.github.com/pulumi",
 		Description:       "A Pulumi package for creating and managing Harness  resources.",
-		Keywords:          []string{"pulumi", "harness"},
+		Keywords:          []string{"pulumi", mainPkg},
 		License:           "Apache-2.0",
 		Homepage:          "https://www.pulumi.com",
 		Repository:        "https://github.com/pulumi/pulumi-harness",
-		GitHubOrg:         "harness",
+		GitHubOrg:         mainPkg,
 		DocRules:          &info.DocRule{EditRules: editRules},
 		Config: map[string]*info.Schema{
 			"endpoint": {
@@ -368,9 +372,9 @@ func Provider() info.Provider {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi": "3.*",
+				pulumiDisplayName: "3.*",
 			},
-			RootNamespace:        "Pulumi",
+			RootNamespace:        pulumiDisplayName,
 			RespectSchemaVersion: true,
 		},
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),

@@ -24,10 +24,6 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var example = new Harness.Platform.Pipeline("example", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         OrgId = "orgIdentifier",
-    ///         ProjectId = "projectIdentifier",
-    ///         Name = "name",
     ///         GitDetails = new Harness.Platform.Inputs.PipelineGitDetailsArgs
     ///         {
     ///             BranchName = "branchName",
@@ -37,6 +33,10 @@ namespace Pulumi.Harness.Platform
     ///             StoreType = "REMOTE",
     ///             RepoName = "repoName",
     ///         },
+    ///         Identifier = "identifier",
+    ///         OrgId = "orgIdentifier",
+    ///         ProjectId = "projectIdentifier",
+    ///         Name = "name",
     ///         Tags = null,
     ///         Yaml = @"pipeline:
     ///     name: name
@@ -135,11 +135,6 @@ namespace Pulumi.Harness.Platform
     /// 
     ///     var testPipeline = new Harness.Platform.Pipeline("test", new()
     ///     {
-    ///         Identifier = "gitx",
-    ///         OrgId = "default",
-    ///         ProjectId = "V",
-    ///         Name = "gitx",
-    ///         ImportFromGit = true,
     ///         GitImportInfo = new Harness.Platform.Inputs.PipelineGitImportInfoArgs
     ///         {
     ///             BranchName = "main",
@@ -153,6 +148,11 @@ namespace Pulumi.Harness.Platform
     ///             PipelineName = "gitx",
     ///             PipelineDescription = "Pipeline Description",
     ///         },
+    ///         Identifier = "gitx",
+    ///         OrgId = "default",
+    ///         ProjectId = "V",
+    ///         Name = "gitx",
+    ///         ImportFromGit = true,
     ///     });
     /// 
     /// });

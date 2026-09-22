@@ -161,12 +161,12 @@ class AwaitableGetRuleScaleGroupResult(GetRuleScaleGroupResult):
 
 def get_rule_scale_group(cloud_connector_id: Optional[_builtins.str] = None,
                          custom_domains: Optional[Sequence[_builtins.str]] = None,
-                         depends: Optional[Sequence[Union['GetRuleScaleGroupDependArgs', 'GetRuleScaleGroupDependArgsDict']]] = None,
+                         depends: Optional[Sequence[Union['GetRuleScaleGroupDependArgs', 'GetRuleScaleGroupDependArgsDict', 'outputs.GetRuleScaleGroupDependResult']]] = None,
                          dry_run: Optional[_builtins.bool] = None,
-                         https: Optional[Sequence[Union['GetRuleScaleGroupHttpArgs', 'GetRuleScaleGroupHttpArgsDict']]] = None,
+                         https: Optional[Sequence[Union['GetRuleScaleGroupHttpArgs', 'GetRuleScaleGroupHttpArgsDict', 'outputs.GetRuleScaleGroupHttpResult']]] = None,
                          idle_time_mins: Optional[_builtins.int] = None,
                          name: Optional[_builtins.str] = None,
-                         scale_group: Optional[Union['GetRuleScaleGroupScaleGroupArgs', 'GetRuleScaleGroupScaleGroupArgsDict']] = None,
+                         scale_group: Optional[Union['GetRuleScaleGroupScaleGroupArgs', 'GetRuleScaleGroupScaleGroupArgsDict', 'outputs.GetRuleScaleGroupScaleGroupResult']] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRuleScaleGroupResult:
     """
     Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
@@ -176,12 +176,12 @@ def get_rule_scale_group(cloud_connector_id: Optional[_builtins.str] = None,
 
     :param _builtins.str cloud_connector_id: Id of the cloud connector
     :param Sequence[_builtins.str] custom_domains: Custom URLs used to access the instances
-    :param Sequence[Union['GetRuleScaleGroupDependArgs', 'GetRuleScaleGroupDependArgsDict']] depends: Dependent rules
+    :param Sequence[Union['GetRuleScaleGroupDependArgs', 'GetRuleScaleGroupDependArgsDict', 'outputs.GetRuleScaleGroupDependResult']] depends: Dependent rules
     :param _builtins.bool dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-    :param Sequence[Union['GetRuleScaleGroupHttpArgs', 'GetRuleScaleGroupHttpArgsDict']] https: Http routing configuration
+    :param Sequence[Union['GetRuleScaleGroupHttpArgs', 'GetRuleScaleGroupHttpArgsDict', 'outputs.GetRuleScaleGroupHttpResult']] https: Http routing configuration
     :param _builtins.int idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
     :param _builtins.str name: Name of the rule
-    :param Union['GetRuleScaleGroupScaleGroupArgs', 'GetRuleScaleGroupScaleGroupArgsDict'] scale_group: Scaling Group configuration
+    :param Union['GetRuleScaleGroupScaleGroupArgs', 'GetRuleScaleGroupScaleGroupArgsDict', 'outputs.GetRuleScaleGroupScaleGroupResult'] scale_group: Scaling Group configuration
     """
     __args__ = dict()
     __args__['cloudConnectorId'] = cloud_connector_id
@@ -208,12 +208,12 @@ def get_rule_scale_group(cloud_connector_id: Optional[_builtins.str] = None,
         scale_group=pulumi.get(__ret__, 'scale_group'))
 def get_rule_scale_group_output(cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
                                 custom_domains: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
-                                depends: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleScaleGroupDependArgs', 'GetRuleScaleGroupDependArgsDict']]]]] = None,
+                                depends: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleScaleGroupDependArgs', 'GetRuleScaleGroupDependArgsDict', 'outputs.GetRuleScaleGroupDependResult']]]]] = None,
                                 dry_run: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
-                                https: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleScaleGroupHttpArgs', 'GetRuleScaleGroupHttpArgsDict']]]]] = None,
+                                https: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleScaleGroupHttpArgs', 'GetRuleScaleGroupHttpArgsDict', 'outputs.GetRuleScaleGroupHttpResult']]]]] = None,
                                 idle_time_mins: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                 name: pulumi.Input[Optional[_builtins.str]] = None,
-                                scale_group: pulumi.Input[Optional[Union['GetRuleScaleGroupScaleGroupArgs', 'GetRuleScaleGroupScaleGroupArgsDict']]] = None,
+                                scale_group: pulumi.Input[Optional[Union['GetRuleScaleGroupScaleGroupArgs', 'GetRuleScaleGroupScaleGroupArgsDict', 'outputs.GetRuleScaleGroupScaleGroupResult']]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleScaleGroupResult]:
     """
     Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
@@ -223,12 +223,12 @@ def get_rule_scale_group_output(cloud_connector_id: pulumi.Input[Optional[_built
 
     :param _builtins.str cloud_connector_id: Id of the cloud connector
     :param Sequence[_builtins.str] custom_domains: Custom URLs used to access the instances
-    :param Sequence[Union['GetRuleScaleGroupDependArgs', 'GetRuleScaleGroupDependArgsDict']] depends: Dependent rules
+    :param Sequence[Union['GetRuleScaleGroupDependArgs', 'GetRuleScaleGroupDependArgsDict', 'outputs.GetRuleScaleGroupDependResult']] depends: Dependent rules
     :param _builtins.bool dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-    :param Sequence[Union['GetRuleScaleGroupHttpArgs', 'GetRuleScaleGroupHttpArgsDict']] https: Http routing configuration
+    :param Sequence[Union['GetRuleScaleGroupHttpArgs', 'GetRuleScaleGroupHttpArgsDict', 'outputs.GetRuleScaleGroupHttpResult']] https: Http routing configuration
     :param _builtins.int idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
     :param _builtins.str name: Name of the rule
-    :param Union['GetRuleScaleGroupScaleGroupArgs', 'GetRuleScaleGroupScaleGroupArgsDict'] scale_group: Scaling Group configuration
+    :param Union['GetRuleScaleGroupScaleGroupArgs', 'GetRuleScaleGroupScaleGroupArgsDict', 'outputs.GetRuleScaleGroupScaleGroupResult'] scale_group: Scaling Group configuration
     """
     __args__ = dict()
     __args__['cloudConnectorId'] = cloud_connector_id

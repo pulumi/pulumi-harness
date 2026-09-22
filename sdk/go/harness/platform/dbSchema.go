@@ -29,6 +29,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewDbSchema(ctx, "default_type_test", &platform.DbSchemaArgs{
+//				SchemaSource: &platform.DbSchemaSchemaSourceArgs{
+//					Connector:   pulumi.String("gitConnector"),
+//					Repo:        pulumi.String("TestRepo"),
+//					Location:    pulumi.String("db/example-changelog.yaml"),
+//					ArchivePath: pulumi.String("path/to/archive.zip"),
+//				},
 //				Identifier: pulumi.String("identifier"),
 //				OrgId:      pulumi.String("org_id"),
 //				ProjectId:  pulumi.String("project_id"),
@@ -38,17 +44,17 @@ import (
 //					pulumi.String("foo:bar"),
 //					pulumi.String("bar:foo"),
 //				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = platform.NewDbSchema(ctx, "liquibase_repository_test", &platform.DbSchemaArgs{
 //				SchemaSource: &platform.DbSchemaSchemaSourceArgs{
 //					Connector:   pulumi.String("gitConnector"),
 //					Repo:        pulumi.String("TestRepo"),
 //					Location:    pulumi.String("db/example-changelog.yaml"),
 //					ArchivePath: pulumi.String("path/to/archive.zip"),
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = platform.NewDbSchema(ctx, "liquibase_repository_test", &platform.DbSchemaArgs{
 //				Identifier:    pulumi.String("identifier"),
 //				OrgId:         pulumi.String("org_id"),
 //				ProjectId:     pulumi.String("project_id"),
@@ -60,17 +66,17 @@ import (
 //					pulumi.String("foo:bar"),
 //					pulumi.String("bar:foo"),
 //				},
-//				SchemaSource: &platform.DbSchemaSchemaSourceArgs{
-//					Connector:   pulumi.String("gitConnector"),
-//					Repo:        pulumi.String("TestRepo"),
-//					Location:    pulumi.String("db/example-changelog.yaml"),
-//					ArchivePath: pulumi.String("path/to/archive.zip"),
-//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewDbSchema(ctx, "liquibase_script_test", &platform.DbSchemaArgs{
+//				ChangelogScript: &platform.DbSchemaChangelogScriptArgs{
+//					Image:    pulumi.String("plugins/image"),
+//					Command:  pulumi.String("echo \\\"hello dbops\\\""),
+//					Shell:    pulumi.String("sh/bash"),
+//					Location: pulumi.String("db/example-changelog.yaml"),
+//				},
 //				Identifier:    pulumi.String("identifier"),
 //				OrgId:         pulumi.String("org_id"),
 //				ProjectId:     pulumi.String("project_id"),
@@ -82,28 +88,11 @@ import (
 //					pulumi.String("foo:bar"),
 //					pulumi.String("bar:foo"),
 //				},
-//				ChangelogScript: &platform.DbSchemaChangelogScriptArgs{
-//					Image:    pulumi.String("plugins/image"),
-//					Command:  pulumi.String("echo \\\"hello dbops\\\""),
-//					Shell:    pulumi.String("sh/bash"),
-//					Location: pulumi.String("db/example-changelog.yaml"),
-//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewDbSchema(ctx, "flyway_repository_test", &platform.DbSchemaArgs{
-//				Identifier:    pulumi.String("identifier"),
-//				OrgId:         pulumi.String("org_id"),
-//				ProjectId:     pulumi.String("project_id"),
-//				Name:          pulumi.String("name"),
-//				Service:       pulumi.String("service1"),
-//				Type:          pulumi.String("Repository"),
-//				MigrationType: pulumi.String("Flyway"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("foo:bar"),
-//					pulumi.String("bar:foo"),
-//				},
 //				SchemaSource: &platform.DbSchemaSchemaSourceArgs{
 //					Connector:   pulumi.String("gitConnector"),
 //					Repo:        pulumi.String("TestRepo"),
@@ -111,11 +100,29 @@ import (
 //					Toml:        pulumi.String("db/flyway.toml"),
 //					ArchivePath: pulumi.String("path/to/archive.zip"),
 //				},
+//				Identifier:    pulumi.String("identifier"),
+//				OrgId:         pulumi.String("org_id"),
+//				ProjectId:     pulumi.String("project_id"),
+//				Name:          pulumi.String("name"),
+//				Service:       pulumi.String("service1"),
+//				Type:          pulumi.String("Repository"),
+//				MigrationType: pulumi.String("Flyway"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("foo:bar"),
+//					pulumi.String("bar:foo"),
+//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewDbSchema(ctx, "flyway_script_test", &platform.DbSchemaArgs{
+//				ChangelogScript: &platform.DbSchemaChangelogScriptArgs{
+//					Image:    pulumi.String("plugins/image"),
+//					Command:  pulumi.String("echo \\\"hello dbops\\\""),
+//					Shell:    pulumi.String("sh/bash"),
+//					Location: pulumi.String("db/flyway/migrations"),
+//					Toml:     pulumi.String("db/flyway.toml"),
+//				},
 //				Identifier:    pulumi.String("identifier"),
 //				OrgId:         pulumi.String("org_id"),
 //				ProjectId:     pulumi.String("project_id"),
@@ -127,18 +134,17 @@ import (
 //					pulumi.String("foo:bar"),
 //					pulumi.String("bar:foo"),
 //				},
-//				ChangelogScript: &platform.DbSchemaChangelogScriptArgs{
-//					Image:    pulumi.String("plugins/image"),
-//					Command:  pulumi.String("echo \\\"hello dbops\\\""),
-//					Shell:    pulumi.String("sh/bash"),
-//					Location: pulumi.String("db/flyway/migrations"),
-//					Toml:     pulumi.String("db/flyway.toml"),
-//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewDbSchema(ctx, "percona_enabled_test", &platform.DbSchemaArgs{
+//				SchemaSource: &platform.DbSchemaSchemaSourceArgs{
+//					Connector:   pulumi.String("gitConnector"),
+//					Repo:        pulumi.String("TestRepo"),
+//					Location:    pulumi.String("db/example-changelog.yaml"),
+//					ArchivePath: pulumi.String("path/to/archive.zip"),
+//				},
 //				Identifier:    pulumi.String("identifier"),
 //				OrgId:         pulumi.String("org_id"),
 //				ProjectId:     pulumi.String("project_id"),
@@ -151,17 +157,15 @@ import (
 //					pulumi.String("foo:bar"),
 //					pulumi.String("bar:foo"),
 //				},
-//				SchemaSource: &platform.DbSchemaSchemaSourceArgs{
-//					Connector:   pulumi.String("gitConnector"),
-//					Repo:        pulumi.String("TestRepo"),
-//					Location:    pulumi.String("db/example-changelog.yaml"),
-//					ArchivePath: pulumi.String("path/to/archive.zip"),
-//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = platform.NewDbSchema(ctx, "harness_code_repo", &platform.DbSchemaArgs{
+//				SchemaSource: &platform.DbSchemaSchemaSourceArgs{
+//					Repo:     pulumi.String("my-harness-code-repo"),
+//					Location: pulumi.String("db/example-changelog.yaml"),
+//				},
 //				Identifier: pulumi.String("identifier"),
 //				OrgId:      pulumi.String("org_id"),
 //				ProjectId:  pulumi.String("project_id"),
@@ -171,10 +175,6 @@ import (
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foo:bar"),
 //					pulumi.String("bar:foo"),
-//				},
-//				SchemaSource: &platform.DbSchemaSchemaSourceArgs{
-//					Repo:     pulumi.String("my-harness-code-repo"),
-//					Location: pulumi.String("db/example-changelog.yaml"),
 //				},
 //			})
 //			if err != nil {

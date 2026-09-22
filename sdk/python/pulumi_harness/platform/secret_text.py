@@ -359,7 +359,7 @@ class SecretText(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecretTextAdditionalMetadataArgs', 'SecretTextAdditionalMetadataArgsDict']]]]] = None,
+                 additional_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecretTextAdditionalMetadataArgs', 'SecretTextAdditionalMetadataArgsDict', 'outputs.SecretTextAdditionalMetadata']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -401,46 +401,46 @@ class SecretText(pulumi.CustomResource):
             value_type="Reference",
             value="secret")
         gcp_secret_manager_reference = harness.platform.SecretText("gcp_secret_manager_reference",
+            additional_metadatas=[{
+                "values": [{
+                    "version": "1",
+                }],
+            }],
             identifier="identifier",
             name="name",
             description="example",
             tags=["foo:bar"],
             secret_manager_identifier="gcpSecretManager",
             value_type="Reference",
-            value="secret",
-            additional_metadatas=[{
-                "values": [{
-                    "version": "1",
-                }],
-            }])
+            value="secret")
         # GCP Secret Manager with project ID and region (for secrets in a different GCP project)
         gcp_secret_manager_with_project = harness.platform.SecretText("gcp_secret_manager_with_project",
+            additional_metadatas=[{
+                "values": [{
+                    "regions": "us-east1",
+                    "gcp_project_id": "my-gcp-project-id",
+                }],
+            }],
             identifier="identifier",
             name="name",
             description="example",
             tags=["foo:bar"],
             secret_manager_identifier="gcpSecretManager",
             value_type="Inline",
-            value="secret",
+            value="secret")
+        aws_secret_manager = harness.platform.SecretText("aws_secret_manager",
             additional_metadatas=[{
                 "values": [{
-                    "regions": "us-east1",
-                    "gcp_project_id": "my-gcp-project-id",
+                    "kms_key_id": "kmsKeyId",
                 }],
-            }])
-        aws_secret_manager = harness.platform.SecretText("aws_secret_manager",
+            }],
             identifier="identifier",
             name="name",
             description="example",
             tags=["foo:bar"],
             secret_manager_identifier="awsSecretManager",
             value_type="Inline",
-            value="secret",
-            additional_metadatas=[{
-                "values": [{
-                    "kms_key_id": "kmsKeyId",
-                }],
-            }])
+            value="secret")
         ```
 
         ## Import
@@ -468,7 +468,7 @@ class SecretText(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretTextAdditionalMetadataArgs', 'SecretTextAdditionalMetadataArgsDict']]]] additional_metadatas: Additional Metadata for the Secret
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretTextAdditionalMetadataArgs', 'SecretTextAdditionalMetadataArgsDict', 'outputs.SecretTextAdditionalMetadata']]]] additional_metadatas: Additional Metadata for the Secret
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
@@ -516,46 +516,46 @@ class SecretText(pulumi.CustomResource):
             value_type="Reference",
             value="secret")
         gcp_secret_manager_reference = harness.platform.SecretText("gcp_secret_manager_reference",
+            additional_metadatas=[{
+                "values": [{
+                    "version": "1",
+                }],
+            }],
             identifier="identifier",
             name="name",
             description="example",
             tags=["foo:bar"],
             secret_manager_identifier="gcpSecretManager",
             value_type="Reference",
-            value="secret",
-            additional_metadatas=[{
-                "values": [{
-                    "version": "1",
-                }],
-            }])
+            value="secret")
         # GCP Secret Manager with project ID and region (for secrets in a different GCP project)
         gcp_secret_manager_with_project = harness.platform.SecretText("gcp_secret_manager_with_project",
+            additional_metadatas=[{
+                "values": [{
+                    "regions": "us-east1",
+                    "gcp_project_id": "my-gcp-project-id",
+                }],
+            }],
             identifier="identifier",
             name="name",
             description="example",
             tags=["foo:bar"],
             secret_manager_identifier="gcpSecretManager",
             value_type="Inline",
-            value="secret",
+            value="secret")
+        aws_secret_manager = harness.platform.SecretText("aws_secret_manager",
             additional_metadatas=[{
                 "values": [{
-                    "regions": "us-east1",
-                    "gcp_project_id": "my-gcp-project-id",
+                    "kms_key_id": "kmsKeyId",
                 }],
-            }])
-        aws_secret_manager = harness.platform.SecretText("aws_secret_manager",
+            }],
             identifier="identifier",
             name="name",
             description="example",
             tags=["foo:bar"],
             secret_manager_identifier="awsSecretManager",
             value_type="Inline",
-            value="secret",
-            additional_metadatas=[{
-                "values": [{
-                    "kms_key_id": "kmsKeyId",
-                }],
-            }])
+            value="secret")
         ```
 
         ## Import
@@ -596,7 +596,7 @@ class SecretText(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecretTextAdditionalMetadataArgs', 'SecretTextAdditionalMetadataArgsDict']]]]] = None,
+                 additional_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecretTextAdditionalMetadataArgs', 'SecretTextAdditionalMetadataArgsDict', 'outputs.SecretTextAdditionalMetadata']]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -643,7 +643,7 @@ class SecretText(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            additional_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecretTextAdditionalMetadataArgs', 'SecretTextAdditionalMetadataArgsDict']]]]] = None,
+            additional_metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecretTextAdditionalMetadataArgs', 'SecretTextAdditionalMetadataArgsDict', 'outputs.SecretTextAdditionalMetadata']]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -660,7 +660,7 @@ class SecretText(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretTextAdditionalMetadataArgs', 'SecretTextAdditionalMetadataArgsDict']]]] additional_metadatas: Additional Metadata for the Secret
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SecretTextAdditionalMetadataArgs', 'SecretTextAdditionalMetadataArgsDict', 'outputs.SecretTextAdditionalMetadata']]]] additional_metadatas: Additional Metadata for the Secret
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.

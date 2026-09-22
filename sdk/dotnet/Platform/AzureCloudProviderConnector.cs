@@ -24,29 +24,29 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var manualConfigSecret = new Harness.Platform.AzureCloudProviderConnector("manual_config_secret", new()
     ///     {
+    ///         Credentials = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsArgs
+    ///         {
+    ///             AzureManualDetails = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsAzureManualDetailsArgs
+    ///             {
+    ///                 Auth = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgs
+    ///                 {
+    ///                     AzureClientSecretKey = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyArgs
+    ///                     {
+    ///                         SecretRef = $"account.{test.Id}",
+    ///                     },
+    ///                     Type = "Secret",
+    ///                 },
+    ///                 ApplicationId = "application_id",
+    ///                 TenantId = "tenant_id",
+    ///             },
+    ///             Type = "ManualConfig",
+    ///         },
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         Description = "example",
     ///         Tags = new[]
     ///         {
     ///             "foo:bar",
-    ///         },
-    ///         Credentials = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsArgs
-    ///         {
-    ///             Type = "ManualConfig",
-    ///             AzureManualDetails = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsAzureManualDetailsArgs
-    ///             {
-    ///                 ApplicationId = "application_id",
-    ///                 TenantId = "tenant_id",
-    ///                 Auth = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgs
-    ///                 {
-    ///                     Type = "Secret",
-    ///                     AzureClientSecretKey = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientSecretKeyArgs
-    ///                     {
-    ///                         SecretRef = $"account.{test.Id}",
-    ///                     },
-    ///                 },
-    ///             },
     ///         },
     ///         AzureEnvironmentType = "AZURE",
     ///         DelegateSelectors = new[]
@@ -57,29 +57,29 @@ namespace Pulumi.Harness.Platform
     /// 
     ///     var manualConfigCertificate = new Harness.Platform.AzureCloudProviderConnector("manual_config_certificate", new()
     ///     {
+    ///         Credentials = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsArgs
+    ///         {
+    ///             AzureManualDetails = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsAzureManualDetailsArgs
+    ///             {
+    ///                 Auth = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgs
+    ///                 {
+    ///                     AzureClientKeyCert = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertArgs
+    ///                     {
+    ///                         CertificateRef = $"account.{test.Id}",
+    ///                     },
+    ///                     Type = "Certificate",
+    ///                 },
+    ///                 ApplicationId = "application_id",
+    ///                 TenantId = "tenant_id",
+    ///             },
+    ///             Type = "ManualConfig",
+    ///         },
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         Description = "example",
     ///         Tags = new[]
     ///         {
     ///             "foo:bar",
-    ///         },
-    ///         Credentials = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsArgs
-    ///         {
-    ///             Type = "ManualConfig",
-    ///             AzureManualDetails = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsAzureManualDetailsArgs
-    ///             {
-    ///                 ApplicationId = "application_id",
-    ///                 TenantId = "tenant_id",
-    ///                 Auth = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthArgs
-    ///                 {
-    ///                     Type = "Certificate",
-    ///                     AzureClientKeyCert = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsAzureManualDetailsAuthAzureClientKeyCertArgs
-    ///                     {
-    ///                         CertificateRef = $"account.{test.Id}",
-    ///                     },
-    ///                 },
-    ///             },
     ///         },
     ///         AzureEnvironmentType = "AZURE",
     ///         DelegateSelectors = new[]
@@ -90,16 +90,8 @@ namespace Pulumi.Harness.Platform
     /// 
     ///     var inheritFromDelegateUserAssignedManagedIdentity = new Harness.Platform.AzureCloudProviderConnector("inherit_from_delegate_user_assigned_managed_identity", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Description = "example",
-    ///         Tags = new[]
-    ///         {
-    ///             "foo:bar",
-    ///         },
     ///         Credentials = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsArgs
     ///         {
-    ///             Type = "InheritFromDelegate",
     ///             AzureInheritFromDelegateDetails = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsArgs
     ///             {
     ///                 Auth = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthArgs
@@ -111,6 +103,14 @@ namespace Pulumi.Harness.Platform
     ///                     Type = "UserAssignedManagedIdentity",
     ///                 },
     ///             },
+    ///             Type = "InheritFromDelegate",
+    ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "example",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
     ///         },
     ///         AzureEnvironmentType = "AZURE",
     ///         DelegateSelectors = new[]
@@ -121,16 +121,8 @@ namespace Pulumi.Harness.Platform
     /// 
     ///     var inheritFromDelegateSystemAssignedManagedIdentity = new Harness.Platform.AzureCloudProviderConnector("inherit_from_delegate_system_assigned_managed_identity", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Description = "example",
-    ///         Tags = new[]
-    ///         {
-    ///             "foo:bar",
-    ///         },
     ///         Credentials = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsArgs
     ///         {
-    ///             Type = "InheritFromDelegate",
     ///             AzureInheritFromDelegateDetails = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsArgs
     ///             {
     ///                 Auth = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsAzureInheritFromDelegateDetailsAuthArgs
@@ -138,6 +130,14 @@ namespace Pulumi.Harness.Platform
     ///                     Type = "SystemAssignedManagedIdentity",
     ///                 },
     ///             },
+    ///             Type = "InheritFromDelegate",
+    ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "example",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
     ///         },
     ///         AzureEnvironmentType = "AZURE",
     ///         DelegateSelectors = new[]
@@ -148,22 +148,22 @@ namespace Pulumi.Harness.Platform
     /// 
     ///     var oidcAuthentication = new Harness.Platform.AzureCloudProviderConnector("oidc_authentication", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Description = "example",
-    ///         Tags = new[]
-    ///         {
-    ///             "foo:bar",
-    ///         },
     ///         Credentials = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsArgs
     ///         {
-    ///             Type = "OidcAuthentication",
     ///             AzureOidcSpec = new Harness.Platform.Inputs.AzureCloudProviderConnectorCredentialsAzureOidcSpecArgs
     ///             {
     ///                 ApplicationId = "application_id",
     ///                 TenantId = "tenant_id",
     ///                 Audience = "audience",
     ///             },
+    ///             Type = "OidcAuthentication",
+    ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "example",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
     ///         },
     ///         AzureEnvironmentType = "AZURE",
     ///         DelegateSelectors = new[]

@@ -232,7 +232,7 @@ class FmeEnvironment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 change_permissions: pulumi.Input[Optional[Union['FmeEnvironmentChangePermissionsArgs', 'FmeEnvironmentChangePermissionsArgsDict']]] = None,
+                 change_permissions: pulumi.Input[Optional[Union['FmeEnvironmentChangePermissionsArgs', 'FmeEnvironmentChangePermissionsArgsDict', 'outputs.FmeEnvironmentChangePermissions']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  production: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -244,7 +244,7 @@ class FmeEnvironment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FmeEnvironmentChangePermissionsArgs', 'FmeEnvironmentChangePermissionsArgsDict']] change_permissions: Change permission and approval settings for this environment. Controls whether kills are allowed, whether approvals are required for changes, and who can approve or skip approvals. Note: the Split API does not return these on read; values are preserved from create/update responses.
+        :param pulumi.Input[Union['FmeEnvironmentChangePermissionsArgs', 'FmeEnvironmentChangePermissionsArgsDict', 'outputs.FmeEnvironmentChangePermissions']] change_permissions: Change permission and approval settings for this environment. Controls whether kills are allowed, whether approvals are required for changes, and who can approve or skip approvals. Note: the Split API does not return these on read; values are preserved from create/update responses.
         :param pulumi.Input[_builtins.str] name: Environment name in Split (max 20 characters per Split API).
         :param pulumi.Input[_builtins.str] org_id: Harness organization identifier.
         :param pulumi.Input[_builtins.bool] production: Whether this is a production environment.
@@ -275,7 +275,7 @@ class FmeEnvironment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 change_permissions: pulumi.Input[Optional[Union['FmeEnvironmentChangePermissionsArgs', 'FmeEnvironmentChangePermissionsArgsDict']]] = None,
+                 change_permissions: pulumi.Input[Optional[Union['FmeEnvironmentChangePermissionsArgs', 'FmeEnvironmentChangePermissionsArgsDict', 'outputs.FmeEnvironmentChangePermissions']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  production: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -311,7 +311,7 @@ class FmeEnvironment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bootstrap_api_token_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            change_permissions: pulumi.Input[Optional[Union['FmeEnvironmentChangePermissionsArgs', 'FmeEnvironmentChangePermissionsArgsDict']]] = None,
+            change_permissions: pulumi.Input[Optional[Union['FmeEnvironmentChangePermissionsArgs', 'FmeEnvironmentChangePermissionsArgsDict', 'outputs.FmeEnvironmentChangePermissions']]] = None,
             environment_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -325,7 +325,7 @@ class FmeEnvironment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bootstrap_api_token_ids: IDs of API keys auto-created by Split when the environment is created. Only populated from the create response; the Split API does not return these on read. Stored in Terraform state so the provider can delete them before destroying the environment. Empty after `pulumi import` unless you set this attribute manually (not recommended).
-        :param pulumi.Input[Union['FmeEnvironmentChangePermissionsArgs', 'FmeEnvironmentChangePermissionsArgsDict']] change_permissions: Change permission and approval settings for this environment. Controls whether kills are allowed, whether approvals are required for changes, and who can approve or skip approvals. Note: the Split API does not return these on read; values are preserved from create/update responses.
+        :param pulumi.Input[Union['FmeEnvironmentChangePermissionsArgs', 'FmeEnvironmentChangePermissionsArgsDict', 'outputs.FmeEnvironmentChangePermissions']] change_permissions: Change permission and approval settings for this environment. Controls whether kills are allowed, whether approvals are required for changes, and who can approve or skip approvals. Note: the Split API does not return these on read; values are preserved from create/update responses.
         :param pulumi.Input[_builtins.str] environment_id: The Split environment ID (same as `id`).
         :param pulumi.Input[_builtins.str] name: Environment name in Split (max 20 characters per Split API).
         :param pulumi.Input[_builtins.str] org_id: Harness organization identifier.

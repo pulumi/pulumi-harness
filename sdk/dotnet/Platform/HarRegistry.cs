@@ -27,10 +27,6 @@ namespace Pulumi.Harness.Platform
     ///     // Example of a Virtual Registry
     ///     var virtualRegistry = new Harness.Platform.HarRegistry("virtual_registry", new()
     ///     {
-    ///         Identifier = "virtual_docker_registry",
-    ///         Description = "Virtual Docker Registry",
-    ///         SpaceRef = "accountId/orgId/projectId",
-    ///         PackageType = "DOCKER",
     ///         Configs = new[]
     ///         {
     ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
@@ -43,23 +39,20 @@ namespace Pulumi.Harness.Platform
     ///                 },
     ///             },
     ///         },
+    ///         Identifier = "virtual_docker_registry",
+    ///         Description = "Virtual Docker Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "DOCKER",
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
     ///     // Example of an Upstream Registry with Authentication
     ///     var upstreamRegistry = new Harness.Platform.HarRegistry("upstream_registry", new()
     ///     {
-    ///         Identifier = "upstream_helm_registry",
-    ///         Description = "Upstream Helm Registry",
-    ///         SpaceRef = "accountId/orgId/projectId",
-    ///         PackageType = "HELM",
     ///         Configs = new[]
     ///         {
     ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
     ///             {
-    ///                 Type = "UPSTREAM",
-    ///                 Source = "Custom",
-    ///                 Url = "https://helm.sh",
     ///                 Auths = new[]
     ///                 {
     ///                     new Harness.Platform.Inputs.HarRegistryConfigAuthArgs
@@ -70,18 +63,21 @@ namespace Pulumi.Harness.Platform
     ///                         SecretSpacePath = "accountId/orgId/projectId",
     ///                     },
     ///                 },
+    ///                 Type = "UPSTREAM",
+    ///                 Source = "Custom",
+    ///                 Url = "https://helm.sh",
     ///             },
     ///         },
+    ///         Identifier = "upstream_helm_registry",
+    ///         Description = "Upstream Helm Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "HELM",
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
     ///     // Example of an Upstream Go Registry (GoProxy source needs no url)
     ///     var goUpstream = new Harness.Platform.HarRegistry("go_upstream", new()
     ///     {
-    ///         Identifier = "upstream_go_registry",
-    ///         Description = "Upstream Go Registry",
-    ///         SpaceRef = "accountId/orgId/projectId",
-    ///         PackageType = "GO",
     ///         Configs = new[]
     ///         {
     ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
@@ -91,16 +87,16 @@ namespace Pulumi.Harness.Platform
     ///                 AuthType = "Anonymous",
     ///             },
     ///         },
+    ///         Identifier = "upstream_go_registry",
+    ///         Description = "Upstream Go Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "GO",
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
     ///     // Example of an Upstream Conda Registry (Anaconda source needs no url)
     ///     var condaUpstream = new Harness.Platform.HarRegistry("conda_upstream", new()
     ///     {
-    ///         Identifier = "upstream_conda_registry",
-    ///         Description = "Upstream Conda Registry",
-    ///         SpaceRef = "accountId/orgId/projectId",
-    ///         PackageType = "CONDA",
     ///         Configs = new[]
     ///         {
     ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
@@ -110,16 +106,16 @@ namespace Pulumi.Harness.Platform
     ///                 AuthType = "Anonymous",
     ///             },
     ///         },
+    ///         Identifier = "upstream_conda_registry",
+    ///         Description = "Upstream Conda Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "CONDA",
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
     ///     // Example of an Upstream Helm HTTP Registry (HelmChartRepo source requires url)
     ///     var helmHttpUpstream = new Harness.Platform.HarRegistry("helm_http_upstream", new()
     ///     {
-    ///         Identifier = "upstream_helm_http_registry",
-    ///         Description = "Upstream Helm HTTP Registry",
-    ///         SpaceRef = "accountId/orgId/projectId",
-    ///         PackageType = "HELM_HTTP",
     ///         Configs = new[]
     ///         {
     ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
@@ -130,25 +126,20 @@ namespace Pulumi.Harness.Platform
     ///                 AuthType = "Anonymous",
     ///             },
     ///         },
+    ///         Identifier = "upstream_helm_http_registry",
+    ///         Description = "Upstream Helm HTTP Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "HELM_HTTP",
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
     ///     // Example of a Virtual Debian Registry with Debian-specific configuration
     ///     var debianVirtual = new Harness.Platform.HarRegistry("debian_virtual", new()
     ///     {
-    ///         Identifier = "virtual_debian_registry",
-    ///         Description = "Virtual Debian Registry",
-    ///         SpaceRef = "accountId/orgId/projectId",
-    ///         PackageType = "DEBIAN",
     ///         Configs = new[]
     ///         {
     ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
     ///             {
-    ///                 Type = "VIRTUAL",
-    ///                 UpstreamProxies = new[]
-    ///                 {
-    ///                     "debian_upstream_registry",
-    ///                 },
     ///                 DebianConfig = new Harness.Platform.Inputs.HarRegistryConfigDebianConfigArgs
     ///                 {
     ///                     RemoteIndexedArchitectures = new[]
@@ -161,18 +152,23 @@ namespace Pulumi.Harness.Platform
     ///                         ".xz",
     ///                     },
     ///                 },
+    ///                 Type = "VIRTUAL",
+    ///                 UpstreamProxies = new[]
+    ///                 {
+    ///                     "debian_upstream_registry",
+    ///                 },
     ///             },
     ///         },
+    ///         Identifier = "virtual_debian_registry",
+    ///         Description = "Virtual Debian Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "DEBIAN",
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
     ///     // Example of an Upstream Custom Debian Registry (Debian source needs url)
     ///     var debianUpstream = new Harness.Platform.HarRegistry("debian_upstream", new()
     ///     {
-    ///         Identifier = "upstream_debian_registry",
-    ///         Description = "Upstream Debian Registry",
-    ///         SpaceRef = "accountId/orgId/projectId",
-    ///         PackageType = "DEBIAN",
     ///         Configs = new[]
     ///         {
     ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
@@ -183,16 +179,16 @@ namespace Pulumi.Harness.Platform
     ///                 AuthType = "Anonymous",
     ///             },
     ///         },
+    ///         Identifier = "upstream_debian_registry",
+    ///         Description = "Upstream Debian Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "DEBIAN",
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
     ///     // Example of an Upstream Python Registry with a custom remote URL suffix
     ///     var pythonUpstream = new Harness.Platform.HarRegistry("python_upstream", new()
     ///     {
-    ///         Identifier = "upstream_python_registry",
-    ///         Description = "Upstream Python Registry",
-    ///         SpaceRef = "accountId/orgId/projectId",
-    ///         PackageType = "PYTHON",
     ///         Configs = new[]
     ///         {
     ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
@@ -204,16 +200,16 @@ namespace Pulumi.Harness.Platform
     ///                 AuthType = "Anonymous",
     ///             },
     ///         },
+    ///         Identifier = "upstream_python_registry",
+    ///         Description = "Upstream Python Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "PYTHON",
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
     ///     // Example of an Upstream Conan Registry (ConanCenter source needs no url)
     ///     var conanUpstream = new Harness.Platform.HarRegistry("conan_upstream", new()
     ///     {
-    ///         Identifier = "upstream_conan_registry",
-    ///         Description = "Upstream Conan Registry",
-    ///         SpaceRef = "accountId/orgId/projectId",
-    ///         PackageType = "CONAN",
     ///         Configs = new[]
     ///         {
     ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
@@ -223,16 +219,16 @@ namespace Pulumi.Harness.Platform
     ///                 AuthType = "Anonymous",
     ///             },
     ///         },
+    ///         Identifier = "upstream_conan_registry",
+    ///         Description = "Upstream Conan Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "CONAN",
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
     ///     // Example of an Upstream Ruby Registry (RubyGems source needs no url)
     ///     var rubygemsUpstream = new Harness.Platform.HarRegistry("rubygems_upstream", new()
     ///     {
-    ///         Identifier = "upstream_ruby_registry",
-    ///         Description = "Upstream Ruby Registry",
-    ///         SpaceRef = "accountId/orgId/projectId",
-    ///         PackageType = "RUBY",
     ///         Configs = new[]
     ///         {
     ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
@@ -242,16 +238,16 @@ namespace Pulumi.Harness.Platform
     ///                 AuthType = "Anonymous",
     ///             },
     ///         },
+    ///         Identifier = "upstream_ruby_registry",
+    ///         Description = "Upstream Ruby Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "RUBY",
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
     ///     // Example of a Virtual Terraform Registry
     ///     var terraformVirtual = new Harness.Platform.HarRegistry("terraform_virtual", new()
     ///     {
-    ///         Identifier = "virtual_terraform_registry",
-    ///         Description = "Virtual Terraform Registry",
-    ///         SpaceRef = "accountId/orgId/projectId",
-    ///         PackageType = "TERRAFORM",
     ///         Configs = new[]
     ///         {
     ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
@@ -259,16 +255,16 @@ namespace Pulumi.Harness.Platform
     ///                 Type = "VIRTUAL",
     ///             },
     ///         },
+    ///         Identifier = "virtual_terraform_registry",
+    ///         Description = "Virtual Terraform Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "TERRAFORM",
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
     ///     // Example of a Virtual CRAN Registry
     ///     var cranVirtual = new Harness.Platform.HarRegistry("cran_virtual", new()
     ///     {
-    ///         Identifier = "virtual_cran_registry",
-    ///         Description = "Virtual CRAN Registry",
-    ///         SpaceRef = "accountId/orgId/projectId",
-    ///         PackageType = "CRAN",
     ///         Configs = new[]
     ///         {
     ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
@@ -276,16 +272,16 @@ namespace Pulumi.Harness.Platform
     ///                 Type = "VIRTUAL",
     ///             },
     ///         },
+    ///         Identifier = "virtual_cran_registry",
+    ///         Description = "Virtual CRAN Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "CRAN",
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
     ///     // Example of an Upstream CRAN Registry (CRAN source needs no url)
     ///     var cranUpstream = new Harness.Platform.HarRegistry("cran_upstream", new()
     ///     {
-    ///         Identifier = "upstream_cran_registry",
-    ///         Description = "Upstream CRAN Registry",
-    ///         SpaceRef = "accountId/orgId/projectId",
-    ///         PackageType = "CRAN",
     ///         Configs = new[]
     ///         {
     ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
@@ -295,16 +291,16 @@ namespace Pulumi.Harness.Platform
     ///                 AuthType = "Anonymous",
     ///             },
     ///         },
+    ///         Identifier = "upstream_cran_registry",
+    ///         Description = "Upstream CRAN Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "CRAN",
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
     ///     // Example of a Virtual Alpine Registry
     ///     var alpineVirtual = new Harness.Platform.HarRegistry("alpine_virtual", new()
     ///     {
-    ///         Identifier = "virtual_alpine_registry",
-    ///         Description = "Virtual Alpine Registry",
-    ///         SpaceRef = "accountId/orgId/projectId",
-    ///         PackageType = "ALPINE",
     ///         Configs = new[]
     ///         {
     ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
@@ -312,16 +308,16 @@ namespace Pulumi.Harness.Platform
     ///                 Type = "VIRTUAL",
     ///             },
     ///         },
+    ///         Identifier = "virtual_alpine_registry",
+    ///         Description = "Virtual Alpine Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "ALPINE",
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
     ///     // Example of an Upstream Alpine Registry (Alpine source needs no url)
     ///     var alpineUpstream = new Harness.Platform.HarRegistry("alpine_upstream", new()
     ///     {
-    ///         Identifier = "upstream_alpine_registry",
-    ///         Description = "Upstream Alpine Registry",
-    ///         SpaceRef = "accountId/orgId/projectId",
-    ///         PackageType = "ALPINE",
     ///         Configs = new[]
     ///         {
     ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
@@ -331,16 +327,16 @@ namespace Pulumi.Harness.Platform
     ///                 AuthType = "Anonymous",
     ///             },
     ///         },
+    ///         Identifier = "upstream_alpine_registry",
+    ///         Description = "Upstream Alpine Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "ALPINE",
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
     ///     // Example of a Virtual Wolfi Registry
     ///     var wolfiVirtual = new Harness.Platform.HarRegistry("wolfi_virtual", new()
     ///     {
-    ///         Identifier = "virtual_wolfi_registry",
-    ///         Description = "Virtual Wolfi Registry",
-    ///         SpaceRef = "accountId/orgId/projectId",
-    ///         PackageType = "WOLFI",
     ///         Configs = new[]
     ///         {
     ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
@@ -348,16 +344,16 @@ namespace Pulumi.Harness.Platform
     ///                 Type = "VIRTUAL",
     ///             },
     ///         },
+    ///         Identifier = "virtual_wolfi_registry",
+    ///         Description = "Virtual Wolfi Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "WOLFI",
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
     ///     // Example of an Upstream Wolfi Registry (Wolfi source needs no url)
     ///     var wolfiUpstream = new Harness.Platform.HarRegistry("wolfi_upstream", new()
     ///     {
-    ///         Identifier = "upstream_wolfi_registry",
-    ///         Description = "Upstream Wolfi Registry",
-    ///         SpaceRef = "accountId/orgId/projectId",
-    ///         PackageType = "WOLFI",
     ///         Configs = new[]
     ///         {
     ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
@@ -367,6 +363,10 @@ namespace Pulumi.Harness.Platform
     ///                 AuthType = "Anonymous",
     ///             },
     ///         },
+    ///         Identifier = "upstream_wolfi_registry",
+    ///         Description = "Upstream Wolfi Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "WOLFI",
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 

@@ -16,13 +16,7 @@ import * as utilities from "./utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const example = new harness.UserGroup("example", {
- *     name: "example-group",
- *     description: "This group demonstrates account level and resource level permissions.",
  *     permissions: {
- *         accountPermissions: [
- *             "ADMINISTER_OTHER_ACCOUNT_FUNCTIONS",
- *             "MANAGE_API_KEYS",
- *         ],
  *         appPermissions: {
  *             alls: [{
  *                 actions: [
@@ -133,7 +127,13 @@ import * as utilities from "./utilities";
  *                 },
  *             ],
  *         },
+ *         accountPermissions: [
+ *             "ADMINISTER_OTHER_ACCOUNT_FUNCTIONS",
+ *             "MANAGE_API_KEYS",
+ *         ],
  *     },
+ *     name: "example-group",
+ *     description: "This group demonstrates account level and resource level permissions.",
  * });
  * ```
  *

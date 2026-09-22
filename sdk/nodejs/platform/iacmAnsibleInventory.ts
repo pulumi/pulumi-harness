@@ -16,30 +16,30 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const manual = new harness.platform.IacmAnsibleInventory("manual", {
- *     identifier: "my_inventory",
- *     name: "my-inventory",
- *     orgId: example.id,
- *     projectId: exampleHarnessPlatformProject.id,
- *     type: "manual",
- *     tags: ["env:prod"],
  *     groups: [{
+ *         vars: [{
+ *             key: "ansible_user",
+ *             value: "ubuntu",
+ *             valueType: "string",
+ *         }],
  *         identifier: "web",
  *         name: "web",
  *         hosts: [
  *             "web-1.example.com",
  *             "web-2.example.com",
  *         ],
- *         vars: [{
- *             key: "ansible_user",
- *             value: "ubuntu",
- *             valueType: "string",
- *         }],
  *     }],
  *     vars: [{
  *         key: "ansible_port",
  *         value: "22",
  *         valueType: "string",
  *     }],
+ *     identifier: "my_inventory",
+ *     name: "my-inventory",
+ *     orgId: example.id,
+ *     projectId: exampleHarnessPlatformProject.id,
+ *     type: "manual",
+ *     tags: ["env:prod"],
  * });
  * ```
  */

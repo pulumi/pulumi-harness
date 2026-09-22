@@ -24,11 +24,6 @@ namespace Pulumi.Harness.Platform
     /// {
     ///     var example = new Harness.Platform.Service("example", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Description = "test",
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
     ///         GitDetails = new Harness.Platform.Inputs.ServiceGitDetailsArgs
     ///         {
     ///             BranchName = "branchName",
@@ -38,6 +33,11 @@ namespace Pulumi.Harness.Platform
     ///             StoreType = "REMOTE",
     ///             RepoName = "repoName",
     ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "test",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
     ///         Yaml = @"service:
     ///   name: name
     ///   identifier: identifier
@@ -82,11 +82,6 @@ namespace Pulumi.Harness.Platform
     ///     //## Importing Service from Git
     ///     var test = new Harness.Platform.Service("test", new()
     ///     {
-    ///         Identifier = "id",
-    ///         Name = "name",
-    ///         OrgId = "org_id",
-    ///         ProjectId = "project_id",
-    ///         ImportFromGit = true,
     ///         GitDetails = new Harness.Platform.Inputs.ServiceGitDetailsArgs
     ///         {
     ///             StoreType = "REMOTE",
@@ -95,6 +90,11 @@ namespace Pulumi.Harness.Platform
     ///             FilePath = ".harness/accountService.yaml",
     ///             Branch = "main",
     ///         },
+    ///         Identifier = "id",
+    ///         Name = "name",
+    ///         OrgId = "org_id",
+    ///         ProjectId = "project_id",
+    ///         ImportFromGit = true,
     ///     });
     /// 
     /// });

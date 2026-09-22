@@ -29,11 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewService(ctx, "example", &platform.ServiceArgs{
-//				Identifier:  pulumi.String("identifier"),
-//				Name:        pulumi.String("name"),
-//				Description: pulumi.String("test"),
-//				OrgId:       pulumi.String("org_id"),
-//				ProjectId:   pulumi.String("project_id"),
 //				GitDetails: &platform.ServiceGitDetailsArgs{
 //					BranchName:    "branchName",
 //					CommitMessage: pulumi.String("commitMessage"),
@@ -42,6 +37,11 @@ import (
 //					StoreType:     pulumi.String("REMOTE"),
 //					RepoName:      pulumi.String("repoName"),
 //				},
+//				Identifier:  pulumi.String("identifier"),
+//				Name:        pulumi.String("name"),
+//				Description: pulumi.String("test"),
+//				OrgId:       pulumi.String("org_id"),
+//				ProjectId:   pulumi.String("project_id"),
 //				Yaml: pulumi.String(`service:
 //	  name: name
 //	  identifier: identifier
@@ -89,11 +89,6 @@ import (
 //			}
 //			// ## Importing Service from Git
 //			_, err = platform.NewService(ctx, "test", &platform.ServiceArgs{
-//				Identifier:    pulumi.String("id"),
-//				Name:          pulumi.String("name"),
-//				OrgId:         pulumi.String("org_id"),
-//				ProjectId:     pulumi.String("project_id"),
-//				ImportFromGit: pulumi.Bool(true),
 //				GitDetails: &platform.ServiceGitDetailsArgs{
 //					StoreType:    pulumi.String("REMOTE"),
 //					ConnectorRef: pulumi.String("account.DoNotDeleteGitX"),
@@ -101,6 +96,11 @@ import (
 //					FilePath:     pulumi.String(".harness/accountService.yaml"),
 //					Branch:       pulumi.String("main"),
 //				},
+//				Identifier:    pulumi.String("id"),
+//				Name:          pulumi.String("name"),
+//				OrgId:         pulumi.String("org_id"),
+//				ProjectId:     pulumi.String("project_id"),
+//				ImportFromGit: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

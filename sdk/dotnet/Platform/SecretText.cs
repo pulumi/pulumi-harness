@@ -57,16 +57,6 @@ namespace Pulumi.Harness.Platform
     /// 
     ///     var gcpSecretManagerReference = new Harness.Platform.SecretText("gcp_secret_manager_reference", new()
     ///     {
-    ///         Identifier = "identifier",
-    ///         Name = "name",
-    ///         Description = "example",
-    ///         Tags = new[]
-    ///         {
-    ///             "foo:bar",
-    ///         },
-    ///         SecretManagerIdentifier = "gcpSecretManager",
-    ///         ValueType = "Reference",
-    ///         Value = "secret",
     ///         AdditionalMetadatas = new[]
     ///         {
     ///             new Harness.Platform.Inputs.SecretTextAdditionalMetadataArgs
@@ -80,11 +70,6 @@ namespace Pulumi.Harness.Platform
     ///                 },
     ///             },
     ///         },
-    ///     });
-    /// 
-    ///     // GCP Secret Manager with project ID and region (for secrets in a different GCP project)
-    ///     var gcpSecretManagerWithProject = new Harness.Platform.SecretText("gcp_secret_manager_with_project", new()
-    ///     {
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         Description = "example",
@@ -93,8 +78,13 @@ namespace Pulumi.Harness.Platform
     ///             "foo:bar",
     ///         },
     ///         SecretManagerIdentifier = "gcpSecretManager",
-    ///         ValueType = "Inline",
+    ///         ValueType = "Reference",
     ///         Value = "secret",
+    ///     });
+    /// 
+    ///     // GCP Secret Manager with project ID and region (for secrets in a different GCP project)
+    ///     var gcpSecretManagerWithProject = new Harness.Platform.SecretText("gcp_secret_manager_with_project", new()
+    ///     {
     ///         AdditionalMetadatas = new[]
     ///         {
     ///             new Harness.Platform.Inputs.SecretTextAdditionalMetadataArgs
@@ -109,10 +99,6 @@ namespace Pulumi.Harness.Platform
     ///                 },
     ///             },
     ///         },
-    ///     });
-    /// 
-    ///     var awsSecretManager = new Harness.Platform.SecretText("aws_secret_manager", new()
-    ///     {
     ///         Identifier = "identifier",
     ///         Name = "name",
     ///         Description = "example",
@@ -120,9 +106,13 @@ namespace Pulumi.Harness.Platform
     ///         {
     ///             "foo:bar",
     ///         },
-    ///         SecretManagerIdentifier = "awsSecretManager",
+    ///         SecretManagerIdentifier = "gcpSecretManager",
     ///         ValueType = "Inline",
     ///         Value = "secret",
+    ///     });
+    /// 
+    ///     var awsSecretManager = new Harness.Platform.SecretText("aws_secret_manager", new()
+    ///     {
     ///         AdditionalMetadatas = new[]
     ///         {
     ///             new Harness.Platform.Inputs.SecretTextAdditionalMetadataArgs
@@ -136,6 +126,16 @@ namespace Pulumi.Harness.Platform
     ///                 },
     ///             },
     ///         },
+    ///         Identifier = "identifier",
+    ///         Name = "name",
+    ///         Description = "example",
+    ///         Tags = new[]
+    ///         {
+    ///             "foo:bar",
+    ///         },
+    ///         SecretManagerIdentifier = "awsSecretManager",
+    ///         ValueType = "Inline",
+    ///         Value = "secret",
     ///     });
     /// 
     /// });

@@ -18,16 +18,16 @@ import * as utilities from "../utilities";
  *
  * // Authentication mechanism as username and password
  * const example = new harness.platform.ArtifactoryConnector("example", {
+ *     credentials: {
+ *         username: "admin",
+ *         passwordRef: "account.secret_id",
+ *     },
  *     identifier: "identifier",
  *     name: "name",
  *     description: "test",
  *     tags: ["foo:bar"],
  *     url: "https://artifactory.example.com",
  *     delegateSelectors: ["harness-delegate"],
- *     credentials: {
- *         username: "admin",
- *         passwordRef: "account.secret_id",
- *     },
  * });
  * // Authentication mechanism as anonymous
  * const test = new harness.platform.ArtifactoryConnector("test", {
@@ -47,6 +47,10 @@ import * as utilities from "../utilities";
  *
  * // Authentication mechanism as username and password
  * const example = new harness.platform.ArtifactoryConnector("example", {
+ *     credentials: {
+ *         username: "admin",
+ *         passwordRef: "account.secret_id",
+ *     },
  *     identifier: "identifier",
  *     name: "name",
  *     description: "test",
@@ -54,10 +58,6 @@ import * as utilities from "../utilities";
  *     orgId: testHarnessPlatformProject.orgId,
  *     url: "https://artifactory.example.com",
  *     delegateSelectors: ["harness-delegate"],
- *     credentials: {
- *         username: "admin",
- *         passwordRef: "account.secret_id",
- *     },
  * });
  * // Authentication mechanism as anonymous
  * const test = new harness.platform.ArtifactoryConnector("test", {
@@ -78,6 +78,10 @@ import * as utilities from "../utilities";
  *
  * // Authentication mechanism as username and password
  * const example = new harness.platform.ArtifactoryConnector("example", {
+ *     credentials: {
+ *         username: "admin",
+ *         passwordRef: "account.secret_id",
+ *     },
  *     identifier: "identifier",
  *     name: "name",
  *     description: "test",
@@ -86,10 +90,6 @@ import * as utilities from "../utilities";
  *     projectId: testHarnessPlatformProject.id,
  *     url: "https://artifactory.example.com",
  *     delegateSelectors: ["harness-delegate"],
- *     credentials: {
- *         username: "admin",
- *         passwordRef: "account.secret_id",
- *     },
  * });
  * // Authentication mechanism as anonymous
  * const test = new harness.platform.ArtifactoryConnector("test", {

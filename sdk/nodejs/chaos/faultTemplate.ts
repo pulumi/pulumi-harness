@@ -47,6 +47,44 @@ import * as utilities from "../utilities";
  * // ----------------------------------------------------------------------------
  * // Most common pattern: Custom Kubernetes fault with container spec
  * const kubernetesFault = new harness.chaos.FaultTemplate("kubernetes_fault", {
+ *     spec: {
+ *         chaos: {
+ *             kubernetes: {
+ *                 resources: {
+ *                     limits: {
+ *                         cpu: "150m",
+ *                         memory: "150Mi",
+ *                     },
+ *                     requests: {
+ *                         cpu: "100m",
+ *                         memory: "100Mi",
+ *                     },
+ *                 },
+ *                 image: "chaosnative/go-runner:ci",
+ *                 commands: [
+ *                     "/bin/bash",
+ *                     "-c",
+ *                 ],
+ *                 args: ["echo 'Running chaos fault'; sleep 30"],
+ *                 imagePullPolicy: "IfNotPresent",
+ *             },
+ *             params: [
+ *                 {
+ *                     name: "CHAOS_DURATION",
+ *                     value: "30s",
+ *                 },
+ *                 {
+ *                     name: "CHAOS_INTERVAL",
+ *                     value: "5s",
+ *                 },
+ *             ],
+ *             faultName: "byoc-injector",
+ *         },
+ *     },
+ *     links: [{
+ *         name: "Documentation",
+ *         url: "https://docs.harness.io/chaos",
+ *     }],
  *     orgId: _this.id,
  *     projectId: thisHarnessPlatformProject.id,
  *     hubIdentity: projectLevel.identity,
@@ -62,44 +100,6 @@ import * as utilities from "../utilities";
  *         "fault",
  *         "custom",
  *     ],
- *     links: [{
- *         name: "Documentation",
- *         url: "https://docs.harness.io/chaos",
- *     }],
- *     spec: {
- *         chaos: {
- *             faultName: "byoc-injector",
- *             params: [
- *                 {
- *                     name: "CHAOS_DURATION",
- *                     value: "30s",
- *                 },
- *                 {
- *                     name: "CHAOS_INTERVAL",
- *                     value: "5s",
- *                 },
- *             ],
- *             kubernetes: {
- *                 image: "chaosnative/go-runner:ci",
- *                 commands: [
- *                     "/bin/bash",
- *                     "-c",
- *                 ],
- *                 args: ["echo 'Running chaos fault'; sleep 30"],
- *                 imagePullPolicy: "IfNotPresent",
- *                 resources: {
- *                     limits: {
- *                         cpu: "150m",
- *                         memory: "150Mi",
- *                     },
- *                     requests: {
- *                         cpu: "100m",
- *                         memory: "100Mi",
- *                     },
- *                 },
- *             },
- *         },
- *     },
  * }, {
  *     dependsOn: [projectLevel],
  * });
@@ -108,6 +108,61 @@ import * as utilities from "../utilities";
  * // ----------------------------------------------------------------------------
  * // Fault with environment variables for configuration
  * const faultWithEnv = new harness.chaos.FaultTemplate("fault_with_env", {
+ *     spec: {
+ *         chaos: {
+ *             kubernetes: {
+ *                 resources: {
+ *                     limits: {
+ *                         cpu: "200m",
+ *                         memory: "200Mi",
+ *                     },
+ *                 },
+ *                 envs: [
+ *                     {
+ *                         name: "TARGET_NAMESPACE",
+ *                         value: "<+input>.default('default')",
+ *                     },
+ *                     {
+ *                         name: "CHAOS_MODE",
+ *                         value: "pod",
+ *                     },
+ *                 ],
+ *                 image: "chaosnative/go-runner:ci",
+ *                 commands: [
+ *                     "/bin/bash",
+ *                     "-c",
+ *                 ],
+ *                 args: ["echo 'Fault with env vars'; sleep 15"],
+ *                 imagePullPolicy: "IfNotPresent",
+ *             },
+ *             params: [
+ *                 {
+ *                     name: "CHAOS_DURATION",
+ *                     value: "15s",
+ *                 },
+ *                 {
+ *                     name: "CHAOS_INTERVAL",
+ *                     value: "3s",
+ *                 },
+ *                 {
+ *                     name: "TARGET_NAMESPACE",
+ *                     value: "<+input>.default('default')",
+ *                 },
+ *             ],
+ *             faultName: "byoc-injector",
+ *         },
+ *     },
+ *     links: [{
+ *         name: "Documentation",
+ *         url: "https://docs.harness.io/chaos",
+ *     }],
+ *     variables: [{
+ *         name: "target_namespace",
+ *         value: "<+input>",
+ *         type: "string",
+ *         required: false,
+ *         description: "Target namespace for chaos injection",
+ *     }],
  *     orgId: _this.id,
  *     projectId: thisHarnessPlatformProject.id,
  *     hubIdentity: projectLevel.identity,
@@ -123,61 +178,6 @@ import * as utilities from "../utilities";
  *         "env",
  *         "config",
  *     ],
- *     links: [{
- *         name: "Documentation",
- *         url: "https://docs.harness.io/chaos",
- *     }],
- *     spec: {
- *         chaos: {
- *             faultName: "byoc-injector",
- *             params: [
- *                 {
- *                     name: "CHAOS_DURATION",
- *                     value: "15s",
- *                 },
- *                 {
- *                     name: "CHAOS_INTERVAL",
- *                     value: "3s",
- *                 },
- *                 {
- *                     name: "TARGET_NAMESPACE",
- *                     value: "<+input>.default('default')",
- *                 },
- *             ],
- *             kubernetes: {
- *                 image: "chaosnative/go-runner:ci",
- *                 commands: [
- *                     "/bin/bash",
- *                     "-c",
- *                 ],
- *                 args: ["echo 'Fault with env vars'; sleep 15"],
- *                 imagePullPolicy: "IfNotPresent",
- *                 envs: [
- *                     {
- *                         name: "TARGET_NAMESPACE",
- *                         value: "<+input>.default('default')",
- *                     },
- *                     {
- *                         name: "CHAOS_MODE",
- *                         value: "pod",
- *                     },
- *                 ],
- *                 resources: {
- *                     limits: {
- *                         cpu: "200m",
- *                         memory: "200Mi",
- *                     },
- *                 },
- *             },
- *         },
- *     },
- *     variables: [{
- *         name: "target_namespace",
- *         value: "<+input>",
- *         type: "string",
- *         required: false,
- *         description: "Target namespace for chaos injection",
- *     }],
  * }, {
  *     dependsOn: [projectLevel],
  * });
@@ -186,45 +186,19 @@ import * as utilities from "../utilities";
  * // ----------------------------------------------------------------------------
  * // Fault with node selector, labels, and annotations
  * const advancedFault = new harness.chaos.FaultTemplate("advanced_fault", {
- *     orgId: _this.id,
- *     projectId: thisHarnessPlatformProject.id,
- *     hubIdentity: projectLevel.identity,
- *     identity: "advanced-fault-template",
- *     name: "Advanced Fault Template",
- *     description: "Fault with advanced Kubernetes configuration",
- *     categories: ["Kubernetes"],
- *     infrastructures: ["KubernetesV2"],
- *     type: "Custom",
- *     permissionsRequired: "Basic",
- *     tags: [
- *         "kubernetes",
- *         "advanced",
- *         "production",
- *     ],
- *     links: [
- *         {
- *             name: "Documentation",
- *             url: "https://docs.harness.io/chaos",
- *         },
- *         {
- *             name: "Support",
- *             url: "https://support.harness.io",
- *         },
- *     ],
  *     spec: {
  *         chaos: {
- *             faultName: "byoc-injector",
- *             params: [
- *                 {
- *                     name: "CHAOS_DURATION",
- *                     value: "<+input>.default('30s')",
- *                 },
- *                 {
- *                     name: "CHAOS_INTERVAL",
- *                     value: "<+input>.default('5s')",
- *                 },
- *             ],
  *             kubernetes: {
+ *                 resources: {
+ *                     limits: {
+ *                         cpu: "250m",
+ *                         memory: "256Mi",
+ *                     },
+ *                     requests: {
+ *                         cpu: "125m",
+ *                         memory: "128Mi",
+ *                     },
+ *                 },
  *                 image: "chaosnative/go-runner:ci",
  *                 commands: [
  *                     "/bin/bash",
@@ -245,19 +219,30 @@ import * as utilities from "../utilities";
  *                     description: "Advanced chaos fault",
  *                     owner: "chaos-team",
  *                 },
- *                 resources: {
- *                     limits: {
- *                         cpu: "250m",
- *                         memory: "256Mi",
- *                     },
- *                     requests: {
- *                         cpu: "125m",
- *                         memory: "128Mi",
- *                     },
- *                 },
  *             },
+ *             params: [
+ *                 {
+ *                     name: "CHAOS_DURATION",
+ *                     value: "<+input>.default('30s')",
+ *                 },
+ *                 {
+ *                     name: "CHAOS_INTERVAL",
+ *                     value: "<+input>.default('5s')",
+ *                 },
+ *             ],
+ *             faultName: "byoc-injector",
  *         },
  *     },
+ *     links: [
+ *         {
+ *             name: "Documentation",
+ *             url: "https://docs.harness.io/chaos",
+ *         },
+ *         {
+ *             name: "Support",
+ *             url: "https://support.harness.io",
+ *         },
+ *     ],
  *     variables: [
  *         {
  *             name: "chaos_duration",
@@ -273,6 +258,21 @@ import * as utilities from "../utilities";
  *             required: false,
  *             description: "Interval between chaos injections",
  *         },
+ *     ],
+ *     orgId: _this.id,
+ *     projectId: thisHarnessPlatformProject.id,
+ *     hubIdentity: projectLevel.identity,
+ *     identity: "advanced-fault-template",
+ *     name: "Advanced Fault Template",
+ *     description: "Fault with advanced Kubernetes configuration",
+ *     categories: ["Kubernetes"],
+ *     infrastructures: ["KubernetesV2"],
+ *     type: "Custom",
+ *     permissionsRequired: "Basic",
+ *     tags: [
+ *         "kubernetes",
+ *         "advanced",
+ *         "production",
  *     ],
  * }, {
  *     dependsOn: [projectLevel],

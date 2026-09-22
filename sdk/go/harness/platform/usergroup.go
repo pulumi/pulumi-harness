@@ -57,15 +57,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := platform.NewUsergroup(ctx, "sso_type_saml", &platform.UsergroupArgs{
-//				Identifier:        pulumi.String("identifier"),
-//				Name:              pulumi.String("name"),
-//				OrgId:             pulumi.String("org_id"),
-//				ProjectId:         pulumi.String("project_id"),
-//				LinkedSsoId:       pulumi.String("linked_sso_id"),
-//				ExternallyManaged: pulumi.Bool(false),
-//				Users: pulumi.StringArray{
-//					pulumi.String("user_id"),
-//				},
 //				NotificationConfigs: platform.UsergroupNotificationConfigArray{
 //					&platform.UsergroupNotificationConfigArgs{
 //						Type:            pulumi.String("SLACK"),
@@ -84,6 +75,15 @@ import (
 //						Type:         pulumi.String("PAGERDUTY"),
 //						PagerDutyKey: pulumi.String("pagerDutyKey"),
 //					},
+//				},
+//				Identifier:        pulumi.String("identifier"),
+//				Name:              pulumi.String("name"),
+//				OrgId:             pulumi.String("org_id"),
+//				ProjectId:         pulumi.String("project_id"),
+//				LinkedSsoId:       pulumi.String("linked_sso_id"),
+//				ExternallyManaged: pulumi.Bool(false),
+//				Users: pulumi.StringArray{
+//					pulumi.String("user_id"),
 //				},
 //				LinkedSsoDisplayName: pulumi.String("linked_sso_display_name"),
 //				SsoGroupId:           pulumi.String("sso_group_name"),
@@ -95,15 +95,6 @@ import (
 //				return err
 //			}
 //			_, err = platform.NewUsergroup(ctx, "sso_type_ldap", &platform.UsergroupArgs{
-//				Identifier:        pulumi.String("identifier"),
-//				Name:              pulumi.String("name"),
-//				OrgId:             pulumi.String("org_id"),
-//				ProjectId:         pulumi.String("project_id"),
-//				LinkedSsoId:       pulumi.String("linked_sso_id"),
-//				ExternallyManaged: pulumi.Bool(false),
-//				Users: pulumi.StringArray{
-//					pulumi.String("user_id"),
-//				},
 //				NotificationConfigs: platform.UsergroupNotificationConfigArray{
 //					&platform.UsergroupNotificationConfigArgs{
 //						Type:            pulumi.String("SLACK"),
@@ -122,6 +113,15 @@ import (
 //						Type:         pulumi.String("PAGERDUTY"),
 //						PagerDutyKey: pulumi.String("pagerDutyKey"),
 //					},
+//				},
+//				Identifier:        pulumi.String("identifier"),
+//				Name:              pulumi.String("name"),
+//				OrgId:             pulumi.String("org_id"),
+//				ProjectId:         pulumi.String("project_id"),
+//				LinkedSsoId:       pulumi.String("linked_sso_id"),
+//				ExternallyManaged: pulumi.Bool(false),
+//				Users: pulumi.StringArray{
+//					pulumi.String("user_id"),
 //				},
 //				LinkedSsoDisplayName: pulumi.String("linked_sso_display_name"),
 //				SsoGroupId:           pulumi.String("sso_group_id"),
@@ -134,15 +134,6 @@ import (
 //			}
 //			// Create user group by adding user emails
 //			_, err = platform.NewUsergroup(ctx, "example", &platform.UsergroupArgs{
-//				Identifier:        pulumi.String("identifier"),
-//				Name:              pulumi.String("name"),
-//				OrgId:             pulumi.String("org_id"),
-//				ProjectId:         pulumi.String("project_id"),
-//				LinkedSsoId:       pulumi.String("linked_sso_id"),
-//				ExternallyManaged: pulumi.Bool(false),
-//				UserEmails: pulumi.StringArray{
-//					pulumi.String("user@email.com"),
-//				},
 //				NotificationConfigs: platform.UsergroupNotificationConfigArray{
 //					&platform.UsergroupNotificationConfigArgs{
 //						Type:            pulumi.String("SLACK"),
@@ -161,6 +152,15 @@ import (
 //						Type:         pulumi.String("PAGERDUTY"),
 //						PagerDutyKey: pulumi.String("pagerDutyKey"),
 //					},
+//				},
+//				Identifier:        pulumi.String("identifier"),
+//				Name:              pulumi.String("name"),
+//				OrgId:             pulumi.String("org_id"),
+//				ProjectId:         pulumi.String("project_id"),
+//				LinkedSsoId:       pulumi.String("linked_sso_id"),
+//				ExternallyManaged: pulumi.Bool(false),
+//				UserEmails: pulumi.StringArray{
+//					pulumi.String("user@email.com"),
 //				},
 //				LinkedSsoDisplayName: pulumi.String("linked_sso_display_name"),
 //				SsoGroupId:           pulumi.String("sso_group_name"),

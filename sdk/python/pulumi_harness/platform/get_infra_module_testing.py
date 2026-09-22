@@ -384,7 +384,7 @@ def get_infra_module_testing(module_id: Optional[_builtins.str] = None,
                              provisioner_version: Optional[_builtins.str] = None,
                              release_pipeline: Optional[_builtins.str] = None,
                              testing_enabled: Optional[_builtins.bool] = None,
-                             testing_metadata: Optional[Union['GetInfraModuleTestingTestingMetadataArgs', 'GetInfraModuleTestingTestingMetadataArgsDict']] = None,
+                             testing_metadata: Optional[Union['GetInfraModuleTestingTestingMetadataArgs', 'GetInfraModuleTestingTestingMetadataArgsDict', 'outputs.GetInfraModuleTestingTestingMetadataResult']] = None,
                              updated: Optional[_builtins.int] = None,
                              versions: Optional[Sequence[_builtins.str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInfraModuleTestingResult:
@@ -401,7 +401,7 @@ def get_infra_module_testing(module_id: Optional[_builtins.str] = None,
     :param _builtins.str provisioner_version: Provisioner version for testing purposes
     :param _builtins.str release_pipeline: Pipeline ID to create webhooks for releases
     :param _builtins.bool testing_enabled: Whether testing is enabled for the module
-    :param Union['GetInfraModuleTestingTestingMetadataArgs', 'GetInfraModuleTestingTestingMetadataArgsDict'] testing_metadata: Testing metadata for the module
+    :param Union['GetInfraModuleTestingTestingMetadataArgs', 'GetInfraModuleTestingTestingMetadataArgsDict', 'outputs.GetInfraModuleTestingTestingMetadataResult'] testing_metadata: Testing metadata for the module
     :param _builtins.int updated: Timestamp when the module was last modified
     :param Sequence[_builtins.str] versions: Versions of the module
     """
@@ -459,7 +459,7 @@ def get_infra_module_testing_output(module_id: pulumi.Input[Optional[_builtins.s
                                     provisioner_version: pulumi.Input[Optional[_builtins.str]] = None,
                                     release_pipeline: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     testing_enabled: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
-                                    testing_metadata: pulumi.Input[Optional[Optional[Union['GetInfraModuleTestingTestingMetadataArgs', 'GetInfraModuleTestingTestingMetadataArgsDict']]]] = None,
+                                    testing_metadata: pulumi.Input[Optional[Optional[Union['GetInfraModuleTestingTestingMetadataArgs', 'GetInfraModuleTestingTestingMetadataArgsDict', 'outputs.GetInfraModuleTestingTestingMetadataResult']]]] = None,
                                     updated: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                     versions: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInfraModuleTestingResult]:
@@ -476,7 +476,7 @@ def get_infra_module_testing_output(module_id: pulumi.Input[Optional[_builtins.s
     :param _builtins.str provisioner_version: Provisioner version for testing purposes
     :param _builtins.str release_pipeline: Pipeline ID to create webhooks for releases
     :param _builtins.bool testing_enabled: Whether testing is enabled for the module
-    :param Union['GetInfraModuleTestingTestingMetadataArgs', 'GetInfraModuleTestingTestingMetadataArgsDict'] testing_metadata: Testing metadata for the module
+    :param Union['GetInfraModuleTestingTestingMetadataArgs', 'GetInfraModuleTestingTestingMetadataArgsDict', 'outputs.GetInfraModuleTestingTestingMetadataResult'] testing_metadata: Testing metadata for the module
     :param _builtins.int updated: Timestamp when the module was last modified
     :param Sequence[_builtins.str] versions: Versions of the module
     """

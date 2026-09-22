@@ -16,6 +16,10 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.platform.AwsCCConnector("test", {
+ *     crossAccountAccess: {
+ *         roleArn: "role_arn",
+ *         externalId: "external_id",
+ *     },
  *     identifier: "identifier",
  *     name: "name",
  *     description: "test",
@@ -28,10 +32,6 @@ import * as utilities from "../utilities";
  *         "VISIBILITY",
  *         "BILLING",
  *     ],
- *     crossAccountAccess: {
- *         roleArn: "role_arn",
- *         externalId: "external_id",
- *     },
  * });
  * ```
  *

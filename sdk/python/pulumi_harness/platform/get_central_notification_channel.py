@@ -172,7 +172,7 @@ class AwaitableGetCentralNotificationChannelResult(GetCentralNotificationChannel
 
 
 def get_central_notification_channel(account: Optional[_builtins.str] = None,
-                                     channels: Optional[Sequence[Union['GetCentralNotificationChannelChannelArgs', 'GetCentralNotificationChannelChannelArgsDict']]] = None,
+                                     channels: Optional[Sequence[Union['GetCentralNotificationChannelChannelArgs', 'GetCentralNotificationChannelChannelArgsDict', 'outputs.GetCentralNotificationChannelChannelResult']]] = None,
                                      created: Optional[_builtins.int] = None,
                                      identifier: Optional[_builtins.str] = None,
                                      last_modified: Optional[_builtins.int] = None,
@@ -187,7 +187,7 @@ def get_central_notification_channel(account: Optional[_builtins.str] = None,
 
 
     :param _builtins.str account: Account identifier associated with this notification channel.
-    :param Sequence[Union['GetCentralNotificationChannelChannelArgs', 'GetCentralNotificationChannelChannelArgsDict']] channels: Configuration details of the notification channel.
+    :param Sequence[Union['GetCentralNotificationChannelChannelArgs', 'GetCentralNotificationChannelChannelArgsDict', 'outputs.GetCentralNotificationChannelChannelResult']] channels: Configuration details of the notification channel.
     :param _builtins.int created: Timestamp when the notification channel was created.
     :param _builtins.str identifier: Unique identifier of the notification channel.
     :param _builtins.int last_modified: Timestamp when the notification channel was last modified.
@@ -224,7 +224,7 @@ def get_central_notification_channel(account: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         status=pulumi.get(__ret__, 'status'))
 def get_central_notification_channel_output(account: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                            channels: pulumi.Input[Optional[Optional[Sequence[Union['GetCentralNotificationChannelChannelArgs', 'GetCentralNotificationChannelChannelArgsDict']]]]] = None,
+                                            channels: pulumi.Input[Optional[Optional[Sequence[Union['GetCentralNotificationChannelChannelArgs', 'GetCentralNotificationChannelChannelArgsDict', 'outputs.GetCentralNotificationChannelChannelResult']]]]] = None,
                                             created: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                             identifier: pulumi.Input[Optional[_builtins.str]] = None,
                                             last_modified: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
@@ -239,7 +239,7 @@ def get_central_notification_channel_output(account: pulumi.Input[Optional[Optio
 
 
     :param _builtins.str account: Account identifier associated with this notification channel.
-    :param Sequence[Union['GetCentralNotificationChannelChannelArgs', 'GetCentralNotificationChannelChannelArgsDict']] channels: Configuration details of the notification channel.
+    :param Sequence[Union['GetCentralNotificationChannelChannelArgs', 'GetCentralNotificationChannelChannelArgsDict', 'outputs.GetCentralNotificationChannelChannelResult']] channels: Configuration details of the notification channel.
     :param _builtins.int created: Timestamp when the notification channel was created.
     :param _builtins.str identifier: Unique identifier of the notification channel.
     :param _builtins.int last_modified: Timestamp when the notification channel was last modified.

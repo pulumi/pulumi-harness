@@ -16,6 +16,10 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.autostopping.GcpProxy("test", {
+ *     certificates: {
+ *         keySecretId: "projects/project_id/secrets/secret_id/versions/1",
+ *         certSecretId: "projects/project_id/secrets/secret_id/versions/1",
+ *     },
  *     name: "name",
  *     cloudConnectorId: "cloud_connector_id",
  *     region: "region",
@@ -26,10 +30,6 @@ import * as utilities from "../utilities";
  *     subnetId: "https://www.googleapis.com/compute/v1/projects/project_id/regions/region/subnetworks/subnet_name",
  *     apiKey: "",
  *     allocateStaticIp: false,
- *     certificates: {
- *         keySecretId: "projects/project_id/secrets/secret_id/versions/1",
- *         certSecretId: "projects/project_id/secrets/secret_id/versions/1",
- *     },
  *     deleteCloudResourcesOnDestroy: false,
  * });
  * ```

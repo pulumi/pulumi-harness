@@ -67,13 +67,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Example of a Kubernetes Security Governance Condition (V3)
  *         var k8sCondition = new SecurityGovernanceConditionV3("k8sCondition", SecurityGovernanceConditionV3Args.builder()
- *             .orgId(orgId)
- *             .projectId(projectId)
- *             .name("k8s-security-condition")
- *             .description("Security governance condition for Kubernetes workloads")
- *             .infraType("KubernetesV2")
  *             .faultSpec(SecurityGovernanceConditionV3FaultSpecArgs.builder()
- *                 .operator("NOT_EQUAL_TO")
  *                 .faults(                
  *                     SecurityGovernanceConditionV3FaultSpecFaultArgs.builder()
  *                         .faultType("FAULT")
@@ -83,6 +77,7 @@ import javax.annotation.Nullable;
  *                         .faultType("FAULT")
  *                         .name("pod-dns")
  *                         .build())
+ *                 .operator("NOT_EQUAL_TO")
  *                 .build())
  *             .k8sSpec(SecurityGovernanceConditionV3K8sSpecArgs.builder()
  *                 .infraSpec(SecurityGovernanceConditionV3K8sSpecInfraSpecArgs.builder()
@@ -90,7 +85,6 @@ import javax.annotation.Nullable;
  *                     .infraIds(k8sInfraId)
  *                     .build())
  *                 .applicationSpec(SecurityGovernanceConditionV3K8sSpecApplicationSpecArgs.builder()
- *                     .operator("EQUAL_TO")
  *                     .workloads(SecurityGovernanceConditionV3K8sSpecApplicationSpecWorkloadArgs.builder()
  *                         .namespace("default")
  *                         .kind("deployment")
@@ -98,6 +92,7 @@ import javax.annotation.Nullable;
  *                         .services("nginx-service")
  *                         .applicationMapId("nginx-app")
  *                         .build())
+ *                     .operator("EQUAL_TO")
  *                     .build())
  *                 .chaosServiceAccountSpec(SecurityGovernanceConditionV3K8sSpecChaosServiceAccountSpecArgs.builder()
  *                     .operator("EQUAL_TO")
@@ -106,6 +101,11 @@ import javax.annotation.Nullable;
  *                         "chaos-service-account")
  *                     .build())
  *                 .build())
+ *             .orgId(orgId)
+ *             .projectId(projectId)
+ *             .name("k8s-security-condition")
+ *             .description("Security governance condition for Kubernetes workloads")
+ *             .infraType("KubernetesV2")
  *             .tags(            
  *                 "env:prod",
  *                 "team:security",
@@ -114,13 +114,7 @@ import javax.annotation.Nullable;
  * 
  *         // Example of a Linux Security Governance Condition (V3)
  *         var linuxCondition = new SecurityGovernanceConditionV3("linuxCondition", SecurityGovernanceConditionV3Args.builder()
- *             .orgId(orgId)
- *             .projectId(projectId)
- *             .name("linux-security-condition")
- *             .description("Security governance condition for Linux hosts")
- *             .infraType("Linux")
  *             .faultSpec(SecurityGovernanceConditionV3FaultSpecArgs.builder()
- *                 .operator("NOT_EQUAL_TO")
  *                 .faults(                
  *                     SecurityGovernanceConditionV3FaultSpecFaultArgs.builder()
  *                         .faultType("FAULT")
@@ -130,6 +124,7 @@ import javax.annotation.Nullable;
  *                         .faultType("FAULT")
  *                         .name("memory-hog")
  *                         .build())
+ *                 .operator("NOT_EQUAL_TO")
  *                 .build())
  *             .machineSpec(SecurityGovernanceConditionV3MachineSpecArgs.builder()
  *                 .infraSpec(SecurityGovernanceConditionV3MachineSpecInfraSpecArgs.builder()
@@ -137,6 +132,11 @@ import javax.annotation.Nullable;
  *                     .infraIds(linuxInfraId)
  *                     .build())
  *                 .build())
+ *             .orgId(orgId)
+ *             .projectId(projectId)
+ *             .name("linux-security-condition")
+ *             .description("Security governance condition for Linux hosts")
+ *             .infraType("Linux")
  *             .tags(            
  *                 "env:prod",
  *                 "team:security",

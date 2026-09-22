@@ -33,9 +33,6 @@ import (
 //					&platform.GitOpsRepoCertRequestArgs{
 //						Certificates: platform.GitOpsRepoCertRequestCertificateArray{
 //							&platform.GitOpsRepoCertRequestCertificateArgs{
-//								Metadatas: platform.GitOpsRepoCertRequestCertificateMetadataArray{
-//									&platform.GitOpsRepoCertRequestCertificateMetadataArgs{},
-//								},
 //								Items: platform.GitOpsRepoCertRequestCertificateItemArray{
 //									&platform.GitOpsRepoCertRequestCertificateItemArgs{
 //										ServerName:  pulumi.String("github.com"),
@@ -43,6 +40,9 @@ import (
 //										CertSubType: pulumi.String("ecdsa-sha2-nistp256"),
 //										CertData:    pulumi.String("QUFBQUUyVmpaSE5oTFhOb1lUSXRibWx6ZEhBeU5UWUFBQUFJYm1semRIQXlOVFlBQUFCQkJFbUtTRU5qUUVlek9teGtaTXk3b3BLZ3dGQjlua3Q1WVJyWU1qTnVHNU44N3VSZ2c2Q0xyYm81d0FkVC95NnYwbUtWMFUydzBXWjJZQi8rK1Rwb2NrZz0="),
 //									},
+//								},
+//								Metadatas: platform.GitOpsRepoCertRequestCertificateMetadataArray{
+//									&platform.GitOpsRepoCertRequestCertificateMetadataArgs{},
 //								},
 //							},
 //						},

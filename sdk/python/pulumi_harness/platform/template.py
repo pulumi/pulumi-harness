@@ -531,8 +531,8 @@ class Template(pulumi.CustomResource):
                  comments: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
-                 git_details: pulumi.Input[Optional[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict']]] = None,
-                 git_import_details: pulumi.Input[Optional[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict']]] = None,
+                 git_details: pulumi.Input[Optional[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict', 'outputs.TemplateGitDetails']]] = None,
+                 git_import_details: pulumi.Input[Optional[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict', 'outputs.TemplateGitImportDetails']]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_stable: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -540,7 +540,7 @@ class Template(pulumi.CustomResource):
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_import_request: pulumi.Input[Optional[Union['TemplateTemplateImportRequestArgs', 'TemplateTemplateImportRequestArgsDict']]] = None,
+                 template_import_request: pulumi.Input[Optional[Union['TemplateTemplateImportRequestArgs', 'TemplateTemplateImportRequestArgsDict', 'outputs.TemplateTemplateImportRequest']]] = None,
                  template_yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -593,8 +593,8 @@ class Template(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] comments: Specify comment with respect to changes.
         :param pulumi.Input[_builtins.str] description: Description of the entity. Description field is deprecated
         :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
-        :param pulumi.Input[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
-        :param pulumi.Input[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict']] git_import_details: Contains Git Information for importing entities from Git
+        :param pulumi.Input[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict', 'outputs.TemplateGitDetails']] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict', 'outputs.TemplateGitImportDetails']] git_import_details: Contains Git Information for importing entities from Git
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.bool] import_from_git: Flag to set if importing from Git
         :param pulumi.Input[_builtins.bool] is_stable: True if given version for template to be set as stable.
@@ -602,7 +602,7 @@ class Template(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: Organization Identifier for the Entity
         :param pulumi.Input[_builtins.str] project_id: Project Identifier for the Entity
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[Union['TemplateTemplateImportRequestArgs', 'TemplateTemplateImportRequestArgsDict']] template_import_request: Contains parameters for importing template.
+        :param pulumi.Input[Union['TemplateTemplateImportRequestArgs', 'TemplateTemplateImportRequestArgsDict', 'outputs.TemplateTemplateImportRequest']] template_import_request: Contains parameters for importing template.
         :param pulumi.Input[_builtins.str] template_yaml: Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         :param pulumi.Input[_builtins.str] version: Version Label for Template.
         """
@@ -674,8 +674,8 @@ class Template(pulumi.CustomResource):
                  comments: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
-                 git_details: pulumi.Input[Optional[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict']]] = None,
-                 git_import_details: pulumi.Input[Optional[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict']]] = None,
+                 git_details: pulumi.Input[Optional[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict', 'outputs.TemplateGitDetails']]] = None,
+                 git_import_details: pulumi.Input[Optional[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict', 'outputs.TemplateGitImportDetails']]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
                  is_stable: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -683,7 +683,7 @@ class Template(pulumi.CustomResource):
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template_import_request: pulumi.Input[Optional[Union['TemplateTemplateImportRequestArgs', 'TemplateTemplateImportRequestArgsDict']]] = None,
+                 template_import_request: pulumi.Input[Optional[Union['TemplateTemplateImportRequestArgs', 'TemplateTemplateImportRequestArgsDict', 'outputs.TemplateTemplateImportRequest']]] = None,
                  template_yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -727,8 +727,8 @@ class Template(pulumi.CustomResource):
             comments: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
-            git_details: pulumi.Input[Optional[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict']]] = None,
-            git_import_details: pulumi.Input[Optional[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict']]] = None,
+            git_details: pulumi.Input[Optional[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict', 'outputs.TemplateGitDetails']]] = None,
+            git_import_details: pulumi.Input[Optional[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict', 'outputs.TemplateGitImportDetails']]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
             is_stable: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -736,7 +736,7 @@ class Template(pulumi.CustomResource):
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            template_import_request: pulumi.Input[Optional[Union['TemplateTemplateImportRequestArgs', 'TemplateTemplateImportRequestArgsDict']]] = None,
+            template_import_request: pulumi.Input[Optional[Union['TemplateTemplateImportRequestArgs', 'TemplateTemplateImportRequestArgsDict', 'outputs.TemplateTemplateImportRequest']]] = None,
             template_yaml: pulumi.Input[Optional[_builtins.str]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None) -> 'Template':
         """
@@ -749,8 +749,8 @@ class Template(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] comments: Specify comment with respect to changes.
         :param pulumi.Input[_builtins.str] description: Description of the entity. Description field is deprecated
         :param pulumi.Input[_builtins.bool] force_delete: Enable this flag for force deletion of template. It will delete the Harness entity even if your pipelines or other entities reference it
-        :param pulumi.Input[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict']] git_details: Contains parameters related to creating an Entity for Git Experience.
-        :param pulumi.Input[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict']] git_import_details: Contains Git Information for importing entities from Git
+        :param pulumi.Input[Union['TemplateGitDetailsArgs', 'TemplateGitDetailsArgsDict', 'outputs.TemplateGitDetails']] git_details: Contains parameters related to creating an Entity for Git Experience.
+        :param pulumi.Input[Union['TemplateGitImportDetailsArgs', 'TemplateGitImportDetailsArgsDict', 'outputs.TemplateGitImportDetails']] git_import_details: Contains Git Information for importing entities from Git
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource
         :param pulumi.Input[_builtins.bool] import_from_git: Flag to set if importing from Git
         :param pulumi.Input[_builtins.bool] is_stable: True if given version for template to be set as stable.
@@ -758,7 +758,7 @@ class Template(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: Organization Identifier for the Entity
         :param pulumi.Input[_builtins.str] project_id: Project Identifier for the Entity
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
-        :param pulumi.Input[Union['TemplateTemplateImportRequestArgs', 'TemplateTemplateImportRequestArgsDict']] template_import_request: Contains parameters for importing template.
+        :param pulumi.Input[Union['TemplateTemplateImportRequestArgs', 'TemplateTemplateImportRequestArgsDict', 'outputs.TemplateTemplateImportRequest']] template_import_request: Contains parameters for importing template.
         :param pulumi.Input[_builtins.str] template_yaml: Yaml for creating new Template. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         :param pulumi.Input[_builtins.str] version: Version Label for Template.
         """

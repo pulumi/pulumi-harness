@@ -16,20 +16,20 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const test = new harness.autostopping.RuleRds("test", {
- *     name: "name",
- *     cloudConnectorId: "cloud_connector_id",
- *     idleTimeMins: 10,
- *     dryRun: true,
  *     database: {
  *         id: "database_id",
  *         region: "region",
  *     },
  *     tcps: [{
- *         proxyId: "proxy_id",
  *         forwardRules: [{
  *             port: 2233,
  *         }],
+ *         proxyId: "proxy_id",
  *     }],
+ *     name: "name",
+ *     cloudConnectorId: "cloud_connector_id",
+ *     idleTimeMins: 10,
+ *     dryRun: true,
  * });
  * ```
  */

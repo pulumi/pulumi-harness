@@ -327,10 +327,10 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 fault_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionFaultSpecArgs', 'SecurityGovernanceConditionFaultSpecArgsDict']]] = None,
+                 fault_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionFaultSpecArgs', 'SecurityGovernanceConditionFaultSpecArgsDict', 'outputs.SecurityGovernanceConditionFaultSpec']]] = None,
                  infra_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 k8s_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionK8sSpecArgs', 'SecurityGovernanceConditionK8sSpecArgsDict']]] = None,
-                 machine_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionMachineSpecArgs', 'SecurityGovernanceConditionMachineSpecArgsDict']]] = None,
+                 k8s_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionK8sSpecArgs', 'SecurityGovernanceConditionK8sSpecArgsDict', 'outputs.SecurityGovernanceConditionK8sSpec']]] = None,
+                 machine_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionMachineSpecArgs', 'SecurityGovernanceConditionMachineSpecArgsDict', 'outputs.SecurityGovernanceConditionMachineSpec']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -347,13 +347,7 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
 
         # Example of a Kubernetes Security Governance Condition
         k8s_condition = harness.chaos.SecurityGovernanceCondition("k8s_condition",
-            org_id=org_id,
-            project_id=project_id,
-            name="k8s-security-condition",
-            description="Security governance condition for Kubernetes workloads",
-            infra_type="KubernetesV2",
             fault_spec={
-                "operator": "NOT_EQUAL_TO",
                 "faults": [
                     {
                         "fault_type": "FAULT",
@@ -364,6 +358,7 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
                         "name": "pod-dns",
                     },
                 ],
+                "operator": "NOT_EQUAL_TO",
             },
             k8s_spec={
                 "infra_spec": {
@@ -371,7 +366,6 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
                     "infra_ids": [k8s_infra_id],
                 },
                 "application_spec": {
-                    "operator": "EQUAL_TO",
                     "workloads": [{
                         "namespace": "default",
                         "kind": "deployment",
@@ -379,6 +373,7 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
                         "services": ["nginx-service"],
                         "application_map_id": "nginx-app",
                     }],
+                    "operator": "EQUAL_TO",
                 },
                 "chaos_service_account_spec": {
                     "operator": "EQUAL_TO",
@@ -388,6 +383,11 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
                     ],
                 },
             },
+            org_id=org_id,
+            project_id=project_id,
+            name="k8s-security-condition",
+            description="Security governance condition for Kubernetes workloads",
+            infra_type="KubernetesV2",
             tags=[
                 "env:prod",
                 "team:security",
@@ -395,13 +395,7 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
             ])
         # Example of a Windows Security Governance Condition
         windows_condition = harness.chaos.SecurityGovernanceCondition("windows_condition",
-            org_id=org_id,
-            project_id=project_id,
-            name="windows-security-condition",
-            description="Security governance condition for Windows hosts",
-            infra_type="Windows",
             fault_spec={
-                "operator": "NOT_EQUAL_TO",
                 "faults": [
                     {
                         "fault_type": "FAULT",
@@ -412,6 +406,7 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
                         "name": "cpu-hog",
                     },
                 ],
+                "operator": "NOT_EQUAL_TO",
             },
             machine_spec={
                 "infra_spec": {
@@ -419,6 +414,11 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
                     "infra_ids": [windows_infra_id],
                 },
             },
+            org_id=org_id,
+            project_id=project_id,
+            name="windows-security-condition",
+            description="Security governance condition for Windows hosts",
+            infra_type="Windows",
             tags=[
                 "env:prod",
                 "team:security",
@@ -426,13 +426,7 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
             ])
         # Example of a Linux Security Governance Condition
         linux_condition = harness.chaos.SecurityGovernanceCondition("linux_condition",
-            org_id=org_id,
-            project_id=project_id,
-            name="linux-security-condition",
-            description="Security governance condition for Linux hosts",
-            infra_type="Linux",
             fault_spec={
-                "operator": "NOT_EQUAL_TO",
                 "faults": [
                     {
                         "fault_type": "FAULT",
@@ -443,6 +437,7 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
                         "name": "memory-hog",
                     },
                 ],
+                "operator": "NOT_EQUAL_TO",
             },
             machine_spec={
                 "infra_spec": {
@@ -450,6 +445,11 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
                     "infra_ids": [linux_infra_id],
                 },
             },
+            org_id=org_id,
+            project_id=project_id,
+            name="linux-security-condition",
+            description="Security governance condition for Linux hosts",
+            infra_type="Linux",
             tags=[
                 "env:prod",
                 "team:security",
@@ -474,10 +474,10 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the security governance condition
-        :param pulumi.Input[Union['SecurityGovernanceConditionFaultSpecArgs', 'SecurityGovernanceConditionFaultSpecArgsDict']] fault_spec: Specification for faults to be included in the condition
+        :param pulumi.Input[Union['SecurityGovernanceConditionFaultSpecArgs', 'SecurityGovernanceConditionFaultSpecArgsDict', 'outputs.SecurityGovernanceConditionFaultSpec']] fault_spec: Specification for faults to be included in the condition
         :param pulumi.Input[_builtins.str] infra_type: Type of infrastructure (Kubernetes, KubernetesV2, Linux, Windows, CloudFoundry, Container)
-        :param pulumi.Input[Union['SecurityGovernanceConditionK8sSpecArgs', 'SecurityGovernanceConditionK8sSpecArgsDict']] k8s_spec: Kubernetes specific configuration (required when infra*type is KUBERNETES or KUBERNETESV2)
-        :param pulumi.Input[Union['SecurityGovernanceConditionMachineSpecArgs', 'SecurityGovernanceConditionMachineSpecArgsDict']] machine_spec: Machine specific configuration (required when infra*type is LINUX or WINDOWS)
+        :param pulumi.Input[Union['SecurityGovernanceConditionK8sSpecArgs', 'SecurityGovernanceConditionK8sSpecArgsDict', 'outputs.SecurityGovernanceConditionK8sSpec']] k8s_spec: Kubernetes specific configuration (required when infra*type is KUBERNETES or KUBERNETESV2)
+        :param pulumi.Input[Union['SecurityGovernanceConditionMachineSpecArgs', 'SecurityGovernanceConditionMachineSpecArgsDict', 'outputs.SecurityGovernanceConditionMachineSpec']] machine_spec: Machine specific configuration (required when infra*type is LINUX or WINDOWS)
         :param pulumi.Input[_builtins.str] name: Name of the security governance condition
         :param pulumi.Input[_builtins.str] org_id: The organization ID of the security governance condition
         :param pulumi.Input[_builtins.str] project_id: The project ID of the security governance condition
@@ -500,13 +500,7 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
 
         # Example of a Kubernetes Security Governance Condition
         k8s_condition = harness.chaos.SecurityGovernanceCondition("k8s_condition",
-            org_id=org_id,
-            project_id=project_id,
-            name="k8s-security-condition",
-            description="Security governance condition for Kubernetes workloads",
-            infra_type="KubernetesV2",
             fault_spec={
-                "operator": "NOT_EQUAL_TO",
                 "faults": [
                     {
                         "fault_type": "FAULT",
@@ -517,6 +511,7 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
                         "name": "pod-dns",
                     },
                 ],
+                "operator": "NOT_EQUAL_TO",
             },
             k8s_spec={
                 "infra_spec": {
@@ -524,7 +519,6 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
                     "infra_ids": [k8s_infra_id],
                 },
                 "application_spec": {
-                    "operator": "EQUAL_TO",
                     "workloads": [{
                         "namespace": "default",
                         "kind": "deployment",
@@ -532,6 +526,7 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
                         "services": ["nginx-service"],
                         "application_map_id": "nginx-app",
                     }],
+                    "operator": "EQUAL_TO",
                 },
                 "chaos_service_account_spec": {
                     "operator": "EQUAL_TO",
@@ -541,6 +536,11 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
                     ],
                 },
             },
+            org_id=org_id,
+            project_id=project_id,
+            name="k8s-security-condition",
+            description="Security governance condition for Kubernetes workloads",
+            infra_type="KubernetesV2",
             tags=[
                 "env:prod",
                 "team:security",
@@ -548,13 +548,7 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
             ])
         # Example of a Windows Security Governance Condition
         windows_condition = harness.chaos.SecurityGovernanceCondition("windows_condition",
-            org_id=org_id,
-            project_id=project_id,
-            name="windows-security-condition",
-            description="Security governance condition for Windows hosts",
-            infra_type="Windows",
             fault_spec={
-                "operator": "NOT_EQUAL_TO",
                 "faults": [
                     {
                         "fault_type": "FAULT",
@@ -565,6 +559,7 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
                         "name": "cpu-hog",
                     },
                 ],
+                "operator": "NOT_EQUAL_TO",
             },
             machine_spec={
                 "infra_spec": {
@@ -572,6 +567,11 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
                     "infra_ids": [windows_infra_id],
                 },
             },
+            org_id=org_id,
+            project_id=project_id,
+            name="windows-security-condition",
+            description="Security governance condition for Windows hosts",
+            infra_type="Windows",
             tags=[
                 "env:prod",
                 "team:security",
@@ -579,13 +579,7 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
             ])
         # Example of a Linux Security Governance Condition
         linux_condition = harness.chaos.SecurityGovernanceCondition("linux_condition",
-            org_id=org_id,
-            project_id=project_id,
-            name="linux-security-condition",
-            description="Security governance condition for Linux hosts",
-            infra_type="Linux",
             fault_spec={
-                "operator": "NOT_EQUAL_TO",
                 "faults": [
                     {
                         "fault_type": "FAULT",
@@ -596,6 +590,7 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
                         "name": "memory-hog",
                     },
                 ],
+                "operator": "NOT_EQUAL_TO",
             },
             machine_spec={
                 "infra_spec": {
@@ -603,6 +598,11 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
                     "infra_ids": [linux_infra_id],
                 },
             },
+            org_id=org_id,
+            project_id=project_id,
+            name="linux-security-condition",
+            description="Security governance condition for Linux hosts",
+            infra_type="Linux",
             tags=[
                 "env:prod",
                 "team:security",
@@ -640,10 +640,10 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 fault_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionFaultSpecArgs', 'SecurityGovernanceConditionFaultSpecArgsDict']]] = None,
+                 fault_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionFaultSpecArgs', 'SecurityGovernanceConditionFaultSpecArgsDict', 'outputs.SecurityGovernanceConditionFaultSpec']]] = None,
                  infra_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 k8s_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionK8sSpecArgs', 'SecurityGovernanceConditionK8sSpecArgsDict']]] = None,
-                 machine_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionMachineSpecArgs', 'SecurityGovernanceConditionMachineSpecArgsDict']]] = None,
+                 k8s_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionK8sSpecArgs', 'SecurityGovernanceConditionK8sSpecArgsDict', 'outputs.SecurityGovernanceConditionK8sSpec']]] = None,
+                 machine_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionMachineSpecArgs', 'SecurityGovernanceConditionMachineSpecArgsDict', 'outputs.SecurityGovernanceConditionMachineSpec']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -685,10 +685,10 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            fault_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionFaultSpecArgs', 'SecurityGovernanceConditionFaultSpecArgsDict']]] = None,
+            fault_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionFaultSpecArgs', 'SecurityGovernanceConditionFaultSpecArgsDict', 'outputs.SecurityGovernanceConditionFaultSpec']]] = None,
             infra_type: pulumi.Input[Optional[_builtins.str]] = None,
-            k8s_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionK8sSpecArgs', 'SecurityGovernanceConditionK8sSpecArgsDict']]] = None,
-            machine_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionMachineSpecArgs', 'SecurityGovernanceConditionMachineSpecArgsDict']]] = None,
+            k8s_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionK8sSpecArgs', 'SecurityGovernanceConditionK8sSpecArgsDict', 'outputs.SecurityGovernanceConditionK8sSpec']]] = None,
+            machine_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionMachineSpecArgs', 'SecurityGovernanceConditionMachineSpecArgsDict', 'outputs.SecurityGovernanceConditionMachineSpec']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -701,10 +701,10 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the security governance condition
-        :param pulumi.Input[Union['SecurityGovernanceConditionFaultSpecArgs', 'SecurityGovernanceConditionFaultSpecArgsDict']] fault_spec: Specification for faults to be included in the condition
+        :param pulumi.Input[Union['SecurityGovernanceConditionFaultSpecArgs', 'SecurityGovernanceConditionFaultSpecArgsDict', 'outputs.SecurityGovernanceConditionFaultSpec']] fault_spec: Specification for faults to be included in the condition
         :param pulumi.Input[_builtins.str] infra_type: Type of infrastructure (Kubernetes, KubernetesV2, Linux, Windows, CloudFoundry, Container)
-        :param pulumi.Input[Union['SecurityGovernanceConditionK8sSpecArgs', 'SecurityGovernanceConditionK8sSpecArgsDict']] k8s_spec: Kubernetes specific configuration (required when infra*type is KUBERNETES or KUBERNETESV2)
-        :param pulumi.Input[Union['SecurityGovernanceConditionMachineSpecArgs', 'SecurityGovernanceConditionMachineSpecArgsDict']] machine_spec: Machine specific configuration (required when infra*type is LINUX or WINDOWS)
+        :param pulumi.Input[Union['SecurityGovernanceConditionK8sSpecArgs', 'SecurityGovernanceConditionK8sSpecArgsDict', 'outputs.SecurityGovernanceConditionK8sSpec']] k8s_spec: Kubernetes specific configuration (required when infra*type is KUBERNETES or KUBERNETESV2)
+        :param pulumi.Input[Union['SecurityGovernanceConditionMachineSpecArgs', 'SecurityGovernanceConditionMachineSpecArgsDict', 'outputs.SecurityGovernanceConditionMachineSpec']] machine_spec: Machine specific configuration (required when infra*type is LINUX or WINDOWS)
         :param pulumi.Input[_builtins.str] name: Name of the security governance condition
         :param pulumi.Input[_builtins.str] org_id: The organization ID of the security governance condition
         :param pulumi.Input[_builtins.str] project_id: The project ID of the security governance condition

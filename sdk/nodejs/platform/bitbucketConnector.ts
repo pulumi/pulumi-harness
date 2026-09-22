@@ -17,14 +17,6 @@ import * as utilities from "../utilities";
  *
  * // Credentials http (with username + personal access token - UsernameToken)
  * const usernameToken = new harness.platform.BitbucketConnector("username_token", {
- *     identifier: "identifier",
- *     name: "name",
- *     description: "test",
- *     tags: ["foo:bar"],
- *     url: "https://bitbucket.com/account",
- *     connectionType: "Account",
- *     validationRepo: "some_repo",
- *     delegateSelectors: ["harness-delegate"],
  *     credentials: {
  *         http: {
  *             username: "username",
@@ -36,18 +28,18 @@ import * as utilities from "../utilities";
  *         username: "username",
  *         tokenRef: "account.secret_id",
  *     },
+ *     identifier: "identifier",
+ *     name: "name",
+ *     description: "test",
+ *     tags: ["foo:bar"],
+ *     url: "https://bitbucket.com/account",
+ *     connectionType: "Account",
+ *     validationRepo: "some_repo",
+ *     delegateSelectors: ["harness-delegate"],
  * });
  * // Credentials http with Bitbucket Cloud Workspace API Token (email + API token)
  * // Use this when migrating off Bitbucket app passwords (EOL 2026-06-09).
  * const emailApiToken = new harness.platform.BitbucketConnector("email_api_token", {
- *     identifier: "identifier_email_api_token",
- *     name: "name_email_api_token",
- *     description: "Bitbucket Cloud with Workspace API Token",
- *     tags: ["foo:bar"],
- *     url: "https://bitbucket.org/my-workspace",
- *     connectionType: "Account",
- *     validationRepo: "some_repo",
- *     delegateSelectors: ["harness-delegate"],
  *     credentials: {
  *         http: {
  *             username: "username",
@@ -59,17 +51,17 @@ import * as utilities from "../utilities";
  *         email: "user@example.com",
  *         tokenRef: "account.api_token_secret",
  *     },
- * });
- * // Credentials http with Bitbucket repo/project Access Token
- * const accessToken = new harness.platform.BitbucketConnector("access_token", {
- *     identifier: "identifier_access_token",
- *     name: "name_access_token",
- *     description: "Bitbucket with Access Token",
+ *     identifier: "identifier_email_api_token",
+ *     name: "name_email_api_token",
+ *     description: "Bitbucket Cloud with Workspace API Token",
  *     tags: ["foo:bar"],
  *     url: "https://bitbucket.org/my-workspace",
  *     connectionType: "Account",
  *     validationRepo: "some_repo",
  *     delegateSelectors: ["harness-delegate"],
+ * });
+ * // Credentials http with Bitbucket repo/project Access Token
+ * const accessToken = new harness.platform.BitbucketConnector("access_token", {
  *     credentials: {
  *         http: {
  *             username: "username",
@@ -80,9 +72,22 @@ import * as utilities from "../utilities";
  *         authType: "AccessToken",
  *         tokenRef: "account.access_token_secret",
  *     },
+ *     identifier: "identifier_access_token",
+ *     name: "name_access_token",
+ *     description: "Bitbucket with Access Token",
+ *     tags: ["foo:bar"],
+ *     url: "https://bitbucket.org/my-workspace",
+ *     connectionType: "Account",
+ *     validationRepo: "some_repo",
+ *     delegateSelectors: ["harness-delegate"],
  * });
  * // Credentials ssh
  * const ssh = new harness.platform.BitbucketConnector("ssh", {
+ *     credentials: {
+ *         ssh: {
+ *             sshKeyRef: "account.secret_id",
+ *         },
+ *     },
  *     identifier: "identifier_ssh",
  *     name: "name_ssh",
  *     description: "test",
@@ -91,11 +96,6 @@ import * as utilities from "../utilities";
  *     connectionType: "Account",
  *     validationRepo: "some_repo",
  *     delegateSelectors: ["harness-delegate"],
- *     credentials: {
- *         ssh: {
- *             sshKeyRef: "account.secret_id",
- *         },
- *     },
  * });
  * ```
  *

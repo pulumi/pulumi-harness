@@ -236,7 +236,7 @@ class Alert(pulumi.CustomResource):
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 recipients: pulumi.Input[Optional[Union['AlertRecipientsArgs', 'AlertRecipientsArgsDict']]] = None,
+                 recipients: pulumi.Input[Optional[Union['AlertRecipientsArgs', 'AlertRecipientsArgsDict', 'outputs.AlertRecipients']]] = None,
                  rule_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  __props__=None):
         """
@@ -249,7 +249,6 @@ class Alert(pulumi.CustomResource):
         import pulumi_harness as harness
 
         specific_rule_alert = harness.autostopping.Alert("specific-rule-alert",
-            name="demo-alert",
             recipients={
                 "emails": [
                     "user1@example.com",
@@ -260,6 +259,7 @@ class Alert(pulumi.CustomResource):
                     "slack-web-hook-2",
                 ],
             },
+            name="demo-alert",
             events=[
                 "autostopping_rule_created",
                 "autostopping_rule_updated",
@@ -269,7 +269,6 @@ class Alert(pulumi.CustomResource):
             ],
             rule_id_lists=[1234])
         all_rule_alert = harness.autostopping.Alert("all-rule-alert",
-            name="demo-alert",
             recipients={
                 "emails": [
                     "user1@example.com",
@@ -280,6 +279,7 @@ class Alert(pulumi.CustomResource):
                     "slack-web-hook-2",
                 ],
             },
+            name="demo-alert",
             events=[
                 "autostopping_rule_created",
                 "autostopping_rule_updated",
@@ -297,7 +297,7 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enabled: Whether the alert is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] events: List of event types that trigger the alert (e.g. autostopping*rule*created, autostopping*warmup*failed, autostopping*cooldown*failed).
         :param pulumi.Input[_builtins.str] name: Name of the alert.
-        :param pulumi.Input[Union['AlertRecipientsArgs', 'AlertRecipientsArgsDict']] recipients: Notification recipients. At least one of `email` or `slack` is required (with at least one value).
+        :param pulumi.Input[Union['AlertRecipientsArgs', 'AlertRecipientsArgsDict', 'outputs.AlertRecipients']] recipients: Notification recipients. At least one of `email` or `slack` is required (with at least one value).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] rule_id_lists: List of AutoStopping rule IDs to apply the alert to. Required when `applicable_to_all_rules` is false. Mutually exclusive with `applicable_to_all_rules` = true.
         """
         ...
@@ -316,7 +316,6 @@ class Alert(pulumi.CustomResource):
         import pulumi_harness as harness
 
         specific_rule_alert = harness.autostopping.Alert("specific-rule-alert",
-            name="demo-alert",
             recipients={
                 "emails": [
                     "user1@example.com",
@@ -327,6 +326,7 @@ class Alert(pulumi.CustomResource):
                     "slack-web-hook-2",
                 ],
             },
+            name="demo-alert",
             events=[
                 "autostopping_rule_created",
                 "autostopping_rule_updated",
@@ -336,7 +336,6 @@ class Alert(pulumi.CustomResource):
             ],
             rule_id_lists=[1234])
         all_rule_alert = harness.autostopping.Alert("all-rule-alert",
-            name="demo-alert",
             recipients={
                 "emails": [
                     "user1@example.com",
@@ -347,6 +346,7 @@ class Alert(pulumi.CustomResource):
                     "slack-web-hook-2",
                 ],
             },
+            name="demo-alert",
             events=[
                 "autostopping_rule_created",
                 "autostopping_rule_updated",
@@ -377,7 +377,7 @@ class Alert(pulumi.CustomResource):
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 recipients: pulumi.Input[Optional[Union['AlertRecipientsArgs', 'AlertRecipientsArgsDict']]] = None,
+                 recipients: pulumi.Input[Optional[Union['AlertRecipientsArgs', 'AlertRecipientsArgsDict', 'outputs.AlertRecipients']]] = None,
                  rule_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -412,7 +412,7 @@ class Alert(pulumi.CustomResource):
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            recipients: pulumi.Input[Optional[Union['AlertRecipientsArgs', 'AlertRecipientsArgsDict']]] = None,
+            recipients: pulumi.Input[Optional[Union['AlertRecipientsArgs', 'AlertRecipientsArgsDict', 'outputs.AlertRecipients']]] = None,
             rule_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None) -> 'Alert':
         """
         Get an existing Alert resource's state with the given name, id, and optional extra
@@ -425,7 +425,7 @@ class Alert(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] enabled: Whether the alert is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] events: List of event types that trigger the alert (e.g. autostopping*rule*created, autostopping*warmup*failed, autostopping*cooldown*failed).
         :param pulumi.Input[_builtins.str] name: Name of the alert.
-        :param pulumi.Input[Union['AlertRecipientsArgs', 'AlertRecipientsArgsDict']] recipients: Notification recipients. At least one of `email` or `slack` is required (with at least one value).
+        :param pulumi.Input[Union['AlertRecipientsArgs', 'AlertRecipientsArgsDict', 'outputs.AlertRecipients']] recipients: Notification recipients. At least one of `email` or `slack` is required (with at least one value).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] rule_id_lists: List of AutoStopping rule IDs to apply the alert to. Required when `applicable_to_all_rules` is false. Mutually exclusive with `applicable_to_all_rules` = true.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

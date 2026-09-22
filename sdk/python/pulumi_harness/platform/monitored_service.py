@@ -170,7 +170,7 @@ class MonitoredService(pulumi.CustomResource):
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 request: pulumi.Input[Optional[Union['MonitoredServiceRequestArgs', 'MonitoredServiceRequestArgsDict']]] = None,
+                 request: pulumi.Input[Optional[Union['MonitoredServiceRequestArgs', 'MonitoredServiceRequestArgsDict', 'outputs.MonitoredServiceRequest']]] = None,
                  __props__=None):
         """
         Resource for creating a monitored service.
@@ -184,58 +184,7 @@ class MonitoredService(pulumi.CustomResource):
 
         #Sample template for Elastic Search Log Health Source
         example = harness.platform.MonitoredService("example",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
             request={
-                "name": "name",
-                "type": "Application",
-                "description": "description",
-                "service_ref": "service_ref",
-                "environment_ref": "environment_ref",
-                "tags": [
-                    "foo:bar",
-                    "bar:foo",
-                ],
-                "health_sources": [{
-                    "name": "name",
-                    "identifier": "identifier",
-                    "type": "ElasticSearch",
-                    "version": "v2",
-                    "spec": json.dumps({
-                        "connectorRef": "connectorRef",
-                        "queryDefinitions": [
-                            {
-                                "name": "name",
-                                "identifier": "infraquery",
-                                "query": "query",
-                                "index": "index",
-                                "groupName": "Logs_Group",
-                                "queryParams": {
-                                    "index": "index",
-                                    "serviceInstanceField": "serviceInstanceIdentifier",
-                                    "timeStampIdentifier": "timeStampIdentifier",
-                                    "timeStampFormat": "timeStampFormat",
-                                    "messageIdentifier": "messageIdentifier",
-                                },
-                            },
-                            {
-                                "name": "name2",
-                                "identifier": "errorquery",
-                                "query": "query2",
-                                "index": "index2",
-                                "groupName": "Logs_Group",
-                                "queryParams": {
-                                    "index": "index",
-                                    "serviceInstanceField": "serviceInstanceIdentifier",
-                                    "timeStampIdentifier": "timeStampIdentifier",
-                                    "timeStampFormat": "timeStampFormat",
-                                    "messageIdentifier": "messageIdentifier",
-                                },
-                            },
-                        ],
-                    }),
-                }],
                 "change_sources": [
                     {
                         "name": "BAC",
@@ -293,6 +242,45 @@ class MonitoredService(pulumi.CustomResource):
                         }),
                     },
                 ],
+                "health_sources": [{
+                    "name": "name",
+                    "identifier": "identifier",
+                    "type": "ElasticSearch",
+                    "version": "v2",
+                    "spec": json.dumps({
+                        "connectorRef": "connectorRef",
+                        "queryDefinitions": [
+                            {
+                                "name": "name",
+                                "identifier": "infraquery",
+                                "query": "query",
+                                "index": "index",
+                                "groupName": "Logs_Group",
+                                "queryParams": {
+                                    "index": "index",
+                                    "serviceInstanceField": "serviceInstanceIdentifier",
+                                    "timeStampIdentifier": "timeStampIdentifier",
+                                    "timeStampFormat": "timeStampFormat",
+                                    "messageIdentifier": "messageIdentifier",
+                                },
+                            },
+                            {
+                                "name": "name2",
+                                "identifier": "errorquery",
+                                "query": "query2",
+                                "index": "index2",
+                                "groupName": "Logs_Group",
+                                "queryParams": {
+                                    "index": "index",
+                                    "serviceInstanceField": "serviceInstanceIdentifier",
+                                    "timeStampIdentifier": "timeStampIdentifier",
+                                    "timeStampFormat": "timeStampFormat",
+                                    "messageIdentifier": "messageIdentifier",
+                                },
+                            },
+                        ],
+                    }),
+                }],
                 "notification_rule_refs": [
                     {
                         "notification_rule_ref": "notification_rule_ref",
@@ -303,13 +291,6 @@ class MonitoredService(pulumi.CustomResource):
                         "enabled": False,
                     },
                 ],
-            })
-        #Sample template for Sumologic Metrics Health Source
-        example1 = harness.platform.MonitoredService("example1",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
-            request={
                 "name": "name",
                 "type": "Application",
                 "description": "description",
@@ -319,6 +300,13 @@ class MonitoredService(pulumi.CustomResource):
                     "foo:bar",
                     "bar:foo",
                 ],
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
+        #Sample template for Sumologic Metrics Health Source
+        example1 = harness.platform.MonitoredService("example1",
+            request={
                 "health_sources": [{
                     "name": "sumologicmetrics",
                     "identifier": "sumo_metric_identifier",
@@ -395,13 +383,6 @@ class MonitoredService(pulumi.CustomResource):
                         ],
                     }),
                 }],
-            })
-        #Sample template for Sumologic Log Health Source
-        example2 = harness.platform.MonitoredService("example2",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
-            request={
                 "name": "name",
                 "type": "Application",
                 "description": "description",
@@ -411,6 +392,13 @@ class MonitoredService(pulumi.CustomResource):
                     "foo:bar",
                     "bar:foo",
                 ],
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
+        #Sample template for Sumologic Log Health Source
+        example2 = harness.platform.MonitoredService("example2",
+            request={
                 "health_sources": [{
                     "name": "sumologic",
                     "identifier": "sumo_metric_identifier",
@@ -440,13 +428,6 @@ class MonitoredService(pulumi.CustomResource):
                         ],
                     }),
                 }],
-            })
-        #Sample template for Splunk Signal FX Health Source
-        example3 = harness.platform.MonitoredService("example3",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
-            request={
                 "name": "name",
                 "type": "Application",
                 "description": "description",
@@ -456,6 +437,13 @@ class MonitoredService(pulumi.CustomResource):
                     "foo:bar",
                     "bar:foo",
                 ],
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
+        #Sample template for Splunk Signal FX Health Source
+        example3 = harness.platform.MonitoredService("example3",
+            request={
                 "health_sources": [{
                     "name": "signalfxmetrics",
                     "identifier": "signalfxmetrics",
@@ -529,13 +517,6 @@ class MonitoredService(pulumi.CustomResource):
                         ],
                     }),
                 }],
-            })
-        #Sample template for Grafana Loki Log Health Source
-        example4 = harness.platform.MonitoredService("example4",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
-            request={
                 "name": "name",
                 "type": "Application",
                 "description": "description",
@@ -545,6 +526,13 @@ class MonitoredService(pulumi.CustomResource):
                     "foo:bar",
                     "bar:foo",
                 ],
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
+        #Sample template for Grafana Loki Log Health Source
+        example4 = harness.platform.MonitoredService("example4",
+            request={
                 "health_sources": [{
                     "name": "Test",
                     "identifier": "Test",
@@ -577,13 +565,6 @@ class MonitoredService(pulumi.CustomResource):
                         ],
                     }),
                 }],
-            })
-        #Sample template for Azure Metrics Health Source
-        example5 = harness.platform.MonitoredService("example5",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
-            request={
                 "name": "name",
                 "type": "Application",
                 "description": "description",
@@ -593,6 +574,13 @@ class MonitoredService(pulumi.CustomResource):
                     "foo:bar",
                     "bar:foo",
                 ],
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
+        #Sample template for Azure Metrics Health Source
+        example5 = harness.platform.MonitoredService("example5",
+            request={
                 "health_sources": [{
                     "name": "azure metrics verify step",
                     "identifier": "azure_metrics_verify_step",
@@ -676,13 +664,6 @@ class MonitoredService(pulumi.CustomResource):
                         ],
                     }),
                 }],
-            })
-        #Sample template for Azure Log Health Source
-        example6 = harness.platform.MonitoredService("example6",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
-            request={
                 "name": "name",
                 "type": "Application",
                 "description": "description",
@@ -692,6 +673,13 @@ class MonitoredService(pulumi.CustomResource):
                     "foo:bar",
                     "bar:foo",
                 ],
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
+        #Sample template for Azure Log Health Source
+        example6 = harness.platform.MonitoredService("example6",
+            request={
                 "health_sources": [{
                     "name": "Demo azure",
                     "identifier": "Demo_azure",
@@ -715,13 +703,6 @@ class MonitoredService(pulumi.CustomResource):
                         }],
                     }),
                 }],
-            })
-        #Sample template for Prometheus Metrics Health Source
-        example7 = harness.platform.MonitoredService("example7",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
-            request={
                 "name": "name",
                 "type": "Application",
                 "description": "description",
@@ -731,6 +712,13 @@ class MonitoredService(pulumi.CustomResource):
                     "foo:bar",
                     "bar:foo",
                 ],
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
+        #Sample template for Prometheus Metrics Health Source
+        example7 = harness.platform.MonitoredService("example7",
+            request={
                 "health_sources": [{
                     "name": "prometheus metrics verify step",
                     "identifier": "prometheus_metrics",
@@ -795,13 +783,6 @@ class MonitoredService(pulumi.CustomResource):
                         }],
                     }),
                 }],
-            })
-        #Sample template for Datadog Metrics Health Source
-        example8 = harness.platform.MonitoredService("example8",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
-            request={
                 "name": "name",
                 "type": "Application",
                 "description": "description",
@@ -811,6 +792,13 @@ class MonitoredService(pulumi.CustomResource):
                     "foo:bar",
                     "bar:foo",
                 ],
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
+        #Sample template for Datadog Metrics Health Source
+        example8 = harness.platform.MonitoredService("example8",
+            request={
                 "health_sources": [{
                     "name": "ddm",
                     "identifier": "ddm",
@@ -908,13 +896,6 @@ class MonitoredService(pulumi.CustomResource):
                         }],
                     }),
                 }],
-            })
-        #Sample template for New Relic Metrics Health Source
-        example9 = harness.platform.MonitoredService("example9",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
-            request={
                 "name": "name",
                 "type": "Application",
                 "description": "description",
@@ -924,6 +905,13 @@ class MonitoredService(pulumi.CustomResource):
                     "foo:bar",
                     "bar:foo",
                 ],
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
+        #Sample template for New Relic Metrics Health Source
+        example9 = harness.platform.MonitoredService("example9",
+            request={
                 "health_sources": [{
                     "name": "name",
                     "identifier": "identifier",
@@ -996,7 +984,19 @@ class MonitoredService(pulumi.CustomResource):
                         }],
                     }),
                 }],
-            })
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
+                    "foo:bar",
+                    "bar:foo",
+                ],
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
         ```
 
         ## Import
@@ -1027,7 +1027,7 @@ class MonitoredService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Identifier of the monitored service.
         :param pulumi.Input[_builtins.str] org_id: Identifier of the organization in which the monitored service is configured.
         :param pulumi.Input[_builtins.str] project_id: Identifier of the project in which the monitored service is configured.
-        :param pulumi.Input[Union['MonitoredServiceRequestArgs', 'MonitoredServiceRequestArgsDict']] request: Request for creating or updating a monitored service.
+        :param pulumi.Input[Union['MonitoredServiceRequestArgs', 'MonitoredServiceRequestArgsDict', 'outputs.MonitoredServiceRequest']] request: Request for creating or updating a monitored service.
         """
         ...
     @overload
@@ -1047,58 +1047,7 @@ class MonitoredService(pulumi.CustomResource):
 
         #Sample template for Elastic Search Log Health Source
         example = harness.platform.MonitoredService("example",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
             request={
-                "name": "name",
-                "type": "Application",
-                "description": "description",
-                "service_ref": "service_ref",
-                "environment_ref": "environment_ref",
-                "tags": [
-                    "foo:bar",
-                    "bar:foo",
-                ],
-                "health_sources": [{
-                    "name": "name",
-                    "identifier": "identifier",
-                    "type": "ElasticSearch",
-                    "version": "v2",
-                    "spec": json.dumps({
-                        "connectorRef": "connectorRef",
-                        "queryDefinitions": [
-                            {
-                                "name": "name",
-                                "identifier": "infraquery",
-                                "query": "query",
-                                "index": "index",
-                                "groupName": "Logs_Group",
-                                "queryParams": {
-                                    "index": "index",
-                                    "serviceInstanceField": "serviceInstanceIdentifier",
-                                    "timeStampIdentifier": "timeStampIdentifier",
-                                    "timeStampFormat": "timeStampFormat",
-                                    "messageIdentifier": "messageIdentifier",
-                                },
-                            },
-                            {
-                                "name": "name2",
-                                "identifier": "errorquery",
-                                "query": "query2",
-                                "index": "index2",
-                                "groupName": "Logs_Group",
-                                "queryParams": {
-                                    "index": "index",
-                                    "serviceInstanceField": "serviceInstanceIdentifier",
-                                    "timeStampIdentifier": "timeStampIdentifier",
-                                    "timeStampFormat": "timeStampFormat",
-                                    "messageIdentifier": "messageIdentifier",
-                                },
-                            },
-                        ],
-                    }),
-                }],
                 "change_sources": [
                     {
                         "name": "BAC",
@@ -1156,6 +1105,45 @@ class MonitoredService(pulumi.CustomResource):
                         }),
                     },
                 ],
+                "health_sources": [{
+                    "name": "name",
+                    "identifier": "identifier",
+                    "type": "ElasticSearch",
+                    "version": "v2",
+                    "spec": json.dumps({
+                        "connectorRef": "connectorRef",
+                        "queryDefinitions": [
+                            {
+                                "name": "name",
+                                "identifier": "infraquery",
+                                "query": "query",
+                                "index": "index",
+                                "groupName": "Logs_Group",
+                                "queryParams": {
+                                    "index": "index",
+                                    "serviceInstanceField": "serviceInstanceIdentifier",
+                                    "timeStampIdentifier": "timeStampIdentifier",
+                                    "timeStampFormat": "timeStampFormat",
+                                    "messageIdentifier": "messageIdentifier",
+                                },
+                            },
+                            {
+                                "name": "name2",
+                                "identifier": "errorquery",
+                                "query": "query2",
+                                "index": "index2",
+                                "groupName": "Logs_Group",
+                                "queryParams": {
+                                    "index": "index",
+                                    "serviceInstanceField": "serviceInstanceIdentifier",
+                                    "timeStampIdentifier": "timeStampIdentifier",
+                                    "timeStampFormat": "timeStampFormat",
+                                    "messageIdentifier": "messageIdentifier",
+                                },
+                            },
+                        ],
+                    }),
+                }],
                 "notification_rule_refs": [
                     {
                         "notification_rule_ref": "notification_rule_ref",
@@ -1166,13 +1154,6 @@ class MonitoredService(pulumi.CustomResource):
                         "enabled": False,
                     },
                 ],
-            })
-        #Sample template for Sumologic Metrics Health Source
-        example1 = harness.platform.MonitoredService("example1",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
-            request={
                 "name": "name",
                 "type": "Application",
                 "description": "description",
@@ -1182,6 +1163,13 @@ class MonitoredService(pulumi.CustomResource):
                     "foo:bar",
                     "bar:foo",
                 ],
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
+        #Sample template for Sumologic Metrics Health Source
+        example1 = harness.platform.MonitoredService("example1",
+            request={
                 "health_sources": [{
                     "name": "sumologicmetrics",
                     "identifier": "sumo_metric_identifier",
@@ -1258,13 +1246,6 @@ class MonitoredService(pulumi.CustomResource):
                         ],
                     }),
                 }],
-            })
-        #Sample template for Sumologic Log Health Source
-        example2 = harness.platform.MonitoredService("example2",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
-            request={
                 "name": "name",
                 "type": "Application",
                 "description": "description",
@@ -1274,6 +1255,13 @@ class MonitoredService(pulumi.CustomResource):
                     "foo:bar",
                     "bar:foo",
                 ],
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
+        #Sample template for Sumologic Log Health Source
+        example2 = harness.platform.MonitoredService("example2",
+            request={
                 "health_sources": [{
                     "name": "sumologic",
                     "identifier": "sumo_metric_identifier",
@@ -1303,13 +1291,6 @@ class MonitoredService(pulumi.CustomResource):
                         ],
                     }),
                 }],
-            })
-        #Sample template for Splunk Signal FX Health Source
-        example3 = harness.platform.MonitoredService("example3",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
-            request={
                 "name": "name",
                 "type": "Application",
                 "description": "description",
@@ -1319,6 +1300,13 @@ class MonitoredService(pulumi.CustomResource):
                     "foo:bar",
                     "bar:foo",
                 ],
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
+        #Sample template for Splunk Signal FX Health Source
+        example3 = harness.platform.MonitoredService("example3",
+            request={
                 "health_sources": [{
                     "name": "signalfxmetrics",
                     "identifier": "signalfxmetrics",
@@ -1392,13 +1380,6 @@ class MonitoredService(pulumi.CustomResource):
                         ],
                     }),
                 }],
-            })
-        #Sample template for Grafana Loki Log Health Source
-        example4 = harness.platform.MonitoredService("example4",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
-            request={
                 "name": "name",
                 "type": "Application",
                 "description": "description",
@@ -1408,6 +1389,13 @@ class MonitoredService(pulumi.CustomResource):
                     "foo:bar",
                     "bar:foo",
                 ],
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
+        #Sample template for Grafana Loki Log Health Source
+        example4 = harness.platform.MonitoredService("example4",
+            request={
                 "health_sources": [{
                     "name": "Test",
                     "identifier": "Test",
@@ -1440,13 +1428,6 @@ class MonitoredService(pulumi.CustomResource):
                         ],
                     }),
                 }],
-            })
-        #Sample template for Azure Metrics Health Source
-        example5 = harness.platform.MonitoredService("example5",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
-            request={
                 "name": "name",
                 "type": "Application",
                 "description": "description",
@@ -1456,6 +1437,13 @@ class MonitoredService(pulumi.CustomResource):
                     "foo:bar",
                     "bar:foo",
                 ],
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
+        #Sample template for Azure Metrics Health Source
+        example5 = harness.platform.MonitoredService("example5",
+            request={
                 "health_sources": [{
                     "name": "azure metrics verify step",
                     "identifier": "azure_metrics_verify_step",
@@ -1539,13 +1527,6 @@ class MonitoredService(pulumi.CustomResource):
                         ],
                     }),
                 }],
-            })
-        #Sample template for Azure Log Health Source
-        example6 = harness.platform.MonitoredService("example6",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
-            request={
                 "name": "name",
                 "type": "Application",
                 "description": "description",
@@ -1555,6 +1536,13 @@ class MonitoredService(pulumi.CustomResource):
                     "foo:bar",
                     "bar:foo",
                 ],
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
+        #Sample template for Azure Log Health Source
+        example6 = harness.platform.MonitoredService("example6",
+            request={
                 "health_sources": [{
                     "name": "Demo azure",
                     "identifier": "Demo_azure",
@@ -1578,13 +1566,6 @@ class MonitoredService(pulumi.CustomResource):
                         }],
                     }),
                 }],
-            })
-        #Sample template for Prometheus Metrics Health Source
-        example7 = harness.platform.MonitoredService("example7",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
-            request={
                 "name": "name",
                 "type": "Application",
                 "description": "description",
@@ -1594,6 +1575,13 @@ class MonitoredService(pulumi.CustomResource):
                     "foo:bar",
                     "bar:foo",
                 ],
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
+        #Sample template for Prometheus Metrics Health Source
+        example7 = harness.platform.MonitoredService("example7",
+            request={
                 "health_sources": [{
                     "name": "prometheus metrics verify step",
                     "identifier": "prometheus_metrics",
@@ -1658,13 +1646,6 @@ class MonitoredService(pulumi.CustomResource):
                         }],
                     }),
                 }],
-            })
-        #Sample template for Datadog Metrics Health Source
-        example8 = harness.platform.MonitoredService("example8",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
-            request={
                 "name": "name",
                 "type": "Application",
                 "description": "description",
@@ -1674,6 +1655,13 @@ class MonitoredService(pulumi.CustomResource):
                     "foo:bar",
                     "bar:foo",
                 ],
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
+        #Sample template for Datadog Metrics Health Source
+        example8 = harness.platform.MonitoredService("example8",
+            request={
                 "health_sources": [{
                     "name": "ddm",
                     "identifier": "ddm",
@@ -1771,13 +1759,6 @@ class MonitoredService(pulumi.CustomResource):
                         }],
                     }),
                 }],
-            })
-        #Sample template for New Relic Metrics Health Source
-        example9 = harness.platform.MonitoredService("example9",
-            org_id="org_id",
-            project_id="project_id",
-            identifier="identifier",
-            request={
                 "name": "name",
                 "type": "Application",
                 "description": "description",
@@ -1787,6 +1768,13 @@ class MonitoredService(pulumi.CustomResource):
                     "foo:bar",
                     "bar:foo",
                 ],
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
+        #Sample template for New Relic Metrics Health Source
+        example9 = harness.platform.MonitoredService("example9",
+            request={
                 "health_sources": [{
                     "name": "name",
                     "identifier": "identifier",
@@ -1859,7 +1847,19 @@ class MonitoredService(pulumi.CustomResource):
                         }],
                     }),
                 }],
-            })
+                "name": "name",
+                "type": "Application",
+                "description": "description",
+                "service_ref": "service_ref",
+                "environment_ref": "environment_ref",
+                "tags": [
+                    "foo:bar",
+                    "bar:foo",
+                ],
+            },
+            org_id="org_id",
+            project_id="project_id",
+            identifier="identifier")
         ```
 
         ## Import
@@ -1903,7 +1903,7 @@ class MonitoredService(pulumi.CustomResource):
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 request: pulumi.Input[Optional[Union['MonitoredServiceRequestArgs', 'MonitoredServiceRequestArgsDict']]] = None,
+                 request: pulumi.Input[Optional[Union['MonitoredServiceRequestArgs', 'MonitoredServiceRequestArgsDict', 'outputs.MonitoredServiceRequest']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1936,7 +1936,7 @@ class MonitoredService(pulumi.CustomResource):
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
-            request: pulumi.Input[Optional[Union['MonitoredServiceRequestArgs', 'MonitoredServiceRequestArgsDict']]] = None) -> 'MonitoredService':
+            request: pulumi.Input[Optional[Union['MonitoredServiceRequestArgs', 'MonitoredServiceRequestArgsDict', 'outputs.MonitoredServiceRequest']]] = None) -> 'MonitoredService':
         """
         Get an existing MonitoredService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1947,7 +1947,7 @@ class MonitoredService(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Identifier of the monitored service.
         :param pulumi.Input[_builtins.str] org_id: Identifier of the organization in which the monitored service is configured.
         :param pulumi.Input[_builtins.str] project_id: Identifier of the project in which the monitored service is configured.
-        :param pulumi.Input[Union['MonitoredServiceRequestArgs', 'MonitoredServiceRequestArgsDict']] request: Request for creating or updating a monitored service.
+        :param pulumi.Input[Union['MonitoredServiceRequestArgs', 'MonitoredServiceRequestArgsDict', 'outputs.MonitoredServiceRequest']] request: Request for creating or updating a monitored service.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -30,6 +30,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Example 1: Username/Password Authentication (New Block Format)
 //			_, err := platform.NewSplunkConnector(ctx, "username_password", &platform.SplunkConnectorArgs{
+//				UsernamePassword: &platform.SplunkConnectorUsernamePasswordArgs{
+//					Username:    pulumi.String("splunk_user"),
+//					PasswordRef: pulumi.String("account.splunk_password"),
+//				},
 //				Identifier:  pulumi.String("splunk_userpass"),
 //				Name:        pulumi.String("Splunk Username/Password"),
 //				Description: pulumi.String("Splunk connector with username/password authentication"),
@@ -41,16 +45,15 @@ import (
 //					pulumi.String("harness-delegate"),
 //				},
 //				AccountId: pulumi.String("splunk_account_id"),
-//				UsernamePassword: &platform.SplunkConnectorUsernamePasswordArgs{
-//					Username:    pulumi.String("splunk_user"),
-//					PasswordRef: pulumi.String("account.splunk_password"),
-//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example 2: Bearer Token Authentication
 //			_, err = platform.NewSplunkConnector(ctx, "bearer_token", &platform.SplunkConnectorArgs{
+//				BearerToken: &platform.SplunkConnectorBearerTokenArgs{
+//					BearerTokenRef: pulumi.String("account.splunk_bearer_token"),
+//				},
 //				Identifier:  pulumi.String("splunk_bearer"),
 //				Name:        pulumi.String("Splunk Bearer Token"),
 //				Description: pulumi.String("Splunk connector with bearer token authentication"),
@@ -62,15 +65,15 @@ import (
 //					pulumi.String("harness-delegate"),
 //				},
 //				AccountId: pulumi.String("splunk_account_id"),
-//				BearerToken: &platform.SplunkConnectorBearerTokenArgs{
-//					BearerTokenRef: pulumi.String("account.splunk_bearer_token"),
-//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example 3: HEC Token Authentication
 //			_, err = platform.NewSplunkConnector(ctx, "hec_token", &platform.SplunkConnectorArgs{
+//				HecToken: &platform.SplunkConnectorHecTokenArgs{
+//					HecTokenRef: pulumi.String("account.splunk_hec_token"),
+//				},
 //				Identifier:  pulumi.String("splunk_hec"),
 //				Name:        pulumi.String("Splunk HEC Token"),
 //				Description: pulumi.String("Splunk connector with HEC token authentication"),
@@ -82,18 +85,16 @@ import (
 //					pulumi.String("harness-delegate"),
 //				},
 //				AccountId: pulumi.String("splunk_account_id"),
-//				HecToken: &platform.SplunkConnectorHecTokenArgs{
-//					HecTokenRef: pulumi.String("account.splunk_hec_token"),
-//				},
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Example 4: No Authentication
 //			_, err = platform.NewSplunkConnector(ctx, "no_auth", &platform.SplunkConnectorArgs{
-//				Identifier:  pulumi.String("splunk_no_auth"),
-//				Name:        pulumi.String("Splunk No Auth"),
-//				Description: pulumi.String("Splunk connector without authentication"),
+//				NoAuthentication: &platform.SplunkConnectorNoAuthenticationArgs{},
+//				Identifier:       pulumi.String("splunk_no_auth"),
+//				Name:             pulumi.String("Splunk No Auth"),
+//				Description:      pulumi.String("Splunk connector without authentication"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("env:development"),
 //				},
@@ -101,8 +102,7 @@ import (
 //				DelegateSelectors: pulumi.StringArray{
 //					pulumi.String("harness-delegate"),
 //				},
-//				AccountId:        pulumi.String("splunk_account_id"),
-//				NoAuthentication: &platform.SplunkConnectorNoAuthenticationArgs{},
+//				AccountId: pulumi.String("splunk_account_id"),
 //			})
 //			if err != nil {
 //				return err

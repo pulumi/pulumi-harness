@@ -51,18 +51,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new DiscoveryAgent("example", DiscoveryAgentArgs.builder()
+ *             .configs(DiscoveryAgentConfigArgs.builder()
+ *                 .kubernetes(DiscoveryAgentConfigKuberneteArgs.builder()
+ *                     .namespace("harness-sd")
+ *                     .build())
+ *                 .collectorImage("harness/service-discovery-collector:main-latest")
+ *                 .logWatcherImage("harness/chaos-log-watcher:main-latest")
+ *                 .build())
  *             .name("ExampleAgent")
  *             .orgIdentifier("your_org_id")
  *             .projectIdentifier("your_project_id")
  *             .environmentIdentifier("your_environment_id")
  *             .infraIdentifier("your_infra_id")
- *             .configs(DiscoveryAgentConfigArgs.builder()
- *                 .collectorImage("harness/service-discovery-collector:main-latest")
- *                 .logWatcherImage("harness/chaos-log-watcher:main-latest")
- *                 .kubernetes(DiscoveryAgentConfigKuberneteArgs.builder()
- *                     .namespace("harness-sd")
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *     }
@@ -84,9 +84,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.harness.service.inputs.DiscoveryAgentConfigArgs;
  * import com.pulumi.harness.service.inputs.DiscoveryAgentConfigKuberneteArgs;
  * import com.pulumi.harness.service.inputs.DiscoveryAgentConfigDataArgs;
+ * import com.pulumi.harness.service.inputs.DiscoveryAgentConfigDataCronArgs;
  * import com.pulumi.harness.service.inputs.DiscoveryAgentConfigKuberneteResourceArgs;
  * import com.pulumi.harness.service.inputs.DiscoveryAgentConfigKuberneteTolerationArgs;
- * import com.pulumi.harness.service.inputs.DiscoveryAgentConfigDataCronArgs;
  * import com.pulumi.harness.service.inputs.DiscoveryAgentConfigMtlArgs;
  * import com.pulumi.harness.service.inputs.DiscoveryAgentConfigProxyArgs;
  * import java.util.ArrayList;
@@ -104,60 +104,56 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new service discovery agent with minimal configuration
  *         var example = new DiscoveryAgent("example", DiscoveryAgentArgs.builder()
+ *             .configs(DiscoveryAgentConfigArgs.builder()
+ *                 .kubernetes(DiscoveryAgentConfigKuberneteArgs.builder()
+ *                     .namespace("harness-sd")
+ *                     .build())
+ *                 .build())
  *             .name("example-agent")
  *             .orgIdentifier(orgIdentifier)
  *             .projectIdentifier(projectIdentifier)
  *             .environmentIdentifier(environmentIdentifier)
  *             .infraIdentifier("example-infra")
- *             .configs(DiscoveryAgentConfigArgs.builder()
- *                 .kubernetes(DiscoveryAgentConfigKuberneteArgs.builder()
- *                     .namespace("harness-sd")
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *         // Create a new service discovery agent with node agent enabled
  *         var nodeAgent = new DiscoveryAgent("nodeAgent", DiscoveryAgentArgs.builder()
+ *             .configs(DiscoveryAgentConfigArgs.builder()
+ *                 .datas(DiscoveryAgentConfigDataArgs.builder()
+ *                     .enableNodeAgent(true)
+ *                     .build())
+ *                 .kubernetes(DiscoveryAgentConfigKuberneteArgs.builder()
+ *                     .namespace("harness-sd")
+ *                     .build())
+ *                 .build())
  *             .name("node-agent-example")
  *             .orgIdentifier(orgIdentifier)
  *             .projectIdentifier(projectIdentifier)
  *             .environmentIdentifier(environmentIdentifier)
  *             .infraIdentifier("node-agent-example")
- *             .configs(DiscoveryAgentConfigArgs.builder()
- *                 .kubernetes(DiscoveryAgentConfigKuberneteArgs.builder()
- *                     .namespace("harness-sd")
- *                     .build())
- *                 .datas(DiscoveryAgentConfigDataArgs.builder()
- *                     .enableNodeAgent(true)
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *         // Create a new service discovery agent with full configuration
  *         var fullConfig = new DiscoveryAgent("fullConfig", DiscoveryAgentArgs.builder()
- *             .name("full-config-example")
- *             .orgIdentifier(orgIdentifier)
- *             .projectIdentifier(projectIdentifier)
- *             .environmentIdentifier(environmentIdentifier)
- *             .infraIdentifier("full-config-example")
- *             .permanentInstallation(false)
- *             .correlationId("full-config-correlation-123")
  *             .configs(DiscoveryAgentConfigArgs.builder()
- *                 .collectorImage("harness/service-discovery-collector:main-latest")
- *                 .logWatcherImage("harness/chaos-log-watcher:main-latest")
- *                 .skipSecureVerify(false)
+ *                 .datas(DiscoveryAgentConfigDataArgs.builder()
+ *                     .crons(DiscoveryAgentConfigDataCronArgs.builder()
+ *                         .expression("0/10 * * * *")
+ *                         .build())
+ *                     .enableNodeAgent(true)
+ *                     .nodeAgentSelector("node-role.kubernetes.io/worker=")
+ *                     .enableBatchResources(true)
+ *                     .enableOrphanedPod(true)
+ *                     .namespaceSelector("environment=dev")
+ *                     .collectionWindowInMin(15)
+ *                     .blacklistedNamespaces(                    
+ *                         "kube-system",
+ *                         "kube-public")
+ *                     .observedNamespaces(                    
+ *                         "default",
+ *                         "harness")
+ *                     .build())
  *                 .kubernetes(DiscoveryAgentConfigKuberneteArgs.builder()
- *                     .namespace("harness-sd")
- *                     .serviceAccount("harness-sd-sa")
- *                     .imagePullPolicy("IfNotPresent")
- *                     .runAsUser(2000)
- *                     .runAsGroup(2000)
- *                     .labels(Map.ofEntries(
- *                         Map.entry("app", "service-discovery"),
- *                         Map.entry("env", "dev")
- *                     ))
- *                     .annotations(Map.of("example.com/annotation", "value"))
- *                     .nodeSelector(Map.of("kubernetes.io/os", "linux"))
  *                     .resources(DiscoveryAgentConfigKuberneteResourceArgs.builder()
  *                         .limits(com.pulumi.harness.service.inputs.DiscoveryAgentConfigKuberneteResourceLimitArgs.builder()
  *                             .cpu("500m")
@@ -174,23 +170,17 @@ import javax.annotation.Nullable;
  *                         .value("value1")
  *                         .effect("NoSchedule")
  *                         .build())
- *                     .build())
- *                 .datas(DiscoveryAgentConfigDataArgs.builder()
- *                     .enableNodeAgent(true)
- *                     .nodeAgentSelector("node-role.kubernetes.io/worker=")
- *                     .enableBatchResources(true)
- *                     .enableOrphanedPod(true)
- *                     .namespaceSelector("environment=dev")
- *                     .collectionWindowInMin(15)
- *                     .blacklistedNamespaces(                    
- *                         "kube-system",
- *                         "kube-public")
- *                     .observedNamespaces(                    
- *                         "default",
- *                         "harness")
- *                     .crons(DiscoveryAgentConfigDataCronArgs.builder()
- *                         .expression("0/10 * * * *")
- *                         .build())
+ *                     .namespace("harness-sd")
+ *                     .serviceAccount("harness-sd-sa")
+ *                     .imagePullPolicy("IfNotPresent")
+ *                     .runAsUser(2000)
+ *                     .runAsGroup(2000)
+ *                     .labels(Map.ofEntries(
+ *                         Map.entry("app", "service-discovery"),
+ *                         Map.entry("env", "dev")
+ *                     ))
+ *                     .annotations(Map.of("example.com/annotation", "value"))
+ *                     .nodeSelector(Map.of("kubernetes.io/os", "linux"))
  *                     .build())
  *                 .mtls(DiscoveryAgentConfigMtlArgs.builder()
  *                     .certPath("/etc/certs/tls.crt")
@@ -204,7 +194,17 @@ import javax.annotation.Nullable;
  *                     .noProxy("localhost,127.0.0.1,.svc,.cluster.local")
  *                     .url("https://proxy.example.com")
  *                     .build())
+ *                 .collectorImage("harness/service-discovery-collector:main-latest")
+ *                 .logWatcherImage("harness/chaos-log-watcher:main-latest")
+ *                 .skipSecureVerify(false)
  *                 .build())
+ *             .name("full-config-example")
+ *             .orgIdentifier(orgIdentifier)
+ *             .projectIdentifier(projectIdentifier)
+ *             .environmentIdentifier(environmentIdentifier)
+ *             .infraIdentifier("full-config-example")
+ *             .permanentInstallation(false)
+ *             .correlationId("full-config-correlation-123")
  *             .build());
  * 
  *     }

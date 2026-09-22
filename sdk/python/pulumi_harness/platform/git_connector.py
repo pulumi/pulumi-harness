@@ -423,7 +423,7 @@ class GitConnector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 credentials: pulumi.Input[Optional[Union['GitConnectorCredentialsArgs', 'GitConnectorCredentialsArgsDict']]] = None,
+                 credentials: pulumi.Input[Optional[Union['GitConnectorCredentialsArgs', 'GitConnectorCredentialsArgsDict', 'outputs.GitConnectorCredentials']]] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -464,7 +464,7 @@ class GitConnector(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_type: Whether the connection we're making is to a git repository or a git account. Valid values are Account, Repo.
-        :param pulumi.Input[Union['GitConnectorCredentialsArgs', 'GitConnectorCredentialsArgsDict']] credentials: Credentials to use for the connection.
+        :param pulumi.Input[Union['GitConnectorCredentialsArgs', 'GitConnectorCredentialsArgsDict', 'outputs.GitConnectorCredentials']] credentials: Credentials to use for the connection.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] execute_on_delegate: Execute on delegate or not.
@@ -524,7 +524,7 @@ class GitConnector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 credentials: pulumi.Input[Optional[Union['GitConnectorCredentialsArgs', 'GitConnectorCredentialsArgsDict']]] = None,
+                 credentials: pulumi.Input[Optional[Union['GitConnectorCredentialsArgs', 'GitConnectorCredentialsArgsDict', 'outputs.GitConnectorCredentials']]] = None,
                  delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -575,7 +575,7 @@ class GitConnector(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             connection_type: pulumi.Input[Optional[_builtins.str]] = None,
-            credentials: pulumi.Input[Optional[Union['GitConnectorCredentialsArgs', 'GitConnectorCredentialsArgsDict']]] = None,
+            credentials: pulumi.Input[Optional[Union['GitConnectorCredentialsArgs', 'GitConnectorCredentialsArgsDict', 'outputs.GitConnectorCredentials']]] = None,
             delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -594,7 +594,7 @@ class GitConnector(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] connection_type: Whether the connection we're making is to a git repository or a git account. Valid values are Account, Repo.
-        :param pulumi.Input[Union['GitConnectorCredentialsArgs', 'GitConnectorCredentialsArgsDict']] credentials: Credentials to use for the connection.
+        :param pulumi.Input[Union['GitConnectorCredentialsArgs', 'GitConnectorCredentialsArgsDict', 'outputs.GitConnectorCredentials']] credentials: Credentials to use for the connection.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] delegate_selectors: Tags to filter delegates for connection.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.bool] execute_on_delegate: Execute on delegate or not.

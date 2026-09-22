@@ -29,10 +29,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// data source for gitops clusters mapped to a project level env
 //			_, err := platform.LookupEnvironmentClustersMapping(ctx, &platform.LookupEnvironmentClustersMappingArgs{
-//				Identifier: "mycustomidentifier",
-//				OrgId:      pulumi.StringRef("orgIdentifer"),
-//				ProjectId:  pulumi.StringRef("projectIdentifier"),
-//				EnvId:      "exampleEnvId",
 //				Clusters: []platform.GetEnvironmentClustersMappingCluster{
 //					{
 //						Identifier:      pulumi.StringRef("incluster"),
@@ -41,14 +37,16 @@ import (
 //						Scope:           pulumi.StringRef("ACCOUNT"),
 //					},
 //				},
+//				Identifier: "mycustomidentifier",
+//				OrgId:      pulumi.StringRef("orgIdentifer"),
+//				ProjectId:  pulumi.StringRef("projectIdentifier"),
+//				EnvId:      "exampleEnvId",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			// data source for two gitops clusters mapped to an account level env
 //			_, err = platform.LookupEnvironmentClustersMapping(ctx, &platform.LookupEnvironmentClustersMappingArgs{
-//				Identifier: "mycustomidentifier",
-//				EnvId:      "env1",
 //				Clusters: []platform.GetEnvironmentClustersMappingCluster{
 //					{
 //						Identifier:      pulumi.StringRef("clusterA"),
@@ -63,6 +61,8 @@ import (
 //						Scope:           pulumi.StringRef("ACCOUNT"),
 //					},
 //				},
+//				Identifier: "mycustomidentifier",
+//				EnvId:      "env1",
 //			}, nil)
 //			if err != nil {
 //				return err

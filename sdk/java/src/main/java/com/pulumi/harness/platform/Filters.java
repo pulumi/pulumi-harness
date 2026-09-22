@@ -44,15 +44,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new Filters("test", FiltersArgs.builder()
+ *             .filterProperties(FiltersFilterPropertiesArgs.builder()
+ *                 .tags("foo:bar")
+ *                 .filterType("Connector")
+ *                 .build())
  *             .identifier("identifier")
  *             .name("name")
  *             .orgId("org_id")
  *             .projectId("project_id")
  *             .type("Connector")
- *             .filterProperties(FiltersFilterPropertiesArgs.builder()
- *                 .tags("foo:bar")
- *                 .filterType("Connector")
- *                 .build())
  *             .filterVisibility("EveryOne")
  *             .build());
  * 

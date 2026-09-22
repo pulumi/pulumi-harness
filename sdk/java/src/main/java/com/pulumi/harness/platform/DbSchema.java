@@ -48,6 +48,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultTypeTest = new DbSchema("defaultTypeTest", DbSchemaArgs.builder()
+ *             .schemaSource(DbSchemaSchemaSourceArgs.builder()
+ *                 .connector("gitConnector")
+ *                 .repo("TestRepo")
+ *                 .location("db/example-changelog.yaml")
+ *                 .archivePath("path/to/archive.zip")
+ *                 .build())
  *             .identifier("identifier")
  *             .orgId("org_id")
  *             .projectId("project_id")
@@ -56,15 +62,15 @@ import javax.annotation.Nullable;
  *             .tags(            
  *                 "foo:bar",
  *                 "bar:foo")
- *             .schemaSource(DbSchemaSchemaSourceArgs.builder()
- *                 .connector("gitConnector")
- *                 .repo("TestRepo")
- *                 .location("db/example-changelog.yaml")
- *                 .archivePath("path/to/archive.zip")
- *                 .build())
  *             .build());
  * 
  *         var liquibaseRepositoryTest = new DbSchema("liquibaseRepositoryTest", DbSchemaArgs.builder()
+ *             .schemaSource(DbSchemaSchemaSourceArgs.builder()
+ *                 .connector("gitConnector")
+ *                 .repo("TestRepo")
+ *                 .location("db/example-changelog.yaml")
+ *                 .archivePath("path/to/archive.zip")
+ *                 .build())
  *             .identifier("identifier")
  *             .orgId("org_id")
  *             .projectId("project_id")
@@ -75,15 +81,15 @@ import javax.annotation.Nullable;
  *             .tags(            
  *                 "foo:bar",
  *                 "bar:foo")
- *             .schemaSource(DbSchemaSchemaSourceArgs.builder()
- *                 .connector("gitConnector")
- *                 .repo("TestRepo")
- *                 .location("db/example-changelog.yaml")
- *                 .archivePath("path/to/archive.zip")
- *                 .build())
  *             .build());
  * 
  *         var liquibaseScriptTest = new DbSchema("liquibaseScriptTest", DbSchemaArgs.builder()
+ *             .changelogScript(DbSchemaChangelogScriptArgs.builder()
+ *                 .image("plugins/image")
+ *                 .command("echo \\\"hello dbops\\\"")
+ *                 .shell("sh/bash")
+ *                 .location("db/example-changelog.yaml")
+ *                 .build())
  *             .identifier("identifier")
  *             .orgId("org_id")
  *             .projectId("project_id")
@@ -94,15 +100,16 @@ import javax.annotation.Nullable;
  *             .tags(            
  *                 "foo:bar",
  *                 "bar:foo")
- *             .changelogScript(DbSchemaChangelogScriptArgs.builder()
- *                 .image("plugins/image")
- *                 .command("echo \\\"hello dbops\\\"")
- *                 .shell("sh/bash")
- *                 .location("db/example-changelog.yaml")
- *                 .build())
  *             .build());
  * 
  *         var flywayRepositoryTest = new DbSchema("flywayRepositoryTest", DbSchemaArgs.builder()
+ *             .schemaSource(DbSchemaSchemaSourceArgs.builder()
+ *                 .connector("gitConnector")
+ *                 .repo("TestRepo")
+ *                 .location("db/flyway/migrations")
+ *                 .toml("db/flyway.toml")
+ *                 .archivePath("path/to/archive.zip")
+ *                 .build())
  *             .identifier("identifier")
  *             .orgId("org_id")
  *             .projectId("project_id")
@@ -113,16 +120,16 @@ import javax.annotation.Nullable;
  *             .tags(            
  *                 "foo:bar",
  *                 "bar:foo")
- *             .schemaSource(DbSchemaSchemaSourceArgs.builder()
- *                 .connector("gitConnector")
- *                 .repo("TestRepo")
- *                 .location("db/flyway/migrations")
- *                 .toml("db/flyway.toml")
- *                 .archivePath("path/to/archive.zip")
- *                 .build())
  *             .build());
  * 
  *         var flywayScriptTest = new DbSchema("flywayScriptTest", DbSchemaArgs.builder()
+ *             .changelogScript(DbSchemaChangelogScriptArgs.builder()
+ *                 .image("plugins/image")
+ *                 .command("echo \\\"hello dbops\\\"")
+ *                 .shell("sh/bash")
+ *                 .location("db/flyway/migrations")
+ *                 .toml("db/flyway.toml")
+ *                 .build())
  *             .identifier("identifier")
  *             .orgId("org_id")
  *             .projectId("project_id")
@@ -133,16 +140,15 @@ import javax.annotation.Nullable;
  *             .tags(            
  *                 "foo:bar",
  *                 "bar:foo")
- *             .changelogScript(DbSchemaChangelogScriptArgs.builder()
- *                 .image("plugins/image")
- *                 .command("echo \\\"hello dbops\\\"")
- *                 .shell("sh/bash")
- *                 .location("db/flyway/migrations")
- *                 .toml("db/flyway.toml")
- *                 .build())
  *             .build());
  * 
  *         var perconaEnabledTest = new DbSchema("perconaEnabledTest", DbSchemaArgs.builder()
+ *             .schemaSource(DbSchemaSchemaSourceArgs.builder()
+ *                 .connector("gitConnector")
+ *                 .repo("TestRepo")
+ *                 .location("db/example-changelog.yaml")
+ *                 .archivePath("path/to/archive.zip")
+ *                 .build())
  *             .identifier("identifier")
  *             .orgId("org_id")
  *             .projectId("project_id")
@@ -154,15 +160,13 @@ import javax.annotation.Nullable;
  *             .tags(            
  *                 "foo:bar",
  *                 "bar:foo")
- *             .schemaSource(DbSchemaSchemaSourceArgs.builder()
- *                 .connector("gitConnector")
- *                 .repo("TestRepo")
- *                 .location("db/example-changelog.yaml")
- *                 .archivePath("path/to/archive.zip")
- *                 .build())
  *             .build());
  * 
  *         var harnessCodeRepo = new DbSchema("harnessCodeRepo", DbSchemaArgs.builder()
+ *             .schemaSource(DbSchemaSchemaSourceArgs.builder()
+ *                 .repo("my-harness-code-repo")
+ *                 .location("db/example-changelog.yaml")
+ *                 .build())
  *             .identifier("identifier")
  *             .orgId("org_id")
  *             .projectId("project_id")
@@ -172,10 +176,6 @@ import javax.annotation.Nullable;
  *             .tags(            
  *                 "foo:bar",
  *                 "bar:foo")
- *             .schemaSource(DbSchemaSchemaSourceArgs.builder()
- *                 .repo("my-harness-code-repo")
- *                 .location("db/example-changelog.yaml")
- *                 .build())
  *             .build());
  * 
  *     }
