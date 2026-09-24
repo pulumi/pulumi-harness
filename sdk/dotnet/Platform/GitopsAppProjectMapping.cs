@@ -73,6 +73,12 @@ namespace Pulumi.Harness.Platform
         public Output<bool?> AutoCreateServiceEnv { get; private set; } = null!;
 
         /// <summary>
+        /// If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
+        /// </summary>
+        [Output("blockIfReferenced")]
+        public Output<bool?> BlockIfReferenced { get; private set; } = null!;
+
+        /// <summary>
         /// Identifier of the GitOps Application Project.
         /// </summary>
         [Output("identifier")]
@@ -162,6 +168,12 @@ namespace Pulumi.Harness.Platform
         public Input<bool>? AutoCreateServiceEnv { get; set; }
 
         /// <summary>
+        /// If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
+        /// </summary>
+        [Input("blockIfReferenced")]
+        public Input<bool>? BlockIfReferenced { get; set; }
+
+        /// <summary>
         /// Organization identifier of the GitOps agent's Application Project.
         /// </summary>
         [Input("orgId", required: true)]
@@ -204,6 +216,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("autoCreateServiceEnv")]
         public Input<bool>? AutoCreateServiceEnv { get; set; }
+
+        /// <summary>
+        /// If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
+        /// </summary>
+        [Input("blockIfReferenced")]
+        public Input<bool>? BlockIfReferenced { get; set; }
 
         /// <summary>
         /// Identifier of the GitOps Application Project.

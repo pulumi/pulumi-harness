@@ -130,6 +130,20 @@ public class GitopsAppProjectMapping extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.autoCreateServiceEnv);
     }
     /**
+     * If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
+     * 
+     */
+    @Export(name="blockIfReferenced", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> blockIfReferenced;
+
+    /**
+     * @return If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
+     * 
+     */
+    public Output<Optional<Boolean>> blockIfReferenced() {
+        return Codegen.optional(this.blockIfReferenced);
+    }
+    /**
      * Identifier of the GitOps Application Project.
      * 
      */
