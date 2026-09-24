@@ -24,7 +24,8 @@ class GitopsAppProjectMappingArgs:
                  org_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
                  account_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 auto_create_service_env: pulumi.Input[Optional[_builtins.bool]] = None):
+                 auto_create_service_env: pulumi.Input[Optional[_builtins.bool]] = None,
+                 block_if_referenced: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a GitopsAppProjectMapping resource.
 
@@ -34,6 +35,7 @@ class GitopsAppProjectMappingArgs:
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps agent's Application Project.
         :param pulumi.Input[_builtins.str] account_id: Account identifier of the GitOps agent's Application Project.
         :param pulumi.Input[_builtins.bool] auto_create_service_env: Enable automated creation of service, environment and cluster-env link. Defaults to false.
+        :param pulumi.Input[_builtins.bool] block_if_referenced: If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
         """
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "argo_project_name", argo_project_name)
@@ -46,6 +48,8 @@ class GitopsAppProjectMappingArgs:
             pulumi.set(__self__, "account_id", account_id)
         if auto_create_service_env is not None:
             pulumi.set(__self__, "auto_create_service_env", auto_create_service_env)
+        if block_if_referenced is not None:
+            pulumi.set(__self__, "block_if_referenced", block_if_referenced)
 
     @_builtins.property
     @pulumi.getter(name="agentId")
@@ -120,6 +124,18 @@ class GitopsAppProjectMappingArgs:
     def auto_create_service_env(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_create_service_env", value)
 
+    @_builtins.property
+    @pulumi.getter(name="blockIfReferenced")
+    def block_if_referenced(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
+        """
+        return pulumi.get(self, "block_if_referenced")
+
+    @block_if_referenced.setter
+    def block_if_referenced(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "block_if_referenced", value)
+
 
 @pulumi.input_type
 class _GitopsAppProjectMappingState:
@@ -128,6 +144,7 @@ class _GitopsAppProjectMappingState:
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  argo_project_name: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_create_service_env: pulumi.Input[Optional[_builtins.bool]] = None,
+                 block_if_referenced: pulumi.Input[Optional[_builtins.bool]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None):
@@ -138,6 +155,7 @@ class _GitopsAppProjectMappingState:
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier for which the ArgoCD and Harness project mapping is to be created.
         :param pulumi.Input[_builtins.str] argo_project_name: ArgoCD Project name which is to be mapped to the Harness project.
         :param pulumi.Input[_builtins.bool] auto_create_service_env: Enable automated creation of service, environment and cluster-env link. Defaults to false.
+        :param pulumi.Input[_builtins.bool] block_if_referenced: If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps Application Project.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the GitOps agent's Application Project.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps agent's Application Project.
@@ -153,6 +171,8 @@ class _GitopsAppProjectMappingState:
             pulumi.set(__self__, "argo_project_name", argo_project_name)
         if auto_create_service_env is not None:
             pulumi.set(__self__, "auto_create_service_env", auto_create_service_env)
+        if block_if_referenced is not None:
+            pulumi.set(__self__, "block_if_referenced", block_if_referenced)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if org_id is not None:
@@ -210,6 +230,18 @@ class _GitopsAppProjectMappingState:
         pulumi.set(self, "auto_create_service_env", value)
 
     @_builtins.property
+    @pulumi.getter(name="blockIfReferenced")
+    def block_if_referenced(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
+        """
+        return pulumi.get(self, "block_if_referenced")
+
+    @block_if_referenced.setter
+    def block_if_referenced(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "block_if_referenced", value)
+
+    @_builtins.property
     @pulumi.getter
     def identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -256,6 +288,7 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  argo_project_name: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_create_service_env: pulumi.Input[Optional[_builtins.bool]] = None,
+                 block_if_referenced: pulumi.Input[Optional[_builtins.bool]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -294,6 +327,7 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier for which the ArgoCD and Harness project mapping is to be created.
         :param pulumi.Input[_builtins.str] argo_project_name: ArgoCD Project name which is to be mapped to the Harness project.
         :param pulumi.Input[_builtins.bool] auto_create_service_env: Enable automated creation of service, environment and cluster-env link. Defaults to false.
+        :param pulumi.Input[_builtins.bool] block_if_referenced: If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the GitOps agent's Application Project.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps agent's Application Project.
         """
@@ -351,6 +385,7 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
                  agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  argo_project_name: pulumi.Input[Optional[_builtins.str]] = None,
                  auto_create_service_env: pulumi.Input[Optional[_builtins.bool]] = None,
+                 block_if_referenced: pulumi.Input[Optional[_builtins.bool]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -370,6 +405,7 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
                 raise TypeError("Missing required property 'argo_project_name'")
             __props__.__dict__["argo_project_name"] = argo_project_name
             __props__.__dict__["auto_create_service_env"] = auto_create_service_env
+            __props__.__dict__["block_if_referenced"] = block_if_referenced
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
@@ -391,6 +427,7 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
             agent_id: pulumi.Input[Optional[_builtins.str]] = None,
             argo_project_name: pulumi.Input[Optional[_builtins.str]] = None,
             auto_create_service_env: pulumi.Input[Optional[_builtins.bool]] = None,
+            block_if_referenced: pulumi.Input[Optional[_builtins.bool]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'GitopsAppProjectMapping':
@@ -405,6 +442,7 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] agent_id: Agent identifier for which the ArgoCD and Harness project mapping is to be created.
         :param pulumi.Input[_builtins.str] argo_project_name: ArgoCD Project name which is to be mapped to the Harness project.
         :param pulumi.Input[_builtins.bool] auto_create_service_env: Enable automated creation of service, environment and cluster-env link. Defaults to false.
+        :param pulumi.Input[_builtins.bool] block_if_referenced: If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
         :param pulumi.Input[_builtins.str] identifier: Identifier of the GitOps Application Project.
         :param pulumi.Input[_builtins.str] org_id: Organization identifier of the GitOps agent's Application Project.
         :param pulumi.Input[_builtins.str] project_id: Project identifier of the GitOps agent's Application Project.
@@ -417,6 +455,7 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
         __props__.__dict__["agent_id"] = agent_id
         __props__.__dict__["argo_project_name"] = argo_project_name
         __props__.__dict__["auto_create_service_env"] = auto_create_service_env
+        __props__.__dict__["block_if_referenced"] = block_if_referenced
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
@@ -454,6 +493,14 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
         Enable automated creation of service, environment and cluster-env link. Defaults to false.
         """
         return pulumi.get(self, "auto_create_service_env")
+
+    @_builtins.property
+    @pulumi.getter(name="blockIfReferenced")
+    def block_if_referenced(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
+        """
+        return pulumi.get(self, "block_if_referenced")
 
     @_builtins.property
     @pulumi.getter

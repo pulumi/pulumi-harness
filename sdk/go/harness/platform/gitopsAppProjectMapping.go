@@ -67,6 +67,8 @@ type GitopsAppProjectMapping struct {
 	ArgoProjectName pulumi.StringOutput `pulumi:"argoProjectName"`
 	// Enable automated creation of service, environment and cluster-env link. Defaults to false.
 	AutoCreateServiceEnv pulumi.BoolPtrOutput `pulumi:"autoCreateServiceEnv"`
+	// If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
+	BlockIfReferenced pulumi.BoolPtrOutput `pulumi:"blockIfReferenced"`
 	// Identifier of the GitOps Application Project.
 	Identifier pulumi.StringOutput `pulumi:"identifier"`
 	// Organization identifier of the GitOps agent's Application Project.
@@ -127,6 +129,8 @@ type gitopsAppProjectMappingState struct {
 	ArgoProjectName *string `pulumi:"argoProjectName"`
 	// Enable automated creation of service, environment and cluster-env link. Defaults to false.
 	AutoCreateServiceEnv *bool `pulumi:"autoCreateServiceEnv"`
+	// If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
+	BlockIfReferenced *bool `pulumi:"blockIfReferenced"`
 	// Identifier of the GitOps Application Project.
 	Identifier *string `pulumi:"identifier"`
 	// Organization identifier of the GitOps agent's Application Project.
@@ -146,6 +150,8 @@ type GitopsAppProjectMappingState struct {
 	ArgoProjectName pulumi.StringPtrInput
 	// Enable automated creation of service, environment and cluster-env link. Defaults to false.
 	AutoCreateServiceEnv pulumi.BoolPtrInput
+	// If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
+	BlockIfReferenced pulumi.BoolPtrInput
 	// Identifier of the GitOps Application Project.
 	Identifier pulumi.StringPtrInput
 	// Organization identifier of the GitOps agent's Application Project.
@@ -169,6 +175,8 @@ type gitopsAppProjectMappingArgs struct {
 	ArgoProjectName string `pulumi:"argoProjectName"`
 	// Enable automated creation of service, environment and cluster-env link. Defaults to false.
 	AutoCreateServiceEnv *bool `pulumi:"autoCreateServiceEnv"`
+	// If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
+	BlockIfReferenced *bool `pulumi:"blockIfReferenced"`
 	// Organization identifier of the GitOps agent's Application Project.
 	OrgId string `pulumi:"orgId"`
 	// Project identifier of the GitOps agent's Application Project.
@@ -187,6 +195,8 @@ type GitopsAppProjectMappingArgs struct {
 	ArgoProjectName pulumi.StringInput
 	// Enable automated creation of service, environment and cluster-env link. Defaults to false.
 	AutoCreateServiceEnv pulumi.BoolPtrInput
+	// If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
+	BlockIfReferenced pulumi.BoolPtrInput
 	// Organization identifier of the GitOps agent's Application Project.
 	OrgId pulumi.StringInput
 	// Project identifier of the GitOps agent's Application Project.
@@ -300,6 +310,11 @@ func (o GitopsAppProjectMappingOutput) ArgoProjectName() pulumi.StringOutput {
 // Enable automated creation of service, environment and cluster-env link. Defaults to false.
 func (o GitopsAppProjectMappingOutput) AutoCreateServiceEnv() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GitopsAppProjectMapping) pulumi.BoolPtrOutput { return v.AutoCreateServiceEnv }).(pulumi.BoolPtrOutput)
+}
+
+// If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
+func (o GitopsAppProjectMappingOutput) BlockIfReferenced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsAppProjectMapping) pulumi.BoolPtrOutput { return v.BlockIfReferenced }).(pulumi.BoolPtrOutput)
 }
 
 // Identifier of the GitOps Application Project.

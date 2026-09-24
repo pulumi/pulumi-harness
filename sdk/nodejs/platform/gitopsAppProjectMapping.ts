@@ -80,6 +80,10 @@ export class GitopsAppProjectMapping extends pulumi.CustomResource {
      */
     declare public readonly autoCreateServiceEnv: pulumi.Output<boolean | undefined>;
     /**
+     * If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
+     */
+    declare public readonly blockIfReferenced: pulumi.Output<boolean | undefined>;
+    /**
      * Identifier of the GitOps Application Project.
      */
     declare public /*out*/ readonly identifier: pulumi.Output<string>;
@@ -109,6 +113,7 @@ export class GitopsAppProjectMapping extends pulumi.CustomResource {
             resourceInputs["agentId"] = state?.agentId;
             resourceInputs["argoProjectName"] = state?.argoProjectName;
             resourceInputs["autoCreateServiceEnv"] = state?.autoCreateServiceEnv;
+            resourceInputs["blockIfReferenced"] = state?.blockIfReferenced;
             resourceInputs["identifier"] = state?.identifier;
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["projectId"] = state?.projectId;
@@ -130,6 +135,7 @@ export class GitopsAppProjectMapping extends pulumi.CustomResource {
             resourceInputs["agentId"] = args?.agentId;
             resourceInputs["argoProjectName"] = args?.argoProjectName;
             resourceInputs["autoCreateServiceEnv"] = args?.autoCreateServiceEnv;
+            resourceInputs["blockIfReferenced"] = args?.blockIfReferenced;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["identifier"] = undefined /*out*/;
@@ -161,6 +167,10 @@ export interface GitopsAppProjectMappingState {
      * Enable automated creation of service, environment and cluster-env link. Defaults to false.
      */
     autoCreateServiceEnv?: pulumi.Input<boolean | undefined>;
+    /**
+     * If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
+     */
+    blockIfReferenced?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier of the GitOps Application Project.
      */
@@ -197,6 +207,10 @@ export interface GitopsAppProjectMappingArgs {
      * Enable automated creation of service, environment and cluster-env link. Defaults to false.
      */
     autoCreateServiceEnv?: pulumi.Input<boolean | undefined>;
+    /**
+     * If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
+     */
+    blockIfReferenced?: pulumi.Input<boolean | undefined>;
     /**
      * Organization identifier of the GitOps agent's Application Project.
      */

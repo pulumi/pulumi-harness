@@ -86,6 +86,21 @@ public final class GitopsAppProjectMappingArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
+     * 
+     */
+    @Import(name="blockIfReferenced")
+    private @Nullable Output<Boolean> blockIfReferenced;
+
+    /**
+     * @return If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
+     * 
+     */
+    public Optional<Output<Boolean>> blockIfReferenced() {
+        return Optional.ofNullable(this.blockIfReferenced);
+    }
+
+    /**
      * Organization identifier of the GitOps agent&#39;s Application Project.
      * 
      */
@@ -122,6 +137,7 @@ public final class GitopsAppProjectMappingArgs extends com.pulumi.resources.Reso
         this.agentId = $.agentId;
         this.argoProjectName = $.argoProjectName;
         this.autoCreateServiceEnv = $.autoCreateServiceEnv;
+        this.blockIfReferenced = $.blockIfReferenced;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
     }
@@ -234,6 +250,27 @@ public final class GitopsAppProjectMappingArgs extends com.pulumi.resources.Reso
          */
         public Builder autoCreateServiceEnv(Boolean autoCreateServiceEnv) {
             return autoCreateServiceEnv(Output.of(autoCreateServiceEnv));
+        }
+
+        /**
+         * @param blockIfReferenced If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockIfReferenced(@Nullable Output<Boolean> blockIfReferenced) {
+            $.blockIfReferenced = blockIfReferenced;
+            return this;
+        }
+
+        /**
+         * @param blockIfReferenced If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockIfReferenced(Boolean blockIfReferenced) {
+            return blockIfReferenced(Output.of(blockIfReferenced));
         }
 
         /**
