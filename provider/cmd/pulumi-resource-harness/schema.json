@@ -80777,6 +80777,10 @@
                     "type": "boolean",
                     "description": "Enable automated creation of service, environment and cluster-env link. Defaults to false.\n"
                 },
+                "blockIfReferenced": {
+                    "type": "boolean",
+                    "description": "If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.\n"
+                },
                 "identifier": {
                     "type": "string",
                     "description": "Identifier of the GitOps Application Project.\n"
@@ -80818,6 +80822,10 @@
                     "type": "boolean",
                     "description": "Enable automated creation of service, environment and cluster-env link. Defaults to false.\n"
                 },
+                "blockIfReferenced": {
+                    "type": "boolean",
+                    "description": "If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.\n"
+                },
                 "orgId": {
                     "type": "string",
                     "description": "Organization identifier of the GitOps agent's Application Project.\n"
@@ -80854,6 +80862,10 @@
                     "autoCreateServiceEnv": {
                         "type": "boolean",
                         "description": "Enable automated creation of service, environment and cluster-env link. Defaults to false.\n"
+                    },
+                    "blockIfReferenced": {
+                        "type": "boolean",
+                        "description": "If true, fails the delete with an error instead of removing Applications, Clusters, Repositories, or ApplicationSets that still reference this mapping. Defaults to true. Set to false only if you intend for the delete to remove those resources as well. Also applies when this resource is replaced due to a change in agent*id or argo*project_name.\n"
                     },
                     "identifier": {
                         "type": "string",
