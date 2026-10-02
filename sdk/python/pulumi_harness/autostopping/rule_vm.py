@@ -398,6 +398,8 @@ class RuleVm(pulumi.CustomResource):
         """
         Resource for creating a AutoStopping rule for VMs.
 
+        > **Cross-Account Proxy Support** — Cross-account proxy-based AutoStopping (using `proxy_cloud_connector_id`) is **only supported for VM rules**. It is not available for ECS, RDS, or Scale Group rule types. If you need to route traffic through a proxy in a different cloud account, use `autostopping.RuleVm`.
+
         ## Example Usage
 
         ```python
@@ -456,6 +458,44 @@ class RuleVm(pulumi.CustomResource):
             cloud_connector_id="cloud_connector_id",
             idle_time_mins=10,
             dry_run=True)
+        # Cross-account AutoStopping rule: the target VM is in a different cloud account
+        # than the proxy (access point). Use proxy_cloud_connector_id to specify the
+        # cloud connector that owns the proxy.
+        cross_account = harness.autostopping.RuleVm("cross_account",
+            filter={
+                "vm_ids": ["i-0123456789abcdef0"],
+                "regions": ["us-east-1"],
+            },
+            https=[{
+                "healths": [{
+                    "protocol": "http",
+                    "port": 80,
+                    "path": "/",
+                    "timeout": 30,
+                    "status_code_from": 200,
+                    "status_code_to": 299,
+                }],
+                "routings": [{
+                    "source_protocol": "https",
+                    "target_protocol": "https",
+                    "source_port": 443,
+                    "target_port": 443,
+                    "action": "forward",
+                }],
+                "proxy_id": "proxy_id",
+                "proxy_cloud_connector_id": "proxy_account_connector_id",
+            }],
+            tcps=[{
+                "sshes": [{
+                    "port": 22,
+                }],
+                "proxy_id": "proxy_id",
+                "proxy_cloud_connector_id": "proxy_account_connector_id",
+            }],
+            name="cross-account-vm-rule",
+            cloud_connector_id="target_account_connector_id",
+            idle_time_mins=10,
+            dry_run=True)
         ```
 
 
@@ -479,6 +519,8 @@ class RuleVm(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a AutoStopping rule for VMs.
+
+        > **Cross-Account Proxy Support** — Cross-account proxy-based AutoStopping (using `proxy_cloud_connector_id`) is **only supported for VM rules**. It is not available for ECS, RDS, or Scale Group rule types. If you need to route traffic through a proxy in a different cloud account, use `autostopping.RuleVm`.
 
         ## Example Usage
 
@@ -536,6 +578,44 @@ class RuleVm(pulumi.CustomResource):
             }],
             name="name",
             cloud_connector_id="cloud_connector_id",
+            idle_time_mins=10,
+            dry_run=True)
+        # Cross-account AutoStopping rule: the target VM is in a different cloud account
+        # than the proxy (access point). Use proxy_cloud_connector_id to specify the
+        # cloud connector that owns the proxy.
+        cross_account = harness.autostopping.RuleVm("cross_account",
+            filter={
+                "vm_ids": ["i-0123456789abcdef0"],
+                "regions": ["us-east-1"],
+            },
+            https=[{
+                "healths": [{
+                    "protocol": "http",
+                    "port": 80,
+                    "path": "/",
+                    "timeout": 30,
+                    "status_code_from": 200,
+                    "status_code_to": 299,
+                }],
+                "routings": [{
+                    "source_protocol": "https",
+                    "target_protocol": "https",
+                    "source_port": 443,
+                    "target_port": 443,
+                    "action": "forward",
+                }],
+                "proxy_id": "proxy_id",
+                "proxy_cloud_connector_id": "proxy_account_connector_id",
+            }],
+            tcps=[{
+                "sshes": [{
+                    "port": 22,
+                }],
+                "proxy_id": "proxy_id",
+                "proxy_cloud_connector_id": "proxy_account_connector_id",
+            }],
+            name="cross-account-vm-rule",
+            cloud_connector_id="target_account_connector_id",
             idle_time_mins=10,
             dry_run=True)
         ```

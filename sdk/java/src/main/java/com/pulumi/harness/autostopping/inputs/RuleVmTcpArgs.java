@@ -36,6 +36,21 @@ public final class RuleVmTcpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+     * 
+     */
+    @Import(name="proxyCloudConnectorId")
+    private @Nullable Output<String> proxyCloudConnectorId;
+
+    /**
+     * @return Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+     * 
+     */
+    public Optional<Output<String>> proxyCloudConnectorId() {
+        return Optional.ofNullable(this.proxyCloudConnectorId);
+    }
+
+    /**
      * Id of the Proxy
      * 
      */
@@ -84,6 +99,7 @@ public final class RuleVmTcpArgs extends com.pulumi.resources.ResourceArgs {
 
     private RuleVmTcpArgs(RuleVmTcpArgs $) {
         this.forwardRules = $.forwardRules;
+        this.proxyCloudConnectorId = $.proxyCloudConnectorId;
         this.proxyId = $.proxyId;
         this.rdps = $.rdps;
         this.sshes = $.sshes;
@@ -136,6 +152,27 @@ public final class RuleVmTcpArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder forwardRules(RuleVmTcpForwardRuleArgs... forwardRules) {
             return forwardRules(List.of(forwardRules));
+        }
+
+        /**
+         * @param proxyCloudConnectorId Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyCloudConnectorId(@Nullable Output<String> proxyCloudConnectorId) {
+            $.proxyCloudConnectorId = proxyCloudConnectorId;
+            return this;
+        }
+
+        /**
+         * @param proxyCloudConnectorId Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyCloudConnectorId(String proxyCloudConnectorId) {
+            return proxyCloudConnectorId(Output.of(proxyCloudConnectorId));
         }
 
         /**

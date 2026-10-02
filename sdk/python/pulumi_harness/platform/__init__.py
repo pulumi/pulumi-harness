@@ -278,6 +278,7 @@ from .template import *
 from .template_filters import *
 from .terraform_cloud_connector import *
 from .token import *
+from .trigger_pipeline import *
 from .triggers import *
 from .user import *
 from .usergroup import *

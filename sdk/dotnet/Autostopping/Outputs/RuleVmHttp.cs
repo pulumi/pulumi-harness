@@ -18,6 +18,10 @@ namespace Pulumi.Harness.Autostopping.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.RuleVmHttpHealth> Healths;
         /// <summary>
+        /// Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+        /// </summary>
+        public readonly string? ProxyCloudConnectorId;
+        /// <summary>
         /// Id of the proxy
         /// </summary>
         public readonly string ProxyId;
@@ -30,11 +34,14 @@ namespace Pulumi.Harness.Autostopping.Outputs
         private RuleVmHttp(
             ImmutableArray<Outputs.RuleVmHttpHealth> healths,
 
+            string? proxyCloudConnectorId,
+
             string proxyId,
 
             ImmutableArray<Outputs.RuleVmHttpRouting> routings)
         {
             Healths = healths;
+            ProxyCloudConnectorId = proxyCloudConnectorId;
             ProxyId = proxyId;
             Routings = routings;
         }

@@ -324,6 +324,8 @@ class RuleScaleGroup(pulumi.CustomResource):
         """
         Resource for creating a Harness AutoStopping rule for Scaling Groups.
 
+        > **Note:** Cross-account proxy-based AutoStopping (`proxy_cloud_connector_id`) is not supported for Scale Group rules. This feature is only available for VM rules.
+
         ## Example Usage
 
         ```python
@@ -384,6 +386,8 @@ class RuleScaleGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a Harness AutoStopping rule for Scaling Groups.
+
+        > **Note:** Cross-account proxy-based AutoStopping (`proxy_cloud_connector_id`) is not supported for Scale Group rules. This feature is only available for VM rules.
 
         ## Example Usage
 

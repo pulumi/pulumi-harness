@@ -35,6 +35,21 @@ public final class GetRuleVmTcp extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+     * 
+     */
+    @Import(name="proxyCloudConnectorId", required=true)
+    private String proxyCloudConnectorId;
+
+    /**
+     * @return Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+     * 
+     */
+    public String proxyCloudConnectorId() {
+        return this.proxyCloudConnectorId;
+    }
+
+    /**
      * Id of the Proxy
      * 
      */
@@ -83,6 +98,7 @@ public final class GetRuleVmTcp extends com.pulumi.resources.InvokeArgs {
 
     private GetRuleVmTcp(GetRuleVmTcp $) {
         this.forwardRules = $.forwardRules;
+        this.proxyCloudConnectorId = $.proxyCloudConnectorId;
         this.proxyId = $.proxyId;
         this.rdps = $.rdps;
         this.sshes = $.sshes;
@@ -125,6 +141,17 @@ public final class GetRuleVmTcp extends com.pulumi.resources.InvokeArgs {
          */
         public Builder forwardRules(GetRuleVmTcpForwardRule... forwardRules) {
             return forwardRules(List.of(forwardRules));
+        }
+
+        /**
+         * @param proxyCloudConnectorId Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyCloudConnectorId(String proxyCloudConnectorId) {
+            $.proxyCloudConnectorId = proxyCloudConnectorId;
+            return this;
         }
 
         /**
@@ -181,6 +208,9 @@ public final class GetRuleVmTcp extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetRuleVmTcp build() {
+            if ($.proxyCloudConnectorId == null) {
+                throw new MissingRequiredPropertyException("GetRuleVmTcp", "proxyCloudConnectorId");
+            }
             if ($.proxyId == null) {
                 throw new MissingRequiredPropertyException("GetRuleVmTcp", "proxyId");
             }

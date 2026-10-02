@@ -34,6 +34,21 @@ public final class GetRuleVmHttp extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+     * 
+     */
+    @Import(name="proxyCloudConnectorId", required=true)
+    private String proxyCloudConnectorId;
+
+    /**
+     * @return Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+     * 
+     */
+    public String proxyCloudConnectorId() {
+        return this.proxyCloudConnectorId;
+    }
+
+    /**
      * Id of the proxy
      * 
      */
@@ -67,6 +82,7 @@ public final class GetRuleVmHttp extends com.pulumi.resources.InvokeArgs {
 
     private GetRuleVmHttp(GetRuleVmHttp $) {
         this.healths = $.healths;
+        this.proxyCloudConnectorId = $.proxyCloudConnectorId;
         this.proxyId = $.proxyId;
         this.routings = $.routings;
     }
@@ -111,6 +127,17 @@ public final class GetRuleVmHttp extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param proxyCloudConnectorId Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyCloudConnectorId(String proxyCloudConnectorId) {
+            $.proxyCloudConnectorId = proxyCloudConnectorId;
+            return this;
+        }
+
+        /**
          * @param proxyId Id of the proxy
          * 
          * @return builder
@@ -143,6 +170,9 @@ public final class GetRuleVmHttp extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetRuleVmHttp build() {
+            if ($.proxyCloudConnectorId == null) {
+                throw new MissingRequiredPropertyException("GetRuleVmHttp", "proxyCloudConnectorId");
+            }
             if ($.proxyId == null) {
                 throw new MissingRequiredPropertyException("GetRuleVmHttp", "proxyId");
             }

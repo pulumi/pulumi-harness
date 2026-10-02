@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  *             .securityGroups(            
  *                 "sg1",
  *                 "sg2")
+ *             .apiKey("api_key")
  *             .deleteCloudResourcesOnDestroy(true)
  *             .build());
  * 
@@ -63,6 +64,7 @@ import javax.annotation.Nullable;
  *             .region("region")
  *             .vpc("vpc")
  *             .securityGroups("sg-0")
+ *             .apiKey("api_key")
  *             .deleteCloudResourcesOnDestroy(false)
  *             .build());
  * 
@@ -87,6 +89,20 @@ public class AwsAlb extends com.pulumi.resources.CustomResource {
      */
     public Output<String> albArn() {
         return this.albArn;
+    }
+    /**
+     * Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+     * 
+     */
+    @Export(name="apiKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> apiKey;
+
+    /**
+     * @return Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+     * 
+     */
+    public Output<Optional<String>> apiKey() {
+        return Codegen.optional(this.apiKey);
     }
     @Export(name="certificateId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certificateId;
@@ -233,6 +249,9 @@ public class AwsAlb extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .pluginDownloadURL("github://api.github.com/pulumi")
+            .additionalSecretOutputs(List.of(
+                "apiKey"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

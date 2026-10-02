@@ -14,6 +14,8 @@ import (
 
 // Resource for creating a AutoStopping rule for VMs.
 //
+// > **Cross-Account Proxy Support** — Cross-account proxy-based AutoStopping (using `proxyCloudConnectorId`) is **only supported for VM rules**. It is not available for ECS, RDS, or Scale Group rule types. If you need to route traffic through a proxy in a different cloud account, use `autostopping.RuleVm`.
+//
 // ## Example Usage
 //
 // ```go
@@ -96,6 +98,62 @@ import (
 //				},
 //				Name:             pulumi.String("name"),
 //				CloudConnectorId: pulumi.String("cloud_connector_id"),
+//				IdleTimeMins:     pulumi.Int(10),
+//				DryRun:           pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Cross-account AutoStopping rule: the target VM is in a different cloud account
+//			// than the proxy (access point). Use proxy_cloud_connector_id to specify the
+//			// cloud connector that owns the proxy.
+//			_, err = autostopping.NewRuleVm(ctx, "cross_account", &autostopping.RuleVmArgs{
+//				Filter: &autostopping.RuleVmFilterArgs{
+//					VmIds: pulumi.StringArray{
+//						pulumi.String("i-0123456789abcdef0"),
+//					},
+//					Regions: pulumi.StringArray{
+//						pulumi.String("us-east-1"),
+//					},
+//				},
+//				Https: autostopping.RuleVmHttpArray{
+//					&autostopping.RuleVmHttpArgs{
+//						Healths: autostopping.RuleVmHttpHealthArray{
+//							&autostopping.RuleVmHttpHealthArgs{
+//								Protocol:       pulumi.String("http"),
+//								Port:           pulumi.Int(80),
+//								Path:           pulumi.String("/"),
+//								Timeout:        pulumi.Int(30),
+//								StatusCodeFrom: pulumi.Int(200),
+//								StatusCodeTo:   pulumi.Int(299),
+//							},
+//						},
+//						Routings: autostopping.RuleVmHttpRoutingArray{
+//							&autostopping.RuleVmHttpRoutingArgs{
+//								SourceProtocol: pulumi.String("https"),
+//								TargetProtocol: pulumi.String("https"),
+//								SourcePort:     pulumi.Int(443),
+//								TargetPort:     pulumi.Int(443),
+//								Action:         pulumi.String("forward"),
+//							},
+//						},
+//						ProxyId:               pulumi.String("proxy_id"),
+//						ProxyCloudConnectorId: pulumi.String("proxy_account_connector_id"),
+//					},
+//				},
+//				Tcps: autostopping.RuleVmTcpArray{
+//					&autostopping.RuleVmTcpArgs{
+//						Sshes: autostopping.RuleVmTcpSshArray{
+//							&autostopping.RuleVmTcpSshArgs{
+//								Port: pulumi.Int(22),
+//							},
+//						},
+//						ProxyId:               pulumi.String("proxy_id"),
+//						ProxyCloudConnectorId: pulumi.String("proxy_account_connector_id"),
+//					},
+//				},
+//				Name:             pulumi.String("cross-account-vm-rule"),
+//				CloudConnectorId: pulumi.String("target_account_connector_id"),
 //				IdleTimeMins:     pulumi.Int(10),
 //				DryRun:           pulumi.Bool(true),
 //			})

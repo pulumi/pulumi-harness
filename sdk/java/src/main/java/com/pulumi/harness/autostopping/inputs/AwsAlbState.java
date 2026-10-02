@@ -32,6 +32,21 @@ public final class AwsAlbState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.albArn);
     }
 
+    /**
+     * Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+     * 
+     */
+    @Import(name="apiKey")
+    private @Nullable Output<String> apiKey;
+
+    /**
+     * @return Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+     * 
+     */
+    public Optional<Output<String>> apiKey() {
+        return Optional.ofNullable(this.apiKey);
+    }
+
     @Import(name="certificateId")
     private @Nullable Output<String> certificateId;
 
@@ -148,6 +163,7 @@ public final class AwsAlbState extends com.pulumi.resources.ResourceArgs {
 
     private AwsAlbState(AwsAlbState $) {
         this.albArn = $.albArn;
+        this.apiKey = $.apiKey;
         this.certificateId = $.certificateId;
         this.cloudConnectorId = $.cloudConnectorId;
         this.deleteCloudResourcesOnDestroy = $.deleteCloudResourcesOnDestroy;
@@ -195,6 +211,27 @@ public final class AwsAlbState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder albArn(String albArn) {
             return albArn(Output.of(albArn));
+        }
+
+        /**
+         * @param apiKey Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiKey(@Nullable Output<String> apiKey) {
+            $.apiKey = apiKey;
+            return this;
+        }
+
+        /**
+         * @param apiKey Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiKey(String apiKey) {
+            return apiKey(Output.of(apiKey));
         }
 
         public Builder certificateId(@Nullable Output<String> certificateId) {

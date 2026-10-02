@@ -1191,6 +1191,8 @@ class RuleVmHttp(dict):
         suggest = None
         if key == "proxyId":
             suggest = "proxy_id"
+        elif key == "proxyCloudConnectorId":
+            suggest = "proxy_cloud_connector_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RuleVmHttp. Access the value via the '{suggest}' property getter instead.")
@@ -1206,15 +1208,19 @@ class RuleVmHttp(dict):
     def __init__(__self__, *,
                  proxy_id: _builtins.str,
                  healths: Optional[Sequence['outputs.RuleVmHttpHealth']] = None,
+                 proxy_cloud_connector_id: Optional[_builtins.str] = None,
                  routings: Optional[Sequence['outputs.RuleVmHttpRouting']] = None):
         """
         :param _builtins.str proxy_id: Id of the proxy
         :param Sequence['RuleVmHttpHealthArgs'] healths: Health Check Details
+        :param _builtins.str proxy_cloud_connector_id: Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
         :param Sequence['RuleVmHttpRoutingArgs'] routings: Routing configuration used to access the instances
         """
         pulumi.set(__self__, "proxy_id", proxy_id)
         if healths is not None:
             pulumi.set(__self__, "healths", healths)
+        if proxy_cloud_connector_id is not None:
+            pulumi.set(__self__, "proxy_cloud_connector_id", proxy_cloud_connector_id)
         if routings is not None:
             pulumi.set(__self__, "routings", routings)
 
@@ -1233,6 +1239,14 @@ class RuleVmHttp(dict):
         Health Check Details
         """
         return pulumi.get(self, "healths")
+
+    @_builtins.property
+    @pulumi.getter(name="proxyCloudConnectorId")
+    def proxy_cloud_connector_id(self) -> Optional[_builtins.str]:
+        """
+        Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+        """
+        return pulumi.get(self, "proxy_cloud_connector_id")
 
     @_builtins.property
     @pulumi.getter
@@ -1448,6 +1462,8 @@ class RuleVmTcp(dict):
             suggest = "proxy_id"
         elif key == "forwardRules":
             suggest = "forward_rules"
+        elif key == "proxyCloudConnectorId":
+            suggest = "proxy_cloud_connector_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RuleVmTcp. Access the value via the '{suggest}' property getter instead.")
@@ -1463,17 +1479,21 @@ class RuleVmTcp(dict):
     def __init__(__self__, *,
                  proxy_id: _builtins.str,
                  forward_rules: Optional[Sequence['outputs.RuleVmTcpForwardRule']] = None,
+                 proxy_cloud_connector_id: Optional[_builtins.str] = None,
                  rdps: Optional[Sequence['outputs.RuleVmTcpRdp']] = None,
                  sshes: Optional[Sequence['outputs.RuleVmTcpSsh']] = None):
         """
         :param _builtins.str proxy_id: Id of the Proxy
         :param Sequence['RuleVmTcpForwardRuleArgs'] forward_rules: Additional tcp forwarding rules
+        :param _builtins.str proxy_cloud_connector_id: Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
         :param Sequence['RuleVmTcpRdpArgs'] rdps: RDP configuration
         :param Sequence['RuleVmTcpSshArgs'] sshes: SSH configuration
         """
         pulumi.set(__self__, "proxy_id", proxy_id)
         if forward_rules is not None:
             pulumi.set(__self__, "forward_rules", forward_rules)
+        if proxy_cloud_connector_id is not None:
+            pulumi.set(__self__, "proxy_cloud_connector_id", proxy_cloud_connector_id)
         if rdps is not None:
             pulumi.set(__self__, "rdps", rdps)
         if sshes is not None:
@@ -1494,6 +1514,14 @@ class RuleVmTcp(dict):
         Additional tcp forwarding rules
         """
         return pulumi.get(self, "forward_rules")
+
+    @_builtins.property
+    @pulumi.getter(name="proxyCloudConnectorId")
+    def proxy_cloud_connector_id(self) -> Optional[_builtins.str]:
+        """
+        Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+        """
+        return pulumi.get(self, "proxy_cloud_connector_id")
 
     @_builtins.property
     @pulumi.getter
@@ -2513,19 +2541,30 @@ class GetRuleVmFilterTagResult(dict):
 @pulumi.output_type
 class GetRuleVmHttpResult(dict):
     def __init__(__self__, *,
+                 proxy_cloud_connector_id: _builtins.str,
                  proxy_id: _builtins.str,
                  healths: Optional[Sequence['outputs.GetRuleVmHttpHealthResult']] = None,
                  routings: Optional[Sequence['outputs.GetRuleVmHttpRoutingResult']] = None):
         """
+        :param _builtins.str proxy_cloud_connector_id: Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
         :param _builtins.str proxy_id: Id of the proxy
         :param Sequence['GetRuleVmHttpHealthArgs'] healths: Health Check Details
         :param Sequence['GetRuleVmHttpRoutingArgs'] routings: Routing configuration used to access the instances
         """
+        pulumi.set(__self__, "proxy_cloud_connector_id", proxy_cloud_connector_id)
         pulumi.set(__self__, "proxy_id", proxy_id)
         if healths is not None:
             pulumi.set(__self__, "healths", healths)
         if routings is not None:
             pulumi.set(__self__, "routings", routings)
+
+    @_builtins.property
+    @pulumi.getter(name="proxyCloudConnectorId")
+    def proxy_cloud_connector_id(self) -> _builtins.str:
+        """
+        Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+        """
+        return pulumi.get(self, "proxy_cloud_connector_id")
 
     @_builtins.property
     @pulumi.getter(name="proxyId")
@@ -2709,16 +2748,19 @@ class GetRuleVmHttpRoutingResult(dict):
 @pulumi.output_type
 class GetRuleVmTcpResult(dict):
     def __init__(__self__, *,
+                 proxy_cloud_connector_id: _builtins.str,
                  proxy_id: _builtins.str,
                  forward_rules: Optional[Sequence['outputs.GetRuleVmTcpForwardRuleResult']] = None,
                  rdps: Optional[Sequence['outputs.GetRuleVmTcpRdpResult']] = None,
                  sshes: Optional[Sequence['outputs.GetRuleVmTcpSshResult']] = None):
         """
+        :param _builtins.str proxy_cloud_connector_id: Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
         :param _builtins.str proxy_id: Id of the Proxy
         :param Sequence['GetRuleVmTcpForwardRuleArgs'] forward_rules: Additional tcp forwarding rules
         :param Sequence['GetRuleVmTcpRdpArgs'] rdps: RDP configuration
         :param Sequence['GetRuleVmTcpSshArgs'] sshes: SSH configuration
         """
+        pulumi.set(__self__, "proxy_cloud_connector_id", proxy_cloud_connector_id)
         pulumi.set(__self__, "proxy_id", proxy_id)
         if forward_rules is not None:
             pulumi.set(__self__, "forward_rules", forward_rules)
@@ -2726,6 +2768,14 @@ class GetRuleVmTcpResult(dict):
             pulumi.set(__self__, "rdps", rdps)
         if sshes is not None:
             pulumi.set(__self__, "sshes", sshes)
+
+    @_builtins.property
+    @pulumi.getter(name="proxyCloudConnectorId")
+    def proxy_cloud_connector_id(self) -> _builtins.str:
+        """
+        Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+        """
+        return pulumi.get(self, "proxy_cloud_connector_id")
 
     @_builtins.property
     @pulumi.getter(name="proxyId")

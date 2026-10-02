@@ -1515,6 +1515,10 @@ export namespace autostopping {
          */
         healths?: inputs.autostopping.GetRuleVmHttpHealth[];
         /**
+         * Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+         */
+        proxyCloudConnectorId?: string;
+        /**
          * Id of the proxy
          */
         proxyId: string;
@@ -1529,6 +1533,10 @@ export namespace autostopping {
          * Health Check Details
          */
         healths?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmHttpHealthArgs>[] | undefined>;
+        /**
+         * Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+         */
+        proxyCloudConnectorId?: pulumi.Input<string | undefined>;
         /**
          * Id of the proxy
          */
@@ -1653,6 +1661,10 @@ export namespace autostopping {
          */
         forwardRules?: inputs.autostopping.GetRuleVmTcpForwardRule[];
         /**
+         * Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+         */
+        proxyCloudConnectorId?: string;
+        /**
          * Id of the Proxy
          */
         proxyId: string;
@@ -1671,6 +1683,10 @@ export namespace autostopping {
          * Additional tcp forwarding rules
          */
         forwardRules?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmTcpForwardRuleArgs>[] | undefined>;
+        /**
+         * Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+         */
+        proxyCloudConnectorId?: pulumi.Input<string | undefined>;
         /**
          * Id of the Proxy
          */
@@ -1999,6 +2015,10 @@ export namespace autostopping {
          */
         healths?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmHttpHealth>[] | undefined>;
         /**
+         * Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+         */
+        proxyCloudConnectorId?: pulumi.Input<string | undefined>;
+        /**
          * Id of the proxy
          */
         proxyId: pulumi.Input<string>;
@@ -2067,6 +2087,10 @@ export namespace autostopping {
          * Additional tcp forwarding rules
          */
         forwardRules?: pulumi.Input<pulumi.Input<inputs.autostopping.RuleVmTcpForwardRule>[] | undefined>;
+        /**
+         * Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+         */
+        proxyCloudConnectorId?: pulumi.Input<string | undefined>;
         /**
          * Id of the Proxy
          */

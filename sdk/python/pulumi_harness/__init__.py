@@ -1680,6 +1680,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/triggerPipeline",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/triggerPipeline:TriggerPipeline": "TriggerPipeline"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/triggers",
   "fqn": "pulumi_harness.platform",
   "classes": {

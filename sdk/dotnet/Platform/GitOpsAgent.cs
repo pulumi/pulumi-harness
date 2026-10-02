@@ -165,6 +165,10 @@ namespace Pulumi.Harness.Platform
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/pulumi",
+                AdditionalSecretOutputs =
+                {
+                    "agentToken",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -275,11 +279,21 @@ namespace Pulumi.Harness.Platform
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        [Input("agentToken")]
+        private Input<string>? _agentToken;
+
         /// <summary>
         /// Agent token to be used for authentication of the agent with Harness.
         /// </summary>
-        [Input("agentToken")]
-        public Input<string>? AgentToken { get; set; }
+        public Input<string>? AgentToken
+        {
+            get => _agentToken;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _agentToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Description of the GitOps agent.

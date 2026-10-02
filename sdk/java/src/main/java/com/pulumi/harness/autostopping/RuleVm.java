@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a AutoStopping rule for VMs.
  * 
+ * &gt; **Cross-Account Proxy Support** — Cross-account proxy-based AutoStopping (using `proxyCloudConnectorId`) is **only supported for VM rules**. It is not available for ECS, RDS, or Scale Group rule types. If you need to route traffic through a proxy in a different cloud account, use `harness.autostopping.RuleVm`.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -107,6 +109,46 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .name("name")
  *             .cloudConnectorId("cloud_connector_id")
+ *             .idleTimeMins(10)
+ *             .dryRun(true)
+ *             .build());
+ * 
+ *         // Cross-account AutoStopping rule: the target VM is in a different cloud account
+ *         // than the proxy (access point). Use proxy_cloud_connector_id to specify the
+ *         // cloud connector that owns the proxy.
+ *         var crossAccount = new RuleVm("crossAccount", RuleVmArgs.builder()
+ *             .filter(RuleVmFilterArgs.builder()
+ *                 .vmIds("i-0123456789abcdef0")
+ *                 .regions("us-east-1")
+ *                 .build())
+ *             .https(RuleVmHttpArgs.builder()
+ *                 .healths(RuleVmHttpHealthArgs.builder()
+ *                     .protocol("http")
+ *                     .port(80)
+ *                     .path("/")
+ *                     .timeout(30)
+ *                     .statusCodeFrom(200)
+ *                     .statusCodeTo(299)
+ *                     .build())
+ *                 .routings(RuleVmHttpRoutingArgs.builder()
+ *                     .sourceProtocol("https")
+ *                     .targetProtocol("https")
+ *                     .sourcePort(443)
+ *                     .targetPort(443)
+ *                     .action("forward")
+ *                     .build())
+ *                 .proxyId("proxy_id")
+ *                 .proxyCloudConnectorId("proxy_account_connector_id")
+ *                 .build())
+ *             .tcps(RuleVmTcpArgs.builder()
+ *                 .sshes(RuleVmTcpSshArgs.builder()
+ *                     .port(22)
+ *                     .build())
+ *                 .proxyId("proxy_id")
+ *                 .proxyCloudConnectorId("proxy_account_connector_id")
+ *                 .build())
+ *             .name("cross-account-vm-rule")
+ *             .cloudConnectorId("target_account_connector_id")
  *             .idleTimeMins(10)
  *             .dryRun(true)
  *             .build());

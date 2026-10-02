@@ -178,6 +178,8 @@ export class GitOpsAgent extends pulumi.CustomResource {
             resourceInputs["prefixedIdentifier"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["agentToken"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(GitOpsAgent.__pulumiType, name, resourceInputs, opts);
     }
 }

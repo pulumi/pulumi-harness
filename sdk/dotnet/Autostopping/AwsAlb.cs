@@ -34,6 +34,7 @@ namespace Pulumi.Harness.Autostopping
     ///             "sg1",
     ///             "sg2",
     ///         },
+    ///         ApiKey = "api_key",
     ///         DeleteCloudResourcesOnDestroy = true,
     ///     });
     /// 
@@ -49,6 +50,7 @@ namespace Pulumi.Harness.Autostopping
     ///         {
     ///             "sg-0",
     ///         },
+    ///         ApiKey = "api_key",
     ///         DeleteCloudResourcesOnDestroy = false,
     ///     });
     /// 
@@ -63,6 +65,12 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         [Output("albArn")]
         public Output<string> AlbArn { get; private set; } = null!;
+
+        /// <summary>
+        /// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+        /// </summary>
+        [Output("apiKey")]
+        public Output<string?> ApiKey { get; private set; } = null!;
 
         [Output("certificateId")]
         public Output<string?> CertificateId { get; private set; } = null!;
@@ -133,6 +141,10 @@ namespace Pulumi.Harness.Autostopping
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/pulumi",
+                AdditionalSecretOutputs =
+                {
+                    "apiKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -161,6 +173,22 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         [Input("albArn")]
         public Input<string>? AlbArn { get; set; }
+
+        [Input("apiKey")]
+        private Input<string>? _apiKey;
+
+        /// <summary>
+        /// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+        /// </summary>
+        public Input<string>? ApiKey
+        {
+            get => _apiKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _apiKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }
@@ -220,6 +248,22 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         [Input("albArn")]
         public Input<string>? AlbArn { get; set; }
+
+        [Input("apiKey")]
+        private Input<string>? _apiKey;
+
+        /// <summary>
+        /// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+        /// </summary>
+        public Input<string>? ApiKey
+        {
+            get => _apiKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _apiKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }

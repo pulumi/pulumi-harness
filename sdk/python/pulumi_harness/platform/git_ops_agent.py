@@ -575,6 +575,8 @@ class GitOpsAgent(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["agent_token"] = None
             __props__.__dict__["prefixed_identifier"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["agentToken"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(GitOpsAgent, __self__).__init__(
             'harness:platform/gitOpsAgent:GitOpsAgent',
             resource_name,

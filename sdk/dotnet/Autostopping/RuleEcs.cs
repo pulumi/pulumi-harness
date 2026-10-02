@@ -12,6 +12,8 @@ namespace Pulumi.Harness.Autostopping
     /// <summary>
     /// Resource for creating a AutoStopping rule for ECS services.
     /// 
+    /// &gt; **Note:** Cross-account proxy-based AutoStopping (`ProxyCloudConnectorId`) is not supported for ECS rules. This feature is only available for VM rules.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

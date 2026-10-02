@@ -21,6 +21,11 @@ public final class GetRuleVmTcp {
      */
     private @Nullable List<GetRuleVmTcpForwardRule> forwardRules;
     /**
+     * @return Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+     * 
+     */
+    private String proxyCloudConnectorId;
+    /**
      * @return Id of the Proxy
      * 
      */
@@ -43,6 +48,13 @@ public final class GetRuleVmTcp {
      */
     public List<GetRuleVmTcpForwardRule> forwardRules() {
         return this.forwardRules == null ? List.of() : this.forwardRules;
+    }
+    /**
+     * @return Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+     * 
+     */
+    public String proxyCloudConnectorId() {
+        return this.proxyCloudConnectorId;
     }
     /**
      * @return Id of the Proxy
@@ -76,6 +88,7 @@ public final class GetRuleVmTcp {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetRuleVmTcpForwardRule> forwardRules;
+        private String proxyCloudConnectorId;
         private String proxyId;
         private @Nullable List<GetRuleVmTcpRdp> rdps;
         private @Nullable List<GetRuleVmTcpSsh> sshes;
@@ -83,6 +96,7 @@ public final class GetRuleVmTcp {
         public Builder(GetRuleVmTcp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.forwardRules = defaults.forwardRules;
+    	      this.proxyCloudConnectorId = defaults.proxyCloudConnectorId;
     	      this.proxyId = defaults.proxyId;
     	      this.rdps = defaults.rdps;
     	      this.sshes = defaults.sshes;
@@ -96,6 +110,14 @@ public final class GetRuleVmTcp {
         }
         public Builder forwardRules(GetRuleVmTcpForwardRule... forwardRules) {
             return forwardRules(List.of(forwardRules));
+        }
+        @CustomType.Setter
+        public Builder proxyCloudConnectorId(String proxyCloudConnectorId) {
+            if (proxyCloudConnectorId == null) {
+              throw new MissingRequiredPropertyException("GetRuleVmTcp", "proxyCloudConnectorId");
+            }
+            this.proxyCloudConnectorId = proxyCloudConnectorId;
+            return this;
         }
         @CustomType.Setter
         public Builder proxyId(String proxyId) {
@@ -126,6 +148,7 @@ public final class GetRuleVmTcp {
         public GetRuleVmTcp build() {
             final var _resultValue = new GetRuleVmTcp();
             _resultValue.forwardRules = forwardRules;
+            _resultValue.proxyCloudConnectorId = proxyCloudConnectorId;
             _resultValue.proxyId = proxyId;
             _resultValue.rdps = rdps;
             _resultValue.sshes = sshes;
