@@ -3,7 +3,7 @@ module github.com/harness/terraform-provider-harness/shim
 go 1.26.6
 
 require (
-	github.com/harness/terraform-provider-harness v0.45.8
+	github.com/harness/terraform-provider-harness v0.45.9
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.40.1
 	github.com/pulumi/pulumi-harness/provider v0.0.0-20221227064623-0d00513c0628
 )
@@ -21,8 +21,8 @@ require (
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
-	github.com/harness/harness-go-sdk v0.8.29 // indirect
-	github.com/harness/harness-openapi-go-client v0.0.25 // indirect
+	github.com/harness/harness-go-sdk v0.8.31 // indirect
+	github.com/harness/harness-openapi-go-client v0.0.26 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-checkpoint v0.5.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect

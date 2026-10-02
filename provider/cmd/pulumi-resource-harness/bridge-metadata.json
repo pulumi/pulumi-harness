@@ -15868,6 +15868,9 @@
                     }
                 }
             },
+            "harness_platform_trigger_pipeline": {
+                "current": "harness:platform/triggerPipeline:TriggerPipeline"
+            },
             "harness_platform_triggers": {
                 "current": "harness:platform/triggers:Triggers",
                 "fields": {
