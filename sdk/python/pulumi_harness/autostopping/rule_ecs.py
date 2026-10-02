@@ -317,6 +317,8 @@ class RuleEcs(pulumi.CustomResource):
         """
         Resource for creating a AutoStopping rule for ECS services.
 
+        > **Note:** Cross-account proxy-based AutoStopping (`proxy_cloud_connector_id`) is not supported for ECS rules. This feature is only available for VM rules.
+
         ## Example Usage
 
         ```python
@@ -359,6 +361,8 @@ class RuleEcs(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a AutoStopping rule for ECS services.
+
+        > **Note:** Cross-account proxy-based AutoStopping (`proxy_cloud_connector_id`) is not supported for ECS rules. This feature is only available for VM rules.
 
         ## Example Usage
 

@@ -421,6 +421,7 @@
         "platform/templateFilters.ts",
         "platform/terraformCloudConnector.ts",
         "platform/token.ts",
+        "platform/triggerPipeline.ts",
         "platform/triggers.ts",
         "platform/user.ts",
         "platform/usergroup.ts",

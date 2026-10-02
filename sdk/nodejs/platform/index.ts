@@ -1365,6 +1365,11 @@ export type Token = import("./token").Token;
 export const Token: typeof import("./token").Token = null as any;
 utilities.lazyLoad(exports, ["Token"], () => require("./token"));
 
+export { TriggerPipelineArgs, TriggerPipelineState } from "./triggerPipeline";
+export type TriggerPipeline = import("./triggerPipeline").TriggerPipeline;
+export const TriggerPipeline: typeof import("./triggerPipeline").TriggerPipeline = null as any;
+utilities.lazyLoad(exports, ["TriggerPipeline"], () => require("./triggerPipeline"));
+
 export { TriggersArgs, TriggersState } from "./triggers";
 export type Triggers = import("./triggers").Triggers;
 export const Triggers: typeof import("./triggers").Triggers = null as any;
@@ -1658,6 +1663,8 @@ const _module = {
                 return new TerraformCloudConnector(name, <any>undefined, { urn })
             case "harness:platform/token:Token":
                 return new Token(name, <any>undefined, { urn })
+            case "harness:platform/triggerPipeline:TriggerPipeline":
+                return new TriggerPipeline(name, <any>undefined, { urn })
             case "harness:platform/triggers:Triggers":
                 return new Triggers(name, <any>undefined, { urn })
             case "harness:platform/user:User":
@@ -1804,6 +1811,7 @@ pulumi.runtime.registerResourceModule("harness", "platform/template", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/templateFilters", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/terraformCloudConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/token", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/triggerPipeline", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/triggers", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/user", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/usergroup", _module)

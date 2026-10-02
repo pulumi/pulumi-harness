@@ -279,6 +279,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TerraformCloudConnector{}
 	case "harness:platform/token:Token":
 		r = &Token{}
+	case "harness:platform/triggerPipeline:TriggerPipeline":
+		r = &TriggerPipeline{}
 	case "harness:platform/triggers:Triggers":
 		r = &Triggers{}
 	case "harness:platform/user:User":
@@ -947,6 +949,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/token",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/triggerPipeline",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

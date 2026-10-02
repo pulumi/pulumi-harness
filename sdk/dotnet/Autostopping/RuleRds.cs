@@ -12,6 +12,8 @@ namespace Pulumi.Harness.Autostopping
     /// <summary>
     /// Resource for creating a AutoStopping rule for RDS databases.
     /// 
+    /// &gt; **Note:** Cross-account proxy-based AutoStopping (`ProxyCloudConnectorId`) is not supported for RDS rules. This feature is only available for VM rules.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

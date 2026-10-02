@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * Resource for creating a AutoStopping rule for ECS services.
  *
+ * > **Note:** Cross-account proxy-based AutoStopping (`proxyCloudConnectorId`) is not supported for ECS rules. This feature is only available for VM rules.
+ *
  * ## Example Usage
  *
  * ```typescript

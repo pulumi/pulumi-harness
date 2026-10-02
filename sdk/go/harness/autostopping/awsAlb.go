@@ -38,6 +38,7 @@ import (
 //					pulumi.String("sg1"),
 //					pulumi.String("sg2"),
 //				},
+//				ApiKey:                        pulumi.String("api_key"),
 //				DeleteCloudResourcesOnDestroy: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -53,6 +54,7 @@ import (
 //				SecurityGroups: pulumi.StringArray{
 //					pulumi.String("sg-0"),
 //				},
+//				ApiKey:                        pulumi.String("api_key"),
 //				DeleteCloudResourcesOnDestroy: pulumi.Bool(false),
 //			})
 //			if err != nil {
@@ -67,7 +69,9 @@ type AwsAlb struct {
 	pulumi.CustomResourceState
 
 	// Arn of AWS ALB to be imported. Required only for importing existing ALB
-	AlbArn        pulumi.StringOutput    `pulumi:"albArn"`
+	AlbArn pulumi.StringOutput `pulumi:"albArn"`
+	// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+	ApiKey        pulumi.StringPtrOutput `pulumi:"apiKey"`
 	CertificateId pulumi.StringPtrOutput `pulumi:"certificateId"`
 	// Id of the cloud connector
 	CloudConnectorId pulumi.StringOutput `pulumi:"cloudConnectorId"`
@@ -104,6 +108,13 @@ func NewAwsAlb(ctx *pulumi.Context,
 	if args.Vpc == nil {
 		return nil, errors.New("invalid value for required argument 'Vpc'")
 	}
+	if args.ApiKey != nil {
+		args.ApiKey = pulumi.ToSecret(args.ApiKey).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"apiKey",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AwsAlb
 	err := ctx.RegisterResource("harness:autostopping/awsAlb:AwsAlb", name, args, &resource, opts...)
@@ -128,7 +139,9 @@ func GetAwsAlb(ctx *pulumi.Context,
 // Input properties used for looking up and filtering AwsAlb resources.
 type awsAlbState struct {
 	// Arn of AWS ALB to be imported. Required only for importing existing ALB
-	AlbArn        *string `pulumi:"albArn"`
+	AlbArn *string `pulumi:"albArn"`
+	// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+	ApiKey        *string `pulumi:"apiKey"`
 	CertificateId *string `pulumi:"certificateId"`
 	// Id of the cloud connector
 	CloudConnectorId *string `pulumi:"cloudConnectorId"`
@@ -148,7 +161,9 @@ type awsAlbState struct {
 
 type AwsAlbState struct {
 	// Arn of AWS ALB to be imported. Required only for importing existing ALB
-	AlbArn        pulumi.StringPtrInput
+	AlbArn pulumi.StringPtrInput
+	// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+	ApiKey        pulumi.StringPtrInput
 	CertificateId pulumi.StringPtrInput
 	// Id of the cloud connector
 	CloudConnectorId pulumi.StringPtrInput
@@ -172,7 +187,9 @@ func (AwsAlbState) ElementType() reflect.Type {
 
 type awsAlbArgs struct {
 	// Arn of AWS ALB to be imported. Required only for importing existing ALB
-	AlbArn        *string `pulumi:"albArn"`
+	AlbArn *string `pulumi:"albArn"`
+	// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+	ApiKey        *string `pulumi:"apiKey"`
 	CertificateId *string `pulumi:"certificateId"`
 	// Id of the cloud connector
 	CloudConnectorId string `pulumi:"cloudConnectorId"`
@@ -191,7 +208,9 @@ type awsAlbArgs struct {
 // The set of arguments for constructing a AwsAlb resource.
 type AwsAlbArgs struct {
 	// Arn of AWS ALB to be imported. Required only for importing existing ALB
-	AlbArn        pulumi.StringPtrInput
+	AlbArn pulumi.StringPtrInput
+	// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+	ApiKey        pulumi.StringPtrInput
 	CertificateId pulumi.StringPtrInput
 	// Id of the cloud connector
 	CloudConnectorId pulumi.StringInput
@@ -297,6 +316,11 @@ func (o AwsAlbOutput) ToAwsAlbOutputWithContext(ctx context.Context) AwsAlbOutpu
 // Arn of AWS ALB to be imported. Required only for importing existing ALB
 func (o AwsAlbOutput) AlbArn() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsAlb) pulumi.StringOutput { return v.AlbArn }).(pulumi.StringOutput)
+}
+
+// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+func (o AwsAlbOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsAlb) pulumi.StringPtrOutput { return v.ApiKey }).(pulumi.StringPtrOutput)
 }
 
 func (o AwsAlbOutput) CertificateId() pulumi.StringPtrOutput {

@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
 /**
  * Resource for creating a Harness AutoStopping rule for Scaling Groups.
  * 
+ * &gt; **Note:** Cross-account proxy-based AutoStopping (`proxyCloudConnectorId`) is not supported for Scale Group rules. This feature is only available for VM rules.
+ * 
  * ## Example Usage
  * 
  * <pre>

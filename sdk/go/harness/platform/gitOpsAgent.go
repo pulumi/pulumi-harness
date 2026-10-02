@@ -117,6 +117,10 @@ func NewGitOpsAgent(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"agentToken",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GitOpsAgent
 	err := ctx.RegisterResource("harness:platform/gitOpsAgent:GitOpsAgent", name, args, &resource, opts...)

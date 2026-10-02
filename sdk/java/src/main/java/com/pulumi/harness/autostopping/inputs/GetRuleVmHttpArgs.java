@@ -35,6 +35,21 @@ public final class GetRuleVmHttpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+     * 
+     */
+    @Import(name="proxyCloudConnectorId", required=true)
+    private Output<String> proxyCloudConnectorId;
+
+    /**
+     * @return Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+     * 
+     */
+    public Output<String> proxyCloudConnectorId() {
+        return this.proxyCloudConnectorId;
+    }
+
+    /**
      * Id of the proxy
      * 
      */
@@ -68,6 +83,7 @@ public final class GetRuleVmHttpArgs extends com.pulumi.resources.ResourceArgs {
 
     private GetRuleVmHttpArgs(GetRuleVmHttpArgs $) {
         this.healths = $.healths;
+        this.proxyCloudConnectorId = $.proxyCloudConnectorId;
         this.proxyId = $.proxyId;
         this.routings = $.routings;
     }
@@ -119,6 +135,27 @@ public final class GetRuleVmHttpArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder healths(GetRuleVmHttpHealthArgs... healths) {
             return healths(List.of(healths));
+        }
+
+        /**
+         * @param proxyCloudConnectorId Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyCloudConnectorId(Output<String> proxyCloudConnectorId) {
+            $.proxyCloudConnectorId = proxyCloudConnectorId;
+            return this;
+        }
+
+        /**
+         * @param proxyCloudConnectorId Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder proxyCloudConnectorId(String proxyCloudConnectorId) {
+            return proxyCloudConnectorId(Output.of(proxyCloudConnectorId));
         }
 
         /**
@@ -174,6 +211,9 @@ public final class GetRuleVmHttpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GetRuleVmHttpArgs build() {
+            if ($.proxyCloudConnectorId == null) {
+                throw new MissingRequiredPropertyException("GetRuleVmHttpArgs", "proxyCloudConnectorId");
+            }
             if ($.proxyId == null) {
                 throw new MissingRequiredPropertyException("GetRuleVmHttpArgs", "proxyId");
             }

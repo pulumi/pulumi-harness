@@ -12,6 +12,8 @@ namespace Pulumi.Harness.Autostopping
     /// <summary>
     /// Resource for creating a AutoStopping rule for VMs.
     /// 
+    /// &gt; **Cross-Account Proxy Support** — Cross-account proxy-based AutoStopping (using `ProxyCloudConnectorId`) is **only supported for VM rules**. It is not available for ECS, RDS, or Scale Group rule types. If you need to route traffic through a proxy in a different cloud account, use `harness.autostopping.RuleVm`.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -111,6 +113,74 @@ namespace Pulumi.Harness.Autostopping
     ///         },
     ///         Name = "name",
     ///         CloudConnectorId = "cloud_connector_id",
+    ///         IdleTimeMins = 10,
+    ///         DryRun = true,
+    ///     });
+    /// 
+    ///     // Cross-account AutoStopping rule: the target VM is in a different cloud account
+    ///     // than the proxy (access point). Use proxy_cloud_connector_id to specify the
+    ///     // cloud connector that owns the proxy.
+    ///     var crossAccount = new Harness.Autostopping.RuleVm("cross_account", new()
+    ///     {
+    ///         Filter = new Harness.Autostopping.Inputs.RuleVmFilterArgs
+    ///         {
+    ///             VmIds = new[]
+    ///             {
+    ///                 "i-0123456789abcdef0",
+    ///             },
+    ///             Regions = new[]
+    ///             {
+    ///                 "us-east-1",
+    ///             },
+    ///         },
+    ///         Https = new[]
+    ///         {
+    ///             new Harness.Autostopping.Inputs.RuleVmHttpArgs
+    ///             {
+    ///                 Healths = new[]
+    ///                 {
+    ///                     new Harness.Autostopping.Inputs.RuleVmHttpHealthArgs
+    ///                     {
+    ///                         Protocol = "http",
+    ///                         Port = 80,
+    ///                         Path = "/",
+    ///                         Timeout = 30,
+    ///                         StatusCodeFrom = 200,
+    ///                         StatusCodeTo = 299,
+    ///                     },
+    ///                 },
+    ///                 Routings = new[]
+    ///                 {
+    ///                     new Harness.Autostopping.Inputs.RuleVmHttpRoutingArgs
+    ///                     {
+    ///                         SourceProtocol = "https",
+    ///                         TargetProtocol = "https",
+    ///                         SourcePort = 443,
+    ///                         TargetPort = 443,
+    ///                         Action = "forward",
+    ///                     },
+    ///                 },
+    ///                 ProxyId = "proxy_id",
+    ///                 ProxyCloudConnectorId = "proxy_account_connector_id",
+    ///             },
+    ///         },
+    ///         Tcps = new[]
+    ///         {
+    ///             new Harness.Autostopping.Inputs.RuleVmTcpArgs
+    ///             {
+    ///                 Sshes = new[]
+    ///                 {
+    ///                     new Harness.Autostopping.Inputs.RuleVmTcpSshArgs
+    ///                     {
+    ///                         Port = 22,
+    ///                     },
+    ///                 },
+    ///                 ProxyId = "proxy_id",
+    ///                 ProxyCloudConnectorId = "proxy_account_connector_id",
+    ///             },
+    ///         },
+    ///         Name = "cross-account-vm-rule",
+    ///         CloudConnectorId = "target_account_connector_id",
     ///         IdleTimeMins = 10,
     ///         DryRun = true,
     ///     });

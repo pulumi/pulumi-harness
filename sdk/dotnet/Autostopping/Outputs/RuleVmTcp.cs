@@ -18,6 +18,10 @@ namespace Pulumi.Harness.Autostopping.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.RuleVmTcpForwardRule> ForwardRules;
         /// <summary>
+        /// Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+        /// </summary>
+        public readonly string? ProxyCloudConnectorId;
+        /// <summary>
         /// Id of the Proxy
         /// </summary>
         public readonly string ProxyId;
@@ -34,6 +38,8 @@ namespace Pulumi.Harness.Autostopping.Outputs
         private RuleVmTcp(
             ImmutableArray<Outputs.RuleVmTcpForwardRule> forwardRules,
 
+            string? proxyCloudConnectorId,
+
             string proxyId,
 
             ImmutableArray<Outputs.RuleVmTcpRdp> rdps,
@@ -41,6 +47,7 @@ namespace Pulumi.Harness.Autostopping.Outputs
             ImmutableArray<Outputs.RuleVmTcpSsh> sshes)
         {
             ForwardRules = forwardRules;
+            ProxyCloudConnectorId = proxyCloudConnectorId;
             ProxyId = proxyId;
             Rdps = rdps;
             Sshes = sshes;

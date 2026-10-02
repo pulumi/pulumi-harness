@@ -10,6 +10,7 @@ import com.pulumi.harness.autostopping.outputs.RuleVmHttpRouting;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -19,6 +20,11 @@ public final class RuleVmHttp {
      * 
      */
     private @Nullable List<RuleVmHttpHealth> healths;
+    /**
+     * @return Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+     * 
+     */
+    private @Nullable String proxyCloudConnectorId;
     /**
      * @return Id of the proxy
      * 
@@ -37,6 +43,13 @@ public final class RuleVmHttp {
      */
     public List<RuleVmHttpHealth> healths() {
         return this.healths == null ? List.of() : this.healths;
+    }
+    /**
+     * @return Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+     * 
+     */
+    public Optional<String> proxyCloudConnectorId() {
+        return Optional.ofNullable(this.proxyCloudConnectorId);
     }
     /**
      * @return Id of the proxy
@@ -63,12 +76,14 @@ public final class RuleVmHttp {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<RuleVmHttpHealth> healths;
+        private @Nullable String proxyCloudConnectorId;
         private String proxyId;
         private @Nullable List<RuleVmHttpRouting> routings;
         public Builder() {}
         public Builder(RuleVmHttp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.healths = defaults.healths;
+    	      this.proxyCloudConnectorId = defaults.proxyCloudConnectorId;
     	      this.proxyId = defaults.proxyId;
     	      this.routings = defaults.routings;
         }
@@ -81,6 +96,12 @@ public final class RuleVmHttp {
         }
         public Builder healths(RuleVmHttpHealth... healths) {
             return healths(List.of(healths));
+        }
+        @CustomType.Setter
+        public Builder proxyCloudConnectorId(@Nullable String proxyCloudConnectorId) {
+
+            this.proxyCloudConnectorId = proxyCloudConnectorId;
+            return this;
         }
         @CustomType.Setter
         public Builder proxyId(String proxyId) {
@@ -102,6 +123,7 @@ public final class RuleVmHttp {
         public RuleVmHttp build() {
             final var _resultValue = new RuleVmHttp();
             _resultValue.healths = healths;
+            _resultValue.proxyCloudConnectorId = proxyCloudConnectorId;
             _resultValue.proxyId = proxyId;
             _resultValue.routings = routings;
             return _resultValue;

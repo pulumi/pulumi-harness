@@ -12,6 +12,8 @@ namespace Pulumi.Harness.Autostopping
     /// <summary>
     /// Resource for creating a Harness AutoStopping rule for Scaling Groups.
     /// 
+    /// &gt; **Note:** Cross-account proxy-based AutoStopping (`ProxyCloudConnectorId`) is not supported for Scale Group rules. This feature is only available for VM rules.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

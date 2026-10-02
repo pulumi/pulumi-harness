@@ -1222,6 +1222,10 @@ export namespace autostopping {
          */
         healths?: outputs.autostopping.GetRuleVmHttpHealth[];
         /**
+         * Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+         */
+        proxyCloudConnectorId: string;
+        /**
          * Id of the proxy
          */
         proxyId: string;
@@ -1290,6 +1294,10 @@ export namespace autostopping {
          * Additional tcp forwarding rules
          */
         forwardRules?: outputs.autostopping.GetRuleVmTcpForwardRule[];
+        /**
+         * Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+         */
+        proxyCloudConnectorId: string;
         /**
          * Id of the Proxy
          */
@@ -1619,6 +1627,10 @@ export namespace autostopping {
          */
         healths?: outputs.autostopping.RuleVmHttpHealth[];
         /**
+         * Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+         */
+        proxyCloudConnectorId: string;
+        /**
          * Id of the proxy
          */
         proxyId: string;
@@ -1687,6 +1699,10 @@ export namespace autostopping {
          * Additional tcp forwarding rules
          */
         forwardRules?: outputs.autostopping.RuleVmTcpForwardRule[];
+        /**
+         * Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+         */
+        proxyCloudConnectorId: string;
         /**
          * Id of the Proxy
          */

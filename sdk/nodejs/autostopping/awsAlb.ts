@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *         "sg1",
  *         "sg2",
  *     ],
+ *     apiKey: "api_key",
  *     deleteCloudResourcesOnDestroy: true,
  * });
  * const harnessAlb = new harness.autostopping.AwsAlb("harness_alb", {
@@ -33,6 +34,7 @@ import * as utilities from "../utilities";
  *     region: "region",
  *     vpc: "vpc",
  *     securityGroups: ["sg-0"],
+ *     apiKey: "api_key",
  *     deleteCloudResourcesOnDestroy: false,
  * });
  * ```
@@ -69,6 +71,10 @@ export class AwsAlb extends pulumi.CustomResource {
      * Arn of AWS ALB to be imported. Required only for importing existing ALB
      */
     declare public readonly albArn: pulumi.Output<string>;
+    /**
+     * Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+     */
+    declare public readonly apiKey: pulumi.Output<string | undefined>;
     declare public readonly certificateId: pulumi.Output<string | undefined>;
     /**
      * Id of the cloud connector
@@ -113,6 +119,7 @@ export class AwsAlb extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AwsAlbState | undefined;
             resourceInputs["albArn"] = state?.albArn;
+            resourceInputs["apiKey"] = state?.apiKey;
             resourceInputs["certificateId"] = state?.certificateId;
             resourceInputs["cloudConnectorId"] = state?.cloudConnectorId;
             resourceInputs["deleteCloudResourcesOnDestroy"] = state?.deleteCloudResourcesOnDestroy;
@@ -136,6 +143,7 @@ export class AwsAlb extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vpc'");
             }
             resourceInputs["albArn"] = args?.albArn;
+            resourceInputs["apiKey"] = args?.apiKey ? pulumi.secret(args.apiKey) : undefined;
             resourceInputs["certificateId"] = args?.certificateId;
             resourceInputs["cloudConnectorId"] = args?.cloudConnectorId;
             resourceInputs["deleteCloudResourcesOnDestroy"] = args?.deleteCloudResourcesOnDestroy;
@@ -146,6 +154,8 @@ export class AwsAlb extends pulumi.CustomResource {
             resourceInputs["identifier"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["apiKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AwsAlb.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -158,6 +168,10 @@ export interface AwsAlbState {
      * Arn of AWS ALB to be imported. Required only for importing existing ALB
      */
     albArn?: pulumi.Input<string | undefined>;
+    /**
+     * Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+     */
+    apiKey?: pulumi.Input<string | undefined>;
     certificateId?: pulumi.Input<string | undefined>;
     /**
      * Id of the cloud connector
@@ -197,6 +211,10 @@ export interface AwsAlbArgs {
      * Arn of AWS ALB to be imported. Required only for importing existing ALB
      */
     albArn?: pulumi.Input<string | undefined>;
+    /**
+     * Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+     */
+    apiKey?: pulumi.Input<string | undefined>;
     certificateId?: pulumi.Input<string | undefined>;
     /**
      * Id of the cloud connector

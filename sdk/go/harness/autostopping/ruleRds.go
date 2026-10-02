@@ -14,6 +14,8 @@ import (
 
 // Resource for creating a AutoStopping rule for RDS databases.
 //
+// > **Note:** Cross-account proxy-based AutoStopping (`proxyCloudConnectorId`) is not supported for RDS rules. This feature is only available for VM rules.
+//
 // ## Example Usage
 //
 // ```go

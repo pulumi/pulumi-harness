@@ -25,6 +25,12 @@ namespace Pulumi.Harness.Autostopping.Inputs
         }
 
         /// <summary>
+        /// Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+        /// </summary>
+        [Input("proxyCloudConnectorId")]
+        public Input<string>? ProxyCloudConnectorId { get; set; }
+
+        /// <summary>
         /// Id of the proxy
         /// </summary>
         [Input("proxyId", required: true)]

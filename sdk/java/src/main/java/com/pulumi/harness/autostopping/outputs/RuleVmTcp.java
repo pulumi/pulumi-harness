@@ -11,6 +11,7 @@ import com.pulumi.harness.autostopping.outputs.RuleVmTcpSsh;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -20,6 +21,11 @@ public final class RuleVmTcp {
      * 
      */
     private @Nullable List<RuleVmTcpForwardRule> forwardRules;
+    /**
+     * @return Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+     * 
+     */
+    private @Nullable String proxyCloudConnectorId;
     /**
      * @return Id of the Proxy
      * 
@@ -43,6 +49,13 @@ public final class RuleVmTcp {
      */
     public List<RuleVmTcpForwardRule> forwardRules() {
         return this.forwardRules == null ? List.of() : this.forwardRules;
+    }
+    /**
+     * @return Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+     * 
+     */
+    public Optional<String> proxyCloudConnectorId() {
+        return Optional.ofNullable(this.proxyCloudConnectorId);
     }
     /**
      * @return Id of the Proxy
@@ -76,6 +89,7 @@ public final class RuleVmTcp {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<RuleVmTcpForwardRule> forwardRules;
+        private @Nullable String proxyCloudConnectorId;
         private String proxyId;
         private @Nullable List<RuleVmTcpRdp> rdps;
         private @Nullable List<RuleVmTcpSsh> sshes;
@@ -83,6 +97,7 @@ public final class RuleVmTcp {
         public Builder(RuleVmTcp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.forwardRules = defaults.forwardRules;
+    	      this.proxyCloudConnectorId = defaults.proxyCloudConnectorId;
     	      this.proxyId = defaults.proxyId;
     	      this.rdps = defaults.rdps;
     	      this.sshes = defaults.sshes;
@@ -96,6 +111,12 @@ public final class RuleVmTcp {
         }
         public Builder forwardRules(RuleVmTcpForwardRule... forwardRules) {
             return forwardRules(List.of(forwardRules));
+        }
+        @CustomType.Setter
+        public Builder proxyCloudConnectorId(@Nullable String proxyCloudConnectorId) {
+
+            this.proxyCloudConnectorId = proxyCloudConnectorId;
+            return this;
         }
         @CustomType.Setter
         public Builder proxyId(String proxyId) {
@@ -126,6 +147,7 @@ public final class RuleVmTcp {
         public RuleVmTcp build() {
             final var _resultValue = new RuleVmTcp();
             _resultValue.forwardRules = forwardRules;
+            _resultValue.proxyCloudConnectorId = proxyCloudConnectorId;
             _resultValue.proxyId = proxyId;
             _resultValue.rdps = rdps;
             _resultValue.sshes = sshes;

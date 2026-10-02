@@ -283,6 +283,8 @@ class RuleRds(pulumi.CustomResource):
         """
         Resource for creating a AutoStopping rule for RDS databases.
 
+        > **Note:** Cross-account proxy-based AutoStopping (`proxy_cloud_connector_id`) is not supported for RDS rules. This feature is only available for VM rules.
+
         ## Example Usage
 
         ```python
@@ -324,6 +326,8 @@ class RuleRds(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource for creating a AutoStopping rule for RDS databases.
+
+        > **Note:** Cross-account proxy-based AutoStopping (`proxy_cloud_connector_id`) is not supported for RDS rules. This feature is only available for VM rules.
 
         ## Example Usage
 

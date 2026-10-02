@@ -2792,6 +2792,8 @@ func (o RuleVmFilterTagArrayOutput) Index(i pulumi.IntInput) RuleVmFilterTagOutp
 type RuleVmHttp struct {
 	// Health Check Details
 	Healths []RuleVmHttpHealth `pulumi:"healths"`
+	// Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+	ProxyCloudConnectorId *string `pulumi:"proxyCloudConnectorId"`
 	// Id of the proxy
 	ProxyId string `pulumi:"proxyId"`
 	// Routing configuration used to access the instances
@@ -2812,6 +2814,8 @@ type RuleVmHttpInput interface {
 type RuleVmHttpArgs struct {
 	// Health Check Details
 	Healths RuleVmHttpHealthArrayInput `pulumi:"healths"`
+	// Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+	ProxyCloudConnectorId pulumi.StringPtrInput `pulumi:"proxyCloudConnectorId"`
 	// Id of the proxy
 	ProxyId pulumi.StringInput `pulumi:"proxyId"`
 	// Routing configuration used to access the instances
@@ -2872,6 +2876,11 @@ func (o RuleVmHttpOutput) ToRuleVmHttpOutputWithContext(ctx context.Context) Rul
 // Health Check Details
 func (o RuleVmHttpOutput) Healths() RuleVmHttpHealthArrayOutput {
 	return o.ApplyT(func(v RuleVmHttp) []RuleVmHttpHealth { return v.Healths }).(RuleVmHttpHealthArrayOutput)
+}
+
+// Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+func (o RuleVmHttpOutput) ProxyCloudConnectorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleVmHttp) *string { return v.ProxyCloudConnectorId }).(pulumi.StringPtrOutput)
 }
 
 // Id of the proxy
@@ -3191,6 +3200,8 @@ func (o RuleVmHttpRoutingArrayOutput) Index(i pulumi.IntInput) RuleVmHttpRouting
 type RuleVmTcp struct {
 	// Additional tcp forwarding rules
 	ForwardRules []RuleVmTcpForwardRule `pulumi:"forwardRules"`
+	// Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+	ProxyCloudConnectorId *string `pulumi:"proxyCloudConnectorId"`
 	// Id of the Proxy
 	ProxyId string `pulumi:"proxyId"`
 	// RDP configuration
@@ -3213,6 +3224,8 @@ type RuleVmTcpInput interface {
 type RuleVmTcpArgs struct {
 	// Additional tcp forwarding rules
 	ForwardRules RuleVmTcpForwardRuleArrayInput `pulumi:"forwardRules"`
+	// Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+	ProxyCloudConnectorId pulumi.StringPtrInput `pulumi:"proxyCloudConnectorId"`
 	// Id of the Proxy
 	ProxyId pulumi.StringInput `pulumi:"proxyId"`
 	// RDP configuration
@@ -3275,6 +3288,11 @@ func (o RuleVmTcpOutput) ToRuleVmTcpOutputWithContext(ctx context.Context) RuleV
 // Additional tcp forwarding rules
 func (o RuleVmTcpOutput) ForwardRules() RuleVmTcpForwardRuleArrayOutput {
 	return o.ApplyT(func(v RuleVmTcp) []RuleVmTcpForwardRule { return v.ForwardRules }).(RuleVmTcpForwardRuleArrayOutput)
+}
+
+// Id of the cloud connector for the proxy. Required when the proxy lives in a different cloud account than the target resource.
+func (o RuleVmTcpOutput) ProxyCloudConnectorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleVmTcp) *string { return v.ProxyCloudConnectorId }).(pulumi.StringPtrOutput)
 }
 
 // Id of the Proxy
@@ -6064,6 +6082,8 @@ func (o GetRuleVmFilterTagArrayOutput) Index(i pulumi.IntInput) GetRuleVmFilterT
 type GetRuleVmHttp struct {
 	// Health Check Details
 	Healths []GetRuleVmHttpHealth `pulumi:"healths"`
+	// Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+	ProxyCloudConnectorId string `pulumi:"proxyCloudConnectorId"`
 	// Id of the proxy
 	ProxyId string `pulumi:"proxyId"`
 	// Routing configuration used to access the instances
@@ -6084,6 +6104,8 @@ type GetRuleVmHttpInput interface {
 type GetRuleVmHttpArgs struct {
 	// Health Check Details
 	Healths GetRuleVmHttpHealthArrayInput `pulumi:"healths"`
+	// Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+	ProxyCloudConnectorId pulumi.StringInput `pulumi:"proxyCloudConnectorId"`
 	// Id of the proxy
 	ProxyId pulumi.StringInput `pulumi:"proxyId"`
 	// Routing configuration used to access the instances
@@ -6144,6 +6166,11 @@ func (o GetRuleVmHttpOutput) ToGetRuleVmHttpOutputWithContext(ctx context.Contex
 // Health Check Details
 func (o GetRuleVmHttpOutput) Healths() GetRuleVmHttpHealthArrayOutput {
 	return o.ApplyT(func(v GetRuleVmHttp) []GetRuleVmHttpHealth { return v.Healths }).(GetRuleVmHttpHealthArrayOutput)
+}
+
+// Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+func (o GetRuleVmHttpOutput) ProxyCloudConnectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRuleVmHttp) string { return v.ProxyCloudConnectorId }).(pulumi.StringOutput)
 }
 
 // Id of the proxy
@@ -6463,6 +6490,8 @@ func (o GetRuleVmHttpRoutingArrayOutput) Index(i pulumi.IntInput) GetRuleVmHttpR
 type GetRuleVmTcp struct {
 	// Additional tcp forwarding rules
 	ForwardRules []GetRuleVmTcpForwardRule `pulumi:"forwardRules"`
+	// Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+	ProxyCloudConnectorId string `pulumi:"proxyCloudConnectorId"`
 	// Id of the Proxy
 	ProxyId string `pulumi:"proxyId"`
 	// RDP configuration
@@ -6485,6 +6514,8 @@ type GetRuleVmTcpInput interface {
 type GetRuleVmTcpArgs struct {
 	// Additional tcp forwarding rules
 	ForwardRules GetRuleVmTcpForwardRuleArrayInput `pulumi:"forwardRules"`
+	// Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+	ProxyCloudConnectorId pulumi.StringInput `pulumi:"proxyCloudConnectorId"`
 	// Id of the Proxy
 	ProxyId pulumi.StringInput `pulumi:"proxyId"`
 	// RDP configuration
@@ -6547,6 +6578,11 @@ func (o GetRuleVmTcpOutput) ToGetRuleVmTcpOutputWithContext(ctx context.Context)
 // Additional tcp forwarding rules
 func (o GetRuleVmTcpOutput) ForwardRules() GetRuleVmTcpForwardRuleArrayOutput {
 	return o.ApplyT(func(v GetRuleVmTcp) []GetRuleVmTcpForwardRule { return v.ForwardRules }).(GetRuleVmTcpForwardRuleArrayOutput)
+}
+
+// Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
+func (o GetRuleVmTcpOutput) ProxyCloudConnectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRuleVmTcp) string { return v.ProxyCloudConnectorId }).(pulumi.StringOutput)
 }
 
 // Id of the Proxy

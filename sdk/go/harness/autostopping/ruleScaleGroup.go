@@ -14,6 +14,8 @@ import (
 
 // Resource for creating a Harness AutoStopping rule for Scaling Groups.
 //
+// > **Note:** Cross-account proxy-based AutoStopping (`proxyCloudConnectorId`) is not supported for Scale Group rules. This feature is only available for VM rules.
+//
 // ## Example Usage
 //
 // ```go
