@@ -5,13 +5,7 @@ package com.pulumi.harness.autostopping.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.harness.autostopping.inputs.GetRuleRdsDatabaseArgs;
-import com.pulumi.harness.autostopping.inputs.GetRuleRdsDependArgs;
-import com.pulumi.harness.autostopping.inputs.GetRuleRdsTcpArgs;
-import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -22,96 +16,40 @@ public final class GetRuleRdsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetRuleRdsArgs Empty = new GetRuleRdsArgs();
 
     /**
-     * Id of the cloud connector
+     * Unique identifier of the resource. Either `identifier` or `name` must be specified.
      * 
      */
-    @Import(name="cloudConnectorId", required=true)
-    private Output<String> cloudConnectorId;
+    @Import(name="identifier")
+    private @Nullable Output<String> identifier;
 
     /**
-     * @return Id of the cloud connector
+     * @return Unique identifier of the resource. Either `identifier` or `name` must be specified.
      * 
      */
-    public Output<String> cloudConnectorId() {
-        return this.cloudConnectorId;
-    }
-
-    @Import(name="database", required=true)
-    private Output<GetRuleRdsDatabaseArgs> database;
-
-    public Output<GetRuleRdsDatabaseArgs> database() {
-        return this.database;
+    public Optional<Output<String>> identifier() {
+        return Optional.ofNullable(this.identifier);
     }
 
     /**
-     * Dependent rules
+     * Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      * 
      */
-    @Import(name="depends")
-    private @Nullable Output<List<GetRuleRdsDependArgs>> depends;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
-     * @return Dependent rules
+     * @return Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      * 
      */
-    public Optional<Output<List<GetRuleRdsDependArgs>>> depends() {
-        return Optional.ofNullable(this.depends);
-    }
-
-    /**
-     * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-     * 
-     */
-    @Import(name="idleTimeMins")
-    private @Nullable Output<Integer> idleTimeMins;
-
-    /**
-     * @return Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-     * 
-     */
-    public Optional<Output<Integer>> idleTimeMins() {
-        return Optional.ofNullable(this.idleTimeMins);
-    }
-
-    /**
-     * Name of the rule
-     * 
-     */
-    @Import(name="name", required=true)
-    private Output<String> name;
-
-    /**
-     * @return Name of the rule
-     * 
-     */
-    public Output<String> name() {
-        return this.name;
-    }
-
-    /**
-     * TCP routing configuration
-     * 
-     */
-    @Import(name="tcps")
-    private @Nullable Output<List<GetRuleRdsTcpArgs>> tcps;
-
-    /**
-     * @return TCP routing configuration
-     * 
-     */
-    public Optional<Output<List<GetRuleRdsTcpArgs>>> tcps() {
-        return Optional.ofNullable(this.tcps);
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     private GetRuleRdsArgs() {}
 
     private GetRuleRdsArgs(GetRuleRdsArgs $) {
-        this.cloudConnectorId = $.cloudConnectorId;
-        this.database = $.database;
-        this.depends = $.depends;
-        this.idleTimeMins = $.idleTimeMins;
+        this.identifier = $.identifier;
         this.name = $.name;
-        this.tcps = $.tcps;
     }
 
     public static Builder builder() {
@@ -133,100 +71,39 @@ public final class GetRuleRdsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param cloudConnectorId Id of the cloud connector
+         * @param identifier Unique identifier of the resource. Either `identifier` or `name` must be specified.
          * 
          * @return builder
          * 
          */
-        public Builder cloudConnectorId(Output<String> cloudConnectorId) {
-            $.cloudConnectorId = cloudConnectorId;
+        public Builder identifier(@Nullable Output<String> identifier) {
+            $.identifier = identifier;
             return this;
         }
 
         /**
-         * @param cloudConnectorId Id of the cloud connector
+         * @param identifier Unique identifier of the resource. Either `identifier` or `name` must be specified.
          * 
          * @return builder
          * 
          */
-        public Builder cloudConnectorId(String cloudConnectorId) {
-            return cloudConnectorId(Output.of(cloudConnectorId));
-        }
-
-        public Builder database(Output<GetRuleRdsDatabaseArgs> database) {
-            $.database = database;
-            return this;
-        }
-
-        public Builder database(GetRuleRdsDatabaseArgs database) {
-            return database(Output.of(database));
+        public Builder identifier(String identifier) {
+            return identifier(Output.of(identifier));
         }
 
         /**
-         * @param depends Dependent rules
+         * @param name Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
          * 
          * @return builder
          * 
          */
-        public Builder depends(@Nullable Output<List<GetRuleRdsDependArgs>> depends) {
-            $.depends = depends;
-            return this;
-        }
-
-        /**
-         * @param depends Dependent rules
-         * 
-         * @return builder
-         * 
-         */
-        public Builder depends(List<GetRuleRdsDependArgs> depends) {
-            return depends(Output.of(depends));
-        }
-
-        /**
-         * @param depends Dependent rules
-         * 
-         * @return builder
-         * 
-         */
-        public Builder depends(GetRuleRdsDependArgs... depends) {
-            return depends(List.of(depends));
-        }
-
-        /**
-         * @param idleTimeMins Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder idleTimeMins(@Nullable Output<Integer> idleTimeMins) {
-            $.idleTimeMins = idleTimeMins;
-            return this;
-        }
-
-        /**
-         * @param idleTimeMins Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder idleTimeMins(Integer idleTimeMins) {
-            return idleTimeMins(Output.of(idleTimeMins));
-        }
-
-        /**
-         * @param name Name of the rule
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Name of the rule
+         * @param name Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
          * 
          * @return builder
          * 
@@ -235,47 +112,7 @@ public final class GetRuleRdsArgs extends com.pulumi.resources.InvokeArgs {
             return name(Output.of(name));
         }
 
-        /**
-         * @param tcps TCP routing configuration
-         * 
-         * @return builder
-         * 
-         */
-        public Builder tcps(@Nullable Output<List<GetRuleRdsTcpArgs>> tcps) {
-            $.tcps = tcps;
-            return this;
-        }
-
-        /**
-         * @param tcps TCP routing configuration
-         * 
-         * @return builder
-         * 
-         */
-        public Builder tcps(List<GetRuleRdsTcpArgs> tcps) {
-            return tcps(Output.of(tcps));
-        }
-
-        /**
-         * @param tcps TCP routing configuration
-         * 
-         * @return builder
-         * 
-         */
-        public Builder tcps(GetRuleRdsTcpArgs... tcps) {
-            return tcps(List.of(tcps));
-        }
-
         public GetRuleRdsArgs build() {
-            if ($.cloudConnectorId == null) {
-                throw new MissingRequiredPropertyException("GetRuleRdsArgs", "cloudConnectorId");
-            }
-            if ($.database == null) {
-                throw new MissingRequiredPropertyException("GetRuleRdsArgs", "database");
-            }
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetRuleRdsArgs", "name");
-            }
             return $;
         }
     }

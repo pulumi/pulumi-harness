@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRuleRdsDepend {
@@ -16,7 +14,7 @@ public final class GetRuleRdsDepend {
      * @return Number of seconds the rule should wait after warming up the dependent rule
      * 
      */
-    private @Nullable Integer delayInSec;
+    private Integer delayInSec;
     /**
      * @return Rule id of the dependent rule
      * 
@@ -28,8 +26,8 @@ public final class GetRuleRdsDepend {
      * @return Number of seconds the rule should wait after warming up the dependent rule
      * 
      */
-    public Optional<Integer> delayInSec() {
-        return Optional.ofNullable(this.delayInSec);
+    public Integer delayInSec() {
+        return this.delayInSec;
     }
     /**
      * @return Rule id of the dependent rule
@@ -48,7 +46,7 @@ public final class GetRuleRdsDepend {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Integer delayInSec;
+        private Integer delayInSec;
         private Integer ruleId;
         public Builder() {}
         public Builder(GetRuleRdsDepend defaults) {
@@ -58,8 +56,10 @@ public final class GetRuleRdsDepend {
         }
 
         @CustomType.Setter
-        public Builder delayInSec(@Nullable Integer delayInSec) {
-
+        public Builder delayInSec(Integer delayInSec) {
+            if (delayInSec == null) {
+              throw new MissingRequiredPropertyException("GetRuleRdsDepend", "delayInSec");
+            }
             this.delayInSec = delayInSec;
             return this;
         }

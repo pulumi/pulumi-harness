@@ -16,16 +16,23 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * export = async () => {
+ *     // Returns all autostopping rules without any filtering.
  *     const all = await harness.autostopping.getRules({});
+ *     // Returns only rules of kind "instance"
  *     const byInstanceKind = await harness.autostopping.getRules({
  *         kind: "instance",
  *     });
+ *     // Returns only rules of kind "k8s"
  *     const byK8sKind = await harness.autostopping.getRules({
  *         kind: "k8s",
  *     });
+ *     // Returns rules whose name starts with "myname-" followed by any characters.
+ *     // Regex: "myname-.*" matches e.g. "myname-prod", "myname-01", "myname-anything".
  *     const byNamePrefix = await harness.autostopping.getRules({
  *         name: "myname-.*",
  *     });
+ *     // Returns rules whose name starts with "app" or "svc" followed by any characters.
+ *     // Regex: "^(app|svc).*" matches e.g. "app-prod", "svc-backend", "appserver" but NOT "myapp".
  *     const byNameRegex = await harness.autostopping.getRules({
  *         name: "^(app|svc).*",
  *     });
@@ -98,16 +105,23 @@ export interface GetRulesResult {
  * import * as harness from "@pulumi/harness";
  *
  * export = async () => {
+ *     // Returns all autostopping rules without any filtering.
  *     const all = await harness.autostopping.getRules({});
+ *     // Returns only rules of kind "instance"
  *     const byInstanceKind = await harness.autostopping.getRules({
  *         kind: "instance",
  *     });
+ *     // Returns only rules of kind "k8s"
  *     const byK8sKind = await harness.autostopping.getRules({
  *         kind: "k8s",
  *     });
+ *     // Returns rules whose name starts with "myname-" followed by any characters.
+ *     // Regex: "myname-.*" matches e.g. "myname-prod", "myname-01", "myname-anything".
  *     const byNamePrefix = await harness.autostopping.getRules({
  *         name: "myname-.*",
  *     });
+ *     // Returns rules whose name starts with "app" or "svc" followed by any characters.
+ *     // Regex: "^(app|svc).*" matches e.g. "app-prod", "svc-backend", "appserver" but NOT "myapp".
  *     const byNameRegex = await harness.autostopping.getRules({
  *         name: "^(app|svc).*",
  *     });

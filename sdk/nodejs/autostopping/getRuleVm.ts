@@ -10,19 +10,46 @@ import * as utilities from "../utilities";
  * Data source for retrieving a Harness AutoStopping rule for VMs.
  *
  * ## Example Usage
+ *
+ * ### Lookup by ID
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byId = harness.autostopping.getRuleVm({
+ *     identifier: "12345",
+ * });
+ * ```
+ *
+ * ### Lookup by name (regex)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byName = harness.autostopping.getRuleVm({
+ *     name: "^my-vm-rule$",
+ * });
+ * ```
+ *
+ * ### Lookup by name pattern
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byPattern = harness.autostopping.getRuleVm({
+ *     name: "my-vm-.*-prod",
+ * });
+ * ```
  */
-export function getRuleVm(args: GetRuleVmArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleVmResult> {
+export function getRuleVm(args?: GetRuleVmArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleVmResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:autostopping/getRuleVm:getRuleVm", {
-        "cloudConnectorId": args.cloudConnectorId,
-        "customDomains": args.customDomains,
-        "depends": args.depends,
-        "filter": args.filter,
-        "https": args.https,
-        "idleTimeMins": args.idleTimeMins,
+        "identifier": args.identifier,
         "name": args.name,
-        "tcps": args.tcps,
-        "useSpot": args.useSpot,
     }, opts);
 }
 
@@ -31,38 +58,13 @@ export function getRuleVm(args: GetRuleVmArgs, opts?: pulumi.InvokeOptions): Pro
  */
 export interface GetRuleVmArgs {
     /**
-     * Id of the cloud connector
+     * Unique identifier of the resource. Either `identifier` or `name` must be specified.
      */
-    cloudConnectorId: string;
+    identifier?: string;
     /**
-     * Custom URLs used to access the instances
+     * Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      */
-    customDomains?: string[];
-    /**
-     * Dependent rules
-     */
-    depends?: inputs.autostopping.GetRuleVmDepend[];
-    filter: inputs.autostopping.GetRuleVmFilter;
-    /**
-     * Http routing configuration
-     */
-    https?: inputs.autostopping.GetRuleVmHttp[];
-    /**
-     * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-     */
-    idleTimeMins?: number;
-    /**
-     * Name of the rule
-     */
-    name: string;
-    /**
-     * TCP routing configuration
-     */
-    tcps?: inputs.autostopping.GetRuleVmTcp[];
-    /**
-     * Boolean that indicates whether the selected instances should be converted to spot vm
-     */
-    useSpot?: boolean;
+    name?: string;
 }
 
 /**
@@ -74,64 +76,74 @@ export interface GetRuleVmResult {
      */
     readonly cloudConnectorId: string;
     /**
-     * Connection information (source ports on the proxy). Keys: "ssh" and "rdp" for SSH/RDP; other keys are target port as string (e.g. "80") for forward_rule, value is the proxy source port.
-     */
-    readonly connect: {[key: string]: number};
-    /**
-     * Custom URLs used to access the instances
-     */
-    readonly customDomains?: string[];
-    /**
      * Dependent rules
      */
-    readonly depends?: outputs.autostopping.GetRuleVmDepend[];
-    readonly filter: outputs.autostopping.GetRuleVmFilter;
+    readonly depends: outputs.autostopping.GetRuleVmDepend[];
     /**
-     * Http routing configuration
+     * Boolean that indicates whether the AutoStopping rule is in DryRun mode
      */
-    readonly https?: outputs.autostopping.GetRuleVmHttp[];
+    readonly dryRun: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * Unique identifier of the resource
+     * Unique identifier of the resource. Either `identifier` or `name` must be specified.
      */
     readonly identifier: string;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */
-    readonly idleTimeMins?: number;
+    readonly idleTimeMins: number;
     /**
-     * Name of the rule
+     * Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      */
     readonly name: string;
-    /**
-     * TCP routing configuration
-     */
-    readonly tcps?: outputs.autostopping.GetRuleVmTcp[];
-    /**
-     * Boolean that indicates whether the selected instances should be converted to spot vm
-     */
-    readonly useSpot?: boolean;
 }
 /**
  * Data source for retrieving a Harness AutoStopping rule for VMs.
  *
  * ## Example Usage
+ *
+ * ### Lookup by ID
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byId = harness.autostopping.getRuleVm({
+ *     identifier: "12345",
+ * });
+ * ```
+ *
+ * ### Lookup by name (regex)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byName = harness.autostopping.getRuleVm({
+ *     name: "^my-vm-rule$",
+ * });
+ * ```
+ *
+ * ### Lookup by name pattern
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byPattern = harness.autostopping.getRuleVm({
+ *     name: "my-vm-.*-prod",
+ * });
+ * ```
  */
-export function getRuleVmOutput(args: GetRuleVmOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRuleVmResult> {
+export function getRuleVmOutput(args?: GetRuleVmOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRuleVmResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:autostopping/getRuleVm:getRuleVm", {
-        "cloudConnectorId": args.cloudConnectorId,
-        "customDomains": args.customDomains,
-        "depends": args.depends,
-        "filter": args.filter,
-        "https": args.https,
-        "idleTimeMins": args.idleTimeMins,
+        "identifier": args.identifier,
         "name": args.name,
-        "tcps": args.tcps,
-        "useSpot": args.useSpot,
     }, opts);
 }
 
@@ -140,36 +152,11 @@ export function getRuleVmOutput(args: GetRuleVmOutputArgs, opts?: pulumi.InvokeO
  */
 export interface GetRuleVmOutputArgs {
     /**
-     * Id of the cloud connector
+     * Unique identifier of the resource. Either `identifier` or `name` must be specified.
      */
-    cloudConnectorId: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
-     * Custom URLs used to access the instances
+     * Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      */
-    customDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    /**
-     * Dependent rules
-     */
-    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmDependArgs>[] | undefined>;
-    filter: pulumi.Input<inputs.autostopping.GetRuleVmFilterArgs>;
-    /**
-     * Http routing configuration
-     */
-    https?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmHttpArgs>[] | undefined>;
-    /**
-     * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-     */
-    idleTimeMins?: pulumi.Input<number | undefined>;
-    /**
-     * Name of the rule
-     */
-    name: pulumi.Input<string>;
-    /**
-     * TCP routing configuration
-     */
-    tcps?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmTcpArgs>[] | undefined>;
-    /**
-     * Boolean that indicates whether the selected instances should be converted to spot vm
-     */
-    useSpot?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
 }

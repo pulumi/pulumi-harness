@@ -974,375 +974,59 @@ export namespace autostopping {
         keySecretId: string;
     }
 
-    export interface GetRuleEcsContainer {
-        /**
-         * Name of cluster in which service belong to
-         */
-        cluster: string;
-        /**
-         * Region of cluster
-         */
-        region: string;
-        /**
-         * Name of service to be onboarded
-         */
-        service: string;
-        /**
-         * Desired number of tasks on warming up a rule
-         */
-        taskCount?: number;
-    }
-
     export interface GetRuleEcsDepend {
         /**
          * Number of seconds the rule should wait after warming up the dependent rule
          */
-        delayInSec?: number;
+        delayInSec: number;
         /**
          * Rule id of the dependent rule
          */
         ruleId: number;
-    }
-
-    export interface GetRuleEcsHttp {
-        /**
-         * Id of the proxy
-         */
-        proxyId: string;
     }
 
     export interface GetRuleK8sDepend {
         /**
          * Number of seconds the rule should wait after warming up the dependent rule
          */
-        delayInSec?: number;
+        delayInSec: number;
         /**
          * Rule id of the dependent rule
          */
         ruleId: number;
-    }
-
-    export interface GetRuleRdsDatabase {
-        /**
-         * ID of the database
-         */
-        id: string;
-        /**
-         * Region to which database belong to
-         */
-        region: string;
     }
 
     export interface GetRuleRdsDepend {
         /**
          * Number of seconds the rule should wait after warming up the dependent rule
          */
-        delayInSec?: number;
+        delayInSec: number;
         /**
          * Rule id of the dependent rule
          */
         ruleId: number;
-    }
-
-    export interface GetRuleRdsTcp {
-        /**
-         * Additional tcp forwarding rules
-         */
-        forwardRules?: outputs.autostopping.GetRuleRdsTcpForwardRule[];
-        /**
-         * Id of the Proxy
-         */
-        proxyId: string;
-    }
-
-    export interface GetRuleRdsTcpForwardRule {
-        /**
-         * Port to listen on the proxy
-         */
-        connectOn?: number;
-        /**
-         * Port to listen on the vm
-         */
-        port: number;
     }
 
     export interface GetRuleScaleGroupDepend {
         /**
          * Number of seconds the rule should wait after warming up the dependent rule
          */
-        delayInSec?: number;
+        delayInSec: number;
         /**
          * Rule id of the dependent rule
          */
         ruleId: number;
-    }
-
-    export interface GetRuleScaleGroupHttp {
-        /**
-         * Health Check Details
-         */
-        healths?: outputs.autostopping.GetRuleScaleGroupHttpHealth[];
-        /**
-         * Id of the proxy
-         */
-        proxyId: string;
-        /**
-         * Routing configuration used to access the scaling group
-         */
-        routings?: outputs.autostopping.GetRuleScaleGroupHttpRouting[];
-    }
-
-    export interface GetRuleScaleGroupHttpHealth {
-        /**
-         * API path to use for health check
-         */
-        path?: string;
-        /**
-         * Health check port on the VM
-         */
-        port: number;
-        /**
-         * Protocol can be http or https
-         */
-        protocol: string;
-        /**
-         * Lower limit for acceptable status code
-         */
-        statusCodeFrom?: number;
-        /**
-         * Upper limit for acceptable status code
-         */
-        statusCodeTo?: number;
-        /**
-         * Health check timeout
-         */
-        timeout?: number;
-    }
-
-    export interface GetRuleScaleGroupHttpRouting {
-        /**
-         * Action to take for the routing rule
-         */
-        action?: string;
-        /**
-         * Path to use for the proxy
-         */
-        path?: string;
-        /**
-         * Port on the proxy
-         */
-        sourcePort?: number;
-        /**
-         * Source protocol of the proxy can be http or https
-         */
-        sourceProtocol: string;
-        /**
-         * Port on the VM
-         */
-        targetPort?: number;
-        /**
-         * Target protocol of the instance can be http or https
-         */
-        targetProtocol: string;
-    }
-
-    export interface GetRuleScaleGroupScaleGroup {
-        /**
-         * Desired capacity of the Scaling Group
-         */
-        desired: number;
-        /**
-         * ID of the Scaling Group
-         */
-        id: string;
-        /**
-         * Maximum capacity of the Scaling Group
-         */
-        max: number;
-        /**
-         * Minimum capacity of the Scaling Group
-         */
-        min: number;
-        /**
-         * Name of the Scaling Group
-         */
-        name: string;
-        /**
-         * On-demand capacity of the Scaling Group
-         */
-        onDemand: number;
-        /**
-         * Region of the Scaling Group
-         */
-        region?: string;
-        /**
-         * Zone of the Scaling Group. Needed for GCP only
-         */
-        zone?: string;
     }
 
     export interface GetRuleVmDepend {
         /**
          * Number of seconds the rule should wait after warming up the dependent rule
          */
-        delayInSec?: number;
+        delayInSec: number;
         /**
          * Rule id of the dependent rule
          */
         ruleId: number;
-    }
-
-    export interface GetRuleVmFilter {
-        /**
-         * Regions of instances that needs to be managed using the AutoStopping rules
-         */
-        regions?: string[];
-        /**
-         * Tags of instances that needs to be managed using the AutoStopping rules
-         */
-        tags?: outputs.autostopping.GetRuleVmFilterTag[];
-        /**
-         * Ids of instances that needs to be managed using the AutoStopping rules
-         */
-        vmIds?: string[];
-        /**
-         * Zones of instances that needs to be managed using the AutoStopping rules
-         */
-        zones?: string[];
-    }
-
-    export interface GetRuleVmFilterTag {
-        key: string;
-        value: string;
-    }
-
-    export interface GetRuleVmHttp {
-        /**
-         * Health Check Details
-         */
-        healths?: outputs.autostopping.GetRuleVmHttpHealth[];
-        /**
-         * Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
-         */
-        proxyCloudConnectorId: string;
-        /**
-         * Id of the proxy
-         */
-        proxyId: string;
-        /**
-         * Routing configuration used to access the instances
-         */
-        routings?: outputs.autostopping.GetRuleVmHttpRouting[];
-    }
-
-    export interface GetRuleVmHttpHealth {
-        /**
-         * API path to use for health check
-         */
-        path?: string;
-        /**
-         * Health check port on the VM
-         */
-        port: number;
-        /**
-         * Protocol can be http or https
-         */
-        protocol: string;
-        /**
-         * Lower limit for acceptable status code
-         */
-        statusCodeFrom?: number;
-        /**
-         * Upper limit for acceptable status code
-         */
-        statusCodeTo?: number;
-        /**
-         * Health check timeout
-         */
-        timeout?: number;
-    }
-
-    export interface GetRuleVmHttpRouting {
-        /**
-         * Action to take for the routing rule
-         */
-        action?: string;
-        /**
-         * Path to use for the proxy
-         */
-        path?: string;
-        /**
-         * Port on the proxy
-         */
-        sourcePort?: number;
-        /**
-         * Source protocol of the proxy can be http or https
-         */
-        sourceProtocol: string;
-        /**
-         * Port on the VM
-         */
-        targetPort?: number;
-        /**
-         * Target protocol of the instance can be http or https
-         */
-        targetProtocol: string;
-    }
-
-    export interface GetRuleVmTcp {
-        /**
-         * Additional tcp forwarding rules
-         */
-        forwardRules?: outputs.autostopping.GetRuleVmTcpForwardRule[];
-        /**
-         * Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
-         */
-        proxyCloudConnectorId: string;
-        /**
-         * Id of the Proxy
-         */
-        proxyId: string;
-        /**
-         * RDP configuration
-         */
-        rdps?: outputs.autostopping.GetRuleVmTcpRdp[];
-        /**
-         * SSH configuration
-         */
-        sshes?: outputs.autostopping.GetRuleVmTcpSsh[];
-    }
-
-    export interface GetRuleVmTcpForwardRule {
-        /**
-         * Port to listen on the proxy
-         */
-        connectOn?: number;
-        /**
-         * Port to listen on the vm
-         */
-        port: number;
-    }
-
-    export interface GetRuleVmTcpRdp {
-        /**
-         * Port to listen on the proxy
-         */
-        connectOn?: number;
-        /**
-         * Port to listen on the vm
-         */
-        port?: number;
-    }
-
-    export interface GetRuleVmTcpSsh {
-        /**
-         * Port to listen on the proxy
-         */
-        connectOn?: number;
-        /**
-         * Port to listen on the vm
-         */
-        port?: number;
     }
 
     export interface GetRulesRule {
@@ -6633,6 +6317,73 @@ export namespace platform {
         notificationEventData?: {[key: string]: string};
     }
 
+    export interface ConnectorAnthropicModelAuth {
+        /**
+         * Authentication type for the Anthropic connector. Valid values: `Token`, `BedrockApiKey`, `Vertex`, `CloudProvider`.
+         */
+        authType: string;
+        /**
+         * Authenticate using an AWS Bedrock API key.
+         */
+        bedrockApiKey?: outputs.platform.ConnectorAnthropicModelAuthBedrockApiKey;
+        /**
+         * Authenticate using an existing cloud provider connector.
+         */
+        cloudProvider?: outputs.platform.ConnectorAnthropicModelAuthCloudProvider;
+        /**
+         * Authenticate using an Anthropic API token.
+         */
+        token?: outputs.platform.ConnectorAnthropicModelAuthToken;
+        /**
+         * Authenticate using Google Vertex AI credentials.
+         */
+        vertex?: outputs.platform.ConnectorAnthropicModelAuthVertex;
+    }
+
+    export interface ConnectorAnthropicModelAuthBedrockApiKey {
+        /**
+         * Reference to a secret containing the Bedrock API key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+         */
+        apiKeyRef: string;
+        /**
+         * AWS region for the Bedrock endpoint.
+         */
+        region: string;
+    }
+
+    export interface ConnectorAnthropicModelAuthCloudProvider {
+        /**
+         * Reference to an existing cloud provider connector.
+         */
+        connectorRef: string;
+        /**
+         * Cloud provider type. Valid values: `AWS`, `GCP`, `Azure`.
+         */
+        type: string;
+    }
+
+    export interface ConnectorAnthropicModelAuthToken {
+        /**
+         * Reference to a secret containing the Anthropic API token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+         */
+        tokenRef: string;
+    }
+
+    export interface ConnectorAnthropicModelAuthVertex {
+        /**
+         * GCP project ID.
+         */
+        projectId: string;
+        /**
+         * GCP region for the Vertex AI endpoint.
+         */
+        region: string;
+        /**
+         * Reference to a secret containing the GCP service account key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+         */
+        serviceAccountKeyRef: string;
+    }
+
     export interface ConnectorAzureArtifactsCredentials {
         /**
          * Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -6882,6 +6633,43 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: string;
+    }
+
+    export interface ConnectorOpenaiModelAuth {
+        /**
+         * Authentication type for the OpenAI connector. Valid values: `Token`, `Vertex`.
+         */
+        authType: string;
+        /**
+         * Authenticate using an OpenAI API token.
+         */
+        token?: outputs.platform.ConnectorOpenaiModelAuthToken;
+        /**
+         * Authenticate using Google Vertex AI credentials.
+         */
+        vertex?: outputs.platform.ConnectorOpenaiModelAuthVertex;
+    }
+
+    export interface ConnectorOpenaiModelAuthToken {
+        /**
+         * Reference to a secret containing the OpenAI API token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+         */
+        tokenRef: string;
+    }
+
+    export interface ConnectorOpenaiModelAuthVertex {
+        /**
+         * GCP project ID.
+         */
+        projectId: string;
+        /**
+         * GCP region for the Vertex AI endpoint.
+         */
+        region: string;
+        /**
+         * Reference to a secret containing the GCP service account key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+         */
+        serviceAccountKeyRef: string;
     }
 
     export interface ConnectorPdcHost {
@@ -7914,6 +7702,73 @@ export namespace platform {
         notificationEventData?: {[key: string]: string};
     }
 
+    export interface GetConnectorAnthropicModelAuth {
+        /**
+         * Authentication type for the Anthropic connector.
+         */
+        authType: string;
+        /**
+         * Authenticate using an AWS Bedrock API key.
+         */
+        bedrockApiKeys: outputs.platform.GetConnectorAnthropicModelAuthBedrockApiKey[];
+        /**
+         * Authenticate using an existing cloud provider connector.
+         */
+        cloudProviders: outputs.platform.GetConnectorAnthropicModelAuthCloudProvider[];
+        /**
+         * Authenticate using an Anthropic API token.
+         */
+        tokens: outputs.platform.GetConnectorAnthropicModelAuthToken[];
+        /**
+         * Authenticate using Google Vertex AI credentials.
+         */
+        vertices: outputs.platform.GetConnectorAnthropicModelAuthVertex[];
+    }
+
+    export interface GetConnectorAnthropicModelAuthBedrockApiKey {
+        /**
+         * Reference to a secret containing the Bedrock API key.
+         */
+        apiKeyRef: string;
+        /**
+         * AWS region for the Bedrock endpoint.
+         */
+        region: string;
+    }
+
+    export interface GetConnectorAnthropicModelAuthCloudProvider {
+        /**
+         * Reference to an existing cloud provider connector.
+         */
+        connectorRef: string;
+        /**
+         * Cloud provider type.
+         */
+        type: string;
+    }
+
+    export interface GetConnectorAnthropicModelAuthToken {
+        /**
+         * Reference to a secret containing the Anthropic API token.
+         */
+        tokenRef: string;
+    }
+
+    export interface GetConnectorAnthropicModelAuthVertex {
+        /**
+         * GCP project ID.
+         */
+        projectId: string;
+        /**
+         * GCP region for the Vertex AI endpoint.
+         */
+        region: string;
+        /**
+         * Reference to a secret containing the GCP service account key.
+         */
+        serviceAccountKeyRef: string;
+    }
+
     export interface GetConnectorAzureRepoApiAuthentication {
         /**
          * Personal access token for interacting with the azure repo api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -8156,6 +8011,43 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef: string;
+    }
+
+    export interface GetConnectorOpenaiModelAuth {
+        /**
+         * Authentication type for the OpenAI connector.
+         */
+        authType: string;
+        /**
+         * Authenticate using an OpenAI API token.
+         */
+        tokens: outputs.platform.GetConnectorOpenaiModelAuthToken[];
+        /**
+         * Authenticate using Google Vertex AI credentials.
+         */
+        vertices: outputs.platform.GetConnectorOpenaiModelAuthVertex[];
+    }
+
+    export interface GetConnectorOpenaiModelAuthToken {
+        /**
+         * Reference to a secret containing the OpenAI API token.
+         */
+        tokenRef: string;
+    }
+
+    export interface GetConnectorOpenaiModelAuthVertex {
+        /**
+         * GCP project ID.
+         */
+        projectId: string;
+        /**
+         * GCP region for the Vertex AI endpoint.
+         */
+        region: string;
+        /**
+         * Reference to a secret containing the GCP service account key.
+         */
+        serviceAccountKeyRef: string;
     }
 
     export interface GetConnectorPdcHost {

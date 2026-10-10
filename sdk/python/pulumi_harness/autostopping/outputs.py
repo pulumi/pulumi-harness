@@ -48,29 +48,11 @@ __all__ = [
     'GetAwsProxyCertificatesResult',
     'GetAzureProxyCertificatesResult',
     'GetGcpProxyCertificatesResult',
-    'GetRuleEcsContainerResult',
     'GetRuleEcsDependResult',
-    'GetRuleEcsHttpResult',
     'GetRuleK8sDependResult',
-    'GetRuleRdsDatabaseResult',
     'GetRuleRdsDependResult',
-    'GetRuleRdsTcpResult',
-    'GetRuleRdsTcpForwardRuleResult',
     'GetRuleScaleGroupDependResult',
-    'GetRuleScaleGroupHttpResult',
-    'GetRuleScaleGroupHttpHealthResult',
-    'GetRuleScaleGroupHttpRoutingResult',
-    'GetRuleScaleGroupScaleGroupResult',
     'GetRuleVmDependResult',
-    'GetRuleVmFilterResult',
-    'GetRuleVmFilterTagResult',
-    'GetRuleVmHttpResult',
-    'GetRuleVmHttpHealthResult',
-    'GetRuleVmHttpRoutingResult',
-    'GetRuleVmTcpResult',
-    'GetRuleVmTcpForwardRuleResult',
-    'GetRuleVmTcpRdpResult',
-    'GetRuleVmTcpSshResult',
     'GetRulesRuleResult',
     'GetScheduleRepeatResult',
 ]
@@ -1863,69 +1845,24 @@ class GetGcpProxyCertificatesResult(dict):
 
 
 @pulumi.output_type
-class GetRuleEcsContainerResult(dict):
-    def __init__(__self__, *,
-                 cluster: _builtins.str,
-                 region: _builtins.str,
-                 service: _builtins.str,
-                 task_count: Optional[_builtins.int] = None):
-        """
-        :param _builtins.str cluster: Name of cluster in which service belong to
-        :param _builtins.str region: Region of cluster
-        :param _builtins.str service: Name of service to be onboarded
-        :param _builtins.int task_count: Desired number of tasks on warming up a rule
-        """
-        pulumi.set(__self__, "cluster", cluster)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "service", service)
-        if task_count is not None:
-            pulumi.set(__self__, "task_count", task_count)
-
-    @_builtins.property
-    @pulumi.getter
-    def cluster(self) -> _builtins.str:
-        """
-        Name of cluster in which service belong to
-        """
-        return pulumi.get(self, "cluster")
-
-    @_builtins.property
-    @pulumi.getter
-    def region(self) -> _builtins.str:
-        """
-        Region of cluster
-        """
-        return pulumi.get(self, "region")
-
-    @_builtins.property
-    @pulumi.getter
-    def service(self) -> _builtins.str:
-        """
-        Name of service to be onboarded
-        """
-        return pulumi.get(self, "service")
-
-    @_builtins.property
-    @pulumi.getter(name="taskCount")
-    def task_count(self) -> Optional[_builtins.int]:
-        """
-        Desired number of tasks on warming up a rule
-        """
-        return pulumi.get(self, "task_count")
-
-
-@pulumi.output_type
 class GetRuleEcsDependResult(dict):
     def __init__(__self__, *,
-                 rule_id: _builtins.int,
-                 delay_in_sec: Optional[_builtins.int] = None):
+                 delay_in_sec: _builtins.int,
+                 rule_id: _builtins.int):
         """
-        :param _builtins.int rule_id: Rule id of the dependent rule
         :param _builtins.int delay_in_sec: Number of seconds the rule should wait after warming up the dependent rule
+        :param _builtins.int rule_id: Rule id of the dependent rule
         """
+        pulumi.set(__self__, "delay_in_sec", delay_in_sec)
         pulumi.set(__self__, "rule_id", rule_id)
-        if delay_in_sec is not None:
-            pulumi.set(__self__, "delay_in_sec", delay_in_sec)
+
+    @_builtins.property
+    @pulumi.getter(name="delayInSec")
+    def delay_in_sec(self) -> _builtins.int:
+        """
+        Number of seconds the rule should wait after warming up the dependent rule
+        """
+        return pulumi.get(self, "delay_in_sec")
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
@@ -1934,46 +1871,27 @@ class GetRuleEcsDependResult(dict):
         Rule id of the dependent rule
         """
         return pulumi.get(self, "rule_id")
-
-    @_builtins.property
-    @pulumi.getter(name="delayInSec")
-    def delay_in_sec(self) -> Optional[_builtins.int]:
-        """
-        Number of seconds the rule should wait after warming up the dependent rule
-        """
-        return pulumi.get(self, "delay_in_sec")
-
-
-@pulumi.output_type
-class GetRuleEcsHttpResult(dict):
-    def __init__(__self__, *,
-                 proxy_id: _builtins.str):
-        """
-        :param _builtins.str proxy_id: Id of the proxy
-        """
-        pulumi.set(__self__, "proxy_id", proxy_id)
-
-    @_builtins.property
-    @pulumi.getter(name="proxyId")
-    def proxy_id(self) -> _builtins.str:
-        """
-        Id of the proxy
-        """
-        return pulumi.get(self, "proxy_id")
 
 
 @pulumi.output_type
 class GetRuleK8sDependResult(dict):
     def __init__(__self__, *,
-                 rule_id: _builtins.int,
-                 delay_in_sec: Optional[_builtins.int] = None):
+                 delay_in_sec: _builtins.int,
+                 rule_id: _builtins.int):
         """
-        :param _builtins.int rule_id: Rule id of the dependent rule
         :param _builtins.int delay_in_sec: Number of seconds the rule should wait after warming up the dependent rule
+        :param _builtins.int rule_id: Rule id of the dependent rule
         """
+        pulumi.set(__self__, "delay_in_sec", delay_in_sec)
         pulumi.set(__self__, "rule_id", rule_id)
-        if delay_in_sec is not None:
-            pulumi.set(__self__, "delay_in_sec", delay_in_sec)
+
+    @_builtins.property
+    @pulumi.getter(name="delayInSec")
+    def delay_in_sec(self) -> _builtins.int:
+        """
+        Number of seconds the rule should wait after warming up the dependent rule
+        """
+        return pulumi.get(self, "delay_in_sec")
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
@@ -1982,57 +1900,27 @@ class GetRuleK8sDependResult(dict):
         Rule id of the dependent rule
         """
         return pulumi.get(self, "rule_id")
-
-    @_builtins.property
-    @pulumi.getter(name="delayInSec")
-    def delay_in_sec(self) -> Optional[_builtins.int]:
-        """
-        Number of seconds the rule should wait after warming up the dependent rule
-        """
-        return pulumi.get(self, "delay_in_sec")
-
-
-@pulumi.output_type
-class GetRuleRdsDatabaseResult(dict):
-    def __init__(__self__, *,
-                 id: _builtins.str,
-                 region: _builtins.str):
-        """
-        :param _builtins.str id: ID of the database
-        :param _builtins.str region: Region to which database belong to
-        """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "region", region)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        ID of the database
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def region(self) -> _builtins.str:
-        """
-        Region to which database belong to
-        """
-        return pulumi.get(self, "region")
 
 
 @pulumi.output_type
 class GetRuleRdsDependResult(dict):
     def __init__(__self__, *,
-                 rule_id: _builtins.int,
-                 delay_in_sec: Optional[_builtins.int] = None):
+                 delay_in_sec: _builtins.int,
+                 rule_id: _builtins.int):
         """
-        :param _builtins.int rule_id: Rule id of the dependent rule
         :param _builtins.int delay_in_sec: Number of seconds the rule should wait after warming up the dependent rule
+        :param _builtins.int rule_id: Rule id of the dependent rule
         """
+        pulumi.set(__self__, "delay_in_sec", delay_in_sec)
         pulumi.set(__self__, "rule_id", rule_id)
-        if delay_in_sec is not None:
-            pulumi.set(__self__, "delay_in_sec", delay_in_sec)
+
+    @_builtins.property
+    @pulumi.getter(name="delayInSec")
+    def delay_in_sec(self) -> _builtins.int:
+        """
+        Number of seconds the rule should wait after warming up the dependent rule
+        """
+        return pulumi.get(self, "delay_in_sec")
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
@@ -2041,88 +1929,27 @@ class GetRuleRdsDependResult(dict):
         Rule id of the dependent rule
         """
         return pulumi.get(self, "rule_id")
-
-    @_builtins.property
-    @pulumi.getter(name="delayInSec")
-    def delay_in_sec(self) -> Optional[_builtins.int]:
-        """
-        Number of seconds the rule should wait after warming up the dependent rule
-        """
-        return pulumi.get(self, "delay_in_sec")
-
-
-@pulumi.output_type
-class GetRuleRdsTcpResult(dict):
-    def __init__(__self__, *,
-                 proxy_id: _builtins.str,
-                 forward_rules: Optional[Sequence['outputs.GetRuleRdsTcpForwardRuleResult']] = None):
-        """
-        :param _builtins.str proxy_id: Id of the Proxy
-        :param Sequence['GetRuleRdsTcpForwardRuleArgs'] forward_rules: Additional tcp forwarding rules
-        """
-        pulumi.set(__self__, "proxy_id", proxy_id)
-        if forward_rules is not None:
-            pulumi.set(__self__, "forward_rules", forward_rules)
-
-    @_builtins.property
-    @pulumi.getter(name="proxyId")
-    def proxy_id(self) -> _builtins.str:
-        """
-        Id of the Proxy
-        """
-        return pulumi.get(self, "proxy_id")
-
-    @_builtins.property
-    @pulumi.getter(name="forwardRules")
-    def forward_rules(self) -> Optional[Sequence['outputs.GetRuleRdsTcpForwardRuleResult']]:
-        """
-        Additional tcp forwarding rules
-        """
-        return pulumi.get(self, "forward_rules")
-
-
-@pulumi.output_type
-class GetRuleRdsTcpForwardRuleResult(dict):
-    def __init__(__self__, *,
-                 port: _builtins.int,
-                 connect_on: Optional[_builtins.int] = None):
-        """
-        :param _builtins.int port: Port to listen on the vm
-        :param _builtins.int connect_on: Port to listen on the proxy
-        """
-        pulumi.set(__self__, "port", port)
-        if connect_on is not None:
-            pulumi.set(__self__, "connect_on", connect_on)
-
-    @_builtins.property
-    @pulumi.getter
-    def port(self) -> _builtins.int:
-        """
-        Port to listen on the vm
-        """
-        return pulumi.get(self, "port")
-
-    @_builtins.property
-    @pulumi.getter(name="connectOn")
-    def connect_on(self) -> Optional[_builtins.int]:
-        """
-        Port to listen on the proxy
-        """
-        return pulumi.get(self, "connect_on")
 
 
 @pulumi.output_type
 class GetRuleScaleGroupDependResult(dict):
     def __init__(__self__, *,
-                 rule_id: _builtins.int,
-                 delay_in_sec: Optional[_builtins.int] = None):
+                 delay_in_sec: _builtins.int,
+                 rule_id: _builtins.int):
         """
-        :param _builtins.int rule_id: Rule id of the dependent rule
         :param _builtins.int delay_in_sec: Number of seconds the rule should wait after warming up the dependent rule
+        :param _builtins.int rule_id: Rule id of the dependent rule
         """
+        pulumi.set(__self__, "delay_in_sec", delay_in_sec)
         pulumi.set(__self__, "rule_id", rule_id)
-        if delay_in_sec is not None:
-            pulumi.set(__self__, "delay_in_sec", delay_in_sec)
+
+    @_builtins.property
+    @pulumi.getter(name="delayInSec")
+    def delay_in_sec(self) -> _builtins.int:
+        """
+        Number of seconds the rule should wait after warming up the dependent rule
+        """
+        return pulumi.get(self, "delay_in_sec")
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
@@ -2131,321 +1958,27 @@ class GetRuleScaleGroupDependResult(dict):
         Rule id of the dependent rule
         """
         return pulumi.get(self, "rule_id")
-
-    @_builtins.property
-    @pulumi.getter(name="delayInSec")
-    def delay_in_sec(self) -> Optional[_builtins.int]:
-        """
-        Number of seconds the rule should wait after warming up the dependent rule
-        """
-        return pulumi.get(self, "delay_in_sec")
-
-
-@pulumi.output_type
-class GetRuleScaleGroupHttpResult(dict):
-    def __init__(__self__, *,
-                 proxy_id: _builtins.str,
-                 healths: Optional[Sequence['outputs.GetRuleScaleGroupHttpHealthResult']] = None,
-                 routings: Optional[Sequence['outputs.GetRuleScaleGroupHttpRoutingResult']] = None):
-        """
-        :param _builtins.str proxy_id: Id of the proxy
-        :param Sequence['GetRuleScaleGroupHttpHealthArgs'] healths: Health Check Details
-        :param Sequence['GetRuleScaleGroupHttpRoutingArgs'] routings: Routing configuration used to access the scaling group
-        """
-        pulumi.set(__self__, "proxy_id", proxy_id)
-        if healths is not None:
-            pulumi.set(__self__, "healths", healths)
-        if routings is not None:
-            pulumi.set(__self__, "routings", routings)
-
-    @_builtins.property
-    @pulumi.getter(name="proxyId")
-    def proxy_id(self) -> _builtins.str:
-        """
-        Id of the proxy
-        """
-        return pulumi.get(self, "proxy_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def healths(self) -> Optional[Sequence['outputs.GetRuleScaleGroupHttpHealthResult']]:
-        """
-        Health Check Details
-        """
-        return pulumi.get(self, "healths")
-
-    @_builtins.property
-    @pulumi.getter
-    def routings(self) -> Optional[Sequence['outputs.GetRuleScaleGroupHttpRoutingResult']]:
-        """
-        Routing configuration used to access the scaling group
-        """
-        return pulumi.get(self, "routings")
-
-
-@pulumi.output_type
-class GetRuleScaleGroupHttpHealthResult(dict):
-    def __init__(__self__, *,
-                 port: _builtins.int,
-                 protocol: _builtins.str,
-                 path: Optional[_builtins.str] = None,
-                 status_code_from: Optional[_builtins.int] = None,
-                 status_code_to: Optional[_builtins.int] = None,
-                 timeout: Optional[_builtins.int] = None):
-        """
-        :param _builtins.int port: Health check port on the VM
-        :param _builtins.str protocol: Protocol can be http or https
-        :param _builtins.str path: API path to use for health check
-        :param _builtins.int status_code_from: Lower limit for acceptable status code
-        :param _builtins.int status_code_to: Upper limit for acceptable status code
-        :param _builtins.int timeout: Health check timeout
-        """
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "protocol", protocol)
-        if path is not None:
-            pulumi.set(__self__, "path", path)
-        if status_code_from is not None:
-            pulumi.set(__self__, "status_code_from", status_code_from)
-        if status_code_to is not None:
-            pulumi.set(__self__, "status_code_to", status_code_to)
-        if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
-
-    @_builtins.property
-    @pulumi.getter
-    def port(self) -> _builtins.int:
-        """
-        Health check port on the VM
-        """
-        return pulumi.get(self, "port")
-
-    @_builtins.property
-    @pulumi.getter
-    def protocol(self) -> _builtins.str:
-        """
-        Protocol can be http or https
-        """
-        return pulumi.get(self, "protocol")
-
-    @_builtins.property
-    @pulumi.getter
-    def path(self) -> Optional[_builtins.str]:
-        """
-        API path to use for health check
-        """
-        return pulumi.get(self, "path")
-
-    @_builtins.property
-    @pulumi.getter(name="statusCodeFrom")
-    def status_code_from(self) -> Optional[_builtins.int]:
-        """
-        Lower limit for acceptable status code
-        """
-        return pulumi.get(self, "status_code_from")
-
-    @_builtins.property
-    @pulumi.getter(name="statusCodeTo")
-    def status_code_to(self) -> Optional[_builtins.int]:
-        """
-        Upper limit for acceptable status code
-        """
-        return pulumi.get(self, "status_code_to")
-
-    @_builtins.property
-    @pulumi.getter
-    def timeout(self) -> Optional[_builtins.int]:
-        """
-        Health check timeout
-        """
-        return pulumi.get(self, "timeout")
-
-
-@pulumi.output_type
-class GetRuleScaleGroupHttpRoutingResult(dict):
-    def __init__(__self__, *,
-                 source_protocol: _builtins.str,
-                 target_protocol: _builtins.str,
-                 action: Optional[_builtins.str] = None,
-                 path: Optional[_builtins.str] = None,
-                 source_port: Optional[_builtins.int] = None,
-                 target_port: Optional[_builtins.int] = None):
-        """
-        :param _builtins.str source_protocol: Source protocol of the proxy can be http or https
-        :param _builtins.str target_protocol: Target protocol of the instance can be http or https
-        :param _builtins.str action: Action to take for the routing rule
-        :param _builtins.str path: Path to use for the proxy
-        :param _builtins.int source_port: Port on the proxy
-        :param _builtins.int target_port: Port on the VM
-        """
-        pulumi.set(__self__, "source_protocol", source_protocol)
-        pulumi.set(__self__, "target_protocol", target_protocol)
-        if action is not None:
-            pulumi.set(__self__, "action", action)
-        if path is not None:
-            pulumi.set(__self__, "path", path)
-        if source_port is not None:
-            pulumi.set(__self__, "source_port", source_port)
-        if target_port is not None:
-            pulumi.set(__self__, "target_port", target_port)
-
-    @_builtins.property
-    @pulumi.getter(name="sourceProtocol")
-    def source_protocol(self) -> _builtins.str:
-        """
-        Source protocol of the proxy can be http or https
-        """
-        return pulumi.get(self, "source_protocol")
-
-    @_builtins.property
-    @pulumi.getter(name="targetProtocol")
-    def target_protocol(self) -> _builtins.str:
-        """
-        Target protocol of the instance can be http or https
-        """
-        return pulumi.get(self, "target_protocol")
-
-    @_builtins.property
-    @pulumi.getter
-    def action(self) -> Optional[_builtins.str]:
-        """
-        Action to take for the routing rule
-        """
-        return pulumi.get(self, "action")
-
-    @_builtins.property
-    @pulumi.getter
-    def path(self) -> Optional[_builtins.str]:
-        """
-        Path to use for the proxy
-        """
-        return pulumi.get(self, "path")
-
-    @_builtins.property
-    @pulumi.getter(name="sourcePort")
-    def source_port(self) -> Optional[_builtins.int]:
-        """
-        Port on the proxy
-        """
-        return pulumi.get(self, "source_port")
-
-    @_builtins.property
-    @pulumi.getter(name="targetPort")
-    def target_port(self) -> Optional[_builtins.int]:
-        """
-        Port on the VM
-        """
-        return pulumi.get(self, "target_port")
-
-
-@pulumi.output_type
-class GetRuleScaleGroupScaleGroupResult(dict):
-    def __init__(__self__, *,
-                 desired: _builtins.int,
-                 id: _builtins.str,
-                 max: _builtins.int,
-                 min: _builtins.int,
-                 name: _builtins.str,
-                 on_demand: _builtins.int,
-                 region: Optional[_builtins.str] = None,
-                 zone: Optional[_builtins.str] = None):
-        """
-        :param _builtins.int desired: Desired capacity of the Scaling Group
-        :param _builtins.str id: ID of the Scaling Group
-        :param _builtins.int max: Maximum capacity of the Scaling Group
-        :param _builtins.int min: Minimum capacity of the Scaling Group
-        :param _builtins.str name: Name of the Scaling Group
-        :param _builtins.int on_demand: On-demand capacity of the Scaling Group
-        :param _builtins.str region: Region of the Scaling Group
-        :param _builtins.str zone: Zone of the Scaling Group. Needed for GCP only
-        """
-        pulumi.set(__self__, "desired", desired)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "max", max)
-        pulumi.set(__self__, "min", min)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "on_demand", on_demand)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
-        if zone is not None:
-            pulumi.set(__self__, "zone", zone)
-
-    @_builtins.property
-    @pulumi.getter
-    def desired(self) -> _builtins.int:
-        """
-        Desired capacity of the Scaling Group
-        """
-        return pulumi.get(self, "desired")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        ID of the Scaling Group
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def max(self) -> _builtins.int:
-        """
-        Maximum capacity of the Scaling Group
-        """
-        return pulumi.get(self, "max")
-
-    @_builtins.property
-    @pulumi.getter
-    def min(self) -> _builtins.int:
-        """
-        Minimum capacity of the Scaling Group
-        """
-        return pulumi.get(self, "min")
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
-        """
-        Name of the Scaling Group
-        """
-        return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter(name="onDemand")
-    def on_demand(self) -> _builtins.int:
-        """
-        On-demand capacity of the Scaling Group
-        """
-        return pulumi.get(self, "on_demand")
-
-    @_builtins.property
-    @pulumi.getter
-    def region(self) -> Optional[_builtins.str]:
-        """
-        Region of the Scaling Group
-        """
-        return pulumi.get(self, "region")
-
-    @_builtins.property
-    @pulumi.getter
-    def zone(self) -> Optional[_builtins.str]:
-        """
-        Zone of the Scaling Group. Needed for GCP only
-        """
-        return pulumi.get(self, "zone")
 
 
 @pulumi.output_type
 class GetRuleVmDependResult(dict):
     def __init__(__self__, *,
-                 rule_id: _builtins.int,
-                 delay_in_sec: Optional[_builtins.int] = None):
+                 delay_in_sec: _builtins.int,
+                 rule_id: _builtins.int):
         """
-        :param _builtins.int rule_id: Rule id of the dependent rule
         :param _builtins.int delay_in_sec: Number of seconds the rule should wait after warming up the dependent rule
+        :param _builtins.int rule_id: Rule id of the dependent rule
         """
+        pulumi.set(__self__, "delay_in_sec", delay_in_sec)
         pulumi.set(__self__, "rule_id", rule_id)
-        if delay_in_sec is not None:
-            pulumi.set(__self__, "delay_in_sec", delay_in_sec)
+
+    @_builtins.property
+    @pulumi.getter(name="delayInSec")
+    def delay_in_sec(self) -> _builtins.int:
+        """
+        Number of seconds the rule should wait after warming up the dependent rule
+        """
+        return pulumi.get(self, "delay_in_sec")
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
@@ -2454,452 +1987,6 @@ class GetRuleVmDependResult(dict):
         Rule id of the dependent rule
         """
         return pulumi.get(self, "rule_id")
-
-    @_builtins.property
-    @pulumi.getter(name="delayInSec")
-    def delay_in_sec(self) -> Optional[_builtins.int]:
-        """
-        Number of seconds the rule should wait after warming up the dependent rule
-        """
-        return pulumi.get(self, "delay_in_sec")
-
-
-@pulumi.output_type
-class GetRuleVmFilterResult(dict):
-    def __init__(__self__, *,
-                 regions: Optional[Sequence[_builtins.str]] = None,
-                 tags: Optional[Sequence['outputs.GetRuleVmFilterTagResult']] = None,
-                 vm_ids: Optional[Sequence[_builtins.str]] = None,
-                 zones: Optional[Sequence[_builtins.str]] = None):
-        """
-        :param Sequence[_builtins.str] regions: Regions of instances that needs to be managed using the AutoStopping rules
-        :param Sequence['GetRuleVmFilterTagArgs'] tags: Tags of instances that needs to be managed using the AutoStopping rules
-        :param Sequence[_builtins.str] vm_ids: Ids of instances that needs to be managed using the AutoStopping rules
-        :param Sequence[_builtins.str] zones: Zones of instances that needs to be managed using the AutoStopping rules
-        """
-        if regions is not None:
-            pulumi.set(__self__, "regions", regions)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
-        if vm_ids is not None:
-            pulumi.set(__self__, "vm_ids", vm_ids)
-        if zones is not None:
-            pulumi.set(__self__, "zones", zones)
-
-    @_builtins.property
-    @pulumi.getter
-    def regions(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        Regions of instances that needs to be managed using the AutoStopping rules
-        """
-        return pulumi.get(self, "regions")
-
-    @_builtins.property
-    @pulumi.getter
-    def tags(self) -> Optional[Sequence['outputs.GetRuleVmFilterTagResult']]:
-        """
-        Tags of instances that needs to be managed using the AutoStopping rules
-        """
-        return pulumi.get(self, "tags")
-
-    @_builtins.property
-    @pulumi.getter(name="vmIds")
-    def vm_ids(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        Ids of instances that needs to be managed using the AutoStopping rules
-        """
-        return pulumi.get(self, "vm_ids")
-
-    @_builtins.property
-    @pulumi.getter
-    def zones(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        Zones of instances that needs to be managed using the AutoStopping rules
-        """
-        return pulumi.get(self, "zones")
-
-
-@pulumi.output_type
-class GetRuleVmFilterTagResult(dict):
-    def __init__(__self__, *,
-                 key: _builtins.str,
-                 value: _builtins.str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> _builtins.str:
-        return pulumi.get(self, "key")
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> _builtins.str:
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
-class GetRuleVmHttpResult(dict):
-    def __init__(__self__, *,
-                 proxy_cloud_connector_id: _builtins.str,
-                 proxy_id: _builtins.str,
-                 healths: Optional[Sequence['outputs.GetRuleVmHttpHealthResult']] = None,
-                 routings: Optional[Sequence['outputs.GetRuleVmHttpRoutingResult']] = None):
-        """
-        :param _builtins.str proxy_cloud_connector_id: Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
-        :param _builtins.str proxy_id: Id of the proxy
-        :param Sequence['GetRuleVmHttpHealthArgs'] healths: Health Check Details
-        :param Sequence['GetRuleVmHttpRoutingArgs'] routings: Routing configuration used to access the instances
-        """
-        pulumi.set(__self__, "proxy_cloud_connector_id", proxy_cloud_connector_id)
-        pulumi.set(__self__, "proxy_id", proxy_id)
-        if healths is not None:
-            pulumi.set(__self__, "healths", healths)
-        if routings is not None:
-            pulumi.set(__self__, "routings", routings)
-
-    @_builtins.property
-    @pulumi.getter(name="proxyCloudConnectorId")
-    def proxy_cloud_connector_id(self) -> _builtins.str:
-        """
-        Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
-        """
-        return pulumi.get(self, "proxy_cloud_connector_id")
-
-    @_builtins.property
-    @pulumi.getter(name="proxyId")
-    def proxy_id(self) -> _builtins.str:
-        """
-        Id of the proxy
-        """
-        return pulumi.get(self, "proxy_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def healths(self) -> Optional[Sequence['outputs.GetRuleVmHttpHealthResult']]:
-        """
-        Health Check Details
-        """
-        return pulumi.get(self, "healths")
-
-    @_builtins.property
-    @pulumi.getter
-    def routings(self) -> Optional[Sequence['outputs.GetRuleVmHttpRoutingResult']]:
-        """
-        Routing configuration used to access the instances
-        """
-        return pulumi.get(self, "routings")
-
-
-@pulumi.output_type
-class GetRuleVmHttpHealthResult(dict):
-    def __init__(__self__, *,
-                 port: _builtins.int,
-                 protocol: _builtins.str,
-                 path: Optional[_builtins.str] = None,
-                 status_code_from: Optional[_builtins.int] = None,
-                 status_code_to: Optional[_builtins.int] = None,
-                 timeout: Optional[_builtins.int] = None):
-        """
-        :param _builtins.int port: Health check port on the VM
-        :param _builtins.str protocol: Protocol can be http or https
-        :param _builtins.str path: API path to use for health check
-        :param _builtins.int status_code_from: Lower limit for acceptable status code
-        :param _builtins.int status_code_to: Upper limit for acceptable status code
-        :param _builtins.int timeout: Health check timeout
-        """
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "protocol", protocol)
-        if path is not None:
-            pulumi.set(__self__, "path", path)
-        if status_code_from is not None:
-            pulumi.set(__self__, "status_code_from", status_code_from)
-        if status_code_to is not None:
-            pulumi.set(__self__, "status_code_to", status_code_to)
-        if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
-
-    @_builtins.property
-    @pulumi.getter
-    def port(self) -> _builtins.int:
-        """
-        Health check port on the VM
-        """
-        return pulumi.get(self, "port")
-
-    @_builtins.property
-    @pulumi.getter
-    def protocol(self) -> _builtins.str:
-        """
-        Protocol can be http or https
-        """
-        return pulumi.get(self, "protocol")
-
-    @_builtins.property
-    @pulumi.getter
-    def path(self) -> Optional[_builtins.str]:
-        """
-        API path to use for health check
-        """
-        return pulumi.get(self, "path")
-
-    @_builtins.property
-    @pulumi.getter(name="statusCodeFrom")
-    def status_code_from(self) -> Optional[_builtins.int]:
-        """
-        Lower limit for acceptable status code
-        """
-        return pulumi.get(self, "status_code_from")
-
-    @_builtins.property
-    @pulumi.getter(name="statusCodeTo")
-    def status_code_to(self) -> Optional[_builtins.int]:
-        """
-        Upper limit for acceptable status code
-        """
-        return pulumi.get(self, "status_code_to")
-
-    @_builtins.property
-    @pulumi.getter
-    def timeout(self) -> Optional[_builtins.int]:
-        """
-        Health check timeout
-        """
-        return pulumi.get(self, "timeout")
-
-
-@pulumi.output_type
-class GetRuleVmHttpRoutingResult(dict):
-    def __init__(__self__, *,
-                 source_protocol: _builtins.str,
-                 target_protocol: _builtins.str,
-                 action: Optional[_builtins.str] = None,
-                 path: Optional[_builtins.str] = None,
-                 source_port: Optional[_builtins.int] = None,
-                 target_port: Optional[_builtins.int] = None):
-        """
-        :param _builtins.str source_protocol: Source protocol of the proxy can be http or https
-        :param _builtins.str target_protocol: Target protocol of the instance can be http or https
-        :param _builtins.str action: Action to take for the routing rule
-        :param _builtins.str path: Path to use for the proxy
-        :param _builtins.int source_port: Port on the proxy
-        :param _builtins.int target_port: Port on the VM
-        """
-        pulumi.set(__self__, "source_protocol", source_protocol)
-        pulumi.set(__self__, "target_protocol", target_protocol)
-        if action is not None:
-            pulumi.set(__self__, "action", action)
-        if path is not None:
-            pulumi.set(__self__, "path", path)
-        if source_port is not None:
-            pulumi.set(__self__, "source_port", source_port)
-        if target_port is not None:
-            pulumi.set(__self__, "target_port", target_port)
-
-    @_builtins.property
-    @pulumi.getter(name="sourceProtocol")
-    def source_protocol(self) -> _builtins.str:
-        """
-        Source protocol of the proxy can be http or https
-        """
-        return pulumi.get(self, "source_protocol")
-
-    @_builtins.property
-    @pulumi.getter(name="targetProtocol")
-    def target_protocol(self) -> _builtins.str:
-        """
-        Target protocol of the instance can be http or https
-        """
-        return pulumi.get(self, "target_protocol")
-
-    @_builtins.property
-    @pulumi.getter
-    def action(self) -> Optional[_builtins.str]:
-        """
-        Action to take for the routing rule
-        """
-        return pulumi.get(self, "action")
-
-    @_builtins.property
-    @pulumi.getter
-    def path(self) -> Optional[_builtins.str]:
-        """
-        Path to use for the proxy
-        """
-        return pulumi.get(self, "path")
-
-    @_builtins.property
-    @pulumi.getter(name="sourcePort")
-    def source_port(self) -> Optional[_builtins.int]:
-        """
-        Port on the proxy
-        """
-        return pulumi.get(self, "source_port")
-
-    @_builtins.property
-    @pulumi.getter(name="targetPort")
-    def target_port(self) -> Optional[_builtins.int]:
-        """
-        Port on the VM
-        """
-        return pulumi.get(self, "target_port")
-
-
-@pulumi.output_type
-class GetRuleVmTcpResult(dict):
-    def __init__(__self__, *,
-                 proxy_cloud_connector_id: _builtins.str,
-                 proxy_id: _builtins.str,
-                 forward_rules: Optional[Sequence['outputs.GetRuleVmTcpForwardRuleResult']] = None,
-                 rdps: Optional[Sequence['outputs.GetRuleVmTcpRdpResult']] = None,
-                 sshes: Optional[Sequence['outputs.GetRuleVmTcpSshResult']] = None):
-        """
-        :param _builtins.str proxy_cloud_connector_id: Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
-        :param _builtins.str proxy_id: Id of the Proxy
-        :param Sequence['GetRuleVmTcpForwardRuleArgs'] forward_rules: Additional tcp forwarding rules
-        :param Sequence['GetRuleVmTcpRdpArgs'] rdps: RDP configuration
-        :param Sequence['GetRuleVmTcpSshArgs'] sshes: SSH configuration
-        """
-        pulumi.set(__self__, "proxy_cloud_connector_id", proxy_cloud_connector_id)
-        pulumi.set(__self__, "proxy_id", proxy_id)
-        if forward_rules is not None:
-            pulumi.set(__self__, "forward_rules", forward_rules)
-        if rdps is not None:
-            pulumi.set(__self__, "rdps", rdps)
-        if sshes is not None:
-            pulumi.set(__self__, "sshes", sshes)
-
-    @_builtins.property
-    @pulumi.getter(name="proxyCloudConnectorId")
-    def proxy_cloud_connector_id(self) -> _builtins.str:
-        """
-        Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
-        """
-        return pulumi.get(self, "proxy_cloud_connector_id")
-
-    @_builtins.property
-    @pulumi.getter(name="proxyId")
-    def proxy_id(self) -> _builtins.str:
-        """
-        Id of the Proxy
-        """
-        return pulumi.get(self, "proxy_id")
-
-    @_builtins.property
-    @pulumi.getter(name="forwardRules")
-    def forward_rules(self) -> Optional[Sequence['outputs.GetRuleVmTcpForwardRuleResult']]:
-        """
-        Additional tcp forwarding rules
-        """
-        return pulumi.get(self, "forward_rules")
-
-    @_builtins.property
-    @pulumi.getter
-    def rdps(self) -> Optional[Sequence['outputs.GetRuleVmTcpRdpResult']]:
-        """
-        RDP configuration
-        """
-        return pulumi.get(self, "rdps")
-
-    @_builtins.property
-    @pulumi.getter
-    def sshes(self) -> Optional[Sequence['outputs.GetRuleVmTcpSshResult']]:
-        """
-        SSH configuration
-        """
-        return pulumi.get(self, "sshes")
-
-
-@pulumi.output_type
-class GetRuleVmTcpForwardRuleResult(dict):
-    def __init__(__self__, *,
-                 port: _builtins.int,
-                 connect_on: Optional[_builtins.int] = None):
-        """
-        :param _builtins.int port: Port to listen on the vm
-        :param _builtins.int connect_on: Port to listen on the proxy
-        """
-        pulumi.set(__self__, "port", port)
-        if connect_on is not None:
-            pulumi.set(__self__, "connect_on", connect_on)
-
-    @_builtins.property
-    @pulumi.getter
-    def port(self) -> _builtins.int:
-        """
-        Port to listen on the vm
-        """
-        return pulumi.get(self, "port")
-
-    @_builtins.property
-    @pulumi.getter(name="connectOn")
-    def connect_on(self) -> Optional[_builtins.int]:
-        """
-        Port to listen on the proxy
-        """
-        return pulumi.get(self, "connect_on")
-
-
-@pulumi.output_type
-class GetRuleVmTcpRdpResult(dict):
-    def __init__(__self__, *,
-                 connect_on: Optional[_builtins.int] = None,
-                 port: Optional[_builtins.int] = None):
-        """
-        :param _builtins.int connect_on: Port to listen on the proxy
-        :param _builtins.int port: Port to listen on the vm
-        """
-        if connect_on is not None:
-            pulumi.set(__self__, "connect_on", connect_on)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
-
-    @_builtins.property
-    @pulumi.getter(name="connectOn")
-    def connect_on(self) -> Optional[_builtins.int]:
-        """
-        Port to listen on the proxy
-        """
-        return pulumi.get(self, "connect_on")
-
-    @_builtins.property
-    @pulumi.getter
-    def port(self) -> Optional[_builtins.int]:
-        """
-        Port to listen on the vm
-        """
-        return pulumi.get(self, "port")
-
-
-@pulumi.output_type
-class GetRuleVmTcpSshResult(dict):
-    def __init__(__self__, *,
-                 connect_on: Optional[_builtins.int] = None,
-                 port: Optional[_builtins.int] = None):
-        """
-        :param _builtins.int connect_on: Port to listen on the proxy
-        :param _builtins.int port: Port to listen on the vm
-        """
-        if connect_on is not None:
-            pulumi.set(__self__, "connect_on", connect_on)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
-
-    @_builtins.property
-    @pulumi.getter(name="connectOn")
-    def connect_on(self) -> Optional[_builtins.int]:
-        """
-        Port to listen on the proxy
-        """
-        return pulumi.get(self, "connect_on")
-
-    @_builtins.property
-    @pulumi.getter
-    def port(self) -> Optional[_builtins.int]:
-        """
-        Port to listen on the vm
-        """
-        return pulumi.get(self, "port")
 
 
 @pulumi.output_type

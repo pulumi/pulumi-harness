@@ -1514,6 +1514,36 @@
                     }
                 }
             },
+            "harness_platform_connector_anthropic_model": {
+                "current": "harness:platform/connectorAnthropicModel:ConnectorAnthropicModel",
+                "fields": {
+                    "auth": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "bedrock_api_key": {
+                                    "maxItemsOne": true
+                                },
+                                "cloud_provider": {
+                                    "maxItemsOne": true
+                                },
+                                "token": {
+                                    "maxItemsOne": true
+                                },
+                                "vertex": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "delegate_selectors": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_connector_appdynamics": {
                 "current": "harness:platform/appDynamicsConnector:AppDynamicsConnector",
                 "fields": {
@@ -2310,6 +2340,30 @@
                 "fields": {
                     "credentials": {
                         "maxItemsOne": true
+                    },
+                    "delegate_selectors": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_connector_openai_model": {
+                "current": "harness:platform/connectorOpenaiModel:ConnectorOpenaiModel",
+                "fields": {
+                    "auth": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "token": {
+                                    "maxItemsOne": true
+                                },
+                                "vertex": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     },
                     "delegate_selectors": {
                         "maxItemsOne": false
@@ -15804,6 +15858,14 @@
                     }
                 }
             },
+            "harness_platform_setting": {
+                "current": "harness:platform/setting:Setting",
+                "fields": {
+                    "allowed_values": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_slo": {
                 "current": "harness:platform/slo:Slo",
                 "fields": {
@@ -16556,16 +16618,7 @@
             "harness_autostopping_rule_ecs": {
                 "current": "harness:autostopping/getRuleEcs:getRuleEcs",
                 "fields": {
-                    "container": {
-                        "maxItemsOne": true
-                    },
-                    "custom_domains": {
-                        "maxItemsOne": false
-                    },
                     "depends": {
-                        "maxItemsOne": false
-                    },
-                    "http": {
                         "maxItemsOne": false
                     }
                 }
@@ -16581,107 +16634,24 @@
             "harness_autostopping_rule_rds": {
                 "current": "harness:autostopping/getRuleRds:getRuleRds",
                 "fields": {
-                    "database": {
-                        "maxItemsOne": true
-                    },
                     "depends": {
                         "maxItemsOne": false
-                    },
-                    "tcp": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "forward_rule": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
                     }
                 }
             },
             "harness_autostopping_rule_scale_group": {
                 "current": "harness:autostopping/getRuleScaleGroup:getRuleScaleGroup",
                 "fields": {
-                    "custom_domains": {
-                        "maxItemsOne": false
-                    },
                     "depends": {
                         "maxItemsOne": false
-                    },
-                    "http": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "health": {
-                                    "maxItemsOne": false
-                                },
-                                "routing": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "scale_group": {
-                        "maxItemsOne": true
                     }
                 }
             },
             "harness_autostopping_rule_vm": {
                 "current": "harness:autostopping/getRuleVm:getRuleVm",
                 "fields": {
-                    "custom_domains": {
-                        "maxItemsOne": false
-                    },
                     "depends": {
                         "maxItemsOne": false
-                    },
-                    "filter": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "regions": {
-                                    "maxItemsOne": false
-                                },
-                                "tags": {
-                                    "maxItemsOne": false
-                                },
-                                "vm_ids": {
-                                    "maxItemsOne": false
-                                },
-                                "zones": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "http": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "health": {
-                                    "maxItemsOne": false
-                                },
-                                "routing": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "tcp": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "forward_rule": {
-                                    "maxItemsOne": false
-                                },
-                                "rdp": {
-                                    "maxItemsOne": false
-                                },
-                                "ssh": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
                     }
                 }
             },
@@ -17579,6 +17549,36 @@
                     }
                 }
             },
+            "harness_platform_connector_anthropic_model": {
+                "current": "harness:platform/getConnectorAnthropicModel:getConnectorAnthropicModel",
+                "fields": {
+                    "auth": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "bedrock_api_key": {
+                                    "maxItemsOne": false
+                                },
+                                "cloud_provider": {
+                                    "maxItemsOne": false
+                                },
+                                "token": {
+                                    "maxItemsOne": false
+                                },
+                                "vertex": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "delegate_selectors": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harness_platform_connector_appdynamics": {
                 "current": "harness:platform/getAppDynamicsConnector:getAppDynamicsConnector",
                 "fields": {
@@ -18347,6 +18347,30 @@
                 "fields": {
                     "credentials": {
                         "maxItemsOne": false
+                    },
+                    "delegate_selectors": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harness_platform_connector_openai_model": {
+                "current": "harness:platform/getConnectorOpenaiModel:getConnectorOpenaiModel",
+                "fields": {
+                    "auth": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "token": {
+                                    "maxItemsOne": false
+                                },
+                                "vertex": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "delegate_selectors": {
                         "maxItemsOne": false

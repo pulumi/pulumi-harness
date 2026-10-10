@@ -14,6 +14,84 @@ import (
 // Data source for retrieving a Harness AutoStopping rule for K8s services.
 //
 // ## Example Usage
+//
+// ### Lookup by ID
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := autostopping.LookupRuleK8s(ctx, &autostopping.LookupRuleK8sArgs{
+//				Identifier: pulumi.StringRef("12345"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Lookup by name (regex)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := autostopping.LookupRuleK8s(ctx, &autostopping.LookupRuleK8sArgs{
+//				Name: pulumi.StringRef("^my-k8s-rule$"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Lookup by name pattern
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := autostopping.LookupRuleK8s(ctx, &autostopping.LookupRuleK8sArgs{
+//				Name: pulumi.StringRef("my-k8s-.*-prod"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupRuleK8s(ctx *pulumi.Context, args *LookupRuleK8sArgs, opts ...pulumi.InvokeOption) (*LookupRuleK8sResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRuleK8sResult
@@ -26,22 +104,10 @@ func LookupRuleK8s(ctx *pulumi.Context, args *LookupRuleK8sArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getRuleK8s.
 type LookupRuleK8sArgs struct {
-	// Id of the cloud connector
-	CloudConnectorId string `pulumi:"cloudConnectorId"`
-	// Dependent rules
-	Depends []GetRuleK8sDepend `pulumi:"depends"`
-	// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-	DryRun *bool `pulumi:"dryRun"`
-	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-	IdleTimeMins *int `pulumi:"idleTimeMins"`
-	// Id of the K8s connector
-	K8sConnectorId string `pulumi:"k8sConnectorId"`
-	// Namespace of the cluster
-	K8sNamespace string `pulumi:"k8sNamespace"`
-	// Name of the rule
-	Name string `pulumi:"name"`
-	// YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
-	RuleYaml string `pulumi:"ruleYaml"`
+	// Unique identifier of the resource. Either `identifier` or `name` must be specified.
+	Identifier *string `pulumi:"identifier"`
+	// Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
+	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getRuleK8s.
@@ -50,22 +116,16 @@ type LookupRuleK8sResult struct {
 	CloudConnectorId string `pulumi:"cloudConnectorId"`
 	// Dependent rules
 	Depends []GetRuleK8sDepend `pulumi:"depends"`
-	// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-	DryRun *bool `pulumi:"dryRun"`
+	// Boolean that indicates whether the AutoStopping rule is in DryRun mode
+	DryRun bool `pulumi:"dryRun"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Unique identifier of the resource
+	// Unique identifier of the resource. Either `identifier` or `name` must be specified.
 	Identifier string `pulumi:"identifier"`
 	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-	IdleTimeMins *int `pulumi:"idleTimeMins"`
-	// Id of the K8s connector
-	K8sConnectorId string `pulumi:"k8sConnectorId"`
-	// Namespace of the cluster
-	K8sNamespace string `pulumi:"k8sNamespace"`
-	// Name of the rule
+	IdleTimeMins int `pulumi:"idleTimeMins"`
+	// Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
 	Name string `pulumi:"name"`
-	// YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
-	RuleYaml string `pulumi:"ruleYaml"`
 }
 
 func LookupRuleK8sOutput(ctx *pulumi.Context, args LookupRuleK8sOutputArgs, opts ...pulumi.InvokeOption) LookupRuleK8sResultOutput {
@@ -75,22 +135,10 @@ func LookupRuleK8sOutput(ctx *pulumi.Context, args LookupRuleK8sOutputArgs, opts
 
 // A collection of arguments for invoking getRuleK8s.
 type LookupRuleK8sOutputArgs struct {
-	// Id of the cloud connector
-	CloudConnectorId pulumi.StringInput `pulumi:"cloudConnectorId"`
-	// Dependent rules
-	Depends GetRuleK8sDependArrayInput `pulumi:"depends"`
-	// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-	DryRun pulumi.BoolPtrInput `pulumi:"dryRun"`
-	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-	IdleTimeMins pulumi.IntPtrInput `pulumi:"idleTimeMins"`
-	// Id of the K8s connector
-	K8sConnectorId pulumi.StringInput `pulumi:"k8sConnectorId"`
-	// Namespace of the cluster
-	K8sNamespace pulumi.StringInput `pulumi:"k8sNamespace"`
-	// Name of the rule
-	Name pulumi.StringInput `pulumi:"name"`
-	// YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
-	RuleYaml pulumi.StringInput `pulumi:"ruleYaml"`
+	// Unique identifier of the resource. Either `identifier` or `name` must be specified.
+	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	// Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (LookupRuleK8sOutputArgs) ElementType() reflect.Type {
@@ -122,9 +170,9 @@ func (o LookupRuleK8sResultOutput) Depends() GetRuleK8sDependArrayOutput {
 	return o.ApplyT(func(v LookupRuleK8sResult) []GetRuleK8sDepend { return v.Depends }).(GetRuleK8sDependArrayOutput)
 }
 
-// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-func (o LookupRuleK8sResultOutput) DryRun() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupRuleK8sResult) *bool { return v.DryRun }).(pulumi.BoolPtrOutput)
+// Boolean that indicates whether the AutoStopping rule is in DryRun mode
+func (o LookupRuleK8sResultOutput) DryRun() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRuleK8sResult) bool { return v.DryRun }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -132,34 +180,19 @@ func (o LookupRuleK8sResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleK8sResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the resource
+// Unique identifier of the resource. Either `identifier` or `name` must be specified.
 func (o LookupRuleK8sResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleK8sResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-func (o LookupRuleK8sResultOutput) IdleTimeMins() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupRuleK8sResult) *int { return v.IdleTimeMins }).(pulumi.IntPtrOutput)
+func (o LookupRuleK8sResultOutput) IdleTimeMins() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupRuleK8sResult) int { return v.IdleTimeMins }).(pulumi.IntOutput)
 }
 
-// Id of the K8s connector
-func (o LookupRuleK8sResultOutput) K8sConnectorId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRuleK8sResult) string { return v.K8sConnectorId }).(pulumi.StringOutput)
-}
-
-// Namespace of the cluster
-func (o LookupRuleK8sResultOutput) K8sNamespace() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRuleK8sResult) string { return v.K8sNamespace }).(pulumi.StringOutput)
-}
-
-// Name of the rule
+// Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
 func (o LookupRuleK8sResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleK8sResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
-func (o LookupRuleK8sResultOutput) RuleYaml() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRuleK8sResult) string { return v.RuleYaml }).(pulumi.StringOutput)
 }
 
 func init() {

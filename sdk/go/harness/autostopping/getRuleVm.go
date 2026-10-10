@@ -14,6 +14,84 @@ import (
 // Data source for retrieving a Harness AutoStopping rule for VMs.
 //
 // ## Example Usage
+//
+// ### Lookup by ID
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := autostopping.LookupRuleVm(ctx, &autostopping.LookupRuleVmArgs{
+//				Identifier: pulumi.StringRef("12345"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Lookup by name (regex)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := autostopping.LookupRuleVm(ctx, &autostopping.LookupRuleVmArgs{
+//				Name: pulumi.StringRef("^my-vm-rule$"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Lookup by name pattern
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := autostopping.LookupRuleVm(ctx, &autostopping.LookupRuleVmArgs{
+//				Name: pulumi.StringRef("my-vm-.*-prod"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupRuleVm(ctx *pulumi.Context, args *LookupRuleVmArgs, opts ...pulumi.InvokeOption) (*LookupRuleVmResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRuleVmResult
@@ -26,50 +104,28 @@ func LookupRuleVm(ctx *pulumi.Context, args *LookupRuleVmArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getRuleVm.
 type LookupRuleVmArgs struct {
-	// Id of the cloud connector
-	CloudConnectorId string `pulumi:"cloudConnectorId"`
-	// Custom URLs used to access the instances
-	CustomDomains []string `pulumi:"customDomains"`
-	// Dependent rules
-	Depends []GetRuleVmDepend `pulumi:"depends"`
-	Filter  GetRuleVmFilter   `pulumi:"filter"`
-	// Http routing configuration
-	Https []GetRuleVmHttp `pulumi:"https"`
-	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-	IdleTimeMins *int `pulumi:"idleTimeMins"`
-	// Name of the rule
-	Name string `pulumi:"name"`
-	// TCP routing configuration
-	Tcps []GetRuleVmTcp `pulumi:"tcps"`
-	// Boolean that indicates whether the selected instances should be converted to spot vm
-	UseSpot *bool `pulumi:"useSpot"`
+	// Unique identifier of the resource. Either `identifier` or `name` must be specified.
+	Identifier *string `pulumi:"identifier"`
+	// Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
+	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getRuleVm.
 type LookupRuleVmResult struct {
 	// Id of the cloud connector
 	CloudConnectorId string `pulumi:"cloudConnectorId"`
-	// Connection information (source ports on the proxy). Keys: "ssh" and "rdp" for SSH/RDP; other keys are target port as string (e.g. "80") for forward_rule, value is the proxy source port.
-	Connect map[string]int `pulumi:"connect"`
-	// Custom URLs used to access the instances
-	CustomDomains []string `pulumi:"customDomains"`
 	// Dependent rules
 	Depends []GetRuleVmDepend `pulumi:"depends"`
-	Filter  GetRuleVmFilter   `pulumi:"filter"`
-	// Http routing configuration
-	Https []GetRuleVmHttp `pulumi:"https"`
+	// Boolean that indicates whether the AutoStopping rule is in DryRun mode
+	DryRun bool `pulumi:"dryRun"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Unique identifier of the resource
+	// Unique identifier of the resource. Either `identifier` or `name` must be specified.
 	Identifier string `pulumi:"identifier"`
 	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-	IdleTimeMins *int `pulumi:"idleTimeMins"`
-	// Name of the rule
+	IdleTimeMins int `pulumi:"idleTimeMins"`
+	// Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
 	Name string `pulumi:"name"`
-	// TCP routing configuration
-	Tcps []GetRuleVmTcp `pulumi:"tcps"`
-	// Boolean that indicates whether the selected instances should be converted to spot vm
-	UseSpot *bool `pulumi:"useSpot"`
 }
 
 func LookupRuleVmOutput(ctx *pulumi.Context, args LookupRuleVmOutputArgs, opts ...pulumi.InvokeOption) LookupRuleVmResultOutput {
@@ -79,23 +135,10 @@ func LookupRuleVmOutput(ctx *pulumi.Context, args LookupRuleVmOutputArgs, opts .
 
 // A collection of arguments for invoking getRuleVm.
 type LookupRuleVmOutputArgs struct {
-	// Id of the cloud connector
-	CloudConnectorId pulumi.StringInput `pulumi:"cloudConnectorId"`
-	// Custom URLs used to access the instances
-	CustomDomains pulumi.StringArrayInput `pulumi:"customDomains"`
-	// Dependent rules
-	Depends GetRuleVmDependArrayInput `pulumi:"depends"`
-	Filter  GetRuleVmFilterInput      `pulumi:"filter"`
-	// Http routing configuration
-	Https GetRuleVmHttpArrayInput `pulumi:"https"`
-	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-	IdleTimeMins pulumi.IntPtrInput `pulumi:"idleTimeMins"`
-	// Name of the rule
-	Name pulumi.StringInput `pulumi:"name"`
-	// TCP routing configuration
-	Tcps GetRuleVmTcpArrayInput `pulumi:"tcps"`
-	// Boolean that indicates whether the selected instances should be converted to spot vm
-	UseSpot pulumi.BoolPtrInput `pulumi:"useSpot"`
+	// Unique identifier of the resource. Either `identifier` or `name` must be specified.
+	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	// Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (LookupRuleVmOutputArgs) ElementType() reflect.Type {
@@ -122,28 +165,14 @@ func (o LookupRuleVmResultOutput) CloudConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleVmResult) string { return v.CloudConnectorId }).(pulumi.StringOutput)
 }
 
-// Connection information (source ports on the proxy). Keys: "ssh" and "rdp" for SSH/RDP; other keys are target port as string (e.g. "80") for forward_rule, value is the proxy source port.
-func (o LookupRuleVmResultOutput) Connect() pulumi.IntMapOutput {
-	return o.ApplyT(func(v LookupRuleVmResult) map[string]int { return v.Connect }).(pulumi.IntMapOutput)
-}
-
-// Custom URLs used to access the instances
-func (o LookupRuleVmResultOutput) CustomDomains() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupRuleVmResult) []string { return v.CustomDomains }).(pulumi.StringArrayOutput)
-}
-
 // Dependent rules
 func (o LookupRuleVmResultOutput) Depends() GetRuleVmDependArrayOutput {
 	return o.ApplyT(func(v LookupRuleVmResult) []GetRuleVmDepend { return v.Depends }).(GetRuleVmDependArrayOutput)
 }
 
-func (o LookupRuleVmResultOutput) Filter() GetRuleVmFilterOutput {
-	return o.ApplyT(func(v LookupRuleVmResult) GetRuleVmFilter { return v.Filter }).(GetRuleVmFilterOutput)
-}
-
-// Http routing configuration
-func (o LookupRuleVmResultOutput) Https() GetRuleVmHttpArrayOutput {
-	return o.ApplyT(func(v LookupRuleVmResult) []GetRuleVmHttp { return v.Https }).(GetRuleVmHttpArrayOutput)
+// Boolean that indicates whether the AutoStopping rule is in DryRun mode
+func (o LookupRuleVmResultOutput) DryRun() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRuleVmResult) bool { return v.DryRun }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -151,29 +180,19 @@ func (o LookupRuleVmResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleVmResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the resource
+// Unique identifier of the resource. Either `identifier` or `name` must be specified.
 func (o LookupRuleVmResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleVmResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-func (o LookupRuleVmResultOutput) IdleTimeMins() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupRuleVmResult) *int { return v.IdleTimeMins }).(pulumi.IntPtrOutput)
+func (o LookupRuleVmResultOutput) IdleTimeMins() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupRuleVmResult) int { return v.IdleTimeMins }).(pulumi.IntOutput)
 }
 
-// Name of the rule
+// Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
 func (o LookupRuleVmResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleVmResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// TCP routing configuration
-func (o LookupRuleVmResultOutput) Tcps() GetRuleVmTcpArrayOutput {
-	return o.ApplyT(func(v LookupRuleVmResult) []GetRuleVmTcp { return v.Tcps }).(GetRuleVmTcpArrayOutput)
-}
-
-// Boolean that indicates whether the selected instances should be converted to spot vm
-func (o LookupRuleVmResultOutput) UseSpot() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupRuleVmResult) *bool { return v.UseSpot }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

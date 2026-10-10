@@ -14,7 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetRuleEcsResult',
@@ -28,22 +27,16 @@ class GetRuleEcsResult:
     """
     A collection of values returned by getRuleEcs.
     """
-    def __init__(__self__, cloud_connector_id=None, container=None, custom_domains=None, depends=None, https=None, id=None, identifier=None, idle_time_mins=None, name=None):
+    def __init__(__self__, cloud_connector_id=None, depends=None, dry_run=None, id=None, identifier=None, idle_time_mins=None, name=None):
         if cloud_connector_id and not isinstance(cloud_connector_id, str):
             raise TypeError("Expected argument 'cloud_connector_id' to be a str")
         pulumi.set(__self__, "cloud_connector_id", cloud_connector_id)
-        if container and not isinstance(container, dict):
-            raise TypeError("Expected argument 'container' to be a dict")
-        pulumi.set(__self__, "container", container)
-        if custom_domains and not isinstance(custom_domains, list):
-            raise TypeError("Expected argument 'custom_domains' to be a list")
-        pulumi.set(__self__, "custom_domains", custom_domains)
         if depends and not isinstance(depends, list):
             raise TypeError("Expected argument 'depends' to be a list")
         pulumi.set(__self__, "depends", depends)
-        if https and not isinstance(https, list):
-            raise TypeError("Expected argument 'https' to be a list")
-        pulumi.set(__self__, "https", https)
+        if dry_run and not isinstance(dry_run, bool):
+            raise TypeError("Expected argument 'dry_run' to be a bool")
+        pulumi.set(__self__, "dry_run", dry_run)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -67,32 +60,19 @@ class GetRuleEcsResult:
 
     @_builtins.property
     @pulumi.getter
-    def container(self) -> Optional['outputs.GetRuleEcsContainerResult']:
-        return pulumi.get(self, "container")
-
-    @_builtins.property
-    @pulumi.getter(name="customDomains")
-    def custom_domains(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        Custom URLs used to access the instances
-        """
-        return pulumi.get(self, "custom_domains")
-
-    @_builtins.property
-    @pulumi.getter
-    def depends(self) -> Optional[Sequence['outputs.GetRuleEcsDependResult']]:
+    def depends(self) -> Sequence['outputs.GetRuleEcsDependResult']:
         """
         Dependent rules
         """
         return pulumi.get(self, "depends")
 
     @_builtins.property
-    @pulumi.getter
-    def https(self) -> Optional[Sequence['outputs.GetRuleEcsHttpResult']]:
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> _builtins.bool:
         """
-        Http routing configuration
+        Boolean that indicates whether the AutoStopping rule is in DryRun mode
         """
-        return pulumi.get(self, "https")
+        return pulumi.get(self, "dry_run")
 
     @_builtins.property
     @pulumi.getter
@@ -106,13 +86,13 @@ class GetRuleEcsResult:
     @pulumi.getter
     def identifier(self) -> _builtins.str:
         """
-        Unique identifier of the resource
+        Unique identifier of the resource. Either `identifier` or `name` must be specified.
         """
         return pulumi.get(self, "identifier")
 
     @_builtins.property
     @pulumi.getter(name="idleTimeMins")
-    def idle_time_mins(self) -> Optional[_builtins.int]:
+    def idle_time_mins(self) -> _builtins.int:
         """
         Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         """
@@ -122,7 +102,7 @@ class GetRuleEcsResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of the rule
+        Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
         """
         return pulumi.get(self, "name")
 
@@ -134,22 +114,15 @@ class AwaitableGetRuleEcsResult(GetRuleEcsResult):
             yield self
         return GetRuleEcsResult(
             cloud_connector_id=self.cloud_connector_id,
-            container=self.container,
-            custom_domains=self.custom_domains,
             depends=self.depends,
-            https=self.https,
+            dry_run=self.dry_run,
             id=self.id,
             identifier=self.identifier,
             idle_time_mins=self.idle_time_mins,
             name=self.name)
 
 
-def get_rule_ecs(cloud_connector_id: Optional[_builtins.str] = None,
-                 container: Optional[Union['GetRuleEcsContainerArgs', 'GetRuleEcsContainerArgsDict', 'outputs.GetRuleEcsContainerResult']] = None,
-                 custom_domains: Optional[Sequence[_builtins.str]] = None,
-                 depends: Optional[Sequence[Union['GetRuleEcsDependArgs', 'GetRuleEcsDependArgsDict', 'outputs.GetRuleEcsDependResult']]] = None,
-                 https: Optional[Sequence[Union['GetRuleEcsHttpArgs', 'GetRuleEcsHttpArgsDict', 'outputs.GetRuleEcsHttpResult']]] = None,
-                 idle_time_mins: Optional[_builtins.int] = None,
+def get_rule_ecs(identifier: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRuleEcsResult:
     """
@@ -157,72 +130,99 @@ def get_rule_ecs(cloud_connector_id: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ### Lookup by ID
 
-    :param _builtins.str cloud_connector_id: Id of the cloud connector
-    :param Sequence[_builtins.str] custom_domains: Custom URLs used to access the instances
-    :param Sequence[Union['GetRuleEcsDependArgs', 'GetRuleEcsDependArgsDict', 'outputs.GetRuleEcsDependResult']] depends: Dependent rules
-    :param Sequence[Union['GetRuleEcsHttpArgs', 'GetRuleEcsHttpArgsDict', 'outputs.GetRuleEcsHttpResult']] https: Http routing configuration
-    :param _builtins.int idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-    :param _builtins.str name: Name of the rule
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_id = harness.autostopping.get_rule_ecs(identifier="12345")
+    ```
+
+    ### Lookup by name (regex)
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_name = harness.autostopping.get_rule_ecs(name="^my-ecs-rule$")
+    ```
+
+    ### Lookup by name pattern
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_pattern = harness.autostopping.get_rule_ecs(name="my-ecs-.*-prod")
+    ```
+
+
+    :param _builtins.str identifier: Unique identifier of the resource. Either `identifier` or `name` must be specified.
+    :param _builtins.str name: Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
     """
     __args__ = dict()
-    __args__['cloudConnectorId'] = cloud_connector_id
-    __args__['container'] = container
-    __args__['customDomains'] = custom_domains
-    __args__['depends'] = depends
-    __args__['https'] = https
-    __args__['idleTimeMins'] = idle_time_mins
+    __args__['identifier'] = identifier
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:autostopping/getRuleEcs:getRuleEcs', __args__, opts=opts, typ=GetRuleEcsResult).value
 
     return AwaitableGetRuleEcsResult(
         cloud_connector_id=pulumi.get(__ret__, 'cloud_connector_id'),
-        container=pulumi.get(__ret__, 'container'),
-        custom_domains=pulumi.get(__ret__, 'custom_domains'),
         depends=pulumi.get(__ret__, 'depends'),
-        https=pulumi.get(__ret__, 'https'),
+        dry_run=pulumi.get(__ret__, 'dry_run'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         idle_time_mins=pulumi.get(__ret__, 'idle_time_mins'),
         name=pulumi.get(__ret__, 'name'))
-def get_rule_ecs_output(cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
-                        container: pulumi.Input[Optional[Optional[Union['GetRuleEcsContainerArgs', 'GetRuleEcsContainerArgsDict', 'outputs.GetRuleEcsContainerResult']]]] = None,
-                        custom_domains: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
-                        depends: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleEcsDependArgs', 'GetRuleEcsDependArgsDict', 'outputs.GetRuleEcsDependResult']]]]] = None,
-                        https: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleEcsHttpArgs', 'GetRuleEcsHttpArgsDict', 'outputs.GetRuleEcsHttpResult']]]]] = None,
-                        idle_time_mins: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                        name: pulumi.Input[Optional[_builtins.str]] = None,
+def get_rule_ecs_output(identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleEcsResult]:
     """
     Data source for retrieving a Harness AutoStopping rule for ECS services.
 
     ## Example Usage
 
+    ### Lookup by ID
 
-    :param _builtins.str cloud_connector_id: Id of the cloud connector
-    :param Sequence[_builtins.str] custom_domains: Custom URLs used to access the instances
-    :param Sequence[Union['GetRuleEcsDependArgs', 'GetRuleEcsDependArgsDict', 'outputs.GetRuleEcsDependResult']] depends: Dependent rules
-    :param Sequence[Union['GetRuleEcsHttpArgs', 'GetRuleEcsHttpArgsDict', 'outputs.GetRuleEcsHttpResult']] https: Http routing configuration
-    :param _builtins.int idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-    :param _builtins.str name: Name of the rule
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_id = harness.autostopping.get_rule_ecs(identifier="12345")
+    ```
+
+    ### Lookup by name (regex)
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_name = harness.autostopping.get_rule_ecs(name="^my-ecs-rule$")
+    ```
+
+    ### Lookup by name pattern
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_pattern = harness.autostopping.get_rule_ecs(name="my-ecs-.*-prod")
+    ```
+
+
+    :param _builtins.str identifier: Unique identifier of the resource. Either `identifier` or `name` must be specified.
+    :param _builtins.str name: Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
     """
     __args__ = dict()
-    __args__['cloudConnectorId'] = cloud_connector_id
-    __args__['container'] = container
-    __args__['customDomains'] = custom_domains
-    __args__['depends'] = depends
-    __args__['https'] = https
-    __args__['idleTimeMins'] = idle_time_mins
+    __args__['identifier'] = identifier
     __args__['name'] = name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:autostopping/getRuleEcs:getRuleEcs', __args__, opts=opts, typ=GetRuleEcsResult)
     return __ret__.apply(lambda __response__: GetRuleEcsResult(
         cloud_connector_id=pulumi.get(__response__, 'cloud_connector_id'),
-        container=pulumi.get(__response__, 'container'),
-        custom_domains=pulumi.get(__response__, 'custom_domains'),
         depends=pulumi.get(__response__, 'depends'),
-        https=pulumi.get(__response__, 'https'),
+        dry_run=pulumi.get(__response__, 'dry_run'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
         idle_time_mins=pulumi.get(__response__, 'idle_time_mins'),

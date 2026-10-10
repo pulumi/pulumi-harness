@@ -16,7 +16,7 @@ namespace Pulumi.Harness.Autostopping.Outputs
         /// <summary>
         /// Number of seconds the rule should wait after warming up the dependent rule
         /// </summary>
-        public readonly int? DelayInSec;
+        public readonly int DelayInSec;
         /// <summary>
         /// Rule id of the dependent rule
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Harness.Autostopping.Outputs
 
         [OutputConstructor]
         private GetRuleScaleGroupDependResult(
-            int? delayInSec,
+            int delayInSec,
 
             int ruleId)
         {

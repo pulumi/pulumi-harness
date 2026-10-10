@@ -10,18 +10,46 @@ import * as utilities from "../utilities";
  * Data source for retrieving a Harness AutoStopping rule for K8s services.
  *
  * ## Example Usage
+ *
+ * ### Lookup by ID
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byId = harness.autostopping.getRuleK8s({
+ *     identifier: "12345",
+ * });
+ * ```
+ *
+ * ### Lookup by name (regex)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byName = harness.autostopping.getRuleK8s({
+ *     name: "^my-k8s-rule$",
+ * });
+ * ```
+ *
+ * ### Lookup by name pattern
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byPattern = harness.autostopping.getRuleK8s({
+ *     name: "my-k8s-.*-prod",
+ * });
+ * ```
  */
-export function getRuleK8s(args: GetRuleK8sArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleK8sResult> {
+export function getRuleK8s(args?: GetRuleK8sArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleK8sResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:autostopping/getRuleK8s:getRuleK8s", {
-        "cloudConnectorId": args.cloudConnectorId,
-        "depends": args.depends,
-        "dryRun": args.dryRun,
-        "idleTimeMins": args.idleTimeMins,
-        "k8sConnectorId": args.k8sConnectorId,
-        "k8sNamespace": args.k8sNamespace,
+        "identifier": args.identifier,
         "name": args.name,
-        "ruleYaml": args.ruleYaml,
     }, opts);
 }
 
@@ -30,37 +58,13 @@ export function getRuleK8s(args: GetRuleK8sArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetRuleK8sArgs {
     /**
-     * Id of the cloud connector
+     * Unique identifier of the resource. Either `identifier` or `name` must be specified.
      */
-    cloudConnectorId: string;
+    identifier?: string;
     /**
-     * Dependent rules
+     * Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      */
-    depends?: inputs.autostopping.GetRuleK8sDepend[];
-    /**
-     * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-     */
-    dryRun?: boolean;
-    /**
-     * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-     */
-    idleTimeMins?: number;
-    /**
-     * Id of the K8s connector
-     */
-    k8sConnectorId: string;
-    /**
-     * Namespace of the cluster
-     */
-    k8sNamespace: string;
-    /**
-     * Name of the rule
-     */
-    name: string;
-    /**
-     * YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
-     */
-    ruleYaml: string;
+    name?: string;
 }
 
 /**
@@ -74,56 +78,72 @@ export interface GetRuleK8sResult {
     /**
      * Dependent rules
      */
-    readonly depends?: outputs.autostopping.GetRuleK8sDepend[];
+    readonly depends: outputs.autostopping.GetRuleK8sDepend[];
     /**
-     * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+     * Boolean that indicates whether the AutoStopping rule is in DryRun mode
      */
-    readonly dryRun?: boolean;
+    readonly dryRun: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * Unique identifier of the resource
+     * Unique identifier of the resource. Either `identifier` or `name` must be specified.
      */
     readonly identifier: string;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */
-    readonly idleTimeMins?: number;
+    readonly idleTimeMins: number;
     /**
-     * Id of the K8s connector
-     */
-    readonly k8sConnectorId: string;
-    /**
-     * Namespace of the cluster
-     */
-    readonly k8sNamespace: string;
-    /**
-     * Name of the rule
+     * Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      */
     readonly name: string;
-    /**
-     * YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
-     */
-    readonly ruleYaml: string;
 }
 /**
  * Data source for retrieving a Harness AutoStopping rule for K8s services.
  *
  * ## Example Usage
+ *
+ * ### Lookup by ID
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byId = harness.autostopping.getRuleK8s({
+ *     identifier: "12345",
+ * });
+ * ```
+ *
+ * ### Lookup by name (regex)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byName = harness.autostopping.getRuleK8s({
+ *     name: "^my-k8s-rule$",
+ * });
+ * ```
+ *
+ * ### Lookup by name pattern
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byPattern = harness.autostopping.getRuleK8s({
+ *     name: "my-k8s-.*-prod",
+ * });
+ * ```
  */
-export function getRuleK8sOutput(args: GetRuleK8sOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRuleK8sResult> {
+export function getRuleK8sOutput(args?: GetRuleK8sOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRuleK8sResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:autostopping/getRuleK8s:getRuleK8s", {
-        "cloudConnectorId": args.cloudConnectorId,
-        "depends": args.depends,
-        "dryRun": args.dryRun,
-        "idleTimeMins": args.idleTimeMins,
-        "k8sConnectorId": args.k8sConnectorId,
-        "k8sNamespace": args.k8sNamespace,
+        "identifier": args.identifier,
         "name": args.name,
-        "ruleYaml": args.ruleYaml,
     }, opts);
 }
 
@@ -132,35 +152,11 @@ export function getRuleK8sOutput(args: GetRuleK8sOutputArgs, opts?: pulumi.Invok
  */
 export interface GetRuleK8sOutputArgs {
     /**
-     * Id of the cloud connector
+     * Unique identifier of the resource. Either `identifier` or `name` must be specified.
      */
-    cloudConnectorId: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
-     * Dependent rules
+     * Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      */
-    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleK8sDependArgs>[] | undefined>;
-    /**
-     * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-     */
-    dryRun?: pulumi.Input<boolean | undefined>;
-    /**
-     * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-     */
-    idleTimeMins?: pulumi.Input<number | undefined>;
-    /**
-     * Id of the K8s connector
-     */
-    k8sConnectorId: pulumi.Input<string>;
-    /**
-     * Namespace of the cluster
-     */
-    k8sNamespace: pulumi.Input<string>;
-    /**
-     * Name of the rule
-     */
-    name: pulumi.Input<string>;
-    /**
-     * YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
-     */
-    ruleYaml: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

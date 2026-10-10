@@ -14,7 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetRuleVmResult',
@@ -28,25 +27,16 @@ class GetRuleVmResult:
     """
     A collection of values returned by getRuleVm.
     """
-    def __init__(__self__, cloud_connector_id=None, connect=None, custom_domains=None, depends=None, filter=None, https=None, id=None, identifier=None, idle_time_mins=None, name=None, tcps=None, use_spot=None):
+    def __init__(__self__, cloud_connector_id=None, depends=None, dry_run=None, id=None, identifier=None, idle_time_mins=None, name=None):
         if cloud_connector_id and not isinstance(cloud_connector_id, str):
             raise TypeError("Expected argument 'cloud_connector_id' to be a str")
         pulumi.set(__self__, "cloud_connector_id", cloud_connector_id)
-        if connect and not isinstance(connect, dict):
-            raise TypeError("Expected argument 'connect' to be a dict")
-        pulumi.set(__self__, "connect", connect)
-        if custom_domains and not isinstance(custom_domains, list):
-            raise TypeError("Expected argument 'custom_domains' to be a list")
-        pulumi.set(__self__, "custom_domains", custom_domains)
         if depends and not isinstance(depends, list):
             raise TypeError("Expected argument 'depends' to be a list")
         pulumi.set(__self__, "depends", depends)
-        if filter and not isinstance(filter, dict):
-            raise TypeError("Expected argument 'filter' to be a dict")
-        pulumi.set(__self__, "filter", filter)
-        if https and not isinstance(https, list):
-            raise TypeError("Expected argument 'https' to be a list")
-        pulumi.set(__self__, "https", https)
+        if dry_run and not isinstance(dry_run, bool):
+            raise TypeError("Expected argument 'dry_run' to be a bool")
+        pulumi.set(__self__, "dry_run", dry_run)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -59,12 +49,6 @@ class GetRuleVmResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if tcps and not isinstance(tcps, list):
-            raise TypeError("Expected argument 'tcps' to be a list")
-        pulumi.set(__self__, "tcps", tcps)
-        if use_spot and not isinstance(use_spot, bool):
-            raise TypeError("Expected argument 'use_spot' to be a bool")
-        pulumi.set(__self__, "use_spot", use_spot)
 
     @_builtins.property
     @pulumi.getter(name="cloudConnectorId")
@@ -76,40 +60,19 @@ class GetRuleVmResult:
 
     @_builtins.property
     @pulumi.getter
-    def connect(self) -> Mapping[str, _builtins.int]:
-        """
-        Connection information (source ports on the proxy). Keys: "ssh" and "rdp" for SSH/RDP; other keys are target port as string (e.g. "80") for forward_rule, value is the proxy source port.
-        """
-        return pulumi.get(self, "connect")
-
-    @_builtins.property
-    @pulumi.getter(name="customDomains")
-    def custom_domains(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        Custom URLs used to access the instances
-        """
-        return pulumi.get(self, "custom_domains")
-
-    @_builtins.property
-    @pulumi.getter
-    def depends(self) -> Optional[Sequence['outputs.GetRuleVmDependResult']]:
+    def depends(self) -> Sequence['outputs.GetRuleVmDependResult']:
         """
         Dependent rules
         """
         return pulumi.get(self, "depends")
 
     @_builtins.property
-    @pulumi.getter
-    def filter(self) -> 'outputs.GetRuleVmFilterResult':
-        return pulumi.get(self, "filter")
-
-    @_builtins.property
-    @pulumi.getter
-    def https(self) -> Optional[Sequence['outputs.GetRuleVmHttpResult']]:
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> _builtins.bool:
         """
-        Http routing configuration
+        Boolean that indicates whether the AutoStopping rule is in DryRun mode
         """
-        return pulumi.get(self, "https")
+        return pulumi.get(self, "dry_run")
 
     @_builtins.property
     @pulumi.getter
@@ -123,13 +86,13 @@ class GetRuleVmResult:
     @pulumi.getter
     def identifier(self) -> _builtins.str:
         """
-        Unique identifier of the resource
+        Unique identifier of the resource. Either `identifier` or `name` must be specified.
         """
         return pulumi.get(self, "identifier")
 
     @_builtins.property
     @pulumi.getter(name="idleTimeMins")
-    def idle_time_mins(self) -> Optional[_builtins.int]:
+    def idle_time_mins(self) -> _builtins.int:
         """
         Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         """
@@ -139,25 +102,9 @@ class GetRuleVmResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of the rule
+        Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
         """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def tcps(self) -> Optional[Sequence['outputs.GetRuleVmTcpResult']]:
-        """
-        TCP routing configuration
-        """
-        return pulumi.get(self, "tcps")
-
-    @_builtins.property
-    @pulumi.getter(name="useSpot")
-    def use_spot(self) -> Optional[_builtins.bool]:
-        """
-        Boolean that indicates whether the selected instances should be converted to spot vm
-        """
-        return pulumi.get(self, "use_spot")
 
 
 class AwaitableGetRuleVmResult(GetRuleVmResult):
@@ -167,117 +114,116 @@ class AwaitableGetRuleVmResult(GetRuleVmResult):
             yield self
         return GetRuleVmResult(
             cloud_connector_id=self.cloud_connector_id,
-            connect=self.connect,
-            custom_domains=self.custom_domains,
             depends=self.depends,
-            filter=self.filter,
-            https=self.https,
+            dry_run=self.dry_run,
             id=self.id,
             identifier=self.identifier,
             idle_time_mins=self.idle_time_mins,
-            name=self.name,
-            tcps=self.tcps,
-            use_spot=self.use_spot)
+            name=self.name)
 
 
-def get_rule_vm(cloud_connector_id: Optional[_builtins.str] = None,
-                custom_domains: Optional[Sequence[_builtins.str]] = None,
-                depends: Optional[Sequence[Union['GetRuleVmDependArgs', 'GetRuleVmDependArgsDict', 'outputs.GetRuleVmDependResult']]] = None,
-                filter: Optional[Union['GetRuleVmFilterArgs', 'GetRuleVmFilterArgsDict', 'outputs.GetRuleVmFilterResult']] = None,
-                https: Optional[Sequence[Union['GetRuleVmHttpArgs', 'GetRuleVmHttpArgsDict', 'outputs.GetRuleVmHttpResult']]] = None,
-                idle_time_mins: Optional[_builtins.int] = None,
+def get_rule_vm(identifier: Optional[_builtins.str] = None,
                 name: Optional[_builtins.str] = None,
-                tcps: Optional[Sequence[Union['GetRuleVmTcpArgs', 'GetRuleVmTcpArgsDict', 'outputs.GetRuleVmTcpResult']]] = None,
-                use_spot: Optional[_builtins.bool] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRuleVmResult:
     """
     Data source for retrieving a Harness AutoStopping rule for VMs.
 
     ## Example Usage
 
+    ### Lookup by ID
 
-    :param _builtins.str cloud_connector_id: Id of the cloud connector
-    :param Sequence[_builtins.str] custom_domains: Custom URLs used to access the instances
-    :param Sequence[Union['GetRuleVmDependArgs', 'GetRuleVmDependArgsDict', 'outputs.GetRuleVmDependResult']] depends: Dependent rules
-    :param Sequence[Union['GetRuleVmHttpArgs', 'GetRuleVmHttpArgsDict', 'outputs.GetRuleVmHttpResult']] https: Http routing configuration
-    :param _builtins.int idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-    :param _builtins.str name: Name of the rule
-    :param Sequence[Union['GetRuleVmTcpArgs', 'GetRuleVmTcpArgsDict', 'outputs.GetRuleVmTcpResult']] tcps: TCP routing configuration
-    :param _builtins.bool use_spot: Boolean that indicates whether the selected instances should be converted to spot vm
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_id = harness.autostopping.get_rule_vm(identifier="12345")
+    ```
+
+    ### Lookup by name (regex)
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_name = harness.autostopping.get_rule_vm(name="^my-vm-rule$")
+    ```
+
+    ### Lookup by name pattern
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_pattern = harness.autostopping.get_rule_vm(name="my-vm-.*-prod")
+    ```
+
+
+    :param _builtins.str identifier: Unique identifier of the resource. Either `identifier` or `name` must be specified.
+    :param _builtins.str name: Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
     """
     __args__ = dict()
-    __args__['cloudConnectorId'] = cloud_connector_id
-    __args__['customDomains'] = custom_domains
-    __args__['depends'] = depends
-    __args__['filter'] = filter
-    __args__['https'] = https
-    __args__['idleTimeMins'] = idle_time_mins
+    __args__['identifier'] = identifier
     __args__['name'] = name
-    __args__['tcps'] = tcps
-    __args__['useSpot'] = use_spot
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:autostopping/getRuleVm:getRuleVm', __args__, opts=opts, typ=GetRuleVmResult).value
 
     return AwaitableGetRuleVmResult(
         cloud_connector_id=pulumi.get(__ret__, 'cloud_connector_id'),
-        connect=pulumi.get(__ret__, 'connect'),
-        custom_domains=pulumi.get(__ret__, 'custom_domains'),
         depends=pulumi.get(__ret__, 'depends'),
-        filter=pulumi.get(__ret__, 'filter'),
-        https=pulumi.get(__ret__, 'https'),
+        dry_run=pulumi.get(__ret__, 'dry_run'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         idle_time_mins=pulumi.get(__ret__, 'idle_time_mins'),
-        name=pulumi.get(__ret__, 'name'),
-        tcps=pulumi.get(__ret__, 'tcps'),
-        use_spot=pulumi.get(__ret__, 'use_spot'))
-def get_rule_vm_output(cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
-                       custom_domains: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
-                       depends: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleVmDependArgs', 'GetRuleVmDependArgsDict', 'outputs.GetRuleVmDependResult']]]]] = None,
-                       filter: pulumi.Input[Optional[Union['GetRuleVmFilterArgs', 'GetRuleVmFilterArgsDict', 'outputs.GetRuleVmFilterResult']]] = None,
-                       https: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleVmHttpArgs', 'GetRuleVmHttpArgsDict', 'outputs.GetRuleVmHttpResult']]]]] = None,
-                       idle_time_mins: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                       name: pulumi.Input[Optional[_builtins.str]] = None,
-                       tcps: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleVmTcpArgs', 'GetRuleVmTcpArgsDict', 'outputs.GetRuleVmTcpResult']]]]] = None,
-                       use_spot: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+        name=pulumi.get(__ret__, 'name'))
+def get_rule_vm_output(identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleVmResult]:
     """
     Data source for retrieving a Harness AutoStopping rule for VMs.
 
     ## Example Usage
 
+    ### Lookup by ID
 
-    :param _builtins.str cloud_connector_id: Id of the cloud connector
-    :param Sequence[_builtins.str] custom_domains: Custom URLs used to access the instances
-    :param Sequence[Union['GetRuleVmDependArgs', 'GetRuleVmDependArgsDict', 'outputs.GetRuleVmDependResult']] depends: Dependent rules
-    :param Sequence[Union['GetRuleVmHttpArgs', 'GetRuleVmHttpArgsDict', 'outputs.GetRuleVmHttpResult']] https: Http routing configuration
-    :param _builtins.int idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-    :param _builtins.str name: Name of the rule
-    :param Sequence[Union['GetRuleVmTcpArgs', 'GetRuleVmTcpArgsDict', 'outputs.GetRuleVmTcpResult']] tcps: TCP routing configuration
-    :param _builtins.bool use_spot: Boolean that indicates whether the selected instances should be converted to spot vm
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_id = harness.autostopping.get_rule_vm(identifier="12345")
+    ```
+
+    ### Lookup by name (regex)
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_name = harness.autostopping.get_rule_vm(name="^my-vm-rule$")
+    ```
+
+    ### Lookup by name pattern
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_pattern = harness.autostopping.get_rule_vm(name="my-vm-.*-prod")
+    ```
+
+
+    :param _builtins.str identifier: Unique identifier of the resource. Either `identifier` or `name` must be specified.
+    :param _builtins.str name: Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
     """
     __args__ = dict()
-    __args__['cloudConnectorId'] = cloud_connector_id
-    __args__['customDomains'] = custom_domains
-    __args__['depends'] = depends
-    __args__['filter'] = filter
-    __args__['https'] = https
-    __args__['idleTimeMins'] = idle_time_mins
+    __args__['identifier'] = identifier
     __args__['name'] = name
-    __args__['tcps'] = tcps
-    __args__['useSpot'] = use_spot
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:autostopping/getRuleVm:getRuleVm', __args__, opts=opts, typ=GetRuleVmResult)
     return __ret__.apply(lambda __response__: GetRuleVmResult(
         cloud_connector_id=pulumi.get(__response__, 'cloud_connector_id'),
-        connect=pulumi.get(__response__, 'connect'),
-        custom_domains=pulumi.get(__response__, 'custom_domains'),
         depends=pulumi.get(__response__, 'depends'),
-        filter=pulumi.get(__response__, 'filter'),
-        https=pulumi.get(__response__, 'https'),
+        dry_run=pulumi.get(__response__, 'dry_run'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
         idle_time_mins=pulumi.get(__response__, 'idle_time_mins'),
-        name=pulumi.get(__response__, 'name'),
-        tcps=pulumi.get(__response__, 'tcps'),
-        use_spot=pulumi.get(__response__, 'use_spot')))
+        name=pulumi.get(__response__, 'name')))

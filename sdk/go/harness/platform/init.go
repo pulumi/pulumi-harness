@@ -45,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CentralNotificationChannel{}
 	case "harness:platform/centralNotificationRule:CentralNotificationRule":
 		r = &CentralNotificationRule{}
+	case "harness:platform/connectorAnthropicModel:ConnectorAnthropicModel":
+		r = &ConnectorAnthropicModel{}
 	case "harness:platform/connectorAzureArtifacts:ConnectorAzureArtifacts":
 		r = &ConnectorAzureArtifacts{}
 	case "harness:platform/connectorAzureRepo:ConnectorAzureRepo":
@@ -57,6 +59,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConnectorGcpKms{}
 	case "harness:platform/connectorJdbc:ConnectorJdbc":
 		r = &ConnectorJdbc{}
+	case "harness:platform/connectorOpenaiModel:ConnectorOpenaiModel":
+		r = &ConnectorOpenaiModel{}
 	case "harness:platform/connectorPdc:ConnectorPdc":
 		r = &ConnectorPdc{}
 	case "harness:platform/connectorRancher:ConnectorRancher":
@@ -261,6 +265,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServiceNowConnector{}
 	case "harness:platform/serviceOverridesV2:ServiceOverridesV2":
 		r = &ServiceOverridesV2{}
+	case "harness:platform/setting:Setting":
+		r = &Setting{}
 	case "harness:platform/slo:Slo":
 		r = &Slo{}
 	case "harness:platform/splunkConnector:SplunkConnector":
@@ -368,6 +374,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"harness",
+		"platform/connectorAnthropicModel",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
 		"platform/connectorAzureArtifacts",
 		&module{version},
 	)
@@ -394,6 +405,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/connectorJdbc",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/connectorOpenaiModel",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -904,6 +920,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harness",
 		"platform/serviceOverridesV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harness",
+		"platform/setting",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

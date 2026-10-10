@@ -35,7 +35,7 @@ class HarRegistryArgs:
         The set of arguments for constructing a HarRegistry resource.
 
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry
-        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
+        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT)
         :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry (required for creation)
         :param pulumi.Input[_builtins.str] space_ref: Space reference for the registry (required for creation)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_patterns: Allowed artifact patterns
@@ -78,7 +78,7 @@ class HarRegistryArgs:
     @pulumi.getter(name="packageType")
     def package_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
+        Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT)
         """
         return pulumi.get(self, "package_type")
 
@@ -209,7 +209,7 @@ class _HarRegistryState:
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry
         :param pulumi.Input[_builtins.bool] is_public: Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
-        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
+        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT)
         :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry (required for creation)
         :param pulumi.Input[_builtins.str] space_ref: Space reference for the registry (required for creation)
         :param pulumi.Input[_builtins.str] url: URL of the registry
@@ -339,7 +339,7 @@ class _HarRegistryState:
     @pulumi.getter(name="packageType")
     def package_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
+        Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT)
         """
         return pulumi.get(self, "package_type")
 
@@ -626,6 +626,58 @@ class HarRegistry(pulumi.CustomResource):
             space_ref="accountId/orgId/projectId",
             package_type="WOLFI",
             parent_ref="accountId/orgId/projectId")
+        # Example of a Virtual Composer Registry
+        composer_virtual = harness.platform.HarRegistry("composer_virtual",
+            configs=[{
+                "type": "VIRTUAL",
+            }],
+            identifier="virtual_composer_registry",
+            description="Virtual Composer Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="COMPOSER",
+            parent_ref="accountId/orgId/projectId")
+        # Example of a Virtual Dart Registry
+        dart_virtual = harness.platform.HarRegistry("dart_virtual",
+            configs=[{
+                "type": "VIRTUAL",
+            }],
+            identifier="virtual_dart_registry",
+            description="Virtual Dart Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="DART",
+            parent_ref="accountId/orgId/projectId")
+        # Example of a Virtual Swift Registry
+        swift_virtual = harness.platform.HarRegistry("swift_virtual",
+            configs=[{
+                "type": "VIRTUAL",
+            }],
+            identifier="virtual_swift_registry",
+            description="Virtual Swift Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="SWIFT",
+            parent_ref="accountId/orgId/projectId")
+        # Example of a Virtual Hugging Face Registry
+        # HUGGINGFACE supports VIRTUAL registries only - upstream is not supported.
+        huggingface_virtual = harness.platform.HarRegistry("huggingface_virtual",
+            configs=[{
+                "type": "VIRTUAL",
+            }],
+            identifier="virtual_huggingface_registry",
+            description="Virtual Hugging Face Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="HUGGINGFACE",
+            parent_ref="accountId/orgId/projectId")
+        # Example of a Virtual Terraform Backend Registry
+        # TERRAFORM_BACKEND supports VIRTUAL registries only - upstream is not supported.
+        terraform_backend_virtual = harness.platform.HarRegistry("terraform_backend_virtual",
+            configs=[{
+                "type": "VIRTUAL",
+            }],
+            identifier="virtual_terraform_backend_registry",
+            description="Virtual Terraform Backend Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="TERRAFORM_BACKEND",
+            parent_ref="accountId/orgId/projectId")
         ```
 
         ## Import
@@ -665,7 +717,7 @@ class HarRegistry(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry
         :param pulumi.Input[_builtins.bool] is_public: Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
-        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
+        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT)
         :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry (required for creation)
         :param pulumi.Input[_builtins.str] space_ref: Space reference for the registry (required for creation)
         """
@@ -900,6 +952,58 @@ class HarRegistry(pulumi.CustomResource):
             space_ref="accountId/orgId/projectId",
             package_type="WOLFI",
             parent_ref="accountId/orgId/projectId")
+        # Example of a Virtual Composer Registry
+        composer_virtual = harness.platform.HarRegistry("composer_virtual",
+            configs=[{
+                "type": "VIRTUAL",
+            }],
+            identifier="virtual_composer_registry",
+            description="Virtual Composer Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="COMPOSER",
+            parent_ref="accountId/orgId/projectId")
+        # Example of a Virtual Dart Registry
+        dart_virtual = harness.platform.HarRegistry("dart_virtual",
+            configs=[{
+                "type": "VIRTUAL",
+            }],
+            identifier="virtual_dart_registry",
+            description="Virtual Dart Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="DART",
+            parent_ref="accountId/orgId/projectId")
+        # Example of a Virtual Swift Registry
+        swift_virtual = harness.platform.HarRegistry("swift_virtual",
+            configs=[{
+                "type": "VIRTUAL",
+            }],
+            identifier="virtual_swift_registry",
+            description="Virtual Swift Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="SWIFT",
+            parent_ref="accountId/orgId/projectId")
+        # Example of a Virtual Hugging Face Registry
+        # HUGGINGFACE supports VIRTUAL registries only - upstream is not supported.
+        huggingface_virtual = harness.platform.HarRegistry("huggingface_virtual",
+            configs=[{
+                "type": "VIRTUAL",
+            }],
+            identifier="virtual_huggingface_registry",
+            description="Virtual Hugging Face Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="HUGGINGFACE",
+            parent_ref="accountId/orgId/projectId")
+        # Example of a Virtual Terraform Backend Registry
+        # TERRAFORM_BACKEND supports VIRTUAL registries only - upstream is not supported.
+        terraform_backend_virtual = harness.platform.HarRegistry("terraform_backend_virtual",
+            configs=[{
+                "type": "VIRTUAL",
+            }],
+            identifier="virtual_terraform_backend_registry",
+            description="Virtual Terraform Backend Registry",
+            space_ref="accountId/orgId/projectId",
+            package_type="TERRAFORM_BACKEND",
+            parent_ref="accountId/orgId/projectId")
         ```
 
         ## Import
@@ -1021,7 +1125,7 @@ class HarRegistry(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the registry
         :param pulumi.Input[_builtins.bool] is_public: Whether the registry is public. When set to true, the registry is publicly accessible without authentication. Defaults to false (private).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Custom metadata key-value pairs attached to the registry. Keys and values must match the pattern letters, numbers, _ . / = + - @. Keys are case-sensitive. Maximum 49 entries allowed.
-        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
+        :param pulumi.Input[_builtins.str] package_type: Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT)
         :param pulumi.Input[_builtins.str] parent_ref: Parent reference for the registry (required for creation)
         :param pulumi.Input[_builtins.str] space_ref: Space reference for the registry (required for creation)
         :param pulumi.Input[_builtins.str] url: URL of the registry
@@ -1112,7 +1216,7 @@ class HarRegistry(pulumi.CustomResource):
     @pulumi.getter(name="packageType")
     def package_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
+        Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT)
         """
         return pulumi.get(self, "package_type")
 

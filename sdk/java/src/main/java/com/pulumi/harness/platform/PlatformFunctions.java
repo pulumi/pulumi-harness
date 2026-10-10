@@ -37,6 +37,8 @@ import com.pulumi.harness.platform.inputs.GetCentralNotificationChannelArgs;
 import com.pulumi.harness.platform.inputs.GetCentralNotificationChannelPlainArgs;
 import com.pulumi.harness.platform.inputs.GetCentralNotificationRuleArgs;
 import com.pulumi.harness.platform.inputs.GetCentralNotificationRulePlainArgs;
+import com.pulumi.harness.platform.inputs.GetConnectorAnthropicModelArgs;
+import com.pulumi.harness.platform.inputs.GetConnectorAnthropicModelPlainArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorAzureRepoArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorAzureRepoPlainArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorCustomSecretManagerArgs;
@@ -47,6 +49,8 @@ import com.pulumi.harness.platform.inputs.GetConnectorGcpKmsArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorGcpKmsPlainArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorJdbcArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorJdbcPlainArgs;
+import com.pulumi.harness.platform.inputs.GetConnectorOpenaiModelArgs;
+import com.pulumi.harness.platform.inputs.GetConnectorOpenaiModelPlainArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorPdcArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorPdcPlainArgs;
 import com.pulumi.harness.platform.inputs.GetConnectorRancherArgs;
@@ -301,11 +305,13 @@ import com.pulumi.harness.platform.outputs.GetBitbucketConnectorResult;
 import com.pulumi.harness.platform.outputs.GetCcmFiltersResult;
 import com.pulumi.harness.platform.outputs.GetCentralNotificationChannelResult;
 import com.pulumi.harness.platform.outputs.GetCentralNotificationRuleResult;
+import com.pulumi.harness.platform.outputs.GetConnectorAnthropicModelResult;
 import com.pulumi.harness.platform.outputs.GetConnectorAzureRepoResult;
 import com.pulumi.harness.platform.outputs.GetConnectorCustomSecretManagerResult;
 import com.pulumi.harness.platform.outputs.GetConnectorCustomhealthsourceResult;
 import com.pulumi.harness.platform.outputs.GetConnectorGcpKmsResult;
 import com.pulumi.harness.platform.outputs.GetConnectorJdbcResult;
+import com.pulumi.harness.platform.outputs.GetConnectorOpenaiModelResult;
 import com.pulumi.harness.platform.outputs.GetConnectorPdcResult;
 import com.pulumi.harness.platform.outputs.GetConnectorRancherResult;
 import com.pulumi.harness.platform.outputs.GetCurrentAccountResult;
@@ -2870,6 +2876,206 @@ public final class PlatformFunctions {
         return Deployment.getInstance().invokeAsync("harness:platform/getCentralNotificationRule:getCentralNotificationRule", TypeShape.of(GetCentralNotificationRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Datasource for looking up an Anthropic Model connector.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetConnectorAnthropicModelArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getConnectorAnthropicModel(GetConnectorAnthropicModelArgs.builder()
+     *             .identifier("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectorAnthropicModelResult> getConnectorAnthropicModel(GetConnectorAnthropicModelArgs args) {
+        return getConnectorAnthropicModel(args, InvokeOptions.Empty);
+    }
+    /**
+     * Datasource for looking up an Anthropic Model connector.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetConnectorAnthropicModelArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getConnectorAnthropicModel(GetConnectorAnthropicModelArgs.builder()
+     *             .identifier("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConnectorAnthropicModelResult> getConnectorAnthropicModelPlain(GetConnectorAnthropicModelPlainArgs args) {
+        return getConnectorAnthropicModelPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Datasource for looking up an Anthropic Model connector.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetConnectorAnthropicModelArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getConnectorAnthropicModel(GetConnectorAnthropicModelArgs.builder()
+     *             .identifier("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectorAnthropicModelResult> getConnectorAnthropicModel(GetConnectorAnthropicModelArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getConnectorAnthropicModel:getConnectorAnthropicModel", TypeShape.of(GetConnectorAnthropicModelResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Datasource for looking up an Anthropic Model connector.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetConnectorAnthropicModelArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getConnectorAnthropicModel(GetConnectorAnthropicModelArgs.builder()
+     *             .identifier("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectorAnthropicModelResult> getConnectorAnthropicModel(GetConnectorAnthropicModelArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getConnectorAnthropicModel:getConnectorAnthropicModel", TypeShape.of(GetConnectorAnthropicModelResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Datasource for looking up an Anthropic Model connector.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetConnectorAnthropicModelArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getConnectorAnthropicModel(GetConnectorAnthropicModelArgs.builder()
+     *             .identifier("identifier")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConnectorAnthropicModelResult> getConnectorAnthropicModelPlain(GetConnectorAnthropicModelPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getConnectorAnthropicModel:getConnectorAnthropicModel", TypeShape.of(GetConnectorAnthropicModelResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Datasource for looking up a Azure Repo connector.
      * 
      */
@@ -3208,6 +3414,206 @@ public final class PlatformFunctions {
      */
     public static CompletableFuture<GetConnectorJdbcResult> getConnectorJdbcPlain(GetConnectorJdbcPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:platform/getConnectorJdbc:getConnectorJdbc", TypeShape.of(GetConnectorJdbcResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Datasource for looking up an OpenAI Model connector.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetConnectorOpenaiModelArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getConnectorOpenaiModel(GetConnectorOpenaiModelArgs.builder()
+     *             .identifier("example_openai_token")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectorOpenaiModelResult> getConnectorOpenaiModel(GetConnectorOpenaiModelArgs args) {
+        return getConnectorOpenaiModel(args, InvokeOptions.Empty);
+    }
+    /**
+     * Datasource for looking up an OpenAI Model connector.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetConnectorOpenaiModelArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getConnectorOpenaiModel(GetConnectorOpenaiModelArgs.builder()
+     *             .identifier("example_openai_token")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConnectorOpenaiModelResult> getConnectorOpenaiModelPlain(GetConnectorOpenaiModelPlainArgs args) {
+        return getConnectorOpenaiModelPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Datasource for looking up an OpenAI Model connector.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetConnectorOpenaiModelArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getConnectorOpenaiModel(GetConnectorOpenaiModelArgs.builder()
+     *             .identifier("example_openai_token")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectorOpenaiModelResult> getConnectorOpenaiModel(GetConnectorOpenaiModelArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getConnectorOpenaiModel:getConnectorOpenaiModel", TypeShape.of(GetConnectorOpenaiModelResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Datasource for looking up an OpenAI Model connector.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetConnectorOpenaiModelArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getConnectorOpenaiModel(GetConnectorOpenaiModelArgs.builder()
+     *             .identifier("example_openai_token")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetConnectorOpenaiModelResult> getConnectorOpenaiModel(GetConnectorOpenaiModelArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("harness:platform/getConnectorOpenaiModel:getConnectorOpenaiModel", TypeShape.of(GetConnectorOpenaiModelResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Datasource for looking up an OpenAI Model connector.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.platform.PlatformFunctions;
+     * import com.pulumi.harness.platform.inputs.GetConnectorOpenaiModelArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = PlatformFunctions.getConnectorOpenaiModel(GetConnectorOpenaiModelArgs.builder()
+     *             .identifier("example_openai_token")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetConnectorOpenaiModelResult> getConnectorOpenaiModelPlain(GetConnectorOpenaiModelPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("harness:platform/getConnectorOpenaiModel:getConnectorOpenaiModel", TypeShape.of(GetConnectorOpenaiModelResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Datasource for looking up a Pdc connector.

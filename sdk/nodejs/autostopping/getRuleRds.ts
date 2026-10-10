@@ -10,16 +10,46 @@ import * as utilities from "../utilities";
  * Data source for retrieving a Harness AutoStopping rule for RDS databases.
  *
  * ## Example Usage
+ *
+ * ### Lookup by ID
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byId = harness.autostopping.getRuleRds({
+ *     identifier: "12345",
+ * });
+ * ```
+ *
+ * ### Lookup by name (regex)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byName = harness.autostopping.getRuleRds({
+ *     name: "^my-rds-rule$",
+ * });
+ * ```
+ *
+ * ### Lookup by name pattern
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byPattern = harness.autostopping.getRuleRds({
+ *     name: "my-rds-.*-prod",
+ * });
+ * ```
  */
-export function getRuleRds(args: GetRuleRdsArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleRdsResult> {
+export function getRuleRds(args?: GetRuleRdsArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleRdsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:autostopping/getRuleRds:getRuleRds", {
-        "cloudConnectorId": args.cloudConnectorId,
-        "database": args.database,
-        "depends": args.depends,
-        "idleTimeMins": args.idleTimeMins,
+        "identifier": args.identifier,
         "name": args.name,
-        "tcps": args.tcps,
     }, opts);
 }
 
@@ -28,26 +58,13 @@ export function getRuleRds(args: GetRuleRdsArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetRuleRdsArgs {
     /**
-     * Id of the cloud connector
+     * Unique identifier of the resource. Either `identifier` or `name` must be specified.
      */
-    cloudConnectorId: string;
-    database: inputs.autostopping.GetRuleRdsDatabase;
+    identifier?: string;
     /**
-     * Dependent rules
+     * Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      */
-    depends?: inputs.autostopping.GetRuleRdsDepend[];
-    /**
-     * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-     */
-    idleTimeMins?: number;
-    /**
-     * Name of the rule
-     */
-    name: string;
-    /**
-     * TCP routing configuration
-     */
-    tcps?: inputs.autostopping.GetRuleRdsTcp[];
+    name?: string;
 }
 
 /**
@@ -58,46 +75,75 @@ export interface GetRuleRdsResult {
      * Id of the cloud connector
      */
     readonly cloudConnectorId: string;
-    readonly database: outputs.autostopping.GetRuleRdsDatabase;
     /**
      * Dependent rules
      */
-    readonly depends?: outputs.autostopping.GetRuleRdsDepend[];
+    readonly depends: outputs.autostopping.GetRuleRdsDepend[];
+    /**
+     * Boolean that indicates whether the AutoStopping rule is in DryRun mode
+     */
+    readonly dryRun: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * Unique identifier of the resource
+     * Unique identifier of the resource. Either `identifier` or `name` must be specified.
      */
     readonly identifier: string;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */
-    readonly idleTimeMins?: number;
+    readonly idleTimeMins: number;
     /**
-     * Name of the rule
+     * Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      */
     readonly name: string;
-    /**
-     * TCP routing configuration
-     */
-    readonly tcps?: outputs.autostopping.GetRuleRdsTcp[];
 }
 /**
  * Data source for retrieving a Harness AutoStopping rule for RDS databases.
  *
  * ## Example Usage
+ *
+ * ### Lookup by ID
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byId = harness.autostopping.getRuleRds({
+ *     identifier: "12345",
+ * });
+ * ```
+ *
+ * ### Lookup by name (regex)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byName = harness.autostopping.getRuleRds({
+ *     name: "^my-rds-rule$",
+ * });
+ * ```
+ *
+ * ### Lookup by name pattern
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byPattern = harness.autostopping.getRuleRds({
+ *     name: "my-rds-.*-prod",
+ * });
+ * ```
  */
-export function getRuleRdsOutput(args: GetRuleRdsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRuleRdsResult> {
+export function getRuleRdsOutput(args?: GetRuleRdsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRuleRdsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:autostopping/getRuleRds:getRuleRds", {
-        "cloudConnectorId": args.cloudConnectorId,
-        "database": args.database,
-        "depends": args.depends,
-        "idleTimeMins": args.idleTimeMins,
+        "identifier": args.identifier,
         "name": args.name,
-        "tcps": args.tcps,
     }, opts);
 }
 
@@ -106,24 +152,11 @@ export function getRuleRdsOutput(args: GetRuleRdsOutputArgs, opts?: pulumi.Invok
  */
 export interface GetRuleRdsOutputArgs {
     /**
-     * Id of the cloud connector
+     * Unique identifier of the resource. Either `identifier` or `name` must be specified.
      */
-    cloudConnectorId: pulumi.Input<string>;
-    database: pulumi.Input<inputs.autostopping.GetRuleRdsDatabaseArgs>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
-     * Dependent rules
+     * Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      */
-    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleRdsDependArgs>[] | undefined>;
-    /**
-     * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-     */
-    idleTimeMins?: pulumi.Input<number | undefined>;
-    /**
-     * Name of the rule
-     */
-    name: pulumi.Input<string>;
-    /**
-     * TCP routing configuration
-     */
-    tcps?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleRdsTcpArgs>[] | undefined>;
+    name?: pulumi.Input<string | undefined>;
 }

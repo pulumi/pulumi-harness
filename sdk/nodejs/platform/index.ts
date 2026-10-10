@@ -65,6 +65,11 @@ export type CentralNotificationRule = import("./centralNotificationRule").Centra
 export const CentralNotificationRule: typeof import("./centralNotificationRule").CentralNotificationRule = null as any;
 utilities.lazyLoad(exports, ["CentralNotificationRule"], () => require("./centralNotificationRule"));
 
+export { ConnectorAnthropicModelArgs, ConnectorAnthropicModelState } from "./connectorAnthropicModel";
+export type ConnectorAnthropicModel = import("./connectorAnthropicModel").ConnectorAnthropicModel;
+export const ConnectorAnthropicModel: typeof import("./connectorAnthropicModel").ConnectorAnthropicModel = null as any;
+utilities.lazyLoad(exports, ["ConnectorAnthropicModel"], () => require("./connectorAnthropicModel"));
+
 export { ConnectorAzureArtifactsArgs, ConnectorAzureArtifactsState } from "./connectorAzureArtifacts";
 export type ConnectorAzureArtifacts = import("./connectorAzureArtifacts").ConnectorAzureArtifacts;
 export const ConnectorAzureArtifacts: typeof import("./connectorAzureArtifacts").ConnectorAzureArtifacts = null as any;
@@ -94,6 +99,11 @@ export { ConnectorJdbcArgs, ConnectorJdbcState } from "./connectorJdbc";
 export type ConnectorJdbc = import("./connectorJdbc").ConnectorJdbc;
 export const ConnectorJdbc: typeof import("./connectorJdbc").ConnectorJdbc = null as any;
 utilities.lazyLoad(exports, ["ConnectorJdbc"], () => require("./connectorJdbc"));
+
+export { ConnectorOpenaiModelArgs, ConnectorOpenaiModelState } from "./connectorOpenaiModel";
+export type ConnectorOpenaiModel = import("./connectorOpenaiModel").ConnectorOpenaiModel;
+export const ConnectorOpenaiModel: typeof import("./connectorOpenaiModel").ConnectorOpenaiModel = null as any;
+utilities.lazyLoad(exports, ["ConnectorOpenaiModel"], () => require("./connectorOpenaiModel"));
 
 export { ConnectorPdcArgs, ConnectorPdcState } from "./connectorPdc";
 export type ConnectorPdc = import("./connectorPdc").ConnectorPdc;
@@ -305,6 +315,11 @@ export const getCentralNotificationRule: typeof import("./getCentralNotification
 export const getCentralNotificationRuleOutput: typeof import("./getCentralNotificationRule").getCentralNotificationRuleOutput = null as any;
 utilities.lazyLoad(exports, ["getCentralNotificationRule","getCentralNotificationRuleOutput"], () => require("./getCentralNotificationRule"));
 
+export { GetConnectorAnthropicModelArgs, GetConnectorAnthropicModelResult, GetConnectorAnthropicModelOutputArgs } from "./getConnectorAnthropicModel";
+export const getConnectorAnthropicModel: typeof import("./getConnectorAnthropicModel").getConnectorAnthropicModel = null as any;
+export const getConnectorAnthropicModelOutput: typeof import("./getConnectorAnthropicModel").getConnectorAnthropicModelOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorAnthropicModel","getConnectorAnthropicModelOutput"], () => require("./getConnectorAnthropicModel"));
+
 export { GetConnectorAzureRepoArgs, GetConnectorAzureRepoResult, GetConnectorAzureRepoOutputArgs } from "./getConnectorAzureRepo";
 export const getConnectorAzureRepo: typeof import("./getConnectorAzureRepo").getConnectorAzureRepo = null as any;
 export const getConnectorAzureRepoOutput: typeof import("./getConnectorAzureRepo").getConnectorAzureRepoOutput = null as any;
@@ -329,6 +344,11 @@ export { GetConnectorJdbcArgs, GetConnectorJdbcResult, GetConnectorJdbcOutputArg
 export const getConnectorJdbc: typeof import("./getConnectorJdbc").getConnectorJdbc = null as any;
 export const getConnectorJdbcOutput: typeof import("./getConnectorJdbc").getConnectorJdbcOutput = null as any;
 utilities.lazyLoad(exports, ["getConnectorJdbc","getConnectorJdbcOutput"], () => require("./getConnectorJdbc"));
+
+export { GetConnectorOpenaiModelArgs, GetConnectorOpenaiModelResult, GetConnectorOpenaiModelOutputArgs } from "./getConnectorOpenaiModel";
+export const getConnectorOpenaiModel: typeof import("./getConnectorOpenaiModel").getConnectorOpenaiModel = null as any;
+export const getConnectorOpenaiModelOutput: typeof import("./getConnectorOpenaiModel").getConnectorOpenaiModelOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectorOpenaiModel","getConnectorOpenaiModelOutput"], () => require("./getConnectorOpenaiModel"));
 
 export { GetConnectorPdcArgs, GetConnectorPdcResult, GetConnectorPdcOutputArgs } from "./getConnectorPdc";
 export const getConnectorPdc: typeof import("./getConnectorPdc").getConnectorPdc = null as any;
@@ -1320,6 +1340,11 @@ export type ServiceOverridesV2 = import("./serviceOverridesV2").ServiceOverrides
 export const ServiceOverridesV2: typeof import("./serviceOverridesV2").ServiceOverridesV2 = null as any;
 utilities.lazyLoad(exports, ["ServiceOverridesV2"], () => require("./serviceOverridesV2"));
 
+export { SettingArgs, SettingState } from "./setting";
+export type Setting = import("./setting").Setting;
+export const Setting: typeof import("./setting").Setting = null as any;
+utilities.lazyLoad(exports, ["Setting"], () => require("./setting"));
+
 export { SloArgs, SloState } from "./slo";
 export type Slo = import("./slo").Slo;
 export const Slo: typeof import("./slo").Slo = null as any;
@@ -1429,6 +1454,8 @@ const _module = {
                 return new CentralNotificationChannel(name, <any>undefined, { urn })
             case "harness:platform/centralNotificationRule:CentralNotificationRule":
                 return new CentralNotificationRule(name, <any>undefined, { urn })
+            case "harness:platform/connectorAnthropicModel:ConnectorAnthropicModel":
+                return new ConnectorAnthropicModel(name, <any>undefined, { urn })
             case "harness:platform/connectorAzureArtifacts:ConnectorAzureArtifacts":
                 return new ConnectorAzureArtifacts(name, <any>undefined, { urn })
             case "harness:platform/connectorAzureRepo:ConnectorAzureRepo":
@@ -1441,6 +1468,8 @@ const _module = {
                 return new ConnectorGcpKms(name, <any>undefined, { urn })
             case "harness:platform/connectorJdbc:ConnectorJdbc":
                 return new ConnectorJdbc(name, <any>undefined, { urn })
+            case "harness:platform/connectorOpenaiModel:ConnectorOpenaiModel":
+                return new ConnectorOpenaiModel(name, <any>undefined, { urn })
             case "harness:platform/connectorPdc:ConnectorPdc":
                 return new ConnectorPdc(name, <any>undefined, { urn })
             case "harness:platform/connectorRancher:ConnectorRancher":
@@ -1645,6 +1674,8 @@ const _module = {
                 return new ServiceNowConnector(name, <any>undefined, { urn })
             case "harness:platform/serviceOverridesV2:ServiceOverridesV2":
                 return new ServiceOverridesV2(name, <any>undefined, { urn })
+            case "harness:platform/setting:Setting":
+                return new Setting(name, <any>undefined, { urn })
             case "harness:platform/slo:Slo":
                 return new Slo(name, <any>undefined, { urn })
             case "harness:platform/splunkConnector:SplunkConnector":
@@ -1694,12 +1725,14 @@ pulumi.runtime.registerResourceModule("harness", "platform/azureKeyVaultConnecto
 pulumi.runtime.registerResourceModule("harness", "platform/bitbucketConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/centralNotificationChannel", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/centralNotificationRule", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/connectorAnthropicModel", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorAzureArtifacts", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorAzureRepo", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorCustomSecretManager", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorCustomhealthsource", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorGcpKms", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorJdbc", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/connectorOpenaiModel", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorPdc", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/connectorRancher", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/dashboardFolder", _module)
@@ -1802,6 +1835,7 @@ pulumi.runtime.registerResourceModule("harness", "platform/service", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/serviceAccount", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/serviceNowConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/serviceOverridesV2", _module)
+pulumi.runtime.registerResourceModule("harness", "platform/setting", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/slo", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/splunkConnector", _module)
 pulumi.runtime.registerResourceModule("harness", "platform/spotConnector", _module)

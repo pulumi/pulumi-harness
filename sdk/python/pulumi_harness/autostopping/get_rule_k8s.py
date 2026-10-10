@@ -14,7 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetRuleK8sResult',
@@ -28,7 +27,7 @@ class GetRuleK8sResult:
     """
     A collection of values returned by getRuleK8s.
     """
-    def __init__(__self__, cloud_connector_id=None, depends=None, dry_run=None, id=None, identifier=None, idle_time_mins=None, k8s_connector_id=None, k8s_namespace=None, name=None, rule_yaml=None):
+    def __init__(__self__, cloud_connector_id=None, depends=None, dry_run=None, id=None, identifier=None, idle_time_mins=None, name=None):
         if cloud_connector_id and not isinstance(cloud_connector_id, str):
             raise TypeError("Expected argument 'cloud_connector_id' to be a str")
         pulumi.set(__self__, "cloud_connector_id", cloud_connector_id)
@@ -47,18 +46,9 @@ class GetRuleK8sResult:
         if idle_time_mins and not isinstance(idle_time_mins, int):
             raise TypeError("Expected argument 'idle_time_mins' to be a int")
         pulumi.set(__self__, "idle_time_mins", idle_time_mins)
-        if k8s_connector_id and not isinstance(k8s_connector_id, str):
-            raise TypeError("Expected argument 'k8s_connector_id' to be a str")
-        pulumi.set(__self__, "k8s_connector_id", k8s_connector_id)
-        if k8s_namespace and not isinstance(k8s_namespace, str):
-            raise TypeError("Expected argument 'k8s_namespace' to be a str")
-        pulumi.set(__self__, "k8s_namespace", k8s_namespace)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if rule_yaml and not isinstance(rule_yaml, str):
-            raise TypeError("Expected argument 'rule_yaml' to be a str")
-        pulumi.set(__self__, "rule_yaml", rule_yaml)
 
     @_builtins.property
     @pulumi.getter(name="cloudConnectorId")
@@ -70,7 +60,7 @@ class GetRuleK8sResult:
 
     @_builtins.property
     @pulumi.getter
-    def depends(self) -> Optional[Sequence['outputs.GetRuleK8sDependResult']]:
+    def depends(self) -> Sequence['outputs.GetRuleK8sDependResult']:
         """
         Dependent rules
         """
@@ -78,9 +68,9 @@ class GetRuleK8sResult:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[_builtins.bool]:
+    def dry_run(self) -> _builtins.bool:
         """
-        Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+        Boolean that indicates whether the AutoStopping rule is in DryRun mode
         """
         return pulumi.get(self, "dry_run")
 
@@ -96,49 +86,25 @@ class GetRuleK8sResult:
     @pulumi.getter
     def identifier(self) -> _builtins.str:
         """
-        Unique identifier of the resource
+        Unique identifier of the resource. Either `identifier` or `name` must be specified.
         """
         return pulumi.get(self, "identifier")
 
     @_builtins.property
     @pulumi.getter(name="idleTimeMins")
-    def idle_time_mins(self) -> Optional[_builtins.int]:
+    def idle_time_mins(self) -> _builtins.int:
         """
         Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         """
         return pulumi.get(self, "idle_time_mins")
 
     @_builtins.property
-    @pulumi.getter(name="k8sConnectorId")
-    def k8s_connector_id(self) -> _builtins.str:
-        """
-        Id of the K8s connector
-        """
-        return pulumi.get(self, "k8s_connector_id")
-
-    @_builtins.property
-    @pulumi.getter(name="k8sNamespace")
-    def k8s_namespace(self) -> _builtins.str:
-        """
-        Namespace of the cluster
-        """
-        return pulumi.get(self, "k8s_namespace")
-
-    @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of the rule
+        Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
         """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter(name="ruleYaml")
-    def rule_yaml(self) -> _builtins.str:
-        """
-        YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
-        """
-        return pulumi.get(self, "rule_yaml")
 
 
 class AwaitableGetRuleK8sResult(GetRuleK8sResult):
@@ -153,45 +119,51 @@ class AwaitableGetRuleK8sResult(GetRuleK8sResult):
             id=self.id,
             identifier=self.identifier,
             idle_time_mins=self.idle_time_mins,
-            k8s_connector_id=self.k8s_connector_id,
-            k8s_namespace=self.k8s_namespace,
-            name=self.name,
-            rule_yaml=self.rule_yaml)
+            name=self.name)
 
 
-def get_rule_k8s(cloud_connector_id: Optional[_builtins.str] = None,
-                 depends: Optional[Sequence[Union['GetRuleK8sDependArgs', 'GetRuleK8sDependArgsDict', 'outputs.GetRuleK8sDependResult']]] = None,
-                 dry_run: Optional[_builtins.bool] = None,
-                 idle_time_mins: Optional[_builtins.int] = None,
-                 k8s_connector_id: Optional[_builtins.str] = None,
-                 k8s_namespace: Optional[_builtins.str] = None,
+def get_rule_k8s(identifier: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None,
-                 rule_yaml: Optional[_builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRuleK8sResult:
     """
     Data source for retrieving a Harness AutoStopping rule for K8s services.
 
     ## Example Usage
 
+    ### Lookup by ID
 
-    :param _builtins.str cloud_connector_id: Id of the cloud connector
-    :param Sequence[Union['GetRuleK8sDependArgs', 'GetRuleK8sDependArgsDict', 'outputs.GetRuleK8sDependResult']] depends: Dependent rules
-    :param _builtins.bool dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-    :param _builtins.int idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-    :param _builtins.str k8s_connector_id: Id of the K8s connector
-    :param _builtins.str k8s_namespace: Namespace of the cluster
-    :param _builtins.str name: Name of the rule
-    :param _builtins.str rule_yaml: YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_id = harness.autostopping.get_rule_k8s(identifier="12345")
+    ```
+
+    ### Lookup by name (regex)
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_name = harness.autostopping.get_rule_k8s(name="^my-k8s-rule$")
+    ```
+
+    ### Lookup by name pattern
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_pattern = harness.autostopping.get_rule_k8s(name="my-k8s-.*-prod")
+    ```
+
+
+    :param _builtins.str identifier: Unique identifier of the resource. Either `identifier` or `name` must be specified.
+    :param _builtins.str name: Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
     """
     __args__ = dict()
-    __args__['cloudConnectorId'] = cloud_connector_id
-    __args__['depends'] = depends
-    __args__['dryRun'] = dry_run
-    __args__['idleTimeMins'] = idle_time_mins
-    __args__['k8sConnectorId'] = k8s_connector_id
-    __args__['k8sNamespace'] = k8s_namespace
+    __args__['identifier'] = identifier
     __args__['name'] = name
-    __args__['ruleYaml'] = rule_yaml
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:autostopping/getRuleK8s:getRuleK8s', __args__, opts=opts, typ=GetRuleK8sResult).value
 
@@ -202,43 +174,49 @@ def get_rule_k8s(cloud_connector_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         idle_time_mins=pulumi.get(__ret__, 'idle_time_mins'),
-        k8s_connector_id=pulumi.get(__ret__, 'k8s_connector_id'),
-        k8s_namespace=pulumi.get(__ret__, 'k8s_namespace'),
-        name=pulumi.get(__ret__, 'name'),
-        rule_yaml=pulumi.get(__ret__, 'rule_yaml'))
-def get_rule_k8s_output(cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
-                        depends: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleK8sDependArgs', 'GetRuleK8sDependArgsDict', 'outputs.GetRuleK8sDependResult']]]]] = None,
-                        dry_run: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
-                        idle_time_mins: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                        k8s_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
-                        k8s_namespace: pulumi.Input[Optional[_builtins.str]] = None,
-                        name: pulumi.Input[Optional[_builtins.str]] = None,
-                        rule_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+        name=pulumi.get(__ret__, 'name'))
+def get_rule_k8s_output(identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleK8sResult]:
     """
     Data source for retrieving a Harness AutoStopping rule for K8s services.
 
     ## Example Usage
 
+    ### Lookup by ID
 
-    :param _builtins.str cloud_connector_id: Id of the cloud connector
-    :param Sequence[Union['GetRuleK8sDependArgs', 'GetRuleK8sDependArgsDict', 'outputs.GetRuleK8sDependResult']] depends: Dependent rules
-    :param _builtins.bool dry_run: Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-    :param _builtins.int idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-    :param _builtins.str k8s_connector_id: Id of the K8s connector
-    :param _builtins.str k8s_namespace: Namespace of the cluster
-    :param _builtins.str name: Name of the rule
-    :param _builtins.str rule_yaml: YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_id = harness.autostopping.get_rule_k8s(identifier="12345")
+    ```
+
+    ### Lookup by name (regex)
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_name = harness.autostopping.get_rule_k8s(name="^my-k8s-rule$")
+    ```
+
+    ### Lookup by name pattern
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_pattern = harness.autostopping.get_rule_k8s(name="my-k8s-.*-prod")
+    ```
+
+
+    :param _builtins.str identifier: Unique identifier of the resource. Either `identifier` or `name` must be specified.
+    :param _builtins.str name: Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
     """
     __args__ = dict()
-    __args__['cloudConnectorId'] = cloud_connector_id
-    __args__['depends'] = depends
-    __args__['dryRun'] = dry_run
-    __args__['idleTimeMins'] = idle_time_mins
-    __args__['k8sConnectorId'] = k8s_connector_id
-    __args__['k8sNamespace'] = k8s_namespace
+    __args__['identifier'] = identifier
     __args__['name'] = name
-    __args__['ruleYaml'] = rule_yaml
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:autostopping/getRuleK8s:getRuleK8s', __args__, opts=opts, typ=GetRuleK8sResult)
     return __ret__.apply(lambda __response__: GetRuleK8sResult(
@@ -248,7 +226,4 @@ def get_rule_k8s_output(cloud_connector_id: pulumi.Input[Optional[_builtins.str]
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
         idle_time_mins=pulumi.get(__response__, 'idle_time_mins'),
-        k8s_connector_id=pulumi.get(__response__, 'k8s_connector_id'),
-        k8s_namespace=pulumi.get(__response__, 'k8s_namespace'),
-        name=pulumi.get(__response__, 'name'),
-        rule_yaml=pulumi.get(__response__, 'rule_yaml')))
+        name=pulumi.get(__response__, 'name')))

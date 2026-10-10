@@ -14,6 +14,84 @@ import (
 // Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
 //
 // ## Example Usage
+//
+// ### Lookup by ID
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := autostopping.LookupRuleScaleGroup(ctx, &autostopping.LookupRuleScaleGroupArgs{
+//				Identifier: pulumi.StringRef("12345"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Lookup by name (regex)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := autostopping.LookupRuleScaleGroup(ctx, &autostopping.LookupRuleScaleGroupArgs{
+//				Name: pulumi.StringRef("^my-scale-group-rule$"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Lookup by name pattern
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := autostopping.LookupRuleScaleGroup(ctx, &autostopping.LookupRuleScaleGroupArgs{
+//				Name: pulumi.StringRef("my-asg-.*-prod"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupRuleScaleGroup(ctx *pulumi.Context, args *LookupRuleScaleGroupArgs, opts ...pulumi.InvokeOption) (*LookupRuleScaleGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRuleScaleGroupResult
@@ -26,46 +104,28 @@ func LookupRuleScaleGroup(ctx *pulumi.Context, args *LookupRuleScaleGroupArgs, o
 
 // A collection of arguments for invoking getRuleScaleGroup.
 type LookupRuleScaleGroupArgs struct {
-	// Id of the cloud connector
-	CloudConnectorId string `pulumi:"cloudConnectorId"`
-	// Custom URLs used to access the instances
-	CustomDomains []string `pulumi:"customDomains"`
-	// Dependent rules
-	Depends []GetRuleScaleGroupDepend `pulumi:"depends"`
-	// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-	DryRun *bool `pulumi:"dryRun"`
-	// Http routing configuration
-	Https []GetRuleScaleGroupHttp `pulumi:"https"`
-	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-	IdleTimeMins *int `pulumi:"idleTimeMins"`
-	// Name of the rule
-	Name string `pulumi:"name"`
-	// Scaling Group configuration
-	ScaleGroup GetRuleScaleGroupScaleGroup `pulumi:"scaleGroup"`
+	// Unique identifier of the resource. Either `identifier` or `name` must be specified.
+	Identifier *string `pulumi:"identifier"`
+	// Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
+	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getRuleScaleGroup.
 type LookupRuleScaleGroupResult struct {
 	// Id of the cloud connector
 	CloudConnectorId string `pulumi:"cloudConnectorId"`
-	// Custom URLs used to access the instances
-	CustomDomains []string `pulumi:"customDomains"`
 	// Dependent rules
 	Depends []GetRuleScaleGroupDepend `pulumi:"depends"`
-	// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-	DryRun *bool `pulumi:"dryRun"`
-	// Http routing configuration
-	Https []GetRuleScaleGroupHttp `pulumi:"https"`
+	// Boolean that indicates whether the AutoStopping rule is in DryRun mode
+	DryRun bool `pulumi:"dryRun"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Unique identifier of the resource
+	// Unique identifier of the resource. Either `identifier` or `name` must be specified.
 	Identifier string `pulumi:"identifier"`
 	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-	IdleTimeMins *int `pulumi:"idleTimeMins"`
-	// Name of the rule
+	IdleTimeMins int `pulumi:"idleTimeMins"`
+	// Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
 	Name string `pulumi:"name"`
-	// Scaling Group configuration
-	ScaleGroup GetRuleScaleGroupScaleGroup `pulumi:"scaleGroup"`
 }
 
 func LookupRuleScaleGroupOutput(ctx *pulumi.Context, args LookupRuleScaleGroupOutputArgs, opts ...pulumi.InvokeOption) LookupRuleScaleGroupResultOutput {
@@ -75,22 +135,10 @@ func LookupRuleScaleGroupOutput(ctx *pulumi.Context, args LookupRuleScaleGroupOu
 
 // A collection of arguments for invoking getRuleScaleGroup.
 type LookupRuleScaleGroupOutputArgs struct {
-	// Id of the cloud connector
-	CloudConnectorId pulumi.StringInput `pulumi:"cloudConnectorId"`
-	// Custom URLs used to access the instances
-	CustomDomains pulumi.StringArrayInput `pulumi:"customDomains"`
-	// Dependent rules
-	Depends GetRuleScaleGroupDependArrayInput `pulumi:"depends"`
-	// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-	DryRun pulumi.BoolPtrInput `pulumi:"dryRun"`
-	// Http routing configuration
-	Https GetRuleScaleGroupHttpArrayInput `pulumi:"https"`
-	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-	IdleTimeMins pulumi.IntPtrInput `pulumi:"idleTimeMins"`
-	// Name of the rule
-	Name pulumi.StringInput `pulumi:"name"`
-	// Scaling Group configuration
-	ScaleGroup GetRuleScaleGroupScaleGroupInput `pulumi:"scaleGroup"`
+	// Unique identifier of the resource. Either `identifier` or `name` must be specified.
+	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	// Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (LookupRuleScaleGroupOutputArgs) ElementType() reflect.Type {
@@ -117,24 +165,14 @@ func (o LookupRuleScaleGroupResultOutput) CloudConnectorId() pulumi.StringOutput
 	return o.ApplyT(func(v LookupRuleScaleGroupResult) string { return v.CloudConnectorId }).(pulumi.StringOutput)
 }
 
-// Custom URLs used to access the instances
-func (o LookupRuleScaleGroupResultOutput) CustomDomains() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupRuleScaleGroupResult) []string { return v.CustomDomains }).(pulumi.StringArrayOutput)
-}
-
 // Dependent rules
 func (o LookupRuleScaleGroupResultOutput) Depends() GetRuleScaleGroupDependArrayOutput {
 	return o.ApplyT(func(v LookupRuleScaleGroupResult) []GetRuleScaleGroupDepend { return v.Depends }).(GetRuleScaleGroupDependArrayOutput)
 }
 
-// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-func (o LookupRuleScaleGroupResultOutput) DryRun() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupRuleScaleGroupResult) *bool { return v.DryRun }).(pulumi.BoolPtrOutput)
-}
-
-// Http routing configuration
-func (o LookupRuleScaleGroupResultOutput) Https() GetRuleScaleGroupHttpArrayOutput {
-	return o.ApplyT(func(v LookupRuleScaleGroupResult) []GetRuleScaleGroupHttp { return v.Https }).(GetRuleScaleGroupHttpArrayOutput)
+// Boolean that indicates whether the AutoStopping rule is in DryRun mode
+func (o LookupRuleScaleGroupResultOutput) DryRun() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRuleScaleGroupResult) bool { return v.DryRun }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -142,24 +180,19 @@ func (o LookupRuleScaleGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleScaleGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the resource
+// Unique identifier of the resource. Either `identifier` or `name` must be specified.
 func (o LookupRuleScaleGroupResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleScaleGroupResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-func (o LookupRuleScaleGroupResultOutput) IdleTimeMins() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupRuleScaleGroupResult) *int { return v.IdleTimeMins }).(pulumi.IntPtrOutput)
+func (o LookupRuleScaleGroupResultOutput) IdleTimeMins() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupRuleScaleGroupResult) int { return v.IdleTimeMins }).(pulumi.IntOutput)
 }
 
-// Name of the rule
+// Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
 func (o LookupRuleScaleGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleScaleGroupResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Scaling Group configuration
-func (o LookupRuleScaleGroupResultOutput) ScaleGroup() GetRuleScaleGroupScaleGroupOutput {
-	return o.ApplyT(func(v LookupRuleScaleGroupResult) GetRuleScaleGroupScaleGroup { return v.ScaleGroup }).(GetRuleScaleGroupScaleGroupOutput)
 }
 
 func init() {

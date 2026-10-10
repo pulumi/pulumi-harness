@@ -15,22 +15,184 @@ namespace Pulumi.Harness.Autostopping
         /// Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Lookup by ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byId = Harness.Autostopping.GetRuleScaleGroup.Invoke(new()
+        ///     {
+        ///         Identifier = "12345",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name (regex)
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byName = Harness.Autostopping.GetRuleScaleGroup.Invoke(new()
+        ///     {
+        ///         Name = "^my-scale-group-rule$",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name pattern
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byPattern = Harness.Autostopping.GetRuleScaleGroup.Invoke(new()
+        ///     {
+        ///         Name = "my-asg-.*-prod",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Task<GetRuleScaleGroupResult> InvokeAsync(GetRuleScaleGroupArgs args, InvokeOptions? options = null)
+        public static Task<GetRuleScaleGroupResult> InvokeAsync(GetRuleScaleGroupArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRuleScaleGroupResult>("harness:autostopping/getRuleScaleGroup:getRuleScaleGroup", args ?? new GetRuleScaleGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Lookup by ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byId = Harness.Autostopping.GetRuleScaleGroup.Invoke(new()
+        ///     {
+        ///         Identifier = "12345",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name (regex)
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byName = Harness.Autostopping.GetRuleScaleGroup.Invoke(new()
+        ///     {
+        ///         Name = "^my-scale-group-rule$",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name pattern
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byPattern = Harness.Autostopping.GetRuleScaleGroup.Invoke(new()
+        ///     {
+        ///         Name = "my-asg-.*-prod",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Output<GetRuleScaleGroupResult> Invoke(GetRuleScaleGroupInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetRuleScaleGroupResult> Invoke(GetRuleScaleGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRuleScaleGroupResult>("harness:autostopping/getRuleScaleGroup:getRuleScaleGroup", args ?? new GetRuleScaleGroupInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Lookup by ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byId = Harness.Autostopping.GetRuleScaleGroup.Invoke(new()
+        ///     {
+        ///         Identifier = "12345",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name (regex)
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byName = Harness.Autostopping.GetRuleScaleGroup.Invoke(new()
+        ///     {
+        ///         Name = "^my-scale-group-rule$",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name pattern
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byPattern = Harness.Autostopping.GetRuleScaleGroup.Invoke(new()
+        ///     {
+        ///         Name = "my-asg-.*-prod",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetRuleScaleGroupResult> Invoke(GetRuleScaleGroupInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRuleScaleGroupResult>("harness:autostopping/getRuleScaleGroup:getRuleScaleGroup", args ?? new GetRuleScaleGroupInvokeArgs(), options.WithDefaults());
@@ -40,70 +202,16 @@ namespace Pulumi.Harness.Autostopping
     public sealed class GetRuleScaleGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Id of the cloud connector
+        /// Unique identifier of the resource. Either `Identifier` or `Name` must be specified.
         /// </summary>
-        [Input("cloudConnectorId", required: true)]
-        public string CloudConnectorId { get; set; } = null!;
-
-        [Input("customDomains")]
-        private List<string>? _customDomains;
+        [Input("identifier")]
+        public string? Identifier { get; set; }
 
         /// <summary>
-        /// Custom URLs used to access the instances
+        /// Name or regex pattern to match the rule name. Either `Identifier` or `Name` must be specified.
         /// </summary>
-        public List<string> CustomDomains
-        {
-            get => _customDomains ?? (_customDomains = new List<string>());
-            set => _customDomains = value;
-        }
-
-        [Input("depends")]
-        private List<Inputs.GetRuleScaleGroupDependArgs>? _depends;
-
-        /// <summary>
-        /// Dependent rules
-        /// </summary>
-        public List<Inputs.GetRuleScaleGroupDependArgs> Depends
-        {
-            get => _depends ?? (_depends = new List<Inputs.GetRuleScaleGroupDependArgs>());
-            set => _depends = value;
-        }
-
-        /// <summary>
-        /// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-        /// </summary>
-        [Input("dryRun")]
-        public bool? DryRun { get; set; }
-
-        [Input("https")]
-        private List<Inputs.GetRuleScaleGroupHttpArgs>? _https;
-
-        /// <summary>
-        /// Http routing configuration
-        /// </summary>
-        public List<Inputs.GetRuleScaleGroupHttpArgs> Https
-        {
-            get => _https ?? (_https = new List<Inputs.GetRuleScaleGroupHttpArgs>());
-            set => _https = value;
-        }
-
-        /// <summary>
-        /// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-        /// </summary>
-        [Input("idleTimeMins")]
-        public int? IdleTimeMins { get; set; }
-
-        /// <summary>
-        /// Name of the rule
-        /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
-
-        /// <summary>
-        /// Scaling Group configuration
-        /// </summary>
-        [Input("scaleGroup", required: true)]
-        public Inputs.GetRuleScaleGroupScaleGroupArgs ScaleGroup { get; set; } = null!;
+        [Input("name")]
+        public string? Name { get; set; }
 
         public GetRuleScaleGroupArgs()
         {
@@ -114,70 +222,16 @@ namespace Pulumi.Harness.Autostopping
     public sealed class GetRuleScaleGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Id of the cloud connector
+        /// Unique identifier of the resource. Either `Identifier` or `Name` must be specified.
         /// </summary>
-        [Input("cloudConnectorId", required: true)]
-        public Input<string> CloudConnectorId { get; set; } = null!;
-
-        [Input("customDomains")]
-        private InputList<string>? _customDomains;
+        [Input("identifier")]
+        public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// Custom URLs used to access the instances
+        /// Name or regex pattern to match the rule name. Either `Identifier` or `Name` must be specified.
         /// </summary>
-        public InputList<string> CustomDomains
-        {
-            get => _customDomains ?? (_customDomains = new InputList<string>());
-            set => _customDomains = value;
-        }
-
-        [Input("depends")]
-        private InputList<Inputs.GetRuleScaleGroupDependInputArgs>? _depends;
-
-        /// <summary>
-        /// Dependent rules
-        /// </summary>
-        public InputList<Inputs.GetRuleScaleGroupDependInputArgs> Depends
-        {
-            get => _depends ?? (_depends = new InputList<Inputs.GetRuleScaleGroupDependInputArgs>());
-            set => _depends = value;
-        }
-
-        /// <summary>
-        /// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-        /// </summary>
-        [Input("dryRun")]
-        public Input<bool>? DryRun { get; set; }
-
-        [Input("https")]
-        private InputList<Inputs.GetRuleScaleGroupHttpInputArgs>? _https;
-
-        /// <summary>
-        /// Http routing configuration
-        /// </summary>
-        public InputList<Inputs.GetRuleScaleGroupHttpInputArgs> Https
-        {
-            get => _https ?? (_https = new InputList<Inputs.GetRuleScaleGroupHttpInputArgs>());
-            set => _https = value;
-        }
-
-        /// <summary>
-        /// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-        /// </summary>
-        [Input("idleTimeMins")]
-        public Input<int>? IdleTimeMins { get; set; }
-
-        /// <summary>
-        /// Name of the rule
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// Scaling Group configuration
-        /// </summary>
-        [Input("scaleGroup", required: true)]
-        public Input<Inputs.GetRuleScaleGroupScaleGroupInputArgs> ScaleGroup { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         public GetRuleScaleGroupInvokeArgs()
         {
@@ -194,74 +248,53 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         public readonly string CloudConnectorId;
         /// <summary>
-        /// Custom URLs used to access the instances
-        /// </summary>
-        public readonly ImmutableArray<string> CustomDomains;
-        /// <summary>
         /// Dependent rules
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRuleScaleGroupDependResult> Depends;
         /// <summary>
-        /// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+        /// Boolean that indicates whether the AutoStopping rule is in DryRun mode
         /// </summary>
-        public readonly bool? DryRun;
-        /// <summary>
-        /// Http routing configuration
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetRuleScaleGroupHttpResult> Https;
+        public readonly bool DryRun;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Unique identifier of the resource
+        /// Unique identifier of the resource. Either `Identifier` or `Name` must be specified.
         /// </summary>
         public readonly string Identifier;
         /// <summary>
         /// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         /// </summary>
-        public readonly int? IdleTimeMins;
+        public readonly int IdleTimeMins;
         /// <summary>
-        /// Name of the rule
+        /// Name or regex pattern to match the rule name. Either `Identifier` or `Name` must be specified.
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Scaling Group configuration
-        /// </summary>
-        public readonly Outputs.GetRuleScaleGroupScaleGroupResult ScaleGroup;
 
         [OutputConstructor]
         private GetRuleScaleGroupResult(
             string cloudConnectorId,
 
-            ImmutableArray<string> customDomains,
-
             ImmutableArray<Outputs.GetRuleScaleGroupDependResult> depends,
 
-            bool? dryRun,
-
-            ImmutableArray<Outputs.GetRuleScaleGroupHttpResult> https,
+            bool dryRun,
 
             string id,
 
             string identifier,
 
-            int? idleTimeMins,
+            int idleTimeMins,
 
-            string name,
-
-            Outputs.GetRuleScaleGroupScaleGroupResult scaleGroup)
+            string name)
         {
             CloudConnectorId = cloudConnectorId;
-            CustomDomains = customDomains;
             Depends = depends;
             DryRun = dryRun;
-            Https = https;
             Id = id;
             Identifier = identifier;
             IdleTimeMins = idleTimeMins;
             Name = name;
-            ScaleGroup = scaleGroup;
         }
     }
 }

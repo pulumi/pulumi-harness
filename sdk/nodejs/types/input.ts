@@ -1025,748 +1025,6 @@ export namespace autostopping {
         keySecretId: pulumi.Input<string>;
     }
 
-    export interface GetRuleEcsContainer {
-        /**
-         * Name of cluster in which service belong to
-         */
-        cluster: string;
-        /**
-         * Region of cluster
-         */
-        region: string;
-        /**
-         * Name of service to be onboarded
-         */
-        service: string;
-        /**
-         * Desired number of tasks on warming up a rule
-         */
-        taskCount?: number;
-    }
-
-    export interface GetRuleEcsContainerArgs {
-        /**
-         * Name of cluster in which service belong to
-         */
-        cluster: pulumi.Input<string>;
-        /**
-         * Region of cluster
-         */
-        region: pulumi.Input<string>;
-        /**
-         * Name of service to be onboarded
-         */
-        service: pulumi.Input<string>;
-        /**
-         * Desired number of tasks on warming up a rule
-         */
-        taskCount?: pulumi.Input<number | undefined>;
-    }
-
-    export interface GetRuleEcsDepend {
-        /**
-         * Number of seconds the rule should wait after warming up the dependent rule
-         */
-        delayInSec?: number;
-        /**
-         * Rule id of the dependent rule
-         */
-        ruleId: number;
-    }
-
-    export interface GetRuleEcsDependArgs {
-        /**
-         * Number of seconds the rule should wait after warming up the dependent rule
-         */
-        delayInSec?: pulumi.Input<number | undefined>;
-        /**
-         * Rule id of the dependent rule
-         */
-        ruleId: pulumi.Input<number>;
-    }
-
-    export interface GetRuleEcsHttp {
-        /**
-         * Id of the proxy
-         */
-        proxyId: string;
-    }
-
-    export interface GetRuleEcsHttpArgs {
-        /**
-         * Id of the proxy
-         */
-        proxyId: pulumi.Input<string>;
-    }
-
-    export interface GetRuleK8sDepend {
-        /**
-         * Number of seconds the rule should wait after warming up the dependent rule
-         */
-        delayInSec?: number;
-        /**
-         * Rule id of the dependent rule
-         */
-        ruleId: number;
-    }
-
-    export interface GetRuleK8sDependArgs {
-        /**
-         * Number of seconds the rule should wait after warming up the dependent rule
-         */
-        delayInSec?: pulumi.Input<number | undefined>;
-        /**
-         * Rule id of the dependent rule
-         */
-        ruleId: pulumi.Input<number>;
-    }
-
-    export interface GetRuleRdsDatabase {
-        /**
-         * ID of the database
-         */
-        id: string;
-        /**
-         * Region to which database belong to
-         */
-        region: string;
-    }
-
-    export interface GetRuleRdsDatabaseArgs {
-        /**
-         * ID of the database
-         */
-        id: pulumi.Input<string>;
-        /**
-         * Region to which database belong to
-         */
-        region: pulumi.Input<string>;
-    }
-
-    export interface GetRuleRdsDepend {
-        /**
-         * Number of seconds the rule should wait after warming up the dependent rule
-         */
-        delayInSec?: number;
-        /**
-         * Rule id of the dependent rule
-         */
-        ruleId: number;
-    }
-
-    export interface GetRuleRdsDependArgs {
-        /**
-         * Number of seconds the rule should wait after warming up the dependent rule
-         */
-        delayInSec?: pulumi.Input<number | undefined>;
-        /**
-         * Rule id of the dependent rule
-         */
-        ruleId: pulumi.Input<number>;
-    }
-
-    export interface GetRuleRdsTcp {
-        /**
-         * Additional tcp forwarding rules
-         */
-        forwardRules?: inputs.autostopping.GetRuleRdsTcpForwardRule[];
-        /**
-         * Id of the Proxy
-         */
-        proxyId: string;
-    }
-
-    export interface GetRuleRdsTcpArgs {
-        /**
-         * Additional tcp forwarding rules
-         */
-        forwardRules?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleRdsTcpForwardRuleArgs>[] | undefined>;
-        /**
-         * Id of the Proxy
-         */
-        proxyId: pulumi.Input<string>;
-    }
-
-    export interface GetRuleRdsTcpForwardRule {
-        /**
-         * Port to listen on the proxy
-         */
-        connectOn?: number;
-        /**
-         * Port to listen on the vm
-         */
-        port: number;
-    }
-
-    export interface GetRuleRdsTcpForwardRuleArgs {
-        /**
-         * Port to listen on the proxy
-         */
-        connectOn?: pulumi.Input<number | undefined>;
-        /**
-         * Port to listen on the vm
-         */
-        port: pulumi.Input<number>;
-    }
-
-    export interface GetRuleScaleGroupDepend {
-        /**
-         * Number of seconds the rule should wait after warming up the dependent rule
-         */
-        delayInSec?: number;
-        /**
-         * Rule id of the dependent rule
-         */
-        ruleId: number;
-    }
-
-    export interface GetRuleScaleGroupDependArgs {
-        /**
-         * Number of seconds the rule should wait after warming up the dependent rule
-         */
-        delayInSec?: pulumi.Input<number | undefined>;
-        /**
-         * Rule id of the dependent rule
-         */
-        ruleId: pulumi.Input<number>;
-    }
-
-    export interface GetRuleScaleGroupHttp {
-        /**
-         * Health Check Details
-         */
-        healths?: inputs.autostopping.GetRuleScaleGroupHttpHealth[];
-        /**
-         * Id of the proxy
-         */
-        proxyId: string;
-        /**
-         * Routing configuration used to access the scaling group
-         */
-        routings?: inputs.autostopping.GetRuleScaleGroupHttpRouting[];
-    }
-
-    export interface GetRuleScaleGroupHttpArgs {
-        /**
-         * Health Check Details
-         */
-        healths?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleScaleGroupHttpHealthArgs>[] | undefined>;
-        /**
-         * Id of the proxy
-         */
-        proxyId: pulumi.Input<string>;
-        /**
-         * Routing configuration used to access the scaling group
-         */
-        routings?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleScaleGroupHttpRoutingArgs>[] | undefined>;
-    }
-
-    export interface GetRuleScaleGroupHttpHealth {
-        /**
-         * API path to use for health check
-         */
-        path?: string;
-        /**
-         * Health check port on the VM
-         */
-        port: number;
-        /**
-         * Protocol can be http or https
-         */
-        protocol: string;
-        /**
-         * Lower limit for acceptable status code
-         */
-        statusCodeFrom?: number;
-        /**
-         * Upper limit for acceptable status code
-         */
-        statusCodeTo?: number;
-        /**
-         * Health check timeout
-         */
-        timeout?: number;
-    }
-
-    export interface GetRuleScaleGroupHttpHealthArgs {
-        /**
-         * API path to use for health check
-         */
-        path?: pulumi.Input<string | undefined>;
-        /**
-         * Health check port on the VM
-         */
-        port: pulumi.Input<number>;
-        /**
-         * Protocol can be http or https
-         */
-        protocol: pulumi.Input<string>;
-        /**
-         * Lower limit for acceptable status code
-         */
-        statusCodeFrom?: pulumi.Input<number | undefined>;
-        /**
-         * Upper limit for acceptable status code
-         */
-        statusCodeTo?: pulumi.Input<number | undefined>;
-        /**
-         * Health check timeout
-         */
-        timeout?: pulumi.Input<number | undefined>;
-    }
-
-    export interface GetRuleScaleGroupHttpRouting {
-        /**
-         * Action to take for the routing rule
-         */
-        action?: string;
-        /**
-         * Path to use for the proxy
-         */
-        path?: string;
-        /**
-         * Port on the proxy
-         */
-        sourcePort?: number;
-        /**
-         * Source protocol of the proxy can be http or https
-         */
-        sourceProtocol: string;
-        /**
-         * Port on the VM
-         */
-        targetPort?: number;
-        /**
-         * Target protocol of the instance can be http or https
-         */
-        targetProtocol: string;
-    }
-
-    export interface GetRuleScaleGroupHttpRoutingArgs {
-        /**
-         * Action to take for the routing rule
-         */
-        action?: pulumi.Input<string | undefined>;
-        /**
-         * Path to use for the proxy
-         */
-        path?: pulumi.Input<string | undefined>;
-        /**
-         * Port on the proxy
-         */
-        sourcePort?: pulumi.Input<number | undefined>;
-        /**
-         * Source protocol of the proxy can be http or https
-         */
-        sourceProtocol: pulumi.Input<string>;
-        /**
-         * Port on the VM
-         */
-        targetPort?: pulumi.Input<number | undefined>;
-        /**
-         * Target protocol of the instance can be http or https
-         */
-        targetProtocol: pulumi.Input<string>;
-    }
-
-    export interface GetRuleScaleGroupScaleGroup {
-        /**
-         * Desired capacity of the Scaling Group
-         */
-        desired: number;
-        /**
-         * ID of the Scaling Group
-         */
-        id: string;
-        /**
-         * Maximum capacity of the Scaling Group
-         */
-        max: number;
-        /**
-         * Minimum capacity of the Scaling Group
-         */
-        min: number;
-        /**
-         * Name of the Scaling Group
-         */
-        name: string;
-        /**
-         * On-demand capacity of the Scaling Group
-         */
-        onDemand: number;
-        /**
-         * Region of the Scaling Group
-         */
-        region?: string;
-        /**
-         * Zone of the Scaling Group. Needed for GCP only
-         */
-        zone?: string;
-    }
-
-    export interface GetRuleScaleGroupScaleGroupArgs {
-        /**
-         * Desired capacity of the Scaling Group
-         */
-        desired: pulumi.Input<number>;
-        /**
-         * ID of the Scaling Group
-         */
-        id: pulumi.Input<string>;
-        /**
-         * Maximum capacity of the Scaling Group
-         */
-        max: pulumi.Input<number>;
-        /**
-         * Minimum capacity of the Scaling Group
-         */
-        min: pulumi.Input<number>;
-        /**
-         * Name of the Scaling Group
-         */
-        name: pulumi.Input<string>;
-        /**
-         * On-demand capacity of the Scaling Group
-         */
-        onDemand: pulumi.Input<number>;
-        /**
-         * Region of the Scaling Group
-         */
-        region?: pulumi.Input<string | undefined>;
-        /**
-         * Zone of the Scaling Group. Needed for GCP only
-         */
-        zone?: pulumi.Input<string | undefined>;
-    }
-
-    export interface GetRuleVmDepend {
-        /**
-         * Number of seconds the rule should wait after warming up the dependent rule
-         */
-        delayInSec?: number;
-        /**
-         * Rule id of the dependent rule
-         */
-        ruleId: number;
-    }
-
-    export interface GetRuleVmDependArgs {
-        /**
-         * Number of seconds the rule should wait after warming up the dependent rule
-         */
-        delayInSec?: pulumi.Input<number | undefined>;
-        /**
-         * Rule id of the dependent rule
-         */
-        ruleId: pulumi.Input<number>;
-    }
-
-    export interface GetRuleVmFilter {
-        /**
-         * Regions of instances that needs to be managed using the AutoStopping rules
-         */
-        regions?: string[];
-        /**
-         * Tags of instances that needs to be managed using the AutoStopping rules
-         */
-        tags?: inputs.autostopping.GetRuleVmFilterTag[];
-        /**
-         * Ids of instances that needs to be managed using the AutoStopping rules
-         */
-        vmIds?: string[];
-        /**
-         * Zones of instances that needs to be managed using the AutoStopping rules
-         */
-        zones?: string[];
-    }
-
-    export interface GetRuleVmFilterArgs {
-        /**
-         * Regions of instances that needs to be managed using the AutoStopping rules
-         */
-        regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-        /**
-         * Tags of instances that needs to be managed using the AutoStopping rules
-         */
-        tags?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmFilterTagArgs>[] | undefined>;
-        /**
-         * Ids of instances that needs to be managed using the AutoStopping rules
-         */
-        vmIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-        /**
-         * Zones of instances that needs to be managed using the AutoStopping rules
-         */
-        zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    }
-
-    export interface GetRuleVmFilterTag {
-        key: string;
-        value: string;
-    }
-
-    export interface GetRuleVmFilterTagArgs {
-        key: pulumi.Input<string>;
-        value: pulumi.Input<string>;
-    }
-
-    export interface GetRuleVmHttp {
-        /**
-         * Health Check Details
-         */
-        healths?: inputs.autostopping.GetRuleVmHttpHealth[];
-        /**
-         * Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
-         */
-        proxyCloudConnectorId?: string;
-        /**
-         * Id of the proxy
-         */
-        proxyId: string;
-        /**
-         * Routing configuration used to access the instances
-         */
-        routings?: inputs.autostopping.GetRuleVmHttpRouting[];
-    }
-
-    export interface GetRuleVmHttpArgs {
-        /**
-         * Health Check Details
-         */
-        healths?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmHttpHealthArgs>[] | undefined>;
-        /**
-         * Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
-         */
-        proxyCloudConnectorId?: pulumi.Input<string | undefined>;
-        /**
-         * Id of the proxy
-         */
-        proxyId: pulumi.Input<string>;
-        /**
-         * Routing configuration used to access the instances
-         */
-        routings?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmHttpRoutingArgs>[] | undefined>;
-    }
-
-    export interface GetRuleVmHttpHealth {
-        /**
-         * API path to use for health check
-         */
-        path?: string;
-        /**
-         * Health check port on the VM
-         */
-        port: number;
-        /**
-         * Protocol can be http or https
-         */
-        protocol: string;
-        /**
-         * Lower limit for acceptable status code
-         */
-        statusCodeFrom?: number;
-        /**
-         * Upper limit for acceptable status code
-         */
-        statusCodeTo?: number;
-        /**
-         * Health check timeout
-         */
-        timeout?: number;
-    }
-
-    export interface GetRuleVmHttpHealthArgs {
-        /**
-         * API path to use for health check
-         */
-        path?: pulumi.Input<string | undefined>;
-        /**
-         * Health check port on the VM
-         */
-        port: pulumi.Input<number>;
-        /**
-         * Protocol can be http or https
-         */
-        protocol: pulumi.Input<string>;
-        /**
-         * Lower limit for acceptable status code
-         */
-        statusCodeFrom?: pulumi.Input<number | undefined>;
-        /**
-         * Upper limit for acceptable status code
-         */
-        statusCodeTo?: pulumi.Input<number | undefined>;
-        /**
-         * Health check timeout
-         */
-        timeout?: pulumi.Input<number | undefined>;
-    }
-
-    export interface GetRuleVmHttpRouting {
-        /**
-         * Action to take for the routing rule
-         */
-        action?: string;
-        /**
-         * Path to use for the proxy
-         */
-        path?: string;
-        /**
-         * Port on the proxy
-         */
-        sourcePort?: number;
-        /**
-         * Source protocol of the proxy can be http or https
-         */
-        sourceProtocol: string;
-        /**
-         * Port on the VM
-         */
-        targetPort?: number;
-        /**
-         * Target protocol of the instance can be http or https
-         */
-        targetProtocol: string;
-    }
-
-    export interface GetRuleVmHttpRoutingArgs {
-        /**
-         * Action to take for the routing rule
-         */
-        action?: pulumi.Input<string | undefined>;
-        /**
-         * Path to use for the proxy
-         */
-        path?: pulumi.Input<string | undefined>;
-        /**
-         * Port on the proxy
-         */
-        sourcePort?: pulumi.Input<number | undefined>;
-        /**
-         * Source protocol of the proxy can be http or https
-         */
-        sourceProtocol: pulumi.Input<string>;
-        /**
-         * Port on the VM
-         */
-        targetPort?: pulumi.Input<number | undefined>;
-        /**
-         * Target protocol of the instance can be http or https
-         */
-        targetProtocol: pulumi.Input<string>;
-    }
-
-    export interface GetRuleVmTcp {
-        /**
-         * Additional tcp forwarding rules
-         */
-        forwardRules?: inputs.autostopping.GetRuleVmTcpForwardRule[];
-        /**
-         * Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
-         */
-        proxyCloudConnectorId?: string;
-        /**
-         * Id of the Proxy
-         */
-        proxyId: string;
-        /**
-         * RDP configuration
-         */
-        rdps?: inputs.autostopping.GetRuleVmTcpRdp[];
-        /**
-         * SSH configuration
-         */
-        sshes?: inputs.autostopping.GetRuleVmTcpSsh[];
-    }
-
-    export interface GetRuleVmTcpArgs {
-        /**
-         * Additional tcp forwarding rules
-         */
-        forwardRules?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmTcpForwardRuleArgs>[] | undefined>;
-        /**
-         * Id of the cloud connector for the proxy. Set when the proxy lives in a different cloud account than the target resource.
-         */
-        proxyCloudConnectorId?: pulumi.Input<string | undefined>;
-        /**
-         * Id of the Proxy
-         */
-        proxyId: pulumi.Input<string>;
-        /**
-         * RDP configuration
-         */
-        rdps?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmTcpRdpArgs>[] | undefined>;
-        /**
-         * SSH configuration
-         */
-        sshes?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleVmTcpSshArgs>[] | undefined>;
-    }
-
-    export interface GetRuleVmTcpForwardRule {
-        /**
-         * Port to listen on the proxy
-         */
-        connectOn?: number;
-        /**
-         * Port to listen on the vm
-         */
-        port: number;
-    }
-
-    export interface GetRuleVmTcpForwardRuleArgs {
-        /**
-         * Port to listen on the proxy
-         */
-        connectOn?: pulumi.Input<number | undefined>;
-        /**
-         * Port to listen on the vm
-         */
-        port: pulumi.Input<number>;
-    }
-
-    export interface GetRuleVmTcpRdp {
-        /**
-         * Port to listen on the proxy
-         */
-        connectOn?: number;
-        /**
-         * Port to listen on the vm
-         */
-        port?: number;
-    }
-
-    export interface GetRuleVmTcpRdpArgs {
-        /**
-         * Port to listen on the proxy
-         */
-        connectOn?: pulumi.Input<number | undefined>;
-        /**
-         * Port to listen on the vm
-         */
-        port?: pulumi.Input<number | undefined>;
-    }
-
-    export interface GetRuleVmTcpSsh {
-        /**
-         * Port to listen on the proxy
-         */
-        connectOn?: number;
-        /**
-         * Port to listen on the vm
-         */
-        port?: number;
-    }
-
-    export interface GetRuleVmTcpSshArgs {
-        /**
-         * Port to listen on the proxy
-         */
-        connectOn?: pulumi.Input<number | undefined>;
-        /**
-         * Port to listen on the vm
-         */
-        port?: pulumi.Input<number | undefined>;
-    }
-
     export interface RuleEcsContainer {
         /**
          * Name of cluster in which service belong to
@@ -7544,6 +6802,73 @@ export namespace platform {
         notificationEventData?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     }
 
+    export interface ConnectorAnthropicModelAuth {
+        /**
+         * Authentication type for the Anthropic connector. Valid values: `Token`, `BedrockApiKey`, `Vertex`, `CloudProvider`.
+         */
+        authType: pulumi.Input<string>;
+        /**
+         * Authenticate using an AWS Bedrock API key.
+         */
+        bedrockApiKey?: pulumi.Input<inputs.platform.ConnectorAnthropicModelAuthBedrockApiKey | undefined>;
+        /**
+         * Authenticate using an existing cloud provider connector.
+         */
+        cloudProvider?: pulumi.Input<inputs.platform.ConnectorAnthropicModelAuthCloudProvider | undefined>;
+        /**
+         * Authenticate using an Anthropic API token.
+         */
+        token?: pulumi.Input<inputs.platform.ConnectorAnthropicModelAuthToken | undefined>;
+        /**
+         * Authenticate using Google Vertex AI credentials.
+         */
+        vertex?: pulumi.Input<inputs.platform.ConnectorAnthropicModelAuthVertex | undefined>;
+    }
+
+    export interface ConnectorAnthropicModelAuthBedrockApiKey {
+        /**
+         * Reference to a secret containing the Bedrock API key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+         */
+        apiKeyRef: pulumi.Input<string>;
+        /**
+         * AWS region for the Bedrock endpoint.
+         */
+        region: pulumi.Input<string>;
+    }
+
+    export interface ConnectorAnthropicModelAuthCloudProvider {
+        /**
+         * Reference to an existing cloud provider connector.
+         */
+        connectorRef: pulumi.Input<string>;
+        /**
+         * Cloud provider type. Valid values: `AWS`, `GCP`, `Azure`.
+         */
+        type: pulumi.Input<string>;
+    }
+
+    export interface ConnectorAnthropicModelAuthToken {
+        /**
+         * Reference to a secret containing the Anthropic API token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+         */
+        tokenRef: pulumi.Input<string>;
+    }
+
+    export interface ConnectorAnthropicModelAuthVertex {
+        /**
+         * GCP project ID.
+         */
+        projectId: pulumi.Input<string>;
+        /**
+         * GCP region for the Vertex AI endpoint.
+         */
+        region: pulumi.Input<string>;
+        /**
+         * Reference to a secret containing the GCP service account key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+         */
+        serviceAccountKeyRef: pulumi.Input<string>;
+    }
+
     export interface ConnectorAzureArtifactsCredentials {
         /**
          * Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
@@ -7793,6 +7118,43 @@ export namespace platform {
          * Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
          */
         usernameRef?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ConnectorOpenaiModelAuth {
+        /**
+         * Authentication type for the OpenAI connector. Valid values: `Token`, `Vertex`.
+         */
+        authType: pulumi.Input<string>;
+        /**
+         * Authenticate using an OpenAI API token.
+         */
+        token?: pulumi.Input<inputs.platform.ConnectorOpenaiModelAuthToken | undefined>;
+        /**
+         * Authenticate using Google Vertex AI credentials.
+         */
+        vertex?: pulumi.Input<inputs.platform.ConnectorOpenaiModelAuthVertex | undefined>;
+    }
+
+    export interface ConnectorOpenaiModelAuthToken {
+        /**
+         * Reference to a secret containing the OpenAI API token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+         */
+        tokenRef: pulumi.Input<string>;
+    }
+
+    export interface ConnectorOpenaiModelAuthVertex {
+        /**
+         * GCP project ID.
+         */
+        projectId: pulumi.Input<string>;
+        /**
+         * GCP region for the Vertex AI endpoint.
+         */
+        region: pulumi.Input<string>;
+        /**
+         * Reference to a secret containing the GCP service account key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+         */
+        serviceAccountKeyRef: pulumi.Input<string>;
     }
 
     export interface ConnectorPdcHost {

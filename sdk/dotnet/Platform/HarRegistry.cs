@@ -370,6 +370,93 @@ namespace Pulumi.Harness.Platform
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
+    ///     // Example of a Virtual Composer Registry
+    ///     var composerVirtual = new Harness.Platform.HarRegistry("composer_virtual", new()
+    ///     {
+    ///         Configs = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
+    ///             {
+    ///                 Type = "VIRTUAL",
+    ///             },
+    ///         },
+    ///         Identifier = "virtual_composer_registry",
+    ///         Description = "Virtual Composer Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "COMPOSER",
+    ///         ParentRef = "accountId/orgId/projectId",
+    ///     });
+    /// 
+    ///     // Example of a Virtual Dart Registry
+    ///     var dartVirtual = new Harness.Platform.HarRegistry("dart_virtual", new()
+    ///     {
+    ///         Configs = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
+    ///             {
+    ///                 Type = "VIRTUAL",
+    ///             },
+    ///         },
+    ///         Identifier = "virtual_dart_registry",
+    ///         Description = "Virtual Dart Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "DART",
+    ///         ParentRef = "accountId/orgId/projectId",
+    ///     });
+    /// 
+    ///     // Example of a Virtual Swift Registry
+    ///     var swiftVirtual = new Harness.Platform.HarRegistry("swift_virtual", new()
+    ///     {
+    ///         Configs = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
+    ///             {
+    ///                 Type = "VIRTUAL",
+    ///             },
+    ///         },
+    ///         Identifier = "virtual_swift_registry",
+    ///         Description = "Virtual Swift Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "SWIFT",
+    ///         ParentRef = "accountId/orgId/projectId",
+    ///     });
+    /// 
+    ///     // Example of a Virtual Hugging Face Registry
+    ///     // HUGGINGFACE supports VIRTUAL registries only - upstream is not supported.
+    ///     var huggingfaceVirtual = new Harness.Platform.HarRegistry("huggingface_virtual", new()
+    ///     {
+    ///         Configs = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
+    ///             {
+    ///                 Type = "VIRTUAL",
+    ///             },
+    ///         },
+    ///         Identifier = "virtual_huggingface_registry",
+    ///         Description = "Virtual Hugging Face Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "HUGGINGFACE",
+    ///         ParentRef = "accountId/orgId/projectId",
+    ///     });
+    /// 
+    ///     // Example of a Virtual Terraform Backend Registry
+    ///     // TERRAFORM_BACKEND supports VIRTUAL registries only - upstream is not supported.
+    ///     var terraformBackendVirtual = new Harness.Platform.HarRegistry("terraform_backend_virtual", new()
+    ///     {
+    ///         Configs = new[]
+    ///         {
+    ///             new Harness.Platform.Inputs.HarRegistryConfigArgs
+    ///             {
+    ///                 Type = "VIRTUAL",
+    ///             },
+    ///         },
+    ///         Identifier = "virtual_terraform_backend_registry",
+    ///         Description = "Virtual Terraform Backend Registry",
+    ///         SpaceRef = "accountId/orgId/projectId",
+    ///         PackageType = "TERRAFORM_BACKEND",
+    ///         ParentRef = "accountId/orgId/projectId",
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -452,7 +539,7 @@ namespace Pulumi.Harness.Platform
         public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
+        /// Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT)
         /// </summary>
         [Output("packageType")]
         public Output<string> PackageType { get; private set; } = null!;
@@ -589,7 +676,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
+        /// Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT)
         /// </summary>
         [Input("packageType", required: true)]
         public Input<string> PackageType { get; set; } = null!;
@@ -687,7 +774,7 @@ namespace Pulumi.Harness.Platform
         }
 
         /// <summary>
-        /// Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
+        /// Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT)
         /// </summary>
         [Input("packageType")]
         public Input<string>? PackageType { get; set; }

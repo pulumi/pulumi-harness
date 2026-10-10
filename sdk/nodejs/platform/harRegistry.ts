@@ -248,6 +248,63 @@ import * as utilities from "../utilities";
  *     packageType: "WOLFI",
  *     parentRef: "accountId/orgId/projectId",
  * });
+ * // Example of a Virtual Composer Registry
+ * const composerVirtual = new harness.platform.HarRegistry("composer_virtual", {
+ *     configs: [{
+ *         type: "VIRTUAL",
+ *     }],
+ *     identifier: "virtual_composer_registry",
+ *     description: "Virtual Composer Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "COMPOSER",
+ *     parentRef: "accountId/orgId/projectId",
+ * });
+ * // Example of a Virtual Dart Registry
+ * const dartVirtual = new harness.platform.HarRegistry("dart_virtual", {
+ *     configs: [{
+ *         type: "VIRTUAL",
+ *     }],
+ *     identifier: "virtual_dart_registry",
+ *     description: "Virtual Dart Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "DART",
+ *     parentRef: "accountId/orgId/projectId",
+ * });
+ * // Example of a Virtual Swift Registry
+ * const swiftVirtual = new harness.platform.HarRegistry("swift_virtual", {
+ *     configs: [{
+ *         type: "VIRTUAL",
+ *     }],
+ *     identifier: "virtual_swift_registry",
+ *     description: "Virtual Swift Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "SWIFT",
+ *     parentRef: "accountId/orgId/projectId",
+ * });
+ * // Example of a Virtual Hugging Face Registry
+ * // HUGGINGFACE supports VIRTUAL registries only - upstream is not supported.
+ * const huggingfaceVirtual = new harness.platform.HarRegistry("huggingface_virtual", {
+ *     configs: [{
+ *         type: "VIRTUAL",
+ *     }],
+ *     identifier: "virtual_huggingface_registry",
+ *     description: "Virtual Hugging Face Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "HUGGINGFACE",
+ *     parentRef: "accountId/orgId/projectId",
+ * });
+ * // Example of a Virtual Terraform Backend Registry
+ * // TERRAFORM_BACKEND supports VIRTUAL registries only - upstream is not supported.
+ * const terraformBackendVirtual = new harness.platform.HarRegistry("terraform_backend_virtual", {
+ *     configs: [{
+ *         type: "VIRTUAL",
+ *     }],
+ *     identifier: "virtual_terraform_backend_registry",
+ *     description: "Virtual Terraform Backend Registry",
+ *     spaceRef: "accountId/orgId/projectId",
+ *     packageType: "TERRAFORM_BACKEND",
+ *     parentRef: "accountId/orgId/projectId",
+ * });
  * ```
  *
  * ## Import
@@ -338,7 +395,7 @@ export class HarRegistry extends pulumi.CustomResource {
      */
     declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
+     * Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT)
      */
     declare public readonly packageType: pulumi.Output<string>;
     /**
@@ -448,7 +505,7 @@ export interface HarRegistryState {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
+     * Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT)
      */
     packageType?: pulumi.Input<string | undefined>;
     /**
@@ -498,7 +555,7 @@ export interface HarRegistryArgs {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
+     * Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT)
      */
     packageType: pulumi.Input<string>;
     /**

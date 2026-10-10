@@ -14,7 +14,6 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetRuleRdsResult',
@@ -28,16 +27,16 @@ class GetRuleRdsResult:
     """
     A collection of values returned by getRuleRds.
     """
-    def __init__(__self__, cloud_connector_id=None, database=None, depends=None, id=None, identifier=None, idle_time_mins=None, name=None, tcps=None):
+    def __init__(__self__, cloud_connector_id=None, depends=None, dry_run=None, id=None, identifier=None, idle_time_mins=None, name=None):
         if cloud_connector_id and not isinstance(cloud_connector_id, str):
             raise TypeError("Expected argument 'cloud_connector_id' to be a str")
         pulumi.set(__self__, "cloud_connector_id", cloud_connector_id)
-        if database and not isinstance(database, dict):
-            raise TypeError("Expected argument 'database' to be a dict")
-        pulumi.set(__self__, "database", database)
         if depends and not isinstance(depends, list):
             raise TypeError("Expected argument 'depends' to be a list")
         pulumi.set(__self__, "depends", depends)
+        if dry_run and not isinstance(dry_run, bool):
+            raise TypeError("Expected argument 'dry_run' to be a bool")
+        pulumi.set(__self__, "dry_run", dry_run)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -50,9 +49,6 @@ class GetRuleRdsResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if tcps and not isinstance(tcps, list):
-            raise TypeError("Expected argument 'tcps' to be a list")
-        pulumi.set(__self__, "tcps", tcps)
 
     @_builtins.property
     @pulumi.getter(name="cloudConnectorId")
@@ -64,16 +60,19 @@ class GetRuleRdsResult:
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> 'outputs.GetRuleRdsDatabaseResult':
-        return pulumi.get(self, "database")
-
-    @_builtins.property
-    @pulumi.getter
-    def depends(self) -> Optional[Sequence['outputs.GetRuleRdsDependResult']]:
+    def depends(self) -> Sequence['outputs.GetRuleRdsDependResult']:
         """
         Dependent rules
         """
         return pulumi.get(self, "depends")
+
+    @_builtins.property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> _builtins.bool:
+        """
+        Boolean that indicates whether the AutoStopping rule is in DryRun mode
+        """
+        return pulumi.get(self, "dry_run")
 
     @_builtins.property
     @pulumi.getter
@@ -87,13 +86,13 @@ class GetRuleRdsResult:
     @pulumi.getter
     def identifier(self) -> _builtins.str:
         """
-        Unique identifier of the resource
+        Unique identifier of the resource. Either `identifier` or `name` must be specified.
         """
         return pulumi.get(self, "identifier")
 
     @_builtins.property
     @pulumi.getter(name="idleTimeMins")
-    def idle_time_mins(self) -> Optional[_builtins.int]:
+    def idle_time_mins(self) -> _builtins.int:
         """
         Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         """
@@ -103,17 +102,9 @@ class GetRuleRdsResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of the rule
+        Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
         """
         return pulumi.get(self, "name")
-
-    @_builtins.property
-    @pulumi.getter
-    def tcps(self) -> Optional[Sequence['outputs.GetRuleRdsTcpResult']]:
-        """
-        TCP routing configuration
-        """
-        return pulumi.get(self, "tcps")
 
 
 class AwaitableGetRuleRdsResult(GetRuleRdsResult):
@@ -123,87 +114,116 @@ class AwaitableGetRuleRdsResult(GetRuleRdsResult):
             yield self
         return GetRuleRdsResult(
             cloud_connector_id=self.cloud_connector_id,
-            database=self.database,
             depends=self.depends,
+            dry_run=self.dry_run,
             id=self.id,
             identifier=self.identifier,
             idle_time_mins=self.idle_time_mins,
-            name=self.name,
-            tcps=self.tcps)
+            name=self.name)
 
 
-def get_rule_rds(cloud_connector_id: Optional[_builtins.str] = None,
-                 database: Optional[Union['GetRuleRdsDatabaseArgs', 'GetRuleRdsDatabaseArgsDict', 'outputs.GetRuleRdsDatabaseResult']] = None,
-                 depends: Optional[Sequence[Union['GetRuleRdsDependArgs', 'GetRuleRdsDependArgsDict', 'outputs.GetRuleRdsDependResult']]] = None,
-                 idle_time_mins: Optional[_builtins.int] = None,
+def get_rule_rds(identifier: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None,
-                 tcps: Optional[Sequence[Union['GetRuleRdsTcpArgs', 'GetRuleRdsTcpArgsDict', 'outputs.GetRuleRdsTcpResult']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRuleRdsResult:
     """
     Data source for retrieving a Harness AutoStopping rule for RDS databases.
 
     ## Example Usage
 
+    ### Lookup by ID
 
-    :param _builtins.str cloud_connector_id: Id of the cloud connector
-    :param Sequence[Union['GetRuleRdsDependArgs', 'GetRuleRdsDependArgsDict', 'outputs.GetRuleRdsDependResult']] depends: Dependent rules
-    :param _builtins.int idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-    :param _builtins.str name: Name of the rule
-    :param Sequence[Union['GetRuleRdsTcpArgs', 'GetRuleRdsTcpArgsDict', 'outputs.GetRuleRdsTcpResult']] tcps: TCP routing configuration
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_id = harness.autostopping.get_rule_rds(identifier="12345")
+    ```
+
+    ### Lookup by name (regex)
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_name = harness.autostopping.get_rule_rds(name="^my-rds-rule$")
+    ```
+
+    ### Lookup by name pattern
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_pattern = harness.autostopping.get_rule_rds(name="my-rds-.*-prod")
+    ```
+
+
+    :param _builtins.str identifier: Unique identifier of the resource. Either `identifier` or `name` must be specified.
+    :param _builtins.str name: Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
     """
     __args__ = dict()
-    __args__['cloudConnectorId'] = cloud_connector_id
-    __args__['database'] = database
-    __args__['depends'] = depends
-    __args__['idleTimeMins'] = idle_time_mins
+    __args__['identifier'] = identifier
     __args__['name'] = name
-    __args__['tcps'] = tcps
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('harness:autostopping/getRuleRds:getRuleRds', __args__, opts=opts, typ=GetRuleRdsResult).value
 
     return AwaitableGetRuleRdsResult(
         cloud_connector_id=pulumi.get(__ret__, 'cloud_connector_id'),
-        database=pulumi.get(__ret__, 'database'),
         depends=pulumi.get(__ret__, 'depends'),
+        dry_run=pulumi.get(__ret__, 'dry_run'),
         id=pulumi.get(__ret__, 'id'),
         identifier=pulumi.get(__ret__, 'identifier'),
         idle_time_mins=pulumi.get(__ret__, 'idle_time_mins'),
-        name=pulumi.get(__ret__, 'name'),
-        tcps=pulumi.get(__ret__, 'tcps'))
-def get_rule_rds_output(cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
-                        database: pulumi.Input[Optional[Union['GetRuleRdsDatabaseArgs', 'GetRuleRdsDatabaseArgsDict', 'outputs.GetRuleRdsDatabaseResult']]] = None,
-                        depends: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleRdsDependArgs', 'GetRuleRdsDependArgsDict', 'outputs.GetRuleRdsDependResult']]]]] = None,
-                        idle_time_mins: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
-                        name: pulumi.Input[Optional[_builtins.str]] = None,
-                        tcps: pulumi.Input[Optional[Optional[Sequence[Union['GetRuleRdsTcpArgs', 'GetRuleRdsTcpArgsDict', 'outputs.GetRuleRdsTcpResult']]]]] = None,
+        name=pulumi.get(__ret__, 'name'))
+def get_rule_rds_output(identifier: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleRdsResult]:
     """
     Data source for retrieving a Harness AutoStopping rule for RDS databases.
 
     ## Example Usage
 
+    ### Lookup by ID
 
-    :param _builtins.str cloud_connector_id: Id of the cloud connector
-    :param Sequence[Union['GetRuleRdsDependArgs', 'GetRuleRdsDependArgsDict', 'outputs.GetRuleRdsDependResult']] depends: Dependent rules
-    :param _builtins.int idle_time_mins: Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-    :param _builtins.str name: Name of the rule
-    :param Sequence[Union['GetRuleRdsTcpArgs', 'GetRuleRdsTcpArgsDict', 'outputs.GetRuleRdsTcpResult']] tcps: TCP routing configuration
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_id = harness.autostopping.get_rule_rds(identifier="12345")
+    ```
+
+    ### Lookup by name (regex)
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_name = harness.autostopping.get_rule_rds(name="^my-rds-rule$")
+    ```
+
+    ### Lookup by name pattern
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    by_pattern = harness.autostopping.get_rule_rds(name="my-rds-.*-prod")
+    ```
+
+
+    :param _builtins.str identifier: Unique identifier of the resource. Either `identifier` or `name` must be specified.
+    :param _builtins.str name: Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
     """
     __args__ = dict()
-    __args__['cloudConnectorId'] = cloud_connector_id
-    __args__['database'] = database
-    __args__['depends'] = depends
-    __args__['idleTimeMins'] = idle_time_mins
+    __args__['identifier'] = identifier
     __args__['name'] = name
-    __args__['tcps'] = tcps
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('harness:autostopping/getRuleRds:getRuleRds', __args__, opts=opts, typ=GetRuleRdsResult)
     return __ret__.apply(lambda __response__: GetRuleRdsResult(
         cloud_connector_id=pulumi.get(__response__, 'cloud_connector_id'),
-        database=pulumi.get(__response__, 'database'),
         depends=pulumi.get(__response__, 'depends'),
+        dry_run=pulumi.get(__response__, 'dry_run'),
         id=pulumi.get(__response__, 'id'),
         identifier=pulumi.get(__response__, 'identifier'),
         idle_time_mins=pulumi.get(__response__, 'idle_time_mins'),
-        name=pulumi.get(__response__, 'name'),
-        tcps=pulumi.get(__response__, 'tcps')))
+        name=pulumi.get(__response__, 'name')))

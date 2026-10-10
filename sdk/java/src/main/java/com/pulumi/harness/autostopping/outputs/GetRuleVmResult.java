@@ -6,17 +6,11 @@ package com.pulumi.harness.autostopping.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.harness.autostopping.outputs.GetRuleVmDepend;
-import com.pulumi.harness.autostopping.outputs.GetRuleVmFilter;
-import com.pulumi.harness.autostopping.outputs.GetRuleVmHttp;
-import com.pulumi.harness.autostopping.outputs.GetRuleVmTcp;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRuleVmResult {
@@ -26,33 +20,22 @@ public final class GetRuleVmResult {
      */
     private String cloudConnectorId;
     /**
-     * @return Connection information (source ports on the proxy). Keys: &#34;ssh&#34; and &#34;rdp&#34; for SSH/RDP; other keys are target port as string (e.g. &#34;80&#34;) for forward_rule, value is the proxy source port.
-     * 
-     */
-    private Map<String,Integer> connect;
-    /**
-     * @return Custom URLs used to access the instances
-     * 
-     */
-    private @Nullable List<String> customDomains;
-    /**
      * @return Dependent rules
      * 
      */
-    private @Nullable List<GetRuleVmDepend> depends;
-    private GetRuleVmFilter filter;
+    private List<GetRuleVmDepend> depends;
     /**
-     * @return Http routing configuration
+     * @return Boolean that indicates whether the AutoStopping rule is in DryRun mode
      * 
      */
-    private @Nullable List<GetRuleVmHttp> https;
+    private Boolean dryRun;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
     /**
-     * @return Unique identifier of the resource
+     * @return Unique identifier of the resource. Either `identifier` or `name` must be specified.
      * 
      */
     private String identifier;
@@ -60,22 +43,12 @@ public final class GetRuleVmResult {
      * @return Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      * 
      */
-    private @Nullable Integer idleTimeMins;
+    private Integer idleTimeMins;
     /**
-     * @return Name of the rule
+     * @return Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      * 
      */
     private String name;
-    /**
-     * @return TCP routing configuration
-     * 
-     */
-    private @Nullable List<GetRuleVmTcp> tcps;
-    /**
-     * @return Boolean that indicates whether the selected instances should be converted to spot vm
-     * 
-     */
-    private @Nullable Boolean useSpot;
 
     private GetRuleVmResult() {}
     /**
@@ -86,35 +59,18 @@ public final class GetRuleVmResult {
         return this.cloudConnectorId;
     }
     /**
-     * @return Connection information (source ports on the proxy). Keys: &#34;ssh&#34; and &#34;rdp&#34; for SSH/RDP; other keys are target port as string (e.g. &#34;80&#34;) for forward_rule, value is the proxy source port.
-     * 
-     */
-    public Map<String,Integer> connect() {
-        return this.connect;
-    }
-    /**
-     * @return Custom URLs used to access the instances
-     * 
-     */
-    public List<String> customDomains() {
-        return this.customDomains == null ? List.of() : this.customDomains;
-    }
-    /**
      * @return Dependent rules
      * 
      */
     public List<GetRuleVmDepend> depends() {
-        return this.depends == null ? List.of() : this.depends;
-    }
-    public GetRuleVmFilter filter() {
-        return this.filter;
+        return this.depends;
     }
     /**
-     * @return Http routing configuration
+     * @return Boolean that indicates whether the AutoStopping rule is in DryRun mode
      * 
      */
-    public List<GetRuleVmHttp> https() {
-        return this.https == null ? List.of() : this.https;
+    public Boolean dryRun() {
+        return this.dryRun;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -124,7 +80,7 @@ public final class GetRuleVmResult {
         return this.id;
     }
     /**
-     * @return Unique identifier of the resource
+     * @return Unique identifier of the resource. Either `identifier` or `name` must be specified.
      * 
      */
     public String identifier() {
@@ -134,29 +90,15 @@ public final class GetRuleVmResult {
      * @return Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      * 
      */
-    public Optional<Integer> idleTimeMins() {
-        return Optional.ofNullable(this.idleTimeMins);
+    public Integer idleTimeMins() {
+        return this.idleTimeMins;
     }
     /**
-     * @return Name of the rule
+     * @return Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      * 
      */
     public String name() {
         return this.name;
-    }
-    /**
-     * @return TCP routing configuration
-     * 
-     */
-    public List<GetRuleVmTcp> tcps() {
-        return this.tcps == null ? List.of() : this.tcps;
-    }
-    /**
-     * @return Boolean that indicates whether the selected instances should be converted to spot vm
-     * 
-     */
-    public Optional<Boolean> useSpot() {
-        return Optional.ofNullable(this.useSpot);
     }
 
     public static Builder builder() {
@@ -169,32 +111,22 @@ public final class GetRuleVmResult {
     @CustomType.Builder
     public static final class Builder {
         private String cloudConnectorId;
-        private Map<String,Integer> connect;
-        private @Nullable List<String> customDomains;
-        private @Nullable List<GetRuleVmDepend> depends;
-        private GetRuleVmFilter filter;
-        private @Nullable List<GetRuleVmHttp> https;
+        private List<GetRuleVmDepend> depends;
+        private Boolean dryRun;
         private String id;
         private String identifier;
-        private @Nullable Integer idleTimeMins;
+        private Integer idleTimeMins;
         private String name;
-        private @Nullable List<GetRuleVmTcp> tcps;
-        private @Nullable Boolean useSpot;
         public Builder() {}
         public Builder(GetRuleVmResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cloudConnectorId = defaults.cloudConnectorId;
-    	      this.connect = defaults.connect;
-    	      this.customDomains = defaults.customDomains;
     	      this.depends = defaults.depends;
-    	      this.filter = defaults.filter;
-    	      this.https = defaults.https;
+    	      this.dryRun = defaults.dryRun;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.idleTimeMins = defaults.idleTimeMins;
     	      this.name = defaults.name;
-    	      this.tcps = defaults.tcps;
-    	      this.useSpot = defaults.useSpot;
         }
 
         @CustomType.Setter
@@ -206,25 +138,10 @@ public final class GetRuleVmResult {
             return this;
         }
         @CustomType.Setter
-        public Builder connect(Map<String,Integer> connect) {
-            if (connect == null) {
-              throw new MissingRequiredPropertyException("GetRuleVmResult", "connect");
+        public Builder depends(List<GetRuleVmDepend> depends) {
+            if (depends == null) {
+              throw new MissingRequiredPropertyException("GetRuleVmResult", "depends");
             }
-            this.connect = connect;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder customDomains(@Nullable List<String> customDomains) {
-
-            this.customDomains = customDomains;
-            return this;
-        }
-        public Builder customDomains(String... customDomains) {
-            return customDomains(List.of(customDomains));
-        }
-        @CustomType.Setter
-        public Builder depends(@Nullable List<GetRuleVmDepend> depends) {
-
             this.depends = depends;
             return this;
         }
@@ -232,21 +149,12 @@ public final class GetRuleVmResult {
             return depends(List.of(depends));
         }
         @CustomType.Setter
-        public Builder filter(GetRuleVmFilter filter) {
-            if (filter == null) {
-              throw new MissingRequiredPropertyException("GetRuleVmResult", "filter");
+        public Builder dryRun(Boolean dryRun) {
+            if (dryRun == null) {
+              throw new MissingRequiredPropertyException("GetRuleVmResult", "dryRun");
             }
-            this.filter = filter;
+            this.dryRun = dryRun;
             return this;
-        }
-        @CustomType.Setter
-        public Builder https(@Nullable List<GetRuleVmHttp> https) {
-
-            this.https = https;
-            return this;
-        }
-        public Builder https(GetRuleVmHttp... https) {
-            return https(List.of(https));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -265,8 +173,10 @@ public final class GetRuleVmResult {
             return this;
         }
         @CustomType.Setter
-        public Builder idleTimeMins(@Nullable Integer idleTimeMins) {
-
+        public Builder idleTimeMins(Integer idleTimeMins) {
+            if (idleTimeMins == null) {
+              throw new MissingRequiredPropertyException("GetRuleVmResult", "idleTimeMins");
+            }
             this.idleTimeMins = idleTimeMins;
             return this;
         }
@@ -278,35 +188,15 @@ public final class GetRuleVmResult {
             this.name = name;
             return this;
         }
-        @CustomType.Setter
-        public Builder tcps(@Nullable List<GetRuleVmTcp> tcps) {
-
-            this.tcps = tcps;
-            return this;
-        }
-        public Builder tcps(GetRuleVmTcp... tcps) {
-            return tcps(List.of(tcps));
-        }
-        @CustomType.Setter
-        public Builder useSpot(@Nullable Boolean useSpot) {
-
-            this.useSpot = useSpot;
-            return this;
-        }
         public GetRuleVmResult build() {
             final var _resultValue = new GetRuleVmResult();
             _resultValue.cloudConnectorId = cloudConnectorId;
-            _resultValue.connect = connect;
-            _resultValue.customDomains = customDomains;
             _resultValue.depends = depends;
-            _resultValue.filter = filter;
-            _resultValue.https = https;
+            _resultValue.dryRun = dryRun;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.idleTimeMins = idleTimeMins;
             _resultValue.name = name;
-            _resultValue.tcps = tcps;
-            _resultValue.useSpot = useSpot;
             return _resultValue;
         }
     }

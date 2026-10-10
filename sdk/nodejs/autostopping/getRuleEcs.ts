@@ -10,16 +10,45 @@ import * as utilities from "../utilities";
  * Data source for retrieving a Harness AutoStopping rule for ECS services.
  *
  * ## Example Usage
+ *
+ * ### Lookup by ID
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byId = harness.autostopping.getRuleEcs({
+ *     identifier: "12345",
+ * });
+ * ```
+ *
+ * ### Lookup by name (regex)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byName = harness.autostopping.getRuleEcs({
+ *     name: "^my-ecs-rule$",
+ * });
+ * ```
+ *
+ * ### Lookup by name pattern
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byPattern = harness.autostopping.getRuleEcs({
+ *     name: "my-ecs-.*-prod",
+ * });
+ * ```
  */
-export function getRuleEcs(args: GetRuleEcsArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleEcsResult> {
+export function getRuleEcs(args?: GetRuleEcsArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleEcsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:autostopping/getRuleEcs:getRuleEcs", {
-        "cloudConnectorId": args.cloudConnectorId,
-        "container": args.container,
-        "customDomains": args.customDomains,
-        "depends": args.depends,
-        "https": args.https,
-        "idleTimeMins": args.idleTimeMins,
+        "identifier": args.identifier,
         "name": args.name,
     }, opts);
 }
@@ -29,30 +58,13 @@ export function getRuleEcs(args: GetRuleEcsArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetRuleEcsArgs {
     /**
-     * Id of the cloud connector
+     * Unique identifier of the resource. Either `identifier` or `name` must be specified.
      */
-    cloudConnectorId: string;
-    container?: inputs.autostopping.GetRuleEcsContainer;
+    identifier?: string;
     /**
-     * Custom URLs used to access the instances
+     * Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      */
-    customDomains?: string[];
-    /**
-     * Dependent rules
-     */
-    depends?: inputs.autostopping.GetRuleEcsDepend[];
-    /**
-     * Http routing configuration
-     */
-    https?: inputs.autostopping.GetRuleEcsHttp[];
-    /**
-     * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-     */
-    idleTimeMins?: number;
-    /**
-     * Name of the rule
-     */
-    name: string;
+    name?: string;
 }
 
 /**
@@ -63,33 +75,28 @@ export interface GetRuleEcsResult {
      * Id of the cloud connector
      */
     readonly cloudConnectorId: string;
-    readonly container?: outputs.autostopping.GetRuleEcsContainer;
-    /**
-     * Custom URLs used to access the instances
-     */
-    readonly customDomains?: string[];
     /**
      * Dependent rules
      */
-    readonly depends?: outputs.autostopping.GetRuleEcsDepend[];
+    readonly depends: outputs.autostopping.GetRuleEcsDepend[];
     /**
-     * Http routing configuration
+     * Boolean that indicates whether the AutoStopping rule is in DryRun mode
      */
-    readonly https?: outputs.autostopping.GetRuleEcsHttp[];
+    readonly dryRun: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * Unique identifier of the resource
+     * Unique identifier of the resource. Either `identifier` or `name` must be specified.
      */
     readonly identifier: string;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */
-    readonly idleTimeMins?: number;
+    readonly idleTimeMins: number;
     /**
-     * Name of the rule
+     * Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      */
     readonly name: string;
 }
@@ -97,16 +104,45 @@ export interface GetRuleEcsResult {
  * Data source for retrieving a Harness AutoStopping rule for ECS services.
  *
  * ## Example Usage
+ *
+ * ### Lookup by ID
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byId = harness.autostopping.getRuleEcs({
+ *     identifier: "12345",
+ * });
+ * ```
+ *
+ * ### Lookup by name (regex)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byName = harness.autostopping.getRuleEcs({
+ *     name: "^my-ecs-rule$",
+ * });
+ * ```
+ *
+ * ### Lookup by name pattern
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byPattern = harness.autostopping.getRuleEcs({
+ *     name: "my-ecs-.*-prod",
+ * });
+ * ```
  */
-export function getRuleEcsOutput(args: GetRuleEcsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRuleEcsResult> {
+export function getRuleEcsOutput(args?: GetRuleEcsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRuleEcsResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:autostopping/getRuleEcs:getRuleEcs", {
-        "cloudConnectorId": args.cloudConnectorId,
-        "container": args.container,
-        "customDomains": args.customDomains,
-        "depends": args.depends,
-        "https": args.https,
-        "idleTimeMins": args.idleTimeMins,
+        "identifier": args.identifier,
         "name": args.name,
     }, opts);
 }
@@ -116,28 +152,11 @@ export function getRuleEcsOutput(args: GetRuleEcsOutputArgs, opts?: pulumi.Invok
  */
 export interface GetRuleEcsOutputArgs {
     /**
-     * Id of the cloud connector
+     * Unique identifier of the resource. Either `identifier` or `name` must be specified.
      */
-    cloudConnectorId: pulumi.Input<string>;
-    container?: pulumi.Input<inputs.autostopping.GetRuleEcsContainerArgs | undefined>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
-     * Custom URLs used to access the instances
+     * Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      */
-    customDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    /**
-     * Dependent rules
-     */
-    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleEcsDependArgs>[] | undefined>;
-    /**
-     * Http routing configuration
-     */
-    https?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleEcsHttpArgs>[] | undefined>;
-    /**
-     * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-     */
-    idleTimeMins?: pulumi.Input<number | undefined>;
-    /**
-     * Name of the rule
-     */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

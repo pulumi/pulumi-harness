@@ -15,22 +15,184 @@ namespace Pulumi.Harness.Autostopping
         /// Data source for retrieving a Harness AutoStopping rule for VMs.
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Lookup by ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byId = Harness.Autostopping.GetRuleVm.Invoke(new()
+        ///     {
+        ///         Identifier = "12345",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name (regex)
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byName = Harness.Autostopping.GetRuleVm.Invoke(new()
+        ///     {
+        ///         Name = "^my-vm-rule$",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name pattern
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byPattern = Harness.Autostopping.GetRuleVm.Invoke(new()
+        ///     {
+        ///         Name = "my-vm-.*-prod",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Task<GetRuleVmResult> InvokeAsync(GetRuleVmArgs args, InvokeOptions? options = null)
+        public static Task<GetRuleVmResult> InvokeAsync(GetRuleVmArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRuleVmResult>("harness:autostopping/getRuleVm:getRuleVm", args ?? new GetRuleVmArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness AutoStopping rule for VMs.
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Lookup by ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byId = Harness.Autostopping.GetRuleVm.Invoke(new()
+        ///     {
+        ///         Identifier = "12345",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name (regex)
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byName = Harness.Autostopping.GetRuleVm.Invoke(new()
+        ///     {
+        ///         Name = "^my-vm-rule$",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name pattern
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byPattern = Harness.Autostopping.GetRuleVm.Invoke(new()
+        ///     {
+        ///         Name = "my-vm-.*-prod",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Output<GetRuleVmResult> Invoke(GetRuleVmInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetRuleVmResult> Invoke(GetRuleVmInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRuleVmResult>("harness:autostopping/getRuleVm:getRuleVm", args ?? new GetRuleVmInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness AutoStopping rule for VMs.
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Lookup by ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byId = Harness.Autostopping.GetRuleVm.Invoke(new()
+        ///     {
+        ///         Identifier = "12345",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name (regex)
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byName = Harness.Autostopping.GetRuleVm.Invoke(new()
+        ///     {
+        ///         Name = "^my-vm-rule$",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name pattern
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byPattern = Harness.Autostopping.GetRuleVm.Invoke(new()
+        ///     {
+        ///         Name = "my-vm-.*-prod",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetRuleVmResult> Invoke(GetRuleVmInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRuleVmResult>("harness:autostopping/getRuleVm:getRuleVm", args ?? new GetRuleVmInvokeArgs(), options.WithDefaults());
@@ -40,79 +202,16 @@ namespace Pulumi.Harness.Autostopping
     public sealed class GetRuleVmArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Id of the cloud connector
+        /// Unique identifier of the resource. Either `Identifier` or `Name` must be specified.
         /// </summary>
-        [Input("cloudConnectorId", required: true)]
-        public string CloudConnectorId { get; set; } = null!;
-
-        [Input("customDomains")]
-        private List<string>? _customDomains;
+        [Input("identifier")]
+        public string? Identifier { get; set; }
 
         /// <summary>
-        /// Custom URLs used to access the instances
+        /// Name or regex pattern to match the rule name. Either `Identifier` or `Name` must be specified.
         /// </summary>
-        public List<string> CustomDomains
-        {
-            get => _customDomains ?? (_customDomains = new List<string>());
-            set => _customDomains = value;
-        }
-
-        [Input("depends")]
-        private List<Inputs.GetRuleVmDependArgs>? _depends;
-
-        /// <summary>
-        /// Dependent rules
-        /// </summary>
-        public List<Inputs.GetRuleVmDependArgs> Depends
-        {
-            get => _depends ?? (_depends = new List<Inputs.GetRuleVmDependArgs>());
-            set => _depends = value;
-        }
-
-        [Input("filter", required: true)]
-        public Inputs.GetRuleVmFilterArgs Filter { get; set; } = null!;
-
-        [Input("https")]
-        private List<Inputs.GetRuleVmHttpArgs>? _https;
-
-        /// <summary>
-        /// Http routing configuration
-        /// </summary>
-        public List<Inputs.GetRuleVmHttpArgs> Https
-        {
-            get => _https ?? (_https = new List<Inputs.GetRuleVmHttpArgs>());
-            set => _https = value;
-        }
-
-        /// <summary>
-        /// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-        /// </summary>
-        [Input("idleTimeMins")]
-        public int? IdleTimeMins { get; set; }
-
-        /// <summary>
-        /// Name of the rule
-        /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
-
-        [Input("tcps")]
-        private List<Inputs.GetRuleVmTcpArgs>? _tcps;
-
-        /// <summary>
-        /// TCP routing configuration
-        /// </summary>
-        public List<Inputs.GetRuleVmTcpArgs> Tcps
-        {
-            get => _tcps ?? (_tcps = new List<Inputs.GetRuleVmTcpArgs>());
-            set => _tcps = value;
-        }
-
-        /// <summary>
-        /// Boolean that indicates whether the selected instances should be converted to spot vm
-        /// </summary>
-        [Input("useSpot")]
-        public bool? UseSpot { get; set; }
+        [Input("name")]
+        public string? Name { get; set; }
 
         public GetRuleVmArgs()
         {
@@ -123,79 +222,16 @@ namespace Pulumi.Harness.Autostopping
     public sealed class GetRuleVmInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Id of the cloud connector
+        /// Unique identifier of the resource. Either `Identifier` or `Name` must be specified.
         /// </summary>
-        [Input("cloudConnectorId", required: true)]
-        public Input<string> CloudConnectorId { get; set; } = null!;
-
-        [Input("customDomains")]
-        private InputList<string>? _customDomains;
+        [Input("identifier")]
+        public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// Custom URLs used to access the instances
+        /// Name or regex pattern to match the rule name. Either `Identifier` or `Name` must be specified.
         /// </summary>
-        public InputList<string> CustomDomains
-        {
-            get => _customDomains ?? (_customDomains = new InputList<string>());
-            set => _customDomains = value;
-        }
-
-        [Input("depends")]
-        private InputList<Inputs.GetRuleVmDependInputArgs>? _depends;
-
-        /// <summary>
-        /// Dependent rules
-        /// </summary>
-        public InputList<Inputs.GetRuleVmDependInputArgs> Depends
-        {
-            get => _depends ?? (_depends = new InputList<Inputs.GetRuleVmDependInputArgs>());
-            set => _depends = value;
-        }
-
-        [Input("filter", required: true)]
-        public Input<Inputs.GetRuleVmFilterInputArgs> Filter { get; set; } = null!;
-
-        [Input("https")]
-        private InputList<Inputs.GetRuleVmHttpInputArgs>? _https;
-
-        /// <summary>
-        /// Http routing configuration
-        /// </summary>
-        public InputList<Inputs.GetRuleVmHttpInputArgs> Https
-        {
-            get => _https ?? (_https = new InputList<Inputs.GetRuleVmHttpInputArgs>());
-            set => _https = value;
-        }
-
-        /// <summary>
-        /// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-        /// </summary>
-        [Input("idleTimeMins")]
-        public Input<int>? IdleTimeMins { get; set; }
-
-        /// <summary>
-        /// Name of the rule
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("tcps")]
-        private InputList<Inputs.GetRuleVmTcpInputArgs>? _tcps;
-
-        /// <summary>
-        /// TCP routing configuration
-        /// </summary>
-        public InputList<Inputs.GetRuleVmTcpInputArgs> Tcps
-        {
-            get => _tcps ?? (_tcps = new InputList<Inputs.GetRuleVmTcpInputArgs>());
-            set => _tcps = value;
-        }
-
-        /// <summary>
-        /// Boolean that indicates whether the selected instances should be converted to spot vm
-        /// </summary>
-        [Input("useSpot")]
-        public Input<bool>? UseSpot { get; set; }
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         public GetRuleVmInvokeArgs()
         {
@@ -212,85 +248,53 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         public readonly string CloudConnectorId;
         /// <summary>
-        /// Connection information (source ports on the proxy). Keys: "ssh" and "rdp" for SSH/RDP; other keys are target port as string (e.g. "80") for forward_rule, value is the proxy source port.
-        /// </summary>
-        public readonly ImmutableDictionary<string, int> Connect;
-        /// <summary>
-        /// Custom URLs used to access the instances
-        /// </summary>
-        public readonly ImmutableArray<string> CustomDomains;
-        /// <summary>
         /// Dependent rules
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRuleVmDependResult> Depends;
-        public readonly Outputs.GetRuleVmFilterResult Filter;
         /// <summary>
-        /// Http routing configuration
+        /// Boolean that indicates whether the AutoStopping rule is in DryRun mode
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetRuleVmHttpResult> Https;
+        public readonly bool DryRun;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Unique identifier of the resource
+        /// Unique identifier of the resource. Either `Identifier` or `Name` must be specified.
         /// </summary>
         public readonly string Identifier;
         /// <summary>
         /// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         /// </summary>
-        public readonly int? IdleTimeMins;
+        public readonly int IdleTimeMins;
         /// <summary>
-        /// Name of the rule
+        /// Name or regex pattern to match the rule name. Either `Identifier` or `Name` must be specified.
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// TCP routing configuration
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetRuleVmTcpResult> Tcps;
-        /// <summary>
-        /// Boolean that indicates whether the selected instances should be converted to spot vm
-        /// </summary>
-        public readonly bool? UseSpot;
 
         [OutputConstructor]
         private GetRuleVmResult(
             string cloudConnectorId,
 
-            ImmutableDictionary<string, int> connect,
-
-            ImmutableArray<string> customDomains,
-
             ImmutableArray<Outputs.GetRuleVmDependResult> depends,
 
-            Outputs.GetRuleVmFilterResult filter,
-
-            ImmutableArray<Outputs.GetRuleVmHttpResult> https,
+            bool dryRun,
 
             string id,
 
             string identifier,
 
-            int? idleTimeMins,
+            int idleTimeMins,
 
-            string name,
-
-            ImmutableArray<Outputs.GetRuleVmTcpResult> tcps,
-
-            bool? useSpot)
+            string name)
         {
             CloudConnectorId = cloudConnectorId;
-            Connect = connect;
-            CustomDomains = customDomains;
             Depends = depends;
-            Filter = filter;
-            Https = https;
+            DryRun = dryRun;
             Id = id;
             Identifier = identifier;
             IdleTimeMins = idleTimeMins;
             Name = name;
-            Tcps = tcps;
-            UseSpot = useSpot;
         }
     }
 }

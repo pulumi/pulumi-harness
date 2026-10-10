@@ -24,23 +24,30 @@ namespace Pulumi.Harness.Autostopping
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Returns all autostopping rules without any filtering.
         ///     var all = Harness.Autostopping.GetRules.Invoke();
         /// 
+        ///     // Returns only rules of kind "instance"
         ///     var byInstanceKind = Harness.Autostopping.GetRules.Invoke(new()
         ///     {
         ///         Kind = "instance",
         ///     });
         /// 
+        ///     // Returns only rules of kind "k8s"
         ///     var byK8sKind = Harness.Autostopping.GetRules.Invoke(new()
         ///     {
         ///         Kind = "k8s",
         ///     });
         /// 
+        ///     // Returns rules whose name starts with "myname-" followed by any characters.
+        ///     // Regex: "myname-.*" matches e.g. "myname-prod", "myname-01", "myname-anything".
         ///     var byNamePrefix = Harness.Autostopping.GetRules.Invoke(new()
         ///     {
         ///         Name = "myname-.*",
         ///     });
         /// 
+        ///     // Returns rules whose name starts with "app" or "svc" followed by any characters.
+        ///     // Regex: "^(app|svc).*" matches e.g. "app-prod", "svc-backend", "appserver" but NOT "myapp".
         ///     var byNameRegex = Harness.Autostopping.GetRules.Invoke(new()
         ///     {
         ///         Name = "^(app|svc).*",
@@ -93,23 +100,30 @@ namespace Pulumi.Harness.Autostopping
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Returns all autostopping rules without any filtering.
         ///     var all = Harness.Autostopping.GetRules.Invoke();
         /// 
+        ///     // Returns only rules of kind "instance"
         ///     var byInstanceKind = Harness.Autostopping.GetRules.Invoke(new()
         ///     {
         ///         Kind = "instance",
         ///     });
         /// 
+        ///     // Returns only rules of kind "k8s"
         ///     var byK8sKind = Harness.Autostopping.GetRules.Invoke(new()
         ///     {
         ///         Kind = "k8s",
         ///     });
         /// 
+        ///     // Returns rules whose name starts with "myname-" followed by any characters.
+        ///     // Regex: "myname-.*" matches e.g. "myname-prod", "myname-01", "myname-anything".
         ///     var byNamePrefix = Harness.Autostopping.GetRules.Invoke(new()
         ///     {
         ///         Name = "myname-.*",
         ///     });
         /// 
+        ///     // Returns rules whose name starts with "app" or "svc" followed by any characters.
+        ///     // Regex: "^(app|svc).*" matches e.g. "app-prod", "svc-backend", "appserver" but NOT "myapp".
         ///     var byNameRegex = Harness.Autostopping.GetRules.Invoke(new()
         ///     {
         ///         Name = "^(app|svc).*",
@@ -162,23 +176,30 @@ namespace Pulumi.Harness.Autostopping
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Returns all autostopping rules without any filtering.
         ///     var all = Harness.Autostopping.GetRules.Invoke();
         /// 
+        ///     // Returns only rules of kind "instance"
         ///     var byInstanceKind = Harness.Autostopping.GetRules.Invoke(new()
         ///     {
         ///         Kind = "instance",
         ///     });
         /// 
+        ///     // Returns only rules of kind "k8s"
         ///     var byK8sKind = Harness.Autostopping.GetRules.Invoke(new()
         ///     {
         ///         Kind = "k8s",
         ///     });
         /// 
+        ///     // Returns rules whose name starts with "myname-" followed by any characters.
+        ///     // Regex: "myname-.*" matches e.g. "myname-prod", "myname-01", "myname-anything".
         ///     var byNamePrefix = Harness.Autostopping.GetRules.Invoke(new()
         ///     {
         ///         Name = "myname-.*",
         ///     });
         /// 
+        ///     // Returns rules whose name starts with "app" or "svc" followed by any characters.
+        ///     // Regex: "^(app|svc).*" matches e.g. "app-prod", "svc-backend", "appserver" but NOT "myapp".
         ///     var byNameRegex = Harness.Autostopping.GetRules.Invoke(new()
         ///     {
         ///         Name = "^(app|svc).*",
