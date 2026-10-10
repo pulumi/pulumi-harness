@@ -5,12 +5,7 @@ package com.pulumi.harness.autostopping.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.harness.autostopping.inputs.GetRuleK8sDependArgs;
-import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,136 +16,40 @@ public final class GetRuleK8sArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetRuleK8sArgs Empty = new GetRuleK8sArgs();
 
     /**
-     * Id of the cloud connector
+     * Unique identifier of the resource. Either `identifier` or `name` must be specified.
      * 
      */
-    @Import(name="cloudConnectorId", required=true)
-    private Output<String> cloudConnectorId;
+    @Import(name="identifier")
+    private @Nullable Output<String> identifier;
 
     /**
-     * @return Id of the cloud connector
+     * @return Unique identifier of the resource. Either `identifier` or `name` must be specified.
      * 
      */
-    public Output<String> cloudConnectorId() {
-        return this.cloudConnectorId;
+    public Optional<Output<String>> identifier() {
+        return Optional.ofNullable(this.identifier);
     }
 
     /**
-     * Dependent rules
+     * Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      * 
      */
-    @Import(name="depends")
-    private @Nullable Output<List<GetRuleK8sDependArgs>> depends;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
-     * @return Dependent rules
+     * @return Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      * 
      */
-    public Optional<Output<List<GetRuleK8sDependArgs>>> depends() {
-        return Optional.ofNullable(this.depends);
-    }
-
-    /**
-     * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-     * 
-     */
-    @Import(name="dryRun")
-    private @Nullable Output<Boolean> dryRun;
-
-    /**
-     * @return Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-     * 
-     */
-    public Optional<Output<Boolean>> dryRun() {
-        return Optional.ofNullable(this.dryRun);
-    }
-
-    /**
-     * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-     * 
-     */
-    @Import(name="idleTimeMins")
-    private @Nullable Output<Integer> idleTimeMins;
-
-    /**
-     * @return Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-     * 
-     */
-    public Optional<Output<Integer>> idleTimeMins() {
-        return Optional.ofNullable(this.idleTimeMins);
-    }
-
-    /**
-     * Id of the K8s connector
-     * 
-     */
-    @Import(name="k8sConnectorId", required=true)
-    private Output<String> k8sConnectorId;
-
-    /**
-     * @return Id of the K8s connector
-     * 
-     */
-    public Output<String> k8sConnectorId() {
-        return this.k8sConnectorId;
-    }
-
-    /**
-     * Namespace of the cluster
-     * 
-     */
-    @Import(name="k8sNamespace", required=true)
-    private Output<String> k8sNamespace;
-
-    /**
-     * @return Namespace of the cluster
-     * 
-     */
-    public Output<String> k8sNamespace() {
-        return this.k8sNamespace;
-    }
-
-    /**
-     * Name of the rule
-     * 
-     */
-    @Import(name="name", required=true)
-    private Output<String> name;
-
-    /**
-     * @return Name of the rule
-     * 
-     */
-    public Output<String> name() {
-        return this.name;
-    }
-
-    /**
-     * YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
-     * 
-     */
-    @Import(name="ruleYaml", required=true)
-    private Output<String> ruleYaml;
-
-    /**
-     * @return YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
-     * 
-     */
-    public Output<String> ruleYaml() {
-        return this.ruleYaml;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     private GetRuleK8sArgs() {}
 
     private GetRuleK8sArgs(GetRuleK8sArgs $) {
-        this.cloudConnectorId = $.cloudConnectorId;
-        this.depends = $.depends;
-        this.dryRun = $.dryRun;
-        this.idleTimeMins = $.idleTimeMins;
-        this.k8sConnectorId = $.k8sConnectorId;
-        this.k8sNamespace = $.k8sNamespace;
+        this.identifier = $.identifier;
         this.name = $.name;
-        this.ruleYaml = $.ruleYaml;
     }
 
     public static Builder builder() {
@@ -172,154 +71,39 @@ public final class GetRuleK8sArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param cloudConnectorId Id of the cloud connector
+         * @param identifier Unique identifier of the resource. Either `identifier` or `name` must be specified.
          * 
          * @return builder
          * 
          */
-        public Builder cloudConnectorId(Output<String> cloudConnectorId) {
-            $.cloudConnectorId = cloudConnectorId;
+        public Builder identifier(@Nullable Output<String> identifier) {
+            $.identifier = identifier;
             return this;
         }
 
         /**
-         * @param cloudConnectorId Id of the cloud connector
+         * @param identifier Unique identifier of the resource. Either `identifier` or `name` must be specified.
          * 
          * @return builder
          * 
          */
-        public Builder cloudConnectorId(String cloudConnectorId) {
-            return cloudConnectorId(Output.of(cloudConnectorId));
+        public Builder identifier(String identifier) {
+            return identifier(Output.of(identifier));
         }
 
         /**
-         * @param depends Dependent rules
+         * @param name Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
          * 
          * @return builder
          * 
          */
-        public Builder depends(@Nullable Output<List<GetRuleK8sDependArgs>> depends) {
-            $.depends = depends;
-            return this;
-        }
-
-        /**
-         * @param depends Dependent rules
-         * 
-         * @return builder
-         * 
-         */
-        public Builder depends(List<GetRuleK8sDependArgs> depends) {
-            return depends(Output.of(depends));
-        }
-
-        /**
-         * @param depends Dependent rules
-         * 
-         * @return builder
-         * 
-         */
-        public Builder depends(GetRuleK8sDependArgs... depends) {
-            return depends(List.of(depends));
-        }
-
-        /**
-         * @param dryRun Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dryRun(@Nullable Output<Boolean> dryRun) {
-            $.dryRun = dryRun;
-            return this;
-        }
-
-        /**
-         * @param dryRun Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dryRun(Boolean dryRun) {
-            return dryRun(Output.of(dryRun));
-        }
-
-        /**
-         * @param idleTimeMins Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder idleTimeMins(@Nullable Output<Integer> idleTimeMins) {
-            $.idleTimeMins = idleTimeMins;
-            return this;
-        }
-
-        /**
-         * @param idleTimeMins Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder idleTimeMins(Integer idleTimeMins) {
-            return idleTimeMins(Output.of(idleTimeMins));
-        }
-
-        /**
-         * @param k8sConnectorId Id of the K8s connector
-         * 
-         * @return builder
-         * 
-         */
-        public Builder k8sConnectorId(Output<String> k8sConnectorId) {
-            $.k8sConnectorId = k8sConnectorId;
-            return this;
-        }
-
-        /**
-         * @param k8sConnectorId Id of the K8s connector
-         * 
-         * @return builder
-         * 
-         */
-        public Builder k8sConnectorId(String k8sConnectorId) {
-            return k8sConnectorId(Output.of(k8sConnectorId));
-        }
-
-        /**
-         * @param k8sNamespace Namespace of the cluster
-         * 
-         * @return builder
-         * 
-         */
-        public Builder k8sNamespace(Output<String> k8sNamespace) {
-            $.k8sNamespace = k8sNamespace;
-            return this;
-        }
-
-        /**
-         * @param k8sNamespace Namespace of the cluster
-         * 
-         * @return builder
-         * 
-         */
-        public Builder k8sNamespace(String k8sNamespace) {
-            return k8sNamespace(Output.of(k8sNamespace));
-        }
-
-        /**
-         * @param name Name of the rule
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Name of the rule
+         * @param name Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
          * 
          * @return builder
          * 
@@ -328,43 +112,7 @@ public final class GetRuleK8sArgs extends com.pulumi.resources.InvokeArgs {
             return name(Output.of(name));
         }
 
-        /**
-         * @param ruleYaml YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ruleYaml(Output<String> ruleYaml) {
-            $.ruleYaml = ruleYaml;
-            return this;
-        }
-
-        /**
-         * @param ruleYaml YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ruleYaml(String ruleYaml) {
-            return ruleYaml(Output.of(ruleYaml));
-        }
-
         public GetRuleK8sArgs build() {
-            if ($.cloudConnectorId == null) {
-                throw new MissingRequiredPropertyException("GetRuleK8sArgs", "cloudConnectorId");
-            }
-            if ($.k8sConnectorId == null) {
-                throw new MissingRequiredPropertyException("GetRuleK8sArgs", "k8sConnectorId");
-            }
-            if ($.k8sNamespace == null) {
-                throw new MissingRequiredPropertyException("GetRuleK8sArgs", "k8sNamespace");
-            }
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetRuleK8sArgs", "name");
-            }
-            if ($.ruleYaml == null) {
-                throw new MissingRequiredPropertyException("GetRuleK8sArgs", "ruleYaml");
-            }
             return $;
         }
     }

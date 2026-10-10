@@ -18,12 +18,14 @@ from .azure_key_vault_connector import *
 from .bitbucket_connector import *
 from .central_notification_channel import *
 from .central_notification_rule import *
+from .connector_anthropic_model import *
 from .connector_azure_artifacts import *
 from .connector_azure_repo import *
 from .connector_custom_secret_manager import *
 from .connector_customhealthsource import *
 from .connector_gcp_kms import *
 from .connector_jdbc import *
+from .connector_openai_model import *
 from .connector_pdc import *
 from .connector_rancher import *
 from .dashboard_folder import *
@@ -66,11 +68,13 @@ from .get_bitbucket_connector import *
 from .get_ccm_filters import *
 from .get_central_notification_channel import *
 from .get_central_notification_rule import *
+from .get_connector_anthropic_model import *
 from .get_connector_azure_repo import *
 from .get_connector_custom_secret_manager import *
 from .get_connector_customhealthsource import *
 from .get_connector_gcp_kms import *
 from .get_connector_jdbc import *
+from .get_connector_openai_model import *
 from .get_connector_pdc import *
 from .get_connector_rancher import *
 from .get_current_account import *
@@ -269,6 +273,7 @@ from .service import *
 from .service_account import *
 from .service_now_connector import *
 from .service_overrides_v2 import *
+from .setting import *
 from .slo import *
 from .splunk_connector import *
 from .spot_connector import *

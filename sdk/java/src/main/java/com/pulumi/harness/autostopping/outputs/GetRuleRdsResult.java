@@ -5,15 +5,12 @@ package com.pulumi.harness.autostopping.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.harness.autostopping.outputs.GetRuleRdsDatabase;
 import com.pulumi.harness.autostopping.outputs.GetRuleRdsDepend;
-import com.pulumi.harness.autostopping.outputs.GetRuleRdsTcp;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRuleRdsResult {
@@ -22,19 +19,23 @@ public final class GetRuleRdsResult {
      * 
      */
     private String cloudConnectorId;
-    private GetRuleRdsDatabase database;
     /**
      * @return Dependent rules
      * 
      */
-    private @Nullable List<GetRuleRdsDepend> depends;
+    private List<GetRuleRdsDepend> depends;
+    /**
+     * @return Boolean that indicates whether the AutoStopping rule is in DryRun mode
+     * 
+     */
+    private Boolean dryRun;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
     /**
-     * @return Unique identifier of the resource
+     * @return Unique identifier of the resource. Either `identifier` or `name` must be specified.
      * 
      */
     private String identifier;
@@ -42,17 +43,12 @@ public final class GetRuleRdsResult {
      * @return Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      * 
      */
-    private @Nullable Integer idleTimeMins;
+    private Integer idleTimeMins;
     /**
-     * @return Name of the rule
+     * @return Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      * 
      */
     private String name;
-    /**
-     * @return TCP routing configuration
-     * 
-     */
-    private @Nullable List<GetRuleRdsTcp> tcps;
 
     private GetRuleRdsResult() {}
     /**
@@ -62,15 +58,19 @@ public final class GetRuleRdsResult {
     public String cloudConnectorId() {
         return this.cloudConnectorId;
     }
-    public GetRuleRdsDatabase database() {
-        return this.database;
-    }
     /**
      * @return Dependent rules
      * 
      */
     public List<GetRuleRdsDepend> depends() {
-        return this.depends == null ? List.of() : this.depends;
+        return this.depends;
+    }
+    /**
+     * @return Boolean that indicates whether the AutoStopping rule is in DryRun mode
+     * 
+     */
+    public Boolean dryRun() {
+        return this.dryRun;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -80,7 +80,7 @@ public final class GetRuleRdsResult {
         return this.id;
     }
     /**
-     * @return Unique identifier of the resource
+     * @return Unique identifier of the resource. Either `identifier` or `name` must be specified.
      * 
      */
     public String identifier() {
@@ -90,22 +90,15 @@ public final class GetRuleRdsResult {
      * @return Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      * 
      */
-    public Optional<Integer> idleTimeMins() {
-        return Optional.ofNullable(this.idleTimeMins);
+    public Integer idleTimeMins() {
+        return this.idleTimeMins;
     }
     /**
-     * @return Name of the rule
+     * @return Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      * 
      */
     public String name() {
         return this.name;
-    }
-    /**
-     * @return TCP routing configuration
-     * 
-     */
-    public List<GetRuleRdsTcp> tcps() {
-        return this.tcps == null ? List.of() : this.tcps;
     }
 
     public static Builder builder() {
@@ -118,24 +111,22 @@ public final class GetRuleRdsResult {
     @CustomType.Builder
     public static final class Builder {
         private String cloudConnectorId;
-        private GetRuleRdsDatabase database;
-        private @Nullable List<GetRuleRdsDepend> depends;
+        private List<GetRuleRdsDepend> depends;
+        private Boolean dryRun;
         private String id;
         private String identifier;
-        private @Nullable Integer idleTimeMins;
+        private Integer idleTimeMins;
         private String name;
-        private @Nullable List<GetRuleRdsTcp> tcps;
         public Builder() {}
         public Builder(GetRuleRdsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cloudConnectorId = defaults.cloudConnectorId;
-    	      this.database = defaults.database;
     	      this.depends = defaults.depends;
+    	      this.dryRun = defaults.dryRun;
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.idleTimeMins = defaults.idleTimeMins;
     	      this.name = defaults.name;
-    	      this.tcps = defaults.tcps;
         }
 
         @CustomType.Setter
@@ -147,21 +138,23 @@ public final class GetRuleRdsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder database(GetRuleRdsDatabase database) {
-            if (database == null) {
-              throw new MissingRequiredPropertyException("GetRuleRdsResult", "database");
+        public Builder depends(List<GetRuleRdsDepend> depends) {
+            if (depends == null) {
+              throw new MissingRequiredPropertyException("GetRuleRdsResult", "depends");
             }
-            this.database = database;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder depends(@Nullable List<GetRuleRdsDepend> depends) {
-
             this.depends = depends;
             return this;
         }
         public Builder depends(GetRuleRdsDepend... depends) {
             return depends(List.of(depends));
+        }
+        @CustomType.Setter
+        public Builder dryRun(Boolean dryRun) {
+            if (dryRun == null) {
+              throw new MissingRequiredPropertyException("GetRuleRdsResult", "dryRun");
+            }
+            this.dryRun = dryRun;
+            return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -180,8 +173,10 @@ public final class GetRuleRdsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder idleTimeMins(@Nullable Integer idleTimeMins) {
-
+        public Builder idleTimeMins(Integer idleTimeMins) {
+            if (idleTimeMins == null) {
+              throw new MissingRequiredPropertyException("GetRuleRdsResult", "idleTimeMins");
+            }
             this.idleTimeMins = idleTimeMins;
             return this;
         }
@@ -193,25 +188,15 @@ public final class GetRuleRdsResult {
             this.name = name;
             return this;
         }
-        @CustomType.Setter
-        public Builder tcps(@Nullable List<GetRuleRdsTcp> tcps) {
-
-            this.tcps = tcps;
-            return this;
-        }
-        public Builder tcps(GetRuleRdsTcp... tcps) {
-            return tcps(List.of(tcps));
-        }
         public GetRuleRdsResult build() {
             final var _resultValue = new GetRuleRdsResult();
             _resultValue.cloudConnectorId = cloudConnectorId;
-            _resultValue.database = database;
             _resultValue.depends = depends;
+            _resultValue.dryRun = dryRun;
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.idleTimeMins = idleTimeMins;
             _resultValue.name = name;
-            _resultValue.tcps = tcps;
             return _resultValue;
         }
     }

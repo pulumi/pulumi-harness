@@ -5,13 +5,7 @@ package com.pulumi.harness.autostopping.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.harness.autostopping.inputs.GetRuleEcsContainerArgs;
-import com.pulumi.harness.autostopping.inputs.GetRuleEcsDependArgs;
-import com.pulumi.harness.autostopping.inputs.GetRuleEcsHttpArgs;
-import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -22,111 +16,39 @@ public final class GetRuleEcsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetRuleEcsArgs Empty = new GetRuleEcsArgs();
 
     /**
-     * Id of the cloud connector
+     * Unique identifier of the resource. Either `identifier` or `name` must be specified.
      * 
      */
-    @Import(name="cloudConnectorId", required=true)
-    private Output<String> cloudConnectorId;
+    @Import(name="identifier")
+    private @Nullable Output<String> identifier;
 
     /**
-     * @return Id of the cloud connector
+     * @return Unique identifier of the resource. Either `identifier` or `name` must be specified.
      * 
      */
-    public Output<String> cloudConnectorId() {
-        return this.cloudConnectorId;
-    }
-
-    @Import(name="container")
-    private @Nullable Output<GetRuleEcsContainerArgs> container;
-
-    public Optional<Output<GetRuleEcsContainerArgs>> container() {
-        return Optional.ofNullable(this.container);
+    public Optional<Output<String>> identifier() {
+        return Optional.ofNullable(this.identifier);
     }
 
     /**
-     * Custom URLs used to access the instances
+     * Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      * 
      */
-    @Import(name="customDomains")
-    private @Nullable Output<List<String>> customDomains;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
-     * @return Custom URLs used to access the instances
+     * @return Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      * 
      */
-    public Optional<Output<List<String>>> customDomains() {
-        return Optional.ofNullable(this.customDomains);
-    }
-
-    /**
-     * Dependent rules
-     * 
-     */
-    @Import(name="depends")
-    private @Nullable Output<List<GetRuleEcsDependArgs>> depends;
-
-    /**
-     * @return Dependent rules
-     * 
-     */
-    public Optional<Output<List<GetRuleEcsDependArgs>>> depends() {
-        return Optional.ofNullable(this.depends);
-    }
-
-    /**
-     * Http routing configuration
-     * 
-     */
-    @Import(name="https")
-    private @Nullable Output<List<GetRuleEcsHttpArgs>> https;
-
-    /**
-     * @return Http routing configuration
-     * 
-     */
-    public Optional<Output<List<GetRuleEcsHttpArgs>>> https() {
-        return Optional.ofNullable(this.https);
-    }
-
-    /**
-     * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-     * 
-     */
-    @Import(name="idleTimeMins")
-    private @Nullable Output<Integer> idleTimeMins;
-
-    /**
-     * @return Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-     * 
-     */
-    public Optional<Output<Integer>> idleTimeMins() {
-        return Optional.ofNullable(this.idleTimeMins);
-    }
-
-    /**
-     * Name of the rule
-     * 
-     */
-    @Import(name="name", required=true)
-    private Output<String> name;
-
-    /**
-     * @return Name of the rule
-     * 
-     */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     private GetRuleEcsArgs() {}
 
     private GetRuleEcsArgs(GetRuleEcsArgs $) {
-        this.cloudConnectorId = $.cloudConnectorId;
-        this.container = $.container;
-        this.customDomains = $.customDomains;
-        this.depends = $.depends;
-        this.https = $.https;
-        this.idleTimeMins = $.idleTimeMins;
+        this.identifier = $.identifier;
         this.name = $.name;
     }
 
@@ -149,162 +71,39 @@ public final class GetRuleEcsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param cloudConnectorId Id of the cloud connector
+         * @param identifier Unique identifier of the resource. Either `identifier` or `name` must be specified.
          * 
          * @return builder
          * 
          */
-        public Builder cloudConnectorId(Output<String> cloudConnectorId) {
-            $.cloudConnectorId = cloudConnectorId;
+        public Builder identifier(@Nullable Output<String> identifier) {
+            $.identifier = identifier;
             return this;
         }
 
         /**
-         * @param cloudConnectorId Id of the cloud connector
+         * @param identifier Unique identifier of the resource. Either `identifier` or `name` must be specified.
          * 
          * @return builder
          * 
          */
-        public Builder cloudConnectorId(String cloudConnectorId) {
-            return cloudConnectorId(Output.of(cloudConnectorId));
-        }
-
-        public Builder container(@Nullable Output<GetRuleEcsContainerArgs> container) {
-            $.container = container;
-            return this;
-        }
-
-        public Builder container(GetRuleEcsContainerArgs container) {
-            return container(Output.of(container));
+        public Builder identifier(String identifier) {
+            return identifier(Output.of(identifier));
         }
 
         /**
-         * @param customDomains Custom URLs used to access the instances
+         * @param name Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
          * 
          * @return builder
          * 
          */
-        public Builder customDomains(@Nullable Output<List<String>> customDomains) {
-            $.customDomains = customDomains;
-            return this;
-        }
-
-        /**
-         * @param customDomains Custom URLs used to access the instances
-         * 
-         * @return builder
-         * 
-         */
-        public Builder customDomains(List<String> customDomains) {
-            return customDomains(Output.of(customDomains));
-        }
-
-        /**
-         * @param customDomains Custom URLs used to access the instances
-         * 
-         * @return builder
-         * 
-         */
-        public Builder customDomains(String... customDomains) {
-            return customDomains(List.of(customDomains));
-        }
-
-        /**
-         * @param depends Dependent rules
-         * 
-         * @return builder
-         * 
-         */
-        public Builder depends(@Nullable Output<List<GetRuleEcsDependArgs>> depends) {
-            $.depends = depends;
-            return this;
-        }
-
-        /**
-         * @param depends Dependent rules
-         * 
-         * @return builder
-         * 
-         */
-        public Builder depends(List<GetRuleEcsDependArgs> depends) {
-            return depends(Output.of(depends));
-        }
-
-        /**
-         * @param depends Dependent rules
-         * 
-         * @return builder
-         * 
-         */
-        public Builder depends(GetRuleEcsDependArgs... depends) {
-            return depends(List.of(depends));
-        }
-
-        /**
-         * @param https Http routing configuration
-         * 
-         * @return builder
-         * 
-         */
-        public Builder https(@Nullable Output<List<GetRuleEcsHttpArgs>> https) {
-            $.https = https;
-            return this;
-        }
-
-        /**
-         * @param https Http routing configuration
-         * 
-         * @return builder
-         * 
-         */
-        public Builder https(List<GetRuleEcsHttpArgs> https) {
-            return https(Output.of(https));
-        }
-
-        /**
-         * @param https Http routing configuration
-         * 
-         * @return builder
-         * 
-         */
-        public Builder https(GetRuleEcsHttpArgs... https) {
-            return https(List.of(https));
-        }
-
-        /**
-         * @param idleTimeMins Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder idleTimeMins(@Nullable Output<Integer> idleTimeMins) {
-            $.idleTimeMins = idleTimeMins;
-            return this;
-        }
-
-        /**
-         * @param idleTimeMins Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder idleTimeMins(Integer idleTimeMins) {
-            return idleTimeMins(Output.of(idleTimeMins));
-        }
-
-        /**
-         * @param name Name of the rule
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Name of the rule
+         * @param name Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
          * 
          * @return builder
          * 
@@ -314,12 +113,6 @@ public final class GetRuleEcsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetRuleEcsArgs build() {
-            if ($.cloudConnectorId == null) {
-                throw new MissingRequiredPropertyException("GetRuleEcsArgs", "cloudConnectorId");
-            }
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetRuleEcsArgs", "name");
-            }
             return $;
         }
     }

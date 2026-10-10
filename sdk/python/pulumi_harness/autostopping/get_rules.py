@@ -98,18 +98,25 @@ def get_rules(kind: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_harness as harness
 
+    # Returns all autostopping rules without any filtering.
     all = harness.autostopping.get_rules()
     pulumi.export("allRules", all.rules)
     pulumi.export("allRuleIds", [r.id for r in all.rules])
+    # Returns only rules of kind "instance"
     by_instance_kind = harness.autostopping.get_rules(kind="instance")
     pulumi.export("byInstanceKind", by_instance_kind.rules)
     pulumi.export("byInstanceKindIds", [r.id for r in by_instance_kind.rules])
+    # Returns only rules of kind "k8s"
     by_k8s_kind = harness.autostopping.get_rules(kind="k8s")
     pulumi.export("k8sRules", by_k8s_kind.rules)
     pulumi.export("k8sRuleIds", [r.id for r in by_k8s_kind.rules])
+    # Returns rules whose name starts with "myname-" followed by any characters.
+    # Regex: "myname-.*" matches e.g. "myname-prod", "myname-01", "myname-anything".
     by_name_prefix = harness.autostopping.get_rules(name="myname-.*")
     pulumi.export("rulesByNamePrefix", by_name_prefix.rules)
     pulumi.export("rulesByNamePrefixIds", [r.id for r in by_name_prefix.rules])
+    # Returns rules whose name starts with "app" or "svc" followed by any characters.
+    # Regex: "^(app|svc).*" matches e.g. "app-prod", "svc-backend", "appserver" but NOT "myapp".
     by_name_regex = harness.autostopping.get_rules(name="^(app|svc).*")
     pulumi.export("rulesByNameRegex", by_name_regex.rules)
     pulumi.export("rulesByNameRegexIds", [r.id for r in by_name_regex.rules])
@@ -142,18 +149,25 @@ def get_rules_output(kind: pulumi.Input[Optional[Optional[_builtins.str]]] = Non
     import pulumi
     import pulumi_harness as harness
 
+    # Returns all autostopping rules without any filtering.
     all = harness.autostopping.get_rules()
     pulumi.export("allRules", all.rules)
     pulumi.export("allRuleIds", [r.id for r in all.rules])
+    # Returns only rules of kind "instance"
     by_instance_kind = harness.autostopping.get_rules(kind="instance")
     pulumi.export("byInstanceKind", by_instance_kind.rules)
     pulumi.export("byInstanceKindIds", [r.id for r in by_instance_kind.rules])
+    # Returns only rules of kind "k8s"
     by_k8s_kind = harness.autostopping.get_rules(kind="k8s")
     pulumi.export("k8sRules", by_k8s_kind.rules)
     pulumi.export("k8sRuleIds", [r.id for r in by_k8s_kind.rules])
+    # Returns rules whose name starts with "myname-" followed by any characters.
+    # Regex: "myname-.*" matches e.g. "myname-prod", "myname-01", "myname-anything".
     by_name_prefix = harness.autostopping.get_rules(name="myname-.*")
     pulumi.export("rulesByNamePrefix", by_name_prefix.rules)
     pulumi.export("rulesByNamePrefixIds", [r.id for r in by_name_prefix.rules])
+    # Returns rules whose name starts with "app" or "svc" followed by any characters.
+    # Regex: "^(app|svc).*" matches e.g. "app-prod", "svc-backend", "appserver" but NOT "myapp".
     by_name_regex = harness.autostopping.get_rules(name="^(app|svc).*")
     pulumi.export("rulesByNameRegex", by_name_regex.rules)
     pulumi.export("rulesByNameRegexIds", [r.id for r in by_name_regex.rules])

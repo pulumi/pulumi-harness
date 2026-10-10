@@ -13,6 +13,1419 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource struct {
+	// Helm chart name. Must be specified for applications sourced from a Helm repo.
+	Chart *string `pulumi:"chart"`
+	// Path/directory specific options.
+	Directory *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory `pulumi:"directory"`
+	// Helm specific options.
+	Helm *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm `pulumi:"helm"`
+	// Kustomize specific options.
+	Kustomize *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize `pulumi:"kustomize"`
+	// Directory path within the repository. Only valid for applications sourced from Git.
+	Path *string `pulumi:"path"`
+	// Config management plugin specific options.
+	Plugin *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePlugin `pulumi:"plugin"`
+	// Reference to another `source` within defined sources. See associated documentation on [Helm value files from external Git repository](https://argo-cd.readthedocs.io/en/stable/user-guide/multiple_sources/#helm-value-files-from-external-git-repository) regarding combining `ref` with `path` and/or `chart`.
+	Ref *string `pulumi:"ref"`
+	// URL to the repository (Git or Helm) that contains the application manifests.
+	RepoUrl *string `pulumi:"repoUrl"`
+	// Revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version.
+	TargetRevision *string `pulumi:"targetRevision"`
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArgs and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArgs{...}
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArgs struct {
+	// Helm chart name. Must be specified for applications sourced from a Helm repo.
+	Chart pulumi.StringPtrInput `pulumi:"chart"`
+	// Path/directory specific options.
+	Directory GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrInput `pulumi:"directory"`
+	// Helm specific options.
+	Helm GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrInput `pulumi:"helm"`
+	// Kustomize specific options.
+	Kustomize GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrInput `pulumi:"kustomize"`
+	// Directory path within the repository. Only valid for applications sourced from Git.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Config management plugin specific options.
+	Plugin GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrInput `pulumi:"plugin"`
+	// Reference to another `source` within defined sources. See associated documentation on [Helm value files from external Git repository](https://argo-cd.readthedocs.io/en/stable/user-guide/multiple_sources/#helm-value-files-from-external-git-repository) regarding combining `ref` with `path` and/or `chart`.
+	Ref pulumi.StringPtrInput `pulumi:"ref"`
+	// URL to the repository (Git or Helm) that contains the application manifests.
+	RepoUrl pulumi.StringPtrInput `pulumi:"repoUrl"`
+	// Revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version.
+	TargetRevision pulumi.StringPtrInput `pulumi:"targetRevision"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput)
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArray and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArray{ GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArgs{...} }
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArray []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceInput
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput {
+	return o
+}
+
+// Helm chart name. Must be specified for applications sourced from a Helm repo.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) Chart() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource) *string {
+		return v.Chart
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path/directory specific options.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) Directory() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory {
+		return v.Directory
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput)
+}
+
+// Helm specific options.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) Helm() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm {
+		return v.Helm
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput)
+}
+
+// Kustomize specific options.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) Kustomize() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize {
+		return v.Kustomize
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput)
+}
+
+// Directory path within the repository. Only valid for applications sourced from Git.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource) *string {
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Config management plugin specific options.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) Plugin() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePlugin {
+		return v.Plugin
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput)
+}
+
+// Reference to another `source` within defined sources. See associated documentation on [Helm value files from external Git repository](https://argo-cd.readthedocs.io/en/stable/user-guide/multiple_sources/#helm-value-files-from-external-git-repository) regarding combining `ref` with `path` and/or `chart`.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource) *string {
+		return v.Ref
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL to the repository (Git or Helm) that contains the application manifests.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) RepoUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource) *string {
+		return v.RepoUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) TargetRevision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource) *string {
+		return v.TargetRevision
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource {
+		return vs[0].([]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource)[vs[1].(int)]
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory struct {
+	// Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation. This takes precedence over the `include` field. To match multiple patterns, wrap the patterns in {} and separate them with commas. For example: '{config.yaml,env-use2/*}'
+	Exclude *string `pulumi:"exclude"`
+	// Glob pattern to match paths against that should be explicitly included during manifest generation. If this field is set, only matching manifests will be included. To match multiple patterns, wrap the patterns in {} and separate them with commas. For example: '{*.yml,*.yaml}'
+	Include *string `pulumi:"include"`
+	// Jsonnet specific options.
+	Jsonnet *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet `pulumi:"jsonnet"`
+	// Whether to scan a directory recursively for manifests.
+	Recurse *bool `pulumi:"recurse"`
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs{...}
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs struct {
+	// Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation. This takes precedence over the `include` field. To match multiple patterns, wrap the patterns in {} and separate them with commas. For example: '{config.yaml,env-use2/*}'
+	Exclude pulumi.StringPtrInput `pulumi:"exclude"`
+	// Glob pattern to match paths against that should be explicitly included during manifest generation. If this field is set, only matching manifests will be included. To match multiple patterns, wrap the patterns in {} and separate them with commas. For example: '{*.yml,*.yaml}'
+	Include pulumi.StringPtrInput `pulumi:"include"`
+	// Jsonnet specific options.
+	Jsonnet GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrInput `pulumi:"jsonnet"`
+	// Whether to scan a directory recursively for manifests.
+	Recurse pulumi.BoolPtrInput `pulumi:"recurse"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput)
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput).ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutputWithContext(ctx)
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs, GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtr and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrInput` via:
+//
+//	        GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput
+}
+
+type gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrType GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs
+
+func GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtr(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrInput {
+	return (*gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrType)(v)
+}
+
+func (*gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory)(nil)).Elem()
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput {
+	return o.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory {
+		return &v
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput)
+}
+
+// Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation. This takes precedence over the `include` field. To match multiple patterns, wrap the patterns in {} and separate them with commas. For example: '{config.yaml,env-use2/*}'
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput) Exclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory) *string {
+		return v.Exclude
+	}).(pulumi.StringPtrOutput)
+}
+
+// Glob pattern to match paths against that should be explicitly included during manifest generation. If this field is set, only matching manifests will be included. To match multiple patterns, wrap the patterns in {} and separate them with commas. For example: '{*.yml,*.yaml}'
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput) Include() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory) *string {
+		return v.Include
+	}).(pulumi.StringPtrOutput)
+}
+
+// Jsonnet specific options.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput) Jsonnet() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet {
+		return v.Jsonnet
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput)
+}
+
+// Whether to scan a directory recursively for manifests.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput) Recurse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory) *bool {
+		return v.Recurse
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory {
+		if v != nil {
+			return *v
+		}
+		var ret GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory
+		return ret
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput)
+}
+
+// Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation. This takes precedence over the `include` field. To match multiple patterns, wrap the patterns in {} and separate them with commas. For example: '{config.yaml,env-use2/*}'
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput) Exclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Exclude
+	}).(pulumi.StringPtrOutput)
+}
+
+// Glob pattern to match paths against that should be explicitly included during manifest generation. If this field is set, only matching manifests will be included. To match multiple patterns, wrap the patterns in {} and separate them with commas. For example: '{*.yml,*.yaml}'
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput) Include() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Include
+	}).(pulumi.StringPtrOutput)
+}
+
+// Jsonnet specific options.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput) Jsonnet() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet {
+		if v == nil {
+			return nil
+		}
+		return v.Jsonnet
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput)
+}
+
+// Whether to scan a directory recursively for manifests.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput) Recurse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Recurse
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet struct {
+	// List of Jsonnet External Variables.
+	ExtVars []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar `pulumi:"extVars"`
+	// Additional library search dirs.
+	Libs []string `pulumi:"libs"`
+	// List of Jsonnet Top-level Arguments
+	Tlas []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla `pulumi:"tlas"`
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs{...}
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs struct {
+	// List of Jsonnet External Variables.
+	ExtVars GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayInput `pulumi:"extVars"`
+	// Additional library search dirs.
+	Libs pulumi.StringArrayInput `pulumi:"libs"`
+	// List of Jsonnet Top-level Arguments
+	Tlas GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayInput `pulumi:"tlas"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput)
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput).ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutputWithContext(ctx)
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs, GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtr and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrInput` via:
+//
+//	        GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput
+}
+
+type gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrType GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs
+
+func GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtr(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrInput {
+	return (*gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrType)(v)
+}
+
+func (*gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet)(nil)).Elem()
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutputWithContext(context.Background())
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput {
+	return o.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutputWithContext(context.Background())
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet {
+		return &v
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput)
+}
+
+// List of Jsonnet External Variables.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput) ExtVars() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet) []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar {
+		return v.ExtVars
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput)
+}
+
+// Additional library search dirs.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput) Libs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet) []string {
+		return v.Libs
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of Jsonnet Top-level Arguments
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput) Tlas() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet) []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla {
+		return v.Tlas
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet {
+		if v != nil {
+			return *v
+		}
+		var ret GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet
+		return ret
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput)
+}
+
+// List of Jsonnet External Variables.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput) ExtVars() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet) []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar {
+		if v == nil {
+			return nil
+		}
+		return v.ExtVars
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput)
+}
+
+// Additional library search dirs.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput) Libs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Libs
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of Jsonnet Top-level Arguments
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput) Tlas() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet) []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla {
+		if v == nil {
+			return nil
+		}
+		return v.Tlas
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar struct {
+	// Determines whether the variable should be evaluated as jsonnet code or treated as string.
+	Code *bool `pulumi:"code"`
+	// Name of Jsonnet variable.
+	Name *string `pulumi:"name"`
+	// Value of Jsonnet variable.
+	Value *string `pulumi:"value"`
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArgs and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArgs{...}
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArgs struct {
+	// Determines whether the variable should be evaluated as jsonnet code or treated as string.
+	Code pulumi.BoolPtrInput `pulumi:"code"`
+	// Name of Jsonnet variable.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of Jsonnet variable.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput)
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArray and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArray{ GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArgs{...} }
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArray []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarInput
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput {
+	return o
+}
+
+// Determines whether the variable should be evaluated as jsonnet code or treated as string.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput) Code() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar) *bool {
+		return v.Code
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Name of Jsonnet variable.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value of Jsonnet variable.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar {
+		return vs[0].([]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar)[vs[1].(int)]
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla struct {
+	// Determines whether the variable should be evaluated as jsonnet code or treated as string.
+	Code *bool `pulumi:"code"`
+	// Name of Jsonnet variable.
+	Name *string `pulumi:"name"`
+	// Value of Jsonnet variable.
+	Value *string `pulumi:"value"`
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArgs and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArgs{...}
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArgs struct {
+	// Determines whether the variable should be evaluated as jsonnet code or treated as string.
+	Code pulumi.BoolPtrInput `pulumi:"code"`
+	// Name of Jsonnet variable.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of Jsonnet variable.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput)
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArray and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArray{ GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArgs{...} }
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArray []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaInput
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput {
+	return o
+}
+
+// Determines whether the variable should be evaluated as jsonnet code or treated as string.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput) Code() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla) *bool {
+		return v.Code
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Name of Jsonnet variable.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value of Jsonnet variable.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla {
+		return vs[0].([]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla)[vs[1].(int)]
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm struct {
+	// File parameters for the helm template.
+	FileParameters []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter `pulumi:"fileParameters"`
+	// Prevents 'helm template' from failing when `valueFiles` do not exist locally by not appending them to 'helm template --values'.
+	IgnoreMissingValueFiles *bool `pulumi:"ignoreMissingValueFiles"`
+	// Helm parameters which are passed to the helm template command upon manifest generation.
+	Parameters []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter `pulumi:"parameters"`
+	// If true then adds '--pass-credentials' to Helm commands to pass credentials to all domains.
+	PassCredentials *bool `pulumi:"passCredentials"`
+	// Helm release name. If omitted it will use the application name.
+	ReleaseName *string `pulumi:"releaseName"`
+	// Whether to skip custom resource definition installation step (Helm's [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
+	SkipCrds *bool `pulumi:"skipCrds"`
+	// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+	SkipSchemaValidation *bool `pulumi:"skipSchemaValidation"`
+	// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+	SkipTests *bool `pulumi:"skipTests"`
+	// List of Helm value files to use when generating a template.
+	ValueFiles []string `pulumi:"valueFiles"`
+	// Helm values to be passed to 'helm template', typically defined as a block.
+	Values *string `pulumi:"values"`
+	// Helm values to be passed to 'helm template', typically defined as a block.
+	ValuesObject map[string]string `pulumi:"valuesObject"`
+	// Helm version to use for templating (either "2" or "3").
+	Version *string `pulumi:"version"`
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs{...}
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs struct {
+	// File parameters for the helm template.
+	FileParameters GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayInput `pulumi:"fileParameters"`
+	// Prevents 'helm template' from failing when `valueFiles` do not exist locally by not appending them to 'helm template --values'.
+	IgnoreMissingValueFiles pulumi.BoolPtrInput `pulumi:"ignoreMissingValueFiles"`
+	// Helm parameters which are passed to the helm template command upon manifest generation.
+	Parameters GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayInput `pulumi:"parameters"`
+	// If true then adds '--pass-credentials' to Helm commands to pass credentials to all domains.
+	PassCredentials pulumi.BoolPtrInput `pulumi:"passCredentials"`
+	// Helm release name. If omitted it will use the application name.
+	ReleaseName pulumi.StringPtrInput `pulumi:"releaseName"`
+	// Whether to skip custom resource definition installation step (Helm's [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
+	SkipCrds pulumi.BoolPtrInput `pulumi:"skipCrds"`
+	// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+	SkipSchemaValidation pulumi.BoolPtrInput `pulumi:"skipSchemaValidation"`
+	// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+	SkipTests pulumi.BoolPtrInput `pulumi:"skipTests"`
+	// List of Helm value files to use when generating a template.
+	ValueFiles pulumi.StringArrayInput `pulumi:"valueFiles"`
+	// Helm values to be passed to 'helm template', typically defined as a block.
+	Values pulumi.StringPtrInput `pulumi:"values"`
+	// Helm values to be passed to 'helm template', typically defined as a block.
+	ValuesObject pulumi.StringMapInput `pulumi:"valuesObject"`
+	// Helm version to use for templating (either "2" or "3").
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput)
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput).ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutputWithContext(ctx)
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs, GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtr and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrInput` via:
+//
+//	        GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput
+}
+
+type gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrType GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs
+
+func GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtr(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrInput {
+	return (*gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrType)(v)
+}
+
+func (*gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm)(nil)).Elem()
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutputWithContext(context.Background())
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput {
+	return o.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutputWithContext(context.Background())
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm {
+		return &v
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput)
+}
+
+// File parameters for the helm template.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) FileParameters() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter {
+		return v.FileParameters
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput)
+}
+
+// Prevents 'helm template' from failing when `valueFiles` do not exist locally by not appending them to 'helm template --values'.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) IgnoreMissingValueFiles() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *bool {
+		return v.IgnoreMissingValueFiles
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Helm parameters which are passed to the helm template command upon manifest generation.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) Parameters() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter {
+		return v.Parameters
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput)
+}
+
+// If true then adds '--pass-credentials' to Helm commands to pass credentials to all domains.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) PassCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *bool {
+		return v.PassCredentials
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Helm release name. If omitted it will use the application name.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) ReleaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *string {
+		return v.ReleaseName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to skip custom resource definition installation step (Helm's [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) SkipCrds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *bool {
+		return v.SkipCrds
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) SkipSchemaValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *bool {
+		return v.SkipSchemaValidation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) SkipTests() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *bool {
+		return v.SkipTests
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of Helm value files to use when generating a template.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) ValueFiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) []string {
+		return v.ValueFiles
+	}).(pulumi.StringArrayOutput)
+}
+
+// Helm values to be passed to 'helm template', typically defined as a block.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) Values() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *string {
+		return v.Values
+	}).(pulumi.StringPtrOutput)
+}
+
+// Helm values to be passed to 'helm template', typically defined as a block.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) ValuesObject() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) map[string]string {
+		return v.ValuesObject
+	}).(pulumi.StringMapOutput)
+}
+
+// Helm version to use for templating (either "2" or "3").
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *string {
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm {
+		if v != nil {
+			return *v
+		}
+		var ret GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm
+		return ret
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput)
+}
+
+// File parameters for the helm template.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) FileParameters() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter {
+		if v == nil {
+			return nil
+		}
+		return v.FileParameters
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput)
+}
+
+// Prevents 'helm template' from failing when `valueFiles` do not exist locally by not appending them to 'helm template --values'.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) IgnoreMissingValueFiles() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreMissingValueFiles
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Helm parameters which are passed to the helm template command upon manifest generation.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) Parameters() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput)
+}
+
+// If true then adds '--pass-credentials' to Helm commands to pass credentials to all domains.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) PassCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PassCredentials
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Helm release name. If omitted it will use the application name.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) ReleaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReleaseName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to skip custom resource definition installation step (Helm's [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) SkipCrds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SkipCrds
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) SkipSchemaValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SkipSchemaValidation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) SkipTests() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SkipTests
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of Helm value files to use when generating a template.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) ValueFiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ValueFiles
+	}).(pulumi.StringArrayOutput)
+}
+
+// Helm values to be passed to 'helm template', typically defined as a block.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) Values() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringPtrOutput)
+}
+
+// Helm values to be passed to 'helm template', typically defined as a block.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) ValuesObject() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ValuesObject
+	}).(pulumi.StringMapOutput)
+}
+
+// Helm version to use for templating (either "2" or "3").
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter struct {
+	// Name of the Helm parameter.
+	Name string `pulumi:"name"`
+	// Path to the file containing the values for the Helm parameter.
+	Path string `pulumi:"path"`
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArgs and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArgs{...}
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArgs struct {
+	// Name of the Helm parameter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Path to the file containing the values for the Helm parameter.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput)
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArray and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArray{ GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArgs{...} }
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArray []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterInput
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput {
+	return o
+}
+
+// Name of the Helm parameter.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+// Path to the file containing the values for the Helm parameter.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter) string {
+		return v.Path
+	}).(pulumi.StringOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter {
+		return vs[0].([]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter)[vs[1].(int)]
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter struct {
+	// Determines whether to tell Helm to interpret booleans and numbers as strings.
+	ForceString *bool `pulumi:"forceString"`
+	// Name of the Helm parameter.
+	Name *string `pulumi:"name"`
+	// Value of the Helm parameter.
+	Value *string `pulumi:"value"`
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArgs and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArgs{...}
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArgs struct {
+	// Determines whether to tell Helm to interpret booleans and numbers as strings.
+	ForceString pulumi.BoolPtrInput `pulumi:"forceString"`
+	// Name of the Helm parameter.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the Helm parameter.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput)
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArray and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArray{ GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArgs{...} }
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArray []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterInput
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput {
+	return o
+}
+
+// Determines whether to tell Helm to interpret booleans and numbers as strings.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput) ForceString() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter) *bool {
+		return v.ForceString
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Name of the Helm parameter.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value of the Helm parameter.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter {
+		return vs[0].([]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter)[vs[1].(int)]
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput)
+}
+
 type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize struct {
 	// List of additional annotations to add to rendered manifests.
 	CommonAnnotations map[string]string `pulumi:"commonAnnotations"`
@@ -34657,6 +36070,567 @@ func (o GetCentralNotificationRuleNotificationConditionNotificationEventConfigAr
 	}).(GetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput)
 }
 
+type GetConnectorAnthropicModelAuth struct {
+	// Authentication type for the Anthropic connector.
+	AuthType string `pulumi:"authType"`
+	// Authenticate using an AWS Bedrock API key.
+	BedrockApiKeys []GetConnectorAnthropicModelAuthBedrockApiKey `pulumi:"bedrockApiKeys"`
+	// Authenticate using an existing cloud provider connector.
+	CloudProviders []GetConnectorAnthropicModelAuthCloudProvider `pulumi:"cloudProviders"`
+	// Authenticate using an Anthropic API token.
+	Tokens []GetConnectorAnthropicModelAuthToken `pulumi:"tokens"`
+	// Authenticate using Google Vertex AI credentials.
+	Vertices []GetConnectorAnthropicModelAuthVertex `pulumi:"vertices"`
+}
+
+// GetConnectorAnthropicModelAuthInput is an input type that accepts GetConnectorAnthropicModelAuthArgs and GetConnectorAnthropicModelAuthOutput values.
+// You can construct a concrete instance of `GetConnectorAnthropicModelAuthInput` via:
+//
+//	GetConnectorAnthropicModelAuthArgs{...}
+type GetConnectorAnthropicModelAuthInput interface {
+	pulumi.Input
+
+	ToGetConnectorAnthropicModelAuthOutput() GetConnectorAnthropicModelAuthOutput
+	ToGetConnectorAnthropicModelAuthOutputWithContext(context.Context) GetConnectorAnthropicModelAuthOutput
+}
+
+type GetConnectorAnthropicModelAuthArgs struct {
+	// Authentication type for the Anthropic connector.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Authenticate using an AWS Bedrock API key.
+	BedrockApiKeys GetConnectorAnthropicModelAuthBedrockApiKeyArrayInput `pulumi:"bedrockApiKeys"`
+	// Authenticate using an existing cloud provider connector.
+	CloudProviders GetConnectorAnthropicModelAuthCloudProviderArrayInput `pulumi:"cloudProviders"`
+	// Authenticate using an Anthropic API token.
+	Tokens GetConnectorAnthropicModelAuthTokenArrayInput `pulumi:"tokens"`
+	// Authenticate using Google Vertex AI credentials.
+	Vertices GetConnectorAnthropicModelAuthVertexArrayInput `pulumi:"vertices"`
+}
+
+func (GetConnectorAnthropicModelAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorAnthropicModelAuth)(nil)).Elem()
+}
+
+func (i GetConnectorAnthropicModelAuthArgs) ToGetConnectorAnthropicModelAuthOutput() GetConnectorAnthropicModelAuthOutput {
+	return i.ToGetConnectorAnthropicModelAuthOutputWithContext(context.Background())
+}
+
+func (i GetConnectorAnthropicModelAuthArgs) ToGetConnectorAnthropicModelAuthOutputWithContext(ctx context.Context) GetConnectorAnthropicModelAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorAnthropicModelAuthOutput)
+}
+
+// GetConnectorAnthropicModelAuthArrayInput is an input type that accepts GetConnectorAnthropicModelAuthArray and GetConnectorAnthropicModelAuthArrayOutput values.
+// You can construct a concrete instance of `GetConnectorAnthropicModelAuthArrayInput` via:
+//
+//	GetConnectorAnthropicModelAuthArray{ GetConnectorAnthropicModelAuthArgs{...} }
+type GetConnectorAnthropicModelAuthArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorAnthropicModelAuthArrayOutput() GetConnectorAnthropicModelAuthArrayOutput
+	ToGetConnectorAnthropicModelAuthArrayOutputWithContext(context.Context) GetConnectorAnthropicModelAuthArrayOutput
+}
+
+type GetConnectorAnthropicModelAuthArray []GetConnectorAnthropicModelAuthInput
+
+func (GetConnectorAnthropicModelAuthArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorAnthropicModelAuth)(nil)).Elem()
+}
+
+func (i GetConnectorAnthropicModelAuthArray) ToGetConnectorAnthropicModelAuthArrayOutput() GetConnectorAnthropicModelAuthArrayOutput {
+	return i.ToGetConnectorAnthropicModelAuthArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorAnthropicModelAuthArray) ToGetConnectorAnthropicModelAuthArrayOutputWithContext(ctx context.Context) GetConnectorAnthropicModelAuthArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorAnthropicModelAuthArrayOutput)
+}
+
+type GetConnectorAnthropicModelAuthOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorAnthropicModelAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorAnthropicModelAuth)(nil)).Elem()
+}
+
+func (o GetConnectorAnthropicModelAuthOutput) ToGetConnectorAnthropicModelAuthOutput() GetConnectorAnthropicModelAuthOutput {
+	return o
+}
+
+func (o GetConnectorAnthropicModelAuthOutput) ToGetConnectorAnthropicModelAuthOutputWithContext(ctx context.Context) GetConnectorAnthropicModelAuthOutput {
+	return o
+}
+
+// Authentication type for the Anthropic connector.
+func (o GetConnectorAnthropicModelAuthOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorAnthropicModelAuth) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Authenticate using an AWS Bedrock API key.
+func (o GetConnectorAnthropicModelAuthOutput) BedrockApiKeys() GetConnectorAnthropicModelAuthBedrockApiKeyArrayOutput {
+	return o.ApplyT(func(v GetConnectorAnthropicModelAuth) []GetConnectorAnthropicModelAuthBedrockApiKey {
+		return v.BedrockApiKeys
+	}).(GetConnectorAnthropicModelAuthBedrockApiKeyArrayOutput)
+}
+
+// Authenticate using an existing cloud provider connector.
+func (o GetConnectorAnthropicModelAuthOutput) CloudProviders() GetConnectorAnthropicModelAuthCloudProviderArrayOutput {
+	return o.ApplyT(func(v GetConnectorAnthropicModelAuth) []GetConnectorAnthropicModelAuthCloudProvider {
+		return v.CloudProviders
+	}).(GetConnectorAnthropicModelAuthCloudProviderArrayOutput)
+}
+
+// Authenticate using an Anthropic API token.
+func (o GetConnectorAnthropicModelAuthOutput) Tokens() GetConnectorAnthropicModelAuthTokenArrayOutput {
+	return o.ApplyT(func(v GetConnectorAnthropicModelAuth) []GetConnectorAnthropicModelAuthToken { return v.Tokens }).(GetConnectorAnthropicModelAuthTokenArrayOutput)
+}
+
+// Authenticate using Google Vertex AI credentials.
+func (o GetConnectorAnthropicModelAuthOutput) Vertices() GetConnectorAnthropicModelAuthVertexArrayOutput {
+	return o.ApplyT(func(v GetConnectorAnthropicModelAuth) []GetConnectorAnthropicModelAuthVertex { return v.Vertices }).(GetConnectorAnthropicModelAuthVertexArrayOutput)
+}
+
+type GetConnectorAnthropicModelAuthArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorAnthropicModelAuthArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorAnthropicModelAuth)(nil)).Elem()
+}
+
+func (o GetConnectorAnthropicModelAuthArrayOutput) ToGetConnectorAnthropicModelAuthArrayOutput() GetConnectorAnthropicModelAuthArrayOutput {
+	return o
+}
+
+func (o GetConnectorAnthropicModelAuthArrayOutput) ToGetConnectorAnthropicModelAuthArrayOutputWithContext(ctx context.Context) GetConnectorAnthropicModelAuthArrayOutput {
+	return o
+}
+
+func (o GetConnectorAnthropicModelAuthArrayOutput) Index(i pulumi.IntInput) GetConnectorAnthropicModelAuthOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorAnthropicModelAuth {
+		return vs[0].([]GetConnectorAnthropicModelAuth)[vs[1].(int)]
+	}).(GetConnectorAnthropicModelAuthOutput)
+}
+
+type GetConnectorAnthropicModelAuthBedrockApiKey struct {
+	// Reference to a secret containing the Bedrock API key.
+	ApiKeyRef string `pulumi:"apiKeyRef"`
+	// AWS region for the Bedrock endpoint.
+	Region string `pulumi:"region"`
+}
+
+// GetConnectorAnthropicModelAuthBedrockApiKeyInput is an input type that accepts GetConnectorAnthropicModelAuthBedrockApiKeyArgs and GetConnectorAnthropicModelAuthBedrockApiKeyOutput values.
+// You can construct a concrete instance of `GetConnectorAnthropicModelAuthBedrockApiKeyInput` via:
+//
+//	GetConnectorAnthropicModelAuthBedrockApiKeyArgs{...}
+type GetConnectorAnthropicModelAuthBedrockApiKeyInput interface {
+	pulumi.Input
+
+	ToGetConnectorAnthropicModelAuthBedrockApiKeyOutput() GetConnectorAnthropicModelAuthBedrockApiKeyOutput
+	ToGetConnectorAnthropicModelAuthBedrockApiKeyOutputWithContext(context.Context) GetConnectorAnthropicModelAuthBedrockApiKeyOutput
+}
+
+type GetConnectorAnthropicModelAuthBedrockApiKeyArgs struct {
+	// Reference to a secret containing the Bedrock API key.
+	ApiKeyRef pulumi.StringInput `pulumi:"apiKeyRef"`
+	// AWS region for the Bedrock endpoint.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetConnectorAnthropicModelAuthBedrockApiKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorAnthropicModelAuthBedrockApiKey)(nil)).Elem()
+}
+
+func (i GetConnectorAnthropicModelAuthBedrockApiKeyArgs) ToGetConnectorAnthropicModelAuthBedrockApiKeyOutput() GetConnectorAnthropicModelAuthBedrockApiKeyOutput {
+	return i.ToGetConnectorAnthropicModelAuthBedrockApiKeyOutputWithContext(context.Background())
+}
+
+func (i GetConnectorAnthropicModelAuthBedrockApiKeyArgs) ToGetConnectorAnthropicModelAuthBedrockApiKeyOutputWithContext(ctx context.Context) GetConnectorAnthropicModelAuthBedrockApiKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorAnthropicModelAuthBedrockApiKeyOutput)
+}
+
+// GetConnectorAnthropicModelAuthBedrockApiKeyArrayInput is an input type that accepts GetConnectorAnthropicModelAuthBedrockApiKeyArray and GetConnectorAnthropicModelAuthBedrockApiKeyArrayOutput values.
+// You can construct a concrete instance of `GetConnectorAnthropicModelAuthBedrockApiKeyArrayInput` via:
+//
+//	GetConnectorAnthropicModelAuthBedrockApiKeyArray{ GetConnectorAnthropicModelAuthBedrockApiKeyArgs{...} }
+type GetConnectorAnthropicModelAuthBedrockApiKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorAnthropicModelAuthBedrockApiKeyArrayOutput() GetConnectorAnthropicModelAuthBedrockApiKeyArrayOutput
+	ToGetConnectorAnthropicModelAuthBedrockApiKeyArrayOutputWithContext(context.Context) GetConnectorAnthropicModelAuthBedrockApiKeyArrayOutput
+}
+
+type GetConnectorAnthropicModelAuthBedrockApiKeyArray []GetConnectorAnthropicModelAuthBedrockApiKeyInput
+
+func (GetConnectorAnthropicModelAuthBedrockApiKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorAnthropicModelAuthBedrockApiKey)(nil)).Elem()
+}
+
+func (i GetConnectorAnthropicModelAuthBedrockApiKeyArray) ToGetConnectorAnthropicModelAuthBedrockApiKeyArrayOutput() GetConnectorAnthropicModelAuthBedrockApiKeyArrayOutput {
+	return i.ToGetConnectorAnthropicModelAuthBedrockApiKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorAnthropicModelAuthBedrockApiKeyArray) ToGetConnectorAnthropicModelAuthBedrockApiKeyArrayOutputWithContext(ctx context.Context) GetConnectorAnthropicModelAuthBedrockApiKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorAnthropicModelAuthBedrockApiKeyArrayOutput)
+}
+
+type GetConnectorAnthropicModelAuthBedrockApiKeyOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorAnthropicModelAuthBedrockApiKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorAnthropicModelAuthBedrockApiKey)(nil)).Elem()
+}
+
+func (o GetConnectorAnthropicModelAuthBedrockApiKeyOutput) ToGetConnectorAnthropicModelAuthBedrockApiKeyOutput() GetConnectorAnthropicModelAuthBedrockApiKeyOutput {
+	return o
+}
+
+func (o GetConnectorAnthropicModelAuthBedrockApiKeyOutput) ToGetConnectorAnthropicModelAuthBedrockApiKeyOutputWithContext(ctx context.Context) GetConnectorAnthropicModelAuthBedrockApiKeyOutput {
+	return o
+}
+
+// Reference to a secret containing the Bedrock API key.
+func (o GetConnectorAnthropicModelAuthBedrockApiKeyOutput) ApiKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorAnthropicModelAuthBedrockApiKey) string { return v.ApiKeyRef }).(pulumi.StringOutput)
+}
+
+// AWS region for the Bedrock endpoint.
+func (o GetConnectorAnthropicModelAuthBedrockApiKeyOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorAnthropicModelAuthBedrockApiKey) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetConnectorAnthropicModelAuthBedrockApiKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorAnthropicModelAuthBedrockApiKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorAnthropicModelAuthBedrockApiKey)(nil)).Elem()
+}
+
+func (o GetConnectorAnthropicModelAuthBedrockApiKeyArrayOutput) ToGetConnectorAnthropicModelAuthBedrockApiKeyArrayOutput() GetConnectorAnthropicModelAuthBedrockApiKeyArrayOutput {
+	return o
+}
+
+func (o GetConnectorAnthropicModelAuthBedrockApiKeyArrayOutput) ToGetConnectorAnthropicModelAuthBedrockApiKeyArrayOutputWithContext(ctx context.Context) GetConnectorAnthropicModelAuthBedrockApiKeyArrayOutput {
+	return o
+}
+
+func (o GetConnectorAnthropicModelAuthBedrockApiKeyArrayOutput) Index(i pulumi.IntInput) GetConnectorAnthropicModelAuthBedrockApiKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorAnthropicModelAuthBedrockApiKey {
+		return vs[0].([]GetConnectorAnthropicModelAuthBedrockApiKey)[vs[1].(int)]
+	}).(GetConnectorAnthropicModelAuthBedrockApiKeyOutput)
+}
+
+type GetConnectorAnthropicModelAuthCloudProvider struct {
+	// Reference to an existing cloud provider connector.
+	ConnectorRef string `pulumi:"connectorRef"`
+	// Cloud provider type.
+	Type string `pulumi:"type"`
+}
+
+// GetConnectorAnthropicModelAuthCloudProviderInput is an input type that accepts GetConnectorAnthropicModelAuthCloudProviderArgs and GetConnectorAnthropicModelAuthCloudProviderOutput values.
+// You can construct a concrete instance of `GetConnectorAnthropicModelAuthCloudProviderInput` via:
+//
+//	GetConnectorAnthropicModelAuthCloudProviderArgs{...}
+type GetConnectorAnthropicModelAuthCloudProviderInput interface {
+	pulumi.Input
+
+	ToGetConnectorAnthropicModelAuthCloudProviderOutput() GetConnectorAnthropicModelAuthCloudProviderOutput
+	ToGetConnectorAnthropicModelAuthCloudProviderOutputWithContext(context.Context) GetConnectorAnthropicModelAuthCloudProviderOutput
+}
+
+type GetConnectorAnthropicModelAuthCloudProviderArgs struct {
+	// Reference to an existing cloud provider connector.
+	ConnectorRef pulumi.StringInput `pulumi:"connectorRef"`
+	// Cloud provider type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetConnectorAnthropicModelAuthCloudProviderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorAnthropicModelAuthCloudProvider)(nil)).Elem()
+}
+
+func (i GetConnectorAnthropicModelAuthCloudProviderArgs) ToGetConnectorAnthropicModelAuthCloudProviderOutput() GetConnectorAnthropicModelAuthCloudProviderOutput {
+	return i.ToGetConnectorAnthropicModelAuthCloudProviderOutputWithContext(context.Background())
+}
+
+func (i GetConnectorAnthropicModelAuthCloudProviderArgs) ToGetConnectorAnthropicModelAuthCloudProviderOutputWithContext(ctx context.Context) GetConnectorAnthropicModelAuthCloudProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorAnthropicModelAuthCloudProviderOutput)
+}
+
+// GetConnectorAnthropicModelAuthCloudProviderArrayInput is an input type that accepts GetConnectorAnthropicModelAuthCloudProviderArray and GetConnectorAnthropicModelAuthCloudProviderArrayOutput values.
+// You can construct a concrete instance of `GetConnectorAnthropicModelAuthCloudProviderArrayInput` via:
+//
+//	GetConnectorAnthropicModelAuthCloudProviderArray{ GetConnectorAnthropicModelAuthCloudProviderArgs{...} }
+type GetConnectorAnthropicModelAuthCloudProviderArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorAnthropicModelAuthCloudProviderArrayOutput() GetConnectorAnthropicModelAuthCloudProviderArrayOutput
+	ToGetConnectorAnthropicModelAuthCloudProviderArrayOutputWithContext(context.Context) GetConnectorAnthropicModelAuthCloudProviderArrayOutput
+}
+
+type GetConnectorAnthropicModelAuthCloudProviderArray []GetConnectorAnthropicModelAuthCloudProviderInput
+
+func (GetConnectorAnthropicModelAuthCloudProviderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorAnthropicModelAuthCloudProvider)(nil)).Elem()
+}
+
+func (i GetConnectorAnthropicModelAuthCloudProviderArray) ToGetConnectorAnthropicModelAuthCloudProviderArrayOutput() GetConnectorAnthropicModelAuthCloudProviderArrayOutput {
+	return i.ToGetConnectorAnthropicModelAuthCloudProviderArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorAnthropicModelAuthCloudProviderArray) ToGetConnectorAnthropicModelAuthCloudProviderArrayOutputWithContext(ctx context.Context) GetConnectorAnthropicModelAuthCloudProviderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorAnthropicModelAuthCloudProviderArrayOutput)
+}
+
+type GetConnectorAnthropicModelAuthCloudProviderOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorAnthropicModelAuthCloudProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorAnthropicModelAuthCloudProvider)(nil)).Elem()
+}
+
+func (o GetConnectorAnthropicModelAuthCloudProviderOutput) ToGetConnectorAnthropicModelAuthCloudProviderOutput() GetConnectorAnthropicModelAuthCloudProviderOutput {
+	return o
+}
+
+func (o GetConnectorAnthropicModelAuthCloudProviderOutput) ToGetConnectorAnthropicModelAuthCloudProviderOutputWithContext(ctx context.Context) GetConnectorAnthropicModelAuthCloudProviderOutput {
+	return o
+}
+
+// Reference to an existing cloud provider connector.
+func (o GetConnectorAnthropicModelAuthCloudProviderOutput) ConnectorRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorAnthropicModelAuthCloudProvider) string { return v.ConnectorRef }).(pulumi.StringOutput)
+}
+
+// Cloud provider type.
+func (o GetConnectorAnthropicModelAuthCloudProviderOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorAnthropicModelAuthCloudProvider) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetConnectorAnthropicModelAuthCloudProviderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorAnthropicModelAuthCloudProviderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorAnthropicModelAuthCloudProvider)(nil)).Elem()
+}
+
+func (o GetConnectorAnthropicModelAuthCloudProviderArrayOutput) ToGetConnectorAnthropicModelAuthCloudProviderArrayOutput() GetConnectorAnthropicModelAuthCloudProviderArrayOutput {
+	return o
+}
+
+func (o GetConnectorAnthropicModelAuthCloudProviderArrayOutput) ToGetConnectorAnthropicModelAuthCloudProviderArrayOutputWithContext(ctx context.Context) GetConnectorAnthropicModelAuthCloudProviderArrayOutput {
+	return o
+}
+
+func (o GetConnectorAnthropicModelAuthCloudProviderArrayOutput) Index(i pulumi.IntInput) GetConnectorAnthropicModelAuthCloudProviderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorAnthropicModelAuthCloudProvider {
+		return vs[0].([]GetConnectorAnthropicModelAuthCloudProvider)[vs[1].(int)]
+	}).(GetConnectorAnthropicModelAuthCloudProviderOutput)
+}
+
+type GetConnectorAnthropicModelAuthToken struct {
+	// Reference to a secret containing the Anthropic API token.
+	TokenRef string `pulumi:"tokenRef"`
+}
+
+// GetConnectorAnthropicModelAuthTokenInput is an input type that accepts GetConnectorAnthropicModelAuthTokenArgs and GetConnectorAnthropicModelAuthTokenOutput values.
+// You can construct a concrete instance of `GetConnectorAnthropicModelAuthTokenInput` via:
+//
+//	GetConnectorAnthropicModelAuthTokenArgs{...}
+type GetConnectorAnthropicModelAuthTokenInput interface {
+	pulumi.Input
+
+	ToGetConnectorAnthropicModelAuthTokenOutput() GetConnectorAnthropicModelAuthTokenOutput
+	ToGetConnectorAnthropicModelAuthTokenOutputWithContext(context.Context) GetConnectorAnthropicModelAuthTokenOutput
+}
+
+type GetConnectorAnthropicModelAuthTokenArgs struct {
+	// Reference to a secret containing the Anthropic API token.
+	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
+}
+
+func (GetConnectorAnthropicModelAuthTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorAnthropicModelAuthToken)(nil)).Elem()
+}
+
+func (i GetConnectorAnthropicModelAuthTokenArgs) ToGetConnectorAnthropicModelAuthTokenOutput() GetConnectorAnthropicModelAuthTokenOutput {
+	return i.ToGetConnectorAnthropicModelAuthTokenOutputWithContext(context.Background())
+}
+
+func (i GetConnectorAnthropicModelAuthTokenArgs) ToGetConnectorAnthropicModelAuthTokenOutputWithContext(ctx context.Context) GetConnectorAnthropicModelAuthTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorAnthropicModelAuthTokenOutput)
+}
+
+// GetConnectorAnthropicModelAuthTokenArrayInput is an input type that accepts GetConnectorAnthropicModelAuthTokenArray and GetConnectorAnthropicModelAuthTokenArrayOutput values.
+// You can construct a concrete instance of `GetConnectorAnthropicModelAuthTokenArrayInput` via:
+//
+//	GetConnectorAnthropicModelAuthTokenArray{ GetConnectorAnthropicModelAuthTokenArgs{...} }
+type GetConnectorAnthropicModelAuthTokenArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorAnthropicModelAuthTokenArrayOutput() GetConnectorAnthropicModelAuthTokenArrayOutput
+	ToGetConnectorAnthropicModelAuthTokenArrayOutputWithContext(context.Context) GetConnectorAnthropicModelAuthTokenArrayOutput
+}
+
+type GetConnectorAnthropicModelAuthTokenArray []GetConnectorAnthropicModelAuthTokenInput
+
+func (GetConnectorAnthropicModelAuthTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorAnthropicModelAuthToken)(nil)).Elem()
+}
+
+func (i GetConnectorAnthropicModelAuthTokenArray) ToGetConnectorAnthropicModelAuthTokenArrayOutput() GetConnectorAnthropicModelAuthTokenArrayOutput {
+	return i.ToGetConnectorAnthropicModelAuthTokenArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorAnthropicModelAuthTokenArray) ToGetConnectorAnthropicModelAuthTokenArrayOutputWithContext(ctx context.Context) GetConnectorAnthropicModelAuthTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorAnthropicModelAuthTokenArrayOutput)
+}
+
+type GetConnectorAnthropicModelAuthTokenOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorAnthropicModelAuthTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorAnthropicModelAuthToken)(nil)).Elem()
+}
+
+func (o GetConnectorAnthropicModelAuthTokenOutput) ToGetConnectorAnthropicModelAuthTokenOutput() GetConnectorAnthropicModelAuthTokenOutput {
+	return o
+}
+
+func (o GetConnectorAnthropicModelAuthTokenOutput) ToGetConnectorAnthropicModelAuthTokenOutputWithContext(ctx context.Context) GetConnectorAnthropicModelAuthTokenOutput {
+	return o
+}
+
+// Reference to a secret containing the Anthropic API token.
+func (o GetConnectorAnthropicModelAuthTokenOutput) TokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorAnthropicModelAuthToken) string { return v.TokenRef }).(pulumi.StringOutput)
+}
+
+type GetConnectorAnthropicModelAuthTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorAnthropicModelAuthTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorAnthropicModelAuthToken)(nil)).Elem()
+}
+
+func (o GetConnectorAnthropicModelAuthTokenArrayOutput) ToGetConnectorAnthropicModelAuthTokenArrayOutput() GetConnectorAnthropicModelAuthTokenArrayOutput {
+	return o
+}
+
+func (o GetConnectorAnthropicModelAuthTokenArrayOutput) ToGetConnectorAnthropicModelAuthTokenArrayOutputWithContext(ctx context.Context) GetConnectorAnthropicModelAuthTokenArrayOutput {
+	return o
+}
+
+func (o GetConnectorAnthropicModelAuthTokenArrayOutput) Index(i pulumi.IntInput) GetConnectorAnthropicModelAuthTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorAnthropicModelAuthToken {
+		return vs[0].([]GetConnectorAnthropicModelAuthToken)[vs[1].(int)]
+	}).(GetConnectorAnthropicModelAuthTokenOutput)
+}
+
+type GetConnectorAnthropicModelAuthVertex struct {
+	// GCP project ID.
+	ProjectId string `pulumi:"projectId"`
+	// GCP region for the Vertex AI endpoint.
+	Region string `pulumi:"region"`
+	// Reference to a secret containing the GCP service account key.
+	ServiceAccountKeyRef string `pulumi:"serviceAccountKeyRef"`
+}
+
+// GetConnectorAnthropicModelAuthVertexInput is an input type that accepts GetConnectorAnthropicModelAuthVertexArgs and GetConnectorAnthropicModelAuthVertexOutput values.
+// You can construct a concrete instance of `GetConnectorAnthropicModelAuthVertexInput` via:
+//
+//	GetConnectorAnthropicModelAuthVertexArgs{...}
+type GetConnectorAnthropicModelAuthVertexInput interface {
+	pulumi.Input
+
+	ToGetConnectorAnthropicModelAuthVertexOutput() GetConnectorAnthropicModelAuthVertexOutput
+	ToGetConnectorAnthropicModelAuthVertexOutputWithContext(context.Context) GetConnectorAnthropicModelAuthVertexOutput
+}
+
+type GetConnectorAnthropicModelAuthVertexArgs struct {
+	// GCP project ID.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// GCP region for the Vertex AI endpoint.
+	Region pulumi.StringInput `pulumi:"region"`
+	// Reference to a secret containing the GCP service account key.
+	ServiceAccountKeyRef pulumi.StringInput `pulumi:"serviceAccountKeyRef"`
+}
+
+func (GetConnectorAnthropicModelAuthVertexArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorAnthropicModelAuthVertex)(nil)).Elem()
+}
+
+func (i GetConnectorAnthropicModelAuthVertexArgs) ToGetConnectorAnthropicModelAuthVertexOutput() GetConnectorAnthropicModelAuthVertexOutput {
+	return i.ToGetConnectorAnthropicModelAuthVertexOutputWithContext(context.Background())
+}
+
+func (i GetConnectorAnthropicModelAuthVertexArgs) ToGetConnectorAnthropicModelAuthVertexOutputWithContext(ctx context.Context) GetConnectorAnthropicModelAuthVertexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorAnthropicModelAuthVertexOutput)
+}
+
+// GetConnectorAnthropicModelAuthVertexArrayInput is an input type that accepts GetConnectorAnthropicModelAuthVertexArray and GetConnectorAnthropicModelAuthVertexArrayOutput values.
+// You can construct a concrete instance of `GetConnectorAnthropicModelAuthVertexArrayInput` via:
+//
+//	GetConnectorAnthropicModelAuthVertexArray{ GetConnectorAnthropicModelAuthVertexArgs{...} }
+type GetConnectorAnthropicModelAuthVertexArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorAnthropicModelAuthVertexArrayOutput() GetConnectorAnthropicModelAuthVertexArrayOutput
+	ToGetConnectorAnthropicModelAuthVertexArrayOutputWithContext(context.Context) GetConnectorAnthropicModelAuthVertexArrayOutput
+}
+
+type GetConnectorAnthropicModelAuthVertexArray []GetConnectorAnthropicModelAuthVertexInput
+
+func (GetConnectorAnthropicModelAuthVertexArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorAnthropicModelAuthVertex)(nil)).Elem()
+}
+
+func (i GetConnectorAnthropicModelAuthVertexArray) ToGetConnectorAnthropicModelAuthVertexArrayOutput() GetConnectorAnthropicModelAuthVertexArrayOutput {
+	return i.ToGetConnectorAnthropicModelAuthVertexArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorAnthropicModelAuthVertexArray) ToGetConnectorAnthropicModelAuthVertexArrayOutputWithContext(ctx context.Context) GetConnectorAnthropicModelAuthVertexArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorAnthropicModelAuthVertexArrayOutput)
+}
+
+type GetConnectorAnthropicModelAuthVertexOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorAnthropicModelAuthVertexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorAnthropicModelAuthVertex)(nil)).Elem()
+}
+
+func (o GetConnectorAnthropicModelAuthVertexOutput) ToGetConnectorAnthropicModelAuthVertexOutput() GetConnectorAnthropicModelAuthVertexOutput {
+	return o
+}
+
+func (o GetConnectorAnthropicModelAuthVertexOutput) ToGetConnectorAnthropicModelAuthVertexOutputWithContext(ctx context.Context) GetConnectorAnthropicModelAuthVertexOutput {
+	return o
+}
+
+// GCP project ID.
+func (o GetConnectorAnthropicModelAuthVertexOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorAnthropicModelAuthVertex) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// GCP region for the Vertex AI endpoint.
+func (o GetConnectorAnthropicModelAuthVertexOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorAnthropicModelAuthVertex) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Reference to a secret containing the GCP service account key.
+func (o GetConnectorAnthropicModelAuthVertexOutput) ServiceAccountKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorAnthropicModelAuthVertex) string { return v.ServiceAccountKeyRef }).(pulumi.StringOutput)
+}
+
+type GetConnectorAnthropicModelAuthVertexArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorAnthropicModelAuthVertexArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorAnthropicModelAuthVertex)(nil)).Elem()
+}
+
+func (o GetConnectorAnthropicModelAuthVertexArrayOutput) ToGetConnectorAnthropicModelAuthVertexArrayOutput() GetConnectorAnthropicModelAuthVertexArrayOutput {
+	return o
+}
+
+func (o GetConnectorAnthropicModelAuthVertexArrayOutput) ToGetConnectorAnthropicModelAuthVertexArrayOutputWithContext(ctx context.Context) GetConnectorAnthropicModelAuthVertexArrayOutput {
+	return o
+}
+
+func (o GetConnectorAnthropicModelAuthVertexArrayOutput) Index(i pulumi.IntInput) GetConnectorAnthropicModelAuthVertexOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorAnthropicModelAuthVertex {
+		return vs[0].([]GetConnectorAnthropicModelAuthVertex)[vs[1].(int)]
+	}).(GetConnectorAnthropicModelAuthVertexOutput)
+}
+
 type GetConnectorAzureRepoApiAuthentication struct {
 	// Personal access token for interacting with the azure repo api. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	TokenRef string `pulumi:"tokenRef"`
@@ -36612,6 +38586,333 @@ func (o GetConnectorJdbcCredentialUsernamePasswordArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorJdbcCredentialUsernamePassword {
 		return vs[0].([]GetConnectorJdbcCredentialUsernamePassword)[vs[1].(int)]
 	}).(GetConnectorJdbcCredentialUsernamePasswordOutput)
+}
+
+type GetConnectorOpenaiModelAuth struct {
+	// Authentication type for the OpenAI connector.
+	AuthType string `pulumi:"authType"`
+	// Authenticate using an OpenAI API token.
+	Tokens []GetConnectorOpenaiModelAuthToken `pulumi:"tokens"`
+	// Authenticate using Google Vertex AI credentials.
+	Vertices []GetConnectorOpenaiModelAuthVertex `pulumi:"vertices"`
+}
+
+// GetConnectorOpenaiModelAuthInput is an input type that accepts GetConnectorOpenaiModelAuthArgs and GetConnectorOpenaiModelAuthOutput values.
+// You can construct a concrete instance of `GetConnectorOpenaiModelAuthInput` via:
+//
+//	GetConnectorOpenaiModelAuthArgs{...}
+type GetConnectorOpenaiModelAuthInput interface {
+	pulumi.Input
+
+	ToGetConnectorOpenaiModelAuthOutput() GetConnectorOpenaiModelAuthOutput
+	ToGetConnectorOpenaiModelAuthOutputWithContext(context.Context) GetConnectorOpenaiModelAuthOutput
+}
+
+type GetConnectorOpenaiModelAuthArgs struct {
+	// Authentication type for the OpenAI connector.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Authenticate using an OpenAI API token.
+	Tokens GetConnectorOpenaiModelAuthTokenArrayInput `pulumi:"tokens"`
+	// Authenticate using Google Vertex AI credentials.
+	Vertices GetConnectorOpenaiModelAuthVertexArrayInput `pulumi:"vertices"`
+}
+
+func (GetConnectorOpenaiModelAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorOpenaiModelAuth)(nil)).Elem()
+}
+
+func (i GetConnectorOpenaiModelAuthArgs) ToGetConnectorOpenaiModelAuthOutput() GetConnectorOpenaiModelAuthOutput {
+	return i.ToGetConnectorOpenaiModelAuthOutputWithContext(context.Background())
+}
+
+func (i GetConnectorOpenaiModelAuthArgs) ToGetConnectorOpenaiModelAuthOutputWithContext(ctx context.Context) GetConnectorOpenaiModelAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorOpenaiModelAuthOutput)
+}
+
+// GetConnectorOpenaiModelAuthArrayInput is an input type that accepts GetConnectorOpenaiModelAuthArray and GetConnectorOpenaiModelAuthArrayOutput values.
+// You can construct a concrete instance of `GetConnectorOpenaiModelAuthArrayInput` via:
+//
+//	GetConnectorOpenaiModelAuthArray{ GetConnectorOpenaiModelAuthArgs{...} }
+type GetConnectorOpenaiModelAuthArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorOpenaiModelAuthArrayOutput() GetConnectorOpenaiModelAuthArrayOutput
+	ToGetConnectorOpenaiModelAuthArrayOutputWithContext(context.Context) GetConnectorOpenaiModelAuthArrayOutput
+}
+
+type GetConnectorOpenaiModelAuthArray []GetConnectorOpenaiModelAuthInput
+
+func (GetConnectorOpenaiModelAuthArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorOpenaiModelAuth)(nil)).Elem()
+}
+
+func (i GetConnectorOpenaiModelAuthArray) ToGetConnectorOpenaiModelAuthArrayOutput() GetConnectorOpenaiModelAuthArrayOutput {
+	return i.ToGetConnectorOpenaiModelAuthArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorOpenaiModelAuthArray) ToGetConnectorOpenaiModelAuthArrayOutputWithContext(ctx context.Context) GetConnectorOpenaiModelAuthArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorOpenaiModelAuthArrayOutput)
+}
+
+type GetConnectorOpenaiModelAuthOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorOpenaiModelAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorOpenaiModelAuth)(nil)).Elem()
+}
+
+func (o GetConnectorOpenaiModelAuthOutput) ToGetConnectorOpenaiModelAuthOutput() GetConnectorOpenaiModelAuthOutput {
+	return o
+}
+
+func (o GetConnectorOpenaiModelAuthOutput) ToGetConnectorOpenaiModelAuthOutputWithContext(ctx context.Context) GetConnectorOpenaiModelAuthOutput {
+	return o
+}
+
+// Authentication type for the OpenAI connector.
+func (o GetConnectorOpenaiModelAuthOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorOpenaiModelAuth) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Authenticate using an OpenAI API token.
+func (o GetConnectorOpenaiModelAuthOutput) Tokens() GetConnectorOpenaiModelAuthTokenArrayOutput {
+	return o.ApplyT(func(v GetConnectorOpenaiModelAuth) []GetConnectorOpenaiModelAuthToken { return v.Tokens }).(GetConnectorOpenaiModelAuthTokenArrayOutput)
+}
+
+// Authenticate using Google Vertex AI credentials.
+func (o GetConnectorOpenaiModelAuthOutput) Vertices() GetConnectorOpenaiModelAuthVertexArrayOutput {
+	return o.ApplyT(func(v GetConnectorOpenaiModelAuth) []GetConnectorOpenaiModelAuthVertex { return v.Vertices }).(GetConnectorOpenaiModelAuthVertexArrayOutput)
+}
+
+type GetConnectorOpenaiModelAuthArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorOpenaiModelAuthArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorOpenaiModelAuth)(nil)).Elem()
+}
+
+func (o GetConnectorOpenaiModelAuthArrayOutput) ToGetConnectorOpenaiModelAuthArrayOutput() GetConnectorOpenaiModelAuthArrayOutput {
+	return o
+}
+
+func (o GetConnectorOpenaiModelAuthArrayOutput) ToGetConnectorOpenaiModelAuthArrayOutputWithContext(ctx context.Context) GetConnectorOpenaiModelAuthArrayOutput {
+	return o
+}
+
+func (o GetConnectorOpenaiModelAuthArrayOutput) Index(i pulumi.IntInput) GetConnectorOpenaiModelAuthOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorOpenaiModelAuth {
+		return vs[0].([]GetConnectorOpenaiModelAuth)[vs[1].(int)]
+	}).(GetConnectorOpenaiModelAuthOutput)
+}
+
+type GetConnectorOpenaiModelAuthToken struct {
+	// Reference to a secret containing the OpenAI API token.
+	TokenRef string `pulumi:"tokenRef"`
+}
+
+// GetConnectorOpenaiModelAuthTokenInput is an input type that accepts GetConnectorOpenaiModelAuthTokenArgs and GetConnectorOpenaiModelAuthTokenOutput values.
+// You can construct a concrete instance of `GetConnectorOpenaiModelAuthTokenInput` via:
+//
+//	GetConnectorOpenaiModelAuthTokenArgs{...}
+type GetConnectorOpenaiModelAuthTokenInput interface {
+	pulumi.Input
+
+	ToGetConnectorOpenaiModelAuthTokenOutput() GetConnectorOpenaiModelAuthTokenOutput
+	ToGetConnectorOpenaiModelAuthTokenOutputWithContext(context.Context) GetConnectorOpenaiModelAuthTokenOutput
+}
+
+type GetConnectorOpenaiModelAuthTokenArgs struct {
+	// Reference to a secret containing the OpenAI API token.
+	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
+}
+
+func (GetConnectorOpenaiModelAuthTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorOpenaiModelAuthToken)(nil)).Elem()
+}
+
+func (i GetConnectorOpenaiModelAuthTokenArgs) ToGetConnectorOpenaiModelAuthTokenOutput() GetConnectorOpenaiModelAuthTokenOutput {
+	return i.ToGetConnectorOpenaiModelAuthTokenOutputWithContext(context.Background())
+}
+
+func (i GetConnectorOpenaiModelAuthTokenArgs) ToGetConnectorOpenaiModelAuthTokenOutputWithContext(ctx context.Context) GetConnectorOpenaiModelAuthTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorOpenaiModelAuthTokenOutput)
+}
+
+// GetConnectorOpenaiModelAuthTokenArrayInput is an input type that accepts GetConnectorOpenaiModelAuthTokenArray and GetConnectorOpenaiModelAuthTokenArrayOutput values.
+// You can construct a concrete instance of `GetConnectorOpenaiModelAuthTokenArrayInput` via:
+//
+//	GetConnectorOpenaiModelAuthTokenArray{ GetConnectorOpenaiModelAuthTokenArgs{...} }
+type GetConnectorOpenaiModelAuthTokenArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorOpenaiModelAuthTokenArrayOutput() GetConnectorOpenaiModelAuthTokenArrayOutput
+	ToGetConnectorOpenaiModelAuthTokenArrayOutputWithContext(context.Context) GetConnectorOpenaiModelAuthTokenArrayOutput
+}
+
+type GetConnectorOpenaiModelAuthTokenArray []GetConnectorOpenaiModelAuthTokenInput
+
+func (GetConnectorOpenaiModelAuthTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorOpenaiModelAuthToken)(nil)).Elem()
+}
+
+func (i GetConnectorOpenaiModelAuthTokenArray) ToGetConnectorOpenaiModelAuthTokenArrayOutput() GetConnectorOpenaiModelAuthTokenArrayOutput {
+	return i.ToGetConnectorOpenaiModelAuthTokenArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorOpenaiModelAuthTokenArray) ToGetConnectorOpenaiModelAuthTokenArrayOutputWithContext(ctx context.Context) GetConnectorOpenaiModelAuthTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorOpenaiModelAuthTokenArrayOutput)
+}
+
+type GetConnectorOpenaiModelAuthTokenOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorOpenaiModelAuthTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorOpenaiModelAuthToken)(nil)).Elem()
+}
+
+func (o GetConnectorOpenaiModelAuthTokenOutput) ToGetConnectorOpenaiModelAuthTokenOutput() GetConnectorOpenaiModelAuthTokenOutput {
+	return o
+}
+
+func (o GetConnectorOpenaiModelAuthTokenOutput) ToGetConnectorOpenaiModelAuthTokenOutputWithContext(ctx context.Context) GetConnectorOpenaiModelAuthTokenOutput {
+	return o
+}
+
+// Reference to a secret containing the OpenAI API token.
+func (o GetConnectorOpenaiModelAuthTokenOutput) TokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorOpenaiModelAuthToken) string { return v.TokenRef }).(pulumi.StringOutput)
+}
+
+type GetConnectorOpenaiModelAuthTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorOpenaiModelAuthTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorOpenaiModelAuthToken)(nil)).Elem()
+}
+
+func (o GetConnectorOpenaiModelAuthTokenArrayOutput) ToGetConnectorOpenaiModelAuthTokenArrayOutput() GetConnectorOpenaiModelAuthTokenArrayOutput {
+	return o
+}
+
+func (o GetConnectorOpenaiModelAuthTokenArrayOutput) ToGetConnectorOpenaiModelAuthTokenArrayOutputWithContext(ctx context.Context) GetConnectorOpenaiModelAuthTokenArrayOutput {
+	return o
+}
+
+func (o GetConnectorOpenaiModelAuthTokenArrayOutput) Index(i pulumi.IntInput) GetConnectorOpenaiModelAuthTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorOpenaiModelAuthToken {
+		return vs[0].([]GetConnectorOpenaiModelAuthToken)[vs[1].(int)]
+	}).(GetConnectorOpenaiModelAuthTokenOutput)
+}
+
+type GetConnectorOpenaiModelAuthVertex struct {
+	// GCP project ID.
+	ProjectId string `pulumi:"projectId"`
+	// GCP region for the Vertex AI endpoint.
+	Region string `pulumi:"region"`
+	// Reference to a secret containing the GCP service account key.
+	ServiceAccountKeyRef string `pulumi:"serviceAccountKeyRef"`
+}
+
+// GetConnectorOpenaiModelAuthVertexInput is an input type that accepts GetConnectorOpenaiModelAuthVertexArgs and GetConnectorOpenaiModelAuthVertexOutput values.
+// You can construct a concrete instance of `GetConnectorOpenaiModelAuthVertexInput` via:
+//
+//	GetConnectorOpenaiModelAuthVertexArgs{...}
+type GetConnectorOpenaiModelAuthVertexInput interface {
+	pulumi.Input
+
+	ToGetConnectorOpenaiModelAuthVertexOutput() GetConnectorOpenaiModelAuthVertexOutput
+	ToGetConnectorOpenaiModelAuthVertexOutputWithContext(context.Context) GetConnectorOpenaiModelAuthVertexOutput
+}
+
+type GetConnectorOpenaiModelAuthVertexArgs struct {
+	// GCP project ID.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// GCP region for the Vertex AI endpoint.
+	Region pulumi.StringInput `pulumi:"region"`
+	// Reference to a secret containing the GCP service account key.
+	ServiceAccountKeyRef pulumi.StringInput `pulumi:"serviceAccountKeyRef"`
+}
+
+func (GetConnectorOpenaiModelAuthVertexArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorOpenaiModelAuthVertex)(nil)).Elem()
+}
+
+func (i GetConnectorOpenaiModelAuthVertexArgs) ToGetConnectorOpenaiModelAuthVertexOutput() GetConnectorOpenaiModelAuthVertexOutput {
+	return i.ToGetConnectorOpenaiModelAuthVertexOutputWithContext(context.Background())
+}
+
+func (i GetConnectorOpenaiModelAuthVertexArgs) ToGetConnectorOpenaiModelAuthVertexOutputWithContext(ctx context.Context) GetConnectorOpenaiModelAuthVertexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorOpenaiModelAuthVertexOutput)
+}
+
+// GetConnectorOpenaiModelAuthVertexArrayInput is an input type that accepts GetConnectorOpenaiModelAuthVertexArray and GetConnectorOpenaiModelAuthVertexArrayOutput values.
+// You can construct a concrete instance of `GetConnectorOpenaiModelAuthVertexArrayInput` via:
+//
+//	GetConnectorOpenaiModelAuthVertexArray{ GetConnectorOpenaiModelAuthVertexArgs{...} }
+type GetConnectorOpenaiModelAuthVertexArrayInput interface {
+	pulumi.Input
+
+	ToGetConnectorOpenaiModelAuthVertexArrayOutput() GetConnectorOpenaiModelAuthVertexArrayOutput
+	ToGetConnectorOpenaiModelAuthVertexArrayOutputWithContext(context.Context) GetConnectorOpenaiModelAuthVertexArrayOutput
+}
+
+type GetConnectorOpenaiModelAuthVertexArray []GetConnectorOpenaiModelAuthVertexInput
+
+func (GetConnectorOpenaiModelAuthVertexArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorOpenaiModelAuthVertex)(nil)).Elem()
+}
+
+func (i GetConnectorOpenaiModelAuthVertexArray) ToGetConnectorOpenaiModelAuthVertexArrayOutput() GetConnectorOpenaiModelAuthVertexArrayOutput {
+	return i.ToGetConnectorOpenaiModelAuthVertexArrayOutputWithContext(context.Background())
+}
+
+func (i GetConnectorOpenaiModelAuthVertexArray) ToGetConnectorOpenaiModelAuthVertexArrayOutputWithContext(ctx context.Context) GetConnectorOpenaiModelAuthVertexArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConnectorOpenaiModelAuthVertexArrayOutput)
+}
+
+type GetConnectorOpenaiModelAuthVertexOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorOpenaiModelAuthVertexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConnectorOpenaiModelAuthVertex)(nil)).Elem()
+}
+
+func (o GetConnectorOpenaiModelAuthVertexOutput) ToGetConnectorOpenaiModelAuthVertexOutput() GetConnectorOpenaiModelAuthVertexOutput {
+	return o
+}
+
+func (o GetConnectorOpenaiModelAuthVertexOutput) ToGetConnectorOpenaiModelAuthVertexOutputWithContext(ctx context.Context) GetConnectorOpenaiModelAuthVertexOutput {
+	return o
+}
+
+// GCP project ID.
+func (o GetConnectorOpenaiModelAuthVertexOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorOpenaiModelAuthVertex) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// GCP region for the Vertex AI endpoint.
+func (o GetConnectorOpenaiModelAuthVertexOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorOpenaiModelAuthVertex) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Reference to a secret containing the GCP service account key.
+func (o GetConnectorOpenaiModelAuthVertexOutput) ServiceAccountKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectorOpenaiModelAuthVertex) string { return v.ServiceAccountKeyRef }).(pulumi.StringOutput)
+}
+
+type GetConnectorOpenaiModelAuthVertexArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConnectorOpenaiModelAuthVertexArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConnectorOpenaiModelAuthVertex)(nil)).Elem()
+}
+
+func (o GetConnectorOpenaiModelAuthVertexArrayOutput) ToGetConnectorOpenaiModelAuthVertexArrayOutput() GetConnectorOpenaiModelAuthVertexArrayOutput {
+	return o
+}
+
+func (o GetConnectorOpenaiModelAuthVertexArrayOutput) ToGetConnectorOpenaiModelAuthVertexArrayOutputWithContext(ctx context.Context) GetConnectorOpenaiModelAuthVertexArrayOutput {
+	return o
+}
+
+func (o GetConnectorOpenaiModelAuthVertexArrayOutput) Index(i pulumi.IntInput) GetConnectorOpenaiModelAuthVertexOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConnectorOpenaiModelAuthVertex {
+		return vs[0].([]GetConnectorOpenaiModelAuthVertex)[vs[1].(int)]
+	}).(GetConnectorOpenaiModelAuthVertexOutput)
 }
 
 type GetConnectorPdcHost struct {
@@ -62578,6 +64879,22 @@ func (o GetWorkspacesWorkspaceArrayOutput) Index(i pulumi.IntInput) GetWorkspace
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginArgs{})
@@ -63016,6 +65333,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCentralNotificationRuleNotificationConditionArrayInput)(nil)).Elem(), GetCentralNotificationRuleNotificationConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCentralNotificationRuleNotificationConditionNotificationEventConfigInput)(nil)).Elem(), GetCentralNotificationRuleNotificationConditionNotificationEventConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayInput)(nil)).Elem(), GetCentralNotificationRuleNotificationConditionNotificationEventConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAnthropicModelAuthInput)(nil)).Elem(), GetConnectorAnthropicModelAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAnthropicModelAuthArrayInput)(nil)).Elem(), GetConnectorAnthropicModelAuthArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAnthropicModelAuthBedrockApiKeyInput)(nil)).Elem(), GetConnectorAnthropicModelAuthBedrockApiKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAnthropicModelAuthBedrockApiKeyArrayInput)(nil)).Elem(), GetConnectorAnthropicModelAuthBedrockApiKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAnthropicModelAuthCloudProviderInput)(nil)).Elem(), GetConnectorAnthropicModelAuthCloudProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAnthropicModelAuthCloudProviderArrayInput)(nil)).Elem(), GetConnectorAnthropicModelAuthCloudProviderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAnthropicModelAuthTokenInput)(nil)).Elem(), GetConnectorAnthropicModelAuthTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAnthropicModelAuthTokenArrayInput)(nil)).Elem(), GetConnectorAnthropicModelAuthTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAnthropicModelAuthVertexInput)(nil)).Elem(), GetConnectorAnthropicModelAuthVertexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAnthropicModelAuthVertexArrayInput)(nil)).Elem(), GetConnectorAnthropicModelAuthVertexArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAzureRepoApiAuthenticationInput)(nil)).Elem(), GetConnectorAzureRepoApiAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAzureRepoApiAuthenticationArrayInput)(nil)).Elem(), GetConnectorAzureRepoApiAuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorAzureRepoCredentialInput)(nil)).Elem(), GetConnectorAzureRepoCredentialArgs{})
@@ -63050,6 +65377,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialServiceAccountArrayInput)(nil)).Elem(), GetConnectorJdbcCredentialServiceAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialUsernamePasswordInput)(nil)).Elem(), GetConnectorJdbcCredentialUsernamePasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorJdbcCredentialUsernamePasswordArrayInput)(nil)).Elem(), GetConnectorJdbcCredentialUsernamePasswordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorOpenaiModelAuthInput)(nil)).Elem(), GetConnectorOpenaiModelAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorOpenaiModelAuthArrayInput)(nil)).Elem(), GetConnectorOpenaiModelAuthArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorOpenaiModelAuthTokenInput)(nil)).Elem(), GetConnectorOpenaiModelAuthTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorOpenaiModelAuthTokenArrayInput)(nil)).Elem(), GetConnectorOpenaiModelAuthTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorOpenaiModelAuthVertexInput)(nil)).Elem(), GetConnectorOpenaiModelAuthVertexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorOpenaiModelAuthVertexArrayInput)(nil)).Elem(), GetConnectorOpenaiModelAuthVertexArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorPdcHostInput)(nil)).Elem(), GetConnectorPdcHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorPdcHostArrayInput)(nil)).Elem(), GetConnectorPdcHostArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConnectorRancherBearerTokenInput)(nil)).Elem(), GetConnectorRancherBearerTokenArgs{})
@@ -63451,6 +65784,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceTerraformVariableFileArrayInput)(nil)).Elem(), GetWorkspaceTerraformVariableFileArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspacesWorkspaceInput)(nil)).Elem(), GetWorkspacesWorkspaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspacesWorkspaceArrayInput)(nil)).Elem(), GetWorkspacesWorkspaceArray{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizeOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginOutput{})
@@ -63889,6 +66238,16 @@ func init() {
 	pulumi.RegisterOutputType(GetCentralNotificationRuleNotificationConditionArrayOutput{})
 	pulumi.RegisterOutputType(GetCentralNotificationRuleNotificationConditionNotificationEventConfigOutput{})
 	pulumi.RegisterOutputType(GetCentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorAnthropicModelAuthOutput{})
+	pulumi.RegisterOutputType(GetConnectorAnthropicModelAuthArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorAnthropicModelAuthBedrockApiKeyOutput{})
+	pulumi.RegisterOutputType(GetConnectorAnthropicModelAuthBedrockApiKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorAnthropicModelAuthCloudProviderOutput{})
+	pulumi.RegisterOutputType(GetConnectorAnthropicModelAuthCloudProviderArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorAnthropicModelAuthTokenOutput{})
+	pulumi.RegisterOutputType(GetConnectorAnthropicModelAuthTokenArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorAnthropicModelAuthVertexOutput{})
+	pulumi.RegisterOutputType(GetConnectorAnthropicModelAuthVertexArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorAzureRepoApiAuthenticationOutput{})
 	pulumi.RegisterOutputType(GetConnectorAzureRepoApiAuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorAzureRepoCredentialOutput{})
@@ -63923,6 +66282,12 @@ func init() {
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialServiceAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialUsernamePasswordOutput{})
 	pulumi.RegisterOutputType(GetConnectorJdbcCredentialUsernamePasswordArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorOpenaiModelAuthOutput{})
+	pulumi.RegisterOutputType(GetConnectorOpenaiModelAuthArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorOpenaiModelAuthTokenOutput{})
+	pulumi.RegisterOutputType(GetConnectorOpenaiModelAuthTokenArrayOutput{})
+	pulumi.RegisterOutputType(GetConnectorOpenaiModelAuthVertexOutput{})
+	pulumi.RegisterOutputType(GetConnectorOpenaiModelAuthVertexArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorPdcHostOutput{})
 	pulumi.RegisterOutputType(GetConnectorPdcHostArrayOutput{})
 	pulumi.RegisterOutputType(GetConnectorRancherBearerTokenOutput{})

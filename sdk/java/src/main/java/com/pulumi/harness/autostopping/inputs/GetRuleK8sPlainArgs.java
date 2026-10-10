@@ -4,12 +4,7 @@
 package com.pulumi.harness.autostopping.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.harness.autostopping.inputs.GetRuleK8sDepend;
-import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,136 +15,40 @@ public final class GetRuleK8sPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetRuleK8sPlainArgs Empty = new GetRuleK8sPlainArgs();
 
     /**
-     * Id of the cloud connector
+     * Unique identifier of the resource. Either `identifier` or `name` must be specified.
      * 
      */
-    @Import(name="cloudConnectorId", required=true)
-    private String cloudConnectorId;
+    @Import(name="identifier")
+    private @Nullable String identifier;
 
     /**
-     * @return Id of the cloud connector
+     * @return Unique identifier of the resource. Either `identifier` or `name` must be specified.
      * 
      */
-    public String cloudConnectorId() {
-        return this.cloudConnectorId;
+    public Optional<String> identifier() {
+        return Optional.ofNullable(this.identifier);
     }
 
     /**
-     * Dependent rules
+     * Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      * 
      */
-    @Import(name="depends")
-    private @Nullable List<GetRuleK8sDepend> depends;
+    @Import(name="name")
+    private @Nullable String name;
 
     /**
-     * @return Dependent rules
+     * @return Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      * 
      */
-    public Optional<List<GetRuleK8sDepend>> depends() {
-        return Optional.ofNullable(this.depends);
-    }
-
-    /**
-     * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-     * 
-     */
-    @Import(name="dryRun")
-    private @Nullable Boolean dryRun;
-
-    /**
-     * @return Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-     * 
-     */
-    public Optional<Boolean> dryRun() {
-        return Optional.ofNullable(this.dryRun);
-    }
-
-    /**
-     * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-     * 
-     */
-    @Import(name="idleTimeMins")
-    private @Nullable Integer idleTimeMins;
-
-    /**
-     * @return Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-     * 
-     */
-    public Optional<Integer> idleTimeMins() {
-        return Optional.ofNullable(this.idleTimeMins);
-    }
-
-    /**
-     * Id of the K8s connector
-     * 
-     */
-    @Import(name="k8sConnectorId", required=true)
-    private String k8sConnectorId;
-
-    /**
-     * @return Id of the K8s connector
-     * 
-     */
-    public String k8sConnectorId() {
-        return this.k8sConnectorId;
-    }
-
-    /**
-     * Namespace of the cluster
-     * 
-     */
-    @Import(name="k8sNamespace", required=true)
-    private String k8sNamespace;
-
-    /**
-     * @return Namespace of the cluster
-     * 
-     */
-    public String k8sNamespace() {
-        return this.k8sNamespace;
-    }
-
-    /**
-     * Name of the rule
-     * 
-     */
-    @Import(name="name", required=true)
-    private String name;
-
-    /**
-     * @return Name of the rule
-     * 
-     */
-    public String name() {
-        return this.name;
-    }
-
-    /**
-     * YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
-     * 
-     */
-    @Import(name="ruleYaml", required=true)
-    private String ruleYaml;
-
-    /**
-     * @return YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
-     * 
-     */
-    public String ruleYaml() {
-        return this.ruleYaml;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
 
     private GetRuleK8sPlainArgs() {}
 
     private GetRuleK8sPlainArgs(GetRuleK8sPlainArgs $) {
-        this.cloudConnectorId = $.cloudConnectorId;
-        this.depends = $.depends;
-        this.dryRun = $.dryRun;
-        this.idleTimeMins = $.idleTimeMins;
-        this.k8sConnectorId = $.k8sConnectorId;
-        this.k8sNamespace = $.k8sNamespace;
+        this.identifier = $.identifier;
         this.name = $.name;
-        this.ruleYaml = $.ruleYaml;
     }
 
     public static Builder builder() {
@@ -171,119 +70,28 @@ public final class GetRuleK8sPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param cloudConnectorId Id of the cloud connector
+         * @param identifier Unique identifier of the resource. Either `identifier` or `name` must be specified.
          * 
          * @return builder
          * 
          */
-        public Builder cloudConnectorId(String cloudConnectorId) {
-            $.cloudConnectorId = cloudConnectorId;
+        public Builder identifier(@Nullable String identifier) {
+            $.identifier = identifier;
             return this;
         }
 
         /**
-         * @param depends Dependent rules
+         * @param name Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
          * 
          * @return builder
          * 
          */
-        public Builder depends(@Nullable List<GetRuleK8sDepend> depends) {
-            $.depends = depends;
-            return this;
-        }
-
-        /**
-         * @param depends Dependent rules
-         * 
-         * @return builder
-         * 
-         */
-        public Builder depends(GetRuleK8sDepend... depends) {
-            return depends(List.of(depends));
-        }
-
-        /**
-         * @param dryRun Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dryRun(@Nullable Boolean dryRun) {
-            $.dryRun = dryRun;
-            return this;
-        }
-
-        /**
-         * @param idleTimeMins Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder idleTimeMins(@Nullable Integer idleTimeMins) {
-            $.idleTimeMins = idleTimeMins;
-            return this;
-        }
-
-        /**
-         * @param k8sConnectorId Id of the K8s connector
-         * 
-         * @return builder
-         * 
-         */
-        public Builder k8sConnectorId(String k8sConnectorId) {
-            $.k8sConnectorId = k8sConnectorId;
-            return this;
-        }
-
-        /**
-         * @param k8sNamespace Namespace of the cluster
-         * 
-         * @return builder
-         * 
-         */
-        public Builder k8sNamespace(String k8sNamespace) {
-            $.k8sNamespace = k8sNamespace;
-            return this;
-        }
-
-        /**
-         * @param name Name of the rule
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(String name) {
+        public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param ruleYaml YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ruleYaml(String ruleYaml) {
-            $.ruleYaml = ruleYaml;
-            return this;
-        }
-
         public GetRuleK8sPlainArgs build() {
-            if ($.cloudConnectorId == null) {
-                throw new MissingRequiredPropertyException("GetRuleK8sPlainArgs", "cloudConnectorId");
-            }
-            if ($.k8sConnectorId == null) {
-                throw new MissingRequiredPropertyException("GetRuleK8sPlainArgs", "k8sConnectorId");
-            }
-            if ($.k8sNamespace == null) {
-                throw new MissingRequiredPropertyException("GetRuleK8sPlainArgs", "k8sNamespace");
-            }
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetRuleK8sPlainArgs", "name");
-            }
-            if ($.ruleYaml == null) {
-                throw new MissingRequiredPropertyException("GetRuleK8sPlainArgs", "ruleYaml");
-            }
             return $;
         }
     }

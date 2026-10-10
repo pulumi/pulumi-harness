@@ -326,6 +326,321 @@ public final class AutostoppingFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .name("^my-ecs-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .name("my-ecs-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRuleEcsResult> getRuleEcs() {
+        return getRuleEcs(GetRuleEcsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness AutoStopping rule for ECS services.
+     * 
+     * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .name("^my-ecs-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .name("my-ecs-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRuleEcsResult> getRuleEcsPlain() {
+        return getRuleEcsPlain(GetRuleEcsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness AutoStopping rule for ECS services.
+     * 
+     * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .name("^my-ecs-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .name("my-ecs-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetRuleEcsResult> getRuleEcs(GetRuleEcsArgs args) {
         return getRuleEcs(args, InvokeOptions.Empty);
@@ -334,6 +649,105 @@ public final class AutostoppingFunctions {
      * Data source for retrieving a Harness AutoStopping rule for ECS services.
      * 
      * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .name("^my-ecs-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .name("my-ecs-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetRuleEcsResult> getRuleEcsPlain(GetRuleEcsPlainArgs args) {
@@ -344,6 +758,105 @@ public final class AutostoppingFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .name("^my-ecs-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .name("my-ecs-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetRuleEcsResult> getRuleEcs(GetRuleEcsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:autostopping/getRuleEcs:getRuleEcs", TypeShape.of(GetRuleEcsResult.class), args, Utilities.withVersion(options));
@@ -352,6 +865,105 @@ public final class AutostoppingFunctions {
      * Data source for retrieving a Harness AutoStopping rule for ECS services.
      * 
      * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .name("^my-ecs-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .name("my-ecs-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetRuleEcsResult> getRuleEcs(GetRuleEcsArgs args, InvokeOutputOptions options) {
@@ -362,6 +974,105 @@ public final class AutostoppingFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .name("^my-ecs-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleEcsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleEcs(GetRuleEcsArgs.builder()
+     *             .name("my-ecs-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetRuleEcsResult> getRuleEcsPlain(GetRuleEcsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:autostopping/getRuleEcs:getRuleEcs", TypeShape.of(GetRuleEcsResult.class), args, Utilities.withVersion(options));
@@ -370,6 +1081,321 @@ public final class AutostoppingFunctions {
      * Data source for retrieving a Harness AutoStopping rule for K8s services.
      * 
      * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleK8s(GetRuleK8sArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleK8s(GetRuleK8sArgs.builder()
+     *             .name("^my-k8s-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleK8s(GetRuleK8sArgs.builder()
+     *             .name("my-k8s-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRuleK8sResult> getRuleK8s() {
+        return getRuleK8s(GetRuleK8sArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness AutoStopping rule for K8s services.
+     * 
+     * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleK8s(GetRuleK8sArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleK8s(GetRuleK8sArgs.builder()
+     *             .name("^my-k8s-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleK8s(GetRuleK8sArgs.builder()
+     *             .name("my-k8s-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRuleK8sResult> getRuleK8sPlain() {
+        return getRuleK8sPlain(GetRuleK8sPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness AutoStopping rule for K8s services.
+     * 
+     * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleK8s(GetRuleK8sArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleK8s(GetRuleK8sArgs.builder()
+     *             .name("^my-k8s-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleK8s(GetRuleK8sArgs.builder()
+     *             .name("my-k8s-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetRuleK8sResult> getRuleK8s(GetRuleK8sArgs args) {
@@ -380,6 +1406,105 @@ public final class AutostoppingFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleK8s(GetRuleK8sArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleK8s(GetRuleK8sArgs.builder()
+     *             .name("^my-k8s-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleK8s(GetRuleK8sArgs.builder()
+     *             .name("my-k8s-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetRuleK8sResult> getRuleK8sPlain(GetRuleK8sPlainArgs args) {
         return getRuleK8sPlain(args, InvokeOptions.Empty);
@@ -388,6 +1513,105 @@ public final class AutostoppingFunctions {
      * Data source for retrieving a Harness AutoStopping rule for K8s services.
      * 
      * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleK8s(GetRuleK8sArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleK8s(GetRuleK8sArgs.builder()
+     *             .name("^my-k8s-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleK8s(GetRuleK8sArgs.builder()
+     *             .name("my-k8s-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetRuleK8sResult> getRuleK8s(GetRuleK8sArgs args, InvokeOptions options) {
@@ -398,6 +1622,105 @@ public final class AutostoppingFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleK8s(GetRuleK8sArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleK8s(GetRuleK8sArgs.builder()
+     *             .name("^my-k8s-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleK8s(GetRuleK8sArgs.builder()
+     *             .name("my-k8s-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetRuleK8sResult> getRuleK8s(GetRuleK8sArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:autostopping/getRuleK8s:getRuleK8s", TypeShape.of(GetRuleK8sResult.class), args, Utilities.withVersion(options));
@@ -406,6 +1729,105 @@ public final class AutostoppingFunctions {
      * Data source for retrieving a Harness AutoStopping rule for K8s services.
      * 
      * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleK8s(GetRuleK8sArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleK8s(GetRuleK8sArgs.builder()
+     *             .name("^my-k8s-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleK8sArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleK8s(GetRuleK8sArgs.builder()
+     *             .name("my-k8s-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetRuleK8sResult> getRuleK8sPlain(GetRuleK8sPlainArgs args, InvokeOptions options) {
@@ -416,6 +1838,321 @@ public final class AutostoppingFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .name("^my-rds-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .name("my-rds-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRuleRdsResult> getRuleRds() {
+        return getRuleRds(GetRuleRdsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness AutoStopping rule for RDS databases.
+     * 
+     * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .name("^my-rds-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .name("my-rds-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRuleRdsResult> getRuleRdsPlain() {
+        return getRuleRdsPlain(GetRuleRdsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness AutoStopping rule for RDS databases.
+     * 
+     * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .name("^my-rds-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .name("my-rds-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetRuleRdsResult> getRuleRds(GetRuleRdsArgs args) {
         return getRuleRds(args, InvokeOptions.Empty);
@@ -424,6 +2161,105 @@ public final class AutostoppingFunctions {
      * Data source for retrieving a Harness AutoStopping rule for RDS databases.
      * 
      * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .name("^my-rds-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .name("my-rds-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetRuleRdsResult> getRuleRdsPlain(GetRuleRdsPlainArgs args) {
@@ -434,6 +2270,105 @@ public final class AutostoppingFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .name("^my-rds-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .name("my-rds-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetRuleRdsResult> getRuleRds(GetRuleRdsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:autostopping/getRuleRds:getRuleRds", TypeShape.of(GetRuleRdsResult.class), args, Utilities.withVersion(options));
@@ -442,6 +2377,105 @@ public final class AutostoppingFunctions {
      * Data source for retrieving a Harness AutoStopping rule for RDS databases.
      * 
      * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .name("^my-rds-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .name("my-rds-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetRuleRdsResult> getRuleRds(GetRuleRdsArgs args, InvokeOutputOptions options) {
@@ -452,6 +2486,105 @@ public final class AutostoppingFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .name("^my-rds-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleRdsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleRds(GetRuleRdsArgs.builder()
+     *             .name("my-rds-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetRuleRdsResult> getRuleRdsPlain(GetRuleRdsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:autostopping/getRuleRds:getRuleRds", TypeShape.of(GetRuleRdsResult.class), args, Utilities.withVersion(options));
@@ -460,6 +2593,321 @@ public final class AutostoppingFunctions {
      * Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
      * 
      * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleScaleGroup(GetRuleScaleGroupArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleScaleGroup(GetRuleScaleGroupArgs.builder()
+     *             .name("^my-scale-group-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleScaleGroup(GetRuleScaleGroupArgs.builder()
+     *             .name("my-asg-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRuleScaleGroupResult> getRuleScaleGroup() {
+        return getRuleScaleGroup(GetRuleScaleGroupArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
+     * 
+     * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleScaleGroup(GetRuleScaleGroupArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleScaleGroup(GetRuleScaleGroupArgs.builder()
+     *             .name("^my-scale-group-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleScaleGroup(GetRuleScaleGroupArgs.builder()
+     *             .name("my-asg-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRuleScaleGroupResult> getRuleScaleGroupPlain() {
+        return getRuleScaleGroupPlain(GetRuleScaleGroupPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
+     * 
+     * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleScaleGroup(GetRuleScaleGroupArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleScaleGroup(GetRuleScaleGroupArgs.builder()
+     *             .name("^my-scale-group-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleScaleGroup(GetRuleScaleGroupArgs.builder()
+     *             .name("my-asg-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetRuleScaleGroupResult> getRuleScaleGroup(GetRuleScaleGroupArgs args) {
@@ -470,6 +2918,105 @@ public final class AutostoppingFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleScaleGroup(GetRuleScaleGroupArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleScaleGroup(GetRuleScaleGroupArgs.builder()
+     *             .name("^my-scale-group-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleScaleGroup(GetRuleScaleGroupArgs.builder()
+     *             .name("my-asg-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetRuleScaleGroupResult> getRuleScaleGroupPlain(GetRuleScaleGroupPlainArgs args) {
         return getRuleScaleGroupPlain(args, InvokeOptions.Empty);
@@ -478,6 +3025,105 @@ public final class AutostoppingFunctions {
      * Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
      * 
      * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleScaleGroup(GetRuleScaleGroupArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleScaleGroup(GetRuleScaleGroupArgs.builder()
+     *             .name("^my-scale-group-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleScaleGroup(GetRuleScaleGroupArgs.builder()
+     *             .name("my-asg-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetRuleScaleGroupResult> getRuleScaleGroup(GetRuleScaleGroupArgs args, InvokeOptions options) {
@@ -488,6 +3134,105 @@ public final class AutostoppingFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleScaleGroup(GetRuleScaleGroupArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleScaleGroup(GetRuleScaleGroupArgs.builder()
+     *             .name("^my-scale-group-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleScaleGroup(GetRuleScaleGroupArgs.builder()
+     *             .name("my-asg-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetRuleScaleGroupResult> getRuleScaleGroup(GetRuleScaleGroupArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:autostopping/getRuleScaleGroup:getRuleScaleGroup", TypeShape.of(GetRuleScaleGroupResult.class), args, Utilities.withVersion(options));
@@ -496,6 +3241,105 @@ public final class AutostoppingFunctions {
      * Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
      * 
      * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleScaleGroup(GetRuleScaleGroupArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleScaleGroup(GetRuleScaleGroupArgs.builder()
+     *             .name("^my-scale-group-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleScaleGroup(GetRuleScaleGroupArgs.builder()
+     *             .name("my-asg-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetRuleScaleGroupResult> getRuleScaleGroupPlain(GetRuleScaleGroupPlainArgs args, InvokeOptions options) {
@@ -506,6 +3350,321 @@ public final class AutostoppingFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .name("^my-vm-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .name("my-vm-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRuleVmResult> getRuleVm() {
+        return getRuleVm(GetRuleVmArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness AutoStopping rule for VMs.
+     * 
+     * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .name("^my-vm-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .name("my-vm-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRuleVmResult> getRuleVmPlain() {
+        return getRuleVmPlain(GetRuleVmPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Data source for retrieving a Harness AutoStopping rule for VMs.
+     * 
+     * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .name("^my-vm-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .name("my-vm-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetRuleVmResult> getRuleVm(GetRuleVmArgs args) {
         return getRuleVm(args, InvokeOptions.Empty);
@@ -514,6 +3673,105 @@ public final class AutostoppingFunctions {
      * Data source for retrieving a Harness AutoStopping rule for VMs.
      * 
      * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .name("^my-vm-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .name("my-vm-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetRuleVmResult> getRuleVmPlain(GetRuleVmPlainArgs args) {
@@ -524,6 +3782,105 @@ public final class AutostoppingFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .name("^my-vm-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .name("my-vm-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetRuleVmResult> getRuleVm(GetRuleVmArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:autostopping/getRuleVm:getRuleVm", TypeShape.of(GetRuleVmResult.class), args, Utilities.withVersion(options));
@@ -533,6 +3890,105 @@ public final class AutostoppingFunctions {
      * 
      * ## Example Usage
      * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .name("^my-vm-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .name("my-vm-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetRuleVmResult> getRuleVm(GetRuleVmArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:autostopping/getRuleVm:getRuleVm", TypeShape.of(GetRuleVmResult.class), args, Utilities.withVersion(options));
@@ -541,6 +3997,105 @@ public final class AutostoppingFunctions {
      * Data source for retrieving a Harness AutoStopping rule for VMs.
      * 
      * ## Example Usage
+     * 
+     * ### Lookup by ID
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byId = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .identifier("12345")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name (regex)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byName = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .name("^my-vm-rule$")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Lookup by name pattern
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.autostopping.AutostoppingFunctions;
+     * import com.pulumi.harness.autostopping.inputs.GetRuleVmArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byPattern = AutostoppingFunctions.getRuleVm(GetRuleVmArgs.builder()
+     *             .name("my-vm-.*-prod")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetRuleVmResult> getRuleVmPlain(GetRuleVmPlainArgs args, InvokeOptions options) {

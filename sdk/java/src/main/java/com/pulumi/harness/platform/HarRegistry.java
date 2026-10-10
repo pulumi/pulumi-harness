@@ -296,6 +296,68 @@ import javax.annotation.Nullable;
  *             .parentRef("accountId/orgId/projectId")
  *             .build());
  * 
+ *         // Example of a Virtual Composer Registry
+ *         var composerVirtual = new HarRegistry("composerVirtual", HarRegistryArgs.builder()
+ *             .configs(HarRegistryConfigArgs.builder()
+ *                 .type("VIRTUAL")
+ *                 .build())
+ *             .identifier("virtual_composer_registry")
+ *             .description("Virtual Composer Registry")
+ *             .spaceRef("accountId/orgId/projectId")
+ *             .packageType("COMPOSER")
+ *             .parentRef("accountId/orgId/projectId")
+ *             .build());
+ * 
+ *         // Example of a Virtual Dart Registry
+ *         var dartVirtual = new HarRegistry("dartVirtual", HarRegistryArgs.builder()
+ *             .configs(HarRegistryConfigArgs.builder()
+ *                 .type("VIRTUAL")
+ *                 .build())
+ *             .identifier("virtual_dart_registry")
+ *             .description("Virtual Dart Registry")
+ *             .spaceRef("accountId/orgId/projectId")
+ *             .packageType("DART")
+ *             .parentRef("accountId/orgId/projectId")
+ *             .build());
+ * 
+ *         // Example of a Virtual Swift Registry
+ *         var swiftVirtual = new HarRegistry("swiftVirtual", HarRegistryArgs.builder()
+ *             .configs(HarRegistryConfigArgs.builder()
+ *                 .type("VIRTUAL")
+ *                 .build())
+ *             .identifier("virtual_swift_registry")
+ *             .description("Virtual Swift Registry")
+ *             .spaceRef("accountId/orgId/projectId")
+ *             .packageType("SWIFT")
+ *             .parentRef("accountId/orgId/projectId")
+ *             .build());
+ * 
+ *         // Example of a Virtual Hugging Face Registry
+ *         // HUGGINGFACE supports VIRTUAL registries only - upstream is not supported.
+ *         var huggingfaceVirtual = new HarRegistry("huggingfaceVirtual", HarRegistryArgs.builder()
+ *             .configs(HarRegistryConfigArgs.builder()
+ *                 .type("VIRTUAL")
+ *                 .build())
+ *             .identifier("virtual_huggingface_registry")
+ *             .description("Virtual Hugging Face Registry")
+ *             .spaceRef("accountId/orgId/projectId")
+ *             .packageType("HUGGINGFACE")
+ *             .parentRef("accountId/orgId/projectId")
+ *             .build());
+ * 
+ *         // Example of a Virtual Terraform Backend Registry
+ *         // TERRAFORM_BACKEND supports VIRTUAL registries only - upstream is not supported.
+ *         var terraformBackendVirtual = new HarRegistry("terraformBackendVirtual", HarRegistryArgs.builder()
+ *             .configs(HarRegistryConfigArgs.builder()
+ *                 .type("VIRTUAL")
+ *                 .build())
+ *             .identifier("virtual_terraform_backend_registry")
+ *             .description("Virtual Terraform Backend Registry")
+ *             .spaceRef("accountId/orgId/projectId")
+ *             .packageType("TERRAFORM_BACKEND")
+ *             .parentRef("accountId/orgId/projectId")
+ *             .build());
+ * 
  *     }
  * }
  * }
@@ -444,14 +506,14 @@ public class HarRegistry extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metadata);
     }
     /**
-     * Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
+     * Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT)
      * 
      */
     @Export(name="packageType", refs={String.class}, tree="[0]")
     private Output<String> packageType;
 
     /**
-     * @return Type of package (DOCKER, HELM, HELM_HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, CRAN, ALPINE, WOLFI)
+     * @return Type of package (DOCKER, HELM, HELM*HTTP, MAVEN, PYTHON, GENERIC, NUGET, NPM, RPM, CARGO, RAW, PUPPET, GO, CONDA, DEBIAN, CONAN, RUBY, TERRAFORM, TERRAFORM*BACKEND, CRAN, ALPINE, WOLFI, COMPOSER, HUGGINGFACE, DART, SWIFT)
      * 
      */
     public Output<String> packageType() {

@@ -11,8 +11,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRuleK8sResult {
@@ -25,19 +23,19 @@ public final class GetRuleK8sResult {
      * @return Dependent rules
      * 
      */
-    private @Nullable List<GetRuleK8sDepend> depends;
+    private List<GetRuleK8sDepend> depends;
     /**
-     * @return Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+     * @return Boolean that indicates whether the AutoStopping rule is in DryRun mode
      * 
      */
-    private @Nullable Boolean dryRun;
+    private Boolean dryRun;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
     /**
-     * @return Unique identifier of the resource
+     * @return Unique identifier of the resource. Either `identifier` or `name` must be specified.
      * 
      */
     private String identifier;
@@ -45,27 +43,12 @@ public final class GetRuleK8sResult {
      * @return Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      * 
      */
-    private @Nullable Integer idleTimeMins;
+    private Integer idleTimeMins;
     /**
-     * @return Id of the K8s connector
-     * 
-     */
-    private String k8sConnectorId;
-    /**
-     * @return Namespace of the cluster
-     * 
-     */
-    private String k8sNamespace;
-    /**
-     * @return Name of the rule
+     * @return Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      * 
      */
     private String name;
-    /**
-     * @return YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
-     * 
-     */
-    private String ruleYaml;
 
     private GetRuleK8sResult() {}
     /**
@@ -80,14 +63,14 @@ public final class GetRuleK8sResult {
      * 
      */
     public List<GetRuleK8sDepend> depends() {
-        return this.depends == null ? List.of() : this.depends;
+        return this.depends;
     }
     /**
-     * @return Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+     * @return Boolean that indicates whether the AutoStopping rule is in DryRun mode
      * 
      */
-    public Optional<Boolean> dryRun() {
-        return Optional.ofNullable(this.dryRun);
+    public Boolean dryRun() {
+        return this.dryRun;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -97,7 +80,7 @@ public final class GetRuleK8sResult {
         return this.id;
     }
     /**
-     * @return Unique identifier of the resource
+     * @return Unique identifier of the resource. Either `identifier` or `name` must be specified.
      * 
      */
     public String identifier() {
@@ -107,36 +90,15 @@ public final class GetRuleK8sResult {
      * @return Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      * 
      */
-    public Optional<Integer> idleTimeMins() {
-        return Optional.ofNullable(this.idleTimeMins);
+    public Integer idleTimeMins() {
+        return this.idleTimeMins;
     }
     /**
-     * @return Id of the K8s connector
-     * 
-     */
-    public String k8sConnectorId() {
-        return this.k8sConnectorId;
-    }
-    /**
-     * @return Namespace of the cluster
-     * 
-     */
-    public String k8sNamespace() {
-        return this.k8sNamespace;
-    }
-    /**
-     * @return Name of the rule
+     * @return Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      * 
      */
     public String name() {
         return this.name;
-    }
-    /**
-     * @return YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
-     * 
-     */
-    public String ruleYaml() {
-        return this.ruleYaml;
     }
 
     public static Builder builder() {
@@ -149,15 +111,12 @@ public final class GetRuleK8sResult {
     @CustomType.Builder
     public static final class Builder {
         private String cloudConnectorId;
-        private @Nullable List<GetRuleK8sDepend> depends;
-        private @Nullable Boolean dryRun;
+        private List<GetRuleK8sDepend> depends;
+        private Boolean dryRun;
         private String id;
         private String identifier;
-        private @Nullable Integer idleTimeMins;
-        private String k8sConnectorId;
-        private String k8sNamespace;
+        private Integer idleTimeMins;
         private String name;
-        private String ruleYaml;
         public Builder() {}
         public Builder(GetRuleK8sResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -167,10 +126,7 @@ public final class GetRuleK8sResult {
     	      this.id = defaults.id;
     	      this.identifier = defaults.identifier;
     	      this.idleTimeMins = defaults.idleTimeMins;
-    	      this.k8sConnectorId = defaults.k8sConnectorId;
-    	      this.k8sNamespace = defaults.k8sNamespace;
     	      this.name = defaults.name;
-    	      this.ruleYaml = defaults.ruleYaml;
         }
 
         @CustomType.Setter
@@ -182,8 +138,10 @@ public final class GetRuleK8sResult {
             return this;
         }
         @CustomType.Setter
-        public Builder depends(@Nullable List<GetRuleK8sDepend> depends) {
-
+        public Builder depends(List<GetRuleK8sDepend> depends) {
+            if (depends == null) {
+              throw new MissingRequiredPropertyException("GetRuleK8sResult", "depends");
+            }
             this.depends = depends;
             return this;
         }
@@ -191,8 +149,10 @@ public final class GetRuleK8sResult {
             return depends(List.of(depends));
         }
         @CustomType.Setter
-        public Builder dryRun(@Nullable Boolean dryRun) {
-
+        public Builder dryRun(Boolean dryRun) {
+            if (dryRun == null) {
+              throw new MissingRequiredPropertyException("GetRuleK8sResult", "dryRun");
+            }
             this.dryRun = dryRun;
             return this;
         }
@@ -213,25 +173,11 @@ public final class GetRuleK8sResult {
             return this;
         }
         @CustomType.Setter
-        public Builder idleTimeMins(@Nullable Integer idleTimeMins) {
-
+        public Builder idleTimeMins(Integer idleTimeMins) {
+            if (idleTimeMins == null) {
+              throw new MissingRequiredPropertyException("GetRuleK8sResult", "idleTimeMins");
+            }
             this.idleTimeMins = idleTimeMins;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder k8sConnectorId(String k8sConnectorId) {
-            if (k8sConnectorId == null) {
-              throw new MissingRequiredPropertyException("GetRuleK8sResult", "k8sConnectorId");
-            }
-            this.k8sConnectorId = k8sConnectorId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder k8sNamespace(String k8sNamespace) {
-            if (k8sNamespace == null) {
-              throw new MissingRequiredPropertyException("GetRuleK8sResult", "k8sNamespace");
-            }
-            this.k8sNamespace = k8sNamespace;
             return this;
         }
         @CustomType.Setter
@@ -242,14 +188,6 @@ public final class GetRuleK8sResult {
             this.name = name;
             return this;
         }
-        @CustomType.Setter
-        public Builder ruleYaml(String ruleYaml) {
-            if (ruleYaml == null) {
-              throw new MissingRequiredPropertyException("GetRuleK8sResult", "ruleYaml");
-            }
-            this.ruleYaml = ruleYaml;
-            return this;
-        }
         public GetRuleK8sResult build() {
             final var _resultValue = new GetRuleK8sResult();
             _resultValue.cloudConnectorId = cloudConnectorId;
@@ -258,10 +196,7 @@ public final class GetRuleK8sResult {
             _resultValue.id = id;
             _resultValue.identifier = identifier;
             _resultValue.idleTimeMins = idleTimeMins;
-            _resultValue.k8sConnectorId = k8sConnectorId;
-            _resultValue.k8sNamespace = k8sNamespace;
             _resultValue.name = name;
-            _resultValue.ruleYaml = ruleYaml;
             return _resultValue;
         }
     }

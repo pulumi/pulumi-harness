@@ -15,22 +15,184 @@ namespace Pulumi.Harness.Autostopping
         /// Data source for retrieving a Harness AutoStopping rule for ECS services.
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Lookup by ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byId = Harness.Autostopping.GetRuleEcs.Invoke(new()
+        ///     {
+        ///         Identifier = "12345",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name (regex)
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byName = Harness.Autostopping.GetRuleEcs.Invoke(new()
+        ///     {
+        ///         Name = "^my-ecs-rule$",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name pattern
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byPattern = Harness.Autostopping.GetRuleEcs.Invoke(new()
+        ///     {
+        ///         Name = "my-ecs-.*-prod",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Task<GetRuleEcsResult> InvokeAsync(GetRuleEcsArgs args, InvokeOptions? options = null)
+        public static Task<GetRuleEcsResult> InvokeAsync(GetRuleEcsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRuleEcsResult>("harness:autostopping/getRuleEcs:getRuleEcs", args ?? new GetRuleEcsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness AutoStopping rule for ECS services.
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Lookup by ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byId = Harness.Autostopping.GetRuleEcs.Invoke(new()
+        ///     {
+        ///         Identifier = "12345",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name (regex)
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byName = Harness.Autostopping.GetRuleEcs.Invoke(new()
+        ///     {
+        ///         Name = "^my-ecs-rule$",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name pattern
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byPattern = Harness.Autostopping.GetRuleEcs.Invoke(new()
+        ///     {
+        ///         Name = "my-ecs-.*-prod",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Output<GetRuleEcsResult> Invoke(GetRuleEcsInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetRuleEcsResult> Invoke(GetRuleEcsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRuleEcsResult>("harness:autostopping/getRuleEcs:getRuleEcs", args ?? new GetRuleEcsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness AutoStopping rule for ECS services.
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Lookup by ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byId = Harness.Autostopping.GetRuleEcs.Invoke(new()
+        ///     {
+        ///         Identifier = "12345",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name (regex)
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byName = Harness.Autostopping.GetRuleEcs.Invoke(new()
+        ///     {
+        ///         Name = "^my-ecs-rule$",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name pattern
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byPattern = Harness.Autostopping.GetRuleEcs.Invoke(new()
+        ///     {
+        ///         Name = "my-ecs-.*-prod",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetRuleEcsResult> Invoke(GetRuleEcsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRuleEcsResult>("harness:autostopping/getRuleEcs:getRuleEcs", args ?? new GetRuleEcsInvokeArgs(), options.WithDefaults());
@@ -40,61 +202,16 @@ namespace Pulumi.Harness.Autostopping
     public sealed class GetRuleEcsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Id of the cloud connector
+        /// Unique identifier of the resource. Either `Identifier` or `Name` must be specified.
         /// </summary>
-        [Input("cloudConnectorId", required: true)]
-        public string CloudConnectorId { get; set; } = null!;
-
-        [Input("container")]
-        public Inputs.GetRuleEcsContainerArgs? Container { get; set; }
-
-        [Input("customDomains")]
-        private List<string>? _customDomains;
+        [Input("identifier")]
+        public string? Identifier { get; set; }
 
         /// <summary>
-        /// Custom URLs used to access the instances
+        /// Name or regex pattern to match the rule name. Either `Identifier` or `Name` must be specified.
         /// </summary>
-        public List<string> CustomDomains
-        {
-            get => _customDomains ?? (_customDomains = new List<string>());
-            set => _customDomains = value;
-        }
-
-        [Input("depends")]
-        private List<Inputs.GetRuleEcsDependArgs>? _depends;
-
-        /// <summary>
-        /// Dependent rules
-        /// </summary>
-        public List<Inputs.GetRuleEcsDependArgs> Depends
-        {
-            get => _depends ?? (_depends = new List<Inputs.GetRuleEcsDependArgs>());
-            set => _depends = value;
-        }
-
-        [Input("https")]
-        private List<Inputs.GetRuleEcsHttpArgs>? _https;
-
-        /// <summary>
-        /// Http routing configuration
-        /// </summary>
-        public List<Inputs.GetRuleEcsHttpArgs> Https
-        {
-            get => _https ?? (_https = new List<Inputs.GetRuleEcsHttpArgs>());
-            set => _https = value;
-        }
-
-        /// <summary>
-        /// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-        /// </summary>
-        [Input("idleTimeMins")]
-        public int? IdleTimeMins { get; set; }
-
-        /// <summary>
-        /// Name of the rule
-        /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        [Input("name")]
+        public string? Name { get; set; }
 
         public GetRuleEcsArgs()
         {
@@ -105,61 +222,16 @@ namespace Pulumi.Harness.Autostopping
     public sealed class GetRuleEcsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Id of the cloud connector
+        /// Unique identifier of the resource. Either `Identifier` or `Name` must be specified.
         /// </summary>
-        [Input("cloudConnectorId", required: true)]
-        public Input<string> CloudConnectorId { get; set; } = null!;
-
-        [Input("container")]
-        public Input<Inputs.GetRuleEcsContainerInputArgs>? Container { get; set; }
-
-        [Input("customDomains")]
-        private InputList<string>? _customDomains;
+        [Input("identifier")]
+        public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// Custom URLs used to access the instances
+        /// Name or regex pattern to match the rule name. Either `Identifier` or `Name` must be specified.
         /// </summary>
-        public InputList<string> CustomDomains
-        {
-            get => _customDomains ?? (_customDomains = new InputList<string>());
-            set => _customDomains = value;
-        }
-
-        [Input("depends")]
-        private InputList<Inputs.GetRuleEcsDependInputArgs>? _depends;
-
-        /// <summary>
-        /// Dependent rules
-        /// </summary>
-        public InputList<Inputs.GetRuleEcsDependInputArgs> Depends
-        {
-            get => _depends ?? (_depends = new InputList<Inputs.GetRuleEcsDependInputArgs>());
-            set => _depends = value;
-        }
-
-        [Input("https")]
-        private InputList<Inputs.GetRuleEcsHttpInputArgs>? _https;
-
-        /// <summary>
-        /// Http routing configuration
-        /// </summary>
-        public InputList<Inputs.GetRuleEcsHttpInputArgs> Https
-        {
-            get => _https ?? (_https = new InputList<Inputs.GetRuleEcsHttpInputArgs>());
-            set => _https = value;
-        }
-
-        /// <summary>
-        /// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-        /// </summary>
-        [Input("idleTimeMins")]
-        public Input<int>? IdleTimeMins { get; set; }
-
-        /// <summary>
-        /// Name of the rule
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         public GetRuleEcsInvokeArgs()
         {
@@ -175,33 +247,28 @@ namespace Pulumi.Harness.Autostopping
         /// Id of the cloud connector
         /// </summary>
         public readonly string CloudConnectorId;
-        public readonly Outputs.GetRuleEcsContainerResult? Container;
-        /// <summary>
-        /// Custom URLs used to access the instances
-        /// </summary>
-        public readonly ImmutableArray<string> CustomDomains;
         /// <summary>
         /// Dependent rules
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRuleEcsDependResult> Depends;
         /// <summary>
-        /// Http routing configuration
+        /// Boolean that indicates whether the AutoStopping rule is in DryRun mode
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetRuleEcsHttpResult> Https;
+        public readonly bool DryRun;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Unique identifier of the resource
+        /// Unique identifier of the resource. Either `Identifier` or `Name` must be specified.
         /// </summary>
         public readonly string Identifier;
         /// <summary>
         /// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         /// </summary>
-        public readonly int? IdleTimeMins;
+        public readonly int IdleTimeMins;
         /// <summary>
-        /// Name of the rule
+        /// Name or regex pattern to match the rule name. Either `Identifier` or `Name` must be specified.
         /// </summary>
         public readonly string Name;
 
@@ -209,27 +276,21 @@ namespace Pulumi.Harness.Autostopping
         private GetRuleEcsResult(
             string cloudConnectorId,
 
-            Outputs.GetRuleEcsContainerResult? container,
-
-            ImmutableArray<string> customDomains,
-
             ImmutableArray<Outputs.GetRuleEcsDependResult> depends,
 
-            ImmutableArray<Outputs.GetRuleEcsHttpResult> https,
+            bool dryRun,
 
             string id,
 
             string identifier,
 
-            int? idleTimeMins,
+            int idleTimeMins,
 
             string name)
         {
             CloudConnectorId = cloudConnectorId;
-            Container = container;
-            CustomDomains = customDomains;
             Depends = depends;
-            Https = https;
+            DryRun = dryRun;
             Id = id;
             Identifier = identifier;
             IdleTimeMins = idleTimeMins;

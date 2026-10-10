@@ -14,6 +14,84 @@ import (
 // Data source for retrieving a Harness AutoStopping rule for RDS databases.
 //
 // ## Example Usage
+//
+// ### Lookup by ID
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := autostopping.LookupRuleRds(ctx, &autostopping.LookupRuleRdsArgs{
+//				Identifier: pulumi.StringRef("12345"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Lookup by name (regex)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := autostopping.LookupRuleRds(ctx, &autostopping.LookupRuleRdsArgs{
+//				Name: pulumi.StringRef("^my-rds-rule$"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Lookup by name pattern
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := autostopping.LookupRuleRds(ctx, &autostopping.LookupRuleRdsArgs{
+//				Name: pulumi.StringRef("my-rds-.*-prod"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupRuleRds(ctx *pulumi.Context, args *LookupRuleRdsArgs, opts ...pulumi.InvokeOption) (*LookupRuleRdsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRuleRdsResult
@@ -26,36 +104,28 @@ func LookupRuleRds(ctx *pulumi.Context, args *LookupRuleRdsArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getRuleRds.
 type LookupRuleRdsArgs struct {
-	// Id of the cloud connector
-	CloudConnectorId string             `pulumi:"cloudConnectorId"`
-	Database         GetRuleRdsDatabase `pulumi:"database"`
-	// Dependent rules
-	Depends []GetRuleRdsDepend `pulumi:"depends"`
-	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-	IdleTimeMins *int `pulumi:"idleTimeMins"`
-	// Name of the rule
-	Name string `pulumi:"name"`
-	// TCP routing configuration
-	Tcps []GetRuleRdsTcp `pulumi:"tcps"`
+	// Unique identifier of the resource. Either `identifier` or `name` must be specified.
+	Identifier *string `pulumi:"identifier"`
+	// Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
+	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getRuleRds.
 type LookupRuleRdsResult struct {
 	// Id of the cloud connector
-	CloudConnectorId string             `pulumi:"cloudConnectorId"`
-	Database         GetRuleRdsDatabase `pulumi:"database"`
+	CloudConnectorId string `pulumi:"cloudConnectorId"`
 	// Dependent rules
 	Depends []GetRuleRdsDepend `pulumi:"depends"`
+	// Boolean that indicates whether the AutoStopping rule is in DryRun mode
+	DryRun bool `pulumi:"dryRun"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Unique identifier of the resource
+	// Unique identifier of the resource. Either `identifier` or `name` must be specified.
 	Identifier string `pulumi:"identifier"`
 	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-	IdleTimeMins *int `pulumi:"idleTimeMins"`
-	// Name of the rule
+	IdleTimeMins int `pulumi:"idleTimeMins"`
+	// Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
 	Name string `pulumi:"name"`
-	// TCP routing configuration
-	Tcps []GetRuleRdsTcp `pulumi:"tcps"`
 }
 
 func LookupRuleRdsOutput(ctx *pulumi.Context, args LookupRuleRdsOutputArgs, opts ...pulumi.InvokeOption) LookupRuleRdsResultOutput {
@@ -65,17 +135,10 @@ func LookupRuleRdsOutput(ctx *pulumi.Context, args LookupRuleRdsOutputArgs, opts
 
 // A collection of arguments for invoking getRuleRds.
 type LookupRuleRdsOutputArgs struct {
-	// Id of the cloud connector
-	CloudConnectorId pulumi.StringInput      `pulumi:"cloudConnectorId"`
-	Database         GetRuleRdsDatabaseInput `pulumi:"database"`
-	// Dependent rules
-	Depends GetRuleRdsDependArrayInput `pulumi:"depends"`
-	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-	IdleTimeMins pulumi.IntPtrInput `pulumi:"idleTimeMins"`
-	// Name of the rule
-	Name pulumi.StringInput `pulumi:"name"`
-	// TCP routing configuration
-	Tcps GetRuleRdsTcpArrayInput `pulumi:"tcps"`
+	// Unique identifier of the resource. Either `identifier` or `name` must be specified.
+	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	// Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (LookupRuleRdsOutputArgs) ElementType() reflect.Type {
@@ -102,13 +165,14 @@ func (o LookupRuleRdsResultOutput) CloudConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleRdsResult) string { return v.CloudConnectorId }).(pulumi.StringOutput)
 }
 
-func (o LookupRuleRdsResultOutput) Database() GetRuleRdsDatabaseOutput {
-	return o.ApplyT(func(v LookupRuleRdsResult) GetRuleRdsDatabase { return v.Database }).(GetRuleRdsDatabaseOutput)
-}
-
 // Dependent rules
 func (o LookupRuleRdsResultOutput) Depends() GetRuleRdsDependArrayOutput {
 	return o.ApplyT(func(v LookupRuleRdsResult) []GetRuleRdsDepend { return v.Depends }).(GetRuleRdsDependArrayOutput)
+}
+
+// Boolean that indicates whether the AutoStopping rule is in DryRun mode
+func (o LookupRuleRdsResultOutput) DryRun() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRuleRdsResult) bool { return v.DryRun }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -116,24 +180,19 @@ func (o LookupRuleRdsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleRdsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the resource
+// Unique identifier of the resource. Either `identifier` or `name` must be specified.
 func (o LookupRuleRdsResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleRdsResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-func (o LookupRuleRdsResultOutput) IdleTimeMins() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupRuleRdsResult) *int { return v.IdleTimeMins }).(pulumi.IntPtrOutput)
+func (o LookupRuleRdsResultOutput) IdleTimeMins() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupRuleRdsResult) int { return v.IdleTimeMins }).(pulumi.IntOutput)
 }
 
-// Name of the rule
+// Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
 func (o LookupRuleRdsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleRdsResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// TCP routing configuration
-func (o LookupRuleRdsResultOutput) Tcps() GetRuleRdsTcpArrayOutput {
-	return o.ApplyT(func(v LookupRuleRdsResult) []GetRuleRdsTcp { return v.Tcps }).(GetRuleRdsTcpArrayOutput)
 }
 
 func init() {

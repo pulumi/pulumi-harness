@@ -744,6 +744,14 @@ _utilities.register(
  },
  {
   "pkg": "harness",
+  "mod": "platform/connectorAnthropicModel",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/connectorAnthropicModel:ConnectorAnthropicModel": "ConnectorAnthropicModel"
+  }
+ },
+ {
+  "pkg": "harness",
   "mod": "platform/connectorAzureArtifacts",
   "fqn": "pulumi_harness.platform",
   "classes": {
@@ -788,6 +796,14 @@ _utilities.register(
   "fqn": "pulumi_harness.platform",
   "classes": {
    "harness:platform/connectorJdbc:ConnectorJdbc": "ConnectorJdbc"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/connectorOpenaiModel",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/connectorOpenaiModel:ConnectorOpenaiModel": "ConnectorOpenaiModel"
   }
  },
  {
@@ -1604,6 +1620,14 @@ _utilities.register(
   "fqn": "pulumi_harness.platform",
   "classes": {
    "harness:platform/serviceOverridesV2:ServiceOverridesV2": "ServiceOverridesV2"
+  }
+ },
+ {
+  "pkg": "harness",
+  "mod": "platform/setting",
+  "fqn": "pulumi_harness.platform",
+  "classes": {
+   "harness:platform/setting:Setting": "Setting"
   }
  },
  {

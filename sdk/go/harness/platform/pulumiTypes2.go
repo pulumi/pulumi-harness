@@ -13,6 +13,1507 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTla struct {
+	// Determines whether the variable should be evaluated as jsonnet code or treated as string.
+	Code *bool `pulumi:"code"`
+	// Name of Jsonnet variable.
+	Name *string `pulumi:"name"`
+	// Value of Jsonnet variable.
+	Value *string `pulumi:"value"`
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArgs and GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArgs{...}
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArgs struct {
+	// Determines whether the variable should be evaluated as jsonnet code or treated as string.
+	Code pulumi.BoolPtrInput `pulumi:"code"`
+	// Name of Jsonnet variable.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of Jsonnet variable.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTla)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutput)
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArray and GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArray{ GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArgs{...} }
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArray []GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaInput
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTla)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArray) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArray) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTla)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutput {
+	return o
+}
+
+// Determines whether the variable should be evaluated as jsonnet code or treated as string.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutput) Code() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTla) *bool {
+		return v.Code
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Name of Jsonnet variable.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTla) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value of Jsonnet variable.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTla) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTla)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTla {
+		return vs[0].([]GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTla)[vs[1].(int)]
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm struct {
+	// File parameters for the helm template.
+	FileParameters []GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameter `pulumi:"fileParameters"`
+	// Prevents 'helm template' from failing when `valueFiles` do not exist locally by not appending them to 'helm template --values'.
+	IgnoreMissingValueFiles *bool `pulumi:"ignoreMissingValueFiles"`
+	// Helm parameters which are passed to the helm template command upon manifest generation.
+	Parameters []GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameter `pulumi:"parameters"`
+	// If true then adds '--pass-credentials' to Helm commands to pass credentials to all domains.
+	PassCredentials *bool `pulumi:"passCredentials"`
+	// Helm release name. If omitted it will use the application name.
+	ReleaseName *string `pulumi:"releaseName"`
+	// Whether to skip custom resource definition installation step (Helm's [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
+	SkipCrds *bool `pulumi:"skipCrds"`
+	// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+	SkipSchemaValidation *bool `pulumi:"skipSchemaValidation"`
+	// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+	SkipTests *bool `pulumi:"skipTests"`
+	// List of Helm value files to use when generating a template.
+	ValueFiles []string `pulumi:"valueFiles"`
+	// Helm values to be passed to 'helm template', typically defined as a block.
+	Values *string `pulumi:"values"`
+	// Helm values to be passed to 'helm template', typically defined as a block.
+	ValuesObject map[string]string `pulumi:"valuesObject"`
+	// Helm version to use for templating (either "2" or "3").
+	Version *string `pulumi:"version"`
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmArgs and GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmArgs{...}
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmArgs struct {
+	// File parameters for the helm template.
+	FileParameters GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayInput `pulumi:"fileParameters"`
+	// Prevents 'helm template' from failing when `valueFiles` do not exist locally by not appending them to 'helm template --values'.
+	IgnoreMissingValueFiles pulumi.BoolPtrInput `pulumi:"ignoreMissingValueFiles"`
+	// Helm parameters which are passed to the helm template command upon manifest generation.
+	Parameters GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayInput `pulumi:"parameters"`
+	// If true then adds '--pass-credentials' to Helm commands to pass credentials to all domains.
+	PassCredentials pulumi.BoolPtrInput `pulumi:"passCredentials"`
+	// Helm release name. If omitted it will use the application name.
+	ReleaseName pulumi.StringPtrInput `pulumi:"releaseName"`
+	// Whether to skip custom resource definition installation step (Helm's [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
+	SkipCrds pulumi.BoolPtrInput `pulumi:"skipCrds"`
+	// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+	SkipSchemaValidation pulumi.BoolPtrInput `pulumi:"skipSchemaValidation"`
+	// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+	SkipTests pulumi.BoolPtrInput `pulumi:"skipTests"`
+	// List of Helm value files to use when generating a template.
+	ValueFiles pulumi.StringArrayInput `pulumi:"valueFiles"`
+	// Helm values to be passed to 'helm template', typically defined as a block.
+	Values pulumi.StringPtrInput `pulumi:"values"`
+	// Helm values to be passed to 'helm template', typically defined as a block.
+	ValuesObject pulumi.StringMapInput `pulumi:"valuesObject"`
+	// Helm version to use for templating (either "2" or "3").
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput)
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput).ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutputWithContext(ctx)
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmArgs, GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtr and GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrInput` via:
+//
+//	        GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput
+}
+
+type gitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrType GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmArgs
+
+func GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtr(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmArgs) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrInput {
+	return (*gitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrType)(v)
+}
+
+func (*gitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm)(nil)).Elem()
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutputWithContext(context.Background())
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput {
+	return o.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutputWithContext(context.Background())
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm {
+		return &v
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput)
+}
+
+// File parameters for the helm template.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput) FileParameters() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) []GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameter {
+		return v.FileParameters
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutput)
+}
+
+// Prevents 'helm template' from failing when `valueFiles` do not exist locally by not appending them to 'helm template --values'.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput) IgnoreMissingValueFiles() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) *bool {
+		return v.IgnoreMissingValueFiles
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Helm parameters which are passed to the helm template command upon manifest generation.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput) Parameters() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) []GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameter {
+		return v.Parameters
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutput)
+}
+
+// If true then adds '--pass-credentials' to Helm commands to pass credentials to all domains.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput) PassCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) *bool {
+		return v.PassCredentials
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Helm release name. If omitted it will use the application name.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput) ReleaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) *string {
+		return v.ReleaseName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to skip custom resource definition installation step (Helm's [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput) SkipCrds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) *bool {
+		return v.SkipCrds
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput) SkipSchemaValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) *bool {
+		return v.SkipSchemaValidation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput) SkipTests() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) *bool {
+		return v.SkipTests
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of Helm value files to use when generating a template.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput) ValueFiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) []string {
+		return v.ValueFiles
+	}).(pulumi.StringArrayOutput)
+}
+
+// Helm values to be passed to 'helm template', typically defined as a block.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput) Values() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) *string {
+		return v.Values
+	}).(pulumi.StringPtrOutput)
+}
+
+// Helm values to be passed to 'helm template', typically defined as a block.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput) ValuesObject() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) map[string]string {
+		return v.ValuesObject
+	}).(pulumi.StringMapOutput)
+}
+
+// Helm version to use for templating (either "2" or "3").
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) *string {
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm {
+		if v != nil {
+			return *v
+		}
+		var ret GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm
+		return ret
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput)
+}
+
+// File parameters for the helm template.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput) FileParameters() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) []GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameter {
+		if v == nil {
+			return nil
+		}
+		return v.FileParameters
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutput)
+}
+
+// Prevents 'helm template' from failing when `valueFiles` do not exist locally by not appending them to 'helm template --values'.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput) IgnoreMissingValueFiles() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreMissingValueFiles
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Helm parameters which are passed to the helm template command upon manifest generation.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput) Parameters() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) []GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameter {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutput)
+}
+
+// If true then adds '--pass-credentials' to Helm commands to pass credentials to all domains.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput) PassCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PassCredentials
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Helm release name. If omitted it will use the application name.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput) ReleaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReleaseName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to skip custom resource definition installation step (Helm's [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput) SkipCrds() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SkipCrds
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput) SkipSchemaValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SkipSchemaValidation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput) SkipTests() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SkipTests
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of Helm value files to use when generating a template.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput) ValueFiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ValueFiles
+	}).(pulumi.StringArrayOutput)
+}
+
+// Helm values to be passed to 'helm template', typically defined as a block.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput) Values() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringPtrOutput)
+}
+
+// Helm values to be passed to 'helm template', typically defined as a block.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput) ValuesObject() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ValuesObject
+	}).(pulumi.StringMapOutput)
+}
+
+// Helm version to use for templating (either "2" or "3").
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameter struct {
+	// Name of the Helm parameter.
+	Name string `pulumi:"name"`
+	// Path to the file containing the values for the Helm parameter.
+	Path string `pulumi:"path"`
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArgs and GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArgs{...}
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArgs struct {
+	// Name of the Helm parameter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Path to the file containing the values for the Helm parameter.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameter)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutput)
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArray and GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArray{ GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArgs{...} }
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArray []GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterInput
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameter)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArray) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArray) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameter)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutput {
+	return o
+}
+
+// Name of the Helm parameter.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameter) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+// Path to the file containing the values for the Helm parameter.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameter) string {
+		return v.Path
+	}).(pulumi.StringOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameter)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameter {
+		return vs[0].([]GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameter)[vs[1].(int)]
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameter struct {
+	// Determines whether to tell Helm to interpret booleans and numbers as strings.
+	ForceString *bool `pulumi:"forceString"`
+	// Name of the Helm parameter.
+	Name *string `pulumi:"name"`
+	// Value of the Helm parameter.
+	Value *string `pulumi:"value"`
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArgs and GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArgs{...}
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArgs struct {
+	// Determines whether to tell Helm to interpret booleans and numbers as strings.
+	ForceString pulumi.BoolPtrInput `pulumi:"forceString"`
+	// Name of the Helm parameter.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the Helm parameter.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameter)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutput)
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArray and GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArray{ GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArgs{...} }
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArray []GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterInput
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameter)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArray) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArray) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameter)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutput {
+	return o
+}
+
+// Determines whether to tell Helm to interpret booleans and numbers as strings.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutput) ForceString() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameter) *bool {
+		return v.ForceString
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Name of the Helm parameter.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameter) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value of the Helm parameter.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameter) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameter)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameter {
+		return vs[0].([]GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameter)[vs[1].(int)]
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize struct {
+	// List of additional annotations to add to rendered manifests.
+	CommonAnnotations map[string]string `pulumi:"commonAnnotations"`
+	// List of additional labels to add to rendered manifests.
+	CommonLabels map[string]string `pulumi:"commonLabels"`
+	// Indicates if to force applying common annotations to resources for kustomize apps.
+	ForceCommonAnnotations *bool `pulumi:"forceCommonAnnotations"`
+	// Indicates if to force apply common labels to resources for kustomize apps.
+	ForceCommonLabels *bool `pulumi:"forceCommonLabels"`
+	// List of Kustomize image override specifications.
+	Images []string `pulumi:"images"`
+	// Prefix appended to resources for Kustomize apps.
+	NamePrefix *string `pulumi:"namePrefix"`
+	// Suffix appended to resources for Kustomize apps.
+	NameSuffix *string `pulumi:"nameSuffix"`
+	// Override the namespace of the Kustomize application.
+	Namespace *string `pulumi:"namespace"`
+	// Version of Kustomize to use for rendering manifests.
+	Version *string `pulumi:"version"`
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeArgs and GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeArgs{...}
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeArgs struct {
+	// List of additional annotations to add to rendered manifests.
+	CommonAnnotations pulumi.StringMapInput `pulumi:"commonAnnotations"`
+	// List of additional labels to add to rendered manifests.
+	CommonLabels pulumi.StringMapInput `pulumi:"commonLabels"`
+	// Indicates if to force applying common annotations to resources for kustomize apps.
+	ForceCommonAnnotations pulumi.BoolPtrInput `pulumi:"forceCommonAnnotations"`
+	// Indicates if to force apply common labels to resources for kustomize apps.
+	ForceCommonLabels pulumi.BoolPtrInput `pulumi:"forceCommonLabels"`
+	// List of Kustomize image override specifications.
+	Images pulumi.StringArrayInput `pulumi:"images"`
+	// Prefix appended to resources for Kustomize apps.
+	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
+	// Suffix appended to resources for Kustomize apps.
+	NameSuffix pulumi.StringPtrInput `pulumi:"nameSuffix"`
+	// Override the namespace of the Kustomize application.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// Version of Kustomize to use for rendering manifests.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput)
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput).ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutputWithContext(ctx)
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeArgs, GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtr and GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrInput` via:
+//
+//	        GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput
+}
+
+type gitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrType GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeArgs
+
+func GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtr(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeArgs) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrInput {
+	return (*gitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrType)(v)
+}
+
+func (*gitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize)(nil)).Elem()
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutputWithContext(context.Background())
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput {
+	return o.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutputWithContext(context.Background())
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize) *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize {
+		return &v
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput)
+}
+
+// List of additional annotations to add to rendered manifests.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput) CommonAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize) map[string]string {
+		return v.CommonAnnotations
+	}).(pulumi.StringMapOutput)
+}
+
+// List of additional labels to add to rendered manifests.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput) CommonLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize) map[string]string {
+		return v.CommonLabels
+	}).(pulumi.StringMapOutput)
+}
+
+// Indicates if to force applying common annotations to resources for kustomize apps.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput) ForceCommonAnnotations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize) *bool {
+		return v.ForceCommonAnnotations
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if to force apply common labels to resources for kustomize apps.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput) ForceCommonLabels() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize) *bool {
+		return v.ForceCommonLabels
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of Kustomize image override specifications.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput) Images() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize) []string {
+		return v.Images
+	}).(pulumi.StringArrayOutput)
+}
+
+// Prefix appended to resources for Kustomize apps.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize) *string {
+		return v.NamePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Suffix appended to resources for Kustomize apps.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput) NameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize) *string {
+		return v.NameSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Override the namespace of the Kustomize application.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize) *string {
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of Kustomize to use for rendering manifests.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize) *string {
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput) Elem() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize {
+		if v != nil {
+			return *v
+		}
+		var ret GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize
+		return ret
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput)
+}
+
+// List of additional annotations to add to rendered manifests.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput) CommonAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.CommonAnnotations
+	}).(pulumi.StringMapOutput)
+}
+
+// List of additional labels to add to rendered manifests.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput) CommonLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.CommonLabels
+	}).(pulumi.StringMapOutput)
+}
+
+// Indicates if to force applying common annotations to resources for kustomize apps.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput) ForceCommonAnnotations() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForceCommonAnnotations
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if to force apply common labels to resources for kustomize apps.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput) ForceCommonLabels() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForceCommonLabels
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of Kustomize image override specifications.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput) Images() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Images
+	}).(pulumi.StringArrayOutput)
+}
+
+// Prefix appended to resources for Kustomize apps.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput) NamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NamePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Suffix appended to resources for Kustomize apps.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput) NameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Override the namespace of the Kustomize application.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of Kustomize to use for rendering manifests.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomize) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePlugin struct {
+	// Environment variables passed to the plugin.
+	Envs []GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnv `pulumi:"envs"`
+	// Name of the plugin. Only set the plugin name if the plugin is defined in `argocd-cm`. If the plugin is defined as a sidecar, omit the name. The plugin will be automatically matched with the Application according to the plugin's discovery rules.
+	Name *string `pulumi:"name"`
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginArgs and GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginArgs{...}
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginArgs struct {
+	// Environment variables passed to the plugin.
+	Envs GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayInput `pulumi:"envs"`
+	// Name of the plugin. Only set the plugin name if the plugin is defined in `argocd-cm`. If the plugin is defined as a sidecar, omit the name. The plugin will be automatically matched with the Application according to the plugin's discovery rules.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePlugin)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput)
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput).ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutputWithContext(ctx)
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginArgs, GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtr and GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrInput` via:
+//
+//	        GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput
+}
+
+type gitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrType GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginArgs
+
+func GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtr(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginArgs) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrInput {
+	return (*gitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrType)(v)
+}
+
+func (*gitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePlugin)(nil)).Elem()
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutputWithContext(context.Background())
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePlugin)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput {
+	return o.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutputWithContext(context.Background())
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePlugin) *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePlugin {
+		return &v
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput)
+}
+
+// Environment variables passed to the plugin.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput) Envs() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePlugin) []GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnv {
+		return v.Envs
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutput)
+}
+
+// Name of the plugin. Only set the plugin name if the plugin is defined in `argocd-cm`. If the plugin is defined as a sidecar, omit the name. The plugin will be automatically matched with the Application according to the plugin's discovery rules.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePlugin) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePlugin)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePlugin) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePlugin {
+		if v != nil {
+			return *v
+		}
+		var ret GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePlugin
+		return ret
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput)
+}
+
+// Environment variables passed to the plugin.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput) Envs() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePlugin) []GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnv {
+		if v == nil {
+			return nil
+		}
+		return v.Envs
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutput)
+}
+
+// Name of the plugin. Only set the plugin name if the plugin is defined in `argocd-cm`. If the plugin is defined as a sidecar, omit the name. The plugin will be automatically matched with the Application according to the plugin's discovery rules.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePlugin) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnv struct {
+	// Name of the environment variable.
+	Name *string `pulumi:"name"`
+	// Value of the environment variable.
+	Value *string `pulumi:"value"`
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArgs and GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArgs{...}
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArgs struct {
+	// Name of the environment variable.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the environment variable.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnv)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutput)
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArray and GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArray{ GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArgs{...} }
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArray []GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvInput
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnv)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArray) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArray) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnv)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutput {
+	return o
+}
+
+// Name of the environment variable.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnv) *string {
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value of the environment variable.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnv) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnv)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnv {
+		return vs[0].([]GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnv)[vs[1].(int)]
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicy struct {
+	// Whether to automatically keep an application synced to the target revision.
+	Automated *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyAutomated `pulumi:"automated"`
+	// Controls metadata in the given namespace (if `CreateNamespace=true`).
+	ManagedNamespaceMetadata *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyManagedNamespaceMetadata `pulumi:"managedNamespaceMetadata"`
+	// Controls failed sync retry behavior.
+	Retry *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyRetry `pulumi:"retry"`
+	// List of sync options. More info: https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/.
+	SyncOptions []string `pulumi:"syncOptions"`
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyArgs and GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyInput` via:
+//
+//	GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyArgs{...}
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyArgs struct {
+	// Whether to automatically keep an application synced to the target revision.
+	Automated GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyAutomatedPtrInput `pulumi:"automated"`
+	// Controls metadata in the given namespace (if `CreateNamespace=true`).
+	ManagedNamespaceMetadata GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyManagedNamespaceMetadataPtrInput `pulumi:"managedNamespaceMetadata"`
+	// Controls failed sync retry behavior.
+	Retry GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyRetryPtrInput `pulumi:"retry"`
+	// List of sync options. More info: https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/.
+	SyncOptions pulumi.StringArrayInput `pulumi:"syncOptions"`
+}
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicy)(nil)).Elem()
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput)
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput).ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutputWithContext(ctx)
+}
+
+// GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyArgs, GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtr and GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput values.
+// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrInput` via:
+//
+//	        GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrInput interface {
+	pulumi.Input
+
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput
+	ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput
+}
+
+type gitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrType GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyArgs
+
+func GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtr(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyArgs) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrInput {
+	return (*gitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrType)(v)
+}
+
+func (*gitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicy)(nil)).Elem()
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput {
+	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *gitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicy)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput {
+	return o.ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicy {
+		return &v
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput)
+}
+
+// Whether to automatically keep an application synced to the target revision.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput) Automated() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyAutomatedPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyAutomated {
+		return v.Automated
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyAutomatedPtrOutput)
+}
+
+// Controls metadata in the given namespace (if `CreateNamespace=true`).
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput) ManagedNamespaceMetadata() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyManagedNamespaceMetadata {
+		return v.ManagedNamespaceMetadata
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput)
+}
+
+// Controls failed sync retry behavior.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput) Retry() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyRetryPtrOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyRetry {
+		return v.Retry
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyRetryPtrOutput)
+}
+
+// List of sync options. More info: https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput) SyncOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicy) []string {
+		return v.SyncOptions
+	}).(pulumi.StringArrayOutput)
+}
+
+type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicy)(nil)).Elem()
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput {
+	return o
+}
+
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicy) GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicy
+		return ret
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput)
+}
+
+// Whether to automatically keep an application synced to the target revision.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput) Automated() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyAutomatedPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyAutomated {
+		if v == nil {
+			return nil
+		}
+		return v.Automated
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyAutomatedPtrOutput)
+}
+
+// Controls metadata in the given namespace (if `CreateNamespace=true`).
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput) ManagedNamespaceMetadata() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyManagedNamespaceMetadata {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedNamespaceMetadata
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput)
+}
+
+// Controls failed sync retry behavior.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput) Retry() GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyRetryPtrOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyRetry {
+		if v == nil {
+			return nil
+		}
+		return v.Retry
+	}).(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyRetryPtrOutput)
+}
+
+// List of sync options. More info: https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/.
+func (o GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput) SyncOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SyncOptions
+	}).(pulumi.StringArrayOutput)
+}
+
 type GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyAutomated struct {
 	// Allows apps have zero live resources.
 	AllowEmpty *bool `pulumi:"allowEmpty"`
@@ -88030,1420 +89531,23 @@ func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecIn
 	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecInfoOutput)
 }
 
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource struct {
-	// Helm chart name. Must be specified for applications sourced from a Helm repo.
-	Chart *string `pulumi:"chart"`
-	// Path/directory specific options.
-	Directory *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory `pulumi:"directory"`
-	// Helm specific options.
-	Helm *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm `pulumi:"helm"`
-	// Kustomize specific options.
-	Kustomize *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize `pulumi:"kustomize"`
-	// Directory path within the repository. Only valid for applications sourced from Git.
-	Path *string `pulumi:"path"`
-	// Config management plugin specific options.
-	Plugin *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePlugin `pulumi:"plugin"`
-	// Reference to another `source` within defined sources. See associated documentation on [Helm value files from external Git repository](https://argo-cd.readthedocs.io/en/stable/user-guide/multiple_sources/#helm-value-files-from-external-git-repository) regarding combining `ref` with `path` and/or `chart`.
-	Ref *string `pulumi:"ref"`
-	// URL to the repository (Git or Helm) that contains the application manifests.
-	RepoUrl *string `pulumi:"repoUrl"`
-	// Revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version.
-	TargetRevision *string `pulumi:"targetRevision"`
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArgs and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArgs{...}
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArgs struct {
-	// Helm chart name. Must be specified for applications sourced from a Helm repo.
-	Chart pulumi.StringPtrInput `pulumi:"chart"`
-	// Path/directory specific options.
-	Directory GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrInput `pulumi:"directory"`
-	// Helm specific options.
-	Helm GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrInput `pulumi:"helm"`
-	// Kustomize specific options.
-	Kustomize GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrInput `pulumi:"kustomize"`
-	// Directory path within the repository. Only valid for applications sourced from Git.
-	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Config management plugin specific options.
-	Plugin GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrInput `pulumi:"plugin"`
-	// Reference to another `source` within defined sources. See associated documentation on [Helm value files from external Git repository](https://argo-cd.readthedocs.io/en/stable/user-guide/multiple_sources/#helm-value-files-from-external-git-repository) regarding combining `ref` with `path` and/or `chart`.
-	Ref pulumi.StringPtrInput `pulumi:"ref"`
-	// URL to the repository (Git or Helm) that contains the application manifests.
-	RepoUrl pulumi.StringPtrInput `pulumi:"repoUrl"`
-	// Revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version.
-	TargetRevision pulumi.StringPtrInput `pulumi:"targetRevision"`
-}
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput)
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArray and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArray{ GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArgs{...} }
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArray []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceInput
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput {
-	return o
-}
-
-// Helm chart name. Must be specified for applications sourced from a Helm repo.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) Chart() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource) *string {
-		return v.Chart
-	}).(pulumi.StringPtrOutput)
-}
-
-// Path/directory specific options.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) Directory() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory {
-		return v.Directory
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput)
-}
-
-// Helm specific options.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) Helm() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm {
-		return v.Helm
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput)
-}
-
-// Kustomize specific options.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) Kustomize() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomize {
-		return v.Kustomize
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceKustomizePtrOutput)
-}
-
-// Directory path within the repository. Only valid for applications sourced from Git.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource) *string {
-		return v.Path
-	}).(pulumi.StringPtrOutput)
-}
-
-// Config management plugin specific options.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) Plugin() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePlugin {
-		return v.Plugin
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourcePluginPtrOutput)
-}
-
-// Reference to another `source` within defined sources. See associated documentation on [Helm value files from external Git repository](https://argo-cd.readthedocs.io/en/stable/user-guide/multiple_sources/#helm-value-files-from-external-git-repository) regarding combining `ref` with `path` and/or `chart`.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) Ref() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource) *string {
-		return v.Ref
-	}).(pulumi.StringPtrOutput)
-}
-
-// URL to the repository (Git or Helm) that contains the application manifests.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) RepoUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource) *string {
-		return v.RepoUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// Revision of the source to sync the application to. In case of Git, this can be commit, tag, or branch. If omitted, will equal to HEAD. In case of Helm, this is a semver tag for the Chart's version.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput) TargetRevision() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource) *string {
-		return v.TargetRevision
-	}).(pulumi.StringPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource {
-		return vs[0].([]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSource)[vs[1].(int)]
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory struct {
-	// Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation. This takes precedence over the `include` field. To match multiple patterns, wrap the patterns in {} and separate them with commas. For example: '{config.yaml,env-use2/*}'
-	Exclude *string `pulumi:"exclude"`
-	// Glob pattern to match paths against that should be explicitly included during manifest generation. If this field is set, only matching manifests will be included. To match multiple patterns, wrap the patterns in {} and separate them with commas. For example: '{*.yml,*.yaml}'
-	Include *string `pulumi:"include"`
-	// Jsonnet specific options.
-	Jsonnet *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet `pulumi:"jsonnet"`
-	// Whether to scan a directory recursively for manifests.
-	Recurse *bool `pulumi:"recurse"`
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs{...}
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs struct {
-	// Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation. This takes precedence over the `include` field. To match multiple patterns, wrap the patterns in {} and separate them with commas. For example: '{config.yaml,env-use2/*}'
-	Exclude pulumi.StringPtrInput `pulumi:"exclude"`
-	// Glob pattern to match paths against that should be explicitly included during manifest generation. If this field is set, only matching manifests will be included. To match multiple patterns, wrap the patterns in {} and separate them with commas. For example: '{*.yml,*.yaml}'
-	Include pulumi.StringPtrInput `pulumi:"include"`
-	// Jsonnet specific options.
-	Jsonnet GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrInput `pulumi:"jsonnet"`
-	// Whether to scan a directory recursively for manifests.
-	Recurse pulumi.BoolPtrInput `pulumi:"recurse"`
-}
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput)
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput).ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutputWithContext(ctx)
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs, GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtr and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrInput` via:
-//
-//	        GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs{...}
-//
-//	or:
-//
-//	        nil
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput
-}
-
-type gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrType GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs
-
-func GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtr(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrInput {
-	return (*gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrType)(v)
-}
-
-func (*gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory)(nil)).Elem()
-}
-
-func (i *gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutputWithContext(context.Background())
-}
-
-func (i *gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput {
-	return o.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutputWithContext(context.Background())
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory {
-		return &v
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput)
-}
-
-// Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation. This takes precedence over the `include` field. To match multiple patterns, wrap the patterns in {} and separate them with commas. For example: '{config.yaml,env-use2/*}'
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput) Exclude() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory) *string {
-		return v.Exclude
-	}).(pulumi.StringPtrOutput)
-}
-
-// Glob pattern to match paths against that should be explicitly included during manifest generation. If this field is set, only matching manifests will be included. To match multiple patterns, wrap the patterns in {} and separate them with commas. For example: '{*.yml,*.yaml}'
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput) Include() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory) *string {
-		return v.Include
-	}).(pulumi.StringPtrOutput)
-}
-
-// Jsonnet specific options.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput) Jsonnet() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet {
-		return v.Jsonnet
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput)
-}
-
-// Whether to scan a directory recursively for manifests.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput) Recurse() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory) *bool {
-		return v.Recurse
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory {
-		if v != nil {
-			return *v
-		}
-		var ret GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory
-		return ret
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput)
-}
-
-// Glob pattern to match paths against that should be explicitly excluded from being used during manifest generation. This takes precedence over the `include` field. To match multiple patterns, wrap the patterns in {} and separate them with commas. For example: '{config.yaml,env-use2/*}'
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput) Exclude() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Exclude
-	}).(pulumi.StringPtrOutput)
-}
-
-// Glob pattern to match paths against that should be explicitly included during manifest generation. If this field is set, only matching manifests will be included. To match multiple patterns, wrap the patterns in {} and separate them with commas. For example: '{*.yml,*.yaml}'
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput) Include() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Include
-	}).(pulumi.StringPtrOutput)
-}
-
-// Jsonnet specific options.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput) Jsonnet() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet {
-		if v == nil {
-			return nil
-		}
-		return v.Jsonnet
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput)
-}
-
-// Whether to scan a directory recursively for manifests.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput) Recurse() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectory) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Recurse
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet struct {
-	// List of Jsonnet External Variables.
-	ExtVars []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar `pulumi:"extVars"`
-	// Additional library search dirs.
-	Libs []string `pulumi:"libs"`
-	// List of Jsonnet Top-level Arguments
-	Tlas []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla `pulumi:"tlas"`
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs{...}
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs struct {
-	// List of Jsonnet External Variables.
-	ExtVars GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayInput `pulumi:"extVars"`
-	// Additional library search dirs.
-	Libs pulumi.StringArrayInput `pulumi:"libs"`
-	// List of Jsonnet Top-level Arguments
-	Tlas GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayInput `pulumi:"tlas"`
-}
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput)
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput).ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutputWithContext(ctx)
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs, GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtr and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrInput` via:
-//
-//	        GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs{...}
-//
-//	or:
-//
-//	        nil
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput
-}
-
-type gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrType GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs
-
-func GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtr(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrInput {
-	return (*gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrType)(v)
-}
-
-func (*gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet)(nil)).Elem()
-}
-
-func (i *gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutputWithContext(context.Background())
-}
-
-func (i *gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput {
-	return o.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutputWithContext(context.Background())
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet {
-		return &v
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput)
-}
-
-// List of Jsonnet External Variables.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput) ExtVars() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet) []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar {
-		return v.ExtVars
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput)
-}
-
-// Additional library search dirs.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput) Libs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet) []string {
-		return v.Libs
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of Jsonnet Top-level Arguments
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput) Tlas() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet) []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla {
-		return v.Tlas
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet {
-		if v != nil {
-			return *v
-		}
-		var ret GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet
-		return ret
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput)
-}
-
-// List of Jsonnet External Variables.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput) ExtVars() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet) []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar {
-		if v == nil {
-			return nil
-		}
-		return v.ExtVars
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput)
-}
-
-// Additional library search dirs.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput) Libs() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Libs
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of Jsonnet Top-level Arguments
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput) Tlas() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnet) []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla {
-		if v == nil {
-			return nil
-		}
-		return v.Tlas
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar struct {
-	// Determines whether the variable should be evaluated as jsonnet code or treated as string.
-	Code *bool `pulumi:"code"`
-	// Name of Jsonnet variable.
-	Name *string `pulumi:"name"`
-	// Value of Jsonnet variable.
-	Value *string `pulumi:"value"`
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArgs and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArgs{...}
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArgs struct {
-	// Determines whether the variable should be evaluated as jsonnet code or treated as string.
-	Code pulumi.BoolPtrInput `pulumi:"code"`
-	// Name of Jsonnet variable.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Value of Jsonnet variable.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput)
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArray and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArray{ GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArgs{...} }
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArray []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarInput
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput {
-	return o
-}
-
-// Determines whether the variable should be evaluated as jsonnet code or treated as string.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput) Code() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar) *bool {
-		return v.Code
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Name of Jsonnet variable.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar) *string {
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Value of Jsonnet variable.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar) *string {
-		return v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar {
-		return vs[0].([]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVar)[vs[1].(int)]
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla struct {
-	// Determines whether the variable should be evaluated as jsonnet code or treated as string.
-	Code *bool `pulumi:"code"`
-	// Name of Jsonnet variable.
-	Name *string `pulumi:"name"`
-	// Value of Jsonnet variable.
-	Value *string `pulumi:"value"`
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArgs and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArgs{...}
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArgs struct {
-	// Determines whether the variable should be evaluated as jsonnet code or treated as string.
-	Code pulumi.BoolPtrInput `pulumi:"code"`
-	// Name of Jsonnet variable.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Value of Jsonnet variable.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput)
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArray and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArray{ GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArgs{...} }
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArray []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaInput
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput {
-	return o
-}
-
-// Determines whether the variable should be evaluated as jsonnet code or treated as string.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput) Code() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla) *bool {
-		return v.Code
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Name of Jsonnet variable.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla) *string {
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Value of Jsonnet variable.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla) *string {
-		return v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla {
-		return vs[0].([]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTla)[vs[1].(int)]
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm struct {
-	// File parameters for the helm template.
-	FileParameters []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter `pulumi:"fileParameters"`
-	// Prevents 'helm template' from failing when `valueFiles` do not exist locally by not appending them to 'helm template --values'.
-	IgnoreMissingValueFiles *bool `pulumi:"ignoreMissingValueFiles"`
-	// Helm parameters which are passed to the helm template command upon manifest generation.
-	Parameters []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter `pulumi:"parameters"`
-	// If true then adds '--pass-credentials' to Helm commands to pass credentials to all domains.
-	PassCredentials *bool `pulumi:"passCredentials"`
-	// Helm release name. If omitted it will use the application name.
-	ReleaseName *string `pulumi:"releaseName"`
-	// Whether to skip custom resource definition installation step (Helm's [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
-	SkipCrds *bool `pulumi:"skipCrds"`
-	// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
-	SkipSchemaValidation *bool `pulumi:"skipSchemaValidation"`
-	// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
-	SkipTests *bool `pulumi:"skipTests"`
-	// List of Helm value files to use when generating a template.
-	ValueFiles []string `pulumi:"valueFiles"`
-	// Helm values to be passed to 'helm template', typically defined as a block.
-	Values *string `pulumi:"values"`
-	// Helm values to be passed to 'helm template', typically defined as a block.
-	ValuesObject map[string]string `pulumi:"valuesObject"`
-	// Helm version to use for templating (either "2" or "3").
-	Version *string `pulumi:"version"`
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs{...}
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs struct {
-	// File parameters for the helm template.
-	FileParameters GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayInput `pulumi:"fileParameters"`
-	// Prevents 'helm template' from failing when `valueFiles` do not exist locally by not appending them to 'helm template --values'.
-	IgnoreMissingValueFiles pulumi.BoolPtrInput `pulumi:"ignoreMissingValueFiles"`
-	// Helm parameters which are passed to the helm template command upon manifest generation.
-	Parameters GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayInput `pulumi:"parameters"`
-	// If true then adds '--pass-credentials' to Helm commands to pass credentials to all domains.
-	PassCredentials pulumi.BoolPtrInput `pulumi:"passCredentials"`
-	// Helm release name. If omitted it will use the application name.
-	ReleaseName pulumi.StringPtrInput `pulumi:"releaseName"`
-	// Whether to skip custom resource definition installation step (Helm's [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
-	SkipCrds pulumi.BoolPtrInput `pulumi:"skipCrds"`
-	// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
-	SkipSchemaValidation pulumi.BoolPtrInput `pulumi:"skipSchemaValidation"`
-	// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
-	SkipTests pulumi.BoolPtrInput `pulumi:"skipTests"`
-	// List of Helm value files to use when generating a template.
-	ValueFiles pulumi.StringArrayInput `pulumi:"valueFiles"`
-	// Helm values to be passed to 'helm template', typically defined as a block.
-	Values pulumi.StringPtrInput `pulumi:"values"`
-	// Helm values to be passed to 'helm template', typically defined as a block.
-	ValuesObject pulumi.StringMapInput `pulumi:"valuesObject"`
-	// Helm version to use for templating (either "2" or "3").
-	Version pulumi.StringPtrInput `pulumi:"version"`
-}
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput)
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput).ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutputWithContext(ctx)
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs, GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtr and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrInput` via:
-//
-//	        GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs{...}
-//
-//	or:
-//
-//	        nil
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput
-}
-
-type gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrType GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs
-
-func GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtr(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrInput {
-	return (*gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrType)(v)
-}
-
-func (*gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm)(nil)).Elem()
-}
-
-func (i *gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutputWithContext(context.Background())
-}
-
-func (i *gitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput {
-	return o.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutputWithContext(context.Background())
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm {
-		return &v
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput)
-}
-
-// File parameters for the helm template.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) FileParameters() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter {
-		return v.FileParameters
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput)
-}
-
-// Prevents 'helm template' from failing when `valueFiles` do not exist locally by not appending them to 'helm template --values'.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) IgnoreMissingValueFiles() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *bool {
-		return v.IgnoreMissingValueFiles
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Helm parameters which are passed to the helm template command upon manifest generation.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) Parameters() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter {
-		return v.Parameters
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput)
-}
-
-// If true then adds '--pass-credentials' to Helm commands to pass credentials to all domains.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) PassCredentials() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *bool {
-		return v.PassCredentials
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Helm release name. If omitted it will use the application name.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) ReleaseName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *string {
-		return v.ReleaseName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Whether to skip custom resource definition installation step (Helm's [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) SkipCrds() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *bool {
-		return v.SkipCrds
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) SkipSchemaValidation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *bool {
-		return v.SkipSchemaValidation
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) SkipTests() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *bool {
-		return v.SkipTests
-	}).(pulumi.BoolPtrOutput)
-}
-
-// List of Helm value files to use when generating a template.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) ValueFiles() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) []string {
-		return v.ValueFiles
-	}).(pulumi.StringArrayOutput)
-}
-
-// Helm values to be passed to 'helm template', typically defined as a block.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) Values() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *string {
-		return v.Values
-	}).(pulumi.StringPtrOutput)
-}
-
-// Helm values to be passed to 'helm template', typically defined as a block.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) ValuesObject() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) map[string]string {
-		return v.ValuesObject
-	}).(pulumi.StringMapOutput)
-}
-
-// Helm version to use for templating (either "2" or "3").
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *string {
-		return v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm {
-		if v != nil {
-			return *v
-		}
-		var ret GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm
-		return ret
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput)
-}
-
-// File parameters for the helm template.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) FileParameters() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter {
-		if v == nil {
-			return nil
-		}
-		return v.FileParameters
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput)
-}
-
-// Prevents 'helm template' from failing when `valueFiles` do not exist locally by not appending them to 'helm template --values'.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) IgnoreMissingValueFiles() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IgnoreMissingValueFiles
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Helm parameters which are passed to the helm template command upon manifest generation.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) Parameters() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter {
-		if v == nil {
-			return nil
-		}
-		return v.Parameters
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput)
-}
-
-// If true then adds '--pass-credentials' to Helm commands to pass credentials to all domains.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) PassCredentials() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.PassCredentials
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Helm release name. If omitted it will use the application name.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) ReleaseName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ReleaseName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Whether to skip custom resource definition installation step (Helm's [--skip-crds](https://helm.sh/docs/chart_best_practices/custom_resource_definitions/)).
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) SkipCrds() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.SkipCrds
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates if to skip schema validation during helm template. Corresponds to helm --skip-schema-validation
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) SkipSchemaValidation() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.SkipSchemaValidation
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates if to skip tests during helm template. Corresponds to helm --skip-tests
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) SkipTests() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.SkipTests
-	}).(pulumi.BoolPtrOutput)
-}
-
-// List of Helm value files to use when generating a template.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) ValueFiles() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ValueFiles
-	}).(pulumi.StringArrayOutput)
-}
-
-// Helm values to be passed to 'helm template', typically defined as a block.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) Values() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Values
-	}).(pulumi.StringPtrOutput)
-}
-
-// Helm values to be passed to 'helm template', typically defined as a block.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) ValuesObject() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.ValuesObject
-	}).(pulumi.StringMapOutput)
-}
-
-// Helm version to use for templating (either "2" or "3").
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelm) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter struct {
-	// Name of the Helm parameter.
-	Name string `pulumi:"name"`
-	// Path to the file containing the values for the Helm parameter.
-	Path string `pulumi:"path"`
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArgs and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArgs{...}
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArgs struct {
-	// Name of the Helm parameter.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Path to the file containing the values for the Helm parameter.
-	Path pulumi.StringInput `pulumi:"path"`
-}
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput)
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArray and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArray{ GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArgs{...} }
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArray []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterInput
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput {
-	return o
-}
-
-// Name of the Helm parameter.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter) string {
-		return v.Name
-	}).(pulumi.StringOutput)
-}
-
-// Path to the file containing the values for the Helm parameter.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter) string {
-		return v.Path
-	}).(pulumi.StringOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter {
-		return vs[0].([]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameter)[vs[1].(int)]
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter struct {
-	// Determines whether to tell Helm to interpret booleans and numbers as strings.
-	ForceString *bool `pulumi:"forceString"`
-	// Name of the Helm parameter.
-	Name *string `pulumi:"name"`
-	// Value of the Helm parameter.
-	Value *string `pulumi:"value"`
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArgs and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArgs{...}
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArgs struct {
-	// Determines whether to tell Helm to interpret booleans and numbers as strings.
-	ForceString pulumi.BoolPtrInput `pulumi:"forceString"`
-	// Name of the Helm parameter.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Value of the Helm parameter.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput)
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArray and GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArray{ GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArgs{...} }
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArray []GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterInput
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArray) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput {
-	return o
-}
-
-// Determines whether to tell Helm to interpret booleans and numbers as strings.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput) ForceString() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter) *bool {
-		return v.ForceString
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Name of the Helm parameter.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter) *string {
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Value of the Helm parameter.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter) *string {
-		return v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter {
-		return vs[0].([]GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameter)[vs[1].(int)]
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyAutomatedInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyAutomatedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyAutomatedPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyAutomatedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyManagedNamespaceMetadataInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyManagedNamespaceMetadataArgs{})
@@ -90428,22 +90532,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecIgnoreDifferenceArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecIgnoreDifferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecInfoInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecInfoArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecInfoArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArray{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceDirectoryJsonnetTlaArrayOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmPtrOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmFileParameterArrayOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceHelmParameterArrayOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizeOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourceKustomizePtrOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginPtrOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSourcePluginEnvArrayOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyOutput{})
+	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyPtrOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyAutomatedOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyAutomatedPtrOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMergeGeneratorMatrixGeneratorClusterTemplateSpecSyncPolicyManagedNamespaceMetadataOutput{})
@@ -91428,20 +91532,4 @@ func init() {
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecIgnoreDifferenceArrayOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecInfoOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecInfoArrayOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceArrayOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryPtrOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetPtrOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetExtVarArrayOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceDirectoryJsonnetTlaArrayOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmPtrOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmFileParameterArrayOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorScmProviderTemplateSpecSourceHelmParameterArrayOutput{})
 }

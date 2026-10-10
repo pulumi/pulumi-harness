@@ -15,22 +15,184 @@ namespace Pulumi.Harness.Autostopping
         /// Data source for retrieving a Harness AutoStopping rule for K8s services.
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Lookup by ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byId = Harness.Autostopping.GetRuleK8s.Invoke(new()
+        ///     {
+        ///         Identifier = "12345",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name (regex)
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byName = Harness.Autostopping.GetRuleK8s.Invoke(new()
+        ///     {
+        ///         Name = "^my-k8s-rule$",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name pattern
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byPattern = Harness.Autostopping.GetRuleK8s.Invoke(new()
+        ///     {
+        ///         Name = "my-k8s-.*-prod",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Task<GetRuleK8sResult> InvokeAsync(GetRuleK8sArgs args, InvokeOptions? options = null)
+        public static Task<GetRuleK8sResult> InvokeAsync(GetRuleK8sArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRuleK8sResult>("harness:autostopping/getRuleK8s:getRuleK8s", args ?? new GetRuleK8sArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness AutoStopping rule for K8s services.
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Lookup by ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byId = Harness.Autostopping.GetRuleK8s.Invoke(new()
+        ///     {
+        ///         Identifier = "12345",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name (regex)
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byName = Harness.Autostopping.GetRuleK8s.Invoke(new()
+        ///     {
+        ///         Name = "^my-k8s-rule$",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name pattern
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byPattern = Harness.Autostopping.GetRuleK8s.Invoke(new()
+        ///     {
+        ///         Name = "my-k8s-.*-prod",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
-        public static Output<GetRuleK8sResult> Invoke(GetRuleK8sInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetRuleK8sResult> Invoke(GetRuleK8sInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRuleK8sResult>("harness:autostopping/getRuleK8s:getRuleK8s", args ?? new GetRuleK8sInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Data source for retrieving a Harness AutoStopping rule for K8s services.
         /// 
         /// ## Example Usage
+        /// 
+        /// ### Lookup by ID
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byId = Harness.Autostopping.GetRuleK8s.Invoke(new()
+        ///     {
+        ///         Identifier = "12345",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name (regex)
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byName = Harness.Autostopping.GetRuleK8s.Invoke(new()
+        ///     {
+        ///         Name = "^my-k8s-rule$",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Lookup by name pattern
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var byPattern = Harness.Autostopping.GetRuleK8s.Invoke(new()
+        ///     {
+        ///         Name = "my-k8s-.*-prod",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetRuleK8sResult> Invoke(GetRuleK8sInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRuleK8sResult>("harness:autostopping/getRuleK8s:getRuleK8s", args ?? new GetRuleK8sInvokeArgs(), options.WithDefaults());
@@ -40,58 +202,16 @@ namespace Pulumi.Harness.Autostopping
     public sealed class GetRuleK8sArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Id of the cloud connector
+        /// Unique identifier of the resource. Either `Identifier` or `Name` must be specified.
         /// </summary>
-        [Input("cloudConnectorId", required: true)]
-        public string CloudConnectorId { get; set; } = null!;
-
-        [Input("depends")]
-        private List<Inputs.GetRuleK8sDependArgs>? _depends;
+        [Input("identifier")]
+        public string? Identifier { get; set; }
 
         /// <summary>
-        /// Dependent rules
+        /// Name or regex pattern to match the rule name. Either `Identifier` or `Name` must be specified.
         /// </summary>
-        public List<Inputs.GetRuleK8sDependArgs> Depends
-        {
-            get => _depends ?? (_depends = new List<Inputs.GetRuleK8sDependArgs>());
-            set => _depends = value;
-        }
-
-        /// <summary>
-        /// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-        /// </summary>
-        [Input("dryRun")]
-        public bool? DryRun { get; set; }
-
-        /// <summary>
-        /// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-        /// </summary>
-        [Input("idleTimeMins")]
-        public int? IdleTimeMins { get; set; }
-
-        /// <summary>
-        /// Id of the K8s connector
-        /// </summary>
-        [Input("k8sConnectorId", required: true)]
-        public string K8sConnectorId { get; set; } = null!;
-
-        /// <summary>
-        /// Namespace of the cluster
-        /// </summary>
-        [Input("k8sNamespace", required: true)]
-        public string K8sNamespace { get; set; } = null!;
-
-        /// <summary>
-        /// Name of the rule
-        /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
-
-        /// <summary>
-        /// YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
-        /// </summary>
-        [Input("ruleYaml", required: true)]
-        public string RuleYaml { get; set; } = null!;
+        [Input("name")]
+        public string? Name { get; set; }
 
         public GetRuleK8sArgs()
         {
@@ -102,58 +222,16 @@ namespace Pulumi.Harness.Autostopping
     public sealed class GetRuleK8sInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Id of the cloud connector
+        /// Unique identifier of the resource. Either `Identifier` or `Name` must be specified.
         /// </summary>
-        [Input("cloudConnectorId", required: true)]
-        public Input<string> CloudConnectorId { get; set; } = null!;
-
-        [Input("depends")]
-        private InputList<Inputs.GetRuleK8sDependInputArgs>? _depends;
+        [Input("identifier")]
+        public Input<string>? Identifier { get; set; }
 
         /// <summary>
-        /// Dependent rules
+        /// Name or regex pattern to match the rule name. Either `Identifier` or `Name` must be specified.
         /// </summary>
-        public InputList<Inputs.GetRuleK8sDependInputArgs> Depends
-        {
-            get => _depends ?? (_depends = new InputList<Inputs.GetRuleK8sDependInputArgs>());
-            set => _depends = value;
-        }
-
-        /// <summary>
-        /// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-        /// </summary>
-        [Input("dryRun")]
-        public Input<bool>? DryRun { get; set; }
-
-        /// <summary>
-        /// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-        /// </summary>
-        [Input("idleTimeMins")]
-        public Input<int>? IdleTimeMins { get; set; }
-
-        /// <summary>
-        /// Id of the K8s connector
-        /// </summary>
-        [Input("k8sConnectorId", required: true)]
-        public Input<string> K8sConnectorId { get; set; } = null!;
-
-        /// <summary>
-        /// Namespace of the cluster
-        /// </summary>
-        [Input("k8sNamespace", required: true)]
-        public Input<string> K8sNamespace { get; set; } = null!;
-
-        /// <summary>
-        /// Name of the rule
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
-        /// </summary>
-        [Input("ruleYaml", required: true)]
-        public Input<string> RuleYaml { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         public GetRuleK8sInvokeArgs()
         {
@@ -174,37 +252,25 @@ namespace Pulumi.Harness.Autostopping
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRuleK8sDependResult> Depends;
         /// <summary>
-        /// Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+        /// Boolean that indicates whether the AutoStopping rule is in DryRun mode
         /// </summary>
-        public readonly bool? DryRun;
+        public readonly bool DryRun;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Unique identifier of the resource
+        /// Unique identifier of the resource. Either `Identifier` or `Name` must be specified.
         /// </summary>
         public readonly string Identifier;
         /// <summary>
         /// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
         /// </summary>
-        public readonly int? IdleTimeMins;
+        public readonly int IdleTimeMins;
         /// <summary>
-        /// Id of the K8s connector
-        /// </summary>
-        public readonly string K8sConnectorId;
-        /// <summary>
-        /// Namespace of the cluster
-        /// </summary>
-        public readonly string K8sNamespace;
-        /// <summary>
-        /// Name of the rule
+        /// Name or regex pattern to match the rule name. Either `Identifier` or `Name` must be specified.
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// YAML definition of the K8s AutoStopping rule (workload selector, ingress, etc.).
-        /// </summary>
-        public readonly string RuleYaml;
 
         [OutputConstructor]
         private GetRuleK8sResult(
@@ -212,21 +278,15 @@ namespace Pulumi.Harness.Autostopping
 
             ImmutableArray<Outputs.GetRuleK8sDependResult> depends,
 
-            bool? dryRun,
+            bool dryRun,
 
             string id,
 
             string identifier,
 
-            int? idleTimeMins,
+            int idleTimeMins,
 
-            string k8sConnectorId,
-
-            string k8sNamespace,
-
-            string name,
-
-            string ruleYaml)
+            string name)
         {
             CloudConnectorId = cloudConnectorId;
             Depends = depends;
@@ -234,10 +294,7 @@ namespace Pulumi.Harness.Autostopping
             Id = id;
             Identifier = identifier;
             IdleTimeMins = idleTimeMins;
-            K8sConnectorId = k8sConnectorId;
-            K8sNamespace = k8sNamespace;
             Name = name;
-            RuleYaml = ruleYaml;
         }
     }
 }

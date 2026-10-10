@@ -4,14 +4,7 @@
 package com.pulumi.harness.autostopping.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupDepend;
-import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupHttp;
-import com.pulumi.harness.autostopping.inputs.GetRuleScaleGroupScaleGroup;
-import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -22,136 +15,40 @@ public final class GetRuleScaleGroupPlainArgs extends com.pulumi.resources.Invok
     public static final GetRuleScaleGroupPlainArgs Empty = new GetRuleScaleGroupPlainArgs();
 
     /**
-     * Id of the cloud connector
+     * Unique identifier of the resource. Either `identifier` or `name` must be specified.
      * 
      */
-    @Import(name="cloudConnectorId", required=true)
-    private String cloudConnectorId;
+    @Import(name="identifier")
+    private @Nullable String identifier;
 
     /**
-     * @return Id of the cloud connector
+     * @return Unique identifier of the resource. Either `identifier` or `name` must be specified.
      * 
      */
-    public String cloudConnectorId() {
-        return this.cloudConnectorId;
+    public Optional<String> identifier() {
+        return Optional.ofNullable(this.identifier);
     }
 
     /**
-     * Custom URLs used to access the instances
+     * Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      * 
      */
-    @Import(name="customDomains")
-    private @Nullable List<String> customDomains;
+    @Import(name="name")
+    private @Nullable String name;
 
     /**
-     * @return Custom URLs used to access the instances
+     * @return Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      * 
      */
-    public Optional<List<String>> customDomains() {
-        return Optional.ofNullable(this.customDomains);
-    }
-
-    /**
-     * Dependent rules
-     * 
-     */
-    @Import(name="depends")
-    private @Nullable List<GetRuleScaleGroupDepend> depends;
-
-    /**
-     * @return Dependent rules
-     * 
-     */
-    public Optional<List<GetRuleScaleGroupDepend>> depends() {
-        return Optional.ofNullable(this.depends);
-    }
-
-    /**
-     * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-     * 
-     */
-    @Import(name="dryRun")
-    private @Nullable Boolean dryRun;
-
-    /**
-     * @return Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-     * 
-     */
-    public Optional<Boolean> dryRun() {
-        return Optional.ofNullable(this.dryRun);
-    }
-
-    /**
-     * Http routing configuration
-     * 
-     */
-    @Import(name="https")
-    private @Nullable List<GetRuleScaleGroupHttp> https;
-
-    /**
-     * @return Http routing configuration
-     * 
-     */
-    public Optional<List<GetRuleScaleGroupHttp>> https() {
-        return Optional.ofNullable(this.https);
-    }
-
-    /**
-     * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-     * 
-     */
-    @Import(name="idleTimeMins")
-    private @Nullable Integer idleTimeMins;
-
-    /**
-     * @return Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-     * 
-     */
-    public Optional<Integer> idleTimeMins() {
-        return Optional.ofNullable(this.idleTimeMins);
-    }
-
-    /**
-     * Name of the rule
-     * 
-     */
-    @Import(name="name", required=true)
-    private String name;
-
-    /**
-     * @return Name of the rule
-     * 
-     */
-    public String name() {
-        return this.name;
-    }
-
-    /**
-     * Scaling Group configuration
-     * 
-     */
-    @Import(name="scaleGroup", required=true)
-    private GetRuleScaleGroupScaleGroup scaleGroup;
-
-    /**
-     * @return Scaling Group configuration
-     * 
-     */
-    public GetRuleScaleGroupScaleGroup scaleGroup() {
-        return this.scaleGroup;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
 
     private GetRuleScaleGroupPlainArgs() {}
 
     private GetRuleScaleGroupPlainArgs(GetRuleScaleGroupPlainArgs $) {
-        this.cloudConnectorId = $.cloudConnectorId;
-        this.customDomains = $.customDomains;
-        this.depends = $.depends;
-        this.dryRun = $.dryRun;
-        this.https = $.https;
-        this.idleTimeMins = $.idleTimeMins;
+        this.identifier = $.identifier;
         this.name = $.name;
-        this.scaleGroup = $.scaleGroup;
     }
 
     public static Builder builder() {
@@ -173,133 +70,28 @@ public final class GetRuleScaleGroupPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param cloudConnectorId Id of the cloud connector
+         * @param identifier Unique identifier of the resource. Either `identifier` or `name` must be specified.
          * 
          * @return builder
          * 
          */
-        public Builder cloudConnectorId(String cloudConnectorId) {
-            $.cloudConnectorId = cloudConnectorId;
+        public Builder identifier(@Nullable String identifier) {
+            $.identifier = identifier;
             return this;
         }
 
         /**
-         * @param customDomains Custom URLs used to access the instances
+         * @param name Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
          * 
          * @return builder
          * 
          */
-        public Builder customDomains(@Nullable List<String> customDomains) {
-            $.customDomains = customDomains;
-            return this;
-        }
-
-        /**
-         * @param customDomains Custom URLs used to access the instances
-         * 
-         * @return builder
-         * 
-         */
-        public Builder customDomains(String... customDomains) {
-            return customDomains(List.of(customDomains));
-        }
-
-        /**
-         * @param depends Dependent rules
-         * 
-         * @return builder
-         * 
-         */
-        public Builder depends(@Nullable List<GetRuleScaleGroupDepend> depends) {
-            $.depends = depends;
-            return this;
-        }
-
-        /**
-         * @param depends Dependent rules
-         * 
-         * @return builder
-         * 
-         */
-        public Builder depends(GetRuleScaleGroupDepend... depends) {
-            return depends(List.of(depends));
-        }
-
-        /**
-         * @param dryRun Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dryRun(@Nullable Boolean dryRun) {
-            $.dryRun = dryRun;
-            return this;
-        }
-
-        /**
-         * @param https Http routing configuration
-         * 
-         * @return builder
-         * 
-         */
-        public Builder https(@Nullable List<GetRuleScaleGroupHttp> https) {
-            $.https = https;
-            return this;
-        }
-
-        /**
-         * @param https Http routing configuration
-         * 
-         * @return builder
-         * 
-         */
-        public Builder https(GetRuleScaleGroupHttp... https) {
-            return https(List.of(https));
-        }
-
-        /**
-         * @param idleTimeMins Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder idleTimeMins(@Nullable Integer idleTimeMins) {
-            $.idleTimeMins = idleTimeMins;
-            return this;
-        }
-
-        /**
-         * @param name Name of the rule
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(String name) {
+        public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param scaleGroup Scaling Group configuration
-         * 
-         * @return builder
-         * 
-         */
-        public Builder scaleGroup(GetRuleScaleGroupScaleGroup scaleGroup) {
-            $.scaleGroup = scaleGroup;
-            return this;
-        }
-
         public GetRuleScaleGroupPlainArgs build() {
-            if ($.cloudConnectorId == null) {
-                throw new MissingRequiredPropertyException("GetRuleScaleGroupPlainArgs", "cloudConnectorId");
-            }
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetRuleScaleGroupPlainArgs", "name");
-            }
-            if ($.scaleGroup == null) {
-                throw new MissingRequiredPropertyException("GetRuleScaleGroupPlainArgs", "scaleGroup");
-            }
             return $;
         }
     }

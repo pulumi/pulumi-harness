@@ -10,18 +10,46 @@ import * as utilities from "../utilities";
  * Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
  *
  * ## Example Usage
+ *
+ * ### Lookup by ID
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byId = harness.autostopping.getRuleScaleGroup({
+ *     identifier: "12345",
+ * });
+ * ```
+ *
+ * ### Lookup by name (regex)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byName = harness.autostopping.getRuleScaleGroup({
+ *     name: "^my-scale-group-rule$",
+ * });
+ * ```
+ *
+ * ### Lookup by name pattern
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byPattern = harness.autostopping.getRuleScaleGroup({
+ *     name: "my-asg-.*-prod",
+ * });
+ * ```
  */
-export function getRuleScaleGroup(args: GetRuleScaleGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleScaleGroupResult> {
+export function getRuleScaleGroup(args?: GetRuleScaleGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetRuleScaleGroupResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harness:autostopping/getRuleScaleGroup:getRuleScaleGroup", {
-        "cloudConnectorId": args.cloudConnectorId,
-        "customDomains": args.customDomains,
-        "depends": args.depends,
-        "dryRun": args.dryRun,
-        "https": args.https,
-        "idleTimeMins": args.idleTimeMins,
+        "identifier": args.identifier,
         "name": args.name,
-        "scaleGroup": args.scaleGroup,
     }, opts);
 }
 
@@ -30,37 +58,13 @@ export function getRuleScaleGroup(args: GetRuleScaleGroupArgs, opts?: pulumi.Inv
  */
 export interface GetRuleScaleGroupArgs {
     /**
-     * Id of the cloud connector
+     * Unique identifier of the resource. Either `identifier` or `name` must be specified.
      */
-    cloudConnectorId: string;
+    identifier?: string;
     /**
-     * Custom URLs used to access the instances
+     * Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      */
-    customDomains?: string[];
-    /**
-     * Dependent rules
-     */
-    depends?: inputs.autostopping.GetRuleScaleGroupDepend[];
-    /**
-     * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-     */
-    dryRun?: boolean;
-    /**
-     * Http routing configuration
-     */
-    https?: inputs.autostopping.GetRuleScaleGroupHttp[];
-    /**
-     * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-     */
-    idleTimeMins?: number;
-    /**
-     * Name of the rule
-     */
-    name: string;
-    /**
-     * Scaling Group configuration
-     */
-    scaleGroup: inputs.autostopping.GetRuleScaleGroupScaleGroup;
+    name?: string;
 }
 
 /**
@@ -72,58 +76,74 @@ export interface GetRuleScaleGroupResult {
      */
     readonly cloudConnectorId: string;
     /**
-     * Custom URLs used to access the instances
-     */
-    readonly customDomains?: string[];
-    /**
      * Dependent rules
      */
-    readonly depends?: outputs.autostopping.GetRuleScaleGroupDepend[];
+    readonly depends: outputs.autostopping.GetRuleScaleGroupDepend[];
     /**
-     * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
+     * Boolean that indicates whether the AutoStopping rule is in DryRun mode
      */
-    readonly dryRun?: boolean;
-    /**
-     * Http routing configuration
-     */
-    readonly https?: outputs.autostopping.GetRuleScaleGroupHttp[];
+    readonly dryRun: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * Unique identifier of the resource
+     * Unique identifier of the resource. Either `identifier` or `name` must be specified.
      */
     readonly identifier: string;
     /**
      * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
      */
-    readonly idleTimeMins?: number;
+    readonly idleTimeMins: number;
     /**
-     * Name of the rule
+     * Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      */
     readonly name: string;
-    /**
-     * Scaling Group configuration
-     */
-    readonly scaleGroup: outputs.autostopping.GetRuleScaleGroupScaleGroup;
 }
 /**
  * Data source for retrieving a Harness AutoStopping rule for Scaling Groups.
  *
  * ## Example Usage
+ *
+ * ### Lookup by ID
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byId = harness.autostopping.getRuleScaleGroup({
+ *     identifier: "12345",
+ * });
+ * ```
+ *
+ * ### Lookup by name (regex)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byName = harness.autostopping.getRuleScaleGroup({
+ *     name: "^my-scale-group-rule$",
+ * });
+ * ```
+ *
+ * ### Lookup by name pattern
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const byPattern = harness.autostopping.getRuleScaleGroup({
+ *     name: "my-asg-.*-prod",
+ * });
+ * ```
  */
-export function getRuleScaleGroupOutput(args: GetRuleScaleGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRuleScaleGroupResult> {
+export function getRuleScaleGroupOutput(args?: GetRuleScaleGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRuleScaleGroupResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harness:autostopping/getRuleScaleGroup:getRuleScaleGroup", {
-        "cloudConnectorId": args.cloudConnectorId,
-        "customDomains": args.customDomains,
-        "depends": args.depends,
-        "dryRun": args.dryRun,
-        "https": args.https,
-        "idleTimeMins": args.idleTimeMins,
+        "identifier": args.identifier,
         "name": args.name,
-        "scaleGroup": args.scaleGroup,
     }, opts);
 }
 
@@ -132,35 +152,11 @@ export function getRuleScaleGroupOutput(args: GetRuleScaleGroupOutputArgs, opts?
  */
 export interface GetRuleScaleGroupOutputArgs {
     /**
-     * Id of the cloud connector
+     * Unique identifier of the resource. Either `identifier` or `name` must be specified.
      */
-    cloudConnectorId: pulumi.Input<string>;
+    identifier?: pulumi.Input<string | undefined>;
     /**
-     * Custom URLs used to access the instances
+     * Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
      */
-    customDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    /**
-     * Dependent rules
-     */
-    depends?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleScaleGroupDependArgs>[] | undefined>;
-    /**
-     * Boolean that indicates whether the AutoStopping rule should be created in DryRun mode
-     */
-    dryRun?: pulumi.Input<boolean | undefined>;
-    /**
-     * Http routing configuration
-     */
-    https?: pulumi.Input<pulumi.Input<inputs.autostopping.GetRuleScaleGroupHttpArgs>[] | undefined>;
-    /**
-     * Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-     */
-    idleTimeMins?: pulumi.Input<number | undefined>;
-    /**
-     * Name of the rule
-     */
-    name: pulumi.Input<string>;
-    /**
-     * Scaling Group configuration
-     */
-    scaleGroup: pulumi.Input<inputs.autostopping.GetRuleScaleGroupScaleGroupArgs>;
+    name?: pulumi.Input<string | undefined>;
 }

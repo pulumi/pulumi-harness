@@ -58,6 +58,11 @@ __all__ = [
     'CentralNotificationRuleCustomNotificationTemplateRefVariable',
     'CentralNotificationRuleNotificationCondition',
     'CentralNotificationRuleNotificationConditionNotificationEventConfig',
+    'ConnectorAnthropicModelAuth',
+    'ConnectorAnthropicModelAuthBedrockApiKey',
+    'ConnectorAnthropicModelAuthCloudProvider',
+    'ConnectorAnthropicModelAuthToken',
+    'ConnectorAnthropicModelAuthVertex',
     'ConnectorAzureArtifactsCredentials',
     'ConnectorAzureRepoApiAuthentication',
     'ConnectorAzureRepoCredentials',
@@ -76,6 +81,9 @@ __all__ = [
     'ConnectorJdbcCredentialsOidcGcpOidc',
     'ConnectorJdbcCredentialsServiceAccount',
     'ConnectorJdbcCredentialsUsernamePassword',
+    'ConnectorOpenaiModelAuth',
+    'ConnectorOpenaiModelAuthToken',
+    'ConnectorOpenaiModelAuthVertex',
     'ConnectorPdcHost',
     'ConnectorRancherBearerToken',
     'DbSchemaChangelogScript',
@@ -1735,6 +1743,11 @@ __all__ = [
     'GetCentralNotificationRuleCustomNotificationTemplateRefVariableResult',
     'GetCentralNotificationRuleNotificationConditionResult',
     'GetCentralNotificationRuleNotificationConditionNotificationEventConfigResult',
+    'GetConnectorAnthropicModelAuthResult',
+    'GetConnectorAnthropicModelAuthBedrockApiKeyResult',
+    'GetConnectorAnthropicModelAuthCloudProviderResult',
+    'GetConnectorAnthropicModelAuthTokenResult',
+    'GetConnectorAnthropicModelAuthVertexResult',
     'GetConnectorAzureRepoApiAuthenticationResult',
     'GetConnectorAzureRepoCredentialResult',
     'GetConnectorAzureRepoCredentialHttpResult',
@@ -1752,6 +1765,9 @@ __all__ = [
     'GetConnectorJdbcCredentialOidcGcpOidcResult',
     'GetConnectorJdbcCredentialServiceAccountResult',
     'GetConnectorJdbcCredentialUsernamePasswordResult',
+    'GetConnectorOpenaiModelAuthResult',
+    'GetConnectorOpenaiModelAuthTokenResult',
+    'GetConnectorOpenaiModelAuthVertexResult',
     'GetConnectorPdcHostResult',
     'GetConnectorRancherBearerTokenResult',
     'GetDashboardFoldersFolderResult',
@@ -4334,6 +4350,279 @@ class CentralNotificationRuleNotificationConditionNotificationEventConfig(dict):
 
 
 @pulumi.output_type
+class ConnectorAnthropicModelAuth(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authType":
+            suggest = "auth_type"
+        elif key == "bedrockApiKey":
+            suggest = "bedrock_api_key"
+        elif key == "cloudProvider":
+            suggest = "cloud_provider"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorAnthropicModelAuth. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorAnthropicModelAuth.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorAnthropicModelAuth.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth_type: _builtins.str,
+                 bedrock_api_key: Optional['outputs.ConnectorAnthropicModelAuthBedrockApiKey'] = None,
+                 cloud_provider: Optional['outputs.ConnectorAnthropicModelAuthCloudProvider'] = None,
+                 token: Optional['outputs.ConnectorAnthropicModelAuthToken'] = None,
+                 vertex: Optional['outputs.ConnectorAnthropicModelAuthVertex'] = None):
+        """
+        :param _builtins.str auth_type: Authentication type for the Anthropic connector. Valid values: `Token`, `BedrockApiKey`, `Vertex`, `CloudProvider`.
+        :param 'ConnectorAnthropicModelAuthBedrockApiKeyArgs' bedrock_api_key: Authenticate using an AWS Bedrock API key.
+        :param 'ConnectorAnthropicModelAuthCloudProviderArgs' cloud_provider: Authenticate using an existing cloud provider connector.
+        :param 'ConnectorAnthropicModelAuthTokenArgs' token: Authenticate using an Anthropic API token.
+        :param 'ConnectorAnthropicModelAuthVertexArgs' vertex: Authenticate using Google Vertex AI credentials.
+        """
+        pulumi.set(__self__, "auth_type", auth_type)
+        if bedrock_api_key is not None:
+            pulumi.set(__self__, "bedrock_api_key", bedrock_api_key)
+        if cloud_provider is not None:
+            pulumi.set(__self__, "cloud_provider", cloud_provider)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if vertex is not None:
+            pulumi.set(__self__, "vertex", vertex)
+
+    @_builtins.property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> _builtins.str:
+        """
+        Authentication type for the Anthropic connector. Valid values: `Token`, `BedrockApiKey`, `Vertex`, `CloudProvider`.
+        """
+        return pulumi.get(self, "auth_type")
+
+    @_builtins.property
+    @pulumi.getter(name="bedrockApiKey")
+    def bedrock_api_key(self) -> Optional['outputs.ConnectorAnthropicModelAuthBedrockApiKey']:
+        """
+        Authenticate using an AWS Bedrock API key.
+        """
+        return pulumi.get(self, "bedrock_api_key")
+
+    @_builtins.property
+    @pulumi.getter(name="cloudProvider")
+    def cloud_provider(self) -> Optional['outputs.ConnectorAnthropicModelAuthCloudProvider']:
+        """
+        Authenticate using an existing cloud provider connector.
+        """
+        return pulumi.get(self, "cloud_provider")
+
+    @_builtins.property
+    @pulumi.getter
+    def token(self) -> Optional['outputs.ConnectorAnthropicModelAuthToken']:
+        """
+        Authenticate using an Anthropic API token.
+        """
+        return pulumi.get(self, "token")
+
+    @_builtins.property
+    @pulumi.getter
+    def vertex(self) -> Optional['outputs.ConnectorAnthropicModelAuthVertex']:
+        """
+        Authenticate using Google Vertex AI credentials.
+        """
+        return pulumi.get(self, "vertex")
+
+
+@pulumi.output_type
+class ConnectorAnthropicModelAuthBedrockApiKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiKeyRef":
+            suggest = "api_key_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorAnthropicModelAuthBedrockApiKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorAnthropicModelAuthBedrockApiKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorAnthropicModelAuthBedrockApiKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_key_ref: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str api_key_ref: Reference to a secret containing the Bedrock API key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+        :param _builtins.str region: AWS region for the Bedrock endpoint.
+        """
+        pulumi.set(__self__, "api_key_ref", api_key_ref)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeyRef")
+    def api_key_ref(self) -> _builtins.str:
+        """
+        Reference to a secret containing the Bedrock API key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "api_key_ref")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        AWS region for the Bedrock endpoint.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class ConnectorAnthropicModelAuthCloudProvider(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectorRef":
+            suggest = "connector_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorAnthropicModelAuthCloudProvider. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorAnthropicModelAuthCloudProvider.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorAnthropicModelAuthCloudProvider.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connector_ref: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str connector_ref: Reference to an existing cloud provider connector.
+        :param _builtins.str type: Cloud provider type. Valid values: `AWS`, `GCP`, `Azure`.
+        """
+        pulumi.set(__self__, "connector_ref", connector_ref)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorRef")
+    def connector_ref(self) -> _builtins.str:
+        """
+        Reference to an existing cloud provider connector.
+        """
+        return pulumi.get(self, "connector_ref")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Cloud provider type. Valid values: `AWS`, `GCP`, `Azure`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ConnectorAnthropicModelAuthToken(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tokenRef":
+            suggest = "token_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorAnthropicModelAuthToken. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorAnthropicModelAuthToken.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorAnthropicModelAuthToken.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 token_ref: _builtins.str):
+        """
+        :param _builtins.str token_ref: Reference to a secret containing the Anthropic API token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "token_ref", token_ref)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> _builtins.str:
+        """
+        Reference to a secret containing the Anthropic API token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "token_ref")
+
+
+@pulumi.output_type
+class ConnectorAnthropicModelAuthVertex(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+        elif key == "serviceAccountKeyRef":
+            suggest = "service_account_key_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorAnthropicModelAuthVertex. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorAnthropicModelAuthVertex.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorAnthropicModelAuthVertex.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 project_id: _builtins.str,
+                 region: _builtins.str,
+                 service_account_key_ref: _builtins.str):
+        """
+        :param _builtins.str project_id: GCP project ID.
+        :param _builtins.str region: GCP region for the Vertex AI endpoint.
+        :param _builtins.str service_account_key_ref: Reference to a secret containing the GCP service account key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "service_account_key_ref", service_account_key_ref)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        GCP project ID.
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        GCP region for the Vertex AI endpoint.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountKeyRef")
+    def service_account_key_ref(self) -> _builtins.str:
+        """
+        Reference to a secret containing the GCP service account key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "service_account_key_ref")
+
+
+@pulumi.output_type
 class ConnectorAzureArtifactsCredentials(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -5359,6 +5648,159 @@ class ConnectorJdbcCredentialsUsernamePassword(dict):
         Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class ConnectorOpenaiModelAuth(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authType":
+            suggest = "auth_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorOpenaiModelAuth. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorOpenaiModelAuth.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorOpenaiModelAuth.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth_type: _builtins.str,
+                 token: Optional['outputs.ConnectorOpenaiModelAuthToken'] = None,
+                 vertex: Optional['outputs.ConnectorOpenaiModelAuthVertex'] = None):
+        """
+        :param _builtins.str auth_type: Authentication type for the OpenAI connector. Valid values: `Token`, `Vertex`.
+        :param 'ConnectorOpenaiModelAuthTokenArgs' token: Authenticate using an OpenAI API token.
+        :param 'ConnectorOpenaiModelAuthVertexArgs' vertex: Authenticate using Google Vertex AI credentials.
+        """
+        pulumi.set(__self__, "auth_type", auth_type)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if vertex is not None:
+            pulumi.set(__self__, "vertex", vertex)
+
+    @_builtins.property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> _builtins.str:
+        """
+        Authentication type for the OpenAI connector. Valid values: `Token`, `Vertex`.
+        """
+        return pulumi.get(self, "auth_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def token(self) -> Optional['outputs.ConnectorOpenaiModelAuthToken']:
+        """
+        Authenticate using an OpenAI API token.
+        """
+        return pulumi.get(self, "token")
+
+    @_builtins.property
+    @pulumi.getter
+    def vertex(self) -> Optional['outputs.ConnectorOpenaiModelAuthVertex']:
+        """
+        Authenticate using Google Vertex AI credentials.
+        """
+        return pulumi.get(self, "vertex")
+
+
+@pulumi.output_type
+class ConnectorOpenaiModelAuthToken(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tokenRef":
+            suggest = "token_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorOpenaiModelAuthToken. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorOpenaiModelAuthToken.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorOpenaiModelAuthToken.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 token_ref: _builtins.str):
+        """
+        :param _builtins.str token_ref: Reference to a secret containing the OpenAI API token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "token_ref", token_ref)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> _builtins.str:
+        """
+        Reference to a secret containing the OpenAI API token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "token_ref")
+
+
+@pulumi.output_type
+class ConnectorOpenaiModelAuthVertex(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+        elif key == "serviceAccountKeyRef":
+            suggest = "service_account_key_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectorOpenaiModelAuthVertex. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectorOpenaiModelAuthVertex.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectorOpenaiModelAuthVertex.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 project_id: _builtins.str,
+                 region: _builtins.str,
+                 service_account_key_ref: _builtins.str):
+        """
+        :param _builtins.str project_id: GCP project ID.
+        :param _builtins.str region: GCP region for the Vertex AI endpoint.
+        :param _builtins.str service_account_key_ref: Reference to a secret containing the GCP service account key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+        """
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "service_account_key_ref", service_account_key_ref)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        GCP project ID.
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        GCP region for the Vertex AI endpoint.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountKeyRef")
+    def service_account_key_ref(self) -> _builtins.str:
+        """
+        Reference to a secret containing the GCP service account key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+        """
+        return pulumi.get(self, "service_account_key_ref")
 
 
 @pulumi.output_type
@@ -114874,6 +115316,184 @@ class GetCentralNotificationRuleNotificationConditionNotificationEventConfigResu
 
 
 @pulumi.output_type
+class GetConnectorAnthropicModelAuthResult(dict):
+    def __init__(__self__, *,
+                 auth_type: _builtins.str,
+                 bedrock_api_keys: Sequence['outputs.GetConnectorAnthropicModelAuthBedrockApiKeyResult'],
+                 cloud_providers: Sequence['outputs.GetConnectorAnthropicModelAuthCloudProviderResult'],
+                 tokens: Sequence['outputs.GetConnectorAnthropicModelAuthTokenResult'],
+                 vertices: Sequence['outputs.GetConnectorAnthropicModelAuthVertexResult']):
+        """
+        :param _builtins.str auth_type: Authentication type for the Anthropic connector.
+        :param Sequence['GetConnectorAnthropicModelAuthBedrockApiKeyArgs'] bedrock_api_keys: Authenticate using an AWS Bedrock API key.
+        :param Sequence['GetConnectorAnthropicModelAuthCloudProviderArgs'] cloud_providers: Authenticate using an existing cloud provider connector.
+        :param Sequence['GetConnectorAnthropicModelAuthTokenArgs'] tokens: Authenticate using an Anthropic API token.
+        :param Sequence['GetConnectorAnthropicModelAuthVertexArgs'] vertices: Authenticate using Google Vertex AI credentials.
+        """
+        pulumi.set(__self__, "auth_type", auth_type)
+        pulumi.set(__self__, "bedrock_api_keys", bedrock_api_keys)
+        pulumi.set(__self__, "cloud_providers", cloud_providers)
+        pulumi.set(__self__, "tokens", tokens)
+        pulumi.set(__self__, "vertices", vertices)
+
+    @_builtins.property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> _builtins.str:
+        """
+        Authentication type for the Anthropic connector.
+        """
+        return pulumi.get(self, "auth_type")
+
+    @_builtins.property
+    @pulumi.getter(name="bedrockApiKeys")
+    def bedrock_api_keys(self) -> Sequence['outputs.GetConnectorAnthropicModelAuthBedrockApiKeyResult']:
+        """
+        Authenticate using an AWS Bedrock API key.
+        """
+        return pulumi.get(self, "bedrock_api_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="cloudProviders")
+    def cloud_providers(self) -> Sequence['outputs.GetConnectorAnthropicModelAuthCloudProviderResult']:
+        """
+        Authenticate using an existing cloud provider connector.
+        """
+        return pulumi.get(self, "cloud_providers")
+
+    @_builtins.property
+    @pulumi.getter
+    def tokens(self) -> Sequence['outputs.GetConnectorAnthropicModelAuthTokenResult']:
+        """
+        Authenticate using an Anthropic API token.
+        """
+        return pulumi.get(self, "tokens")
+
+    @_builtins.property
+    @pulumi.getter
+    def vertices(self) -> Sequence['outputs.GetConnectorAnthropicModelAuthVertexResult']:
+        """
+        Authenticate using Google Vertex AI credentials.
+        """
+        return pulumi.get(self, "vertices")
+
+
+@pulumi.output_type
+class GetConnectorAnthropicModelAuthBedrockApiKeyResult(dict):
+    def __init__(__self__, *,
+                 api_key_ref: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str api_key_ref: Reference to a secret containing the Bedrock API key.
+        :param _builtins.str region: AWS region for the Bedrock endpoint.
+        """
+        pulumi.set(__self__, "api_key_ref", api_key_ref)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeyRef")
+    def api_key_ref(self) -> _builtins.str:
+        """
+        Reference to a secret containing the Bedrock API key.
+        """
+        return pulumi.get(self, "api_key_ref")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        AWS region for the Bedrock endpoint.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetConnectorAnthropicModelAuthCloudProviderResult(dict):
+    def __init__(__self__, *,
+                 connector_ref: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str connector_ref: Reference to an existing cloud provider connector.
+        :param _builtins.str type: Cloud provider type.
+        """
+        pulumi.set(__self__, "connector_ref", connector_ref)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="connectorRef")
+    def connector_ref(self) -> _builtins.str:
+        """
+        Reference to an existing cloud provider connector.
+        """
+        return pulumi.get(self, "connector_ref")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Cloud provider type.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetConnectorAnthropicModelAuthTokenResult(dict):
+    def __init__(__self__, *,
+                 token_ref: _builtins.str):
+        """
+        :param _builtins.str token_ref: Reference to a secret containing the Anthropic API token.
+        """
+        pulumi.set(__self__, "token_ref", token_ref)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> _builtins.str:
+        """
+        Reference to a secret containing the Anthropic API token.
+        """
+        return pulumi.get(self, "token_ref")
+
+
+@pulumi.output_type
+class GetConnectorAnthropicModelAuthVertexResult(dict):
+    def __init__(__self__, *,
+                 project_id: _builtins.str,
+                 region: _builtins.str,
+                 service_account_key_ref: _builtins.str):
+        """
+        :param _builtins.str project_id: GCP project ID.
+        :param _builtins.str region: GCP region for the Vertex AI endpoint.
+        :param _builtins.str service_account_key_ref: Reference to a secret containing the GCP service account key.
+        """
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "service_account_key_ref", service_account_key_ref)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        GCP project ID.
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        GCP region for the Vertex AI endpoint.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountKeyRef")
+    def service_account_key_ref(self) -> _builtins.str:
+        """
+        Reference to a secret containing the GCP service account key.
+        """
+        return pulumi.get(self, "service_account_key_ref")
+
+
+@pulumi.output_type
 class GetConnectorAzureRepoApiAuthenticationResult(dict):
     def __init__(__self__, *,
                  token_ref: _builtins.str):
@@ -115538,6 +116158,104 @@ class GetConnectorJdbcCredentialUsernamePasswordResult(dict):
         Reference to a secret containing the username to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
         """
         return pulumi.get(self, "username_ref")
+
+
+@pulumi.output_type
+class GetConnectorOpenaiModelAuthResult(dict):
+    def __init__(__self__, *,
+                 auth_type: _builtins.str,
+                 tokens: Sequence['outputs.GetConnectorOpenaiModelAuthTokenResult'],
+                 vertices: Sequence['outputs.GetConnectorOpenaiModelAuthVertexResult']):
+        """
+        :param _builtins.str auth_type: Authentication type for the OpenAI connector.
+        :param Sequence['GetConnectorOpenaiModelAuthTokenArgs'] tokens: Authenticate using an OpenAI API token.
+        :param Sequence['GetConnectorOpenaiModelAuthVertexArgs'] vertices: Authenticate using Google Vertex AI credentials.
+        """
+        pulumi.set(__self__, "auth_type", auth_type)
+        pulumi.set(__self__, "tokens", tokens)
+        pulumi.set(__self__, "vertices", vertices)
+
+    @_builtins.property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> _builtins.str:
+        """
+        Authentication type for the OpenAI connector.
+        """
+        return pulumi.get(self, "auth_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def tokens(self) -> Sequence['outputs.GetConnectorOpenaiModelAuthTokenResult']:
+        """
+        Authenticate using an OpenAI API token.
+        """
+        return pulumi.get(self, "tokens")
+
+    @_builtins.property
+    @pulumi.getter
+    def vertices(self) -> Sequence['outputs.GetConnectorOpenaiModelAuthVertexResult']:
+        """
+        Authenticate using Google Vertex AI credentials.
+        """
+        return pulumi.get(self, "vertices")
+
+
+@pulumi.output_type
+class GetConnectorOpenaiModelAuthTokenResult(dict):
+    def __init__(__self__, *,
+                 token_ref: _builtins.str):
+        """
+        :param _builtins.str token_ref: Reference to a secret containing the OpenAI API token.
+        """
+        pulumi.set(__self__, "token_ref", token_ref)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenRef")
+    def token_ref(self) -> _builtins.str:
+        """
+        Reference to a secret containing the OpenAI API token.
+        """
+        return pulumi.get(self, "token_ref")
+
+
+@pulumi.output_type
+class GetConnectorOpenaiModelAuthVertexResult(dict):
+    def __init__(__self__, *,
+                 project_id: _builtins.str,
+                 region: _builtins.str,
+                 service_account_key_ref: _builtins.str):
+        """
+        :param _builtins.str project_id: GCP project ID.
+        :param _builtins.str region: GCP region for the Vertex AI endpoint.
+        :param _builtins.str service_account_key_ref: Reference to a secret containing the GCP service account key.
+        """
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "service_account_key_ref", service_account_key_ref)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        GCP project ID.
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        GCP region for the Vertex AI endpoint.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountKeyRef")
+    def service_account_key_ref(self) -> _builtins.str:
+        """
+        Reference to a secret containing the GCP service account key.
+        """
+        return pulumi.get(self, "service_account_key_ref")
 
 
 @pulumi.output_type

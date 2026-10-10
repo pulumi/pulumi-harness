@@ -14,6 +14,84 @@ import (
 // Data source for retrieving a Harness AutoStopping rule for ECS services.
 //
 // ## Example Usage
+//
+// ### Lookup by ID
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := autostopping.LookupRuleEcs(ctx, &autostopping.LookupRuleEcsArgs{
+//				Identifier: pulumi.StringRef("12345"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Lookup by name (regex)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := autostopping.LookupRuleEcs(ctx, &autostopping.LookupRuleEcsArgs{
+//				Name: pulumi.StringRef("^my-ecs-rule$"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Lookup by name pattern
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := autostopping.LookupRuleEcs(ctx, &autostopping.LookupRuleEcsArgs{
+//				Name: pulumi.StringRef("my-ecs-.*-prod"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupRuleEcs(ctx *pulumi.Context, args *LookupRuleEcsArgs, opts ...pulumi.InvokeOption) (*LookupRuleEcsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRuleEcsResult
@@ -26,39 +104,27 @@ func LookupRuleEcs(ctx *pulumi.Context, args *LookupRuleEcsArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getRuleEcs.
 type LookupRuleEcsArgs struct {
-	// Id of the cloud connector
-	CloudConnectorId string               `pulumi:"cloudConnectorId"`
-	Container        *GetRuleEcsContainer `pulumi:"container"`
-	// Custom URLs used to access the instances
-	CustomDomains []string `pulumi:"customDomains"`
-	// Dependent rules
-	Depends []GetRuleEcsDepend `pulumi:"depends"`
-	// Http routing configuration
-	Https []GetRuleEcsHttp `pulumi:"https"`
-	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-	IdleTimeMins *int `pulumi:"idleTimeMins"`
-	// Name of the rule
-	Name string `pulumi:"name"`
+	// Unique identifier of the resource. Either `identifier` or `name` must be specified.
+	Identifier *string `pulumi:"identifier"`
+	// Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
+	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getRuleEcs.
 type LookupRuleEcsResult struct {
 	// Id of the cloud connector
-	CloudConnectorId string               `pulumi:"cloudConnectorId"`
-	Container        *GetRuleEcsContainer `pulumi:"container"`
-	// Custom URLs used to access the instances
-	CustomDomains []string `pulumi:"customDomains"`
+	CloudConnectorId string `pulumi:"cloudConnectorId"`
 	// Dependent rules
 	Depends []GetRuleEcsDepend `pulumi:"depends"`
-	// Http routing configuration
-	Https []GetRuleEcsHttp `pulumi:"https"`
+	// Boolean that indicates whether the AutoStopping rule is in DryRun mode
+	DryRun bool `pulumi:"dryRun"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Unique identifier of the resource
+	// Unique identifier of the resource. Either `identifier` or `name` must be specified.
 	Identifier string `pulumi:"identifier"`
 	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-	IdleTimeMins *int `pulumi:"idleTimeMins"`
-	// Name of the rule
+	IdleTimeMins int `pulumi:"idleTimeMins"`
+	// Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
 	Name string `pulumi:"name"`
 }
 
@@ -69,19 +135,10 @@ func LookupRuleEcsOutput(ctx *pulumi.Context, args LookupRuleEcsOutputArgs, opts
 
 // A collection of arguments for invoking getRuleEcs.
 type LookupRuleEcsOutputArgs struct {
-	// Id of the cloud connector
-	CloudConnectorId pulumi.StringInput          `pulumi:"cloudConnectorId"`
-	Container        GetRuleEcsContainerPtrInput `pulumi:"container"`
-	// Custom URLs used to access the instances
-	CustomDomains pulumi.StringArrayInput `pulumi:"customDomains"`
-	// Dependent rules
-	Depends GetRuleEcsDependArrayInput `pulumi:"depends"`
-	// Http routing configuration
-	Https GetRuleEcsHttpArrayInput `pulumi:"https"`
-	// Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-	IdleTimeMins pulumi.IntPtrInput `pulumi:"idleTimeMins"`
-	// Name of the rule
-	Name pulumi.StringInput `pulumi:"name"`
+	// Unique identifier of the resource. Either `identifier` or `name` must be specified.
+	Identifier pulumi.StringPtrInput `pulumi:"identifier"`
+	// Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (LookupRuleEcsOutputArgs) ElementType() reflect.Type {
@@ -108,23 +165,14 @@ func (o LookupRuleEcsResultOutput) CloudConnectorId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleEcsResult) string { return v.CloudConnectorId }).(pulumi.StringOutput)
 }
 
-func (o LookupRuleEcsResultOutput) Container() GetRuleEcsContainerPtrOutput {
-	return o.ApplyT(func(v LookupRuleEcsResult) *GetRuleEcsContainer { return v.Container }).(GetRuleEcsContainerPtrOutput)
-}
-
-// Custom URLs used to access the instances
-func (o LookupRuleEcsResultOutput) CustomDomains() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupRuleEcsResult) []string { return v.CustomDomains }).(pulumi.StringArrayOutput)
-}
-
 // Dependent rules
 func (o LookupRuleEcsResultOutput) Depends() GetRuleEcsDependArrayOutput {
 	return o.ApplyT(func(v LookupRuleEcsResult) []GetRuleEcsDepend { return v.Depends }).(GetRuleEcsDependArrayOutput)
 }
 
-// Http routing configuration
-func (o LookupRuleEcsResultOutput) Https() GetRuleEcsHttpArrayOutput {
-	return o.ApplyT(func(v LookupRuleEcsResult) []GetRuleEcsHttp { return v.Https }).(GetRuleEcsHttpArrayOutput)
+// Boolean that indicates whether the AutoStopping rule is in DryRun mode
+func (o LookupRuleEcsResultOutput) DryRun() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRuleEcsResult) bool { return v.DryRun }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -132,17 +180,17 @@ func (o LookupRuleEcsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleEcsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Unique identifier of the resource
+// Unique identifier of the resource. Either `identifier` or `name` must be specified.
 func (o LookupRuleEcsResultOutput) Identifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleEcsResult) string { return v.Identifier }).(pulumi.StringOutput)
 }
 
 // Idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
-func (o LookupRuleEcsResultOutput) IdleTimeMins() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupRuleEcsResult) *int { return v.IdleTimeMins }).(pulumi.IntPtrOutput)
+func (o LookupRuleEcsResultOutput) IdleTimeMins() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupRuleEcsResult) int { return v.IdleTimeMins }).(pulumi.IntOutput)
 }
 
-// Name of the rule
+// Name or regex pattern to match the rule name. Either `identifier` or `name` must be specified.
 func (o LookupRuleEcsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleEcsResult) string { return v.Name }).(pulumi.StringOutput)
 }

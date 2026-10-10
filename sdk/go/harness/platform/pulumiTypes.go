@@ -7028,6 +7028,843 @@ func (o CentralNotificationRuleNotificationConditionNotificationEventConfigArray
 	}).(CentralNotificationRuleNotificationConditionNotificationEventConfigOutput)
 }
 
+type ConnectorAnthropicModelAuth struct {
+	// Authentication type for the Anthropic connector. Valid values: `Token`, `BedrockApiKey`, `Vertex`, `CloudProvider`.
+	AuthType string `pulumi:"authType"`
+	// Authenticate using an AWS Bedrock API key.
+	BedrockApiKey *ConnectorAnthropicModelAuthBedrockApiKey `pulumi:"bedrockApiKey"`
+	// Authenticate using an existing cloud provider connector.
+	CloudProvider *ConnectorAnthropicModelAuthCloudProvider `pulumi:"cloudProvider"`
+	// Authenticate using an Anthropic API token.
+	Token *ConnectorAnthropicModelAuthToken `pulumi:"token"`
+	// Authenticate using Google Vertex AI credentials.
+	Vertex *ConnectorAnthropicModelAuthVertex `pulumi:"vertex"`
+}
+
+// ConnectorAnthropicModelAuthInput is an input type that accepts ConnectorAnthropicModelAuthArgs and ConnectorAnthropicModelAuthOutput values.
+// You can construct a concrete instance of `ConnectorAnthropicModelAuthInput` via:
+//
+//	ConnectorAnthropicModelAuthArgs{...}
+type ConnectorAnthropicModelAuthInput interface {
+	pulumi.Input
+
+	ToConnectorAnthropicModelAuthOutput() ConnectorAnthropicModelAuthOutput
+	ToConnectorAnthropicModelAuthOutputWithContext(context.Context) ConnectorAnthropicModelAuthOutput
+}
+
+type ConnectorAnthropicModelAuthArgs struct {
+	// Authentication type for the Anthropic connector. Valid values: `Token`, `BedrockApiKey`, `Vertex`, `CloudProvider`.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Authenticate using an AWS Bedrock API key.
+	BedrockApiKey ConnectorAnthropicModelAuthBedrockApiKeyPtrInput `pulumi:"bedrockApiKey"`
+	// Authenticate using an existing cloud provider connector.
+	CloudProvider ConnectorAnthropicModelAuthCloudProviderPtrInput `pulumi:"cloudProvider"`
+	// Authenticate using an Anthropic API token.
+	Token ConnectorAnthropicModelAuthTokenPtrInput `pulumi:"token"`
+	// Authenticate using Google Vertex AI credentials.
+	Vertex ConnectorAnthropicModelAuthVertexPtrInput `pulumi:"vertex"`
+}
+
+func (ConnectorAnthropicModelAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAnthropicModelAuth)(nil)).Elem()
+}
+
+func (i ConnectorAnthropicModelAuthArgs) ToConnectorAnthropicModelAuthOutput() ConnectorAnthropicModelAuthOutput {
+	return i.ToConnectorAnthropicModelAuthOutputWithContext(context.Background())
+}
+
+func (i ConnectorAnthropicModelAuthArgs) ToConnectorAnthropicModelAuthOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAnthropicModelAuthOutput)
+}
+
+func (i ConnectorAnthropicModelAuthArgs) ToConnectorAnthropicModelAuthPtrOutput() ConnectorAnthropicModelAuthPtrOutput {
+	return i.ToConnectorAnthropicModelAuthPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorAnthropicModelAuthArgs) ToConnectorAnthropicModelAuthPtrOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAnthropicModelAuthOutput).ToConnectorAnthropicModelAuthPtrOutputWithContext(ctx)
+}
+
+// ConnectorAnthropicModelAuthPtrInput is an input type that accepts ConnectorAnthropicModelAuthArgs, ConnectorAnthropicModelAuthPtr and ConnectorAnthropicModelAuthPtrOutput values.
+// You can construct a concrete instance of `ConnectorAnthropicModelAuthPtrInput` via:
+//
+//	        ConnectorAnthropicModelAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorAnthropicModelAuthPtrInput interface {
+	pulumi.Input
+
+	ToConnectorAnthropicModelAuthPtrOutput() ConnectorAnthropicModelAuthPtrOutput
+	ToConnectorAnthropicModelAuthPtrOutputWithContext(context.Context) ConnectorAnthropicModelAuthPtrOutput
+}
+
+type connectorAnthropicModelAuthPtrType ConnectorAnthropicModelAuthArgs
+
+func ConnectorAnthropicModelAuthPtr(v *ConnectorAnthropicModelAuthArgs) ConnectorAnthropicModelAuthPtrInput {
+	return (*connectorAnthropicModelAuthPtrType)(v)
+}
+
+func (*connectorAnthropicModelAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAnthropicModelAuth)(nil)).Elem()
+}
+
+func (i *connectorAnthropicModelAuthPtrType) ToConnectorAnthropicModelAuthPtrOutput() ConnectorAnthropicModelAuthPtrOutput {
+	return i.ToConnectorAnthropicModelAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorAnthropicModelAuthPtrType) ToConnectorAnthropicModelAuthPtrOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAnthropicModelAuthPtrOutput)
+}
+
+type ConnectorAnthropicModelAuthOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAnthropicModelAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAnthropicModelAuth)(nil)).Elem()
+}
+
+func (o ConnectorAnthropicModelAuthOutput) ToConnectorAnthropicModelAuthOutput() ConnectorAnthropicModelAuthOutput {
+	return o
+}
+
+func (o ConnectorAnthropicModelAuthOutput) ToConnectorAnthropicModelAuthOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthOutput {
+	return o
+}
+
+func (o ConnectorAnthropicModelAuthOutput) ToConnectorAnthropicModelAuthPtrOutput() ConnectorAnthropicModelAuthPtrOutput {
+	return o.ToConnectorAnthropicModelAuthPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorAnthropicModelAuthOutput) ToConnectorAnthropicModelAuthPtrOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorAnthropicModelAuth) *ConnectorAnthropicModelAuth {
+		return &v
+	}).(ConnectorAnthropicModelAuthPtrOutput)
+}
+
+// Authentication type for the Anthropic connector. Valid values: `Token`, `BedrockApiKey`, `Vertex`, `CloudProvider`.
+func (o ConnectorAnthropicModelAuthOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorAnthropicModelAuth) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Authenticate using an AWS Bedrock API key.
+func (o ConnectorAnthropicModelAuthOutput) BedrockApiKey() ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput {
+	return o.ApplyT(func(v ConnectorAnthropicModelAuth) *ConnectorAnthropicModelAuthBedrockApiKey { return v.BedrockApiKey }).(ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput)
+}
+
+// Authenticate using an existing cloud provider connector.
+func (o ConnectorAnthropicModelAuthOutput) CloudProvider() ConnectorAnthropicModelAuthCloudProviderPtrOutput {
+	return o.ApplyT(func(v ConnectorAnthropicModelAuth) *ConnectorAnthropicModelAuthCloudProvider { return v.CloudProvider }).(ConnectorAnthropicModelAuthCloudProviderPtrOutput)
+}
+
+// Authenticate using an Anthropic API token.
+func (o ConnectorAnthropicModelAuthOutput) Token() ConnectorAnthropicModelAuthTokenPtrOutput {
+	return o.ApplyT(func(v ConnectorAnthropicModelAuth) *ConnectorAnthropicModelAuthToken { return v.Token }).(ConnectorAnthropicModelAuthTokenPtrOutput)
+}
+
+// Authenticate using Google Vertex AI credentials.
+func (o ConnectorAnthropicModelAuthOutput) Vertex() ConnectorAnthropicModelAuthVertexPtrOutput {
+	return o.ApplyT(func(v ConnectorAnthropicModelAuth) *ConnectorAnthropicModelAuthVertex { return v.Vertex }).(ConnectorAnthropicModelAuthVertexPtrOutput)
+}
+
+type ConnectorAnthropicModelAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAnthropicModelAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAnthropicModelAuth)(nil)).Elem()
+}
+
+func (o ConnectorAnthropicModelAuthPtrOutput) ToConnectorAnthropicModelAuthPtrOutput() ConnectorAnthropicModelAuthPtrOutput {
+	return o
+}
+
+func (o ConnectorAnthropicModelAuthPtrOutput) ToConnectorAnthropicModelAuthPtrOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthPtrOutput {
+	return o
+}
+
+func (o ConnectorAnthropicModelAuthPtrOutput) Elem() ConnectorAnthropicModelAuthOutput {
+	return o.ApplyT(func(v *ConnectorAnthropicModelAuth) ConnectorAnthropicModelAuth {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorAnthropicModelAuth
+		return ret
+	}).(ConnectorAnthropicModelAuthOutput)
+}
+
+// Authentication type for the Anthropic connector. Valid values: `Token`, `BedrockApiKey`, `Vertex`, `CloudProvider`.
+func (o ConnectorAnthropicModelAuthPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAnthropicModelAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Authenticate using an AWS Bedrock API key.
+func (o ConnectorAnthropicModelAuthPtrOutput) BedrockApiKey() ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput {
+	return o.ApplyT(func(v *ConnectorAnthropicModelAuth) *ConnectorAnthropicModelAuthBedrockApiKey {
+		if v == nil {
+			return nil
+		}
+		return v.BedrockApiKey
+	}).(ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput)
+}
+
+// Authenticate using an existing cloud provider connector.
+func (o ConnectorAnthropicModelAuthPtrOutput) CloudProvider() ConnectorAnthropicModelAuthCloudProviderPtrOutput {
+	return o.ApplyT(func(v *ConnectorAnthropicModelAuth) *ConnectorAnthropicModelAuthCloudProvider {
+		if v == nil {
+			return nil
+		}
+		return v.CloudProvider
+	}).(ConnectorAnthropicModelAuthCloudProviderPtrOutput)
+}
+
+// Authenticate using an Anthropic API token.
+func (o ConnectorAnthropicModelAuthPtrOutput) Token() ConnectorAnthropicModelAuthTokenPtrOutput {
+	return o.ApplyT(func(v *ConnectorAnthropicModelAuth) *ConnectorAnthropicModelAuthToken {
+		if v == nil {
+			return nil
+		}
+		return v.Token
+	}).(ConnectorAnthropicModelAuthTokenPtrOutput)
+}
+
+// Authenticate using Google Vertex AI credentials.
+func (o ConnectorAnthropicModelAuthPtrOutput) Vertex() ConnectorAnthropicModelAuthVertexPtrOutput {
+	return o.ApplyT(func(v *ConnectorAnthropicModelAuth) *ConnectorAnthropicModelAuthVertex {
+		if v == nil {
+			return nil
+		}
+		return v.Vertex
+	}).(ConnectorAnthropicModelAuthVertexPtrOutput)
+}
+
+type ConnectorAnthropicModelAuthBedrockApiKey struct {
+	// Reference to a secret containing the Bedrock API key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+	ApiKeyRef string `pulumi:"apiKeyRef"`
+	// AWS region for the Bedrock endpoint.
+	Region string `pulumi:"region"`
+}
+
+// ConnectorAnthropicModelAuthBedrockApiKeyInput is an input type that accepts ConnectorAnthropicModelAuthBedrockApiKeyArgs and ConnectorAnthropicModelAuthBedrockApiKeyOutput values.
+// You can construct a concrete instance of `ConnectorAnthropicModelAuthBedrockApiKeyInput` via:
+//
+//	ConnectorAnthropicModelAuthBedrockApiKeyArgs{...}
+type ConnectorAnthropicModelAuthBedrockApiKeyInput interface {
+	pulumi.Input
+
+	ToConnectorAnthropicModelAuthBedrockApiKeyOutput() ConnectorAnthropicModelAuthBedrockApiKeyOutput
+	ToConnectorAnthropicModelAuthBedrockApiKeyOutputWithContext(context.Context) ConnectorAnthropicModelAuthBedrockApiKeyOutput
+}
+
+type ConnectorAnthropicModelAuthBedrockApiKeyArgs struct {
+	// Reference to a secret containing the Bedrock API key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+	ApiKeyRef pulumi.StringInput `pulumi:"apiKeyRef"`
+	// AWS region for the Bedrock endpoint.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (ConnectorAnthropicModelAuthBedrockApiKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAnthropicModelAuthBedrockApiKey)(nil)).Elem()
+}
+
+func (i ConnectorAnthropicModelAuthBedrockApiKeyArgs) ToConnectorAnthropicModelAuthBedrockApiKeyOutput() ConnectorAnthropicModelAuthBedrockApiKeyOutput {
+	return i.ToConnectorAnthropicModelAuthBedrockApiKeyOutputWithContext(context.Background())
+}
+
+func (i ConnectorAnthropicModelAuthBedrockApiKeyArgs) ToConnectorAnthropicModelAuthBedrockApiKeyOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthBedrockApiKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAnthropicModelAuthBedrockApiKeyOutput)
+}
+
+func (i ConnectorAnthropicModelAuthBedrockApiKeyArgs) ToConnectorAnthropicModelAuthBedrockApiKeyPtrOutput() ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput {
+	return i.ToConnectorAnthropicModelAuthBedrockApiKeyPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorAnthropicModelAuthBedrockApiKeyArgs) ToConnectorAnthropicModelAuthBedrockApiKeyPtrOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAnthropicModelAuthBedrockApiKeyOutput).ToConnectorAnthropicModelAuthBedrockApiKeyPtrOutputWithContext(ctx)
+}
+
+// ConnectorAnthropicModelAuthBedrockApiKeyPtrInput is an input type that accepts ConnectorAnthropicModelAuthBedrockApiKeyArgs, ConnectorAnthropicModelAuthBedrockApiKeyPtr and ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput values.
+// You can construct a concrete instance of `ConnectorAnthropicModelAuthBedrockApiKeyPtrInput` via:
+//
+//	        ConnectorAnthropicModelAuthBedrockApiKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorAnthropicModelAuthBedrockApiKeyPtrInput interface {
+	pulumi.Input
+
+	ToConnectorAnthropicModelAuthBedrockApiKeyPtrOutput() ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput
+	ToConnectorAnthropicModelAuthBedrockApiKeyPtrOutputWithContext(context.Context) ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput
+}
+
+type connectorAnthropicModelAuthBedrockApiKeyPtrType ConnectorAnthropicModelAuthBedrockApiKeyArgs
+
+func ConnectorAnthropicModelAuthBedrockApiKeyPtr(v *ConnectorAnthropicModelAuthBedrockApiKeyArgs) ConnectorAnthropicModelAuthBedrockApiKeyPtrInput {
+	return (*connectorAnthropicModelAuthBedrockApiKeyPtrType)(v)
+}
+
+func (*connectorAnthropicModelAuthBedrockApiKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAnthropicModelAuthBedrockApiKey)(nil)).Elem()
+}
+
+func (i *connectorAnthropicModelAuthBedrockApiKeyPtrType) ToConnectorAnthropicModelAuthBedrockApiKeyPtrOutput() ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput {
+	return i.ToConnectorAnthropicModelAuthBedrockApiKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorAnthropicModelAuthBedrockApiKeyPtrType) ToConnectorAnthropicModelAuthBedrockApiKeyPtrOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput)
+}
+
+type ConnectorAnthropicModelAuthBedrockApiKeyOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAnthropicModelAuthBedrockApiKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAnthropicModelAuthBedrockApiKey)(nil)).Elem()
+}
+
+func (o ConnectorAnthropicModelAuthBedrockApiKeyOutput) ToConnectorAnthropicModelAuthBedrockApiKeyOutput() ConnectorAnthropicModelAuthBedrockApiKeyOutput {
+	return o
+}
+
+func (o ConnectorAnthropicModelAuthBedrockApiKeyOutput) ToConnectorAnthropicModelAuthBedrockApiKeyOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthBedrockApiKeyOutput {
+	return o
+}
+
+func (o ConnectorAnthropicModelAuthBedrockApiKeyOutput) ToConnectorAnthropicModelAuthBedrockApiKeyPtrOutput() ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput {
+	return o.ToConnectorAnthropicModelAuthBedrockApiKeyPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorAnthropicModelAuthBedrockApiKeyOutput) ToConnectorAnthropicModelAuthBedrockApiKeyPtrOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorAnthropicModelAuthBedrockApiKey) *ConnectorAnthropicModelAuthBedrockApiKey {
+		return &v
+	}).(ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput)
+}
+
+// Reference to a secret containing the Bedrock API key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+func (o ConnectorAnthropicModelAuthBedrockApiKeyOutput) ApiKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorAnthropicModelAuthBedrockApiKey) string { return v.ApiKeyRef }).(pulumi.StringOutput)
+}
+
+// AWS region for the Bedrock endpoint.
+func (o ConnectorAnthropicModelAuthBedrockApiKeyOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorAnthropicModelAuthBedrockApiKey) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAnthropicModelAuthBedrockApiKey)(nil)).Elem()
+}
+
+func (o ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput) ToConnectorAnthropicModelAuthBedrockApiKeyPtrOutput() ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput {
+	return o
+}
+
+func (o ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput) ToConnectorAnthropicModelAuthBedrockApiKeyPtrOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput {
+	return o
+}
+
+func (o ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput) Elem() ConnectorAnthropicModelAuthBedrockApiKeyOutput {
+	return o.ApplyT(func(v *ConnectorAnthropicModelAuthBedrockApiKey) ConnectorAnthropicModelAuthBedrockApiKey {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorAnthropicModelAuthBedrockApiKey
+		return ret
+	}).(ConnectorAnthropicModelAuthBedrockApiKeyOutput)
+}
+
+// Reference to a secret containing the Bedrock API key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+func (o ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput) ApiKeyRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAnthropicModelAuthBedrockApiKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApiKeyRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS region for the Bedrock endpoint.
+func (o ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAnthropicModelAuthBedrockApiKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectorAnthropicModelAuthCloudProvider struct {
+	// Reference to an existing cloud provider connector.
+	ConnectorRef string `pulumi:"connectorRef"`
+	// Cloud provider type. Valid values: `AWS`, `GCP`, `Azure`.
+	Type string `pulumi:"type"`
+}
+
+// ConnectorAnthropicModelAuthCloudProviderInput is an input type that accepts ConnectorAnthropicModelAuthCloudProviderArgs and ConnectorAnthropicModelAuthCloudProviderOutput values.
+// You can construct a concrete instance of `ConnectorAnthropicModelAuthCloudProviderInput` via:
+//
+//	ConnectorAnthropicModelAuthCloudProviderArgs{...}
+type ConnectorAnthropicModelAuthCloudProviderInput interface {
+	pulumi.Input
+
+	ToConnectorAnthropicModelAuthCloudProviderOutput() ConnectorAnthropicModelAuthCloudProviderOutput
+	ToConnectorAnthropicModelAuthCloudProviderOutputWithContext(context.Context) ConnectorAnthropicModelAuthCloudProviderOutput
+}
+
+type ConnectorAnthropicModelAuthCloudProviderArgs struct {
+	// Reference to an existing cloud provider connector.
+	ConnectorRef pulumi.StringInput `pulumi:"connectorRef"`
+	// Cloud provider type. Valid values: `AWS`, `GCP`, `Azure`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ConnectorAnthropicModelAuthCloudProviderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAnthropicModelAuthCloudProvider)(nil)).Elem()
+}
+
+func (i ConnectorAnthropicModelAuthCloudProviderArgs) ToConnectorAnthropicModelAuthCloudProviderOutput() ConnectorAnthropicModelAuthCloudProviderOutput {
+	return i.ToConnectorAnthropicModelAuthCloudProviderOutputWithContext(context.Background())
+}
+
+func (i ConnectorAnthropicModelAuthCloudProviderArgs) ToConnectorAnthropicModelAuthCloudProviderOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthCloudProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAnthropicModelAuthCloudProviderOutput)
+}
+
+func (i ConnectorAnthropicModelAuthCloudProviderArgs) ToConnectorAnthropicModelAuthCloudProviderPtrOutput() ConnectorAnthropicModelAuthCloudProviderPtrOutput {
+	return i.ToConnectorAnthropicModelAuthCloudProviderPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorAnthropicModelAuthCloudProviderArgs) ToConnectorAnthropicModelAuthCloudProviderPtrOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthCloudProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAnthropicModelAuthCloudProviderOutput).ToConnectorAnthropicModelAuthCloudProviderPtrOutputWithContext(ctx)
+}
+
+// ConnectorAnthropicModelAuthCloudProviderPtrInput is an input type that accepts ConnectorAnthropicModelAuthCloudProviderArgs, ConnectorAnthropicModelAuthCloudProviderPtr and ConnectorAnthropicModelAuthCloudProviderPtrOutput values.
+// You can construct a concrete instance of `ConnectorAnthropicModelAuthCloudProviderPtrInput` via:
+//
+//	        ConnectorAnthropicModelAuthCloudProviderArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorAnthropicModelAuthCloudProviderPtrInput interface {
+	pulumi.Input
+
+	ToConnectorAnthropicModelAuthCloudProviderPtrOutput() ConnectorAnthropicModelAuthCloudProviderPtrOutput
+	ToConnectorAnthropicModelAuthCloudProviderPtrOutputWithContext(context.Context) ConnectorAnthropicModelAuthCloudProviderPtrOutput
+}
+
+type connectorAnthropicModelAuthCloudProviderPtrType ConnectorAnthropicModelAuthCloudProviderArgs
+
+func ConnectorAnthropicModelAuthCloudProviderPtr(v *ConnectorAnthropicModelAuthCloudProviderArgs) ConnectorAnthropicModelAuthCloudProviderPtrInput {
+	return (*connectorAnthropicModelAuthCloudProviderPtrType)(v)
+}
+
+func (*connectorAnthropicModelAuthCloudProviderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAnthropicModelAuthCloudProvider)(nil)).Elem()
+}
+
+func (i *connectorAnthropicModelAuthCloudProviderPtrType) ToConnectorAnthropicModelAuthCloudProviderPtrOutput() ConnectorAnthropicModelAuthCloudProviderPtrOutput {
+	return i.ToConnectorAnthropicModelAuthCloudProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorAnthropicModelAuthCloudProviderPtrType) ToConnectorAnthropicModelAuthCloudProviderPtrOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthCloudProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAnthropicModelAuthCloudProviderPtrOutput)
+}
+
+type ConnectorAnthropicModelAuthCloudProviderOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAnthropicModelAuthCloudProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAnthropicModelAuthCloudProvider)(nil)).Elem()
+}
+
+func (o ConnectorAnthropicModelAuthCloudProviderOutput) ToConnectorAnthropicModelAuthCloudProviderOutput() ConnectorAnthropicModelAuthCloudProviderOutput {
+	return o
+}
+
+func (o ConnectorAnthropicModelAuthCloudProviderOutput) ToConnectorAnthropicModelAuthCloudProviderOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthCloudProviderOutput {
+	return o
+}
+
+func (o ConnectorAnthropicModelAuthCloudProviderOutput) ToConnectorAnthropicModelAuthCloudProviderPtrOutput() ConnectorAnthropicModelAuthCloudProviderPtrOutput {
+	return o.ToConnectorAnthropicModelAuthCloudProviderPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorAnthropicModelAuthCloudProviderOutput) ToConnectorAnthropicModelAuthCloudProviderPtrOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthCloudProviderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorAnthropicModelAuthCloudProvider) *ConnectorAnthropicModelAuthCloudProvider {
+		return &v
+	}).(ConnectorAnthropicModelAuthCloudProviderPtrOutput)
+}
+
+// Reference to an existing cloud provider connector.
+func (o ConnectorAnthropicModelAuthCloudProviderOutput) ConnectorRef() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorAnthropicModelAuthCloudProvider) string { return v.ConnectorRef }).(pulumi.StringOutput)
+}
+
+// Cloud provider type. Valid values: `AWS`, `GCP`, `Azure`.
+func (o ConnectorAnthropicModelAuthCloudProviderOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorAnthropicModelAuthCloudProvider) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ConnectorAnthropicModelAuthCloudProviderPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAnthropicModelAuthCloudProviderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAnthropicModelAuthCloudProvider)(nil)).Elem()
+}
+
+func (o ConnectorAnthropicModelAuthCloudProviderPtrOutput) ToConnectorAnthropicModelAuthCloudProviderPtrOutput() ConnectorAnthropicModelAuthCloudProviderPtrOutput {
+	return o
+}
+
+func (o ConnectorAnthropicModelAuthCloudProviderPtrOutput) ToConnectorAnthropicModelAuthCloudProviderPtrOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthCloudProviderPtrOutput {
+	return o
+}
+
+func (o ConnectorAnthropicModelAuthCloudProviderPtrOutput) Elem() ConnectorAnthropicModelAuthCloudProviderOutput {
+	return o.ApplyT(func(v *ConnectorAnthropicModelAuthCloudProvider) ConnectorAnthropicModelAuthCloudProvider {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorAnthropicModelAuthCloudProvider
+		return ret
+	}).(ConnectorAnthropicModelAuthCloudProviderOutput)
+}
+
+// Reference to an existing cloud provider connector.
+func (o ConnectorAnthropicModelAuthCloudProviderPtrOutput) ConnectorRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAnthropicModelAuthCloudProvider) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectorRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cloud provider type. Valid values: `AWS`, `GCP`, `Azure`.
+func (o ConnectorAnthropicModelAuthCloudProviderPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAnthropicModelAuthCloudProvider) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectorAnthropicModelAuthToken struct {
+	// Reference to a secret containing the Anthropic API token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+	TokenRef string `pulumi:"tokenRef"`
+}
+
+// ConnectorAnthropicModelAuthTokenInput is an input type that accepts ConnectorAnthropicModelAuthTokenArgs and ConnectorAnthropicModelAuthTokenOutput values.
+// You can construct a concrete instance of `ConnectorAnthropicModelAuthTokenInput` via:
+//
+//	ConnectorAnthropicModelAuthTokenArgs{...}
+type ConnectorAnthropicModelAuthTokenInput interface {
+	pulumi.Input
+
+	ToConnectorAnthropicModelAuthTokenOutput() ConnectorAnthropicModelAuthTokenOutput
+	ToConnectorAnthropicModelAuthTokenOutputWithContext(context.Context) ConnectorAnthropicModelAuthTokenOutput
+}
+
+type ConnectorAnthropicModelAuthTokenArgs struct {
+	// Reference to a secret containing the Anthropic API token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
+}
+
+func (ConnectorAnthropicModelAuthTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAnthropicModelAuthToken)(nil)).Elem()
+}
+
+func (i ConnectorAnthropicModelAuthTokenArgs) ToConnectorAnthropicModelAuthTokenOutput() ConnectorAnthropicModelAuthTokenOutput {
+	return i.ToConnectorAnthropicModelAuthTokenOutputWithContext(context.Background())
+}
+
+func (i ConnectorAnthropicModelAuthTokenArgs) ToConnectorAnthropicModelAuthTokenOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAnthropicModelAuthTokenOutput)
+}
+
+func (i ConnectorAnthropicModelAuthTokenArgs) ToConnectorAnthropicModelAuthTokenPtrOutput() ConnectorAnthropicModelAuthTokenPtrOutput {
+	return i.ToConnectorAnthropicModelAuthTokenPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorAnthropicModelAuthTokenArgs) ToConnectorAnthropicModelAuthTokenPtrOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAnthropicModelAuthTokenOutput).ToConnectorAnthropicModelAuthTokenPtrOutputWithContext(ctx)
+}
+
+// ConnectorAnthropicModelAuthTokenPtrInput is an input type that accepts ConnectorAnthropicModelAuthTokenArgs, ConnectorAnthropicModelAuthTokenPtr and ConnectorAnthropicModelAuthTokenPtrOutput values.
+// You can construct a concrete instance of `ConnectorAnthropicModelAuthTokenPtrInput` via:
+//
+//	        ConnectorAnthropicModelAuthTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorAnthropicModelAuthTokenPtrInput interface {
+	pulumi.Input
+
+	ToConnectorAnthropicModelAuthTokenPtrOutput() ConnectorAnthropicModelAuthTokenPtrOutput
+	ToConnectorAnthropicModelAuthTokenPtrOutputWithContext(context.Context) ConnectorAnthropicModelAuthTokenPtrOutput
+}
+
+type connectorAnthropicModelAuthTokenPtrType ConnectorAnthropicModelAuthTokenArgs
+
+func ConnectorAnthropicModelAuthTokenPtr(v *ConnectorAnthropicModelAuthTokenArgs) ConnectorAnthropicModelAuthTokenPtrInput {
+	return (*connectorAnthropicModelAuthTokenPtrType)(v)
+}
+
+func (*connectorAnthropicModelAuthTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAnthropicModelAuthToken)(nil)).Elem()
+}
+
+func (i *connectorAnthropicModelAuthTokenPtrType) ToConnectorAnthropicModelAuthTokenPtrOutput() ConnectorAnthropicModelAuthTokenPtrOutput {
+	return i.ToConnectorAnthropicModelAuthTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorAnthropicModelAuthTokenPtrType) ToConnectorAnthropicModelAuthTokenPtrOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAnthropicModelAuthTokenPtrOutput)
+}
+
+type ConnectorAnthropicModelAuthTokenOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAnthropicModelAuthTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAnthropicModelAuthToken)(nil)).Elem()
+}
+
+func (o ConnectorAnthropicModelAuthTokenOutput) ToConnectorAnthropicModelAuthTokenOutput() ConnectorAnthropicModelAuthTokenOutput {
+	return o
+}
+
+func (o ConnectorAnthropicModelAuthTokenOutput) ToConnectorAnthropicModelAuthTokenOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthTokenOutput {
+	return o
+}
+
+func (o ConnectorAnthropicModelAuthTokenOutput) ToConnectorAnthropicModelAuthTokenPtrOutput() ConnectorAnthropicModelAuthTokenPtrOutput {
+	return o.ToConnectorAnthropicModelAuthTokenPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorAnthropicModelAuthTokenOutput) ToConnectorAnthropicModelAuthTokenPtrOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorAnthropicModelAuthToken) *ConnectorAnthropicModelAuthToken {
+		return &v
+	}).(ConnectorAnthropicModelAuthTokenPtrOutput)
+}
+
+// Reference to a secret containing the Anthropic API token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+func (o ConnectorAnthropicModelAuthTokenOutput) TokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorAnthropicModelAuthToken) string { return v.TokenRef }).(pulumi.StringOutput)
+}
+
+type ConnectorAnthropicModelAuthTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAnthropicModelAuthTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAnthropicModelAuthToken)(nil)).Elem()
+}
+
+func (o ConnectorAnthropicModelAuthTokenPtrOutput) ToConnectorAnthropicModelAuthTokenPtrOutput() ConnectorAnthropicModelAuthTokenPtrOutput {
+	return o
+}
+
+func (o ConnectorAnthropicModelAuthTokenPtrOutput) ToConnectorAnthropicModelAuthTokenPtrOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthTokenPtrOutput {
+	return o
+}
+
+func (o ConnectorAnthropicModelAuthTokenPtrOutput) Elem() ConnectorAnthropicModelAuthTokenOutput {
+	return o.ApplyT(func(v *ConnectorAnthropicModelAuthToken) ConnectorAnthropicModelAuthToken {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorAnthropicModelAuthToken
+		return ret
+	}).(ConnectorAnthropicModelAuthTokenOutput)
+}
+
+// Reference to a secret containing the Anthropic API token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+func (o ConnectorAnthropicModelAuthTokenPtrOutput) TokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAnthropicModelAuthToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectorAnthropicModelAuthVertex struct {
+	// GCP project ID.
+	ProjectId string `pulumi:"projectId"`
+	// GCP region for the Vertex AI endpoint.
+	Region string `pulumi:"region"`
+	// Reference to a secret containing the GCP service account key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+	ServiceAccountKeyRef string `pulumi:"serviceAccountKeyRef"`
+}
+
+// ConnectorAnthropicModelAuthVertexInput is an input type that accepts ConnectorAnthropicModelAuthVertexArgs and ConnectorAnthropicModelAuthVertexOutput values.
+// You can construct a concrete instance of `ConnectorAnthropicModelAuthVertexInput` via:
+//
+//	ConnectorAnthropicModelAuthVertexArgs{...}
+type ConnectorAnthropicModelAuthVertexInput interface {
+	pulumi.Input
+
+	ToConnectorAnthropicModelAuthVertexOutput() ConnectorAnthropicModelAuthVertexOutput
+	ToConnectorAnthropicModelAuthVertexOutputWithContext(context.Context) ConnectorAnthropicModelAuthVertexOutput
+}
+
+type ConnectorAnthropicModelAuthVertexArgs struct {
+	// GCP project ID.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// GCP region for the Vertex AI endpoint.
+	Region pulumi.StringInput `pulumi:"region"`
+	// Reference to a secret containing the GCP service account key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+	ServiceAccountKeyRef pulumi.StringInput `pulumi:"serviceAccountKeyRef"`
+}
+
+func (ConnectorAnthropicModelAuthVertexArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAnthropicModelAuthVertex)(nil)).Elem()
+}
+
+func (i ConnectorAnthropicModelAuthVertexArgs) ToConnectorAnthropicModelAuthVertexOutput() ConnectorAnthropicModelAuthVertexOutput {
+	return i.ToConnectorAnthropicModelAuthVertexOutputWithContext(context.Background())
+}
+
+func (i ConnectorAnthropicModelAuthVertexArgs) ToConnectorAnthropicModelAuthVertexOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthVertexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAnthropicModelAuthVertexOutput)
+}
+
+func (i ConnectorAnthropicModelAuthVertexArgs) ToConnectorAnthropicModelAuthVertexPtrOutput() ConnectorAnthropicModelAuthVertexPtrOutput {
+	return i.ToConnectorAnthropicModelAuthVertexPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorAnthropicModelAuthVertexArgs) ToConnectorAnthropicModelAuthVertexPtrOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthVertexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAnthropicModelAuthVertexOutput).ToConnectorAnthropicModelAuthVertexPtrOutputWithContext(ctx)
+}
+
+// ConnectorAnthropicModelAuthVertexPtrInput is an input type that accepts ConnectorAnthropicModelAuthVertexArgs, ConnectorAnthropicModelAuthVertexPtr and ConnectorAnthropicModelAuthVertexPtrOutput values.
+// You can construct a concrete instance of `ConnectorAnthropicModelAuthVertexPtrInput` via:
+//
+//	        ConnectorAnthropicModelAuthVertexArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorAnthropicModelAuthVertexPtrInput interface {
+	pulumi.Input
+
+	ToConnectorAnthropicModelAuthVertexPtrOutput() ConnectorAnthropicModelAuthVertexPtrOutput
+	ToConnectorAnthropicModelAuthVertexPtrOutputWithContext(context.Context) ConnectorAnthropicModelAuthVertexPtrOutput
+}
+
+type connectorAnthropicModelAuthVertexPtrType ConnectorAnthropicModelAuthVertexArgs
+
+func ConnectorAnthropicModelAuthVertexPtr(v *ConnectorAnthropicModelAuthVertexArgs) ConnectorAnthropicModelAuthVertexPtrInput {
+	return (*connectorAnthropicModelAuthVertexPtrType)(v)
+}
+
+func (*connectorAnthropicModelAuthVertexPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAnthropicModelAuthVertex)(nil)).Elem()
+}
+
+func (i *connectorAnthropicModelAuthVertexPtrType) ToConnectorAnthropicModelAuthVertexPtrOutput() ConnectorAnthropicModelAuthVertexPtrOutput {
+	return i.ToConnectorAnthropicModelAuthVertexPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorAnthropicModelAuthVertexPtrType) ToConnectorAnthropicModelAuthVertexPtrOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthVertexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorAnthropicModelAuthVertexPtrOutput)
+}
+
+type ConnectorAnthropicModelAuthVertexOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAnthropicModelAuthVertexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorAnthropicModelAuthVertex)(nil)).Elem()
+}
+
+func (o ConnectorAnthropicModelAuthVertexOutput) ToConnectorAnthropicModelAuthVertexOutput() ConnectorAnthropicModelAuthVertexOutput {
+	return o
+}
+
+func (o ConnectorAnthropicModelAuthVertexOutput) ToConnectorAnthropicModelAuthVertexOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthVertexOutput {
+	return o
+}
+
+func (o ConnectorAnthropicModelAuthVertexOutput) ToConnectorAnthropicModelAuthVertexPtrOutput() ConnectorAnthropicModelAuthVertexPtrOutput {
+	return o.ToConnectorAnthropicModelAuthVertexPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorAnthropicModelAuthVertexOutput) ToConnectorAnthropicModelAuthVertexPtrOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthVertexPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorAnthropicModelAuthVertex) *ConnectorAnthropicModelAuthVertex {
+		return &v
+	}).(ConnectorAnthropicModelAuthVertexPtrOutput)
+}
+
+// GCP project ID.
+func (o ConnectorAnthropicModelAuthVertexOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorAnthropicModelAuthVertex) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// GCP region for the Vertex AI endpoint.
+func (o ConnectorAnthropicModelAuthVertexOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorAnthropicModelAuthVertex) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Reference to a secret containing the GCP service account key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+func (o ConnectorAnthropicModelAuthVertexOutput) ServiceAccountKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorAnthropicModelAuthVertex) string { return v.ServiceAccountKeyRef }).(pulumi.StringOutput)
+}
+
+type ConnectorAnthropicModelAuthVertexPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorAnthropicModelAuthVertexPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorAnthropicModelAuthVertex)(nil)).Elem()
+}
+
+func (o ConnectorAnthropicModelAuthVertexPtrOutput) ToConnectorAnthropicModelAuthVertexPtrOutput() ConnectorAnthropicModelAuthVertexPtrOutput {
+	return o
+}
+
+func (o ConnectorAnthropicModelAuthVertexPtrOutput) ToConnectorAnthropicModelAuthVertexPtrOutputWithContext(ctx context.Context) ConnectorAnthropicModelAuthVertexPtrOutput {
+	return o
+}
+
+func (o ConnectorAnthropicModelAuthVertexPtrOutput) Elem() ConnectorAnthropicModelAuthVertexOutput {
+	return o.ApplyT(func(v *ConnectorAnthropicModelAuthVertex) ConnectorAnthropicModelAuthVertex {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorAnthropicModelAuthVertex
+		return ret
+	}).(ConnectorAnthropicModelAuthVertexOutput)
+}
+
+// GCP project ID.
+func (o ConnectorAnthropicModelAuthVertexPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAnthropicModelAuthVertex) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// GCP region for the Vertex AI endpoint.
+func (o ConnectorAnthropicModelAuthVertexPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAnthropicModelAuthVertex) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to a secret containing the GCP service account key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+func (o ConnectorAnthropicModelAuthVertexPtrOutput) ServiceAccountKeyRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorAnthropicModelAuthVertex) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccountKeyRef
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConnectorAzureArtifactsCredentials struct {
 	// Reference to a secret containing the token to use for authentication. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	TokenRef string `pulumi:"tokenRef"`
@@ -9815,6 +10652,493 @@ func (o ConnectorJdbcCredentialsUsernamePasswordPtrOutput) UsernameRef() pulumi.
 			return nil
 		}
 		return v.UsernameRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectorOpenaiModelAuth struct {
+	// Authentication type for the OpenAI connector. Valid values: `Token`, `Vertex`.
+	AuthType string `pulumi:"authType"`
+	// Authenticate using an OpenAI API token.
+	Token *ConnectorOpenaiModelAuthToken `pulumi:"token"`
+	// Authenticate using Google Vertex AI credentials.
+	Vertex *ConnectorOpenaiModelAuthVertex `pulumi:"vertex"`
+}
+
+// ConnectorOpenaiModelAuthInput is an input type that accepts ConnectorOpenaiModelAuthArgs and ConnectorOpenaiModelAuthOutput values.
+// You can construct a concrete instance of `ConnectorOpenaiModelAuthInput` via:
+//
+//	ConnectorOpenaiModelAuthArgs{...}
+type ConnectorOpenaiModelAuthInput interface {
+	pulumi.Input
+
+	ToConnectorOpenaiModelAuthOutput() ConnectorOpenaiModelAuthOutput
+	ToConnectorOpenaiModelAuthOutputWithContext(context.Context) ConnectorOpenaiModelAuthOutput
+}
+
+type ConnectorOpenaiModelAuthArgs struct {
+	// Authentication type for the OpenAI connector. Valid values: `Token`, `Vertex`.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Authenticate using an OpenAI API token.
+	Token ConnectorOpenaiModelAuthTokenPtrInput `pulumi:"token"`
+	// Authenticate using Google Vertex AI credentials.
+	Vertex ConnectorOpenaiModelAuthVertexPtrInput `pulumi:"vertex"`
+}
+
+func (ConnectorOpenaiModelAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorOpenaiModelAuth)(nil)).Elem()
+}
+
+func (i ConnectorOpenaiModelAuthArgs) ToConnectorOpenaiModelAuthOutput() ConnectorOpenaiModelAuthOutput {
+	return i.ToConnectorOpenaiModelAuthOutputWithContext(context.Background())
+}
+
+func (i ConnectorOpenaiModelAuthArgs) ToConnectorOpenaiModelAuthOutputWithContext(ctx context.Context) ConnectorOpenaiModelAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorOpenaiModelAuthOutput)
+}
+
+func (i ConnectorOpenaiModelAuthArgs) ToConnectorOpenaiModelAuthPtrOutput() ConnectorOpenaiModelAuthPtrOutput {
+	return i.ToConnectorOpenaiModelAuthPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorOpenaiModelAuthArgs) ToConnectorOpenaiModelAuthPtrOutputWithContext(ctx context.Context) ConnectorOpenaiModelAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorOpenaiModelAuthOutput).ToConnectorOpenaiModelAuthPtrOutputWithContext(ctx)
+}
+
+// ConnectorOpenaiModelAuthPtrInput is an input type that accepts ConnectorOpenaiModelAuthArgs, ConnectorOpenaiModelAuthPtr and ConnectorOpenaiModelAuthPtrOutput values.
+// You can construct a concrete instance of `ConnectorOpenaiModelAuthPtrInput` via:
+//
+//	        ConnectorOpenaiModelAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorOpenaiModelAuthPtrInput interface {
+	pulumi.Input
+
+	ToConnectorOpenaiModelAuthPtrOutput() ConnectorOpenaiModelAuthPtrOutput
+	ToConnectorOpenaiModelAuthPtrOutputWithContext(context.Context) ConnectorOpenaiModelAuthPtrOutput
+}
+
+type connectorOpenaiModelAuthPtrType ConnectorOpenaiModelAuthArgs
+
+func ConnectorOpenaiModelAuthPtr(v *ConnectorOpenaiModelAuthArgs) ConnectorOpenaiModelAuthPtrInput {
+	return (*connectorOpenaiModelAuthPtrType)(v)
+}
+
+func (*connectorOpenaiModelAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorOpenaiModelAuth)(nil)).Elem()
+}
+
+func (i *connectorOpenaiModelAuthPtrType) ToConnectorOpenaiModelAuthPtrOutput() ConnectorOpenaiModelAuthPtrOutput {
+	return i.ToConnectorOpenaiModelAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorOpenaiModelAuthPtrType) ToConnectorOpenaiModelAuthPtrOutputWithContext(ctx context.Context) ConnectorOpenaiModelAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorOpenaiModelAuthPtrOutput)
+}
+
+type ConnectorOpenaiModelAuthOutput struct{ *pulumi.OutputState }
+
+func (ConnectorOpenaiModelAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorOpenaiModelAuth)(nil)).Elem()
+}
+
+func (o ConnectorOpenaiModelAuthOutput) ToConnectorOpenaiModelAuthOutput() ConnectorOpenaiModelAuthOutput {
+	return o
+}
+
+func (o ConnectorOpenaiModelAuthOutput) ToConnectorOpenaiModelAuthOutputWithContext(ctx context.Context) ConnectorOpenaiModelAuthOutput {
+	return o
+}
+
+func (o ConnectorOpenaiModelAuthOutput) ToConnectorOpenaiModelAuthPtrOutput() ConnectorOpenaiModelAuthPtrOutput {
+	return o.ToConnectorOpenaiModelAuthPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorOpenaiModelAuthOutput) ToConnectorOpenaiModelAuthPtrOutputWithContext(ctx context.Context) ConnectorOpenaiModelAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorOpenaiModelAuth) *ConnectorOpenaiModelAuth {
+		return &v
+	}).(ConnectorOpenaiModelAuthPtrOutput)
+}
+
+// Authentication type for the OpenAI connector. Valid values: `Token`, `Vertex`.
+func (o ConnectorOpenaiModelAuthOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorOpenaiModelAuth) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Authenticate using an OpenAI API token.
+func (o ConnectorOpenaiModelAuthOutput) Token() ConnectorOpenaiModelAuthTokenPtrOutput {
+	return o.ApplyT(func(v ConnectorOpenaiModelAuth) *ConnectorOpenaiModelAuthToken { return v.Token }).(ConnectorOpenaiModelAuthTokenPtrOutput)
+}
+
+// Authenticate using Google Vertex AI credentials.
+func (o ConnectorOpenaiModelAuthOutput) Vertex() ConnectorOpenaiModelAuthVertexPtrOutput {
+	return o.ApplyT(func(v ConnectorOpenaiModelAuth) *ConnectorOpenaiModelAuthVertex { return v.Vertex }).(ConnectorOpenaiModelAuthVertexPtrOutput)
+}
+
+type ConnectorOpenaiModelAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorOpenaiModelAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorOpenaiModelAuth)(nil)).Elem()
+}
+
+func (o ConnectorOpenaiModelAuthPtrOutput) ToConnectorOpenaiModelAuthPtrOutput() ConnectorOpenaiModelAuthPtrOutput {
+	return o
+}
+
+func (o ConnectorOpenaiModelAuthPtrOutput) ToConnectorOpenaiModelAuthPtrOutputWithContext(ctx context.Context) ConnectorOpenaiModelAuthPtrOutput {
+	return o
+}
+
+func (o ConnectorOpenaiModelAuthPtrOutput) Elem() ConnectorOpenaiModelAuthOutput {
+	return o.ApplyT(func(v *ConnectorOpenaiModelAuth) ConnectorOpenaiModelAuth {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorOpenaiModelAuth
+		return ret
+	}).(ConnectorOpenaiModelAuthOutput)
+}
+
+// Authentication type for the OpenAI connector. Valid values: `Token`, `Vertex`.
+func (o ConnectorOpenaiModelAuthPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorOpenaiModelAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Authenticate using an OpenAI API token.
+func (o ConnectorOpenaiModelAuthPtrOutput) Token() ConnectorOpenaiModelAuthTokenPtrOutput {
+	return o.ApplyT(func(v *ConnectorOpenaiModelAuth) *ConnectorOpenaiModelAuthToken {
+		if v == nil {
+			return nil
+		}
+		return v.Token
+	}).(ConnectorOpenaiModelAuthTokenPtrOutput)
+}
+
+// Authenticate using Google Vertex AI credentials.
+func (o ConnectorOpenaiModelAuthPtrOutput) Vertex() ConnectorOpenaiModelAuthVertexPtrOutput {
+	return o.ApplyT(func(v *ConnectorOpenaiModelAuth) *ConnectorOpenaiModelAuthVertex {
+		if v == nil {
+			return nil
+		}
+		return v.Vertex
+	}).(ConnectorOpenaiModelAuthVertexPtrOutput)
+}
+
+type ConnectorOpenaiModelAuthToken struct {
+	// Reference to a secret containing the OpenAI API token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+	TokenRef string `pulumi:"tokenRef"`
+}
+
+// ConnectorOpenaiModelAuthTokenInput is an input type that accepts ConnectorOpenaiModelAuthTokenArgs and ConnectorOpenaiModelAuthTokenOutput values.
+// You can construct a concrete instance of `ConnectorOpenaiModelAuthTokenInput` via:
+//
+//	ConnectorOpenaiModelAuthTokenArgs{...}
+type ConnectorOpenaiModelAuthTokenInput interface {
+	pulumi.Input
+
+	ToConnectorOpenaiModelAuthTokenOutput() ConnectorOpenaiModelAuthTokenOutput
+	ToConnectorOpenaiModelAuthTokenOutputWithContext(context.Context) ConnectorOpenaiModelAuthTokenOutput
+}
+
+type ConnectorOpenaiModelAuthTokenArgs struct {
+	// Reference to a secret containing the OpenAI API token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+	TokenRef pulumi.StringInput `pulumi:"tokenRef"`
+}
+
+func (ConnectorOpenaiModelAuthTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorOpenaiModelAuthToken)(nil)).Elem()
+}
+
+func (i ConnectorOpenaiModelAuthTokenArgs) ToConnectorOpenaiModelAuthTokenOutput() ConnectorOpenaiModelAuthTokenOutput {
+	return i.ToConnectorOpenaiModelAuthTokenOutputWithContext(context.Background())
+}
+
+func (i ConnectorOpenaiModelAuthTokenArgs) ToConnectorOpenaiModelAuthTokenOutputWithContext(ctx context.Context) ConnectorOpenaiModelAuthTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorOpenaiModelAuthTokenOutput)
+}
+
+func (i ConnectorOpenaiModelAuthTokenArgs) ToConnectorOpenaiModelAuthTokenPtrOutput() ConnectorOpenaiModelAuthTokenPtrOutput {
+	return i.ToConnectorOpenaiModelAuthTokenPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorOpenaiModelAuthTokenArgs) ToConnectorOpenaiModelAuthTokenPtrOutputWithContext(ctx context.Context) ConnectorOpenaiModelAuthTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorOpenaiModelAuthTokenOutput).ToConnectorOpenaiModelAuthTokenPtrOutputWithContext(ctx)
+}
+
+// ConnectorOpenaiModelAuthTokenPtrInput is an input type that accepts ConnectorOpenaiModelAuthTokenArgs, ConnectorOpenaiModelAuthTokenPtr and ConnectorOpenaiModelAuthTokenPtrOutput values.
+// You can construct a concrete instance of `ConnectorOpenaiModelAuthTokenPtrInput` via:
+//
+//	        ConnectorOpenaiModelAuthTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorOpenaiModelAuthTokenPtrInput interface {
+	pulumi.Input
+
+	ToConnectorOpenaiModelAuthTokenPtrOutput() ConnectorOpenaiModelAuthTokenPtrOutput
+	ToConnectorOpenaiModelAuthTokenPtrOutputWithContext(context.Context) ConnectorOpenaiModelAuthTokenPtrOutput
+}
+
+type connectorOpenaiModelAuthTokenPtrType ConnectorOpenaiModelAuthTokenArgs
+
+func ConnectorOpenaiModelAuthTokenPtr(v *ConnectorOpenaiModelAuthTokenArgs) ConnectorOpenaiModelAuthTokenPtrInput {
+	return (*connectorOpenaiModelAuthTokenPtrType)(v)
+}
+
+func (*connectorOpenaiModelAuthTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorOpenaiModelAuthToken)(nil)).Elem()
+}
+
+func (i *connectorOpenaiModelAuthTokenPtrType) ToConnectorOpenaiModelAuthTokenPtrOutput() ConnectorOpenaiModelAuthTokenPtrOutput {
+	return i.ToConnectorOpenaiModelAuthTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorOpenaiModelAuthTokenPtrType) ToConnectorOpenaiModelAuthTokenPtrOutputWithContext(ctx context.Context) ConnectorOpenaiModelAuthTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorOpenaiModelAuthTokenPtrOutput)
+}
+
+type ConnectorOpenaiModelAuthTokenOutput struct{ *pulumi.OutputState }
+
+func (ConnectorOpenaiModelAuthTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorOpenaiModelAuthToken)(nil)).Elem()
+}
+
+func (o ConnectorOpenaiModelAuthTokenOutput) ToConnectorOpenaiModelAuthTokenOutput() ConnectorOpenaiModelAuthTokenOutput {
+	return o
+}
+
+func (o ConnectorOpenaiModelAuthTokenOutput) ToConnectorOpenaiModelAuthTokenOutputWithContext(ctx context.Context) ConnectorOpenaiModelAuthTokenOutput {
+	return o
+}
+
+func (o ConnectorOpenaiModelAuthTokenOutput) ToConnectorOpenaiModelAuthTokenPtrOutput() ConnectorOpenaiModelAuthTokenPtrOutput {
+	return o.ToConnectorOpenaiModelAuthTokenPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorOpenaiModelAuthTokenOutput) ToConnectorOpenaiModelAuthTokenPtrOutputWithContext(ctx context.Context) ConnectorOpenaiModelAuthTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorOpenaiModelAuthToken) *ConnectorOpenaiModelAuthToken {
+		return &v
+	}).(ConnectorOpenaiModelAuthTokenPtrOutput)
+}
+
+// Reference to a secret containing the OpenAI API token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+func (o ConnectorOpenaiModelAuthTokenOutput) TokenRef() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorOpenaiModelAuthToken) string { return v.TokenRef }).(pulumi.StringOutput)
+}
+
+type ConnectorOpenaiModelAuthTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorOpenaiModelAuthTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorOpenaiModelAuthToken)(nil)).Elem()
+}
+
+func (o ConnectorOpenaiModelAuthTokenPtrOutput) ToConnectorOpenaiModelAuthTokenPtrOutput() ConnectorOpenaiModelAuthTokenPtrOutput {
+	return o
+}
+
+func (o ConnectorOpenaiModelAuthTokenPtrOutput) ToConnectorOpenaiModelAuthTokenPtrOutputWithContext(ctx context.Context) ConnectorOpenaiModelAuthTokenPtrOutput {
+	return o
+}
+
+func (o ConnectorOpenaiModelAuthTokenPtrOutput) Elem() ConnectorOpenaiModelAuthTokenOutput {
+	return o.ApplyT(func(v *ConnectorOpenaiModelAuthToken) ConnectorOpenaiModelAuthToken {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorOpenaiModelAuthToken
+		return ret
+	}).(ConnectorOpenaiModelAuthTokenOutput)
+}
+
+// Reference to a secret containing the OpenAI API token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+func (o ConnectorOpenaiModelAuthTokenPtrOutput) TokenRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorOpenaiModelAuthToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TokenRef
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectorOpenaiModelAuthVertex struct {
+	// GCP project ID.
+	ProjectId string `pulumi:"projectId"`
+	// GCP region for the Vertex AI endpoint.
+	Region string `pulumi:"region"`
+	// Reference to a secret containing the GCP service account key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+	ServiceAccountKeyRef string `pulumi:"serviceAccountKeyRef"`
+}
+
+// ConnectorOpenaiModelAuthVertexInput is an input type that accepts ConnectorOpenaiModelAuthVertexArgs and ConnectorOpenaiModelAuthVertexOutput values.
+// You can construct a concrete instance of `ConnectorOpenaiModelAuthVertexInput` via:
+//
+//	ConnectorOpenaiModelAuthVertexArgs{...}
+type ConnectorOpenaiModelAuthVertexInput interface {
+	pulumi.Input
+
+	ToConnectorOpenaiModelAuthVertexOutput() ConnectorOpenaiModelAuthVertexOutput
+	ToConnectorOpenaiModelAuthVertexOutputWithContext(context.Context) ConnectorOpenaiModelAuthVertexOutput
+}
+
+type ConnectorOpenaiModelAuthVertexArgs struct {
+	// GCP project ID.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// GCP region for the Vertex AI endpoint.
+	Region pulumi.StringInput `pulumi:"region"`
+	// Reference to a secret containing the GCP service account key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+	ServiceAccountKeyRef pulumi.StringInput `pulumi:"serviceAccountKeyRef"`
+}
+
+func (ConnectorOpenaiModelAuthVertexArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorOpenaiModelAuthVertex)(nil)).Elem()
+}
+
+func (i ConnectorOpenaiModelAuthVertexArgs) ToConnectorOpenaiModelAuthVertexOutput() ConnectorOpenaiModelAuthVertexOutput {
+	return i.ToConnectorOpenaiModelAuthVertexOutputWithContext(context.Background())
+}
+
+func (i ConnectorOpenaiModelAuthVertexArgs) ToConnectorOpenaiModelAuthVertexOutputWithContext(ctx context.Context) ConnectorOpenaiModelAuthVertexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorOpenaiModelAuthVertexOutput)
+}
+
+func (i ConnectorOpenaiModelAuthVertexArgs) ToConnectorOpenaiModelAuthVertexPtrOutput() ConnectorOpenaiModelAuthVertexPtrOutput {
+	return i.ToConnectorOpenaiModelAuthVertexPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectorOpenaiModelAuthVertexArgs) ToConnectorOpenaiModelAuthVertexPtrOutputWithContext(ctx context.Context) ConnectorOpenaiModelAuthVertexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorOpenaiModelAuthVertexOutput).ToConnectorOpenaiModelAuthVertexPtrOutputWithContext(ctx)
+}
+
+// ConnectorOpenaiModelAuthVertexPtrInput is an input type that accepts ConnectorOpenaiModelAuthVertexArgs, ConnectorOpenaiModelAuthVertexPtr and ConnectorOpenaiModelAuthVertexPtrOutput values.
+// You can construct a concrete instance of `ConnectorOpenaiModelAuthVertexPtrInput` via:
+//
+//	        ConnectorOpenaiModelAuthVertexArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectorOpenaiModelAuthVertexPtrInput interface {
+	pulumi.Input
+
+	ToConnectorOpenaiModelAuthVertexPtrOutput() ConnectorOpenaiModelAuthVertexPtrOutput
+	ToConnectorOpenaiModelAuthVertexPtrOutputWithContext(context.Context) ConnectorOpenaiModelAuthVertexPtrOutput
+}
+
+type connectorOpenaiModelAuthVertexPtrType ConnectorOpenaiModelAuthVertexArgs
+
+func ConnectorOpenaiModelAuthVertexPtr(v *ConnectorOpenaiModelAuthVertexArgs) ConnectorOpenaiModelAuthVertexPtrInput {
+	return (*connectorOpenaiModelAuthVertexPtrType)(v)
+}
+
+func (*connectorOpenaiModelAuthVertexPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorOpenaiModelAuthVertex)(nil)).Elem()
+}
+
+func (i *connectorOpenaiModelAuthVertexPtrType) ToConnectorOpenaiModelAuthVertexPtrOutput() ConnectorOpenaiModelAuthVertexPtrOutput {
+	return i.ToConnectorOpenaiModelAuthVertexPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorOpenaiModelAuthVertexPtrType) ToConnectorOpenaiModelAuthVertexPtrOutputWithContext(ctx context.Context) ConnectorOpenaiModelAuthVertexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorOpenaiModelAuthVertexPtrOutput)
+}
+
+type ConnectorOpenaiModelAuthVertexOutput struct{ *pulumi.OutputState }
+
+func (ConnectorOpenaiModelAuthVertexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorOpenaiModelAuthVertex)(nil)).Elem()
+}
+
+func (o ConnectorOpenaiModelAuthVertexOutput) ToConnectorOpenaiModelAuthVertexOutput() ConnectorOpenaiModelAuthVertexOutput {
+	return o
+}
+
+func (o ConnectorOpenaiModelAuthVertexOutput) ToConnectorOpenaiModelAuthVertexOutputWithContext(ctx context.Context) ConnectorOpenaiModelAuthVertexOutput {
+	return o
+}
+
+func (o ConnectorOpenaiModelAuthVertexOutput) ToConnectorOpenaiModelAuthVertexPtrOutput() ConnectorOpenaiModelAuthVertexPtrOutput {
+	return o.ToConnectorOpenaiModelAuthVertexPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorOpenaiModelAuthVertexOutput) ToConnectorOpenaiModelAuthVertexPtrOutputWithContext(ctx context.Context) ConnectorOpenaiModelAuthVertexPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectorOpenaiModelAuthVertex) *ConnectorOpenaiModelAuthVertex {
+		return &v
+	}).(ConnectorOpenaiModelAuthVertexPtrOutput)
+}
+
+// GCP project ID.
+func (o ConnectorOpenaiModelAuthVertexOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorOpenaiModelAuthVertex) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// GCP region for the Vertex AI endpoint.
+func (o ConnectorOpenaiModelAuthVertexOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorOpenaiModelAuthVertex) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Reference to a secret containing the GCP service account key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+func (o ConnectorOpenaiModelAuthVertexOutput) ServiceAccountKeyRef() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorOpenaiModelAuthVertex) string { return v.ServiceAccountKeyRef }).(pulumi.StringOutput)
+}
+
+type ConnectorOpenaiModelAuthVertexPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorOpenaiModelAuthVertexPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorOpenaiModelAuthVertex)(nil)).Elem()
+}
+
+func (o ConnectorOpenaiModelAuthVertexPtrOutput) ToConnectorOpenaiModelAuthVertexPtrOutput() ConnectorOpenaiModelAuthVertexPtrOutput {
+	return o
+}
+
+func (o ConnectorOpenaiModelAuthVertexPtrOutput) ToConnectorOpenaiModelAuthVertexPtrOutputWithContext(ctx context.Context) ConnectorOpenaiModelAuthVertexPtrOutput {
+	return o
+}
+
+func (o ConnectorOpenaiModelAuthVertexPtrOutput) Elem() ConnectorOpenaiModelAuthVertexOutput {
+	return o.ApplyT(func(v *ConnectorOpenaiModelAuthVertex) ConnectorOpenaiModelAuthVertex {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorOpenaiModelAuthVertex
+		return ret
+	}).(ConnectorOpenaiModelAuthVertexOutput)
+}
+
+// GCP project ID.
+func (o ConnectorOpenaiModelAuthVertexPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorOpenaiModelAuthVertex) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// GCP region for the Vertex AI endpoint.
+func (o ConnectorOpenaiModelAuthVertexPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorOpenaiModelAuthVertex) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to a secret containing the GCP service account key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account' to the expression: account.{identifier}.
+func (o ConnectorOpenaiModelAuthVertexPtrOutput) ServiceAccountKeyRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorOpenaiModelAuthVertex) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccountKeyRef
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -82589,1467 +83913,6 @@ func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGene
 	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceHelmParameterOutput)
 }
 
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize struct {
-	// List of additional annotations to add to rendered manifests.
-	CommonAnnotations map[string]string `pulumi:"commonAnnotations"`
-	// List of additional labels to add to rendered manifests.
-	CommonLabels map[string]string `pulumi:"commonLabels"`
-	// Indicates if to force applying common annotations to resources for kustomize apps.
-	ForceCommonAnnotations *bool `pulumi:"forceCommonAnnotations"`
-	// Indicates if to force apply common labels to resources for kustomize apps.
-	ForceCommonLabels *bool `pulumi:"forceCommonLabels"`
-	// List of Kustomize image override specifications.
-	Images []string `pulumi:"images"`
-	// Prefix appended to resources for Kustomize apps.
-	NamePrefix *string `pulumi:"namePrefix"`
-	// Suffix appended to resources for Kustomize apps.
-	NameSuffix *string `pulumi:"nameSuffix"`
-	// Override the namespace of the Kustomize application.
-	Namespace *string `pulumi:"namespace"`
-	// Version of Kustomize to use for rendering manifests.
-	Version *string `pulumi:"version"`
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeArgs and GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeArgs{...}
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeArgs struct {
-	// List of additional annotations to add to rendered manifests.
-	CommonAnnotations pulumi.StringMapInput `pulumi:"commonAnnotations"`
-	// List of additional labels to add to rendered manifests.
-	CommonLabels pulumi.StringMapInput `pulumi:"commonLabels"`
-	// Indicates if to force applying common annotations to resources for kustomize apps.
-	ForceCommonAnnotations pulumi.BoolPtrInput `pulumi:"forceCommonAnnotations"`
-	// Indicates if to force apply common labels to resources for kustomize apps.
-	ForceCommonLabels pulumi.BoolPtrInput `pulumi:"forceCommonLabels"`
-	// List of Kustomize image override specifications.
-	Images pulumi.StringArrayInput `pulumi:"images"`
-	// Prefix appended to resources for Kustomize apps.
-	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
-	// Suffix appended to resources for Kustomize apps.
-	NameSuffix pulumi.StringPtrInput `pulumi:"nameSuffix"`
-	// Override the namespace of the Kustomize application.
-	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
-	// Version of Kustomize to use for rendering manifests.
-	Version pulumi.StringPtrInput `pulumi:"version"`
-}
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput)
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput).ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutputWithContext(ctx)
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeArgs, GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtr and GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrInput` via:
-//
-//	        GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeArgs{...}
-//
-//	or:
-//
-//	        nil
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput
-}
-
-type gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrType GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeArgs
-
-func GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtr(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeArgs) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrInput {
-	return (*gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrType)(v)
-}
-
-func (*gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize)(nil)).Elem()
-}
-
-func (i *gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutputWithContext(context.Background())
-}
-
-func (i *gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput {
-	return o.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutputWithContext(context.Background())
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize) *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize {
-		return &v
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput)
-}
-
-// List of additional annotations to add to rendered manifests.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput) CommonAnnotations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize) map[string]string {
-		return v.CommonAnnotations
-	}).(pulumi.StringMapOutput)
-}
-
-// List of additional labels to add to rendered manifests.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput) CommonLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize) map[string]string {
-		return v.CommonLabels
-	}).(pulumi.StringMapOutput)
-}
-
-// Indicates if to force applying common annotations to resources for kustomize apps.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput) ForceCommonAnnotations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize) *bool {
-		return v.ForceCommonAnnotations
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates if to force apply common labels to resources for kustomize apps.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput) ForceCommonLabels() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize) *bool {
-		return v.ForceCommonLabels
-	}).(pulumi.BoolPtrOutput)
-}
-
-// List of Kustomize image override specifications.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput) Images() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize) []string {
-		return v.Images
-	}).(pulumi.StringArrayOutput)
-}
-
-// Prefix appended to resources for Kustomize apps.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput) NamePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize) *string {
-		return v.NamePrefix
-	}).(pulumi.StringPtrOutput)
-}
-
-// Suffix appended to resources for Kustomize apps.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput) NameSuffix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize) *string {
-		return v.NameSuffix
-	}).(pulumi.StringPtrOutput)
-}
-
-// Override the namespace of the Kustomize application.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize) *string {
-		return v.Namespace
-	}).(pulumi.StringPtrOutput)
-}
-
-// Version of Kustomize to use for rendering manifests.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize) *string {
-		return v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput) Elem() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize {
-		if v != nil {
-			return *v
-		}
-		var ret GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize
-		return ret
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput)
-}
-
-// List of additional annotations to add to rendered manifests.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput) CommonAnnotations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.CommonAnnotations
-	}).(pulumi.StringMapOutput)
-}
-
-// List of additional labels to add to rendered manifests.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput) CommonLabels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.CommonLabels
-	}).(pulumi.StringMapOutput)
-}
-
-// Indicates if to force applying common annotations to resources for kustomize apps.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput) ForceCommonAnnotations() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ForceCommonAnnotations
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates if to force apply common labels to resources for kustomize apps.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput) ForceCommonLabels() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ForceCommonLabels
-	}).(pulumi.BoolPtrOutput)
-}
-
-// List of Kustomize image override specifications.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput) Images() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Images
-	}).(pulumi.StringArrayOutput)
-}
-
-// Prefix appended to resources for Kustomize apps.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput) NamePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NamePrefix
-	}).(pulumi.StringPtrOutput)
-}
-
-// Suffix appended to resources for Kustomize apps.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput) NameSuffix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NameSuffix
-	}).(pulumi.StringPtrOutput)
-}
-
-// Override the namespace of the Kustomize application.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Namespace
-	}).(pulumi.StringPtrOutput)
-}
-
-// Version of Kustomize to use for rendering manifests.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomize) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePlugin struct {
-	// Environment variables passed to the plugin.
-	Envs []GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnv `pulumi:"envs"`
-	// Name of the plugin. Only set the plugin name if the plugin is defined in `argocd-cm`. If the plugin is defined as a sidecar, omit the name. The plugin will be automatically matched with the Application according to the plugin's discovery rules.
-	Name *string `pulumi:"name"`
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginArgs and GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginArgs{...}
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginArgs struct {
-	// Environment variables passed to the plugin.
-	Envs GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayInput `pulumi:"envs"`
-	// Name of the plugin. Only set the plugin name if the plugin is defined in `argocd-cm`. If the plugin is defined as a sidecar, omit the name. The plugin will be automatically matched with the Application according to the plugin's discovery rules.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-}
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePlugin)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput)
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput).ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutputWithContext(ctx)
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginArgs, GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtr and GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrInput` via:
-//
-//	        GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginArgs{...}
-//
-//	or:
-//
-//	        nil
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput
-}
-
-type gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrType GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginArgs
-
-func GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtr(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginArgs) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrInput {
-	return (*gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrType)(v)
-}
-
-func (*gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePlugin)(nil)).Elem()
-}
-
-func (i *gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutputWithContext(context.Background())
-}
-
-func (i *gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePlugin)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput {
-	return o.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutputWithContext(context.Background())
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePlugin) *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePlugin {
-		return &v
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput)
-}
-
-// Environment variables passed to the plugin.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput) Envs() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePlugin) []GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnv {
-		return v.Envs
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutput)
-}
-
-// Name of the plugin. Only set the plugin name if the plugin is defined in `argocd-cm`. If the plugin is defined as a sidecar, omit the name. The plugin will be automatically matched with the Application according to the plugin's discovery rules.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePlugin) *string {
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePlugin)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePlugin) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePlugin {
-		if v != nil {
-			return *v
-		}
-		var ret GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePlugin
-		return ret
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput)
-}
-
-// Environment variables passed to the plugin.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput) Envs() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePlugin) []GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnv {
-		if v == nil {
-			return nil
-		}
-		return v.Envs
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutput)
-}
-
-// Name of the plugin. Only set the plugin name if the plugin is defined in `argocd-cm`. If the plugin is defined as a sidecar, omit the name. The plugin will be automatically matched with the Application according to the plugin's discovery rules.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePlugin) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnv struct {
-	// Name of the environment variable.
-	Name *string `pulumi:"name"`
-	// Value of the environment variable.
-	Value *string `pulumi:"value"`
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArgs and GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArgs{...}
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArgs struct {
-	// Name of the environment variable.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Value of the environment variable.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnv)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutput)
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArray and GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArray{ GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArgs{...} }
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArray []GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvInput
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnv)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArray) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArray) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnv)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutput {
-	return o
-}
-
-// Name of the environment variable.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnv) *string {
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Value of the environment variable.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnv) *string {
-		return v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnv)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutput) Index(i pulumi.IntInput) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnv {
-		return vs[0].([]GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnv)[vs[1].(int)]
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicy struct {
-	// Whether to automatically keep an application synced to the target revision.
-	Automated *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomated `pulumi:"automated"`
-	// Controls metadata in the given namespace (if `CreateNamespace=true`).
-	ManagedNamespaceMetadata *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadata `pulumi:"managedNamespaceMetadata"`
-	// Controls failed sync retry behavior.
-	Retry *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetry `pulumi:"retry"`
-	// List of sync options. More info: https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/.
-	SyncOptions []string `pulumi:"syncOptions"`
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyArgs and GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyArgs{...}
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyArgs struct {
-	// Whether to automatically keep an application synced to the target revision.
-	Automated GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrInput `pulumi:"automated"`
-	// Controls metadata in the given namespace (if `CreateNamespace=true`).
-	ManagedNamespaceMetadata GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrInput `pulumi:"managedNamespaceMetadata"`
-	// Controls failed sync retry behavior.
-	Retry GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrInput `pulumi:"retry"`
-	// List of sync options. More info: https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/.
-	SyncOptions pulumi.StringArrayInput `pulumi:"syncOptions"`
-}
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicy)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput)
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput).ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutputWithContext(ctx)
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyArgs, GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtr and GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrInput` via:
-//
-//	        GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyArgs{...}
-//
-//	or:
-//
-//	        nil
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput
-}
-
-type gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrType GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyArgs
-
-func GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtr(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyArgs) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrInput {
-	return (*gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrType)(v)
-}
-
-func (*gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicy)(nil)).Elem()
-}
-
-func (i *gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicy)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput {
-	return o.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicy {
-		return &v
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput)
-}
-
-// Whether to automatically keep an application synced to the target revision.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput) Automated() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomated {
-		return v.Automated
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput)
-}
-
-// Controls metadata in the given namespace (if `CreateNamespace=true`).
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput) ManagedNamespaceMetadata() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadata {
-		return v.ManagedNamespaceMetadata
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput)
-}
-
-// Controls failed sync retry behavior.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput) Retry() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetry {
-		return v.Retry
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput)
-}
-
-// List of sync options. More info: https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput) SyncOptions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicy) []string {
-		return v.SyncOptions
-	}).(pulumi.StringArrayOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicy)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicy) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicy
-		return ret
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput)
-}
-
-// Whether to automatically keep an application synced to the target revision.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput) Automated() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomated {
-		if v == nil {
-			return nil
-		}
-		return v.Automated
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput)
-}
-
-// Controls metadata in the given namespace (if `CreateNamespace=true`).
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput) ManagedNamespaceMetadata() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadata {
-		if v == nil {
-			return nil
-		}
-		return v.ManagedNamespaceMetadata
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput)
-}
-
-// Controls failed sync retry behavior.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput) Retry() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicy) *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetry {
-		if v == nil {
-			return nil
-		}
-		return v.Retry
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput)
-}
-
-// List of sync options. More info: https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput) SyncOptions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicy) []string {
-		if v == nil {
-			return nil
-		}
-		return v.SyncOptions
-	}).(pulumi.StringArrayOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomated struct {
-	// Allows apps have zero live resources.
-	AllowEmpty *bool `pulumi:"allowEmpty"`
-	// Whether to delete resources from the cluster that are not found in the sources anymore as part of automated sync.
-	Prune *bool `pulumi:"prune"`
-	// Whether to revert resources back to their desired state upon modification in the cluster.
-	SelfHeal *bool `pulumi:"selfHeal"`
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedArgs and GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedArgs{...}
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedArgs struct {
-	// Allows apps have zero live resources.
-	AllowEmpty pulumi.BoolPtrInput `pulumi:"allowEmpty"`
-	// Whether to delete resources from the cluster that are not found in the sources anymore as part of automated sync.
-	Prune pulumi.BoolPtrInput `pulumi:"prune"`
-	// Whether to revert resources back to their desired state upon modification in the cluster.
-	SelfHeal pulumi.BoolPtrInput `pulumi:"selfHeal"`
-}
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomated)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput)
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput).ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutputWithContext(ctx)
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedArgs, GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtr and GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrInput` via:
-//
-//	        GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedArgs{...}
-//
-//	or:
-//
-//	        nil
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput
-}
-
-type gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrType GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedArgs
-
-func GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtr(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedArgs) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrInput {
-	return (*gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrType)(v)
-}
-
-func (*gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomated)(nil)).Elem()
-}
-
-func (i *gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutputWithContext(context.Background())
-}
-
-func (i *gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomated)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput {
-	return o.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutputWithContext(context.Background())
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomated) *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomated {
-		return &v
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput)
-}
-
-// Allows apps have zero live resources.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput) AllowEmpty() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomated) *bool {
-		return v.AllowEmpty
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether to delete resources from the cluster that are not found in the sources anymore as part of automated sync.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput) Prune() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomated) *bool {
-		return v.Prune
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether to revert resources back to their desired state upon modification in the cluster.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput) SelfHeal() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomated) *bool {
-		return v.SelfHeal
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomated)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomated) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomated {
-		if v != nil {
-			return *v
-		}
-		var ret GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomated
-		return ret
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput)
-}
-
-// Allows apps have zero live resources.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput) AllowEmpty() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomated) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AllowEmpty
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether to delete resources from the cluster that are not found in the sources anymore as part of automated sync.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput) Prune() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomated) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Prune
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether to revert resources back to their desired state upon modification in the cluster.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput) SelfHeal() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomated) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.SelfHeal
-	}).(pulumi.BoolPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadata struct {
-	// Annotations to apply to the namespace.
-	Annotations map[string]string `pulumi:"annotations"`
-	// Labels to apply to the namespace.
-	Labels map[string]string `pulumi:"labels"`
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataArgs and GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataArgs{...}
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataArgs struct {
-	// Annotations to apply to the namespace.
-	Annotations pulumi.StringMapInput `pulumi:"annotations"`
-	// Labels to apply to the namespace.
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-}
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadata)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput)
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput).ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutputWithContext(ctx)
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataArgs, GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtr and GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrInput` via:
-//
-//	        GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataArgs{...}
-//
-//	or:
-//
-//	        nil
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput
-}
-
-type gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrType GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataArgs
-
-func GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtr(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataArgs) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrInput {
-	return (*gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrType)(v)
-}
-
-func (*gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadata)(nil)).Elem()
-}
-
-func (i *gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutputWithContext(context.Background())
-}
-
-func (i *gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadata)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput {
-	return o.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutputWithContext(context.Background())
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadata) *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadata {
-		return &v
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput)
-}
-
-// Annotations to apply to the namespace.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadata) map[string]string {
-		return v.Annotations
-	}).(pulumi.StringMapOutput)
-}
-
-// Labels to apply to the namespace.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadata) map[string]string {
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadata)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadata) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadata {
-		if v != nil {
-			return *v
-		}
-		var ret GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadata
-		return ret
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput)
-}
-
-// Annotations to apply to the namespace.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadata) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Annotations
-	}).(pulumi.StringMapOutput)
-}
-
-// Labels to apply to the namespace.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadata) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetry struct {
-	// Controls how to backoff on subsequent retries of failed syncs.
-	Backoff *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoff `pulumi:"backoff"`
-	// Maximum number of attempts for retrying a failed sync. If set to 0, no retries will be performed.
-	Limit *string `pulumi:"limit"`
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryArgs and GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryArgs{...}
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryArgs struct {
-	// Controls how to backoff on subsequent retries of failed syncs.
-	Backoff GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrInput `pulumi:"backoff"`
-	// Maximum number of attempts for retrying a failed sync. If set to 0, no retries will be performed.
-	Limit pulumi.StringPtrInput `pulumi:"limit"`
-}
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetry)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput)
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput).ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutputWithContext(ctx)
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryArgs, GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtr and GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrInput` via:
-//
-//	        GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryArgs{...}
-//
-//	or:
-//
-//	        nil
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput
-}
-
-type gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrType GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryArgs
-
-func GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtr(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryArgs) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrInput {
-	return (*gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrType)(v)
-}
-
-func (*gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetry)(nil)).Elem()
-}
-
-func (i *gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutputWithContext(context.Background())
-}
-
-func (i *gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetry)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput {
-	return o.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutputWithContext(context.Background())
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetry) *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetry {
-		return &v
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput)
-}
-
-// Controls how to backoff on subsequent retries of failed syncs.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput) Backoff() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetry) *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoff {
-		return v.Backoff
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput)
-}
-
-// Maximum number of attempts for retrying a failed sync. If set to 0, no retries will be performed.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput) Limit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetry) *string {
-		return v.Limit
-	}).(pulumi.StringPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetry)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetry) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetry {
-		if v != nil {
-			return *v
-		}
-		var ret GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetry
-		return ret
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput)
-}
-
-// Controls how to backoff on subsequent retries of failed syncs.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput) Backoff() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetry) *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoff {
-		if v == nil {
-			return nil
-		}
-		return v.Backoff
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput)
-}
-
-// Maximum number of attempts for retrying a failed sync. If set to 0, no retries will be performed.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput) Limit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetry) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Limit
-	}).(pulumi.StringPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoff struct {
-	// Duration is the amount to back off. Default unit is seconds, but could also be a duration (e.g. `2m`, `1h`), as a string.
-	Duration *string `pulumi:"duration"`
-	// Factor to multiply the base duration after each failed retry.
-	Factor *string `pulumi:"factor"`
-	// Maximum amount of time allowed for the backoff strategy. Default unit is seconds, but could also be a duration (e.g. `2m`, `1h`), as a string.
-	MaxDuration *string `pulumi:"maxDuration"`
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffArgs and GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffInput` via:
-//
-//	GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffArgs{...}
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffArgs struct {
-	// Duration is the amount to back off. Default unit is seconds, but could also be a duration (e.g. `2m`, `1h`), as a string.
-	Duration pulumi.StringPtrInput `pulumi:"duration"`
-	// Factor to multiply the base duration after each failed retry.
-	Factor pulumi.StringPtrInput `pulumi:"factor"`
-	// Maximum amount of time allowed for the backoff strategy. Default unit is seconds, but could also be a duration (e.g. `2m`, `1h`), as a string.
-	MaxDuration pulumi.StringPtrInput `pulumi:"maxDuration"`
-}
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoff)(nil)).Elem()
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput)
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutputWithContext(context.Background())
-}
-
-func (i GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffArgs) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput).ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutputWithContext(ctx)
-}
-
-// GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrInput is an input type that accepts GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffArgs, GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtr and GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput values.
-// You can construct a concrete instance of `GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrInput` via:
-//
-//	        GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffArgs{...}
-//
-//	or:
-//
-//	        nil
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrInput interface {
-	pulumi.Input
-
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput
-	ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutputWithContext(context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput
-}
-
-type gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrType GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffArgs
-
-func GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtr(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffArgs) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrInput {
-	return (*gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrType)(v)
-}
-
-func (*gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoff)(nil)).Elem()
-}
-
-func (i *gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput {
-	return i.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutputWithContext(context.Background())
-}
-
-func (i *gitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrType) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoff)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput {
-	return o.ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutputWithContext(context.Background())
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoff) *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoff {
-		return &v
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput)
-}
-
-// Duration is the amount to back off. Default unit is seconds, but could also be a duration (e.g. `2m`, `1h`), as a string.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput) Duration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoff) *string {
-		return v.Duration
-	}).(pulumi.StringPtrOutput)
-}
-
-// Factor to multiply the base duration after each failed retry.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput) Factor() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoff) *string {
-		return v.Factor
-	}).(pulumi.StringPtrOutput)
-}
-
-// Maximum amount of time allowed for the backoff strategy. Default unit is seconds, but could also be a duration (e.g. `2m`, `1h`), as a string.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput) MaxDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoff) *string {
-		return v.MaxDuration
-	}).(pulumi.StringPtrOutput)
-}
-
-type GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput struct{ *pulumi.OutputState }
-
-func (GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoff)(nil)).Elem()
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput) ToGitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutputWithContext(ctx context.Context) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput {
-	return o
-}
-
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput) Elem() GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoff) GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoff {
-		if v != nil {
-			return *v
-		}
-		var ret GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoff
-		return ret
-	}).(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput)
-}
-
-// Duration is the amount to back off. Default unit is seconds, but could also be a duration (e.g. `2m`, `1h`), as a string.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput) Duration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoff) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Duration
-	}).(pulumi.StringPtrOutput)
-}
-
-// Factor to multiply the base duration after each failed retry.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput) Factor() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoff) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Factor
-	}).(pulumi.StringPtrOutput)
-}
-
-// Maximum amount of time allowed for the backoff strategy. Default unit is seconds, but could also be a duration (e.g. `2m`, `1h`), as a string.
-func (o GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput) MaxDuration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoff) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MaxDuration
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDynamicsConnectorApiTokenInput)(nil)).Elem(), AppDynamicsConnectorApiTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDynamicsConnectorApiTokenPtrInput)(nil)).Elem(), AppDynamicsConnectorApiTokenArgs{})
@@ -84135,6 +83998,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CentralNotificationRuleNotificationConditionArrayInput)(nil)).Elem(), CentralNotificationRuleNotificationConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CentralNotificationRuleNotificationConditionNotificationEventConfigInput)(nil)).Elem(), CentralNotificationRuleNotificationConditionNotificationEventConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CentralNotificationRuleNotificationConditionNotificationEventConfigArrayInput)(nil)).Elem(), CentralNotificationRuleNotificationConditionNotificationEventConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAnthropicModelAuthInput)(nil)).Elem(), ConnectorAnthropicModelAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAnthropicModelAuthPtrInput)(nil)).Elem(), ConnectorAnthropicModelAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAnthropicModelAuthBedrockApiKeyInput)(nil)).Elem(), ConnectorAnthropicModelAuthBedrockApiKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAnthropicModelAuthBedrockApiKeyPtrInput)(nil)).Elem(), ConnectorAnthropicModelAuthBedrockApiKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAnthropicModelAuthCloudProviderInput)(nil)).Elem(), ConnectorAnthropicModelAuthCloudProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAnthropicModelAuthCloudProviderPtrInput)(nil)).Elem(), ConnectorAnthropicModelAuthCloudProviderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAnthropicModelAuthTokenInput)(nil)).Elem(), ConnectorAnthropicModelAuthTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAnthropicModelAuthTokenPtrInput)(nil)).Elem(), ConnectorAnthropicModelAuthTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAnthropicModelAuthVertexInput)(nil)).Elem(), ConnectorAnthropicModelAuthVertexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAnthropicModelAuthVertexPtrInput)(nil)).Elem(), ConnectorAnthropicModelAuthVertexArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAzureArtifactsCredentialsInput)(nil)).Elem(), ConnectorAzureArtifactsCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAzureArtifactsCredentialsPtrInput)(nil)).Elem(), ConnectorAzureArtifactsCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorAzureRepoApiAuthenticationInput)(nil)).Elem(), ConnectorAzureRepoApiAuthenticationArgs{})
@@ -84171,6 +84044,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorJdbcCredentialsServiceAccountPtrInput)(nil)).Elem(), ConnectorJdbcCredentialsServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorJdbcCredentialsUsernamePasswordInput)(nil)).Elem(), ConnectorJdbcCredentialsUsernamePasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorJdbcCredentialsUsernamePasswordPtrInput)(nil)).Elem(), ConnectorJdbcCredentialsUsernamePasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorOpenaiModelAuthInput)(nil)).Elem(), ConnectorOpenaiModelAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorOpenaiModelAuthPtrInput)(nil)).Elem(), ConnectorOpenaiModelAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorOpenaiModelAuthTokenInput)(nil)).Elem(), ConnectorOpenaiModelAuthTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorOpenaiModelAuthTokenPtrInput)(nil)).Elem(), ConnectorOpenaiModelAuthTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorOpenaiModelAuthVertexInput)(nil)).Elem(), ConnectorOpenaiModelAuthVertexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorOpenaiModelAuthVertexPtrInput)(nil)).Elem(), ConnectorOpenaiModelAuthVertexArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorPdcHostInput)(nil)).Elem(), ConnectorPdcHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorPdcHostArrayInput)(nil)).Elem(), ConnectorPdcHostArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorRancherBearerTokenInput)(nil)).Elem(), ConnectorRancherBearerTokenArgs{})
@@ -85034,22 +84913,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceHelmFileParameterArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceHelmFileParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceHelmParameterInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceHelmParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceHelmParameterArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceHelmParameterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrInput)(nil)).Elem(), GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffArgs{})
 	pulumi.RegisterOutputType(AppDynamicsConnectorApiTokenOutput{})
 	pulumi.RegisterOutputType(AppDynamicsConnectorApiTokenPtrOutput{})
 	pulumi.RegisterOutputType(AppDynamicsConnectorUsernamePasswordOutput{})
@@ -85134,6 +84997,16 @@ func init() {
 	pulumi.RegisterOutputType(CentralNotificationRuleNotificationConditionArrayOutput{})
 	pulumi.RegisterOutputType(CentralNotificationRuleNotificationConditionNotificationEventConfigOutput{})
 	pulumi.RegisterOutputType(CentralNotificationRuleNotificationConditionNotificationEventConfigArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorAnthropicModelAuthOutput{})
+	pulumi.RegisterOutputType(ConnectorAnthropicModelAuthPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorAnthropicModelAuthBedrockApiKeyOutput{})
+	pulumi.RegisterOutputType(ConnectorAnthropicModelAuthBedrockApiKeyPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorAnthropicModelAuthCloudProviderOutput{})
+	pulumi.RegisterOutputType(ConnectorAnthropicModelAuthCloudProviderPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorAnthropicModelAuthTokenOutput{})
+	pulumi.RegisterOutputType(ConnectorAnthropicModelAuthTokenPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorAnthropicModelAuthVertexOutput{})
+	pulumi.RegisterOutputType(ConnectorAnthropicModelAuthVertexPtrOutput{})
 	pulumi.RegisterOutputType(ConnectorAzureArtifactsCredentialsOutput{})
 	pulumi.RegisterOutputType(ConnectorAzureArtifactsCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectorAzureRepoApiAuthenticationOutput{})
@@ -85170,6 +85043,12 @@ func init() {
 	pulumi.RegisterOutputType(ConnectorJdbcCredentialsServiceAccountPtrOutput{})
 	pulumi.RegisterOutputType(ConnectorJdbcCredentialsUsernamePasswordOutput{})
 	pulumi.RegisterOutputType(ConnectorJdbcCredentialsUsernamePasswordPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorOpenaiModelAuthOutput{})
+	pulumi.RegisterOutputType(ConnectorOpenaiModelAuthPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorOpenaiModelAuthTokenOutput{})
+	pulumi.RegisterOutputType(ConnectorOpenaiModelAuthTokenPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorOpenaiModelAuthVertexOutput{})
+	pulumi.RegisterOutputType(ConnectorOpenaiModelAuthVertexPtrOutput{})
 	pulumi.RegisterOutputType(ConnectorPdcHostOutput{})
 	pulumi.RegisterOutputType(ConnectorPdcHostArrayOutput{})
 	pulumi.RegisterOutputType(ConnectorRancherBearerTokenOutput{})
@@ -86033,20 +85912,4 @@ func init() {
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceHelmFileParameterArrayOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceHelmParameterOutput{})
 	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceHelmParameterArrayOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizeOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourceKustomizePtrOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginPtrOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSourcePluginEnvArrayOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyPtrOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyAutomatedPtrOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyManagedNamespaceMetadataPtrOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryPtrOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffOutput{})
-	pulumi.RegisterOutputType(GitopsApplicationsetApplicationsetSpecGeneratorMatrixGeneratorMatrixGeneratorPullRequestTemplateSpecSyncPolicyRetryBackoffPtrOutput{})
 }
