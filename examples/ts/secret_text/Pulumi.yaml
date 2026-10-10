@@ -1,3 +1,0 @@
-name: harness_secrettext_ts
-description: A minimal TypeScript Pulumi program
-runtime: nodejs
