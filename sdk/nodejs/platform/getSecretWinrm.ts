@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     projectId: "project_identifier",
  * });
  * export const winrmPort = example.then(example => example.port);
- * export const winrmAuthType = example.then(example => example.ntlms).length.apply(length => length > 0 ? "NTLM" : "Kerberos");
+ * export const winrmAuthType = example.then(example => example.ntlms.length).then(length => length > 0 ? "NTLM" : "Kerberos");
  * ```
  */
 export function getSecretWinrm(args: GetSecretWinrmArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretWinrmResult> {
@@ -136,7 +136,7 @@ export interface GetSecretWinrmResult {
  *     projectId: "project_identifier",
  * });
  * export const winrmPort = example.then(example => example.port);
- * export const winrmAuthType = example.then(example => example.ntlms).length.apply(length => length > 0 ? "NTLM" : "Kerberos");
+ * export const winrmAuthType = example.then(example => example.ntlms.length).then(length => length > 0 ? "NTLM" : "Kerberos");
  * ```
  */
 export function getSecretWinrmOutput(args: GetSecretWinrmOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretWinrmResult> {

@@ -390,14 +390,14 @@ def get_fault_template(hub_identity: Optional[_builtins.str] = None,
         lambda: by_identity.spec[0]["chaos"][0]["params"],
         lambda: []
     ))
-    has_kubernetes_spec = len(try_(
+    has_kubernetes_spec = try_(
         lambda: by_identity.spec[0]["chaos"][0]["kubernetes"],
         lambda: []
-    )).apply(lambda length: length > 0)
-    has_targets = len(try_(
+    ).apply(lambda try_: len(try_)).apply(lambda length: length > 0)
+    has_targets = try_(
         lambda: by_identity.spec[0]["target"],
         lambda: []
-    )).apply(lambda length: length > 0)
+    ).apply(lambda try_: len(try_)).apply(lambda length: length > 0)
     pulumi.export("templateFeatures", {
         "hasKubernetesSpec": has_kubernetes_spec,
         "hasTargets": has_targets,
@@ -501,14 +501,14 @@ def get_fault_template_output(hub_identity: pulumi.Input[Optional[_builtins.str]
         lambda: by_identity.spec[0]["chaos"][0]["params"],
         lambda: []
     ))
-    has_kubernetes_spec = len(try_(
+    has_kubernetes_spec = try_(
         lambda: by_identity.spec[0]["chaos"][0]["kubernetes"],
         lambda: []
-    )).apply(lambda length: length > 0)
-    has_targets = len(try_(
+    ).apply(lambda try_: len(try_)).apply(lambda length: length > 0)
+    has_targets = try_(
         lambda: by_identity.spec[0]["target"],
         lambda: []
-    )).apply(lambda length: length > 0)
+    ).apply(lambda try_: len(try_)).apply(lambda length: length > 0)
     pulumi.export("templateFeatures", {
         "hasKubernetesSpec": has_kubernetes_spec,
         "hasTargets": has_targets,

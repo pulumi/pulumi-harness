@@ -25,10 +25,10 @@ namespace Pulumi.Harness.Chaos
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // ============================================================================
-        ///     // Harness Chaos Experiment Data Source Examples
+        ///     // Harness Chaos Experiment Function Examples
         ///     // ============================================================================
         ///     //
-        ///     // The harness_chaos_experiment data source retrieves information about
+        ///     // The harness_chaos_experiment function retrieves information about
         ///     // existing chaos experiments.
         ///     //
         ///     // Lookup Methods:
@@ -105,10 +105,10 @@ namespace Pulumi.Harness.Chaos
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // ============================================================================
-        ///     // Harness Chaos Experiment Data Source Examples
+        ///     // Harness Chaos Experiment Function Examples
         ///     // ============================================================================
         ///     //
-        ///     // The harness_chaos_experiment data source retrieves information about
+        ///     // The harness_chaos_experiment function retrieves information about
         ///     // existing chaos experiments.
         ///     //
         ///     // Lookup Methods:
@@ -185,10 +185,10 @@ namespace Pulumi.Harness.Chaos
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // ============================================================================
-        ///     // Harness Chaos Experiment Data Source Examples
+        ///     // Harness Chaos Experiment Function Examples
         ///     // ============================================================================
         ///     //
-        ///     // The harness_chaos_experiment data source retrieves information about
+        ///     // The harness_chaos_experiment function retrieves information about
         ///     // existing chaos experiments.
         ///     //
         ///     // Lookup Methods:

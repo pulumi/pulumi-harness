@@ -245,7 +245,7 @@ namespace Pulumi.Harness.Platform
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
-    ///     // Example of a Virtual Terraform Registry
+    ///     // Example of a Virtual Pulumi Registry
     ///     var terraformVirtual = new Harness.Platform.HarRegistry("terraform_virtual", new()
     ///     {
     ///         Configs = new[]
@@ -439,7 +439,7 @@ namespace Pulumi.Harness.Platform
     ///         ParentRef = "accountId/orgId/projectId",
     ///     });
     /// 
-    ///     // Example of a Virtual Terraform Backend Registry
+    ///     // Example of a Virtual Pulumi Backend Registry
     ///     // TERRAFORM_BACKEND supports VIRTUAL registries only - upstream is not supported.
     ///     var terraformBackendVirtual = new Harness.Platform.HarRegistry("terraform_backend_virtual", new()
     ///     {

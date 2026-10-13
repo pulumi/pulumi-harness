@@ -52,7 +52,7 @@ namespace Pulumi.Harness.Platform
     ///     {
     ///         Name = "expiry-delegate-token",
     ///         AccountId = "account_id",
-    ///         RevokeAfter = 1769689600000,
+    ///         RevokeAfter = (int)1769689600000,
     ///     });
     /// 
     /// });

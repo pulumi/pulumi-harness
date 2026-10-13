@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *         // ----------------------------------------------------------------------------
  *         // Org-level hub accessible within the organization
  *         var orgLevel = new HubV2("orgLevel", HubV2Args.builder()
- *             .orgId(this_.id())
+ *             .orgId(this_.get("id"))
  *             .identity("org-chaos-hub")
  *             .name("Org Chaos Hub")
  *             .description("Org-level chaos hub for shared templates")
@@ -104,8 +104,8 @@ import javax.annotation.Nullable;
  *         // ----------------------------------------------------------------------------
  *         // Project-level hub for project-specific templates
  *         var projectLevel = new HubV2("projectLevel", HubV2Args.builder()
- *             .orgId(this_.id())
- *             .projectId(thisHarnessPlatformProject.id())
+ *             .orgId(this_.get("id"))
+ *             .projectId(thisHarnessPlatformProject.get("id"))
  *             .identity("project-chaos-hub")
  *             .name("Project Chaos Hub")
  *             .description("Project-level chaos hub for team templates")

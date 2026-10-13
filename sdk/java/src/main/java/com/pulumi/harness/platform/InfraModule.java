@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *             .repository("repo")
  *             .repositoryBranch("main")
  *             .repositoryPath("tf/aws/basic")
- *             .repositoryConnector(test.id())
+ *             .repositoryConnector(test.get("id"))
  *             .onboardingPipeline("my_onboarding_pipeline")
  *             .onboardingPipelineOrg("default")
  *             .onboardingPipelineProject("IaCM_Project")

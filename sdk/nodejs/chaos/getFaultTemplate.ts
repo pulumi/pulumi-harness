@@ -64,11 +64,11 @@ import * as utilities from "../utilities";
  * const hasKubernetesSpec = tryOutput_(
  *     () => byIdentity.then(byIdentity => byIdentity.spec[0].chaos[0].kubernetes),
  *     () => []
- * ).length.apply(length => length > 0);
+ * ).apply(_try => Object.keys(_try).length).apply(length => length > 0);
  * const hasTargets = tryOutput_(
  *     () => byIdentity.then(byIdentity => byIdentity.spec[0].target),
  *     () => []
- * ).length.apply(length => length > 0);
+ * ).apply(_try => Object.keys(_try).length).apply(length => length > 0);
  * export const templateFeatures = {
  *     hasKubernetesSpec: hasKubernetesSpec,
  *     hasTargets: hasTargets,
@@ -281,11 +281,11 @@ export interface GetFaultTemplateResult {
  * const hasKubernetesSpec = tryOutput_(
  *     () => byIdentity.then(byIdentity => byIdentity.spec[0].chaos[0].kubernetes),
  *     () => []
- * ).length.apply(length => length > 0);
+ * ).apply(_try => Object.keys(_try).length).apply(length => length > 0);
  * const hasTargets = tryOutput_(
  *     () => byIdentity.then(byIdentity => byIdentity.spec[0].target),
  *     () => []
- * ).length.apply(length => length > 0);
+ * ).apply(_try => Object.keys(_try).length).apply(length => length > 0);
  * export const templateFeatures = {
  *     hasKubernetesSpec: hasKubernetesSpec,
  *     hasTargets: hasTargets,

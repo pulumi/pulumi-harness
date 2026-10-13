@@ -16,10 +16,10 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * // ============================================================================
- * // Harness Chaos Experiment Data Source Examples
+ * // Harness Chaos Experiment Function Examples
  * // ============================================================================
  * //
- * // The harness_chaos_experiment data source retrieves information about
+ * // The harness_chaos_experiment function retrieves information about
  * // existing chaos experiments.
  * //
  * // Lookup Methods:
@@ -230,10 +230,10 @@ export interface GetExperimentResult {
  * import * as harness from "@pulumi/harness";
  *
  * // ============================================================================
- * // Harness Chaos Experiment Data Source Examples
+ * // Harness Chaos Experiment Function Examples
  * // ============================================================================
  * //
- * // The harness_chaos_experiment data source retrieves information about
+ * // The harness_chaos_experiment function retrieves information about
  * // existing chaos experiments.
  * //
  * // Lookup Methods:

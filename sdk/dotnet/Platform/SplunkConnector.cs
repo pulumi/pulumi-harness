@@ -92,7 +92,7 @@ namespace Pulumi.Harness.Platform
     ///     // Example 4: No Authentication
     ///     var noAuth = new Harness.Platform.SplunkConnector("no_auth", new()
     ///     {
-    ///         NoAuthentication = null,
+    ///         NoAuthentication = new() { },
     ///         Identifier = "splunk_no_auth",
     ///         Name = "Splunk No Auth",
     ///         Description = "Splunk connector without authentication",

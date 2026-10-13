@@ -42,9 +42,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new IacmWorkspaceTemplate("example", IacmWorkspaceTemplateArgs.builder()
- *             .orgId(test.id())
- *             .projectId(testHarnessPlatformProject.id())
- *             .workspaceId(exampleHarnessPlatformWorkspace.identifier())
+ *             .orgId(test.get("id"))
+ *             .projectId(testHarnessPlatformProject.get("id"))
+ *             .workspaceId(exampleHarnessPlatformWorkspace.get("identifier"))
  *             .templateId("my_template")
  *             .version("v1.0.0")
  *             .build());

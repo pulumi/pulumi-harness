@@ -43,10 +43,10 @@ import * as utilities from "../utilities";
  * export const experimentId = byIdentity.then(byIdentity => byIdentity.id);
  * export const experimentIdentity = byIdentity.then(byIdentity => byIdentity.identity);
  * export const experimentSpec = byIdentity.then(byIdentity => byIdentity.specs);
- * export const faultsCount = byIdentity.then(byIdentity => byIdentity.specs?.[0]?.faults).length;
- * export const probesCount = byIdentity.then(byIdentity => byIdentity.specs?.[0]?.probes).length;
- * export const actionsCount = byIdentity.then(byIdentity => byIdentity.specs?.[0]?.actions).length;
- * export const verticesCount = byIdentity.then(byIdentity => byIdentity.specs?.[0]?.vertices).length;
+ * export const faultsCount = byIdentity.then(byIdentity => byIdentity.specs?.[0]?.faults.length);
+ * export const probesCount = byIdentity.then(byIdentity => byIdentity.specs?.[0]?.probes.length);
+ * export const actionsCount = byIdentity.then(byIdentity => byIdentity.specs?.[0]?.actions.length);
+ * export const verticesCount = byIdentity.then(byIdentity => byIdentity.specs?.[0]?.vertices.length);
  * ```
  */
 export function getExperimentTemplate(args: GetExperimentTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetExperimentTemplateResult> {
@@ -180,10 +180,10 @@ export interface GetExperimentTemplateResult {
  * export const experimentId = byIdentity.then(byIdentity => byIdentity.id);
  * export const experimentIdentity = byIdentity.then(byIdentity => byIdentity.identity);
  * export const experimentSpec = byIdentity.then(byIdentity => byIdentity.specs);
- * export const faultsCount = byIdentity.then(byIdentity => byIdentity.specs?.[0]?.faults).length;
- * export const probesCount = byIdentity.then(byIdentity => byIdentity.specs?.[0]?.probes).length;
- * export const actionsCount = byIdentity.then(byIdentity => byIdentity.specs?.[0]?.actions).length;
- * export const verticesCount = byIdentity.then(byIdentity => byIdentity.specs?.[0]?.vertices).length;
+ * export const faultsCount = byIdentity.then(byIdentity => byIdentity.specs?.[0]?.faults.length);
+ * export const probesCount = byIdentity.then(byIdentity => byIdentity.specs?.[0]?.probes.length);
+ * export const actionsCount = byIdentity.then(byIdentity => byIdentity.specs?.[0]?.actions.length);
+ * export const verticesCount = byIdentity.then(byIdentity => byIdentity.specs?.[0]?.vertices.length);
  * ```
  */
 export function getExperimentTemplateOutput(args: GetExperimentTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetExperimentTemplateResult> {

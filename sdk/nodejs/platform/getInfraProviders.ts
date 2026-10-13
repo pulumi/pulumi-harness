@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as harness from "@pulumi/harness";
  *
  * const all = harness.platform.getInfraProviders({});
- * export const providerCount = all.then(all => all.providers).length;
+ * export const providerCount = all.then(all => all.providers.length);
  * export const providerTypes = all.then(all => .map(p => (p.type)));
  * ```
  */
@@ -49,7 +49,7 @@ export interface GetInfraProvidersResult {
  * import * as harness from "@pulumi/harness";
  *
  * const all = harness.platform.getInfraProviders({});
- * export const providerCount = all.then(all => all.providers).length;
+ * export const providerCount = all.then(all => all.providers.length);
  * export const providerTypes = all.then(all => .map(p => (p.type)));
  * ```
  */

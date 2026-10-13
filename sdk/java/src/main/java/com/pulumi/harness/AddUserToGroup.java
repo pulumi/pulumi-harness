@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleAddUserToGroups = new AddUserToGroup("exampleAddUserToGroups", AddUserToGroupArgs.builder()
  *             .groupId(admin.id())
- *             .userId(test.id())
+ *             .userId(test.get("id"))
  *             .build());
  * 
  *     }}{@code

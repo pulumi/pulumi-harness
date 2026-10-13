@@ -37,7 +37,7 @@ namespace Pulumi.Harness.Platform
     ///         OrgId = "orgIdentifier",
     ///         ProjectId = "projectIdentifier",
     ///         Name = "name",
-    ///         Tags = null,
+    ///         Tags = new() { },
     ///         Yaml = @"pipeline:
     ///     name: name
     ///     identifier: identifier

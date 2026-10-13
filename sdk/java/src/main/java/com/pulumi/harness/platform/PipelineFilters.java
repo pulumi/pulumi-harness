@@ -151,8 +151,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .identifier("identifier")
  *             .name("name")
- *             .orgId(testHarnessPlatformProject.orgId())
- *             .projectId(testHarnessPlatformProject.id())
+ *             .orgId(testHarnessPlatformProject.get("orgId"))
+ *             .projectId(testHarnessPlatformProject.get("id"))
  *             .type("PipelineExecution")
  *             .build());
  * 

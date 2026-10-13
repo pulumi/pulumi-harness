@@ -41,8 +41,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new IacmDefaultPipeline("example", IacmDefaultPipelineArgs.builder()
- *             .orgId(test.id())
- *             .projectId(testHarnessPlatformProject.id())
+ *             .orgId(test.get("id"))
+ *             .projectId(testHarnessPlatformProject.get("id"))
  *             .provisionerType("terraform")
  *             .operation("plan")
  *             .pipeline("pipeline1")

@@ -550,7 +550,7 @@ class HarRegistry(pulumi.CustomResource):
             space_ref="accountId/orgId/projectId",
             package_type="RUBY",
             parent_ref="accountId/orgId/projectId")
-        # Example of a Virtual Terraform Registry
+        # Example of a Virtual Pulumi Registry
         terraform_virtual = harness.platform.HarRegistry("terraform_virtual",
             configs=[{
                 "type": "VIRTUAL",
@@ -667,7 +667,7 @@ class HarRegistry(pulumi.CustomResource):
             space_ref="accountId/orgId/projectId",
             package_type="HUGGINGFACE",
             parent_ref="accountId/orgId/projectId")
-        # Example of a Virtual Terraform Backend Registry
+        # Example of a Virtual Pulumi Backend Registry
         # TERRAFORM_BACKEND supports VIRTUAL registries only - upstream is not supported.
         terraform_backend_virtual = harness.platform.HarRegistry("terraform_backend_virtual",
             configs=[{
@@ -876,7 +876,7 @@ class HarRegistry(pulumi.CustomResource):
             space_ref="accountId/orgId/projectId",
             package_type="RUBY",
             parent_ref="accountId/orgId/projectId")
-        # Example of a Virtual Terraform Registry
+        # Example of a Virtual Pulumi Registry
         terraform_virtual = harness.platform.HarRegistry("terraform_virtual",
             configs=[{
                 "type": "VIRTUAL",
@@ -993,7 +993,7 @@ class HarRegistry(pulumi.CustomResource):
             space_ref="accountId/orgId/projectId",
             package_type="HUGGINGFACE",
             parent_ref="accountId/orgId/projectId")
-        # Example of a Virtual Terraform Backend Registry
+        # Example of a Virtual Pulumi Backend Registry
         # TERRAFORM_BACKEND supports VIRTUAL registries only - upstream is not supported.
         terraform_backend_virtual = harness.platform.HarRegistry("terraform_backend_virtual",
             configs=[{

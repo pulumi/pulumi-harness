@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .name("k8s-security-rule")
  *             .description("Security governance rule for Kubernetes chaos experiments")
  *             .isEnabled(true)
- *             .conditionIds(k8sCondition.id())
+ *             .conditionIds(k8sCondition.get("id"))
  *             .userGroupIds("_project_all_users")
  *             .tags(            
  *                 "env:prod",

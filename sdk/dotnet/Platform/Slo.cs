@@ -30,7 +30,7 @@ namespace Pulumi.Harness.Platform
     ///             SloTarget = new Harness.Platform.Inputs.SloRequestSloTargetArgs
     ///             {
     ///                 Type = "Calender",
-    ///                 SloTargetPercentage = 10,
+    ///                 SloTargetPercentage = 10.0,
     ///                 Spec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///                 {
     ///                     ["type"] = "Monthly",

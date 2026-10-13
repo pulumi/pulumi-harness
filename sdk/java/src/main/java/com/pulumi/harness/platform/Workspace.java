@@ -75,19 +75,19 @@ import javax.annotation.Nullable;
  *                     .repository("https://github.com/org/repo")
  *                     .repositoryBranch("main")
  *                     .repositoryPath("tf/gcp/basic")
- *                     .repositoryConnector(test.id())
+ *                     .repositoryConnector(test.get("id"))
  *                     .build(),
  *                 WorkspaceTerraformVariableFileArgs.builder()
  *                     .repository("https://github.com/org/repo")
  *                     .repositoryCommit("v1.0.0")
  *                     .repositoryPath("tf/aws/basic")
- *                     .repositoryConnector(test.id())
+ *                     .repositoryConnector(test.get("id"))
  *                     .build(),
  *                 WorkspaceTerraformVariableFileArgs.builder()
  *                     .repository("https://github.com/org/repo")
  *                     .repositorySha("349d90bb9c90f4a3482981c259080de31609e6f6")
  *                     .repositoryPath("tf/aws/basic")
- *                     .repositoryConnector(test.id())
+ *                     .repositoryConnector(test.get("id"))
  *                     .build())
  *             .terraformVariables(            
  *                 WorkspaceTerraformVariableArgs.builder()
@@ -102,20 +102,20 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .name("example")
  *             .identifier("example")
- *             .orgId(testHarnessPlatformOrganization.id())
- *             .projectId(testHarnessPlatformProject.id())
+ *             .orgId(testHarnessPlatformOrganization.get("id"))
+ *             .projectId(testHarnessPlatformProject.get("id"))
  *             .provisionerType("terraform")
  *             .provisionerVersion("1.5.6")
  *             .repository("https://github.com/org/repo")
  *             .repositoryBranch("main")
  *             .repositoryPath("tf/aws/basic")
  *             .costEstimationEnabled(true)
- *             .providerConnector(test.id())
- *             .repositoryConnector(test.id())
+ *             .providerConnector(test.get("id"))
+ *             .repositoryConnector(test.get("id"))
  *             .tags(            
  *                 "tag1",
  *                 "tag2")
- *             .variableSets(testHarnessPlatformInfraVariableSet.id())
+ *             .variableSets(testHarnessPlatformInfraVariableSet.get("id"))
  *             .defaultPipelines(Map.ofEntries(
  *                 Map.entry("destroy", "destroy_pipeline_id"),
  *                 Map.entry("drift", "drift_pipeline_id"),

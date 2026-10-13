@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// data source for gitops clusters mapped to a project level env
+//			// function for gitops clusters mapped to a project level env
 //			_, err := platform.LookupEnvironmentClustersMapping(ctx, &platform.LookupEnvironmentClustersMappingArgs{
 //				Clusters: []platform.GetEnvironmentClustersMappingCluster{
 //					{
@@ -45,7 +45,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// data source for two gitops clusters mapped to an account level env
+//			// function for two gitops clusters mapped to an account level env
 //			_, err = platform.LookupEnvironmentClustersMapping(ctx, &platform.LookupEnvironmentClustersMappingArgs{
 //				Clusters: []platform.GetEnvironmentClustersMappingCluster{
 //					{

@@ -182,7 +182,7 @@ def get_secret_winrm(identifier: Optional[_builtins.str] = None,
         org_id="org_identifier",
         project_id="project_identifier")
     pulumi.export("winrmPort", example.port)
-    pulumi.export("winrmAuthType", len(example.ntlms).apply(lambda length: "NTLM" if length > 0 else "Kerberos"))
+    pulumi.export("winrmAuthType", "NTLM" if len(example.ntlms) > 0 else "Kerberos")
     ```
 
 
@@ -234,7 +234,7 @@ def get_secret_winrm_output(identifier: pulumi.Input[Optional[_builtins.str]] = 
         org_id="org_identifier",
         project_id="project_identifier")
     pulumi.export("winrmPort", example.port)
-    pulumi.export("winrmAuthType", len(example.ntlms).apply(lambda length: "NTLM" if length > 0 else "Kerberos"))
+    pulumi.export("winrmAuthType", "NTLM" if len(example.ntlms) > 0 else "Kerberos")
     ```
 
 
