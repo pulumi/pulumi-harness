@@ -47,10 +47,10 @@ namespace Pulumi.Harness.Platform
     ///         OrgId = "org_id",
     ///     });
     /// 
-    ///     var defaultSettings = 
+    ///     var defaultSettings = new Dictionary&lt;string, string&gt;
     ///     {
-    ///         { "defaultConnectorForGitExperience", "account.gitlab_connector" },
-    ///         { "defaultRepoForGitExperience", "my-org/my-repo" },
+    ///         ["defaultConnectorForGitExperience"] = "account.gitlab_connector",
+    ///         ["defaultRepoForGitExperience"] = "my-org/my-repo",
     ///     };
     /// 
     ///     var project = new List&lt;Harness.Platform.Setting&gt;();

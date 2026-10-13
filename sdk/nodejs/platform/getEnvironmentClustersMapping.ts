@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * // data source for gitops clusters mapped to a project level env
+ * // function for gitops clusters mapped to a project level env
  * const example = harness.platform.getEnvironmentClustersMapping({
  *     clusters: [{
  *         identifier: "incluster",
@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     projectId: "projectIdentifier",
  *     envId: "exampleEnvId",
  * });
- * // data source for two gitops clusters mapped to an account level env
+ * // function for two gitops clusters mapped to an account level env
  * const example2 = harness.platform.getEnvironmentClustersMapping({
  *     clusters: [
  *         {
@@ -128,7 +128,7 @@ export interface GetEnvironmentClustersMappingResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harness from "@pulumi/harness";
  *
- * // data source for gitops clusters mapped to a project level env
+ * // function for gitops clusters mapped to a project level env
  * const example = harness.platform.getEnvironmentClustersMapping({
  *     clusters: [{
  *         identifier: "incluster",
@@ -141,7 +141,7 @@ export interface GetEnvironmentClustersMappingResult {
  *     projectId: "projectIdentifier",
  *     envId: "exampleEnvId",
  * });
- * // data source for two gitops clusters mapped to an account level env
+ * // function for two gitops clusters mapped to an account level env
  * const example2 = harness.platform.getEnvironmentClustersMapping({
  *     clusters: [
  *         {

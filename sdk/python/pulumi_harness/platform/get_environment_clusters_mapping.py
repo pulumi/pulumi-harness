@@ -138,7 +138,7 @@ def get_environment_clusters_mapping(clusters: Optional[Sequence[Union['GetEnvir
     import pulumi
     import pulumi_harness as harness
 
-    # data source for gitops clusters mapped to a project level env
+    # function for gitops clusters mapped to a project level env
     example = harness.platform.get_environment_clusters_mapping(clusters=[{
             "identifier": "incluster",
             "name": "in-cluster",
@@ -149,7 +149,7 @@ def get_environment_clusters_mapping(clusters: Optional[Sequence[Union['GetEnvir
         org_id="orgIdentifer",
         project_id="projectIdentifier",
         env_id="exampleEnvId")
-    # data source for two gitops clusters mapped to an account level env
+    # function for two gitops clusters mapped to an account level env
     example2 = harness.platform.get_environment_clusters_mapping(clusters=[
             {
                 "identifier": "clusterA",
@@ -207,7 +207,7 @@ def get_environment_clusters_mapping_output(clusters: pulumi.Input[Optional[Opti
     import pulumi
     import pulumi_harness as harness
 
-    # data source for gitops clusters mapped to a project level env
+    # function for gitops clusters mapped to a project level env
     example = harness.platform.get_environment_clusters_mapping(clusters=[{
             "identifier": "incluster",
             "name": "in-cluster",
@@ -218,7 +218,7 @@ def get_environment_clusters_mapping_output(clusters: pulumi.Input[Optional[Opti
         org_id="orgIdentifer",
         project_id="projectIdentifier",
         env_id="exampleEnvId")
-    # data source for two gitops clusters mapped to an account level env
+    # function for two gitops clusters mapped to an account level env
     example2 = harness.platform.get_environment_clusters_mapping(clusters=[
             {
                 "identifier": "clusterA",

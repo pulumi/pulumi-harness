@@ -234,7 +234,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// Example of a Virtual Terraform Registry
+//			// Example of a Virtual Pulumi Registry
 //			_, err = platform.NewHarRegistry(ctx, "terraform_virtual", &platform.HarRegistryArgs{
 //				Configs: platform.HarRegistryConfigArray{
 //					&platform.HarRegistryConfigArgs{
@@ -417,7 +417,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// Example of a Virtual Terraform Backend Registry
+//			// Example of a Virtual Pulumi Backend Registry
 //			// TERRAFORM_BACKEND supports VIRTUAL registries only - upstream is not supported.
 //			_, err = platform.NewHarRegistry(ctx, "terraform_backend_virtual", &platform.HarRegistryArgs{
 //				Configs: platform.HarRegistryConfigArray{

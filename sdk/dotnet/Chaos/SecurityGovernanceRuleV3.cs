@@ -41,7 +41,7 @@ namespace Pulumi.Harness.Chaos
     ///                     Until = -1,
     ///                 },
     ///                 TimeZone = "UTC",
-    ///                 StartTime = 1711238400000,
+    ///                 StartTime = (int)1711238400000,
     ///                 Duration = "24h",
     ///             },
     ///         },

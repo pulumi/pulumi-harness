@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * 
  *         var mySecret = new EncryptedText("mySecret", EncryptedTextArgs.builder()
  *             .name("my_secret")
- *             .value(harnessDeployKey.privateKeyPem())
+ *             .value(harnessDeployKey.get("privateKeyPem"))
  *             .secretManagerId(secretManager.id())
  *             .build());
  * 

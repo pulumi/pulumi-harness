@@ -27,7 +27,7 @@ namespace Pulumi.Harness.Cluster
     ///         Distribution = new Harness.Cluster.Inputs.OrchestratorConfigDistributionArgs
     ///         {
     ///             BaseOndemandCapacity = 2,
-    ///             OndemandReplicaPercentage = 50,
+    ///             OndemandReplicaPercentage = 50.0,
     ///             Selector = "ALL",
     ///             Strategy = "CostOptimized",
     ///         },
@@ -37,8 +37,8 @@ namespace Pulumi.Harness.Cluster
     ///             {
     ///                 Threshold = new Harness.Cluster.Inputs.OrchestratorConfigBinpackingPodEvictionThresholdArgs
     ///                 {
-    ///                     Cpu = 60,
-    ///                     Memory = 80,
+    ///                     Cpu = 60.0,
+    ///                     Memory = 80.0,
     ///                 },
     ///             },
     ///             Disruption = new Harness.Cluster.Inputs.OrchestratorConfigBinpackingDisruptionArgs

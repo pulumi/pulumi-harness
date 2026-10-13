@@ -31,10 +31,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// ============================================================================
-//			// Harness Chaos Experiment Data Source Examples
+//			// Harness Chaos Experiment Function Examples
 //			// ============================================================================
 //			//
-//			// The harness_chaos_experiment data source retrieves information about
+//			// The harness_chaos_experiment function retrieves information about
 //			// existing chaos experiments.
 //			//
 //			// Lookup Methods:

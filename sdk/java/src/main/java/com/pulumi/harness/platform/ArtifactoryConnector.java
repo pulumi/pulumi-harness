@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *             .name("name")
  *             .description("test")
  *             .tags("foo:bar")
- *             .orgId(testHarnessPlatformProject.orgId())
+ *             .orgId(testHarnessPlatformProject.get("orgId"))
  *             .url("https://artifactory.example.com")
  *             .delegateSelectors("harness-delegate")
  *             .build());
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *             .name("name")
  *             .description("test")
  *             .tags("foo:bar")
- *             .orgId(testHarnessPlatformProject.orgId())
+ *             .orgId(testHarnessPlatformProject.get("orgId"))
  *             .url("https://artifactory.example.com")
  *             .delegateSelectors("harness-delegate")
  *             .build());
@@ -164,8 +164,8 @@ import javax.annotation.Nullable;
  *             .name("name")
  *             .description("test")
  *             .tags("foo:bar")
- *             .orgId(testHarnessPlatformProject.orgId())
- *             .projectId(testHarnessPlatformProject.id())
+ *             .orgId(testHarnessPlatformProject.get("orgId"))
+ *             .projectId(testHarnessPlatformProject.get("id"))
  *             .url("https://artifactory.example.com")
  *             .delegateSelectors("harness-delegate")
  *             .build());
@@ -176,8 +176,8 @@ import javax.annotation.Nullable;
  *             .name("name")
  *             .description("test")
  *             .tags("foo:bar")
- *             .orgId(testHarnessPlatformProject.orgId())
- *             .projectId(testHarnessPlatformProject.id())
+ *             .orgId(testHarnessPlatformProject.get("orgId"))
+ *             .projectId(testHarnessPlatformProject.get("id"))
  *             .url("https://artifactory.example.com")
  *             .delegateSelectors("harness-delegate")
  *             .build());

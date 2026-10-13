@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *             .description("test")
  *             .tags("foo:bar")
  *             .delegateSelectors("harness-delegate")
- *             .credentialsRef(String.format("account.%s", test.id()))
+ *             .credentialsRef(String.format("account.%s", test.get("id")))
  *             .build());
  * 
  *         var gcpSmInherit = new GcpSecretManagerConnector("gcpSmInherit", GcpSecretManagerConnectorArgs.builder()

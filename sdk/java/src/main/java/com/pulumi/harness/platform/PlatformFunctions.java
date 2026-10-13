@@ -8969,7 +8969,7 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // data source for gitops clusters mapped to a project level env
+     *         // function for gitops clusters mapped to a project level env
      *         final var example = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
      *             .clusters(GetEnvironmentClustersMappingClusterArgs.builder()
      *                 .identifier("incluster")
@@ -8983,7 +8983,7 @@ public final class PlatformFunctions {
      *             .envId("exampleEnvId")
      *             .build());
      * 
-     *         // data source for two gitops clusters mapped to an account level env
+     *         // function for two gitops clusters mapped to an account level env
      *         final var example2 = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
      *             .clusters(            
      *                 GetEnvironmentClustersMappingClusterArgs.builder()
@@ -9039,7 +9039,7 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // data source for gitops clusters mapped to a project level env
+     *         // function for gitops clusters mapped to a project level env
      *         final var example = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
      *             .clusters(GetEnvironmentClustersMappingClusterArgs.builder()
      *                 .identifier("incluster")
@@ -9053,7 +9053,7 @@ public final class PlatformFunctions {
      *             .envId("exampleEnvId")
      *             .build());
      * 
-     *         // data source for two gitops clusters mapped to an account level env
+     *         // function for two gitops clusters mapped to an account level env
      *         final var example2 = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
      *             .clusters(            
      *                 GetEnvironmentClustersMappingClusterArgs.builder()
@@ -9109,7 +9109,7 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // data source for gitops clusters mapped to a project level env
+     *         // function for gitops clusters mapped to a project level env
      *         final var example = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
      *             .clusters(GetEnvironmentClustersMappingClusterArgs.builder()
      *                 .identifier("incluster")
@@ -9123,7 +9123,7 @@ public final class PlatformFunctions {
      *             .envId("exampleEnvId")
      *             .build());
      * 
-     *         // data source for two gitops clusters mapped to an account level env
+     *         // function for two gitops clusters mapped to an account level env
      *         final var example2 = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
      *             .clusters(            
      *                 GetEnvironmentClustersMappingClusterArgs.builder()
@@ -9179,7 +9179,7 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // data source for gitops clusters mapped to a project level env
+     *         // function for gitops clusters mapped to a project level env
      *         final var example = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
      *             .clusters(GetEnvironmentClustersMappingClusterArgs.builder()
      *                 .identifier("incluster")
@@ -9193,7 +9193,7 @@ public final class PlatformFunctions {
      *             .envId("exampleEnvId")
      *             .build());
      * 
-     *         // data source for two gitops clusters mapped to an account level env
+     *         // function for two gitops clusters mapped to an account level env
      *         final var example2 = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
      *             .clusters(            
      *                 GetEnvironmentClustersMappingClusterArgs.builder()
@@ -9249,7 +9249,7 @@ public final class PlatformFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // data source for gitops clusters mapped to a project level env
+     *         // function for gitops clusters mapped to a project level env
      *         final var example = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
      *             .clusters(GetEnvironmentClustersMappingClusterArgs.builder()
      *                 .identifier("incluster")
@@ -9263,7 +9263,7 @@ public final class PlatformFunctions {
      *             .envId("exampleEnvId")
      *             .build());
      * 
-     *         // data source for two gitops clusters mapped to an account level env
+     *         // function for two gitops clusters mapped to an account level env
      *         final var example2 = PlatformFunctions.getEnvironmentClustersMapping(GetEnvironmentClustersMappingArgs.builder()
      *             .clusters(            
      *                 GetEnvironmentClustersMappingClusterArgs.builder()
@@ -13854,8 +13854,8 @@ public final class PlatformFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getIacmAnsibleInventory(GetIacmAnsibleInventoryArgs.builder()
      *             .identifier("my_inventory")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
-     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
+     *             .projectId(exampleHarnessPlatformProject.get("id"))
      *             .build());
      * 
      *     }
@@ -13896,8 +13896,8 @@ public final class PlatformFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getIacmAnsibleInventory(GetIacmAnsibleInventoryArgs.builder()
      *             .identifier("my_inventory")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
-     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
+     *             .projectId(exampleHarnessPlatformProject.get("id"))
      *             .build());
      * 
      *     }
@@ -13938,8 +13938,8 @@ public final class PlatformFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getIacmAnsibleInventory(GetIacmAnsibleInventoryArgs.builder()
      *             .identifier("my_inventory")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
-     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
+     *             .projectId(exampleHarnessPlatformProject.get("id"))
      *             .build());
      * 
      *     }
@@ -13980,8 +13980,8 @@ public final class PlatformFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getIacmAnsibleInventory(GetIacmAnsibleInventoryArgs.builder()
      *             .identifier("my_inventory")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
-     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
+     *             .projectId(exampleHarnessPlatformProject.get("id"))
      *             .build());
      * 
      *     }
@@ -14022,8 +14022,8 @@ public final class PlatformFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getIacmAnsibleInventory(GetIacmAnsibleInventoryArgs.builder()
      *             .identifier("my_inventory")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
-     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
+     *             .projectId(exampleHarnessPlatformProject.get("id"))
      *             .build());
      * 
      *     }
@@ -14064,8 +14064,8 @@ public final class PlatformFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getIacmAnsiblePlaybook(GetIacmAnsiblePlaybookArgs.builder()
      *             .identifier("my_playbook")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
-     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
+     *             .projectId(exampleHarnessPlatformProject.get("id"))
      *             .build());
      * 
      *     }
@@ -14106,8 +14106,8 @@ public final class PlatformFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getIacmAnsiblePlaybook(GetIacmAnsiblePlaybookArgs.builder()
      *             .identifier("my_playbook")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
-     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
+     *             .projectId(exampleHarnessPlatformProject.get("id"))
      *             .build());
      * 
      *     }
@@ -14148,8 +14148,8 @@ public final class PlatformFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getIacmAnsiblePlaybook(GetIacmAnsiblePlaybookArgs.builder()
      *             .identifier("my_playbook")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
-     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
+     *             .projectId(exampleHarnessPlatformProject.get("id"))
      *             .build());
      * 
      *     }
@@ -14190,8 +14190,8 @@ public final class PlatformFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getIacmAnsiblePlaybook(GetIacmAnsiblePlaybookArgs.builder()
      *             .identifier("my_playbook")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
-     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
+     *             .projectId(exampleHarnessPlatformProject.get("id"))
      *             .build());
      * 
      *     }
@@ -14232,8 +14232,8 @@ public final class PlatformFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getIacmAnsiblePlaybook(GetIacmAnsiblePlaybookArgs.builder()
      *             .identifier("my_playbook")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
-     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
+     *             .projectId(exampleHarnessPlatformProject.get("id"))
      *             .build());
      * 
      *     }
@@ -14273,8 +14273,8 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getIacmDefaultPipeline(GetIacmDefaultPipelineArgs.builder()
-     *             .orgId(test.id())
-     *             .projectId(testHarnessPlatformProject.id())
+     *             .orgId(test.get("id"))
+     *             .projectId(testHarnessPlatformProject.get("id"))
      *             .provisionerType("terraform")
      *             .operation("plan")
      *             .build());
@@ -14316,8 +14316,8 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getIacmDefaultPipeline(GetIacmDefaultPipelineArgs.builder()
-     *             .orgId(test.id())
-     *             .projectId(testHarnessPlatformProject.id())
+     *             .orgId(test.get("id"))
+     *             .projectId(testHarnessPlatformProject.get("id"))
      *             .provisionerType("terraform")
      *             .operation("plan")
      *             .build());
@@ -14359,8 +14359,8 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getIacmDefaultPipeline(GetIacmDefaultPipelineArgs.builder()
-     *             .orgId(test.id())
-     *             .projectId(testHarnessPlatformProject.id())
+     *             .orgId(test.get("id"))
+     *             .projectId(testHarnessPlatformProject.get("id"))
      *             .provisionerType("terraform")
      *             .operation("plan")
      *             .build());
@@ -14402,8 +14402,8 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getIacmDefaultPipeline(GetIacmDefaultPipelineArgs.builder()
-     *             .orgId(test.id())
-     *             .projectId(testHarnessPlatformProject.id())
+     *             .orgId(test.get("id"))
+     *             .projectId(testHarnessPlatformProject.get("id"))
      *             .provisionerType("terraform")
      *             .operation("plan")
      *             .build());
@@ -14445,8 +14445,8 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PlatformFunctions.getIacmDefaultPipeline(GetIacmDefaultPipelineArgs.builder()
-     *             .orgId(test.id())
-     *             .projectId(testHarnessPlatformProject.id())
+     *             .orgId(test.get("id"))
+     *             .projectId(testHarnessPlatformProject.get("id"))
      *             .provisionerType("terraform")
      *             .operation("plan")
      *             .build());
@@ -15995,14 +15995,14 @@ public final class PlatformFunctions {
      *         // Look up an org level Variable Set. Set org_id only.
      *         final var orgLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
      *             .identifier("org_variable_set")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
      *             .build());
      * 
      *         // Look up a project level Variable Set. Set both org_id and project_id.
      *         final var projectLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
      *             .identifier("project_variable_set")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
-     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
+     *             .projectId(exampleHarnessPlatformProject.get("id"))
      *             .build());
      * 
      *         // Consuming a Variable Set from a Workspace.
@@ -16020,15 +16020,15 @@ public final class PlatformFunctions {
      *         var example = new Workspace("example", WorkspaceArgs.builder()
      *             .identifier("example")
      *             .name("example")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
-     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
+     *             .projectId(exampleHarnessPlatformProject.get("id"))
      *             .provisionerType("terraform")
      *             .provisionerVersion("1.5.7")
      *             .repository("https://github.com/org/repo")
      *             .repositoryBranch("main")
      *             .repositoryPath("tf/aws/basic")
-     *             .repositoryConnector(exampleHarnessPlatformConnectorGithub.id())
-     *             .providerConnector(exampleHarnessPlatformConnectorAws.id())
+     *             .repositoryConnector(exampleHarnessPlatformConnectorGithub.get("id"))
+     *             .providerConnector(exampleHarnessPlatformConnectorAws.get("id"))
      *             .variableSets(            
      *                 String.format("account.%s", accountLevel.id()),
      *                 String.format("org.%s", orgLevel.id()),
@@ -16090,14 +16090,14 @@ public final class PlatformFunctions {
      *         // Look up an org level Variable Set. Set org_id only.
      *         final var orgLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
      *             .identifier("org_variable_set")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
      *             .build());
      * 
      *         // Look up a project level Variable Set. Set both org_id and project_id.
      *         final var projectLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
      *             .identifier("project_variable_set")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
-     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
+     *             .projectId(exampleHarnessPlatformProject.get("id"))
      *             .build());
      * 
      *         // Consuming a Variable Set from a Workspace.
@@ -16115,15 +16115,15 @@ public final class PlatformFunctions {
      *         var example = new Workspace("example", WorkspaceArgs.builder()
      *             .identifier("example")
      *             .name("example")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
-     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
+     *             .projectId(exampleHarnessPlatformProject.get("id"))
      *             .provisionerType("terraform")
      *             .provisionerVersion("1.5.7")
      *             .repository("https://github.com/org/repo")
      *             .repositoryBranch("main")
      *             .repositoryPath("tf/aws/basic")
-     *             .repositoryConnector(exampleHarnessPlatformConnectorGithub.id())
-     *             .providerConnector(exampleHarnessPlatformConnectorAws.id())
+     *             .repositoryConnector(exampleHarnessPlatformConnectorGithub.get("id"))
+     *             .providerConnector(exampleHarnessPlatformConnectorAws.get("id"))
      *             .variableSets(            
      *                 String.format("account.%s", accountLevel.id()),
      *                 String.format("org.%s", orgLevel.id()),
@@ -16185,14 +16185,14 @@ public final class PlatformFunctions {
      *         // Look up an org level Variable Set. Set org_id only.
      *         final var orgLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
      *             .identifier("org_variable_set")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
      *             .build());
      * 
      *         // Look up a project level Variable Set. Set both org_id and project_id.
      *         final var projectLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
      *             .identifier("project_variable_set")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
-     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
+     *             .projectId(exampleHarnessPlatformProject.get("id"))
      *             .build());
      * 
      *         // Consuming a Variable Set from a Workspace.
@@ -16210,15 +16210,15 @@ public final class PlatformFunctions {
      *         var example = new Workspace("example", WorkspaceArgs.builder()
      *             .identifier("example")
      *             .name("example")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
-     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
+     *             .projectId(exampleHarnessPlatformProject.get("id"))
      *             .provisionerType("terraform")
      *             .provisionerVersion("1.5.7")
      *             .repository("https://github.com/org/repo")
      *             .repositoryBranch("main")
      *             .repositoryPath("tf/aws/basic")
-     *             .repositoryConnector(exampleHarnessPlatformConnectorGithub.id())
-     *             .providerConnector(exampleHarnessPlatformConnectorAws.id())
+     *             .repositoryConnector(exampleHarnessPlatformConnectorGithub.get("id"))
+     *             .providerConnector(exampleHarnessPlatformConnectorAws.get("id"))
      *             .variableSets(            
      *                 String.format("account.%s", accountLevel.id()),
      *                 String.format("org.%s", orgLevel.id()),
@@ -16280,14 +16280,14 @@ public final class PlatformFunctions {
      *         // Look up an org level Variable Set. Set org_id only.
      *         final var orgLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
      *             .identifier("org_variable_set")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
      *             .build());
      * 
      *         // Look up a project level Variable Set. Set both org_id and project_id.
      *         final var projectLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
      *             .identifier("project_variable_set")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
-     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
+     *             .projectId(exampleHarnessPlatformProject.get("id"))
      *             .build());
      * 
      *         // Consuming a Variable Set from a Workspace.
@@ -16305,15 +16305,15 @@ public final class PlatformFunctions {
      *         var example = new Workspace("example", WorkspaceArgs.builder()
      *             .identifier("example")
      *             .name("example")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
-     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
+     *             .projectId(exampleHarnessPlatformProject.get("id"))
      *             .provisionerType("terraform")
      *             .provisionerVersion("1.5.7")
      *             .repository("https://github.com/org/repo")
      *             .repositoryBranch("main")
      *             .repositoryPath("tf/aws/basic")
-     *             .repositoryConnector(exampleHarnessPlatformConnectorGithub.id())
-     *             .providerConnector(exampleHarnessPlatformConnectorAws.id())
+     *             .repositoryConnector(exampleHarnessPlatformConnectorGithub.get("id"))
+     *             .providerConnector(exampleHarnessPlatformConnectorAws.get("id"))
      *             .variableSets(            
      *                 String.format("account.%s", accountLevel.id()),
      *                 String.format("org.%s", orgLevel.id()),
@@ -16375,14 +16375,14 @@ public final class PlatformFunctions {
      *         // Look up an org level Variable Set. Set org_id only.
      *         final var orgLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
      *             .identifier("org_variable_set")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
      *             .build());
      * 
      *         // Look up a project level Variable Set. Set both org_id and project_id.
      *         final var projectLevel = PlatformFunctions.getInfraVariableSet(GetInfraVariableSetArgs.builder()
      *             .identifier("project_variable_set")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
-     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
+     *             .projectId(exampleHarnessPlatformProject.get("id"))
      *             .build());
      * 
      *         // Consuming a Variable Set from a Workspace.
@@ -16400,15 +16400,15 @@ public final class PlatformFunctions {
      *         var example = new Workspace("example", WorkspaceArgs.builder()
      *             .identifier("example")
      *             .name("example")
-     *             .orgId(exampleHarnessPlatformOrganization.id())
-     *             .projectId(exampleHarnessPlatformProject.id())
+     *             .orgId(exampleHarnessPlatformOrganization.get("id"))
+     *             .projectId(exampleHarnessPlatformProject.get("id"))
      *             .provisionerType("terraform")
      *             .provisionerVersion("1.5.7")
      *             .repository("https://github.com/org/repo")
      *             .repositoryBranch("main")
      *             .repositoryPath("tf/aws/basic")
-     *             .repositoryConnector(exampleHarnessPlatformConnectorGithub.id())
-     *             .providerConnector(exampleHarnessPlatformConnectorAws.id())
+     *             .repositoryConnector(exampleHarnessPlatformConnectorGithub.get("id"))
+     *             .providerConnector(exampleHarnessPlatformConnectorAws.get("id"))
      *             .variableSets(            
      *                 String.format("account.%s", accountLevel.id()),
      *                 String.format("org.%s", orgLevel.id()),
@@ -19674,7 +19674,7 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = PlatformFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .identifier(testHarnessPlatformPolicy.identifier())
+     *             .identifier(testHarnessPlatformPolicy.get("identifier"))
      *             .build());
      * 
      *     }
@@ -19714,7 +19714,7 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = PlatformFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .identifier(testHarnessPlatformPolicy.identifier())
+     *             .identifier(testHarnessPlatformPolicy.get("identifier"))
      *             .build());
      * 
      *     }
@@ -19754,7 +19754,7 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = PlatformFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .identifier(testHarnessPlatformPolicy.identifier())
+     *             .identifier(testHarnessPlatformPolicy.get("identifier"))
      *             .build());
      * 
      *     }
@@ -19794,7 +19794,7 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = PlatformFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .identifier(testHarnessPlatformPolicy.identifier())
+     *             .identifier(testHarnessPlatformPolicy.get("identifier"))
      *             .build());
      * 
      *     }
@@ -19834,7 +19834,7 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = PlatformFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .identifier(testHarnessPlatformPolicy.identifier())
+     *             .identifier(testHarnessPlatformPolicy.get("identifier"))
      *             .build());
      * 
      *     }
@@ -19874,7 +19874,7 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = PlatformFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .identifier(testHarnessPlatformPolicy.identifier())
+     *             .identifier(testHarnessPlatformPolicy.get("identifier"))
      *             .build());
      * 
      *     }
@@ -19914,7 +19914,7 @@ public final class PlatformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = PlatformFunctions.getPolicy(GetPolicyArgs.builder()
-     *             .identifier(testHarnessPlatformPolicy.identifier())
+     *             .identifier(testHarnessPlatformPolicy.get("identifier"))
      *             .build());
      * 
      *     }
@@ -22217,7 +22217,7 @@ public final class PlatformFunctions {
      *             .build());
      * 
      *         ctx.export("winrmPort", example.port());
-     *         ctx.export("winrmAuthType", example.ntlms().size().applyValue(_length -> _length > 0 ? "NTLM" : "Kerberos"));
+     *         ctx.export("winrmAuthType", example.ntlms().size() > 0 ? "NTLM" : "Kerberos");
      *     }
      * }
      * }
@@ -22273,7 +22273,7 @@ public final class PlatformFunctions {
      *             .build());
      * 
      *         ctx.export("winrmPort", example.port());
-     *         ctx.export("winrmAuthType", example.ntlms().size().applyValue(_length -> _length > 0 ? "NTLM" : "Kerberos"));
+     *         ctx.export("winrmAuthType", example.ntlms().size() > 0 ? "NTLM" : "Kerberos");
      *     }
      * }
      * }
@@ -22329,7 +22329,7 @@ public final class PlatformFunctions {
      *             .build());
      * 
      *         ctx.export("winrmPort", example.port());
-     *         ctx.export("winrmAuthType", example.ntlms().size().applyValue(_length -> _length > 0 ? "NTLM" : "Kerberos"));
+     *         ctx.export("winrmAuthType", example.ntlms().size() > 0 ? "NTLM" : "Kerberos");
      *     }
      * }
      * }
@@ -22385,7 +22385,7 @@ public final class PlatformFunctions {
      *             .build());
      * 
      *         ctx.export("winrmPort", example.port());
-     *         ctx.export("winrmAuthType", example.ntlms().size().applyValue(_length -> _length > 0 ? "NTLM" : "Kerberos"));
+     *         ctx.export("winrmAuthType", example.ntlms().size() > 0 ? "NTLM" : "Kerberos");
      *     }
      * }
      * }
@@ -22441,7 +22441,7 @@ public final class PlatformFunctions {
      *             .build());
      * 
      *         ctx.export("winrmPort", example.port());
-     *         ctx.export("winrmAuthType", example.ntlms().size().applyValue(_length -> _length > 0 ? "NTLM" : "Kerberos"));
+     *         ctx.export("winrmAuthType", example.ntlms().size() > 0 ? "NTLM" : "Kerberos");
      *     }
      * }
      * }

@@ -69,8 +69,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .identifier("my_inventory")
  *             .name("my-inventory")
- *             .orgId(example.id())
- *             .projectId(exampleHarnessPlatformProject.id())
+ *             .orgId(example.get("id"))
+ *             .projectId(exampleHarnessPlatformProject.get("id"))
  *             .type("manual")
  *             .tags("env:prod")
  *             .build());

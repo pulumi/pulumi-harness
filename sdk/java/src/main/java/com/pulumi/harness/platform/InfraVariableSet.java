@@ -97,8 +97,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .identifier("example")
  *             .name("example")
- *             .orgId(test.id())
- *             .projectId(testHarnessPlatformProject.id())
+ *             .orgId(test.get("id"))
+ *             .projectId(testHarnessPlatformProject.get("id"))
  *             .description("some description")
  *             .build());
  * 

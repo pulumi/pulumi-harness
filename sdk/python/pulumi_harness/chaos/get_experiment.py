@@ -401,10 +401,10 @@ def get_experiment(identity: Optional[_builtins.str] = None,
     import pulumi_harness as harness
 
     # ============================================================================
-    # Harness Chaos Experiment Data Source Examples
+    # Harness Chaos Experiment Function Examples
     # ============================================================================
     #
-    # The harness_chaos_experiment data source retrieves information about
+    # The harness_chaos_experiment function retrieves information about
     # existing chaos experiments.
     #
     # Lookup Methods:
@@ -504,10 +504,10 @@ def get_experiment_output(identity: pulumi.Input[Optional[Optional[_builtins.str
     import pulumi_harness as harness
 
     # ============================================================================
-    # Harness Chaos Experiment Data Source Examples
+    # Harness Chaos Experiment Function Examples
     # ============================================================================
     #
-    # The harness_chaos_experiment data source retrieves information about
+    # The harness_chaos_experiment function retrieves information about
     # existing chaos experiments.
     #
     # Lookup Methods:

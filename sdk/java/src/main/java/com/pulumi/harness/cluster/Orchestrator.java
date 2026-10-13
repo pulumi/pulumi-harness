@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *             .name("name")
  *             .clusterEndpoint("http://test.test.com")
  *             .k8sConnectorId("test")
- *             .region(current.name())
+ *             .region(current.get("name"))
  *             .build());
  * 
  *     }

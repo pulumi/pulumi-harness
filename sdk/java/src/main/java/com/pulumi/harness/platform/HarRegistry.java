@@ -206,7 +206,7 @@ import javax.annotation.Nullable;
  *             .parentRef("accountId/orgId/projectId")
  *             .build());
  * 
- *         // Example of a Virtual Terraform Registry
+ *         // Example of a Virtual Pulumi Registry
  *         var terraformVirtual = new HarRegistry("terraformVirtual", HarRegistryArgs.builder()
  *             .configs(HarRegistryConfigArgs.builder()
  *                 .type("VIRTUAL")
@@ -345,7 +345,7 @@ import javax.annotation.Nullable;
  *             .parentRef("accountId/orgId/projectId")
  *             .build());
  * 
- *         // Example of a Virtual Terraform Backend Registry
+ *         // Example of a Virtual Pulumi Backend Registry
  *         // TERRAFORM_BACKEND supports VIRTUAL registries only - upstream is not supported.
  *         var terraformBackendVirtual = new HarRegistry("terraformBackendVirtual", HarRegistryArgs.builder()
  *             .configs(HarRegistryConfigArgs.builder()

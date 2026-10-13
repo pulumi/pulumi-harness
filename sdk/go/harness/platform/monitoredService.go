@@ -72,7 +72,7 @@ import (
 //			json4 := string(tmpJSON4)
 //			tmpJSON5, err := json.Marshal(map[string]interface{}{
 //				"connectorRef": "connectorRef",
-//				"queryDefinitions": []map[string]interface{}{
+//				"queryDefinitions": []interface{}{
 //					map[string]interface{}{
 //						"name":       "name",
 //						"identifier": "infraquery",
@@ -208,7 +208,7 @@ import (
 //						"liveMonitoringEnabled":         "true",
 //						"continuousVerificationEnabled": "true",
 //						"sliEnabled":                    "false",
-//						"metricThresholds": []map[string]interface{}{
+//						"metricThresholds": []interface{}{
 //							map[string]interface{}{
 //								"type": "IgnoreThreshold",
 //								"spec": map[string]string{
@@ -297,7 +297,7 @@ import (
 //			}
 //			tmpJSON7, err := json.Marshal(map[string]interface{}{
 //				"connectorRef": "connectorRef",
-//				"queryDefinitions": []map[string]interface{}{
+//				"queryDefinitions": []interface{}{
 //					map[string]interface{}{
 //						"name":       "log1",
 //						"identifier": "log1",
@@ -455,7 +455,7 @@ import (
 //			}
 //			tmpJSON9, err := json.Marshal(map[string]interface{}{
 //				"connectorRef": "connectorRef",
-//				"queryDefinitions": []map[string]interface{}{
+//				"queryDefinitions": []interface{}{
 //					map[string]interface{}{
 //						"name":       "Demo",
 //						"identifier": "Demo",
@@ -940,7 +940,7 @@ import (
 //				"metricPacks": []map[string]interface{}{
 //					map[string]interface{}{
 //						"identifier": "Custom",
-//						"metricThresholds": []map[string]interface{}{
+//						"metricThresholds": []interface{}{
 //							map[string]interface{}{
 //								"type": "IgnoreThreshold",
 //								"spec": map[string]string{
