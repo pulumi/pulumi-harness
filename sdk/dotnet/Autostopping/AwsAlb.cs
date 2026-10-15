@@ -70,7 +70,7 @@ namespace Pulumi.Harness.Autostopping
         /// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
         /// </summary>
         [Output("apiKey")]
-        public Output<string?> ApiKey { get; private set; } = null!;
+        public Output<string> ApiKey { get; private set; } = null!;
 
         [Output("certificateId")]
         public Output<string?> CertificateId { get; private set; } = null!;
@@ -174,7 +174,7 @@ namespace Pulumi.Harness.Autostopping
         [Input("albArn")]
         public Input<string>? AlbArn { get; set; }
 
-        [Input("apiKey")]
+        [Input("apiKey", required: true)]
         private Input<string>? _apiKey;
 
         /// <summary>

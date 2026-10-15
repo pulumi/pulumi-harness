@@ -93,13 +93,25 @@ export interface GetAwsCCConnectorResult {
      */
     readonly projectId?: string;
     /**
+     * The AWS region where the Cost and Usage Report is delivered.
+     */
+    readonly region: string;
+    /**
      * The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
      */
     readonly reportName: string;
     /**
+     * The Cost and Usage Report type. `CUR2.0` means the connector uses AWS Data Exports (CUR 2.0). Empty means legacy CUR 1.0.
+     */
+    readonly reportType: string;
+    /**
      * The name of s3 bucket.
      */
     readonly s3Bucket: string;
+    /**
+     * The S3 path prefix where the Cost and Usage Report is delivered.
+     */
+    readonly s3Prefix: string;
     /**
      * Tags to associate with the resource.
      */

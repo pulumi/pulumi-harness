@@ -55,7 +55,10 @@ import javax.annotation.Nullable;
  *             .tags("foo:bar")
  *             .accountId("account_id")
  *             .reportName("report_name")
+ *             .reportType("CUR2.0")
+ *             .region("us-east-1")
  *             .s3Bucket("s3bucket")
+ *             .s3Prefix("cur")
  *             .featuresEnableds(            
  *                 "OPTIMIZATION",
  *                 "VISIBILITY",
@@ -205,6 +208,20 @@ public class AwsCCConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.projectId);
     }
     /**
+     * The AWS region where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the region stored in Harness.
+     * 
+     */
+    @Export(name="region", refs={String.class}, tree="[0]")
+    private Output<String> region;
+
+    /**
+     * @return The AWS region where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the region stored in Harness.
+     * 
+     */
+    public Output<String> region() {
+        return this.region;
+    }
+    /**
      * The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
      * 
      */
@@ -219,6 +236,20 @@ public class AwsCCConnector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.reportName);
     }
     /**
+     * The Cost and Usage Report type. Set to `CUR2.0` for AWS Data Exports. When omitted, a new connector uses legacy CUR 1.0 and an existing connector keeps the report type stored in Harness.
+     * 
+     */
+    @Export(name="reportType", refs={String.class}, tree="[0]")
+    private Output<String> reportType;
+
+    /**
+     * @return The Cost and Usage Report type. Set to `CUR2.0` for AWS Data Exports. When omitted, a new connector uses legacy CUR 1.0 and an existing connector keeps the report type stored in Harness.
+     * 
+     */
+    public Output<String> reportType() {
+        return this.reportType;
+    }
+    /**
      * The name of s3 bucket.
      * 
      */
@@ -231,6 +262,20 @@ public class AwsCCConnector extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> s3Bucket() {
         return Codegen.optional(this.s3Bucket);
+    }
+    /**
+     * The S3 path prefix where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the prefix stored in Harness.
+     * 
+     */
+    @Export(name="s3Prefix", refs={String.class}, tree="[0]")
+    private Output<String> s3Prefix;
+
+    /**
+     * @return The S3 path prefix where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the prefix stored in Harness.
+     * 
+     */
+    public Output<String> s3Prefix() {
+        return this.s3Prefix;
     }
     /**
      * Tags to associate with the resource.

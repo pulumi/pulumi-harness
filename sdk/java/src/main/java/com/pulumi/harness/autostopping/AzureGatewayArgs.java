@@ -18,6 +18,21 @@ public final class AzureGatewayArgs extends com.pulumi.resources.ResourceArgs {
     public static final AzureGatewayArgs Empty = new AzureGatewayArgs();
 
     /**
+     * Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+     * 
+     */
+    @Import(name="apiKey", required=true)
+    private Output<String> apiKey;
+
+    /**
+     * @return Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+     * 
+     */
+    public Output<String> apiKey() {
+        return this.apiKey;
+    }
+
+    /**
      * ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
      * 
      */
@@ -200,6 +215,7 @@ public final class AzureGatewayArgs extends com.pulumi.resources.ResourceArgs {
     private AzureGatewayArgs() {}
 
     private AzureGatewayArgs(AzureGatewayArgs $) {
+        this.apiKey = $.apiKey;
         this.appGatewayId = $.appGatewayId;
         this.azureFuncRegion = $.azureFuncRegion;
         this.certificateId = $.certificateId;
@@ -230,6 +246,27 @@ public final class AzureGatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(AzureGatewayArgs defaults) {
             $ = new AzureGatewayArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param apiKey Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiKey(Output<String> apiKey) {
+            $.apiKey = apiKey;
+            return this;
+        }
+
+        /**
+         * @param apiKey Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiKey(String apiKey) {
+            return apiKey(Output.of(apiKey));
         }
 
         /**
@@ -485,6 +522,9 @@ public final class AzureGatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AzureGatewayArgs build() {
+            if ($.apiKey == null) {
+                throw new MissingRequiredPropertyException("AzureGatewayArgs", "apiKey");
+            }
             if ($.azureFuncRegion == null) {
                 throw new MissingRequiredPropertyException("AzureGatewayArgs", "azureFuncRegion");
             }

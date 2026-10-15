@@ -80,10 +80,16 @@ type LookupAwsCCConnectorResult struct {
 	OrgId *string `pulumi:"orgId"`
 	// Unique identifier of the project.
 	ProjectId *string `pulumi:"projectId"`
+	// The AWS region where the Cost and Usage Report is delivered.
+	Region string `pulumi:"region"`
 	// The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
 	ReportName string `pulumi:"reportName"`
+	// The Cost and Usage Report type. `CUR2.0` means the connector uses AWS Data Exports (CUR 2.0). Empty means legacy CUR 1.0.
+	ReportType string `pulumi:"reportType"`
 	// The name of s3 bucket.
 	S3Bucket string `pulumi:"s3Bucket"`
+	// The S3 path prefix where the Cost and Usage Report is delivered.
+	S3Prefix string `pulumi:"s3Prefix"`
 	// Tags to associate with the resource.
 	Tags []string `pulumi:"tags"`
 }
@@ -171,14 +177,29 @@ func (o LookupAwsCCConnectorResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAwsCCConnectorResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
+// The AWS region where the Cost and Usage Report is delivered.
+func (o LookupAwsCCConnectorResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAwsCCConnectorResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
 // The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
 func (o LookupAwsCCConnectorResultOutput) ReportName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsCCConnectorResult) string { return v.ReportName }).(pulumi.StringOutput)
 }
 
+// The Cost and Usage Report type. `CUR2.0` means the connector uses AWS Data Exports (CUR 2.0). Empty means legacy CUR 1.0.
+func (o LookupAwsCCConnectorResultOutput) ReportType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAwsCCConnectorResult) string { return v.ReportType }).(pulumi.StringOutput)
+}
+
 // The name of s3 bucket.
 func (o LookupAwsCCConnectorResultOutput) S3Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsCCConnectorResult) string { return v.S3Bucket }).(pulumi.StringOutput)
+}
+
+// The S3 path prefix where the Cost and Usage Report is delivered.
+func (o LookupAwsCCConnectorResultOutput) S3Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAwsCCConnectorResult) string { return v.S3Prefix }).(pulumi.StringOutput)
 }
 
 // Tags to associate with the resource.

@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  *     azureFuncRegion: "westus2",
  *     frontendIp: "/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Network/publicIPAddresses/publicip",
  *     skuSize: "sku2",
+ *     apiKey: "api_key",
  *     deleteCloudResourcesOnDestroy: true,
  * });
  * const importTest = new harness.autostopping.AzureGateway("import_test", {
@@ -36,6 +37,7 @@ import * as utilities from "../utilities";
  *     certificateId: "/subscriptions/subscription_id/resourceGroups/test_resource_group/providers/Microsoft.Network/applicationGateways/TestAppGateway/sslCertificates/certificate_name",
  *     azureFuncRegion: "westus2",
  *     vpc: "/subscriptions/subscription_id/resourceGroups/test_resource_group/providers/Microsoft.Network/virtualNetworks/test_resource_group_vnet",
+ *     apiKey: "api_key",
  *     deleteCloudResourcesOnDestroy: false,
  * });
  * ```
@@ -68,6 +70,10 @@ export class AzureGateway extends pulumi.CustomResource {
         return obj['__pulumiType'] === AzureGateway.__pulumiType;
     }
 
+    /**
+     * Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+     */
+    declare public readonly apiKey: pulumi.Output<string>;
     /**
      * ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
      */
@@ -134,6 +140,7 @@ export class AzureGateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AzureGatewayState | undefined;
+            resourceInputs["apiKey"] = state?.apiKey;
             resourceInputs["appGatewayId"] = state?.appGatewayId;
             resourceInputs["azureFuncRegion"] = state?.azureFuncRegion;
             resourceInputs["certificateId"] = state?.certificateId;
@@ -149,6 +156,9 @@ export class AzureGateway extends pulumi.CustomResource {
             resourceInputs["vpc"] = state?.vpc;
         } else {
             const args = argsOrState as AzureGatewayArgs | undefined;
+            if (args?.apiKey === undefined && !opts.urn) {
+                throw new Error("Missing required property 'apiKey'");
+            }
             if (args?.azureFuncRegion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'azureFuncRegion'");
             }
@@ -167,6 +177,7 @@ export class AzureGateway extends pulumi.CustomResource {
             if (args?.vpc === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpc'");
             }
+            resourceInputs["apiKey"] = args?.apiKey ? pulumi.secret(args.apiKey) : undefined;
             resourceInputs["appGatewayId"] = args?.appGatewayId;
             resourceInputs["azureFuncRegion"] = args?.azureFuncRegion;
             resourceInputs["certificateId"] = args?.certificateId;
@@ -182,6 +193,8 @@ export class AzureGateway extends pulumi.CustomResource {
             resourceInputs["identifier"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["apiKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AzureGateway.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -190,6 +203,10 @@ export class AzureGateway extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AzureGateway resources.
  */
 export interface AzureGatewayState {
+    /**
+     * Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+     */
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
      */
@@ -248,6 +265,10 @@ export interface AzureGatewayState {
  * The set of arguments for constructing a AzureGateway resource.
  */
 export interface AzureGatewayArgs {
+    /**
+     * Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+     */
+    apiKey: pulumi.Input<string>;
     /**
      * ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
      */

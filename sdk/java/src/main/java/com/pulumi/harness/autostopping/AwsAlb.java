@@ -95,14 +95,14 @@ public class AwsAlb extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="apiKey", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> apiKey;
+    private Output<String> apiKey;
 
     /**
      * @return Harness NG API key. Used to configure the AutoStopping warmup function with authentication
      * 
      */
-    public Output<Optional<String>> apiKey() {
-        return Codegen.optional(this.apiKey);
+    public Output<String> apiKey() {
+        return this.apiKey;
     }
     @Export(name="certificateId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certificateId;

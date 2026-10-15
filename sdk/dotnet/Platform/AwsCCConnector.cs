@@ -38,7 +38,10 @@ namespace Pulumi.Harness.Platform
     ///         },
     ///         AccountId = "account_id",
     ///         ReportName = "report_name",
+    ///         ReportType = "CUR2.0",
+    ///         Region = "us-east-1",
     ///         S3Bucket = "s3bucket",
+    ///         S3Prefix = "cur",
     ///         FeaturesEnableds = new[]
     ///         {
     ///             "OPTIMIZATION",
@@ -124,16 +127,34 @@ namespace Pulumi.Harness.Platform
         public Output<string?> ProjectId { get; private set; } = null!;
 
         /// <summary>
+        /// The AWS region where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the region stored in Harness.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
         /// The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
         /// </summary>
         [Output("reportName")]
         public Output<string?> ReportName { get; private set; } = null!;
 
         /// <summary>
+        /// The Cost and Usage Report type. Set to `CUR2.0` for AWS Data Exports. When omitted, a new connector uses legacy CUR 1.0 and an existing connector keeps the report type stored in Harness.
+        /// </summary>
+        [Output("reportType")]
+        public Output<string> ReportType { get; private set; } = null!;
+
+        /// <summary>
         /// The name of s3 bucket.
         /// </summary>
         [Output("s3Bucket")]
         public Output<string?> S3Bucket { get; private set; } = null!;
+
+        /// <summary>
+        /// The S3 path prefix where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the prefix stored in Harness.
+        /// </summary>
+        [Output("s3Prefix")]
+        public Output<string> S3Prefix { get; private set; } = null!;
 
         /// <summary>
         /// Tags to associate with the resource.
@@ -243,16 +264,34 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
+        /// The AWS region where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the region stored in Harness.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
         /// The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
         /// </summary>
         [Input("reportName")]
         public Input<string>? ReportName { get; set; }
 
         /// <summary>
+        /// The Cost and Usage Report type. Set to `CUR2.0` for AWS Data Exports. When omitted, a new connector uses legacy CUR 1.0 and an existing connector keeps the report type stored in Harness.
+        /// </summary>
+        [Input("reportType")]
+        public Input<string>? ReportType { get; set; }
+
+        /// <summary>
         /// The name of s3 bucket.
         /// </summary>
         [Input("s3Bucket")]
         public Input<string>? S3Bucket { get; set; }
+
+        /// <summary>
+        /// The S3 path prefix where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the prefix stored in Harness.
+        /// </summary>
+        [Input("s3Prefix")]
+        public Input<string>? S3Prefix { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -329,16 +368,34 @@ namespace Pulumi.Harness.Platform
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
+        /// The AWS region where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the region stored in Harness.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
         /// The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
         /// </summary>
         [Input("reportName")]
         public Input<string>? ReportName { get; set; }
 
         /// <summary>
+        /// The Cost and Usage Report type. Set to `CUR2.0` for AWS Data Exports. When omitted, a new connector uses legacy CUR 1.0 and an existing connector keeps the report type stored in Harness.
+        /// </summary>
+        [Input("reportType")]
+        public Input<string>? ReportType { get; set; }
+
+        /// <summary>
         /// The name of s3 bucket.
         /// </summary>
         [Input("s3Bucket")]
         public Input<string>? S3Bucket { get; set; }
+
+        /// <summary>
+        /// The S3 path prefix where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the prefix stored in Harness.
+        /// </summary>
+        [Input("s3Prefix")]
+        public Input<string>? S3Prefix { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

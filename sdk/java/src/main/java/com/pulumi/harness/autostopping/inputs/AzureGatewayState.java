@@ -17,6 +17,21 @@ public final class AzureGatewayState extends com.pulumi.resources.ResourceArgs {
     public static final AzureGatewayState Empty = new AzureGatewayState();
 
     /**
+     * Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+     * 
+     */
+    @Import(name="apiKey")
+    private @Nullable Output<String> apiKey;
+
+    /**
+     * @return Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+     * 
+     */
+    public Optional<Output<String>> apiKey() {
+        return Optional.ofNullable(this.apiKey);
+    }
+
+    /**
      * ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
      * 
      */
@@ -214,6 +229,7 @@ public final class AzureGatewayState extends com.pulumi.resources.ResourceArgs {
     private AzureGatewayState() {}
 
     private AzureGatewayState(AzureGatewayState $) {
+        this.apiKey = $.apiKey;
         this.appGatewayId = $.appGatewayId;
         this.azureFuncRegion = $.azureFuncRegion;
         this.certificateId = $.certificateId;
@@ -245,6 +261,27 @@ public final class AzureGatewayState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(AzureGatewayState defaults) {
             $ = new AzureGatewayState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param apiKey Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiKey(@Nullable Output<String> apiKey) {
+            $.apiKey = apiKey;
+            return this;
+        }
+
+        /**
+         * @param apiKey Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiKey(String apiKey) {
+            return apiKey(Output.of(apiKey));
         }
 
         /**

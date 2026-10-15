@@ -19,6 +19,7 @@ __all__ = ['AzureGatewayArgs', 'AzureGateway']
 @pulumi.input_type
 class AzureGatewayArgs:
     def __init__(__self__, *,
+                 api_key: pulumi.Input[_builtins.str],
                  azure_func_region: pulumi.Input[_builtins.str],
                  cloud_connector_id: pulumi.Input[_builtins.str],
                  delete_cloud_resources_on_destroy: pulumi.Input[_builtins.bool],
@@ -34,6 +35,7 @@ class AzureGatewayArgs:
         """
         The set of arguments for constructing a AzureGateway resource.
 
+        :param pulumi.Input[_builtins.str] api_key: Harness NG API key. Used to configure the AutoStopping warmup function with authentication
         :param pulumi.Input[_builtins.str] azure_func_region: Region in which azure cloud function will be provisioned
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated Application Gateway will be deleted permanently from Azure account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
@@ -47,6 +49,7 @@ class AzureGatewayArgs:
         :param pulumi.Input[_builtins.str] sku_size: Size of machine used for the gateway. Required only for creating new AppGateway
         :param pulumi.Input[_builtins.str] subnet_id: Subnet in which cloud resources are hosted. Required only for creating new AppGateway
         """
+        pulumi.set(__self__, "api_key", api_key)
         pulumi.set(__self__, "azure_func_region", azure_func_region)
         pulumi.set(__self__, "cloud_connector_id", cloud_connector_id)
         pulumi.set(__self__, "delete_cloud_resources_on_destroy", delete_cloud_resources_on_destroy)
@@ -65,6 +68,18 @@ class AzureGatewayArgs:
             pulumi.set(__self__, "sku_size", sku_size)
         if subnet_id is not None:
             pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> pulumi.Input[_builtins.str]:
+        """
+        Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "api_key", value)
 
     @_builtins.property
     @pulumi.getter(name="azureFuncRegion")
@@ -214,6 +229,7 @@ class AzureGatewayArgs:
 @pulumi.input_type
 class _AzureGatewayState:
     def __init__(__self__, *,
+                 api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  app_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  azure_func_region: pulumi.Input[Optional[_builtins.str]] = None,
                  certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -230,6 +246,7 @@ class _AzureGatewayState:
         """
         Input properties used for looking up and filtering AzureGateway resources.
 
+        :param pulumi.Input[_builtins.str] api_key: Harness NG API key. Used to configure the AutoStopping warmup function with authentication
         :param pulumi.Input[_builtins.str] app_gateway_id: ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
         :param pulumi.Input[_builtins.str] azure_func_region: Region in which azure cloud function will be provisioned
         :param pulumi.Input[_builtins.str] certificate_id: ID of existing SSL certificate from AppGateway being imported. Required only for importing existing AppGateway. Required only for SSL based rules
@@ -244,6 +261,8 @@ class _AzureGatewayState:
         :param pulumi.Input[_builtins.str] subnet_id: Subnet in which cloud resources are hosted. Required only for creating new AppGateway
         :param pulumi.Input[_builtins.str] vpc: VNet in which cloud resources are hosted. Required only for creating new AppGateway
         """
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
         if app_gateway_id is not None:
             pulumi.set(__self__, "app_gateway_id", app_gateway_id)
         if azure_func_region is not None:
@@ -270,6 +289,18 @@ class _AzureGatewayState:
             pulumi.set(__self__, "subnet_id", subnet_id)
         if vpc is not None:
             pulumi.set(__self__, "vpc", vpc)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "api_key", value)
 
     @_builtins.property
     @pulumi.getter(name="appGatewayId")
@@ -434,6 +465,7 @@ class AzureGateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  app_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  azure_func_region: pulumi.Input[Optional[_builtins.str]] = None,
                  certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -467,6 +499,7 @@ class AzureGateway(pulumi.CustomResource):
             azure_func_region="westus2",
             frontend_ip="/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Network/publicIPAddresses/publicip",
             sku_size="sku2",
+            api_key="api_key",
             delete_cloud_resources_on_destroy=True)
         import_test = harness.autostopping.AzureGateway("import_test",
             name="import_test",
@@ -478,12 +511,14 @@ class AzureGateway(pulumi.CustomResource):
             certificate_id="/subscriptions/subscription_id/resourceGroups/test_resource_group/providers/Microsoft.Network/applicationGateways/TestAppGateway/sslCertificates/certificate_name",
             azure_func_region="westus2",
             vpc="/subscriptions/subscription_id/resourceGroups/test_resource_group/providers/Microsoft.Network/virtualNetworks/test_resource_group_vnet",
+            api_key="api_key",
             delete_cloud_resources_on_destroy=False)
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] api_key: Harness NG API key. Used to configure the AutoStopping warmup function with authentication
         :param pulumi.Input[_builtins.str] app_gateway_id: ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
         :param pulumi.Input[_builtins.str] azure_func_region: Region in which azure cloud function will be provisioned
         :param pulumi.Input[_builtins.str] certificate_id: ID of existing SSL certificate from AppGateway being imported. Required only for importing existing AppGateway. Required only for SSL based rules
@@ -523,6 +558,7 @@ class AzureGateway(pulumi.CustomResource):
             azure_func_region="westus2",
             frontend_ip="/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Network/publicIPAddresses/publicip",
             sku_size="sku2",
+            api_key="api_key",
             delete_cloud_resources_on_destroy=True)
         import_test = harness.autostopping.AzureGateway("import_test",
             name="import_test",
@@ -534,6 +570,7 @@ class AzureGateway(pulumi.CustomResource):
             certificate_id="/subscriptions/subscription_id/resourceGroups/test_resource_group/providers/Microsoft.Network/applicationGateways/TestAppGateway/sslCertificates/certificate_name",
             azure_func_region="westus2",
             vpc="/subscriptions/subscription_id/resourceGroups/test_resource_group/providers/Microsoft.Network/virtualNetworks/test_resource_group_vnet",
+            api_key="api_key",
             delete_cloud_resources_on_destroy=False)
         ```
 
@@ -553,6 +590,7 @@ class AzureGateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  app_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  azure_func_region: pulumi.Input[Optional[_builtins.str]] = None,
                  certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -574,6 +612,9 @@ class AzureGateway(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AzureGatewayArgs.__new__(AzureGatewayArgs)
 
+            if api_key is None and not opts.urn:
+                raise TypeError("Missing required property 'api_key'")
+            __props__.__dict__["api_key"] = None if api_key is None else pulumi.Output.secret(api_key)
             __props__.__dict__["app_gateway_id"] = app_gateway_id
             if azure_func_region is None and not opts.urn:
                 raise TypeError("Missing required property 'azure_func_region'")
@@ -599,6 +640,8 @@ class AzureGateway(pulumi.CustomResource):
                 raise TypeError("Missing required property 'vpc'")
             __props__.__dict__["vpc"] = vpc
             __props__.__dict__["identifier"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["apiKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AzureGateway, __self__).__init__(
             'harness:autostopping/azureGateway:AzureGateway',
             resource_name,
@@ -609,6 +652,7 @@ class AzureGateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            api_key: pulumi.Input[Optional[_builtins.str]] = None,
             app_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
             azure_func_region: pulumi.Input[Optional[_builtins.str]] = None,
             certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -629,6 +673,7 @@ class AzureGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] api_key: Harness NG API key. Used to configure the AutoStopping warmup function with authentication
         :param pulumi.Input[_builtins.str] app_gateway_id: ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
         :param pulumi.Input[_builtins.str] azure_func_region: Region in which azure cloud function will be provisioned
         :param pulumi.Input[_builtins.str] certificate_id: ID of existing SSL certificate from AppGateway being imported. Required only for importing existing AppGateway. Required only for SSL based rules
@@ -647,6 +692,7 @@ class AzureGateway(pulumi.CustomResource):
 
         __props__ = _AzureGatewayState.__new__(_AzureGatewayState)
 
+        __props__.__dict__["api_key"] = api_key
         __props__.__dict__["app_gateway_id"] = app_gateway_id
         __props__.__dict__["azure_func_region"] = azure_func_region
         __props__.__dict__["certificate_id"] = certificate_id
@@ -661,6 +707,14 @@ class AzureGateway(pulumi.CustomResource):
         __props__.__dict__["subnet_id"] = subnet_id
         __props__.__dict__["vpc"] = vpc
         return AzureGateway(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> pulumi.Output[_builtins.str]:
+        """
+        Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+        """
+        return pulumi.get(self, "api_key")
 
     @_builtins.property
     @pulumi.getter(name="appGatewayId")

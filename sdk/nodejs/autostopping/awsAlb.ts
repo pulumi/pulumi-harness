@@ -74,7 +74,7 @@ export class AwsAlb extends pulumi.CustomResource {
     /**
      * Harness NG API key. Used to configure the AutoStopping warmup function with authentication
      */
-    declare public readonly apiKey: pulumi.Output<string | undefined>;
+    declare public readonly apiKey: pulumi.Output<string>;
     declare public readonly certificateId: pulumi.Output<string | undefined>;
     /**
      * Id of the cloud connector
@@ -130,6 +130,9 @@ export class AwsAlb extends pulumi.CustomResource {
             resourceInputs["vpc"] = state?.vpc;
         } else {
             const args = argsOrState as AwsAlbArgs | undefined;
+            if (args?.apiKey === undefined && !opts.urn) {
+                throw new Error("Missing required property 'apiKey'");
+            }
             if (args?.cloudConnectorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cloudConnectorId'");
             }
@@ -214,7 +217,7 @@ export interface AwsAlbArgs {
     /**
      * Harness NG API key. Used to configure the AutoStopping warmup function with authentication
      */
-    apiKey?: pulumi.Input<string | undefined>;
+    apiKey: pulumi.Input<string>;
     certificateId?: pulumi.Input<string | undefined>;
     /**
      * Id of the cloud connector

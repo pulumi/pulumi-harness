@@ -37,15 +37,15 @@ public final class AwsAlbArgs extends com.pulumi.resources.ResourceArgs {
      * Harness NG API key. Used to configure the AutoStopping warmup function with authentication
      * 
      */
-    @Import(name="apiKey")
-    private @Nullable Output<String> apiKey;
+    @Import(name="apiKey", required=true)
+    private Output<String> apiKey;
 
     /**
      * @return Harness NG API key. Used to configure the AutoStopping warmup function with authentication
      * 
      */
-    public Optional<Output<String>> apiKey() {
-        return Optional.ofNullable(this.apiKey);
+    public Output<String> apiKey() {
+        return this.apiKey;
     }
 
     @Import(name="certificateId")
@@ -204,7 +204,7 @@ public final class AwsAlbArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder apiKey(@Nullable Output<String> apiKey) {
+        public Builder apiKey(Output<String> apiKey) {
             $.apiKey = apiKey;
             return this;
         }
@@ -365,6 +365,9 @@ public final class AwsAlbArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AwsAlbArgs build() {
+            if ($.apiKey == null) {
+                throw new MissingRequiredPropertyException("AwsAlbArgs", "apiKey");
+            }
             if ($.cloudConnectorId == null) {
                 throw new MissingRequiredPropertyException("AwsAlbArgs", "cloudConnectorId");
             }

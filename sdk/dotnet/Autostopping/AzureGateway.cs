@@ -34,6 +34,7 @@ namespace Pulumi.Harness.Autostopping
     ///         AzureFuncRegion = "westus2",
     ///         FrontendIp = "/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Network/publicIPAddresses/publicip",
     ///         SkuSize = "sku2",
+    ///         ApiKey = "api_key",
     ///         DeleteCloudResourcesOnDestroy = true,
     ///     });
     /// 
@@ -48,6 +49,7 @@ namespace Pulumi.Harness.Autostopping
     ///         CertificateId = "/subscriptions/subscription_id/resourceGroups/test_resource_group/providers/Microsoft.Network/applicationGateways/TestAppGateway/sslCertificates/certificate_name",
     ///         AzureFuncRegion = "westus2",
     ///         Vpc = "/subscriptions/subscription_id/resourceGroups/test_resource_group/providers/Microsoft.Network/virtualNetworks/test_resource_group_vnet",
+    ///         ApiKey = "api_key",
     ///         DeleteCloudResourcesOnDestroy = false,
     ///     });
     /// 
@@ -57,6 +59,12 @@ namespace Pulumi.Harness.Autostopping
     [HarnessResourceType("harness:autostopping/azureGateway:AzureGateway")]
     public partial class AzureGateway : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+        /// </summary>
+        [Output("apiKey")]
+        public Output<string> ApiKey { get; private set; } = null!;
+
         /// <summary>
         /// ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
         /// </summary>
@@ -159,6 +167,10 @@ namespace Pulumi.Harness.Autostopping
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/pulumi",
+                AdditionalSecretOutputs =
+                {
+                    "apiKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -182,6 +194,22 @@ namespace Pulumi.Harness.Autostopping
 
     public sealed class AzureGatewayArgs : global::Pulumi.ResourceArgs
     {
+        [Input("apiKey", required: true)]
+        private Input<string>? _apiKey;
+
+        /// <summary>
+        /// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+        /// </summary>
+        public Input<string>? ApiKey
+        {
+            get => _apiKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _apiKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
         /// </summary>
@@ -262,6 +290,22 @@ namespace Pulumi.Harness.Autostopping
 
     public sealed class AzureGatewayState : global::Pulumi.ResourceArgs
     {
+        [Input("apiKey")]
+        private Input<string>? _apiKey;
+
+        /// <summary>
+        /// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+        /// </summary>
+        public Input<string>? ApiKey
+        {
+            get => _apiKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _apiKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
         /// </summary>

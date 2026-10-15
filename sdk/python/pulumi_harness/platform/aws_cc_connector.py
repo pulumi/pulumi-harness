@@ -29,8 +29,11 @@ class AwsCCConnectorArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  report_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_type: pulumi.Input[Optional[_builtins.str]] = None,
                  s3_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AwsCCConnector resource.
@@ -43,8 +46,11 @@ class AwsCCConnectorArgs:
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
+        :param pulumi.Input[_builtins.str] region: The AWS region where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the region stored in Harness.
         :param pulumi.Input[_builtins.str] report_name: The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
+        :param pulumi.Input[_builtins.str] report_type: The Cost and Usage Report type. Set to `CUR2.0` for AWS Data Exports. When omitted, a new connector uses legacy CUR 1.0 and an existing connector keeps the report type stored in Harness.
         :param pulumi.Input[_builtins.str] s3_bucket: The name of s3 bucket.
+        :param pulumi.Input[_builtins.str] s3_prefix: The S3 path prefix where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the prefix stored in Harness.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -59,10 +65,16 @@ class AwsCCConnectorArgs:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if report_name is not None:
             pulumi.set(__self__, "report_name", report_name)
+        if report_type is not None:
+            pulumi.set(__self__, "report_type", report_type)
         if s3_bucket is not None:
             pulumi.set(__self__, "s3_bucket", s3_bucket)
+        if s3_prefix is not None:
+            pulumi.set(__self__, "s3_prefix", s3_prefix)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -163,6 +175,18 @@ class AwsCCConnectorArgs:
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The AWS region where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the region stored in Harness.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
     @pulumi.getter(name="reportName")
     def report_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -175,6 +199,18 @@ class AwsCCConnectorArgs:
         pulumi.set(self, "report_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="reportType")
+    def report_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Cost and Usage Report type. Set to `CUR2.0` for AWS Data Exports. When omitted, a new connector uses legacy CUR 1.0 and an existing connector keeps the report type stored in Harness.
+        """
+        return pulumi.get(self, "report_type")
+
+    @report_type.setter
+    def report_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "report_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="s3Bucket")
     def s3_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -185,6 +221,18 @@ class AwsCCConnectorArgs:
     @s3_bucket.setter
     def s3_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "s3_bucket", value)
+
+    @_builtins.property
+    @pulumi.getter(name="s3Prefix")
+    def s3_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The S3 path prefix where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the prefix stored in Harness.
+        """
+        return pulumi.get(self, "s3_prefix")
+
+    @s3_prefix.setter
+    def s3_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "s3_prefix", value)
 
     @_builtins.property
     @pulumi.getter
@@ -210,8 +258,11 @@ class _AwsCCConnectorState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  report_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_type: pulumi.Input[Optional[_builtins.str]] = None,
                  s3_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AwsCCConnector resources.
@@ -224,8 +275,11 @@ class _AwsCCConnectorState:
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
+        :param pulumi.Input[_builtins.str] region: The AWS region where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the region stored in Harness.
         :param pulumi.Input[_builtins.str] report_name: The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
+        :param pulumi.Input[_builtins.str] report_type: The Cost and Usage Report type. Set to `CUR2.0` for AWS Data Exports. When omitted, a new connector uses legacy CUR 1.0 and an existing connector keeps the report type stored in Harness.
         :param pulumi.Input[_builtins.str] s3_bucket: The name of s3 bucket.
+        :param pulumi.Input[_builtins.str] s3_prefix: The S3 path prefix where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the prefix stored in Harness.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         """
         if account_id is not None:
@@ -244,10 +298,16 @@ class _AwsCCConnectorState:
             pulumi.set(__self__, "org_id", org_id)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if report_name is not None:
             pulumi.set(__self__, "report_name", report_name)
+        if report_type is not None:
+            pulumi.set(__self__, "report_type", report_type)
         if s3_bucket is not None:
             pulumi.set(__self__, "s3_bucket", s3_bucket)
+        if s3_prefix is not None:
+            pulumi.set(__self__, "s3_prefix", s3_prefix)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -348,6 +408,18 @@ class _AwsCCConnectorState:
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The AWS region where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the region stored in Harness.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
     @pulumi.getter(name="reportName")
     def report_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -360,6 +432,18 @@ class _AwsCCConnectorState:
         pulumi.set(self, "report_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="reportType")
+    def report_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Cost and Usage Report type. Set to `CUR2.0` for AWS Data Exports. When omitted, a new connector uses legacy CUR 1.0 and an existing connector keeps the report type stored in Harness.
+        """
+        return pulumi.get(self, "report_type")
+
+    @report_type.setter
+    def report_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "report_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="s3Bucket")
     def s3_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -370,6 +454,18 @@ class _AwsCCConnectorState:
     @s3_bucket.setter
     def s3_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "s3_bucket", value)
+
+    @_builtins.property
+    @pulumi.getter(name="s3Prefix")
+    def s3_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The S3 path prefix where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the prefix stored in Harness.
+        """
+        return pulumi.get(self, "s3_prefix")
+
+    @s3_prefix.setter
+    def s3_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "s3_prefix", value)
 
     @_builtins.property
     @pulumi.getter
@@ -398,8 +494,11 @@ class AwsCCConnector(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  report_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_type: pulumi.Input[Optional[_builtins.str]] = None,
                  s3_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -422,7 +521,10 @@ class AwsCCConnector(pulumi.CustomResource):
             tags=["foo:bar"],
             account_id="account_id",
             report_name="report_name",
+            report_type="CUR2.0",
+            region="us-east-1",
             s3_bucket="s3bucket",
+            s3_prefix="cur",
             features_enableds=[
                 "OPTIMIZATION",
                 "VISIBILITY",
@@ -463,8 +565,11 @@ class AwsCCConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
+        :param pulumi.Input[_builtins.str] region: The AWS region where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the region stored in Harness.
         :param pulumi.Input[_builtins.str] report_name: The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
+        :param pulumi.Input[_builtins.str] report_type: The Cost and Usage Report type. Set to `CUR2.0` for AWS Data Exports. When omitted, a new connector uses legacy CUR 1.0 and an existing connector keeps the report type stored in Harness.
         :param pulumi.Input[_builtins.str] s3_bucket: The name of s3 bucket.
+        :param pulumi.Input[_builtins.str] s3_prefix: The S3 path prefix where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the prefix stored in Harness.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         """
         ...
@@ -493,7 +598,10 @@ class AwsCCConnector(pulumi.CustomResource):
             tags=["foo:bar"],
             account_id="account_id",
             report_name="report_name",
+            report_type="CUR2.0",
+            region="us-east-1",
             s3_bucket="s3bucket",
+            s3_prefix="cur",
             features_enableds=[
                 "OPTIMIZATION",
                 "VISIBILITY",
@@ -547,8 +655,11 @@ class AwsCCConnector(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  report_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 report_type: pulumi.Input[Optional[_builtins.str]] = None,
                  s3_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -575,8 +686,11 @@ class AwsCCConnector(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["region"] = region
             __props__.__dict__["report_name"] = report_name
+            __props__.__dict__["report_type"] = report_type
             __props__.__dict__["s3_bucket"] = s3_bucket
+            __props__.__dict__["s3_prefix"] = s3_prefix
             __props__.__dict__["tags"] = tags
         super(AwsCCConnector, __self__).__init__(
             'harness:platform/awsCCConnector:AwsCCConnector',
@@ -596,8 +710,11 @@ class AwsCCConnector(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
             report_name: pulumi.Input[Optional[_builtins.str]] = None,
+            report_type: pulumi.Input[Optional[_builtins.str]] = None,
             s3_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            s3_prefix: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AwsCCConnector':
         """
         Get an existing AwsCCConnector resource's state with the given name, id, and optional extra
@@ -614,8 +731,11 @@ class AwsCCConnector(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
         :param pulumi.Input[_builtins.str] project_id: Unique identifier of the project.
+        :param pulumi.Input[_builtins.str] region: The AWS region where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the region stored in Harness.
         :param pulumi.Input[_builtins.str] report_name: The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
+        :param pulumi.Input[_builtins.str] report_type: The Cost and Usage Report type. Set to `CUR2.0` for AWS Data Exports. When omitted, a new connector uses legacy CUR 1.0 and an existing connector keeps the report type stored in Harness.
         :param pulumi.Input[_builtins.str] s3_bucket: The name of s3 bucket.
+        :param pulumi.Input[_builtins.str] s3_prefix: The S3 path prefix where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the prefix stored in Harness.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to associate with the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -630,8 +750,11 @@ class AwsCCConnector(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["region"] = region
         __props__.__dict__["report_name"] = report_name
+        __props__.__dict__["report_type"] = report_type
         __props__.__dict__["s3_bucket"] = s3_bucket
+        __props__.__dict__["s3_prefix"] = s3_prefix
         __props__.__dict__["tags"] = tags
         return AwsCCConnector(resource_name, opts=opts, __props__=__props__)
 
@@ -700,6 +823,14 @@ class AwsCCConnector(pulumi.CustomResource):
         return pulumi.get(self, "project_id")
 
     @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[_builtins.str]:
+        """
+        The AWS region where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the region stored in Harness.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
     @pulumi.getter(name="reportName")
     def report_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -708,12 +839,28 @@ class AwsCCConnector(pulumi.CustomResource):
         return pulumi.get(self, "report_name")
 
     @_builtins.property
+    @pulumi.getter(name="reportType")
+    def report_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The Cost and Usage Report type. Set to `CUR2.0` for AWS Data Exports. When omitted, a new connector uses legacy CUR 1.0 and an existing connector keeps the report type stored in Harness.
+        """
+        return pulumi.get(self, "report_type")
+
+    @_builtins.property
     @pulumi.getter(name="s3Bucket")
     def s3_bucket(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The name of s3 bucket.
         """
         return pulumi.get(self, "s3_bucket")
+
+    @_builtins.property
+    @pulumi.getter(name="s3Prefix")
+    def s3_prefix(self) -> pulumi.Output[_builtins.str]:
+        """
+        The S3 path prefix where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the prefix stored in Harness.
+        """
+        return pulumi.get(self, "s3_prefix")
 
     @_builtins.property
     @pulumi.getter

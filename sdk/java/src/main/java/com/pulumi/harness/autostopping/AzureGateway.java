@@ -12,6 +12,7 @@ import com.pulumi.harness.autostopping.AzureGatewayArgs;
 import com.pulumi.harness.autostopping.inputs.AzureGatewayState;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -53,6 +54,7 @@ import javax.annotation.Nullable;
  *             .azureFuncRegion("westus2")
  *             .frontendIp("/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Network/publicIPAddresses/publicip")
  *             .skuSize("sku2")
+ *             .apiKey("api_key")
  *             .deleteCloudResourcesOnDestroy(true)
  *             .build());
  * 
@@ -66,6 +68,7 @@ import javax.annotation.Nullable;
  *             .certificateId("/subscriptions/subscription_id/resourceGroups/test_resource_group/providers/Microsoft.Network/applicationGateways/TestAppGateway/sslCertificates/certificate_name")
  *             .azureFuncRegion("westus2")
  *             .vpc("/subscriptions/subscription_id/resourceGroups/test_resource_group/providers/Microsoft.Network/virtualNetworks/test_resource_group_vnet")
+ *             .apiKey("api_key")
  *             .deleteCloudResourcesOnDestroy(false)
  *             .build());
  * 
@@ -77,6 +80,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="harness:autostopping/azureGateway:AzureGateway")
 public class AzureGateway extends com.pulumi.resources.CustomResource {
+    /**
+     * Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+     * 
+     */
+    @Export(name="apiKey", refs={String.class}, tree="[0]")
+    private Output<String> apiKey;
+
+    /**
+     * @return Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+     * 
+     */
+    public Output<String> apiKey() {
+        return this.apiKey;
+    }
     /**
      * ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
      * 
@@ -300,6 +317,9 @@ public class AzureGateway extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .pluginDownloadURL("github://api.github.com/pulumi")
+            .additionalSecretOutputs(List.of(
+                "apiKey"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

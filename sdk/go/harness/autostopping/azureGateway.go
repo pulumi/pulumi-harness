@@ -39,6 +39,7 @@ import (
 //				AzureFuncRegion:               pulumi.String("westus2"),
 //				FrontendIp:                    pulumi.String("/subscriptions/subscription_id/resourceGroups/resource_group/providers/Microsoft.Network/publicIPAddresses/publicip"),
 //				SkuSize:                       pulumi.String("sku2"),
+//				ApiKey:                        pulumi.String("api_key"),
 //				DeleteCloudResourcesOnDestroy: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -54,6 +55,7 @@ import (
 //				CertificateId:                 pulumi.String("/subscriptions/subscription_id/resourceGroups/test_resource_group/providers/Microsoft.Network/applicationGateways/TestAppGateway/sslCertificates/certificate_name"),
 //				AzureFuncRegion:               pulumi.String("westus2"),
 //				Vpc:                           pulumi.String("/subscriptions/subscription_id/resourceGroups/test_resource_group/providers/Microsoft.Network/virtualNetworks/test_resource_group_vnet"),
+//				ApiKey:                        pulumi.String("api_key"),
 //				DeleteCloudResourcesOnDestroy: pulumi.Bool(false),
 //			})
 //			if err != nil {
@@ -67,6 +69,8 @@ import (
 type AzureGateway struct {
 	pulumi.CustomResourceState
 
+	// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+	ApiKey pulumi.StringOutput `pulumi:"apiKey"`
 	// ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
 	AppGatewayId pulumi.StringPtrOutput `pulumi:"appGatewayId"`
 	// Region in which azure cloud function will be provisioned
@@ -102,6 +106,9 @@ func NewAzureGateway(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ApiKey == nil {
+		return nil, errors.New("invalid value for required argument 'ApiKey'")
+	}
 	if args.AzureFuncRegion == nil {
 		return nil, errors.New("invalid value for required argument 'AzureFuncRegion'")
 	}
@@ -120,6 +127,13 @@ func NewAzureGateway(ctx *pulumi.Context,
 	if args.Vpc == nil {
 		return nil, errors.New("invalid value for required argument 'Vpc'")
 	}
+	if args.ApiKey != nil {
+		args.ApiKey = pulumi.ToSecret(args.ApiKey).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"apiKey",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AzureGateway
 	err := ctx.RegisterResource("harness:autostopping/azureGateway:AzureGateway", name, args, &resource, opts...)
@@ -143,6 +157,8 @@ func GetAzureGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AzureGateway resources.
 type azureGatewayState struct {
+	// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+	ApiKey *string `pulumi:"apiKey"`
 	// ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
 	AppGatewayId *string `pulumi:"appGatewayId"`
 	// Region in which azure cloud function will be provisioned
@@ -172,6 +188,8 @@ type azureGatewayState struct {
 }
 
 type AzureGatewayState struct {
+	// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+	ApiKey pulumi.StringPtrInput
 	// ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
 	AppGatewayId pulumi.StringPtrInput
 	// Region in which azure cloud function will be provisioned
@@ -205,6 +223,8 @@ func (AzureGatewayState) ElementType() reflect.Type {
 }
 
 type azureGatewayArgs struct {
+	// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+	ApiKey string `pulumi:"apiKey"`
 	// ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
 	AppGatewayId *string `pulumi:"appGatewayId"`
 	// Region in which azure cloud function will be provisioned
@@ -233,6 +253,8 @@ type azureGatewayArgs struct {
 
 // The set of arguments for constructing a AzureGateway resource.
 type AzureGatewayArgs struct {
+	// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+	ApiKey pulumi.StringInput
 	// ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
 	AppGatewayId pulumi.StringPtrInput
 	// Region in which azure cloud function will be provisioned
@@ -344,6 +366,11 @@ func (o AzureGatewayOutput) ToAzureGatewayOutput() AzureGatewayOutput {
 
 func (o AzureGatewayOutput) ToAzureGatewayOutputWithContext(ctx context.Context) AzureGatewayOutput {
 	return o
+}
+
+// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+func (o AzureGatewayOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureGateway) pulumi.StringOutput { return v.ApiKey }).(pulumi.StringOutput)
 }
 
 // ID of Azure AppGateway for importing. Required only for importing exiging AppGateway
