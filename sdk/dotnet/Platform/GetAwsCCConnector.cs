@@ -190,13 +190,25 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
+        /// The AWS region where the Cost and Usage Report is delivered.
+        /// </summary>
+        public readonly string Region;
+        /// <summary>
         /// The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
         /// </summary>
         public readonly string ReportName;
         /// <summary>
+        /// The Cost and Usage Report type. `CUR2.0` means the connector uses AWS Data Exports (CUR 2.0). Empty means legacy CUR 1.0.
+        /// </summary>
+        public readonly string ReportType;
+        /// <summary>
         /// The name of s3 bucket.
         /// </summary>
         public readonly string S3Bucket;
+        /// <summary>
+        /// The S3 path prefix where the Cost and Usage Report is delivered.
+        /// </summary>
+        public readonly string S3Prefix;
         /// <summary>
         /// Tags to associate with the resource.
         /// </summary>
@@ -222,9 +234,15 @@ namespace Pulumi.Harness.Platform
 
             string? projectId,
 
+            string region,
+
             string reportName,
 
+            string reportType,
+
             string s3Bucket,
+
+            string s3Prefix,
 
             ImmutableArray<string> tags)
         {
@@ -237,8 +255,11 @@ namespace Pulumi.Harness.Platform
             Name = name;
             OrgId = orgId;
             ProjectId = projectId;
+            Region = region;
             ReportName = reportName;
+            ReportType = reportType;
             S3Bucket = s3Bucket;
+            S3Prefix = s3Prefix;
             Tags = tags;
         }
     }

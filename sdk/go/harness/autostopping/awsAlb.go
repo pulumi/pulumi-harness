@@ -71,7 +71,7 @@ type AwsAlb struct {
 	// Arn of AWS ALB to be imported. Required only for importing existing ALB
 	AlbArn pulumi.StringOutput `pulumi:"albArn"`
 	// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
-	ApiKey        pulumi.StringPtrOutput `pulumi:"apiKey"`
+	ApiKey        pulumi.StringOutput    `pulumi:"apiKey"`
 	CertificateId pulumi.StringPtrOutput `pulumi:"certificateId"`
 	// Id of the cloud connector
 	CloudConnectorId pulumi.StringOutput `pulumi:"cloudConnectorId"`
@@ -96,6 +96,9 @@ func NewAwsAlb(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ApiKey == nil {
+		return nil, errors.New("invalid value for required argument 'ApiKey'")
+	}
 	if args.CloudConnectorId == nil {
 		return nil, errors.New("invalid value for required argument 'CloudConnectorId'")
 	}
@@ -109,7 +112,7 @@ func NewAwsAlb(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Vpc'")
 	}
 	if args.ApiKey != nil {
-		args.ApiKey = pulumi.ToSecret(args.ApiKey).(pulumi.StringPtrInput)
+		args.ApiKey = pulumi.ToSecret(args.ApiKey).(pulumi.StringInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"apiKey",
@@ -189,7 +192,7 @@ type awsAlbArgs struct {
 	// Arn of AWS ALB to be imported. Required only for importing existing ALB
 	AlbArn *string `pulumi:"albArn"`
 	// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
-	ApiKey        *string `pulumi:"apiKey"`
+	ApiKey        string  `pulumi:"apiKey"`
 	CertificateId *string `pulumi:"certificateId"`
 	// Id of the cloud connector
 	CloudConnectorId string `pulumi:"cloudConnectorId"`
@@ -210,7 +213,7 @@ type AwsAlbArgs struct {
 	// Arn of AWS ALB to be imported. Required only for importing existing ALB
 	AlbArn pulumi.StringPtrInput
 	// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
-	ApiKey        pulumi.StringPtrInput
+	ApiKey        pulumi.StringInput
 	CertificateId pulumi.StringPtrInput
 	// Id of the cloud connector
 	CloudConnectorId pulumi.StringInput
@@ -319,8 +322,8 @@ func (o AwsAlbOutput) AlbArn() pulumi.StringOutput {
 }
 
 // Harness NG API key. Used to configure the AutoStopping warmup function with authentication
-func (o AwsAlbOutput) ApiKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AwsAlb) pulumi.StringPtrOutput { return v.ApiKey }).(pulumi.StringPtrOutput)
+func (o AwsAlbOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsAlb) pulumi.StringOutput { return v.ApiKey }).(pulumi.StringOutput)
 }
 
 func (o AwsAlbOutput) CertificateId() pulumi.StringPtrOutput {

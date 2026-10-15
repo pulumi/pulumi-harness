@@ -60,15 +60,30 @@ public final class GetAwsCCConnectorResult {
      */
     private @Nullable String projectId;
     /**
+     * @return The AWS region where the Cost and Usage Report is delivered.
+     * 
+     */
+    private String region;
+    /**
      * @return The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
      * 
      */
     private String reportName;
     /**
+     * @return The Cost and Usage Report type. `CUR2.0` means the connector uses AWS Data Exports (CUR 2.0). Empty means legacy CUR 1.0.
+     * 
+     */
+    private String reportType;
+    /**
      * @return The name of s3 bucket.
      * 
      */
     private String s3Bucket;
+    /**
+     * @return The S3 path prefix where the Cost and Usage Report is delivered.
+     * 
+     */
+    private String s3Prefix;
     /**
      * @return Tags to associate with the resource.
      * 
@@ -140,6 +155,13 @@ public final class GetAwsCCConnectorResult {
         return Optional.ofNullable(this.projectId);
     }
     /**
+     * @return The AWS region where the Cost and Usage Report is delivered.
+     * 
+     */
+    public String region() {
+        return this.region;
+    }
+    /**
      * @return The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
      * 
      */
@@ -147,11 +169,25 @@ public final class GetAwsCCConnectorResult {
         return this.reportName;
     }
     /**
+     * @return The Cost and Usage Report type. `CUR2.0` means the connector uses AWS Data Exports (CUR 2.0). Empty means legacy CUR 1.0.
+     * 
+     */
+    public String reportType() {
+        return this.reportType;
+    }
+    /**
      * @return The name of s3 bucket.
      * 
      */
     public String s3Bucket() {
         return this.s3Bucket;
+    }
+    /**
+     * @return The S3 path prefix where the Cost and Usage Report is delivered.
+     * 
+     */
+    public String s3Prefix() {
+        return this.s3Prefix;
     }
     /**
      * @return Tags to associate with the resource.
@@ -179,8 +215,11 @@ public final class GetAwsCCConnectorResult {
         private @Nullable String name;
         private @Nullable String orgId;
         private @Nullable String projectId;
+        private String region;
         private String reportName;
+        private String reportType;
         private String s3Bucket;
+        private String s3Prefix;
         private List<String> tags;
         public Builder() {}
         public Builder(GetAwsCCConnectorResult defaults) {
@@ -194,8 +233,11 @@ public final class GetAwsCCConnectorResult {
     	      this.name = defaults.name;
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
+    	      this.region = defaults.region;
     	      this.reportName = defaults.reportName;
+    	      this.reportType = defaults.reportType;
     	      this.s3Bucket = defaults.s3Bucket;
+    	      this.s3Prefix = defaults.s3Prefix;
     	      this.tags = defaults.tags;
         }
 
@@ -272,6 +314,14 @@ public final class GetAwsCCConnectorResult {
             return this;
         }
         @CustomType.Setter
+        public Builder region(String region) {
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetAwsCCConnectorResult", "region");
+            }
+            this.region = region;
+            return this;
+        }
+        @CustomType.Setter
         public Builder reportName(String reportName) {
             if (reportName == null) {
               throw new MissingRequiredPropertyException("GetAwsCCConnectorResult", "reportName");
@@ -280,11 +330,27 @@ public final class GetAwsCCConnectorResult {
             return this;
         }
         @CustomType.Setter
+        public Builder reportType(String reportType) {
+            if (reportType == null) {
+              throw new MissingRequiredPropertyException("GetAwsCCConnectorResult", "reportType");
+            }
+            this.reportType = reportType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder s3Bucket(String s3Bucket) {
             if (s3Bucket == null) {
               throw new MissingRequiredPropertyException("GetAwsCCConnectorResult", "s3Bucket");
             }
             this.s3Bucket = s3Bucket;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder s3Prefix(String s3Prefix) {
+            if (s3Prefix == null) {
+              throw new MissingRequiredPropertyException("GetAwsCCConnectorResult", "s3Prefix");
+            }
+            this.s3Prefix = s3Prefix;
             return this;
         }
         @CustomType.Setter
@@ -309,8 +375,11 @@ public final class GetAwsCCConnectorResult {
             _resultValue.name = name;
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;
+            _resultValue.region = region;
             _resultValue.reportName = reportName;
+            _resultValue.reportType = reportType;
             _resultValue.s3Bucket = s3Bucket;
+            _resultValue.s3Prefix = s3Prefix;
             _resultValue.tags = tags;
             return _resultValue;
         }

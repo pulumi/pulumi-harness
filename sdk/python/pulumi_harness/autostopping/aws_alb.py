@@ -19,41 +19,52 @@ __all__ = ['AwsAlbArgs', 'AwsAlb']
 @pulumi.input_type
 class AwsAlbArgs:
     def __init__(__self__, *,
+                 api_key: pulumi.Input[_builtins.str],
                  cloud_connector_id: pulumi.Input[_builtins.str],
                  delete_cloud_resources_on_destroy: pulumi.Input[_builtins.bool],
                  region: pulumi.Input[_builtins.str],
                  vpc: pulumi.Input[_builtins.str],
                  alb_arn: pulumi.Input[Optional[_builtins.str]] = None,
-                 api_key: pulumi.Input[Optional[_builtins.str]] = None,
                  certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AwsAlb resource.
 
+        :param pulumi.Input[_builtins.str] api_key: Harness NG API key. Used to configure the AutoStopping warmup function with authentication
         :param pulumi.Input[_builtins.str] cloud_connector_id: Id of the cloud connector
         :param pulumi.Input[_builtins.bool] delete_cloud_resources_on_destroy: Governs how the loadabalancer entity will be deleted on Terraform destroy. When set to true, the associated ALB will be deleted permanently from AWS account. Be fully aware of the consequneces of settting this to true, as the action is irreversible. When set to false, solely the Harness LB representation will be deleted, leaving the cloud resources intact.
         :param pulumi.Input[_builtins.str] region: Region in which cloud resources are hosted
         :param pulumi.Input[_builtins.str] vpc: VPC in which cloud resources are hosted
         :param pulumi.Input[_builtins.str] alb_arn: Arn of AWS ALB to be imported. Required only for importing existing ALB
-        :param pulumi.Input[_builtins.str] api_key: Harness NG API key. Used to configure the AutoStopping warmup function with authentication
         :param pulumi.Input[_builtins.str] name: Name of the proxy
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: Security Group to define the security rules that determine the inbound and outbound traffic
         """
+        pulumi.set(__self__, "api_key", api_key)
         pulumi.set(__self__, "cloud_connector_id", cloud_connector_id)
         pulumi.set(__self__, "delete_cloud_resources_on_destroy", delete_cloud_resources_on_destroy)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "vpc", vpc)
         if alb_arn is not None:
             pulumi.set(__self__, "alb_arn", alb_arn)
-        if api_key is not None:
-            pulumi.set(__self__, "api_key", api_key)
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if security_groups is not None:
             pulumi.set(__self__, "security_groups", security_groups)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> pulumi.Input[_builtins.str]:
+        """
+        Harness NG API key. Used to configure the AutoStopping warmup function with authentication
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "api_key", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudConnectorId")
@@ -114,18 +125,6 @@ class AwsAlbArgs:
     @alb_arn.setter
     def alb_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alb_arn", value)
-
-    @_builtins.property
-    @pulumi.getter(name="apiKey")
-    def api_key(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Harness NG API key. Used to configure the AutoStopping warmup function with authentication
-        """
-        return pulumi.get(self, "api_key")
-
-    @api_key.setter
-    def api_key(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "api_key", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateId")
@@ -461,6 +460,8 @@ class AwsAlb(pulumi.CustomResource):
             __props__ = AwsAlbArgs.__new__(AwsAlbArgs)
 
             __props__.__dict__["alb_arn"] = alb_arn
+            if api_key is None and not opts.urn:
+                raise TypeError("Missing required property 'api_key'")
             __props__.__dict__["api_key"] = None if api_key is None else pulumi.Output.secret(api_key)
             __props__.__dict__["certificate_id"] = certificate_id
             if cloud_connector_id is None and not opts.urn:
@@ -543,7 +544,7 @@ class AwsAlb(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="apiKey")
-    def api_key(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def api_key(self) -> pulumi.Output[_builtins.str]:
         """
         Harness NG API key. Used to configure the AutoStopping warmup function with authentication
         """

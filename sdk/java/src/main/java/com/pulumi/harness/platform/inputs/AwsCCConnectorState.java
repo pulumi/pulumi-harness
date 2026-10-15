@@ -138,6 +138,21 @@ public final class AwsCCConnectorState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The AWS region where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the region stored in Harness.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return The AWS region where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the region stored in Harness.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    /**
      * The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
      * 
      */
@@ -153,6 +168,21 @@ public final class AwsCCConnectorState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The Cost and Usage Report type. Set to `CUR2.0` for AWS Data Exports. When omitted, a new connector uses legacy CUR 1.0 and an existing connector keeps the report type stored in Harness.
+     * 
+     */
+    @Import(name="reportType")
+    private @Nullable Output<String> reportType;
+
+    /**
+     * @return The Cost and Usage Report type. Set to `CUR2.0` for AWS Data Exports. When omitted, a new connector uses legacy CUR 1.0 and an existing connector keeps the report type stored in Harness.
+     * 
+     */
+    public Optional<Output<String>> reportType() {
+        return Optional.ofNullable(this.reportType);
+    }
+
+    /**
      * The name of s3 bucket.
      * 
      */
@@ -165,6 +195,21 @@ public final class AwsCCConnectorState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> s3Bucket() {
         return Optional.ofNullable(this.s3Bucket);
+    }
+
+    /**
+     * The S3 path prefix where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the prefix stored in Harness.
+     * 
+     */
+    @Import(name="s3Prefix")
+    private @Nullable Output<String> s3Prefix;
+
+    /**
+     * @return The S3 path prefix where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the prefix stored in Harness.
+     * 
+     */
+    public Optional<Output<String>> s3Prefix() {
+        return Optional.ofNullable(this.s3Prefix);
     }
 
     /**
@@ -193,8 +238,11 @@ public final class AwsCCConnectorState extends com.pulumi.resources.ResourceArgs
         this.name = $.name;
         this.orgId = $.orgId;
         this.projectId = $.projectId;
+        this.region = $.region;
         this.reportName = $.reportName;
+        this.reportType = $.reportType;
         this.s3Bucket = $.s3Bucket;
+        this.s3Prefix = $.s3Prefix;
         this.tags = $.tags;
     }
 
@@ -395,6 +443,27 @@ public final class AwsCCConnectorState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param region The AWS region where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the region stored in Harness.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region The AWS region where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the region stored in Harness.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
+        }
+
+        /**
          * @param reportName The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
          * 
          * @return builder
@@ -416,6 +485,27 @@ public final class AwsCCConnectorState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param reportType The Cost and Usage Report type. Set to `CUR2.0` for AWS Data Exports. When omitted, a new connector uses legacy CUR 1.0 and an existing connector keeps the report type stored in Harness.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reportType(@Nullable Output<String> reportType) {
+            $.reportType = reportType;
+            return this;
+        }
+
+        /**
+         * @param reportType The Cost and Usage Report type. Set to `CUR2.0` for AWS Data Exports. When omitted, a new connector uses legacy CUR 1.0 and an existing connector keeps the report type stored in Harness.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reportType(String reportType) {
+            return reportType(Output.of(reportType));
+        }
+
+        /**
          * @param s3Bucket The name of s3 bucket.
          * 
          * @return builder
@@ -434,6 +524,27 @@ public final class AwsCCConnectorState extends com.pulumi.resources.ResourceArgs
          */
         public Builder s3Bucket(String s3Bucket) {
             return s3Bucket(Output.of(s3Bucket));
+        }
+
+        /**
+         * @param s3Prefix The S3 path prefix where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the prefix stored in Harness.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder s3Prefix(@Nullable Output<String> s3Prefix) {
+            $.s3Prefix = s3Prefix;
+            return this;
+        }
+
+        /**
+         * @param s3Prefix The S3 path prefix where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the prefix stored in Harness.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder s3Prefix(String s3Prefix) {
+            return s3Prefix(Output.of(s3Prefix));
         }
 
         /**

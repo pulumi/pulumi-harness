@@ -26,7 +26,10 @@ import * as utilities from "../utilities";
  *     tags: ["foo:bar"],
  *     accountId: "account_id",
  *     reportName: "report_name",
+ *     reportType: "CUR2.0",
+ *     region: "us-east-1",
  *     s3Bucket: "s3bucket",
+ *     s3Prefix: "cur",
  *     featuresEnableds: [
  *         "OPTIMIZATION",
  *         "VISIBILITY",
@@ -118,13 +121,25 @@ export class AwsCCConnector extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string | undefined>;
     /**
+     * The AWS region where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the region stored in Harness.
+     */
+    declare public readonly region: pulumi.Output<string>;
+    /**
      * The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
      */
     declare public readonly reportName: pulumi.Output<string | undefined>;
     /**
+     * The Cost and Usage Report type. Set to `CUR2.0` for AWS Data Exports. When omitted, a new connector uses legacy CUR 1.0 and an existing connector keeps the report type stored in Harness.
+     */
+    declare public readonly reportType: pulumi.Output<string>;
+    /**
      * The name of s3 bucket.
      */
     declare public readonly s3Bucket: pulumi.Output<string | undefined>;
+    /**
+     * The S3 path prefix where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the prefix stored in Harness.
+     */
+    declare public readonly s3Prefix: pulumi.Output<string>;
     /**
      * Tags to associate with the resource.
      */
@@ -151,8 +166,11 @@ export class AwsCCConnector extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
             resourceInputs["reportName"] = state?.reportName;
+            resourceInputs["reportType"] = state?.reportType;
             resourceInputs["s3Bucket"] = state?.s3Bucket;
+            resourceInputs["s3Prefix"] = state?.s3Prefix;
             resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as AwsCCConnectorArgs | undefined;
@@ -176,8 +194,11 @@ export class AwsCCConnector extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["reportName"] = args?.reportName;
+            resourceInputs["reportType"] = args?.reportType;
             resourceInputs["s3Bucket"] = args?.s3Bucket;
+            resourceInputs["s3Prefix"] = args?.s3Prefix;
             resourceInputs["tags"] = args?.tags;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -222,13 +243,25 @@ export interface AwsCCConnectorState {
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
+     * The AWS region where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the region stored in Harness.
+     */
+    region?: pulumi.Input<string | undefined>;
+    /**
      * The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
      */
     reportName?: pulumi.Input<string | undefined>;
     /**
+     * The Cost and Usage Report type. Set to `CUR2.0` for AWS Data Exports. When omitted, a new connector uses legacy CUR 1.0 and an existing connector keeps the report type stored in Harness.
+     */
+    reportType?: pulumi.Input<string | undefined>;
+    /**
      * The name of s3 bucket.
      */
     s3Bucket?: pulumi.Input<string | undefined>;
+    /**
+     * The S3 path prefix where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the prefix stored in Harness.
+     */
+    s3Prefix?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */
@@ -272,13 +305,25 @@ export interface AwsCCConnectorArgs {
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
+     * The AWS region where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the region stored in Harness.
+     */
+    region?: pulumi.Input<string | undefined>;
+    /**
      * The cost and usage report name. Provided in the delivery options when the template is opened in the AWS console.
      */
     reportName?: pulumi.Input<string | undefined>;
     /**
+     * The Cost and Usage Report type. Set to `CUR2.0` for AWS Data Exports. When omitted, a new connector uses legacy CUR 1.0 and an existing connector keeps the report type stored in Harness.
+     */
+    reportType?: pulumi.Input<string | undefined>;
+    /**
      * The name of s3 bucket.
      */
     s3Bucket?: pulumi.Input<string | undefined>;
+    /**
+     * The S3 path prefix where the Cost and Usage Report is delivered. Set this when using CUR 2.0. When omitted, an existing connector keeps the prefix stored in Harness.
+     */
+    s3Prefix?: pulumi.Input<string | undefined>;
     /**
      * Tags to associate with the resource.
      */

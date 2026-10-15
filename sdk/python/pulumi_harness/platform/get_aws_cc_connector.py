@@ -27,7 +27,7 @@ class GetAwsCCConnectorResult:
     """
     A collection of values returned by getAwsCCConnector.
     """
-    def __init__(__self__, account_id=None, cross_account_accesses=None, description=None, features_enableds=None, id=None, identifier=None, name=None, org_id=None, project_id=None, report_name=None, s3_bucket=None, tags=None):
+    def __init__(__self__, account_id=None, cross_account_accesses=None, description=None, features_enableds=None, id=None, identifier=None, name=None, org_id=None, project_id=None, region=None, report_name=None, report_type=None, s3_bucket=None, s3_prefix=None, tags=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
@@ -55,12 +55,21 @@ class GetAwsCCConnectorResult:
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         pulumi.set(__self__, "project_id", project_id)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if report_name and not isinstance(report_name, str):
             raise TypeError("Expected argument 'report_name' to be a str")
         pulumi.set(__self__, "report_name", report_name)
+        if report_type and not isinstance(report_type, str):
+            raise TypeError("Expected argument 'report_type' to be a str")
+        pulumi.set(__self__, "report_type", report_type)
         if s3_bucket and not isinstance(s3_bucket, str):
             raise TypeError("Expected argument 's3_bucket' to be a str")
         pulumi.set(__self__, "s3_bucket", s3_bucket)
+        if s3_prefix and not isinstance(s3_prefix, str):
+            raise TypeError("Expected argument 's3_prefix' to be a str")
+        pulumi.set(__self__, "s3_prefix", s3_prefix)
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
@@ -138,6 +147,14 @@ class GetAwsCCConnectorResult:
         return pulumi.get(self, "project_id")
 
     @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        The AWS region where the Cost and Usage Report is delivered.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
     @pulumi.getter(name="reportName")
     def report_name(self) -> _builtins.str:
         """
@@ -146,12 +163,28 @@ class GetAwsCCConnectorResult:
         return pulumi.get(self, "report_name")
 
     @_builtins.property
+    @pulumi.getter(name="reportType")
+    def report_type(self) -> _builtins.str:
+        """
+        The Cost and Usage Report type. `CUR2.0` means the connector uses AWS Data Exports (CUR 2.0). Empty means legacy CUR 1.0.
+        """
+        return pulumi.get(self, "report_type")
+
+    @_builtins.property
     @pulumi.getter(name="s3Bucket")
     def s3_bucket(self) -> _builtins.str:
         """
         The name of s3 bucket.
         """
         return pulumi.get(self, "s3_bucket")
+
+    @_builtins.property
+    @pulumi.getter(name="s3Prefix")
+    def s3_prefix(self) -> _builtins.str:
+        """
+        The S3 path prefix where the Cost and Usage Report is delivered.
+        """
+        return pulumi.get(self, "s3_prefix")
 
     @_builtins.property
     @pulumi.getter
@@ -177,8 +210,11 @@ class AwaitableGetAwsCCConnectorResult(GetAwsCCConnectorResult):
             name=self.name,
             org_id=self.org_id,
             project_id=self.project_id,
+            region=self.region,
             report_name=self.report_name,
+            report_type=self.report_type,
             s3_bucket=self.s3_bucket,
+            s3_prefix=self.s3_prefix,
             tags=self.tags)
 
 
@@ -223,8 +259,11 @@ def get_aws_cc_connector(identifier: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         org_id=pulumi.get(__ret__, 'org_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
+        region=pulumi.get(__ret__, 'region'),
         report_name=pulumi.get(__ret__, 'report_name'),
+        report_type=pulumi.get(__ret__, 'report_type'),
         s3_bucket=pulumi.get(__ret__, 's3_bucket'),
+        s3_prefix=pulumi.get(__ret__, 's3_prefix'),
         tags=pulumi.get(__ret__, 'tags'))
 def get_aws_cc_connector_output(identifier: pulumi.Input[Optional[_builtins.str]] = None,
                                 name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -266,6 +305,9 @@ def get_aws_cc_connector_output(identifier: pulumi.Input[Optional[_builtins.str]
         name=pulumi.get(__response__, 'name'),
         org_id=pulumi.get(__response__, 'org_id'),
         project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region'),
         report_name=pulumi.get(__response__, 'report_name'),
+        report_type=pulumi.get(__response__, 'report_type'),
         s3_bucket=pulumi.get(__response__, 's3_bucket'),
+        s3_prefix=pulumi.get(__response__, 's3_prefix'),
         tags=pulumi.get(__response__, 'tags')))
