@@ -230,6 +230,13 @@ def get_aws_proxy(allocate_static_ip: Optional[_builtins.bool] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    test = harness.autostopping.get_aws_proxy(identifier="identifier")
+    ```
+
 
     :param _builtins.bool allocate_static_ip: Boolean value to indicate if proxy vm needs to have static IP
     :param _builtins.str api_key: Harness NG API key
@@ -288,6 +295,13 @@ def get_aws_proxy_output(allocate_static_ip: pulumi.Input[Optional[Optional[_bui
     Data source for AWS Autostopping proxy
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    test = harness.autostopping.get_aws_proxy(identifier="identifier")
+    ```
 
 
     :param _builtins.bool allocate_static_ip: Boolean value to indicate if proxy vm needs to have static IP

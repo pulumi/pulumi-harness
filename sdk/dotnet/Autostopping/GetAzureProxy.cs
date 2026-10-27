@@ -15,6 +15,22 @@ namespace Pulumi.Harness.Autostopping
         /// Data source for Azure Autostopping proxy
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Autostopping.GetAzureProxy.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetAzureProxyResult> InvokeAsync(GetAzureProxyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAzureProxyResult>("harness:autostopping/getAzureProxy:getAzureProxy", args ?? new GetAzureProxyArgs(), options.WithDefaults());
@@ -23,6 +39,22 @@ namespace Pulumi.Harness.Autostopping
         /// Data source for Azure Autostopping proxy
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Autostopping.GetAzureProxy.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAzureProxyResult> Invoke(GetAzureProxyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAzureProxyResult>("harness:autostopping/getAzureProxy:getAzureProxy", args ?? new GetAzureProxyInvokeArgs(), options.WithDefaults());
@@ -31,6 +63,22 @@ namespace Pulumi.Harness.Autostopping
         /// Data source for Azure Autostopping proxy
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Autostopping.GetAzureProxy.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAzureProxyResult> Invoke(GetAzureProxyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAzureProxyResult>("harness:autostopping/getAzureProxy:getAzureProxy", args ?? new GetAzureProxyInvokeArgs(), options.WithDefaults());

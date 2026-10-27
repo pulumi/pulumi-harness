@@ -14,6 +14,30 @@ import (
 // Data source for retrieving a Harness ClusterOrchestrator.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/cluster"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cluster.LookupOrchestrator(ctx, &cluster.LookupOrchestratorArgs{
+//				Identifier: "identifier",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupOrchestrator(ctx *pulumi.Context, args *LookupOrchestratorArgs, opts ...pulumi.InvokeOption) (*LookupOrchestratorResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrchestratorResult

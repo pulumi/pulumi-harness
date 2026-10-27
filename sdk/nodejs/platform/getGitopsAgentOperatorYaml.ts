@@ -10,6 +10,19 @@ import * as utilities from "../utilities";
  * Datasource for fetching a Harness Gitops Agent operator manifest YAML.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getGitopsAgentOperatorYaml({
+ *     identifier: "identifier",
+ *     accountId: "account_id",
+ *     projectId: "project_id",
+ *     orgId: "org_id",
+ *     namespace: "namespace",
+ * });
+ * ```
  */
 export function getGitopsAgentOperatorYaml(args: GetGitopsAgentOperatorYamlArgs, opts?: pulumi.InvokeOptions): Promise<GetGitopsAgentOperatorYamlResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -112,6 +125,19 @@ export interface GetGitopsAgentOperatorYamlResult {
  * Datasource for fetching a Harness Gitops Agent operator manifest YAML.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getGitopsAgentOperatorYaml({
+ *     identifier: "identifier",
+ *     accountId: "account_id",
+ *     projectId: "project_id",
+ *     orgId: "org_id",
+ *     namespace: "namespace",
+ * });
+ * ```
  */
 export function getGitopsAgentOperatorYamlOutput(args: GetGitopsAgentOperatorYamlOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGitopsAgentOperatorYamlResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

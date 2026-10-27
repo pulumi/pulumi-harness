@@ -15,6 +15,31 @@ namespace Pulumi.Harness.Chaos
         /// Data source for retrieving a Harness Chaos Hub.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var projectLevel = Harness.Chaos.GetHubV2.Invoke(new()
+        ///     {
+        ///         Name = "&lt;name&gt;",
+        ///         Identity = "&lt;identity&gt;",
+        ///         Description = "&lt;description&gt;",
+        ///         Tags = new[]
+        ///         {
+        ///             "&lt;tag1&gt;",
+        ///             "&lt;tag2&gt;",
+        ///         },
+        ///         OrgId = "&lt;org_id&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetHubV2Result> InvokeAsync(GetHubV2Args? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHubV2Result>("harness:chaos/getHubV2:getHubV2", args ?? new GetHubV2Args(), options.WithDefaults());
@@ -23,6 +48,31 @@ namespace Pulumi.Harness.Chaos
         /// Data source for retrieving a Harness Chaos Hub.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var projectLevel = Harness.Chaos.GetHubV2.Invoke(new()
+        ///     {
+        ///         Name = "&lt;name&gt;",
+        ///         Identity = "&lt;identity&gt;",
+        ///         Description = "&lt;description&gt;",
+        ///         Tags = new[]
+        ///         {
+        ///             "&lt;tag1&gt;",
+        ///             "&lt;tag2&gt;",
+        ///         },
+        ///         OrgId = "&lt;org_id&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetHubV2Result> Invoke(GetHubV2InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHubV2Result>("harness:chaos/getHubV2:getHubV2", args ?? new GetHubV2InvokeArgs(), options.WithDefaults());
@@ -31,6 +81,31 @@ namespace Pulumi.Harness.Chaos
         /// Data source for retrieving a Harness Chaos Hub.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var projectLevel = Harness.Chaos.GetHubV2.Invoke(new()
+        ///     {
+        ///         Name = "&lt;name&gt;",
+        ///         Identity = "&lt;identity&gt;",
+        ///         Description = "&lt;description&gt;",
+        ///         Tags = new[]
+        ///         {
+        ///             "&lt;tag1&gt;",
+        ///             "&lt;tag2&gt;",
+        ///         },
+        ///         OrgId = "&lt;org_id&gt;",
+        ///         ProjectId = "&lt;project_id&gt;",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetHubV2Result> Invoke(GetHubV2InvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetHubV2Result>("harness:chaos/getHubV2:getHubV2", args ?? new GetHubV2InvokeArgs(), options.WithDefaults());

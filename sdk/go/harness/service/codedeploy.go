@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			_, err = service.NewCodedeploy(ctx, "example", &service.CodedeployArgs{
-//				AppId:       example.ID().ToIDOutput().ToStringOutput(),
+//				AppId:       example.ID(),
 //				Name:        pulumi.String("aws-codedeploy"),
 //				Description: pulumi.String("Service for AWS codedeploy applications."),
 //			})

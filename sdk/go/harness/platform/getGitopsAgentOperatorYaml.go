@@ -14,6 +14,34 @@ import (
 // Datasource for fetching a Harness Gitops Agent operator manifest YAML.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.GetGitopsAgentOperatorYaml(ctx, &platform.GetGitopsAgentOperatorYamlArgs{
+//				Identifier: "identifier",
+//				AccountId:  "account_id",
+//				ProjectId:  pulumi.StringRef("project_id"),
+//				OrgId:      pulumi.StringRef("org_id"),
+//				Namespace:  "namespace",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetGitopsAgentOperatorYaml(ctx *pulumi.Context, args *GetGitopsAgentOperatorYamlArgs, opts ...pulumi.InvokeOption) (*GetGitopsAgentOperatorYamlResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGitopsAgentOperatorYamlResult

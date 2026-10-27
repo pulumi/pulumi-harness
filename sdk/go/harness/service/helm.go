@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			_, err = service.NewHelm(ctx, "example", &service.HelmArgs{
-//				AppId:       example.ID().ToIDOutput().ToStringOutput(),
+//				AppId:       example.ID(),
 //				Name:        pulumi.String("helm-example-service"),
 //				Description: pulumi.String("Service for deploying native Helm application.s"),
 //			})

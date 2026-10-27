@@ -47,7 +47,7 @@ import (
 //				Url:                pulumi.String("https://github.com/harness/terraform-provider-harness"),
 //				Branch:             pulumi.String("master"),
 //				GenerateWebhookUrl: pulumi.Bool(true),
-//				PasswordSecretId:   example.ID().ToIDOutput().ToStringOutput(),
+//				PasswordSecretId:   example.ID(),
 //				UrlType:            pulumi.String("REPO"),
 //				Username:           pulumi.String("someuser"),
 //			})

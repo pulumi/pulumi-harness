@@ -347,6 +347,21 @@ def get_hub_v2(identity: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    project_level = harness.chaos.get_hub_v2(name="<name>",
+        identity="<identity>",
+        description="<description>",
+        tags=[
+            "<tag1>",
+            "<tag2>",
+        ],
+        org_id="<org_id>",
+        project_id="<project_id>")
+    ```
+
 
     :param _builtins.str identity: Unique identifier of the chaos hub.
     :param _builtins.str name: Name of the chaos hub.
@@ -396,6 +411,21 @@ def get_hub_v2_output(identity: pulumi.Input[Optional[Optional[_builtins.str]]] 
     Data source for retrieving a Harness Chaos Hub.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    project_level = harness.chaos.get_hub_v2(name="<name>",
+        identity="<identity>",
+        description="<description>",
+        tags=[
+            "<tag1>",
+            "<tag2>",
+        ],
+        org_id="<org_id>",
+        project_id="<project_id>")
+    ```
 
 
     :param _builtins.str identity: Unique identifier of the chaos hub.

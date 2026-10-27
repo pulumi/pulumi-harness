@@ -10,6 +10,18 @@ import * as utilities from "../utilities";
  * DataSource for deployment freeze in harness.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getPipeline({
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     accountId: "account_id",
+ * });
+ * ```
  */
 export function getManualFreeze(args: GetManualFreezeArgs, opts?: pulumi.InvokeOptions): Promise<GetManualFreezeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -108,6 +120,18 @@ export interface GetManualFreezeResult {
  * DataSource for deployment freeze in harness.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getPipeline({
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ *     accountId: "account_id",
+ * });
+ * ```
  */
 export function getManualFreezeOutput(args: GetManualFreezeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetManualFreezeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -14,6 +14,38 @@ import (
 // Data source for retrieving a Harness Chaos Hub.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/chaos"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := chaos.LookupHubV2(ctx, &chaos.LookupHubV2Args{
+//				Name:        pulumi.StringRef("<name>"),
+//				Identity:    pulumi.StringRef("<identity>"),
+//				Description: "<description>",
+//				Tags: []string{
+//					"<tag1>",
+//					"<tag2>",
+//				},
+//				OrgId:     pulumi.StringRef("<org_id>"),
+//				ProjectId: pulumi.StringRef("<project_id>"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupHubV2(ctx *pulumi.Context, args *LookupHubV2Args, opts ...pulumi.InvokeOption) (*LookupHubV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupHubV2Result

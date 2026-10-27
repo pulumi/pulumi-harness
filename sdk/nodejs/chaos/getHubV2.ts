@@ -8,6 +8,23 @@ import * as utilities from "../utilities";
  * Data source for retrieving a Harness Chaos Hub.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const projectLevel = harness.chaos.getHubV2({
+ *     name: "<name>",
+ *     identity: "<identity>",
+ *     description: "<description>",
+ *     tags: [
+ *         "<tag1>",
+ *         "<tag2>",
+ *     ],
+ *     orgId: "<org_id>",
+ *     projectId: "<project_id>",
+ * });
+ * ```
  */
 export function getHubV2(args?: GetHubV2Args, opts?: pulumi.InvokeOptions): Promise<GetHubV2Result> {
     args = args || {};
@@ -151,6 +168,23 @@ export interface GetHubV2Result {
  * Data source for retrieving a Harness Chaos Hub.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const projectLevel = harness.chaos.getHubV2({
+ *     name: "<name>",
+ *     identity: "<identity>",
+ *     description: "<description>",
+ *     tags: [
+ *         "<tag1>",
+ *         "<tag2>",
+ *     ],
+ *     orgId: "<org_id>",
+ *     projectId: "<project_id>",
+ * });
+ * ```
  */
 export function getHubV2Output(args?: GetHubV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHubV2Result> {
     args = args || {};

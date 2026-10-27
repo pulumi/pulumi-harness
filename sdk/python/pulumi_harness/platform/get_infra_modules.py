@@ -67,6 +67,15 @@ def get_infra_modules(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
     Data source for retrieving a list of modules from the module registry.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    test = harness.platform.get_infra_module(identifier="identifier",
+        name="name",
+        system="system")
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -80,6 +89,15 @@ def get_infra_modules_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.I
     Data source for retrieving a list of modules from the module registry.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    test = harness.platform.get_infra_module(identifier="identifier",
+        name="name",
+        system="system")
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

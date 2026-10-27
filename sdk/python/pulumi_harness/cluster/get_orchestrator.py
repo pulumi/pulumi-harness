@@ -107,6 +107,13 @@ def get_orchestrator(cluster_endpoint: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.cluster.get_orchestrator(identifier="identifier")
+    ```
+
 
     :param _builtins.str cluster_endpoint: Endpoint of the k8s cluster being onboarded under the orchestrator
     :param _builtins.str k8s_connector_id: ID of the Harness Kubernetes Connector Being used
@@ -136,6 +143,13 @@ def get_orchestrator_output(cluster_endpoint: pulumi.Input[Optional[_builtins.st
     Data source for retrieving a Harness ClusterOrchestrator.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.cluster.get_orchestrator(identifier="identifier")
+    ```
 
 
     :param _builtins.str cluster_endpoint: Endpoint of the k8s cluster being onboarded under the orchestrator

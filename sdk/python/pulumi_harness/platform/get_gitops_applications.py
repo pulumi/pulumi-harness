@@ -280,6 +280,18 @@ def get_gitops_applications(account_id: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_gitops_applications(identifier="identifier",
+        account_id="account_id",
+        project_id="project_id",
+        org_id="org_id",
+        agent_id="agent_id",
+        repo_id="repo_id")
+    ```
+
 
     :param _builtins.str account_id: Account identifier of the GitOps application.
     :param _builtins.str agent_id: Agent identifier of the GitOps application.
@@ -329,6 +341,18 @@ def get_gitops_applications_output(account_id: pulumi.Input[Optional[Optional[_b
     Datasource for fetching a Harness GitOps Application.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_gitops_applications(identifier="identifier",
+        account_id="account_id",
+        project_id="project_id",
+        org_id="org_id",
+        agent_id="agent_id",
+        repo_id="repo_id")
+    ```
 
 
     :param _builtins.str account_id: Account identifier of the GitOps application.

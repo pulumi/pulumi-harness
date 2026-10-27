@@ -10,6 +10,15 @@ import * as utilities from "../utilities";
  * Data source for Azure Autostopping proxy
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = harness.autostopping.getAzureProxy({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
 export function getAzureProxy(args: GetAzureProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureProxyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -162,6 +171,15 @@ export interface GetAzureProxyResult {
  * Data source for Azure Autostopping proxy
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = harness.autostopping.getAzureProxy({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
 export function getAzureProxyOutput(args: GetAzureProxyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAzureProxyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

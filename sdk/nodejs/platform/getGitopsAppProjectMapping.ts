@@ -8,6 +8,19 @@ import * as utilities from "../utilities";
  * Resource for managing the Harness GitOps Application Project Mappings.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getGitopsAppProjectMapping({
+ *     accountId: "account_id",
+ *     orgId: "organization_id",
+ *     projectId: "project_id",
+ *     agentId: "agent_id",
+ *     argoProjName: "argo_proj_name",
+ * });
+ * ```
  */
 export function getGitopsAppProjectMapping(args: GetGitopsAppProjectMappingArgs, opts?: pulumi.InvokeOptions): Promise<GetGitopsAppProjectMappingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -91,6 +104,19 @@ export interface GetGitopsAppProjectMappingResult {
  * Resource for managing the Harness GitOps Application Project Mappings.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getGitopsAppProjectMapping({
+ *     accountId: "account_id",
+ *     orgId: "organization_id",
+ *     projectId: "project_id",
+ *     agentId: "agent_id",
+ *     argoProjName: "argo_proj_name",
+ * });
+ * ```
  */
 export function getGitopsAppProjectMappingOutput(args: GetGitopsAppProjectMappingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGitopsAppProjectMappingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

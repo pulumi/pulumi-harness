@@ -53,7 +53,7 @@ import (
 //			}
 //			ctx.Export("winrmPort", example.Port)
 //			var tmp0 pulumi.String
-//			if len(example.Ntlms) > 0 {
+//			if bool(len(example.Ntlms) > 0) {
 //				tmp0 = "NTLM"
 //			} else {
 //				tmp0 = "Kerberos"

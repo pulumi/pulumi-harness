@@ -14,6 +14,34 @@ import (
 // Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.GetGitopsRepoCert(ctx, &platform.GetGitopsRepoCertArgs{
+//				Identifier: "identifier",
+//				AccountId:  pulumi.StringRef("account_id"),
+//				ProjectId:  pulumi.StringRef("project_id"),
+//				OrgId:      pulumi.StringRef("org_id"),
+//				AgentId:    "agent_id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetGitopsRepoCert(ctx *pulumi.Context, args *GetGitopsRepoCertArgs, opts ...pulumi.InvokeOption) (*GetGitopsRepoCertResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGitopsRepoCertResult

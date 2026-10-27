@@ -15,6 +15,26 @@ namespace Pulumi.Harness.Platform
         /// Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Platform.GetGitopsRepoCert.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         AccountId = "account_id",
+        ///         ProjectId = "project_id",
+        ///         OrgId = "org_id",
+        ///         AgentId = "agent_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetGitopsRepoCertResult> InvokeAsync(GetGitopsRepoCertArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGitopsRepoCertResult>("harness:platform/getGitopsRepoCert:getGitopsRepoCert", args ?? new GetGitopsRepoCertArgs(), options.WithDefaults());
@@ -23,6 +43,26 @@ namespace Pulumi.Harness.Platform
         /// Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Platform.GetGitopsRepoCert.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         AccountId = "account_id",
+        ///         ProjectId = "project_id",
+        ///         OrgId = "org_id",
+        ///         AgentId = "agent_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetGitopsRepoCertResult> Invoke(GetGitopsRepoCertInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsRepoCertResult>("harness:platform/getGitopsRepoCert:getGitopsRepoCert", args ?? new GetGitopsRepoCertInvokeArgs(), options.WithDefaults());
@@ -31,6 +71,26 @@ namespace Pulumi.Harness.Platform
         /// Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Platform.GetGitopsRepoCert.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         AccountId = "account_id",
+        ///         ProjectId = "project_id",
+        ///         OrgId = "org_id",
+        ///         AgentId = "agent_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetGitopsRepoCertResult> Invoke(GetGitopsRepoCertInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsRepoCertResult>("harness:platform/getGitopsRepoCert:getGitopsRepoCert", args ?? new GetGitopsRepoCertInvokeArgs(), options.WithDefaults());

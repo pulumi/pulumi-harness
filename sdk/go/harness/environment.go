@@ -48,7 +48,7 @@ import (
 //						Type:  pulumi.String("TEXT"),
 //					},
 //				},
-//				AppId:       test.ID().ToIDOutput().ToStringOutput(),
+//				AppId:       test.ID(),
 //				Name:        pulumi.String("%[1]s"),
 //				HelmVersion: pulumi.String("V2"),
 //				Description: pulumi.String("description"),
@@ -71,7 +71,7 @@ import (
 //						Type:        pulumi.String("TEXT"),
 //					},
 //				},
-//				AppId: test.ID().ToIDOutput().ToStringOutput(),
+//				AppId: test.ID(),
 //				Name:  pulumi.String("%[1]s"),
 //				Type:  pulumi.String("%[2]s"),
 //			})

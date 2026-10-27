@@ -14,6 +14,30 @@ import (
 // Data source for Azure Autostopping proxy
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := autostopping.LookupAzureProxy(ctx, &autostopping.LookupAzureProxyArgs{
+//				Identifier: "identifier",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAzureProxy(ctx *pulumi.Context, args *LookupAzureProxyArgs, opts ...pulumi.InvokeOption) (*LookupAzureProxyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureProxyResult

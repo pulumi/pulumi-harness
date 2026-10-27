@@ -15,6 +15,22 @@ namespace Pulumi.Harness.Autostopping
         /// Data source for AWS Autostopping proxy
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Autostopping.GetAwsAlb.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetAwsAlbResult> InvokeAsync(GetAwsAlbArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsAlbResult>("harness:autostopping/getAwsAlb:getAwsAlb", args ?? new GetAwsAlbArgs(), options.WithDefaults());
@@ -23,6 +39,22 @@ namespace Pulumi.Harness.Autostopping
         /// Data source for AWS Autostopping proxy
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Autostopping.GetAwsAlb.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAwsAlbResult> Invoke(GetAwsAlbInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsAlbResult>("harness:autostopping/getAwsAlb:getAwsAlb", args ?? new GetAwsAlbInvokeArgs(), options.WithDefaults());
@@ -31,6 +63,22 @@ namespace Pulumi.Harness.Autostopping
         /// Data source for AWS Autostopping proxy
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Autostopping.GetAwsAlb.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAwsAlbResult> Invoke(GetAwsAlbInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsAlbResult>("harness:autostopping/getAwsAlb:getAwsAlb", args ?? new GetAwsAlbInvokeArgs(), options.WithDefaults());
