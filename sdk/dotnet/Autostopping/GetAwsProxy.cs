@@ -15,6 +15,22 @@ namespace Pulumi.Harness.Autostopping
         /// Data source for AWS Autostopping proxy
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Autostopping.GetAwsProxy.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetAwsProxyResult> InvokeAsync(GetAwsProxyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsProxyResult>("harness:autostopping/getAwsProxy:getAwsProxy", args ?? new GetAwsProxyArgs(), options.WithDefaults());
@@ -23,6 +39,22 @@ namespace Pulumi.Harness.Autostopping
         /// Data source for AWS Autostopping proxy
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Autostopping.GetAwsProxy.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAwsProxyResult> Invoke(GetAwsProxyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsProxyResult>("harness:autostopping/getAwsProxy:getAwsProxy", args ?? new GetAwsProxyInvokeArgs(), options.WithDefaults());
@@ -31,6 +63,22 @@ namespace Pulumi.Harness.Autostopping
         /// Data source for AWS Autostopping proxy
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Autostopping.GetAwsProxy.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAwsProxyResult> Invoke(GetAwsProxyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsProxyResult>("harness:autostopping/getAwsProxy:getAwsProxy", args ?? new GetAwsProxyInvokeArgs(), options.WithDefaults());

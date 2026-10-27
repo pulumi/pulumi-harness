@@ -51,7 +51,7 @@ import (
 //			}
 //			devEnvironment, err := harness.NewEnvironment(ctx, "dev", &harness.EnvironmentArgs{
 //				Name:  pulumi.String("dev"),
-//				AppId: example.ID().ToIDOutput().ToStringOutput(),
+//				AppId: example.ID(),
 //				Type:  pulumi.String("NON_PROD"),
 //			})
 //			if err != nil {
@@ -65,8 +65,8 @@ import (
 //					ReleaseName:       pulumi.String("${service.name}"),
 //				},
 //				Name:              pulumi.String("k8s-eks-us-east-1"),
-//				AppId:             example.ID().ToIDOutput().ToStringOutput(),
-//				EnvId:             devEnvironment.ID().ToIDOutput().ToStringOutput(),
+//				AppId:             example.ID(),
+//				EnvId:             devEnvironment.ID(),
 //				CloudProviderType: pulumi.String("KUBERNETES_CLUSTER"),
 //				DeploymentType:    pulumi.String("KUBERNETES"),
 //			})
@@ -114,8 +114,8 @@ import (
 //					DeploymentTypeTemplateVersion: pulumi.String("1"),
 //				},
 //				Name:              pulumi.String("custom-infra"),
-//				AppId:             example.ID().ToIDOutput().ToStringOutput(),
-//				EnvId:             devEnvironment.ID().ToIDOutput().ToStringOutput(),
+//				AppId:             example.ID(),
+//				EnvId:             devEnvironment.ID(),
 //				CloudProviderType: pulumi.String("CUSTOM"),
 //				DeploymentType:    pulumi.String("CUSTOM"),
 //				DeploymentTemplateUri: exampleYaml.Name.ApplyT(func(name string) (string, error) {

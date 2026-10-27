@@ -173,6 +173,17 @@ def get_gitops_agent_operator_yaml(ca_data: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_gitops_agent_operator_yaml(identifier="identifier",
+        account_id="account_id",
+        project_id="project_id",
+        org_id="org_id",
+        namespace="namespace")
+    ```
+
 
     :param _builtins.str ca_data: CA data of the GitOps agent, base64 encoded content of ca chain.
     :param _builtins.str identifier: Identifier of the GitOps agent.
@@ -219,6 +230,17 @@ def get_gitops_agent_operator_yaml_output(ca_data: pulumi.Input[Optional[Optiona
     Datasource for fetching a Harness Gitops Agent operator manifest YAML.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_gitops_agent_operator_yaml(identifier="identifier",
+        account_id="account_id",
+        project_id="project_id",
+        org_id="org_id",
+        namespace="namespace")
+    ```
 
 
     :param _builtins.str ca_data: CA data of the GitOps agent, base64 encoded content of ca chain.

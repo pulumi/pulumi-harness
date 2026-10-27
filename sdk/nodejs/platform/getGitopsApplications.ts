@@ -10,6 +10,20 @@ import * as utilities from "../utilities";
  * Datasource for fetching a Harness GitOps Application.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getGitopsApplications({
+ *     identifier: "identifier",
+ *     accountId: "account_id",
+ *     projectId: "project_id",
+ *     orgId: "org_id",
+ *     agentId: "agent_id",
+ *     repoId: "repo_id",
+ * });
+ * ```
  */
 export function getGitopsApplications(args: GetGitopsApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetGitopsApplicationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -146,6 +160,20 @@ export interface GetGitopsApplicationsResult {
  * Datasource for fetching a Harness GitOps Application.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getGitopsApplications({
+ *     identifier: "identifier",
+ *     accountId: "account_id",
+ *     projectId: "project_id",
+ *     orgId: "org_id",
+ *     agentId: "agent_id",
+ *     repoId: "repo_id",
+ * });
+ * ```
  */
 export function getGitopsApplicationsOutput(args: GetGitopsApplicationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGitopsApplicationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

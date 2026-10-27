@@ -8,6 +8,19 @@ import * as utilities from "../utilities";
  * Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = harness.platform.getGitopsRepoCert({
+ *     identifier: "identifier",
+ *     accountId: "account_id",
+ *     projectId: "project_id",
+ *     orgId: "org_id",
+ *     agentId: "agent_id",
+ * });
+ * ```
  */
 export function getGitopsRepoCert(args: GetGitopsRepoCertArgs, opts?: pulumi.InvokeOptions): Promise<GetGitopsRepoCertResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -74,6 +87,19 @@ export interface GetGitopsRepoCertResult {
  * Data source for retrieving a GitOps Repository Certificate. It fetches all the certificates that are added to the provided agent.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = harness.platform.getGitopsRepoCert({
+ *     identifier: "identifier",
+ *     accountId: "account_id",
+ *     projectId: "project_id",
+ *     orgId: "org_id",
+ *     agentId: "agent_id",
+ * });
+ * ```
  */
 export function getGitopsRepoCertOutput(args: GetGitopsRepoCertOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGitopsRepoCertResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

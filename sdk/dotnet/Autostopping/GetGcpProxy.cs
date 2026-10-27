@@ -15,6 +15,22 @@ namespace Pulumi.Harness.Autostopping
         /// Data source for GCP Autostopping proxy
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Autostopping.GetGcpProxy.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetGcpProxyResult> InvokeAsync(GetGcpProxyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGcpProxyResult>("harness:autostopping/getGcpProxy:getGcpProxy", args ?? new GetGcpProxyArgs(), options.WithDefaults());
@@ -23,6 +39,22 @@ namespace Pulumi.Harness.Autostopping
         /// Data source for GCP Autostopping proxy
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Autostopping.GetGcpProxy.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetGcpProxyResult> Invoke(GetGcpProxyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGcpProxyResult>("harness:autostopping/getGcpProxy:getGcpProxy", args ?? new GetGcpProxyInvokeArgs(), options.WithDefaults());
@@ -31,6 +63,22 @@ namespace Pulumi.Harness.Autostopping
         /// Data source for GCP Autostopping proxy
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Harness.Autostopping.GetGcpProxy.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetGcpProxyResult> Invoke(GetGcpProxyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGcpProxyResult>("harness:autostopping/getGcpProxy:getGcpProxy", args ?? new GetGcpProxyInvokeArgs(), options.WithDefaults());

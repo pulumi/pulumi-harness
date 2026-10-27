@@ -14,6 +14,32 @@ import (
 // Data source for retrieving a Notification Rule.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.LookupPipelineCentralNotificationRule(ctx, &platform.LookupPipelineCentralNotificationRuleArgs{
+//				Identifier: "identifier",
+//				OrgId:      "org_id",
+//				ProjectId:  "project_id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupPipelineCentralNotificationRule(ctx *pulumi.Context, args *LookupPipelineCentralNotificationRuleArgs, opts ...pulumi.InvokeOption) (*LookupPipelineCentralNotificationRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPipelineCentralNotificationRuleResult

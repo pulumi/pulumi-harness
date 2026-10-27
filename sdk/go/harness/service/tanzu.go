@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			_, err = service.NewTanzu(ctx, "example", &service.TanzuArgs{
-//				AppId:       example.ID().ToIDOutput().ToStringOutput(),
+//				AppId:       example.ID(),
 //				Name:        pulumi.String("tanzu-svc"),
 //				Description: pulumi.String("A service for deploying Tanzu applications."),
 //			})

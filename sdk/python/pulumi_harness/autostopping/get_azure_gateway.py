@@ -223,6 +223,13 @@ def get_azure_gateway(app_gateway_id: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    test = harness.autostopping.get_azure_gateway(identifier="identifier")
+    ```
+
 
     :param _builtins.str app_gateway_id: ID of Azure AppGateway for importing
     :param _builtins.str azure_func_region: Region in which azure cloud function will be provisioned
@@ -285,6 +292,13 @@ def get_azure_gateway_output(app_gateway_id: pulumi.Input[Optional[Optional[_bui
     Data source for AWS Autostopping proxy
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    test = harness.autostopping.get_azure_gateway(identifier="identifier")
+    ```
 
 
     :param _builtins.str app_gateway_id: ID of Azure AppGateway for importing

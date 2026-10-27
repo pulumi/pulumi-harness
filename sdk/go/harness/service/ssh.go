@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			_, err = service.NewSsh(ctx, "example", &service.SshArgs{
-//				AppId:        example.ID().ToIDOutput().ToStringOutput(),
+//				AppId:        example.ID(),
 //				ArtifactType: pulumi.String("TAR"),
 //				Name:         pulumi.String("ssh-example"),
 //				Description:  pulumi.String("Service for deploying applications with SSH."),

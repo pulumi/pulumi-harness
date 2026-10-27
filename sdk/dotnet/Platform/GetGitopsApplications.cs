@@ -15,6 +15,27 @@ namespace Pulumi.Harness.Platform
         /// Datasource for fetching a Harness GitOps Application.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetGitopsApplications.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         AccountId = "account_id",
+        ///         ProjectId = "project_id",
+        ///         OrgId = "org_id",
+        ///         AgentId = "agent_id",
+        ///         RepoId = "repo_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetGitopsApplicationsResult> InvokeAsync(GetGitopsApplicationsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGitopsApplicationsResult>("harness:platform/getGitopsApplications:getGitopsApplications", args ?? new GetGitopsApplicationsArgs(), options.WithDefaults());
@@ -23,6 +44,27 @@ namespace Pulumi.Harness.Platform
         /// Datasource for fetching a Harness GitOps Application.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetGitopsApplications.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         AccountId = "account_id",
+        ///         ProjectId = "project_id",
+        ///         OrgId = "org_id",
+        ///         AgentId = "agent_id",
+        ///         RepoId = "repo_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetGitopsApplicationsResult> Invoke(GetGitopsApplicationsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsApplicationsResult>("harness:platform/getGitopsApplications:getGitopsApplications", args ?? new GetGitopsApplicationsInvokeArgs(), options.WithDefaults());
@@ -31,6 +73,27 @@ namespace Pulumi.Harness.Platform
         /// Datasource for fetching a Harness GitOps Application.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetGitopsApplications.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         AccountId = "account_id",
+        ///         ProjectId = "project_id",
+        ///         OrgId = "org_id",
+        ///         AgentId = "agent_id",
+        ///         RepoId = "repo_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetGitopsApplicationsResult> Invoke(GetGitopsApplicationsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGitopsApplicationsResult>("harness:platform/getGitopsApplications:getGitopsApplications", args ?? new GetGitopsApplicationsInvokeArgs(), options.WithDefaults());

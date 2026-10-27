@@ -252,7 +252,7 @@ import (
 //				Ntlm: &platform.SecretWinrmNtlmArgs{
 //					Domain:        pulumi.String("project.example.com"),
 //					Username:      pulumi.String("projectadmin"),
-//					PasswordRef:   projectNtlmPassword.ID().ToIDOutput().ToStringOutput(),
+//					PasswordRef:   projectNtlmPassword.ID(),
 //					UseSsl:        pulumi.Bool(true),
 //					SkipCertCheck: pulumi.Bool(false),
 //					UseNoProfile:  pulumi.Bool(false),
@@ -315,7 +315,7 @@ import (
 //			_, err = platform.NewSecretWinrm(ctx, "project_kerberos_password", &platform.SecretWinrmArgs{
 //				Kerberos: &platform.SecretWinrmKerberosArgs{
 //					TgtPasswordSpec: &platform.SecretWinrmKerberosTgtPasswordSpecArgs{
-//						PasswordRef: projectKerberosPassword.ID().ToIDOutput().ToStringOutput(),
+//						PasswordRef: projectKerberosPassword.ID(),
 //					},
 //					Principal:           pulumi.String("projectuser@EXAMPLE.COM"),
 //					Realm:               pulumi.String("EXAMPLE.COM"),

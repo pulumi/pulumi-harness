@@ -14,6 +14,30 @@ import (
 // Data source for AWS Autostopping proxy
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/autostopping"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := autostopping.LookupAwsAlb(ctx, &autostopping.LookupAwsAlbArgs{
+//				Identifier: "identifier",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAwsAlb(ctx *pulumi.Context, args *LookupAwsAlbArgs, opts ...pulumi.InvokeOption) (*LookupAwsAlbResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAwsAlbResult

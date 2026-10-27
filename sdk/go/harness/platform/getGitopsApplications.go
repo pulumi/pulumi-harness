@@ -14,6 +14,35 @@ import (
 // Datasource for fetching a Harness GitOps Application.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.GetGitopsApplications(ctx, &platform.GetGitopsApplicationsArgs{
+//				Identifier: pulumi.StringRef("identifier"),
+//				AccountId:  pulumi.StringRef("account_id"),
+//				ProjectId:  "project_id",
+//				OrgId:      "org_id",
+//				AgentId:    "agent_id",
+//				RepoId:     "repo_id",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetGitopsApplications(ctx *pulumi.Context, args *GetGitopsApplicationsArgs, opts ...pulumi.InvokeOption) (*GetGitopsApplicationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGitopsApplicationsResult

@@ -48,7 +48,7 @@ import (
 //						Type:  pulumi.String("TEXT"),
 //					},
 //				},
-//				AppId:       example.ID().ToIDOutput().ToStringOutput(),
+//				AppId:       example.ID(),
 //				Name:        pulumi.String("k8s-svc"),
 //				HelmVersion: pulumi.String("V3"),
 //				Description: pulumi.String("Service for deploying Kubernetes manifests"),

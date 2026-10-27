@@ -14,6 +14,32 @@ import (
 // Data source for retrieving modules from the module registry.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.LookupInfraModule(ctx, &platform.LookupInfraModuleArgs{
+//				Identifier: "identifier",
+//				Name:       "name",
+//				System:     "system",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupInfraModule(ctx *pulumi.Context, args *LookupInfraModuleArgs, opts ...pulumi.InvokeOption) (*LookupInfraModuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInfraModuleResult

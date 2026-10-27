@@ -10,6 +10,15 @@ import * as utilities from "../utilities";
  * Data source for GCP Autostopping proxy
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = harness.autostopping.getGcpProxy({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
 export function getGcpProxy(args: GetGcpProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetGcpProxyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -150,6 +159,15 @@ export interface GetGcpProxyResult {
  * Data source for GCP Autostopping proxy
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = harness.autostopping.getGcpProxy({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
 export function getGcpProxyOutput(args: GetGcpProxyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGcpProxyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

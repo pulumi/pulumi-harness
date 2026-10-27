@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			_, err = service.NewLambda(ctx, "example", &service.LambdaArgs{
-//				AppId:       example.ID().ToIDOutput().ToStringOutput(),
+//				AppId:       example.ID(),
 //				Name:        pulumi.String("my-lambda-service"),
 //				Description: pulumi.String("Service for deploying AWS Lambda functions."),
 //			})

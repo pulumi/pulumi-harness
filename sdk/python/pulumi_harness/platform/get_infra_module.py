@@ -414,6 +414,15 @@ def get_infra_module(account: Optional[_builtins.str] = None,
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    test = harness.platform.get_infra_module(identifier="identifier",
+        name="name",
+        system="system")
+    ```
+
 
     :param _builtins.str account: Account that owns the module
     :param _builtins.int created: Timestamp when the module was created
@@ -534,6 +543,15 @@ def get_infra_module_output(account: pulumi.Input[Optional[_builtins.str]] = Non
     Data source for retrieving modules from the module registry.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    test = harness.platform.get_infra_module(identifier="identifier",
+        name="name",
+        system="system")
+    ```
 
 
     :param _builtins.str account: Account that owns the module

@@ -39,7 +39,10 @@ namespace Pulumi.Harness.Platform
         ///     {
         ///         var awsVersions = values.Item1;
         ///         var invoke = values.Item2;
-        ///         return ;
+        ///         return .Where(v =&gt; invoke.Result).Select(v =&gt; 
+        ///         {
+        ///             return v;
+        ///         }).ToList();
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -80,7 +83,10 @@ namespace Pulumi.Harness.Platform
         ///     {
         ///         var awsVersions = values.Item1;
         ///         var invoke = values.Item2;
-        ///         return ;
+        ///         return .Where(v =&gt; invoke.Result).Select(v =&gt; 
+        ///         {
+        ///             return v;
+        ///         }).ToList();
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -121,7 +127,10 @@ namespace Pulumi.Harness.Platform
         ///     {
         ///         var awsVersions = values.Item1;
         ///         var invoke = values.Item2;
-        ///         return ;
+        ///         return .Where(v =&gt; invoke.Result).Select(v =&gt; 
+        ///         {
+        ///             return v;
+        ///         }).ToList();
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

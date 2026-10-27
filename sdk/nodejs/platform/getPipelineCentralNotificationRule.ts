@@ -10,6 +10,17 @@ import * as utilities from "../utilities";
  * Data source for retrieving a Notification Rule.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getPipelineCentralNotificationRule({
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
  */
 export function getPipelineCentralNotificationRule(args: GetPipelineCentralNotificationRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetPipelineCentralNotificationRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -90,6 +101,17 @@ export interface GetPipelineCentralNotificationRuleResult {
  * Data source for retrieving a Notification Rule.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const example = harness.platform.getPipelineCentralNotificationRule({
+ *     identifier: "identifier",
+ *     orgId: "org_id",
+ *     projectId: "project_id",
+ * });
+ * ```
  */
 export function getPipelineCentralNotificationRuleOutput(args: GetPipelineCentralNotificationRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPipelineCentralNotificationRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

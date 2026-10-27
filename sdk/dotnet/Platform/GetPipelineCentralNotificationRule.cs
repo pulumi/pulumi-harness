@@ -15,6 +15,24 @@ namespace Pulumi.Harness.Platform
         /// Data source for retrieving a Notification Rule.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetPipelineCentralNotificationRule.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetPipelineCentralNotificationRuleResult> InvokeAsync(GetPipelineCentralNotificationRuleArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPipelineCentralNotificationRuleResult>("harness:platform/getPipelineCentralNotificationRule:getPipelineCentralNotificationRule", args ?? new GetPipelineCentralNotificationRuleArgs(), options.WithDefaults());
@@ -23,6 +41,24 @@ namespace Pulumi.Harness.Platform
         /// Data source for retrieving a Notification Rule.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetPipelineCentralNotificationRule.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPipelineCentralNotificationRuleResult> Invoke(GetPipelineCentralNotificationRuleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPipelineCentralNotificationRuleResult>("harness:platform/getPipelineCentralNotificationRule:getPipelineCentralNotificationRule", args ?? new GetPipelineCentralNotificationRuleInvokeArgs(), options.WithDefaults());
@@ -31,6 +67,24 @@ namespace Pulumi.Harness.Platform
         /// Data source for retrieving a Notification Rule.
         /// 
         /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Harness = Pulumi.Harness;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Harness.Platform.GetPipelineCentralNotificationRule.Invoke(new()
+        ///     {
+        ///         Identifier = "identifier",
+        ///         OrgId = "org_id",
+        ///         ProjectId = "project_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPipelineCentralNotificationRuleResult> Invoke(GetPipelineCentralNotificationRuleInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPipelineCentralNotificationRuleResult>("harness:platform/getPipelineCentralNotificationRule:getPipelineCentralNotificationRule", args ?? new GetPipelineCentralNotificationRuleInvokeArgs(), options.WithDefaults());

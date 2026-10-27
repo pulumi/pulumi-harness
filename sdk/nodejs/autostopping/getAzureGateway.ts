@@ -8,6 +8,15 @@ import * as utilities from "../utilities";
  * Data source for AWS Autostopping proxy
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = harness.autostopping.getAzureGateway({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
 export function getAzureGateway(args: GetAzureGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureGatewayResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -146,6 +155,15 @@ export interface GetAzureGatewayResult {
  * Data source for AWS Autostopping proxy
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = harness.autostopping.getAzureGateway({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
 export function getAzureGatewayOutput(args: GetAzureGatewayOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAzureGatewayResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

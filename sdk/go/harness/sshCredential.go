@@ -52,7 +52,7 @@ import (
 //			_, err = harness.NewSshCredential(ctx, "ssh_creds", &harness.SshCredentialArgs{
 //				SshAuthentication: &harness.SshCredentialSshAuthenticationArgs{
 //					InlineSsh: &harness.SshCredentialSshAuthenticationInlineSshArgs{
-//						SshKeyFileId: mySecret.ID().ToIDOutput().ToStringOutput(),
+//						SshKeyFileId: mySecret.ID(),
 //					},
 //					Port:     pulumi.Int(22),
 //					Username: pulumi.String("git"),

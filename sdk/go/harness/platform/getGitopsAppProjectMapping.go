@@ -14,6 +14,34 @@ import (
 // Resource for managing the Harness GitOps Application Project Mappings.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := platform.LookupGitopsAppProjectMapping(ctx, &platform.LookupGitopsAppProjectMappingArgs{
+//				AccountId:    pulumi.StringRef("account_id"),
+//				OrgId:        "organization_id",
+//				ProjectId:    "project_id",
+//				AgentId:      "agent_id",
+//				ArgoProjName: "argo_proj_name",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupGitopsAppProjectMapping(ctx *pulumi.Context, args *LookupGitopsAppProjectMappingArgs, opts ...pulumi.InvokeOption) (*LookupGitopsAppProjectMappingResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGitopsAppProjectMappingResult

@@ -67,7 +67,7 @@ import (
 //				__res, err := platform.NewSetting(ctx, fmt.Sprintf("project-%v", key0), &platform.SettingArgs{
 //					Identifier: pulumi.String(key0),
 //					OrgId:      example.OrgId,
-//					ProjectId:  example.ID().ToIDOutput().ToStringOutput(),
+//					ProjectId:  example.ID(),
 //					Value:      pulumi.String(val0),
 //				})
 //				if err != nil {

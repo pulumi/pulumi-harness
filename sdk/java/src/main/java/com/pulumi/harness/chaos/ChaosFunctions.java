@@ -1351,6 +1351,44 @@ public final class ChaosFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetHubV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectLevel = ChaosFunctions.getHubV2(GetHubV2Args.builder()
+     *             .name("<name>")
+     *             .identity("<identity>")
+     *             .description("<description>")
+     *             .tags(Arrays.asList(            
+     *                 "<tag1>",
+     *                 "<tag2>"))
+     *             .orgId("<org_id>")
+     *             .projectId("<project_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetHubV2Result> getHubV2() {
         return getHubV2(GetHubV2Args.Empty, InvokeOptions.Empty);
@@ -1359,6 +1397,44 @@ public final class ChaosFunctions {
      * Data source for retrieving a Harness Chaos Hub.
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetHubV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectLevel = ChaosFunctions.getHubV2(GetHubV2Args.builder()
+     *             .name("<name>")
+     *             .identity("<identity>")
+     *             .description("<description>")
+     *             .tags(Arrays.asList(            
+     *                 "<tag1>",
+     *                 "<tag2>"))
+     *             .orgId("<org_id>")
+     *             .projectId("<project_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetHubV2Result> getHubV2Plain() {
@@ -1369,6 +1445,44 @@ public final class ChaosFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetHubV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectLevel = ChaosFunctions.getHubV2(GetHubV2Args.builder()
+     *             .name("<name>")
+     *             .identity("<identity>")
+     *             .description("<description>")
+     *             .tags(Arrays.asList(            
+     *                 "<tag1>",
+     *                 "<tag2>"))
+     *             .orgId("<org_id>")
+     *             .projectId("<project_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetHubV2Result> getHubV2(GetHubV2Args args) {
         return getHubV2(args, InvokeOptions.Empty);
@@ -1377,6 +1491,44 @@ public final class ChaosFunctions {
      * Data source for retrieving a Harness Chaos Hub.
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetHubV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectLevel = ChaosFunctions.getHubV2(GetHubV2Args.builder()
+     *             .name("<name>")
+     *             .identity("<identity>")
+     *             .description("<description>")
+     *             .tags(Arrays.asList(            
+     *                 "<tag1>",
+     *                 "<tag2>"))
+     *             .orgId("<org_id>")
+     *             .projectId("<project_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetHubV2Result> getHubV2Plain(GetHubV2PlainArgs args) {
@@ -1387,6 +1539,44 @@ public final class ChaosFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetHubV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectLevel = ChaosFunctions.getHubV2(GetHubV2Args.builder()
+     *             .name("<name>")
+     *             .identity("<identity>")
+     *             .description("<description>")
+     *             .tags(Arrays.asList(            
+     *                 "<tag1>",
+     *                 "<tag2>"))
+     *             .orgId("<org_id>")
+     *             .projectId("<project_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetHubV2Result> getHubV2(GetHubV2Args args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:chaos/getHubV2:getHubV2", TypeShape.of(GetHubV2Result.class), args, Utilities.withVersion(options));
@@ -1396,6 +1586,44 @@ public final class ChaosFunctions {
      * 
      * ## Example Usage
      * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetHubV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectLevel = ChaosFunctions.getHubV2(GetHubV2Args.builder()
+     *             .name("<name>")
+     *             .identity("<identity>")
+     *             .description("<description>")
+     *             .tags(Arrays.asList(            
+     *                 "<tag1>",
+     *                 "<tag2>"))
+     *             .orgId("<org_id>")
+     *             .projectId("<project_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetHubV2Result> getHubV2(GetHubV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:chaos/getHubV2:getHubV2", TypeShape.of(GetHubV2Result.class), args, Utilities.withVersion(options));
@@ -1404,6 +1632,44 @@ public final class ChaosFunctions {
      * Data source for retrieving a Harness Chaos Hub.
      * 
      * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.harness.chaos.ChaosFunctions;
+     * import com.pulumi.harness.chaos.inputs.GetHubV2Args;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var projectLevel = ChaosFunctions.getHubV2(GetHubV2Args.builder()
+     *             .name("<name>")
+     *             .identity("<identity>")
+     *             .description("<description>")
+     *             .tags(Arrays.asList(            
+     *                 "<tag1>",
+     *                 "<tag2>"))
+     *             .orgId("<org_id>")
+     *             .projectId("<project_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetHubV2Result> getHubV2Plain(GetHubV2PlainArgs args, InvokeOptions options) {

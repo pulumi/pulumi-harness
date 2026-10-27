@@ -182,6 +182,15 @@ def get_pipeline_central_notification_rule(custom_notification_template_ref: Opt
 
     ## Example Usage
 
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_pipeline_central_notification_rule(identifier="identifier",
+        org_id="org_id",
+        project_id="project_id")
+    ```
+
 
     :param _builtins.str identifier: Identifier of the Notification Rule.
     :param _builtins.str org: Identifier of the organization in which the Notification Rule is configured.
@@ -225,6 +234,15 @@ def get_pipeline_central_notification_rule_output(custom_notification_template_r
     Data source for retrieving a Notification Rule.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_harness as harness
+
+    example = harness.platform.get_pipeline_central_notification_rule(identifier="identifier",
+        org_id="org_id",
+        project_id="project_id")
+    ```
 
 
     :param _builtins.str identifier: Identifier of the Notification Rule.

@@ -10,6 +10,15 @@ import * as utilities from "../utilities";
  * Data source for retrieving a Harness AutoStopping alert by ID. Use the id (identifier) returned by the API when the alert was created.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = harness.autostopping.getAlert({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
 export function getAlert(args: GetAlertArgs, opts?: pulumi.InvokeOptions): Promise<GetAlertResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -94,6 +103,15 @@ export interface GetAlertResult {
  * Data source for retrieving a Harness AutoStopping alert by ID. Use the id (identifier) returned by the API when the alert was created.
  *
  * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ *
+ * const test = harness.autostopping.getAlert({
+ *     identifier: "identifier",
+ * });
+ * ```
  */
 export function getAlertOutput(args: GetAlertOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlertResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
