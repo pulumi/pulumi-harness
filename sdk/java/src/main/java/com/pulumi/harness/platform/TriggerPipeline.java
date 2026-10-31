@@ -16,6 +16,90 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Resource for triggering a Harness pipeline execution with optional runtime inputs. Any change to `orgId`, `projectId`, `pipelineId`, `moduleType`, `inputSetYaml`, or `branch` re-runs the pipeline (recreate). `waitForCompletion` and `pollIntervalSeconds` can be changed in place.
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.harness.platform.TriggerPipeline;
+ * import com.pulumi.harness.platform.TriggerPipelineArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.JsondecodeArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var scsEcsTimingTest = new TriggerPipeline("scsEcsTimingTest", TriggerPipelineArgs.builder()
+ *             .orgId("default")
+ *             .projectId("rssnyder")
+ *             .pipelineId("SCS_ECS_timing_test_local")
+ *             .inputSetYaml("""
+ * pipeline:
+ *   identifier: SCS_ECS_timing_test_local
+ *   properties:
+ *     ci:
+ *       codebase:
+ *         build:
+ *           type: branch
+ *           spec:
+ *             branch: master
+ *   stages:
+ *     - stage:
+ *         identifier: Build_n_Scan
+ *         type: CI
+ *         spec:
+ *           execution:
+ *             steps:
+ *               - step:
+ *                   identifier: BuildAndPushECR
+ *                   type: BuildAndPushECR
+ *                   spec:
+ *                     connectorRef: account.harness_impeng_play
+ *         variables:
+ *           - name: image_name
+ *             type: String
+ *             value: harness-private
+ *           - name: tag
+ *             type: String
+ *             value: latest
+ *           - name: ecr_account
+ *             type: String
+ *             value: \"000000000000\"
+ *           - name: region
+ *             type: String
+ *             value: us-west-2
+ *             """)
+ *             .waitForCompletion(true)
+ *             .pollIntervalSeconds(15)
+ *             .build());
+ * 
+ *         ctx.export("pipelineStatus", scsEcsTimingTest.status());
+ *         ctx.export("pipelineExecutionId", scsEcsTimingTest.planExecutionId());
+ *         ctx.export("pipelineContext", StdFunctions.jsondecode(JsondecodeArgs.builder()
+ *             .input(scsEcsTimingTest.outputs())
+ *             .build()).applyValue(_invoke -> _invoke.result()));
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ */
 @ResourceType(type="harness:platform/triggerPipeline:TriggerPipeline")
 public class TriggerPipeline extends com.pulumi.resources.CustomResource {
     /**

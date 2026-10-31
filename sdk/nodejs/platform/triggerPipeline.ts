@@ -4,6 +4,65 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Resource for triggering a Harness pipeline execution with optional runtime inputs. Any change to `orgId`, `projectId`, `pipelineId`, `moduleType`, `inputSetYaml`, or `branch` re-runs the pipeline (recreate). `waitForCompletion` and `pollIntervalSeconds` can be changed in place.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as harness from "@pulumi/harness";
+ * import * as std from "@pulumi/std";
+ *
+ * const scsEcsTimingTest = new harness.platform.TriggerPipeline("scs_ecs_timing_test", {
+ *     orgId: "default",
+ *     projectId: "rssnyder",
+ *     pipelineId: "SCS_ECS_timing_test_local",
+ *     inputSetYaml: `pipeline:
+ *   identifier: SCS_ECS_timing_test_local
+ *   properties:
+ *     ci:
+ *       codebase:
+ *         build:
+ *           type: branch
+ *           spec:
+ *             branch: master
+ *   stages:
+ *     - stage:
+ *         identifier: Build_n_Scan
+ *         type: CI
+ *         spec:
+ *           execution:
+ *             steps:
+ *               - step:
+ *                   identifier: BuildAndPushECR
+ *                   type: BuildAndPushECR
+ *                   spec:
+ *                     connectorRef: account.harness_impeng_play
+ *         variables:
+ *           - name: image_name
+ *             type: String
+ *             value: harness-private
+ *           - name: tag
+ *             type: String
+ *             value: latest
+ *           - name: ecr_account
+ *             type: String
+ *             value: \\"000000000000\\"
+ *           - name: region
+ *             type: String
+ *             value: us-west-2
+ * `,
+ *     waitForCompletion: true,
+ *     pollIntervalSeconds: 15,
+ * });
+ * export const pipelineStatus = scsEcsTimingTest.status;
+ * export const pipelineExecutionId = scsEcsTimingTest.planExecutionId;
+ * export const pipelineContext = std.jsondecodeOutput({
+ *     input: scsEcsTimingTest.outputs,
+ * }).result;
+ * ```
+ */
 export class TriggerPipeline extends pulumi.CustomResource {
     /**
      * Get an existing TriggerPipeline resource's state with the given name, ID, and optional extra

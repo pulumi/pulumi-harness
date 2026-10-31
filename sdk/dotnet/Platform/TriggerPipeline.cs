@@ -9,6 +9,76 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Harness.Platform
 {
+    /// <summary>
+    /// Resource for triggering a Harness pipeline execution with optional runtime inputs. Any change to `OrgId`, `ProjectId`, `PipelineId`, `ModuleType`, `InputSetYaml`, or `Branch` re-runs the pipeline (recreate). `WaitForCompletion` and `PollIntervalSeconds` can be changed in place.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Harness = Pulumi.Harness;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var scsEcsTimingTest = new Harness.Platform.TriggerPipeline("scs_ecs_timing_test", new()
+    ///     {
+    ///         OrgId = "default",
+    ///         ProjectId = "rssnyder",
+    ///         PipelineId = "SCS_ECS_timing_test_local",
+    ///         InputSetYaml = @"pipeline:
+    ///   identifier: SCS_ECS_timing_test_local
+    ///   properties:
+    ///     ci:
+    ///       codebase:
+    ///         build:
+    ///           type: branch
+    ///           spec:
+    ///             branch: master
+    ///   stages:
+    ///     - stage:
+    ///         identifier: Build_n_Scan
+    ///         type: CI
+    ///         spec:
+    ///           execution:
+    ///             steps:
+    ///               - step:
+    ///                   identifier: BuildAndPushECR
+    ///                   type: BuildAndPushECR
+    ///                   spec:
+    ///                     connectorRef: account.harness_impeng_play
+    ///         variables:
+    ///           - name: image_name
+    ///             type: String
+    ///             value: harness-private
+    ///           - name: tag
+    ///             type: String
+    ///             value: latest
+    ///           - name: ecr_account
+    ///             type: String
+    ///             value: \""000000000000\""
+    ///           - name: region
+    ///             type: String
+    ///             value: us-west-2
+    /// ",
+    ///         WaitForCompletion = true,
+    ///         PollIntervalSeconds = 15,
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["pipelineStatus"] = scsEcsTimingTest.Status,
+    ///         ["pipelineExecutionId"] = scsEcsTimingTest.PlanExecutionId,
+    ///         ["pipelineContext"] = Std.Jsondecode.Invoke(new()
+    ///         {
+    ///             Input = scsEcsTimingTest.Outputs,
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     };
+    /// });
+    /// ```
+    /// </summary>
     [HarnessResourceType("harness:platform/triggerPipeline:TriggerPipeline")]
     public partial class TriggerPipeline : global::Pulumi.CustomResource
     {

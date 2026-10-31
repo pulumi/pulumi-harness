@@ -12,6 +12,80 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Resource for triggering a Harness pipeline execution with optional runtime inputs. Any change to `orgId`, `projectId`, `pipelineId`, `moduleType`, `inputSetYaml`, or `branch` re-runs the pipeline (recreate). `waitForCompletion` and `pollIntervalSeconds` can be changed in place.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-harness/sdk/go/harness/platform"
+//	"github.com/pulumi/pulumi-std/sdk/v2/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			scsEcsTimingTest, err := platform.NewTriggerPipeline(ctx, "scs_ecs_timing_test", &platform.TriggerPipelineArgs{
+//				OrgId:      pulumi.String("default"),
+//				ProjectId:  pulumi.String("rssnyder"),
+//				PipelineId: pulumi.String("SCS_ECS_timing_test_local"),
+//				InputSetYaml: pulumi.String(`pipeline:
+//	  identifier: SCS_ECS_timing_test_local
+//	  properties:
+//	    ci:
+//	      codebase:
+//	        build:
+//	          type: branch
+//	          spec:
+//	            branch: master
+//	  stages:
+//	    - stage:
+//	        identifier: Build_n_Scan
+//	        type: CI
+//	        spec:
+//	          execution:
+//	            steps:
+//	              - step:
+//	                  identifier: BuildAndPushECR
+//	                  type: BuildAndPushECR
+//	                  spec:
+//	                    connectorRef: account.harness_impeng_play
+//	        variables:
+//	          - name: image_name
+//	            type: String
+//	            value: harness-private
+//	          - name: tag
+//	            type: String
+//	            value: latest
+//	          - name: ecr_account
+//	            type: String
+//	            value: \"000000000000\"
+//	          - name: region
+//	            type: String
+//	            value: us-west-2
+//
+// `),
+//
+//				WaitForCompletion:   pulumi.Bool(true),
+//				PollIntervalSeconds: pulumi.Int(15),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("pipelineStatus", scsEcsTimingTest.Status)
+//			ctx.Export("pipelineExecutionId", scsEcsTimingTest.PlanExecutionId)
+//			ctx.Export("pipelineContext", std.JsondecodeOutput(ctx, std.JsondecodeOutputArgs{
+//				Input: scsEcsTimingTest.Outputs,
+//			}, nil).Result())
+//			return nil
+//		})
+//	}
+//
+// ```
 type TriggerPipeline struct {
 	pulumi.CustomResourceState
 
