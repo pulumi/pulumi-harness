@@ -351,7 +351,61 @@ class TriggerPipeline(pulumi.CustomResource):
                  wait_for_completion: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
-        Create a TriggerPipeline resource with the given unique name, props, and options.
+        Resource for triggering a Harness pipeline execution with optional runtime inputs. Any change to `org_id`, `project_id`, `pipeline_id`, `module_type`, `input_set_yaml`, or `branch` re-runs the pipeline (recreate). `wait_for_completion` and `poll_interval_seconds` can be changed in place.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+        import pulumi_std as std
+
+        scs_ecs_timing_test = harness.platform.TriggerPipeline("scs_ecs_timing_test",
+            org_id="default",
+            project_id="rssnyder",
+            pipeline_id="SCS_ECS_timing_test_local",
+            input_set_yaml=\"\"\"pipeline:
+          identifier: SCS_ECS_timing_test_local
+          properties:
+            ci:
+              codebase:
+                build:
+                  type: branch
+                  spec:
+                    branch: master
+          stages:
+            - stage:
+                identifier: Build_n_Scan
+                type: CI
+                spec:
+                  execution:
+                    steps:
+                      - step:
+                          identifier: BuildAndPushECR
+                          type: BuildAndPushECR
+                          spec:
+                            connectorRef: account.harness_impeng_play
+                variables:
+                  - name: image_name
+                    type: String
+                    value: harness-private
+                  - name: tag
+                    type: String
+                    value: latest
+                  - name: ecr_account
+                    type: String
+                    value: \\"000000000000\\"
+                  - name: region
+                    type: String
+                    value: us-west-2
+        \"\"\",
+            wait_for_completion=True,
+            poll_interval_seconds=15)
+        pulumi.export("pipelineStatus", scs_ecs_timing_test.status)
+        pulumi.export("pipelineExecutionId", scs_ecs_timing_test.plan_execution_id)
+        pulumi.export("pipelineContext", std.jsondecode_output(input=scs_ecs_timing_test.outputs).result)
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -371,7 +425,61 @@ class TriggerPipeline(pulumi.CustomResource):
                  args: TriggerPipelineArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a TriggerPipeline resource with the given unique name, props, and options.
+        Resource for triggering a Harness pipeline execution with optional runtime inputs. Any change to `org_id`, `project_id`, `pipeline_id`, `module_type`, `input_set_yaml`, or `branch` re-runs the pipeline (recreate). `wait_for_completion` and `poll_interval_seconds` can be changed in place.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_harness as harness
+        import pulumi_std as std
+
+        scs_ecs_timing_test = harness.platform.TriggerPipeline("scs_ecs_timing_test",
+            org_id="default",
+            project_id="rssnyder",
+            pipeline_id="SCS_ECS_timing_test_local",
+            input_set_yaml=\"\"\"pipeline:
+          identifier: SCS_ECS_timing_test_local
+          properties:
+            ci:
+              codebase:
+                build:
+                  type: branch
+                  spec:
+                    branch: master
+          stages:
+            - stage:
+                identifier: Build_n_Scan
+                type: CI
+                spec:
+                  execution:
+                    steps:
+                      - step:
+                          identifier: BuildAndPushECR
+                          type: BuildAndPushECR
+                          spec:
+                            connectorRef: account.harness_impeng_play
+                variables:
+                  - name: image_name
+                    type: String
+                    value: harness-private
+                  - name: tag
+                    type: String
+                    value: latest
+                  - name: ecr_account
+                    type: String
+                    value: \\"000000000000\\"
+                  - name: region
+                    type: String
+                    value: us-west-2
+        \"\"\",
+            wait_for_completion=True,
+            poll_interval_seconds=15)
+        pulumi.export("pipelineStatus", scs_ecs_timing_test.status)
+        pulumi.export("pipelineExecutionId", scs_ecs_timing_test.plan_execution_id)
+        pulumi.export("pipelineContext", std.jsondecode_output(input=scs_ecs_timing_test.outputs).result)
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param TriggerPipelineArgs args: The arguments to use to populate this resource's properties.

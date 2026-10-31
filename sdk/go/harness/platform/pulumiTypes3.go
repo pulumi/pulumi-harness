@@ -8674,7 +8674,7 @@ type HarRegistryConfig struct {
 	NegativeCacheTtl *int `pulumi:"negativeCacheTtl"`
 	// Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
 	RemoteUrlSuffix *string `pulumi:"remoteUrlSuffix"`
-	// Upstream source
+	// Upstream source. Every package type accepts `Custom` (which requires `config.url`). Package types with a built-in default source, which resolves the remote URL for you: `ALPINE` → `Alpine`, `CARGO` → `Crates`, `COMPOSER` → `Packagist`, `CONAN` → `ConanCenter`, `CONDA` → `Anaconda`, `CRAN` → `CRAN`, `DART` → `Pubdev`, `DOCKER` → `Dockerhub` or `AwsEcr`, `GO` → `GoProxy`, `HELM_HTTP` → `HelmChartRepo`, `MAVEN` → `MavenCentral`, `NPM` → `NpmJs`, `NUGET` → `NugetOrg`, `PUPPET` → `PuppetForge`, `PYTHON` → `PyPi`, `RUBY` → `RubyGems`, `TERRAFORM` → `TerraformRegistry`, `WOLFI` → `Wolfi`. `DEBIAN`, `GENERIC`, `HELM`, `HUGGINGFACE`, `RAW`, `RPM` and `SWIFT` support `Custom` only, and `TERRAFORM_BACKEND` does not support UPSTREAM registries.
 	Source *string `pulumi:"source"`
 	// Type of registry (VIRTUAL or UPSTREAM)
 	Type string `pulumi:"type"`
@@ -8710,7 +8710,7 @@ type HarRegistryConfigArgs struct {
 	NegativeCacheTtl pulumi.IntPtrInput `pulumi:"negativeCacheTtl"`
 	// Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
 	RemoteUrlSuffix pulumi.StringPtrInput `pulumi:"remoteUrlSuffix"`
-	// Upstream source
+	// Upstream source. Every package type accepts `Custom` (which requires `config.url`). Package types with a built-in default source, which resolves the remote URL for you: `ALPINE` → `Alpine`, `CARGO` → `Crates`, `COMPOSER` → `Packagist`, `CONAN` → `ConanCenter`, `CONDA` → `Anaconda`, `CRAN` → `CRAN`, `DART` → `Pubdev`, `DOCKER` → `Dockerhub` or `AwsEcr`, `GO` → `GoProxy`, `HELM_HTTP` → `HelmChartRepo`, `MAVEN` → `MavenCentral`, `NPM` → `NpmJs`, `NUGET` → `NugetOrg`, `PUPPET` → `PuppetForge`, `PYTHON` → `PyPi`, `RUBY` → `RubyGems`, `TERRAFORM` → `TerraformRegistry`, `WOLFI` → `Wolfi`. `DEBIAN`, `GENERIC`, `HELM`, `HUGGINGFACE`, `RAW`, `RPM` and `SWIFT` support `Custom` only, and `TERRAFORM_BACKEND` does not support UPSTREAM registries.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 	// Type of registry (VIRTUAL or UPSTREAM)
 	Type pulumi.StringInput `pulumi:"type"`
@@ -8806,7 +8806,7 @@ func (o HarRegistryConfigOutput) RemoteUrlSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HarRegistryConfig) *string { return v.RemoteUrlSuffix }).(pulumi.StringPtrOutput)
 }
 
-// Upstream source
+// Upstream source. Every package type accepts `Custom` (which requires `config.url`). Package types with a built-in default source, which resolves the remote URL for you: `ALPINE` → `Alpine`, `CARGO` → `Crates`, `COMPOSER` → `Packagist`, `CONAN` → `ConanCenter`, `CONDA` → `Anaconda`, `CRAN` → `CRAN`, `DART` → `Pubdev`, `DOCKER` → `Dockerhub` or `AwsEcr`, `GO` → `GoProxy`, `HELM_HTTP` → `HelmChartRepo`, `MAVEN` → `MavenCentral`, `NPM` → `NpmJs`, `NUGET` → `NugetOrg`, `PUPPET` → `PuppetForge`, `PYTHON` → `PyPi`, `RUBY` → `RubyGems`, `TERRAFORM` → `TerraformRegistry`, `WOLFI` → `Wolfi`. `DEBIAN`, `GENERIC`, `HELM`, `HUGGINGFACE`, `RAW`, `RPM` and `SWIFT` support `Custom` only, and `TERRAFORM_BACKEND` does not support UPSTREAM registries.
 func (o HarRegistryConfigOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HarRegistryConfig) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -48854,7 +48854,7 @@ type GetHarRegistryConfig struct {
 	NegativeCacheTtl *int `pulumi:"negativeCacheTtl"`
 	// Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
 	RemoteUrlSuffix *string `pulumi:"remoteUrlSuffix"`
-	// Upstream source
+	// Upstream source. Every package type accepts `Custom` (which requires `config.url`). Package types with a built-in default source, which resolves the remote URL for you: `ALPINE` → `Alpine`, `CARGO` → `Crates`, `COMPOSER` → `Packagist`, `CONAN` → `ConanCenter`, `CONDA` → `Anaconda`, `CRAN` → `CRAN`, `DART` → `Pubdev`, `DOCKER` → `Dockerhub` or `AwsEcr`, `GO` → `GoProxy`, `HELM_HTTP` → `HelmChartRepo`, `MAVEN` → `MavenCentral`, `NPM` → `NpmJs`, `NUGET` → `NugetOrg`, `PUPPET` → `PuppetForge`, `PYTHON` → `PyPi`, `RUBY` → `RubyGems`, `TERRAFORM` → `TerraformRegistry`, `WOLFI` → `Wolfi`. `DEBIAN`, `GENERIC`, `HELM`, `HUGGINGFACE`, `RAW`, `RPM` and `SWIFT` support `Custom` only, and `TERRAFORM_BACKEND` does not support UPSTREAM registries.
 	Source *string `pulumi:"source"`
 	// Type of registry (VIRTUAL or UPSTREAM)
 	Type string `pulumi:"type"`
@@ -48890,7 +48890,7 @@ type GetHarRegistryConfigArgs struct {
 	NegativeCacheTtl pulumi.IntPtrInput `pulumi:"negativeCacheTtl"`
 	// Optional path suffix for Python UPSTREAM registries with Custom source. Overrides the default `simple` path used for PyPI-compatible indexes. Requires `config.url` when source is Custom. Not supported for non-PYTHON package types. Leading and trailing slashes are normalized.
 	RemoteUrlSuffix pulumi.StringPtrInput `pulumi:"remoteUrlSuffix"`
-	// Upstream source
+	// Upstream source. Every package type accepts `Custom` (which requires `config.url`). Package types with a built-in default source, which resolves the remote URL for you: `ALPINE` → `Alpine`, `CARGO` → `Crates`, `COMPOSER` → `Packagist`, `CONAN` → `ConanCenter`, `CONDA` → `Anaconda`, `CRAN` → `CRAN`, `DART` → `Pubdev`, `DOCKER` → `Dockerhub` or `AwsEcr`, `GO` → `GoProxy`, `HELM_HTTP` → `HelmChartRepo`, `MAVEN` → `MavenCentral`, `NPM` → `NpmJs`, `NUGET` → `NugetOrg`, `PUPPET` → `PuppetForge`, `PYTHON` → `PyPi`, `RUBY` → `RubyGems`, `TERRAFORM` → `TerraformRegistry`, `WOLFI` → `Wolfi`. `DEBIAN`, `GENERIC`, `HELM`, `HUGGINGFACE`, `RAW`, `RPM` and `SWIFT` support `Custom` only, and `TERRAFORM_BACKEND` does not support UPSTREAM registries.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 	// Type of registry (VIRTUAL or UPSTREAM)
 	Type pulumi.StringInput `pulumi:"type"`
@@ -48986,7 +48986,7 @@ func (o GetHarRegistryConfigOutput) RemoteUrlSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHarRegistryConfig) *string { return v.RemoteUrlSuffix }).(pulumi.StringPtrOutput)
 }
 
-// Upstream source
+// Upstream source. Every package type accepts `Custom` (which requires `config.url`). Package types with a built-in default source, which resolves the remote URL for you: `ALPINE` → `Alpine`, `CARGO` → `Crates`, `COMPOSER` → `Packagist`, `CONAN` → `ConanCenter`, `CONDA` → `Anaconda`, `CRAN` → `CRAN`, `DART` → `Pubdev`, `DOCKER` → `Dockerhub` or `AwsEcr`, `GO` → `GoProxy`, `HELM_HTTP` → `HelmChartRepo`, `MAVEN` → `MavenCentral`, `NPM` → `NpmJs`, `NUGET` → `NugetOrg`, `PUPPET` → `PuppetForge`, `PYTHON` → `PyPi`, `RUBY` → `RubyGems`, `TERRAFORM` → `TerraformRegistry`, `WOLFI` → `Wolfi`. `DEBIAN`, `GENERIC`, `HELM`, `HUGGINGFACE`, `RAW`, `RPM` and `SWIFT` support `Custom` only, and `TERRAFORM_BACKEND` does not support UPSTREAM registries.
 func (o GetHarRegistryConfigOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetHarRegistryConfig) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
