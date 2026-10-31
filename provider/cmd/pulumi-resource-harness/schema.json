@@ -47908,7 +47908,7 @@
                 },
                 "source": {
                     "type": "string",
-                    "description": "Upstream source\n"
+                    "description": "Upstream source. Every package type accepts `Custom` (which requires `config.url`). Package types with a built-in default source, which resolves the remote URL for you: `ALPINE` → `Alpine`, `CARGO` → `Crates`, `COMPOSER` → `Packagist`, `CONAN` → `ConanCenter`, `CONDA` → `Anaconda`, `CRAN` → `CRAN`, `DART` → `Pubdev`, `DOCKER` → `Dockerhub` or `AwsEcr`, `GO` → `GoProxy`, `HELM_HTTP` → `HelmChartRepo`, `MAVEN` → `MavenCentral`, `NPM` → `NpmJs`, `NUGET` → `NugetOrg`, `PUPPET` → `PuppetForge`, `PYTHON` → `PyPi`, `RUBY` → `RubyGems`, `TERRAFORM` → `TerraformRegistry`, `WOLFI` → `Wolfi`. `DEBIAN`, `GENERIC`, `HELM`, `HUGGINGFACE`, `RAW`, `RPM` and `SWIFT` support `Custom` only, and `TERRAFORM_BACKEND` does not support UPSTREAM registries.\n"
                 },
                 "type": {
                     "type": "string",
@@ -55924,7 +55924,7 @@
                 },
                 "source": {
                     "type": "string",
-                    "description": "Upstream source\n"
+                    "description": "Upstream source. Every package type accepts `Custom` (which requires `config.url`). Package types with a built-in default source, which resolves the remote URL for you: `ALPINE` → `Alpine`, `CARGO` → `Crates`, `COMPOSER` → `Packagist`, `CONAN` → `ConanCenter`, `CONDA` → `Anaconda`, `CRAN` → `CRAN`, `DART` → `Pubdev`, `DOCKER` → `Dockerhub` or `AwsEcr`, `GO` → `GoProxy`, `HELM_HTTP` → `HelmChartRepo`, `MAVEN` → `MavenCentral`, `NPM` → `NpmJs`, `NUGET` → `NugetOrg`, `PUPPET` → `PuppetForge`, `PYTHON` → `PyPi`, `RUBY` → `RubyGems`, `TERRAFORM` → `TerraformRegistry`, `WOLFI` → `Wolfi`. `DEBIAN`, `GENERIC`, `HELM`, `HUGGINGFACE`, `RAW`, `RPM` and `SWIFT` support `Custom` only, and `TERRAFORM_BACKEND` does not support UPSTREAM registries.\n"
                 },
                 "type": {
                     "type": "string",
@@ -92643,50 +92643,51 @@
             }
         },
         "harness:platform/triggerPipeline:TriggerPipeline": {
+            "description": "Resource for triggering a Harness pipeline execution with optional runtime inputs. Any change to \u003cspan pulumi-lang-nodejs=\"`orgId`\" pulumi-lang-dotnet=\"`OrgId`\" pulumi-lang-go=\"`orgId`\" pulumi-lang-python=\"`org_id`\" pulumi-lang-yaml=\"`orgId`\" pulumi-lang-java=\"`orgId`\" pulumi-lang-hcl=\"`org_id`\"\u003e`orgId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\" pulumi-lang-hcl=\"`project_id`\"\u003e`projectId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`pipelineId`\" pulumi-lang-dotnet=\"`PipelineId`\" pulumi-lang-go=\"`pipelineId`\" pulumi-lang-python=\"`pipeline_id`\" pulumi-lang-yaml=\"`pipelineId`\" pulumi-lang-java=\"`pipelineId`\" pulumi-lang-hcl=\"`pipeline_id`\"\u003e`pipelineId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`moduleType`\" pulumi-lang-dotnet=\"`ModuleType`\" pulumi-lang-go=\"`moduleType`\" pulumi-lang-python=\"`module_type`\" pulumi-lang-yaml=\"`moduleType`\" pulumi-lang-java=\"`moduleType`\" pulumi-lang-hcl=\"`module_type`\"\u003e`moduleType`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`inputSetYaml`\" pulumi-lang-dotnet=\"`InputSetYaml`\" pulumi-lang-go=\"`inputSetYaml`\" pulumi-lang-python=\"`input_set_yaml`\" pulumi-lang-yaml=\"`inputSetYaml`\" pulumi-lang-java=\"`inputSetYaml`\" pulumi-lang-hcl=\"`input_set_yaml`\"\u003e`inputSetYaml`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`branch`\" pulumi-lang-dotnet=\"`Branch`\" pulumi-lang-go=\"`branch`\" pulumi-lang-python=\"`branch`\" pulumi-lang-yaml=\"`branch`\" pulumi-lang-java=\"`branch`\" pulumi-lang-hcl=\"`branch`\"\u003e`branch`\u003c/span\u003e re-runs the pipeline (recreate). \u003cspan pulumi-lang-nodejs=\"`waitForCompletion`\" pulumi-lang-dotnet=\"`WaitForCompletion`\" pulumi-lang-go=\"`waitForCompletion`\" pulumi-lang-python=\"`wait_for_completion`\" pulumi-lang-yaml=\"`waitForCompletion`\" pulumi-lang-java=\"`waitForCompletion`\" pulumi-lang-hcl=\"`wait_for_completion`\"\u003e`waitForCompletion`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`pollIntervalSeconds`\" pulumi-lang-dotnet=\"`PollIntervalSeconds`\" pulumi-lang-go=\"`pollIntervalSeconds`\" pulumi-lang-python=\"`poll_interval_seconds`\" pulumi-lang-yaml=\"`pollIntervalSeconds`\" pulumi-lang-java=\"`pollIntervalSeconds`\" pulumi-lang-hcl=\"`poll_interval_seconds`\"\u003e`pollIntervalSeconds`\u003c/span\u003e can be changed in place.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harness from \"@pulumi/harness\";\nimport * as std from \"@pulumi/std\";\n\nconst scsEcsTimingTest = new harness.platform.TriggerPipeline(\"scs_ecs_timing_test\", {\n    orgId: \"default\",\n    projectId: \"rssnyder\",\n    pipelineId: \"SCS_ECS_timing_test_local\",\n    inputSetYaml: `pipeline:\n  identifier: SCS_ECS_timing_test_local\n  properties:\n    ci:\n      codebase:\n        build:\n          type: branch\n          spec:\n            branch: master\n  stages:\n    - stage:\n        identifier: Build_n_Scan\n        type: CI\n        spec:\n          execution:\n            steps:\n              - step:\n                  identifier: BuildAndPushECR\n                  type: BuildAndPushECR\n                  spec:\n                    connectorRef: account.harness_impeng_play\n        variables:\n          - name: image_name\n            type: String\n            value: harness-private\n          - name: tag\n            type: String\n            value: latest\n          - name: ecr_account\n            type: String\n            value: \\\\\"000000000000\\\\\"\n          - name: region\n            type: String\n            value: us-west-2\n`,\n    waitForCompletion: true,\n    pollIntervalSeconds: 15,\n});\nexport const pipelineStatus = scsEcsTimingTest.status;\nexport const pipelineExecutionId = scsEcsTimingTest.planExecutionId;\nexport const pipelineContext = std.jsondecodeOutput({\n    input: scsEcsTimingTest.outputs,\n}).result;\n```\n```python\nimport pulumi\nimport pulumi_harness as harness\nimport pulumi_std as std\n\nscs_ecs_timing_test = harness.platform.TriggerPipeline(\"scs_ecs_timing_test\",\n    org_id=\"default\",\n    project_id=\"rssnyder\",\n    pipeline_id=\"SCS_ECS_timing_test_local\",\n    input_set_yaml=\"\"\"pipeline:\n  identifier: SCS_ECS_timing_test_local\n  properties:\n    ci:\n      codebase:\n        build:\n          type: branch\n          spec:\n            branch: master\n  stages:\n    - stage:\n        identifier: Build_n_Scan\n        type: CI\n        spec:\n          execution:\n            steps:\n              - step:\n                  identifier: BuildAndPushECR\n                  type: BuildAndPushECR\n                  spec:\n                    connectorRef: account.harness_impeng_play\n        variables:\n          - name: image_name\n            type: String\n            value: harness-private\n          - name: tag\n            type: String\n            value: latest\n          - name: ecr_account\n            type: String\n            value: \\\"000000000000\\\"\n          - name: region\n            type: String\n            value: us-west-2\n\"\"\",\n    wait_for_completion=True,\n    poll_interval_seconds=15)\npulumi.export(\"pipelineStatus\", scs_ecs_timing_test.status)\npulumi.export(\"pipelineExecutionId\", scs_ecs_timing_test.plan_execution_id)\npulumi.export(\"pipelineContext\", std.jsondecode_output(input=scs_ecs_timing_test.outputs).result)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harness = Pulumi.Harness;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var scsEcsTimingTest = new Harness.Platform.TriggerPipeline(\"scs_ecs_timing_test\", new()\n    {\n        OrgId = \"default\",\n        ProjectId = \"rssnyder\",\n        PipelineId = \"SCS_ECS_timing_test_local\",\n        InputSetYaml = @\"pipeline:\n  identifier: SCS_ECS_timing_test_local\n  properties:\n    ci:\n      codebase:\n        build:\n          type: branch\n          spec:\n            branch: master\n  stages:\n    - stage:\n        identifier: Build_n_Scan\n        type: CI\n        spec:\n          execution:\n            steps:\n              - step:\n                  identifier: BuildAndPushECR\n                  type: BuildAndPushECR\n                  spec:\n                    connectorRef: account.harness_impeng_play\n        variables:\n          - name: image_name\n            type: String\n            value: harness-private\n          - name: tag\n            type: String\n            value: latest\n          - name: ecr_account\n            type: String\n            value: \\\"\"000000000000\\\"\"\n          - name: region\n            type: String\n            value: us-west-2\n\",\n        WaitForCompletion = true,\n        PollIntervalSeconds = 15,\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"pipelineStatus\"] = scsEcsTimingTest.Status,\n        [\"pipelineExecutionId\"] = scsEcsTimingTest.PlanExecutionId,\n        [\"pipelineContext\"] = Std.Jsondecode.Invoke(new()\n        {\n            Input = scsEcsTimingTest.Outputs,\n        }).Apply(invoke =\u003e invoke.Result),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-harness/sdk/go/harness/platform\"\n\t\"github.com/pulumi/pulumi-std/sdk/v2/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tscsEcsTimingTest, err := platform.NewTriggerPipeline(ctx, \"scs_ecs_timing_test\", \u0026platform.TriggerPipelineArgs{\n\t\t\tOrgId:      pulumi.String(\"default\"),\n\t\t\tProjectId:  pulumi.String(\"rssnyder\"),\n\t\t\tPipelineId: pulumi.String(\"SCS_ECS_timing_test_local\"),\n\t\t\tInputSetYaml: pulumi.String(`pipeline:\n  identifier: SCS_ECS_timing_test_local\n  properties:\n    ci:\n      codebase:\n        build:\n          type: branch\n          spec:\n            branch: master\n  stages:\n    - stage:\n        identifier: Build_n_Scan\n        type: CI\n        spec:\n          execution:\n            steps:\n              - step:\n                  identifier: BuildAndPushECR\n                  type: BuildAndPushECR\n                  spec:\n                    connectorRef: account.harness_impeng_play\n        variables:\n          - name: image_name\n            type: String\n            value: harness-private\n          - name: tag\n            type: String\n            value: latest\n          - name: ecr_account\n            type: String\n            value: \\\"000000000000\\\"\n          - name: region\n            type: String\n            value: us-west-2\n`),\n\t\t\tWaitForCompletion:   pulumi.Bool(true),\n\t\t\tPollIntervalSeconds: pulumi.Int(15),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"pipelineStatus\", scsEcsTimingTest.Status)\n\t\tctx.Export(\"pipelineExecutionId\", scsEcsTimingTest.PlanExecutionId)\n\t\tctx.Export(\"pipelineContext\", std.JsondecodeOutput(ctx, std.JsondecodeOutputArgs{\n\t\t\tInput: scsEcsTimingTest.Outputs,\n\t\t}, nil).Result())\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    harness = {\n      source = \"pulumi/harness\"\n    }\n    std = {\n      source = \"pulumi/std\"\n    }\n  }\n}\n\nresource \"harness_platform_trigger_pipeline\" \"scs_ecs_timing_test\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  org_id                = \"default\"\n  project_id            = \"rssnyder\"\n  pipeline_id           = \"SCS_ECS_timing_test_local\"\n  input_set_yaml        = \u003c\u003c-EOT\npipeline:\n  identifier: SCS_ECS_timing_test_local\n  properties:\n    ci:\n      codebase:\n        build:\n          type: branch\n          spec:\n            branch: master\n  stages:\n    - stage:\n        identifier: Build_n_Scan\n        type: CI\n        spec:\n          execution:\n            steps:\n              - step:\n                  identifier: BuildAndPushECR\n                  type: BuildAndPushECR\n                  spec:\n                    connectorRef: account.harness_impeng_play\n        variables:\n          - name: image_name\n            type: String\n            value: harness-private\n          - name: tag\n            type: String\n            value: latest\n          - name: ecr_account\n            type: String\n            value: \\\"000000000000\\\"\n          - name: region\n            type: String\n            value: us-west-2\nEOT\n\n  wait_for_completion   = true\n  poll_interval_seconds = 15\n}\n# Status of the run: Success, Failed, Aborted, etc.\noutput \"pipelineStatus\" {\n  value = harness_platform_trigger_pipeline.scs_ecs_timing_test.status\n}\n# Identifier of the execution, useful for linking back to the Harness UI.\noutput \"pipelineExecutionId\" {\n  value = harness_platform_trigger_pipeline.scs_ecs_timing_test.plan_execution_id\n}\n# JSON-encoded map of output variables/outcomes exported by the pipeline execution.\noutput \"pipelineContext\" {\n  value = jsondecode(harness_platform_trigger_pipeline.scs_ecs_timing_test.outputs)\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harness.platform.TriggerPipeline;\nimport com.pulumi.harness.platform.TriggerPipelineArgs;\nimport com.pulumi.std.StdFunctions;\nimport com.pulumi.std.inputs.JsondecodeArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var scsEcsTimingTest = new TriggerPipeline(\"scsEcsTimingTest\", TriggerPipelineArgs.builder()\n            .orgId(\"default\")\n            .projectId(\"rssnyder\")\n            .pipelineId(\"SCS_ECS_timing_test_local\")\n            .inputSetYaml(\"\"\"\npipeline:\n  identifier: SCS_ECS_timing_test_local\n  properties:\n    ci:\n      codebase:\n        build:\n          type: branch\n          spec:\n            branch: master\n  stages:\n    - stage:\n        identifier: Build_n_Scan\n        type: CI\n        spec:\n          execution:\n            steps:\n              - step:\n                  identifier: BuildAndPushECR\n                  type: BuildAndPushECR\n                  spec:\n                    connectorRef: account.harness_impeng_play\n        variables:\n          - name: image_name\n            type: String\n            value: harness-private\n          - name: tag\n            type: String\n            value: latest\n          - name: ecr_account\n            type: String\n            value: \\\"000000000000\\\"\n          - name: region\n            type: String\n            value: us-west-2\n            \"\"\")\n            .waitForCompletion(true)\n            .pollIntervalSeconds(15)\n            .build());\n\n        ctx.export(\"pipelineStatus\", scsEcsTimingTest.status());\n        ctx.export(\"pipelineExecutionId\", scsEcsTimingTest.planExecutionId());\n        ctx.export(\"pipelineContext\", StdFunctions.jsondecode(JsondecodeArgs.builder()\n            .input(scsEcsTimingTest.outputs())\n            .build()).applyValue(_invoke -\u003e _invoke.result()));\n    }\n}\n```\n```yaml\nresources:\n  scsEcsTimingTest:\n    type: harness:platform:TriggerPipeline\n    name: scs_ecs_timing_test\n    properties:\n      orgId: default\n      projectId: rssnyder\n      pipelineId: SCS_ECS_timing_test_local\n      inputSetYaml: |\n        pipeline:\n          identifier: SCS_ECS_timing_test_local\n          properties:\n            ci:\n              codebase:\n                build:\n                  type: branch\n                  spec:\n                    branch: master\n          stages:\n            - stage:\n                identifier: Build_n_Scan\n                type: CI\n                spec:\n                  execution:\n                    steps:\n                      - step:\n                          identifier: BuildAndPushECR\n                          type: BuildAndPushECR\n                          spec:\n                            connectorRef: account.harness_impeng_play\n                variables:\n                  - name: image_name\n                    type: String\n                    value: harness-private\n                  - name: tag\n                    type: String\n                    value: latest\n                  - name: ecr_account\n                    type: String\n                    value: \\\"000000000000\\\"\n                  - name: region\n                    type: String\n                    value: us-west-2\n      waitForCompletion: true\n      pollIntervalSeconds: 15\noutputs:\n  # Status of the run: Success, Failed, Aborted, etc.\n  pipelineStatus: ${scsEcsTimingTest.status}\n  # Identifier of the execution, useful for linking back to the Harness UI.\n  pipelineExecutionId: ${scsEcsTimingTest.planExecutionId}\n  # JSON-encoded map of output variables/outcomes exported by the pipeline execution.\n  pipelineContext:\n    fn::invoke:\n      function: std:jsondecode\n      arguments:\n        input: ${scsEcsTimingTest.outputs}\n      return: result\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "branch": {
                     "type": "string",
-                    "description": "Name of the branch, for Git Experience pipelines."
+                    "description": "Name of the branch, for Git Experience pipelines.\n"
                 },
                 "inputSetYaml": {
                     "type": "string",
-                    "description": "Input Set YAML used to run the pipeline. Only needed if the pipeline has runtime inputs."
+                    "description": "Input Set YAML used to run the pipeline. Only needed if the pipeline has runtime inputs.\n"
                 },
                 "moduleType": {
                     "type": "string",
-                    "description": "Module type of the pipeline, e.g. cd, ci."
+                    "description": "Module type of the pipeline, e.g. cd, ci.\n"
                 },
                 "orgId": {
                     "type": "string",
-                    "description": "Unique identifier of the organization."
+                    "description": "Unique identifier of the organization.\n"
                 },
                 "outputs": {
                     "type": "string",
-                    "description": "JSON-encoded map of output variables exported by the pipeline execution, keyed by step/stage identifier. Each value is a list of outcome objects (one per node execution; more than one when a matrix/parallel looping strategy runs the same identifier multiple times). Only populated once the execution has finished."
+                    "description": "JSON-encoded map of output variables exported by the pipeline execution, keyed by step/stage identifier. Each value is a list of outcome objects (one per node execution; more than one when a matrix/parallel looping strategy runs the same identifier multiple times). Only populated once the execution has finished.\n"
                 },
                 "pipelineId": {
                     "type": "string",
-                    "description": "Identifier of the pipeline to trigger."
+                    "description": "Identifier of the pipeline to trigger.\n"
                 },
                 "planExecutionId": {
                     "type": "string",
-                    "description": "Identifier of the triggered pipeline execution."
+                    "description": "Identifier of the triggered pipeline execution.\n"
                 },
                 "pollIntervalSeconds": {
                     "type": "integer",
-                    "description": "Interval, in seconds, between polls of the execution status when \u003cspan pulumi-lang-nodejs=\"`waitForCompletion`\" pulumi-lang-dotnet=\"`WaitForCompletion`\" pulumi-lang-go=\"`waitForCompletion`\" pulumi-lang-python=\"`wait_for_completion`\" pulumi-lang-yaml=\"`waitForCompletion`\" pulumi-lang-java=\"`waitForCompletion`\" pulumi-lang-hcl=\"`wait_for_completion`\"\u003e`waitForCompletion`\u003c/span\u003e is true."
+                    "description": "Interval, in seconds, between polls of the execution status when \u003cspan pulumi-lang-nodejs=\"`waitForCompletion`\" pulumi-lang-dotnet=\"`WaitForCompletion`\" pulumi-lang-go=\"`waitForCompletion`\" pulumi-lang-python=\"`wait_for_completion`\" pulumi-lang-yaml=\"`waitForCompletion`\" pulumi-lang-java=\"`waitForCompletion`\" pulumi-lang-hcl=\"`wait_for_completion`\"\u003e`waitForCompletion`\u003c/span\u003e is true.\n"
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "Unique identifier of the project."
+                    "description": "Unique identifier of the project.\n"
                 },
                 "status": {
                     "type": "string",
-                    "description": "Status of the pipeline execution."
+                    "description": "Status of the pipeline execution.\n"
                 },
                 "waitForCompletion": {
                     "type": "boolean",
-                    "description": "Whether to wait for the pipeline execution to reach a final status. When true, \u003cspan pulumi-lang-nodejs=\"`status`\" pulumi-lang-dotnet=\"`Status`\" pulumi-lang-go=\"`status`\" pulumi-lang-python=\"`status`\" pulumi-lang-yaml=\"`status`\" pulumi-lang-java=\"`status`\" pulumi-lang-hcl=\"`status`\"\u003e`status`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`outputs`\" pulumi-lang-dotnet=\"`Outputs`\" pulumi-lang-go=\"`outputs`\" pulumi-lang-python=\"`outputs`\" pulumi-lang-yaml=\"`outputs`\" pulumi-lang-java=\"`outputs`\" pulumi-lang-hcl=\"`outputs`\"\u003e`outputs`\u003c/span\u003e reflect the completed execution."
+                    "description": "Whether to wait for the pipeline execution to reach a final status. When true, \u003cspan pulumi-lang-nodejs=\"`status`\" pulumi-lang-dotnet=\"`Status`\" pulumi-lang-go=\"`status`\" pulumi-lang-python=\"`status`\" pulumi-lang-yaml=\"`status`\" pulumi-lang-java=\"`status`\" pulumi-lang-hcl=\"`status`\"\u003e`status`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`outputs`\" pulumi-lang-dotnet=\"`Outputs`\" pulumi-lang-go=\"`outputs`\" pulumi-lang-python=\"`outputs`\" pulumi-lang-yaml=\"`outputs`\" pulumi-lang-java=\"`outputs`\" pulumi-lang-hcl=\"`outputs`\"\u003e`outputs`\u003c/span\u003e reflect the completed execution.\n"
                 }
             },
             "required": [
@@ -92700,41 +92701,41 @@
             "inputProperties": {
                 "branch": {
                     "type": "string",
-                    "description": "Name of the branch, for Git Experience pipelines.",
+                    "description": "Name of the branch, for Git Experience pipelines.\n",
                     "willReplaceOnChanges": true
                 },
                 "inputSetYaml": {
                     "type": "string",
-                    "description": "Input Set YAML used to run the pipeline. Only needed if the pipeline has runtime inputs.",
+                    "description": "Input Set YAML used to run the pipeline. Only needed if the pipeline has runtime inputs.\n",
                     "willReplaceOnChanges": true
                 },
                 "moduleType": {
                     "type": "string",
-                    "description": "Module type of the pipeline, e.g. cd, ci.",
+                    "description": "Module type of the pipeline, e.g. cd, ci.\n",
                     "willReplaceOnChanges": true
                 },
                 "orgId": {
                     "type": "string",
-                    "description": "Unique identifier of the organization.",
+                    "description": "Unique identifier of the organization.\n",
                     "willReplaceOnChanges": true
                 },
                 "pipelineId": {
                     "type": "string",
-                    "description": "Identifier of the pipeline to trigger.",
+                    "description": "Identifier of the pipeline to trigger.\n",
                     "willReplaceOnChanges": true
                 },
                 "pollIntervalSeconds": {
                     "type": "integer",
-                    "description": "Interval, in seconds, between polls of the execution status when \u003cspan pulumi-lang-nodejs=\"`waitForCompletion`\" pulumi-lang-dotnet=\"`WaitForCompletion`\" pulumi-lang-go=\"`waitForCompletion`\" pulumi-lang-python=\"`wait_for_completion`\" pulumi-lang-yaml=\"`waitForCompletion`\" pulumi-lang-java=\"`waitForCompletion`\" pulumi-lang-hcl=\"`wait_for_completion`\"\u003e`waitForCompletion`\u003c/span\u003e is true."
+                    "description": "Interval, in seconds, between polls of the execution status when \u003cspan pulumi-lang-nodejs=\"`waitForCompletion`\" pulumi-lang-dotnet=\"`WaitForCompletion`\" pulumi-lang-go=\"`waitForCompletion`\" pulumi-lang-python=\"`wait_for_completion`\" pulumi-lang-yaml=\"`waitForCompletion`\" pulumi-lang-java=\"`waitForCompletion`\" pulumi-lang-hcl=\"`wait_for_completion`\"\u003e`waitForCompletion`\u003c/span\u003e is true.\n"
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "Unique identifier of the project.",
+                    "description": "Unique identifier of the project.\n",
                     "willReplaceOnChanges": true
                 },
                 "waitForCompletion": {
                     "type": "boolean",
-                    "description": "Whether to wait for the pipeline execution to reach a final status. When true, \u003cspan pulumi-lang-nodejs=\"`status`\" pulumi-lang-dotnet=\"`Status`\" pulumi-lang-go=\"`status`\" pulumi-lang-python=\"`status`\" pulumi-lang-yaml=\"`status`\" pulumi-lang-java=\"`status`\" pulumi-lang-hcl=\"`status`\"\u003e`status`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`outputs`\" pulumi-lang-dotnet=\"`Outputs`\" pulumi-lang-go=\"`outputs`\" pulumi-lang-python=\"`outputs`\" pulumi-lang-yaml=\"`outputs`\" pulumi-lang-java=\"`outputs`\" pulumi-lang-hcl=\"`outputs`\"\u003e`outputs`\u003c/span\u003e reflect the completed execution."
+                    "description": "Whether to wait for the pipeline execution to reach a final status. When true, \u003cspan pulumi-lang-nodejs=\"`status`\" pulumi-lang-dotnet=\"`Status`\" pulumi-lang-go=\"`status`\" pulumi-lang-python=\"`status`\" pulumi-lang-yaml=\"`status`\" pulumi-lang-java=\"`status`\" pulumi-lang-hcl=\"`status`\"\u003e`status`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`outputs`\" pulumi-lang-dotnet=\"`Outputs`\" pulumi-lang-go=\"`outputs`\" pulumi-lang-python=\"`outputs`\" pulumi-lang-yaml=\"`outputs`\" pulumi-lang-java=\"`outputs`\" pulumi-lang-hcl=\"`outputs`\"\u003e`outputs`\u003c/span\u003e reflect the completed execution.\n"
                 }
             },
             "requiredInputs": [
@@ -92747,53 +92748,53 @@
                 "properties": {
                     "branch": {
                         "type": "string",
-                        "description": "Name of the branch, for Git Experience pipelines.",
+                        "description": "Name of the branch, for Git Experience pipelines.\n",
                         "willReplaceOnChanges": true
                     },
                     "inputSetYaml": {
                         "type": "string",
-                        "description": "Input Set YAML used to run the pipeline. Only needed if the pipeline has runtime inputs.",
+                        "description": "Input Set YAML used to run the pipeline. Only needed if the pipeline has runtime inputs.\n",
                         "willReplaceOnChanges": true
                     },
                     "moduleType": {
                         "type": "string",
-                        "description": "Module type of the pipeline, e.g. cd, ci.",
+                        "description": "Module type of the pipeline, e.g. cd, ci.\n",
                         "willReplaceOnChanges": true
                     },
                     "orgId": {
                         "type": "string",
-                        "description": "Unique identifier of the organization.",
+                        "description": "Unique identifier of the organization.\n",
                         "willReplaceOnChanges": true
                     },
                     "outputs": {
                         "type": "string",
-                        "description": "JSON-encoded map of output variables exported by the pipeline execution, keyed by step/stage identifier. Each value is a list of outcome objects (one per node execution; more than one when a matrix/parallel looping strategy runs the same identifier multiple times). Only populated once the execution has finished."
+                        "description": "JSON-encoded map of output variables exported by the pipeline execution, keyed by step/stage identifier. Each value is a list of outcome objects (one per node execution; more than one when a matrix/parallel looping strategy runs the same identifier multiple times). Only populated once the execution has finished.\n"
                     },
                     "pipelineId": {
                         "type": "string",
-                        "description": "Identifier of the pipeline to trigger.",
+                        "description": "Identifier of the pipeline to trigger.\n",
                         "willReplaceOnChanges": true
                     },
                     "planExecutionId": {
                         "type": "string",
-                        "description": "Identifier of the triggered pipeline execution."
+                        "description": "Identifier of the triggered pipeline execution.\n"
                     },
                     "pollIntervalSeconds": {
                         "type": "integer",
-                        "description": "Interval, in seconds, between polls of the execution status when \u003cspan pulumi-lang-nodejs=\"`waitForCompletion`\" pulumi-lang-dotnet=\"`WaitForCompletion`\" pulumi-lang-go=\"`waitForCompletion`\" pulumi-lang-python=\"`wait_for_completion`\" pulumi-lang-yaml=\"`waitForCompletion`\" pulumi-lang-java=\"`waitForCompletion`\" pulumi-lang-hcl=\"`wait_for_completion`\"\u003e`waitForCompletion`\u003c/span\u003e is true."
+                        "description": "Interval, in seconds, between polls of the execution status when \u003cspan pulumi-lang-nodejs=\"`waitForCompletion`\" pulumi-lang-dotnet=\"`WaitForCompletion`\" pulumi-lang-go=\"`waitForCompletion`\" pulumi-lang-python=\"`wait_for_completion`\" pulumi-lang-yaml=\"`waitForCompletion`\" pulumi-lang-java=\"`waitForCompletion`\" pulumi-lang-hcl=\"`wait_for_completion`\"\u003e`waitForCompletion`\u003c/span\u003e is true.\n"
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "Unique identifier of the project.",
+                        "description": "Unique identifier of the project.\n",
                         "willReplaceOnChanges": true
                     },
                     "status": {
                         "type": "string",
-                        "description": "Status of the pipeline execution."
+                        "description": "Status of the pipeline execution.\n"
                     },
                     "waitForCompletion": {
                         "type": "boolean",
-                        "description": "Whether to wait for the pipeline execution to reach a final status. When true, \u003cspan pulumi-lang-nodejs=\"`status`\" pulumi-lang-dotnet=\"`Status`\" pulumi-lang-go=\"`status`\" pulumi-lang-python=\"`status`\" pulumi-lang-yaml=\"`status`\" pulumi-lang-java=\"`status`\" pulumi-lang-hcl=\"`status`\"\u003e`status`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`outputs`\" pulumi-lang-dotnet=\"`Outputs`\" pulumi-lang-go=\"`outputs`\" pulumi-lang-python=\"`outputs`\" pulumi-lang-yaml=\"`outputs`\" pulumi-lang-java=\"`outputs`\" pulumi-lang-hcl=\"`outputs`\"\u003e`outputs`\u003c/span\u003e reflect the completed execution."
+                        "description": "Whether to wait for the pipeline execution to reach a final status. When true, \u003cspan pulumi-lang-nodejs=\"`status`\" pulumi-lang-dotnet=\"`Status`\" pulumi-lang-go=\"`status`\" pulumi-lang-python=\"`status`\" pulumi-lang-yaml=\"`status`\" pulumi-lang-java=\"`status`\" pulumi-lang-hcl=\"`status`\"\u003e`status`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`outputs`\" pulumi-lang-dotnet=\"`Outputs`\" pulumi-lang-go=\"`outputs`\" pulumi-lang-python=\"`outputs`\" pulumi-lang-yaml=\"`outputs`\" pulumi-lang-java=\"`outputs`\" pulumi-lang-hcl=\"`outputs`\"\u003e`outputs`\u003c/span\u003e reflect the completed execution.\n"
                     }
                 },
                 "type": "object"
