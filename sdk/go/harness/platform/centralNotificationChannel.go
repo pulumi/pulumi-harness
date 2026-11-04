@@ -105,6 +105,12 @@ func (CentralNotificationChannelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*centralNotificationChannelState)(nil)).Elem()
 }
 
+// CentralNotificationChannelExists checks whether an existing CentralNotificationChannel resource with the given ID exists.
+func CentralNotificationChannelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CentralNotificationChannelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/centralNotificationChannel:CentralNotificationChannel", id, state, "", opts...)
+}
+
 type centralNotificationChannelArgs struct {
 	Channel                 CentralNotificationChannelChannel `pulumi:"channel"`
 	Identifier              string                            `pulumi:"identifier"`

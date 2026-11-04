@@ -199,6 +199,12 @@ func (IdpScorecardCheckState) ElementType() reflect.Type {
 	return reflect.TypeOf((*idpScorecardCheckState)(nil)).Elem()
 }
 
+// IdpScorecardCheckExists checks whether an existing IdpScorecardCheck resource with the given ID exists.
+func IdpScorecardCheckExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IdpScorecardCheckState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/idpScorecardCheck:IdpScorecardCheck", id, state, "", opts...)
+}
+
 type idpScorecardCheckArgs struct {
 	// Default behaviour when the check cannot be evaluated. Valid values are PASS and FAIL.
 	DefaultBehaviour string `pulumi:"defaultBehaviour"`

@@ -39,22 +39,20 @@ public final class TemplateArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Description of the entity. Description field is deprecated
      * 
-     * @deprecated
-     * description field is deprecated
+     * @deprecated description field is deprecated
      * 
      */
-    @Deprecated /* description field is deprecated */
+    @Deprecated
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
      * @return Description of the entity. Description field is deprecated
      * 
-     * @deprecated
-     * description field is deprecated
+     * @deprecated description field is deprecated
      * 
      */
-    @Deprecated /* description field is deprecated */
+    @Deprecated
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -318,11 +316,10 @@ public final class TemplateArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * description field is deprecated
+         * @deprecated description field is deprecated
          * 
          */
-        @Deprecated /* description field is deprecated */
+        @Deprecated
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
@@ -333,11 +330,10 @@ public final class TemplateArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * description field is deprecated
+         * @deprecated description field is deprecated
          * 
          */
-        @Deprecated /* description field is deprecated */
+        @Deprecated
         public Builder description(String description) {
             return description(Output.of(description));
         }

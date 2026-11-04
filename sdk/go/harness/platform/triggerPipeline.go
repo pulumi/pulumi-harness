@@ -205,6 +205,12 @@ func (TriggerPipelineState) ElementType() reflect.Type {
 	return reflect.TypeOf((*triggerPipelineState)(nil)).Elem()
 }
 
+// TriggerPipelineExists checks whether an existing TriggerPipeline resource with the given ID exists.
+func TriggerPipelineExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TriggerPipelineState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/triggerPipeline:TriggerPipeline", id, state, "", opts...)
+}
+
 type triggerPipelineArgs struct {
 	// Name of the branch, for Git Experience pipelines.
 	Branch *string `pulumi:"branch"`

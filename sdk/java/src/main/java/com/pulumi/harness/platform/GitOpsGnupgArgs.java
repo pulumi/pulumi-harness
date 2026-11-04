@@ -21,22 +21,20 @@ public final class GitOpsGnupgArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Account Identifier for the GnuPG Key.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
      * @return Account Identifier for the GnuPG Key.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -134,11 +132,10 @@ public final class GitOpsGnupgArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release.
+         * @deprecated This field is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        @Deprecated
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
@@ -149,11 +146,10 @@ public final class GitOpsGnupgArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release.
+         * @deprecated This field is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        @Deprecated
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }

@@ -216,6 +216,12 @@ func (AppDynamicsConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appDynamicsConnectorState)(nil)).Elem()
 }
 
+// AppDynamicsConnectorExists checks whether an existing AppDynamicsConnector resource with the given ID exists.
+func AppDynamicsConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppDynamicsConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/appDynamicsConnector:AppDynamicsConnector", id, state, "", opts...)
+}
+
 type appDynamicsConnectorArgs struct {
 	// The App Dynamics account name.
 	AccountName string `pulumi:"accountName"`

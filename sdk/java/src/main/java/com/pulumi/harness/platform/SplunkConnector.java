@@ -278,11 +278,10 @@ public class SplunkConnector extends com.pulumi.resources.CustomResource {
     /**
      * The reference to the Harness secret containing the Splunk password. Deprecated: Use &#39;username_password&#39; block instead. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
-     * @deprecated
-     * Use &#39;username_password&#39; authentication block instead
+     * @deprecated Use &#39;username_password&#39; authentication block instead
      * 
      */
-    @Deprecated /* Use 'username_password' authentication block instead */
+    @Deprecated
     @Export(name="passwordRef", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> passwordRef;
 
@@ -338,11 +337,10 @@ public class SplunkConnector extends com.pulumi.resources.CustomResource {
     /**
      * The username used for connecting to Splunk. Deprecated: Use &#39;username_password&#39; block instead.
      * 
-     * @deprecated
-     * Use &#39;username_password&#39; authentication block instead
+     * @deprecated Use &#39;username_password&#39; authentication block instead
      * 
      */
-    @Deprecated /* Use 'username_password' authentication block instead */
+    @Deprecated
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> username;
 

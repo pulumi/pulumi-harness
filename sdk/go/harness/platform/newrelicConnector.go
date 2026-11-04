@@ -188,6 +188,12 @@ func (NewrelicConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*newrelicConnectorState)(nil)).Elem()
 }
 
+// NewrelicConnectorExists checks whether an existing NewrelicConnector resource with the given ID exists.
+func NewrelicConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NewrelicConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/newrelicConnector:NewrelicConnector", id, state, "", opts...)
+}
+
 type newrelicConnectorArgs struct {
 	// Account ID of the NewRelic account.
 	AccountId string `pulumi:"accountId"`

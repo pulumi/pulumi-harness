@@ -1027,6 +1027,56 @@ class InfraModule(pulumi.CustomResource):
         __props__.__dict__["versions"] = versions
         return InfraModule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connector_org: pulumi.Input[Optional[_builtins.str]] = None,
+            connector_project: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            git_tag_style: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            onboarding_pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+            onboarding_pipeline_org: pulumi.Input[Optional[_builtins.str]] = None,
+            onboarding_pipeline_project: pulumi.Input[Optional[_builtins.str]] = None,
+            onboarding_pipeline_sync: pulumi.Input[Optional[_builtins.bool]] = None,
+            platform_infra_module_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repository: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_commit: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_connector: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_path: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_url: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            synced: pulumi.Input[Optional[_builtins.int]] = None,
+            system: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[_builtins.str]] = None,
+            versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectorOrg"] = connector_org
+        __props__["connectorProject"] = connector_project
+        __props__["created"] = created
+        __props__["description"] = description
+        __props__["gitTagStyle"] = git_tag_style
+        __props__["name"] = name
+        __props__["onboardingPipeline"] = onboarding_pipeline
+        __props__["onboardingPipelineOrg"] = onboarding_pipeline_org
+        __props__["onboardingPipelineProject"] = onboarding_pipeline_project
+        __props__["onboardingPipelineSync"] = onboarding_pipeline_sync
+        __props__["platformInfraModuleId"] = platform_infra_module_id
+        __props__["repository"] = repository
+        __props__["repositoryBranch"] = repository_branch
+        __props__["repositoryCommit"] = repository_commit
+        __props__["repositoryConnector"] = repository_connector
+        __props__["repositoryPath"] = repository_path
+        __props__["repositoryUrl"] = repository_url
+        __props__["storageType"] = storage_type
+        __props__["synced"] = synced
+        __props__["system"] = system
+        __props__["tags"] = tags
+        __props__["versions"] = versions
+        return pulumi.runtime.exists_resource(None, 'harness:platform/infraModule:InfraModule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectorOrg")
     def connector_org(self) -> pulumi.Output[Optional[_builtins.str]]:

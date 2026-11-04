@@ -222,6 +222,12 @@ func (ManualFreezeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*manualFreezeState)(nil)).Elem()
 }
 
+// ManualFreezeExists checks whether an existing ManualFreeze resource with the given ID exists.
+func ManualFreezeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ManualFreezeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/manualFreeze:ManualFreeze", id, state, "", opts...)
+}
+
 type manualFreezeArgs struct {
 	// Account Identifier of the freeze
 	AccountId string `pulumi:"accountId"`

@@ -212,6 +212,12 @@ func (AzureCloudCostConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*azureCloudCostConnectorState)(nil)).Elem()
 }
 
+// AzureCloudCostConnectorExists checks whether an existing AzureCloudCostConnector resource with the given ID exists.
+func AzureCloudCostConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AzureCloudCostConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/azureCloudCostConnector:AzureCloudCostConnector", id, state, "", opts...)
+}
+
 type azureCloudCostConnectorArgs struct {
 	// Returns billing details for the Azure account.
 	BillingExportSpec *AzureCloudCostConnectorBillingExportSpec `pulumi:"billingExportSpec"`

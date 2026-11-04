@@ -338,6 +338,20 @@ class SshCredential(pulumi.CustomResource):
         __props__.__dict__["usage_scopes"] = usage_scopes
         return SshCredential(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            kerberos_authentication: pulumi.Input[Optional[Union['SshCredentialKerberosAuthenticationArgs', 'SshCredentialKerberosAuthenticationArgsDict', 'outputs.SshCredentialKerberosAuthentication']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ssh_authentication: pulumi.Input[Optional[Union['SshCredentialSshAuthenticationArgs', 'SshCredentialSshAuthenticationArgsDict', 'outputs.SshCredentialSshAuthentication']]] = None,
+            usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SshCredentialUsageScopeArgs', 'SshCredentialUsageScopeArgsDict', 'outputs.SshCredentialUsageScope']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["kerberosAuthentication"] = kerberos_authentication
+        __props__["name"] = name
+        __props__["sshAuthentication"] = ssh_authentication
+        __props__["usageScopes"] = usage_scopes
+        return pulumi.runtime.exists_resource(None, 'harness:index/sshCredential:SshCredential', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="kerberosAuthentication")
     def kerberos_authentication(self) -> pulumi.Output[Optional['outputs.SshCredentialKerberosAuthentication']]:

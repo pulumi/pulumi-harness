@@ -201,6 +201,12 @@ func (SloState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sloState)(nil)).Elem()
 }
 
+// SloExists checks whether an existing Slo resource with the given ID exists.
+func SloExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SloState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/slo:Slo", id, state, "", opts...)
+}
+
 type sloArgs struct {
 	// Identifier of the SLO.
 	Identifier string `pulumi:"identifier"`

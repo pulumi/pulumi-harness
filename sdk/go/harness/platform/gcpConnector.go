@@ -148,6 +148,12 @@ func (GcpConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gcpConnectorState)(nil)).Elem()
 }
 
+// GcpConnectorExists checks whether an existing GcpConnector resource with the given ID exists.
+func GcpConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GcpConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/gcpConnector:GcpConnector", id, state, "", opts...)
+}
+
 type gcpConnectorArgs struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`

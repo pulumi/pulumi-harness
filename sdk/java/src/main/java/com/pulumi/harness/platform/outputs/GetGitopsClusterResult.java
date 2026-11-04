@@ -15,11 +15,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetGitopsClusterResult {
     /**
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     private String accountId;
     private String agentId;
     /**
@@ -34,11 +33,10 @@ public final class GetGitopsClusterResult {
 
     private GetGitopsClusterResult() {}
     /**
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     public String accountId() {
         return this.accountId;
     }

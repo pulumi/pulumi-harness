@@ -293,6 +293,12 @@ func (BitbucketConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bitbucketConnectorState)(nil)).Elem()
 }
 
+// BitbucketConnectorExists checks whether an existing BitbucketConnector resource with the given ID exists.
+func BitbucketConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BitbucketConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/bitbucketConnector:BitbucketConnector", id, state, "", opts...)
+}
+
 type bitbucketConnectorArgs struct {
 	// Configuration for using the BitBucket api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
 	ApiAuthentication *BitbucketConnectorApiAuthentication `pulumi:"apiAuthentication"`

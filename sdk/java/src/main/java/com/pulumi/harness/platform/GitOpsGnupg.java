@@ -92,11 +92,10 @@ public class GitOpsGnupg extends com.pulumi.resources.CustomResource {
     /**
      * Account Identifier for the GnuPG Key.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 

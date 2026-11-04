@@ -21,11 +21,10 @@ public final class ExperimentTemplateSpecProbe {
     /**
      * @return Deprecated: no longer part of the experiment template API; use conditionsV2 instead. This field is ignored.
      * 
-     * @deprecated
-     * conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
+     * @deprecated conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
      * 
      */
-    @Deprecated /* conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead. */
+    @Deprecated
     private @Nullable List<ExperimentTemplateSpecProbeCondition> conditions;
     /**
      * @return Execution conditions gating whether this probe runs, evaluated as boolean values combined by the operator.
@@ -82,11 +81,10 @@ public final class ExperimentTemplateSpecProbe {
     /**
      * @return Deprecated: no longer part of the experiment template API; use conditionsV2 instead. This field is ignored.
      * 
-     * @deprecated
-     * conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
+     * @deprecated conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
      * 
      */
-    @Deprecated /* conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead. */
+    @Deprecated
     public List<ExperimentTemplateSpecProbeCondition> conditions() {
         return this.conditions == null ? List.of() : this.conditions;
     }

@@ -426,6 +426,26 @@ class IdpCatalogEntity(pulumi.CustomResource):
         __props__.__dict__["yaml"] = yaml
         return IdpCatalogEntity(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            git_details: pulumi.Input[Optional[Union['IdpCatalogEntityGitDetailsArgs', 'IdpCatalogEntityGitDetailsArgsDict', 'outputs.IdpCatalogEntityGitDetails']]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            yaml: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["gitDetails"] = git_details
+        __props__["identifier"] = identifier
+        __props__["importFromGit"] = import_from_git
+        __props__["kind"] = kind
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["yaml"] = yaml
+        return pulumi.runtime.exists_resource(None, 'harness:platform/idpCatalogEntity:IdpCatalogEntity', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="gitDetails")
     def git_details(self) -> pulumi.Output['outputs.IdpCatalogEntityGitDetails']:

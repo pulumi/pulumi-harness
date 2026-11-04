@@ -167,6 +167,12 @@ func (TemplateFiltersState) ElementType() reflect.Type {
 	return reflect.TypeOf((*templateFiltersState)(nil)).Elem()
 }
 
+// TemplateFiltersExists checks whether an existing TemplateFilters resource with the given ID exists.
+func TemplateFiltersExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TemplateFiltersState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/templateFilters:TemplateFilters", id, state, "", opts...)
+}
+
 type templateFiltersArgs struct {
 	// Properties of the filters entity defined in Harness.
 	FilterProperties TemplateFiltersFilterProperties `pulumi:"filterProperties"`

@@ -420,6 +420,26 @@ class FeatureFlagTarget(pulumi.CustomResource):
         __props__.__dict__["project_id"] = project_id
         return FeatureFlagTarget(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["attributes"] = attributes
+        __props__["environment"] = environment
+        __props__["identifier"] = identifier
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        return pulumi.runtime.exists_resource(None, 'harness:platform/featureFlagTarget:FeatureFlagTarget', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

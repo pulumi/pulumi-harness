@@ -102,6 +102,12 @@ func (SegmentKeysState) ElementType() reflect.Type {
 	return reflect.TypeOf((*segmentKeysState)(nil)).Elem()
 }
 
+// SegmentKeysExists checks whether an existing SegmentKeys resource with the given ID exists.
+func SegmentKeysExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SegmentKeysState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:fmeEnvironment/segmentKeys:SegmentKeys", id, state, "", opts...)
+}
+
 type segmentKeysArgs struct {
 	// Split environment ID.
 	EnvironmentId string `pulumi:"environmentId"`

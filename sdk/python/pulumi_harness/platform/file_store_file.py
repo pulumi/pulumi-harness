@@ -709,6 +709,42 @@ class FileStoreFile(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return FileStoreFile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            created_bies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FileStoreFileCreatedByArgs', 'FileStoreFileCreatedByArgsDict', 'outputs.FileStoreFileCreatedBy']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            file_content_path: pulumi.Input[Optional[_builtins.str]] = None,
+            file_usage: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_at: pulumi.Input[Optional[_builtins.int]] = None,
+            last_modified_bies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FileStoreFileLastModifiedByArgs', 'FileStoreFileLastModifiedByArgsDict', 'outputs.FileStoreFileLastModifiedBy']]]]] = None,
+            mime_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["content"] = content
+        __props__["createdBies"] = created_bies
+        __props__["description"] = description
+        __props__["fileContentPath"] = file_content_path
+        __props__["fileUsage"] = file_usage
+        __props__["identifier"] = identifier
+        __props__["lastModifiedAt"] = last_modified_at
+        __props__["lastModifiedBies"] = last_modified_bies
+        __props__["mimeType"] = mime_type
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["parentIdentifier"] = parent_identifier
+        __props__["path"] = path
+        __props__["projectId"] = project_id
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'harness:platform/fileStoreFile:FileStoreFile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def content(self) -> pulumi.Output[_builtins.str]:

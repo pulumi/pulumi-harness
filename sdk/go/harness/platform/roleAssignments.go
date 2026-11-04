@@ -132,6 +132,12 @@ func (RoleAssignmentsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*roleAssignmentsState)(nil)).Elem()
 }
 
+// RoleAssignmentsExists checks whether an existing RoleAssignments resource with the given ID exists.
+func RoleAssignmentsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RoleAssignmentsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/roleAssignments:RoleAssignments", id, state, "", opts...)
+}
+
 type roleAssignmentsArgs struct {
 	// Disabled or not.
 	Disabled *bool `pulumi:"disabled"`

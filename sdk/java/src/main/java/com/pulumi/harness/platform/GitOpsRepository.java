@@ -51,11 +51,10 @@ public class GitOpsRepository extends com.pulumi.resources.CustomResource {
     /**
      * Account identifier of the GitOps repository.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
@@ -225,11 +224,10 @@ public class GitOpsRepository extends com.pulumi.resources.CustomResource {
     /**
      * Update mask of the repository.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     @Export(name="updateMasks", refs={List.class,GitOpsRepositoryUpdateMask.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GitOpsRepositoryUpdateMask>> updateMasks;
 

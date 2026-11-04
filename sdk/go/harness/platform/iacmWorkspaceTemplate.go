@@ -152,6 +152,12 @@ func (IacmWorkspaceTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*iacmWorkspaceTemplateState)(nil)).Elem()
 }
 
+// IacmWorkspaceTemplateExists checks whether an existing IacmWorkspaceTemplate resource with the given ID exists.
+func IacmWorkspaceTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IacmWorkspaceTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/iacmWorkspaceTemplate:IacmWorkspaceTemplate", id, state, "", opts...)
+}
+
 type iacmWorkspaceTemplateArgs struct {
 	// Organization identifier.
 	OrgId string `pulumi:"orgId"`

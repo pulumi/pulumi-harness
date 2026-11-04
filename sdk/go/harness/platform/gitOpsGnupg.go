@@ -166,6 +166,12 @@ func (GitOpsGnupgState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gitOpsGnupgState)(nil)).Elem()
 }
 
+// GitOpsGnupgExists checks whether an existing GitOpsGnupg resource with the given ID exists.
+func GitOpsGnupgExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GitOpsGnupgState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/gitOpsGnupg:GitOpsGnupg", id, state, "", opts...)
+}
+
 type gitOpsGnupgArgs struct {
 	// Account Identifier for the GnuPG Key.
 	//

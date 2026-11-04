@@ -226,6 +226,12 @@ func (AzureProxyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*azureProxyState)(nil)).Elem()
 }
 
+// AzureProxyExists checks whether an existing AzureProxy resource with the given ID exists.
+func AzureProxyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AzureProxyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:autostopping/azureProxy:AzureProxy", id, state, "", opts...)
+}
+
 type azureProxyArgs struct {
 	// Boolean value to indicate if proxy vm needs to have static IP
 	AllocateStaticIp *bool `pulumi:"allocateStaticIp"`

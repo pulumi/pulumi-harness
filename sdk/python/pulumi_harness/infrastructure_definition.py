@@ -1085,6 +1085,54 @@ class InfrastructureDefinition(pulumi.CustomResource):
         __props__.__dict__["tanzu"] = tanzu
         return InfrastructureDefinition(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_ami: pulumi.Input[Optional[Union['InfrastructureDefinitionAwsAmiArgs', 'InfrastructureDefinitionAwsAmiArgsDict', 'outputs.InfrastructureDefinitionAwsAmi']]] = None,
+            aws_ecs: pulumi.Input[Optional[Union['InfrastructureDefinitionAwsEcsArgs', 'InfrastructureDefinitionAwsEcsArgsDict', 'outputs.InfrastructureDefinitionAwsEcs']]] = None,
+            aws_lambda: pulumi.Input[Optional[Union['InfrastructureDefinitionAwsLambdaArgs', 'InfrastructureDefinitionAwsLambdaArgsDict', 'outputs.InfrastructureDefinitionAwsLambda']]] = None,
+            aws_ssh: pulumi.Input[Optional[Union['InfrastructureDefinitionAwsSshArgs', 'InfrastructureDefinitionAwsSshArgsDict', 'outputs.InfrastructureDefinitionAwsSsh']]] = None,
+            aws_winrm: pulumi.Input[Optional[Union['InfrastructureDefinitionAwsWinrmArgs', 'InfrastructureDefinitionAwsWinrmArgsDict', 'outputs.InfrastructureDefinitionAwsWinrm']]] = None,
+            azure_vmss: pulumi.Input[Optional[Union['InfrastructureDefinitionAzureVmssArgs', 'InfrastructureDefinitionAzureVmssArgsDict', 'outputs.InfrastructureDefinitionAzureVmss']]] = None,
+            azure_webapp: pulumi.Input[Optional[Union['InfrastructureDefinitionAzureWebappArgs', 'InfrastructureDefinitionAzureWebappArgsDict', 'outputs.InfrastructureDefinitionAzureWebapp']]] = None,
+            cloud_provider_type: pulumi.Input[Optional[_builtins.str]] = None,
+            custom: pulumi.Input[Optional[Union['InfrastructureDefinitionCustomArgs', 'InfrastructureDefinitionCustomArgsDict', 'outputs.InfrastructureDefinitionCustom']]] = None,
+            datacenter_ssh: pulumi.Input[Optional[Union['InfrastructureDefinitionDatacenterSshArgs', 'InfrastructureDefinitionDatacenterSshArgsDict', 'outputs.InfrastructureDefinitionDatacenterSsh']]] = None,
+            datacenter_winrm: pulumi.Input[Optional[Union['InfrastructureDefinitionDatacenterWinrmArgs', 'InfrastructureDefinitionDatacenterWinrmArgsDict', 'outputs.InfrastructureDefinitionDatacenterWinrm']]] = None,
+            deployment_template_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            env_id: pulumi.Input[Optional[_builtins.str]] = None,
+            kubernetes: pulumi.Input[Optional[Union['InfrastructureDefinitionKubernetesArgs', 'InfrastructureDefinitionKubernetesArgsDict', 'outputs.InfrastructureDefinitionKubernetes']]] = None,
+            kubernetes_gcp: pulumi.Input[Optional[Union['InfrastructureDefinitionKubernetesGcpArgs', 'InfrastructureDefinitionKubernetesGcpArgsDict', 'outputs.InfrastructureDefinitionKubernetesGcp']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioner_name: pulumi.Input[Optional[_builtins.str]] = None,
+            scoped_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tanzu: pulumi.Input[Optional[Union['InfrastructureDefinitionTanzuArgs', 'InfrastructureDefinitionTanzuArgsDict', 'outputs.InfrastructureDefinitionTanzu']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appId"] = app_id
+        __props__["awsAmi"] = aws_ami
+        __props__["awsEcs"] = aws_ecs
+        __props__["awsLambda"] = aws_lambda
+        __props__["awsSsh"] = aws_ssh
+        __props__["awsWinrm"] = aws_winrm
+        __props__["azureVmss"] = azure_vmss
+        __props__["azureWebapp"] = azure_webapp
+        __props__["cloudProviderType"] = cloud_provider_type
+        __props__["custom"] = custom
+        __props__["datacenterSsh"] = datacenter_ssh
+        __props__["datacenterWinrm"] = datacenter_winrm
+        __props__["deploymentTemplateUri"] = deployment_template_uri
+        __props__["deploymentType"] = deployment_type
+        __props__["envId"] = env_id
+        __props__["kubernetes"] = kubernetes
+        __props__["kubernetesGcp"] = kubernetes_gcp
+        __props__["name"] = name
+        __props__["provisionerName"] = provisioner_name
+        __props__["scopedServices"] = scoped_services
+        __props__["tanzu"] = tanzu
+        return pulumi.runtime.exists_resource(None, 'harness:index/infrastructureDefinition:InfrastructureDefinition', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[_builtins.str]:

@@ -489,6 +489,12 @@ func (ResourceGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourceGroupState)(nil)).Elem()
 }
 
+// ResourceGroupExists checks whether an existing ResourceGroup resource with the given ID exists.
+func ResourceGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ResourceGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/resourceGroup:ResourceGroup", id, state, "", opts...)
+}
+
 type resourceGroupArgs struct {
 	// Account Identifier of the account
 	AccountId string `pulumi:"accountId"`

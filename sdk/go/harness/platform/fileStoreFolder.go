@@ -187,6 +187,12 @@ func (FileStoreFolderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fileStoreFolderState)(nil)).Elem()
 }
 
+// FileStoreFolderExists checks whether an existing FileStoreFolder resource with the given ID exists.
+func FileStoreFolderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FileStoreFolderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/fileStoreFolder:FileStoreFolder", id, state, "", opts...)
+}
+
 type fileStoreFolderArgs struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`

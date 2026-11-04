@@ -425,6 +425,30 @@ class DefaultNotificationTemplateSet(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return DefaultNotificationTemplateSet(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            event_template_configuration_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DefaultNotificationTemplateSetEventTemplateConfigurationSetArgs', 'DefaultNotificationTemplateSetEventTemplateConfigurationSetArgsDict', 'outputs.DefaultNotificationTemplateSetEventTemplateConfigurationSet']]]]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_entity: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["created"] = created
+        __props__["description"] = description
+        __props__["eventTemplateConfigurationSets"] = event_template_configuration_sets
+        __props__["identifier"] = identifier
+        __props__["lastModified"] = last_modified
+        __props__["name"] = name
+        __props__["notificationChannelType"] = notification_channel_type
+        __props__["notificationEntity"] = notification_entity
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'harness:platform/defaultNotificationTemplateSet:DefaultNotificationTemplateSet', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def created(self) -> pulumi.Output[_builtins.int]:

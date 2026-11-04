@@ -139,6 +139,12 @@ func (GitOpsClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gitOpsClusterState)(nil)).Elem()
 }
 
+// GitOpsClusterExists checks whether an existing GitOpsCluster resource with the given ID exists.
+func GitOpsClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GitOpsClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/gitOpsCluster:GitOpsCluster", id, state, "", opts...)
+}
+
 type gitOpsClusterArgs struct {
 	// Account identifier of the GitOps cluster.
 	//

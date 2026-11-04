@@ -278,6 +278,12 @@ func (DefaultImagesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*defaultImagesState)(nil)).Elem()
 }
 
+// DefaultImagesExists checks whether an existing DefaultImages resource with the given ID exists.
+func DefaultImagesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DefaultImagesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/defaultImages:DefaultImages", id, state, "", opts...)
+}
+
 type defaultImagesArgs struct {
 	// The image field name to override (e.g. `addonTag`, `liteEngineTag`).
 	Field string `pulumi:"field"`

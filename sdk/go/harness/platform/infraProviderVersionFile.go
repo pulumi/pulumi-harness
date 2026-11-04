@@ -209,6 +209,12 @@ func (InfraProviderVersionFileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*infraProviderVersionFileState)(nil)).Elem()
 }
 
+// InfraProviderVersionFileExists checks whether an existing InfraProviderVersionFile resource with the given ID exists.
+func InfraProviderVersionFileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InfraProviderVersionFileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/infraProviderVersionFile:InfraProviderVersionFile", id, state, "", opts...)
+}
+
 type infraProviderVersionFileArgs struct {
 	// Local path to the file to upload. Required for uploading file content.
 	FilePath string `pulumi:"filePath"`

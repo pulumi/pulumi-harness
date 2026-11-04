@@ -656,6 +656,28 @@ class UserGroup(pulumi.CustomResource):
         __props__.__dict__["saml_settings"] = saml_settings
         return UserGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            imported_by_scim: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_sso_linked: pulumi.Input[Optional[_builtins.bool]] = None,
+            ldap_settings: pulumi.Input[Optional[Union['UserGroupLdapSettingsArgs', 'UserGroupLdapSettingsArgsDict', 'outputs.UserGroupLdapSettings']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_settings: pulumi.Input[Optional[Union['UserGroupNotificationSettingsArgs', 'UserGroupNotificationSettingsArgsDict', 'outputs.UserGroupNotificationSettings']]] = None,
+            permissions: pulumi.Input[Optional[Union['UserGroupPermissionsArgs', 'UserGroupPermissionsArgsDict', 'outputs.UserGroupPermissions']]] = None,
+            saml_settings: pulumi.Input[Optional[Union['UserGroupSamlSettingsArgs', 'UserGroupSamlSettingsArgsDict', 'outputs.UserGroupSamlSettings']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["importedByScim"] = imported_by_scim
+        __props__["isSsoLinked"] = is_sso_linked
+        __props__["ldapSettings"] = ldap_settings
+        __props__["name"] = name
+        __props__["notificationSettings"] = notification_settings
+        __props__["permissions"] = permissions
+        __props__["samlSettings"] = saml_settings
+        return pulumi.runtime.exists_resource(None, 'harness:index/userGroup:UserGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

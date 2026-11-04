@@ -169,6 +169,12 @@ func (AlertState) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertState)(nil)).Elem()
 }
 
+// AlertExists checks whether an existing Alert resource with the given ID exists.
+func AlertExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlertState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:autostopping/alert:Alert", id, state, "", opts...)
+}
+
 type alertArgs struct {
 	// When true, the alert applies to all AutoStopping rules in the account (leave `ruleIdList` empty). Mutually exclusive with `ruleIdList`.
 	ApplicableToAllRules *bool `pulumi:"applicableToAllRules"`

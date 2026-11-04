@@ -178,6 +178,12 @@ func (DynatraceConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dynatraceConnectorState)(nil)).Elem()
 }
 
+// DynatraceConnectorExists checks whether an existing DynatraceConnector resource with the given ID exists.
+func DynatraceConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DynatraceConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/dynatraceConnector:DynatraceConnector", id, state, "", opts...)
+}
+
 type dynatraceConnectorArgs struct {
 	// The reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ApiTokenRef string `pulumi:"apiTokenRef"`

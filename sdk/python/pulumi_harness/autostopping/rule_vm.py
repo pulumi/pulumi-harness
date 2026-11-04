@@ -730,6 +730,36 @@ class RuleVm(pulumi.CustomResource):
         __props__.__dict__["use_spot"] = use_spot
         return RuleVm(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connect: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+            custom_domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleVmDependArgs', 'RuleVmDependArgsDict', 'outputs.RuleVmDepend']]]]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            filter: pulumi.Input[Optional[Union['RuleVmFilterArgs', 'RuleVmFilterArgsDict', 'outputs.RuleVmFilter']]] = None,
+            https: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleVmHttpArgs', 'RuleVmHttpArgsDict', 'outputs.RuleVmHttp']]]]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            tcps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleVmTcpArgs', 'RuleVmTcpArgsDict', 'outputs.RuleVmTcp']]]]] = None,
+            use_spot: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cloudConnectorId"] = cloud_connector_id
+        __props__["connect"] = connect
+        __props__["customDomains"] = custom_domains
+        __props__["depends"] = depends
+        __props__["dryRun"] = dry_run
+        __props__["filter"] = filter
+        __props__["https"] = https
+        __props__["identifier"] = identifier
+        __props__["idleTimeMins"] = idle_time_mins
+        __props__["name"] = name
+        __props__["tcps"] = tcps
+        __props__["useSpot"] = use_spot
+        return pulumi.runtime.exists_resource(None, 'harness:autostopping/ruleVm:RuleVm', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cloudConnectorId")
     def cloud_connector_id(self) -> pulumi.Output[_builtins.str]:

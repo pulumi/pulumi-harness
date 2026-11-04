@@ -424,6 +424,20 @@ class DefaultImages(pulumi.CustomResource):
         __props__.__dict__["value"] = value
         return DefaultImages(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            field: pulumi.Input[Optional[_builtins.str]] = None,
+            infra_type: pulumi.Input[Optional[_builtins.str]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["field"] = field
+        __props__["infraType"] = infra_type
+        __props__["kind"] = kind
+        __props__["value"] = value
+        return pulumi.runtime.exists_resource(None, 'harness:platform/defaultImages:DefaultImages', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def field(self) -> pulumi.Output[_builtins.str]:

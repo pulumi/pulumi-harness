@@ -244,6 +244,12 @@ func (ConnectorOpenaiModelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectorOpenaiModelState)(nil)).Elem()
 }
 
+// ConnectorOpenaiModelExists checks whether an existing ConnectorOpenaiModel resource with the given ID exists.
+func ConnectorOpenaiModelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectorOpenaiModelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/connectorOpenaiModel:ConnectorOpenaiModel", id, state, "", opts...)
+}
+
 type connectorOpenaiModelArgs struct {
 	// The authentication configuration for the OpenAI connector.
 	Auth ConnectorOpenaiModelAuth `pulumi:"auth"`

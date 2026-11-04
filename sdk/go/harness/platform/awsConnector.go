@@ -178,6 +178,12 @@ func (AwsConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*awsConnectorState)(nil)).Elem()
 }
 
+// AwsConnectorExists checks whether an existing AwsConnector resource with the given ID exists.
+func AwsConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AwsConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/awsConnector:AwsConnector", id, state, "", opts...)
+}
+
 type awsConnectorArgs struct {
 	// Select this option if you want to use one AWS account for the connection, but you want to deploy or build in a different AWS account. In this scenario, the AWS account used for AWS access in Credentials will assume the IAM role you specify in Cross-account role ARN setting. This option uses the AWS Security Token Service (STS) feature.
 	CrossAccountAccess *AwsConnectorCrossAccountAccess `pulumi:"crossAccountAccess"`

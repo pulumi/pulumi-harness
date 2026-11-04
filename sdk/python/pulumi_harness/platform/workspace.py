@@ -1341,6 +1341,66 @@ class Workspace(pulumi.CustomResource):
         __props__.__dict__["variable_sets"] = variable_sets
         return Workspace(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            associated_template: pulumi.Input[Optional[Union['WorkspaceAssociatedTemplateArgs', 'WorkspaceAssociatedTemplateArgsDict', 'outputs.WorkspaceAssociatedTemplate']]] = None,
+            connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceConnectorArgs', 'WorkspaceConnectorArgsDict', 'outputs.WorkspaceConnector']]]]] = None,
+            cost_estimation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            default_pipelines: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceEnvironmentVariableArgs', 'WorkspaceEnvironmentVariableArgsDict', 'outputs.WorkspaceEnvironmentVariable']]]]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_connector: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioner_config: pulumi.Input[Optional[Union['WorkspaceProvisionerConfigArgs', 'WorkspaceProvisionerConfigArgsDict', 'outputs.WorkspaceProvisionerConfig']]] = None,
+            provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioner_version: pulumi.Input[Optional[_builtins.str]] = None,
+            repository: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_commit: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_connector: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_path: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_sha: pulumi.Input[Optional[_builtins.str]] = None,
+            run_all: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            terraform_variable_files: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableFileArgs', 'WorkspaceTerraformVariableFileArgsDict', 'outputs.WorkspaceTerraformVariableFile']]]]] = None,
+            terraform_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceTerraformVariableArgs', 'WorkspaceTerraformVariableArgsDict', 'outputs.WorkspaceTerraformVariable']]]]] = None,
+            terragrunt_provider: pulumi.Input[Optional[_builtins.bool]] = None,
+            terragrunt_version: pulumi.Input[Optional[_builtins.str]] = None,
+            variable_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["associatedTemplate"] = associated_template
+        __props__["connectors"] = connectors
+        __props__["costEstimationEnabled"] = cost_estimation_enabled
+        __props__["defaultPipelines"] = default_pipelines
+        __props__["description"] = description
+        __props__["environmentVariables"] = environment_variables
+        __props__["identifier"] = identifier
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["providerConnector"] = provider_connector
+        __props__["provisionerConfig"] = provisioner_config
+        __props__["provisionerType"] = provisioner_type
+        __props__["provisionerVersion"] = provisioner_version
+        __props__["repository"] = repository
+        __props__["repositoryBranch"] = repository_branch
+        __props__["repositoryCommit"] = repository_commit
+        __props__["repositoryConnector"] = repository_connector
+        __props__["repositoryPath"] = repository_path
+        __props__["repositorySha"] = repository_sha
+        __props__["runAll"] = run_all
+        __props__["tags"] = tags
+        __props__["terraformVariableFiles"] = terraform_variable_files
+        __props__["terraformVariables"] = terraform_variables
+        __props__["terragruntProvider"] = terragrunt_provider
+        __props__["terragruntVersion"] = terragrunt_version
+        __props__["variableSets"] = variable_sets
+        return pulumi.runtime.exists_resource(None, 'harness:platform/workspace:Workspace', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="associatedTemplate")
     def associated_template(self) -> pulumi.Output[Optional['outputs.WorkspaceAssociatedTemplate']]:

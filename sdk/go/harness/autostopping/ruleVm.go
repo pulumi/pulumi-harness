@@ -284,6 +284,12 @@ func (RuleVmState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ruleVmState)(nil)).Elem()
 }
 
+// RuleVmExists checks whether an existing RuleVm resource with the given ID exists.
+func RuleVmExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RuleVmState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:autostopping/ruleVm:RuleVm", id, state, "", opts...)
+}
+
 type ruleVmArgs struct {
 	// Id of the cloud connector
 	CloudConnectorId string `pulumi:"cloudConnectorId"`

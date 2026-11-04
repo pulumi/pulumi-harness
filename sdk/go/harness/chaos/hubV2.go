@@ -330,6 +330,12 @@ func (HubV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*hubV2State)(nil)).Elem()
 }
 
+// HubV2Exists checks whether an existing HubV2 resource with the given ID exists.
+func HubV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HubV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:chaos/hubV2:HubV2", id, state, "", opts...)
+}
+
 type hubV2Args struct {
 	// Reference to the Git connector (format: scope.connectorId, e.g., org.myconnector or account.myconnector). Git-backed Chaos Hub V2 is not supported yet, so this field has no functional effect today. Changing this forces recreation.
 	ConnectorRef *string `pulumi:"connectorRef"`

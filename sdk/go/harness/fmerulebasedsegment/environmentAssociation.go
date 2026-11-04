@@ -102,6 +102,12 @@ func (EnvironmentAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*environmentAssociationState)(nil)).Elem()
 }
 
+// EnvironmentAssociationExists checks whether an existing EnvironmentAssociation resource with the given ID exists.
+func EnvironmentAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvironmentAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:fmeRuleBasedSegment/environmentAssociation:EnvironmentAssociation", id, state, "", opts...)
+}
+
 type environmentAssociationArgs struct {
 	// JSON body for `RuleBasedSegmentDefinition` in this environment. After `EnableInEnvironment`, this is applied via update. Semantically equivalent JSON (e.g. different key order from `jsonencode` vs API refresh) is not treated as a diff.
 	DefinitionJson string `pulumi:"definitionJson"`

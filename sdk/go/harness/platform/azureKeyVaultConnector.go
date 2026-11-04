@@ -317,6 +317,12 @@ func (AzureKeyVaultConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*azureKeyVaultConnectorState)(nil)).Elem()
 }
 
+// AzureKeyVaultConnectorExists checks whether an existing AzureKeyVaultConnector resource with the given ID exists.
+func AzureKeyVaultConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AzureKeyVaultConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector", id, state, "", opts...)
+}
+
 type azureKeyVaultConnectorArgs struct {
 	// Azure environment type. Possible values: AZURE or AZURE*US*GOVERNMENT. Default value: AZURE
 	AzureEnvironmentType *string `pulumi:"azureEnvironmentType"`

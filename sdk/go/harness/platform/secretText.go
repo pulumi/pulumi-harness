@@ -279,6 +279,12 @@ func (SecretTextState) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretTextState)(nil)).Elem()
 }
 
+// SecretTextExists checks whether an existing SecretText resource with the given ID exists.
+func SecretTextExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecretTextState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/secretText:SecretText", id, state, "", opts...)
+}
+
 type secretTextArgs struct {
 	// Additional Metadata for the Secret
 	AdditionalMetadatas []SecretTextAdditionalMetadata `pulumi:"additionalMetadatas"`

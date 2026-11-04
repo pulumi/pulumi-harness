@@ -908,6 +908,38 @@ class Pipeline(pulumi.CustomResource):
         __props__.__dict__["yaml"] = yaml
         return Pipeline(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            git_details: pulumi.Input[Optional[Union['PipelineGitDetailsArgs', 'PipelineGitDetailsArgsDict', 'outputs.PipelineGitDetails']]] = None,
+            git_import_info: pulumi.Input[Optional[Union['PipelineGitImportInfoArgs', 'PipelineGitImportInfoArgsDict', 'outputs.PipelineGitImportInfo']]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pipeline_import_request: pulumi.Input[Optional[Union['PipelinePipelineImportRequestArgs', 'PipelinePipelineImportRequestArgsDict', 'outputs.PipelinePipelineImportRequest']]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            template_applied: pulumi.Input[Optional[_builtins.bool]] = None,
+            template_applied_pipeline_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+            yaml: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["gitDetails"] = git_details
+        __props__["gitImportInfo"] = git_import_info
+        __props__["identifier"] = identifier
+        __props__["importFromGit"] = import_from_git
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["pipelineImportRequest"] = pipeline_import_request
+        __props__["projectId"] = project_id
+        __props__["tags"] = tags
+        __props__["templateApplied"] = template_applied
+        __props__["templateAppliedPipelineYaml"] = template_applied_pipeline_yaml
+        __props__["yaml"] = yaml
+        return pulumi.runtime.exists_resource(None, 'harness:platform/pipeline:Pipeline', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -151,6 +151,12 @@ func (InputSetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*inputSetState)(nil)).Elem()
 }
 
+// InputSetExists checks whether an existing InputSet resource with the given ID exists.
+func InputSetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InputSetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/inputSet:InputSet", id, state, "", opts...)
+}
+
 type inputSetArgs struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`

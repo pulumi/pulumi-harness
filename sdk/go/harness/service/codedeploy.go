@@ -129,6 +129,12 @@ func (CodedeployState) ElementType() reflect.Type {
 	return reflect.TypeOf((*codedeployState)(nil)).Elem()
 }
 
+// CodedeployExists checks whether an existing Codedeploy resource with the given ID exists.
+func CodedeployExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CodedeployState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:service/codedeploy:Codedeploy", id, state, "", opts...)
+}
+
 type codedeployArgs struct {
 	// The id of the application the service belongs to
 	AppId string `pulumi:"appId"`

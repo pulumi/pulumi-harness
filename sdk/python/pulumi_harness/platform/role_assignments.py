@@ -503,6 +503,30 @@ class RoleAssignments(pulumi.CustomResource):
         __props__.__dict__["role_reference"] = role_reference
         return RoleAssignments(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            managed: pulumi.Input[Optional[_builtins.bool]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            principals: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RoleAssignmentsPrincipalArgs', 'RoleAssignmentsPrincipalArgsDict', 'outputs.RoleAssignmentsPrincipal']]]]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            role_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            role_reference: pulumi.Input[Optional[Union['RoleAssignmentsRoleReferenceArgs', 'RoleAssignmentsRoleReferenceArgsDict', 'outputs.RoleAssignmentsRoleReference']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["disabled"] = disabled
+        __props__["identifier"] = identifier
+        __props__["managed"] = managed
+        __props__["orgId"] = org_id
+        __props__["principals"] = principals
+        __props__["projectId"] = project_id
+        __props__["resourceGroupIdentifier"] = resource_group_identifier
+        __props__["roleIdentifier"] = role_identifier
+        __props__["roleReference"] = role_reference
+        return pulumi.runtime.exists_resource(None, 'harness:platform/roleAssignments:RoleAssignments', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def disabled(self) -> pulumi.Output[Optional[_builtins.bool]]:

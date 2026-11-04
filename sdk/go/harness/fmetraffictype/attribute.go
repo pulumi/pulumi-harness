@@ -135,6 +135,12 @@ func (AttributeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*attributeState)(nil)).Elem()
 }
 
+// AttributeExists checks whether an existing Attribute resource with the given ID exists.
+func AttributeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AttributeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:fmeTrafficType/attribute:Attribute", id, state, "", opts...)
+}
+
 type attributeArgs struct {
 	// Data type: e.g. `string`, `number`, `datetime`, `set` (normalized to lowercase in state; Split may return uppercase). Config casing is ignored for diffs.
 	DataType string `pulumi:"dataType"`

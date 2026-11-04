@@ -1082,11 +1082,10 @@ public final class FmeFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
+     * @deprecated harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
      * 
      */
-    @Deprecated /* harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace */
+    @Deprecated
     public static Output<WorkspaceResult> workspace() {
         return workspace(WorkspaceArgs.Empty, InvokeOptions.Empty);
     }
@@ -1133,11 +1132,10 @@ public final class FmeFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
+     * @deprecated harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
      * 
      */
-    @Deprecated /* harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace */
+    @Deprecated
     public static CompletableFuture<WorkspaceResult> workspacePlain() {
         return workspacePlain(WorkspacePlainArgs.Empty, InvokeOptions.Empty);
     }
@@ -1184,11 +1182,10 @@ public final class FmeFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
+     * @deprecated harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
      * 
      */
-    @Deprecated /* harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace */
+    @Deprecated
     public static Output<WorkspaceResult> workspace(WorkspaceArgs args) {
         return workspace(args, InvokeOptions.Empty);
     }
@@ -1235,11 +1232,10 @@ public final class FmeFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
+     * @deprecated harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
      * 
      */
-    @Deprecated /* harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace */
+    @Deprecated
     public static CompletableFuture<WorkspaceResult> workspacePlain(WorkspacePlainArgs args) {
         return workspacePlain(args, InvokeOptions.Empty);
     }
@@ -1286,11 +1282,10 @@ public final class FmeFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
+     * @deprecated harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
      * 
      */
-    @Deprecated /* harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace */
+    @Deprecated
     public static Output<WorkspaceResult> workspace(WorkspaceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("harness:fme/workspace:Workspace", TypeShape.of(WorkspaceResult.class), args, Utilities.withVersion(options));
     }
@@ -1337,11 +1332,10 @@ public final class FmeFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
+     * @deprecated harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
      * 
      */
-    @Deprecated /* harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace */
+    @Deprecated
     public static Output<WorkspaceResult> workspace(WorkspaceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("harness:fme/workspace:Workspace", TypeShape.of(WorkspaceResult.class), args, Utilities.withVersion(options));
     }
@@ -1388,11 +1382,10 @@ public final class FmeFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
+     * @deprecated harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace
      * 
      */
-    @Deprecated /* harness.fme/workspace.Workspace has been deprecated in favor of harness.fme/getworkspace.getWorkspace */
+    @Deprecated
     public static CompletableFuture<WorkspaceResult> workspacePlain(WorkspacePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("harness:fme/workspace:Workspace", TypeShape.of(WorkspaceResult.class), args, Utilities.withVersion(options));
     }

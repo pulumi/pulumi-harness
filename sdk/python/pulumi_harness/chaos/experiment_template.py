@@ -1189,6 +1189,36 @@ class ExperimentTemplate(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return ExperimentTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api_version: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+            identity: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            revision: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[Union['ExperimentTemplateSpecArgs', 'ExperimentTemplateSpecArgsDict', 'outputs.ExperimentTemplateSpec']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["apiVersion"] = api_version
+        __props__["description"] = description
+        __props__["hubIdentity"] = hub_identity
+        __props__["identity"] = identity
+        __props__["isDefault"] = is_default
+        __props__["kind"] = kind
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["revision"] = revision
+        __props__["spec"] = spec
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'harness:chaos/experimentTemplate:ExperimentTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="apiVersion")
     def api_version(self) -> pulumi.Output[_builtins.str]:

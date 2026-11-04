@@ -145,6 +145,12 @@ func (InfraProviderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*infraProviderState)(nil)).Elem()
 }
 
+// InfraProviderExists checks whether an existing InfraProvider resource with the given ID exists.
+func InfraProviderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InfraProviderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/infraProvider:InfraProvider", id, state, "", opts...)
+}
+
 type infraProviderArgs struct {
 	// Description of the provider.
 	Description *string `pulumi:"description"`

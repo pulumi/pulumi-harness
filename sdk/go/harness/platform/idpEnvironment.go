@@ -190,6 +190,12 @@ func (IdpEnvironmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*idpEnvironmentState)(nil)).Elem()
 }
 
+// IdpEnvironmentExists checks whether an existing IdpEnvironment resource with the given ID exists.
+func IdpEnvironmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IdpEnvironmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/idpEnvironment:IdpEnvironment", id, state, "", opts...)
+}
+
 type idpEnvironmentArgs struct {
 	// Based on environment reference. This should be passed as \n\n.\n\n/\n\n
 	BasedOn *string `pulumi:"basedOn"`

@@ -211,6 +211,12 @@ func (TriggersState) ElementType() reflect.Type {
 	return reflect.TypeOf((*triggersState)(nil)).Elem()
 }
 
+// TriggersExists checks whether an existing Triggers resource with the given ID exists.
+func TriggersExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TriggersState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/triggers:Triggers", id, state, "", opts...)
+}
+
 type triggersArgs struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`

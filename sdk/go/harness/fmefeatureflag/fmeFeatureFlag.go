@@ -108,6 +108,12 @@ func (FmeFeatureFlagState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fmeFeatureFlagState)(nil)).Elem()
 }
 
+// FmeFeatureFlagExists checks whether an existing FmeFeatureFlag resource with the given ID exists.
+func FmeFeatureFlagExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FmeFeatureFlagState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:fmeFeatureFlag/fmeFeatureFlag:FmeFeatureFlag", id, state, "", opts...)
+}
+
 type fmeFeatureFlagArgs struct {
 	// Description.
 	Description *string `pulumi:"description"`

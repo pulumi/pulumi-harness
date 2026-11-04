@@ -188,6 +188,12 @@ func (DatadogConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*datadogConnectorState)(nil)).Elem()
 }
 
+// DatadogConnectorExists checks whether an existing DatadogConnector resource with the given ID exists.
+func DatadogConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatadogConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/datadogConnector:DatadogConnector", id, state, "", opts...)
+}
+
 type datadogConnectorArgs struct {
 	// Reference to the Harness secret containing the api key. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ApiKeyRef string `pulumi:"apiKeyRef"`

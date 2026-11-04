@@ -175,6 +175,12 @@ func (GithubConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*githubConnectorState)(nil)).Elem()
 }
 
+// GithubConnectorExists checks whether an existing GithubConnector resource with the given ID exists.
+func GithubConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GithubConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/githubConnector:GithubConnector", id, state, "", opts...)
+}
+
 type githubConnectorArgs struct {
 	// Configuration for using the github api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
 	ApiAuthentication *GithubConnectorApiAuthentication `pulumi:"apiAuthentication"`

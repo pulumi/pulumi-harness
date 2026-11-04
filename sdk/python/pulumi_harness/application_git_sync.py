@@ -378,6 +378,22 @@ class ApplicationGitSync(pulumi.CustomResource):
         __props__.__dict__["repository_name"] = repository_name
         return ApplicationGitSync(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            branch: pulumi.Input[Optional[_builtins.str]] = None,
+            connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            repository_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appId"] = app_id
+        __props__["branch"] = branch
+        __props__["connectorId"] = connector_id
+        __props__["enabled"] = enabled
+        __props__["repositoryName"] = repository_name
+        return pulumi.runtime.exists_resource(None, 'harness:index/applicationGitSync:ApplicationGitSync', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[_builtins.str]:

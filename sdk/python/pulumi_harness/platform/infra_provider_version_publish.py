@@ -222,6 +222,18 @@ class InfraProviderVersionPublish(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return InfraProviderVersionPublish(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+            published: pulumi.Input[Optional[_builtins.bool]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["providerId"] = provider_id
+        __props__["published"] = published
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'harness:platform/infraProviderVersionPublish:InfraProviderVersionPublish', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="providerId")
     def provider_id(self) -> pulumi.Output[_builtins.str]:

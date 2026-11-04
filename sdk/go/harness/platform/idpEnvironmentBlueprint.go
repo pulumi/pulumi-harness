@@ -171,6 +171,12 @@ func (IdpEnvironmentBlueprintState) ElementType() reflect.Type {
 	return reflect.TypeOf((*idpEnvironmentBlueprintState)(nil)).Elem()
 }
 
+// IdpEnvironmentBlueprintExists checks whether an existing IdpEnvironmentBlueprint resource with the given ID exists.
+func IdpEnvironmentBlueprintExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IdpEnvironmentBlueprintState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/idpEnvironmentBlueprint:IdpEnvironmentBlueprint", id, state, "", opts...)
+}
+
 type idpEnvironmentBlueprintArgs struct {
 	// Whether the catalog entity is deprecated
 	Deprecated *bool `pulumi:"deprecated"`

@@ -157,6 +157,12 @@ func (ServiceOverridesV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceOverridesV2State)(nil)).Elem()
 }
 
+// ServiceOverridesV2Exists checks whether an existing ServiceOverridesV2 resource with the given ID exists.
+func ServiceOverridesV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceOverridesV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/serviceOverridesV2:ServiceOverridesV2", id, state, "", opts...)
+}
+
 type serviceOverridesV2Args struct {
 	// The cluster ID to which the overrides are associated.
 	ClusterId *string `pulumi:"clusterId"`

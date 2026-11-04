@@ -139,6 +139,12 @@ func (SshState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sshState)(nil)).Elem()
 }
 
+// SshExists checks whether an existing Ssh resource with the given ID exists.
+func SshExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SshState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:service/ssh:Ssh", id, state, "", opts...)
+}
+
 type sshArgs struct {
 	// The id of the application the service belongs to
 	AppId string `pulumi:"appId"`

@@ -150,6 +150,12 @@ func (RepoRuleBranchState) ElementType() reflect.Type {
 	return reflect.TypeOf((*repoRuleBranchState)(nil)).Elem()
 }
 
+// RepoRuleBranchExists checks whether an existing RepoRuleBranch resource with the given ID exists.
+func RepoRuleBranchExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RepoRuleBranchState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/repoRuleBranch:RepoRuleBranch", id, state, "", opts...)
+}
+
 type repoRuleBranchArgs struct {
 	// List of users who can bypass this rule.
 	Bypasses []RepoRuleBranchBypass `pulumi:"bypasses"`

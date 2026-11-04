@@ -188,6 +188,12 @@ func (AwsAlbState) ElementType() reflect.Type {
 	return reflect.TypeOf((*awsAlbState)(nil)).Elem()
 }
 
+// AwsAlbExists checks whether an existing AwsAlb resource with the given ID exists.
+func AwsAlbExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AwsAlbState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:autostopping/awsAlb:AwsAlb", id, state, "", opts...)
+}
+
 type awsAlbArgs struct {
 	// Arn of AWS ALB to be imported. Required only for importing existing ALB
 	AlbArn *string `pulumi:"albArn"`

@@ -437,6 +437,24 @@ class IdpEnvironmentBlueprint(pulumi.CustomResource):
         __props__.__dict__["yaml"] = yaml
         return IdpEnvironmentBlueprint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            stable: pulumi.Input[Optional[_builtins.bool]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            yaml: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["deprecated"] = deprecated
+        __props__["description"] = description
+        __props__["identifier"] = identifier
+        __props__["stable"] = stable
+        __props__["version"] = version
+        __props__["yaml"] = yaml
+        return pulumi.runtime.exists_resource(None, 'harness:platform/idpEnvironmentBlueprint:IdpEnvironmentBlueprint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def deprecated(self) -> pulumi.Output[Optional[_builtins.bool]]:

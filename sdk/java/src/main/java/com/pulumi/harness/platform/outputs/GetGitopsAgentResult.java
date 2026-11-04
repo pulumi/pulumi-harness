@@ -19,11 +19,10 @@ public final class GetGitopsAgentResult {
     /**
      * @return Account identifier of the GitOps agent.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     private String accountId;
     /**
      * @return Agent token to be used for authentication of the agent with Harness.
@@ -46,7 +45,7 @@ public final class GetGitopsAgentResult {
      */
     private String identifier;
     /**
-     * @return This computed field specifies if the referenced agent ever successfully connected and was authenticated to harness. Note that this is different from whether the agent is currently connected. \n\nSet withCredentials to true to allow computing of this field.\n\n For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     * @return This computed field specifies if the referenced agent ever successfully connected and was authenticated to harness. Note that this is different from whether the agent is currently connected. &#92;n&#92;nSet withCredentials to true to allow computing of this field.&#92;n&#92;n For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
      * 
      */
     private Boolean isAuthenticated;
@@ -101,11 +100,10 @@ public final class GetGitopsAgentResult {
     /**
      * @return Account identifier of the GitOps agent.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     public String accountId() {
         return this.accountId;
     }
@@ -138,7 +136,7 @@ public final class GetGitopsAgentResult {
         return this.identifier;
     }
     /**
-     * @return This computed field specifies if the referenced agent ever successfully connected and was authenticated to harness. Note that this is different from whether the agent is currently connected. \n\nSet withCredentials to true to allow computing of this field.\n\n For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
+     * @return This computed field specifies if the referenced agent ever successfully connected and was authenticated to harness. Note that this is different from whether the agent is currently connected. &#92;n&#92;nSet withCredentials to true to allow computing of this field.&#92;n&#92;n For retrieval of this information, the user associated to the token being used must have Gitops Agent Edit permissions
      * 
      */
     public Boolean isAuthenticated() {

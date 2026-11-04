@@ -166,6 +166,12 @@ func (ChaosInfrastructureState) ElementType() reflect.Type {
 	return reflect.TypeOf((*chaosInfrastructureState)(nil)).Elem()
 }
 
+// ChaosInfrastructureExists checks whether an existing ChaosInfrastructure resource with the given ID exists.
+func ChaosInfrastructureExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ChaosInfrastructureState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:index/chaosInfrastructure:ChaosInfrastructure", id, state, "", opts...)
+}
+
 type chaosInfrastructureArgs struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`

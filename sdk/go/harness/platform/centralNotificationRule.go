@@ -110,6 +110,12 @@ func (CentralNotificationRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*centralNotificationRuleState)(nil)).Elem()
 }
 
+// CentralNotificationRuleExists checks whether an existing CentralNotificationRule resource with the given ID exists.
+func CentralNotificationRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CentralNotificationRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/centralNotificationRule:CentralNotificationRule", id, state, "", opts...)
+}
+
 type centralNotificationRuleArgs struct {
 	CustomNotificationTemplateRef *CentralNotificationRuleCustomNotificationTemplateRef `pulumi:"customNotificationTemplateRef"`
 	Identifier                    string                                                `pulumi:"identifier"`

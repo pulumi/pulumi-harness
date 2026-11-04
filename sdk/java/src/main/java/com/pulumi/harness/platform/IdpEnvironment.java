@@ -79,14 +79,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="harness:platform/idpEnvironment:IdpEnvironment")
 public class IdpEnvironment extends com.pulumi.resources.CustomResource {
     /**
-     * Based on environment reference. This should be passed as \n\n.\n\n/\n\n
+     * Based on environment reference. This should be passed as &#92;n&#92;n.&#92;n&#92;n/&#92;n&#92;n
      * 
      */
     @Export(name="basedOn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> basedOn;
 
     /**
-     * @return Based on environment reference. This should be passed as \n\n.\n\n/\n\n
+     * @return Based on environment reference. This should be passed as &#92;n&#92;n.&#92;n&#92;n/&#92;n&#92;n
      * 
      */
     public Output<Optional<String>> basedOn() {

@@ -154,6 +154,12 @@ func (TanzuState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tanzuState)(nil)).Elem()
 }
 
+// TanzuExists checks whether an existing Tanzu resource with the given ID exists.
+func TanzuExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TanzuState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:cloudprovider/tanzu:Tanzu", id, state, "", opts...)
+}
+
 type tanzuArgs struct {
 	// The url of the Tanzu platform.
 	Endpoint string `pulumi:"endpoint"`

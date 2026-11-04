@@ -163,6 +163,12 @@ func (GitConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gitConnectorState)(nil)).Elem()
 }
 
+// GitConnectorExists checks whether an existing GitConnector resource with the given ID exists.
+func GitConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GitConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/gitConnector:GitConnector", id, state, "", opts...)
+}
+
 type gitConnectorArgs struct {
 	// Whether the connection we're making is to a git repository or a git account. Valid values are Account, Repo.
 	ConnectionType string `pulumi:"connectionType"`

@@ -145,6 +145,12 @@ func (OciHelmConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ociHelmConnectorState)(nil)).Elem()
 }
 
+// OciHelmConnectorExists checks whether an existing OciHelmConnector resource with the given ID exists.
+func OciHelmConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OciHelmConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/ociHelmConnector:OciHelmConnector", id, state, "", opts...)
+}
+
 type ociHelmConnectorArgs struct {
 	// Credentials to use for authentication.
 	Credentials *OciHelmConnectorCredentials `pulumi:"credentials"`

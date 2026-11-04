@@ -247,6 +247,12 @@ func (GcpSecretManagerConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gcpSecretManagerConnectorState)(nil)).Elem()
 }
 
+// GcpSecretManagerConnectorExists checks whether an existing GcpSecretManagerConnector resource with the given ID exists.
+func GcpSecretManagerConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GcpSecretManagerConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/gcpSecretManagerConnector:GcpSecretManagerConnector", id, state, "", opts...)
+}
+
 type gcpSecretManagerConnectorArgs struct {
 	// Reference to the secret containing credentials of IAM service account for Google Secret Manager. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	CredentialsRef *string `pulumi:"credentialsRef"`

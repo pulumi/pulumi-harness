@@ -93,6 +93,12 @@ func (FlagSetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*flagSetState)(nil)).Elem()
 }
 
+// FlagSetExists checks whether an existing FlagSet resource with the given ID exists.
+func FlagSetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FlagSetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:fme/flagSet:FlagSet", id, state, "", opts...)
+}
+
 type flagSetArgs struct {
 	// Flag set description.
 	Description *string `pulumi:"description"`

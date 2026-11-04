@@ -164,6 +164,12 @@ func (GitopsAppProjectMappingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gitopsAppProjectMappingState)(nil)).Elem()
 }
 
+// GitopsAppProjectMappingExists checks whether an existing GitopsAppProjectMapping resource with the given ID exists.
+func GitopsAppProjectMappingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GitopsAppProjectMappingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping", id, state, "", opts...)
+}
+
 type gitopsAppProjectMappingArgs struct {
 	// Account identifier of the GitOps agent's Application Project.
 	//

@@ -207,6 +207,12 @@ func (GitOpsAgentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gitOpsAgentState)(nil)).Elem()
 }
 
+// GitOpsAgentExists checks whether an existing GitOpsAgent resource with the given ID exists.
+func GitOpsAgentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GitOpsAgentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/gitOpsAgent:GitOpsAgent", id, state, "", opts...)
+}
+
 type gitOpsAgentArgs struct {
 	// Account identifier of the GitOps agent.
 	//

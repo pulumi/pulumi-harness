@@ -576,6 +576,34 @@ class PipelineCentralNotificationRule(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return PipelineCentralNotificationRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.int]] = None,
+            custom_notification_template_ref: pulumi.Input[Optional[Union['PipelineCentralNotificationRuleCustomNotificationTemplateRefArgs', 'PipelineCentralNotificationRuleCustomNotificationTemplateRefArgsDict', 'outputs.PipelineCentralNotificationRuleCustomNotificationTemplateRef']]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_channel_refs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            notification_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineCentralNotificationRuleNotificationConditionArgs', 'PipelineCentralNotificationRuleNotificationConditionArgsDict', 'outputs.PipelineCentralNotificationRuleNotificationCondition']]]]] = None,
+            org: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["account"] = account
+        __props__["created"] = created
+        __props__["customNotificationTemplateRef"] = custom_notification_template_ref
+        __props__["identifier"] = identifier
+        __props__["lastModified"] = last_modified
+        __props__["name"] = name
+        __props__["notificationChannelRefs"] = notification_channel_refs
+        __props__["notificationConditions"] = notification_conditions
+        __props__["org"] = org
+        __props__["project"] = project
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def account(self) -> pulumi.Output[_builtins.str]:

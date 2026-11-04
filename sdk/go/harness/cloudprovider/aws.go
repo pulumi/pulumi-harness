@@ -171,6 +171,12 @@ func (AwsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*awsState)(nil)).Elem()
 }
 
+// AwsExists checks whether an existing Aws resource with the given ID exists.
+func AwsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AwsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:cloudprovider/aws:Aws", id, state, "", opts...)
+}
+
 type awsArgs struct {
 	// The plain text AWS access key id.
 	AccessKeyId *string `pulumi:"accessKeyId"`

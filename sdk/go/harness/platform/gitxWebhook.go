@@ -148,6 +148,12 @@ func (GitxWebhookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gitxWebhookState)(nil)).Elem()
 }
 
+// GitxWebhookExists checks whether an existing GitxWebhook resource with the given ID exists.
+func GitxWebhookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GitxWebhookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/gitxWebhook:GitxWebhook", id, state, "", opts...)
+}
+
 type gitxWebhookArgs struct {
 	// ConnectorRef to be used to create Gitx webhook.
 	ConnectorRef string `pulumi:"connectorRef"`

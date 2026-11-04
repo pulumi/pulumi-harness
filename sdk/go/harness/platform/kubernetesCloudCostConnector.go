@@ -172,6 +172,12 @@ func (KubernetesCloudCostConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kubernetesCloudCostConnectorState)(nil)).Elem()
 }
 
+// KubernetesCloudCostConnectorExists checks whether an existing KubernetesCloudCostConnector resource with the given ID exists.
+func KubernetesCloudCostConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KubernetesCloudCostConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/kubernetesCloudCostConnector:KubernetesCloudCostConnector", id, state, "", opts...)
+}
+
 type kubernetesCloudCostConnectorArgs struct {
 	// Reference of the Connector. To reference a connector at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a connector at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ConnectorRef string `pulumi:"connectorRef"`

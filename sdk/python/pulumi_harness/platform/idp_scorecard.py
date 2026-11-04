@@ -639,6 +639,38 @@ class IdpScorecard(pulumi.CustomResource):
         __props__.__dict__["weightage_strategy"] = weightage_strategy
         return IdpScorecard(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpScorecardCheckArgs', 'IdpScorecardCheckArgsDict', 'outputs.IdpScorecardCheck']]]]] = None,
+            checks_missings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            components: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            filter: pulumi.Input[Optional[Union['IdpScorecardFilterArgs', 'IdpScorecardFilterArgsDict', 'outputs.IdpScorecardFilter']]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+            percentage: pulumi.Input[Optional[_builtins.float]] = None,
+            published: pulumi.Input[Optional[_builtins.bool]] = None,
+            tier_analytics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpScorecardTierAnalyticArgs', 'IdpScorecardTierAnalyticArgsDict', 'outputs.IdpScorecardTierAnalytic']]]]] = None,
+            tier_group_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            weightage_strategy: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["checks"] = checks
+        __props__["checksMissings"] = checks_missings
+        __props__["components"] = components
+        __props__["description"] = description
+        __props__["filter"] = filter
+        __props__["identifier"] = identifier
+        __props__["name"] = name
+        __props__["onDemand"] = on_demand
+        __props__["percentage"] = percentage
+        __props__["published"] = published
+        __props__["tierAnalytics"] = tier_analytics
+        __props__["tierGroupIdentifier"] = tier_group_identifier
+        __props__["weightageStrategy"] = weightage_strategy
+        return pulumi.runtime.exists_resource(None, 'harness:platform/idpScorecard:IdpScorecard', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def checks(self) -> pulumi.Output[Sequence['outputs.IdpScorecardCheck']]:

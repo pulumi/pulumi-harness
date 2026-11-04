@@ -20,22 +20,20 @@ public final class GetGitopsGnupgPlainArgs extends com.pulumi.resources.InvokeAr
     /**
      * Account Identifier for the GnuPG Key.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     @Import(name="accountId")
     private @Nullable String accountId;
 
     /**
      * @return Account Identifier for the GnuPG Key.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -149,11 +147,10 @@ public final class GetGitopsGnupgPlainArgs extends com.pulumi.resources.InvokeAr
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release.
+         * @deprecated This field is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        @Deprecated
         public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;

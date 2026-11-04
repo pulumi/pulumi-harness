@@ -102,6 +102,12 @@ func (FmeLargeSegmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fmeLargeSegmentState)(nil)).Elem()
 }
 
+// FmeLargeSegmentExists checks whether an existing FmeLargeSegment resource with the given ID exists.
+func FmeLargeSegmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FmeLargeSegmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:fmeLargeSegment/fmeLargeSegment:FmeLargeSegment", id, state, "", opts...)
+}
+
 type fmeLargeSegmentArgs struct {
 	// Large segment description. Set when the segment is created; changing this value forces replacement (destroy and recreate), not an in-place Split API update.
 	Description *string `pulumi:"description"`

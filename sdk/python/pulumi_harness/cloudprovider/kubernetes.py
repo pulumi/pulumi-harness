@@ -285,6 +285,20 @@ class Kubernetes(pulumi.CustomResource):
         __props__.__dict__["usage_scopes"] = usage_scopes
         return Kubernetes(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            authentication: pulumi.Input[Optional[Union['KubernetesAuthenticationArgs', 'KubernetesAuthenticationArgsDict', 'outputs.KubernetesAuthentication']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesUsageScopeArgs', 'KubernetesUsageScopeArgsDict', 'outputs.KubernetesUsageScope']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authentication"] = authentication
+        __props__["name"] = name
+        __props__["skipValidation"] = skip_validation
+        __props__["usageScopes"] = usage_scopes
+        return pulumi.runtime.exists_resource(None, 'harness:cloudprovider/kubernetes:Kubernetes', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def authentication(self) -> pulumi.Output['outputs.KubernetesAuthentication']:

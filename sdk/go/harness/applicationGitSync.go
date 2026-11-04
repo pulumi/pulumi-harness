@@ -167,6 +167,12 @@ func (ApplicationGitSyncState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationGitSyncState)(nil)).Elem()
 }
 
+// ApplicationGitSyncExists checks whether an existing ApplicationGitSync resource with the given ID exists.
+func ApplicationGitSyncExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationGitSyncState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:index/applicationGitSync:ApplicationGitSync", id, state, "", opts...)
+}
+
 type applicationGitSyncArgs struct {
 	// The id of the application.
 	AppId string `pulumi:"appId"`

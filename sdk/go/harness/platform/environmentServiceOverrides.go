@@ -187,6 +187,12 @@ func (EnvironmentServiceOverridesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*environmentServiceOverridesState)(nil)).Elem()
 }
 
+// EnvironmentServiceOverridesExists checks whether an existing EnvironmentServiceOverrides resource with the given ID exists.
+func EnvironmentServiceOverridesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvironmentServiceOverridesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides", id, state, "", opts...)
+}
+
 type environmentServiceOverridesArgs struct {
 	// The env ID to which the overrides associated.
 	EnvId string `pulumi:"envId"`

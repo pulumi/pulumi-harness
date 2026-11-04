@@ -148,6 +148,12 @@ func (KubernetesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kubernetesState)(nil)).Elem()
 }
 
+// KubernetesExists checks whether an existing Kubernetes resource with the given ID exists.
+func KubernetesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KubernetesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:service/kubernetes:Kubernetes", id, state, "", opts...)
+}
+
 type kubernetesArgs struct {
 	// The id of the application the service belongs to
 	AppId string `pulumi:"appId"`

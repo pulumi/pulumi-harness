@@ -1878,6 +1878,86 @@ class VaultConnector(pulumi.CustomResource):
         __props__.__dict__["xvault_aws_iam_server_id"] = xvault_aws_iam_server_id
         return VaultConnector(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            app_role_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_token: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+            base_path: pulumi.Input[Optional[_builtins.str]] = None,
+            default: pulumi.Input[Optional[_builtins.bool]] = None,
+            delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            k8s_auth_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            renew_app_role_token: pulumi.Input[Optional[_builtins.bool]] = None,
+            renewal_interval_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+            secret_engine_manually_configured: pulumi.Input[Optional[_builtins.bool]] = None,
+            secret_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_engine_version: pulumi.Input[Optional[_builtins.int]] = None,
+            secret_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_token_path: pulumi.Input[Optional[_builtins.str]] = None,
+            sink_path: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            use_aws_iam: pulumi.Input[Optional[_builtins.bool]] = None,
+            use_jwt_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+            use_k8s_auth: pulumi.Input[Optional[_builtins.bool]] = None,
+            use_vault_agent: pulumi.Input[Optional[_builtins.bool]] = None,
+            vault_aws_iam_role: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_jwt_auth_path: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_jwt_auth_role: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_k8s_auth_role: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_url: pulumi.Input[Optional[_builtins.str]] = None,
+            xvault_aws_iam_server_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessType"] = access_type
+        __props__["appRoleId"] = app_role_id
+        __props__["authToken"] = auth_token
+        __props__["awsRegion"] = aws_region
+        __props__["basePath"] = base_path
+        __props__["default"] = default
+        __props__["delegateSelectors"] = delegate_selectors
+        __props__["description"] = description
+        __props__["executeOnDelegate"] = execute_on_delegate
+        __props__["identifier"] = identifier
+        __props__["isDefault"] = is_default
+        __props__["isReadOnly"] = is_read_only
+        __props__["k8sAuthEndpoint"] = k8s_auth_endpoint
+        __props__["name"] = name
+        __props__["namespace"] = namespace
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["readOnly"] = read_only
+        __props__["renewAppRoleToken"] = renew_app_role_token
+        __props__["renewalIntervalMinutes"] = renewal_interval_minutes
+        __props__["secretEngineManuallyConfigured"] = secret_engine_manually_configured
+        __props__["secretEngineName"] = secret_engine_name
+        __props__["secretEngineVersion"] = secret_engine_version
+        __props__["secretId"] = secret_id
+        __props__["serviceAccountTokenPath"] = service_account_token_path
+        __props__["sinkPath"] = sink_path
+        __props__["tags"] = tags
+        __props__["useAwsIam"] = use_aws_iam
+        __props__["useJwtAuth"] = use_jwt_auth
+        __props__["useK8sAuth"] = use_k8s_auth
+        __props__["useVaultAgent"] = use_vault_agent
+        __props__["vaultAwsIamRole"] = vault_aws_iam_role
+        __props__["vaultJwtAuthPath"] = vault_jwt_auth_path
+        __props__["vaultJwtAuthRole"] = vault_jwt_auth_role
+        __props__["vaultK8sAuthRole"] = vault_k8s_auth_role
+        __props__["vaultUrl"] = vault_url
+        __props__["xvaultAwsIamServerId"] = xvault_aws_iam_server_id
+        return pulumi.runtime.exists_resource(None, 'harness:platform/vaultConnector:VaultConnector', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> pulumi.Output[Optional[_builtins.str]]:

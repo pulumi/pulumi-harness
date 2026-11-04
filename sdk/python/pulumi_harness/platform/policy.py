@@ -791,6 +791,46 @@ class Policy(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return Policy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            git_base_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            git_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            git_commit_msg: pulumi.Input[Optional[_builtins.str]] = None,
+            git_commit_sha: pulumi.Input[Optional[_builtins.str]] = None,
+            git_connector_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            git_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+            git_import: pulumi.Input[Optional[_builtins.bool]] = None,
+            git_is_new_branch: pulumi.Input[Optional[_builtins.bool]] = None,
+            git_path: pulumi.Input[Optional[_builtins.str]] = None,
+            git_repo: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rego: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["gitBaseBranch"] = git_base_branch
+        __props__["gitBranch"] = git_branch
+        __props__["gitCommitMsg"] = git_commit_msg
+        __props__["gitCommitSha"] = git_commit_sha
+        __props__["gitConnectorRef"] = git_connector_ref
+        __props__["gitFileId"] = git_file_id
+        __props__["gitImport"] = git_import
+        __props__["gitIsNewBranch"] = git_is_new_branch
+        __props__["gitPath"] = git_path
+        __props__["gitRepo"] = git_repo
+        __props__["identifier"] = identifier
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["rego"] = rego
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'harness:platform/policy:Policy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -565,6 +565,12 @@ func (FaultTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*faultTemplateState)(nil)).Elem()
 }
 
+// FaultTemplateExists checks whether an existing FaultTemplate resource with the given ID exists.
+func FaultTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FaultTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:chaos/faultTemplate:FaultTemplate", id, state, "", opts...)
+}
+
 type faultTemplateArgs struct {
 	// API version
 	ApiVersion *string `pulumi:"apiVersion"`

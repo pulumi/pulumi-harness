@@ -306,6 +306,22 @@ class EnvironmentAssociation(pulumi.CustomResource):
         __props__.__dict__["segment_name"] = segment_name
         return EnvironmentAssociation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            definition_json: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            segment_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["definitionJson"] = definition_json
+        __props__["environmentId"] = environment_id
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["segmentName"] = segment_name
+        return pulumi.runtime.exists_resource(None, 'harness:fmeRuleBasedSegment/environmentAssociation:EnvironmentAssociation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="definitionJson")
     def definition_json(self) -> pulumi.Output[_builtins.str]:

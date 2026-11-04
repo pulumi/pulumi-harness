@@ -120,6 +120,12 @@ func (ConnectorAzureArtifactsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectorAzureArtifactsState)(nil)).Elem()
 }
 
+// ConnectorAzureArtifactsExists checks whether an existing ConnectorAzureArtifacts resource with the given ID exists.
+func ConnectorAzureArtifactsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectorAzureArtifactsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/connectorAzureArtifacts:ConnectorAzureArtifacts", id, state, "", opts...)
+}
+
 type connectorAzureArtifactsArgs struct {
 	// Credentials to use for authentication.
 	Credentials ConnectorAzureArtifactsCredentials `pulumi:"credentials"`

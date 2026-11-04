@@ -509,6 +509,12 @@ func (VaultConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vaultConnectorState)(nil)).Elem()
 }
 
+// VaultConnectorExists checks whether an existing VaultConnector resource with the given ID exists.
+func VaultConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VaultConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/vaultConnector:VaultConnector", id, state, "", opts...)
+}
+
 type vaultConnectorArgs struct {
 	// Access type.
 	AccessType *string `pulumi:"accessType"`

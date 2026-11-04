@@ -185,6 +185,12 @@ func (ConnectorRancherState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectorRancherState)(nil)).Elem()
 }
 
+// ConnectorRancherExists checks whether an existing ConnectorRancher resource with the given ID exists.
+func ConnectorRancherExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectorRancherState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/connectorRancher:ConnectorRancher", id, state, "", opts...)
+}
+
 type connectorRancherArgs struct {
 	// Bearer token information for the rancher cluster.
 	BearerToken *ConnectorRancherBearerToken `pulumi:"bearerToken"`

@@ -89,6 +89,12 @@ func (InfraProviderVersionPublishState) ElementType() reflect.Type {
 	return reflect.TypeOf((*infraProviderVersionPublishState)(nil)).Elem()
 }
 
+// InfraProviderVersionPublishExists checks whether an existing InfraProviderVersionPublish resource with the given ID exists.
+func InfraProviderVersionPublishExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InfraProviderVersionPublishState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/infraProviderVersionPublish:InfraProviderVersionPublish", id, state, "", opts...)
+}
+
 type infraProviderVersionPublishArgs struct {
 	// The ID of the provider.
 	ProviderId string `pulumi:"providerId"`

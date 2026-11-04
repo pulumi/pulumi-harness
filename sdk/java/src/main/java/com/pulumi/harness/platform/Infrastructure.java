@@ -39,12 +39,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new Infrastructure("example", InfrastructureArgs.builder()
  *             .gitDetails(InfrastructureGitDetailsArgs.builder()
  *                 .branchName("branchName")
@@ -65,9 +65,9 @@ import javax.annotation.Nullable;
  * infrastructureDefinition:
  *  name: name
  *  identifier: identifier
- *  description: \"\"
+ *  description: }&#92;{@code "}&#92;{@code "
  *  tags:
- *    asda: \"\"
+ *    asda: }&#92;{@code "}&#92;{@code "
  *  orgIdentifier: orgIdentifer
  *  projectIdentifier: projectIdentifier
  *  environmentRef: environmentIdentifier
@@ -81,8 +81,8 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

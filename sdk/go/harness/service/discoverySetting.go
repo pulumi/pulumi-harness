@@ -127,6 +127,12 @@ func (DiscoverySettingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*discoverySettingState)(nil)).Elem()
 }
 
+// DiscoverySettingExists checks whether an existing DiscoverySetting resource with the given ID exists.
+func DiscoverySettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DiscoverySettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:service/discoverySetting:DiscoverySetting", id, state, "", opts...)
+}
+
 type discoverySettingArgs struct {
 	// Correlation ID for the request.
 	CorrelationId *string `pulumi:"correlationId"`

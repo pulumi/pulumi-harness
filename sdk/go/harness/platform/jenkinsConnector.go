@@ -139,6 +139,12 @@ func (JenkinsConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*jenkinsConnectorState)(nil)).Elem()
 }
 
+// JenkinsConnectorExists checks whether an existing JenkinsConnector resource with the given ID exists.
+func JenkinsConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *JenkinsConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/jenkinsConnector:JenkinsConnector", id, state, "", opts...)
+}
+
 type jenkinsConnectorArgs struct {
 	// This entity contains the details for Jenkins Authentication.
 	Auth *JenkinsConnectorAuth `pulumi:"auth"`

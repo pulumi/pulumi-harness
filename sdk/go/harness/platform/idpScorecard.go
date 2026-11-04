@@ -221,6 +221,12 @@ func (IdpScorecardState) ElementType() reflect.Type {
 	return reflect.TypeOf((*idpScorecardState)(nil)).Elem()
 }
 
+// IdpScorecardExists checks whether an existing IdpScorecard resource with the given ID exists.
+func IdpScorecardExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IdpScorecardState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/idpScorecard:IdpScorecard", id, state, "", opts...)
+}
+
 type idpScorecardArgs struct {
 	// Checks included in the scorecard.
 	Checks []IdpScorecardCheckType `pulumi:"checks"`

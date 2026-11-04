@@ -169,6 +169,12 @@ func (InfraProviderSigningKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*infraProviderSigningKeyState)(nil)).Elem()
 }
 
+// InfraProviderSigningKeyExists checks whether an existing InfraProviderSigningKey resource with the given ID exists.
+func InfraProviderSigningKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InfraProviderSigningKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/infraProviderSigningKey:InfraProviderSigningKey", id, state, "", opts...)
+}
+
 type infraProviderSigningKeyArgs struct {
 	// ASCII-armored GPG public key.
 	AsciiArmor string `pulumi:"asciiArmor"`

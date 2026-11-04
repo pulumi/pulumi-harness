@@ -320,6 +320,12 @@ func (DbSchemaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dbSchemaState)(nil)).Elem()
 }
 
+// DbSchemaExists checks whether an existing DbSchema resource with the given ID exists.
+func DbSchemaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DbSchemaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/dbSchema:DbSchema", id, state, "", opts...)
+}
+
 type dbSchemaArgs struct {
 	// Configuration to clone changeSets using script
 	ChangelogScript *DbSchemaChangelogScript `pulumi:"changelogScript"`

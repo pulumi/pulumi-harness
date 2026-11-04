@@ -114,6 +114,12 @@ func (GitopsFiltersState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gitopsFiltersState)(nil)).Elem()
 }
 
+// GitopsFiltersExists checks whether an existing GitopsFilters resource with the given ID exists.
+func GitopsFiltersExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GitopsFiltersState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/gitopsFilters:GitopsFilters", id, state, "", opts...)
+}
+
 type gitopsFiltersArgs struct {
 	// Properties of the filters entity defined in Harness as a JSON string. All values should be arrays of strings. Example: jsonencode({"healthStatus": ["Healthy", "Degraded"], "syncStatus": ["Synced"]})
 	FilterProperties string `pulumi:"filterProperties"`

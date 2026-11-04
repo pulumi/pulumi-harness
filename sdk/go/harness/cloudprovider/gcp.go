@@ -86,6 +86,12 @@ func (GcpState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gcpState)(nil)).Elem()
 }
 
+// GcpExists checks whether an existing Gcp resource with the given ID exists.
+func GcpExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GcpState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:cloudprovider/gcp:Gcp", id, state, "", opts...)
+}
+
 type gcpArgs struct {
 	// Delegate selectors to use for this provider.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`

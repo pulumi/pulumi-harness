@@ -93,6 +93,12 @@ func (EnvironmentAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*environmentAssociationState)(nil)).Elem()
 }
 
+// EnvironmentAssociationExists checks whether an existing EnvironmentAssociation resource with the given ID exists.
+func EnvironmentAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvironmentAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:fmeSegment/environmentAssociation:EnvironmentAssociation", id, state, "", opts...)
+}
+
 type environmentAssociationArgs struct {
 	// Split environment ID.
 	EnvironmentId string `pulumi:"environmentId"`

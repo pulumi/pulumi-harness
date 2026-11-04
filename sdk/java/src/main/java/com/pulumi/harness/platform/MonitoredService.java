@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *                             jsonObject(
  *                                 jsonProperty("name", "FH"),
  *                                 jsonProperty("webhookUrl", "https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH"),
- *                                 jsonProperty("webhookCurlCommand", "curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH' -d '}{{@code  \"eventIdentifier\": \"<string>\" (optional), \"user\": \"user}{@literal @}{@code harness.io\", \"startTime\": timeInMs, \"endTime\": timeInMs, \"eventDetail\": }{{@code  \"description\": \"<String>\", \"changeEventDetailsLink\": \"urlString\" (optional), \"externalLinkToEntity\": \"urlString\" (optional), \"name\": \"changeEventName\" }}{@code  }}{@code '"),
+ *                                 jsonProperty("webhookCurlCommand", "curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://harness.io/cv/api/account/sampleAcc/org/sampleOrg/project/sampleProj/webhook/custom-change?monitoredServiceIdentifier=checkout_prod&changeSourceIdentifier=FH' -d '}{{@code  }&#92;{@code "eventIdentifier}&#92;{@code ": }&#92;{@code "<string>}&#92;{@code " (optional), }&#92;{@code "user}&#92;{@code ": }&#92;{@code "user}{@literal @}{@code harness.io}&#92;{@code ", }&#92;{@code "startTime}&#92;{@code ": timeInMs, }&#92;{@code "endTime}&#92;{@code ": timeInMs, }&#92;{@code "eventDetail}&#92;{@code ": }{{@code  }&#92;{@code "description}&#92;{@code ": }&#92;{@code "<String>}&#92;{@code ", }&#92;{@code "changeEventDetailsLink}&#92;{@code ": }&#92;{@code "urlString}&#92;{@code " (optional), }&#92;{@code "externalLinkToEntity}&#92;{@code ": }&#92;{@code "urlString}&#92;{@code " (optional), }&#92;{@code "name}&#92;{@code ": }&#92;{@code "changeEventName}&#92;{@code " }}{@code  }}{@code '"),
  *                                 jsonProperty("type", "Alert")
  *                             )))
  *                         .category("Alert")
@@ -421,7 +421,7 @@ import javax.annotation.Nullable;
  *                                 jsonObject(
  *                                     jsonProperty("name", "Demo"),
  *                                     jsonProperty("identifier", "Demo"),
- *                                     jsonProperty("query", "}{{@code job=~\".+\"}}{@code "),
+ *                                     jsonProperty("query", "}{{@code job=~}&#92;{@code ".+}&#92;{@code "}}{@code "),
  *                                     jsonProperty("groupName", "Log_Group"),
  *                                     jsonProperty("queryParams", jsonObject(
  *                                         jsonProperty("serviceInstanceField", "job")
@@ -624,7 +624,7 @@ import javax.annotation.Nullable;
  *                                         jsonProperty("serviceInstanceFieldName", "pod_name")
  *                                     ))
  *                                 )),
- *                                 jsonProperty("query", "count(up}{{@code group=\"cv\",group=\"cv\"}}{@code )"),
+ *                                 jsonProperty("query", "count(up}{{@code group=}&#92;{@code "cv}&#92;{@code ",group=}&#92;{@code "cv}&#92;{@code "}}{@code )"),
  *                                 jsonProperty("groupName", "met"),
  *                                 jsonProperty("isManualQuery", true)
  *                             ))),

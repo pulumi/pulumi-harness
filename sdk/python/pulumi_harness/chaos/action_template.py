@@ -1281,6 +1281,62 @@ class ActionTemplate(pulumi.CustomResource):
         __props__.__dict__["variables"] = variables
         return ActionTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            container_action: pulumi.Input[Optional[Union['ActionTemplateContainerActionArgs', 'ActionTemplateContainerActionArgsDict', 'outputs.ActionTemplateContainerAction']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_script_action: pulumi.Input[Optional[Union['ActionTemplateCustomScriptActionArgs', 'ActionTemplateCustomScriptActionArgsDict', 'outputs.ActionTemplateCustomScriptAction']]] = None,
+            delay_action: pulumi.Input[Optional[Union['ActionTemplateDelayActionArgs', 'ActionTemplateDelayActionArgsDict', 'outputs.ActionTemplateDelayAction']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+            id_internal: pulumi.Input[Optional[_builtins.str]] = None,
+            identity: pulumi.Input[Optional[_builtins.str]] = None,
+            infrastructure_type: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_enterprise: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_removed: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            revision: pulumi.Input[Optional[_builtins.int]] = None,
+            run_properties: pulumi.Input[Optional[Union['ActionTemplateRunPropertiesArgs', 'ActionTemplateRunPropertiesArgsDict', 'outputs.ActionTemplateRunProperties']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            template: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ActionTemplateVariableArgs', 'ActionTemplateVariableArgsDict', 'outputs.ActionTemplateVariable']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["containerAction"] = container_action
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["customScriptAction"] = custom_script_action
+        __props__["delayAction"] = delay_action
+        __props__["description"] = description
+        __props__["hubIdentity"] = hub_identity
+        __props__["idInternal"] = id_internal
+        __props__["identity"] = identity
+        __props__["infrastructureType"] = infrastructure_type
+        __props__["isDefault"] = is_default
+        __props__["isEnterprise"] = is_enterprise
+        __props__["isRemoved"] = is_removed
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["revision"] = revision
+        __props__["runProperties"] = run_properties
+        __props__["tags"] = tags
+        __props__["template"] = template
+        __props__["type"] = type
+        __props__["updatedAt"] = updated_at
+        __props__["updatedBy"] = updated_by
+        __props__["variables"] = variables
+        return pulumi.runtime.exists_resource(None, 'harness:chaos/actionTemplate:ActionTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

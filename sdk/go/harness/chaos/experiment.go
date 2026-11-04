@@ -420,6 +420,12 @@ func (ExperimentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*experimentState)(nil)).Elem()
 }
 
+// ExperimentExists checks whether an existing Experiment resource with the given ID exists.
+func ExperimentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ExperimentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:chaos/experiment:Experiment", id, state, "", opts...)
+}
+
 type experimentArgs struct {
 	// Description of the chaos experiment
 	Description *string `pulumi:"description"`

@@ -345,6 +345,26 @@ class FmeEnvironment(pulumi.CustomResource):
         __props__.__dict__["project_id"] = project_id
         return FmeEnvironment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bootstrap_api_token_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            change_permissions: pulumi.Input[Optional[Union['FmeEnvironmentChangePermissionsArgs', 'FmeEnvironmentChangePermissionsArgsDict', 'outputs.FmeEnvironmentChangePermissions']]] = None,
+            environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            production: pulumi.Input[Optional[_builtins.bool]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bootstrapApiTokenIds"] = bootstrap_api_token_ids
+        __props__["changePermissions"] = change_permissions
+        __props__["environmentId"] = environment_id
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["production"] = production
+        __props__["projectId"] = project_id
+        return pulumi.runtime.exists_resource(None, 'harness:fmeEnvironment/fmeEnvironment:FmeEnvironment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bootstrapApiTokenIds")
     def bootstrap_api_token_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:

@@ -177,6 +177,12 @@ func (TimeSleepState) ElementType() reflect.Type {
 	return reflect.TypeOf((*timeSleepState)(nil)).Elem()
 }
 
+// TimeSleepExists checks whether an existing TimeSleep resource with the given ID exists.
+func TimeSleepExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TimeSleepState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:index/timeSleep:TimeSleep", id, state, "", opts...)
+}
+
 type timeSleepArgs struct {
 	// Duration to sleep when the resource is created. Accepts Go duration strings: `ms`, `s`, `m`, `h`. Example: `"30s"`, `"5m"`. At least one of `createDuration` or `destroyDuration` must be set.
 	CreateDuration *string `pulumi:"createDuration"`

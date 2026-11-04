@@ -123,6 +123,12 @@ func (RuleK8sState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ruleK8sState)(nil)).Elem()
 }
 
+// RuleK8sExists checks whether an existing RuleK8s resource with the given ID exists.
+func RuleK8sExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RuleK8sState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:autostopping/ruleK8s:RuleK8s", id, state, "", opts...)
+}
+
 type ruleK8sArgs struct {
 	// Id of the cloud connector
 	CloudConnectorId string `pulumi:"cloudConnectorId"`

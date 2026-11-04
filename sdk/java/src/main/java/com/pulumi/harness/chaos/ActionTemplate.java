@@ -65,12 +65,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         // ============================================================================
  *         // Harness Chaos Action Template Resource Examples
  *         // ============================================================================
@@ -199,10 +199,10 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .script("""
  * #!/bin/bash
- * echo \"Running custom chaos script\"
- * echo \"Target: <+input>\"
+ * echo }&#92;{@code "Running custom chaos script}&#92;{@code "
+ * echo }&#92;{@code "Target: <+input>}&#92;{@code "
  * sleep 10
- * echo \"Script completed\"
+ * echo }&#92;{@code "Script completed}&#92;{@code "
  *                 """)
  *                 .shell("bash")
  *                 .build())
@@ -232,8 +232,8 @@ import javax.annotation.Nullable;
  *                 .dependsOn(projectLevel)
  *                 .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

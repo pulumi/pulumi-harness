@@ -708,6 +708,40 @@ class AzureGateway(pulumi.CustomResource):
         __props__.__dict__["vpc"] = vpc
         return AzureGateway(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api_key: pulumi.Input[Optional[_builtins.str]] = None,
+            app_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            azure_func_region: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_cloud_resources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            frontend_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group: pulumi.Input[Optional[_builtins.str]] = None,
+            sku_size: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["apiKey"] = api_key
+        __props__["appGatewayId"] = app_gateway_id
+        __props__["azureFuncRegion"] = azure_func_region
+        __props__["certificateId"] = certificate_id
+        __props__["cloudConnectorId"] = cloud_connector_id
+        __props__["deleteCloudResourcesOnDestroy"] = delete_cloud_resources_on_destroy
+        __props__["frontendIp"] = frontend_ip
+        __props__["identifier"] = identifier
+        __props__["name"] = name
+        __props__["region"] = region
+        __props__["resourceGroup"] = resource_group
+        __props__["skuSize"] = sku_size
+        __props__["subnetId"] = subnet_id
+        __props__["vpc"] = vpc
+        return pulumi.runtime.exists_resource(None, 'harness:autostopping/azureGateway:AzureGateway', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="apiKey")
     def api_key(self) -> pulumi.Output[_builtins.str]:

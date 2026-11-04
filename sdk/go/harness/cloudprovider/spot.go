@@ -134,6 +134,12 @@ func (SpotState) ElementType() reflect.Type {
 	return reflect.TypeOf((*spotState)(nil)).Elem()
 }
 
+// SpotExists checks whether an existing Spot resource with the given ID exists.
+func SpotExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SpotState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:cloudprovider/spot:Spot", id, state, "", opts...)
+}
+
 type spotArgs struct {
 	// The Spot account ID
 	AccountId string `pulumi:"accountId"`

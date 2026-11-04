@@ -277,6 +277,12 @@ func (NotificationRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*notificationRuleState)(nil)).Elem()
 }
 
+// NotificationRuleExists checks whether an existing NotificationRule resource with the given ID exists.
+func NotificationRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NotificationRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/notificationRule:NotificationRule", id, state, "", opts...)
+}
+
 type notificationRuleArgs struct {
 	// Identifier of the Notification Rule.
 	Identifier string `pulumi:"identifier"`

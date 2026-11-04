@@ -284,6 +284,22 @@ class RuleSet(pulumi.CustomResource):
         __props__.__dict__["rule_set_id"] = rule_set_id
         return RuleSet(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cloud_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            rule_set_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cloudProvider"] = cloud_provider
+        __props__["description"] = description
+        __props__["name"] = name
+        __props__["ruleIds"] = rule_ids
+        __props__["ruleSetId"] = rule_set_id
+        return pulumi.runtime.exists_resource(None, 'harness:governance/ruleSet:RuleSet', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cloudProvider")
     def cloud_provider(self) -> pulumi.Output[_builtins.str]:

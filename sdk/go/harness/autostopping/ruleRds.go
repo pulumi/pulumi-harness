@@ -153,6 +153,12 @@ func (RuleRdsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ruleRdsState)(nil)).Elem()
 }
 
+// RuleRdsExists checks whether an existing RuleRds resource with the given ID exists.
+func RuleRdsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RuleRdsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:autostopping/ruleRds:RuleRds", id, state, "", opts...)
+}
+
 type ruleRdsArgs struct {
 	// Id of the cloud connector
 	CloudConnectorId string          `pulumi:"cloudConnectorId"`

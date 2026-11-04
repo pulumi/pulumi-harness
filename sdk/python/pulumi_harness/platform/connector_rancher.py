@@ -580,6 +580,32 @@ class ConnectorRancher(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return ConnectorRancher(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bearer_token: pulumi.Input[Optional[Union['ConnectorRancherBearerTokenArgs', 'ConnectorRancherBearerTokenArgsDict', 'outputs.ConnectorRancherBearerToken']]] = None,
+            delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rancher_url: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bearerToken"] = bearer_token
+        __props__["delegateSelectors"] = delegate_selectors
+        __props__["description"] = description
+        __props__["forceDelete"] = force_delete
+        __props__["identifier"] = identifier
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["rancherUrl"] = rancher_url
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'harness:platform/connectorRancher:ConnectorRancher', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bearerToken")
     def bearer_token(self) -> pulumi.Output[Optional['outputs.ConnectorRancherBearerToken']]:

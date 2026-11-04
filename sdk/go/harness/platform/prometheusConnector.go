@@ -196,6 +196,12 @@ func (PrometheusConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*prometheusConnectorState)(nil)).Elem()
 }
 
+// PrometheusConnectorExists checks whether an existing PrometheusConnector resource with the given ID exists.
+func PrometheusConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PrometheusConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/prometheusConnector:PrometheusConnector", id, state, "", opts...)
+}
+
 type prometheusConnectorArgs struct {
 	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`

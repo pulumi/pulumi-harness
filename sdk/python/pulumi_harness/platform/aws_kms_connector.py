@@ -662,6 +662,38 @@ class AwsKmsConnector(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return AwsKmsConnector(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            arn_plaintext: pulumi.Input[Optional[_builtins.str]] = None,
+            arn_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            credentials: pulumi.Input[Optional[Union['AwsKmsConnectorCredentialsArgs', 'AwsKmsConnectorCredentialsArgsDict', 'outputs.AwsKmsConnectorCredentials']]] = None,
+            default: pulumi.Input[Optional[_builtins.bool]] = None,
+            delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["arnPlaintext"] = arn_plaintext
+        __props__["arnRef"] = arn_ref
+        __props__["credentials"] = credentials
+        __props__["default"] = default
+        __props__["delegateSelectors"] = delegate_selectors
+        __props__["description"] = description
+        __props__["executeOnDelegate"] = execute_on_delegate
+        __props__["identifier"] = identifier
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'harness:platform/awsKmsConnector:AwsKmsConnector', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="arnPlaintext")
     def arn_plaintext(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -35,14 +35,14 @@ public final class GitOpsClusterRequestArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. &#34;username&#34;, &#34;password&#34;, &#34;bearerToken&#34;, &#34;certData&#34;, &#34;keyData&#34;, &#34;caData&#34;) and values are Harness expressions referencing secrets (e.g. &#34;&lt;+secrets.getValue(\&#34;account.my_secret\&#34;)&gt;&#34;).
+     * Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. &#34;username&#34;, &#34;password&#34;, &#34;bearerToken&#34;, &#34;certData&#34;, &#34;keyData&#34;, &#34;caData&#34;) and values are Harness expressions referencing secrets (e.g. &#34;&lt;+secrets.getValue(&#92;&#34;account.my_secret&#92;&#34;)&gt;&#34;).
      * 
      */
     @Import(name="secretExpressions")
     private @Nullable Output<Map<String,String>> secretExpressions;
 
     /**
-     * @return Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. &#34;username&#34;, &#34;password&#34;, &#34;bearerToken&#34;, &#34;certData&#34;, &#34;keyData&#34;, &#34;caData&#34;) and values are Harness expressions referencing secrets (e.g. &#34;&lt;+secrets.getValue(\&#34;account.my_secret\&#34;)&gt;&#34;).
+     * @return Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. &#34;username&#34;, &#34;password&#34;, &#34;bearerToken&#34;, &#34;certData&#34;, &#34;keyData&#34;, &#34;caData&#34;) and values are Harness expressions referencing secrets (e.g. &#34;&lt;+secrets.getValue(&#92;&#34;account.my_secret&#92;&#34;)&gt;&#34;).
      * 
      */
     public Optional<Output<Map<String,String>>> secretExpressions() {
@@ -154,7 +154,7 @@ public final class GitOpsClusterRequestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param secretExpressions Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. &#34;username&#34;, &#34;password&#34;, &#34;bearerToken&#34;, &#34;certData&#34;, &#34;keyData&#34;, &#34;caData&#34;) and values are Harness expressions referencing secrets (e.g. &#34;&lt;+secrets.getValue(\&#34;account.my_secret\&#34;)&gt;&#34;).
+         * @param secretExpressions Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. &#34;username&#34;, &#34;password&#34;, &#34;bearerToken&#34;, &#34;certData&#34;, &#34;keyData&#34;, &#34;caData&#34;) and values are Harness expressions referencing secrets (e.g. &#34;&lt;+secrets.getValue(&#92;&#34;account.my_secret&#92;&#34;)&gt;&#34;).
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class GitOpsClusterRequestArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param secretExpressions Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. &#34;username&#34;, &#34;password&#34;, &#34;bearerToken&#34;, &#34;certData&#34;, &#34;keyData&#34;, &#34;caData&#34;) and values are Harness expressions referencing secrets (e.g. &#34;&lt;+secrets.getValue(\&#34;account.my_secret\&#34;)&gt;&#34;).
+         * @param secretExpressions Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. &#34;username&#34;, &#34;password&#34;, &#34;bearerToken&#34;, &#34;certData&#34;, &#34;keyData&#34;, &#34;caData&#34;) and values are Harness expressions referencing secrets (e.g. &#34;&lt;+secrets.getValue(&#92;&#34;account.my_secret&#92;&#34;)&gt;&#34;).
          * 
          * @return builder
          * 

@@ -891,6 +891,46 @@ class HarLifecycleRule(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return HarLifecycleRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            apply_to: pulumi.Input[Optional[Union['HarLifecycleRuleApplyToArgs', 'HarLifecycleRuleApplyToArgsDict', 'outputs.HarLifecycleRuleApplyTo']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            criteria: pulumi.Input[Optional[Union['HarLifecycleRuleCriteriaArgs', 'HarLifecycleRuleCriteriaArgsDict', 'outputs.HarLifecycleRuleCriteria']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            filter_config: pulumi.Input[Optional[Union['HarLifecycleRuleFilterConfigArgs', 'HarLifecycleRuleFilterConfigArgsDict', 'outputs.HarLifecycleRuleFilterConfig']]] = None,
+            last_run_at: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            next_run_at: pulumi.Input[Optional[_builtins.int]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            package_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[Union['HarLifecycleRuleScheduleArgs', 'HarLifecycleRuleScheduleArgsDict', 'outputs.HarLifecycleRuleSchedule']]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["action"] = action
+        __props__["applyTo"] = apply_to
+        __props__["createdAt"] = created_at
+        __props__["criteria"] = criteria
+        __props__["description"] = description
+        __props__["enabled"] = enabled
+        __props__["filterConfig"] = filter_config
+        __props__["lastRunAt"] = last_run_at
+        __props__["name"] = name
+        __props__["nextRunAt"] = next_run_at
+        __props__["orgId"] = org_id
+        __props__["packageType"] = package_type
+        __props__["projectId"] = project_id
+        __props__["ruleId"] = rule_id
+        __props__["schedule"] = schedule
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'harness:platform/harLifecycleRule:HarLifecycleRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

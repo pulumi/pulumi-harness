@@ -105,6 +105,12 @@ func (FmeEnvironmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fmeEnvironmentState)(nil)).Elem()
 }
 
+// FmeEnvironmentExists checks whether an existing FmeEnvironment resource with the given ID exists.
+func FmeEnvironmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FmeEnvironmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:fmeEnvironment/fmeEnvironment:FmeEnvironment", id, state, "", opts...)
+}
+
 type fmeEnvironmentArgs struct {
 	// Change permission and approval settings for this environment. Controls whether kills are allowed, whether approvals are required for changes, and who can approve or skip approvals. Note: the Split API does not return these on read; values are preserved from create/update responses.
 	ChangePermissions *FmeEnvironmentChangePermissions `pulumi:"changePermissions"`

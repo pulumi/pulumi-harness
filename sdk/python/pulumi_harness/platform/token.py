@@ -826,6 +826,48 @@ class Token(pulumi.CustomResource):
         __props__.__dict__["value"] = value
         return Token(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            apikey_id: pulumi.Input[Optional[_builtins.str]] = None,
+            apikey_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            encoded_password: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduled_expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None,
+            valid: pulumi.Input[Optional[_builtins.bool]] = None,
+            valid_from: pulumi.Input[Optional[_builtins.int]] = None,
+            valid_to: pulumi.Input[Optional[_builtins.int]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["apikeyId"] = apikey_id
+        __props__["apikeyType"] = apikey_type
+        __props__["description"] = description
+        __props__["email"] = email
+        __props__["encodedPassword"] = encoded_password
+        __props__["identifier"] = identifier
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["parentId"] = parent_id
+        __props__["projectId"] = project_id
+        __props__["scheduledExpireTime"] = scheduled_expire_time
+        __props__["tags"] = tags
+        __props__["username"] = username
+        __props__["valid"] = valid
+        __props__["validFrom"] = valid_from
+        __props__["validTo"] = valid_to
+        __props__["value"] = value
+        return pulumi.runtime.exists_resource(None, 'harness:platform/token:Token', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

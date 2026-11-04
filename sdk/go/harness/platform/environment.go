@@ -253,6 +253,12 @@ func (EnvironmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*environmentState)(nil)).Elem()
 }
 
+// EnvironmentExists checks whether an existing Environment resource with the given ID exists.
+func EnvironmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvironmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/environment:Environment", id, state, "", opts...)
+}
+
 type environmentArgs struct {
 	// Color of the environment.
 	Color *string `pulumi:"color"`

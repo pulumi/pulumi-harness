@@ -449,6 +449,32 @@ class User(pulumi.CustomResource):
         __props__.__dict__["user_groups"] = user_groups
         return User(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            externally_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_bindings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserRoleBindingArgs', 'UserRoleBindingArgsDict', 'outputs.UserRoleBinding']]]]] = None,
+            user_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["disabled"] = disabled
+        __props__["email"] = email
+        __props__["externallyManaged"] = externally_managed
+        __props__["identifier"] = identifier
+        __props__["locked"] = locked
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["roleBindings"] = role_bindings
+        __props__["userGroups"] = user_groups
+        return pulumi.runtime.exists_resource(None, 'harness:platform/user:User', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def disabled(self) -> pulumi.Output[_builtins.bool]:

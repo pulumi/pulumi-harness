@@ -798,6 +798,38 @@ class KubernetesConnector(pulumi.CustomResource):
         __props__.__dict__["username_password"] = username_password
         return KubernetesConnector(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            client_key_cert: pulumi.Input[Optional[Union['KubernetesConnectorClientKeyCertArgs', 'KubernetesConnectorClientKeyCertArgsDict', 'outputs.KubernetesConnectorClientKeyCert']]] = None,
+            delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            inherit_from_delegate: pulumi.Input[Optional[Union['KubernetesConnectorInheritFromDelegateArgs', 'KubernetesConnectorInheritFromDelegateArgsDict', 'outputs.KubernetesConnectorInheritFromDelegate']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            openid_connect: pulumi.Input[Optional[Union['KubernetesConnectorOpenidConnectArgs', 'KubernetesConnectorOpenidConnectArgsDict', 'outputs.KubernetesConnectorOpenidConnect']]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[Union['KubernetesConnectorServiceAccountArgs', 'KubernetesConnectorServiceAccountArgsDict', 'outputs.KubernetesConnectorServiceAccount']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            username_password: pulumi.Input[Optional[Union['KubernetesConnectorUsernamePasswordArgs', 'KubernetesConnectorUsernamePasswordArgsDict', 'outputs.KubernetesConnectorUsernamePassword']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clientKeyCert"] = client_key_cert
+        __props__["delegateSelectors"] = delegate_selectors
+        __props__["description"] = description
+        __props__["forceDelete"] = force_delete
+        __props__["identifier"] = identifier
+        __props__["inheritFromDelegate"] = inherit_from_delegate
+        __props__["name"] = name
+        __props__["openidConnect"] = openid_connect
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["serviceAccount"] = service_account
+        __props__["tags"] = tags
+        __props__["usernamePassword"] = username_password
+        return pulumi.runtime.exists_resource(None, 'harness:platform/kubernetesConnector:KubernetesConnector', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clientKeyCert")
     def client_key_cert(self) -> pulumi.Output[Optional['outputs.KubernetesConnectorClientKeyCert']]:

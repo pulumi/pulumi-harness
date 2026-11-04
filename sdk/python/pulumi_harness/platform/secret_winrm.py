@@ -1012,6 +1012,30 @@ class SecretWinrm(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return SecretWinrm(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            kerberos: pulumi.Input[Optional[Union['SecretWinrmKerberosArgs', 'SecretWinrmKerberosArgsDict', 'outputs.SecretWinrmKerberos']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ntlm: pulumi.Input[Optional[Union['SecretWinrmNtlmArgs', 'SecretWinrmNtlmArgsDict', 'outputs.SecretWinrmNtlm']]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["identifier"] = identifier
+        __props__["kerberos"] = kerberos
+        __props__["name"] = name
+        __props__["ntlm"] = ntlm
+        __props__["orgId"] = org_id
+        __props__["port"] = port
+        __props__["projectId"] = project_id
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'harness:platform/secretWinrm:SecretWinrm', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

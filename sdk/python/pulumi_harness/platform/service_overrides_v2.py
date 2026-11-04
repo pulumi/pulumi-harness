@@ -622,6 +622,36 @@ class ServiceOverridesV2(pulumi.CustomResource):
         __props__.__dict__["yaml"] = yaml
         return ServiceOverridesV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            env_id: pulumi.Input[Optional[_builtins.str]] = None,
+            git_details: pulumi.Input[Optional[Union['ServiceOverridesV2GitDetailsArgs', 'ServiceOverridesV2GitDetailsArgsDict', 'outputs.ServiceOverridesV2GitDetails']]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
+            infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_force_import: pulumi.Input[Optional[_builtins.bool]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            yaml: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterId"] = cluster_id
+        __props__["envId"] = env_id
+        __props__["gitDetails"] = git_details
+        __props__["identifier"] = identifier
+        __props__["importFromGit"] = import_from_git
+        __props__["infraId"] = infra_id
+        __props__["isForceImport"] = is_force_import
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["serviceId"] = service_id
+        __props__["type"] = type
+        __props__["yaml"] = yaml
+        return pulumi.runtime.exists_resource(None, 'harness:platform/serviceOverridesV2:ServiceOverridesV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:

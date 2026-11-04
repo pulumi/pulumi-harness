@@ -108,6 +108,12 @@ func (DefinitionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*definitionState)(nil)).Elem()
 }
 
+// DefinitionExists checks whether an existing Definition resource with the given ID exists.
+func DefinitionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DefinitionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:fmeFeatureFlag/definition:Definition", id, state, "", opts...)
+}
+
 type definitionArgs struct {
 	// JSON object for the split definition (treatments, defaultTreatment, defaultRule, trafficAllocation, rules, etc.).
 	Definition string `pulumi:"definition"`

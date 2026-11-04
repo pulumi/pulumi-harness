@@ -133,6 +133,12 @@ func (GitopsAppProjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gitopsAppProjectState)(nil)).Elem()
 }
 
+// GitopsAppProjectExists checks whether an existing GitopsAppProject resource with the given ID exists.
+func GitopsAppProjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GitopsAppProjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/gitopsAppProject:GitopsAppProject", id, state, "", opts...)
+}
+
 type gitopsAppProjectArgs struct {
 	// Account identifier of the GitOps Agent where argo project will exist.
 	//

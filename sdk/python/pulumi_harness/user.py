@@ -366,6 +366,28 @@ class User(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         return User(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            is_email_verified: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_imported_from_identity_provider: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_password_expired: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_two_factor_auth_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_user_locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["email"] = email
+        __props__["groupIds"] = group_ids
+        __props__["isEmailVerified"] = is_email_verified
+        __props__["isImportedFromIdentityProvider"] = is_imported_from_identity_provider
+        __props__["isPasswordExpired"] = is_password_expired
+        __props__["isTwoFactorAuthEnabled"] = is_two_factor_auth_enabled
+        __props__["isUserLocked"] = is_user_locked
+        __props__["name"] = name
+        return pulumi.runtime.exists_resource(None, 'harness:index/user:User', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def email(self) -> pulumi.Output[_builtins.str]:

@@ -14,11 +14,10 @@ public final class GetGitopsAppProjectMappingResult {
     /**
      * @return Account identifier of the GitOps agent&#39;s Application Project.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     private String accountId;
     /**
      * @return Agent identifier for which the ArgoCD and Harness project mapping is to be created.
@@ -60,11 +59,10 @@ public final class GetGitopsAppProjectMappingResult {
     /**
      * @return Account identifier of the GitOps agent&#39;s Application Project.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     public String accountId() {
         return this.accountId;
     }

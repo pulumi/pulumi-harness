@@ -990,6 +990,50 @@ class GitOpsApplications(pulumi.CustomResource):
         __props__.__dict__["validate"] = validate
         return GitOpsApplications(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            applications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsApplicationsApplicationArgs', 'GitOpsApplicationsApplicationArgsDict', 'outputs.GitOpsApplicationsApplication']]]]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            options_remove_existing_finalizers: pulumi.Input[Optional[_builtins.bool]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            request_cascade: pulumi.Input[Optional[_builtins.bool]] = None,
+            request_propagation_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_repo_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            upsert: pulumi.Input[Optional[_builtins.bool]] = None,
+            validate: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["agentId"] = agent_id
+        __props__["applications"] = applications
+        __props__["clusterId"] = cluster_id
+        __props__["forceDelete"] = force_delete
+        __props__["identifier"] = identifier
+        __props__["kind"] = kind
+        __props__["name"] = name
+        __props__["optionsRemoveExistingFinalizers"] = options_remove_existing_finalizers
+        __props__["orgId"] = org_id
+        __props__["project"] = project
+        __props__["projectId"] = project_id
+        __props__["repoId"] = repo_id
+        __props__["repoIds"] = repo_ids
+        __props__["requestCascade"] = request_cascade
+        __props__["requestPropagationPolicy"] = request_propagation_policy
+        __props__["skipRepoValidation"] = skip_repo_validation
+        __props__["upsert"] = upsert
+        __props__["validate"] = validate
+        return pulumi.runtime.exists_resource(None, 'harness:platform/gitOpsApplications:GitOpsApplications', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")

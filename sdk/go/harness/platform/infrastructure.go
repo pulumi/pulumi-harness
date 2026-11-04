@@ -213,6 +213,12 @@ func (InfrastructureState) ElementType() reflect.Type {
 	return reflect.TypeOf((*infrastructureState)(nil)).Elem()
 }
 
+// InfrastructureExists checks whether an existing Infrastructure resource with the given ID exists.
+func InfrastructureExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InfrastructureState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/infrastructure:Infrastructure", id, state, "", opts...)
+}
+
 type infrastructureArgs struct {
 	// Infrastructure deployment type. Valid values are Kubernetes, NativeHelm, Ssh, WinRm, ServerlessAwsLambda, AzureWebApp, Custom, ECS, GoogleManagedInstanceGroup.
 	DeploymentType *string `pulumi:"deploymentType"`

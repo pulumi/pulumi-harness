@@ -154,6 +154,12 @@ func (RuleEcsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ruleEcsState)(nil)).Elem()
 }
 
+// RuleEcsExists checks whether an existing RuleEcs resource with the given ID exists.
+func RuleEcsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RuleEcsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:autostopping/ruleEcs:RuleEcs", id, state, "", opts...)
+}
+
 type ruleEcsArgs struct {
 	// Id of the cloud connector
 	CloudConnectorId string            `pulumi:"cloudConnectorId"`

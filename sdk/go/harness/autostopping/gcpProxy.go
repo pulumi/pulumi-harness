@@ -217,6 +217,12 @@ func (GcpProxyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gcpProxyState)(nil)).Elem()
 }
 
+// GcpProxyExists checks whether an existing GcpProxy resource with the given ID exists.
+func GcpProxyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GcpProxyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:autostopping/gcpProxy:GcpProxy", id, state, "", opts...)
+}
+
 type gcpProxyArgs struct {
 	// Boolean value to indicate if proxy vm needs to have static IP
 	AllocateStaticIp *bool `pulumi:"allocateStaticIp"`

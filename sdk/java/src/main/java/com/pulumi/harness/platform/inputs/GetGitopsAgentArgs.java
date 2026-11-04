@@ -20,22 +20,20 @@ public final class GetGitopsAgentArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Account identifier of the GitOps agent.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
      * @return Account identifier of the GitOps agent.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -133,11 +131,10 @@ public final class GetGitopsAgentArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release.
+         * @deprecated This field is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        @Deprecated
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
@@ -148,11 +145,10 @@ public final class GetGitopsAgentArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release.
+         * @deprecated This field is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        @Deprecated
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }

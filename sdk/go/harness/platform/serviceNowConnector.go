@@ -160,6 +160,12 @@ func (ServiceNowConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceNowConnectorState)(nil)).Elem()
 }
 
+// ServiceNowConnectorExists checks whether an existing ServiceNowConnector resource with the given ID exists.
+func ServiceNowConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceNowConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/serviceNowConnector:ServiceNowConnector", id, state, "", opts...)
+}
+
 type serviceNowConnectorArgs struct {
 	// The credentials to use for the service now authentication.
 	Auth ServiceNowConnectorAuth `pulumi:"auth"`

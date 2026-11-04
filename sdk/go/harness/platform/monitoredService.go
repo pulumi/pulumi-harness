@@ -1112,6 +1112,12 @@ func (MonitoredServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*monitoredServiceState)(nil)).Elem()
 }
 
+// MonitoredServiceExists checks whether an existing MonitoredService resource with the given ID exists.
+func MonitoredServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MonitoredServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/monitoredService:MonitoredService", id, state, "", opts...)
+}
+
 type monitoredServiceArgs struct {
 	// Identifier of the monitored service.
 	Identifier string `pulumi:"identifier"`

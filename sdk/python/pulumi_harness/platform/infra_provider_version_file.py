@@ -421,6 +421,22 @@ class InfraProviderVersionFile(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return InfraProviderVersionFile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            file_path: pulumi.Input[Optional[_builtins.str]] = None,
+            filename: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_id: pulumi.Input[Optional[_builtins.str]] = None,
+            synced: pulumi.Input[Optional[_builtins.bool]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["filePath"] = file_path
+        __props__["filename"] = filename
+        __props__["providerId"] = provider_id
+        __props__["synced"] = synced
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'harness:platform/infraProviderVersionFile:InfraProviderVersionFile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="filePath")
     def file_path(self) -> pulumi.Output[_builtins.str]:

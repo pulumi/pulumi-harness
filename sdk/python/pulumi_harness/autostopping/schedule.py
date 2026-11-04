@@ -443,6 +443,30 @@ class Schedule(pulumi.CustomResource):
         __props__.__dict__["time_zone"] = time_zone
         return Schedule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ending_on: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.float]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            repeats: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScheduleRepeatArgs', 'ScheduleRepeatArgsDict', 'outputs.ScheduleRepeat']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.float]]]] = None,
+            schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+            starting_from: pulumi.Input[Optional[_builtins.str]] = None,
+            time_zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["endingOn"] = ending_on
+        __props__["identifier"] = identifier
+        __props__["name"] = name
+        __props__["priority"] = priority
+        __props__["repeats"] = repeats
+        __props__["rules"] = rules
+        __props__["scheduleType"] = schedule_type
+        __props__["startingFrom"] = starting_from
+        __props__["timeZone"] = time_zone
+        return pulumi.runtime.exists_resource(None, 'harness:autostopping/schedule:Schedule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="endingOn")
     def ending_on(self) -> pulumi.Output[Optional[_builtins.str]]:

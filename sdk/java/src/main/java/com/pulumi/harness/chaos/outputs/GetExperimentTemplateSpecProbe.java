@@ -19,11 +19,10 @@ public final class GetExperimentTemplateSpecProbe {
     /**
      * @return Deprecated: not part of the experiment template API; use conditions_v2.
      * 
-     * @deprecated
-     * conditions (execute_upon) is not supported by the experiment template API. Use conditionsV2 instead.
+     * @deprecated conditions (execute_upon) is not supported by the experiment template API. Use conditionsV2 instead.
      * 
      */
-    @Deprecated /* conditions (execute_upon) is not supported by the experiment template API. Use conditionsV2 instead. */
+    @Deprecated
     private List<GetExperimentTemplateSpecProbeCondition> conditions;
     /**
      * @return Execution conditions (operator + values) gating whether this runs.
@@ -80,11 +79,10 @@ public final class GetExperimentTemplateSpecProbe {
     /**
      * @return Deprecated: not part of the experiment template API; use conditions_v2.
      * 
-     * @deprecated
-     * conditions (execute_upon) is not supported by the experiment template API. Use conditionsV2 instead.
+     * @deprecated conditions (execute_upon) is not supported by the experiment template API. Use conditionsV2 instead.
      * 
      */
-    @Deprecated /* conditions (execute_upon) is not supported by the experiment template API. Use conditionsV2 instead. */
+    @Deprecated
     public List<GetExperimentTemplateSpecProbeCondition> conditions() {
         return this.conditions;
     }

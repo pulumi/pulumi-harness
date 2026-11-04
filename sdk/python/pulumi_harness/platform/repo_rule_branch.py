@@ -544,6 +544,38 @@ class RepoRuleBranch(pulumi.CustomResource):
         __props__.__dict__["updated_by"] = updated_by
         return RepoRuleBranch(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bypasses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepoRuleBranchBypassArgs', 'RepoRuleBranchBypassArgsDict', 'outputs.RepoRuleBranchBypass']]]]] = None,
+            created: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            patterns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepoRuleBranchPatternArgs', 'RepoRuleBranchPatternArgsDict', 'outputs.RepoRuleBranchPattern']]]]] = None,
+            policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepoRuleBranchPolicyArgs', 'RepoRuleBranchPolicyArgsDict', 'outputs.RepoRuleBranchPolicy']]]]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            updated: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bypasses"] = bypasses
+        __props__["created"] = created
+        __props__["createdBy"] = created_by
+        __props__["description"] = description
+        __props__["identifier"] = identifier
+        __props__["orgId"] = org_id
+        __props__["patterns"] = patterns
+        __props__["policies"] = policies
+        __props__["projectId"] = project_id
+        __props__["repoIdentifier"] = repo_identifier
+        __props__["state"] = state
+        __props__["updated"] = updated
+        __props__["updatedBy"] = updated_by
+        return pulumi.runtime.exists_resource(None, 'harness:platform/repoRuleBranch:RepoRuleBranch', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def bypasses(self) -> pulumi.Output[Sequence['outputs.RepoRuleBranchBypass']]:

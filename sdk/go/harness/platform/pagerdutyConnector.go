@@ -168,6 +168,12 @@ func (PagerdutyConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pagerdutyConnectorState)(nil)).Elem()
 }
 
+// PagerdutyConnectorExists checks whether an existing PagerdutyConnector resource with the given ID exists.
+func PagerdutyConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PagerdutyConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/pagerdutyConnector:PagerdutyConnector", id, state, "", opts...)
+}
+
 type pagerdutyConnectorArgs struct {
 	// Reference to the Harness secret containing the api token. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	ApiTokenRef string `pulumi:"apiTokenRef"`

@@ -157,6 +157,12 @@ func (OverridesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*overridesState)(nil)).Elem()
 }
 
+// OverridesExists checks whether an existing Overrides resource with the given ID exists.
+func OverridesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OverridesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/overrides:Overrides", id, state, "", opts...)
+}
+
 type overridesArgs struct {
 	// The cluster ID to which the overrides are associated.
 	ClusterId *string `pulumi:"clusterId"`

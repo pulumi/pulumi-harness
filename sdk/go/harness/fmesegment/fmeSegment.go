@@ -96,6 +96,12 @@ func (FmeSegmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fmeSegmentState)(nil)).Elem()
 }
 
+// FmeSegmentExists checks whether an existing FmeSegment resource with the given ID exists.
+func FmeSegmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FmeSegmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:fmeSegment/fmeSegment:FmeSegment", id, state, "", opts...)
+}
+
 type fmeSegmentArgs struct {
 	// Segment description. Set when the segment is created; changing this value forces replacement (destroy and recreate), not an in-place Split API update.
 	Description *string `pulumi:"description"`

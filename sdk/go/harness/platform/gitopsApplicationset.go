@@ -359,6 +359,12 @@ func (GitopsApplicationsetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gitopsApplicationsetState)(nil)).Elem()
 }
 
+// GitopsApplicationsetExists checks whether an existing GitopsApplicationset resource with the given ID exists.
+func GitopsApplicationsetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GitopsApplicationsetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/gitopsApplicationset:GitopsApplicationset", id, state, "", opts...)
+}
+
 type gitopsApplicationsetArgs struct {
 	// Agent identifier of the GitOps applicationset.
 	AgentId string `pulumi:"agentId"`

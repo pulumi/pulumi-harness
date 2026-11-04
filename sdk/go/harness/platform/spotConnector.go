@@ -115,6 +115,12 @@ func (SpotConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*spotConnectorState)(nil)).Elem()
 }
 
+// SpotConnectorExists checks whether an existing SpotConnector resource with the given ID exists.
+func SpotConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SpotConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/spotConnector:SpotConnector", id, state, "", opts...)
+}
+
 type spotConnectorArgs struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`

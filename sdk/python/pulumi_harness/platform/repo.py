@@ -660,6 +660,42 @@ class Repo(pulumi.CustomResource):
         __props__.__dict__["updated"] = updated
         return Repo(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.int]] = None,
+            default_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            git_ignore: pulumi.Input[Optional[_builtins.str]] = None,
+            git_url: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            license: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            readme: pulumi.Input[Optional[_builtins.bool]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepoSourceArgs', 'RepoSourceArgsDict', 'outputs.RepoSource']]]]] = None,
+            updated: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["created"] = created
+        __props__["createdBy"] = created_by
+        __props__["defaultBranch"] = default_branch
+        __props__["description"] = description
+        __props__["gitIgnore"] = git_ignore
+        __props__["gitUrl"] = git_url
+        __props__["identifier"] = identifier
+        __props__["license"] = license
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["path"] = path
+        __props__["projectId"] = project_id
+        __props__["readme"] = readme
+        __props__["sources"] = sources
+        __props__["updated"] = updated
+        return pulumi.runtime.exists_resource(None, 'harness:platform/repo:Repo', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def created(self) -> pulumi.Output[_builtins.int]:

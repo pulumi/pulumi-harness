@@ -142,6 +142,12 @@ func (ConnectorJdbcState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectorJdbcState)(nil)).Elem()
 }
 
+// ConnectorJdbcExists checks whether an existing ConnectorJdbc resource with the given ID exists.
+func ConnectorJdbcExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectorJdbcState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/connectorJdbc:ConnectorJdbc", id, state, "", opts...)
+}
+
 type connectorJdbcArgs struct {
 	// The credentials to use for the database server.
 	Credentials ConnectorJdbcCredentials `pulumi:"credentials"`

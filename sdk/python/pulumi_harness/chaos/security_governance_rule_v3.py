@@ -557,6 +557,30 @@ class SecurityGovernanceRuleV3(pulumi.CustomResource):
         __props__.__dict__["user_group_ids"] = user_group_ids
         return SecurityGovernanceRuleV3(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            condition_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            time_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityGovernanceRuleV3TimeWindowArgs', 'SecurityGovernanceRuleV3TimeWindowArgsDict', 'outputs.SecurityGovernanceRuleV3TimeWindow']]]]] = None,
+            user_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["conditionIds"] = condition_ids
+        __props__["description"] = description
+        __props__["isEnabled"] = is_enabled
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["tags"] = tags
+        __props__["timeWindows"] = time_windows
+        __props__["userGroupIds"] = user_group_ids
+        return pulumi.runtime.exists_resource(None, 'harness:chaos/securityGovernanceRuleV3:SecurityGovernanceRuleV3', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="conditionIds")
     def condition_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:

@@ -227,6 +227,12 @@ func (ElasticsearchConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*elasticsearchConnectorState)(nil)).Elem()
 }
 
+// ElasticsearchConnectorExists checks whether an existing ElasticsearchConnector resource with the given ID exists.
+func ElasticsearchConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ElasticsearchConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/elasticsearchConnector:ElasticsearchConnector", id, state, "", opts...)
+}
+
 type elasticsearchConnectorArgs struct {
 	// Authenticate to ElasticSearch using api token.
 	ApiToken *ElasticsearchConnectorApiToken `pulumi:"apiToken"`

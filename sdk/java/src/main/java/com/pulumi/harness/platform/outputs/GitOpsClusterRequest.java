@@ -21,7 +21,7 @@ public final class GitOpsClusterRequest {
      */
     private @Nullable List<GitOpsClusterRequestCluster> clusters;
     /**
-     * @return Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. &#34;username&#34;, &#34;password&#34;, &#34;bearerToken&#34;, &#34;certData&#34;, &#34;keyData&#34;, &#34;caData&#34;) and values are Harness expressions referencing secrets (e.g. &#34;&lt;+secrets.getValue(\&#34;account.my_secret\&#34;)&gt;&#34;).
+     * @return Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. &#34;username&#34;, &#34;password&#34;, &#34;bearerToken&#34;, &#34;certData&#34;, &#34;keyData&#34;, &#34;caData&#34;) and values are Harness expressions referencing secrets (e.g. &#34;&lt;+secrets.getValue(&#92;&#34;account.my_secret&#92;&#34;)&gt;&#34;).
      * 
      */
     private @Nullable Map<String,String> secretExpressions;
@@ -50,7 +50,7 @@ public final class GitOpsClusterRequest {
         return this.clusters == null ? List.of() : this.clusters;
     }
     /**
-     * @return Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. &#34;username&#34;, &#34;password&#34;, &#34;bearerToken&#34;, &#34;certData&#34;, &#34;keyData&#34;, &#34;caData&#34;) and values are Harness expressions referencing secrets (e.g. &#34;&lt;+secrets.getValue(\&#34;account.my_secret\&#34;)&gt;&#34;).
+     * @return Maps credential field names to Harness secret expressions. Keys are credential field names (e.g. &#34;username&#34;, &#34;password&#34;, &#34;bearerToken&#34;, &#34;certData&#34;, &#34;keyData&#34;, &#34;caData&#34;) and values are Harness expressions referencing secrets (e.g. &#34;&lt;+secrets.getValue(&#92;&#34;account.my_secret&#92;&#34;)&gt;&#34;).
      * 
      */
     public Map<String,String> secretExpressions() {

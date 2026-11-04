@@ -165,6 +165,12 @@ func (FeatureFlagState) ElementType() reflect.Type {
 	return reflect.TypeOf((*featureFlagState)(nil)).Elem()
 }
 
+// FeatureFlagExists checks whether an existing FeatureFlag resource with the given ID exists.
+func FeatureFlagExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FeatureFlagState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/featureFlag:FeatureFlag", id, state, "", opts...)
+}
+
 type featureFlagArgs struct {
 	// Whether or not the flag is archived.
 	Archived *bool `pulumi:"archived"`

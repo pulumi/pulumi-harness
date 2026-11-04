@@ -150,6 +150,12 @@ func (AzureState) ElementType() reflect.Type {
 	return reflect.TypeOf((*azureState)(nil)).Elem()
 }
 
+// AzureExists checks whether an existing Azure resource with the given ID exists.
+func AzureExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AzureState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:cloudprovider/azure:Azure", id, state, "", opts...)
+}
+
 type azureArgs struct {
 	// The client id for the Azure application
 	ClientId string `pulumi:"clientId"`

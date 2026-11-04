@@ -563,6 +563,38 @@ class RepoWebhook(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return RepoWebhook(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            has_secret: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
+            triggers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["created"] = created
+        __props__["createdBy"] = created_by
+        __props__["description"] = description
+        __props__["enabled"] = enabled
+        __props__["hasSecret"] = has_secret
+        __props__["identifier"] = identifier
+        __props__["insecure"] = insecure
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["repoIdentifier"] = repo_identifier
+        __props__["secret"] = secret
+        __props__["triggers"] = triggers
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'harness:platform/repoWebhook:RepoWebhook', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def created(self) -> pulumi.Output[_builtins.int]:

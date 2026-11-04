@@ -120,6 +120,12 @@ func (ScheduleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*scheduleState)(nil)).Elem()
 }
 
+// ScheduleExists checks whether an existing Schedule resource with the given ID exists.
+func ScheduleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ScheduleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:autostopping/schedule:Schedule", id, state, "", opts...)
+}
+
 type scheduleArgs struct {
 	// Time until which schedule will be active. Need to be in YYYY-MM-DD HH:mm:SS format. Eg 2006-01-02 15:04:05
 	EndingOn *string `pulumi:"endingOn"`

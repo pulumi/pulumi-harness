@@ -663,6 +663,34 @@ class ElasticsearchConnector(pulumi.CustomResource):
         __props__.__dict__["username_password"] = username_password
         return ElasticsearchConnector(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api_token: pulumi.Input[Optional[Union['ElasticsearchConnectorApiTokenArgs', 'ElasticsearchConnectorApiTokenArgsDict', 'outputs.ElasticsearchConnectorApiToken']]] = None,
+            delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            no_authentication: pulumi.Input[Optional[Union['ElasticsearchConnectorNoAuthenticationArgs', 'ElasticsearchConnectorNoAuthenticationArgsDict', 'outputs.ElasticsearchConnectorNoAuthentication']]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            username_password: pulumi.Input[Optional[Union['ElasticsearchConnectorUsernamePasswordArgs', 'ElasticsearchConnectorUsernamePasswordArgsDict', 'outputs.ElasticsearchConnectorUsernamePassword']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["apiToken"] = api_token
+        __props__["delegateSelectors"] = delegate_selectors
+        __props__["description"] = description
+        __props__["identifier"] = identifier
+        __props__["name"] = name
+        __props__["noAuthentication"] = no_authentication
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["tags"] = tags
+        __props__["url"] = url
+        __props__["usernamePassword"] = username_password
+        return pulumi.runtime.exists_resource(None, 'harness:platform/elasticsearchConnector:ElasticsearchConnector', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="apiToken")
     def api_token(self) -> pulumi.Output[Optional['outputs.ElasticsearchConnectorApiToken']]:

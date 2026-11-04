@@ -115,11 +115,10 @@ public class GitOpsApplications extends com.pulumi.resources.CustomResource {
     /**
      * Account identifier of the GitOps application.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
@@ -189,11 +188,10 @@ public class GitOpsApplications extends com.pulumi.resources.CustomResource {
     /**
      * Identifier of the GitOps application.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> identifier;
 

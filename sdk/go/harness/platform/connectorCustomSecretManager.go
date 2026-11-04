@@ -144,6 +144,12 @@ func (ConnectorCustomSecretManagerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectorCustomSecretManagerState)(nil)).Elem()
 }
 
+// ConnectorCustomSecretManagerExists checks whether an existing ConnectorCustomSecretManager resource with the given ID exists.
+func ConnectorCustomSecretManagerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectorCustomSecretManagerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/connectorCustomSecretManager:ConnectorCustomSecretManager", id, state, "", opts...)
+}
+
 type connectorCustomSecretManagerArgs struct {
 	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`

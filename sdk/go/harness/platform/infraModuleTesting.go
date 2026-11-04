@@ -283,6 +283,12 @@ func (InfraModuleTestingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*infraModuleTestingState)(nil)).Elem()
 }
 
+// InfraModuleTestingExists checks whether an existing InfraModuleTesting resource with the given ID exists.
+func InfraModuleTestingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InfraModuleTestingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/infraModuleTesting:InfraModuleTesting", id, state, "", opts...)
+}
+
 type infraModuleTestingArgs struct {
 	// Identifier of the module to enable testing for
 	ModuleId string `pulumi:"moduleId"`
