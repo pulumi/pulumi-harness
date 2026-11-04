@@ -537,6 +537,26 @@ class OrchestratorConfig(pulumi.CustomResource):
         __props__.__dict__["replacement_schedule"] = replacement_schedule
         return OrchestratorConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            binpacking: pulumi.Input[Optional[Union['OrchestratorConfigBinpackingArgs', 'OrchestratorConfigBinpackingArgsDict', 'outputs.OrchestratorConfigBinpacking']]] = None,
+            commitment_integration: pulumi.Input[Optional[Union['OrchestratorConfigCommitmentIntegrationArgs', 'OrchestratorConfigCommitmentIntegrationArgsDict', 'outputs.OrchestratorConfigCommitmentIntegration']]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            distribution: pulumi.Input[Optional[Union['OrchestratorConfigDistributionArgs', 'OrchestratorConfigDistributionArgsDict', 'outputs.OrchestratorConfigDistribution']]] = None,
+            node_preferences: pulumi.Input[Optional[Union['OrchestratorConfigNodePreferencesArgs', 'OrchestratorConfigNodePreferencesArgsDict', 'outputs.OrchestratorConfigNodePreferences']]] = None,
+            orchestrator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            replacement_schedule: pulumi.Input[Optional[Union['OrchestratorConfigReplacementScheduleArgs', 'OrchestratorConfigReplacementScheduleArgsDict', 'outputs.OrchestratorConfigReplacementSchedule']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["binpacking"] = binpacking
+        __props__["commitmentIntegration"] = commitment_integration
+        __props__["disabled"] = disabled
+        __props__["distribution"] = distribution
+        __props__["nodePreferences"] = node_preferences
+        __props__["orchestratorId"] = orchestrator_id
+        __props__["replacementSchedule"] = replacement_schedule
+        return pulumi.runtime.exists_resource(None, 'harness:cluster/orchestratorConfig:OrchestratorConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def binpacking(self) -> pulumi.Output[Optional['outputs.OrchestratorConfigBinpacking']]:

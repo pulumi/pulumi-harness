@@ -124,6 +124,12 @@ func (IdpCatalogEntityState) ElementType() reflect.Type {
 	return reflect.TypeOf((*idpCatalogEntityState)(nil)).Elem()
 }
 
+// IdpCatalogEntityExists checks whether an existing IdpCatalogEntity resource with the given ID exists.
+func IdpCatalogEntityExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IdpCatalogEntityState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/idpCatalogEntity:IdpCatalogEntity", id, state, "", opts...)
+}
+
 type idpCatalogEntityArgs struct {
 	// Contains Git Information for importing entities from Git
 	GitDetails *IdpCatalogEntityGitDetails `pulumi:"gitDetails"`

@@ -18,11 +18,10 @@ public final class GetGitopsRepositoryResult {
     /**
      * @return Account identifier of the GitOps repository.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     private String accountId;
     /**
      * @return Agent identifier of the GitOps repository.
@@ -64,11 +63,10 @@ public final class GetGitopsRepositoryResult {
     /**
      * @return Account identifier of the GitOps repository.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     public String accountId() {
         return this.accountId;
     }

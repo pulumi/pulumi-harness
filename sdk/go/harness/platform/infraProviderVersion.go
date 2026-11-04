@@ -153,6 +153,12 @@ func (InfraProviderVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*infraProviderVersionState)(nil)).Elem()
 }
 
+// InfraProviderVersionExists checks whether an existing InfraProviderVersion resource with the given ID exists.
+func InfraProviderVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InfraProviderVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/infraProviderVersion:InfraProviderVersion", id, state, "", opts...)
+}
+
 type infraProviderVersionArgs struct {
 	// GPG key ID for signing.
 	GpgKeyId string `pulumi:"gpgKeyId"`

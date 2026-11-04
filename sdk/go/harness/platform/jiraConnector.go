@@ -160,6 +160,12 @@ func (JiraConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*jiraConnectorState)(nil)).Elem()
 }
 
+// JiraConnectorExists checks whether an existing JiraConnector resource with the given ID exists.
+func JiraConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *JiraConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/jiraConnector:JiraConnector", id, state, "", opts...)
+}
+
 type jiraConnectorArgs struct {
 	// The credentials to use for the jira authentication.
 	Auth JiraConnectorAuth `pulumi:"auth"`

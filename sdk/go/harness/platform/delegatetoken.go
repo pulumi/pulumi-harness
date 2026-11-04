@@ -178,6 +178,12 @@ func (DelegatetokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*delegatetokenState)(nil)).Elem()
 }
 
+// DelegatetokenExists checks whether an existing Delegatetoken resource with the given ID exists.
+func DelegatetokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DelegatetokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/delegatetoken:Delegatetoken", id, state, "", opts...)
+}
+
 type delegatetokenArgs struct {
 	// Account Identifier for the Entity
 	AccountId string `pulumi:"accountId"`

@@ -435,6 +435,26 @@ class GitopsAppProject(pulumi.CustomResource):
         __props__.__dict__["upsert"] = upsert
         return GitopsAppProject(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            projects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitopsAppProjectProjectArgs', 'GitopsAppProjectProjectArgsDict', 'outputs.GitopsAppProjectProject']]]]] = None,
+            query_name: pulumi.Input[Optional[_builtins.str]] = None,
+            upsert: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["agentId"] = agent_id
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["projects"] = projects
+        __props__["queryName"] = query_name
+        __props__["upsert"] = upsert
+        return pulumi.runtime.exists_resource(None, 'harness:platform/gitopsAppProject:GitopsAppProject', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")

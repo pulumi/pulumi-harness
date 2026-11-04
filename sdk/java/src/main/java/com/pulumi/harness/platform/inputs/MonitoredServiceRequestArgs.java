@@ -70,22 +70,20 @@ public final class MonitoredServiceRequestArgs extends com.pulumi.resources.Reso
     /**
      * Enable or disable the monitored service.
      * 
-     * @deprecated
-     * enabled field is deprecated
+     * @deprecated enabled field is deprecated
      * 
      */
-    @Deprecated /* enabled field is deprecated */
+    @Deprecated
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
      * @return Enable or disable the monitored service.
      * 
-     * @deprecated
-     * enabled field is deprecated
+     * @deprecated enabled field is deprecated
      * 
      */
-    @Deprecated /* enabled field is deprecated */
+    @Deprecated
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -365,11 +363,10 @@ public final class MonitoredServiceRequestArgs extends com.pulumi.resources.Reso
          * 
          * @return builder
          * 
-         * @deprecated
-         * enabled field is deprecated
+         * @deprecated enabled field is deprecated
          * 
          */
-        @Deprecated /* enabled field is deprecated */
+        @Deprecated
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
@@ -380,11 +377,10 @@ public final class MonitoredServiceRequestArgs extends com.pulumi.resources.Reso
          * 
          * @return builder
          * 
-         * @deprecated
-         * enabled field is deprecated
+         * @deprecated enabled field is deprecated
          * 
          */
-        @Deprecated /* enabled field is deprecated */
+        @Deprecated
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

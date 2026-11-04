@@ -318,6 +318,12 @@ func (InfrastructureV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*infrastructureV2State)(nil)).Elem()
 }
 
+// InfrastructureV2Exists checks whether an existing InfrastructureV2 resource with the given ID exists.
+func InfrastructureV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InfrastructureV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:chaos/infrastructureV2:InfrastructureV2", id, state, "", opts...)
+}
+
 type infrastructureV2Args struct {
 	// Enable AI features for the infrastructure.
 	AiEnabled *bool `pulumi:"aiEnabled"`

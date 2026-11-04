@@ -198,6 +198,12 @@ func (OrchestratorConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*orchestratorConfigState)(nil)).Elem()
 }
 
+// OrchestratorConfigExists checks whether an existing OrchestratorConfig resource with the given ID exists.
+func OrchestratorConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrchestratorConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:cluster/orchestratorConfig:OrchestratorConfig", id, state, "", opts...)
+}
+
 type orchestratorConfigArgs struct {
 	// Binpacking preferences for Cluster Orchestrator
 	Binpacking *OrchestratorConfigBinpacking `pulumi:"binpacking"`

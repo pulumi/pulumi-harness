@@ -137,7 +137,7 @@ namespace Pulumi.Harness.Platform
     ///         * `IncludedScopes` points to a child scope.
     ///   
     ///       In dynamic scope, the matching resources can change over time as child scopes are added or removed. Because of this, you can only select resources by `ResourceType` (and optionally `AttributeFilter`), not by specific identifiers.
-    ///       
+    ///         
     ///       If you attempt to use `Identifiers` in this case, you will receive:
     ///         ```
     ///         Cannot provide specific identifiers in resource filter for a dynamic scope

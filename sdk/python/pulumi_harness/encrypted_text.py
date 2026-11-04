@@ -448,6 +448,26 @@ class EncryptedText(pulumi.CustomResource):
         __props__.__dict__["value"] = value
         return EncryptedText(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            inherit_scopes_from_secret_manager: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            scoped_to_account: pulumi.Input[Optional[_builtins.bool]] = None,
+            secret_manager_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_reference: pulumi.Input[Optional[_builtins.str]] = None,
+            usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EncryptedTextUsageScopeArgs', 'EncryptedTextUsageScopeArgsDict', 'outputs.EncryptedTextUsageScope']]]]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["inheritScopesFromSecretManager"] = inherit_scopes_from_secret_manager
+        __props__["name"] = name
+        __props__["scopedToAccount"] = scoped_to_account
+        __props__["secretManagerId"] = secret_manager_id
+        __props__["secretReference"] = secret_reference
+        __props__["usageScopes"] = usage_scopes
+        __props__["value"] = value
+        return pulumi.runtime.exists_resource(None, 'harness:index/encryptedText:EncryptedText', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="inheritScopesFromSecretManager")
     def inherit_scopes_from_secret_manager(self) -> pulumi.Output[Optional[_builtins.bool]]:

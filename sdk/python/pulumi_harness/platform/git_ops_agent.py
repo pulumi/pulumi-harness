@@ -638,6 +638,36 @@ class GitOpsAgent(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return GitOpsAgent(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            agent_token: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsAgentMetadataArgs', 'GitOpsAgentMetadataArgsDict', 'outputs.GitOpsAgentMetadata']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            operator: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            prefixed_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["agentToken"] = agent_token
+        __props__["description"] = description
+        __props__["identifier"] = identifier
+        __props__["metadatas"] = metadatas
+        __props__["name"] = name
+        __props__["operator"] = operator
+        __props__["orgId"] = org_id
+        __props__["prefixedIdentifier"] = prefixed_identifier
+        __props__["projectId"] = project_id
+        __props__["tags"] = tags
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'harness:platform/gitOpsAgent:GitOpsAgent', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")

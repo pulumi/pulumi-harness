@@ -167,6 +167,12 @@ func (EnvironmentClustersMappingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*environmentClustersMappingState)(nil)).Elem()
 }
 
+// EnvironmentClustersMappingExists checks whether an existing EnvironmentClustersMapping resource with the given ID exists.
+func EnvironmentClustersMappingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EnvironmentClustersMappingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/environmentClustersMapping:EnvironmentClustersMapping", id, state, "", opts...)
+}
+
 type environmentClustersMappingArgs struct {
 	// list of cluster identifiers and names
 	Clusters []EnvironmentClustersMappingCluster `pulumi:"clusters"`

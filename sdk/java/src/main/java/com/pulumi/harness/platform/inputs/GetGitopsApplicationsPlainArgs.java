@@ -18,22 +18,20 @@ public final class GetGitopsApplicationsPlainArgs extends com.pulumi.resources.I
     /**
      * Account identifier of the GitOps application.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     @Import(name="accountId")
     private @Nullable String accountId;
 
     /**
      * @return Account identifier of the GitOps application.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -56,22 +54,20 @@ public final class GetGitopsApplicationsPlainArgs extends com.pulumi.resources.I
     /**
      * Identifier of the GitOps application.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     @Import(name="identifier")
     private @Nullable String identifier;
 
     /**
      * @return Identifier of the GitOps application.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     public Optional<String> identifier() {
         return Optional.ofNullable(this.identifier);
     }
@@ -155,11 +151,10 @@ public final class GetGitopsApplicationsPlainArgs extends com.pulumi.resources.I
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release.
+         * @deprecated This field is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        @Deprecated
         public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;
@@ -181,11 +176,10 @@ public final class GetGitopsApplicationsPlainArgs extends com.pulumi.resources.I
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release.
+         * @deprecated This field is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        @Deprecated
         public Builder identifier(@Nullable String identifier) {
             $.identifier = identifier;
             return this;

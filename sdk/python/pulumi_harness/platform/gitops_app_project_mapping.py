@@ -461,6 +461,28 @@ class GitopsAppProjectMapping(pulumi.CustomResource):
         __props__.__dict__["project_id"] = project_id
         return GitopsAppProjectMapping(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            argo_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_create_service_env: pulumi.Input[Optional[_builtins.bool]] = None,
+            block_if_referenced: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["agentId"] = agent_id
+        __props__["argoProjectName"] = argo_project_name
+        __props__["autoCreateServiceEnv"] = auto_create_service_env
+        __props__["blockIfReferenced"] = block_if_referenced
+        __props__["identifier"] = identifier
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        return pulumi.runtime.exists_resource(None, 'harness:platform/gitopsAppProjectMapping:GitopsAppProjectMapping', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")

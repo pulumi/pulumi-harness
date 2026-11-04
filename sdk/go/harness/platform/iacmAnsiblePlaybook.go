@@ -210,6 +210,12 @@ func (IacmAnsiblePlaybookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*iacmAnsiblePlaybookState)(nil)).Elem()
 }
 
+// IacmAnsiblePlaybookExists checks whether an existing IacmAnsiblePlaybook resource with the given ID exists.
+func IacmAnsiblePlaybookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IacmAnsiblePlaybookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/iacmAnsiblePlaybook:IacmAnsiblePlaybook", id, state, "", opts...)
+}
+
 type iacmAnsiblePlaybookArgs struct {
 	// Install Ansible Galaxy dependencies.
 	AnsibleGalaxy *bool `pulumi:"ansibleGalaxy"`

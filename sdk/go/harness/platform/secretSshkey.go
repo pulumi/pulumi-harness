@@ -136,6 +136,12 @@ func (SecretSshkeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretSshkeyState)(nil)).Elem()
 }
 
+// SecretSshkeyExists checks whether an existing SecretSshkey resource with the given ID exists.
+func SecretSshkeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecretSshkeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/secretSshkey:SecretSshkey", id, state, "", opts...)
+}
+
 type secretSshkeyArgs struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`

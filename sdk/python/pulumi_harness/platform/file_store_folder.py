@@ -547,6 +547,34 @@ class FileStoreFolder(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return FileStoreFolder(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_bies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FileStoreFolderCreatedByArgs', 'FileStoreFolderCreatedByArgsDict', 'outputs.FileStoreFolderCreatedBy']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_at: pulumi.Input[Optional[_builtins.int]] = None,
+            last_modified_bies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FileStoreFolderLastModifiedByArgs', 'FileStoreFolderLastModifiedByArgsDict', 'outputs.FileStoreFolderLastModifiedBy']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdBies"] = created_bies
+        __props__["description"] = description
+        __props__["identifier"] = identifier
+        __props__["lastModifiedAt"] = last_modified_at
+        __props__["lastModifiedBies"] = last_modified_bies
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["parentIdentifier"] = parent_identifier
+        __props__["path"] = path
+        __props__["projectId"] = project_id
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'harness:platform/fileStoreFolder:FileStoreFolder', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createdBies")
     def created_bies(self) -> pulumi.Output[Sequence['outputs.FileStoreFolderCreatedBy']]:

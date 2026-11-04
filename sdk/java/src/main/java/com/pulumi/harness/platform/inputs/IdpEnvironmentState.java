@@ -16,14 +16,14 @@ public final class IdpEnvironmentState extends com.pulumi.resources.ResourceArgs
     public static final IdpEnvironmentState Empty = new IdpEnvironmentState();
 
     /**
-     * Based on environment reference. This should be passed as \n\n.\n\n/\n\n
+     * Based on environment reference. This should be passed as &#92;n&#92;n.&#92;n&#92;n/&#92;n&#92;n
      * 
      */
     @Import(name="basedOn")
     private @Nullable Output<String> basedOn;
 
     /**
-     * @return Based on environment reference. This should be passed as \n\n.\n\n/\n\n
+     * @return Based on environment reference. This should be passed as &#92;n&#92;n.&#92;n&#92;n/&#92;n&#92;n
      * 
      */
     public Optional<Output<String>> basedOn() {
@@ -215,7 +215,7 @@ public final class IdpEnvironmentState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param basedOn Based on environment reference. This should be passed as \n\n.\n\n/\n\n
+         * @param basedOn Based on environment reference. This should be passed as &#92;n&#92;n.&#92;n&#92;n/&#92;n&#92;n
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class IdpEnvironmentState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param basedOn Based on environment reference. This should be passed as \n\n.\n\n/\n\n
+         * @param basedOn Based on environment reference. This should be passed as &#92;n&#92;n.&#92;n&#92;n/&#92;n&#92;n
          * 
          * @return builder
          * 

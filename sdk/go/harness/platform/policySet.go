@@ -148,6 +148,12 @@ func (PolicySetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*policySetState)(nil)).Elem()
 }
 
+// PolicySetExists checks whether an existing PolicySet resource with the given ID exists.
+func PolicySetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PolicySetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/policySet:PolicySet", id, state, "", opts...)
+}
+
 type policySetArgs struct {
 	// Action for the policyset.
 	Action string `pulumi:"action"`

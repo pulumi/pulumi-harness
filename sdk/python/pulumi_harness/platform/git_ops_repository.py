@@ -723,6 +723,40 @@ class GitOpsRepository(pulumi.CustomResource):
         __props__.__dict__["upsert"] = upsert
         return GitOpsRepository(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            creds_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            ecr_gen: pulumi.Input[Optional[Union['GitOpsRepositoryEcrGenArgs', 'GitOpsRepositoryEcrGenArgsDict', 'outputs.GitOpsRepositoryEcrGen']]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            gcr_gen: pulumi.Input[Optional[Union['GitOpsRepositoryGcrGenArgs', 'GitOpsRepositoryGcrGenArgsDict', 'outputs.GitOpsRepositoryGcrGen']]] = None,
+            gen_type: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            refresh_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            repos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepositoryRepoArgs', 'GitOpsRepositoryRepoArgsDict', 'outputs.GitOpsRepositoryRepo']]]]] = None,
+            update_masks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepositoryUpdateMaskArgs', 'GitOpsRepositoryUpdateMaskArgsDict', 'outputs.GitOpsRepositoryUpdateMask']]]]] = None,
+            upsert: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["agentId"] = agent_id
+        __props__["credsOnly"] = creds_only
+        __props__["ecrGen"] = ecr_gen
+        __props__["forceDelete"] = force_delete
+        __props__["gcrGen"] = gcr_gen
+        __props__["genType"] = gen_type
+        __props__["identifier"] = identifier
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["refreshInterval"] = refresh_interval
+        __props__["repos"] = repos
+        __props__["updateMasks"] = update_masks
+        __props__["upsert"] = upsert
+        return pulumi.runtime.exists_resource(None, 'harness:platform/gitOpsRepository:GitOpsRepository', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")

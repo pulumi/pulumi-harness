@@ -623,6 +623,36 @@ class RuleEnforcement(pulumi.CustomResource):
         __props__.__dict__["target_regions"] = target_regions
         return RuleEnforcement(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cloud_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enforcement_id: pulumi.Input[Optional[_builtins.str]] = None,
+            execution_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            execution_timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            is_dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            rule_set_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cloudProvider"] = cloud_provider
+        __props__["description"] = description
+        __props__["enforcementId"] = enforcement_id
+        __props__["executionSchedule"] = execution_schedule
+        __props__["executionTimezone"] = execution_timezone
+        __props__["isDryRun"] = is_dry_run
+        __props__["isEnabled"] = is_enabled
+        __props__["name"] = name
+        __props__["ruleIds"] = rule_ids
+        __props__["ruleSetIds"] = rule_set_ids
+        __props__["targetAccounts"] = target_accounts
+        __props__["targetRegions"] = target_regions
+        return pulumi.runtime.exists_resource(None, 'harness:governance/ruleEnforcement:RuleEnforcement', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cloudProvider")
     def cloud_provider(self) -> pulumi.Output[_builtins.str]:

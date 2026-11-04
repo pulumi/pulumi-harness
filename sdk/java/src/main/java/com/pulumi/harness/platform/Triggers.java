@@ -37,12 +37,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new Triggers("example", TriggersArgs.builder()
  *             .identifier("identifier")
  *             .orgId("orgIdentifer")
@@ -54,8 +54,8 @@ import javax.annotation.Nullable;
  *   name: name
  *   identifier: identifier
  *   enabled: true
- *   description: \"\"
- *   tags: {}
+ *   description: }&#92;{@code "}&#92;{@code "
+ *   tags: }{}{@code
  *   projectIdentifier: projectIdentifier
  *   orgIdentifier: orgIdentifer
  *   pipelineIdentifier: pipelineIdentifier
@@ -79,13 +79,13 @@ import javax.annotation.Nullable;
  *           repoName: repoName
  *           actions: []
  *   inputYaml: |
- *     pipeline: {}\
+ *     pipeline: }{}&#92;{@code
  * 
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

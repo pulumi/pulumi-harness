@@ -863,6 +863,36 @@ class DbSchema(pulumi.CustomResource):
         __props__.__dict__["use_percona"] = use_percona
         return DbSchema(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            changelog_script: pulumi.Input[Optional[Union['DbSchemaChangelogScriptArgs', 'DbSchemaChangelogScriptArgsDict', 'outputs.DbSchemaChangelogScript']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            migration_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            schema_source: pulumi.Input[Optional[Union['DbSchemaSchemaSourceArgs', 'DbSchemaSchemaSourceArgsDict', 'outputs.DbSchemaSchemaSource']]] = None,
+            service: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            use_percona: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["changelogScript"] = changelog_script
+        __props__["description"] = description
+        __props__["identifier"] = identifier
+        __props__["migrationType"] = migration_type
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["schemaSource"] = schema_source
+        __props__["service"] = service
+        __props__["tags"] = tags
+        __props__["type"] = type
+        __props__["usePercona"] = use_percona
+        return pulumi.runtime.exists_resource(None, 'harness:platform/dbSchema:DbSchema', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="changelogScript")
     def changelog_script(self) -> pulumi.Output[Optional['outputs.DbSchemaChangelogScript']]:

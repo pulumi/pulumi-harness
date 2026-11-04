@@ -169,6 +169,12 @@ func (GitlabConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gitlabConnectorState)(nil)).Elem()
 }
 
+// GitlabConnectorExists checks whether an existing GitlabConnector resource with the given ID exists.
+func GitlabConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GitlabConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/gitlabConnector:GitlabConnector", id, state, "", opts...)
+}
+
 type gitlabConnectorArgs struct {
 	// Configuration for using the gitlab api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
 	ApiAuthentication *GitlabConnectorApiAuthentication `pulumi:"apiAuthentication"`

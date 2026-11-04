@@ -281,6 +281,12 @@ func (KubernetesConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kubernetesConnectorState)(nil)).Elem()
 }
 
+// KubernetesConnectorExists checks whether an existing KubernetesConnector resource with the given ID exists.
+func KubernetesConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KubernetesConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/kubernetesConnector:KubernetesConnector", id, state, "", opts...)
+}
+
 type kubernetesConnectorArgs struct {
 	// Client key and certificate config for the connector.
 	ClientKeyCert *KubernetesConnectorClientKeyCert `pulumi:"clientKeyCert"`

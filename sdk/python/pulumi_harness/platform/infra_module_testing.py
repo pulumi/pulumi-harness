@@ -937,6 +937,66 @@ class InfraModuleTesting(pulumi.CustomResource):
         __props__.__dict__["versions"] = versions
         return InfraModuleTesting(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            git_tag_style: pulumi.Input[Optional[_builtins.str]] = None,
+            module_error: pulumi.Input[Optional[_builtins.str]] = None,
+            module_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org: pulumi.Input[Optional[_builtins.str]] = None,
+            pipelines: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_connector: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioner_type: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioner_version: pulumi.Input[Optional[_builtins.str]] = None,
+            release_pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+            repository: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_commit: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_connector: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_path: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_url: pulumi.Input[Optional[_builtins.str]] = None,
+            synced: pulumi.Input[Optional[_builtins.int]] = None,
+            system: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[_builtins.str]] = None,
+            testing_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            testing_metadata: pulumi.Input[Optional[Union['InfraModuleTestingTestingMetadataArgs', 'InfraModuleTestingTestingMetadataArgsDict', 'outputs.InfraModuleTestingTestingMetadata']]] = None,
+            updated: pulumi.Input[Optional[_builtins.int]] = None,
+            versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["account"] = account
+        __props__["created"] = created
+        __props__["description"] = description
+        __props__["gitTagStyle"] = git_tag_style
+        __props__["moduleError"] = module_error
+        __props__["moduleId"] = module_id
+        __props__["name"] = name
+        __props__["org"] = org
+        __props__["pipelines"] = pipelines
+        __props__["project"] = project
+        __props__["providerConnector"] = provider_connector
+        __props__["provisionerType"] = provisioner_type
+        __props__["provisionerVersion"] = provisioner_version
+        __props__["releasePipeline"] = release_pipeline
+        __props__["repository"] = repository
+        __props__["repositoryBranch"] = repository_branch
+        __props__["repositoryCommit"] = repository_commit
+        __props__["repositoryConnector"] = repository_connector
+        __props__["repositoryPath"] = repository_path
+        __props__["repositoryUrl"] = repository_url
+        __props__["synced"] = synced
+        __props__["system"] = system
+        __props__["tags"] = tags
+        __props__["testingEnabled"] = testing_enabled
+        __props__["testingMetadata"] = testing_metadata
+        __props__["updated"] = updated
+        __props__["versions"] = versions
+        return pulumi.runtime.exists_resource(None, 'harness:platform/infraModuleTesting:InfraModuleTesting', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def account(self) -> pulumi.Output[_builtins.str]:

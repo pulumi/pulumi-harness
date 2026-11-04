@@ -178,6 +178,12 @@ func (AwsSecretManagerConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*awsSecretManagerConnectorState)(nil)).Elem()
 }
 
+// AwsSecretManagerConnectorExists checks whether an existing AwsSecretManagerConnector resource with the given ID exists.
+func AwsSecretManagerConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AwsSecretManagerConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/awsSecretManagerConnector:AwsSecretManagerConnector", id, state, "", opts...)
+}
+
 type awsSecretManagerConnectorArgs struct {
 	// Credentials to connect to AWS.
 	Credentials AwsSecretManagerConnectorCredentials `pulumi:"credentials"`

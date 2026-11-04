@@ -221,6 +221,12 @@ func (AwsCCConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*awsCCConnectorState)(nil)).Elem()
 }
 
+// AwsCCConnectorExists checks whether an existing AwsCCConnector resource with the given ID exists.
+func AwsCCConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AwsCCConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/awsCCConnector:AwsCCConnector", id, state, "", opts...)
+}
+
 type awsCCConnectorArgs struct {
 	// The AWS account id.
 	AccountId string `pulumi:"accountId"`

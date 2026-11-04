@@ -188,6 +188,12 @@ func (SumologicConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sumologicConnectorState)(nil)).Elem()
 }
 
+// SumologicConnectorExists checks whether an existing SumologicConnector resource with the given ID exists.
+func SumologicConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SumologicConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/sumologicConnector:SumologicConnector", id, state, "", opts...)
+}
+
 type sumologicConnectorArgs struct {
 	// Reference to the Harness secret containing the access id. To reference a secret at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference a secret at the account scope, prefix 'account` to the expression: account.{identifier}.
 	AccessIdRef string `pulumi:"accessIdRef"`

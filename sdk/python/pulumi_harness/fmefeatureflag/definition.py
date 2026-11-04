@@ -326,6 +326,24 @@ class Definition(pulumi.CustomResource):
         __props__.__dict__["project_id"] = project_id
         return Definition(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            definition: pulumi.Input[Optional[_builtins.str]] = None,
+            definition_id: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            flag_name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["definition"] = definition
+        __props__["definitionId"] = definition_id
+        __props__["environmentId"] = environment_id
+        __props__["flagName"] = flag_name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        return pulumi.runtime.exists_resource(None, 'harness:fmeFeatureFlag/definition:Definition', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def definition(self) -> pulumi.Output[_builtins.str]:

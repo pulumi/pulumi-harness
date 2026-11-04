@@ -214,6 +214,12 @@ func (FileStoreFileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fileStoreFileState)(nil)).Elem()
 }
 
+// FileStoreFileExists checks whether an existing FileStoreFile resource with the given ID exists.
+func FileStoreFileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FileStoreFileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/fileStoreFile:FileStoreFile", id, state, "", opts...)
+}
+
 type fileStoreFileArgs struct {
 	// File content stored on Harness File Store
 	Content *string `pulumi:"content"`

@@ -20,22 +20,20 @@ public final class GetGitopsRepoCredPlainArgs extends com.pulumi.resources.Invok
     /**
      * Account identifier of the Repository Credentials.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     @Import(name="accountId")
     private @Nullable String accountId;
 
     /**
      * @return Account identifier of the Repository Credentials.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -149,11 +147,10 @@ public final class GetGitopsRepoCredPlainArgs extends com.pulumi.resources.Invok
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release.
+         * @deprecated This field is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        @Deprecated
         public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;

@@ -373,6 +373,32 @@ class CentralNotificationChannel(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return CentralNotificationChannel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account: pulumi.Input[Optional[_builtins.str]] = None,
+            channel: pulumi.Input[Optional[Union['CentralNotificationChannelChannelArgs', 'CentralNotificationChannelChannelArgsDict', 'outputs.CentralNotificationChannelChannel']]] = None,
+            created: pulumi.Input[Optional[_builtins.int]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
+            org: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["account"] = account
+        __props__["channel"] = channel
+        __props__["created"] = created
+        __props__["identifier"] = identifier
+        __props__["lastModified"] = last_modified
+        __props__["name"] = name
+        __props__["notificationChannelType"] = notification_channel_type
+        __props__["org"] = org
+        __props__["project"] = project
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'harness:platform/centralNotificationChannel:CentralNotificationChannel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def account(self) -> pulumi.Output[_builtins.str]:

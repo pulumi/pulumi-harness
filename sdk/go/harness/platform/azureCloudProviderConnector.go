@@ -299,6 +299,12 @@ func (AzureCloudProviderConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*azureCloudProviderConnectorState)(nil)).Elem()
 }
 
+// AzureCloudProviderConnectorExists checks whether an existing AzureCloudProviderConnector resource with the given ID exists.
+func AzureCloudProviderConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AzureCloudProviderConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/azureCloudProviderConnector:AzureCloudProviderConnector", id, state, "", opts...)
+}
+
 type azureCloudProviderConnectorArgs struct {
 	// Specifies the Azure Environment type, which is AZURE by default. Can either be AZURE or AZURE*US*GOVERNMENT
 	AzureEnvironmentType *string `pulumi:"azureEnvironmentType"`

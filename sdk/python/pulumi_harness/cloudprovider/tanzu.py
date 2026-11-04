@@ -400,6 +400,24 @@ class Tanzu(pulumi.CustomResource):
         __props__.__dict__["username_secret_name"] = username_secret_name
         return Tanzu(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            password_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None,
+            username_secret_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["endpoint"] = endpoint
+        __props__["name"] = name
+        __props__["passwordSecretName"] = password_secret_name
+        __props__["skipValidation"] = skip_validation
+        __props__["username"] = username
+        __props__["usernameSecretName"] = username_secret_name
+        return pulumi.runtime.exists_resource(None, 'harness:cloudprovider/tanzu:Tanzu', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def endpoint(self) -> pulumi.Output[_builtins.str]:

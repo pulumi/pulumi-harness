@@ -222,6 +222,12 @@ func (AzureGatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*azureGatewayState)(nil)).Elem()
 }
 
+// AzureGatewayExists checks whether an existing AzureGateway resource with the given ID exists.
+func AzureGatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AzureGatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:autostopping/azureGateway:AzureGateway", id, state, "", opts...)
+}
+
 type azureGatewayArgs struct {
 	// Harness NG API key. Used to configure the AutoStopping warmup function with authentication
 	ApiKey string `pulumi:"apiKey"`

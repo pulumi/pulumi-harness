@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetIdpEnvironmentResult {
     /**
-     * @return Based on environment reference. This should be passed as \n\n.\n\n/\n\n
+     * @return Based on environment reference. This should be passed as &#92;n&#92;n.&#92;n&#92;n/&#92;n&#92;n
      * 
      */
     private String basedOn;
@@ -75,7 +75,7 @@ public final class GetIdpEnvironmentResult {
 
     private GetIdpEnvironmentResult() {}
     /**
-     * @return Based on environment reference. This should be passed as \n\n.\n\n/\n\n
+     * @return Based on environment reference. This should be passed as &#92;n&#92;n.&#92;n&#92;n/&#92;n&#92;n
      * 
      */
     public String basedOn() {

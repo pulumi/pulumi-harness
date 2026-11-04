@@ -388,6 +388,24 @@ class InfraProviderSigningKey(pulumi.CustomResource):
         __props__.__dict__["user"] = user
         return InfraProviderSigningKey(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ascii_armor: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["asciiArmor"] = ascii_armor
+        __props__["createdAt"] = created_at
+        __props__["keyId"] = key_id
+        __props__["keyName"] = key_name
+        __props__["updatedAt"] = updated_at
+        __props__["user"] = user
+        return pulumi.runtime.exists_resource(None, 'harness:platform/infraProviderSigningKey:InfraProviderSigningKey', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="asciiArmor")
     def ascii_armor(self) -> pulumi.Output[_builtins.str]:

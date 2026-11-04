@@ -68,6 +68,12 @@ func (DashboardFolderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dashboardFolderState)(nil)).Elem()
 }
 
+// DashboardFolderExists checks whether an existing DashboardFolder resource with the given ID exists.
+func DashboardFolderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DashboardFolderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/dashboardFolder:DashboardFolder", id, state, "", opts...)
+}
+
 type dashboardFolderArgs struct {
 	// Name of the folder.
 	Name *string `pulumi:"name"`

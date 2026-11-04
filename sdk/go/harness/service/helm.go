@@ -129,6 +129,12 @@ func (HelmState) ElementType() reflect.Type {
 	return reflect.TypeOf((*helmState)(nil)).Elem()
 }
 
+// HelmExists checks whether an existing Helm resource with the given ID exists.
+func HelmExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HelmState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:service/helm:Helm", id, state, "", opts...)
+}
+
 type helmArgs struct {
 	// The id of the application the service belongs to
 	AppId string `pulumi:"appId"`

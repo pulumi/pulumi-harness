@@ -132,6 +132,12 @@ func (IacmDefaultPipelineState) ElementType() reflect.Type {
 	return reflect.TypeOf((*iacmDefaultPipelineState)(nil)).Elem()
 }
 
+// IacmDefaultPipelineExists checks whether an existing IacmDefaultPipeline resource with the given ID exists.
+func IacmDefaultPipelineExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IacmDefaultPipelineState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/iacmDefaultPipeline:IacmDefaultPipeline", id, state, "", opts...)
+}
+
 type iacmDefaultPipelineArgs struct {
 	// The operation associated with this default.
 	Operation string `pulumi:"operation"`

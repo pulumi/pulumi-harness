@@ -225,6 +225,12 @@ func (ProbeTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*probeTemplateState)(nil)).Elem()
 }
 
+// ProbeTemplateExists checks whether an existing ProbeTemplate resource with the given ID exists.
+func ProbeTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProbeTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:chaos/probeTemplate:ProbeTemplate", id, state, "", opts...)
+}
+
 type probeTemplateArgs struct {
 	// APM probe configuration. Required when type is 'apmProbe'.
 	ApmProbe *ProbeTemplateApmProbe `pulumi:"apmProbe"`

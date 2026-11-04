@@ -162,6 +162,12 @@ func (EncryptedTextState) ElementType() reflect.Type {
 	return reflect.TypeOf((*encryptedTextState)(nil)).Elem()
 }
 
+// EncryptedTextExists checks whether an existing EncryptedText resource with the given ID exists.
+func EncryptedTextExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EncryptedTextState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:index/encryptedText:EncryptedText", id, state, "", opts...)
+}
+
 type encryptedTextArgs struct {
 	// Boolean that indicates whether or not to inherit the usage scopes from the secret manager
 	InheritScopesFromSecretManager *bool `pulumi:"inheritScopesFromSecretManager"`

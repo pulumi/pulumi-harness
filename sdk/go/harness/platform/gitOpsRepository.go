@@ -187,6 +187,12 @@ func (GitOpsRepositoryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gitOpsRepositoryState)(nil)).Elem()
 }
 
+// GitOpsRepositoryExists checks whether an existing GitOpsRepository resource with the given ID exists.
+func GitOpsRepositoryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GitOpsRepositoryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/gitOpsRepository:GitOpsRepository", id, state, "", opts...)
+}
+
 type gitOpsRepositoryArgs struct {
 	// Account identifier of the GitOps repository.
 	//

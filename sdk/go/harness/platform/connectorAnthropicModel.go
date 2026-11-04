@@ -345,6 +345,12 @@ func (ConnectorAnthropicModelState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectorAnthropicModelState)(nil)).Elem()
 }
 
+// ConnectorAnthropicModelExists checks whether an existing ConnectorAnthropicModel resource with the given ID exists.
+func ConnectorAnthropicModelExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectorAnthropicModelState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/connectorAnthropicModel:ConnectorAnthropicModel", id, state, "", opts...)
+}
+
 type connectorAnthropicModelArgs struct {
 	// The authentication configuration for the Anthropic connector.
 	Auth ConnectorAnthropicModelAuth `pulumi:"auth"`

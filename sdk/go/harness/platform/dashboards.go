@@ -170,6 +170,12 @@ func (DashboardsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dashboardsState)(nil)).Elem()
 }
 
+// DashboardsExists checks whether an existing Dashboards resource with the given ID exists.
+func DashboardsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DashboardsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/dashboards:Dashboards", id, state, "", opts...)
+}
+
 type dashboardsArgs struct {
 	// Created at timestamp of the Dashboard.
 	CreatedAt *string `pulumi:"createdAt"`

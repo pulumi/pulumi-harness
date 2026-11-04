@@ -624,6 +624,36 @@ class GitConnector(pulumi.CustomResource):
         __props__.__dict__["validation_repo"] = validation_repo
         return GitConnector(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+            credentials: pulumi.Input[Optional[Union['GitConnectorCredentialsArgs', 'GitConnectorCredentialsArgsDict', 'outputs.GitConnectorCredentials']]] = None,
+            delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            validation_repo: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectionType"] = connection_type
+        __props__["credentials"] = credentials
+        __props__["delegateSelectors"] = delegate_selectors
+        __props__["description"] = description
+        __props__["executeOnDelegate"] = execute_on_delegate
+        __props__["identifier"] = identifier
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["tags"] = tags
+        __props__["url"] = url
+        __props__["validationRepo"] = validation_repo
+        return pulumi.runtime.exists_resource(None, 'harness:platform/gitConnector:GitConnector', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> pulumi.Output[_builtins.str]:

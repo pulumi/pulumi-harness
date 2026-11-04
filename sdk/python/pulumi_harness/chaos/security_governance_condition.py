@@ -725,6 +725,30 @@ class SecurityGovernanceCondition(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return SecurityGovernanceCondition(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            fault_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionFaultSpecArgs', 'SecurityGovernanceConditionFaultSpecArgsDict', 'outputs.SecurityGovernanceConditionFaultSpec']]] = None,
+            infra_type: pulumi.Input[Optional[_builtins.str]] = None,
+            k8s_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionK8sSpecArgs', 'SecurityGovernanceConditionK8sSpecArgsDict', 'outputs.SecurityGovernanceConditionK8sSpec']]] = None,
+            machine_spec: pulumi.Input[Optional[Union['SecurityGovernanceConditionMachineSpecArgs', 'SecurityGovernanceConditionMachineSpecArgsDict', 'outputs.SecurityGovernanceConditionMachineSpec']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["faultSpec"] = fault_spec
+        __props__["infraType"] = infra_type
+        __props__["k8sSpec"] = k8s_spec
+        __props__["machineSpec"] = machine_spec
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'harness:chaos/securityGovernanceCondition:SecurityGovernanceCondition', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

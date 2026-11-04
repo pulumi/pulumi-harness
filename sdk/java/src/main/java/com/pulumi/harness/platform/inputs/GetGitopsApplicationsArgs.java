@@ -19,22 +19,20 @@ public final class GetGitopsApplicationsArgs extends com.pulumi.resources.Invoke
     /**
      * Account identifier of the GitOps application.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
      * @return Account identifier of the GitOps application.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -57,22 +55,20 @@ public final class GetGitopsApplicationsArgs extends com.pulumi.resources.Invoke
     /**
      * Identifier of the GitOps application.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     @Import(name="identifier")
     private @Nullable Output<String> identifier;
 
     /**
      * @return Identifier of the GitOps application.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     public Optional<Output<String>> identifier() {
         return Optional.ofNullable(this.identifier);
     }
@@ -156,11 +152,10 @@ public final class GetGitopsApplicationsArgs extends com.pulumi.resources.Invoke
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release.
+         * @deprecated This field is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        @Deprecated
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
@@ -171,11 +166,10 @@ public final class GetGitopsApplicationsArgs extends com.pulumi.resources.Invoke
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release.
+         * @deprecated This field is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        @Deprecated
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
@@ -206,11 +200,10 @@ public final class GetGitopsApplicationsArgs extends com.pulumi.resources.Invoke
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release.
+         * @deprecated This field is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        @Deprecated
         public Builder identifier(@Nullable Output<String> identifier) {
             $.identifier = identifier;
             return this;
@@ -221,11 +214,10 @@ public final class GetGitopsApplicationsArgs extends com.pulumi.resources.Invoke
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release.
+         * @deprecated This field is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        @Deprecated
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
         }

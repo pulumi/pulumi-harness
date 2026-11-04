@@ -180,6 +180,12 @@ func (GitOpsRepoCredState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gitOpsRepoCredState)(nil)).Elem()
 }
 
+// GitOpsRepoCredExists checks whether an existing GitOpsRepoCred resource with the given ID exists.
+func GitOpsRepoCredExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GitOpsRepoCredState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/gitOpsRepoCred:GitOpsRepoCred", id, state, "", opts...)
+}
+
 type gitOpsRepoCredArgs struct {
 	// Account identifier of the Repository Credentials.
 	//

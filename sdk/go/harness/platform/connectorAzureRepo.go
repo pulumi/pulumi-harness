@@ -147,6 +147,12 @@ func (ConnectorAzureRepoState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectorAzureRepoState)(nil)).Elem()
 }
 
+// ConnectorAzureRepoExists checks whether an existing ConnectorAzureRepo resource with the given ID exists.
+func ConnectorAzureRepoExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectorAzureRepoState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/connectorAzureRepo:ConnectorAzureRepo", id, state, "", opts...)
+}
+
 type connectorAzureRepoArgs struct {
 	// Configuration for using the azure api. API Access is required for using “Git Experience”, for creation of Git based triggers, Webhooks management and updating Git statuses.
 	ApiAuthentication *ConnectorAzureRepoApiAuthentication `pulumi:"apiAuthentication"`

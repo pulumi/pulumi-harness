@@ -641,6 +641,38 @@ class GitConnector(pulumi.CustomResource):
         __props__.__dict__["webhook_url"] = webhook_url
         return GitConnector(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            branch: pulumi.Input[Optional[_builtins.str]] = None,
+            commit_details: pulumi.Input[Optional[Union['GitConnectorCommitDetailsArgs', 'GitConnectorCommitDetailsArgsDict', 'outputs.GitConnectorCommitDetails']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            generate_webhook_url: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            password_secret_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ssh_setting_id: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            url_type: pulumi.Input[Optional[_builtins.str]] = None,
+            usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitConnectorUsageScopeArgs', 'GitConnectorUsageScopeArgsDict', 'outputs.GitConnectorUsageScope']]]]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None,
+            webhook_url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["branch"] = branch
+        __props__["commitDetails"] = commit_details
+        __props__["createdAt"] = created_at
+        __props__["delegateSelectors"] = delegate_selectors
+        __props__["generateWebhookUrl"] = generate_webhook_url
+        __props__["name"] = name
+        __props__["passwordSecretId"] = password_secret_id
+        __props__["sshSettingId"] = ssh_setting_id
+        __props__["url"] = url
+        __props__["urlType"] = url_type
+        __props__["usageScopes"] = usage_scopes
+        __props__["username"] = username
+        __props__["webhookUrl"] = webhook_url
+        return pulumi.runtime.exists_resource(None, 'harness:index/gitConnector:GitConnector', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def branch(self) -> pulumi.Output[Optional[_builtins.str]]:

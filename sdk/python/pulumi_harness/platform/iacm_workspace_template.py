@@ -390,6 +390,26 @@ class IacmWorkspaceTemplate(pulumi.CustomResource):
         __props__.__dict__["workspace_id"] = workspace_id
         return IacmWorkspaceTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdAt"] = created_at
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["templateId"] = template_id
+        __props__["updatedAt"] = updated_at
+        __props__["version"] = version
+        __props__["workspaceId"] = workspace_id
+        return pulumi.runtime.exists_resource(None, 'harness:platform/iacmWorkspaceTemplate:IacmWorkspaceTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.int]:

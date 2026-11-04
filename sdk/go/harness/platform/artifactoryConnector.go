@@ -318,6 +318,12 @@ func (ArtifactoryConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*artifactoryConnectorState)(nil)).Elem()
 }
 
+// ArtifactoryConnectorExists checks whether an existing ArtifactoryConnector resource with the given ID exists.
+func ArtifactoryConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ArtifactoryConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/artifactoryConnector:ArtifactoryConnector", id, state, "", opts...)
+}
+
 type artifactoryConnectorArgs struct {
 	// Credentials to use for authentication.
 	Credentials *ArtifactoryConnectorCredentials `pulumi:"credentials"`

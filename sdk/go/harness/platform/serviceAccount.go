@@ -169,6 +169,12 @@ func (ServiceAccountState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceAccountState)(nil)).Elem()
 }
 
+// ServiceAccountExists checks whether an existing ServiceAccount resource with the given ID exists.
+func ServiceAccountExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceAccountState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/serviceAccount:ServiceAccount", id, state, "", opts...)
+}
+
 type serviceAccountArgs struct {
 	// Account Identifier for the Entity.
 	AccountId string `pulumi:"accountId"`

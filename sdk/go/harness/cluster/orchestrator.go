@@ -130,6 +130,12 @@ func (OrchestratorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*orchestratorState)(nil)).Elem()
 }
 
+// OrchestratorExists checks whether an existing Orchestrator resource with the given ID exists.
+func OrchestratorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrchestratorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:cluster/orchestrator:Orchestrator", id, state, "", opts...)
+}
+
 type orchestratorArgs struct {
 	// Endpoint of the k8s cluster being onboarded under the orchestrator
 	ClusterEndpoint string `pulumi:"clusterEndpoint"`

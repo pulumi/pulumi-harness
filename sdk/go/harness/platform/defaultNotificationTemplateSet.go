@@ -123,6 +123,12 @@ func (DefaultNotificationTemplateSetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*defaultNotificationTemplateSetState)(nil)).Elem()
 }
 
+// DefaultNotificationTemplateSetExists checks whether an existing DefaultNotificationTemplateSet resource with the given ID exists.
+func DefaultNotificationTemplateSetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DefaultNotificationTemplateSetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/defaultNotificationTemplateSet:DefaultNotificationTemplateSet", id, state, "", opts...)
+}
+
 type defaultNotificationTemplateSetArgs struct {
 	// Description for Default Notification Template Set
 	Description *string `pulumi:"description"`

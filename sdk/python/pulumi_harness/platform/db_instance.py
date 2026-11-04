@@ -744,6 +744,38 @@ class DbInstance(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return DbInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            branch: pulumi.Input[Optional[_builtins.str]] = None,
+            commit_sha: pulumi.Input[Optional[_builtins.str]] = None,
+            connector: pulumi.Input[Optional[_builtins.str]] = None,
+            context: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            git_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[_builtins.str]] = None,
+            substitute_properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["branch"] = branch
+        __props__["commitSha"] = commit_sha
+        __props__["connector"] = connector
+        __props__["context"] = context
+        __props__["description"] = description
+        __props__["gitTag"] = git_tag
+        __props__["identifier"] = identifier
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["schema"] = schema
+        __props__["substituteProperties"] = substitute_properties
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'harness:platform/dbInstance:DbInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def branch(self) -> pulumi.Output[Optional[_builtins.str]]:

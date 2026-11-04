@@ -148,6 +148,12 @@ func (NexusConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nexusConnectorState)(nil)).Elem()
 }
 
+// NexusConnectorExists checks whether an existing NexusConnector resource with the given ID exists.
+func NexusConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NexusConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/nexusConnector:NexusConnector", id, state, "", opts...)
+}
+
 type nexusConnectorArgs struct {
 	// Credentials to use for authentication.
 	Credentials *NexusConnectorCredentials `pulumi:"credentials"`

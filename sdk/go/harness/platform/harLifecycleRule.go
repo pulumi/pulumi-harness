@@ -308,6 +308,12 @@ func (HarLifecycleRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*harLifecycleRuleState)(nil)).Elem()
 }
 
+// HarLifecycleRuleExists checks whether an existing HarLifecycleRule resource with the given ID exists.
+func HarLifecycleRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HarLifecycleRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/harLifecycleRule:HarLifecycleRule", id, state, "", opts...)
+}
+
 type harLifecycleRuleArgs struct {
 	// Account identifier for the lifecycle rule.
 	AccountId string `pulumi:"accountId"`

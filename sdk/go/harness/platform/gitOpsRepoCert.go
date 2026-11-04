@@ -168,6 +168,12 @@ func (GitOpsRepoCertState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gitOpsRepoCertState)(nil)).Elem()
 }
 
+// GitOpsRepoCertExists checks whether an existing GitOpsRepoCert resource with the given ID exists.
+func GitOpsRepoCertExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GitOpsRepoCertState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/gitOpsRepoCert:GitOpsRepoCert", id, state, "", opts...)
+}
+
 type gitOpsRepoCertArgs struct {
 	// Account identifier of the GitOps repository certificate.
 	//

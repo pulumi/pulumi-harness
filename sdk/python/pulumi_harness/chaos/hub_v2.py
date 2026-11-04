@@ -952,6 +952,60 @@ class HubV2(pulumi.CustomResource):
         __props__.__dict__["updated_by"] = updated_by
         return HubV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            action_template_count: pulumi.Input[Optional[_builtins.int]] = None,
+            connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connector_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            experiment_template_count: pulumi.Input[Optional[_builtins.int]] = None,
+            fault_template_count: pulumi.Input[Optional[_builtins.int]] = None,
+            hub_id: pulumi.Input[Optional[_builtins.str]] = None,
+            identity: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_removed: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_synced_at: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            probe_template_count: pulumi.Input[Optional[_builtins.int]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_url: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["actionTemplateCount"] = action_template_count
+        __props__["connectorId"] = connector_id
+        __props__["connectorRef"] = connector_ref
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["description"] = description
+        __props__["experimentTemplateCount"] = experiment_template_count
+        __props__["faultTemplateCount"] = fault_template_count
+        __props__["hubId"] = hub_id
+        __props__["identity"] = identity
+        __props__["isDefault"] = is_default
+        __props__["isRemoved"] = is_removed
+        __props__["lastSyncedAt"] = last_synced_at
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["probeTemplateCount"] = probe_template_count
+        __props__["projectId"] = project_id
+        __props__["repoBranch"] = repo_branch
+        __props__["repoName"] = repo_name
+        __props__["repoUrl"] = repo_url
+        __props__["tags"] = tags
+        __props__["updatedAt"] = updated_at
+        __props__["updatedBy"] = updated_by
+        return pulumi.runtime.exists_resource(None, 'harness:chaos/hubV2:HubV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

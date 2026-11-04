@@ -167,6 +167,12 @@ func (PlatformCcmFiltersState) ElementType() reflect.Type {
 	return reflect.TypeOf((*platformCcmFiltersState)(nil)).Elem()
 }
 
+// PlatformCcmFiltersExists checks whether an existing PlatformCcmFilters resource with the given ID exists.
+func PlatformCcmFiltersExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PlatformCcmFiltersState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:index/platformCcmFilters:PlatformCcmFilters", id, state, "", opts...)
+}
+
 type platformCcmFiltersArgs struct {
 	// Properties of the filters entity defined in Harness.
 	FilterProperties PlatformCcmFiltersFilterProperties `pulumi:"filterProperties"`

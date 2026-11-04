@@ -144,6 +144,12 @@ func (PlatformApiKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*platformApiKeyState)(nil)).Elem()
 }
 
+// PlatformApiKeyExists checks whether an existing PlatformApiKey resource with the given ID exists.
+func PlatformApiKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PlatformApiKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:index/platformApiKey:PlatformApiKey", id, state, "", opts...)
+}
+
 type platformApiKeyArgs struct {
 	// Account Identifier for the Entity
 	AccountId string `pulumi:"accountId"`

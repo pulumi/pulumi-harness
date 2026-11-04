@@ -668,6 +668,38 @@ class ImageRegistry(pulumi.CustomResource):
         __props__.__dict__["use_custom_images"] = use_custom_images
         return ImageRegistry(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageRegistryCustomImageArgs', 'ImageRegistryCustomImageArgsDict', 'outputs.ImageRegistryCustomImage']]]]] = None,
+            infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_override_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_private: pulumi.Input[Optional[_builtins.bool]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            registry_account: pulumi.Input[Optional[_builtins.str]] = None,
+            registry_server: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            use_custom_images: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdAt"] = created_at
+        __props__["customImages"] = custom_images
+        __props__["infraId"] = infra_id
+        __props__["isDefault"] = is_default
+        __props__["isOverrideAllowed"] = is_override_allowed
+        __props__["isPrivate"] = is_private
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["registryAccount"] = registry_account
+        __props__["registryServer"] = registry_server
+        __props__["secretName"] = secret_name
+        __props__["updatedAt"] = updated_at
+        __props__["useCustomImages"] = use_custom_images
+        return pulumi.runtime.exists_resource(None, 'harness:chaos/imageRegistry:ImageRegistry', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:

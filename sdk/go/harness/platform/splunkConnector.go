@@ -308,6 +308,12 @@ func (SplunkConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*splunkConnectorState)(nil)).Elem()
 }
 
+// SplunkConnectorExists checks whether an existing SplunkConnector resource with the given ID exists.
+func SplunkConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SplunkConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/splunkConnector:SplunkConnector", id, state, "", opts...)
+}
+
 type splunkConnectorArgs struct {
 	// Splunk account id.
 	AccountId string `pulumi:"accountId"`

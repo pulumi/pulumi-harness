@@ -440,6 +440,24 @@ class Alert(pulumi.CustomResource):
         __props__.__dict__["rule_id_lists"] = rule_id_lists
         return Alert(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            applicable_to_all_rules: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            recipients: pulumi.Input[Optional[Union['AlertRecipientsArgs', 'AlertRecipientsArgsDict', 'outputs.AlertRecipients']]] = None,
+            rule_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["applicableToAllRules"] = applicable_to_all_rules
+        __props__["enabled"] = enabled
+        __props__["events"] = events
+        __props__["name"] = name
+        __props__["recipients"] = recipients
+        __props__["ruleIdLists"] = rule_id_lists
+        return pulumi.runtime.exists_resource(None, 'harness:autostopping/alert:Alert', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="applicableToAllRules")
     def applicable_to_all_rules(self) -> pulumi.Output[Optional[_builtins.bool]]:

@@ -109,6 +109,12 @@ func (IdpPluginState) ElementType() reflect.Type {
 	return reflect.TypeOf((*idpPluginState)(nil)).Elem()
 }
 
+// IdpPluginExists checks whether an existing IdpPlugin resource with the given ID exists.
+func IdpPluginExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IdpPluginState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/idpPlugin:IdpPlugin", id, state, "", opts...)
+}
+
 type idpPluginArgs struct {
 	// Backstage YAML configuration for the plugin.
 	Configs string `pulumi:"configs"`

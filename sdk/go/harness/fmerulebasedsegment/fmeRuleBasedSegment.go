@@ -90,6 +90,12 @@ func (FmeRuleBasedSegmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fmeRuleBasedSegmentState)(nil)).Elem()
 }
 
+// FmeRuleBasedSegmentExists checks whether an existing FmeRuleBasedSegment resource with the given ID exists.
+func FmeRuleBasedSegmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FmeRuleBasedSegmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:fmeRuleBasedSegment/fmeRuleBasedSegment:FmeRuleBasedSegment", id, state, "", opts...)
+}
+
 type fmeRuleBasedSegmentArgs struct {
 	// Rule-based segment name.
 	Name *string `pulumi:"name"`

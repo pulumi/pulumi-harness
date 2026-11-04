@@ -133,6 +133,12 @@ func (ConnectorPdcState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectorPdcState)(nil)).Elem()
 }
 
+// ConnectorPdcExists checks whether an existing ConnectorPdc resource with the given ID exists.
+func ConnectorPdcExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectorPdcState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/connectorPdc:ConnectorPdc", id, state, "", opts...)
+}
+
 type connectorPdcArgs struct {
 	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`

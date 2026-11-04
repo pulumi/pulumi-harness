@@ -309,6 +309,18 @@ class TimeSleep(pulumi.CustomResource):
         __props__.__dict__["triggers"] = triggers
         return TimeSleep(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            destroy_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            triggers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createDuration"] = create_duration
+        __props__["destroyDuration"] = destroy_duration
+        __props__["triggers"] = triggers
+        return pulumi.runtime.exists_resource(None, 'harness:index/timeSleep:TimeSleep', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createDuration")
     def create_duration(self) -> pulumi.Output[Optional[_builtins.str]]:

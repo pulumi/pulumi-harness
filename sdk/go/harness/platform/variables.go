@@ -164,6 +164,12 @@ func (VariablesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*variablesState)(nil)).Elem()
 }
 
+// VariablesExists checks whether an existing Variables resource with the given ID exists.
+func VariablesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VariablesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/variables:Variables", id, state, "", opts...)
+}
+
 type variablesArgs struct {
 	// Description of the entity
 	Description *string `pulumi:"description"`

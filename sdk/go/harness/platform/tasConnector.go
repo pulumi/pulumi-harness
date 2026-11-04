@@ -139,6 +139,12 @@ func (TasConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tasConnectorState)(nil)).Elem()
 }
 
+// TasConnectorExists checks whether an existing TasConnector resource with the given ID exists.
+func TasConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TasConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/tasConnector:TasConnector", id, state, "", opts...)
+}
+
 type tasConnectorArgs struct {
 	// Contains Tas connector credentials.
 	Credentials TasConnectorCredentials `pulumi:"credentials"`

@@ -16,20 +16,18 @@ public final class GetGitopsClusterPlainArgs extends com.pulumi.resources.Invoke
     public static final GetGitopsClusterPlainArgs Empty = new GetGitopsClusterPlainArgs();
 
     /**
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     @Import(name="accountId")
     private @Nullable String accountId;
 
     /**
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -93,11 +91,10 @@ public final class GetGitopsClusterPlainArgs extends com.pulumi.resources.Invoke
         /**
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release.
+         * @deprecated This field is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        @Deprecated
         public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;

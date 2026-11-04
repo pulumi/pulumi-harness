@@ -631,6 +631,38 @@ class IdpScorecardCheck(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return IdpScorecardCheck(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            custom: pulumi.Input[Optional[_builtins.bool]] = None,
+            default_behaviour: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            expression: pulumi.Input[Optional[_builtins.str]] = None,
+            fail_message: pulumi.Input[Optional[_builtins.str]] = None,
+            harness_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            percentage: pulumi.Input[Optional[_builtins.float]] = None,
+            rule_description: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IdpScorecardCheckRuleArgs', 'IdpScorecardCheckRuleArgsDict', 'outputs.IdpScorecardCheckRule']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["custom"] = custom
+        __props__["defaultBehaviour"] = default_behaviour
+        __props__["description"] = description
+        __props__["expression"] = expression
+        __props__["failMessage"] = fail_message
+        __props__["harnessManaged"] = harness_managed
+        __props__["identifier"] = identifier
+        __props__["name"] = name
+        __props__["percentage"] = percentage
+        __props__["ruleDescription"] = rule_description
+        __props__["ruleStrategy"] = rule_strategy
+        __props__["rules"] = rules
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'harness:platform/idpScorecardCheck:IdpScorecardCheck', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def custom(self) -> pulumi.Output[_builtins.bool]:

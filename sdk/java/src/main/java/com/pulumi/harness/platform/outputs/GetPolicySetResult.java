@@ -54,11 +54,10 @@ public final class GetPolicySetResult {
     /**
      * @return List of policy identifiers / severity for the policyset. Deprecated: use &#39;policy_references&#39; instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
      * 
-     * @deprecated
-     * The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+     * @deprecated The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
      * 
      */
-    @Deprecated /* The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version. */
+    @Deprecated
     private List<GetPolicySetPolicy> policies;
     /**
      * @return Set of policy identifiers / severity for the policyset. Order is not significant. Preferred over the deprecated &#39;policies&#39; field.
@@ -134,11 +133,10 @@ public final class GetPolicySetResult {
     /**
      * @return List of policy identifiers / severity for the policyset. Deprecated: use &#39;policy_references&#39; instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads.
      * 
-     * @deprecated
-     * The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+     * @deprecated The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
      * 
      */
-    @Deprecated /* The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version. */
+    @Deprecated
     public List<GetPolicySetPolicy> policies() {
         return this.policies;
     }

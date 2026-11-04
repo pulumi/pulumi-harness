@@ -582,6 +582,34 @@ class GcpConnector(pulumi.CustomResource):
         __props__.__dict__["tags"] = tags
         return GcpConnector(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            inherit_from_delegates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpConnectorInheritFromDelegateArgs', 'GcpConnectorInheritFromDelegateArgsDict', 'outputs.GcpConnectorInheritFromDelegate']]]]] = None,
+            manual: pulumi.Input[Optional[Union['GcpConnectorManualArgs', 'GcpConnectorManualArgsDict', 'outputs.GcpConnectorManual']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oidc_authentications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpConnectorOidcAuthenticationArgs', 'GcpConnectorOidcAuthenticationArgsDict', 'outputs.GcpConnectorOidcAuthentication']]]]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["executeOnDelegate"] = execute_on_delegate
+        __props__["forceDelete"] = force_delete
+        __props__["identifier"] = identifier
+        __props__["inheritFromDelegates"] = inherit_from_delegates
+        __props__["manual"] = manual
+        __props__["name"] = name
+        __props__["oidcAuthentications"] = oidc_authentications
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["tags"] = tags
+        return pulumi.runtime.exists_resource(None, 'harness:platform/gcpConnector:GcpConnector', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

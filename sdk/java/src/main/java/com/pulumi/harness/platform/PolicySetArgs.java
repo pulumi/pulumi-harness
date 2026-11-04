@@ -113,22 +113,20 @@ public final class PolicySetArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * List of policy identifiers / severity for the policyset. Deprecated: use &#39;policy_references&#39; instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
      * 
-     * @deprecated
-     * The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+     * @deprecated The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
      * 
      */
-    @Deprecated /* The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version. */
+    @Deprecated
     @Import(name="policies")
     private @Nullable Output<List<PolicySetPolicyArgs>> policies;
 
     /**
      * @return List of policy identifiers / severity for the policyset. Deprecated: use &#39;policy_references&#39; instead - this field is order-sensitive and the underlying API does not guarantee a stable order for linked policies across reads, which can produce a plan diff that only reorders entries.
      * 
-     * @deprecated
-     * The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+     * @deprecated The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
      * 
      */
-    @Deprecated /* The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version. */
+    @Deprecated
     public Optional<Output<List<PolicySetPolicyArgs>>> policies() {
         return Optional.ofNullable(this.policies);
     }
@@ -358,11 +356,10 @@ public final class PolicySetArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+         * @deprecated The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
          * 
          */
-        @Deprecated /* The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version. */
+        @Deprecated
         public Builder policies(@Nullable Output<List<PolicySetPolicyArgs>> policies) {
             $.policies = policies;
             return this;
@@ -373,11 +370,10 @@ public final class PolicySetArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+         * @deprecated The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
          * 
          */
-        @Deprecated /* The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version. */
+        @Deprecated
         public Builder policies(List<PolicySetPolicyArgs> policies) {
             return policies(Output.of(policies));
         }
@@ -387,11 +383,10 @@ public final class PolicySetArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
+         * @deprecated The &#39;policies&#39; field is deprecated. Use &#39;policy_references&#39; instead. This field will be removed in a future version.
          * 
          */
-        @Deprecated /* The 'policies' field is deprecated. Use 'policy_references' instead. This field will be removed in a future version. */
+        @Deprecated
         public Builder policies(PolicySetPolicyArgs... policies) {
             return policies(List.of(policies));
         }

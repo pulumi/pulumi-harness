@@ -153,6 +153,12 @@ func (IpAllowlistState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipAllowlistState)(nil)).Elem()
 }
 
+// IpAllowlistExists checks whether an existing IpAllowlist resource with the given ID exists.
+func IpAllowlistExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IpAllowlistState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/ipAllowlist:IpAllowlist", id, state, "", opts...)
+}
+
 type ipAllowlistArgs struct {
 	// List of sources to allow. Valid values are `UI` and `API`.
 	AllowedSourceTypes []string `pulumi:"allowedSourceTypes"`

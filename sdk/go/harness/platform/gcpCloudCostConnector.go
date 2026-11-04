@@ -194,6 +194,12 @@ func (GcpCloudCostConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gcpCloudCostConnectorState)(nil)).Elem()
 }
 
+// GcpCloudCostConnectorExists checks whether an existing GcpCloudCostConnector resource with the given ID exists.
+func GcpCloudCostConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GcpCloudCostConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/gcpCloudCostConnector:GcpCloudCostConnector", id, state, "", opts...)
+}
+
 type gcpCloudCostConnectorArgs struct {
 	// Returns billing details.
 	BillingExportSpec *GcpCloudCostConnectorBillingExportSpec `pulumi:"billingExportSpec"`

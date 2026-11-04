@@ -22,22 +22,20 @@ public final class GetGitopsAgentDeployYamlPlainArgs extends com.pulumi.resource
     /**
      * Account identifier of the GitOps agent.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     @Import(name="accountId")
     private @Nullable String accountId;
 
     /**
      * @return Account identifier of the GitOps agent.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     public Optional<String> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -215,11 +213,10 @@ public final class GetGitopsAgentDeployYamlPlainArgs extends com.pulumi.resource
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release.
+         * @deprecated This field is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. */
+        @Deprecated
         public Builder accountId(@Nullable String accountId) {
             $.accountId = accountId;
             return this;

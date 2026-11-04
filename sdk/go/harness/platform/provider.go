@@ -99,6 +99,12 @@ func (ProviderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*providerState)(nil)).Elem()
 }
 
+// ProviderExists checks whether an existing Provider resource with the given ID exists.
+func ProviderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProviderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/provider:Provider", id, state, "", opts...)
+}
+
 type providerArgs struct {
 	// The description of the provider entity.
 	Description *string `pulumi:"description"`

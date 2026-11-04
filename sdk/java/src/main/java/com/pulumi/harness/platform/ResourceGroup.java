@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *         * `includedScopes` points to a child scope.
  *   
  *       In dynamic scope, the matching resources can change over time as child scopes are added or removed. Because of this, you can only select resources by `resourceType` (and optionally `attributeFilter`), not by specific identifiers.
- *       
+ *         
  *       If you attempt to use `identifiers` in this case, you will receive:
  *         ```
  *         Cannot provide specific identifiers in resource filter for a dynamic scope

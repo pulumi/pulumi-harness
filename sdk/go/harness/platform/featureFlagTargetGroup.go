@@ -168,6 +168,12 @@ func (FeatureFlagTargetGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*featureFlagTargetGroupState)(nil)).Elem()
 }
 
+// FeatureFlagTargetGroupExists checks whether an existing FeatureFlagTargetGroup resource with the given ID exists.
+func FeatureFlagTargetGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FeatureFlagTargetGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/featureFlagTargetGroup:FeatureFlagTargetGroup", id, state, "", opts...)
+}
+
 type featureFlagTargetGroupArgs struct {
 	// Account Identifier
 	AccountId string `pulumi:"accountId"`

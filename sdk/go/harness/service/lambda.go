@@ -129,6 +129,12 @@ func (LambdaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*lambdaState)(nil)).Elem()
 }
 
+// LambdaExists checks whether an existing Lambda resource with the given ID exists.
+func LambdaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LambdaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:service/lambda:Lambda", id, state, "", opts...)
+}
+
 type lambdaArgs struct {
 	// The id of the application the service belongs to
 	AppId string `pulumi:"appId"`

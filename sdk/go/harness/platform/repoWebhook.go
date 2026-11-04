@@ -157,6 +157,12 @@ func (RepoWebhookState) ElementType() reflect.Type {
 	return reflect.TypeOf((*repoWebhookState)(nil)).Elem()
 }
 
+// RepoWebhookExists checks whether an existing RepoWebhook resource with the given ID exists.
+func RepoWebhookExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RepoWebhookState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/repoWebhook:RepoWebhook", id, state, "", opts...)
+}
+
 type repoWebhookArgs struct {
 	// Description of the webhook.
 	Description *string `pulumi:"description"`

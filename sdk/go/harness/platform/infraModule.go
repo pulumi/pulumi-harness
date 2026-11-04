@@ -239,6 +239,12 @@ func (InfraModuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*infraModuleState)(nil)).Elem()
 }
 
+// InfraModuleExists checks whether an existing InfraModule resource with the given ID exists.
+func InfraModuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InfraModuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/infraModule:InfraModule", id, state, "", opts...)
+}
+
 type infraModuleArgs struct {
 	// Org of the connector to be used to fetch the code.
 	ConnectorOrg *string `pulumi:"connectorOrg"`

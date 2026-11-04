@@ -197,6 +197,12 @@ func (RuleEnforcementState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ruleEnforcementState)(nil)).Elem()
 }
 
+// RuleEnforcementExists checks whether an existing RuleEnforcement resource with the given ID exists.
+func RuleEnforcementExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RuleEnforcementState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:governance/ruleEnforcement:RuleEnforcement", id, state, "", opts...)
+}
+
 type ruleEnforcementArgs struct {
 	// The cloud provider for the rule enforcement. It should be either AWS, AZURE or GCP.
 	CloudProvider string `pulumi:"cloudProvider"`

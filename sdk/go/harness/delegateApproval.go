@@ -124,6 +124,12 @@ func (DelegateApprovalState) ElementType() reflect.Type {
 	return reflect.TypeOf((*delegateApprovalState)(nil)).Elem()
 }
 
+// DelegateApprovalExists checks whether an existing DelegateApproval resource with the given ID exists.
+func DelegateApprovalExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DelegateApprovalState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:index/delegateApproval:DelegateApproval", id, state, "", opts...)
+}
+
 type delegateApprovalArgs struct {
 	// Whether or not to approve the delegate.
 	Approve bool `pulumi:"approve"`

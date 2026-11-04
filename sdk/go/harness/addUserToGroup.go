@@ -124,6 +124,12 @@ func (AddUserToGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*addUserToGroupState)(nil)).Elem()
 }
 
+// AddUserToGroupExists checks whether an existing AddUserToGroup resource with the given ID exists.
+func AddUserToGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AddUserToGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:index/addUserToGroup:AddUserToGroup", id, state, "", opts...)
+}
+
 type addUserToGroupArgs struct {
 	// The name of the user.
 	GroupId string `pulumi:"groupId"`

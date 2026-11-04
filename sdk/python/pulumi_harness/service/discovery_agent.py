@@ -1033,6 +1033,56 @@ class DiscoveryAgent(pulumi.CustomResource):
         __props__.__dict__["webhook_url"] = webhook_url
         return DiscoveryAgent(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiscoveryAgentConfigArgs', 'DiscoveryAgentConfigArgsDict', 'outputs.DiscoveryAgentConfig']]]]] = None,
+            correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            identity: pulumi.Input[Optional[_builtins.str]] = None,
+            infra_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            installation_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DiscoveryAgentInstallationDetailArgs', 'DiscoveryAgentInstallationDetailArgsDict', 'outputs.DiscoveryAgentInstallationDetail']]]]] = None,
+            installation_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_map_count: pulumi.Input[Optional[_builtins.int]] = None,
+            org_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            permanent_installation: pulumi.Input[Optional[_builtins.bool]] = None,
+            project_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            removed: pulumi.Input[Optional[_builtins.bool]] = None,
+            removed_at: pulumi.Input[Optional[_builtins.str]] = None,
+            service_count: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            webhook_url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configs"] = configs
+        __props__["correlationId"] = correlation_id
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["description"] = description
+        __props__["environmentIdentifier"] = environment_identifier
+        __props__["identity"] = identity
+        __props__["infraIdentifier"] = infra_identifier
+        __props__["installationDetails"] = installation_details
+        __props__["installationType"] = installation_type
+        __props__["name"] = name
+        __props__["networkMapCount"] = network_map_count
+        __props__["orgIdentifier"] = org_identifier
+        __props__["permanentInstallation"] = permanent_installation
+        __props__["projectIdentifier"] = project_identifier
+        __props__["removed"] = removed
+        __props__["removedAt"] = removed_at
+        __props__["serviceCount"] = service_count
+        __props__["tags"] = tags
+        __props__["updatedAt"] = updated_at
+        __props__["updatedBy"] = updated_by
+        __props__["webhookUrl"] = webhook_url
+        return pulumi.runtime.exists_resource(None, 'harness:service/discoveryAgent:DiscoveryAgent', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def configs(self) -> pulumi.Output[Sequence['outputs.DiscoveryAgentConfig']]:

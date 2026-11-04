@@ -138,6 +138,12 @@ func (YamlConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*yamlConfigState)(nil)).Elem()
 }
 
+// YamlConfigExists checks whether an existing YamlConfig resource with the given ID exists.
+func YamlConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *YamlConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:index/yamlConfig:YamlConfig", id, state, "", opts...)
+}
+
 type yamlConfigArgs struct {
 	// The id of the application. This is required for all resources except global ones.
 	AppId *string `pulumi:"appId"`

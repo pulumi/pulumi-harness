@@ -594,6 +594,12 @@ func (HarRegistryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*harRegistryState)(nil)).Elem()
 }
 
+// HarRegistryExists checks whether an existing HarRegistry resource with the given ID exists.
+func HarRegistryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HarRegistryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/harRegistry:HarRegistry", id, state, "", opts...)
+}
+
 type harRegistryArgs struct {
 	// Allowed artifact patterns
 	AllowedPatterns []string `pulumi:"allowedPatterns"`

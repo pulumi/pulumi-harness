@@ -322,6 +322,12 @@ func (InfrastructureDefinitionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*infrastructureDefinitionState)(nil)).Elem()
 }
 
+// InfrastructureDefinitionExists checks whether an existing InfrastructureDefinition resource with the given ID exists.
+func InfrastructureDefinitionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InfrastructureDefinitionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:index/infrastructureDefinition:InfrastructureDefinition", id, state, "", opts...)
+}
+
 type infrastructureDefinitionArgs struct {
 	// The id of the application the infrastructure definition belongs to.
 	AppId string `pulumi:"appId"`

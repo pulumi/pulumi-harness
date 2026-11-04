@@ -206,6 +206,12 @@ func (ImageRegistryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageRegistryState)(nil)).Elem()
 }
 
+// ImageRegistryExists checks whether an existing ImageRegistry resource with the given ID exists.
+func ImageRegistryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ImageRegistryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:chaos/imageRegistry:ImageRegistry", id, state, "", opts...)
+}
+
 type imageRegistryArgs struct {
 	// Custom images configuration
 	CustomImages []ImageRegistryCustomImage `pulumi:"customImages"`

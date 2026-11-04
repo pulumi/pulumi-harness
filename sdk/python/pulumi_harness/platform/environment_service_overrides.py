@@ -477,6 +477,24 @@ class EnvironmentServiceOverrides(pulumi.CustomResource):
         __props__.__dict__["yaml"] = yaml
         return EnvironmentServiceOverrides(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            env_id: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            yaml: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["envId"] = env_id
+        __props__["identifier"] = identifier
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["serviceId"] = service_id
+        __props__["yaml"] = yaml
+        return pulumi.runtime.exists_resource(None, 'harness:platform/environmentServiceOverrides:EnvironmentServiceOverrides', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="envId")
     def env_id(self) -> pulumi.Output[_builtins.str]:

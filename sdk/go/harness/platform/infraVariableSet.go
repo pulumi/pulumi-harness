@@ -220,6 +220,12 @@ func (InfraVariableSetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*infraVariableSetState)(nil)).Elem()
 }
 
+// InfraVariableSetExists checks whether an existing InfraVariableSet resource with the given ID exists.
+func InfraVariableSetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InfraVariableSetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/infraVariableSet:InfraVariableSet", id, state, "", opts...)
+}
+
 type infraVariableSetArgs struct {
 	// Provider connectors configured on the Variable Set. Only one connector of a type is supported
 	Connectors []InfraVariableSetConnector `pulumi:"connectors"`

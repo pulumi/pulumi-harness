@@ -25,22 +25,20 @@ public final class ExperimentTemplateSpecProbeArgs extends com.pulumi.resources.
     /**
      * Deprecated: no longer part of the experiment template API; use conditionsV2 instead. This field is ignored.
      * 
-     * @deprecated
-     * conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
+     * @deprecated conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
      * 
      */
-    @Deprecated /* conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead. */
+    @Deprecated
     @Import(name="conditions")
     private @Nullable Output<List<ExperimentTemplateSpecProbeConditionArgs>> conditions;
 
     /**
      * @return Deprecated: no longer part of the experiment template API; use conditionsV2 instead. This field is ignored.
      * 
-     * @deprecated
-     * conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
+     * @deprecated conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
      * 
      */
-    @Deprecated /* conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead. */
+    @Deprecated
     public Optional<Output<List<ExperimentTemplateSpecProbeConditionArgs>>> conditions() {
         return Optional.ofNullable(this.conditions);
     }
@@ -234,11 +232,10 @@ public final class ExperimentTemplateSpecProbeArgs extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
+         * @deprecated conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
          * 
          */
-        @Deprecated /* conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead. */
+        @Deprecated
         public Builder conditions(@Nullable Output<List<ExperimentTemplateSpecProbeConditionArgs>> conditions) {
             $.conditions = conditions;
             return this;
@@ -249,11 +246,10 @@ public final class ExperimentTemplateSpecProbeArgs extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
+         * @deprecated conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
          * 
          */
-        @Deprecated /* conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead. */
+        @Deprecated
         public Builder conditions(List<ExperimentTemplateSpecProbeConditionArgs> conditions) {
             return conditions(Output.of(conditions));
         }
@@ -263,11 +259,10 @@ public final class ExperimentTemplateSpecProbeArgs extends com.pulumi.resources.
          * 
          * @return builder
          * 
-         * @deprecated
-         * conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
+         * @deprecated conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead.
          * 
          */
-        @Deprecated /* conditions (execute_upon) is not supported by the experiment template API and is ignored. Use conditionsV2 (operator + values) instead. */
+        @Deprecated
         public Builder conditions(ExperimentTemplateSpecProbeConditionArgs... conditions) {
             return conditions(List.of(conditions));
         }

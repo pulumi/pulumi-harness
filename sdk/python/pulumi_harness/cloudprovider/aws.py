@@ -521,6 +521,30 @@ class Aws(pulumi.CustomResource):
         __props__.__dict__["use_irsa"] = use_irsa
         return Aws(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            access_key_id_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+            assume_cross_account_role: pulumi.Input[Optional[Union['AwsAssumeCrossAccountRoleArgs', 'AwsAssumeCrossAccountRoleArgsDict', 'outputs.AwsAssumeCrossAccountRole']]] = None,
+            delegate_selector: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_access_key_secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+            usage_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AwsUsageScopeArgs', 'AwsUsageScopeArgsDict', 'outputs.AwsUsageScope']]]]] = None,
+            use_ec2_iam_credentials: pulumi.Input[Optional[_builtins.bool]] = None,
+            use_irsa: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessKeyId"] = access_key_id
+        __props__["accessKeyIdSecretName"] = access_key_id_secret_name
+        __props__["assumeCrossAccountRole"] = assume_cross_account_role
+        __props__["delegateSelector"] = delegate_selector
+        __props__["name"] = name
+        __props__["secretAccessKeySecretName"] = secret_access_key_secret_name
+        __props__["usageScopes"] = usage_scopes
+        __props__["useEc2IamCredentials"] = use_ec2_iam_credentials
+        __props__["useIrsa"] = use_irsa
+        return pulumi.runtime.exists_resource(None, 'harness:cloudprovider/aws:Aws', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessKeyId")
     def access_key_id(self) -> pulumi.Output[Optional[_builtins.str]]:

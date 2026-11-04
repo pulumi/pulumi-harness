@@ -444,6 +444,30 @@ class RuleK8s(pulumi.CustomResource):
         __props__.__dict__["rule_yaml"] = rule_yaml
         return RuleK8s(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            depends: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleK8sDependArgs', 'RuleK8sDependArgsDict', 'outputs.RuleK8sDepend']]]]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            idle_time_mins: pulumi.Input[Optional[_builtins.int]] = None,
+            k8s_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            k8s_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_yaml: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cloudConnectorId"] = cloud_connector_id
+        __props__["depends"] = depends
+        __props__["dryRun"] = dry_run
+        __props__["identifier"] = identifier
+        __props__["idleTimeMins"] = idle_time_mins
+        __props__["k8sConnectorId"] = k8s_connector_id
+        __props__["k8sNamespace"] = k8s_namespace
+        __props__["name"] = name
+        __props__["ruleYaml"] = rule_yaml
+        return pulumi.runtime.exists_resource(None, 'harness:autostopping/ruleK8s:RuleK8s', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cloudConnectorId")
     def cloud_connector_id(self) -> pulumi.Output[_builtins.str]:

@@ -587,6 +587,34 @@ class TriggerPipeline(pulumi.CustomResource):
         __props__.__dict__["wait_for_completion"] = wait_for_completion
         return TriggerPipeline(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            branch: pulumi.Input[Optional[_builtins.str]] = None,
+            input_set_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+            module_type: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            outputs: pulumi.Input[Optional[_builtins.str]] = None,
+            pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_execution_id: pulumi.Input[Optional[_builtins.str]] = None,
+            poll_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            wait_for_completion: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["branch"] = branch
+        __props__["inputSetYaml"] = input_set_yaml
+        __props__["moduleType"] = module_type
+        __props__["orgId"] = org_id
+        __props__["outputs"] = outputs
+        __props__["pipelineId"] = pipeline_id
+        __props__["planExecutionId"] = plan_execution_id
+        __props__["pollIntervalSeconds"] = poll_interval_seconds
+        __props__["projectId"] = project_id
+        __props__["status"] = status
+        __props__["waitForCompletion"] = wait_for_completion
+        return pulumi.runtime.exists_resource(None, 'harness:platform/triggerPipeline:TriggerPipeline', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def branch(self) -> pulumi.Output[Optional[_builtins.str]]:

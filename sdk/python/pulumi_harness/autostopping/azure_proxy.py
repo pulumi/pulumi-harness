@@ -747,6 +747,46 @@ class AzureProxy(pulumi.CustomResource):
         __props__.__dict__["vpc"] = vpc
         return AzureProxy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allocate_static_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            api_key: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            certificates: pulumi.Input[Optional[Union['AzureProxyCertificatesArgs', 'AzureProxyCertificatesArgsDict', 'outputs.AzureProxyCertificates']]] = None,
+            cloud_connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_cloud_resources_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            keypair: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group: pulumi.Input[Optional[_builtins.str]] = None,
+            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allocateStaticIp"] = allocate_static_ip
+        __props__["apiKey"] = api_key
+        __props__["certificateId"] = certificate_id
+        __props__["certificates"] = certificates
+        __props__["cloudConnectorId"] = cloud_connector_id
+        __props__["deleteCloudResourcesOnDestroy"] = delete_cloud_resources_on_destroy
+        __props__["identifier"] = identifier
+        __props__["keypair"] = keypair
+        __props__["machineType"] = machine_type
+        __props__["name"] = name
+        __props__["privateIp"] = private_ip
+        __props__["publicIp"] = public_ip
+        __props__["region"] = region
+        __props__["resourceGroup"] = resource_group
+        __props__["securityGroups"] = security_groups
+        __props__["subnetId"] = subnet_id
+        __props__["vpc"] = vpc
+        return pulumi.runtime.exists_resource(None, 'harness:autostopping/azureProxy:AzureProxy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allocateStaticIp")
     def allocate_static_ip(self) -> pulumi.Output[Optional[_builtins.bool]]:

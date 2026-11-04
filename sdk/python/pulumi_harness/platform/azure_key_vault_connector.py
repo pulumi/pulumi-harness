@@ -981,6 +981,48 @@ class AzureKeyVaultConnector(pulumi.CustomResource):
         __props__.__dict__["vault_name"] = vault_name
         return AzureKeyVaultConnector(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            azure_environment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            azure_managed_identity_type: pulumi.Input[Optional[_builtins.str]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_purge: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            managed_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+            subscription: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            use_managed_identity: pulumi.Input[Optional[_builtins.bool]] = None,
+            vault_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["azureEnvironmentType"] = azure_environment_type
+        __props__["azureManagedIdentityType"] = azure_managed_identity_type
+        __props__["clientId"] = client_id
+        __props__["delegateSelectors"] = delegate_selectors
+        __props__["description"] = description
+        __props__["enablePurge"] = enable_purge
+        __props__["identifier"] = identifier
+        __props__["isDefault"] = is_default
+        __props__["managedClientId"] = managed_client_id
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["secretKey"] = secret_key
+        __props__["subscription"] = subscription
+        __props__["tags"] = tags
+        __props__["tenantId"] = tenant_id
+        __props__["useManagedIdentity"] = use_managed_identity
+        __props__["vaultName"] = vault_name
+        return pulumi.runtime.exists_resource(None, 'harness:platform/azureKeyVaultConnector:AzureKeyVaultConnector', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="azureEnvironmentType")
     def azure_environment_type(self) -> pulumi.Output[_builtins.str]:

@@ -483,6 +483,32 @@ class Attribute(pulumi.CustomResource):
         __props__.__dict__["traffic_type_id"] = traffic_type_id
         return Attribute(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attribute_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            is_searchable: pulumi.Input[Optional[_builtins.bool]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            suggested_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            traffic_type_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["attributeId"] = attribute_id
+        __props__["dataType"] = data_type
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["identifier"] = identifier
+        __props__["isSearchable"] = is_searchable
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["suggestedValues"] = suggested_values
+        __props__["trafficTypeId"] = traffic_type_id
+        return pulumi.runtime.exists_resource(None, 'harness:fmeTrafficType/attribute:Attribute', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="attributeId")
     def attribute_id(self) -> pulumi.Output[_builtins.str]:

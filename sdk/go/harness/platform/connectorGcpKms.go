@@ -314,6 +314,12 @@ func (ConnectorGcpKmsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectorGcpKmsState)(nil)).Elem()
 }
 
+// ConnectorGcpKmsExists checks whether an existing ConnectorGcpKms resource with the given ID exists.
+func ConnectorGcpKmsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectorGcpKmsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/connectorGcpKms:ConnectorGcpKms", id, state, "", opts...)
+}
+
 type connectorGcpKmsArgs struct {
 	// Set this flag to set this secret manager as default secret manager.
 	Default *bool `pulumi:"default"`

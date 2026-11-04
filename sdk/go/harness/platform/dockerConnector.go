@@ -154,6 +154,12 @@ func (DockerConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dockerConnectorState)(nil)).Elem()
 }
 
+// DockerConnectorExists checks whether an existing DockerConnector resource with the given ID exists.
+func DockerConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DockerConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/dockerConnector:DockerConnector", id, state, "", opts...)
+}
+
 type dockerConnectorArgs struct {
 	// The credentials to use for the docker registry. If not specified then the connection is made to the registry anonymously.
 	Credentials *DockerConnectorCredentials `pulumi:"credentials"`

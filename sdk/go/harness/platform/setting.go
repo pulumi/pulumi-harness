@@ -218,6 +218,12 @@ func (SettingState) ElementType() reflect.Type {
 	return reflect.TypeOf((*settingState)(nil)).Elem()
 }
 
+// SettingExists checks whether an existing Setting resource with the given ID exists.
+func SettingExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SettingState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/setting:Setting", id, state, "", opts...)
+}
+
 type settingArgs struct {
 	// Whether child scopes can override this setting. Setting this to `false` removes existing overrides in child scopes.
 	AllowOverrides *bool `pulumi:"allowOverrides"`

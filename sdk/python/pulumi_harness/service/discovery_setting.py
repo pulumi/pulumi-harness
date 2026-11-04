@@ -338,6 +338,24 @@ class DiscoverySetting(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return DiscoverySetting(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            correlation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            image_registry: pulumi.Input[Optional[Union['DiscoverySettingImageRegistryArgs', 'DiscoverySettingImageRegistryArgsDict', 'outputs.DiscoverySettingImageRegistry']]] = None,
+            org_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            project_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["correlationId"] = correlation_id
+        __props__["createdAt"] = created_at
+        __props__["imageRegistry"] = image_registry
+        __props__["orgIdentifier"] = org_identifier
+        __props__["projectIdentifier"] = project_identifier
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'harness:service/discoverySetting:DiscoverySetting', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="correlationId")
     def correlation_id(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -197,6 +197,12 @@ func (AwsProxyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*awsProxyState)(nil)).Elem()
 }
 
+// AwsProxyExists checks whether an existing AwsProxy resource with the given ID exists.
+func AwsProxyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AwsProxyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:autostopping/awsProxy:AwsProxy", id, state, "", opts...)
+}
+
 type awsProxyArgs struct {
 	// Boolean value to indicate if proxy vm needs to have static IP
 	AllocateStaticIp *bool `pulumi:"allocateStaticIp"`

@@ -147,6 +147,12 @@ func (SshCredentialState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sshCredentialState)(nil)).Elem()
 }
 
+// SshCredentialExists checks whether an existing SshCredential resource with the given ID exists.
+func SshCredentialExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SshCredentialState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:index/sshCredential:SshCredential", id, state, "", opts...)
+}
+
 type sshCredentialArgs struct {
 	// Kerberos authentication for SSH. Cannot be used if ssh*authentication is specified
 	KerberosAuthentication *SshCredentialKerberosAuthentication `pulumi:"kerberosAuthentication"`

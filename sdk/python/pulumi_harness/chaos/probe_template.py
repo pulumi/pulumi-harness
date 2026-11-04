@@ -866,6 +866,50 @@ class ProbeTemplate(pulumi.CustomResource):
         __props__.__dict__["variables"] = variables
         return ProbeTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            apm_probe: pulumi.Input[Optional[Union['ProbeTemplateApmProbeArgs', 'ProbeTemplateApmProbeArgsDict', 'outputs.ProbeTemplateApmProbe']]] = None,
+            cmd_probe: pulumi.Input[Optional[Union['ProbeTemplateCmdProbeArgs', 'ProbeTemplateCmdProbeArgsDict', 'outputs.ProbeTemplateCmdProbe']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            http_probe: pulumi.Input[Optional[Union['ProbeTemplateHttpProbeArgs', 'ProbeTemplateHttpProbeArgsDict', 'outputs.ProbeTemplateHttpProbe']]] = None,
+            hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+            hub_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            identity: pulumi.Input[Optional[_builtins.str]] = None,
+            infrastructure_type: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            k8s_probe: pulumi.Input[Optional[Union['ProbeTemplateK8sProbeArgs', 'ProbeTemplateK8sProbeArgsDict', 'outputs.ProbeTemplateK8sProbe']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            revision: pulumi.Input[Optional[_builtins.int]] = None,
+            run_properties: pulumi.Input[Optional[Union['ProbeTemplateRunPropertiesArgs', 'ProbeTemplateRunPropertiesArgsDict', 'outputs.ProbeTemplateRunProperties']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProbeTemplateVariableArgs', 'ProbeTemplateVariableArgsDict', 'outputs.ProbeTemplateVariable']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["apmProbe"] = apm_probe
+        __props__["cmdProbe"] = cmd_probe
+        __props__["description"] = description
+        __props__["httpProbe"] = http_probe
+        __props__["hubIdentity"] = hub_identity
+        __props__["hubRef"] = hub_ref
+        __props__["identity"] = identity
+        __props__["infrastructureType"] = infrastructure_type
+        __props__["isDefault"] = is_default
+        __props__["k8sProbe"] = k8s_probe
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["revision"] = revision
+        __props__["runProperties"] = run_properties
+        __props__["tags"] = tags
+        __props__["type"] = type
+        __props__["variables"] = variables
+        return pulumi.runtime.exists_resource(None, 'harness:chaos/probeTemplate:ProbeTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

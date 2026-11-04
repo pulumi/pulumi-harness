@@ -19,11 +19,10 @@ public final class GetGitopsAgentDeployYamlResult {
     /**
      * @return Account identifier of the GitOps agent.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     private String accountId;
     /**
      * @return Argocd settings for the GitOps agent. Values set here will be overridden by the values set in the argocd settings in case of complete installation of agent + argocd. Each param contains as a description about what it will enable.
@@ -85,11 +84,10 @@ public final class GetGitopsAgentDeployYamlResult {
     /**
      * @return Account identifier of the GitOps agent.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     public String accountId() {
         return this.accountId;
     }

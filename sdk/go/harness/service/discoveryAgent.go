@@ -414,6 +414,12 @@ func (DiscoveryAgentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*discoveryAgentState)(nil)).Elem()
 }
 
+// DiscoveryAgentExists checks whether an existing DiscoveryAgent resource with the given ID exists.
+func DiscoveryAgentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DiscoveryAgentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:service/discoveryAgent:DiscoveryAgent", id, state, "", opts...)
+}
+
 type discoveryAgentArgs struct {
 	// Configuration for the agent. This is a required field.
 	Configs []DiscoveryAgentConfig `pulumi:"configs"`

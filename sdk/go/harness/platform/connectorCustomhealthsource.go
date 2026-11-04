@@ -212,6 +212,12 @@ func (ConnectorCustomhealthsourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectorCustomhealthsourceState)(nil)).Elem()
 }
 
+// ConnectorCustomhealthsourceExists checks whether an existing ConnectorCustomhealthsource resource with the given ID exists.
+func ConnectorCustomhealthsourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectorCustomhealthsourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/connectorCustomhealthsource:ConnectorCustomhealthsource", id, state, "", opts...)
+}
+
 type connectorCustomhealthsourceArgs struct {
 	// Tags to filter delegates for connection.
 	DelegateSelectors []string `pulumi:"delegateSelectors"`

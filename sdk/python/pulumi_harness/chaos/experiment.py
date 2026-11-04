@@ -1256,6 +1256,74 @@ class Experiment(pulumi.CustomResource):
         __props__.__dict__["updated_by"] = updated_by
         return Experiment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            cron_syntax: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            experiment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            fault_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+            hub_org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            hub_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            identity: pulumi.Input[Optional[_builtins.str]] = None,
+            import_type: pulumi.Input[Optional[_builtins.str]] = None,
+            infra_id: pulumi.Input[Optional[_builtins.str]] = None,
+            infra_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            infra_type: pulumi.Input[Optional[_builtins.str]] = None,
+            is_cron_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_custom_experiment: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_single_run_cron_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_executed_at: pulumi.Input[Optional[_builtins.int]] = None,
+            manifest: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            revision: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            target_network_map_id: pulumi.Input[Optional[_builtins.str]] = None,
+            template_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExperimentTemplateDetailArgs', 'ExperimentTemplateDetailArgsDict', 'outputs.ExperimentTemplateDetail']]]]] = None,
+            template_identity: pulumi.Input[Optional[_builtins.str]] = None,
+            total_experiment_runs: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["cronSyntax"] = cron_syntax
+        __props__["description"] = description
+        __props__["experimentId"] = experiment_id
+        __props__["experimentType"] = experiment_type
+        __props__["faultIds"] = fault_ids
+        __props__["hubIdentity"] = hub_identity
+        __props__["hubOrgId"] = hub_org_id
+        __props__["hubProjectId"] = hub_project_id
+        __props__["identity"] = identity
+        __props__["importType"] = import_type
+        __props__["infraId"] = infra_id
+        __props__["infraRef"] = infra_ref
+        __props__["infraType"] = infra_type
+        __props__["isCronEnabled"] = is_cron_enabled
+        __props__["isCustomExperiment"] = is_custom_experiment
+        __props__["isSingleRunCronEnabled"] = is_single_run_cron_enabled
+        __props__["lastExecutedAt"] = last_executed_at
+        __props__["manifest"] = manifest
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["revision"] = revision
+        __props__["tags"] = tags
+        __props__["targetNetworkMapId"] = target_network_map_id
+        __props__["templateDetails"] = template_details
+        __props__["templateIdentity"] = template_identity
+        __props__["totalExperimentRuns"] = total_experiment_runs
+        __props__["updatedAt"] = updated_at
+        __props__["updatedBy"] = updated_by
+        return pulumi.runtime.exists_resource(None, 'harness:chaos/experiment:Experiment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.int]:

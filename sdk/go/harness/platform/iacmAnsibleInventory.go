@@ -192,6 +192,12 @@ func (IacmAnsibleInventoryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*iacmAnsibleInventoryState)(nil)).Elem()
 }
 
+// IacmAnsibleInventoryExists checks whether an existing IacmAnsibleInventory resource with the given ID exists.
+func IacmAnsibleInventoryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IacmAnsibleInventoryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/iacmAnsibleInventory:IacmAnsibleInventory", id, state, "", opts...)
+}
+
 type iacmAnsibleInventoryArgs struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`

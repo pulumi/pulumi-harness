@@ -286,6 +286,12 @@ func (GitOpsApplicationsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gitOpsApplicationsState)(nil)).Elem()
 }
 
+// GitOpsApplicationsExists checks whether an existing GitOpsApplications resource with the given ID exists.
+func GitOpsApplicationsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GitOpsApplicationsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/gitOpsApplications:GitOpsApplications", id, state, "", opts...)
+}
+
 type gitOpsApplicationsArgs struct {
 	// Account identifier of the GitOps application.
 	//

@@ -680,6 +680,44 @@ class Hub(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return Hub(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connector_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connector_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            is_available: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_synced_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            total_experiments: pulumi.Input[Optional[_builtins.int]] = None,
+            total_faults: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectorId"] = connector_id
+        __props__["connectorScope"] = connector_scope
+        __props__["createdAt"] = created_at
+        __props__["description"] = description
+        __props__["isAvailable"] = is_available
+        __props__["isDefault"] = is_default
+        __props__["lastSyncedAt"] = last_synced_at
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["repoBranch"] = repo_branch
+        __props__["repoName"] = repo_name
+        __props__["tags"] = tags
+        __props__["totalExperiments"] = total_experiments
+        __props__["totalFaults"] = total_faults
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'harness:chaos/hub:Hub', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> pulumi.Output[_builtins.str]:

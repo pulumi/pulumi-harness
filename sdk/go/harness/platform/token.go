@@ -199,6 +199,12 @@ func (TokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tokenState)(nil)).Elem()
 }
 
+// TokenExists checks whether an existing Token resource with the given ID exists.
+func TokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/token:Token", id, state, "", opts...)
+}
+
 type tokenArgs struct {
 	// Account Identifier for the Entity
 	AccountId string `pulumi:"accountId"`

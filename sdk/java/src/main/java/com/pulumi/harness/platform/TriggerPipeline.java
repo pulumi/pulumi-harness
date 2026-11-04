@@ -39,12 +39,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var scsEcsTimingTest = new TriggerPipeline("scsEcsTimingTest", TriggerPipelineArgs.builder()
  *             .orgId("default")
  *             .projectId("rssnyder")
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             value: latest
  *           - name: ecr_account
  *             type: String
- *             value: \"000000000000\"
+ *             value: }&#92;{@code "000000000000}&#92;{@code "
  *           - name: region
  *             type: String
  *             value: us-west-2
@@ -94,8 +94,8 @@ import javax.annotation.Nullable;
  *         ctx.export("pipelineContext", StdFunctions.jsondecode(JsondecodeArgs.builder()
  *             .input(scsEcsTimingTest.outputs())
  *             .build()).applyValue(_invoke -> _invoke.result()));
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

@@ -45,12 +45,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new Pipeline("example", PipelineArgs.builder()
  *             .gitDetails(PipelineGitDetailsArgs.builder()
  *                 .branchName("branchName")
@@ -73,12 +73,12 @@ import javax.annotation.Nullable;
  *     allowStageExecutions: false
  *     projectIdentifier: projectIdentifier
  *     orgIdentifier: orgIdentifier
- *     tags: {}
+ *     tags: }{}{@code
  *     stages:
  *         - stage:
  *             name: dep
  *             identifier: dep
- *             description: \"\"
+ *             description: }&#92;{@code "}&#92;{@code "
  *             type: Deployment
  *             spec:
  *                 serviceConfig:
@@ -118,14 +118,14 @@ import javax.annotation.Nullable;
  *                                         identifier: canaryDelete
  *                                         type: K8sCanaryDelete
  *                                         timeout: 10m
- *                                         spec: {}
+ *                                         spec: }{}{@code
  *                                 rollbackSteps:
  *                                     - step:
  *                                         name: Canary Delete
  *                                         identifier: rollbackCanaryDelete
  *                                         type: K8sCanaryDelete
  *                                         timeout: 10m
- *                                         spec: {}
+ *                                         spec: }{}{@code
  *                         - stepGroup:
  *                                 name: Primary Deployment
  *                                 identifier: primaryDepoyment
@@ -143,9 +143,9 @@ import javax.annotation.Nullable;
  *                                         identifier: rollingRollback
  *                                         type: K8sRollingRollback
  *                                         timeout: 10m
- *                                         spec: {}
+ *                                         spec: }{}{@code
  *                     rollbackSteps: []
- *             tags: {}
+ *             tags: }{}{@code
  *             failureStrategies:
  *                 - onFailure:
  *                         errors:
@@ -180,8 +180,8 @@ import javax.annotation.Nullable;
  *             .importFromGit(true)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

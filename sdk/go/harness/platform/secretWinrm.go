@@ -466,6 +466,12 @@ func (SecretWinrmState) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretWinrmState)(nil)).Elem()
 }
 
+// SecretWinrmExists checks whether an existing SecretWinrm resource with the given ID exists.
+func SecretWinrmExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecretWinrmState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/secretWinrm:SecretWinrm", id, state, "", opts...)
+}
+
 type secretWinrmArgs struct {
 	// Description of the resource.
 	Description *string `pulumi:"description"`

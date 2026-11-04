@@ -166,6 +166,12 @@ func (AwsKmsConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*awsKmsConnectorState)(nil)).Elem()
 }
 
+// AwsKmsConnectorExists checks whether an existing AwsKmsConnector resource with the given ID exists.
+func AwsKmsConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AwsKmsConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/awsKmsConnector:AwsKmsConnector", id, state, "", opts...)
+}
+
 type awsKmsConnectorArgs struct {
 	// A reference to the Harness secret containing the ARN of the AWS KMS.
 	ArnPlaintext *string `pulumi:"arnPlaintext"`

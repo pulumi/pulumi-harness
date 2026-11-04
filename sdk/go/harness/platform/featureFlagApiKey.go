@@ -164,6 +164,12 @@ func (FeatureFlagApiKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*featureFlagApiKeyState)(nil)).Elem()
 }
 
+// FeatureFlagApiKeyExists checks whether an existing FeatureFlagApiKey resource with the given ID exists.
+func FeatureFlagApiKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FeatureFlagApiKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/featureFlagApiKey:FeatureFlagApiKey", id, state, "", opts...)
+}
+
 type featureFlagApiKeyArgs struct {
 	// Description of the SDK API Key
 	Description *string `pulumi:"description"`

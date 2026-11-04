@@ -417,6 +417,24 @@ class EnvironmentClustersMapping(pulumi.CustomResource):
         __props__.__dict__["scope"] = scope
         return EnvironmentClustersMapping(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EnvironmentClustersMappingClusterArgs', 'EnvironmentClustersMappingClusterArgsDict', 'outputs.EnvironmentClustersMappingCluster']]]]] = None,
+            env_id: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusters"] = clusters
+        __props__["envId"] = env_id
+        __props__["identifier"] = identifier
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["scope"] = scope
+        return pulumi.runtime.exists_resource(None, 'harness:platform/environmentClustersMapping:EnvironmentClustersMapping', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def clusters(self) -> pulumi.Output[Optional[Sequence['outputs.EnvironmentClustersMappingCluster']]]:

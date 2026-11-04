@@ -1148,6 +1148,36 @@ class HarRegistry(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return HarRegistry(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            blocked_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HarRegistryConfigArgs', 'HarRegistryConfigArgsDict', 'outputs.HarRegistryConfig']]]]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            package_type: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            space_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowedPatterns"] = allowed_patterns
+        __props__["blockedPatterns"] = blocked_patterns
+        __props__["configs"] = configs
+        __props__["createdAt"] = created_at
+        __props__["description"] = description
+        __props__["identifier"] = identifier
+        __props__["isPublic"] = is_public
+        __props__["metadata"] = metadata
+        __props__["packageType"] = package_type
+        __props__["parentRef"] = parent_ref
+        __props__["spaceRef"] = space_ref
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'harness:platform/harRegistry:HarRegistry', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowedPatterns")
     def allowed_patterns(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

@@ -105,6 +105,17 @@ export class InfrastructureDefinition extends pulumi.CustomResource {
         return new InfrastructureDefinition(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing InfrastructureDefinition resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: InfrastructureDefinitionState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("harness:index/infrastructureDefinition:InfrastructureDefinition", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'harness:index/infrastructureDefinition:InfrastructureDefinition';
 

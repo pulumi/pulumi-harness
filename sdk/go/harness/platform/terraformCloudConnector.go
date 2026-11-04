@@ -148,6 +148,12 @@ func (TerraformCloudConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*terraformCloudConnectorState)(nil)).Elem()
 }
 
+// TerraformCloudConnectorExists checks whether an existing TerraformCloudConnector resource with the given ID exists.
+func TerraformCloudConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TerraformCloudConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/terraformCloudConnector:TerraformCloudConnector", id, state, "", opts...)
+}
+
 type terraformCloudConnectorArgs struct {
 	// Credentials to connect to the Terraform Cloud platform.
 	Credentials TerraformCloudConnectorCredentials `pulumi:"credentials"`

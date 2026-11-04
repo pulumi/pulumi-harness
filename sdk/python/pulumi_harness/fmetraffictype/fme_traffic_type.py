@@ -284,6 +284,22 @@ class FmeTrafficType(pulumi.CustomResource):
         __props__.__dict__["traffic_type_id"] = traffic_type_id
         return FmeTrafficType(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            display_attribute_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_type_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["displayAttributeId"] = display_attribute_id
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["trafficTypeId"] = traffic_type_id
+        return pulumi.runtime.exists_resource(None, 'harness:fmeTrafficType/fmeTrafficType:FmeTrafficType', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="displayAttributeId")
     def display_attribute_id(self) -> pulumi.Output[Optional[_builtins.str]]:

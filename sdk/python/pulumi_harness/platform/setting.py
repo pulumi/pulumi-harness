@@ -539,6 +539,34 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["value_type"] = value_type
         return Setting(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_overrides: pulumi.Input[Optional[_builtins.bool]] = None,
+            allowed_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            group_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_at: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None,
+            value_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowOverrides"] = allow_overrides
+        __props__["allowedValues"] = allowed_values
+        __props__["category"] = category
+        __props__["groupIdentifier"] = group_identifier
+        __props__["identifier"] = identifier
+        __props__["lastModifiedAt"] = last_modified_at
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["value"] = value
+        __props__["valueType"] = value_type
+        return pulumi.runtime.exists_resource(None, 'harness:platform/setting:Setting', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowOverrides")
     def allow_overrides(self) -> pulumi.Output[Optional[_builtins.bool]]:

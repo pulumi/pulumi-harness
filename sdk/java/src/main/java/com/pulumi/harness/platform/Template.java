@@ -82,11 +82,10 @@ public class Template extends com.pulumi.resources.CustomResource {
     /**
      * Description of the entity. Description field is deprecated
      * 
-     * @deprecated
-     * description field is deprecated
+     * @deprecated description field is deprecated
      * 
      */
-    @Deprecated /* description field is deprecated */
+    @Deprecated
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 

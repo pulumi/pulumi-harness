@@ -603,6 +603,38 @@ class Dashboards(pulumi.CustomResource):
         __props__.__dict__["view_count"] = view_count
         return Dashboards(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            favorite_count: pulumi.Input[Optional[_builtins.int]] = None,
+            folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+            last_accessed_at: pulumi.Input[Optional[_builtins.str]] = None,
+            models: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            view_count: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createdAt"] = created_at
+        __props__["dashboardId"] = dashboard_id
+        __props__["dataSources"] = data_sources
+        __props__["description"] = description
+        __props__["favoriteCount"] = favorite_count
+        __props__["folderId"] = folder_id
+        __props__["lastAccessedAt"] = last_accessed_at
+        __props__["models"] = models
+        __props__["name"] = name
+        __props__["resourceIdentifier"] = resource_identifier
+        __props__["title"] = title
+        __props__["type"] = type
+        __props__["viewCount"] = view_count
+        return pulumi.runtime.exists_resource(None, 'harness:platform/dashboards:Dashboards', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:

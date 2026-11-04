@@ -139,6 +139,12 @@ func (WinrmState) ElementType() reflect.Type {
 	return reflect.TypeOf((*winrmState)(nil)).Elem()
 }
 
+// WinrmExists checks whether an existing Winrm resource with the given ID exists.
+func WinrmExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *WinrmState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:service/winrm:Winrm", id, state, "", opts...)
+}
+
 type winrmArgs struct {
 	// The id of the application the service belongs to
 	AppId string `pulumi:"appId"`

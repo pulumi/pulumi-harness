@@ -93,6 +93,12 @@ func (FmeTrafficTypeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fmeTrafficTypeState)(nil)).Elem()
 }
 
+// FmeTrafficTypeExists checks whether an existing FmeTrafficType resource with the given ID exists.
+func FmeTrafficTypeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FmeTrafficTypeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:fmeTrafficType/fmeTrafficType:FmeTrafficType", id, state, "", opts...)
+}
+
 type fmeTrafficTypeArgs struct {
 	// Optional display attribute ID.
 	DisplayAttributeId *string `pulumi:"displayAttributeId"`

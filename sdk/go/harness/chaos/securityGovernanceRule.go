@@ -246,6 +246,12 @@ func (SecurityGovernanceRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityGovernanceRuleState)(nil)).Elem()
 }
 
+// SecurityGovernanceRuleExists checks whether an existing SecurityGovernanceRule resource with the given ID exists.
+func SecurityGovernanceRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityGovernanceRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:chaos/securityGovernanceRule:SecurityGovernanceRule", id, state, "", opts...)
+}
+
 type securityGovernanceRuleArgs struct {
 	// List of condition IDs associated with this rule
 	ConditionIds []string `pulumi:"conditionIds"`

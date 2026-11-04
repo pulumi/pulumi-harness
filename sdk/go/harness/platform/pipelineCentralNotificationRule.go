@@ -245,6 +245,12 @@ func (PipelineCentralNotificationRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pipelineCentralNotificationRuleState)(nil)).Elem()
 }
 
+// PipelineCentralNotificationRuleExists checks whether an existing PipelineCentralNotificationRule resource with the given ID exists.
+func PipelineCentralNotificationRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PipelineCentralNotificationRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/pipelineCentralNotificationRule:PipelineCentralNotificationRule", id, state, "", opts...)
+}
+
 type pipelineCentralNotificationRuleArgs struct {
 	CustomNotificationTemplateRef *PipelineCentralNotificationRuleCustomNotificationTemplateRef `pulumi:"customNotificationTemplateRef"`
 	Identifier                    string                                                        `pulumi:"identifier"`

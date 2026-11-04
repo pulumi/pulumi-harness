@@ -283,6 +283,12 @@ func (PipelineFiltersState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pipelineFiltersState)(nil)).Elem()
 }
 
+// PipelineFiltersExists checks whether an existing PipelineFilters resource with the given ID exists.
+func PipelineFiltersExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PipelineFiltersState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/pipelineFilters:PipelineFilters", id, state, "", opts...)
+}
+
 type pipelineFiltersArgs struct {
 	// Properties of the filters entity defined in Harness.
 	FilterProperties PipelineFiltersFilterProperties `pulumi:"filterProperties"`

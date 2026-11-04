@@ -129,6 +129,12 @@ func (EcsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ecsState)(nil)).Elem()
 }
 
+// EcsExists checks whether an existing Ecs resource with the given ID exists.
+func EcsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EcsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:service/ecs:Ecs", id, state, "", opts...)
+}
+
 type ecsArgs struct {
 	// The id of the application the service belongs to
 	AppId string `pulumi:"appId"`

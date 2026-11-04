@@ -888,6 +888,42 @@ class SplunkConnector(pulumi.CustomResource):
         __props__.__dict__["username_password"] = username_password
         return SplunkConnector(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bearer_token: pulumi.Input[Optional[Union['SplunkConnectorBearerTokenArgs', 'SplunkConnectorBearerTokenArgsDict', 'outputs.SplunkConnectorBearerToken']]] = None,
+            delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            hec_token: pulumi.Input[Optional[Union['SplunkConnectorHecTokenArgs', 'SplunkConnectorHecTokenArgsDict', 'outputs.SplunkConnectorHecToken']]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            no_authentication: pulumi.Input[Optional[Union['SplunkConnectorNoAuthenticationArgs', 'SplunkConnectorNoAuthenticationArgsDict', 'outputs.SplunkConnectorNoAuthentication']]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            password_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None,
+            username_password: pulumi.Input[Optional[Union['SplunkConnectorUsernamePasswordArgs', 'SplunkConnectorUsernamePasswordArgsDict', 'outputs.SplunkConnectorUsernamePassword']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["bearerToken"] = bearer_token
+        __props__["delegateSelectors"] = delegate_selectors
+        __props__["description"] = description
+        __props__["hecToken"] = hec_token
+        __props__["identifier"] = identifier
+        __props__["name"] = name
+        __props__["noAuthentication"] = no_authentication
+        __props__["orgId"] = org_id
+        __props__["passwordRef"] = password_ref
+        __props__["projectId"] = project_id
+        __props__["tags"] = tags
+        __props__["url"] = url
+        __props__["username"] = username
+        __props__["usernamePassword"] = username_password
+        return pulumi.runtime.exists_resource(None, 'harness:platform/splunkConnector:SplunkConnector', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

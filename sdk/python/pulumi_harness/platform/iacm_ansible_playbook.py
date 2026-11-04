@@ -755,6 +755,42 @@ class IacmAnsiblePlaybook(pulumi.CustomResource):
         __props__.__dict__["vars"] = vars
         return IacmAnsiblePlaybook(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ansible_galaxy: pulumi.Input[Optional[_builtins.bool]] = None,
+            ansible_galaxy_requirements_file: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            env_vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookEnvVarArgs', 'IacmAnsiblePlaybookEnvVarArgsDict', 'outputs.IacmAnsiblePlaybookEnvVar']]]]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repository: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_commit: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_connector: pulumi.Input[Optional[_builtins.str]] = None,
+            repository_path: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vars: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IacmAnsiblePlaybookVarArgs', 'IacmAnsiblePlaybookVarArgsDict', 'outputs.IacmAnsiblePlaybookVar']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["ansibleGalaxy"] = ansible_galaxy
+        __props__["ansibleGalaxyRequirementsFile"] = ansible_galaxy_requirements_file
+        __props__["description"] = description
+        __props__["envVars"] = env_vars
+        __props__["identifier"] = identifier
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["repository"] = repository
+        __props__["repositoryBranch"] = repository_branch
+        __props__["repositoryCommit"] = repository_commit
+        __props__["repositoryConnector"] = repository_connector
+        __props__["repositoryPath"] = repository_path
+        __props__["tags"] = tags
+        __props__["vars"] = vars
+        return pulumi.runtime.exists_resource(None, 'harness:platform/iacmAnsiblePlaybook:IacmAnsiblePlaybook', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="ansibleGalaxy")
     def ansible_galaxy(self) -> pulumi.Output[Optional[_builtins.bool]]:

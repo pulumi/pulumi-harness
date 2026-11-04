@@ -158,22 +158,20 @@ public final class SplunkConnectorState extends com.pulumi.resources.ResourceArg
     /**
      * The reference to the Harness secret containing the Splunk password. Deprecated: Use &#39;username_password&#39; block instead. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
-     * @deprecated
-     * Use &#39;username_password&#39; authentication block instead
+     * @deprecated Use &#39;username_password&#39; authentication block instead
      * 
      */
-    @Deprecated /* Use 'username_password' authentication block instead */
+    @Deprecated
     @Import(name="passwordRef")
     private @Nullable Output<String> passwordRef;
 
     /**
      * @return The reference to the Harness secret containing the Splunk password. Deprecated: Use &#39;username_password&#39; block instead. To reference a secret at the organization scope, prefix &#39;org&#39; to the expression: org.{identifier}. To reference a secret at the account scope, prefix &#39;account` to the expression: account.{identifier}.
      * 
-     * @deprecated
-     * Use &#39;username_password&#39; authentication block instead
+     * @deprecated Use &#39;username_password&#39; authentication block instead
      * 
      */
-    @Deprecated /* Use 'username_password' authentication block instead */
+    @Deprecated
     public Optional<Output<String>> passwordRef() {
         return Optional.ofNullable(this.passwordRef);
     }
@@ -226,22 +224,20 @@ public final class SplunkConnectorState extends com.pulumi.resources.ResourceArg
     /**
      * The username used for connecting to Splunk. Deprecated: Use &#39;username_password&#39; block instead.
      * 
-     * @deprecated
-     * Use &#39;username_password&#39; authentication block instead
+     * @deprecated Use &#39;username_password&#39; authentication block instead
      * 
      */
-    @Deprecated /* Use 'username_password' authentication block instead */
+    @Deprecated
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
      * @return The username used for connecting to Splunk. Deprecated: Use &#39;username_password&#39; block instead.
      * 
-     * @deprecated
-     * Use &#39;username_password&#39; authentication block instead
+     * @deprecated Use &#39;username_password&#39; authentication block instead
      * 
      */
-    @Deprecated /* Use 'username_password' authentication block instead */
+    @Deprecated
     public Optional<Output<String>> username() {
         return Optional.ofNullable(this.username);
     }
@@ -503,11 +499,10 @@ public final class SplunkConnectorState extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use &#39;username_password&#39; authentication block instead
+         * @deprecated Use &#39;username_password&#39; authentication block instead
          * 
          */
-        @Deprecated /* Use 'username_password' authentication block instead */
+        @Deprecated
         public Builder passwordRef(@Nullable Output<String> passwordRef) {
             $.passwordRef = passwordRef;
             return this;
@@ -518,11 +513,10 @@ public final class SplunkConnectorState extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use &#39;username_password&#39; authentication block instead
+         * @deprecated Use &#39;username_password&#39; authentication block instead
          * 
          */
-        @Deprecated /* Use 'username_password' authentication block instead */
+        @Deprecated
         public Builder passwordRef(String passwordRef) {
             return passwordRef(Output.of(passwordRef));
         }
@@ -605,11 +599,10 @@ public final class SplunkConnectorState extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use &#39;username_password&#39; authentication block instead
+         * @deprecated Use &#39;username_password&#39; authentication block instead
          * 
          */
-        @Deprecated /* Use 'username_password' authentication block instead */
+        @Deprecated
         public Builder username(@Nullable Output<String> username) {
             $.username = username;
             return this;
@@ -620,11 +613,10 @@ public final class SplunkConnectorState extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use &#39;username_password&#39; authentication block instead
+         * @deprecated Use &#39;username_password&#39; authentication block instead
          * 
          */
-        @Deprecated /* Use 'username_password' authentication block instead */
+        @Deprecated
         public Builder username(String username) {
             return username(Output.of(username));
         }

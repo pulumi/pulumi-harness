@@ -41,12 +41,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var defaultTypeTest = new DbSchema("defaultTypeTest", DbSchemaArgs.builder()
  *             .schemaSource(DbSchemaSchemaSourceArgs.builder()
  *                 .connector("gitConnector")
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *         var liquibaseScriptTest = new DbSchema("liquibaseScriptTest", DbSchemaArgs.builder()
  *             .changelogScript(DbSchemaChangelogScriptArgs.builder()
  *                 .image("plugins/image")
- *                 .command("echo \\\"hello dbops\\\"")
+ *                 .command("echo }&#92;&#92;&#92;{@code "hello dbops}&#92;&#92;&#92;{@code "")
  *                 .shell("sh/bash")
  *                 .location("db/example-changelog.yaml")
  *                 .build())
@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  *         var flywayScriptTest = new DbSchema("flywayScriptTest", DbSchemaArgs.builder()
  *             .changelogScript(DbSchemaChangelogScriptArgs.builder()
  *                 .image("plugins/image")
- *                 .command("echo \\\"hello dbops\\\"")
+ *                 .command("echo }&#92;&#92;&#92;{@code "hello dbops}&#92;&#92;&#92;{@code "")
  *                 .shell("sh/bash")
  *                 .location("db/flyway/migrations")
  *                 .toml("db/flyway.toml")
@@ -178,8 +178,8 @@ import javax.annotation.Nullable;
  *                 "bar:foo")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

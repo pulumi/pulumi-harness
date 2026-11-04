@@ -148,6 +148,12 @@ func (FeatureFlagTargetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*featureFlagTargetState)(nil)).Elem()
 }
 
+// FeatureFlagTargetExists checks whether an existing FeatureFlagTarget resource with the given ID exists.
+func FeatureFlagTargetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FeatureFlagTargetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/featureFlagTarget:FeatureFlagTarget", id, state, "", opts...)
+}
+
 type featureFlagTargetArgs struct {
 	// Account Identifier
 	AccountId string `pulumi:"accountId"`

@@ -1043,6 +1043,44 @@ class Usergroup(pulumi.CustomResource):
         __props__.__dict__["users"] = users
         return Usergroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            externally_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            linked_sso_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            linked_sso_id: pulumi.Input[Optional[_builtins.str]] = None,
+            linked_sso_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UsergroupNotificationConfigArgs', 'UsergroupNotificationConfigArgsDict', 'outputs.UsergroupNotificationConfig']]]]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sso_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sso_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sso_linked: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            user_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["externallyManaged"] = externally_managed
+        __props__["identifier"] = identifier
+        __props__["linkedSsoDisplayName"] = linked_sso_display_name
+        __props__["linkedSsoId"] = linked_sso_id
+        __props__["linkedSsoType"] = linked_sso_type
+        __props__["name"] = name
+        __props__["notificationConfigs"] = notification_configs
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["ssoGroupId"] = sso_group_id
+        __props__["ssoGroupName"] = sso_group_name
+        __props__["ssoLinked"] = sso_linked
+        __props__["tags"] = tags
+        __props__["userEmails"] = user_emails
+        __props__["users"] = users
+        return pulumi.runtime.exists_resource(None, 'harness:platform/usergroup:Usergroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

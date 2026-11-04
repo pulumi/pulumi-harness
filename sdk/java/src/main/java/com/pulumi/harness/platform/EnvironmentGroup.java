@@ -36,12 +36,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new EnvironmentGroup("example", EnvironmentGroupArgs.builder()
  *             .identifier("identifier")
  *             .orgId("orgIdentifer")
@@ -49,17 +49,17 @@ import javax.annotation.Nullable;
  *             .color("#0063F7")
  *             .yaml("""
  * environmentGroup:
- *   name: \"name\"
- *   identifier: \"identifier\"
- *   description: \"temp\"
- *   orgIdentifier: \"orgIdentifer\"
- *   projectIdentifier: \"projectIdentifier\"
+ *   name: }&#92;{@code "name}&#92;{@code "
+ *   identifier: }&#92;{@code "identifier}&#92;{@code "
+ *   description: }&#92;{@code "temp}&#92;{@code "
+ *   orgIdentifier: }&#92;{@code "orgIdentifer}&#92;{@code "
+ *   projectIdentifier: }&#92;{@code "projectIdentifier}&#92;{@code "
  *   envIdentifiers: []
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

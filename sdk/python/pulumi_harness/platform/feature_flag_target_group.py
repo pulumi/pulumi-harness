@@ -508,6 +508,30 @@ class FeatureFlagTargetGroup(pulumi.CustomResource):
         __props__.__dict__["rules"] = rules
         return FeatureFlagTargetGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            environment: pulumi.Input[Optional[_builtins.str]] = None,
+            excludeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            includeds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureFlagTargetGroupRuleArgs', 'FeatureFlagTargetGroupRuleArgsDict', 'outputs.FeatureFlagTargetGroupRule']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["environment"] = environment
+        __props__["excludeds"] = excludeds
+        __props__["identifier"] = identifier
+        __props__["includeds"] = includeds
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["rules"] = rules
+        return pulumi.runtime.exists_resource(None, 'harness:platform/featureFlagTargetGroup:FeatureFlagTargetGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

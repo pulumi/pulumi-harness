@@ -18,11 +18,10 @@ public final class GetGitopsApplicationsResult {
     /**
      * @return Account identifier of the GitOps application.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     private String accountId;
     /**
      * @return Agent identifier of the GitOps application.
@@ -47,11 +46,10 @@ public final class GetGitopsApplicationsResult {
     /**
      * @return Identifier of the GitOps application.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     private @Nullable String identifier;
     /**
      * @return Kind of the GitOps application.
@@ -123,11 +121,10 @@ public final class GetGitopsApplicationsResult {
     /**
      * @return Account identifier of the GitOps application.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     public String accountId() {
         return this.accountId;
     }
@@ -162,11 +159,10 @@ public final class GetGitopsApplicationsResult {
     /**
      * @return Identifier of the GitOps application.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release.
+     * @deprecated This field is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. */
+    @Deprecated
     public Optional<String> identifier() {
         return Optional.ofNullable(this.identifier);
     }

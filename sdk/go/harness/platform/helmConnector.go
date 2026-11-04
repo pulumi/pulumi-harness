@@ -145,6 +145,12 @@ func (HelmConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*helmConnectorState)(nil)).Elem()
 }
 
+// HelmConnectorExists checks whether an existing HelmConnector resource with the given ID exists.
+func HelmConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HelmConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/helmConnector:HelmConnector", id, state, "", opts...)
+}
+
 type helmConnectorArgs struct {
 	// Credentials to use for authentication.
 	Credentials *HelmConnectorCredentials `pulumi:"credentials"`

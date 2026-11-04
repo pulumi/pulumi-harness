@@ -311,6 +311,20 @@ class Ecs(pulumi.CustomResource):
         __props__.__dict__["variables"] = variables
         return Ecs(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcsVariableArgs', 'EcsVariableArgsDict', 'outputs.EcsVariable']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appId"] = app_id
+        __props__["description"] = description
+        __props__["name"] = name
+        __props__["variables"] = variables
+        return pulumi.runtime.exists_resource(None, 'harness:service/ecs:Ecs', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appId")
     def app_id(self) -> pulumi.Output[_builtins.str]:

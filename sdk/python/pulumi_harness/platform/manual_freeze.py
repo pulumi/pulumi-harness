@@ -586,6 +586,38 @@ class ManualFreeze(pulumi.CustomResource):
         __props__.__dict__["yaml"] = yaml
         return ManualFreeze(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            current_or_upcoming_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManualFreezeCurrentOrUpcomingWindowArgs', 'ManualFreezeCurrentOrUpcomingWindowArgsDict', 'outputs.ManualFreezeCurrentOrUpcomingWindow']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            freeze_windows: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManualFreezeFreezeWindowArgs', 'ManualFreezeFreezeWindowArgsDict', 'outputs.ManualFreezeFreezeWindow']]]]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            yaml: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["currentOrUpcomingWindows"] = current_or_upcoming_windows
+        __props__["description"] = description
+        __props__["freezeWindows"] = freeze_windows
+        __props__["identifier"] = identifier
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["scope"] = scope
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["type"] = type
+        __props__["yaml"] = yaml
+        return pulumi.runtime.exists_resource(None, 'harness:platform/manualFreeze:ManualFreeze', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

@@ -1589,6 +1589,66 @@ class FaultTemplate(pulumi.CustomResource):
         __props__.__dict__["variables"] = variables
         return FaultTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            api_version: pulumi.Input[Optional[_builtins.str]] = None,
+            categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            hub_identity: pulumi.Input[Optional[_builtins.str]] = None,
+            hub_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            identity: pulumi.Input[Optional[_builtins.str]] = None,
+            infrastructures: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            is_enterprise: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_removed: pulumi.Input[Optional[_builtins.bool]] = None,
+            keywords: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            links: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FaultTemplateLinkArgs', 'FaultTemplateLinkArgsDict', 'outputs.FaultTemplateLink']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            permissions_required: pulumi.Input[Optional[_builtins.str]] = None,
+            platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            revision: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[Union['FaultTemplateSpecArgs', 'FaultTemplateSpecArgsDict', 'outputs.FaultTemplateSpec']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FaultTemplateVariableArgs', 'FaultTemplateVariableArgsDict', 'outputs.FaultTemplateVariable']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["apiVersion"] = api_version
+        __props__["categories"] = categories
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["description"] = description
+        __props__["hubIdentity"] = hub_identity
+        __props__["hubRef"] = hub_ref
+        __props__["identity"] = identity
+        __props__["infrastructures"] = infrastructures
+        __props__["isEnterprise"] = is_enterprise
+        __props__["isRemoved"] = is_removed
+        __props__["keywords"] = keywords
+        __props__["kind"] = kind
+        __props__["links"] = links
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["permissionsRequired"] = permissions_required
+        __props__["platforms"] = platforms
+        __props__["projectId"] = project_id
+        __props__["revision"] = revision
+        __props__["spec"] = spec
+        __props__["tags"] = tags
+        __props__["type"] = type
+        __props__["updatedAt"] = updated_at
+        __props__["updatedBy"] = updated_by
+        __props__["variables"] = variables
+        return pulumi.runtime.exists_resource(None, 'harness:chaos/faultTemplate:FaultTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

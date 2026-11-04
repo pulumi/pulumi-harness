@@ -167,6 +167,12 @@ func (RolesState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rolesState)(nil)).Elem()
 }
 
+// RolesExists checks whether an existing Roles resource with the given ID exists.
+func RolesExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RolesState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:platform/roles:Roles", id, state, "", opts...)
+}
+
 type rolesArgs struct {
 	// The scope levels at which this role can be used
 	AllowedScopeLevels []string `pulumi:"allowedScopeLevels"`

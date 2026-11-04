@@ -453,6 +453,12 @@ func (ActionTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*actionTemplateState)(nil)).Elem()
 }
 
+// ActionTemplateExists checks whether an existing ActionTemplate resource with the given ID exists.
+func ActionTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ActionTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:chaos/actionTemplate:ActionTemplate", id, state, "", opts...)
+}
+
 type actionTemplateArgs struct {
 	// Container action configuration. Required when type is 'container'.
 	ContainerAction *ActionTemplateContainerAction `pulumi:"containerAction"`

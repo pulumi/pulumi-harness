@@ -112,6 +112,12 @@ func (HubSyncState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hubSyncState)(nil)).Elem()
 }
 
+// HubSyncExists checks whether an existing HubSync resource with the given ID exists.
+func HubSyncExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HubSyncState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:chaos/hubSync:HubSync", id, state, "", opts...)
+}
+
 type hubSyncArgs struct {
 	// The ID of the Chaos Hub to sync
 	HubId     string `pulumi:"hubId"`

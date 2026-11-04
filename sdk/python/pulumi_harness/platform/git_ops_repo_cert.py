@@ -403,6 +403,22 @@ class GitOpsRepoCert(pulumi.CustomResource):
         __props__.__dict__["requests"] = requests
         return GitOpsRepoCert(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            agent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            requests: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GitOpsRepoCertRequestArgs', 'GitOpsRepoCertRequestArgsDict', 'outputs.GitOpsRepoCertRequest']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["agentId"] = agent_id
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["requests"] = requests
+        return pulumi.runtime.exists_resource(None, 'harness:platform/gitOpsRepoCert:GitOpsRepoCert', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release.""")

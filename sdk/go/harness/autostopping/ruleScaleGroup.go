@@ -183,6 +183,12 @@ func (RuleScaleGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ruleScaleGroupState)(nil)).Elem()
 }
 
+// RuleScaleGroupExists checks whether an existing RuleScaleGroup resource with the given ID exists.
+func RuleScaleGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RuleScaleGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:autostopping/ruleScaleGroup:RuleScaleGroup", id, state, "", opts...)
+}
+
 type ruleScaleGroupArgs struct {
 	// Id of the cloud connector
 	CloudConnectorId string `pulumi:"cloudConnectorId"`

@@ -129,6 +129,12 @@ func (AmiState) ElementType() reflect.Type {
 	return reflect.TypeOf((*amiState)(nil)).Elem()
 }
 
+// AmiExists checks whether an existing Ami resource with the given ID exists.
+func AmiExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AmiState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("harness:service/ami:Ami", id, state, "", opts...)
+}
+
 type amiArgs struct {
 	// The id of the application the service belongs to
 	AppId string `pulumi:"appId"`

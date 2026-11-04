@@ -718,6 +718,36 @@ class ConnectorOpenaiModel(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return ConnectorOpenaiModel(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auth: pulumi.Input[Optional[Union['ConnectorOpenaiModelAuthArgs', 'ConnectorOpenaiModelAuthArgsDict', 'outputs.ConnectorOpenaiModelAuth']]] = None,
+            delegate_selectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            execute_on_delegate: pulumi.Input[Optional[_builtins.bool]] = None,
+            identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_test_connection: pulumi.Input[Optional[_builtins.bool]] = None,
+            model: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            org_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["auth"] = auth
+        __props__["delegateSelectors"] = delegate_selectors
+        __props__["description"] = description
+        __props__["executeOnDelegate"] = execute_on_delegate
+        __props__["identifier"] = identifier
+        __props__["ignoreTestConnection"] = ignore_test_connection
+        __props__["model"] = model
+        __props__["name"] = name
+        __props__["orgId"] = org_id
+        __props__["projectId"] = project_id
+        __props__["tags"] = tags
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'harness:platform/connectorOpenaiModel:ConnectorOpenaiModel', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def auth(self) -> pulumi.Output['outputs.ConnectorOpenaiModelAuth']:
