@@ -102,8 +102,8 @@ require (
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.33.0 // indirect
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645 // indirect
 	github.com/harness/harness-go-sdk v0.8.37 // indirect
-	github.com/harness/harness-openapi-go-client v0.0.26 // indirect
-	github.com/harness/terraform-provider-harness v0.47.5 // indirect
+	github.com/harness/harness-openapi-go-client v0.0.27 // indirect
+	github.com/harness/terraform-provider-harness v0.47.6 // indirect
 	github.com/hashicorp/aws-sdk-go-base/v2 v2.0.0-beta.72 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-checkpoint v0.5.0 // indirect
