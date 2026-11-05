@@ -202,6 +202,12 @@ namespace Pulumi.Harness.Platform
         public Output<string> Identifier { get; private set; } = null!;
 
         /// <summary>
+        /// If true, Terraform ignores plan differences when a bare `&lt;+input&gt;` in `Yaml` is returned by the API decorated with the template's default/allowed-values expression (for example `&lt;+input&gt;.default(python)` or `&lt;+input&gt;.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.
+        /// </summary>
+        [Output("ignoreRuntimeInputDefaults")]
+        public Output<bool?> IgnoreRuntimeInputDefaults { get; private set; } = null!;
+
+        /// <summary>
         /// Flag to set if importing from Git
         /// </summary>
         [Output("importFromGit")]
@@ -254,6 +260,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Output("yaml")]
         public Output<string> Yaml { get; private set; } = null!;
+
+        /// <summary>
+        /// Pipeline YAML version sent as `Version` on create and update. Use `1` for a Harness 3.0 (unified) pipeline and `0` for a legacy pipeline. Defaults to `0`.
+        /// </summary>
+        [Output("yamlVersion")]
+        public Output<string?> YamlVersion { get; private set; } = null!;
 
 
         /// <summary>
@@ -327,6 +339,12 @@ namespace Pulumi.Harness.Platform
         public Input<string> Identifier { get; set; } = null!;
 
         /// <summary>
+        /// If true, Terraform ignores plan differences when a bare `&lt;+input&gt;` in `Yaml` is returned by the API decorated with the template's default/allowed-values expression (for example `&lt;+input&gt;.default(python)` or `&lt;+input&gt;.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.
+        /// </summary>
+        [Input("ignoreRuntimeInputDefaults")]
+        public Input<bool>? IgnoreRuntimeInputDefaults { get; set; }
+
+        /// <summary>
         /// Flag to set if importing from Git
         /// </summary>
         [Input("importFromGit")]
@@ -386,6 +404,12 @@ namespace Pulumi.Harness.Platform
         [Input("yaml")]
         public Input<string>? Yaml { get; set; }
 
+        /// <summary>
+        /// Pipeline YAML version sent as `Version` on create and update. Use `1` for a Harness 3.0 (unified) pipeline and `0` for a legacy pipeline. Defaults to `0`.
+        /// </summary>
+        [Input("yamlVersion")]
+        public Input<string>? YamlVersion { get; set; }
+
         public PipelineArgs()
         {
         }
@@ -417,6 +441,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }
+
+        /// <summary>
+        /// If true, Terraform ignores plan differences when a bare `&lt;+input&gt;` in `Yaml` is returned by the API decorated with the template's default/allowed-values expression (for example `&lt;+input&gt;.default(python)` or `&lt;+input&gt;.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.
+        /// </summary>
+        [Input("ignoreRuntimeInputDefaults")]
+        public Input<bool>? IgnoreRuntimeInputDefaults { get; set; }
 
         /// <summary>
         /// Flag to set if importing from Git
@@ -477,6 +507,12 @@ namespace Pulumi.Harness.Platform
         /// </summary>
         [Input("yaml")]
         public Input<string>? Yaml { get; set; }
+
+        /// <summary>
+        /// Pipeline YAML version sent as `Version` on create and update. Use `1` for a Harness 3.0 (unified) pipeline and `0` for a legacy pipeline. Defaults to `0`.
+        /// </summary>
+        [Input("yamlVersion")]
+        public Input<string>? YamlVersion { get; set; }
 
         public PipelineState()
         {

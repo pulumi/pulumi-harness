@@ -213,6 +213,10 @@ export class Pipeline extends pulumi.CustomResource {
      */
     declare public readonly identifier: pulumi.Output<string>;
     /**
+     * If true, Terraform ignores plan differences when a bare `<+input>` in `yaml` is returned by the API decorated with the template's default/allowed-values expression (for example `<+input>.default(python)` or `<+input>.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.
+     */
+    declare public readonly ignoreRuntimeInputDefaults: pulumi.Output<boolean | undefined>;
+    /**
      * Flag to set if importing from Git
      */
     declare public readonly importFromGit: pulumi.Output<boolean | undefined>;
@@ -248,6 +252,10 @@ export class Pipeline extends pulumi.CustomResource {
      * YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     declare public readonly yaml: pulumi.Output<string>;
+    /**
+     * Pipeline YAML version sent as `version` on create and update. Use `1` for a Harness 3.0 (unified) pipeline and `0` for a legacy pipeline. Defaults to `0`.
+     */
+    declare public readonly yamlVersion: pulumi.Output<string | undefined>;
 
     /**
      * Create a Pipeline resource with the given unique name, arguments, and options.
@@ -266,6 +274,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["gitDetails"] = state?.gitDetails;
             resourceInputs["gitImportInfo"] = state?.gitImportInfo;
             resourceInputs["identifier"] = state?.identifier;
+            resourceInputs["ignoreRuntimeInputDefaults"] = state?.ignoreRuntimeInputDefaults;
             resourceInputs["importFromGit"] = state?.importFromGit;
             resourceInputs["name"] = state?.name;
             resourceInputs["orgId"] = state?.orgId;
@@ -275,6 +284,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["templateApplied"] = state?.templateApplied;
             resourceInputs["templateAppliedPipelineYaml"] = state?.templateAppliedPipelineYaml;
             resourceInputs["yaml"] = state?.yaml;
+            resourceInputs["yamlVersion"] = state?.yamlVersion;
         } else {
             const args = argsOrState as PipelineArgs | undefined;
             if (args?.identifier === undefined && !opts.urn) {
@@ -290,6 +300,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["gitDetails"] = args?.gitDetails;
             resourceInputs["gitImportInfo"] = args?.gitImportInfo;
             resourceInputs["identifier"] = args?.identifier;
+            resourceInputs["ignoreRuntimeInputDefaults"] = args?.ignoreRuntimeInputDefaults;
             resourceInputs["importFromGit"] = args?.importFromGit;
             resourceInputs["name"] = args?.name;
             resourceInputs["orgId"] = args?.orgId;
@@ -299,6 +310,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["templateApplied"] = args?.templateApplied;
             resourceInputs["templateAppliedPipelineYaml"] = args?.templateAppliedPipelineYaml;
             resourceInputs["yaml"] = args?.yaml;
+            resourceInputs["yamlVersion"] = args?.yamlVersion;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Pipeline.__pulumiType, name, resourceInputs, opts);
@@ -325,6 +337,10 @@ export interface PipelineState {
      * Unique identifier of the resource.
      */
     identifier?: pulumi.Input<string | undefined>;
+    /**
+     * If true, Terraform ignores plan differences when a bare `<+input>` in `yaml` is returned by the API decorated with the template's default/allowed-values expression (for example `<+input>.default(python)` or `<+input>.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.
+     */
+    ignoreRuntimeInputDefaults?: pulumi.Input<boolean | undefined>;
     /**
      * Flag to set if importing from Git
      */
@@ -361,6 +377,10 @@ export interface PipelineState {
      * YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     yaml?: pulumi.Input<string | undefined>;
+    /**
+     * Pipeline YAML version sent as `version` on create and update. Use `1` for a Harness 3.0 (unified) pipeline and `0` for a legacy pipeline. Defaults to `0`.
+     */
+    yamlVersion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -383,6 +403,10 @@ export interface PipelineArgs {
      * Unique identifier of the resource.
      */
     identifier: pulumi.Input<string>;
+    /**
+     * If true, Terraform ignores plan differences when a bare `<+input>` in `yaml` is returned by the API decorated with the template's default/allowed-values expression (for example `<+input>.default(python)` or `<+input>.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.
+     */
+    ignoreRuntimeInputDefaults?: pulumi.Input<boolean | undefined>;
     /**
      * Flag to set if importing from Git
      */
@@ -419,4 +443,8 @@ export interface PipelineArgs {
      * YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
      */
     yaml?: pulumi.Input<string | undefined>;
+    /**
+     * Pipeline YAML version sent as `version` on create and update. Use `1` for a Harness 3.0 (unified) pipeline and `0` for a legacy pipeline. Defaults to `0`.
+     */
+    yamlVersion?: pulumi.Input<string | undefined>;
 }

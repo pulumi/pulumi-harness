@@ -5,6 +5,7 @@ package com.pulumi.harness.platform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
@@ -16,7 +17,7 @@ public final class GetPipelineGitDetails {
      */
     private String baseBranch;
     /**
-     * @return Name of the branch.
+     * @return Name of the branch. Set this to read a remote pipeline from a branch other than the repository default branch.
      * 
      */
     private String branchName;
@@ -26,7 +27,7 @@ public final class GetPipelineGitDetails {
      */
     private String commitMessage;
     /**
-     * @return Identifier of the Harness Connector used for CRUD operations on the Entity.
+     * @return Identifier of the Harness Connector used for CRUD operations on the Entity. Set this when reading a remote pipeline.
      * 
      */
     private String connectorRef;
@@ -35,6 +36,11 @@ public final class GetPipelineGitDetails {
      * 
      */
     private String filePath;
+    /**
+     * @return If the repo is harness code.
+     * 
+     */
+    private Boolean isHarnessCodeRepo;
     /**
      * @return Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
      * 
@@ -46,7 +52,7 @@ public final class GetPipelineGitDetails {
      */
     private String lastObjectId;
     /**
-     * @return Name of the repository.
+     * @return Name of the repository. Set this when reading a remote pipeline.
      * 
      */
     private String repoName;
@@ -65,7 +71,7 @@ public final class GetPipelineGitDetails {
         return this.baseBranch;
     }
     /**
-     * @return Name of the branch.
+     * @return Name of the branch. Set this to read a remote pipeline from a branch other than the repository default branch.
      * 
      */
     public String branchName() {
@@ -79,7 +85,7 @@ public final class GetPipelineGitDetails {
         return this.commitMessage;
     }
     /**
-     * @return Identifier of the Harness Connector used for CRUD operations on the Entity.
+     * @return Identifier of the Harness Connector used for CRUD operations on the Entity. Set this when reading a remote pipeline.
      * 
      */
     public String connectorRef() {
@@ -91,6 +97,13 @@ public final class GetPipelineGitDetails {
      */
     public String filePath() {
         return this.filePath;
+    }
+    /**
+     * @return If the repo is harness code.
+     * 
+     */
+    public Boolean isHarnessCodeRepo() {
+        return this.isHarnessCodeRepo;
     }
     /**
      * @return Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
@@ -107,7 +120,7 @@ public final class GetPipelineGitDetails {
         return this.lastObjectId;
     }
     /**
-     * @return Name of the repository.
+     * @return Name of the repository. Set this when reading a remote pipeline.
      * 
      */
     public String repoName() {
@@ -135,6 +148,7 @@ public final class GetPipelineGitDetails {
         private String commitMessage;
         private String connectorRef;
         private String filePath;
+        private Boolean isHarnessCodeRepo;
         private String lastCommitId;
         private String lastObjectId;
         private String repoName;
@@ -147,6 +161,7 @@ public final class GetPipelineGitDetails {
     	      this.commitMessage = defaults.commitMessage;
     	      this.connectorRef = defaults.connectorRef;
     	      this.filePath = defaults.filePath;
+    	      this.isHarnessCodeRepo = defaults.isHarnessCodeRepo;
     	      this.lastCommitId = defaults.lastCommitId;
     	      this.lastObjectId = defaults.lastObjectId;
     	      this.repoName = defaults.repoName;
@@ -194,6 +209,14 @@ public final class GetPipelineGitDetails {
             return this;
         }
         @CustomType.Setter
+        public Builder isHarnessCodeRepo(Boolean isHarnessCodeRepo) {
+            if (isHarnessCodeRepo == null) {
+              throw new MissingRequiredPropertyException("GetPipelineGitDetails", "isHarnessCodeRepo");
+            }
+            this.isHarnessCodeRepo = isHarnessCodeRepo;
+            return this;
+        }
+        @CustomType.Setter
         public Builder lastCommitId(String lastCommitId) {
             if (lastCommitId == null) {
               throw new MissingRequiredPropertyException("GetPipelineGitDetails", "lastCommitId");
@@ -232,6 +255,7 @@ public final class GetPipelineGitDetails {
             _resultValue.commitMessage = commitMessage;
             _resultValue.connectorRef = connectorRef;
             _resultValue.filePath = filePath;
+            _resultValue.isHarnessCodeRepo = isHarnessCodeRepo;
             _resultValue.lastCommitId = lastCommitId;
             _resultValue.lastObjectId = lastObjectId;
             _resultValue.repoName = repoName;

@@ -43,10 +43,10 @@ namespace Pulumi.Harness
         public Output<string> ApikeyType { get; private set; } = null!;
 
         /// <summary>
-        /// Default expiration time of the Token within API Key
+        /// Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
         /// </summary>
         [Output("defaultTimeToExpireToken")]
-        public Output<int?> DefaultTimeToExpireToken { get; private set; } = null!;
+        public Output<int> DefaultTimeToExpireToken { get; private set; } = null!;
 
         /// <summary>
         /// Description of the resource.
@@ -150,7 +150,7 @@ namespace Pulumi.Harness
         public Input<string> ApikeyType { get; set; } = null!;
 
         /// <summary>
-        /// Default expiration time of the Token within API Key
+        /// Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
         /// </summary>
         [Input("defaultTimeToExpireToken")]
         public Input<int>? DefaultTimeToExpireToken { get; set; }
@@ -224,7 +224,7 @@ namespace Pulumi.Harness
         public Input<string>? ApikeyType { get; set; }
 
         /// <summary>
-        /// Default expiration time of the Token within API Key
+        /// Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
         /// </summary>
         [Input("defaultTimeToExpireToken")]
         public Input<int>? DefaultTimeToExpireToken { get; set; }

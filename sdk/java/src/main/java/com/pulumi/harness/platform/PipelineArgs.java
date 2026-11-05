@@ -82,6 +82,21 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If true, Terraform ignores plan differences when a bare `&lt;+input&gt;` in `yaml` is returned by the API decorated with the template&#39;s default/allowed-values expression (for example `&lt;+input&gt;.default(python)` or `&lt;+input&gt;.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.
+     * 
+     */
+    @Import(name="ignoreRuntimeInputDefaults")
+    private @Nullable Output<Boolean> ignoreRuntimeInputDefaults;
+
+    /**
+     * @return If true, Terraform ignores plan differences when a bare `&lt;+input&gt;` in `yaml` is returned by the API decorated with the template&#39;s default/allowed-values expression (for example `&lt;+input&gt;.default(python)` or `&lt;+input&gt;.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.
+     * 
+     */
+    public Optional<Output<Boolean>> ignoreRuntimeInputDefaults() {
+        return Optional.ofNullable(this.ignoreRuntimeInputDefaults);
+    }
+
+    /**
      * Flag to set if importing from Git
      * 
      */
@@ -216,6 +231,21 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.yaml);
     }
 
+    /**
+     * Pipeline YAML version sent as `version` on create and update. Use `1` for a Harness 3.0 (unified) pipeline and `0` for a legacy pipeline. Defaults to `0`.
+     * 
+     */
+    @Import(name="yamlVersion")
+    private @Nullable Output<String> yamlVersion;
+
+    /**
+     * @return Pipeline YAML version sent as `version` on create and update. Use `1` for a Harness 3.0 (unified) pipeline and `0` for a legacy pipeline. Defaults to `0`.
+     * 
+     */
+    public Optional<Output<String>> yamlVersion() {
+        return Optional.ofNullable(this.yamlVersion);
+    }
+
     private PipelineArgs() {}
 
     private PipelineArgs(PipelineArgs $) {
@@ -223,6 +253,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         this.gitDetails = $.gitDetails;
         this.gitImportInfo = $.gitImportInfo;
         this.identifier = $.identifier;
+        this.ignoreRuntimeInputDefaults = $.ignoreRuntimeInputDefaults;
         this.importFromGit = $.importFromGit;
         this.name = $.name;
         this.orgId = $.orgId;
@@ -232,6 +263,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         this.templateApplied = $.templateApplied;
         this.templateAppliedPipelineYaml = $.templateAppliedPipelineYaml;
         this.yaml = $.yaml;
+        this.yamlVersion = $.yamlVersion;
     }
 
     public static Builder builder() {
@@ -334,6 +366,27 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder identifier(String identifier) {
             return identifier(Output.of(identifier));
+        }
+
+        /**
+         * @param ignoreRuntimeInputDefaults If true, Terraform ignores plan differences when a bare `&lt;+input&gt;` in `yaml` is returned by the API decorated with the template&#39;s default/allowed-values expression (for example `&lt;+input&gt;.default(python)` or `&lt;+input&gt;.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreRuntimeInputDefaults(@Nullable Output<Boolean> ignoreRuntimeInputDefaults) {
+            $.ignoreRuntimeInputDefaults = ignoreRuntimeInputDefaults;
+            return this;
+        }
+
+        /**
+         * @param ignoreRuntimeInputDefaults If true, Terraform ignores plan differences when a bare `&lt;+input&gt;` in `yaml` is returned by the API decorated with the template&#39;s default/allowed-values expression (for example `&lt;+input&gt;.default(python)` or `&lt;+input&gt;.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreRuntimeInputDefaults(Boolean ignoreRuntimeInputDefaults) {
+            return ignoreRuntimeInputDefaults(Output.of(ignoreRuntimeInputDefaults));
         }
 
         /**
@@ -533,6 +586,27 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder yaml(String yaml) {
             return yaml(Output.of(yaml));
+        }
+
+        /**
+         * @param yamlVersion Pipeline YAML version sent as `version` on create and update. Use `1` for a Harness 3.0 (unified) pipeline and `0` for a legacy pipeline. Defaults to `0`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder yamlVersion(@Nullable Output<String> yamlVersion) {
+            $.yamlVersion = yamlVersion;
+            return this;
+        }
+
+        /**
+         * @param yamlVersion Pipeline YAML version sent as `version` on create and update. Use `1` for a Harness 3.0 (unified) pipeline and `0` for a legacy pipeline. Defaults to `0`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder yamlVersion(String yamlVersion) {
+            return yamlVersion(Output.of(yamlVersion));
         }
 
         public PipelineArgs build() {

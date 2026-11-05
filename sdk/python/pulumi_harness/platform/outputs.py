@@ -124075,19 +124075,21 @@ class GetPipelineGitDetailsResult(dict):
                  commit_message: _builtins.str,
                  connector_ref: _builtins.str,
                  file_path: _builtins.str,
+                 is_harness_code_repo: _builtins.bool,
                  last_commit_id: _builtins.str,
                  last_object_id: _builtins.str,
                  repo_name: _builtins.str,
                  store_type: _builtins.str):
         """
         :param _builtins.str base_branch: Name of the default branch (this checks out a new branch titled by branch_name).
-        :param _builtins.str branch_name: Name of the branch.
+        :param _builtins.str branch_name: Name of the branch. Set this to read a remote pipeline from a branch other than the repository default branch.
         :param _builtins.str commit_message: Commit message used for the merge commit.
-        :param _builtins.str connector_ref: Identifier of the Harness Connector used for CRUD operations on the Entity.
+        :param _builtins.str connector_ref: Identifier of the Harness Connector used for CRUD operations on the Entity. Set this when reading a remote pipeline.
         :param _builtins.str file_path: File path of the Entity in the repository.
+        :param _builtins.bool is_harness_code_repo: If the repo is harness code.
         :param _builtins.str last_commit_id: Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
         :param _builtins.str last_object_id: Last object identifier (for Github). To be provided only when updating Pipeline.
-        :param _builtins.str repo_name: Name of the repository.
+        :param _builtins.str repo_name: Name of the repository. Set this when reading a remote pipeline.
         :param _builtins.str store_type: Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
         """
         pulumi.set(__self__, "base_branch", base_branch)
@@ -124095,6 +124097,7 @@ class GetPipelineGitDetailsResult(dict):
         pulumi.set(__self__, "commit_message", commit_message)
         pulumi.set(__self__, "connector_ref", connector_ref)
         pulumi.set(__self__, "file_path", file_path)
+        pulumi.set(__self__, "is_harness_code_repo", is_harness_code_repo)
         pulumi.set(__self__, "last_commit_id", last_commit_id)
         pulumi.set(__self__, "last_object_id", last_object_id)
         pulumi.set(__self__, "repo_name", repo_name)
@@ -124112,7 +124115,7 @@ class GetPipelineGitDetailsResult(dict):
     @pulumi.getter(name="branchName")
     def branch_name(self) -> _builtins.str:
         """
-        Name of the branch.
+        Name of the branch. Set this to read a remote pipeline from a branch other than the repository default branch.
         """
         return pulumi.get(self, "branch_name")
 
@@ -124128,7 +124131,7 @@ class GetPipelineGitDetailsResult(dict):
     @pulumi.getter(name="connectorRef")
     def connector_ref(self) -> _builtins.str:
         """
-        Identifier of the Harness Connector used for CRUD operations on the Entity.
+        Identifier of the Harness Connector used for CRUD operations on the Entity. Set this when reading a remote pipeline.
         """
         return pulumi.get(self, "connector_ref")
 
@@ -124139,6 +124142,14 @@ class GetPipelineGitDetailsResult(dict):
         File path of the Entity in the repository.
         """
         return pulumi.get(self, "file_path")
+
+    @_builtins.property
+    @pulumi.getter(name="isHarnessCodeRepo")
+    def is_harness_code_repo(self) -> _builtins.bool:
+        """
+        If the repo is harness code.
+        """
+        return pulumi.get(self, "is_harness_code_repo")
 
     @_builtins.property
     @pulumi.getter(name="lastCommitId")
@@ -124160,7 +124171,7 @@ class GetPipelineGitDetailsResult(dict):
     @pulumi.getter(name="repoName")
     def repo_name(self) -> _builtins.str:
         """
-        Name of the repository.
+        Name of the repository. Set this when reading a remote pipeline.
         """
         return pulumi.get(self, "repo_name")
 

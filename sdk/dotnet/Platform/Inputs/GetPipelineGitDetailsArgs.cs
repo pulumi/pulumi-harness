@@ -19,7 +19,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string> BaseBranch { get; set; } = null!;
 
         /// <summary>
-        /// Name of the branch.
+        /// Name of the branch. Set this to read a remote pipeline from a branch other than the repository default branch.
         /// </summary>
         [Input("branchName", required: true)]
         public Input<string> BranchName { get; set; } = null!;
@@ -31,7 +31,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string> CommitMessage { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of the Harness Connector used for CRUD operations on the Entity.
+        /// Identifier of the Harness Connector used for CRUD operations on the Entity. Set this when reading a remote pipeline.
         /// </summary>
         [Input("connectorRef", required: true)]
         public Input<string> ConnectorRef { get; set; } = null!;
@@ -41,6 +41,12 @@ namespace Pulumi.Harness.Platform.Inputs
         /// </summary>
         [Input("filePath", required: true)]
         public Input<string> FilePath { get; set; } = null!;
+
+        /// <summary>
+        /// If the repo is harness code.
+        /// </summary>
+        [Input("isHarnessCodeRepo", required: true)]
+        public Input<bool> IsHarnessCodeRepo { get; set; } = null!;
 
         /// <summary>
         /// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
@@ -55,7 +61,7 @@ namespace Pulumi.Harness.Platform.Inputs
         public Input<string> LastObjectId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the repository.
+        /// Name of the repository. Set this when reading a remote pipeline.
         /// </summary>
         [Input("repoName", required: true)]
         public Input<string> RepoName { get; set; } = null!;

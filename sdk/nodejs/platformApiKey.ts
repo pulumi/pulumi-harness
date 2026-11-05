@@ -70,9 +70,9 @@ export class PlatformApiKey extends pulumi.CustomResource {
      */
     declare public readonly apikeyType: pulumi.Output<string>;
     /**
-     * Default expiration time of the Token within API Key
+     * Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
      */
-    declare public readonly defaultTimeToExpireToken: pulumi.Output<number | undefined>;
+    declare public readonly defaultTimeToExpireToken: pulumi.Output<number>;
     /**
      * Description of the resource.
      */
@@ -168,7 +168,7 @@ export interface PlatformApiKeyState {
      */
     apikeyType?: pulumi.Input<string | undefined>;
     /**
-     * Default expiration time of the Token within API Key
+     * Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
      */
     defaultTimeToExpireToken?: pulumi.Input<number | undefined>;
     /**
@@ -214,7 +214,7 @@ export interface PlatformApiKeyArgs {
      */
     apikeyType: pulumi.Input<string>;
     /**
-     * Default expiration time of the Token within API Key
+     * Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
      */
     defaultTimeToExpireToken?: pulumi.Input<number | undefined>;
     /**

@@ -48,14 +48,14 @@ public final class PlatformApiKeyState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Default expiration time of the Token within API Key
+     * Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
      * 
      */
     @Import(name="defaultTimeToExpireToken")
     private @Nullable Output<Integer> defaultTimeToExpireToken;
 
     /**
-     * @return Default expiration time of the Token within API Key
+     * @return Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
      * 
      */
     public Optional<Output<Integer>> defaultTimeToExpireToken() {
@@ -243,7 +243,7 @@ public final class PlatformApiKeyState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param defaultTimeToExpireToken Default expiration time of the Token within API Key
+         * @param defaultTimeToExpireToken Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class PlatformApiKeyState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param defaultTimeToExpireToken Default expiration time of the Token within API Key
+         * @param defaultTimeToExpireToken Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
          * 
          * @return builder
          * 

@@ -66,18 +66,18 @@ public class PlatformApiKey extends com.pulumi.resources.CustomResource {
         return this.apikeyType;
     }
     /**
-     * Default expiration time of the Token within API Key
+     * Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
      * 
      */
     @Export(name="defaultTimeToExpireToken", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> defaultTimeToExpireToken;
+    private Output<Integer> defaultTimeToExpireToken;
 
     /**
-     * @return Default expiration time of the Token within API Key
+     * @return Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
      * 
      */
-    public Output<Optional<Integer>> defaultTimeToExpireToken() {
-        return Codegen.optional(this.defaultTimeToExpireToken);
+    public Output<Integer> defaultTimeToExpireToken() {
+        return this.defaultTimeToExpireToken;
     }
     /**
      * Description of the resource.

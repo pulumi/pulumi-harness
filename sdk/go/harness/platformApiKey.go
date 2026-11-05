@@ -35,8 +35,8 @@ type PlatformApiKey struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Type of the API Key
 	ApikeyType pulumi.StringOutput `pulumi:"apikeyType"`
-	// Default expiration time of the Token within API Key
-	DefaultTimeToExpireToken pulumi.IntPtrOutput `pulumi:"defaultTimeToExpireToken"`
+	// Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
+	DefaultTimeToExpireToken pulumi.IntOutput `pulumi:"defaultTimeToExpireToken"`
 	// Description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Unique identifier of the resource.
@@ -99,7 +99,7 @@ type platformApiKeyState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Type of the API Key
 	ApikeyType *string `pulumi:"apikeyType"`
-	// Default expiration time of the Token within API Key
+	// Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
 	DefaultTimeToExpireToken *int `pulumi:"defaultTimeToExpireToken"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -122,7 +122,7 @@ type PlatformApiKeyState struct {
 	AccountId pulumi.StringPtrInput
 	// Type of the API Key
 	ApikeyType pulumi.StringPtrInput
-	// Default expiration time of the Token within API Key
+	// Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
 	DefaultTimeToExpireToken pulumi.IntPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -155,7 +155,7 @@ type platformApiKeyArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Type of the API Key
 	ApikeyType string `pulumi:"apikeyType"`
-	// Default expiration time of the Token within API Key
+	// Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
 	DefaultTimeToExpireToken *int `pulumi:"defaultTimeToExpireToken"`
 	// Description of the resource.
 	Description *string `pulumi:"description"`
@@ -179,7 +179,7 @@ type PlatformApiKeyArgs struct {
 	AccountId pulumi.StringInput
 	// Type of the API Key
 	ApikeyType pulumi.StringInput
-	// Default expiration time of the Token within API Key
+	// Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
 	DefaultTimeToExpireToken pulumi.IntPtrInput
 	// Description of the resource.
 	Description pulumi.StringPtrInput
@@ -294,9 +294,9 @@ func (o PlatformApiKeyOutput) ApikeyType() pulumi.StringOutput {
 	return o.ApplyT(func(v *PlatformApiKey) pulumi.StringOutput { return v.ApikeyType }).(pulumi.StringOutput)
 }
 
-// Default expiration time of the Token within API Key
-func (o PlatformApiKeyOutput) DefaultTimeToExpireToken() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PlatformApiKey) pulumi.IntPtrOutput { return v.DefaultTimeToExpireToken }).(pulumi.IntPtrOutput)
+// Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
+func (o PlatformApiKeyOutput) DefaultTimeToExpireToken() pulumi.IntOutput {
+	return o.ApplyT(func(v *PlatformApiKey) pulumi.IntOutput { return v.DefaultTimeToExpireToken }).(pulumi.IntOutput)
 }
 
 // Description of the resource.

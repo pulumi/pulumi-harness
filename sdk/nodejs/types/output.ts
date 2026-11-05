@@ -10872,7 +10872,7 @@ export namespace platform {
          */
         baseBranch: string;
         /**
-         * Name of the branch.
+         * Name of the branch. Set this to read a remote pipeline from a branch other than the repository default branch.
          */
         branchName: string;
         /**
@@ -10880,13 +10880,17 @@ export namespace platform {
          */
         commitMessage: string;
         /**
-         * Identifier of the Harness Connector used for CRUD operations on the Entity.
+         * Identifier of the Harness Connector used for CRUD operations on the Entity. Set this when reading a remote pipeline.
          */
         connectorRef: string;
         /**
          * File path of the Entity in the repository.
          */
         filePath: string;
+        /**
+         * If the repo is harness code.
+         */
+        isHarnessCodeRepo: boolean;
         /**
          * Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
          */
@@ -10896,7 +10900,7 @@ export namespace platform {
          */
         lastObjectId: string;
         /**
-         * Name of the repository.
+         * Name of the repository. Set this when reading a remote pipeline.
          */
         repoName: string;
         /**
