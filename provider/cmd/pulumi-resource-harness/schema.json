@@ -58283,7 +58283,7 @@
                 },
                 "branchName": {
                     "type": "string",
-                    "description": "Name of the branch.\n"
+                    "description": "Name of the branch. Set this to read a remote pipeline from a branch other than the repository default branch.\n"
                 },
                 "commitMessage": {
                     "type": "string",
@@ -58291,11 +58291,15 @@
                 },
                 "connectorRef": {
                     "type": "string",
-                    "description": "Identifier of the Harness Connector used for CRUD operations on the Entity.\n"
+                    "description": "Identifier of the Harness Connector used for CRUD operations on the Entity. Set this when reading a remote pipeline.\n"
                 },
                 "filePath": {
                     "type": "string",
                     "description": "File path of the Entity in the repository.\n"
+                },
+                "isHarnessCodeRepo": {
+                    "type": "boolean",
+                    "description": "If the repo is harness code.\n"
                 },
                 "lastCommitId": {
                     "type": "string",
@@ -58307,7 +58311,7 @@
                 },
                 "repoName": {
                     "type": "string",
-                    "description": "Name of the repository.\n"
+                    "description": "Name of the repository. Set this when reading a remote pipeline.\n"
                 },
                 "storeType": {
                     "type": "string",
@@ -58321,6 +58325,7 @@
                 "commitMessage",
                 "connectorRef",
                 "filePath",
+                "isHarnessCodeRepo",
                 "lastCommitId",
                 "lastObjectId",
                 "repoName",
@@ -70533,7 +70538,7 @@
                 },
                 "defaultTimeToExpireToken": {
                     "type": "integer",
-                    "description": "Default expiration time of the Token within API Key\n"
+                    "description": "Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.\n"
                 },
                 "description": {
                     "type": "string",
@@ -70570,6 +70575,7 @@
             "required": [
                 "accountId",
                 "apikeyType",
+                "defaultTimeToExpireToken",
                 "identifier",
                 "name",
                 "parentId"
@@ -70585,7 +70591,7 @@
                 },
                 "defaultTimeToExpireToken": {
                     "type": "integer",
-                    "description": "Default expiration time of the Token within API Key\n"
+                    "description": "Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.\n"
                 },
                 "description": {
                     "type": "string",
@@ -70639,7 +70645,7 @@
                     },
                     "defaultTimeToExpireToken": {
                         "type": "integer",
-                        "description": "Default expiration time of the Token within API Key\n"
+                        "description": "Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.\n"
                     },
                     "description": {
                         "type": "string",
@@ -87433,6 +87439,10 @@
                     "type": "string",
                     "description": "Unique identifier of the resource.\n"
                 },
+                "ignoreRuntimeInputDefaults": {
+                    "type": "boolean",
+                    "description": "If true, Terraform ignores plan differences when a bare `\u003c+input\u003e` in \u003cspan pulumi-lang-nodejs=\"`yaml`\" pulumi-lang-dotnet=\"`Yaml`\" pulumi-lang-go=\"`yaml`\" pulumi-lang-python=\"`yaml`\" pulumi-lang-yaml=\"`yaml`\" pulumi-lang-java=\"`yaml`\" pulumi-lang-hcl=\"`yaml`\"\u003e`yaml`\u003c/span\u003e is returned by the API decorated with the template's default/allowed-values expression (for example `\u003c+input\u003e.default(python)` or `\u003c+input\u003e.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.\n"
+                },
                 "importFromGit": {
                     "type": "boolean",
                     "description": "Flag to set if importing from Git\n"
@@ -87471,6 +87481,10 @@
                 "yaml": {
                     "type": "string",
                     "description": "YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.\n"
+                },
+                "yamlVersion": {
+                    "type": "string",
+                    "description": "Pipeline YAML version sent as \u003cspan pulumi-lang-nodejs=\"`version`\" pulumi-lang-dotnet=\"`Version`\" pulumi-lang-go=\"`version`\" pulumi-lang-python=\"`version`\" pulumi-lang-yaml=\"`version`\" pulumi-lang-java=\"`version`\" pulumi-lang-hcl=\"`version`\"\u003e`version`\u003c/span\u003e on create and update. Use \u003cspan pulumi-lang-nodejs=\"`1`\" pulumi-lang-dotnet=\"`1`\" pulumi-lang-go=\"`1`\" pulumi-lang-python=\"`1`\" pulumi-lang-yaml=\"`1`\" pulumi-lang-java=\"`1`\" pulumi-lang-hcl=\"`1`\"\u003e`1`\u003c/span\u003e for a Harness 3.0 (unified) pipeline and \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e for a legacy pipeline. Defaults to \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e.\n"
                 }
             },
             "required": [
@@ -87498,6 +87512,10 @@
                     "type": "string",
                     "description": "Unique identifier of the resource.\n",
                     "willReplaceOnChanges": true
+                },
+                "ignoreRuntimeInputDefaults": {
+                    "type": "boolean",
+                    "description": "If true, Terraform ignores plan differences when a bare `\u003c+input\u003e` in \u003cspan pulumi-lang-nodejs=\"`yaml`\" pulumi-lang-dotnet=\"`Yaml`\" pulumi-lang-go=\"`yaml`\" pulumi-lang-python=\"`yaml`\" pulumi-lang-yaml=\"`yaml`\" pulumi-lang-java=\"`yaml`\" pulumi-lang-hcl=\"`yaml`\"\u003e`yaml`\u003c/span\u003e is returned by the API decorated with the template's default/allowed-values expression (for example `\u003c+input\u003e.default(python)` or `\u003c+input\u003e.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.\n"
                 },
                 "importFromGit": {
                     "type": "boolean",
@@ -87539,6 +87557,10 @@
                 "yaml": {
                     "type": "string",
                     "description": "YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.\n"
+                },
+                "yamlVersion": {
+                    "type": "string",
+                    "description": "Pipeline YAML version sent as \u003cspan pulumi-lang-nodejs=\"`version`\" pulumi-lang-dotnet=\"`Version`\" pulumi-lang-go=\"`version`\" pulumi-lang-python=\"`version`\" pulumi-lang-yaml=\"`version`\" pulumi-lang-java=\"`version`\" pulumi-lang-hcl=\"`version`\"\u003e`version`\u003c/span\u003e on create and update. Use \u003cspan pulumi-lang-nodejs=\"`1`\" pulumi-lang-dotnet=\"`1`\" pulumi-lang-go=\"`1`\" pulumi-lang-python=\"`1`\" pulumi-lang-yaml=\"`1`\" pulumi-lang-java=\"`1`\" pulumi-lang-hcl=\"`1`\"\u003e`1`\u003c/span\u003e for a Harness 3.0 (unified) pipeline and \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e for a legacy pipeline. Defaults to \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e.\n"
                 }
             },
             "requiredInputs": [
@@ -87565,6 +87587,10 @@
                         "type": "string",
                         "description": "Unique identifier of the resource.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "ignoreRuntimeInputDefaults": {
+                        "type": "boolean",
+                        "description": "If true, Terraform ignores plan differences when a bare `\u003c+input\u003e` in \u003cspan pulumi-lang-nodejs=\"`yaml`\" pulumi-lang-dotnet=\"`Yaml`\" pulumi-lang-go=\"`yaml`\" pulumi-lang-python=\"`yaml`\" pulumi-lang-yaml=\"`yaml`\" pulumi-lang-java=\"`yaml`\" pulumi-lang-hcl=\"`yaml`\"\u003e`yaml`\u003c/span\u003e is returned by the API decorated with the template's default/allowed-values expression (for example `\u003c+input\u003e.default(python)` or `\u003c+input\u003e.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.\n"
                     },
                     "importFromGit": {
                         "type": "boolean",
@@ -87606,6 +87632,10 @@
                     "yaml": {
                         "type": "string",
                         "description": "YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.\n"
+                    },
+                    "yamlVersion": {
+                        "type": "string",
+                        "description": "Pipeline YAML version sent as \u003cspan pulumi-lang-nodejs=\"`version`\" pulumi-lang-dotnet=\"`Version`\" pulumi-lang-go=\"`version`\" pulumi-lang-python=\"`version`\" pulumi-lang-yaml=\"`version`\" pulumi-lang-java=\"`version`\" pulumi-lang-hcl=\"`version`\"\u003e`version`\u003c/span\u003e on create and update. Use \u003cspan pulumi-lang-nodejs=\"`1`\" pulumi-lang-dotnet=\"`1`\" pulumi-lang-go=\"`1`\" pulumi-lang-python=\"`1`\" pulumi-lang-yaml=\"`1`\" pulumi-lang-java=\"`1`\" pulumi-lang-hcl=\"`1`\"\u003e`1`\u003c/span\u003e for a Harness 3.0 (unified) pipeline and \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e for a legacy pipeline. Defaults to \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e.\n"
                     }
                 },
                 "type": "object"

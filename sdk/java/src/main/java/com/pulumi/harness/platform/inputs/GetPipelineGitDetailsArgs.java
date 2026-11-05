@@ -6,6 +6,7 @@ package com.pulumi.harness.platform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
@@ -30,14 +31,14 @@ public final class GetPipelineGitDetailsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Name of the branch.
+     * Name of the branch. Set this to read a remote pipeline from a branch other than the repository default branch.
      * 
      */
     @Import(name="branchName", required=true)
     private Output<String> branchName;
 
     /**
-     * @return Name of the branch.
+     * @return Name of the branch. Set this to read a remote pipeline from a branch other than the repository default branch.
      * 
      */
     public Output<String> branchName() {
@@ -60,14 +61,14 @@ public final class GetPipelineGitDetailsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Identifier of the Harness Connector used for CRUD operations on the Entity.
+     * Identifier of the Harness Connector used for CRUD operations on the Entity. Set this when reading a remote pipeline.
      * 
      */
     @Import(name="connectorRef", required=true)
     private Output<String> connectorRef;
 
     /**
-     * @return Identifier of the Harness Connector used for CRUD operations on the Entity.
+     * @return Identifier of the Harness Connector used for CRUD operations on the Entity. Set this when reading a remote pipeline.
      * 
      */
     public Output<String> connectorRef() {
@@ -87,6 +88,21 @@ public final class GetPipelineGitDetailsArgs extends com.pulumi.resources.Resour
      */
     public Output<String> filePath() {
         return this.filePath;
+    }
+
+    /**
+     * If the repo is harness code.
+     * 
+     */
+    @Import(name="isHarnessCodeRepo", required=true)
+    private Output<Boolean> isHarnessCodeRepo;
+
+    /**
+     * @return If the repo is harness code.
+     * 
+     */
+    public Output<Boolean> isHarnessCodeRepo() {
+        return this.isHarnessCodeRepo;
     }
 
     /**
@@ -120,14 +136,14 @@ public final class GetPipelineGitDetailsArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Name of the repository.
+     * Name of the repository. Set this when reading a remote pipeline.
      * 
      */
     @Import(name="repoName", required=true)
     private Output<String> repoName;
 
     /**
-     * @return Name of the repository.
+     * @return Name of the repository. Set this when reading a remote pipeline.
      * 
      */
     public Output<String> repoName() {
@@ -157,6 +173,7 @@ public final class GetPipelineGitDetailsArgs extends com.pulumi.resources.Resour
         this.commitMessage = $.commitMessage;
         this.connectorRef = $.connectorRef;
         this.filePath = $.filePath;
+        this.isHarnessCodeRepo = $.isHarnessCodeRepo;
         this.lastCommitId = $.lastCommitId;
         this.lastObjectId = $.lastObjectId;
         this.repoName = $.repoName;
@@ -203,7 +220,7 @@ public final class GetPipelineGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param branchName Name of the branch.
+         * @param branchName Name of the branch. Set this to read a remote pipeline from a branch other than the repository default branch.
          * 
          * @return builder
          * 
@@ -214,7 +231,7 @@ public final class GetPipelineGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param branchName Name of the branch.
+         * @param branchName Name of the branch. Set this to read a remote pipeline from a branch other than the repository default branch.
          * 
          * @return builder
          * 
@@ -245,7 +262,7 @@ public final class GetPipelineGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param connectorRef Identifier of the Harness Connector used for CRUD operations on the Entity.
+         * @param connectorRef Identifier of the Harness Connector used for CRUD operations on the Entity. Set this when reading a remote pipeline.
          * 
          * @return builder
          * 
@@ -256,7 +273,7 @@ public final class GetPipelineGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param connectorRef Identifier of the Harness Connector used for CRUD operations on the Entity.
+         * @param connectorRef Identifier of the Harness Connector used for CRUD operations on the Entity. Set this when reading a remote pipeline.
          * 
          * @return builder
          * 
@@ -284,6 +301,27 @@ public final class GetPipelineGitDetailsArgs extends com.pulumi.resources.Resour
          */
         public Builder filePath(String filePath) {
             return filePath(Output.of(filePath));
+        }
+
+        /**
+         * @param isHarnessCodeRepo If the repo is harness code.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isHarnessCodeRepo(Output<Boolean> isHarnessCodeRepo) {
+            $.isHarnessCodeRepo = isHarnessCodeRepo;
+            return this;
+        }
+
+        /**
+         * @param isHarnessCodeRepo If the repo is harness code.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isHarnessCodeRepo(Boolean isHarnessCodeRepo) {
+            return isHarnessCodeRepo(Output.of(isHarnessCodeRepo));
         }
 
         /**
@@ -329,7 +367,7 @@ public final class GetPipelineGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param repoName Name of the repository.
+         * @param repoName Name of the repository. Set this when reading a remote pipeline.
          * 
          * @return builder
          * 
@@ -340,7 +378,7 @@ public final class GetPipelineGitDetailsArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param repoName Name of the repository.
+         * @param repoName Name of the repository. Set this when reading a remote pipeline.
          * 
          * @return builder
          * 
@@ -385,6 +423,9 @@ public final class GetPipelineGitDetailsArgs extends com.pulumi.resources.Resour
             }
             if ($.filePath == null) {
                 throw new MissingRequiredPropertyException("GetPipelineGitDetailsArgs", "filePath");
+            }
+            if ($.isHarnessCodeRepo == null) {
+                throw new MissingRequiredPropertyException("GetPipelineGitDetailsArgs", "isHarnessCodeRepo");
             }
             if ($.lastCommitId == null) {
                 throw new MissingRequiredPropertyException("GetPipelineGitDetailsArgs", "lastCommitId");

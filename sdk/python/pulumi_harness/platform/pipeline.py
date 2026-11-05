@@ -27,13 +27,15 @@ class PipelineArgs:
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  git_details: pulumi.Input[Optional['PipelineGitDetailsArgs']] = None,
                  git_import_info: pulumi.Input[Optional['PipelineGitImportInfoArgs']] = None,
+                 ignore_runtime_input_defaults: pulumi.Input[Optional[_builtins.bool]] = None,
                  import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  pipeline_import_request: pulumi.Input[Optional['PipelinePipelineImportRequestArgs']] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  template_applied: pulumi.Input[Optional[_builtins.bool]] = None,
                  template_applied_pipeline_yaml: pulumi.Input[Optional[_builtins.str]] = None,
-                 yaml: pulumi.Input[Optional[_builtins.str]] = None):
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Pipeline resource.
 
@@ -43,6 +45,7 @@ class PipelineArgs:
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input['PipelineGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input['PipelineGitImportInfoArgs'] git_import_info: Contains Git Information for importing entities from Git
+        :param pulumi.Input[_builtins.bool] ignore_runtime_input_defaults: If true, Terraform ignores plan differences when a bare `<+input>` in `yaml` is returned by the API decorated with the template's default/allowed-values expression (for example `<+input>.default(python)` or `<+input>.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.
         :param pulumi.Input[_builtins.bool] import_from_git: Flag to set if importing from Git
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input['PipelinePipelineImportRequestArgs'] pipeline_import_request: Contains parameters for importing a pipeline
@@ -50,6 +53,7 @@ class PipelineArgs:
         :param pulumi.Input[_builtins.bool] template_applied: If true, returns Pipeline YAML with Templates applied on it.
         :param pulumi.Input[_builtins.str] template_applied_pipeline_yaml: Pipeline YAML after resolving Templates (returned as a String).
         :param pulumi.Input[_builtins.str] yaml: YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        :param pulumi.Input[_builtins.str] yaml_version: Pipeline YAML version sent as `version` on create and update. Use `1` for a Harness 3.0 (unified) pipeline and `0` for a legacy pipeline. Defaults to `0`.
         """
         pulumi.set(__self__, "identifier", identifier)
         pulumi.set(__self__, "org_id", org_id)
@@ -60,6 +64,8 @@ class PipelineArgs:
             pulumi.set(__self__, "git_details", git_details)
         if git_import_info is not None:
             pulumi.set(__self__, "git_import_info", git_import_info)
+        if ignore_runtime_input_defaults is not None:
+            pulumi.set(__self__, "ignore_runtime_input_defaults", ignore_runtime_input_defaults)
         if import_from_git is not None:
             pulumi.set(__self__, "import_from_git", import_from_git)
         if name is not None:
@@ -74,6 +80,8 @@ class PipelineArgs:
             pulumi.set(__self__, "template_applied_pipeline_yaml", template_applied_pipeline_yaml)
         if yaml is not None:
             pulumi.set(__self__, "yaml", yaml)
+        if yaml_version is not None:
+            pulumi.set(__self__, "yaml_version", yaml_version)
 
     @_builtins.property
     @pulumi.getter
@@ -146,6 +154,18 @@ class PipelineArgs:
     @git_import_info.setter
     def git_import_info(self, value: pulumi.Input[Optional['PipelineGitImportInfoArgs']]):
         pulumi.set(self, "git_import_info", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreRuntimeInputDefaults")
+    def ignore_runtime_input_defaults(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, Terraform ignores plan differences when a bare `<+input>` in `yaml` is returned by the API decorated with the template's default/allowed-values expression (for example `<+input>.default(python)` or `<+input>.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.
+        """
+        return pulumi.get(self, "ignore_runtime_input_defaults")
+
+    @ignore_runtime_input_defaults.setter
+    def ignore_runtime_input_defaults(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ignore_runtime_input_defaults", value)
 
     @_builtins.property
     @pulumi.getter(name="importFromGit")
@@ -231,6 +251,18 @@ class PipelineArgs:
     def yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "yaml", value)
 
+    @_builtins.property
+    @pulumi.getter(name="yamlVersion")
+    def yaml_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Pipeline YAML version sent as `version` on create and update. Use `1` for a Harness 3.0 (unified) pipeline and `0` for a legacy pipeline. Defaults to `0`.
+        """
+        return pulumi.get(self, "yaml_version")
+
+    @yaml_version.setter
+    def yaml_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "yaml_version", value)
+
 
 @pulumi.input_type
 class _PipelineState:
@@ -239,6 +271,7 @@ class _PipelineState:
                  git_details: pulumi.Input[Optional['PipelineGitDetailsArgs']] = None,
                  git_import_info: pulumi.Input[Optional['PipelineGitImportInfoArgs']] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_runtime_input_defaults: pulumi.Input[Optional[_builtins.bool]] = None,
                  import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -247,7 +280,8 @@ class _PipelineState:
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  template_applied: pulumi.Input[Optional[_builtins.bool]] = None,
                  template_applied_pipeline_yaml: pulumi.Input[Optional[_builtins.str]] = None,
-                 yaml: pulumi.Input[Optional[_builtins.str]] = None):
+                 yaml: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Pipeline resources.
 
@@ -255,6 +289,7 @@ class _PipelineState:
         :param pulumi.Input['PipelineGitDetailsArgs'] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input['PipelineGitImportInfoArgs'] git_import_info: Contains Git Information for importing entities from Git
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[_builtins.bool] ignore_runtime_input_defaults: If true, Terraform ignores plan differences when a bare `<+input>` in `yaml` is returned by the API decorated with the template's default/allowed-values expression (for example `<+input>.default(python)` or `<+input>.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.
         :param pulumi.Input[_builtins.bool] import_from_git: Flag to set if importing from Git
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -264,6 +299,7 @@ class _PipelineState:
         :param pulumi.Input[_builtins.bool] template_applied: If true, returns Pipeline YAML with Templates applied on it.
         :param pulumi.Input[_builtins.str] template_applied_pipeline_yaml: Pipeline YAML after resolving Templates (returned as a String).
         :param pulumi.Input[_builtins.str] yaml: YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        :param pulumi.Input[_builtins.str] yaml_version: Pipeline YAML version sent as `version` on create and update. Use `1` for a Harness 3.0 (unified) pipeline and `0` for a legacy pipeline. Defaults to `0`.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -273,6 +309,8 @@ class _PipelineState:
             pulumi.set(__self__, "git_import_info", git_import_info)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
+        if ignore_runtime_input_defaults is not None:
+            pulumi.set(__self__, "ignore_runtime_input_defaults", ignore_runtime_input_defaults)
         if import_from_git is not None:
             pulumi.set(__self__, "import_from_git", import_from_git)
         if name is not None:
@@ -291,6 +329,8 @@ class _PipelineState:
             pulumi.set(__self__, "template_applied_pipeline_yaml", template_applied_pipeline_yaml)
         if yaml is not None:
             pulumi.set(__self__, "yaml", yaml)
+        if yaml_version is not None:
+            pulumi.set(__self__, "yaml_version", yaml_version)
 
     @_builtins.property
     @pulumi.getter
@@ -339,6 +379,18 @@ class _PipelineState:
     @identifier.setter
     def identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "identifier", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreRuntimeInputDefaults")
+    def ignore_runtime_input_defaults(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, Terraform ignores plan differences when a bare `<+input>` in `yaml` is returned by the API decorated with the template's default/allowed-values expression (for example `<+input>.default(python)` or `<+input>.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.
+        """
+        return pulumi.get(self, "ignore_runtime_input_defaults")
+
+    @ignore_runtime_input_defaults.setter
+    def ignore_runtime_input_defaults(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ignore_runtime_input_defaults", value)
 
     @_builtins.property
     @pulumi.getter(name="importFromGit")
@@ -448,6 +500,18 @@ class _PipelineState:
     def yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "yaml", value)
 
+    @_builtins.property
+    @pulumi.getter(name="yamlVersion")
+    def yaml_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Pipeline YAML version sent as `version` on create and update. Use `1` for a Harness 3.0 (unified) pipeline and `0` for a legacy pipeline. Defaults to `0`.
+        """
+        return pulumi.get(self, "yaml_version")
+
+    @yaml_version.setter
+    def yaml_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "yaml_version", value)
+
 
 @pulumi.type_token("harness:platform/pipeline:Pipeline")
 class Pipeline(pulumi.CustomResource):
@@ -459,6 +523,7 @@ class Pipeline(pulumi.CustomResource):
                  git_details: pulumi.Input[Optional[Union['PipelineGitDetailsArgs', 'PipelineGitDetailsArgsDict', 'outputs.PipelineGitDetails']]] = None,
                  git_import_info: pulumi.Input[Optional[Union['PipelineGitImportInfoArgs', 'PipelineGitImportInfoArgsDict', 'outputs.PipelineGitImportInfo']]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_runtime_input_defaults: pulumi.Input[Optional[_builtins.bool]] = None,
                  import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -468,6 +533,7 @@ class Pipeline(pulumi.CustomResource):
                  template_applied: pulumi.Input[Optional[_builtins.bool]] = None,
                  template_applied_pipeline_yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  yaml: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml_version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Resource for creating a Harness pipeline.
@@ -624,6 +690,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[Union['PipelineGitDetailsArgs', 'PipelineGitDetailsArgsDict', 'outputs.PipelineGitDetails']] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[Union['PipelineGitImportInfoArgs', 'PipelineGitImportInfoArgsDict', 'outputs.PipelineGitImportInfo']] git_import_info: Contains Git Information for importing entities from Git
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[_builtins.bool] ignore_runtime_input_defaults: If true, Terraform ignores plan differences when a bare `<+input>` in `yaml` is returned by the API decorated with the template's default/allowed-values expression (for example `<+input>.default(python)` or `<+input>.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.
         :param pulumi.Input[_builtins.bool] import_from_git: Flag to set if importing from Git
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -633,6 +700,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] template_applied: If true, returns Pipeline YAML with Templates applied on it.
         :param pulumi.Input[_builtins.str] template_applied_pipeline_yaml: Pipeline YAML after resolving Templates (returned as a String).
         :param pulumi.Input[_builtins.str] yaml: YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        :param pulumi.Input[_builtins.str] yaml_version: Pipeline YAML version sent as `version` on create and update. Use `1` for a Harness 3.0 (unified) pipeline and `0` for a legacy pipeline. Defaults to `0`.
         """
         ...
     @overload
@@ -808,6 +876,7 @@ class Pipeline(pulumi.CustomResource):
                  git_details: pulumi.Input[Optional[Union['PipelineGitDetailsArgs', 'PipelineGitDetailsArgsDict', 'outputs.PipelineGitDetails']]] = None,
                  git_import_info: pulumi.Input[Optional[Union['PipelineGitImportInfoArgs', 'PipelineGitImportInfoArgsDict', 'outputs.PipelineGitImportInfo']]] = None,
                  identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_runtime_input_defaults: pulumi.Input[Optional[_builtins.bool]] = None,
                  import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -817,6 +886,7 @@ class Pipeline(pulumi.CustomResource):
                  template_applied: pulumi.Input[Optional[_builtins.bool]] = None,
                  template_applied_pipeline_yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  yaml: pulumi.Input[Optional[_builtins.str]] = None,
+                 yaml_version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -832,6 +902,7 @@ class Pipeline(pulumi.CustomResource):
             if identifier is None and not opts.urn:
                 raise TypeError("Missing required property 'identifier'")
             __props__.__dict__["identifier"] = identifier
+            __props__.__dict__["ignore_runtime_input_defaults"] = ignore_runtime_input_defaults
             __props__.__dict__["import_from_git"] = import_from_git
             __props__.__dict__["name"] = name
             if org_id is None and not opts.urn:
@@ -845,6 +916,7 @@ class Pipeline(pulumi.CustomResource):
             __props__.__dict__["template_applied"] = template_applied
             __props__.__dict__["template_applied_pipeline_yaml"] = template_applied_pipeline_yaml
             __props__.__dict__["yaml"] = yaml
+            __props__.__dict__["yaml_version"] = yaml_version
         super(Pipeline, __self__).__init__(
             'harness:platform/pipeline:Pipeline',
             resource_name,
@@ -859,6 +931,7 @@ class Pipeline(pulumi.CustomResource):
             git_details: pulumi.Input[Optional[Union['PipelineGitDetailsArgs', 'PipelineGitDetailsArgsDict', 'outputs.PipelineGitDetails']]] = None,
             git_import_info: pulumi.Input[Optional[Union['PipelineGitImportInfoArgs', 'PipelineGitImportInfoArgsDict', 'outputs.PipelineGitImportInfo']]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_runtime_input_defaults: pulumi.Input[Optional[_builtins.bool]] = None,
             import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -867,7 +940,8 @@ class Pipeline(pulumi.CustomResource):
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             template_applied: pulumi.Input[Optional[_builtins.bool]] = None,
             template_applied_pipeline_yaml: pulumi.Input[Optional[_builtins.str]] = None,
-            yaml: pulumi.Input[Optional[_builtins.str]] = None) -> 'Pipeline':
+            yaml: pulumi.Input[Optional[_builtins.str]] = None,
+            yaml_version: pulumi.Input[Optional[_builtins.str]] = None) -> 'Pipeline':
         """
         Get an existing Pipeline resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -879,6 +953,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[Union['PipelineGitDetailsArgs', 'PipelineGitDetailsArgsDict', 'outputs.PipelineGitDetails']] git_details: Contains parameters related to creating an Entity for Git Experience.
         :param pulumi.Input[Union['PipelineGitImportInfoArgs', 'PipelineGitImportInfoArgsDict', 'outputs.PipelineGitImportInfo']] git_import_info: Contains Git Information for importing entities from Git
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
+        :param pulumi.Input[_builtins.bool] ignore_runtime_input_defaults: If true, Terraform ignores plan differences when a bare `<+input>` in `yaml` is returned by the API decorated with the template's default/allowed-values expression (for example `<+input>.default(python)` or `<+input>.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.
         :param pulumi.Input[_builtins.bool] import_from_git: Flag to set if importing from Git
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -888,6 +963,7 @@ class Pipeline(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] template_applied: If true, returns Pipeline YAML with Templates applied on it.
         :param pulumi.Input[_builtins.str] template_applied_pipeline_yaml: Pipeline YAML after resolving Templates (returned as a String).
         :param pulumi.Input[_builtins.str] yaml: YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
+        :param pulumi.Input[_builtins.str] yaml_version: Pipeline YAML version sent as `version` on create and update. Use `1` for a Harness 3.0 (unified) pipeline and `0` for a legacy pipeline. Defaults to `0`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -897,6 +973,7 @@ class Pipeline(pulumi.CustomResource):
         __props__.__dict__["git_details"] = git_details
         __props__.__dict__["git_import_info"] = git_import_info
         __props__.__dict__["identifier"] = identifier
+        __props__.__dict__["ignore_runtime_input_defaults"] = ignore_runtime_input_defaults
         __props__.__dict__["import_from_git"] = import_from_git
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
@@ -906,6 +983,7 @@ class Pipeline(pulumi.CustomResource):
         __props__.__dict__["template_applied"] = template_applied
         __props__.__dict__["template_applied_pipeline_yaml"] = template_applied_pipeline_yaml
         __props__.__dict__["yaml"] = yaml
+        __props__.__dict__["yaml_version"] = yaml_version
         return Pipeline(resource_name, opts=opts, __props__=__props__)
 
     @staticmethod
@@ -915,6 +993,7 @@ class Pipeline(pulumi.CustomResource):
             git_details: pulumi.Input[Optional[Union['PipelineGitDetailsArgs', 'PipelineGitDetailsArgsDict', 'outputs.PipelineGitDetails']]] = None,
             git_import_info: pulumi.Input[Optional[Union['PipelineGitImportInfoArgs', 'PipelineGitImportInfoArgsDict', 'outputs.PipelineGitImportInfo']]] = None,
             identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_runtime_input_defaults: pulumi.Input[Optional[_builtins.bool]] = None,
             import_from_git: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -923,12 +1002,14 @@ class Pipeline(pulumi.CustomResource):
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             template_applied: pulumi.Input[Optional[_builtins.bool]] = None,
             template_applied_pipeline_yaml: pulumi.Input[Optional[_builtins.str]] = None,
-            yaml: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+            yaml: pulumi.Input[Optional[_builtins.str]] = None,
+            yaml_version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["description"] = description
         __props__["gitDetails"] = git_details
         __props__["gitImportInfo"] = git_import_info
         __props__["identifier"] = identifier
+        __props__["ignoreRuntimeInputDefaults"] = ignore_runtime_input_defaults
         __props__["importFromGit"] = import_from_git
         __props__["name"] = name
         __props__["orgId"] = org_id
@@ -938,6 +1019,7 @@ class Pipeline(pulumi.CustomResource):
         __props__["templateApplied"] = template_applied
         __props__["templateAppliedPipelineYaml"] = template_applied_pipeline_yaml
         __props__["yaml"] = yaml
+        __props__["yamlVersion"] = yaml_version
         return pulumi.runtime.exists_resource(None, 'harness:platform/pipeline:Pipeline', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
@@ -971,6 +1053,14 @@ class Pipeline(pulumi.CustomResource):
         Unique identifier of the resource.
         """
         return pulumi.get(self, "identifier")
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreRuntimeInputDefaults")
+    def ignore_runtime_input_defaults(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If true, Terraform ignores plan differences when a bare `<+input>` in `yaml` is returned by the API decorated with the template's default/allowed-values expression (for example `<+input>.default(python)` or `<+input>.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.
+        """
+        return pulumi.get(self, "ignore_runtime_input_defaults")
 
     @_builtins.property
     @pulumi.getter(name="importFromGit")
@@ -1043,4 +1133,12 @@ class Pipeline(pulumi.CustomResource):
         YAML of the pipeline. In YAML, to reference an entity at the organization scope, prefix 'org' to the expression: org.{identifier}. To reference an entity at the account scope, prefix 'account` to the expression: account.{identifier}. For eg, to reference a connector with identifier 'connectorId' at the organization scope in a stage mention it as connectorRef: org.connectorId.
         """
         return pulumi.get(self, "yaml")
+
+    @_builtins.property
+    @pulumi.getter(name="yamlVersion")
+    def yaml_version(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Pipeline YAML version sent as `version` on create and update. Use `1` for a Harness 3.0 (unified) pipeline and `0` for a legacy pipeline. Defaults to `0`.
+        """
+        return pulumi.get(self, "yaml_version")
 

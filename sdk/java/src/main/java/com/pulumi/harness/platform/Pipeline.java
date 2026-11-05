@@ -261,6 +261,20 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return this.identifier;
     }
     /**
+     * If true, Terraform ignores plan differences when a bare `&lt;+input&gt;` in `yaml` is returned by the API decorated with the template&#39;s default/allowed-values expression (for example `&lt;+input&gt;.default(python)` or `&lt;+input&gt;.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.
+     * 
+     */
+    @Export(name="ignoreRuntimeInputDefaults", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> ignoreRuntimeInputDefaults;
+
+    /**
+     * @return If true, Terraform ignores plan differences when a bare `&lt;+input&gt;` in `yaml` is returned by the API decorated with the template&#39;s default/allowed-values expression (for example `&lt;+input&gt;.default(python)` or `&lt;+input&gt;.allowedValues(...)`). Useful for template-based pipelines that leave `templateInputs` as runtime inputs. Defaults to false.
+     * 
+     */
+    public Output<Optional<Boolean>> ignoreRuntimeInputDefaults() {
+        return Codegen.optional(this.ignoreRuntimeInputDefaults);
+    }
+    /**
      * Flag to set if importing from Git
      * 
      */
@@ -385,6 +399,20 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      */
     public Output<String> yaml() {
         return this.yaml;
+    }
+    /**
+     * Pipeline YAML version sent as `version` on create and update. Use `1` for a Harness 3.0 (unified) pipeline and `0` for a legacy pipeline. Defaults to `0`.
+     * 
+     */
+    @Export(name="yamlVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> yamlVersion;
+
+    /**
+     * @return Pipeline YAML version sent as `version` on create and update. Use `1` for a Harness 3.0 (unified) pipeline and `0` for a legacy pipeline. Defaults to `0`.
+     * 
+     */
+    public Output<Optional<String>> yamlVersion() {
+        return Codegen.optional(this.yamlVersion);
     }
 
     /**

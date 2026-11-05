@@ -57851,19 +57851,21 @@ func (o GetPipelineFiltersFilterPropertyModulePropertiesCiCiExecutionInfoPullReq
 type GetPipelineGitDetails struct {
 	// Name of the default branch (this checks out a new branch titled by branch_name).
 	BaseBranch string `pulumi:"baseBranch"`
-	// Name of the branch.
+	// Name of the branch. Set this to read a remote pipeline from a branch other than the repository default branch.
 	BranchName string `pulumi:"branchName"`
 	// Commit message used for the merge commit.
 	CommitMessage string `pulumi:"commitMessage"`
-	// Identifier of the Harness Connector used for CRUD operations on the Entity.
+	// Identifier of the Harness Connector used for CRUD operations on the Entity. Set this when reading a remote pipeline.
 	ConnectorRef string `pulumi:"connectorRef"`
 	// File path of the Entity in the repository.
 	FilePath string `pulumi:"filePath"`
+	// If the repo is harness code.
+	IsHarnessCodeRepo bool `pulumi:"isHarnessCodeRepo"`
 	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
 	LastCommitId string `pulumi:"lastCommitId"`
 	// Last object identifier (for Github). To be provided only when updating Pipeline.
 	LastObjectId string `pulumi:"lastObjectId"`
-	// Name of the repository.
+	// Name of the repository. Set this when reading a remote pipeline.
 	RepoName string `pulumi:"repoName"`
 	// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
 	StoreType string `pulumi:"storeType"`
@@ -57883,19 +57885,21 @@ type GetPipelineGitDetailsInput interface {
 type GetPipelineGitDetailsArgs struct {
 	// Name of the default branch (this checks out a new branch titled by branch_name).
 	BaseBranch pulumi.StringInput `pulumi:"baseBranch"`
-	// Name of the branch.
+	// Name of the branch. Set this to read a remote pipeline from a branch other than the repository default branch.
 	BranchName pulumi.StringInput `pulumi:"branchName"`
 	// Commit message used for the merge commit.
 	CommitMessage pulumi.StringInput `pulumi:"commitMessage"`
-	// Identifier of the Harness Connector used for CRUD operations on the Entity.
+	// Identifier of the Harness Connector used for CRUD operations on the Entity. Set this when reading a remote pipeline.
 	ConnectorRef pulumi.StringInput `pulumi:"connectorRef"`
 	// File path of the Entity in the repository.
 	FilePath pulumi.StringInput `pulumi:"filePath"`
+	// If the repo is harness code.
+	IsHarnessCodeRepo pulumi.BoolInput `pulumi:"isHarnessCodeRepo"`
 	// Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
 	LastCommitId pulumi.StringInput `pulumi:"lastCommitId"`
 	// Last object identifier (for Github). To be provided only when updating Pipeline.
 	LastObjectId pulumi.StringInput `pulumi:"lastObjectId"`
-	// Name of the repository.
+	// Name of the repository. Set this when reading a remote pipeline.
 	RepoName pulumi.StringInput `pulumi:"repoName"`
 	// Specifies whether the Entity is to be stored in Git or not. Possible values: INLINE, REMOTE.
 	StoreType pulumi.StringInput `pulumi:"storeType"`
@@ -57983,7 +57987,7 @@ func (o GetPipelineGitDetailsOutput) BaseBranch() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPipelineGitDetails) string { return v.BaseBranch }).(pulumi.StringOutput)
 }
 
-// Name of the branch.
+// Name of the branch. Set this to read a remote pipeline from a branch other than the repository default branch.
 func (o GetPipelineGitDetailsOutput) BranchName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPipelineGitDetails) string { return v.BranchName }).(pulumi.StringOutput)
 }
@@ -57993,7 +57997,7 @@ func (o GetPipelineGitDetailsOutput) CommitMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPipelineGitDetails) string { return v.CommitMessage }).(pulumi.StringOutput)
 }
 
-// Identifier of the Harness Connector used for CRUD operations on the Entity.
+// Identifier of the Harness Connector used for CRUD operations on the Entity. Set this when reading a remote pipeline.
 func (o GetPipelineGitDetailsOutput) ConnectorRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPipelineGitDetails) string { return v.ConnectorRef }).(pulumi.StringOutput)
 }
@@ -58001,6 +58005,11 @@ func (o GetPipelineGitDetailsOutput) ConnectorRef() pulumi.StringOutput {
 // File path of the Entity in the repository.
 func (o GetPipelineGitDetailsOutput) FilePath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPipelineGitDetails) string { return v.FilePath }).(pulumi.StringOutput)
+}
+
+// If the repo is harness code.
+func (o GetPipelineGitDetailsOutput) IsHarnessCodeRepo() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPipelineGitDetails) bool { return v.IsHarnessCodeRepo }).(pulumi.BoolOutput)
 }
 
 // Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
@@ -58013,7 +58022,7 @@ func (o GetPipelineGitDetailsOutput) LastObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPipelineGitDetails) string { return v.LastObjectId }).(pulumi.StringOutput)
 }
 
-// Name of the repository.
+// Name of the repository. Set this when reading a remote pipeline.
 func (o GetPipelineGitDetailsOutput) RepoName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPipelineGitDetails) string { return v.RepoName }).(pulumi.StringOutput)
 }
@@ -58057,7 +58066,7 @@ func (o GetPipelineGitDetailsPtrOutput) BaseBranch() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the branch.
+// Name of the branch. Set this to read a remote pipeline from a branch other than the repository default branch.
 func (o GetPipelineGitDetailsPtrOutput) BranchName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPipelineGitDetails) *string {
 		if v == nil {
@@ -58077,7 +58086,7 @@ func (o GetPipelineGitDetailsPtrOutput) CommitMessage() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Identifier of the Harness Connector used for CRUD operations on the Entity.
+// Identifier of the Harness Connector used for CRUD operations on the Entity. Set this when reading a remote pipeline.
 func (o GetPipelineGitDetailsPtrOutput) ConnectorRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPipelineGitDetails) *string {
 		if v == nil {
@@ -58095,6 +58104,16 @@ func (o GetPipelineGitDetailsPtrOutput) FilePath() pulumi.StringPtrOutput {
 		}
 		return &v.FilePath
 	}).(pulumi.StringPtrOutput)
+}
+
+// If the repo is harness code.
+func (o GetPipelineGitDetailsPtrOutput) IsHarnessCodeRepo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPipelineGitDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IsHarnessCodeRepo
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Last commit identifier (for Git Repositories other than Github). To be provided only when updating Pipeline.
@@ -58117,7 +58136,7 @@ func (o GetPipelineGitDetailsPtrOutput) LastObjectId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the repository.
+// Name of the repository. Set this when reading a remote pipeline.
 func (o GetPipelineGitDetailsPtrOutput) RepoName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetPipelineGitDetails) *string {
 		if v == nil {

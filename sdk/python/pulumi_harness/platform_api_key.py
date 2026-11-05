@@ -36,7 +36,7 @@ class PlatformApiKeyArgs:
         :param pulumi.Input[_builtins.str] apikey_type: Type of the API Key
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] parent_id: Parent Entity Identifier of the API Key
-        :param pulumi.Input[_builtins.int] default_time_to_expire_token: Default expiration time of the Token within API Key
+        :param pulumi.Input[_builtins.int] default_time_to_expire_token: Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
         :param pulumi.Input[_builtins.str] org_id: Unique identifier of the organization.
@@ -112,7 +112,7 @@ class PlatformApiKeyArgs:
     @pulumi.getter(name="defaultTimeToExpireToken")
     def default_time_to_expire_token(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Default expiration time of the Token within API Key
+        Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
         """
         return pulumi.get(self, "default_time_to_expire_token")
 
@@ -199,7 +199,7 @@ class _PlatformApiKeyState:
 
         :param pulumi.Input[_builtins.str] account_id: Account Identifier for the Entity
         :param pulumi.Input[_builtins.str] apikey_type: Type of the API Key
-        :param pulumi.Input[_builtins.int] default_time_to_expire_token: Default expiration time of the Token within API Key
+        :param pulumi.Input[_builtins.int] default_time_to_expire_token: Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
@@ -257,7 +257,7 @@ class _PlatformApiKeyState:
     @pulumi.getter(name="defaultTimeToExpireToken")
     def default_time_to_expire_token(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Default expiration time of the Token within API Key
+        Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
         """
         return pulumi.get(self, "default_time_to_expire_token")
 
@@ -390,7 +390,7 @@ class PlatformApiKey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Identifier for the Entity
         :param pulumi.Input[_builtins.str] apikey_type: Type of the API Key
-        :param pulumi.Input[_builtins.int] default_time_to_expire_token: Default expiration time of the Token within API Key
+        :param pulumi.Input[_builtins.int] default_time_to_expire_token: Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
@@ -505,7 +505,7 @@ class PlatformApiKey(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account_id: Account Identifier for the Entity
         :param pulumi.Input[_builtins.str] apikey_type: Type of the API Key
-        :param pulumi.Input[_builtins.int] default_time_to_expire_token: Default expiration time of the Token within API Key
+        :param pulumi.Input[_builtins.int] default_time_to_expire_token: Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
         :param pulumi.Input[_builtins.str] description: Description of the resource.
         :param pulumi.Input[_builtins.str] identifier: Unique identifier of the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource.
@@ -574,9 +574,9 @@ class PlatformApiKey(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="defaultTimeToExpireToken")
-    def default_time_to_expire_token(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def default_time_to_expire_token(self) -> pulumi.Output[_builtins.int]:
         """
-        Default expiration time of the Token within API Key
+        Default expiration time of the Token within API Key. When omitted, the server-assigned default is adopted instead of forcing a perpetual diff.
         """
         return pulumi.get(self, "default_time_to_expire_token")
 
